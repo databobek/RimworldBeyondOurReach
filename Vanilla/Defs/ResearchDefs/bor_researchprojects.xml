@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+
+	<ResearchProjectDef Name="BOR_Research_Base" Abstract="True">
+		<requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+		<requiredResearchFacilities>
+			<li>MultiAnalyzer</li>
+		</requiredResearchFacilities>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef Name="BOR_Research_Base_GenI" ParentName="BOR_Research_Base" Abstract="True">
+		<requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+		<requiredResearchFacilities>
+			<li>BOR_Linkable_Unlocker_GenI</li>
+		</requiredResearchFacilities>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef Name="BOR_Research_Base_GenII" ParentName="BOR_Research_Base" Abstract="True">
+		<requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+		<requiredResearchFacilities>
+			<li>BOR_Linkable_Unlocker_GenII</li>
+		</requiredResearchFacilities>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef Name="BOR_Research_Base_GenIII" ParentName="BOR_Research_Base" Abstract="True">
+		<requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+		<requiredResearchFacilities>
+			<li>BOR_Linkable_Unlocker_GenIII</li>
+		</requiredResearchFacilities>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef ParentName="BOR_Research_Base_GenI">
+		<defName>BOR_Research_NanoClusters</defName>
+		<label>Nano Clusters</label>
+		<description>Some places are too small for human hands, too narrow for human minds, too fast for human reflexes. That's where we use the nanoclusters, inert nanomachines springing into action on our every command.</description>
+		<baseCost>25000</baseCost>
+		<techLevel>Ultra</techLevel>
+		<prerequisites>
+			<li>BOR_Research_I</li>
+		</prerequisites>
+		<researchViewX>21.00</researchViewX>
+		<researchViewY>0.55</researchViewY>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef ParentName="BOR_Research_Base_GenI">
+		<defName>BOR_Research_Refinery_I</defName>
+		<label>Neutronium Refinery Tier 1</label>
+		<description>The very first step into automation of the Neutronium utilities, this refinery allows to create semi-advanced products, from Neutronium, automatically. It also unlocks the entire industry of transporting and storing Neutronium with the use of Starsteel.</description>
+		<baseCost>35000</baseCost>
+		<techLevel>Ultra</techLevel>
+		<prerequisites>
+			<li>BOR_Research_II_bridge</li>
+		</prerequisites>
+		<researchViewX>23.50</researchViewX>
+		<researchViewY>3.85</researchViewY>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef ParentName="BOR_Research_Base_GenI">
+		<defName>BOR_Research_Refinery_I_Temperature_Ruinable</defName>
+		<label>Temperature-dependent Tier 1 Refining</label>
+		<description>Devise alternative processing methods that take half the ingredients, but are very susceptible to temperature deviations.</description>
+		<baseCost>35000</baseCost>
+		<techLevel>Ultra</techLevel>
+		<prerequisites>
+			<li>BOR_Research_Refinery_I</li>
+		</prerequisites>
+		<researchViewX>24.00</researchViewX>
+		<researchViewY>4.75</researchViewY>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef ParentName="BOR_Research_Base_GenII">
+		<defName>BOR_Research_PicoClusters</defName>
+		<label>Pico Clusters</label>
+		<description>When Nanoclusters are too big is where the science begins to feel like magic. Picoclusters contain machines and contraptions carved in atoms themselves, boldly going where nothing else will fit.</description>
+		<baseCost>50000</baseCost>
+		<techLevel>Archotech</techLevel>
+		<prerequisites>
+			<li>BOR_Research_NanoClusters</li>
+			<li>BOR_Research_III_base</li>
+		</prerequisites>
+		<researchViewX>24.00</researchViewX>
+		<researchViewY>0.50</researchViewY>
+
+	</ResearchProjectDef>
+
+	<ResearchProjectDef ParentName="BOR_Research_Base_GenII">
+		<defName>BOR_Research_Refinery_II</defName>
+		<label>Neutronium Refinery Tier 2</label>
+		<description>Bold lunge into Neutronium automation, allows to construct even more complex refineries that are more space- and time-efficient.</description>
+		<baseCost>75000</baseCost>
+		<techLevel>Archotech</techLevel>
+		<prerequisites>
+			<li>BOR_Research_Refinery_I</li>
+			<li>BOR_Research_IV</li>
+		</prerequisites>
+		<researchViewX>27.00</researchViewX>
+		<researchViewY>4.60</researchViewY>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef ParentName="BOR_Research_Base_GenII">
+		<defName>BOR_Research_Refinery_II_Temperature_Ruinable</defName>
+		<label>Temperature-ruinable Tier II Refining</label>
+		<description>Devise new processing methods, dependent on the temperature.</description>
+		<baseCost>75000</baseCost>
+		<techLevel>Archotech</techLevel>
+		<prerequisites>
+			<li>BOR_Research_Refinery_II</li>
+		</prerequisites>
+		<researchViewX>28.00</researchViewX>
+		<researchViewY>4.20</researchViewY>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef ParentName="BOR_Research_Base_GenIII">
+		<defName>BOR_Research_FemtoClusters</defName>
+		<label>Femto Clusters</label>
+		<description>In the realms of quantum particles, even picotechnology seems ridiculously big. Thanks to our advancements, we can know produce the ultimate machines, that don't even need atoms to work. This allows us to strip the reality to its barebones and rebuild it anew to our liking.</description>
+		<baseCost>125000</baseCost>
+		<techLevel>Archotech</techLevel>
+		<prerequisites>
+			<li>BOR_Research_PicoClusters</li>
+			<li>BOR_Research_IV</li>
+		</prerequisites>
+		<researchViewX>29.00</researchViewX>
+		<researchViewY>0.65</researchViewY>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef ParentName="BOR_Research_Base_GenIII">
+		<defName>BOR_Research_Refinery_III</defName>
+		<label>Neutronium Refinery Tier 3</label>
+		<description>Final leap into automation of creation with neutronium, this refinery is the most efficient possible.</description>
+		<baseCost>150000</baseCost>
+		<techLevel>Archotech</techLevel>
+		<prerequisites>
+			<li>BOR_Research_Refinery_II</li>
+			<li>BOR_Research_VI_base</li>
+		</prerequisites>
+		<researchViewX>31.00</researchViewX>
+		<researchViewY>5.45</researchViewY>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef ParentName="BOR_Research_Base_GenIII">
+		<defName>BOR_Research_Refinery_III_Temperature_Ruinable</defName>
+		<label>Temperature-ruinable Tier III refining</label>
+		<description>Devise new refining methods that operate in sub-zero temperatures but use half the ingredients.</description>
+		<baseCost>150000</baseCost>
+		<techLevel>Archotech</techLevel>
+		<prerequisites>
+			<li>BOR_Research_Refinery_III</li>
+		</prerequisites>
+		<researchViewX>32.00</researchViewX>
+		<researchViewY>4.8</researchViewY>
+	</ResearchProjectDef>
+
+	<ResearchProjectDef ParentName="BOR_Research_Base_GenIII">
+		<defName>BOR_Research_Infreactor</defName>
+		<label>Infinite Neutronium Reactor</label>
+		<description>Through sheer luck have we stumbled into a way to start a self-sustaining Neutronium draw. Utilizing tremendous power and our finest materials, we can create a beacon for Neutronium to feed our networks, to allow unprecedented efficiency in automation.</description>
+		<baseCost>500000</baseCost>
+		<techLevel>Archotech</techLevel>
+		<prerequisites>
+			<li>BOR_Research_VI_final</li>
+		</prerequisites>
+		<researchViewX>32.00</researchViewX>
+		<researchViewY>0.50</researchViewY>
+	</ResearchProjectDef>
+
+</Defs>

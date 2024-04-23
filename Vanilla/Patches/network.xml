@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+    <!-- 
+    <Operation Class="PatchOperationAdd">
+        <xpath>/Defs/ThingDef[defName="BOR_Linkable_CosmicCall_I"]/comps</xpath>
+        <value>
+            <li Class="PipeSystem.CompProperties_ResourceTrader">
+                <pipeNet>BOR_NeutroniumNet</pipeNet>
+                <consumptionPerTick>0</consumptionPerTick>
+                <idleConsumptionPerTick>1</idleConsumptionPerTick>
+            </li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>/Defs/ThingDef[defName="BOR_Linkable_CosmicCall_II"]/comps</xpath>
+        <value>
+            <li Class="PipeSystem.CompProperties_ResourceTrader">
+                <pipeNet>BOR_NeutroniumNet</pipeNet>
+                <consumptionPerTick>0</consumptionPerTick>
+                <idleConsumptionPerTick>2</idleConsumptionPerTick>
+            </li>
+        </value>
+    </Operation>
+
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>/Defs/ThingDef[defName="BOR_Linkable_CosmicCall_III"]/comps</xpath>
+        <value>
+            <li Class="PipeSystem.CompProperties_ResourceTrader">
+                <pipeNet>BOR_NeutroniumNet</pipeNet>
+                <consumptionPerTick>0</consumptionPerTick>
+                <idleConsumptionPerTick>3</idleConsumptionPerTick>
+            </li>
+        </value>
+    </Operation> -->
+
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>/Defs/ThingDef[defName="BOR_Reactor_II"]/comps</xpath>
+        <value>
+            <li Class="PipeSystem.CompProperties_ResourceTrader">
+                <pipeNet>BOR_NeutroniumNet</pipeNet>
+                <consumptionPerTick>0.04</consumptionPerTick>
+            </li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationRemove">
+        <xpath>/Defs/ThingDef[defName="BOR_Reactor_II"]/comps/li[@Class="CompProperties_Refuelable"]/fuelCapacity</xpath>
+    </Operation>
+    <Operation Class="PatchOperationReplace">
+        <xpath>/Defs/ThingDef[defName="BOR_Reactor_II"]/comps/li[@Class="CompProperties_Power"]/compClass</xpath>
+        <value>
+            <compClass>PipeSystem.CompPowerPlantNeedResource</compClass>
+        </value>
+    </Operation>
+
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>/Defs/ThingDef[defName="BOR_Reactor_II_Portable"]/comps/li[@Class="CompProperties_Refuelable"]/fuelConsumptionRate</xpath>
+        <value>
+            <fuelConsumptionRate>3</fuelConsumptionRate>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>/Defs/ThingDef[defName="BOR_Reactor_II_Portable"]/comps/li[@Class="CompProperties_Refuelable"]/fuelCapacity</xpath>
+        <value>
+            <fuelCapacity>30</fuelCapacity>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>/Defs/ThingDef[defName="Table_BOR_PinnacleFabricator"]/thingClass</xpath>
+        <value>
+            <thingClass>PipeSystem.Building_ResourceWorkTable</thingClass>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>/Defs/ThingDef[defName="Table_BOR_CosmicCall"]/thingClass</xpath>
+        <value>
+            <thingClass>PipeSystem.Building_ResourceWorkTable</thingClass>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>/Defs/ThingDef[defName="Table_BOR_Constructor"]/thingClass</xpath>
+        <value>
+            <thingClass>PipeSystem.Building_ResourceWorkTable</thingClass>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>/Defs/ThingDef[defName="Table_BOR_PinnacleFabricator"]/comps</xpath>
+        <value>
+            <li Class="PipeSystem.CompProperties_ResourceTrader">
+                <pipeNet>BOR_NeutroniumNet</pipeNet>
+                <consumptionPerTick>80</consumptionPerTick>
+                <idleConsumptionPerTick>0</idleConsumptionPerTick>
+            </li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>/Defs/ThingDef[defName="Table_BOR_CosmicCall"]/comps</xpath>
+        <value>
+            <li Class="PipeSystem.CompProperties_ResourceTrader">
+                <pipeNet>BOR_NeutroniumNet</pipeNet>
+                <consumptionPerTick>40</consumptionPerTick>
+                <idleConsumptionPerTick>0</idleConsumptionPerTick>
+            </li>
+        </value>
+    </Operation>
+
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>/Defs/ThingDef[defName="Table_BOR_Constructor"]/comps</xpath>
+        <value>
+            <li Class="PipeSystem.CompProperties_ResourceTrader">
+                <pipeNet>BOR_NeutroniumNet</pipeNet>
+                <consumptionPerTick>20</consumptionPerTick>
+                <idleConsumptionPerTick>0</idleConsumptionPerTick>
+            </li>
+        </value>
+    </Operation>
+</Patch>

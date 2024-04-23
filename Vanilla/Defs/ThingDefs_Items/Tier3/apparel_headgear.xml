@@ -1,0 +1,218 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- ================================== Helmets ====================================-->
+
+  <ThingDef Name="ApparelArmorHelmetPowerTenebralBase" ParentName="ArmorHelmetMakeableBase" Abstract="True">
+    <techLevel>Archotech</techLevel>
+    <recipeMaker>
+      <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+      <researchPrerequisites>
+        <li>BOR_Research_VI_armor</li>
+        <li>PoweredArmor</li>
+      </researchPrerequisites>
+      <skillRequirements>
+        <Crafting>20</Crafting>
+      </skillRequirements>
+      <recipeUsers Inherit="False">
+        <li>FabricationBench</li>
+      </recipeUsers>
+    </recipeMaker>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/PowerArmorHelmet/PowerArmorHelmet</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <uiIconScale>1.25</uiIconScale>
+    <tradeTags>
+      <li>HiTechArmor</li>
+      <li>Armor</li>
+    </tradeTags>
+    <generateCommonality>0.5</generateCommonality>
+    <statBases>
+      <WorkToMake>70875</WorkToMake>
+      <MaxHitPoints>505.5</MaxHitPoints>
+      <Mass>0.6</Mass>
+      <Flammability>0.15</Flammability>
+      <ArmorRating_Sharp>3.6</ArmorRating_Sharp>
+      <ArmorRating_Blunt>1.6</ArmorRating_Blunt>
+      <ArmorRating_Heat>1.65</ArmorRating_Heat>
+      <Insulation_Cold>13.5</Insulation_Cold>
+      <Insulation_Heat>6.75</Insulation_Heat>
+      <EquipDelay>3</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <SlaveSuppressionOffset MayRequire="Ludeon.RimWorld.Ideology">-0.1</SlaveSuppressionOffset>
+    </equippedStatOffsets>
+    <costList>
+      <BOR_Component_GenIII>1</BOR_Component_GenIII>
+      <BOR_Tenebrite>40</BOR_Tenebrite>
+    </costList>
+    <apparel>
+      <bodyPartGroups>
+        <li>FullHead</li>
+      </bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/PowerArmorHelmet/PowerArmorHelmet</wornGraphicPath>
+      <layers>
+        <li>Overhead</li>
+      </layers>
+      <defaultOutfitTags>
+        <li>Soldier</li>
+      </defaultOutfitTags>
+      <useDeflectMetalEffect>true</useDeflectMetalEffect>
+      <forceEyesVisibleForRotations>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+      </forceEyesVisibleForRotations>
+    </apparel>
+    <colorGenerator Class="ColorGenerator_Options">
+      <options>
+        <li>
+          <weight>10</weight>
+          <only>(0.9,0.9,0.9,1)</only>
+        </li>
+        <li>
+          <weight>10</weight>
+          <only>(0.33,0.33,0.33,1)</only>
+        </li>
+        <li>
+          <weight>10</weight>
+          <only>(0.65,0.65,0.65,1)</only>
+        </li>
+        <li>
+          <weight>6</weight>
+          <min>(0.3,0.3,0.3,1)</min>
+          <max>(0.5,0.5,0.5,1)</max>
+        </li>
+      </options>
+    </colorGenerator>
+    <comps>
+      <li Class="CompProperties_Biocodable" />
+    </comps>
+    <thingSetMakerTags>
+      <li>RewardStandardHighFreq</li>
+    </thingSetMakerTags>
+  </ThingDef>
+
+  <ThingDef ParentName="ApparelArmorHelmetPowerTenebralBase">
+    <defName>BOR_Tenebral_Apparel_PowerArmorHelmet</defName>
+    <label>tenebral marine helmet</label>
+    <description>A tenebral marine armor helmet, with a built-in status computer and layered tenebrite-weave plates.\n\nArmor like this is often used by rapid-incursion space marines.</description>
+    <apparel>
+      <tags>
+        <li>SpacerMilitary</li>
+      </tags>
+    </apparel>
+    <tradeTags>
+      <li>Armor</li>
+    </tradeTags>
+    <recipeMaker>
+      <displayPriority>100</displayPriority>
+    </recipeMaker>
+  </ThingDef>
+
+  <ThingDef Name="ApparelArmorHelmetReconTenebralBase" ParentName="ArmorHelmetMakeableBase" Abstract="True">
+    <techLevel>Ultra</techLevel>
+    <recipeMaker>
+      <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+      <researchPrerequisites>
+        <li>BOR_Research_VI_armor</li>
+        <li>ReconArmor</li>
+      </researchPrerequisites>
+      <skillRequirements>
+        <Crafting>20</Crafting>
+      </skillRequirements>
+      <recipeUsers Inherit="False">
+        <li>FabricationBench</li>
+      </recipeUsers>
+    </recipeMaker>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/ReconArmorHelmet/ReconHelmet</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(0.9, 0.9)</drawSize>
+    </graphicData>
+    <tradeTags>
+      <li>HiTechArmor</li>
+    </tradeTags>
+    <generateCommonality>1.0</generateCommonality>
+    <statBases>
+      <WorkToMake>49500</WorkToMake>
+      <MaxHitPoints>405</MaxHitPoints>
+      <Mass>0.5</Mass>
+      <Flammability>0.15</Flammability>
+      <ArmorRating_Sharp>3.15</ArmorRating_Sharp>
+      <ArmorRating_Blunt>1.35</ArmorRating_Blunt>
+      <ArmorRating_Heat>1,462</ArmorRating_Heat>
+      <Insulation_Cold>9</Insulation_Cold>
+      <Insulation_Heat>4.5</Insulation_Heat>
+      <EquipDelay>1.5</EquipDelay>
+    </statBases>
+    <costList>
+      <BOR_Component_GenIII>1</BOR_Component_GenIII>
+      <BOR_Tenebrite>30</BOR_Tenebrite>
+    </costList>
+    <apparel>
+      <bodyPartGroups>
+        <li>FullHead</li>
+      </bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/ReconArmorHelmet/ReconHelmet</wornGraphicPath>
+      <layers>
+        <li>Overhead</li>
+      </layers>
+      <defaultOutfitTags>
+        <li>Soldier</li>
+      </defaultOutfitTags>
+      <useDeflectMetalEffect>true</useDeflectMetalEffect>
+    </apparel>
+    <colorGenerator Class="ColorGenerator_Options">
+      <options>
+        <li>
+          <weight>10</weight>
+          <only>(0.9,0.9,0.9,1)</only>
+        </li>
+        <li>
+          <weight>10</weight>
+          <only>(0.33,0.33,0.33,1)</only>
+        </li>
+        <li>
+          <weight>10</weight>
+          <only>(0.65,0.65,0.65,1)</only>
+        </li>
+        <li>
+          <weight>6</weight>
+          <min>(0.3,0.3,0.3,1)</min>
+          <max>(0.5,0.5,0.5,1)</max>
+        </li>
+      </options>
+    </colorGenerator>
+    <comps>
+      <li Class="CompProperties_Biocodable" />
+    </comps>
+    <thingSetMakerTags>
+      <li>RewardStandardHighFreq</li>
+    </thingSetMakerTags>
+  </ThingDef>
+
+  <ThingDef ParentName="ApparelArmorHelmetReconTenebralBase">
+    <defName>BOR_Tenebral_Apparel_ArmorHelmetRecon</defName>
+    <label>tenebral recon helmet</label>
+    <description>A tenebral armored helmet with a built-in status computer and a protective tenebrite-weave plate.\n\nArmor like this is often used by imperial scout troops or glitterworld police forces.</description>
+    <apparel>
+      <tags>
+        <li>SpacerMilitary</li>
+      </tags>
+      <forceEyesVisibleForRotations>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+      </forceEyesVisibleForRotations>
+    </apparel>
+    <tradeTags>
+      <li>Armor</li>
+    </tradeTags>
+    <recipeMaker>
+      <displayPriority>110</displayPriority>
+    </recipeMaker>
+  </ThingDef>
+
+</Defs>

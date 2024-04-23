@@ -1,0 +1,1338 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <ThingDef ParentName="ArmorMachineableBase">
+    <defName>BOR_Solar_RA_RanseurArmor</defName>
+    <label>solar ranseur armor</label>
+    <description>A highly specialized suit of light solar power-armor. Solar anseur armor cannot protect as well as standard Recon armor, but it is highly optimized for stealth and reconissance operations. It features an advanced cloaking device in its core that can render its wearer invisible for extended periods of time. \nRanseur armor requires excessive power when its cloaking device is active, and its reactor must be resupplied with uranium after sufficient use.</description>
+    <techLevel>Ultra</techLevel>
+    <statBases>
+      <ArmorRating_Sharp>1.26</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.48</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.60</ArmorRating_Heat>
+      <SmokepopBeltRadius>6.9</SmokepopBeltRadius>
+      <WorkToMake>120000</WorkToMake>
+      <MaxHitPoints>420</MaxHitPoints>
+      <Mass>7</Mass>
+      <Flammability>0.3</Flammability>
+      <Insulation_Cold>48</Insulation_Cold>
+      <Insulation_Heat>13.5</Insulation_Heat>
+      <EquipDelay>9</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <MoveSpeed>1.5</MoveSpeed>
+      <SlaveSuppressionOffset MayRequire="Ludeon.RimWorld.Ideology">-0.35</SlaveSuppressionOffset>
+    </equippedStatOffsets>
+    <recipeMaker>
+      <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+      <researchPrerequisites>
+        <li>RA_CloakingResearch</li>
+        <li>BOR_Research_II_armor</li>
+      </researchPrerequisites>
+      <skillRequirements>
+        <Crafting>12</Crafting>
+      </skillRequirements>
+      <recipeUsers Inherit="False">
+        <li>FabricationBench</li>
+      </recipeUsers>
+    </recipeMaker>
+    <graphicData>
+      <texPath>Things/Items/Equipment/Apparel/RanseurArmor/RanseurArmor</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <generateCommonality>1.5</generateCommonality>
+    <tradeTags>
+      <li>HiTechArmor</li>
+    </tradeTags>
+    <thingCategories>
+      <li>ApparelArmor</li>
+    </thingCategories>
+    <costList>
+      <BOR_Component_GenII>6</BOR_Component_GenII>
+      <BOR_SunSteel>80</BOR_SunSteel>
+      <Uranium>90</Uranium>
+    </costList>
+    <apparel>
+      <bodyPartGroups>
+        <li>Torso</li>
+        <li>Neck</li>
+        <li>Shoulders</li>
+        <li>Arms</li>
+        <li>Legs</li>
+      </bodyPartGroups>
+      <wornGraphicPath>Things/Items/Equipment/Apparel/RanseurArmor/RanseurArmor</wornGraphicPath>
+      <layers>
+        <li>Middle</li>
+        <li>Shell</li>
+      </layers>
+      <useDeflectMetalEffect>true</useDeflectMetalEffect>
+    </apparel>
+    <comps>
+      <li Class="CompProperties_Biocodable" />
+      <li Class="CompProperties_Reloadable">
+        <maxCharges>5</maxCharges>
+        <ammoDef>Uranium</ammoDef>
+        <ammoCountPerCharge>30</ammoCountPerCharge>
+        <baseReloadTicks>40</baseReloadTicks>
+        <soundReload>Standard_Reload</soundReload>
+        <hotKey>Misc4</hotKey>
+        <chargeNoun>cloak</chargeNoun>
+        <displayGizmoWhileUndrafted>false</displayGizmoWhileUndrafted>
+      </li>
+    </comps>
+    <verbs>
+      <li>
+        <verbClass>RoyalArsenal.Verb_Cloak</verbClass>
+        <label>activate cloak</label>
+        <violent>false</violent>
+        <hasStandardCommand>true</hasStandardCommand>
+        <targetable>false</targetable>
+        <nonInterruptingSelfCast>true</nonInterruptingSelfCast>
+        <onlyManualCast>True</onlyManualCast>
+      </li>
+    </verbs>
+    <thingSetMakerTags>
+      <li>RewardStandardHighFreq</li>
+    </thingSetMakerTags>
+    <modExtensions>
+      <li Class="FalloutCore.ApparelExtension">
+        <shouldHideBody>true</shouldHideBody>
+      </li>
+    </modExtensions>
+
+  </ThingDef>
+
+  <ThingDef ParentName="ArmorHelmetMakeableBase">
+    <defName>BOR_Solar_RA_RanseurArmorHelmet</defName>
+    <label>solar ranseur helmet</label>
+    <description>A high-tech armored helmet designed for use with a set of solar ranseur armor. It features an internal heads-up display with a targeting computer similar to those found in Gunlinks.</description>
+    <techLevel>Ultra</techLevel>
+    <recipeMaker>
+      <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+      <researchPrerequisites>
+        <li>RA_CloakingResearch</li>
+        <li>BOR_Research_II_armor</li>
+      </researchPrerequisites>
+      <skillRequirements>
+        <Crafting>12</Crafting>
+      </skillRequirements>
+      <recipeUsers Inherit="False">
+        <li>FabricationBench</li>
+      </recipeUsers>
+    </recipeMaker>
+    <graphicData>
+      <texPath>Things/Items/Equipment/Apparel/RanseurArmorHelmet/RanseurArmorHelmet</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(0.9, 0.9)</drawSize>
+    </graphicData>
+    <tradeTags>
+      <li>HiTechArmor</li>
+    </tradeTags>
+    <generateCommonality>1.5</generateCommonality>
+    <statBases>
+      <WorkToMake>45000</WorkToMake>
+      <MaxHitPoints>180</MaxHitPoints>
+      <Mass>0.75</Mass>
+      <Flammability>0.3</Flammability>
+      <ArmorRating_Sharp>1.26</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.48</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.60</ArmorRating_Heat>
+      <Insulation_Cold>6</Insulation_Cold>
+      <Insulation_Heat>3</Insulation_Heat>
+      <EquipDelay>1.5</EquipDelay>
+    </statBases>
+    <costList>
+      <BOR_Component_GenII>4</BOR_Component_GenII>
+      <BOR_SunSteel>30</BOR_SunSteel>
+    </costList>
+    <apparel>
+      <bodyPartGroups>
+        <li>FullHead</li>
+      </bodyPartGroups>
+      <wornGraphicPath>Things/Items/Equipment/Apparel/RanseurArmorHelmet/RanseurArmorHelmet</wornGraphicPath>
+      <layers>
+        <li>Overhead</li>
+      </layers>
+      <useDeflectMetalEffect>true</useDeflectMetalEffect>
+    </apparel>
+    <equippedStatOffsets>
+      <ShootingAccuracyPawn>4.5</ShootingAccuracyPawn>
+    </equippedStatOffsets>
+    <comps>
+      <li Class="CompProperties_Biocodable" />
+    </comps>
+    <thingSetMakerTags>
+      <li>RewardStandardHighFreq</li>
+    </thingSetMakerTags>
+  </ThingDef>
+
+  <ThingDef ParentName="ApparelBase">
+    <defName>BOR_Solar_RA_StealthBelt</defName>
+    <label>personal solar cloaking system</label>
+    <description>An solar cloaking system worn on the belt. It is less efficient than a suit of solar ranseur armor, and it can only hold enough nuclear fuel for one charge at a time.</description>
+    <techLevel>Ultra</techLevel>
+    <comps>
+      <li Class="CompProperties_Reloadable">
+        <maxCharges>2</maxCharges>
+        <ammoDef>Uranium</ammoDef>
+        <ammoCountPerCharge>60</ammoCountPerCharge>
+        <baseReloadTicks>40</baseReloadTicks>
+        <soundReload>Standard_Reload</soundReload>
+        <hotKey>Misc4</hotKey>
+        <chargeNoun>cloak</chargeNoun>
+        <displayGizmoWhileUndrafted>false</displayGizmoWhileUndrafted>
+      </li>
+    </comps>
+    <verbs>
+      <li>
+        <verbClass>RoyalArsenal.Verb_Cloak</verbClass>
+        <label>activate solar cloak</label>
+        <violent>false</violent>
+        <hasStandardCommand>true</hasStandardCommand>
+        <targetable>false</targetable>
+        <nonInterruptingSelfCast>true</nonInterruptingSelfCast>
+        <onlyManualCast>True</onlyManualCast>
+      </li>
+    </verbs>
+    <recipeMaker>
+      <unfinishedThingDef>UnfinishedPack</unfinishedThingDef>
+      <researchPrerequisites>
+        <li>BOR_Research_II_armor</li>
+      </researchPrerequisites>
+      <recipeUsers>
+        <li>FabricationBench</li>
+      </recipeUsers>
+      <useIngredientsForColor>false</useIngredientsForColor>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Smith</effectWorking>
+      <soundWorking>Recipe_Smith</soundWorking>
+      <skillRequirements>
+        <Crafting>6</Crafting>
+      </skillRequirements>
+    </recipeMaker>
+    <costList>
+      <BOR_Component_GenII>2</BOR_Component_GenII>
+      <BOR_SunSteel>20</BOR_SunSteel>
+      <Uranium>60</Uranium>
+    </costList>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/SmokepopPack/SmokepopPack</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <tickerType>Normal</tickerType>
+    <statBases>
+      <WorkToMake>45000</WorkToMake>
+      <Mass>2</Mass>
+      <Flammability>0.3</Flammability>
+      <EquipDelay>1.5</EquipDelay>
+    </statBases>
+    <thingCategories>
+      <li>ApparelUtility</li>
+    </thingCategories>
+    <generateAllowChance>0.15</generateAllowChance>
+    <apparel>
+      <countsAsClothingForNudity>false</countsAsClothingForNudity>
+      <careIfWornByCorpse>false</careIfWornByCorpse>
+      <careIfDamaged>false</careIfDamaged>
+      <wearPerDay>0</wearPerDay>
+      <bodyPartGroups>
+        <li>Waist</li>
+      </bodyPartGroups>
+      <layers>
+        <li>Belt</li>
+      </layers>
+    </apparel>
+    <colorGenerator Class="ColorGenerator_Options">
+      <options>
+        <li>
+          <weight>10</weight>
+          <only>(0.33,0.33,0.33,1)</only>
+        </li>
+        <li>
+          <weight>10</weight>
+          <only>(0.6,0.4,0.4,1)</only>
+        </li>
+        <li>
+          <weight>10</weight>
+          <only>(0.6,0.6,0.4,1)</only>
+        </li>
+        <li>
+          <weight>6</weight>
+          <min>(0.3,0.3,0.3,1)</min>
+          <max>(0.5,0.5,0.5,1)</max>
+        </li>
+      </options>
+    </colorGenerator>
+  </ThingDef>
+
+  <ThingDef ParentName="ArmorMachineableBase">
+    <defName>BOR_Solar_RA_GuardianArmorBase</defName>
+    <label>solar guardian armor</label>
+    <description>A suit of specialty solar power armor designed with extra defensive measures. A personal countermeasure system is mounted on the back, capable of rapidly launching EMP grenades to disrupt turrets and energy shields.</description>
+    <techLevel>Ultra</techLevel>
+    <recipeMaker>
+      <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+      <researchPrerequisites>
+        <li>RA_RadioChaffResearch</li>
+        <li>BOR_Research_II_armor</li>
+      </researchPrerequisites>
+      <skillRequirements>
+        <Crafting>13</Crafting>
+      </skillRequirements>
+      <recipeUsers Inherit="False">
+        <li>FabricationBench</li>
+      </recipeUsers>
+    </recipeMaker>
+    <graphicData>
+      <texPath>Things/Items/Equipment/Apparel/GuardianArmor/GuardianArmor</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <generateCommonality>1.25</generateCommonality>
+    <statBases>
+      <WorkToMake>112500</WorkToMake>
+      <MaxHitPoints>510</MaxHitPoints>
+      <Mass>10</Mass>
+      <Flammability>0.3</Flammability>
+      <ArmorRating_Sharp>1.74</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.8</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.9</ArmorRating_Heat>
+      <Insulation_Cold>51</Insulation_Cold>
+      <Insulation_Heat>15</Insulation_Heat>
+      <EquipDelay>12</EquipDelay>
+      <SmokepopBeltRadius>6.9</SmokepopBeltRadius>
+    </statBases>
+    <equippedStatOffsets>
+      <MoveSpeed>-0.5</MoveSpeed>
+      <SlaveSuppressionOffset MayRequire="Ludeon.RimWorld.Ideology">-0.3</SlaveSuppressionOffset>
+    </equippedStatOffsets>
+    <thingCategories>
+      <li>ApparelArmor</li>
+    </thingCategories>
+    <tradeTags>
+      <li>HiTechArmor</li>
+    </tradeTags>
+    <costList>
+      <BOR_Component_GenII>4</BOR_Component_GenII>
+      <BOR_SunSteel>130</BOR_SunSteel>
+      <Uranium>20</Uranium>
+    </costList>
+    <apparel>
+      <bodyPartGroups>
+        <li>Torso</li>
+        <li>Neck</li>
+        <li>Shoulders</li>
+        <li>Arms</li>
+        <li>Legs</li>
+      </bodyPartGroups>
+      <wornGraphicPath>Things/Items/Equipment/Apparel/GuardianArmor/GuardianArmor</wornGraphicPath>
+      <layers>
+        <li>Middle</li>
+        <li>Shell</li>
+      </layers>
+      <useDeflectMetalEffect>true</useDeflectMetalEffect>
+    </apparel>
+    <comps>
+      <li Class="CompProperties_Biocodable" />
+      <li Class="CompProperties_Reloadable">
+        <maxCharges>7</maxCharges>
+        <ammoDef>ComponentIndustrial</ammoDef>
+        <ammoCountPerCharge>2</ammoCountPerCharge>
+        <baseReloadTicks>40</baseReloadTicks>
+        <soundReload>Standard_Reload</soundReload>
+        <hotKey>Misc4</hotKey>
+        <chargeNoun>grenade</chargeNoun>
+        <displayGizmoWhileUndrafted>false</displayGizmoWhileUndrafted>
+      </li>
+    </comps>
+    <verbs>
+      <li>
+        <label>launch solar emp grenade</label>
+        <verbClass>Verb_LaunchProjectileStatic</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <onlyManualCast>True</onlyManualCast>
+        <range>21.9</range>
+        <!-- <forcedMissRadius>1.4</forcedMissRadius> -->
+        <warmupTime>0.18</warmupTime>
+        <noiseRadius>3</noiseRadius>
+        <ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
+        <soundCast>Shot_IncendiaryLauncher</soundCast>
+        <soundCastTail>GunTail_Medium</soundCastTail>
+        <muzzleFlashScale>14</muzzleFlashScale>
+        <drawHighlightWithLineOfSight>true</drawHighlightWithLineOfSight>
+        <targetParams>
+          <canTargetLocations>true</canTargetLocations>
+        </targetParams>
+        <defaultProjectile>Proj_GrenadeEMP</defaultProjectile>
+        <rangedFireRulepack>Combat_RangedFire_Thrown</rangedFireRulepack>
+      </li>
+    </verbs>
+    <colorGenerator Class="ColorGenerator_Options">
+      <options>
+        <li>
+          <weight>10</weight>
+          <only>(0.9,0.9,0.9)</only>
+        </li>
+        <li>
+          <weight>10</weight>
+          <only>(0.33,0.33,0.33)</only>
+        </li>
+        <li>
+          <weight>10</weight>
+          <only>(0.65,0.65,0.65)</only>
+        </li>
+        <li>
+          <weight>6</weight>
+          <min>(0.3,0.3,0.3)</min>
+          <max>(0.5,0.5,0.5)</max>
+        </li>
+      </options>
+    </colorGenerator>
+    <thingSetMakerTags>
+      <li>RewardStandardHighFreq</li>
+    </thingSetMakerTags>
+    <modExtensions>
+      <li Class="FalloutCore.ApparelExtension">
+        <shouldHideBody>true</shouldHideBody>
+      </li>
+    </modExtensions>
+  </ThingDef>
+
+  <ThingDef ParentName="ArmorHelmetMakeableBase">
+    <defName>BOR_Solar_RA_GuardianArmorHelmet</defName>
+    <label>solar guardian helmet</label>
+    <description>A modified solar marine helmet with an added armor plate in the front. It offers improved protection over a standard solar marine helmet.</description>
+    <techLevel>Ultra</techLevel>
+    <recipeMaker>
+      <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+      <researchPrerequisites>
+        <li>RA_RadioChaffResearch</li>
+        <li>BOR_Research_II_armor</li>
+      </researchPrerequisites>
+      <skillRequirements>
+        <Crafting>10</Crafting>
+      </skillRequirements>
+      <recipeUsers Inherit="False">
+        <li>FabricationBench</li>
+      </recipeUsers>
+    </recipeMaker>
+    <graphicData>
+      <texPath>Things/Items/Equipment/Apparel/GuardianArmorHelmet/GuardianArmorHelmet</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(0.9, 0.9)</drawSize>
+    </graphicData>
+    <uiIconScale>1.25</uiIconScale>
+    <tradeTags>
+      <li>HiTechArmor</li>
+    </tradeTags>
+    <generateCommonality>1.25</generateCommonality>
+    <statBases>
+      <WorkToMake>31500</WorkToMake>
+      <MaxHitPoints>225</MaxHitPoints>
+      <Mass>1.25</Mass>
+      <Flammability>0.3</Flammability>
+      <ArmorRating_Sharp>2.1</ArmorRating_Sharp>
+      <ArmorRating_Blunt>1.05</ArmorRating_Blunt>
+      <ArmorRating_Heat>1.05</ArmorRating_Heat>
+      <Insulation_Cold>6</Insulation_Cold>
+      <Insulation_Heat>3</Insulation_Heat>
+      <EquipDelay>3</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <SlaveSuppressionOffset MayRequire="Ludeon.RimWorld.Ideology">-0.1</SlaveSuppressionOffset>
+    </equippedStatOffsets>
+    <costList>
+      <BOR_Component_GenII>1</BOR_Component_GenII>
+      <BOR_SunSteel>70</BOR_SunSteel>
+    </costList>
+    <apparel>
+      <bodyPartGroups>
+        <li>FullHead</li>
+      </bodyPartGroups>
+      <wornGraphicPath>Things/Items/Equipment/Apparel/GuardianArmorHelmet/GuardianArmorHelmet</wornGraphicPath>
+      <layers>
+        <li>Overhead</li>
+      </layers>
+      <useDeflectMetalEffect>true</useDeflectMetalEffect>
+    </apparel>
+    <colorGenerator Class="ColorGenerator_Options">
+      <options>
+        <li>
+          <weight>10</weight>
+          <only>(0.9,0.9,0.9,1)</only>
+        </li>
+        <li>
+          <weight>10</weight>
+          <only>(0.33,0.33,0.33,1)</only>
+        </li>
+        <li>
+          <weight>10</weight>
+          <only>(0.65,0.65,0.65,1)</only>
+        </li>
+        <li>
+          <weight>6</weight>
+          <min>(0.3,0.3,0.3,1)</min>
+          <max>(0.5,0.5,0.5,1)</max>
+        </li>
+      </options>
+    </colorGenerator>
+    <comps>
+      <li Class="CompProperties_Biocodable" />
+    </comps>
+    <thingSetMakerTags>
+      <li>RewardStandardHighFreq</li>
+    </thingSetMakerTags>
+  </ThingDef>
+
+  <ThingDef ParentName="ArmorMachineableBase">
+    <defName>BOR_Solar_RA_PhalanxArmor</defName>
+    <label>phalanx armor</label>
+    <description>A suit of heavy powered armor based on the standard Cataphract design. It features defensive improvements, including stronger armor plating and a reusable low-shield deployer. \nMechanites within the low-shield deployer can replicate the shield core in-between uses, but the unit must be resupplied with advanced components.</description>
+    <techLevel>Ultra</techLevel>
+    <recipeMaker>
+      <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+      <researchPrerequisites>
+        <li>BOR_Research_II_armor</li>
+        <li>ShieldBelt</li>
+      </researchPrerequisites>
+      <skillRequirements>
+        <Crafting>13</Crafting>
+      </skillRequirements>
+      <recipeUsers Inherit="False">
+        <li>FabricationBench</li>
+      </recipeUsers>
+    </recipeMaker>
+    <graphicData>
+      <texPath>Things/Items/Equipment/Apparel/PhalanxArmor/PhalanxArmor</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <uiIconScale>1.25</uiIconScale>
+    <generateCommonality>1.25</generateCommonality>
+    <statBases>
+      <WorkToMake>135000</WorkToMake>
+      <MaxHitPoints>600</MaxHitPoints>
+      <Mass>12</Mass>
+      <Flammability>0.3</Flammability>
+      <ArmorRating_Sharp>1.9</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.9</ArmorRating_Blunt>
+      <ArmorRating_Heat>1.05</ArmorRating_Heat>
+      <Insulation_Cold>54</Insulation_Cold>
+      <Insulation_Heat>18</Insulation_Heat>
+      <EquipDelay>14</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <MoveSpeed>-0.8</MoveSpeed>
+      <SlaveSuppressionOffset MayRequire="Ludeon.RimWorld.Ideology">-0.3</SlaveSuppressionOffset>
+    </equippedStatOffsets>
+    <tradeTags>
+      <li>HiTechArmor</li>
+    </tradeTags>
+    <thingCategories>
+      <li>ApparelArmor</li>
+    </thingCategories>
+    <costList>
+      <BOR_Component_GenII>7</BOR_Component_GenII>
+      <BroadshieldCore>1</BroadshieldCore>
+      <BOR_SunSteel>180</BOR_SunSteel>
+      <Uranium>50</Uranium>
+    </costList>
+    <apparel>
+      <bodyPartGroups>
+        <li>Torso</li>
+        <li>Neck</li>
+        <li>Shoulders</li>
+        <li>Arms</li>
+        <li>Legs</li>
+      </bodyPartGroups>
+      <wornGraphicPath>Things/Items/Equipment/Apparel/PhalanxArmor/PhalanxArmor</wornGraphicPath>
+      <layers>
+        <li>Middle</li>
+        <li>Shell</li>
+      </layers>
+      <useDeflectMetalEffect>true</useDeflectMetalEffect>
+    </apparel>
+    <colorGenerator Class="ColorGenerator_Options">
+      <options>
+        <li>
+          <weight>10</weight>
+          <only>(0.9,0.9,0.9)</only>
+        </li>
+        <li>
+          <weight>10</weight>
+          <only>(0.33,0.33,0.33)</only>
+        </li>
+        <li>
+          <weight>10</weight>
+          <only>(0.65,0.65,0.65)</only>
+        </li>
+        <li>
+          <weight>6</weight>
+          <min>(0.3,0.3,0.3)</min>
+          <max>(0.5,0.5,0.5)</max>
+        </li>
+      </options>
+    </colorGenerator>
+    <comps>
+      <li Class="CompProperties_Biocodable" />
+      <li Class="CompProperties_Reloadable">
+        <maxCharges>1</maxCharges>
+        <ammoDef>BOR_Component_GenII</ammoDef>
+        <ammoCountPerCharge>3</ammoCountPerCharge>
+        <baseReloadTicks>40</baseReloadTicks>
+        <soundReload>Standard_Reload</soundReload>
+        <hotKey>Misc4</hotKey>
+        <chargeNoun>shield</chargeNoun>
+        <displayGizmoWhileUndrafted>false</displayGizmoWhileUndrafted>
+      </li>
+    </comps>
+    <verbs>
+      <li>
+        <verbClass>Verb_DeployBroadshield</verbClass>
+        <label>deploy solar phalanx shield</label>
+        <violent>false</violent>
+        <hasStandardCommand>true</hasStandardCommand>
+        <targetable>false</targetable>
+        <nonInterruptingSelfCast>true</nonInterruptingSelfCast>
+        <onlyManualCast>True</onlyManualCast>
+      </li>
+    </verbs>
+    <thingSetMakerTags>
+      <li>RewardStandardHighFreq</li>
+    </thingSetMakerTags>
+    <modExtensions>
+      <li Class="FalloutCore.ApparelExtension">
+        <shouldHideBody>true</shouldHideBody>
+      </li>
+    </modExtensions>
+
+  </ThingDef>
+
+
+  <ThingDef ParentName="ArmorHelmetMakeableBase">
+    <defName>BOR_Solar_RA_PhalanxArmorHelmet</defName>
+    <label>solar phalanx helmet</label>
+    <description>A heavy solar Phalanx helmet. It offers better protection than a standard solar Cataphract helmet, and it has a built-in filter that removes most toxins and other harmful chemicals from the air before the wearer can breathe them.</description>
+    <techLevel>Ultra</techLevel>
+    <recipeMaker>
+      <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+      <researchPrerequisites>
+        <li>BOR_Research_II_armor</li>
+        <li>ShieldBelt</li>
+      </researchPrerequisites>
+      <skillRequirements>
+        <Crafting>12</Crafting>
+      </skillRequirements>
+      <recipeUsers Inherit="False">
+        <li>FabricationBench</li>
+      </recipeUsers>
+    </recipeMaker>
+    <graphicData>
+      <texPath>Things/Items/Equipment/Apparel/PhalanxArmorHelmet/PhalanxArmorHelmet</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(0.9, 0.9)</drawSize>
+    </graphicData>
+    <tradeTags>
+      <li>HiTechArmor</li>
+    </tradeTags>
+    <generateCommonality>1.25</generateCommonality>
+    <statBases>
+      <WorkToMake>39375</WorkToMake>
+      <MaxHitPoints>270</MaxHitPoints>
+      <Mass>1.75</Mass>
+      <Flammability>0.3</Flammability>
+      <ArmorRating_Sharp>1.9</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.9</ArmorRating_Blunt>
+      <ArmorRating_Heat>1.05</ArmorRating_Heat>
+      <Insulation_Cold>6</Insulation_Cold>
+      <Insulation_Heat>3</Insulation_Heat>
+      <EquipDelay>5</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <ToxicEnvironmentResistance>0.95</ToxicEnvironmentResistance>
+      <SlaveSuppressionOffset MayRequire="Ludeon.RimWorld.Ideology">-0.1</SlaveSuppressionOffset>
+    </equippedStatOffsets>
+    <costList>
+      <BOR_Component_GenII>2</BOR_Component_GenII>
+      <BOR_SunSteel>80</BOR_SunSteel>
+    </costList>
+    <apparel>
+      <bodyPartGroups>
+        <li>FullHead</li>
+      </bodyPartGroups>
+      <wornGraphicPath>Things/Items/Equipment/Apparel/PhalanxArmorHelmet/PhalanxArmorHelmet</wornGraphicPath>
+      <layers>
+        <li>Overhead</li>
+      </layers>
+      <useDeflectMetalEffect>true</useDeflectMetalEffect>
+    </apparel>
+    <colorGenerator Class="ColorGenerator_Options">
+      <options>
+        <li>
+          <weight>10</weight>
+          <only>(0.33,0.33,0.33,1)</only>
+        </li>
+        <li>
+          <weight>10</weight>
+          <only>(0.65,0.65,0.65,1)</only>
+        </li>
+        <li>
+          <weight>6</weight>
+          <min>(0.3,0.3,0.3,1)</min>
+          <max>(0.5,0.5,0.5,1)</max>
+        </li>
+        <li>
+          <weight>10.1</weight>
+          <only>(0.9,0.9,0.9,1)</only>
+        </li>
+      </options>
+    </colorGenerator>
+    <comps>
+      <li Class="CompProperties_Biocodable" />
+    </comps>
+    <thingSetMakerTags>
+      <li>RewardStandardHighFreq</li>
+    </thingSetMakerTags>
+  </ThingDef>
+
+  <ThingDef ParentName="ArmorMachineableBase">
+    <defName>BOR_Solar_RA_RanseurArmor_Prestige</defName>
+    <label>prestige solar ranseur armor</label>
+    <description>A highly specialized suit of light solar power-armor. Solar ranseur armor cannot protect as well as standard Recon armor, but it is highly optimized for stealth and reconissance operations. It features an advanced cloaking device in its core that can render its wearer invisible for extended periods of time.\n\nExpensive and beautiful, prestige armor like this is usually made for those of high status. Embedded eltex threads also enhance the wearer's psychic sensitivity. \nRanseur armor requires excessive power when its cloaking device is active, and its reactor must be resupplied with uranium after sufficient use.</description>
+    <techLevel>Ultra</techLevel>
+    <statBases>
+      <ArmorRating_Sharp>1.26</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.48</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.60</ArmorRating_Heat>
+      <SmokepopBeltRadius>6.9</SmokepopBeltRadius>
+      <WorkToMake>240000</WorkToMake>
+      <MaxHitPoints>420</MaxHitPoints>
+      <Mass>7</Mass>
+      <Flammability>0.3</Flammability>
+      <Insulation_Cold>48</Insulation_Cold>
+      <Insulation_Heat>13.5</Insulation_Heat>
+      <EquipDelay>8</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <MoveSpeed>1.5</MoveSpeed>
+      <PsychicSensitivity>0.075</PsychicSensitivity>
+      <PsychicEntropyRecoveryRate>0.05</PsychicEntropyRecoveryRate>
+      <SlaveSuppressionOffset MayRequire="Ludeon.RimWorld.Ideology">-0.3</SlaveSuppressionOffset>
+    </equippedStatOffsets>
+    <recipeMaker>
+      <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+      <researchPrerequisites>
+        <li>RA_CloakingResearch</li>
+        <li>BOR_Research_II_armor</li>
+      </researchPrerequisites>
+      <skillRequirements>
+        <Crafting>12</Crafting>
+      </skillRequirements>
+      <recipeUsers Inherit="False">
+        <li>FabricationBench</li>
+      </recipeUsers>
+    </recipeMaker>
+    <graphicData>
+      <texPath>Things/Items/Equipment/Apparel/PrestigeRanseurArmor/PrestigeRanseurArmor</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <generateCommonality>2</generateCommonality>
+    <tradeTags>
+      <li>HiTechArmor</li>
+    </tradeTags>
+    <thingCategories>
+      <li>ApparelArmor</li>
+    </thingCategories>
+    <costList>
+      <BOR_Component_GenII>6</BOR_Component_GenII>
+      <BOR_SunSteel>80</BOR_SunSteel>
+      <Uranium>60</Uranium>
+      <Gold>13</Gold>
+      <VPE_Eltex MayRequire="vanillaexpanded.vpsycastse">2</VPE_Eltex>
+    </costList>
+    <apparel>
+      <tags>
+        <li>PrestigeCombatGear</li>
+      </tags>
+      <bodyPartGroups>
+        <li>Torso</li>
+        <li>Neck</li>
+        <li>Shoulders</li>
+        <li>Arms</li>
+        <li>Legs</li>
+      </bodyPartGroups>
+      <wornGraphicPath>Things/Items/Equipment/Apparel/PrestigeRanseurArmor/PrestigeRanseurArmor</wornGraphicPath>
+      <layers>
+        <li>Middle</li>
+        <li>Shell</li>
+      </layers>
+      <useDeflectMetalEffect>true</useDeflectMetalEffect>
+    </apparel>
+    <comps>
+      <li Class="CompProperties_Biocodable" />
+      <li Class="CompProperties_Reloadable">
+        <maxCharges>5</maxCharges>
+        <ammoDef>Uranium</ammoDef>
+        <ammoCountPerCharge>30</ammoCountPerCharge>
+        <baseReloadTicks>40</baseReloadTicks>
+        <soundReload>Standard_Reload</soundReload>
+        <hotKey>Misc4</hotKey>
+        <chargeNoun>cloak</chargeNoun>
+        <displayGizmoWhileUndrafted>false</displayGizmoWhileUndrafted>
+      </li>
+    </comps>
+    <verbs>
+      <li>
+        <verbClass>RoyalArsenal.Verb_Cloak</verbClass>
+        <label>activate solar cloak</label>
+        <violent>false</violent>
+        <hasStandardCommand>true</hasStandardCommand>
+        <targetable>false</targetable>
+        <nonInterruptingSelfCast>true</nonInterruptingSelfCast>
+        <onlyManualCast>True</onlyManualCast>
+      </li>
+    </verbs>
+    <thingSetMakerTags>
+      <li>RewardStandardHighFreq</li>
+    </thingSetMakerTags>
+    <modExtensions>
+      <li Class="FalloutCore.ApparelExtension">
+        <shouldHideBody>true</shouldHideBody>
+      </li>
+    </modExtensions>
+  </ThingDef>
+
+  <ThingDef ParentName="ArmorHelmetMakeableBase">
+    <defName>BOR_Solar_RA_RanseurArmorHelmet_Prestige</defName>
+    <label>prestige solar ranseur helmet</label>
+    <description>A high-tech armored solar helmet designed for use with a set of solar ranseur armor. It features an internal heads-up display with a targeting computer similar to those found in Gunlinks.\n\nExpensive and beautiful, prestige armor like this is usually made for those of high status. Embedded eltex threads also enhance the wearer's psychic sensitivity.</description>
+    <techLevel>Ultra</techLevel>
+    <recipeMaker>
+      <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+      <researchPrerequisites>
+        <li>RA_CloakingResearch</li>
+        <li>BOR_Research_II_armor</li>
+      </researchPrerequisites>
+      <skillRequirements>
+        <Crafting>12</Crafting>
+      </skillRequirements>
+      <recipeUsers Inherit="False">
+        <li>FabricationBench</li>
+      </recipeUsers>
+    </recipeMaker>
+    <graphicData>
+      <texPath>Things/Items/Equipment/Apparel/PrestigeRanseurArmorHelmet/PrestigeRanseurArmorHelmet</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(0.9, 0.9)</drawSize>
+    </graphicData>
+    <tradeTags>
+      <li>HiTechArmor</li>
+    </tradeTags>
+    <generateCommonality>1.25</generateCommonality>
+    <statBases>
+      <WorkToMake>90000</WorkToMake>
+      <MaxHitPoints>180</MaxHitPoints>
+      <Mass>0.75</Mass>
+      <Flammability>0.3</Flammability>
+      <ArmorRating_Sharp>1.2</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.48</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.60</ArmorRating_Heat>
+      <Insulation_Cold>6</Insulation_Cold>
+      <Insulation_Heat>3</Insulation_Heat>
+      <EquipDelay>1.75</EquipDelay>
+    </statBases>
+    <costList>
+      <BOR_Component_GenII>4</BOR_Component_GenII>
+      <BOR_SunSteel>30</BOR_SunSteel>
+      <Gold>6</Gold>
+      <VPE_Eltex MayRequire="vanillaexpanded.vpsycastse">2</VPE_Eltex>
+    </costList>
+    <apparel>
+      <tags>
+        <li>PrestigeCombatGear</li>
+      </tags>
+      <bodyPartGroups>
+        <li>FullHead</li>
+      </bodyPartGroups>
+      <wornGraphicPath>Things/Items/Equipment/Apparel/PrestigeRanseurArmorHelmet/PrestigeRanseurArmorHelmet</wornGraphicPath>
+      <layers>
+        <li>Overhead</li>
+      </layers>
+      <useDeflectMetalEffect>true</useDeflectMetalEffect>
+    </apparel>
+    <equippedStatOffsets>
+      <PsychicSensitivity>0.075</PsychicSensitivity>
+      <PsychicEntropyRecoveryRate>0.05</PsychicEntropyRecoveryRate>
+      <ShootingAccuracyPawn>4.5</ShootingAccuracyPawn>
+    </equippedStatOffsets>
+    <comps>
+      <li Class="CompProperties_Biocodable" />
+    </comps>
+    <thingSetMakerTags>
+      <li>RewardStandardHighFreq</li>
+    </thingSetMakerTags>
+  </ThingDef>
+
+  <ThingDef ParentName="ArmorMachineableBase">
+    <defName>BOR_Solar_RA_GuardianArmorBase_Prestige</defName>
+    <label>prestige solar guardian armor</label>
+    <description>A suit of specialty solar power armor designed with extra defensive measures. A personal countermeasure system is mounted on the back, capable of rapidly launching EMP grenades to disrupt turrets and energy shields. \n\nExpensive and beautiful, prestige armor like this is usually made for those of high status. Embedded eltex threads also enhance the wearer's psychic sensitivity.</description>
+    <techLevel>Ultra</techLevel>
+    <recipeMaker>
+      <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+      <researchPrerequisites>
+        <li>RA_RadioChaffResearch</li>
+        <li>BOR_Research_II_armor</li>
+      </researchPrerequisites>
+      <skillRequirements>
+        <Crafting>12</Crafting>
+      </skillRequirements>
+      <recipeUsers Inherit="False">
+        <li>FabricationBench</li>
+      </recipeUsers>
+    </recipeMaker>
+    <graphicData>
+      <texPath>Things/Items/Equipment/Apparel/PrestigeGuardianArmor/PrestigeGuardianArmor</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
+    </graphicData>
+    <generateCommonality>1.25</generateCommonality>
+    <statBases>
+      <WorkToMake>210000</WorkToMake>
+      <MaxHitPoints>510</MaxHitPoints>
+      <Mass>10</Mass>
+      <Flammability>0.3</Flammability>
+      <ArmorRating_Sharp>1.7</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.8</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.96</ArmorRating_Heat>
+      <Insulation_Cold>51</Insulation_Cold>
+      <Insulation_Heat>15</Insulation_Heat>
+      <EquipDelay>11</EquipDelay>
+      <SmokepopBeltRadius>6.9</SmokepopBeltRadius>
+    </statBases>
+    <equippedStatOffsets>
+      <PsychicSensitivity>0.075</PsychicSensitivity>
+      <PsychicEntropyRecoveryRate>0.05</PsychicEntropyRecoveryRate>
+      <MoveSpeed>-0.4</MoveSpeed>
+      <SlaveSuppressionOffset MayRequire="Ludeon.RimWorld.Ideology">-0.3</SlaveSuppressionOffset>
+    </equippedStatOffsets>
+    <thingCategories>
+      <li>ApparelArmor</li>
+    </thingCategories>
+    <tradeTags>
+      <li>HiTechArmor</li>
+    </tradeTags>
+    <costList>
+      <BOR_Component_GenII>4</BOR_Component_GenII>
+      <BOR_SunSteel>130</BOR_SunSteel>
+      <Uranium>20</Uranium>
+      <Gold>15</Gold>
+      <VPE_Eltex MayRequire="vanillaexpanded.vpsycastse">2</VPE_Eltex>
+    </costList>
+    <apparel>
+      <tags>
+        <li>PrestigeCombatGear</li>
+      </tags>
+      <bodyPartGroups>
+        <li>Torso</li>
+        <li>Neck</li>
+        <li>Shoulders</li>
+        <li>Arms</li>
+        <li>Legs</li>
+      </bodyPartGroups>
+      <wornGraphicPath>Things/Items/Equipment/Apparel/PrestigeGuardianArmor/PrestigeGuardianArmor</wornGraphicPath>
+      <useWornGraphicMask>true</useWornGraphicMask>
+      <layers>
+        <li>Middle</li>
+        <li>Shell</li>
+      </layers>
+      <useDeflectMetalEffect>true</useDeflectMetalEffect>
+    </apparel>
+    <comps>
+      <li Class="CompProperties_Biocodable" />
+      <li Class="CompProperties_Reloadable">
+        <maxCharges>7</maxCharges>
+        <ammoDef>ComponentSpacer</ammoDef>
+        <ammoCountPerCharge>2</ammoCountPerCharge>
+        <baseReloadTicks>40</baseReloadTicks>
+        <soundReload>Standard_Reload</soundReload>
+        <hotKey>Misc4</hotKey>
+        <chargeNoun>grenade</chargeNoun>
+        <displayGizmoWhileUndrafted>false</displayGizmoWhileUndrafted>
+      </li>
+    </comps>
+    <verbs>
+      <li>
+        <label>launch solar emp grenade</label>
+        <verbClass>Verb_LaunchProjectileStatic</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <onlyManualCast>True</onlyManualCast>
+        <range>21.9</range>
+        <!-- <forcedMissRadius>1.4</forcedMissRadius> -->
+        <warmupTime>0.175</warmupTime>
+        <noiseRadius>3</noiseRadius>
+        <ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
+        <soundCast>Shot_IncendiaryLauncher</soundCast>
+        <soundCastTail>GunTail_Medium</soundCastTail>
+        <muzzleFlashScale>14</muzzleFlashScale>
+        <drawHighlightWithLineOfSight>true</drawHighlightWithLineOfSight>
+        <targetParams>
+          <canTargetLocations>true</canTargetLocations>
+        </targetParams>
+        <defaultProjectile>Proj_GrenadeEMP</defaultProjectile>
+        <rangedFireRulepack>Combat_RangedFire_Thrown</rangedFireRulepack>
+      </li>
+    </verbs>
+    <colorGenerator Class="ColorGenerator_Options">
+      <options>
+        <li>
+          <weight>10</weight>
+          <only>(0.9,0.9,0.9)</only>
+        </li>
+        <li>
+          <weight>10</weight>
+          <only>(0.33,0.33,0.33)</only>
+        </li>
+        <li>
+          <weight>10</weight>
+          <only>(0.65,0.65,0.65)</only>
+        </li>
+        <li>
+          <weight>6</weight>
+          <min>(0.3,0.3,0.3)</min>
+          <max>(0.5,0.5,0.5)</max>
+        </li>
+      </options>
+    </colorGenerator>
+    <thingSetMakerTags>
+      <li>RewardStandardHighFreq</li>
+    </thingSetMakerTags>
+    <modExtensions>
+      <li Class="FalloutCore.ApparelExtension">
+        <shouldHideBody>true</shouldHideBody>
+      </li>
+    </modExtensions>
+  </ThingDef>
+
+
+  <ThingDef ParentName="ArmorHelmetMakeableBase">
+    <defName>BOR_Solar_RA_GuardianArmorHelmet_Prestige</defName>
+    <label>prestige solar guardian helmet</label>
+    <description>A modified solar marine helmet with an added armor plate in the front. It offers improved protection over a standard solar marine helmet.\n\nExpensive and beautiful, prestige armor like this is usually made for those of high status. Embedded eltex threads also enhance the wearer's psychic sensitivity.</description>
+    <techLevel>Ultra</techLevel>
+    <recipeMaker>
+      <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+      <researchPrerequisites>
+        <li>RA_RadioChaffResearch</li>
+        <li>BOR_Research_II_armor</li>
+      </researchPrerequisites>
+      <skillRequirements>
+        <Crafting>11</Crafting>
+      </skillRequirements>
+      <recipeUsers Inherit="False">
+        <li>FabricationBench</li>
+      </recipeUsers>
+    </recipeMaker>
+    <graphicData>
+      <texPath>Things/Items/Equipment/Apparel/PrestigeGuardianArmorHelmet/PrestigeGuardianArmorHelmet</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
+      <drawSize>(0.9, 0.9)</drawSize>
+    </graphicData>
+    <uiIconScale>1.25</uiIconScale>
+    <tradeTags>
+      <li>HiTechArmor</li>
+    </tradeTags>
+    <generateCommonality>1.25</generateCommonality>
+    <statBases>
+      <WorkToMake>63000</WorkToMake>
+      <MaxHitPoints>225</MaxHitPoints>
+      <Mass>1.1</Mass>
+      <Flammability>0.3</Flammability>
+      <ArmorRating_Sharp>2.1</ArmorRating_Sharp>
+      <ArmorRating_Blunt>1.05</ArmorRating_Blunt>
+      <ArmorRating_Heat>1.05</ArmorRating_Heat>
+      <Insulation_Cold>6</Insulation_Cold>
+      <Insulation_Heat>3</Insulation_Heat>
+      <EquipDelay>3</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <PsychicSensitivity>0.075</PsychicSensitivity>
+      <PsychicEntropyRecoveryRate>0.06</PsychicEntropyRecoveryRate>
+      <SlaveSuppressionOffset MayRequire="Ludeon.RimWorld.Ideology">-0.1</SlaveSuppressionOffset>
+    </equippedStatOffsets>
+    <costList>
+      <BOR_Component_GenII>1</BOR_Component_GenII>
+      <BOR_SunSteel>70</BOR_SunSteel>
+      <Gold>7</Gold>
+      <VPE_Eltex MayRequire="vanillaexpanded.vpsycastse">2</VPE_Eltex>
+    </costList>
+    <apparel>
+      <tags>
+        <li>PrestigeCombatGear</li>
+      </tags>
+      <bodyPartGroups>
+        <li>FullHead</li>
+      </bodyPartGroups>
+      <wornGraphicPath>Things/Items/Equipment/Apparel/PrestigeGuardianArmorHelmet/PrestigeGuardianArmorHelmet</wornGraphicPath>
+      <useWornGraphicMask>true</useWornGraphicMask>
+      <layers>
+        <li>Overhead</li>
+      </layers>
+      <useDeflectMetalEffect>true</useDeflectMetalEffect>
+    </apparel>
+    <colorGenerator Class="ColorGenerator_Options">
+      <options>
+        <li>
+          <weight>10</weight>
+          <only>(0.9,0.9,0.9,1)</only>
+        </li>
+        <li>
+          <weight>10</weight>
+          <only>(0.33,0.33,0.33,1)</only>
+        </li>
+        <li>
+          <weight>10</weight>
+          <only>(0.65,0.65,0.65,1)</only>
+        </li>
+        <li>
+          <weight>6</weight>
+          <min>(0.3,0.3,0.3,1)</min>
+          <max>(0.5,0.5,0.5,1)</max>
+        </li>
+      </options>
+    </colorGenerator>
+    <comps>
+      <li Class="CompProperties_Biocodable" />
+    </comps>
+    <thingSetMakerTags>
+      <li>RewardStandardHighFreq</li>
+    </thingSetMakerTags>
+  </ThingDef>
+
+  <ThingDef ParentName="ArmorMachineableBase">
+    <defName>BOR_Solar_RA_PhalanxArmor_Prestige</defName>
+    <label>prestige solarphalanx armor</label>
+    <description>A suit of heavy solar powered armor based on the standard solar Cataphract design. It features defensive improvements, including stronger armor plating and a reusable low-shield deployer.\n\nExpensive and beautiful, prestige armor like this is usually made for those of high status. Embedded eltex threads also enhance the wearer's psychic sensitivity. \nMechanites within the low-shield deployer can replicate the shield core in-between uses, but the unit must be resupplied with advanced components.</description>
+    <techLevel>Ultra</techLevel>
+    <recipeMaker>
+      <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+      <researchPrerequisites>
+        <li>BOR_Research_II_armor</li>
+        <li>ShieldBelt</li>
+      </researchPrerequisites>
+      <skillRequirements>
+        <Crafting>14</Crafting>
+      </skillRequirements>
+      <recipeUsers Inherit="False">
+        <li>FabricationBench</li>
+      </recipeUsers>
+    </recipeMaker>
+    <graphicData>
+      <texPath>Things/Items/Equipment/Apparel/PrestigePhalanxArmor/PrestigePhalanxArmor</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
+    </graphicData>
+    <uiIconScale>1.25</uiIconScale>
+    <generateCommonality>1.25</generateCommonality>
+    <statBases>
+      <WorkToMake>240000</WorkToMake>
+      <MaxHitPoints>600</MaxHitPoints>
+      <Mass>12</Mass>
+      <Flammability>0.3</Flammability>
+      <ArmorRating_Sharp>1.9</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.9</ArmorRating_Blunt>
+      <ArmorRating_Heat>1.05</ArmorRating_Heat>
+      <Insulation_Cold>54</Insulation_Cold>
+      <Insulation_Heat>18</Insulation_Heat>
+      <EquipDelay>14</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <PsychicSensitivity>0.075</PsychicSensitivity>
+      <PsychicEntropyRecoveryRate>0.06</PsychicEntropyRecoveryRate>
+      <MoveSpeed>-0.75</MoveSpeed>
+      <SlaveSuppressionOffset MayRequire="Ludeon.RimWorld.Ideology">-0.3</SlaveSuppressionOffset>
+    </equippedStatOffsets>
+    <tradeTags>
+      <li>HiTechArmor</li>
+    </tradeTags>
+    <thingCategories>
+      <li>ApparelArmor</li>
+    </thingCategories>
+    <costList>
+      <BOR_Component_GenII>7</BOR_Component_GenII>
+      <BroadshieldCore>1</BroadshieldCore>
+      <BOR_SunSteel>180</BOR_SunSteel>
+      <Uranium>50</Uranium>
+      <Gold>24</Gold>
+      <VPE_Eltex MayRequire="vanillaexpanded.vpsycastse">2</VPE_Eltex>
+    </costList>
+    <apparel>
+      <tags>
+        <li>PrestigeCombatGear</li>
+      </tags>
+      <bodyPartGroups>
+        <li>Torso</li>
+        <li>Neck</li>
+        <li>Shoulders</li>
+        <li>Arms</li>
+        <li>Legs</li>
+      </bodyPartGroups>
+      <wornGraphicPath>Things/Items/Equipment/Apparel/PrestigePhalanxArmor/PrestigePhalanxArmor</wornGraphicPath>
+      <useWornGraphicMask>true</useWornGraphicMask>
+      <layers>
+        <li>Middle</li>
+        <li>Shell</li>
+      </layers>
+      <useDeflectMetalEffect>true</useDeflectMetalEffect>
+    </apparel>
+    <colorGenerator Class="ColorGenerator_Options">
+      <options>
+        <li>
+          <weight>10</weight>
+          <only>(0.9,0.9,0.9)</only>
+        </li>
+        <li>
+          <weight>10</weight>
+          <only>(0.33,0.33,0.33)</only>
+        </li>
+        <li>
+          <weight>10</weight>
+          <only>(0.65,0.65,0.65)</only>
+        </li>
+        <li>
+          <weight>6</weight>
+          <min>(0.3,0.3,0.3)</min>
+          <max>(0.5,0.5,0.5)</max>
+        </li>
+      </options>
+    </colorGenerator>
+    <comps>
+      <li Class="CompProperties_Biocodable" />
+      <li Class="CompProperties_Reloadable">
+        <maxCharges>1</maxCharges>
+        <ammoDef>BOR_Component_GenII</ammoDef>
+        <ammoCountPerCharge>2</ammoCountPerCharge>
+        <baseReloadTicks>40</baseReloadTicks>
+        <soundReload>Standard_Reload</soundReload>
+        <hotKey>Misc4</hotKey>
+        <chargeNoun>shield</chargeNoun>
+        <displayGizmoWhileUndrafted>false</displayGizmoWhileUndrafted>
+      </li>
+    </comps>
+    <verbs>
+      <li>
+        <verbClass>Verb_DeployBroadshield</verbClass>
+        <label>deploy solar phalanx shield</label>
+        <violent>false</violent>
+        <hasStandardCommand>true</hasStandardCommand>
+        <targetable>false</targetable>
+        <nonInterruptingSelfCast>true</nonInterruptingSelfCast>
+        <onlyManualCast>True</onlyManualCast>
+      </li>
+    </verbs>
+    <thingSetMakerTags>
+      <li>RewardStandardHighFreq</li>
+    </thingSetMakerTags>
+    <modExtensions>
+      <li Class="FalloutCore.ApparelExtension">
+        <shouldHideBody>true</shouldHideBody>
+      </li>
+    </modExtensions>
+  </ThingDef>
+
+  <ThingDef ParentName="ArmorHelmetMakeableBase">
+    <defName>BOR_Solar_RA_PhalanxArmorHelmet_Prestige</defName>
+    <label>prestige solar phalanx helmet</label>
+    <description>A heavy solar Phalanx helmet. It offers better protection than a standard solar Cataphract helmet, and it has a built-in filter that removes most toxins and other harmful chemicals from the air before the wearer can breathe them.\n\nExpensive and beautiful, prestige armor like this is usually made for those of high status. Embedded eltex threads also enhance the wearer's psychic sensitivity.</description>
+    <techLevel>Ultra</techLevel>
+    <recipeMaker>
+      <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+      <researchPrerequisites>
+        <li>BOR_Research_II_armor</li>
+        <li>ShieldBelt</li>
+      </researchPrerequisites>
+      <skillRequirements>
+        <Crafting>12</Crafting>
+      </skillRequirements>
+      <recipeUsers Inherit="False">
+        <li>FabricationBench</li>
+      </recipeUsers>
+    </recipeMaker>
+    <graphicData>
+      <texPath>Things/Items/Equipment/Apparel/PrestigePhalanxArmorHelmet/PrestigePhalanxArmorHelmet</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
+      <drawSize>(0.9, 0.9)</drawSize>
+    </graphicData>
+    <tradeTags>
+      <li>HiTechArmor</li>
+    </tradeTags>
+    <generateCommonality>1.25</generateCommonality>
+    <statBases>
+      <WorkToMake>78750</WorkToMake>
+      <MaxHitPoints>240</MaxHitPoints>
+      <Mass>1.5</Mass>
+      <Flammability>0.3</Flammability>
+      <ArmorRating_Sharp>1.9</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.9</ArmorRating_Blunt>
+      <ArmorRating_Heat>1.05</ArmorRating_Heat>
+      <Insulation_Cold>6</Insulation_Cold>
+      <Insulation_Heat>3</Insulation_Heat>
+      <EquipDelay>5</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <PsychicSensitivity>0.075</PsychicSensitivity>
+      <PsychicEntropyRecoveryRate>0.05</PsychicEntropyRecoveryRate>
+      <ToxicEnvironmentResistance>0.95</ToxicEnvironmentResistance>
+      <SlaveSuppressionOffset MayRequire="Ludeon.RimWorld.Ideology">-0.1</SlaveSuppressionOffset>
+    </equippedStatOffsets>
+    <costList>
+      <BOR_Component_GenII>2</BOR_Component_GenII>
+      <BOR_SunSteel>80</BOR_SunSteel>
+      <Gold>15</Gold>
+      <VPE_Eltex MayRequire="vanillaexpanded.vpsycastse">2</VPE_Eltex>
+    </costList>
+    <apparel>
+      <tags>
+        <li>PrestigeCombatGear</li>
+      </tags>
+      <bodyPartGroups>
+        <li>FullHead</li>
+      </bodyPartGroups>
+      <wornGraphicPath>Things/Items/Equipment/Apparel/PrestigePhalanxArmorHelmet/PrestigePhalanxArmorHelmet</wornGraphicPath>
+      <useWornGraphicMask>true</useWornGraphicMask>
+      <layers>
+        <li>Overhead</li>
+      </layers>
+      <useDeflectMetalEffect>true</useDeflectMetalEffect>
+    </apparel>
+    <colorGenerator Class="ColorGenerator_Options">
+      <options>
+        <li>
+          <weight>10</weight>
+          <only>(0.33,0.33,0.33,1)</only>
+        </li>
+        <li>
+          <weight>10</weight>
+          <only>(0.65,0.65,0.65,1)</only>
+        </li>
+        <li>
+          <weight>6</weight>
+          <min>(0.3,0.3,0.3,1)</min>
+          <max>(0.5,0.5,0.5,1)</max>
+        </li>
+        <li>
+          <weight>10.1</weight>
+          <only>(0.9,0.9,0.9,1)</only>
+        </li>
+      </options>
+    </colorGenerator>
+    <comps>
+      <li Class="CompProperties_Biocodable" />
+    </comps>
+    <thingSetMakerTags>
+      <li>RewardStandardHighFreq</li>
+    </thingSetMakerTags>
+  </ThingDef>
+
+</Defs>

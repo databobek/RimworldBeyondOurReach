@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+    <Operation Class="PatchOperationAdd">
+        <xpath>/Defs/ThingDef[defName="QC_QuantumHeater" or defName="QC_QuantumHeater_Large" or defName="QC_QuantumHeater_Generator" or defName="QC_QuantumCooler_Proto" or defName="QC_QuantumCooler" or defName="QC_QuantumCooler_Large" or defName="QC_QuantumCooler_Generator"]</xpath>
+        <value>
+            <designatorDropdown>BOR_QuantumTemp</designatorDropdown>
+        </value>
+    </Operation>
+    <Operation Class="PatchOperationReplace">
+        <xpath>/Defs/ThingDef[defName="QC_QuantumHeater" or defName="QC_QuantumHeater_Large" or defName="QC_QuantumHeater_Generator" or defName="QC_QuantumCooler_Proto" or defName="QC_QuantumCooler" or defName="QC_QuantumCooler_Large" or defName="QC_QuantumCooler_Generator"]/designationCategory</xpath>
+        <value>
+            <designationCategory>BOR</designationCategory>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>/Defs/ResearchProjectDef[defName="QC_Research_QuantumCooler_I"]/baseCost</xpath>
+        <value>
+            <baseCost>20000</baseCost>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>/Defs/ResearchProjectDef[defName="QC_Research_QuantumCooler_II" or defName="QC_Research_QuantumCooler_II"]/baseCost</xpath>
+        <value>
+            <baseCost>60000</baseCost>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>/Defs/ResearchProjectDef[defName="QC_Research_QuantumHeater_III"]/baseCost</xpath>
+        <value>
+            <baseCost>100000</baseCost>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>/Defs/ResearchProjectDef[defName="QC_Research_QuantumCooler_II" or defName="QC_Research_QuantumCooler_II"]/prerequisites</xpath>
+        <value>
+            <li>BOR_Research_II_bridge</li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>/Defs/ResearchProjectDef[defName="QC_Research_QuantumHeater_III"]/prerequisites</xpath>
+        <value>
+            <li>BOR_Research_III_power</li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>/Defs/ThingDef[defName="QC_QuantumCooler" or defName="QC_QuantumHeater"]/costList</xpath>
+        <value>
+            <costList>
+                <Gold>25</Gold>
+                <BOR_SunSteel>25</BOR_SunSteel>
+                <Silver>250</Silver>
+                <ComponentSpacer>5</ComponentSpacer>
+            </costList>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>/Defs/ThingDef[defName="QC_QuantumCooler_Large" or defName="QC_QuantumHeater_Large"]/costList</xpath>
+        <value>
+            <costList>
+                <Gold>100</Gold>
+                <BOR_QuasarAlloy>125</BOR_QuasarAlloy>
+                <Silver>775</Silver>
+                <ComponentSpacer>10</ComponentSpacer>
+                <BOR_Component_GenII>5</BOR_Component_GenII>
+            </costList>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>/Defs/ThingDef[defName="QC_QuantumCooler_Large" or defName="QC_QuantumHeater_Large"]/costList</xpath>
+        <value>
+            <costList>
+                <Gold>50</Gold>
+                <BOR_QuasarAlloy>75</BOR_QuasarAlloy>
+                <Silver>500</Silver>
+                <BOR_Component_GenII>10</BOR_Component_GenII>
+            </costList>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>/Defs/ThingDef[defName="QC_QuantumCooler_Generator" or defName="QC_QuantumHeater_Generator"]/costList</xpath>
+        <value>
+            <costList>
+                <Gold>100</Gold>
+                <BOR_QuasarAlloy>125</BOR_QuasarAlloy>
+                <Silver>775</Silver>
+                <ComponentSpacer>10</ComponentSpacer>
+                <BOR_Component_GenII>5</BOR_Component_GenII>
+            </costList>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>/Defs/ThingDef[defName="QC_QuantumCooler_Generator" or defName="QC_QuantumHeater_Generator"]/statBases/WorkToBuild</xpath>
+        <value>
+            <WorkToBuild>13400</WorkToBuild>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>/Defs/ThingDef[defName="QC_QuantumCooler" or defName="QC_QuantumHeater"]/comps/li[@Class="CompProperties_Power"]/basePowerConsumption</xpath>
+        <value>
+            <basePowerConsumption>5000</basePowerConsumption>
+        </value>
+    </Operation>
+    <Operation Class="PatchOperationReplace">
+        <xpath>/Defs/ThingDef[defName="QC_QuantumCooler_Large" or defName="QC_QuantumHeater_Large"]/comps/li[@Class="CompProperties_Power"]/basePowerConsumption</xpath>
+        <value>
+            <basePowerConsumption>10000</basePowerConsumption>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>/Defs/ThingDef[defName="QC_QuantumCooler_Generator" or defName="QC_QuantumHeater_Generator"]/comps/li[@Class="CompProperties_Power"]/basePowerConsumption</xpath>
+        <value>
+            <basePowerConsumption>-250000</basePowerConsumption>
+        </value>
+    </Operation>
+    <Operation Class="PatchOperationRemove">
+        <xpath>/Defs/ThingDef[defName="QC_QuantumCooler_Generator" or defName="QC_QuantumHeater_Generator"]/comps/li[@Class="CompProperties_TempControl"]</xpath>
+    </Operation>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>/Defs/ThingDef[defName="QC_QuantumCooler_Generator"]/comps/li[@Class="CompProperties_HeatPusher"]/heatPerSecond</xpath>
+        <value>
+            <heatPerSecond>-200</heatPerSecond>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>/Defs/ThingDef[defName="QC_QuantumCooler_Generator"]/comps/li[@Class="CompProperties_HeatPusher"]/heatPerSecond</xpath>
+        <value>
+            <heatPerSecond>200</heatPerSecond>
+        </value>
+    </Operation>
+    <Operation Class="PatchOperationReplace">
+        <xpath>/Defs/ThingDef[defName="QC_QuantumCooler_Generator" or defName="QC_QuantumHeater_Generator"]/size</xpath>
+        <value>
+            <size>(10,10)</size>
+        </value>
+    </Operation>
+    <Operation Class="PatchOperationReplace">
+        <xpath>/Defs/ThingDef[defName="QC_QuantumCooler_Generator" or defName="QC_QuantumHeater_Generator"]/graphicData/drawSize</xpath>
+        <value>
+            <drawSize>(10,10)</drawSize>
+        </value>
+    </Operation>
+    <Operation Class="PatchOperationAdd">
+        <xpath>/Defs/ThingDef[defName="QC_QuantumCooler_Generator" or defName="QC_QuantumHeater_Generator"]/graphicData</xpath>
+        <value>
+            <drawOffset>(0,3,-0.15)</drawOffset>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationFindMod">
+        <mods>
+            <li>ProxyHeat</li>
+        </mods>
+        <match Class="PatchOperationSequence">
+            <operations>
+                <li Class="PatchOperationAdd">
+                    <xpath>/Defs/ThingDef[defName = "QC_QuantumHeater"]/comps</xpath>
+                    <value>
+                        <li Class="ProxyHeat.CompProperties_TemperatureSource">
+                            <radius>3</radius>
+                            <tempOutcome>21</tempOutcome>
+                            <minTemperature>10</minTemperature>
+                            <maxTemperature>30</maxTemperature>
+                            <dependsOnPower>true</dependsOnPower>
+                            <smeltSnowRadius>10</smeltSnowRadius>
+                            <smeltSnowAtTemperature>3</smeltSnowAtTemperature>
+                            <smeltSnowPower>0.001</smeltSnowPower>
+                        </li>
+                    </value>
+                </li>
+                <li Class="PatchOperationAdd">
+                    <xpath>/Defs/ThingDef[defName = "QC_QuantumCooler"]/comps</xpath>
+                    <value>
+                        <li Class="ProxyHeat.CompProperties_TemperatureSource">
+                            <radius>3</radius>
+                            <tempOutcome>-21</tempOutcome>
+                            <maxTemperature>0</maxTemperature>
+                            <minTemperature>-21</minTemperature>
+                            <dependsOnPower>true</dependsOnPower>
+                        </li>
+                    </value>
+                </li>
+                <li Class="PatchOperationAdd">
+                    <xpath>/Defs/ThingDef[defName = "QC_QuantumHeater_Large"]/comps</xpath>
+                    <value>
+                        <li Class="ProxyHeat.CompProperties_TemperatureSource">
+                            <radius>6</radius>
+                            <tempOutcome>100</tempOutcome>
+                            <minTemperature>10</minTemperature>
+                            <maxTemperature>50</maxTemperature>
+                            <dependsOnPower>true</dependsOnPower>
+                            <smeltSnowRadius>10</smeltSnowRadius>
+                            <smeltSnowAtTemperature>1</smeltSnowAtTemperature>
+                            <smeltSnowPower>0.01</smeltSnowPower>
+                        </li>
+                    </value>
+                </li>
+                <li Class="PatchOperationAdd">
+                    <xpath>/Defs/ThingDef[defName = "QC_QuantumCooler_Large"]/comps</xpath>
+                    <value>
+                        <li Class="ProxyHeat.CompProperties_TemperatureSource">
+                            <radius>6</radius>
+                            <tempOutcome>-100</tempOutcome>
+                            <maxTemperature>-20</maxTemperature>
+                            <minTemperature>-100</minTemperature>
+                            <dependsOnPower>true</dependsOnPower>
+                        </li>
+                    </value>
+                </li>
+                <li Class="PatchOperationAdd">
+                    <xpath>/Defs/ThingDef[defName = "QC_QuantumHeater_Generator"]/comps</xpath>
+                    <value>
+                        <li Class="ProxyHeat.CompProperties_TemperatureSource">
+                            <radius>20</radius>
+                            <tempOutcome>210</tempOutcome>
+                            <minTemperature>20</minTemperature>
+                            <maxTemperature>250</maxTemperature>
+                            <dependsOnPower>true</dependsOnPower>
+                            <smeltSnowRadius>40</smeltSnowRadius>
+                            <smeltSnowAtTemperature>3</smeltSnowAtTemperature>
+                            <smeltSnowPower>0.1</smeltSnowPower>
+                        </li>
+                    </value>
+                </li>
+                <li Class="PatchOperationAdd">
+                    <xpath>/Defs/ThingDef[defName = "QC_QuantumCooler_Generator"]/comps</xpath>
+                    <value>
+                        <li Class="ProxyHeat.CompProperties_TemperatureSource">
+                            <radius>20</radius>
+                            <tempOutcome>-210</tempOutcome>
+                            <maxTemperature>-21</maxTemperature>
+                            <minTemperature>-250</minTemperature>
+                            <dependsOnPower>true</dependsOnPower>
+                        </li>
+                    </value>
+                </li>
+            </operations>
+        </match>
+    </Operation>
+    <Operation Class="PatchOperationReplace">
+        <xpath>/Defs/ResearchProjectDef[defName="QC_Research_QuantumCooler_I"]/researchViewX</xpath>
+        <value>
+            <researchViewX>21.00</researchViewX>
+        </value>
+    </Operation>
+    <Operation Class="PatchOperationReplace">
+        <xpath>/Defs/ResearchProjectDef[defName="QC_Research_QuantumCooler_I"]/researchViewY</xpath>
+        <value>
+            <researchViewY>1.90</researchViewY>
+        </value>
+    </Operation>
+
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>/Defs/ResearchProjectDef[defName="QC_Research_QuantumCooler_II"]/researchViewX</xpath>
+        <value>
+            <researchViewX>23.00</researchViewX>
+        </value>
+    </Operation>
+    <Operation Class="PatchOperationReplace">
+        <xpath>/Defs/ResearchProjectDef[defName="QC_Research_QuantumCooler_II"]/researchViewY</xpath>
+        <value>
+            <researchViewY>4.50</researchViewY>
+        </value>
+    </Operation>
+
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>/Defs/ResearchProjectDef[defName="QC_Research_QuantumHeater_II"]/researchViewX</xpath>
+        <value>
+            <researchViewX>23.00</researchViewX>
+        </value>
+    </Operation>
+    <Operation Class="PatchOperationReplace">
+        <xpath>/Defs/ResearchProjectDef[defName="QC_Research_QuantumHeater_II"]/researchViewY</xpath>
+        <value>
+            <researchViewY>3.75</researchViewY>
+        </value>
+    </Operation>
+
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>/Defs/ResearchProjectDef[defName="QC_Research_QuantumHeater_III"]/researchViewX</xpath>
+        <value>
+            <researchViewX>26.00</researchViewX>
+        </value>
+    </Operation>
+    <Operation Class="PatchOperationReplace">
+        <xpath>/Defs/ResearchProjectDef[defName="QC_Research_QuantumHeater_III"]/researchViewY</xpath>
+        <value>
+            <researchViewY>2.80</researchViewY>
+        </value>
+    </Operation>
+
+
+</Patch>

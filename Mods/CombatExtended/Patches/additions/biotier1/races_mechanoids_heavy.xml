@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>Biotech</li>
+		</mods>
+		<match Class="PatchOperationSequence">
+			<operations>
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[@Name="HeavySolarMechanoid"]/statBases/ArmorRating_Blunt</xpath>
+					<value>
+						<ArmorRating_Blunt>23</ArmorRating_Blunt>
+					</value>
+				</li>
+
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[@Name="HeavySolarMechanoid"]/statBases/ArmorRating_Sharp</xpath>
+					<value>
+						<ArmorRating_Sharp>11</ArmorRating_Sharp>
+					</value>
+				</li>
+
+				<li Class="PatchOperationAddModExtension">
+					<xpath>Defs/ThingDef[defName="BOR_Solar_Mech_Tunneler"]</xpath>
+					<value>
+						<li Class="CombatExtended.RacePropertiesExtensionCE">
+							<bodyShape>QuadrupedLow</bodyShape>
+						</li>
+					</value>
+				</li>
+
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="BOR_Solar_Mech_Tunneler"]/statBases/ArmorRating_Blunt</xpath>
+					<value>
+						<ArmorRating_Blunt>90</ArmorRating_Blunt>
+					</value>
+				</li>
+
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="BOR_Solar_Mech_Tunneler"]/statBases/ArmorRating_Sharp</xpath>
+					<value>
+						<ArmorRating_Sharp>36</ArmorRating_Sharp>
+					</value>
+				</li>
+
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[defName="BOR_Solar_Mech_Tunneler"]/statBases</xpath>
+					<value>
+						<ArmorRating_Heat>0.375</ArmorRating_Heat>
+						<MeleeDodgeChance>0.02</MeleeDodgeChance>
+						<MeleeCritChance>0.23</MeleeCritChance>
+						<MeleeParryChance>0.53</MeleeParryChance>
+						<MaxHitPoints>450</MaxHitPoints>
+					</value>
+				</li>
+
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="BOR_Solar_Mech_Tunneler"]/statBases/EnergyShieldEnergyMax</xpath>
+					<value>
+						<EnergyShieldEnergyMax>5.625</EnergyShieldEnergyMax>
+					</value>
+				</li>
+
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="BOR_Solar_Mech_Tunneler"]/tools</xpath>
+					<value>
+						<tools>
+							<li Class="CombatExtended.ToolCE">
+								<label>left power claw</label>
+								<capacities>
+									<li>Blunt</li>
+								</capacities>
+								<power>45</power>
+								<cooldownTime>3.142</cooldownTime>
+								<linkedBodyPartsGroup>LeftPowerClaw</linkedBodyPartsGroup>
+								<ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+								<armorPenetrationBlunt>30</armorPenetrationBlunt>
+							</li>
+							<li Class="CombatExtended.ToolCE">
+								<label>right power claw</label>
+								<capacities>
+									<li>Scratch</li>
+								</capacities>
+								<power>36</power>
+								<cooldownTime>2.642</cooldownTime>
+								<linkedBodyPartsGroup>RightPowerClaw</linkedBodyPartsGroup>
+								<ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+								<armorPenetrationSharp>3</armorPenetrationSharp>
+								<armorPenetrationBlunt>15</armorPenetrationBlunt>
+							</li>
+						</tools>
+					</value>
+				</li>
+
+				<li Class="PatchOperationConditional">
+					<xpath>Defs/ThingDef[defName="BOR_Solar_Mech_Tunneler"]/comps</xpath>
+					<nomatch Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[defName="BOR_Solar_Mech_Tunneler"]</xpath>
+						<value>
+							<comps />
+						</value>
+					</nomatch>
+				</li>
+
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[defName="BOR_Solar_Mech_Tunneler"]/comps</xpath>
+					<value>
+						<li Class="CombatExtended.CompProperties_ArmorDurability">
+							<Durability>2500</Durability>
+							<Regenerates>true</Regenerates>
+							<RegenInterval>1250</RegenInterval>
+							<RegenValue>5</RegenValue>
+							<Repairable>true</Repairable>
+							<RepairIngredients>
+								<Plasteel>5</Plasteel>
+								<BOR_SunSteel>5</BOR_SunSteel>
+							</RepairIngredients>
+							<RepairTime>300</RepairTime>
+							<RepairValue>200</RepairValue>
+							<CanOverHeal>true</CanOverHeal>
+							<MaxOverHeal>250</MaxOverHeal>
+							<MinArmorPct>0.75</MinArmorPct>
+						</li>
+					</value>
+				</li>
+			</operations>
+		</match>
+	</Operation>
+
+</Patch>

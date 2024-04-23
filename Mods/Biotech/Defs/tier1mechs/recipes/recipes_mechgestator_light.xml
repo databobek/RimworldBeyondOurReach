@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+
+  <RecipeDef Name="BaseSolarMechanoidRecipe" Abstract="True">
+    <jobString>Gestating solar mech.</jobString>
+    <workAmount>2400</workAmount>
+    <gestationCycles>1</gestationCycles>
+    <formingTicks>120000</formingTicks>
+    <mechanitorOnlyRecipe>true</mechanitorOnlyRecipe>
+    <workSpeedStat>MechFormingSpeed</workSpeedStat>
+    <soundWorking>MechGestatorCycle_Initiating</soundWorking>
+  </RecipeDef>
+
+  <RecipeDef Name="LightSolarMechanoidRecipe" ParentName="BaseSolarMechanoidRecipe" Abstract="True">
+    <researchPrerequisite>BasicSolarMechtech</researchPrerequisite>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Plasteel</li>
+          </thingDefs>
+        </filter>
+        <count>50</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>SubcoreBasic</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+  </RecipeDef>
+
+  <RecipeDef ParentName="LightSolarMechanoidRecipe">
+    <defName>BOR_Solar_Militor</defName>
+    <label>gestate solar militor</label>
+    <description>Gestate a solar militor mechanoid.</description>
+    <products>
+      <BOR_Solar_Mech_Militor>1</BOR_Solar_Mech_Militor>
+    </products>
+    <descriptionHyperlinks>
+      <ThingDef>BOR_Solar_Mech_Militor</ThingDef>
+    </descriptionHyperlinks>
+  </RecipeDef>
+
+  <RecipeDef ParentName="LightSolarMechanoidRecipe">
+    <defName>BOR_Solar_Lifter</defName>
+    <label>gestate solar lifter</label>
+    <description>Gestate a solar lifter mechanoid.</description>
+    <products>
+      <BOR_Solar_Mech_Lifter>1</BOR_Solar_Mech_Lifter>
+    </products>
+    <descriptionHyperlinks>
+      <ThingDef>BOR_Solar_Mech_Lifter</ThingDef>
+    </descriptionHyperlinks>
+  </RecipeDef>
+
+  <RecipeDef ParentName="LightSolarMechanoidRecipe">
+    <defName>BOR_Solar_Constructoid</defName>
+    <label>gestate solar constructoid</label>
+    <description>Gestate a solar constructoid mechanoid.</description>
+    <products>
+      <BOR_Solar_Mech_Constructoid>1</BOR_Solar_Mech_Constructoid>
+    </products>
+    <descriptionHyperlinks>
+      <ThingDef>BOR_Solar_Mech_Constructoid</ThingDef>
+    </descriptionHyperlinks>
+  </RecipeDef>
+
+  <RecipeDef ParentName="LightSolarMechanoidRecipe">
+    <defName>BOR_Solar_Fabricor</defName>
+    <label>gestate solar fabricor</label>
+    <description>Gestate a solar fabricor mechanoid.</description>
+    <researchPrerequisite>HighSolarMechtech</researchPrerequisite>
+    <ingredients Inherit="False">
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Plasteel</li>
+          </thingDefs>
+        </filter>
+        <count>100</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>SubcoreHigh</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <products>
+      <BOR_Solar_Mech_Fabricor>1</BOR_Solar_Mech_Fabricor>
+    </products>
+    <descriptionHyperlinks>
+      <ThingDef>BOR_Solar_Mech_Fabricor</ThingDef>
+    </descriptionHyperlinks>
+  </RecipeDef>
+
+  <RecipeDef ParentName="LightSolarMechanoidRecipe">
+    <defName>BOR_Solar_Agrihand</defName>
+    <label>gestate a solargrihand</label>
+    <description>Gestate a solarn agrihand mechanoid.</description>
+    <researchPrerequisite>BasicSolarMechtech</researchPrerequisite>
+    <products>
+      <BOR_Solar_Mech_Agrihand>1</BOR_Solar_Mech_Agrihand>
+    </products>
+    <descriptionHyperlinks>
+      <ThingDef>BOR_Solar_Mech_Agrihand</ThingDef>
+    </descriptionHyperlinks>
+  </RecipeDef>
+
+  <RecipeDef ParentName="LightSolarMechanoidRecipe">
+    <defName>BOR_Solar_Cleansweeper</defName>
+    <label>gestate solar cleansweeper</label>
+    <description>Gestate a solar cleansweeper mechanoid.</description>
+    <researchPrerequisite>BasicSolarMechtech</researchPrerequisite>
+    <products>
+      <BOR_Solar_Mech_Cleansweeper>1</BOR_Solar_Mech_Cleansweeper>
+    </products>
+    <descriptionHyperlinks>
+      <ThingDef>BOR_Solar_Mech_Cleansweeper</ThingDef>
+    </descriptionHyperlinks>
+  </RecipeDef>
+
+  <RecipeDef ParentName="LightSolarMechanoidRecipe">
+    <defName>BOR_Solar_Paramedic</defName>
+    <label>gestate solar paramedic</label>
+    <description>Gestate a solar paramedic mechanoid.</description>
+    <researchPrerequisite>HighSolarMechtech</researchPrerequisite>
+    <ingredients Inherit="False">
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Plasteel</li>
+          </thingDefs>
+        </filter>
+        <count>100</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>SubcoreHigh</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <products>
+      <BOR_Solar_Mech_Paramedic>1</BOR_Solar_Mech_Paramedic>
+    </products>
+    <descriptionHyperlinks>
+      <ThingDef>BOR_Solar_Mech_Paramedic</ThingDef>
+    </descriptionHyperlinks>
+  </RecipeDef>
+
+</Defs>

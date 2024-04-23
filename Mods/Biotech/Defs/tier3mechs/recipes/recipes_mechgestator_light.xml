@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+
+  <RecipeDef Name="BaseTenebralMechanoidRecipe" Abstract="True">
+    <jobString>Gestating tenebral mech.</jobString>
+    <workAmount>2400</workAmount>
+    <gestationCycles>1</gestationCycles>
+    <formingTicks>120000</formingTicks>
+    <mechanitorOnlyRecipe>true</mechanitorOnlyRecipe>
+    <workSpeedStat>MechFormingSpeed</workSpeedStat>
+    <soundWorking>MechGestatorCycle_Initiating</soundWorking>
+  </RecipeDef>
+
+  <RecipeDef Name="LightTenebralMechanoidRecipe" ParentName="BaseTenebralMechanoidRecipe" Abstract="True">
+    <researchPrerequisite>BasicTenebralMechtech</researchPrerequisite>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>BOR_QuasarAlloy</li>
+          </thingDefs>
+        </filter>
+        <count>50</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>SubcoreBasic</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+  </RecipeDef>
+
+  <RecipeDef ParentName="LightTenebralMechanoidRecipe">
+    <defName>BOR_Tenebral_Militor</defName>
+    <label>gestate tenebral militor</label>
+    <description>Gestate a tenebral militor mechanoid.</description>
+    <products>
+      <BOR_Tenebral_Mech_Militor>1</BOR_Tenebral_Mech_Militor>
+    </products>
+    <descriptionHyperlinks>
+      <ThingDef>BOR_Tenebral_Mech_Militor</ThingDef>
+    </descriptionHyperlinks>
+  </RecipeDef>
+
+  <RecipeDef ParentName="LightTenebralMechanoidRecipe">
+    <defName>BOR_Tenebral_Lifter</defName>
+    <label>gestate tenebral lifter</label>
+    <description>Gestate a tenebral lifter mechanoid.</description>
+    <products>
+      <BOR_Tenebral_Mech_Lifter>1</BOR_Tenebral_Mech_Lifter>
+    </products>
+    <descriptionHyperlinks>
+      <ThingDef>BOR_Tenebral_Mech_Lifter</ThingDef>
+    </descriptionHyperlinks>
+  </RecipeDef>
+
+  <RecipeDef ParentName="LightTenebralMechanoidRecipe">
+    <defName>BOR_Tenebral_Constructoid</defName>
+    <label>gestate tenebral constructoid</label>
+    <description>Gestate a tenebral constructoid mechanoid.</description>
+    <products>
+      <BOR_Tenebral_Mech_Constructoid>1</BOR_Tenebral_Mech_Constructoid>
+    </products>
+    <descriptionHyperlinks>
+      <ThingDef>BOR_Tenebral_Mech_Constructoid</ThingDef>
+    </descriptionHyperlinks>
+  </RecipeDef>
+
+  <RecipeDef ParentName="LightTenebralMechanoidRecipe">
+    <defName>BOR_Tenebral_Fabricor</defName>
+    <label>gestate tenebral fabricor</label>
+    <description>Gestate a tenebral fabricor mechanoid.</description>
+    <researchPrerequisite>HighTenebralMechtech</researchPrerequisite>
+    <ingredients Inherit="False">
+      <li>
+        <filter>
+          <thingDefs>
+            <li>BOR_QuasarAlloy</li>
+          </thingDefs>
+        </filter>
+        <count>100</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>SubcoreHigh</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <products>
+      <BOR_Tenebral_Mech_Fabricor>1</BOR_Tenebral_Mech_Fabricor>
+    </products>
+    <descriptionHyperlinks>
+      <ThingDef>BOR_Tenebral_Mech_Fabricor</ThingDef>
+    </descriptionHyperlinks>
+  </RecipeDef>
+
+  <RecipeDef ParentName="LightTenebralMechanoidRecipe">
+    <defName>BOR_Tenebral_Agrihand</defName>
+    <label>gestate a tenebral agrihand</label>
+    <description>Gestate a tenebral agrihand mechanoid.</description>
+    <researchPrerequisite>BasicTenebralMechtech</researchPrerequisite>
+    <products>
+      <BOR_Tenebral_Mech_Agrihand>1</BOR_Tenebral_Mech_Agrihand>
+    </products>
+    <descriptionHyperlinks>
+      <ThingDef>BOR_Tenebral_Mech_Agrihand</ThingDef>
+    </descriptionHyperlinks>
+  </RecipeDef>
+
+  <RecipeDef ParentName="LightTenebralMechanoidRecipe">
+    <defName>BOR_Tenebral_Cleansweeper</defName>
+    <label>gestate tenebral cleansweeper</label>
+    <description>Gestate a tenebral cleansweeper mechanoid.</description>
+    <researchPrerequisite>BasicTenebralMechtech</researchPrerequisite>
+    <products>
+      <BOR_Tenebral_Mech_Cleansweeper>1</BOR_Tenebral_Mech_Cleansweeper>
+    </products>
+    <descriptionHyperlinks>
+      <ThingDef>BOR_Tenebral_Mech_Cleansweeper</ThingDef>
+    </descriptionHyperlinks>
+  </RecipeDef>
+
+  <RecipeDef ParentName="LightTenebralMechanoidRecipe">
+    <defName>BOR_Tenebral_Paramedic</defName>
+    <label>gestate tenebral paramedic</label>
+    <description>Gestate a tenebral paramedic mechanoid.</description>
+    <researchPrerequisite>HighTenebralMechtech</researchPrerequisite>
+    <ingredients Inherit="False">
+      <li>
+        <filter>
+          <thingDefs>
+            <li>BOR_SunSteel</li>
+          </thingDefs>
+        </filter>
+        <count>100</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>SubcoreHigh</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <products>
+      <BOR_Tenebral_Mech_Paramedic>1</BOR_Tenebral_Mech_Paramedic>
+    </products>
+    <descriptionHyperlinks>
+      <ThingDef>BOR_Tenebral_Mech_Paramedic</ThingDef>
+    </descriptionHyperlinks>
+  </RecipeDef>
+
+</Defs>

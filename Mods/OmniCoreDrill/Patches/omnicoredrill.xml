@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+    <Operation Class="PatchOperationReplace">
+        <xpath>/Defs/ThingDef[defName="CoreDrill"]/graphicData/texPath</xpath>
+        <value>
+            <texPath>ModRetex/Drill</texPath>
+        </value>
+    </Operation>
+    <Operation Class="PatchOperationReplace">
+        <xpath>/Defs/ThingDef[defName="CoreDrill"]/graphicData/drawSize</xpath>
+        <value>
+            <drawSize>(3.5, 3.5)</drawSize>
+        </value>
+    </Operation>
+    <Operation Class="PatchOperationAdd">
+        <xpath>/Defs/ThingDef[defName="CoreDrill"]/graphicData</xpath>
+        <value>
+            <drawOffset>(0,2,0.112)</drawOffset>
+        </value>
+    </Operation>
+    <Operation Class="PatchOperationAdd">
+        <xpath>/Defs/ThingDef[defName="CoreDrill"]/researchPrerequisites</xpath>
+        <value>
+            <li>BOR_Research_Core_Drill</li>
+        </value>
+    </Operation>
+    <Operation Class="PatchOperationReplace">
+        <xpath>/Defs/ThingDef[defName="CoreDrill"]/costList</xpath>
+        <value>
+            <costList>
+                <Plasteel>2000</Plasteel>
+                <ComponentSpacer>10</ComponentSpacer>
+                <BOR_SunSteel>400</BOR_SunSteel>
+            </costList>
+        </value>
+    </Operation>
+    <Operation Class="PatchOperationReplace">
+        <xpath>/Defs/ThingDef[defName="CoreDrill"]/comps/li[@Class="CompProperties_Power"]/basePowerConsumption</xpath>
+        <value>
+            <basePowerConsumption>20000</basePowerConsumption>
+        </value>
+    </Operation>
+    <Operation Class="PatchOperationReplace">
+        <xpath>/Defs/ThingDef[defName="CoreDrill"]/designationCategory</xpath>
+        <value>
+            <designationCategory>BOR</designationCategory>
+        </value>
+    </Operation>
+    <Operation Class="PatchOperationFindMod">
+        <mods>
+            <li>RePower Patch Pack</li>
+        </mods>
+        <match Class="PatchOperationSequence">
+            <operations>
+                <li Class="PatchOperationReplace">
+                    <xpath>/Defs/RePower.RePowerDef[defName="RePowerCoreDrill"]/lowPower</xpath>
+                    <value>
+                        <lowPower>-1000</lowPower>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace">
+                    <xpath>/Defs/RePower.RePowerDef[defName="RePowerCoreDrill"]/highPower</xpath>
+                    <value>
+                        <highPower>-20000</highPower>
+                    </value>
+                </li>
+            </operations>
+        </match>
+    </Operation>
+</Patch>

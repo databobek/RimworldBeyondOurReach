@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>BOR_Research_Unlocker_I</defName>
+    <label>solarite self-computing mainframe</label>
+    <description>Increases research speed when placed near hi-tech research bench and unlocks Solarite research projects. Each research bench can only use one Solarite self-computing mainframe.</description>
+    <graphicData>
+      <texPath>Things/BOR/Building/tier1/research_unlocker</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>1.3</drawSize>
+    </graphicData>
+    <uiIconScale>0.85</uiIconScale>
+    <researchPrerequisites>
+      <li>MultiAnalyzer</li>
+    </researchPrerequisites>
+    <size>(1,1)</size>
+    <rotatable>false</rotatable>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <castEdgeShadows>true</castEdgeShadows>
+    <fillPercent>0.5</fillPercent>
+    <designationHotKey>Misc4</designationHotKey>
+    <designationCategory>Misc</designationCategory>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <canOverlapZones>false</canOverlapZones>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+    <thingCategories>
+      <li>BuildingsMisc</li>
+    </thingCategories>
+    <statBases>
+      <MaxHitPoints>350</MaxHitPoints>
+      <WorkToBuild>15000</WorkToBuild>
+      <Mass>90</Mass>
+      <Flammability>0.833</Flammability>
+    </statBases>
+    <costList>
+      <Plasteel>40</Plasteel>
+      <BOR_Sunsteel>50</BOR_Sunsteel>
+      <ComponentSpacer>8</ComponentSpacer>
+    </costList>
+    <building>
+      <destroySound>BuildingDestroyed_Metal_Medium</destroySound>
+    </building>
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <shortCircuitInRain>true</shortCircuitInRain>
+        <basePowerConsumption>5000</basePowerConsumption>
+      </li>
+      <li Class="CompProperties_Flickable" />
+      <li Class="CompProperties_Facility">
+        <statOffsets>
+          <ResearchSpeedFactor>0.33</ResearchSpeedFactor>
+        </statOffsets>
+        <maxSimultaneous>1</maxSimultaneous>
+      </li>
+    </comps>
+    <placeWorkers>
+      <li>PlaceWorker_ShowFacilitiesConnections</li>
+    </placeWorkers>
+    <constructionSkillPrerequisite>12</constructionSkillPrerequisite>
+  </ThingDef>
+
+</Defs>

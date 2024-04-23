@@ -1,0 +1,720 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <!-- Base: Bionic body part (spacer tech) -->
+
+    <ThingDef Name="QuasarBodyPartBionicBase" ParentName="BodyPartBase" Abstract="True">
+        <techLevel>Ultra</techLevel>
+        <thingCategories>
+            <li>BOR_Bionics_GenII</li>
+        </thingCategories>
+        <graphicData>
+            <texPath>Things/Item/Health/HealthItem</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>0.80</drawSize>
+            <color>(98, 150, 150)</color>
+        </graphicData>
+        <tradeTags>
+            <li>Bionic</li>
+        </tradeTags>
+        <techHediffsTags>
+            <li>Ultra</li>
+        </techHediffsTags>
+        <statBases>
+            <WorkToMake>58500</WorkToMake>
+        </statBases>
+        <recipeMaker>
+            <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+            <workSkill>Crafting</workSkill>
+            <effectWorking>Smith</effectWorking>
+            <soundWorking>Recipe_Smith</soundWorking>
+            <unfinishedThingDef>UnfinishedHealthItemBionic</unfinishedThingDef>
+            <skillRequirements>
+                <Crafting>18</Crafting>
+            </skillRequirements>
+            <!-- todo -->
+            <researchPrerequisite>BOR_QuasarBionics</researchPrerequisite>
+            <recipeUsers>
+                <!-- todo -->
+                <li>FabricationBench</li>
+            </recipeUsers>
+            <displayPriority>300</displayPriority>
+        </recipeMaker>
+    </ThingDef>
+
+    <!-- Bionic eye -->
+
+    <HediffDef ParentName="AddedBodyPartBase">
+        <defName>BOR_QuasarBionicEye</defName>
+        <label>quasar bionic eye</label>
+        <labelNoun>a quasar bionic eye</labelNoun>
+        <description>An installed quasar bionic eye. With its biogel nerve-link, internal signal pre-processor, and wide-spectrum sensors, it is better than a biological eye in almost every way. A lattice-dust healing system allows it to recover from damage.</description>
+        <descriptionHyperlinks>
+            <ThingDef>BOR_QuasarBionicEye</ThingDef>
+        </descriptionHyperlinks>
+        <spawnThingOnRemoved>BOR_QuasarBionicEye</spawnThingOnRemoved>
+        <addedPartProps>
+            <solid>true</solid>
+            <partEfficiency>2.8125</partEfficiency>
+            <betterThanNatural>true</betterThanNatural>
+        </addedPartProps>
+    </HediffDef>
+
+    <ThingDef ParentName="BodyPartBionicBase">
+        <defName>BOR_QuasarBionicEye</defName>
+        <label>quasar bionic eye</label>
+        <description>An advanced artificial eye. With its biogel nerve-link, internal signal pre-processor, and wide-spectrum sensors, it is better than a biological eye in almost every way. A lattice-dust healing system allows it to recover from damage.</description>
+        <descriptionHyperlinks>
+            <RecipeDef>BOR_InstallQuasarBionicEye</RecipeDef>
+        </descriptionHyperlinks>
+        <costList>
+            <BOR_QuasarAlloy>15</BOR_QuasarAlloy>
+            <BOR_SolarComponent>4</BOR_SolarComponent>
+        </costList>
+        <thingSetMakerTags>
+            <li>RewardStandardMidFreq</li>
+        </thingSetMakerTags>
+        <statBases>
+            <Mass>0.21</Mass>
+        </statBases>
+    </ThingDef>
+
+    <RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase">
+        <defName>BOR_InstallQuasarBionicEye</defName>
+        <label>install quasar bionic eye</label>
+        <description>Install a quasar bionic eye.</description>
+        <descriptionHyperlinks>
+            <ThingDef>BOR_QuasarBionicEye</ThingDef>
+            <HediffDef>BOR_QuasarBionicEye</HediffDef>
+        </descriptionHyperlinks>
+        <jobString>Installing quasar bionic eye.</jobString>
+        <ingredients>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>BOR_QuasarBionicEye</li>
+                    </thingDefs>
+                </filter>
+                <count>1</count>
+            </li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Picoclusters</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>  
+        </ingredients>
+        <fixedIngredientFilter>
+            <thingDefs>
+                <li>BOR_QuasarBionicEye</li>
+                <li>BOR_Picoclusters</li>
+            </thingDefs>
+        </fixedIngredientFilter>
+        <appliedOnFixedBodyParts>
+            <li>Eye</li>
+        </appliedOnFixedBodyParts>
+        <addsHediff>BOR_QuasarBionicEye</addsHediff>
+    </RecipeDef>
+
+    <!-- Bionic arm -->
+
+    <HediffDef ParentName="AddedBodyPartBase">
+        <defName>BOR_QuasarBionicArm</defName>
+        <label>quasar bionic arm</label>
+        <labelNoun>a quasar bionic arm</labelNoun>
+        <description>An installed quasar bionic arm. Silenced mini-servos give great strength, while the biogel nerve-link gives exquisite control. A lattice-dust healing system allows it to recover from damage. It is better than a biological arm in almost every way.</description>
+        <descriptionHyperlinks>
+            <ThingDef>BOR_QuasarBionicArm</ThingDef>
+        </descriptionHyperlinks>
+        <comps>
+            <li Class="HediffCompProperties_VerbGiver">
+                <tools>
+                    <li>
+                        <label>fist</label>
+                        <capacities>
+                            <li>Blunt</li>
+                        </capacities>
+                        <power>27</power>
+                        <cooldownTime>1.39</cooldownTime>
+                        <soundMeleeHit>MeleeHit_BionicPunch</soundMeleeHit>
+                        <soundMeleeMiss>MeleeMiss_BionicPunch</soundMeleeMiss>
+                    </li>
+                </tools>
+            </li>
+        </comps>
+        <spawnThingOnRemoved>BOR_QuasarBionicArm</spawnThingOnRemoved>
+        <addedPartProps>
+            <solid>true</solid>
+            <partEfficiency>2.8125</partEfficiency>
+            <betterThanNatural>true</betterThanNatural>
+        </addedPartProps>
+    </HediffDef>
+
+    <ThingDef ParentName="BodyPartBionicBase">
+        <defName>BOR_QuasarBionicArm</defName>
+        <label>quasar bionic arm</label>
+        <description>An advanced artificial arm. Silenced mini-servos give great strength, while the biogel nerve-link gives exquisite control. A lattice-dust healing system allows it to recover from damage. It is better than a biological arm in almost every way.</description>
+        <descriptionHyperlinks>
+            <RecipeDef>BOR_InstallQuasarBionicArm</RecipeDef>
+        </descriptionHyperlinks>
+        <costList>
+            <BOR_QuasarAlloy>15</BOR_QuasarAlloy>
+            <BOR_SolarComponent>4</BOR_SolarComponent>
+        </costList>
+        <thingSetMakerTags>
+            <li>RewardStandardMidFreq</li>
+        </thingSetMakerTags>
+        <statBases>
+            <Mass>3.46</Mass>
+        </statBases>
+    </ThingDef>
+
+    <RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase">
+        <defName>BOR_InstallQuasarBionicArm</defName>
+        <label>install quasar bionic arm</label>
+        <description>Install a quasar bionic arm.</description>
+        <descriptionHyperlinks>
+            <ThingDef>BOR_QuasarBionicArm</ThingDef>
+            <HediffDef>BOR_QuasarBionicArm</HediffDef>
+        </descriptionHyperlinks>
+        <jobString>Installing quasar bionic arm.</jobString>
+        <ingredients>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>BOR_QuasarBionicArm</li>
+                    </thingDefs>
+                </filter>
+                <count>1</count>
+            </li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Picoclusters</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>  
+        </ingredients>
+        <fixedIngredientFilter>
+            <thingDefs>
+                <li>BOR_QuasarBionicArm</li>
+                <li>BOR_Picoclusters</li>
+            </thingDefs>
+        </fixedIngredientFilter>
+        <appliedOnFixedBodyParts>
+            <li>Shoulder</li>
+        </appliedOnFixedBodyParts>
+        <addsHediff>BOR_QuasarBionicArm</addsHediff>
+    </RecipeDef>
+
+    <!-- Bionic leg -->
+
+    <HediffDef ParentName="AddedBodyPartBase">
+        <defName>BOR_QuasarBionicLeg</defName>
+        <label>quasar bionic leg</label>
+        <labelNoun>a quasar bionic leg</labelNoun>
+        <description>An installed quasar bionic leg. With its biogel nerve-link, powerful mini-servos, and lattice-dust healing system, it is better than a biological leg in almost every way.</description>
+        <descriptionHyperlinks>
+            <ThingDef>BOR_QuasarBionicLeg</ThingDef>
+        </descriptionHyperlinks>
+        <spawnThingOnRemoved>BOR_QuasarBionicLeg</spawnThingOnRemoved>
+        <addedPartProps>
+            <solid>true</solid>
+            <partEfficiency>2.8125</partEfficiency>
+            <betterThanNatural>true</betterThanNatural>
+        </addedPartProps>
+    </HediffDef>
+
+    <ThingDef ParentName="BodyPartBionicBase">
+        <defName>BOR_QuasarBionicLeg</defName>
+        <label>quasar bionic leg</label>
+        <description>An advanced artificial leg. With its biogel nerve-link, powerful mini-servos, and lattice-dust healing system, it is better than a biological leg in almost every way.</description>
+        <descriptionHyperlinks>
+            <RecipeDef>BOR_InstallQuasarBionicLeg</RecipeDef>
+        </descriptionHyperlinks>
+        <costList>
+            <BOR_QuasarAlloy>15</BOR_QuasarAlloy>
+            <BOR_SolarComponent>4</BOR_SolarComponent>
+        </costList>
+        <thingSetMakerTags>
+            <li>RewardStandardMidFreq</li>
+        </thingSetMakerTags>
+        <statBases>
+            <Mass>5.55</Mass>
+        </statBases>
+    </ThingDef>
+
+    <RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase">
+        <defName>BOR_InstallQuasarBionicLeg</defName>
+        <label>install quasar bionic leg</label>
+        <description>Install a quasar bionic leg.</description>
+        <descriptionHyperlinks>
+            <ThingDef>BOR_QuasarBionicLeg</ThingDef>
+            <HediffDef>BOR_QuasarBionicLeg</HediffDef>
+        </descriptionHyperlinks>
+        <jobString>Installing quasar bionic leg.</jobString>
+        <ingredients>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>BOR_QuasarBionicLeg</li>
+                    </thingDefs>
+                </filter>
+                <count>1</count>
+            </li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Picoclusters</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>  
+        </ingredients>
+        <fixedIngredientFilter>
+            <thingDefs>
+                <li>BOR_QuasarBionicLeg</li>
+                <li>BOR_Picoclusters</li>
+            </thingDefs>
+        </fixedIngredientFilter>
+        <appliedOnFixedBodyParts>
+            <li>Leg</li>
+        </appliedOnFixedBodyParts>
+        <addsHediff>BOR_QuasarBionicLeg</addsHediff>
+    </RecipeDef>
+
+    <!-- Bionic spine -->
+
+    <HediffDef ParentName="AddedBodyPartBase">
+        <defName>BOR_QuasarBionicSpine</defName>
+        <label>quasar bionic spine</label>
+        <labelNoun>a quasar bionic spine</labelNoun>
+        <description>An installed quasar bionic spine. A biogel nerve bundle runs down an articulated plasteel core, surrounded by a lattice-dust healing system. It matches the performance of a biological spine.</description>
+        <descriptionHyperlinks>
+            <ThingDef>BOR_QuasarBionicSpine</ThingDef>
+        </descriptionHyperlinks>
+        <spawnThingOnRemoved>BOR_QuasarBionicSpine</spawnThingOnRemoved>
+        <addedPartProps>
+            <solid>true</solid>
+            <betterThanNatural>true</betterThanNatural>
+        </addedPartProps>
+    </HediffDef>
+
+    <ThingDef ParentName="BodyPartBionicBase">
+        <defName>BOR_QuasarBionicSpine</defName>
+        <label>quasar bionic spine</label>
+        <description>An advanced artificial spine. A biogel nerve bundle runs down an articulated plasteel core, surrounded by a lattice-dust healing system. It matches the performance of a biological spine.</description>
+        <descriptionHyperlinks>
+            <RecipeDef>BOR_InstallQuasarBionicSpine</RecipeDef>
+        </descriptionHyperlinks>
+        <costList>
+            <BOR_QuasarAlloy>15</BOR_QuasarAlloy>
+            <BOR_SolarComponent>4</BOR_SolarComponent>
+        </costList>
+        <statBases>
+            <Mass>1.38</Mass>
+        </statBases>
+    </ThingDef>
+
+    <RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase">
+        <defName>BOR_InstallQuasarBionicSpine</defName>
+        <label>install quasar bionic spine</label>
+        <description>Install a quasar bionic spine.</description>
+        <descriptionHyperlinks>
+            <ThingDef>BOR_QuasarBionicSpine</ThingDef>
+            <HediffDef>BOR_QuasarBionicSpine</HediffDef>
+        </descriptionHyperlinks>
+        <jobString>Installing quasar bionic spine.</jobString>
+        <ingredients>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>BOR_QuasarBionicSpine</li>
+                    </thingDefs>
+                </filter>
+                <count>1</count>
+            </li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Picoclusters</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>  
+        </ingredients>
+        <fixedIngredientFilter>
+            <thingDefs>
+                <li>BOR_QuasarBionicSpine</li>
+                <li>BOR_Picoclusters</li>
+            </thingDefs>
+        </fixedIngredientFilter>
+        <appliedOnFixedBodyParts>
+            <li>Spine</li>
+        </appliedOnFixedBodyParts>
+        <addsHediff>BOR_QuasarBionicSpine</addsHediff>
+    </RecipeDef>
+
+    <!-- Bionic heart -->
+
+    <HediffDef ParentName="AddedBodyPartBase">
+        <defName>BOR_QuasarBionicHeart</defName>
+        <label>quasar bionic heart</label>
+        <labelNoun>a quasar bionic heart</labelNoun>
+        <description>An installed quasar bionic heart. It has synthetic muscle fibers for a realistic heartbeat, plus a high-flow pump for rapid circulation during high stress. It is better than a biological heart in almost every way.</description>
+        <descriptionHyperlinks>
+            <ThingDef>BOR_QuasarBionicHeart</ThingDef>
+        </descriptionHyperlinks>
+        <spawnThingOnRemoved>BOR_QuasarBionicHeart</spawnThingOnRemoved>
+        <addedPartProps>
+            <solid>true</solid>
+            <partEfficiency>2.8125</partEfficiency>
+            <betterThanNatural>true</betterThanNatural>
+        </addedPartProps>
+    </HediffDef>
+
+    <ThingDef ParentName="BodyPartBionicBase">
+        <defName>BOR_QuasarBionicHeart</defName>
+        <label>quasar bionic heart</label>
+        <description>An advanced artificial heart. It has synthetic muscle fibers for a realistic heartbeat, plus a high-flow pump for rapid circulation during high stress. It is better than a biological heart in almost every way.</description>
+        <descriptionHyperlinks>
+            <RecipeDef>BOR_InstallQuasarBionicHeart</RecipeDef>
+        </descriptionHyperlinks>
+        <costList>
+            <BOR_QuasarAlloy>15</BOR_QuasarAlloy>
+            <BOR_SolarComponent>4</BOR_SolarComponent>
+        </costList>
+    </ThingDef>
+
+    <RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase">
+        <defName>BOR_InstallQuasarBionicHeart</defName>
+        <label>install quasar bionic heart</label>
+        <description>Install a quasar bionic heart.</description>
+        <descriptionHyperlinks>
+            <ThingDef>BOR_QuasarBionicHeart</ThingDef>
+            <HediffDef>BOR_QuasarBionicHeart</HediffDef>
+        </descriptionHyperlinks>
+        <jobString>Installing quasar bionic heart.</jobString>
+        <ingredients>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>BOR_QuasarBionicHeart</li>
+                    </thingDefs>
+                </filter>
+                <count>1</count>
+            </li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Picoclusters</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>  
+        </ingredients>
+        <fixedIngredientFilter>
+            <thingDefs>
+                <li>BOR_QuasarBionicHeart</li>
+                <li>BOR_Picoclusters</li>
+            </thingDefs>
+        </fixedIngredientFilter>
+        <appliedOnFixedBodyParts>
+            <li>Heart</li>
+        </appliedOnFixedBodyParts>
+        <addsHediff>BOR_QuasarBionicHeart</addsHediff>
+    </RecipeDef>
+
+    <!-- Bionic stomach -->
+
+    <HediffDef ParentName="AddedBodyPartBase">
+        <defName>BOR_QuasarBionicStomach</defName>
+        <label>quasar bionic stomach</label>
+        <labelNoun>a quasar bionic stomach</labelNoun>
+        <description>An installed quasar bionic stomach. A person with this has a much lower chance of getting food poisoning, and is immune to some stomach diseases. An integrated lattice-dust healing system automatically repairs any damage to the artificial organ. It is better than a biological stomach in almost every way.</description>
+        <descriptionHyperlinks>
+            <ThingDef>BOR_QuasarBionicStomach</ThingDef>
+        </descriptionHyperlinks>
+        <spawnThingOnRemoved>BOR_QuasarBionicStomach</spawnThingOnRemoved>
+        <stages>
+            <li>
+                <makeImmuneTo>
+                    <li>GutWorms</li>
+                </makeImmuneTo>
+                <foodPoisoningChanceFactor>0.5</foodPoisoningChanceFactor>
+            </li>
+        </stages>
+        <addedPartProps>
+            <solid>true</solid>
+            <partEfficiency>2.8125</partEfficiency>
+            <betterThanNatural>true</betterThanNatural>
+        </addedPartProps>
+    </HediffDef>
+
+    <ThingDef ParentName="BodyPartBionicBase">
+        <defName>BOR_QuasarBionicStomach</defName>
+        <label>quasar bionic stomach</label>
+        <description>An advanced artificial stomach with sensors and chemical synthesizers that efficiently digest nearly any energy-bearing foodstuff. A person with this has a much lower chance of getting food poisoning, and is immune to some stomach diseases. An integrated lattice-dust healing system automatically repairs any damage to the artificial organ. It is better than a biological stomach in almost every way.</description>
+        <descriptionHyperlinks>
+            <RecipeDef>BOR_InstallQuasarBionicStomach</RecipeDef>
+        </descriptionHyperlinks>
+        <costList>
+            <BOR_QuasarAlloy>10</BOR_QuasarAlloy>
+            <BOR_SolarComponent>3</BOR_SolarComponent>
+        </costList>
+        <statBases>
+            <Mass>1.38</Mass>
+        </statBases>
+    </ThingDef>
+
+    <RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase">
+        <defName>BOR_InstallQuasarBionicStomach</defName>
+        <label>install quasar bionic stomach</label>
+        <description>Install a quasar bionic stomach.</description>
+        <descriptionHyperlinks>
+            <ThingDef>BOR_QuasarBionicStomach</ThingDef>
+            <HediffDef>BOR_QuasarBionicStomach</HediffDef>
+        </descriptionHyperlinks>
+        <jobString>Installing quasar bionic stomach.</jobString>
+        <ingredients>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>BOR_QuasarBionicStomach</li>
+                    </thingDefs>
+                </filter>
+                <count>1</count>
+            </li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Picoclusters</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>  
+        </ingredients>
+        <fixedIngredientFilter>
+            <thingDefs>
+                <li>BOR_QuasarBionicStomach</li>
+                <li>BOR_Picoclusters</li>
+            </thingDefs>
+        </fixedIngredientFilter>
+        <appliedOnFixedBodyParts>
+            <li>Stomach</li>
+        </appliedOnFixedBodyParts>
+        <addsHediff>BOR_QuasarBionicStomach</addsHediff>
+    </RecipeDef>
+
+    <!-- Bionic ear -->
+
+    <HediffDef ParentName="AddedBodyPartBase">
+        <defName>BOR_QuasarBionicEar</defName>
+        <label>quasar bionic ear</label>
+        <labelNoun>a quasar bionic ear</labelNoun>
+        <description>An installed quasar bionic ear. A collection of invisible subdermal microphones capture sound and transmit it to a biogel nerve interface that links directly with the auditory nerve. It's sensitive enough to hear a cat before you see it, can't be damaged by loud noise, and automatically tunes itself to pick out meaningful sounds in noisy environments.</description>
+        <descriptionHyperlinks>
+            <ThingDef>BOR_QuasarBionicEar</ThingDef>
+        </descriptionHyperlinks>
+        <spawnThingOnRemoved>BOR_QuasarBionicEar</spawnThingOnRemoved>
+        <addedPartProps>
+            <solid>true</solid>
+            <partEfficiency>2.8125</partEfficiency>
+            <betterThanNatural>true</betterThanNatural>
+        </addedPartProps>
+    </HediffDef>
+
+    <ThingDef ParentName="BodyPartBionicBase">
+        <defName>BOR_QuasarBionicEar</defName>
+        <label>quasar bionic ear</label>
+        <description>An advanced artificial ear implant. A collection of invisible subdermal microphones capture sound and transmit it to a biogel nerve interface that links directly with the auditory nerve. It's sensitive enough to hear a cat before you see it, can't be damaged by loud noise, and automatically tunes itself to pick out meaningful sounds in noisy environments.</description>
+        <descriptionHyperlinks>
+            <RecipeDef>BOR_InstallQuasarBionicEar</RecipeDef>
+        </descriptionHyperlinks>
+        <costList>
+            <BOR_QuasarAlloy>10</BOR_QuasarAlloy>
+            <BOR_SolarComponent>3</BOR_SolarComponent>
+        </costList>
+    </ThingDef>
+
+    <RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase">
+        <defName>BOR_InstallQuasarBionicEar</defName>
+        <label>install quasar bionic ear</label>
+        <description>Install a quasar bionic ear.</description>
+        <descriptionHyperlinks>
+            <ThingDef>BOR_QuasarBionicEar</ThingDef>
+            <HediffDef>BOR_QuasarBionicEar</HediffDef>
+        </descriptionHyperlinks>
+        <jobString>Installing quasar bionic ear.</jobString>
+        <ingredients>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>BOR_QuasarBionicEar</li>
+                    </thingDefs>
+                </filter>
+                <count>1</count>
+            </li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Picoclusters</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>  
+        </ingredients>
+        <fixedIngredientFilter>
+            <thingDefs>
+                <li>BOR_QuasarBionicEar</li>
+                <li>BOR_Picoclusters</li>
+            </thingDefs>
+        </fixedIngredientFilter>
+        <appliedOnFixedBodyParts>
+            <li>Ear</li>
+        </appliedOnFixedBodyParts>
+        <addsHediff>BOR_QuasarBionicEar</addsHediff>
+    </RecipeDef>
+
+    <!-- Bionic tongue -->
+
+    <HediffDef ParentName="AddedBodyPartBase">
+        <defName>BOR_QuasarBionicTongue</defName>
+        <label>quasar bionic tongue</label>
+        <labelNoun>a quasar bionic tongue</labelNoun>
+        <description>An installed quasar bionic tongue. Made of synthetic smooth-fibers and connected through a neurogel interface, it can match the performance of a natural tongue in speaking, eating, and tasting.</description>
+        <descriptionHyperlinks>
+            <ThingDef>BOR_QuasarBionicTongue</ThingDef>
+        </descriptionHyperlinks>
+        <spawnThingOnRemoved>BOR_QuasarBionicTongue</spawnThingOnRemoved>
+        <addedPartProps>
+            <solid>true</solid>
+            <partEfficiency>2.25</partEfficiency>
+        </addedPartProps>
+    </HediffDef>
+
+    <ThingDef ParentName="BodyPartBionicBase">
+        <defName>BOR_QuasarBionicTongue</defName>
+        <label>quasar bionic tongue</label>
+        <description>An artificial tongue replacement. Made of synthetic smooth-fibers and connected through a neurogel interface, it can match the performance of a natural tongue in speaking, eating, and tasting.</description>
+        <descriptionHyperlinks>
+            <RecipeDef>BOR_InstallQuasarBionicTongue</RecipeDef>
+        </descriptionHyperlinks>
+        <costList>
+            <BOR_QuasarAlloy>8</BOR_QuasarAlloy>
+            <BOR_SolarComponent>2</BOR_SolarComponent>
+        </costList>
+    </ThingDef>
+
+    <RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase">
+        <defName>BOR_InstallQuasarBionicTongue</defName>
+        <label>install quasar bionic tongue</label>
+        <description>Install a quasar bionic tongue.</description>
+        <descriptionHyperlinks>
+            <ThingDef>BOR_QuasarBionicTongue</ThingDef>
+            <HediffDef>BOR_QuasarBionicTongue</HediffDef>
+        </descriptionHyperlinks>
+        <jobString>Installing quasar bionic tongue.</jobString>
+        <ingredients>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>BOR_QuasarBionicTongue</li>
+                    </thingDefs>
+                </filter>
+                <count>1</count>
+            </li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Picoclusters</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>  
+        </ingredients>
+        <fixedIngredientFilter>
+            <thingDefs>
+                <li>BOR_QuasarBionicTongue</li>
+                <li>BOR_Picoclusters</li>
+            </thingDefs>
+        </fixedIngredientFilter>
+        <appliedOnFixedBodyParts>
+            <li>Tongue</li>
+        </appliedOnFixedBodyParts>
+        <addsHediff>BOR_QuasarBionicTongue</addsHediff>
+    </RecipeDef>
+
+    <!-- Bionic Jaw -->
+
+    <HediffDef ParentName="AddedBodyPartBase">
+        <defName>BOR_QuasarBionicJaw</defName>
+        <label>quasar bionic jaw</label>
+        <labelNoun>a quasar bionic jaw</labelNoun>
+        <description>An installed quasar bionic jaw. Made out of biosynthetic bone, with plasteel tooth replacements and a set of micro servomotors for the full range of motion.</description>
+        <descriptionHyperlinks>
+            <ThingDef>BOR_QuasarBionicJaw</ThingDef>
+        </descriptionHyperlinks>
+        <spawnThingOnRemoved>BOR_QuasarBionicJaw</spawnThingOnRemoved>
+        <addedPartProps>
+            <solid>true</solid>
+            <partEfficiency>2.8125</partEfficiency>
+            <betterThanNatural>true</betterThanNatural>
+        </addedPartProps>
+    </HediffDef>
+
+    <ThingDef ParentName="BodyPartBionicBase">
+        <defName>BOR_QuasarBionicJaw</defName>
+        <label>quasar bionic jaw</label>
+        <description>An artificial jaw replacement. Made out of biosynthetic bone, with plasteel tooth replacements and a set of micro servomotors for the full range of motion.</description>
+        <descriptionHyperlinks>
+            <RecipeDef>BOR_InstallQuasarBionicJaw</RecipeDef>
+        </descriptionHyperlinks>
+        <costList>
+            <BOR_QuasarAlloy>10</BOR_QuasarAlloy>
+            <BOR_SolarComponent>3</BOR_SolarComponent>
+        </costList>
+        <statBases>
+            <Mass>1.875</Mass>
+        </statBases>
+    </ThingDef>
+
+    <RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase">
+        <defName>BOR_InstallQuasarBionicJaw</defName>
+        <label>Install quasar bionic jaw</label>
+        <description>Install quasar bionic jaw.</description>
+        <jobString>Installing quasar bionic jaw.</jobString>
+        <ingredients>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>BOR_QuasarBionicJaw</li>
+                    </thingDefs>
+                </filter>
+                <count>1</count>
+            </li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Picoclusters</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>  
+        </ingredients>
+        <fixedIngredientFilter>
+            <thingDefs>
+                <li>BOR_QuasarBionicJaw</li>
+                <li>BOR_Picoclusters</li>
+            </thingDefs>
+        </fixedIngredientFilter>
+        <appliedOnFixedBodyParts>
+            <li>Jaw</li>
+        </appliedOnFixedBodyParts>
+        <addsHediff>BOR_QuasarBionicJaw</addsHediff>
+    </RecipeDef>
+
+</Defs>

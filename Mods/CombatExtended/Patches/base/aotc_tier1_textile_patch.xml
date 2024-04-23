@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch> <!-- BOR_SunSteel_Fiber -->
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName="BOR_SunSteel_Fiber"]/statBases</xpath>
+        <value>
+            <Bulk>0.05</Bulk>
+            <WornBulk>0.5</WornBulk>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="BOR_SunSteel_Fiber"]/statBases/StuffPower_Armor_Sharp</xpath>
+        <value>
+            <StuffPower_Armor_Sharp>2</StuffPower_Armor_Sharp>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="BOR_SunSteel_Fiber"]/statBases/StuffPower_Armor_Blunt</xpath>
+        <value>
+            <StuffPower_Armor_Blunt>3.0</StuffPower_Armor_Blunt>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="BOR_SunSteel_Fiber"]/statBases/StuffPower_Armor_Heat</xpath>
+        <value>
+            <StuffPower_Armor_Heat>0.2</StuffPower_Armor_Heat>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName="BOR_SunSteel_Fiber"]/stuffProps/statFactors</xpath>
+        <value>
+            <Mass>0.9</Mass>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="BOR_SunSteel_Fiber"]/stuffProps/statFactors/Flammability</xpath>
+        <value>
+            <Flammability>0.05</Flammability>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName="BOR_SunSteel_Fiber"]/stuffProps/categories</xpath>
+        <nomatch Class="PatchOperationAdd">
+            <xpath>Defs/ThingDef[defName="BOR_SunSteel_Fiber"]/stuffProps</xpath>
+            <value>
+                <categories>
+                    <li>SoftArmor</li>
+                </categories>
+            </value>
+        </nomatch>
+        <match Class="PatchOperationAdd">
+            <xpath>Defs/ThingDef[defName="BOR_SunSteel_Fiber"]/stuffProps/categories</xpath>
+            <value>
+                <li>SoftArmor</li>
+            </value>
+        </match>
+    </Operation>
+</Patch>
