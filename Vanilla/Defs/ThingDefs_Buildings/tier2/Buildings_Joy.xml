@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>BOR_MegascreenTelevision_II</defName>
+    <label>quasarscreen television</label>
+    <description>A huge, high-tech television. Gigantic, hyper-vibrant images almost leap out of the screen. Very entertaining. Picks up transmissions from ancient satellites and ubiquitous data cards.</description>
+    <graphicData>
+      <texPath>Things/BOR/Building/tier2/tv</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <shadowData>
+        <volume>(2.5, 0.6, 0.1)</volume>
+        <offset>(0, 0, 0.2)</offset>
+      </shadowData>
+      <drawSize>(6,2)</drawSize>
+      <drawOffsetNorth>(0,3,0.6)</drawOffsetNorth>
+      <drawOffsetSouth>(0,3,0.6)</drawOffsetSouth>
+      <drawOffsetWest>(0.2,0,0)</drawOffsetWest>
+      <drawOffsetEast>(-0.2,0,0)</drawOffsetEast>
+    </graphicData>
+    <altitudeLayer>Building</altitudeLayer>
+    <drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+    <rotatable>true</rotatable>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <socialPropernessMatters>true</socialPropernessMatters>
+    <fillPercent>0.35</fillPercent>
+    <defaultPlacingRot>South</defaultPlacingRot>
+    <thingCategories>
+      <li>BuildingsJoy</li>
+    </thingCategories>
+    <thingSetMakerTags>
+      <li>RewardStandardQualitySuper</li>
+    </thingSetMakerTags>
+    <costList>
+      <BOR_QuasarAlloy>260</BOR_QuasarAlloy>
+      <BOR_ComponentII>22</BOR_ComponentII>
+    </costList>
+    <statBases>
+      <WorkToBuild>120000</WorkToBuild>
+      <MaxHitPoints>127</MaxHitPoints>
+      <Flammability>0.833</Flammability>
+      <Mass>8.333</Mass>
+      <JoyGainFactor>2.4</JoyGainFactor>
+    </statBases>
+    <pathCost>50</pathCost>
+    <passability>PassThroughOnly</passability>
+    <size>(6,1)</size>
+    <building>
+      <joyKind>Television</joyKind>
+      <spawnedConceptLearnOpportunity>TVForSickPeople</spawnedConceptLearnOpportunity>
+      <boughtConceptLearnOpportunity>TVForSickPeople</boughtConceptLearnOpportunity>
+      <watchBuildingStandDistanceRange>2~7</watchBuildingStandDistanceRange>
+      <watchBuildingStandRectWidth>7</watchBuildingStandRectWidth>
+      <watchBuildingInSameRoom>true</watchBuildingInSameRoom>
+      <effectWatching>WatchingTelevision</effectWatching>
+    </building>
+    <placeWorkers>
+      <li>PlaceWorker_WatchArea</li>
+    </placeWorkers>
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <shortCircuitInRain>true</shortCircuitInRain>
+        <basePowerConsumption>2500</basePowerConsumption>
+      </li>
+      <li Class="CompProperties_Flickable" />
+    </comps>
+    <tradeTags>
+      <li>Television</li>
+    </tradeTags>
+  </ThingDef>
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>BOR_Telescope_II</defName>
+    <label>quasoscope</label>
+    <description>A telescope for doing amateur astronomy. It's a relaxing hobby for a certain kind of person. Can only be used outdoors.</description>
+    <possessionCount>1</possessionCount>
+    <graphicData>
+      <texPath>Things/BOR/Building/tier2/telescope</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawRotated>false</drawRotated>
+      <shadowData>
+        <volume>(0.3, 0.7, 0.3)</volume>
+        <offset>(-0.03,0,-0.35)</offset>
+      </shadowData>
+    </graphicData>
+    <canBeUsedUnderRoof>false</canBeUsedUnderRoof>
+    <fillPercent>0.15</fillPercent>
+    <altitudeLayer>Building</altitudeLayer>
+    <hasInteractionCell>true</hasInteractionCell>
+    <interactionCellOffset>(0,0,1)</interactionCellOffset>
+    <passability>PassThroughOnly</passability>
+    <pathCost>30</pathCost>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <socialPropernessMatters>true</socialPropernessMatters>
+    <thingCategories>
+      <li>BuildingsJoy</li>
+    </thingCategories>
+    <thingSetMakerTags>
+      <li>RewardStandardQualitySuper</li>
+    </thingSetMakerTags>
+    <building>
+      <joyKind>Telescope</joyKind>
+    </building>
+    <costList>
+      <BOR_QuasarAlloy>50</BOR_QuasarAlloy>
+      <BOR_ComponentII>1</BOR_ComponentII>
+    </costList>
+    <statBases>
+      <MaxHitPoints>168</MaxHitPoints>
+      <Flammability>0.694</Flammability>
+      <MarketValue>787</MarketValue>
+      <Mass>5.21</Mass>
+      <JoyGainFactor>2.7</JoyGainFactor>
+    </statBases>
+    <placeWorkers>
+      <li>PlaceWorker_NotUnderRoof</li>
+      <li>PlaceWorker_PreventInteractionSpotOverlap</li>
+    </placeWorkers>
+  </ThingDef>
+
+</Defs>
