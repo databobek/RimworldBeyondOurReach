@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Defs>
 
+  <!--Tab-->
+  
   <ResearchTabDef>
     <defName>BOR_Research_Tab</defName>
-    <label>Beyond</label>
+    <label>beyond</label>
+    <generalTitle>Beyond Our Reach research projects</generalTitle>
+    <generalDescription>Unlock solar, quasaric, tenebrite, and umbra technologies by researching at a hi-tech research bench. You can only have one active project at a time.</generalDescription>
   </ResearchTabDef>
 
+  <!--Base Defs-->
+  
   <ResearchProjectDef Name="BOR_Research_Base" Abstract="True">
 		<requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
 		<requiredResearchFacilities>
@@ -35,6 +41,383 @@
 		</requiredResearchFacilities>
 	</ResearchProjectDef>
 
+  <!--_________________-->
+  <!--Research Projects-->
+  <!--~~~~~~~~~~~~~~~~~-->
+  
+  <!--Tier 1-->
+
+  <ResearchProjectDef ParentName="BOR_Research_Base">
+    <defName>BOR_Research_Analyzer_GenI</defName>
+    <label>solar analyzer</label>
+    <description>Build a solar analyzer, which uses advanced models of this world's sun to aid research and unlock solar-tier research projects. Explore the hellish corona of a star or simulate the effects of supernovae on spacecraft. Reverse-engineer the secrets of Solar Republic society.</description>
+    <baseCost>25000</baseCost>
+    <techLevel>Ultra</techLevel>
+    <prerequisites>
+      <li>ShipCryptosleep</li>
+      <li>ShipReactor</li>
+      <li>ShipEngine</li>
+      <li>ShipComputerCore</li>
+      <li>ShipSensorCluster</li>
+    </prerequisites>
+    <researchViewX>0.00</researchViewX>
+    <researchViewY>2.90</researchViewY>
+  </ResearchProjectDef>
+  
+  <ResearchProjectDef ParentName="BOR_Research_Base_GenI">
+    <defName>BOR_Research_Production_GenI</defName>
+    <label>solar fabrication</label>
+    <description>Some places are too small for human hands, too narrow for human minds, too fast for human reflexes. That's where we use the nanoclusters, inert nanomachines springing into action on our every command.</description>
+    <baseCost>25000</baseCost>
+    <techLevel>Ultra</techLevel>
+    <prerequisites>
+      <li>BOR_Research_Analyzer_GenI</li>
+    </prerequisites>
+    <researchViewX>1.00</researchViewX>
+    <researchViewY>1.50</researchViewY>
+  </ResearchProjectDef>
+  
+  <ResearchProjectDef ParentName="BOR_Research_Base_GenI">
+    <defName>BOR_Research_Power_GenI</defName>
+    <label>solar generation</label>
+    <description>Some places are too small for human hands, too narrow for human minds, too fast for human reflexes. That's where we use the nanoclusters, inert nanomachines springing into action on our every command.</description>
+    <baseCost>25000</baseCost>
+    <techLevel>Ultra</techLevel>
+    <prerequisites>
+      <li>BOR_Research_Analyzer_GenI</li>
+    </prerequisites>
+    <researchViewX>1.00</researchViewX>
+    <researchViewY>2.20</researchViewY>
+  </ResearchProjectDef>
+  
+  <ResearchProjectDef ParentName="BOR_Research_Base_GenI">
+    <defName>BOR_Research_Medicine_GenI</defName>
+    <label>solar medicinals</label>
+    <description>Some places are too small for human hands, too narrow for human minds, too fast for human reflexes. That's where we use the nanoclusters, inert nanomachines springing into action on our every command.</description>
+    <baseCost>25000</baseCost>
+    <techLevel>Ultra</techLevel>
+    <prerequisites>
+      <li>BOR_Research_Analyzer_GenI</li>
+    </prerequisites>
+    <researchViewX>1.00</researchViewX>
+    <researchViewY>3.60</researchViewY>
+  </ResearchProjectDef>
+  
+  <ResearchProjectDef ParentName="BOR_Research_Base_GenI">
+    <defName>BOR_Research_Combat_GenI</defName>
+    <label>solar warcraft</label>
+    <description>Some places are too small for human hands, too narrow for human minds, too fast for human reflexes. That's where we use the nanoclusters, inert nanomachines springing into action on our every command.</description>
+    <baseCost>25000</baseCost>
+    <techLevel>Ultra</techLevel>
+    <prerequisites>
+      <li>BOR_Research_Analyzer_GenI</li>
+    </prerequisites>
+    <researchViewX>1.00</researchViewX>
+    <researchViewY>4.30</researchViewY>
+  </ResearchProjectDef>
+  
+  <ResearchProjectDef ParentName="BOR_Research_Base_GenI">
+    <defName>BOR_Research_Mechs_GenI</defName>
+    <label>solar mechtech</label>
+    <description>Some places are too small for human hands, too narrow for human minds, too fast for human reflexes. That's where we use the nanoclusters, inert nanomachines springing into action on our every command.</description>
+    <baseCost>25000</baseCost>
+    <techLevel>Ultra</techLevel>
+    <prerequisites>
+      <li>BOR_Research_Analyzer_GenI</li>
+    </prerequisites>
+    <researchViewX>1.00</researchViewX>
+    <researchViewY>5.00</researchViewY>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef ParentName="BOR_Research_Base_GenI">
+    <defName>BOR_Research_QuarkManip_GenI</defName>
+    <label>strong force manipulation</label>
+    <description>We can control the electromagnetic force with the literal flick of a switch; why stop at mastery over one fundamental force? Harness the strong nuclear force to stitch neutrons into the ultradense material Neutronium. Imagine, a sliver of a neutron star in our own backyard!</description>
+    <baseCost>25000</baseCost>
+    <techLevel>Ultra</techLevel>
+    <prerequisites>
+      <li>BOR_Research_Production_GenI</li>
+      <li>BOR_Research_Power_GenI</li>
+    </prerequisites>
+    <researchViewX>2.00</researchViewX>
+    <researchViewY>0.45</researchViewY>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef ParentName="BOR_Research_Base_GenI">
+    <defName>BOR_Research_NeutProcTemp_GenI</defName>
+    <label>temperature dependent solar processing</label>
+    <description>We can control the electromagnetic force with the literal flick of a switch; why stop at mastery over one fundamental force? Harness the strong nuclear force to stitch neutrons into the ultradense material Neutronium. Imagine, a sliver of a neutron star in our own backyard!</description>
+    <baseCost>25000</baseCost>
+    <techLevel>Ultra</techLevel>
+    <prerequisites>
+      <li>BOR_Research_QuarkManip_GenI</li>
+    </prerequisites>
+    <researchViewX>3.00</researchViewX>
+    <researchViewY>0.00</researchViewY>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef ParentName="BOR_Research_Base_GenI">
+    <defName>BOR_Research_NeutProcWaste_GenI</defName>
+    <label>wasteful solar processing</label>
+    <description>We can control the electromagnetic force with the literal flick of a switch; why stop at mastery over one fundamental force? Harness the strong nuclear force to stitch neutrons into the ultradense material Neutronium. Imagine, a sliver of a neutron star in our own backyard!</description>
+    <baseCost>25000</baseCost>
+    <techLevel>Ultra</techLevel>
+    <prerequisites>
+      <li>BOR_Research_QuarkManip_GenI</li>
+    </prerequisites>
+    <researchViewX>3.00</researchViewX>
+    <researchViewY>0.80</researchViewY>
+  </ResearchProjectDef>
+
+  <!--Tier 2-->
+
+  <ResearchProjectDef ParentName="BOR_Research_Base_GenI">
+    <defName>BOR_Research_Analyzer_GenII</defName>
+    <label>quasaric analyzer</label>
+    <description>Build a solar analyzer, which uses advanced models of this world's sun to aid research and unlock solar-tier research projects. Explore the hellish corona of a star or simulate the effects of supernovae on spacecraft. Reverse-engineer the secrets of Solar Republic society.</description>
+    <baseCost>25000</baseCost>
+    <techLevel>Ultra</techLevel>
+    <prerequisites>
+      <li>BOR_Research_Production_GenI</li>
+      <li>BOR_Research_Power_GenI</li>
+      <li>BOR_Research_Analyzer_GenI</li>
+    </prerequisites>
+    <researchViewX>3.00</researchViewX>
+    <researchViewY>2.90</researchViewY>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef ParentName="BOR_Research_Base_GenII">
+    <defName>BOR_Research_Production_GenII</defName>
+    <label>quasaric fabrication</label>
+    <description>Some places are too small for human hands, too narrow for human minds, too fast for human reflexes. That's where we use the nanoclusters, inert nanomachines springing into action on our every command.</description>
+    <baseCost>25000</baseCost>
+    <techLevel>Ultra</techLevel>
+    <prerequisites>
+      <li>BOR_Research_Analyzer_GenII</li>
+    </prerequisites>
+    <researchViewX>4.00</researchViewX>
+    <researchViewY>1.50</researchViewY>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef ParentName="BOR_Research_Base_GenII">
+    <defName>BOR_Research_Power_GenII</defName>
+    <label>quasaric generation</label>
+    <description>Some places are too small for human hands, too narrow for human minds, too fast for human reflexes. That's where we use the nanoclusters, inert nanomachines springing into action on our every command.</description>
+    <baseCost>25000</baseCost>
+    <techLevel>Ultra</techLevel>
+    <prerequisites>
+      <li>BOR_Research_Analyzer_GenII</li>
+    </prerequisites>
+    <researchViewX>4.00</researchViewX>
+    <researchViewY>2.20</researchViewY>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef ParentName="BOR_Research_Base_GenII">
+    <defName>BOR_Research_Medicine_GenII</defName>
+    <label>quasaric medicinals</label>
+    <description>Some places are too small for human hands, too narrow for human minds, too fast for human reflexes. That's where we use the nanoclusters, inert nanomachines springing into action on our every command.</description>
+    <baseCost>25000</baseCost>
+    <techLevel>Ultra</techLevel>
+    <prerequisites>
+      <li>BOR_Research_Analyzer_GenII</li>
+    </prerequisites>
+    <hiddenPrerequisites>
+      <li>BOR_Research_Medicine_GenI</li>
+    </hiddenPrerequisites>
+    <researchViewX>4.00</researchViewX>
+    <researchViewY>3.60</researchViewY>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef ParentName="BOR_Research_Base_GenII">
+    <defName>BOR_Research_Combat_GenII</defName>
+    <label>quasaric warcraft</label>
+    <description>Some places are too small for human hands, too narrow for human minds, too fast for human reflexes. That's where we use the nanoclusters, inert nanomachines springing into action on our every command.</description>
+    <baseCost>25000</baseCost>
+    <techLevel>Ultra</techLevel>
+    <prerequisites>
+      <li>BOR_Research_Analyzer_GenII</li>
+    </prerequisites>
+    <hiddenPrerequisites>
+      <li>BOR_Research_Combat_GenI</li>
+    </hiddenPrerequisites>
+    <researchViewX>4.00</researchViewX>
+    <researchViewY>4.30</researchViewY>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef ParentName="BOR_Research_Base_GenII">
+    <defName>BOR_Research_Mechs_GenII</defName>
+    <label>quasaric mechtech</label>
+    <description>Some places are too small for human hands, too narrow for human minds, too fast for human reflexes. That's where we use the nanoclusters, inert nanomachines springing into action on our every command.</description>
+    <baseCost>25000</baseCost>
+    <techLevel>Ultra</techLevel>
+    <prerequisites>
+      <li>BOR_Research_Analyzer_GenII</li>
+    </prerequisites>
+    <hiddenPrerequisites>
+      <li>BOR_Research_Mechs_GenI</li>
+    </hiddenPrerequisites>
+    <researchViewX>4.00</researchViewX>
+    <researchViewY>5.00</researchViewY>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef ParentName="BOR_Research_Base_GenII">
+    <defName>BOR_Research_NeutProcTemp_GenII</defName>
+    <label>temperature dependent quasaric processing</label>
+    <description>We can control the electromagnetic force with the literal flick of a switch; why stop at mastery over one fundamental force? Harness the strong nuclear force to stitch neutrons into the ultradense material Neutronium. Imagine, a sliver of a neutron star in our own backyard!</description>
+    <baseCost>25000</baseCost>
+    <techLevel>Ultra</techLevel>
+    <prerequisites>
+      <li>BOR_Research_Analyzer_GenII</li>
+    </prerequisites>
+    <hiddenPrerequisites>
+      <li>BOR_Research_NeutProcTemp_GenI</li>
+    </hiddenPrerequisites>
+    <researchViewX>4.00</researchViewX>
+    <researchViewY>0.00</researchViewY>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef ParentName="BOR_Research_Base_GenII">
+    <defName>BOR_Research_NeutProcWaste_GenII</defName>
+    <label>wasteful quasaric processing</label>
+    <description>We can control the electromagnetic force with the literal flick of a switch; why stop at mastery over one fundamental force? Harness the strong nuclear force to stitch neutrons into the ultradense material Neutronium. Imagine, a sliver of a neutron star in our own backyard!</description>
+    <baseCost>25000</baseCost>
+    <techLevel>Ultra</techLevel>
+    <prerequisites>
+      <li>BOR_Research_Analyzer_GenII</li>
+    </prerequisites>
+    <hiddenPrerequisites>
+      <li>BOR_Research_NeutProcWaste_GenI</li>
+    </hiddenPrerequisites>
+    <researchViewX>4.00</researchViewX>
+    <researchViewY>0.80</researchViewY>
+  </ResearchProjectDef>
+
+  <!--Tier 3-->
+
+  <ResearchProjectDef ParentName="BOR_Research_Base_GenII">
+    <defName>BOR_Research_Analyzer_GenIII</defName>
+    <label>tenebrite analyzer</label>
+    <description>Build a solar analyzer, which uses advanced models of this world's sun to aid research and unlock solar-tier research projects. Explore the hellish corona of a star or simulate the effects of supernovae on spacecraft. Reverse-engineer the secrets of Solar Republic society.</description>
+    <baseCost>25000</baseCost>
+    <techLevel>Ultra</techLevel>
+    <prerequisites>
+      <li>BOR_Research_Production_GenII</li>
+      <li>BOR_Research_Power_GenII</li>
+      <li>BOR_Research_Analyzer_GenII</li>
+    </prerequisites>
+    <researchViewX>5.00</researchViewX>
+    <researchViewY>2.90</researchViewY>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef ParentName="BOR_Research_Base_GenIII">
+    <defName>BOR_Research_Production_GenIII</defName>
+    <label>tenebrite fabrication</label>
+    <description>Some places are too small for human hands, too narrow for human minds, too fast for human reflexes. That's where we use the nanoclusters, inert nanomachines springing into action on our every command.</description>
+    <baseCost>25000</baseCost>
+    <techLevel>Ultra</techLevel>
+    <prerequisites>
+      <li>BOR_Research_Analyzer_GenIII</li>
+    </prerequisites>
+    <researchViewX>6.00</researchViewX>
+    <researchViewY>1.50</researchViewY>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef ParentName="BOR_Research_Base_GenIII">
+    <defName>BOR_Research_Power_GenIII</defName>
+    <label>tenebrite generation</label>
+    <description>Some places are too small for human hands, too narrow for human minds, too fast for human reflexes. That's where we use the nanoclusters, inert nanomachines springing into action on our every command.</description>
+    <baseCost>25000</baseCost>
+    <techLevel>Ultra</techLevel>
+    <prerequisites>
+      <li>BOR_Research_Analyzer_GenIII</li>
+    </prerequisites>
+    <researchViewX>6.00</researchViewX>
+    <researchViewY>2.20</researchViewY>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef ParentName="BOR_Research_Base_GenIII">
+    <defName>BOR_Research_Medicine_GenIII</defName>
+    <label>tenebrite medicinals</label>
+    <description>Some places are too small for human hands, too narrow for human minds, too fast for human reflexes. That's where we use the nanoclusters, inert nanomachines springing into action on our every command.</description>
+    <baseCost>25000</baseCost>
+    <techLevel>Ultra</techLevel>
+    <prerequisites>
+      <li>BOR_Research_Analyzer_GenIII</li>
+    </prerequisites>
+    <hiddenPrerequisites>
+      <li>BOR_Research_Medicine_GenII</li>
+    </hiddenPrerequisites>
+    <researchViewX>6.00</researchViewX>
+    <researchViewY>3.60</researchViewY>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef ParentName="BOR_Research_Base_GenIII">
+    <defName>BOR_Research_Combat_GenIII</defName>
+    <label>tenebrite warcraft</label>
+    <description>Some places are too small for human hands, too narrow for human minds, too fast for human reflexes. That's where we use the nanoclusters, inert nanomachines springing into action on our every command.</description>
+    <baseCost>25000</baseCost>
+    <techLevel>Ultra</techLevel>
+    <prerequisites>
+      <li>BOR_Research_Analyzer_GenIII</li>
+    </prerequisites>
+    <hiddenPrerequisites>
+      <li>BOR_Research_Combat_GenII</li>
+    </hiddenPrerequisites>
+    <researchViewX>6.00</researchViewX>
+    <researchViewY>4.30</researchViewY>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef ParentName="BOR_Research_Base_GenIII">
+    <defName>BOR_Research_Mechs_GenIII</defName>
+    <label>tenebrite mechtech</label>
+    <description>Some places are too small for human hands, too narrow for human minds, too fast for human reflexes. That's where we use the nanoclusters, inert nanomachines springing into action on our every command.</description>
+    <baseCost>25000</baseCost>
+    <techLevel>Ultra</techLevel>
+    <prerequisites>
+      <li>BOR_Research_Analyzer_GenIII</li>
+    </prerequisites>
+    <hiddenPrerequisites>
+      <li>BOR_Research_Mechs_GenII</li>
+    </hiddenPrerequisites>
+    <researchViewX>6.00</researchViewX>
+    <researchViewY>5.00</researchViewY>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef ParentName="BOR_Research_Base_GenIII">
+    <defName>BOR_Research_NeutProcTemp_GenIII</defName>
+    <label>temperature dependent tenebrite processing</label>
+    <description>We can control the electromagnetic force with the literal flick of a switch; why stop at mastery over one fundamental force? Harness the strong nuclear force to stitch neutrons into the ultradense material Neutronium. Imagine, a sliver of a neutron star in our own backyard!</description>
+    <baseCost>25000</baseCost>
+    <techLevel>Ultra</techLevel>
+    <prerequisites>
+      <li>BOR_Research_Analyzer_GenIII</li>
+    </prerequisites>
+    <hiddenPrerequisites>
+      <li>BOR_Research_NeutProcTemp_GenII</li>
+    </hiddenPrerequisites>
+    <researchViewX>6.00</researchViewX>
+    <researchViewY>0.00</researchViewY>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef ParentName="BOR_Research_Base_GenIII">
+    <defName>BOR_Research_NeutProcWaste_GenIII</defName>
+    <label>wasteful tenebrite processing</label>
+    <description>We can control the electromagnetic force with the literal flick of a switch; why stop at mastery over one fundamental force? Harness the strong nuclear force to stitch neutrons into the ultradense material Neutronium. Imagine, a sliver of a neutron star in our own backyard!</description>
+    <baseCost>25000</baseCost>
+    <techLevel>Ultra</techLevel>
+    <prerequisites>
+      <li>BOR_Research_Analyzer_GenIII</li>
+    </prerequisites>
+    <hiddenPrerequisites>
+      <li>BOR_Research_NeutProcWaste_GenII</li>
+    </hiddenPrerequisites>
+    <researchViewX>6.00</researchViewX>
+    <researchViewY>0.80</researchViewY>
+  </ResearchProjectDef>
+  
+  
+  
+  
 	<ResearchProjectDef ParentName="BOR_Research_Base_GenI">
 		<defName>BOR_Research_NanoClusters</defName>
 		<label>Nano Clusters</label>
