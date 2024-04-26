@@ -84,7 +84,7 @@
     <defName>BOR_Forge_I</defName>
     <label>sunforge</label>
     <description>Extracts usable metal from slag chunks and other mixed metal items. Consumes a lot of power.</description>
-    <thingClass>Building_WorkTable_HeatPush</thingClass>
+    <thingClass>PipeSystem.Building_ResourceWorkTable</thingClass>
     <graphicData>
       <texPath>Things/BOR/Building/tier1/smelter</texPath>
       <graphicClass>Graphic_Single</graphicClass>
@@ -131,11 +131,12 @@
         <glowRadius>2</glowRadius>
         <glowColor>(143, 187, 189,0)</glowColor>
       </li>
-      <li Class="CompProperties_HeatPusher">
-        <compClass>CompHeatPusherPowered</compClass>
-        <heatPerSecond>9</heatPerSecond>
-      </li>
       <li Class="CompProperties_Breakdownable" />
+      <li Class="PipeSystem.CompProperties_ResourceTrader">
+        <pipeNet>BOR_NeutroniumNet</pipeNet>
+        <consumptionPerTick>20</consumptionPerTick>
+        <idleConsumptionPerTick>0</idleConsumptionPerTick>
+      </li>
     </comps>
     <building>
       <spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>

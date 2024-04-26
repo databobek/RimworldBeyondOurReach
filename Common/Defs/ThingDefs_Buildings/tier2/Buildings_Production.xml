@@ -80,7 +80,8 @@
     <defName>BOR_Forge_II</defName>
     <label>theta forge</label>
     <description>Extracts usable metal from slag chunks and other mixed metal items. Consumes a lot of power.</description>
-    <thingClass>Building_WorkTable_HeatPush</thingClass>
+
+    <thingClass>PipeSystem.Building_ResourceWorkTable</thingClass>
     <graphicData>
       <texPath>Things/BOR/Building/tier2/forge</texPath>
       <graphicClass>Graphic_Single</graphicClass>
@@ -122,11 +123,12 @@
         <basePowerConsumption>12500</basePowerConsumption>
         <shortCircuitInRain>true</shortCircuitInRain>
       </li>
-      <li Class="CompProperties_Flickable" />
-      <li Class="CompProperties_HeatPusher">
-        <compClass>CompHeatPusherPowered</compClass>
-        <heatPerSecond>9</heatPerSecond>
+      <li Class="PipeSystem.CompProperties_ResourceTrader">
+        <pipeNet>BOR_NeutroniumNet</pipeNet>
+        <consumptionPerTick>40</consumptionPerTick>
+        <idleConsumptionPerTick>0</idleConsumptionPerTick>
       </li>
+      <li Class="CompProperties_Flickable" />
       <li Class="CompProperties_Breakdownable" />
     </comps>
     <building>
