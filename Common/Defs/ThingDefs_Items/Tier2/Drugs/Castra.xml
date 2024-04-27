@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <ThingDef ParentName="MakeableDrugPillBase">
+    <defName>BOR_Castra</defName>
+    <label>castra</label>
+    <description>A drug for preventing infections before they take hold. Blocks malaria, sleeping sickness, plague. Must be taken every five days to remain effective.\n\nThis drug only prevents new infections. It does not cure existing infections - even those that are not yet discovered.</description>
+    <possessionCount>3</possessionCount>
+    <descriptionHyperlinks><HediffDef>BOR_CastraHigh</HediffDef></descriptionHyperlinks>
+    <graphicData>
+      <texPath>BOR/Things/Item/Drugs/Tier2/Immune</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <socialPropernessMatters>false</socialPropernessMatters>
+    <rotatable>false</rotatable>
+    <statBases>
+      <WorkToMake>1350</WorkToMake>
+      <MarketValue>40</MarketValue>
+      <Mass>0.00034</Mass>
+      <Flammability>0.485</Flammability>
+    </statBases>
+    <techLevel>Ultra</techLevel>
+    <ingestible>
+      <drugCategory>Medical</drugCategory>
+      <outcomeDoers>
+        <li Class="IngestionOutcomeDoer_GiveHediff">
+          <hediffDef>BOR_CastraHigh</hediffDef>
+          <severity>1.0</severity>
+        </li>
+      </outcomeDoers>
+    </ingestible>
+    <recipeMaker>
+      <!-- TODO -->
+      <!-- <researchPrerequisite>BOR_CastraProduction</researchPrerequisite> -->
+      <recipeUsers>
+        <li>DrugLab</li>
+      </recipeUsers>
+      <displayPriority>2100</displayPriority>
+    </recipeMaker>
+    <costList>
+      <Neutroamine>5</Neutroamine>
+    </costList>
+    <comps>
+      <li Class="CompProperties_Drug">
+        <listOrder>1000</listOrder>
+        <overdoseSeverityOffset>0.056~0.09</overdoseSeverityOffset>
+      </li>
+    </comps>
+  </ThingDef>
+  
+  <HediffDef>
+    <defName>BOR_CastraHigh</defName>
+    <hediffClass>Hediff_High</hediffClass>
+    <label>castra</label>
+    <description>castra-induced immunity to certain illnesses. This only blocks new infections; it does nothing for those who are already infected, even if their infection is dormant.</description>
+    <defaultLabelColor>(1,0,0.5)</defaultLabelColor>
+    <scenarioCanAdd>true</scenarioCanAdd>
+    <maxSeverity>1.0</maxSeverity>
+    <isBad>false</isBad>
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-0.125</severityPerDay>
+        <showHoursToRecover>true</showHoursToRecover>
+      </li>
+    </comps>
+      <stages>
+        <li>
+          <makeImmuneTo>
+            <li>Malaria</li>
+            <li>SleepingSickness</li>
+            <li>Plague</li>
+            <li>GutWorms</li>
+            <li>MuscleParasites</li>
+            <li>WoundInfection</li>
+            <li>Flu</li>
+            <li>FibrousMechanites</li>
+            <li>SensoryMechanites</li>
+          </makeImmuneTo>
+        </li>
+      </stages>
+  </HediffDef>
+  
+</Defs>

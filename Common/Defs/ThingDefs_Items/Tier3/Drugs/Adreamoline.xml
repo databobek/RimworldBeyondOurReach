@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <ThingDef ParentName="MakeableDrugPillBase">
+    <defName>BOR_Adreamoline</defName>
+    <label>adreamoline</label>
+    <description>A synthetic stimulant. adreamoline fills the user's need for rest, allowing them to work for extended periods without getting tired. However, taking adreamoline runs the risk of developing an addiction.\n\nIn the most competitive universities and companies of many worlds, high-achievers are sometimes called 'adreamolines' because of the association with this drug.</description>
+    <descriptionHyperlinks>
+      <HediffDef>BOR_AdreamolineHigh</HediffDef>
+      <HediffDef>BOR_AdreamolineAddiction</HediffDef>
+      <HediffDef>HeartAttack</HediffDef>
+    </descriptionHyperlinks>
+    <graphicData>
+      <texPath>BOR/Things/Item/Drugs/Tier3/Sleep</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <rotatable>false</rotatable>
+    <statBases>
+      <WorkToMake>3037</WorkToMake>
+      <MarketValue>117</MarketValue>
+      <Mass>0.002891</Mass>
+    </statBases>
+    <techLevel>Archotech</techLevel>
+    <ingestible>
+      <joyKind>Chemical</joyKind>
+      <joy>1</joy>
+      <drugCategory>Hard</drugCategory>
+      <outcomeDoers>
+        <li Class="IngestionOutcomeDoer_GiveHediff">
+          <hediffDef>BOR_AdreamolineHigh</hediffDef>
+          <severity>1</severity>
+          <toleranceChemical>BOR_Sunsteel_Chemical</toleranceChemical>
+        </li>
+        <li Class="IngestionOutcomeDoer_OffsetNeed">
+          <need>Rest</need>
+          <offset>1.0</offset>
+          <toleranceChemical>BOR_Sunsteel_Chemical</toleranceChemical>
+        </li>
+      </outcomeDoers>
+    </ingestible>
+    <recipeMaker>
+      <!-- todo -->
+      <!-- <researchPrerequisite>BOR_AdreamolineProduction</researchPrerequisite> -->
+      <recipeUsers>
+        <!-- todo -->
+        <li>DrugLab</li>
+      </recipeUsers>
+      <displayPriority>1800</displayPriority>
+    </recipeMaker>
+    <costList>
+      <Neutroamine>10</Neutroamine>
+      <BOR_Sunsteel>1</BOR_Sunsteel>
+      <BOR_Tenebrite>1</BOR_Tenebrite>
+    </costList>
+    <comps>
+      <li Class="CompProperties_Drug">
+        <chemical>BOR_Sunsteel_Chemical</chemical>
+        <addictiveness>0.0108</addictiveness>
+        <existingAddictionSeverityOffset>0.108</existingAddictionSeverityOffset>
+        <needLevelOffset>0.9</needLevelOffset>
+        <listOrder>210</listOrder>
+        <overdoseSeverityOffset>0.104~0.2020</overdoseSeverityOffset>
+        <largeOverdoseChance>0.002</largeOverdoseChance>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <HediffDef>
+    <defName>BOR_AdreamolineHigh</defName>
+    <label>high on adreamoline</label>
+    <labelNoun>a adreamoline high</labelNoun>
+    <description>adreamoline in the bloodstream. It fills the need for rest by stimulating the brain, and increases focus, allowing faster work. It also increases the psyfocus gains from meditation.</description>
+    <hediffClass>Hediff_High</hediffClass>
+    <defaultLabelColor>(1,0,0.5)</defaultLabelColor>
+    <scenarioCanAdd>true</scenarioCanAdd>
+    <maxSeverity>1.0</maxSeverity>
+    <isBad>false</isBad>
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-0.8675</severityPerDay>
+        <showHoursToRecover>true</showHoursToRecover>
+      </li>
+    </comps>
+      <stages>
+        <li>
+          <capMods>
+            <li>
+              <capacity>Consciousness</capacity>
+              <offset>0.1875</offset>
+            </li>
+            <li>
+              <capacity>Moving</capacity>
+              <offset>0.1875</offset>
+            </li>
+          </capMods>
+          <statOffsets>
+            <WorkSpeedGlobal>1.6875</WorkSpeedGlobal>
+            <MeditationFocusGain MayRequire="Ludeon.RimWorld.Royalty">0.675</MeditationFocusGain>
+          </statOffsets>
+          <statFactors>
+            <RestFallRateFactor>0.122</RestFallRateFactor>
+          </statFactors>
+          <hediffGivers>
+            <li Class="HediffGiver_Random">
+              <hediff>HeartAttack</hediff>
+              <mtbDays>405</mtbDays>
+              <partsToAffect>
+                <li>Heart</li>
+              </partsToAffect>
+            </li>
+          </hediffGivers>
+        </li>
+      </stages>
+  </HediffDef>
+
+</Defs>

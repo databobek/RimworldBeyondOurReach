@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <ThingDef ParentName="MakeableDrugBase">
+    <defName>BOR_Canter</defName>
+    <label>canter</label>
+    <description>A synthetic performance-enhancing drug developed for space marines during the early days of interplanetary warfare. canter blocks pain, increases movement speed, and improves the user's melee and shooting abilities.\n\nThe military chemists who created it were never able to remove its addictiveness. Some saw this as a downside; others saw it as a benefit.</description>
+    <descriptionHyperlinks>
+      <HediffDef>BOR_CanterHigh</HediffDef>
+      <HediffDef>BOR_Sunsteel_Chemical_Addiction</HediffDef>
+    </descriptionHyperlinks>
+    <graphicData>
+      <texPath>BOR/Things/Item/Drugs/Tier2/Combat</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <rotatable>false</rotatable>
+    <statBases>
+      <WorkToMake>1350</WorkToMake>
+      <MarketValue>118</MarketValue>
+      <Mass>0.069</Mass>
+    </statBases>
+    <techLevel>Ultra</techLevel>
+    <ingestible>
+      <joyKind>Chemical</joyKind>
+      <joy>0.60</joy>
+      <drugCategory>Hard</drugCategory>
+      <foodType>Processed, Fluid</foodType>
+      <baseIngestTicks>66</baseIngestTicks>
+      <ingestSound>Ingest_Inject</ingestSound>
+      <ingestHoldOffsetStanding>
+        <northDefault>
+          <offset>(0.18,0,0)</offset>
+        </northDefault>
+      </ingestHoldOffsetStanding>
+      <ingestCommandString>Inject {0}</ingestCommandString>
+      <ingestReportString>Injecting {0}.</ingestReportString>
+      <useEatingSpeedStat>false</useEatingSpeedStat>
+      <chairSearchRadius>0</chairSearchRadius>
+      <outcomeDoers>
+        <li Class="IngestionOutcomeDoer_GiveHediff">
+          <hediffDef>BOR_CanterHigh</hediffDef>
+          <severity>0.9</severity>
+          <toleranceChemical>BOR_Sunsteel_Chemical</toleranceChemical>
+        </li>
+        <li Class="IngestionOutcomeDoer_OffsetNeed">
+          <need>Rest</need>
+          <offset>0.9</offset>
+          <toleranceChemical>BOR_Sunsteel_Chemical</toleranceChemical>
+        </li>
+        <li Class="IngestionOutcomeDoer_OffsetPsyfocus">
+          <offset>0.3375</offset>
+        </li>
+      </outcomeDoers>
+    </ingestible>
+    <recipeMaker>
+      <!-- todo -->
+      <!-- <researchPrerequisite>BOR_CanterProduction</researchPrerequisite> -->
+      <recipeUsers>
+        <!-- todo -->
+        <li>DrugLab</li>
+      </recipeUsers>
+      <soundWorking>Recipe_Drug</soundWorking>
+      <displayPriority>1500</displayPriority>
+    </recipeMaker>
+    <costList>
+      <Neutroamine>2</Neutroamine>
+      <BOR_Sunsteel>1</BOR_Sunsteel>
+      <BOR_QuasarAlloy>1</BOR_QuasarAlloy>
+    </costList>
+    <comps>
+      <li Class="CompProperties_Drug">
+        <chemical>BOR_Sunsteel_Chemical</chemical>
+        <addictiveness>0.018</addictiveness>
+        <existingAddictionSeverityOffset>0.133</existingAddictionSeverityOffset>
+        <needLevelOffset>0.9</needLevelOffset>
+        <isCombatEnhancingDrug>true</isCombatEnhancingDrug>
+        <listOrder>200</listOrder>
+        <overdoseSeverityOffset>0.125~0.2425</overdoseSeverityOffset>
+        <largeOverdoseChance>0.003</largeOverdoseChance>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <HediffDef>
+    <defName>BOR_CanterHigh</defName>
+    <hediffClass>Hediff_High</hediffClass>
+    <label>high on canter</label>
+    <labelNoun>a canter high</labelNoun>
+    <description>canter in the bloodstream. It supercharges combat-related abilities, and instantly increases psyfocus when first injected.</description>
+    <defaultLabelColor>(1,0,0.5)</defaultLabelColor>
+    <scenarioCanAdd>true</scenarioCanAdd>
+    <maxSeverity>1.0</maxSeverity>
+    <isBad>false</isBad>
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-0.521</severityPerDay>
+        <showHoursToRecover>true</showHoursToRecover>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <painFactor>0.0691</painFactor>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <offset>0.45</offset>
+          </li>
+          <li>
+            <capacity>Sight</capacity>
+            <offset>0.7875</offset>
+          </li>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>1.125</offset>
+          </li>
+        </capMods>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <ThoughtDef>
+    <defName>BOR_CanterHigh</defName>
+    <workerClass>ThoughtWorker_Hediff</workerClass>
+    <hediff>BOR_CanterHigh</hediff>
+    <validWhileDespawned>true</validWhileDespawned>
+    <developmentalStageFilter>Baby, Child, Adult</developmentalStageFilter>
+    <stages>
+      <li>
+        <label>high on canter</label>
+        <description>I got the canters and I love every single one of them.</description>
+        <baseMoodEffect>10</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+</Defs>

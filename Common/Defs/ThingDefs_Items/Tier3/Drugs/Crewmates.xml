@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <ThingDef ParentName="MakeableDrugBase">
+    <defName>BOR_Crewmates</defName>
+    <label>crewmates</label>
+    <description>A refined powdery preparation of the BOR_Chemical_Sunweave drug. When snorted, it produces a rapid euphoric high, dramatically reduces the user's need for rest, and suppresses pain. Like all forms of BOR_Chemical_Sunweave, it is addictive, though it is not as addictive as the cruder flake.\n\nBecause of its high cost and refined appearance, many cultures associate yayo with degenerate wealth. Whether in the throneroom or the boardroom, many hare-brained policy schemes have been developed during yayo-fueled binge parties.</description>
+    <descriptionHyperlinks>
+      <HediffDef>BOR_CrewmatesHigh</HediffDef>
+      <HediffDef>BOR_Chemical_SunweaveTolerance</HediffDef>
+      <HediffDef>BOR_Chemical_SunweaveAddiction</HediffDef>
+      <HediffDef>ChemicalDamageSevere</HediffDef>
+    </descriptionHyperlinks>
+    <graphicData>
+      <texPath>BOR/Things/Item/Drugs/Tier3/Happy/Crewmates</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>0.75</drawSize>
+    </graphicData>
+    <rotatable>false</rotatable>
+    <statBases>
+      <WorkToMake>955</WorkToMake>
+      <MarketValue>72</MarketValue>
+      <Mass>0.02775</Mass>
+    </statBases>
+    <techLevel>Archotech</techLevel>
+    <minRewardCount>1</minRewardCount>
+    <ingestible>
+      <foodType>Processed</foodType>
+      <joyKind>Chemical</joyKind>
+      <joy>2.4</joy>
+      <drugCategory>Social</drugCategory>
+      <baseIngestTicks>86</baseIngestTicks>
+      <ingestSound>Ingest_Drink</ingestSound>
+      <ingestHoldOffsetStanding>
+        <northDefault>
+          <offset>(0.21,0,0.05)</offset>
+        </northDefault>
+      </ingestHoldOffsetStanding>
+      <ingestHoldUsesTable>false</ingestHoldUsesTable>
+      <ingestCommandString>drinking {0}</ingestCommandString>
+      <ingestReportString>Drinking {0}.</ingestReportString>
+      <useEatingSpeedStat>false</useEatingSpeedStat>
+      <outcomeDoers>
+        <li Class="IngestionOutcomeDoer_GiveHediff">
+          <hediffDef>BOR_CrewmatesHigh</hediffDef>
+          <severity>1</severity>
+          <toleranceChemical>BOR_Chemical_Sunweave</toleranceChemical>
+        </li>
+        <li Class="IngestionOutcomeDoer_OffsetNeed">
+          <need>Rest</need>
+          <offset>0.9</offset>
+          <toleranceChemical>BOR_Chemical_Sunweave</toleranceChemical>
+        </li>
+        <li Class="IngestionOutcomeDoer_GiveHediff">
+          <hediffDef>BOR_Chemical_SunweaveTolerance</hediffDef>
+          <toleranceChemical>BOR_Chemical_Sunweave</toleranceChemical>
+          <severity>0.02425</severity>
+          <divideByBodySize>true</divideByBodySize>
+          <multiplyByGeneToleranceFactors>true</multiplyByGeneToleranceFactors>
+        </li>
+      </outcomeDoers>
+    </ingestible>
+    <recipeMaker>
+      <!-- todo -->
+      <!-- <researchPrerequisite>BOR_Chemical_SunweaveRefining</researchPrerequisite> -->
+      <recipeUsers>
+        <!-- todo -->
+        <li>DrugLab</li>
+      </recipeUsers>
+      <soundWorking>Recipe_Drug</soundWorking>
+      <displayPriority>1700</displayPriority>
+    </recipeMaker>
+    <costList>
+      <BOR_Sunweave>18</BOR_Sunweave>
+      <BOR_Tenebrite>4</BOR_Tenebrite>
+    </costList>
+    <allowedArchonexusCount>25</allowedArchonexusCount>
+  </ThingDef>
+
+  <HediffDef>
+    <defName>BOR_CrewmatesHigh</defName>
+    <label>crewmates blessed</label>
+    <labelNoun>a crewmates blessing</labelNoun>
+    <description>Active crewmates in the bloodstream. Generates an euphoric high.</description>
+    <hediffClass>Hediff_High</hediffClass>
+    <defaultLabelColor>(1,0,0.5)</defaultLabelColor>
+    <scenarioCanAdd>true</scenarioCanAdd>
+    <maxSeverity>1.0</maxSeverity>
+    <isBad>false</isBad>
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-0.8675</severityPerDay>
+        <showHoursToRecover>true</showHoursToRecover>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <painFactor>0.275</painFactor>
+        <statFactors>
+          <RestFallRateFactor>0.1527</RestFallRateFactor>
+        </statFactors>
+        <capMods>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>0.5062</offset>
+          </li>
+        </capMods>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <ThoughtDef>
+    <defName>BOR_CrewmatesHigh</defName>
+    <workerClass>ThoughtWorker_Hediff</workerClass>
+    <hediff>BOR_CrewmatesHigh</hediff>
+    <validWhileDespawned>true</validWhileDespawned>
+    <developmentalStageFilter>Baby, Child, Adult</developmentalStageFilter>
+    <stages>
+      <li>
+        <label>suspiciously high</label>
+        <description>It all feels sus.</description>
+        <baseMoodEffect>117</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+</Defs>
