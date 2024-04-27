@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+	<HediffDef ParentName="ImplantHediffBase">
+		<defName>CosmicBladder</defName>
+		<label>cosmic bladder</label>
+		<labelNoun>a cosmic bladder</labelNoun>
+		<description>An installed cosmic bladder.</description>
+		<descriptionHyperlinks>
+			<ThingDef>CosmicBladder</ThingDef>
+		</descriptionHyperlinks>
+		<spawnThingOnRemoved>CosmicBladder</spawnThingOnRemoved>
+		<stages>
+			<li>
+				<statOffsets>
+					<BladderRateMultiplier>-0.75</BladderRateMultiplier>
+					<ThirstRateMultiplier>-0.75</ThirstRateMultiplier>
+				</statOffsets>
+			</li>
+		</stages>
+	</HediffDef>
+
+	<ThingDef ParentName="BodyPartBionicBase">
+		<defName>CosmicBladder</defName>
+		<label>cosmic bladder</label>
+		<description>An advanced cosmic-tech bladder. A chemical recycling system breaks down waste products from the body into molecules which are recycled with the remainder released as gas, the downside of this being that it gives the user gas.</description>
+		<descriptionHyperlinks>
+			<RecipeDef>InstallCosmicBladder</RecipeDef>
+		</descriptionHyperlinks>
+		<costList>
+			<BOR_QuasarAlloy>10</BOR_QuasarAlloy>
+			<BOR_ComponentII>3</BOR_ComponentII>
+		</costList>
+		<statBases>
+			<Mass>2</Mass>
+			<WorkToMake>20000</WorkToMake>
+			<MarketValue>20000</MarketValue>
+		</statBases>
+		<recipeMaker>
+			<skillRequirements>
+				<Crafting>16</Crafting>
+			</skillRequirements>
+			<researchPrerequisite MayRequire="dbhlitemode">HygieneBionics</researchPrerequisite>
+			<recipeUsers Inherit="False">
+				<li>Table_SNS_BionicCraftingStation_GenII</li>
+			</recipeUsers>
+		</recipeMaker>
+	</ThingDef>
+
+	<RecipeDef ParentName="SurgeryInstallImplantBase">
+		<defName>InstallCosmicBladder</defName>
+		<label>install cosmic bladder</label>
+		<description>Install a cosmic bladder.</description>
+		<skillRequirements>
+			<Medicine>16</Medicine>
+		</skillRequirements>
+		<descriptionHyperlinks>
+			<ThingDef>CosmicBladder</ThingDef>
+			<HediffDef>CosmicBladder</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing cosmic bladder.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>CosmicBladder</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_MedicineII</li>
+					</thingDefs>
+				</filter>
+				<count>3</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Picoclusters</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>BOR_MedicineII</li>
+				<li>BOR_Picoclusters</li>
+				<li>CosmicBladder</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<addsHediff>CosmicBladder</addsHediff>
+		<appliedOnFixedBodyParts>
+			<li>Torso</li>
+		</appliedOnFixedBodyParts>
+	</RecipeDef>
+
+
+	<HediffDef ParentName="ImplantHediffBase">
+		<defName>CosmicHygieneEnhancer</defName>
+		<label>cosmic hygiene enhancer</label>
+		<labelNoun>a cosmic hygiene enhancer</labelNoun>
+		<description>An installed cosmic hygiene enhancer.</description>
+		<descriptionHyperlinks>
+			<ThingDef>CosmicHygieneEnhancer</ThingDef>
+		</descriptionHyperlinks>
+		<spawnThingOnRemoved>CosmicHygieneEnhancer</spawnThingOnRemoved>
+		<stages>
+			<li>
+				<statOffsets>
+					<HygieneRateMultiplier>-0.75</HygieneRateMultiplier>
+				</statOffsets>
+			</li>
+		</stages>
+	</HediffDef>
+
+	<ThingDef ParentName="BodyPartBionicBase">
+		<defName>CosmicHygieneEnhancer</defName>
+		<label>cosmic hygiene enhancer</label>
+		<description>Releases cosmic mechanites that break down dead skin cells and other detritus on the skin and hair releasing it harmlessly into the air.</description>
+		<descriptionHyperlinks>
+			<RecipeDef>InstallCosmicHygieneEnhancer</RecipeDef>
+		</descriptionHyperlinks>
+		<costList>
+			<BOR_QuasarAlloy>10</BOR_QuasarAlloy>
+			<BOR_ComponentII>3</BOR_ComponentII>
+		</costList>
+		<statBases>
+			<Mass>2</Mass>
+			<WorkToMake>20000</WorkToMake>
+			<MarketValue>20000</MarketValue>
+		</statBases>
+		<recipeMaker>
+			<skillRequirements>
+				<Crafting>16</Crafting>
+			</skillRequirements>
+			<recipeUsers Inherit="False">
+				<li>Table_SNS_BionicCraftingStation_GenII</li>
+			</recipeUsers>
+			<researchPrerequisite>HygieneBionics</researchPrerequisite>
+		</recipeMaker>
+	</ThingDef>
+
+	<RecipeDef ParentName="SurgeryInstallImplantBase">
+		<defName>InstallCosmicHygieneEnhancer</defName>
+		<skillRequirements>
+			<Medicine>16</Medicine>
+		</skillRequirements>
+		<label>install cosmic hygiene enhancer</label>
+		<description>Install a cosmic hygiene enhancer.</description>
+		<descriptionHyperlinks>
+			<ThingDef>CosmicHygieneEnhancer</ThingDef>
+			<HediffDef>CosmicHygieneEnhancer</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing cosmic hygiene enhancer.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>CosmicHygieneEnhancer</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_MedicineII</li>
+					</thingDefs>
+				</filter>
+				<count>3</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Picoclusters</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>BOR_MedicineII</li>
+				<li>BOR_Picoclusters</li>
+				<li>CosmicHygieneEnhancer</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<addsHediff>CosmicHygieneEnhancer</addsHediff>
+		<appliedOnFixedBodyParts>
+			<li>Torso</li>
+		</appliedOnFixedBodyParts>
+	</RecipeDef>
+
+</Defs>

@@ -1,0 +1,688 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- Mindscrew -->
+
+  <HediffDef ParentName="ImplantHediffBase">
+    <defName>MindscrewEnigmatic</defName>
+    <label>enigmatic mindscrew</label>
+    <labelNoun>an enigmatic mindscrew</labelNoun>
+    <description>An installed enigmatic mindscrew.</description>
+    <descriptionHyperlinks>
+      <ThingDef>MindscrewEnigmatic</ThingDef>
+    </descriptionHyperlinks>
+    <spawnThingOnRemoved>MindscrewEnigmatic</spawnThingOnRemoved>
+    <priceOffset>-440</priceOffset>
+    <stages>
+      <li>
+        <painOffset>0.6</painOffset>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <ThingDef ParentName="BodyPartAOTCEnigmaticBase">
+    <defName>MindscrewEnigmatic</defName>
+    <label>enigmatic mindscrew</label>
+    <description>Inflicts continuous pain on the user. Mindscrews are used by some authorities as a long-term punishment. Some even install them voluntarily as a demonstration of ideological or religious devotion.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>InstallMindscrewEnigmatic</RecipeDef>
+    </descriptionHyperlinks>
+    <techHediffsTags>
+      <li>PainCauser</li>
+    </techHediffsTags>
+
+  </ThingDef>
+
+  <RecipeDef ParentName="SurgeryInstallImplantAOTCEnigmaticBase">
+    <defName>InstallMindscrewEnigmatic</defName>
+    <label>install enigmatic mindscrew</label>
+    <description>Install a mindscrew.</description>
+    <descriptionHyperlinks>
+      <ThingDef>MindscrewEnigmatic</ThingDef>
+      <HediffDef>MindscrewEnigmatic</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing enigmatic mindscrew.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>MindscrewEnigmatic</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>MindscrewEnigmatic</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Brain</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>MindscrewEnigmatic</addsHediff>
+  </RecipeDef>
+
+  <!-- Drill arm -->
+
+  <HediffDef ParentName="AddedBodyPartBase">
+    <defName>DrillArmEnigmatic</defName>
+    <label>enigmatic drill arm</label>
+    <labelNoun>an enigmatic drill arm</labelNoun>
+    <description>An installed enigmatic drill arm.</description>
+    <descriptionHyperlinks>
+      <ThingDef>DrillArmEnigmatic</ThingDef>
+    </descriptionHyperlinks>
+    <addedPartProps>
+      <solid>true</solid>
+    </addedPartProps>
+    <stages>
+      <li>
+        <statOffsets>
+          <MiningSpeed>6.4</MiningSpeed>
+          <DeepDrillingSpeed>2.8</DeepDrillingSpeed>
+        </statOffsets>
+        <capMods>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>-0.12</offset>
+          </li>
+        </capMods>
+      </li>
+    </stages>
+    <comps>
+      <li Class="HediffCompProperties_VerbGiver">
+        <tools>
+          <li>
+            <label>enigmatic drill</label>
+            <capacities>
+              <li>Stab</li>
+            </capacities>
+            <power>52</power>
+            <cooldownTime>3</cooldownTime>
+            <alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+            <soundMeleeHit>MeleeHit_DrillArm</soundMeleeHit>
+            <soundMeleeMiss>MeleeMiss_DrillArm</soundMeleeMiss>
+          </li>
+        </tools>
+      </li>
+    </comps>
+    <spawnThingOnRemoved>DrillArmEnigmatic</spawnThingOnRemoved>
+  </HediffDef>
+
+  <ThingDef ParentName="BodyPartAOTCEnigmaticBase">
+    <defName>DrillArmEnigmatic</defName>
+    <label>enigmatic drill arm</label>
+    <description>A mechanical arm replacement for speeding up mining. It has a built-in snake drill, which allows the miner to rapidly find and exploit weak lines in the rock. It also has a general-purpose manipulator. It is somewhat ungainly, which slows down movement slightly.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>InstallDrillArmEnigmatic</RecipeDef>
+    </descriptionHyperlinks>
+
+    <techHediffsTags>
+      <li>DrillArm</li>
+    </techHediffsTags>
+  </ThingDef>
+
+  <RecipeDef ParentName="SurgeryInstallBodyPartProstheticBase">
+    <defName>InstallDrillArmEnigmatic</defName>
+    <label>install enigmatic drill arm</label>
+    <description>Install a drill arm.</description>
+    <descriptionHyperlinks>
+      <ThingDef>DrillArmEnigmatic</ThingDef>
+      <HediffDef>DrillArmEnigmatic</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing enigmatic drill arm.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>DrillArmEnigmatic</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>DrillArmEnigmatic</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Arm</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>DrillArmEnigmatic</addsHediff>
+  </RecipeDef>
+
+  <!-- Field hand -->
+
+  <HediffDef ParentName="AddedBodyPartBase">
+    <defName>FieldHandEnigmatic</defName>
+    <label>enigmatic field hand</label>
+    <labelNoun>an enigmatic field hand</labelNoun>
+    <description>An installed enigmatic field hand.</description>
+    <descriptionHyperlinks>
+      <ThingDef>FieldHandEnigmatic</ThingDef>
+    </descriptionHyperlinks>
+    <addedPartProps>
+      <solid>true</solid>
+    </addedPartProps>
+    <stages>
+      <li>
+        <statOffsets>
+          <PlantWorkSpeed>6.4</PlantWorkSpeed>
+        </statOffsets>
+        <capMods>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>-0.12</offset>
+          </li>
+        </capMods>
+      </li>
+    </stages>
+    <comps>
+      <li Class="HediffCompProperties_VerbGiver">
+        <tools>
+          <li>
+            <label>enigmatic knuckle</label>
+            <capacities>
+              <li>Blunt</li>
+            </capacities>
+            <power>36</power>
+            <cooldownTime>3</cooldownTime>
+            <alwaysTreatAsWeapon>false</alwaysTreatAsWeapon>
+            <soundMeleeHit>MeleeHit_FieldHand</soundMeleeHit>
+            <soundMeleeMiss>MeleeMiss_FieldHand</soundMeleeMiss>
+          </li>
+        </tools>
+      </li>
+    </comps>
+    <spawnThingOnRemoved>FieldHandEnigmatic</spawnThingOnRemoved>
+  </HediffDef>
+
+  <ThingDef ParentName="BodyPartAOTCEnigmaticBase">
+    <defName>FieldHandEnigmatic</defName>
+    <label>enigmatic field hand</label>
+    <description>This mechanical hand replacement is made to speed up the sowing and harvesting tasks of a farmer. Multiple telescoping finger-like protrusions can simultaneously harvest from several points on the same plant, or precisely sow several holes at once. It also has a general-purpose manipulator. It is somewhat ungainly, which slows down movement slightly.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>InstallFieldHandEnigmatic</RecipeDef>
+    </descriptionHyperlinks>
+
+    <techHediffsTags>
+      <li>FieldHand</li>
+    </techHediffsTags>
+  </ThingDef>
+
+  <RecipeDef ParentName="SurgeryInstallBodyPartProstheticBase">
+    <defName>InstallFieldHandEnigmatic</defName>
+    <label>install enigmatic field hand</label>
+    <description>Install a field hand.</description>
+    <descriptionHyperlinks>
+      <ThingDef>FieldHandEnigmatic</ThingDef>
+      <HediffDef>FieldHandEnigmatic</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing enigmatic field hand.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>FieldHandEnigmatic</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>FieldHandEnigmatic</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Hand</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>FieldHandEnigmatic</addsHediff>
+  </RecipeDef>
+
+  <!-- Hand talon -->
+
+  <HediffDef ParentName="ImplantHediffBase">
+    <defName>HandTalonEnigmatic</defName>
+    <label>enigmatic hand talon</label>
+    <labelNoun>an enigmatic hand talon</labelNoun>
+    <description>An installed enigmatic hand talon.</description>
+    <descriptionHyperlinks>
+      <ThingDef>HandTalonEnigmatic</ThingDef>
+    </descriptionHyperlinks>
+    <addedPartProps>
+      <solid>true</solid>
+    </addedPartProps>
+    <comps>
+      <li Class="HediffCompProperties_VerbGiver">
+        <tools>
+          <li>
+            <label>enigmatic talon</label>
+            <capacities>
+              <li>Scratch</li>
+            </capacities>
+            <power>60</power>  <!-- Lower damage means lower AP than other compact weapons, but it's faster with more raw DPS -->
+            <armorPenetration>0.5</armorPenetration>
+            <cooldownTime>0.5</cooldownTime>
+            <alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+            <soundMeleeHit>MeleeHit_BionicSlash</soundMeleeHit>
+            <soundMeleeMiss>MeleeMiss_BionicSlash</soundMeleeMiss>
+          </li>
+        </tools>
+      </li>
+    </comps>
+    <spawnThingOnRemoved>HandTalonEnigmatic</spawnThingOnRemoved>
+  </HediffDef>
+
+  <ThingDef ParentName="BodyPartAOTCEnigmaticBase">
+    <defName>HandTalonEnigmatic</defName>
+    <label>enigmatic hand talon</label>
+    <description>A razor-sharp talon which extends from a hidden opening between the middle and ring fingers. The talon is longer than the palm, but it becomes flexible upon retracting, allowing the user to curl it up and conceal it inside the hand. It can perform rapid slashing attacks, but is poor at penetrating armor.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>InstallHandTalonEnigmatic</RecipeDef>
+    </descriptionHyperlinks>
+
+    <violentTechHediff>true</violentTechHediff>
+    <techHediffsTags>
+      <li>AdvancedWeapon</li>
+    </techHediffsTags>
+  </ThingDef>
+
+  <RecipeDef ParentName="SurgeryInstallImplantAOTCEnigmaticBase">
+    <defName>InstallHandTalonEnigmatic</defName>
+    <label>install enigmatic hand talon</label>
+    <description>Install a hand talon.</description>
+    <descriptionHyperlinks>
+      <ThingDef>HandTalonEnigmatic</ThingDef>
+      <HediffDef>HandTalonEnigmatic</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing enigmatic hand talon.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>HandTalonEnigmatic</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>HandTalonEnigmatic</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Hand</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>HandTalonEnigmatic</addsHediff>
+  </RecipeDef>
+
+  <RecipeDef ParentName="SurgeryRemoveImplantBase">
+    <defName>RemoveHandTalonEnigmatic</defName>
+    <label>remove enigmatic hand talon</label>
+    <description>Remove hand talon.</description>
+    <descriptionHyperlinks>
+      <ThingDef>HandTalonEnigmatic</ThingDef>
+      <HediffDef>HandTalonEnigmatic</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Removing enigmatic hand talon.</jobString>
+    <removesHediff>HandTalonEnigmatic</removesHediff>
+  </RecipeDef>
+
+  <!-- Elbow blade -->
+
+  <HediffDef ParentName="ImplantHediffBase">
+    <defName>ElbowBladeEnigmatic</defName>
+    <label>enigmatic elbow blade</label>
+    <labelNoun>an enigmatic elbow blade</labelNoun>
+    <description>An installed enigmatic elbow blade.</description>
+    <descriptionHyperlinks>
+      <ThingDef>ElbowBladeEnigmatic</ThingDef>
+    </descriptionHyperlinks>
+    <addedPartProps>
+      <solid>true</solid>
+    </addedPartProps>
+    <comps>
+      <li Class="HediffCompProperties_VerbGiver">
+        <tools>
+          <li>
+            <label>enigmatic blade</label>
+            <capacities>
+              <li>Cut</li>
+            </capacities>
+            <power>72</power>
+            <cooldownTime>4</cooldownTime>
+            <alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+            <soundMeleeHit>MeleeHit_BionicSlash</soundMeleeHit>
+            <soundMeleeMiss>MeleeMiss_BionicSlash</soundMeleeMiss>
+          </li>
+        </tools>
+      </li>
+    </comps>
+    <spawnThingOnRemoved>ElbowBladeEnigmatic</spawnThingOnRemoved>
+  </HediffDef>
+
+  <ThingDef ParentName="BodyPartAOTCEnigmaticBase">
+    <defName>ElbowBladeEnigmatic</defName>
+    <label>enigmatic elbow blade</label>
+    <description>A razor-sharp blade that extends at will from a hidden opening at the end of the ulna. Appearing without warning, it can be used for devastating slice attacks.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>InstallElbowBladeEnigmatic</RecipeDef>
+    </descriptionHyperlinks>
+
+    <violentTechHediff>true</violentTechHediff>
+    <techHediffsTags>
+      <li>AdvancedWeapon</li>
+    </techHediffsTags>
+  </ThingDef>
+
+  <RecipeDef ParentName="SurgeryInstallImplantAOTCEnigmaticBase">
+    <defName>InstallElbowBladeEnigmatic</defName>
+    <label>install enigmatic elbow blade</label>
+    <description>Install an elbow blade.</description>
+    <descriptionHyperlinks>
+      <ThingDef>ElbowBladeEnigmatic</ThingDef>
+      <HediffDef>ElbowBladeEnigmatic</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing enigmatic elbow blade.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>ElbowBladeEnigmatic</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>ElbowBladeEnigmatic</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Arm</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>ElbowBladeEnigmatic</addsHediff>
+  </RecipeDef>
+
+  <RecipeDef ParentName="SurgeryRemoveImplantBase">
+    <defName>RemoveElbowBladeEnigmatic</defName>
+    <label>remove enigmatic elbow blade</label>
+    <description>Remove elbow blade.</description>
+    <descriptionHyperlinks>
+      <ThingDef>ElbowBladeEnigmatic</ThingDef>
+      <HediffDef>ElbowBladeEnigmatic</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Removing enigmatic elbow blade.</jobString>
+    <removesHediff>ElbowBladeEnigmatic</removesHediff>
+  </RecipeDef>
+
+  <!-- Knee spike -->
+
+  <HediffDef ParentName="ImplantHediffBase">
+    <defName>KneeSpikeEnigmatic</defName>
+    <label>enigmatic knee spike</label>
+    <labelNoun>an enigmatic knee spike</labelNoun>
+    <description>An installed enigmatic knee spike.</description>
+    <descriptionHyperlinks>
+      <ThingDef>KneeSpikeEnigmatic</ThingDef>
+    </descriptionHyperlinks>
+    <addedPartProps>
+      <solid>true</solid>
+    </addedPartProps>
+    <comps>
+      <li Class="HediffCompProperties_VerbGiver">
+        <tools>
+          <li>
+            <label>enigmatic spike</label>
+            <capacities>
+              <li>Stab</li>
+            </capacities>
+            <power>88</power> <!-- More power and AP but slower than other compact weapons -->
+            <armorPenetration>1.4</armorPenetration>
+            <cooldownTime>3.0</cooldownTime>
+            <alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+            <soundMeleeHit>MeleeHit_BionicSlash</soundMeleeHit>
+            <soundMeleeMiss>MeleeMiss_BionicSlash</soundMeleeMiss>
+          </li>
+        </tools>
+      </li>
+    </comps>
+    <spawnThingOnRemoved>KneeSpikeEnigmatic</spawnThingOnRemoved>
+  </HediffDef>
+
+  <ThingDef ParentName="BodyPartAOTCEnigmaticBase">
+    <defName>KneeSpikeEnigmatic</defName>
+    <label>enigmatic knee spike</label>
+    <description>A spike that extends at will from a hidden opening on the front of the knee. Appearing without warning, it can be used for devastating stabbing attacks which penetrate even thick armor.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>InstallKneeSpikeEnigmatic</RecipeDef>
+    </descriptionHyperlinks>
+
+    <violentTechHediff>true</violentTechHediff>
+    <techHediffsTags>
+      <li>AdvancedWeapon</li>
+    </techHediffsTags>
+  </ThingDef>
+
+  <RecipeDef ParentName="SurgeryInstallImplantAOTCEnigmaticBase">
+    <defName>InstallKneeSpikeEnigmatic</defName>
+    <label>install enigmatic knee spike</label>
+    <description>Install a knee spike.</description>
+    <descriptionHyperlinks>
+      <ThingDef>KneeSpikeEnigmatic</ThingDef>
+      <HediffDef>KneeSpikeEnigmatic</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing enigmatic knee spike.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>KneeSpikeEnigmatic</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>KneeSpikeEnigmatic</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Leg</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>KneeSpikeEnigmatic</addsHediff>
+  </RecipeDef>
+
+  <RecipeDef ParentName="SurgeryRemoveImplantBase">
+    <defName>RemoveKneeSpikeEnigmatic</defName>
+    <label>remove enigmatic knee spike</label>
+    <description>Remove knee spike.</description>
+    <descriptionHyperlinks>
+      <ThingDef>KneeSpikeEnigmatic</ThingDef>
+      <HediffDef>KneeSpikeEnigmatic</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Removing enigmatic knee spike.</jobString>
+    <removesHediff>KneeSpikeEnigmatic</removesHediff>
+  </RecipeDef>
+
+  <!-- venom fangs -->
+
+  <HediffDef ParentName="ImplantHediffBase">
+    <defName>VenomFangsEnigmatic</defName>
+    <label>enigmatic venom fangs</label>
+    <labelNoun>an enigmatic set of venom fangs</labelNoun>
+    <description>An installed enigmatic set of venom fangs.</description>
+    <descriptionHyperlinks>
+      <ThingDef>VenomFangsEnigmatic</ThingDef>
+    </descriptionHyperlinks>
+    <addedPartProps>
+      <solid>true</solid>
+    </addedPartProps>
+    <comps>
+      <li Class="HediffCompProperties_VerbGiver">
+        <tools>
+          <li>
+            <label>enigmatic venom fangs</label>
+            <capacities>
+              <li>ToxicBite</li>
+            </capacities>
+            <power>60</power>
+            <cooldownTime>3</cooldownTime>
+            <alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+          </li>
+        </tools>
+      </li>
+    </comps>
+    <spawnThingOnRemoved>VenomFangsEnigmatic</spawnThingOnRemoved>
+  </HediffDef>
+
+  <ThingDef ParentName="BodyPartAOTCEnigmaticBase">
+    <defName>VenomFangsEnigmatic</defName>
+    <label>enigmatic venom fangs</label>
+    <description>A pair of injectors implanted through the canine teeth, connected to a venom pump. The user can bite an enemy, extend the injectors, and pump venom into the target.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>InstallVenomFangsEnigmatic</RecipeDef>
+    </descriptionHyperlinks>
+
+    <violentTechHediff>true</violentTechHediff>
+    <techHediffsTags>
+      <li>AdvancedWeapon</li>
+    </techHediffsTags>
+  </ThingDef>
+
+  <RecipeDef ParentName="SurgeryInstallImplantAOTCEnigmaticBase">
+    <defName>InstallVenomFangsEnigmatic</defName>
+    <label>install enigmatic venom fangs</label>
+    <description>Install venom fangs.</description>
+    <descriptionHyperlinks>
+      <ThingDef>VenomFangsEnigmatic</ThingDef>
+      <HediffDef>VenomFangsEnigmatic</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing enigmatic venom fangs.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>VenomFangsEnigmatic</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>VenomFangsEnigmatic</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyPartGroups>
+      <li>Teeth</li>
+    </appliedOnFixedBodyPartGroups>
+    <addsHediff>VenomFangsEnigmatic</addsHediff>
+  </RecipeDef>
+
+  <RecipeDef ParentName="SurgeryRemoveImplantBase">
+    <defName>RemoveVenomFangsEnigmatic</defName>
+    <label>remove enigmatic venom fangs</label>
+    <description>Remove venom fangs.</description>
+    <descriptionHyperlinks>
+      <ThingDef>VenomFangsEnigmatic</ThingDef>
+      <HediffDef>VenomFangsEnigmatic</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Removing enigmatic venom fangs.</jobString>
+    <removesHediff>VenomFangsEnigmatic</removesHediff>
+  </RecipeDef>
+
+  <!-- venom talon -->
+
+  <HediffDef ParentName="ImplantHediffBase">
+    <defName>VenomTalonEnigmatic</defName>
+    <label>enigmatic venom talon</label>
+    <labelNoun>an enigmatic venom talon</labelNoun>
+    <description>An installed enigmatic venom talon.</description>
+    <descriptionHyperlinks>
+      <ThingDef>VenomTalonEnigmatic</ThingDef>
+    </descriptionHyperlinks>
+    <comps>
+      <li Class="HediffCompProperties_VerbGiver">
+        <tools>
+          <li>
+            <label>enigmatic venom talon</label>
+            <capacities>
+              <li>ScratchToxic</li>
+            </capacities>
+            <power>44</power> <!-- Toxic and fast but with poor armor penetration -->
+            <armorPenetration>0.6</armorPenetration>
+            <cooldownTime>1.0</cooldownTime>
+            <alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+            <soundMeleeHit>MeleeHit_BionicSlash</soundMeleeHit>
+            <soundMeleeMiss>MeleeMiss_BionicSlash</soundMeleeMiss>
+          </li>
+        </tools>
+      </li>
+    </comps>
+    <spawnThingOnRemoved>VenomTalonEnigmatic</spawnThingOnRemoved>
+  </HediffDef>
+
+  <ThingDef ParentName="BodyPartAOTCEnigmaticBase">
+    <defName>VenomTalonEnigmatic</defName>
+    <label>enigmatic venom talon</label>
+    <description>A retractable finger talon connected to a venom pump in the lower arm. The user can scratch an enemy while squirting venom into the wound. The talon is designed to be installed in the middle finger. It's fast, but poor at penetrating armor.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>InstallVenomTalonEnigmatic</RecipeDef>
+    </descriptionHyperlinks>
+
+    <violentTechHediff>true</violentTechHediff>
+    <techHediffsTags>
+      <li>AdvancedWeapon</li>
+    </techHediffsTags>
+  </ThingDef>
+
+  <RecipeDef ParentName="SurgeryInstallImplantAOTCEnigmaticBase">
+    <defName>InstallVenomTalonEnigmatic</defName>
+    <label>install enigmatic venom talon</label>
+    <description>Install a venom talon.</description>
+    <descriptionHyperlinks>
+      <ThingDef>VenomTalonEnigmatic</ThingDef>
+      <HediffDef>VenomTalonEnigmatic</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing enigmatic venom talon.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>VenomTalonEnigmatic</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>VenomTalonEnigmatic</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyPartGroups>
+      <li>MiddleFingers</li>
+    </appliedOnFixedBodyPartGroups>
+    <addsHediff>VenomTalonEnigmatic</addsHediff>
+  </RecipeDef>
+
+  <RecipeDef ParentName="SurgeryRemoveImplantBase">
+    <defName>RemoveVenomTalonEnigmatic</defName>
+    <label>remove enigmatic venom talon</label>
+    <description>Remove venom talon.</description>
+    <descriptionHyperlinks>
+      <ThingDef>VenomTalonEnigmatic</ThingDef>
+      <HediffDef>VenomTalonEnigmatic</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Removing enigmatic venom talon.</jobString>
+    <removesHediff>VenomTalonEnigmatic</removesHediff>
+  </RecipeDef>
+
+</Defs>

@@ -1,0 +1,688 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- Mindscrew -->
+
+  <HediffDef ParentName="ImplantHediffBase">
+    <defName>MindscrewCosmic</defName>
+    <label>cosmic mindscrew</label>
+    <labelNoun>a cosmic mindscrew</labelNoun>
+    <description>An installed cosmic mindscrew.</description>
+    <descriptionHyperlinks>
+      <ThingDef>MindscrewCosmic</ThingDef>
+    </descriptionHyperlinks>
+    <spawnThingOnRemoved>MindscrewCosmic</spawnThingOnRemoved>
+    <priceOffset>-440</priceOffset>
+    <stages>
+      <li>
+        <painOffset>0.6</painOffset>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <ThingDef ParentName="BodyPartAOTCCosmicBase">
+    <defName>MindscrewCosmic</defName>
+    <label>cosmic mindscrew</label>
+    <description>Inflicts continuous pain on the user. Mindscrews are used by some authorities as a long-term punishment. Some even install them voluntarily as a demonstration of ideological or religious devotion.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>InstallMindscrewCosmic</RecipeDef>
+    </descriptionHyperlinks>
+    <techHediffsTags>
+      <li>PainCauser</li>
+    </techHediffsTags>
+
+  </ThingDef>
+
+  <RecipeDef ParentName="SurgeryInstallImplantAOTCCosmicBase">
+    <defName>InstallMindscrewCosmic</defName>
+    <label>install cosmic mindscrew</label>
+    <description>Install a mindscrew.</description>
+    <descriptionHyperlinks>
+      <ThingDef>MindscrewCosmic</ThingDef>
+      <HediffDef>MindscrewCosmic</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing cosmic mindscrew.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>MindscrewCosmic</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>MindscrewCosmic</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Brain</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>MindscrewCosmic</addsHediff>
+  </RecipeDef>
+
+  <!-- Drill arm -->
+
+  <HediffDef ParentName="AddedBodyPartBase">
+    <defName>DrillArmCosmic</defName>
+    <label>cosmic drill arm</label>
+    <labelNoun>a cosmic drill arm</labelNoun>
+    <description>An installed cosmic drill arm.</description>
+    <descriptionHyperlinks>
+      <ThingDef>DrillArmCosmic</ThingDef>
+    </descriptionHyperlinks>
+    <addedPartProps>
+      <solid>true</solid>
+    </addedPartProps>
+    <stages>
+      <li>
+        <statOffsets>
+          <MiningSpeed>6.4</MiningSpeed>
+          <DeepDrillingSpeed>2.8</DeepDrillingSpeed>
+        </statOffsets>
+        <capMods>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>-0.12</offset>
+          </li>
+        </capMods>
+      </li>
+    </stages>
+    <comps>
+      <li Class="HediffCompProperties_VerbGiver">
+        <tools>
+          <li>
+            <label>cosmic drill</label>
+            <capacities>
+              <li>Stab</li>
+            </capacities>
+            <power>52</power>
+            <cooldownTime>3</cooldownTime>
+            <alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+            <soundMeleeHit>MeleeHit_DrillArm</soundMeleeHit>
+            <soundMeleeMiss>MeleeMiss_DrillArm</soundMeleeMiss>
+          </li>
+        </tools>
+      </li>
+    </comps>
+    <spawnThingOnRemoved>DrillArmCosmic</spawnThingOnRemoved>
+  </HediffDef>
+
+  <ThingDef ParentName="BodyPartAOTCCosmicBase">
+    <defName>DrillArmCosmic</defName>
+    <label>cosmic drill arm</label>
+    <description>A mechanical arm replacement for speeding up mining. It has a built-in snake drill, which allows the miner to rapidly find and exploit weak lines in the rock. It also has a general-purpose manipulator. It is somewhat ungainly, which slows down movement slightly.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>InstallDrillArmCosmic</RecipeDef>
+    </descriptionHyperlinks>
+
+    <techHediffsTags>
+      <li>DrillArm</li>
+    </techHediffsTags>
+  </ThingDef>
+
+  <RecipeDef ParentName="SurgeryInstallBodyPartProstheticBase">
+    <defName>InstallDrillArmCosmic</defName>
+    <label>install cosmic drill arm</label>
+    <description>Install a drill arm.</description>
+    <descriptionHyperlinks>
+      <ThingDef>DrillArmCosmic</ThingDef>
+      <HediffDef>DrillArmCosmic</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing cosmic drill arm.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>DrillArmCosmic</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>DrillArmCosmic</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Arm</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>DrillArmCosmic</addsHediff>
+  </RecipeDef>
+
+  <!-- Field hand -->
+
+  <HediffDef ParentName="AddedBodyPartBase">
+    <defName>FieldHandCosmic</defName>
+    <label>cosmic field hand</label>
+    <labelNoun>a cosmic field hand</labelNoun>
+    <description>An installed cosmic field hand.</description>
+    <descriptionHyperlinks>
+      <ThingDef>FieldHandCosmic</ThingDef>
+    </descriptionHyperlinks>
+    <addedPartProps>
+      <solid>true</solid>
+    </addedPartProps>
+    <stages>
+      <li>
+        <statOffsets>
+          <PlantWorkSpeed>6.4</PlantWorkSpeed>
+        </statOffsets>
+        <capMods>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>-0.12</offset>
+          </li>
+        </capMods>
+      </li>
+    </stages>
+    <comps>
+      <li Class="HediffCompProperties_VerbGiver">
+        <tools>
+          <li>
+            <label>cosmic knuckle</label>
+            <capacities>
+              <li>Blunt</li>
+            </capacities>
+            <power>36</power>
+            <cooldownTime>3</cooldownTime>
+            <alwaysTreatAsWeapon>false</alwaysTreatAsWeapon>
+            <soundMeleeHit>MeleeHit_FieldHand</soundMeleeHit>
+            <soundMeleeMiss>MeleeMiss_FieldHand</soundMeleeMiss>
+          </li>
+        </tools>
+      </li>
+    </comps>
+    <spawnThingOnRemoved>FieldHandCosmic</spawnThingOnRemoved>
+  </HediffDef>
+
+  <ThingDef ParentName="BodyPartAOTCCosmicBase">
+    <defName>FieldHandCosmic</defName>
+    <label>cosmic field hand</label>
+    <description>This mechanical hand replacement is made to speed up the sowing and harvesting tasks of a farmer. Multiple telescoping finger-like protrusions can simultaneously harvest from several points on the same plant, or precisely sow several holes at once. It also has a general-purpose manipulator. It is somewhat ungainly, which slows down movement slightly.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>InstallFieldHandCosmic</RecipeDef>
+    </descriptionHyperlinks>
+
+    <techHediffsTags>
+      <li>FieldHand</li>
+    </techHediffsTags>
+  </ThingDef>
+
+  <RecipeDef ParentName="SurgeryInstallBodyPartProstheticBase">
+    <defName>InstallFieldHandCosmic</defName>
+    <label>install cosmic field hand</label>
+    <description>Install a field hand.</description>
+    <descriptionHyperlinks>
+      <ThingDef>FieldHandCosmic</ThingDef>
+      <HediffDef>FieldHandCosmic</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing cosmic field hand.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>FieldHandCosmic</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>FieldHandCosmic</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Hand</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>FieldHandCosmic</addsHediff>
+  </RecipeDef>
+
+  <!-- Hand talon -->
+
+  <HediffDef ParentName="ImplantHediffBase">
+    <defName>HandTalonCosmic</defName>
+    <label>cosmic hand talon</label>
+    <labelNoun>a cosmic hand talon</labelNoun>
+    <description>An installed cosmic hand talon.</description>
+    <descriptionHyperlinks>
+      <ThingDef>HandTalonCosmic</ThingDef>
+    </descriptionHyperlinks>
+    <addedPartProps>
+      <solid>true</solid>
+    </addedPartProps>
+    <comps>
+      <li Class="HediffCompProperties_VerbGiver">
+        <tools>
+          <li>
+            <label>cosmic talon</label>
+            <capacities>
+              <li>Scratch</li>
+            </capacities>
+            <power>60</power>  <!-- Lower damage means lower AP than other compact weapons, but it's faster with more raw DPS -->
+            <armorPenetration>0.5</armorPenetration>
+            <cooldownTime>0.5</cooldownTime>
+            <alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+            <soundMeleeHit>MeleeHit_BionicSlash</soundMeleeHit>
+            <soundMeleeMiss>MeleeMiss_BionicSlash</soundMeleeMiss>
+          </li>
+        </tools>
+      </li>
+    </comps>
+    <spawnThingOnRemoved>HandTalonCosmic</spawnThingOnRemoved>
+  </HediffDef>
+
+  <ThingDef ParentName="BodyPartAOTCCosmicBase">
+    <defName>HandTalonCosmic</defName>
+    <label>cosmic hand talon</label>
+    <description>A razor-sharp talon which extends from a hidden opening between the middle and ring fingers. The talon is longer than the palm, but it becomes flexible upon retracting, allowing the user to curl it up and conceal it inside the hand. It can perform rapid slashing attacks, but is poor at penetrating armor.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>InstallHandTalonCosmic</RecipeDef>
+    </descriptionHyperlinks>
+
+    <violentTechHediff>true</violentTechHediff>
+    <techHediffsTags>
+      <li>AdvancedWeapon</li>
+    </techHediffsTags>
+  </ThingDef>
+
+  <RecipeDef ParentName="SurgeryInstallImplantAOTCCosmicBase">
+    <defName>InstallHandTalonCosmic</defName>
+    <label>install cosmic hand talon</label>
+    <description>Install a hand talon.</description>
+    <descriptionHyperlinks>
+      <ThingDef>HandTalonCosmic</ThingDef>
+      <HediffDef>HandTalonCosmic</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing cosmic hand talon.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>HandTalonCosmic</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>HandTalonCosmic</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Hand</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>HandTalonCosmic</addsHediff>
+  </RecipeDef>
+
+  <RecipeDef ParentName="SurgeryRemoveImplantBase">
+    <defName>RemoveHandTalonCosmic</defName>
+    <label>cosmic remove hand talon</label>
+    <description>Remove hand talon.</description>
+    <descriptionHyperlinks>
+      <ThingDef>HandTalonCosmic</ThingDef>
+      <HediffDef>HandTalonCosmic</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Removing cosmic hand talon.</jobString>
+    <removesHediff>HandTalonCosmic</removesHediff>
+  </RecipeDef>
+
+  <!-- Elbow blade -->
+
+  <HediffDef ParentName="ImplantHediffBase">
+    <defName>ElbowBladeCosmic</defName>
+    <label>cosmic elbow blade</label>
+    <labelNoun>a cosmicn elbow blade</labelNoun>
+    <description>An installed cosmic elbow blade.</description>
+    <descriptionHyperlinks>
+      <ThingDef>ElbowBladeCosmic</ThingDef>
+    </descriptionHyperlinks>
+    <addedPartProps>
+      <solid>true</solid>
+    </addedPartProps>
+    <comps>
+      <li Class="HediffCompProperties_VerbGiver">
+        <tools>
+          <li>
+            <label>cosmic blade</label>
+            <capacities>
+              <li>Cut</li>
+            </capacities>
+            <power>72</power>
+            <cooldownTime>4</cooldownTime>
+            <alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+            <soundMeleeHit>MeleeHit_BionicSlash</soundMeleeHit>
+            <soundMeleeMiss>MeleeMiss_BionicSlash</soundMeleeMiss>
+          </li>
+        </tools>
+      </li>
+    </comps>
+    <spawnThingOnRemoved>ElbowBladeCosmic</spawnThingOnRemoved>
+  </HediffDef>
+
+  <ThingDef ParentName="BodyPartAOTCCosmicBase">
+    <defName>ElbowBladeCosmic</defName>
+    <label>cosmic elbow blade</label>
+    <description>A razor-sharp blade that extends at will from a hidden opening at the end of the ulna. Appearing without warning, it can be used for devastating slice attacks.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>InstallElbowBladeCosmic</RecipeDef>
+    </descriptionHyperlinks>
+
+    <violentTechHediff>true</violentTechHediff>
+    <techHediffsTags>
+      <li>AdvancedWeapon</li>
+    </techHediffsTags>
+  </ThingDef>
+
+  <RecipeDef ParentName="SurgeryInstallImplantAOTCCosmicBase">
+    <defName>InstallElbowBladeCosmic</defName>
+    <label>install cosmic elbow blade</label>
+    <description>Install an elbow blade.</description>
+    <descriptionHyperlinks>
+      <ThingDef>ElbowBladeCosmic</ThingDef>
+      <HediffDef>ElbowBladeCosmic</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing cosmic elbow blade.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>ElbowBladeCosmic</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>ElbowBladeCosmic</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Arm</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>ElbowBladeCosmic</addsHediff>
+  </RecipeDef>
+
+  <RecipeDef ParentName="SurgeryRemoveImplantBase">
+    <defName>RemoveElbowBladeCosmic</defName>
+    <label>cosmic remove elbow blade</label>
+    <description>Remove elbow blade.</description>
+    <descriptionHyperlinks>
+      <ThingDef>ElbowBladeCosmic</ThingDef>
+      <HediffDef>ElbowBladeCosmic</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Removing cosmic elbow blade.</jobString>
+    <removesHediff>ElbowBladeCosmic</removesHediff>
+  </RecipeDef>
+
+  <!-- Knee spike -->
+
+  <HediffDef ParentName="ImplantHediffBase">
+    <defName>KneeSpikeCosmic</defName>
+    <label>cosmic knee spike</label>
+    <labelNoun>a cosmic knee spike</labelNoun>
+    <description>An installed cosmic knee spike.</description>
+    <descriptionHyperlinks>
+      <ThingDef>KneeSpikeCosmic</ThingDef>
+    </descriptionHyperlinks>
+    <addedPartProps>
+      <solid>true</solid>
+    </addedPartProps>
+    <comps>
+      <li Class="HediffCompProperties_VerbGiver">
+        <tools>
+          <li>
+            <label>cosmic spike</label>
+            <capacities>
+              <li>Stab</li>
+            </capacities>
+            <power>88</power> <!-- More power and AP but slower than other compact weapons -->
+            <armorPenetration>1.4</armorPenetration>
+            <cooldownTime>3.0</cooldownTime>
+            <alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+            <soundMeleeHit>MeleeHit_BionicSlash</soundMeleeHit>
+            <soundMeleeMiss>MeleeMiss_BionicSlash</soundMeleeMiss>
+          </li>
+        </tools>
+      </li>
+    </comps>
+    <spawnThingOnRemoved>KneeSpikeCosmic</spawnThingOnRemoved>
+  </HediffDef>
+
+  <ThingDef ParentName="BodyPartAOTCCosmicBase">
+    <defName>KneeSpikeCosmic</defName>
+    <label>cosmic knee spike</label>
+    <description>A spike that extends at will from a hidden opening on the front of the knee. Appearing without warning, it can be used for devastating stabbing attacks which penetrate even thick armor.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>InstallKneeSpikeCosmic</RecipeDef>
+    </descriptionHyperlinks>
+
+    <violentTechHediff>true</violentTechHediff>
+    <techHediffsTags>
+      <li>AdvancedWeapon</li>
+    </techHediffsTags>
+  </ThingDef>
+
+  <RecipeDef ParentName="SurgeryInstallImplantAOTCCosmicBase">
+    <defName>InstallKneeSpikeCosmic</defName>
+    <label>install cosmic knee spike</label>
+    <description>Install a knee spike.</description>
+    <descriptionHyperlinks>
+      <ThingDef>KneeSpikeCosmic</ThingDef>
+      <HediffDef>KneeSpikeCosmic</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing cosmic knee spike.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>KneeSpikeCosmic</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>KneeSpikeCosmic</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Leg</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>KneeSpikeCosmic</addsHediff>
+  </RecipeDef>
+
+  <RecipeDef ParentName="SurgeryRemoveImplantBase">
+    <defName>RemoveKneeSpikeCosmic</defName>
+    <label>cosmic remove knee spike</label>
+    <description>Remove knee spike.</description>
+    <descriptionHyperlinks>
+      <ThingDef>KneeSpikeCosmic</ThingDef>
+      <HediffDef>KneeSpikeCosmic</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Removing cosmic knee spike.</jobString>
+    <removesHediff>KneeSpikeCosmic</removesHediff>
+  </RecipeDef>
+
+  <!-- venom fangs -->
+
+  <HediffDef ParentName="ImplantHediffBase">
+    <defName>VenomFangsCosmic</defName>
+    <label>cosmic venom fangs</label>
+    <labelNoun>a cosmic set of venom fangs</labelNoun>
+    <description>An installed cosmic set of venom fangs.</description>
+    <descriptionHyperlinks>
+      <ThingDef>VenomFangsCosmic</ThingDef>
+    </descriptionHyperlinks>
+    <addedPartProps>
+      <solid>true</solid>
+    </addedPartProps>
+    <comps>
+      <li Class="HediffCompProperties_VerbGiver">
+        <tools>
+          <li>
+            <label>cosmic venom fangs</label>
+            <capacities>
+              <li>ToxicBite</li>
+            </capacities>
+            <power>60</power>
+            <cooldownTime>3</cooldownTime>
+            <alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+          </li>
+        </tools>
+      </li>
+    </comps>
+    <spawnThingOnRemoved>VenomFangsCosmic</spawnThingOnRemoved>
+  </HediffDef>
+
+  <ThingDef ParentName="BodyPartAOTCCosmicBase">
+    <defName>VenomFangsCosmic</defName>
+    <label>cosmic venom fangs</label>
+    <description>A pair of injectors implanted through the canine teeth, connected to a venom pump. The user can bite an enemy, extend the injectors, and pump venom into the target.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>InstallVenomFangsCosmic</RecipeDef>
+    </descriptionHyperlinks>
+
+    <violentTechHediff>true</violentTechHediff>
+    <techHediffsTags>
+      <li>AdvancedWeapon</li>
+    </techHediffsTags>
+  </ThingDef>
+
+  <RecipeDef ParentName="SurgeryInstallImplantAOTCCosmicBase">
+    <defName>InstallVenomFangsCosmic</defName>
+    <label>install cosmic venom fangs</label>
+    <description>Install venom fangs.</description>
+    <descriptionHyperlinks>
+      <ThingDef>VenomFangsCosmic</ThingDef>
+      <HediffDef>VenomFangsCosmic</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing cosmic venom fangs.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>VenomFangsCosmic</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>VenomFangsCosmic</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyPartGroups>
+      <li>Teeth</li>
+    </appliedOnFixedBodyPartGroups>
+    <addsHediff>VenomFangsCosmic</addsHediff>
+  </RecipeDef>
+
+  <RecipeDef ParentName="SurgeryRemoveImplantBase">
+    <defName>RemoveVenomFangsCosmic</defName>
+    <label>cosmic remove venom fangs</label>
+    <description>Remove venom fangs.</description>
+    <descriptionHyperlinks>
+      <ThingDef>VenomFangsCosmic</ThingDef>
+      <HediffDef>VenomFangsCosmic</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Removing cosmic venom fangs.</jobString>
+    <removesHediff>VenomFangsCosmic</removesHediff>
+  </RecipeDef>
+
+  <!-- venom talon -->
+
+  <HediffDef ParentName="ImplantHediffBase">
+    <defName>VenomTalonCosmic</defName>
+    <label>cosmic venom talon</label>
+    <labelNoun>a cosmic venom talon</labelNoun>
+    <description>An installed cosmic venom talon.</description>
+    <descriptionHyperlinks>
+      <ThingDef>VenomTalonCosmic</ThingDef>
+    </descriptionHyperlinks>
+    <comps>
+      <li Class="HediffCompProperties_VerbGiver">
+        <tools>
+          <li>
+            <label>cosmic venom talon</label>
+            <capacities>
+              <li>ScratchToxic</li>
+            </capacities>
+            <power>44</power> <!-- Toxic and fast but with poor armor penetration -->
+            <armorPenetration>0.6</armorPenetration>
+            <cooldownTime>1.0</cooldownTime>
+            <alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+            <soundMeleeHit>MeleeHit_BionicSlash</soundMeleeHit>
+            <soundMeleeMiss>MeleeMiss_BionicSlash</soundMeleeMiss>
+          </li>
+        </tools>
+      </li>
+    </comps>
+    <spawnThingOnRemoved>VenomTalonCosmic</spawnThingOnRemoved>
+  </HediffDef>
+
+  <ThingDef ParentName="BodyPartAOTCCosmicBase">
+    <defName>VenomTalonCosmic</defName>
+    <label>cosmic venom talon</label>
+    <description>A retractable finger talon connected to a venom pump in the lower arm. The user can scratch an enemy while squirting venom into the wound. The talon is designed to be installed in the middle finger. It's fast, but poor at penetrating armor.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>InstallVenomTalonCosmic</RecipeDef>
+    </descriptionHyperlinks>
+
+    <violentTechHediff>true</violentTechHediff>
+    <techHediffsTags>
+      <li>AdvancedWeapon</li>
+    </techHediffsTags>
+  </ThingDef>
+
+  <RecipeDef ParentName="SurgeryInstallImplantAOTCCosmicBase">
+    <defName>InstallVenomTalonCosmic</defName>
+    <label>install cosmic venom talon</label>
+    <description>Install a venom talon.</description>
+    <descriptionHyperlinks>
+      <ThingDef>VenomTalonCosmic</ThingDef>
+      <HediffDef>VenomTalonCosmic</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing cosmic venom talon.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>VenomTalonCosmic</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>VenomTalonCosmic</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyPartGroups>
+      <li>MiddleFingers</li>
+    </appliedOnFixedBodyPartGroups>
+    <addsHediff>VenomTalonCosmic</addsHediff>
+  </RecipeDef>
+
+  <RecipeDef ParentName="SurgeryRemoveImplantBase">
+    <defName>RemoveVenomTalonCosmic</defName>
+    <label>cosmic remove venom talon</label>
+    <description>Remove venom talon.</description>
+    <descriptionHyperlinks>
+      <ThingDef>VenomTalonCosmic</ThingDef>
+      <HediffDef>VenomTalonCosmic</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Removing cosmic venom talon.</jobString>
+    <removesHediff>VenomTalonCosmic</removesHediff>
+  </RecipeDef>
+
+</Defs>

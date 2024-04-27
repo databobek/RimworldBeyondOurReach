@@ -1,0 +1,871 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+	<ThingDef Name="EPIA_BodyPartBionicRibBaseBAOTCEnigmatic" ParentName="EPIASyntheticBase" Abstract="True">
+		<recipeMaker>
+			<soundWorking>Recipe_Smith</soundWorking>
+			<recipeUsers Inherit="False">
+				<li>Table_SNS_BionicCraftingStation_GenIII</li>
+			</recipeUsers>
+			<researchPrerequisite>RibReplacements</researchPrerequisite>
+			<skillRequirements>
+				<Crafting>19</Crafting>
+			</skillRequirements>
+		</recipeMaker>
+		<statBases>
+			<WorkToMake>30000</WorkToMake>
+			<MarketValue>45000</MarketValue>
+		</statBases>
+	</ThingDef>
+
+	<RecipeDef ParentName="SurgeryInstallImplantBase" Name="SurgeryInstallImplantBaseBAOTCEnigmatic" Abstract="True">
+		<recipeUsers>
+			<li>Human</li>
+		</recipeUsers>
+		<skillRequirements>
+			<Medicine>19</Medicine>
+		</skillRequirements>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>SNS_Medicine_GenIII</li>
+					</thingDefs>
+				</filter>
+				<count>3</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Femtoclusters</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>SNS_Medicine_GenIII</li>
+				<li>BOR_Femtoclusters</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+	</RecipeDef>
+
+	<!-- Medical rib -->
+
+	<HediffDef ParentName="addedPartBionicsRib">
+		<defName>MedicalRibEnigmatic</defName>
+		<label>enigmatic medical rib</label>
+		<labelNoun>a enigmatic medical rib</labelNoun>
+		<description>An installed enigmatic medical rib implant.</description>
+		<descriptionHyperlinks>
+			<ThingDef>MedicalRibEnigmatic</ThingDef>
+		</descriptionHyperlinks>
+		<spawnThingOnRemoved>MedicalRibEnigmatic</spawnThingOnRemoved>
+		<hediffClass>Hediff_Implant</hediffClass>
+		<stages>
+			<li>
+				<capMods>
+					<li>
+						<capacity>BloodFiltration</capacity>
+						<offset>0.45</offset>
+					</li>
+				</capMods>
+			</li>
+		</stages>
+		<tags>
+			<li>MedicalRib</li>
+		</tags>
+	</HediffDef>
+
+	<ThingDef ParentName="EPIA_BodyPartBionicRibBaseBAOTCEnigmatic">
+		<defName>MedicalRibEnigmatic</defName>
+		<label>medical enigmatic rib implant</label>
+		<description>An artificial enigmatic rib, equipped with little blood filters and antibiotics-dispensers to keep the user healthy.</description>
+		<descriptionHyperlinks>
+			<RecipeDef>InstallMedicalRibEnigmatic</RecipeDef>
+		</descriptionHyperlinks>
+		<costList>
+			<BOR_Tenebrite>10</BOR_Tenebrite>
+			<BOR_ComponentIII>1</BOR_ComponentIII>
+			<Neutroamine>3</Neutroamine>
+			<SNS_Aeterno>10</SNS_Aeterno>
+		</costList>
+		<statBases>
+			<Mass>0.3</Mass>
+		</statBases>
+	</ThingDef>
+
+
+	<RecipeDef ParentName="SurgeryInstallImplantBaseBAOTCEnigmatic">
+		<defName>InstallMedicalRibEnigmatic</defName>
+		<label>install enigmatic medical rib implant</label>
+		<description>Installs a enigmatic medical rib implant.</description>
+		<descriptionHyperlinks>
+			<ThingDef>MedicalRibEnigmatic</ThingDef>
+			<HediffDef>MedicalRibEnigmatic</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing a enigmatic medical rib.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>MedicalRibEnigmatic</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>MedicalRibEnigmatic</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Ribcage</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>MedicalRibEnigmatic</addsHediff>
+		<uiIconThing>MedicalRibEnigmatic</uiIconThing>
+		<incompatibleWithHediffTags>
+			<li>MedicalRib</li>
+			<li>LuciferiumRib</li>
+		</incompatibleWithHediffTags>
+	</RecipeDef>
+
+	<RecipeDef ParentName="SurgeryRemoveImplantBase">
+		<defName>RemoveMedicalRibEnigmatic</defName>
+		<label>remove enigmatic medical rib implant</label>
+		<description>Remove a enigmatic medical rib implant.</description>
+		<descriptionHyperlinks>
+			<ThingDef>MedicalRibEnigmatic</ThingDef>
+			<HediffDef>MedicalRibEnigmatic</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Removing enigmatic rib implant.</jobString>
+		<removesHediff>MedicalRibEnigmatic</removesHediff>
+	</RecipeDef>
+
+	<!-- Drugged rib -->
+
+	<HediffDef ParentName="addedPartBionicsRib">
+		<defName>DruggedRibEnigmatic</defName>
+		<label>drugged enigmatic rib</label>
+		<labelNoun>a drugged enigmatic rib</labelNoun>
+		<description>An installed drugged enigmatic rib implant.</description>
+		<descriptionHyperlinks>
+			<ThingDef>DruggedRibEnigmatic</ThingDef>
+		</descriptionHyperlinks>
+		<spawnThingOnRemoved>DruggedRibEnigmatic</spawnThingOnRemoved>
+		<hediffClass>Hediff_Implant</hediffClass>
+		<stages>
+			<li>
+				<capMods>
+					<li>
+						<capacity>Consciousness</capacity>
+						<offset>-0.35</offset>
+					</li>
+				</capMods>
+			</li>
+		</stages>
+		<tags>
+			<li>DruggedRib</li>
+		</tags>
+	</HediffDef>
+
+	<ThingDef ParentName="EPIA_BodyPartBionicRibBaseBAOTCEnigmatic">
+		<defName>DruggedRibEnigmatic</defName>
+		<label>drugged rib enigmatic implant</label>
+		<description>An artificial enigmatic rib, equipped with little flake-dispensers to keep the user happy. Side effects of feeling high and unfocused.</description>
+		<descriptionHyperlinks>
+			<RecipeDef>InstallDruggedRib</RecipeDef>
+		</descriptionHyperlinks>
+		<costList>
+			<BOR_Tenebrite>10</BOR_Tenebrite>
+			<BOR_ComponentIII>1</BOR_ComponentIII>
+			<Neutroamine>3</Neutroamine>
+			<SNS_Hedonia>20</SNS_Hedonia>
+		</costList>
+		<statBases>
+			<Mass>0.3</Mass>
+		</statBases>
+	</ThingDef>
+
+
+	<RecipeDef ParentName="SurgeryInstallImplantBaseBAOTCEnigmatic">
+		<defName>InstallDruggedRibEnigmatic</defName>
+		<label>install drugged enigmatic rib implant</label>
+		<description>Installs a drugged enigmatic rib implant.</description>
+		<descriptionHyperlinks>
+			<ThingDef>DruggedRibEnigmatic</ThingDef>
+			<HediffDef>DruggedRibEnigmatic</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing a enigmatic drugged rib.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>DruggedRibEnigmatic</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>DruggedRibEnigmatic</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Ribcage</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>DruggedRibEnigmatic</addsHediff>
+		<uiIconThing>DruggedRibEnigmatic</uiIconThing>
+		<incompatibleWithHediffTags>
+			<li>DruggedRib</li>
+			<li>LuciferiumRib</li>
+		</incompatibleWithHediffTags>
+	</RecipeDef>
+
+	<RecipeDef ParentName="SurgeryRemoveImplantBase">
+		<defName>RemoveDruggedRibEnigmatic</defName>
+		<label>remove drugged enigmatic rib implant</label>
+		<description>Remove a drugged enigmatic rib implant.</description>
+		<descriptionHyperlinks>
+			<ThingDef>DruggedRibEnigmatic</ThingDef>
+			<HediffDef>DruggedRibEnigmatic</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Removing enigmatic rib implant.</jobString>
+		<removesHediff>DruggedRibEnigmatic</removesHediff>
+	</RecipeDef>
+
+	<!-- Adrenaline rib -->
+
+	<HediffDef ParentName="addedPartBionicsRib">
+		<defName>AdrenalineRibEnigmatic</defName>
+		<label>enigmatic adrenaline rib</label>
+		<labelNoun>a enigmatic adrenaline rib</labelNoun>
+		<description>An installed enigmatic adrenaline rib implant.</description>
+		<descriptionHyperlinks>
+			<ThingDef>AdrenalineRibEnigmatic</ThingDef>
+		</descriptionHyperlinks>
+		<spawnThingOnRemoved>AdrenalineRibEnigmatic</spawnThingOnRemoved>
+		<hediffClass>Hediff_Implant</hediffClass>
+		<stages>
+			<li>
+				<capMods>
+					<li>
+						<capacity>Moving</capacity>
+						<offset>0.45</offset>
+					</li>
+				</capMods>
+			</li>
+		</stages>
+		<tags>
+			<li>AdrenalineRib</li>
+		</tags>
+	</HediffDef>
+
+	<ThingDef ParentName="EPIA_BodyPartBionicRibBaseBAOTCEnigmatic">
+		<defName>AdrenalineRibEnigmatic</defName>
+		<label>adrenaline enigmatic rib implant</label>
+		<description>An artificial enigmatic rib, equipped with little adrenaline-dispensers to keep the user fit and awake.</description>
+		<descriptionHyperlinks>
+			<RecipeDef>InstallAdrenalineRibEnigmatic</RecipeDef>
+		</descriptionHyperlinks>
+		<costList>
+			<BOR_Tenebrite>10</BOR_Tenebrite>
+			<BOR_ComponentIII>1</BOR_ComponentIII>
+			<Neutroamine>3</Neutroamine>
+			<BOR_Gallop>5</BOR_Gallop>
+		</costList>
+		<statBases>
+			<Mass>0.3</Mass>
+		</statBases>
+	</ThingDef>
+
+
+	<RecipeDef ParentName="SurgeryInstallImplantBaseBAOTCEnigmatic">
+		<defName>InstallAdrenalineRibEnigmatic</defName>
+		<label>install a enigmatic adrenaline rib implant</label>
+		<description>Installs a a enigmatic adrenaline rib implant.</description>
+		<descriptionHyperlinks>
+			<ThingDef>AdrenalineRibEnigmatic</ThingDef>
+			<HediffDef>AdrenalineRibEnigmatic</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing a enigmatic adrenaline rib.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>AdrenalineRibEnigmatic</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>AdrenalineRibEnigmatic</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Ribcage</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>AdrenalineRibEnigmatic</addsHediff>
+		<uiIconThing>AdrenalineRibEnigmatic</uiIconThing>
+		<incompatibleWithHediffTags>
+			<li>AdrenalineRib</li>
+			<li>LuciferiumRib</li>
+		</incompatibleWithHediffTags>
+	</RecipeDef>
+
+	<RecipeDef ParentName="SurgeryRemoveImplantBase">
+		<defName>RemoveAdrenalineRibEnigmatic</defName>
+		<label>remove enigmatic adrenaline rib implant</label>
+		<description>Remove a enigmatic adrenaline rib implant.</description>
+		<descriptionHyperlinks>
+			<ThingDef>AdrenalineRibEnigmatic</ThingDef>
+			<HediffDef>AdrenalineRibEnigmatic</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Removing a enigmatic rib implant.</jobString>
+		<removesHediff>AdrenalineRibEnigmatic</removesHediff>
+	</RecipeDef>
+
+	<!-- Painkiller rib -->
+
+	<HediffDef ParentName="addedPartBionicsRib">
+		<defName>PainkillerRibEnigmatic</defName>
+		<label>enigmatic painkiller rib</label>
+		<labelNoun>a enigmatic painkiller rib</labelNoun>
+		<description>An installed enigmatic painkiller rib implant.</description>
+		<descriptionHyperlinks>
+			<ThingDef>PainkillerRibEnigmatic</ThingDef>
+		</descriptionHyperlinks>
+		<spawnThingOnRemoved>PainkillerRibEnigmatic</spawnThingOnRemoved>
+		<hediffClass>Hediff_Implant</hediffClass>
+		<stages>
+			<li>
+				<painOffset>-0.48</painOffset>
+				<painFactor>0.65</painFactor>
+			</li>
+		</stages>
+		<tags>
+			<li>PainkillerRib</li>
+		</tags>
+	</HediffDef>
+
+	<ThingDef ParentName="EPIA_BodyPartBionicRibBaseBAOTCEnigmatic">
+		<defName>PainkillerRibEnigmatic</defName>
+		<label>enigmatic painkiller rib implant</label>
+		<description>An artificial enigmatic rib, equipped with little morphine-dispensers to numb the user's pain.</description>
+		<descriptionHyperlinks>
+			<RecipeDef>InstallPainkillerRibEnigmatic</RecipeDef>
+		</descriptionHyperlinks>
+		<costList>
+			<BOR_Tenebrite>10</BOR_Tenebrite>
+			<BOR_ComponentIII>1</BOR_ComponentIII>
+			<Neutroamine>3</Neutroamine>
+			<GoJuice>5</GoJuice>
+			<SNS_Hedonia>5</SNS_Hedonia>
+		</costList>
+		<statBases>
+			<Mass>0.3</Mass>
+		</statBases>
+	</ThingDef>
+
+	<RecipeDef ParentName="SurgeryInstallImplantBaseBAOTCEnigmatic">
+		<defName>InstallPainkillerRibEnigmatic</defName>
+		<label>install a enigmatic painkiller rib implant</label>
+		<description>Installs a enigmatic painkiller rib implant.</description>
+		<descriptionHyperlinks>
+			<ThingDef>PainkillerRibEnigmatic</ThingDef>
+			<HediffDef>PainkillerRibEnigmatic</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing a enigmatic painkiller rib.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>PainkillerRibEnigmatic</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>PainkillerRibEnigmatic</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Ribcage</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>PainkillerRibEnigmatic</addsHediff>
+		<uiIconThing>PainkillerRibEnigmatic</uiIconThing>
+		<incompatibleWithHediffTags>
+			<li>PainkillerRib</li>
+			<li>LuciferiumRib</li>
+		</incompatibleWithHediffTags>
+	</RecipeDef>
+
+	<RecipeDef ParentName="SurgeryRemoveImplantBase">
+		<defName>RemovePainkillerRibEnigmatic</defName>
+		<label>remove a enigmatic painkiller rib implant</label>
+		<description>Remove a enigmatic painkiller rib implant.</description>
+		<descriptionHyperlinks>
+			<ThingDef>PainkillerRibEnigmatic</ThingDef>
+			<HediffDef>PainkillerRibEnigmatic</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Removing a enigmatic rib implant.</jobString>
+		<removesHediff>PainkillerRibEnigmatic</removesHediff>
+	</RecipeDef>
+
+	<!-- Heater rib -->
+
+	<HediffDef ParentName="addedPartBionicsRib">
+		<defName>HeaterRibEnigmatic</defName>
+		<label>enigmatic heating rib</label>
+		<description>An installed enigmatic heater rib implant.</description>
+		<descriptionHyperlinks>
+			<ThingDef>HeaterRibEnigmatic</ThingDef>
+		</descriptionHyperlinks>
+		<spawnThingOnRemoved>HeaterRibEnigmatic</spawnThingOnRemoved>
+		<hediffClass>Hediff_Implant</hediffClass>
+		<stages>
+			<li>
+				<statOffsets>
+					<ComfyTemperatureMax>-10</ComfyTemperatureMax>
+					<ComfyTemperatureMin>-50</ComfyTemperatureMin>
+				</statOffsets>
+			</li>
+		</stages>
+		<tags>
+			<li>HeaterRib</li>
+		</tags>
+	</HediffDef>
+
+	<ThingDef ParentName="EPIA_BodyPartBionicRibBaseBAOTCEnigmatic">
+		<defName>HeaterRibEnigmatic</defName>
+		<label>enigmatic heating rib implant</label>
+		<description>An artificial enigmatic rib, containing a micro-reactor powered, heat inducing spiral to warm the body from the inside.</description>
+		<descriptionHyperlinks>
+			<RecipeDef>InstallHeaterRibEnigmatic</RecipeDef>
+		</descriptionHyperlinks>
+		<costList>
+			<BOR_Tenebrite>10</BOR_Tenebrite>
+			<BOR_Sunsteel>10</BOR_Sunsteel>
+			<BOR_ComponentIII>1</BOR_ComponentIII>
+		</costList>
+		<statBases>
+			<Mass>0.3</Mass>
+		</statBases>
+	</ThingDef>
+
+
+	<RecipeDef ParentName="SurgeryInstallImplantBaseBAOTCEnigmatic">
+		<defName>InstallHeaterRibEnigmatic</defName>
+		<label>install as tellar heating rib implant</label>
+		<description>Installs a enigmatic heating rib implant.</description>
+		<descriptionHyperlinks>
+			<ThingDef>HeaterRibEnigmatic</ThingDef>
+			<HediffDef>HeaterRibEnigmatic</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing a enigmatic heating rib.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>HeaterRibEnigmatic</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>HeaterRibEnigmatic</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Ribcage</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>HeaterRibEnigmatic</addsHediff>
+		<uiIconThing>HeaterRibEnigmatic</uiIconThing>
+		<incompatibleWithHediffTags>
+			<li>HeaterRib</li>
+			<li>LuciferiumRib</li>
+		</incompatibleWithHediffTags>
+	</RecipeDef>
+
+	<RecipeDef ParentName="SurgeryRemoveImplantBase">
+		<defName>RemoveHeaterRibEnigmatic</defName>
+		<label>remove a enigmatic heating rib implant</label>
+		<description>Remove a enigmatic heating rib implant.</description>
+		<descriptionHyperlinks>
+			<ThingDef>HeaterRibEnigmatic</ThingDef>
+			<HediffDef>HeaterRibEnigmatic</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Removing enigmatic rib implant.</jobString>
+		<removesHediff>HeaterRibEnigmatic</removesHediff>
+	</RecipeDef>
+
+	<!-- Cooler rib -->
+
+	<HediffDef ParentName="addedPartBionicsRib">
+		<defName>CoolerRibEnigmatic</defName>
+		<label>enigmatic cooling rib</label>
+		<description>An installed enigmatic cooler rib implant.</description>
+		<descriptionHyperlinks>
+			<ThingDef>CoolerRibEnigmatic</ThingDef>
+		</descriptionHyperlinks>
+		<spawnThingOnRemoved>CoolerRibEnigmatic</spawnThingOnRemoved>
+		<hediffClass>Hediff_Implant</hediffClass>
+		<stages>
+			<li>
+				<statOffsets>
+					<ComfyTemperatureMax>50</ComfyTemperatureMax>
+					<ComfyTemperatureMin>10</ComfyTemperatureMin>
+				</statOffsets>
+			</li>
+		</stages>
+		<tags>
+			<li>CoolerRibEnigmatic</li>
+		</tags>
+	</HediffDef>
+
+	<ThingDef ParentName="EPIA_BodyPartBionicRibBaseBAOTCEnigmatic">
+		<defName>CoolerRibEnigmatic</defName>
+		<label>enigmatic cooling rib implant</label>
+		<description>An artificial enigmatic rib with a micro coolant system, increasing the effectiveness of heat exchange via dermal exhausts.</description>
+		<descriptionHyperlinks>
+			<RecipeDef>InstallCoolerRibEnigmatic</RecipeDef>
+		</descriptionHyperlinks>
+		<costList>
+			<BOR_Tenebrite>10</BOR_Tenebrite>
+			<BOR_Sunsteel>10</BOR_Sunsteel>
+			<BOR_ComponentIII>1</BOR_ComponentIII>
+		</costList>
+		<statBases>
+			<Mass>0.3</Mass>
+		</statBases>
+	</ThingDef>
+
+	<RecipeDef ParentName="SurgeryInstallImplantBaseBAOTCEnigmatic">
+		<defName>InstallCoolerRibEnigmatic</defName>
+		<label>install a enigmaticcooling rib implant</label>
+		<description>Installs a enigmatic cooling rib implant.</description>
+		<descriptionHyperlinks>
+			<ThingDef>CoolerRibEnigmatic</ThingDef>
+			<HediffDef>CoolerRibEnigmatic</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing a enigmatic cooling rib.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>CoolerRibEnigmatic</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>CoolerRibEnigmatic</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Ribcage</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>CoolerRibEnigmatic</addsHediff>
+		<uiIconThing>CoolerRibEnigmatic</uiIconThing>
+		<incompatibleWithHediffTags>
+			<li>CoolerRib</li>
+			<li>LuciferiumRib</li>
+		</incompatibleWithHediffTags>
+	</RecipeDef>
+
+	<RecipeDef ParentName="SurgeryRemoveImplantBase">
+		<defName>RemoveCoolerRibEnigmatic</defName>
+		<label>remove a enigmatic cooling rib implant</label>
+		<description>Remove a enigmatic cooling rib implant.</description>
+		<descriptionHyperlinks>
+			<ThingDef>CoolerRibEnigmatic</ThingDef>
+			<HediffDef>CoolerRibEnigmatic</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Removing a enigmatic rib implant.</jobString>
+		<removesHediff>CoolerRibEnigmatic</removesHediff>
+	</RecipeDef>
+
+	<!-- Coagulator rib -->
+
+	<HediffDef ParentName="addedPartBionicsRib">
+		<defName>CoagulatorRibEnigmatic</defName>
+		<label>enigmatic coagulator rib</label>
+		<description>An installed enigmatic coagulator rib implant.</description>
+		<descriptionHyperlinks>
+			<ThingDef>CoagulatorRibEnigmatic</ThingDef>
+		</descriptionHyperlinks>
+		<spawnThingOnRemoved>CoagulatorRibEnigmatic</spawnThingOnRemoved>
+		<hediffClass>Hediff_Implant</hediffClass>
+		<stages>
+			<li>
+				<totalBleedFactor>0.45</totalBleedFactor>
+			</li>
+		</stages>
+		<tags>
+			<li>CoagulatorRib</li>
+		</tags>
+	</HediffDef>
+
+	<ThingDef ParentName="EPIA_BodyPartBionicRibBaseBAOTCEnigmatic">
+		<defName>CoagulatorRibEnigmatic</defName>
+		<label>enigmatic coagulator rib implant</label>
+		<description>An artificial enigmatic rib, equipped with little coagulator-dispensers that responds to blood loss, which will make the blood clot easier, in an effort to reduce bleeding.</description>
+		<descriptionHyperlinks>
+			<RecipeDef>InstallCoagulatorRibEnigmatic</RecipeDef>
+		</descriptionHyperlinks>
+		<costList>
+			<BOR_Tenebrite>10</BOR_Tenebrite>
+			<BOR_ComponentIII>1</BOR_ComponentIII>
+			<Neutroamine>3</Neutroamine>
+			<SNS_Medicine_GenIII>5</SNS_Medicine_GenIII>
+		</costList>
+		<statBases>
+			<Mass>0.3</Mass>
+		</statBases>
+	</ThingDef>
+
+	<RecipeDef ParentName="SurgeryInstallImplantBaseBAOTCEnigmatic">
+		<defName>InstallCoagulatorRibEnigmatic</defName>
+		<label>install a enigmatic coagulator rib implant</label>
+		<description>Installs a enigmatic coagulator rib implant.</description>
+		<descriptionHyperlinks>
+			<ThingDef>CoagulatorRibEnigmatic</ThingDef>
+			<HediffDef>CoagulatorRibEnigmatic</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing a enigmatic coagulator rib.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>CoagulatorRibEnigmatic</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>CoagulatorRibEnigmatic</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Ribcage</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>CoagulatorRibEnigmatic</addsHediff>
+		<uiIconThing>CoagulatorRibEnigmatic</uiIconThing>
+		<incompatibleWithHediffTags>
+			<li>CoagulatorRib</li>
+			<li>LuciferiumRib</li>
+		</incompatibleWithHediffTags>
+	</RecipeDef>
+
+	<RecipeDef ParentName="SurgeryRemoveImplantBase">
+		<defName>RemoveCoagulatorRibEnigmatic</defName>
+		<label>remove a enigmatic coagulator rib implant</label>
+		<description>Remove a enigmatic coagulator rib implant.</description>
+		<descriptionHyperlinks>
+			<ThingDef>CoagulatorRibEnigmatic</ThingDef>
+			<HediffDef>CoagulatorRibEnigmatic</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Removing a enigmatic rib implant.</jobString>
+		<removesHediff>CoagulatorRibEnigmatic</removesHediff>
+	</RecipeDef>
+
+	<!-- Respiration rib -->
+
+	<HediffDef ParentName="addedPartBionicsRib">
+		<defName>RespirationRibEnigmatic</defName>
+		<label>enigmatic respiration rib</label>
+		<description>An installed enigmatic respiration rib implant.</description>
+		<descriptionHyperlinks>
+			<ThingDef>RespirationRibEnigmatic</ThingDef>
+		</descriptionHyperlinks>
+		<spawnThingOnRemoved>RespirationRibEnigmatic</spawnThingOnRemoved>
+		<hediffClass>Hediff_Implant</hediffClass>
+		<stages>
+			<li>
+				<statOffsets>
+					<MentalBreakThreshold>-0.3</MentalBreakThreshold>
+				</statOffsets>
+				<capMods>
+					<li>
+						<capacity>Breathing</capacity>
+						<offset>0.45</offset>
+					</li>
+				</capMods>
+			</li>
+		</stages>
+		<tags>
+			<li>RespirationRib</li>
+		</tags>
+	</HediffDef>
+
+	<ThingDef ParentName="EPIA_BodyPartBionicRibBaseBAOTCEnigmatic">
+		<defName>RespirationRibEnigmatic</defName>
+		<label>enigmatic respiration rib implant</label>
+		<description>An artificial enigmatic rib, that works with the diaphragm to assist with regulating breathing pattern for increased efficiency and coping with stress.</description>
+		<descriptionHyperlinks>
+			<RecipeDef>InstallRespirationRibEnigmatic</RecipeDef>
+		</descriptionHyperlinks>
+		<costList>
+			<BOR_Tenebrite>20</BOR_Tenebrite>
+			<BOR_ComponentIII>3</BOR_ComponentIII>
+		</costList>
+		<statBases>
+			<Mass>0.6</Mass>
+		</statBases>
+	</ThingDef>
+
+	<RecipeDef ParentName="SurgeryInstallImplantBaseBAOTCEnigmatic">
+		<defName>InstallRespirationRibEnigmatic</defName>
+		<label>install a enigmatic respiration rib implant</label>
+		<description>Installs a enigmatic respiration rib implant.</description>
+		<descriptionHyperlinks>
+			<ThingDef>RespirationRibEnigmatic</ThingDef>
+			<HediffDef>RespirationRibEnigmatic</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing a enigmatic respiration rib.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>RespirationRibEnigmatic</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>RespirationRibEnigmatic</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Ribcage</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>RespirationRibEnigmatic</addsHediff>
+		<uiIconThing>RespirationRibEnigmatic</uiIconThing>
+		<incompatibleWithHediffTags>
+			<li>RespirationRib</li>
+			<li>LuciferiumRib</li>
+		</incompatibleWithHediffTags>
+	</RecipeDef>
+
+	<RecipeDef ParentName="SurgeryRemoveImplantBase">
+		<defName>RemoveRespirationRibEnigmatic</defName>
+		<label>remove a enigmatic respiration rib implant</label>
+		<description>Remove a enigmatic respiration rib implant.</description>
+		<descriptionHyperlinks>
+			<ThingDef>RespirationRibEnigmatic</ThingDef>
+			<HediffDef>RespirationRibEnigmatic</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Removing a enigmatic rib implant.</jobString>
+		<removesHediff>RespirationRibEnigmatic</removesHediff>
+	</RecipeDef>
+
+	<!-- Wake-up rib -->
+
+	<HediffDef ParentName="addedPartBionicsRib">
+		<defName>WakeUpRibEnigmatic</defName>
+		<label>enigmatic STIM_VII rib</label>
+		<description>An installed enigmatic STIM_VII rib implant.</description>
+		<descriptionHyperlinks>
+			<ThingDef>WakeUpRibEnigmatic</ThingDef>
+		</descriptionHyperlinks>
+		<spawnThingOnRemoved>WakeUpRibEnigmatic</spawnThingOnRemoved>
+		<hediffClass>Hediff_Implant</hediffClass>
+		<stages>
+			<li>
+				<restFallFactor>0.55</restFallFactor>
+				<statOffsets>
+					<MentalBreakThreshold>0.15</MentalBreakThreshold>
+				</statOffsets>
+				<capMods>
+					<li>
+						<capacity>Consciousness</capacity>
+						<offset>0.4</offset>
+					</li>
+				</capMods>
+			</li>
+		</stages>
+		<tags>
+			<li>WakeUpRib</li>
+		</tags>
+	</HediffDef>
+
+	<ThingDef ParentName="EPIA_BodyPartBionicRibBaseBAOTCEnigmatic">
+		<defName>WakeUpRibEnigmatic</defName>
+		<label>enigmatic STIM_VII rib implant</label>
+		<description>An artificial enigmatic rib, equipped with little STIM_VII-dispensers to keep the user awake and focused.</description>
+		<descriptionHyperlinks>
+			<RecipeDef>InstallWakeUpRibEnigmatic</RecipeDef>
+		</descriptionHyperlinks>
+		<costList>
+			<BOR_Tenebrite>10</BOR_Tenebrite>
+			<BOR_ComponentIII>1</BOR_ComponentIII>
+			<Neutroamine>3</Neutroamine>
+			<BOR_Adreamoline>5</BOR_Adreamoline>
+		</costList>
+		<statBases>
+			<Mass>0.6</Mass>
+		</statBases>
+	</ThingDef>
+
+	<RecipeDef ParentName="SurgeryInstallImplantBaseBAOTCEnigmatic">
+		<defName>InstallWakeUpRibEnigmatic</defName>
+		<label>install a enigmatic STIM_VII rib implant</label>
+		<description>Installs a enigmatic STIM_VII rib implant.</description>
+		<descriptionHyperlinks>
+			<ThingDef>WakeUpRibEnigmatic</ThingDef>
+			<HediffDef>WakeUpRibEnigmatic</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing a enigmatic STIM_VII rib.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>WakeUpRibEnigmatic</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>WakeUpRibEnigmatic</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Ribcage</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>WakeUpRibEnigmatic</addsHediff>
+		<uiIconThing>WakeUpRibEnigmatic</uiIconThing>
+		<incompatibleWithHediffTags>
+			<li>WakeUpRib</li>
+			<li>LuciferiumRib</li>
+		</incompatibleWithHediffTags>
+	</RecipeDef>
+
+	<RecipeDef ParentName="SurgeryRemoveImplantBase">
+		<defName>RemoveWakeUpRibEnigmatic</defName>
+		<label>remove a enigmatic STIM_VII rib implant</label>
+		<description>Remove a enigmatic STIM_VII rib implant.</description>
+		<descriptionHyperlinks>
+			<ThingDef>WakeUpRibEnigmatic</ThingDef>
+			<HediffDef>WakeUpRibEnigmatic</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Removing a enigmatic rib implant.</jobString>
+		<removesHediff>WakeUpRibEnigmatic</removesHediff>
+	</RecipeDef>
+
+</Defs>

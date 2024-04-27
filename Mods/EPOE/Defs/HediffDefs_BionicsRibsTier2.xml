@@ -1,0 +1,871 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+	<ThingDef Name="EPIA_BodyPartBionicRibBaseBAOTCCosmic" ParentName="EPIASyntheticBase" Abstract="True">
+		<recipeMaker>
+			<soundWorking>Recipe_Smith</soundWorking>
+			<recipeUsers Inherit="False">
+				<li>Table_SNS_BionicCraftingStation_GenII</li>
+			</recipeUsers>
+			<researchPrerequisite>RibReplacements</researchPrerequisite>
+			<skillRequirements>
+				<Crafting>16</Crafting>
+			</skillRequirements>
+		</recipeMaker>
+		<statBases>
+			<WorkToMake>15000</WorkToMake>
+			<MarketValue>30000</MarketValue>
+		</statBases>
+	</ThingDef>
+
+	<RecipeDef ParentName="SurgeryInstallImplantBase" Name="SurgeryInstallImplantBaseBAOTCCosmic" Abstract="True">
+		<recipeUsers>
+			<li>Human</li>
+		</recipeUsers>
+		<skillRequirements>
+			<Medicine>16</Medicine>
+		</skillRequirements>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>SNS_Medicine_GenII</li>
+					</thingDefs>
+				</filter>
+				<count>3</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Picoclusters</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>SNS_Medicine_GenII</li>
+				<li>BOR_Picoclusters</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+	</RecipeDef>
+
+	<!-- Medical rib -->
+
+	<HediffDef ParentName="addedPartBionicsRib">
+		<defName>MedicalRibCosmic</defName>
+		<label>cosmic medical rib</label>
+		<labelNoun>a cosmic medical rib</labelNoun>
+		<description>An installed cosmic medical rib implant.</description>
+		<descriptionHyperlinks>
+			<ThingDef>MedicalRibCosmic</ThingDef>
+		</descriptionHyperlinks>
+		<spawnThingOnRemoved>MedicalRibCosmic</spawnThingOnRemoved>
+		<hediffClass>Hediff_Implant</hediffClass>
+		<stages>
+			<li>
+				<capMods>
+					<li>
+						<capacity>BloodFiltration</capacity>
+						<offset>0.25</offset>
+					</li>
+				</capMods>
+			</li>
+		</stages>
+		<tags>
+			<li>MedicalRib</li>
+		</tags>
+	</HediffDef>
+
+	<ThingDef ParentName="EPIA_BodyPartBionicRibBaseBAOTCCosmic">
+		<defName>MedicalRibCosmic</defName>
+		<label>medical cosmic rib implant</label>
+		<description>An artificial cosmic rib, equipped with little blood filters and antibiotics-dispensers to keep the user healthy.</description>
+		<descriptionHyperlinks>
+			<RecipeDef>InstallMedicalRibCosmic</RecipeDef>
+		</descriptionHyperlinks>
+		<costList>
+			<BOR_QuasarAlloy>10</BOR_QuasarAlloy>
+			<BOR_ComponentII>1</BOR_ComponentII>
+			<Neutroamine>3</Neutroamine>
+			<SNS_Aeterno>10</SNS_Aeterno>
+		</costList>
+		<statBases>
+			<Mass>0.3</Mass>
+		</statBases>
+	</ThingDef>
+
+
+	<RecipeDef ParentName="SurgeryInstallImplantBaseBAOTCCosmic">
+		<defName>InstallMedicalRibCosmic</defName>
+		<label>install cosmic medical rib implant</label>
+		<description>Installs a cosmic medical rib implant.</description>
+		<descriptionHyperlinks>
+			<ThingDef>MedicalRibCosmic</ThingDef>
+			<HediffDef>MedicalRibCosmic</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing a cosmic medical rib.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>MedicalRibCosmic</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>MedicalRibCosmic</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Ribcage</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>MedicalRibCosmic</addsHediff>
+		<uiIconThing>MedicalRibCosmic</uiIconThing>
+		<incompatibleWithHediffTags>
+			<li>MedicalRib</li>
+			<li>LuciferiumRib</li>
+		</incompatibleWithHediffTags>
+	</RecipeDef>
+
+	<RecipeDef ParentName="SurgeryRemoveImplantBase">
+		<defName>RemoveMedicalRibCosmic</defName>
+		<label>remove cosmic medical rib implant</label>
+		<description>Remove a cosmic medical rib implant.</description>
+		<descriptionHyperlinks>
+			<ThingDef>MedicalRibCosmic</ThingDef>
+			<HediffDef>MedicalRibCosmic</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Removing cosmic rib implant.</jobString>
+		<removesHediff>MedicalRibCosmic</removesHediff>
+	</RecipeDef>
+
+	<!-- Drugged rib -->
+
+	<HediffDef ParentName="addedPartBionicsRib">
+		<defName>DruggedRibCosmic</defName>
+		<label>drugged cosmic rib</label>
+		<labelNoun>a drugged cosmic rib</labelNoun>
+		<description>An installed drugged cosmic rib implant.</description>
+		<descriptionHyperlinks>
+			<ThingDef>DruggedRibCosmic</ThingDef>
+		</descriptionHyperlinks>
+		<spawnThingOnRemoved>DruggedRibCosmic</spawnThingOnRemoved>
+		<hediffClass>Hediff_Implant</hediffClass>
+		<stages>
+			<li>
+				<capMods>
+					<li>
+						<capacity>Consciousness</capacity>
+						<offset>-0.25</offset>
+					</li>
+				</capMods>
+			</li>
+		</stages>
+		<tags>
+			<li>DruggedRib</li>
+		</tags>
+	</HediffDef>
+
+	<ThingDef ParentName="EPIA_BodyPartBionicRibBaseBAOTCCosmic">
+		<defName>DruggedRibCosmic</defName>
+		<label>drugged rib cosmic implant</label>
+		<description>An artificial cosmic rib, equipped with little flake-dispensers to keep the user happy. Side effects of feeling high and unfocused.</description>
+		<descriptionHyperlinks>
+			<RecipeDef>InstallDruggedRib</RecipeDef>
+		</descriptionHyperlinks>
+		<costList>
+			<BOR_QuasarAlloy>10</BOR_QuasarAlloy>
+			<BOR_ComponentII>1</BOR_ComponentII>
+			<Neutroamine>3</Neutroamine>
+			<SNS_Lux>20</SNS_Lux>
+		</costList>
+		<statBases>
+			<Mass>0.3</Mass>
+		</statBases>
+	</ThingDef>
+
+
+	<RecipeDef ParentName="SurgeryInstallImplantBaseBAOTCCosmic">
+		<defName>InstallDruggedRibCosmic</defName>
+		<label>install drugged cosmic rib implant</label>
+		<description>Installs a drugged cosmic rib implant.</description>
+		<descriptionHyperlinks>
+			<ThingDef>DruggedRibCosmic</ThingDef>
+			<HediffDef>DruggedRibCosmic</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing a cosmic drugged rib.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>DruggedRibCosmic</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>DruggedRibCosmic</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Ribcage</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>DruggedRibCosmic</addsHediff>
+		<uiIconThing>DruggedRibCosmic</uiIconThing>
+		<incompatibleWithHediffTags>
+			<li>DruggedRib</li>
+			<li>LuciferiumRib</li>
+		</incompatibleWithHediffTags>
+	</RecipeDef>
+
+	<RecipeDef ParentName="SurgeryRemoveImplantBase">
+		<defName>RemoveDruggedRibCosmic</defName>
+		<label>remove drugged cosmic rib implant</label>
+		<description>Remove a drugged cosmic rib implant.</description>
+		<descriptionHyperlinks>
+			<ThingDef>DruggedRibCosmic</ThingDef>
+			<HediffDef>DruggedRibCosmic</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Removing cosmic rib implant.</jobString>
+		<removesHediff>DruggedRibCosmic</removesHediff>
+	</RecipeDef>
+
+	<!-- Adrenaline rib -->
+
+	<HediffDef ParentName="addedPartBionicsRib">
+		<defName>AdrenalineRibCosmic</defName>
+		<label>cosmic adrenaline rib</label>
+		<labelNoun>a cosmic adrenaline rib</labelNoun>
+		<description>An installed cosmic adrenaline rib implant.</description>
+		<descriptionHyperlinks>
+			<ThingDef>AdrenalineRibCosmic</ThingDef>
+		</descriptionHyperlinks>
+		<spawnThingOnRemoved>AdrenalineRibCosmic</spawnThingOnRemoved>
+		<hediffClass>Hediff_Implant</hediffClass>
+		<stages>
+			<li>
+				<capMods>
+					<li>
+						<capacity>Moving</capacity>
+						<offset>0.25</offset>
+					</li>
+				</capMods>
+			</li>
+		</stages>
+		<tags>
+			<li>AdrenalineRib</li>
+		</tags>
+	</HediffDef>
+
+	<ThingDef ParentName="EPIA_BodyPartBionicRibBaseBAOTCCosmic">
+		<defName>AdrenalineRibCosmic</defName>
+		<label>adrenaline cosmic rib implant</label>
+		<description>An artificial cosmic rib, equipped with little adrenaline-dispensers to keep the user fit and awake.</description>
+		<descriptionHyperlinks>
+			<RecipeDef>InstallAdrenalineRibCosmic</RecipeDef>
+		</descriptionHyperlinks>
+		<costList>
+			<BOR_QuasarAlloy>10</BOR_QuasarAlloy>
+			<BOR_ComponentII>1</BOR_ComponentII>
+			<Neutroamine>3</Neutroamine>
+			<BOR_Canter>5</BOR_Canter>
+		</costList>
+		<statBases>
+			<Mass>0.3</Mass>
+		</statBases>
+	</ThingDef>
+
+
+	<RecipeDef ParentName="SurgeryInstallImplantBaseBAOTCCosmic">
+		<defName>InstallAdrenalineRibCosmic</defName>
+		<label>install a cosmic adrenaline rib implant</label>
+		<description>Installs a a cosmic adrenaline rib implant.</description>
+		<descriptionHyperlinks>
+			<ThingDef>AdrenalineRibCosmic</ThingDef>
+			<HediffDef>AdrenalineRibCosmic</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing a cosmic adrenaline rib.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>AdrenalineRibCosmic</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>AdrenalineRibCosmic</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Ribcage</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>AdrenalineRibCosmic</addsHediff>
+		<uiIconThing>AdrenalineRibCosmic</uiIconThing>
+		<incompatibleWithHediffTags>
+			<li>AdrenalineRib</li>
+			<li>LuciferiumRib</li>
+		</incompatibleWithHediffTags>
+	</RecipeDef>
+
+	<RecipeDef ParentName="SurgeryRemoveImplantBase">
+		<defName>RemoveAdrenalineRibCosmic</defName>
+		<label>remove cosmic adrenaline rib implant</label>
+		<description>Remove a cosmic adrenaline rib implant.</description>
+		<descriptionHyperlinks>
+			<ThingDef>AdrenalineRibCosmic</ThingDef>
+			<HediffDef>AdrenalineRibCosmic</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Removing a cosmic rib implant.</jobString>
+		<removesHediff>AdrenalineRibCosmic</removesHediff>
+	</RecipeDef>
+
+	<!-- Painkiller rib -->
+
+	<HediffDef ParentName="addedPartBionicsRib">
+		<defName>PainkillerRibCosmic</defName>
+		<label>cosmic painkiller rib</label>
+		<labelNoun>a cosmic painkiller rib</labelNoun>
+		<description>An installed cosmic painkiller rib implant.</description>
+		<descriptionHyperlinks>
+			<ThingDef>PainkillerRibCosmic</ThingDef>
+		</descriptionHyperlinks>
+		<spawnThingOnRemoved>PainkillerRibCosmic</spawnThingOnRemoved>
+		<hediffClass>Hediff_Implant</hediffClass>
+		<stages>
+			<li>
+				<painOffset>-0.24</painOffset>
+				<painFactor>0.75</painFactor>
+			</li>
+		</stages>
+		<tags>
+			<li>PainkillerRib</li>
+		</tags>
+	</HediffDef>
+
+	<ThingDef ParentName="EPIA_BodyPartBionicRibBaseBAOTCCosmic">
+		<defName>PainkillerRibCosmic</defName>
+		<label>cosmic painkiller rib implant</label>
+		<description>An artificial cosmic rib, equipped with little morphine-dispensers to numb the user's pain.</description>
+		<descriptionHyperlinks>
+			<RecipeDef>InstallPainkillerRibCosmic</RecipeDef>
+		</descriptionHyperlinks>
+		<costList>
+			<BOR_QuasarAlloy>10</BOR_QuasarAlloy>
+			<BOR_ComponentII>1</BOR_ComponentII>
+			<Neutroamine>3</Neutroamine>
+			<GoJuice>5</GoJuice>
+			<SNS_Lux>5</SNS_Lux>
+		</costList>
+		<statBases>
+			<Mass>0.3</Mass>
+		</statBases>
+	</ThingDef>
+
+	<RecipeDef ParentName="SurgeryInstallImplantBaseBAOTCCosmic">
+		<defName>InstallPainkillerRibCosmic</defName>
+		<label>install a cosmic painkiller rib implant</label>
+		<description>Installs a cosmic painkiller rib implant.</description>
+		<descriptionHyperlinks>
+			<ThingDef>PainkillerRibCosmic</ThingDef>
+			<HediffDef>PainkillerRibCosmic</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing a cosmic painkiller rib.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>PainkillerRibCosmic</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>PainkillerRibCosmic</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Ribcage</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>PainkillerRibCosmic</addsHediff>
+		<uiIconThing>PainkillerRibCosmic</uiIconThing>
+		<incompatibleWithHediffTags>
+			<li>PainkillerRib</li>
+			<li>LuciferiumRib</li>
+		</incompatibleWithHediffTags>
+	</RecipeDef>
+
+	<RecipeDef ParentName="SurgeryRemoveImplantBase">
+		<defName>RemovePainkillerRibCosmic</defName>
+		<label>remove a cosmic painkiller rib implant</label>
+		<description>Remove a cosmic painkiller rib implant.</description>
+		<descriptionHyperlinks>
+			<ThingDef>PainkillerRibCosmic</ThingDef>
+			<HediffDef>PainkillerRibCosmic</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Removing a cosmic rib implant.</jobString>
+		<removesHediff>PainkillerRibCosmic</removesHediff>
+	</RecipeDef>
+
+	<!-- Heater rib -->
+
+	<HediffDef ParentName="addedPartBionicsRib">
+		<defName>HeaterRibCosmic</defName>
+		<label>cosmic heating rib</label>
+		<description>An installed cosmic heater rib implant.</description>
+		<descriptionHyperlinks>
+			<ThingDef>HeaterRibCosmic</ThingDef>
+		</descriptionHyperlinks>
+		<spawnThingOnRemoved>HeaterRibCosmic</spawnThingOnRemoved>
+		<hediffClass>Hediff_Implant</hediffClass>
+		<stages>
+			<li>
+				<statOffsets>
+					<ComfyTemperatureMax>-1</ComfyTemperatureMax>
+					<ComfyTemperatureMin>-24</ComfyTemperatureMin>
+				</statOffsets>
+			</li>
+		</stages>
+		<tags>
+			<li>HeaterRib</li>
+		</tags>
+	</HediffDef>
+
+	<ThingDef ParentName="EPIA_BodyPartBionicRibBaseBAOTCCosmic">
+		<defName>HeaterRibCosmic</defName>
+		<label>cosmic heating rib implant</label>
+		<description>An artificial cosmic rib, containing a micro-reactor powered, heat inducing spiral to warm the body from the inside.</description>
+		<descriptionHyperlinks>
+			<RecipeDef>InstallHeaterRibCosmic</RecipeDef>
+		</descriptionHyperlinks>
+		<costList>
+			<BOR_QuasarAlloy>10</BOR_QuasarAlloy>
+			<Plasteel>10</Plasteel>
+			<BOR_ComponentII>1</BOR_ComponentII>
+		</costList>
+		<statBases>
+			<Mass>0.3</Mass>
+		</statBases>
+	</ThingDef>
+
+
+	<RecipeDef ParentName="SurgeryInstallImplantBaseBAOTCCosmic">
+		<defName>InstallHeaterRibCosmic</defName>
+		<label>install as tellar heating rib implant</label>
+		<description>Installs a cosmic heating rib implant.</description>
+		<descriptionHyperlinks>
+			<ThingDef>HeaterRibCosmic</ThingDef>
+			<HediffDef>HeaterRibCosmic</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing a cosmic heating rib.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>HeaterRibCosmic</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>HeaterRibCosmic</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Ribcage</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>HeaterRibCosmic</addsHediff>
+		<uiIconThing>HeaterRibCosmic</uiIconThing>
+		<incompatibleWithHediffTags>
+			<li>HeaterRib</li>
+			<li>LuciferiumRib</li>
+		</incompatibleWithHediffTags>
+	</RecipeDef>
+
+	<RecipeDef ParentName="SurgeryRemoveImplantBase">
+		<defName>RemoveHeaterRibCosmic</defName>
+		<label>remove a cosmic heating rib implant</label>
+		<description>Remove a cosmic heating rib implant.</description>
+		<descriptionHyperlinks>
+			<ThingDef>HeaterRibCosmic</ThingDef>
+			<HediffDef>HeaterRibCosmic</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Removing cosmic rib implant.</jobString>
+		<removesHediff>HeaterRibCosmic</removesHediff>
+	</RecipeDef>
+
+	<!-- Cooler rib -->
+
+	<HediffDef ParentName="addedPartBionicsRib">
+		<defName>CoolerRibCosmic</defName>
+		<label>cosmic cooling rib</label>
+		<description>An installed cosmic cooler rib implant.</description>
+		<descriptionHyperlinks>
+			<ThingDef>CoolerRibCosmic</ThingDef>
+		</descriptionHyperlinks>
+		<spawnThingOnRemoved>CoolerRibCosmic</spawnThingOnRemoved>
+		<hediffClass>Hediff_Implant</hediffClass>
+		<stages>
+			<li>
+				<statOffsets>
+					<ComfyTemperatureMax>24</ComfyTemperatureMax>
+					<ComfyTemperatureMin>1</ComfyTemperatureMin>
+				</statOffsets>
+			</li>
+		</stages>
+		<tags>
+			<li>CoolerRibCosmic</li>
+		</tags>
+	</HediffDef>
+
+	<ThingDef ParentName="EPIA_BodyPartBionicRibBaseBAOTCCosmic">
+		<defName>CoolerRibCosmic</defName>
+		<label>cosmic cooling rib implant</label>
+		<description>An artificial cosmic rib with a micro coolant system, increasing the effectiveness of heat exchange via dermal exhausts.</description>
+		<descriptionHyperlinks>
+			<RecipeDef>InstallCoolerRibCosmic</RecipeDef>
+		</descriptionHyperlinks>
+		<costList>
+			<BOR_QuasarAlloy>10</BOR_QuasarAlloy>
+			<Plasteel>10</Plasteel>
+			<BOR_ComponentII>1</BOR_ComponentII>
+		</costList>
+		<statBases>
+			<Mass>0.3</Mass>
+		</statBases>
+	</ThingDef>
+
+	<RecipeDef ParentName="SurgeryInstallImplantBaseBAOTCCosmic">
+		<defName>InstallCoolerRibCosmic</defName>
+		<label>install a cosmiccooling rib implant</label>
+		<description>Installs a cosmic cooling rib implant.</description>
+		<descriptionHyperlinks>
+			<ThingDef>CoolerRibCosmic</ThingDef>
+			<HediffDef>CoolerRibCosmic</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing a cosmic cooling rib.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>CoolerRibCosmic</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>CoolerRibCosmic</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Ribcage</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>CoolerRibCosmic</addsHediff>
+		<uiIconThing>CoolerRibCosmic</uiIconThing>
+		<incompatibleWithHediffTags>
+			<li>CoolerRib</li>
+			<li>LuciferiumRib</li>
+		</incompatibleWithHediffTags>
+	</RecipeDef>
+
+	<RecipeDef ParentName="SurgeryRemoveImplantBase">
+		<defName>RemoveCoolerRibCosmic</defName>
+		<label>remove a cosmic cooling rib implant</label>
+		<description>Remove a cosmic cooling rib implant.</description>
+		<descriptionHyperlinks>
+			<ThingDef>CoolerRibCosmic</ThingDef>
+			<HediffDef>CoolerRibCosmic</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Removing a cosmic rib implant.</jobString>
+		<removesHediff>CoolerRibCosmic</removesHediff>
+	</RecipeDef>
+
+	<!-- Coagulator rib -->
+
+	<HediffDef ParentName="addedPartBionicsRib">
+		<defName>CoagulatorRibCosmic</defName>
+		<label>cosmic coagulator rib</label>
+		<description>An installed cosmic coagulator rib implant.</description>
+		<descriptionHyperlinks>
+			<ThingDef>CoagulatorRibCosmic</ThingDef>
+		</descriptionHyperlinks>
+		<spawnThingOnRemoved>CoagulatorRibCosmic</spawnThingOnRemoved>
+		<hediffClass>Hediff_Implant</hediffClass>
+		<stages>
+			<li>
+				<totalBleedFactor>0.65</totalBleedFactor>
+			</li>
+		</stages>
+		<tags>
+			<li>CoagulatorRib</li>
+		</tags>
+	</HediffDef>
+
+	<ThingDef ParentName="EPIA_BodyPartBionicRibBaseBAOTCCosmic">
+		<defName>CoagulatorRibCosmic</defName>
+		<label>cosmic coagulator rib implant</label>
+		<description>An artificial cosmic rib, equipped with little coagulator-dispensers that responds to blood loss, which will make the blood clot easier, in an effort to reduce bleeding.</description>
+		<descriptionHyperlinks>
+			<RecipeDef>InstallCoagulatorRibCosmic</RecipeDef>
+		</descriptionHyperlinks>
+		<costList>
+			<BOR_QuasarAlloy>10</BOR_QuasarAlloy>
+			<BOR_ComponentII>1</BOR_ComponentII>
+			<Neutroamine>3</Neutroamine>
+			<SNS_Medicine_GenII>5</SNS_Medicine_GenII>
+		</costList>
+		<statBases>
+			<Mass>0.3</Mass>
+		</statBases>
+	</ThingDef>
+
+	<RecipeDef ParentName="SurgeryInstallImplantBaseBAOTCCosmic">
+		<defName>InstallCoagulatorRibCosmic</defName>
+		<label>install a cosmic coagulator rib implant</label>
+		<description>Installs a cosmic coagulator rib implant.</description>
+		<descriptionHyperlinks>
+			<ThingDef>CoagulatorRibCosmic</ThingDef>
+			<HediffDef>CoagulatorRibCosmic</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing a cosmic coagulator rib.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>CoagulatorRibCosmic</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>CoagulatorRibCosmic</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Ribcage</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>CoagulatorRibCosmic</addsHediff>
+		<uiIconThing>CoagulatorRibCosmic</uiIconThing>
+		<incompatibleWithHediffTags>
+			<li>CoagulatorRib</li>
+			<li>LuciferiumRib</li>
+		</incompatibleWithHediffTags>
+	</RecipeDef>
+
+	<RecipeDef ParentName="SurgeryRemoveImplantBase">
+		<defName>RemoveCoagulatorRibCosmic</defName>
+		<label>remove a cosmic coagulator rib implant</label>
+		<description>Remove a cosmic coagulator rib implant.</description>
+		<descriptionHyperlinks>
+			<ThingDef>CoagulatorRibCosmic</ThingDef>
+			<HediffDef>CoagulatorRibCosmic</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Removing a cosmic rib implant.</jobString>
+		<removesHediff>CoagulatorRibCosmic</removesHediff>
+	</RecipeDef>
+
+	<!-- Respiration rib -->
+
+	<HediffDef ParentName="addedPartBionicsRib">
+		<defName>RespirationRibCosmic</defName>
+		<label>cosmic respiration rib</label>
+		<description>An installed cosmic respiration rib implant.</description>
+		<descriptionHyperlinks>
+			<ThingDef>RespirationRibCosmic</ThingDef>
+		</descriptionHyperlinks>
+		<spawnThingOnRemoved>RespirationRibCosmic</spawnThingOnRemoved>
+		<hediffClass>Hediff_Implant</hediffClass>
+		<stages>
+			<li>
+				<statOffsets>
+					<MentalBreakThreshold>-0.18</MentalBreakThreshold>
+				</statOffsets>
+				<capMods>
+					<li>
+						<capacity>Breathing</capacity>
+						<offset>0.25</offset>
+					</li>
+				</capMods>
+			</li>
+		</stages>
+		<tags>
+			<li>RespirationRib</li>
+		</tags>
+	</HediffDef>
+
+	<ThingDef ParentName="EPIA_BodyPartBionicRibBaseBAOTCCosmic">
+		<defName>RespirationRibCosmic</defName>
+		<label>cosmic respiration rib implant</label>
+		<description>An artificial cosmic rib, that works with the diaphragm to assist with regulating breathing pattern for increased efficiency and coping with stress.</description>
+		<descriptionHyperlinks>
+			<RecipeDef>InstallRespirationRibCosmic</RecipeDef>
+		</descriptionHyperlinks>
+		<costList>
+			<BOR_QuasarAlloy>20</BOR_QuasarAlloy>
+			<BOR_ComponentII>3</BOR_ComponentII>
+		</costList>
+		<statBases>
+			<Mass>0.6</Mass>
+		</statBases>
+	</ThingDef>
+
+	<RecipeDef ParentName="SurgeryInstallImplantBaseBAOTCCosmic">
+		<defName>InstallRespirationRibCosmic</defName>
+		<label>install a cosmic respiration rib implant</label>
+		<description>Installs a cosmic respiration rib implant.</description>
+		<descriptionHyperlinks>
+			<ThingDef>RespirationRibCosmic</ThingDef>
+			<HediffDef>RespirationRibCosmic</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing a cosmic respiration rib.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>RespirationRibCosmic</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>RespirationRibCosmic</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Ribcage</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>RespirationRibCosmic</addsHediff>
+		<uiIconThing>RespirationRibCosmic</uiIconThing>
+		<incompatibleWithHediffTags>
+			<li>RespirationRib</li>
+			<li>LuciferiumRib</li>
+		</incompatibleWithHediffTags>
+	</RecipeDef>
+
+	<RecipeDef ParentName="SurgeryRemoveImplantBase">
+		<defName>RemoveRespirationRibCosmic</defName>
+		<label>remove a cosmic respiration rib implant</label>
+		<description>Remove a cosmic respiration rib implant.</description>
+		<descriptionHyperlinks>
+			<ThingDef>RespirationRibCosmic</ThingDef>
+			<HediffDef>RespirationRibCosmic</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Removing a cosmic rib implant.</jobString>
+		<removesHediff>RespirationRibCosmic</removesHediff>
+	</RecipeDef>
+
+	<!-- Wake-up rib -->
+
+	<HediffDef ParentName="addedPartBionicsRib">
+		<defName>WakeUpRibCosmic</defName>
+		<label>cosmic STIM_VII rib</label>
+		<description>An installed cosmic STIM_VII rib implant.</description>
+		<descriptionHyperlinks>
+			<ThingDef>WakeUpRibCosmic</ThingDef>
+		</descriptionHyperlinks>
+		<spawnThingOnRemoved>WakeUpRibCosmic</spawnThingOnRemoved>
+		<hediffClass>Hediff_Implant</hediffClass>
+		<stages>
+			<li>
+				<restFallFactor>0.75</restFallFactor>
+				<statOffsets>
+					<MentalBreakThreshold>0.05</MentalBreakThreshold>
+				</statOffsets>
+				<capMods>
+					<li>
+						<capacity>Consciousness</capacity>
+						<offset>0.2</offset>
+					</li>
+				</capMods>
+			</li>
+		</stages>
+		<tags>
+			<li>WakeUpRib</li>
+		</tags>
+	</HediffDef>
+
+	<ThingDef ParentName="EPIA_BodyPartBionicRibBaseBAOTCCosmic">
+		<defName>WakeUpRibCosmic</defName>
+		<label>cosmic STIM_VII rib implant</label>
+		<description>An artificial cosmic rib, equipped with little STIM_VII-dispensers to keep the user awake and focused.</description>
+		<descriptionHyperlinks>
+			<RecipeDef>InstallWakeUpRibCosmic</RecipeDef>
+		</descriptionHyperlinks>
+		<costList>
+			<BOR_QuasarAlloy>10</BOR_QuasarAlloy>
+			<BOR_ComponentII>1</BOR_ComponentII>
+			<Neutroamine>3</Neutroamine>
+			<BOR_Sleepquitin>5</BOR_Sleepquitin>
+		</costList>
+		<statBases>
+			<Mass>0.6</Mass>
+		</statBases>
+	</ThingDef>
+
+	<RecipeDef ParentName="SurgeryInstallImplantBaseBAOTCCosmic">
+		<defName>InstallWakeUpRibCosmic</defName>
+		<label>install a cosmic STIM_VII rib implant</label>
+		<description>Installs a cosmic STIM_VII rib implant.</description>
+		<descriptionHyperlinks>
+			<ThingDef>WakeUpRibCosmic</ThingDef>
+			<HediffDef>WakeUpRibCosmic</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing a cosmic STIM_VII rib.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>WakeUpRibCosmic</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>WakeUpRibCosmic</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Ribcage</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>WakeUpRibCosmic</addsHediff>
+		<uiIconThing>WakeUpRibCosmic</uiIconThing>
+		<incompatibleWithHediffTags>
+			<li>WakeUpRib</li>
+			<li>LuciferiumRib</li>
+		</incompatibleWithHediffTags>
+	</RecipeDef>
+
+	<RecipeDef ParentName="SurgeryRemoveImplantBase">
+		<defName>RemoveWakeUpRibCosmic</defName>
+		<label>remove a cosmic STIM_VII rib implant</label>
+		<description>Remove a cosmic STIM_VII rib implant.</description>
+		<descriptionHyperlinks>
+			<ThingDef>WakeUpRibCosmic</ThingDef>
+			<HediffDef>WakeUpRibCosmic</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Removing a cosmic rib implant.</jobString>
+		<removesHediff>WakeUpRibCosmic</removesHediff>
+	</RecipeDef>
+
+</Defs>

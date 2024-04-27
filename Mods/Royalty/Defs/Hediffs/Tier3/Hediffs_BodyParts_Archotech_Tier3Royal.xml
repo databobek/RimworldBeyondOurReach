@@ -1,0 +1,233 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- Psychic sensitizer -->
+
+  <HediffDef ParentName="ImplantHediffBase">
+    <defName>PsychicSensitizerEnigmatic</defName>
+    <label>enigmatic psychic sensitizer</label>
+    <labelNoun>an enigmatic psychic sensitizer</labelNoun>
+    <description>An installed enigmatic psychic sensitizer implant.</description>
+    <descriptionHyperlinks>
+      <ThingDef>PsychicSensitizerEnigmatic</ThingDef>
+    </descriptionHyperlinks>
+    <spawnThingOnRemoved>PsychicSensitizerEnigmatic</spawnThingOnRemoved>
+    <stages>
+      <li>
+        <statOffsets>
+          <PsychicSensitivity>1.5</PsychicSensitivity>
+        </statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <ThingDef ParentName="BodyPartAOTCEnigmaticBase">
+    <defName>PsychicSensitizerEnigmatic</defName>
+    <label>enigmatic psychic sensitizer</label>
+    <description>This brain implant stimulates growth in the regions of the brain related to psychic interaction, thus increasing psychic sensitivity.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>InstallPsychicSensitizerEnigmatic</RecipeDef>
+    </descriptionHyperlinks>
+  </ThingDef>
+
+  <RecipeDef ParentName="SurgeryInstallImplantAOTCEnigmaticBase">
+    <defName>InstallPsychicSensitizerEnigmatic</defName>
+    <label>install enigmatic psychic sensitizer</label>
+    <description>Install a psychic sensitizer.</description>
+    <descriptionHyperlinks>
+      <ThingDef>PsychicSensitizerEnigmatic</ThingDef>
+      <HediffDef>PsychicSensitizerEnigmatic</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing enigmatic psychic sensitizer.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>PsychicSensitizerEnigmatic</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>PsychicSensitizerEnigmatic</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Brain</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>PsychicSensitizerEnigmatic</addsHediff>
+  </RecipeDef>
+
+  <RecipeDef ParentName="SurgeryRemoveImplantBase">
+    <defName>RemovePsychicSensitizerEnigmatic</defName>
+    <label>remove enigmatic psychic sensitizer</label>
+    <description>Remove psychic sensitizer.</description>
+    <descriptionHyperlinks>
+      <ThingDef>PsychicSensitizerEnigmatic</ThingDef>
+      <HediffDef>PsychicSensitizerEnigmatic</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Removing enigmatic psychic sensitizer.</jobString>
+    <removesHediff>PsychicSensitizerEnigmatic</removesHediff>
+  </RecipeDef>
+
+  <!-- Psychic harmonizer -->
+
+  <ThoughtDef>
+    <defName>PsychicHarmonizationEnigmatic</defName>
+    <thoughtClass>Thought_PsychicHarmonizer</thoughtClass>
+    <effectMultiplyingStat>PsychicSensitivity</effectMultiplyingStat>
+    <stackLimit>100</stackLimit>
+    <developmentalStageFilter>Baby, Child, Adult</developmentalStageFilter>
+    <stages>
+      <li>
+        <label>enigmatic psychic harmony: {HARMONIZER_labelShort}</label>
+        <description>The psychic harmonizer implant makes me feel some of the emotions of the person using it as long as we're close together.</description>
+        <baseMoodEffect>25</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <HediffDef ParentName="ImplantHediffBase">
+    <defName>PsychicHarmonizerEnigmatic</defName>
+    <label>enigmatic psychic harmonizer</label>
+    <labelNoun>an enigmatic psychic harmonizer</labelNoun>
+    <description>An installed enigmatic psychic harmonizer implant.</description>
+    <descriptionHyperlinks>
+      <ThingDef>PsychicHarmonizerEnigmatic</ThingDef>
+    </descriptionHyperlinks>
+    <spawnThingOnRemoved>PsychicHarmonizerEnigmatic</spawnThingOnRemoved>
+    <comps>
+      <li Class="HediffCompProperties_PsychicHarmonizer">
+        <range>75</range>
+        <thought>PsychicHarmonization</thought>
+      </li>
+    </comps>
+  </HediffDef>
+
+  <ThingDef ParentName="BodyPartAOTCEnigmaticBase">
+    <defName>PsychicHarmonizerEnigmatic</defName>
+    <label>enigmatic psychic harmonizer</label>
+    <description>This brain implant projects the user's mood in a spherical psychic field, forcing others nearby to feel a blurred, simplified version of their emotions. It can be a powerful tool to keep morale high, but if the user becomes unhappy, it can lead to collective disaster.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>InstallPsychicHarmonizerEnigmatic</RecipeDef>
+    </descriptionHyperlinks>
+  </ThingDef>
+
+  <RecipeDef ParentName="SurgeryInstallImplantAOTCEnigmaticBase">
+    <defName>InstallPsychicHarmonizerEnigmatic</defName>
+    <label>install enigmatic psychic harmonizer</label>
+    <description>Install a psychic harmonizer.</description>
+    <descriptionHyperlinks>
+      <ThingDef>PsychicHarmonizerEnigmatic</ThingDef>
+      <HediffDef>PsychicHarmonizerEnigmatic</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing enigmatic psychic harmonizer.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>PsychicHarmonizerEnigmatic</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>PsychicHarmonizerEnigmatic</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Brain</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>PsychicHarmonizerEnigmatic</addsHediff>
+  </RecipeDef>
+
+  <RecipeDef ParentName="SurgeryRemoveImplantBase">
+    <defName>RemovePsychicHarmonizerEnigmatic</defName>
+    <label>remove enigmatic psychic harmonizer</label>
+    <description>Remove psychic harmonizer.</description>
+    <descriptionHyperlinks>
+      <ThingDef>PsychicHarmonizerEnigmatic</ThingDef>
+      <HediffDef>PsychicHarmonizerEnigmatic</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Removing enigmatic psychic harmonizer.</jobString>
+    <removesHediff>PsychicHarmonizerEnigmatic</removesHediff>
+  </RecipeDef>
+
+  <!-- Psychic reader -->
+
+  <HediffDef ParentName="ImplantHediffBase">
+    <defName>PsychicReaderEnigmatic</defName>
+    <label>enigmatic psychic reader</label>
+    <labelNoun>an enigmatic psychic reader</labelNoun>
+    <description>An installed enigmatic psychic reader implant.</description>
+    <descriptionHyperlinks>
+      <ThingDef>PsychicReaderEnigmatic</ThingDef>
+    </descriptionHyperlinks>
+    <spawnThingOnRemoved>PsychicReaderEnigmatic</spawnThingOnRemoved>
+    <stages>
+      <li>
+        <statOffsets>
+          <NegotiationAbility>0.9</NegotiationAbility>
+          <TradePriceImprovement>0.75</TradePriceImprovement>
+        </statOffsets>
+        <statOffsetEffectMultiplier>PsychicSensitivity</statOffsetEffectMultiplier>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <ThingDef ParentName="BodyPartAOTCEnigmaticBase">
+    <defName>PsychicReaderEnigmatic</defName>
+    <label>enigmatic psychic reader</label>
+    <description>Gives limited mind-reading ability, improving the user's ability to get the upper hand in negotiations and social situations. The effect is proportional to the user's psychic sensitivity.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>InstallPsychicReaderEnigmatic</RecipeDef>
+    </descriptionHyperlinks>
+  </ThingDef>
+
+  <RecipeDef ParentName="SurgeryInstallImplantAOTCEnigmaticBase">
+    <defName>InstallPsychicReaderEnigmatic</defName>
+    <label>install enigmatic psychic reader</label>
+    <description>Install a psychic reader.</description>
+    <descriptionHyperlinks>
+      <ThingDef>PsychicReaderEnigmatic</ThingDef>
+      <HediffDef>PsychicReaderEnigmatic</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing enigmatic psychic reader.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>PsychicReaderEnigmatic</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>PsychicReaderEnigmatic</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Brain</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>PsychicReaderEnigmatic</addsHediff>
+  </RecipeDef>
+
+  <RecipeDef ParentName="SurgeryRemoveImplantBase">
+    <defName>RemovePsychicReaderEnigmatic</defName>
+    <label>remove enigmatic psychic reader</label>
+    <description>Remove psychic reader.</description>
+    <descriptionHyperlinks>
+      <ThingDef>PsychicReaderEnigmatic</ThingDef>
+      <HediffDef>PsychicReaderEnigmatic</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Removing enigmatic psychic reader.</jobString>
+    <removesHediff>PsychicReaderEnigmatic</removesHediff>
+  </RecipeDef>
+
+</Defs>

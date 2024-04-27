@@ -1,0 +1,233 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- Psychic sensitizer -->
+
+  <HediffDef ParentName="ImplantHediffBase">
+    <defName>PsychicSensitizerStellar</defName>
+    <label>stellar psychic sensitizer</label>
+    <labelNoun>a stellar psychic sensitizer</labelNoun>
+    <description>An installed stellar psychic sensitizer implant.</description>
+    <descriptionHyperlinks>
+      <ThingDef>PsychicSensitizerStellar</ThingDef>
+    </descriptionHyperlinks>
+    <spawnThingOnRemoved>PsychicSensitizerStellar</spawnThingOnRemoved>
+    <stages>
+      <li>
+        <statOffsets>
+          <PsychicSensitivity>0.5</PsychicSensitivity>
+        </statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <ThingDef ParentName="BodyPartAOTCStellarBase">
+    <defName>PsychicSensitizerStellar</defName>
+    <label>stellar psychic sensitizer</label>
+    <description>This brain implant stimulates growth in the regions of the brain related to psychic interaction, thus increasing psychic sensitivity.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>InstallPsychicSensitizerStellar</RecipeDef>
+    </descriptionHyperlinks>
+  </ThingDef>
+
+  <RecipeDef ParentName="SurgeryInstallImplantAOTCStellarBase">
+    <defName>InstallPsychicSensitizerStellar</defName>
+    <label>install stellar psychic sensitizer</label>
+    <description>Install a psychic sensitizer.</description>
+    <descriptionHyperlinks>
+      <ThingDef>PsychicSensitizerStellar</ThingDef>
+      <HediffDef>PsychicSensitizerStellar</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing stellar psychic sensitizer.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>PsychicSensitizerStellar</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>PsychicSensitizerStellar</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Brain</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>PsychicSensitizerStellar</addsHediff>
+  </RecipeDef>
+
+  <RecipeDef ParentName="SurgeryRemoveImplantBase">
+    <defName>RemovePsychicSensitizerStellar</defName>
+    <label>stellar remove psychic sensitizer</label>
+    <description>Remove psychic sensitizer.</description>
+    <descriptionHyperlinks>
+      <ThingDef>PsychicSensitizerStellar</ThingDef>
+      <HediffDef>PsychicSensitizerStellar</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Removing stellar psychic sensitizer.</jobString>
+    <removesHediff>PsychicSensitizerStellar</removesHediff>
+  </RecipeDef>
+
+  <!-- Psychic harmonizer -->
+
+  <ThoughtDef>
+    <defName>PsychicHarmonizationStellar</defName>
+    <thoughtClass>Thought_PsychicHarmonizer</thoughtClass>
+    <effectMultiplyingStat>PsychicSensitivity</effectMultiplyingStat>
+    <stackLimit>100</stackLimit>
+    <developmentalStageFilter>Baby, Child, Adult</developmentalStageFilter>
+    <stages>
+      <li>
+        <label>stellar psychic harmony: {HARMONIZER_labelShort}</label>
+        <description>The psychic harmonizer implant makes me feel some of the emotions of the person using it as long as we're close together.</description>
+        <baseMoodEffect>12</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <HediffDef ParentName="ImplantHediffBase">
+    <defName>PsychicHarmonizerStellar</defName>
+    <label>stellar psychic harmonizer</label>
+    <labelNoun>a stellar psychic harmonizer</labelNoun>
+    <description>An installed stellar psychic harmonizer implant.</description>
+    <descriptionHyperlinks>
+      <ThingDef>PsychicHarmonizerStellar</ThingDef>
+    </descriptionHyperlinks>
+    <spawnThingOnRemoved>PsychicHarmonizerStellar</spawnThingOnRemoved>
+    <comps>
+      <li Class="HediffCompProperties_PsychicHarmonizer">
+        <range>45</range>
+        <thought>PsychicHarmonization</thought>
+      </li>
+    </comps>
+  </HediffDef>
+
+  <ThingDef ParentName="BodyPartAOTCStellarBase">
+    <defName>PsychicHarmonizerStellar</defName>
+    <label>stellar psychic harmonizer</label>
+    <description>This brain implant projects the user's mood in a spherical psychic field, forcing others nearby to feel a blurred, simplified version of their emotions. It can be a powerful tool to keep morale high, but if the user becomes unhappy, it can lead to collective disaster.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>InstallPsychicHarmonizerStellar</RecipeDef>
+    </descriptionHyperlinks>
+  </ThingDef>
+
+  <RecipeDef ParentName="SurgeryInstallImplantAOTCStellarBase">
+    <defName>InstallPsychicHarmonizerStellar</defName>
+    <label>install stellar psychic harmonizer</label>
+    <description>Install a psychic harmonizer.</description>
+    <descriptionHyperlinks>
+      <ThingDef>PsychicHarmonizerStellar</ThingDef>
+      <HediffDef>PsychicHarmonizerStellar</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing stellar psychic harmonizer.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>PsychicHarmonizerStellar</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>PsychicHarmonizerStellar</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Brain</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>PsychicHarmonizerStellar</addsHediff>
+  </RecipeDef>
+
+  <RecipeDef ParentName="SurgeryRemoveImplantBase">
+    <defName>RemovePsychicHarmonizerStellar</defName>
+    <label>stellar remove psychic harmonizer</label>
+    <description>Remove psychic harmonizer.</description>
+    <descriptionHyperlinks>
+      <ThingDef>PsychicHarmonizerStellar</ThingDef>
+      <HediffDef>PsychicHarmonizerStellar</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Removing stellar psychic harmonizer.</jobString>
+    <removesHediff>PsychicHarmonizerStellar</removesHediff>
+  </RecipeDef>
+
+  <!-- Psychic reader -->
+
+  <HediffDef ParentName="ImplantHediffBase">
+    <defName>PsychicReaderStellar</defName>
+    <label>stellar psychic reader</label>
+    <labelNoun>a stellar psychic reader</labelNoun>
+    <description>An installed stellar psychic reader implant.</description>
+    <descriptionHyperlinks>
+      <ThingDef>PsychicReaderStellar</ThingDef>
+    </descriptionHyperlinks>
+    <spawnThingOnRemoved>PsychicReaderStellar</spawnThingOnRemoved>
+    <stages>
+      <li>
+        <statOffsets>
+          <NegotiationAbility>0.65</NegotiationAbility>
+          <TradePriceImprovement>0.20</TradePriceImprovement>
+        </statOffsets>
+        <statOffsetEffectMultiplier>PsychicSensitivity</statOffsetEffectMultiplier>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <ThingDef ParentName="BodyPartAOTCStellarBase">
+    <defName>PsychicReaderStellar</defName>
+    <label>stellar psychic reader</label>
+    <description>Gives limited mind-reading ability, improving the user's ability to get the upper hand in negotiations and social situations. The effect is proportional to the user's psychic sensitivity.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>InstallPsychicReaderStellar</RecipeDef>
+    </descriptionHyperlinks>
+  </ThingDef>
+
+  <RecipeDef ParentName="SurgeryInstallImplantAOTCStellarBase">
+    <defName>InstallPsychicReaderStellar</defName>
+    <label>install stellar psychic reader</label>
+    <description>Install a psychic reader.</description>
+    <descriptionHyperlinks>
+      <ThingDef>PsychicReaderStellar</ThingDef>
+      <HediffDef>PsychicReaderStellar</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing stellar psychic reader.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>PsychicReaderStellar</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>PsychicReaderStellar</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Brain</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>PsychicReaderStellar</addsHediff>
+  </RecipeDef>
+
+  <RecipeDef ParentName="SurgeryRemoveImplantBase">
+    <defName>RemovePsychicReaderStellar</defName>
+    <label>stellar remove psychic reader</label>
+    <description>Remove psychic reader.</description>
+    <descriptionHyperlinks>
+      <ThingDef>PsychicReaderStellar</ThingDef>
+      <HediffDef>PsychicReaderStellar</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Removing stellar psychic reader.</jobString>
+    <removesHediff>PsychicReaderStellar</removesHediff>
+  </RecipeDef>
+
+</Defs>

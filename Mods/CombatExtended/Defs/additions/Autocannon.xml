@@ -1,0 +1,266 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- bullets -->
+	<ThingDef ParentName="Base20x102mmNATOBullet">
+		<defName>BOR_Bullet_Autocannon_CaP</defName>
+		<label>Autocannon bullet (CaP)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>66</damageAmountBase>
+			<armorPenetrationSharp>45</armorPenetrationSharp>
+			<armorPenetrationBlunt>1500</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base20x102mmNATOBullet">
+		<defName>BOR_Bullet_Autocannon_CMc</defName>
+		<label>Autocannon bullet (CMc)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>66</damageAmountBase>
+			<armorPenetrationSharp>45</armorPenetrationSharp>
+			<armorPenetrationBlunt>1500</armorPenetrationBlunt>
+			<secondaryDamage>
+				<li>
+					<def>Flame_Secondary</def>
+					<amount>40</amount>
+				</li>
+			</secondaryDamage>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base20x102mmNATOBullet">
+		<defName>BOR_Bullet_Autocannon_CMi</defName>
+		<label>Autocannon bullet (CMi)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>105</damageAmountBase>
+			<armorPenetrationSharp>22</armorPenetrationSharp>
+			<armorPenetrationBlunt>1500</armorPenetrationBlunt>
+			<secondaryDamage>
+				<li>
+					<def>Bomb_Secondary</def>
+					<amount>63</amount>
+				</li>
+			</secondaryDamage>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base20x102mmNATOBullet">
+		<defName>BOR_Bullet_Autocannon_EC</defName>
+		<label>Autocannon bullet (EC)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>55</damageAmountBase>
+			<armorPenetrationSharp>79</armorPenetrationSharp>
+			<armorPenetrationBlunt>2000</armorPenetrationBlunt>
+			<speed>375</speed>
+		</projectile>
+	</ThingDef>
+
+
+	<!-- ==================== Ammo ========================== -->
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="AmmoAutocannonShellBase">
+		<defName>BOR_Ammo_Autocannon_CaP</defName>
+		<label>Autocannon shell (CaP)</label>
+		<graphicData>
+			<texPath>Things/Ammo/STACK_RANGED/HighCaliber/AP</texPath>
+			<graphicClass>CombatExtended.Graphic_StackCountRanged</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>1.54</MarketValue>
+		</statBases>
+		<ammoClass>BOR_CaP_AmmoClass</ammoClass>
+		<cookOffProjectile>BOR_Bullet_Autocannon_CaP</cookOffProjectile>
+		<generateAllowChance>0.1</generateAllowChance>
+		<generateCommonality>0.1</generateCommonality>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="AmmoAutocannonShellBase">
+		<defName>BOR_Ammo_Autocannon_CMc</defName>
+		<label>Autocannon shell (CMc)</label>
+		<graphicData>
+			<texPath>Things/Ammo/STACK_RANGED/HighCaliber/Incendiary</texPath>
+			<graphicClass>CombatExtended.Graphic_StackCountRanged</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>2</MarketValue>
+		</statBases>
+		<ammoClass>BOR_CMc_AmmoClass</ammoClass>
+		<cookOffProjectile>BOR_Bullet_Autocannon_CMc</cookOffProjectile>
+		<generateAllowChance>0.1</generateAllowChance>
+		<generateCommonality>0.1</generateCommonality>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="AmmoAutocannonShellBase">
+		<defName>BOR_Ammo_Autocannon_CMi</defName>
+		<label>Autocannon shell (CMi)</label>
+		<graphicData>
+			<texPath>Things/Ammo/STACK_RANGED/HighCaliber/HE</texPath>
+			<graphicClass>CombatExtended.Graphic_StackCountRanged</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>2.7</MarketValue>
+		</statBases>
+		<ammoClass>BOR_CMi_AmmoClass</ammoClass>
+		<cookOffProjectile>BOR_Bullet_Autocannon_CMi</cookOffProjectile>
+		<generateAllowChance>0.1</generateAllowChance>
+		<generateCommonality>0.1</generateCommonality>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="AmmoAutocannonShellBase">
+		<defName>BOR_Ammo_Autocannon_EC</defName>
+		<label>Autocannon shell (EC)</label>
+		<graphicData>
+			<texPath>Things/Ammo/STACK_RANGED/HighCaliber/Sabot</texPath>
+			<graphicClass>CombatExtended.Graphic_StackCountRanged</graphicClass>
+		</graphicData>
+		<statBases>
+			<Mass>0.35</Mass>
+			<MarketValue>1.8</MarketValue>
+		</statBases>
+		<ammoClass>BOR_EC_AmmoClass</ammoClass>
+		<cookOffProjectile>BOR_Bullet_Autocannon_EC</cookOffProjectile>
+		<generateAllowChance>0.1</generateAllowChance>
+		<generateCommonality>0.1</generateCommonality>
+	</ThingDef>
+
+	<!-- ==================== Recipes ========================== -->
+
+	<RecipeDef ParentName="AmmoRecipeBase">
+		<defName>MakeBOR_Ammo_Autocannon_CaP</defName>
+		<label>make Autocannon shell (CaP) x200</label>
+		<description>Craft 200 Autocannon shell (CaP).</description>
+		<jobString>Making Autocannon shell (CaP).</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_QuasarAlloy</li>
+					</thingDefs>
+				</filter>
+				<count>104</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>BOR_QuasarAlloy</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<BOR_Ammo_Autocannon_CaP>200</BOR_Ammo_Autocannon_CaP>
+		</products>
+		<workAmount>18000</workAmount>
+	</RecipeDef>
+
+	<RecipeDef ParentName="AdvancedAmmoRecipeBase">
+		<defName>MakeBOR_Ammo_Autocannon_CMc</defName>
+		<label>make Autocannon shell (CMc) x200</label>
+		<description>Craft 200 Autocannon shell (CMc).</description>
+		<jobString>Making Autocannon shell (CMc).</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Sunsteel</li>
+					</thingDefs>
+				</filter>
+				<count>104</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Neutronium</li>
+					</thingDefs>
+				</filter>
+				<count>10</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>BOR_Sunsteel</li>
+				<li>BOR_Neutronium</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<BOR_Ammo_Autocannon_CMc>200</BOR_Ammo_Autocannon_CMc>
+		</products>
+		<workAmount>21000</workAmount>
+	</RecipeDef>
+
+	<RecipeDef ParentName="AdvancedAmmoRecipeBase">
+		<defName>MakeBOR_Ammo_Autocannon_CMi</defName>
+		<label>make Autocannon shell (CMi) x200</label>
+		<description>Craft 200 Autocannon shell (CMi).</description>
+		<jobString>Making Autocannon shell (CMi).</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_QuasarAlloy</li>
+					</thingDefs>
+				</filter>
+				<count>104</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Neutronium</li>
+					</thingDefs>
+				</filter>
+				<count>19</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>BOR_QuasarAlloy</li>
+				<li>BOR_Neutronium</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<BOR_Ammo_Autocannon_CMi>200</BOR_Ammo_Autocannon_CMi>
+		</products>
+		<workAmount>24000</workAmount>
+	</RecipeDef>
+
+	<RecipeDef ParentName="AdvancedAmmoRecipeBase">
+		<defName>MakeBOR_Ammo_Autocannon_EC</defName>
+		<label>make Autocannon shell (EC) x200</label>
+		<description>Craft 200 Autocannon shell (EC).</description>
+		<jobString>Making Autocannon shell (EC).</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_QuasarAlloy</li>
+					</thingDefs>
+				</filter>
+				<count>64</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Tenebrite</li>
+					</thingDefs>
+				</filter>
+				<count>12</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Neutronium</li>
+					</thingDefs>
+				</filter>
+				<count>12</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>BOR_QuasarAlloy</li>
+				<li>BOR_Tenebrite</li>
+				<li>BOR_Neutronium</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<BOR_Ammo_Autocannon_EC>200</BOR_Ammo_Autocannon_EC>
+		</products>
+		<workAmount>20100</workAmount>
+	</RecipeDef>
+</Defs>

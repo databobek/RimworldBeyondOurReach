@@ -1,0 +1,1080 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- Neurocalculator -->
+
+  <HediffDef ParentName="ImplantHediffBase">
+    <defName>NeurocalculatorStellar</defName>
+    <label>stellar neurocalculator</label>
+    <labelNoun>a stellar neurocalculator</labelNoun>
+    <description>An installed stellar neurocalculator.</description>
+    <descriptionHyperlinks>
+      <ThingDef>NeurocalculatorStellar</ThingDef>
+    </descriptionHyperlinks>
+    <spawnThingOnRemoved>NeurocalculatorStellar</spawnThingOnRemoved>
+    <stages>
+      <li>
+        <statOffsets>
+          <ResearchSpeed>0.4</ResearchSpeed>
+        </statOffsets>
+      </li>
+    </stages>
+    <comps>
+      <li Class="HediffCompProperties_ReactOnDamage">
+        <damageDefIncoming>EMP</damageDefIncoming>
+        <createHediff>BrainShock</createHediff>
+      </li>
+    </comps>
+  </HediffDef>
+
+  <ThingDef ParentName="BodyPartAOTCStellarBase">
+    <defName>NeurocalculatorStellar</defName>
+    <label>stellar neurocalculator</label>
+    <description>A non-intelligent microcomputer controlled by a visual/tactile neural interface. It assists with memory and calculation, like a calculator and notepad embedded in the brain.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>InstallNeurocalculatorStellar</RecipeDef>
+    </descriptionHyperlinks>
+    <graphicData>
+      <texPath>Things/Item/Health/HealthItem</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>0.80</drawSize>
+      <color>(102, 204, 255)</color>
+    </graphicData>
+  </ThingDef>
+
+  <RecipeDef ParentName="SurgeryInstallImplantAOTCStellarBase">
+    <defName>InstallNeurocalculatorStellar</defName>
+    <label>install stellar neurocalculator</label>
+    <description>Install a neurocalculator.</description>
+    <descriptionHyperlinks>
+      <ThingDef>NeurocalculatorStellar</ThingDef>
+      <HediffDef>NeurocalculatorStellar</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing stellar neurocalculator.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>NeurocalculatorStellar</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>NeurocalculatorStellar</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Brain</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>NeurocalculatorStellar</addsHediff>
+  </RecipeDef>
+
+  <RecipeDef ParentName="SurgeryRemoveImplantBase">
+    <defName>RemoveNeurocalculatorStellar</defName>
+    <label>stellar remove neurocalculator</label>
+    <description>Remove neurocalculator.</description>
+    <descriptionHyperlinks>
+      <ThingDef>NeurocalculatorStellar</ThingDef>
+      <HediffDef>NeurocalculatorStellar</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Removing stellar neurocalculator.</jobString>
+    <removesHediff>NeurocalculatorStellar</removesHediff>
+  </RecipeDef>
+
+  <!-- Learning assistant -->
+
+  <HediffDef ParentName="ImplantHediffBase">
+    <defName>LearningAssistantStellar</defName>
+    <label>stellar learning assistant</label>
+    <labelNoun>a stellar learning assistant</labelNoun>
+    <description>An installed stellar learning assistant.</description>
+    <descriptionHyperlinks>
+      <ThingDef>LearningAssistantStellar</ThingDef>
+    </descriptionHyperlinks>
+    <spawnThingOnRemoved>LearningAssistantStellar</spawnThingOnRemoved>
+    <stages>
+      <li>
+        <statOffsets>
+          <GlobalLearningFactor>0.4</GlobalLearningFactor>
+        </statOffsets>
+      </li>
+    </stages>
+    <comps>
+      <li Class="HediffCompProperties_ReactOnDamage">
+        <damageDefIncoming>EMP</damageDefIncoming>
+        <createHediff>BrainShock</createHediff>
+      </li>
+    </comps>
+  </HediffDef>
+
+  <ThingDef ParentName="BodyPartAOTCStellarBase">
+    <defName>LearningAssistantStellar</defName>
+    <label>stellar learning assistant</label>
+    <description>A sensory recording system that replays important experiences during sleep, strengthening the formation of new memories.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>InstallLearningAssistantStellar</RecipeDef>
+    </descriptionHyperlinks>
+  </ThingDef>
+
+  <RecipeDef ParentName="SurgeryInstallImplantAOTCStellarBase">
+    <defName>InstallLearningAssistantStellar</defName>
+    <label>install stellar learning assistant</label>
+    <description>Install a learning assistant.</description>
+    <descriptionHyperlinks>
+      <ThingDef>LearningAssistantStellar</ThingDef>
+      <HediffDef>LearningAssistantStellar</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing stellar learning assistant.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>LearningAssistantStellar</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>LearningAssistantStellar</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Brain</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>LearningAssistantStellar</addsHediff>
+  </RecipeDef>
+
+  <RecipeDef ParentName="SurgeryRemoveImplantBase">
+    <defName>RemoveLearningAssistantStellar</defName>
+    <label>stellar remove learning assistant</label>
+    <description>Remove learning assistant.</description>
+    <descriptionHyperlinks>
+      <ThingDef>LearningAssistantStellar</ThingDef>
+      <HediffDef>LearningAssistantStellar</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Removing stellar learning assistant.</jobString>
+    <removesHediff>LearningAssistantStellar</removesHediff>
+  </RecipeDef>
+
+  <!-- Gastro-analyzer -->
+
+  <HediffDef ParentName="ImplantHediffBase">
+    <defName>GastroAnalyzerStellar</defName>
+    <label>stellar gastro-analyzer</label>
+    <labelNoun>a stellar gastro-analyzer</labelNoun>
+    <description>An installed stellar gastro-analyzer.</description>
+    <descriptionHyperlinks>
+      <ThingDef>GastroAnalyzerStellar</ThingDef>
+    </descriptionHyperlinks>
+    <addedPartProps>
+      <solid>true</solid>
+    </addedPartProps>
+    <stages>
+      <li>
+        <statOffsets>
+          <CookSpeed>7.5</CookSpeed>
+        </statOffsets>
+      </li>
+    </stages>
+    <spawnThingOnRemoved>GastroAnalyzerStellar</spawnThingOnRemoved>
+  </HediffDef>
+
+  <ThingDef ParentName="BodyPartAOTCStellarBase">
+    <defName>GastroAnalyzerStellar</defName>
+    <label>stellar gastro-analyzer</label>
+    <description>This bionic nose implant enhances the sense of smell, with a focus towards food-related smells. A multi-layered ultrafine absorption mesh detects compounds in the air. A microprocessor formats the readings into an olfactory nerve signal to send to the brain through a nerve-link interface. The result is that the user can smell foods with a depth, richness, and precision unknown among unenhanced humans, allowing them to cook more effectively. The whole unit is small enough to be installed in the nose without affecting the user's appearance.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>InstallGastroAnalyzerStellar</RecipeDef>
+    </descriptionHyperlinks>
+  </ThingDef>
+
+  <RecipeDef ParentName="SurgeryInstallImplantAOTCStellarBase">
+    <defName>InstallGastroAnalyzerStellar</defName>
+    <label>install stellar gastro-analyzer</label>
+    <description>Install a gastro-analyzer.</description>
+    <descriptionHyperlinks>
+      <ThingDef>GastroAnalyzerStellar</ThingDef>
+      <HediffDef>GastroAnalyzerStellar</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing stellar gastro-analyzer.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>GastroAnalyzerStellar</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>GastroAnalyzerStellar</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Nose</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>GastroAnalyzerStellar</addsHediff>
+  </RecipeDef>
+
+  <RecipeDef ParentName="SurgeryRemoveImplantBase">
+    <defName>RemoveGastroAnalyzerStellar</defName>
+    <label>stellar remove gastro-analyzer</label>
+    <description>Remove gastro-analyzer.</description>
+    <descriptionHyperlinks>
+      <ThingDef>GastroAnalyzerStellar</ThingDef>
+      <HediffDef>GastroAnalyzerStellar</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Removing stellar gastro-analyzer.</jobString>
+    <removesHediff>GastroAnalyzerStellar</removesHediff>
+  </RecipeDef>
+
+  <!-- Immunoenhancer -->
+
+  <HediffDef ParentName="ImplantHediffBase">
+    <defName>ImmunoenhancerStellar</defName>
+    <label>stellar immunoenhancer</label>
+    <labelNoun>a stellarn immunoenhancer</labelNoun>
+    <description>An installed stellar immunoenhancer.</description>
+    <descriptionHyperlinks>
+      <ThingDef>ImmunoenhancerStellar</ThingDef>
+    </descriptionHyperlinks>
+    <spawnThingOnRemoved>ImmunoenhancerStellar</spawnThingOnRemoved>
+    <stages>
+      <li>
+        <statOffsets>
+          <ImmunityGainSpeed>0.16</ImmunityGainSpeed>
+        </statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <ThingDef ParentName="BodyPartAOTCStellarBase">
+    <defName>ImmunoenhancerStellar</defName>
+    <label>stellar immunoenhancer</label>
+    <description>An analysis computer inspects the bloodstream, classifies pathogens, and rapidly prompts the body's natural immune system to respond to them faster than it could alone. This speeds immunity gain significantly.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>InstallImmunoenhancerStellar</RecipeDef>
+    </descriptionHyperlinks>
+  </ThingDef>
+
+  <RecipeDef ParentName="SurgeryInstallImplantAOTCStellarBase">
+    <defName>InstallImmunoenhancerStellar</defName>
+    <label>install stellar immunoenhancer</label>
+    <description>Install an immunoenhancer.</description>
+    <descriptionHyperlinks>
+      <ThingDef>ImmunoenhancerStellar</ThingDef>
+      <HediffDef>ImmunoenhancerStellar</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing stellar immunoenhancer.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>ImmunoenhancerStellar</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>ImmunoenhancerStellar</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Kidney</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>ImmunoenhancerStellar</addsHediff>
+  </RecipeDef>
+
+  <RecipeDef ParentName="SurgeryRemoveImplantBase">
+    <defName>RemoveImmunoenhancerStellar</defName>
+    <label>stellar remove immunoenhancer</label>
+    <description>Remove immunoenhancer.</description>
+    <descriptionHyperlinks>
+      <ThingDef>ImmunoenhancerStellar</ThingDef>
+      <HediffDef>ImmunoenhancerStellar</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Removing stellar immunoenhancer.</jobString>
+    <removesHediff>ImmunoenhancerStellar</removesHediff>
+  </RecipeDef>
+
+  <!-- Coagulator -->
+
+  <HediffDef ParentName="ImplantHediffBase">
+    <defName>CoagulatorStellar</defName>
+    <label>stellar coagulator</label>
+    <labelNoun>a stellar coagulator</labelNoun>
+    <description>An installed stellar coagulator implant.</description>
+    <descriptionHyperlinks>
+      <ThingDef>CoagulatorStellar</ThingDef>
+    </descriptionHyperlinks>
+    <spawnThingOnRemoved>CoagulatorStellar</spawnThingOnRemoved>
+    <stages>
+      <li>
+        <totalBleedFactor>0.35</totalBleedFactor>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <ThingDef ParentName="BodyPartAOTCStellarBase">
+    <defName>CoagulatorStellar</defName>
+    <label>stellar coagulator</label>
+    <description>Releases coagulating factors in response to blood loss, reducing bleeding rates significantly.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>InstallCoagulatorStellar</RecipeDef>
+    </descriptionHyperlinks>
+  </ThingDef>
+
+  <RecipeDef ParentName="SurgeryInstallImplantAOTCStellarBase">
+    <defName>InstallCoagulatorStellar</defName>
+    <label>install stellar coagulator</label>
+    <description>Install a coagulator.</description>
+    <descriptionHyperlinks>
+      <ThingDef>CoagulatorStellar</ThingDef>
+      <HediffDef>CoagulatorStellar</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing stellar coagulator.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>CoagulatorStellar</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>CoagulatorStellar</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Torso</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>CoagulatorStellar</addsHediff>
+  </RecipeDef>
+
+  <RecipeDef ParentName="SurgeryRemoveImplantBase">
+    <defName>RemoveCoagulatorStellar</defName>
+    <label>stellar remove coagulator</label>
+    <description>Remove coagulator.</description>
+    <descriptionHyperlinks>
+      <ThingDef>CoagulatorStellar</ThingDef>
+      <HediffDef>CoagulatorStellar</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Removing stellar coagulator.</jobString>
+    <removesHediff>CoagulatorStellar</removesHediff>
+  </RecipeDef>
+
+  <!-- Healing enhancer -->
+
+  <HediffDef ParentName="ImplantHediffBase">
+    <defName>HealingEnhancerStellar</defName>
+    <label>stellar healing enhancer</label>
+    <labelNoun>a stellar healing enhancer</labelNoun>
+    <description>An installed stellar healing enhancer implant.</description>
+    <descriptionHyperlinks>
+      <ThingDef>HealingEnhancerStellar</ThingDef>
+    </descriptionHyperlinks>
+    <spawnThingOnRemoved>HealingEnhancerStellar</spawnThingOnRemoved>
+    <stages>
+      <li>
+        <naturalHealingFactor>2.5</naturalHealingFactor>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <ThingDef ParentName="BodyPartAOTCStellarBase">
+    <defName>HealingEnhancerStellar</defName>
+    <label>stellar healing enhancer</label>
+    <description>Releases nanomachines and healing factors that speed up wound healing. This implant only helps with physical wounds, and does nothing to combat disease or other health problems.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>InstallHealingEnhancerStellar</RecipeDef>
+    </descriptionHyperlinks>
+  </ThingDef>
+
+  <RecipeDef ParentName="SurgeryInstallImplantAOTCStellarBase">
+    <defName>InstallHealingEnhancerStellar</defName>
+    <label>install stellar healing enhancer</label>
+    <description>Install a healing enhancer.</description>
+    <descriptionHyperlinks>
+      <ThingDef>HealingEnhancerStellar</ThingDef>
+      <HediffDef>HealingEnhancerStellar</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing stellar healing enhancer.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>HealingEnhancerStellar</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>HealingEnhancerStellar</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Torso</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>HealingEnhancerStellar</addsHediff>
+  </RecipeDef>
+
+  <RecipeDef ParentName="SurgeryRemoveImplantBase">
+    <defName>RemoveHealingEnhancerStellar</defName>
+    <label>stellar remove healing enhancer</label>
+    <description>Remove healing enhancer.</description>
+    <descriptionHyperlinks>
+      <ThingDef>HealingEnhancerStellar</ThingDef>
+      <HediffDef>HealingEnhancerStellar</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Removing stellar healing enhancer.</jobString>
+    <removesHediff>HealingEnhancerStellar</removesHediff>
+  </RecipeDef>
+
+  <!-- Toughskin gland -->
+
+  <HediffDef ParentName="ImplantHediffBase">
+    <defName>ToughskinGlandStellar</defName>
+    <label>stellar toughskin gland</label>
+    <labelNoun>a stellar toughskin gland</labelNoun>
+    <description>An installed stellar toughskin gland.</description>
+    <descriptionHyperlinks>
+      <ThingDef>ToughskinGlandStellar</ThingDef>
+    </descriptionHyperlinks>
+    <spawnThingOnRemoved>ToughskinGlandStellar</spawnThingOnRemoved>
+    <stages>
+      <li>
+        <capMods>
+          <li>
+            <capacity>Moving</capacity>
+            <postFactor>0.95</postFactor>
+          </li>
+        </capMods>
+        <statOffsets>
+          <ArmorRating_Sharp>0.55</ArmorRating_Sharp>
+          <ArmorRating_Blunt>0.2</ArmorRating_Blunt>
+          <ArmorRating_Heat>0.45</ArmorRating_Heat>
+        </statOffsets>
+      </li>
+    </stages>
+    <tags>
+      <li>ArmorGland</li>
+    </tags>
+  </HediffDef>
+
+  <ThingDef ParentName="BodyPartAOTCStellarBase">
+    <defName>ToughskinGlandStellar</defName>
+    <label>stellar toughskin gland</label>
+    <description>This bionic gland releases chemicals and nanomachines that toughen the skin, making it somewhat more resistant to damage. While it doesn't add as much protection as some other skin-hardening glands, the toughskin gland has the advantage of not noticeably altering the user's appearance.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>InstallToughskinGlandStellar</RecipeDef>
+    </descriptionHyperlinks>
+  </ThingDef>
+
+  <RecipeDef ParentName="SurgeryInstallImplantAOTCStellarBase">
+    <defName>InstallToughskinGlandStellar</defName>
+    <label>install stellar toughskin gland</label>
+    <description>Install a toughskin gland.</description>
+    <descriptionHyperlinks>
+      <ThingDef>ToughskinGlandStellar</ThingDef>
+      <HediffDef>ToughskinGlandStellar</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing stellar toughskin gland.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>ToughskinGlandStellar</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>ToughskinGlandStellar</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Torso</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>ToughskinGlandStellar</addsHediff>
+    <incompatibleWithHediffTags>
+      <li>ArmorGland</li>
+    </incompatibleWithHediffTags>
+  </RecipeDef>
+
+  <RecipeDef ParentName="SurgeryRemoveImplantBase">
+    <defName>RemoveToughskinGlandStellar</defName>
+    <label>stellar remove toughskin gland</label>
+    <description>Remove toughskin gland.</description>
+    <descriptionHyperlinks>
+      <ThingDef>ToughskinGlandStellar</ThingDef>
+      <HediffDef>ToughskinGlandStellar</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Removing stellar toughskin gland.</jobString>
+    <removesHediff>ToughskinGlandStellar</removesHediff>
+  </RecipeDef>
+
+  <!-- Armorskin gland -->
+
+  <HediffDef ParentName="ImplantHediffBase">
+    <defName>ArmorskinGlandStellar</defName>
+    <label>stellar armorskin gland</label>
+    <labelNoun>a stellar armorskin gland</labelNoun>
+    <description>An installed stellar armorskin gland.</description>
+    <descriptionHyperlinks>
+      <ThingDef>ArmorskinGlandStellar</ThingDef>
+    </descriptionHyperlinks>
+    <spawnThingOnRemoved>ArmorskinGlandStellar</spawnThingOnRemoved>
+    <stages>
+      <li>
+        <capMods>
+          <li>
+            <capacity>Moving</capacity>
+            <postFactor>0.85</postFactor>
+          </li>
+        </capMods>
+        <statOffsets>
+          <ArmorRating_Sharp>0.68</ArmorRating_Sharp>
+          <ArmorRating_Blunt>0.4</ArmorRating_Blunt>
+          <ArmorRating_Heat>0.6</ArmorRating_Heat>
+          <PawnBeauty>-1</PawnBeauty>
+        </statOffsets>
+      </li>
+    </stages>
+    <tags>
+      <li>ArmorGland</li>
+    </tags>
+  </HediffDef>
+
+  <ThingDef ParentName="BodyPartAOTCStellarBase">
+    <defName>ArmorskinGlandStellar</defName>
+    <label>stellar armorskin gland</label>
+    <description>This bionic gland releases chemicals and nanomachines that toughen the skin and add flexible subdermal keratin plates at strategic points. This makes the user more resistant to damage across their whole body. Unfortunately, these changes make the skin appear leathery, with wrinkles across the whole body and face, which is generally considered ugly.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>InstallArmorskinGlandStellar</RecipeDef>
+    </descriptionHyperlinks>
+  </ThingDef>
+
+  <RecipeDef ParentName="SurgeryInstallImplantAOTCStellarBase">
+    <defName>InstallArmorskinGlandStellar</defName>
+    <label>install stellar armorskin gland</label>
+    <description>Install an armorskin gland.</description>
+    <descriptionHyperlinks>
+      <ThingDef>ArmorskinGlandStellar</ThingDef>
+      <HediffDef>ArmorskinGlandStellar</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing stellar armorskin gland.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>ArmorskinGlandStellar</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>ArmorskinGlandStellar</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Torso</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>ArmorskinGlandStellar</addsHediff>
+    <incompatibleWithHediffTags>
+      <li>ArmorGland</li>
+    </incompatibleWithHediffTags>
+  </RecipeDef>
+
+  <RecipeDef ParentName="SurgeryRemoveImplantBase">
+    <defName>RemoveArmorskinGlandStellar</defName>
+    <label>stellar remove armorskin gland</label>
+    <description>Remove armorskin gland.</description>
+    <descriptionHyperlinks>
+      <ThingDef>ArmorskinGlandStellar</ThingDef>
+    </descriptionHyperlinks>
+    <jobString>Removing stellar armorskin gland.</jobString>
+    <removesHediff>ArmorskinGlandStellar</removesHediff>
+  </RecipeDef>
+
+  <!-- Stoneskin gland -->
+
+  <HediffDef ParentName="ImplantHediffBase">
+    <defName>StoneskinGlandStellar</defName>
+    <label>stellar stoneskin gland</label>
+    <labelNoun>a stellar stoneskin gland</labelNoun>
+    <description>An installed stellar stoneskin gland.</description>
+    <descriptionHyperlinks>
+      <ThingDef>StoneskinGlandStellar</ThingDef>
+    </descriptionHyperlinks>
+    <spawnThingOnRemoved>StoneskinGlandStellar</spawnThingOnRemoved>
+    <stages>
+      <li>
+        <capMods>
+          <li>
+            <capacity>Moving</capacity>
+            <postFactor>0.8</postFactor>
+          </li>
+        </capMods>
+        <statOffsets>
+          <ArmorRating_Sharp>0.85</ArmorRating_Sharp>
+          <ArmorRating_Blunt>0.5</ArmorRating_Blunt>
+          <ArmorRating_Heat>0.55</ArmorRating_Heat>
+          <PawnBeauty>-2</PawnBeauty>
+        </statOffsets>
+      </li>
+    </stages>
+    <tags>
+      <li>ArmorGland</li>
+    </tags>
+  </HediffDef>
+
+  <ThingDef ParentName="BodyPartAOTCStellarBase">
+    <defName>StoneskinGlandStellar</defName>
+    <label>stellar stoneskin gland</label>
+    <description>This bionic gland releases chemical and nanomachines that transform the user's skin into a built-in suit of armor. The whole epidermis thickens and hardens to resist burns, while jointed exterior keratin plates form everywhere they can - including the head and face. While it's very difficult to physically hurt someone using this implant, the plates and hard skin significantly reduces the user's physical attractiveness.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>InstallStoneskinGlandStellar</RecipeDef>
+    </descriptionHyperlinks>
+
+  </ThingDef>
+
+  <RecipeDef ParentName="SurgeryInstallImplantAOTCStellarBase">
+    <defName>InstallStoneskinGlandStellar</defName>
+    <label>install stellar stoneskin gland</label>
+    <description>Install a stoneskin gland.</description>
+    <descriptionHyperlinks>
+      <ThingDef>StoneskinGlandStellar</ThingDef>
+      <HediffDef>StoneskinGlandStellar</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing stellar stoneskin gland.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>StoneskinGlandStellar</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>StoneskinGlandStellar</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Torso</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>StoneskinGlandStellar</addsHediff>
+    <incompatibleWithHediffTags>
+      <li>ArmorGland</li>
+    </incompatibleWithHediffTags>
+  </RecipeDef>
+
+  <RecipeDef ParentName="SurgeryRemoveImplantBase">
+    <defName>RemoveStoneskinGlandStellar</defName>
+    <label>stellar remove stoneskin gland</label>
+    <description>Remove stoneskin gland.</description>
+    <descriptionHyperlinks>
+      <ThingDef>StoneskinGlandStellar</ThingDef>
+    </descriptionHyperlinks>
+    <jobString>Removing stellar stoneskin gland.</jobString>
+    <removesHediff>StoneskinGlandStellar</removesHediff>
+  </RecipeDef>
+
+  <!-- Aesthetic shaper -->
+
+  <HediffDef ParentName="ImplantHediffBase">
+    <defName>AestheticShaperStellar</defName>
+    <label>stellar aesthetic shaper</label>
+    <labelNoun>a stellarn aesthetic shaper</labelNoun>
+    <description>An installed stellar aesthetic shaper.</description>
+    <descriptionHyperlinks>
+      <ThingDef>AestheticShaperStellar</ThingDef>
+    </descriptionHyperlinks>
+    <spawnThingOnRemoved>AestheticShaperStellar</spawnThingOnRemoved>
+    <stages>
+      <li>
+        <statOffsets>
+          <PawnBeauty>1.5</PawnBeauty>
+        </statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <ThingDef ParentName="BodyPartAOTCStellarBase">
+    <defName>AestheticShaperStellar</defName>
+    <label>stellar aesthetic shaper</label>
+    <description>A sophisticated package of hormonal and mechanite influences shapes the muscles and fat on the body, adding non-functional aesthetic tissue where needed to achieve a desired appearance. This implant can be configured to form various body shapes according to the user's taste - or that of their partner.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>InstallAestheticShaperStellar</RecipeDef>
+    </descriptionHyperlinks>
+
+  </ThingDef>
+
+  <RecipeDef ParentName="SurgeryInstallImplantAOTCStellarBase">
+    <defName>InstallAestheticShaperStellar</defName>
+    <label>install stellar aesthetic shaper</label>
+    <description>Install an aesthetic shaper.</description>
+    <descriptionHyperlinks>
+      <ThingDef>AestheticShaperStellar</ThingDef>
+      <HediffDef>AestheticShaperStellar</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing stellar aesthetic shaper.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>AestheticShaperStellar</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>AestheticShaperStellar</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Torso</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>AestheticShaperStellar</addsHediff>
+  </RecipeDef>
+
+  <RecipeDef ParentName="SurgeryRemoveImplantBase">
+    <defName>RemoveAestheticShaperStellar</defName>
+    <label>stellar remove aesthetic shaper</label>
+    <description>Remove aesthetic shaper.</description>
+    <descriptionHyperlinks>
+      <ThingDef>AestheticShaperStellar</ThingDef>
+      <HediffDef>AestheticShaperStellar</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Removing stellar aesthetic shaper.</jobString>
+    <removesHediff>AestheticShaperStellar</removesHediff>
+  </RecipeDef>
+
+  <!-- Aesthetic nose -->
+
+  <HediffDef ParentName="AddedBodyPartBase">
+    <defName>AestheticNoseStellar</defName>
+    <label>stellar aesthetic nose</label>
+    <labelNoun>a stellarn aesthetic nose</labelNoun>
+    <description>An installed stellar aesthetic nose.</description>
+    <descriptionHyperlinks>
+      <ThingDef>AestheticNoseStellar</ThingDef>
+    </descriptionHyperlinks>
+    <spawnThingOnRemoved>AestheticNoseStellar</spawnThingOnRemoved>
+    <addedPartProps>
+      <partEfficiency>1.25</partEfficiency>
+    </addedPartProps>
+    <stages>
+      <li>
+        <statOffsets>
+          <PawnBeauty>1.25</PawnBeauty>
+        </statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <ThingDef ParentName="BodyPartAOTCStellarBase">
+    <defName>AestheticNoseStellar</defName>
+    <label>stellar aesthetic nose</label>
+    <description>The nose is shaped to the user's desired form, matching prevalent beauty standards and enhancing physical impressions.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>InstallAestheticNoseStellar</RecipeDef>
+    </descriptionHyperlinks>
+
+  </ThingDef>
+
+  <RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase">
+    <defName>InstallAestheticNoseStellar</defName>
+    <label>install stellar aesthetic nose</label>
+    <description>Install an aesthetic nose.</description>
+    <descriptionHyperlinks>
+      <ThingDef>AestheticNoseStellar</ThingDef>
+      <HediffDef>AestheticNoseStellar</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing stellar aesthetic nose.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>AestheticNoseStellar</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>AestheticNoseStellar</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Nose</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>AestheticNoseStellar</addsHediff>
+  </RecipeDef>
+
+  <RecipeDef ParentName="SurgeryRemoveImplantBase">
+    <defName>RemoveAestheticNoseStellar</defName>
+    <label>stellar remove aesthetic nose</label>
+    <description>Remove aesthetic nose.</description>
+    <descriptionHyperlinks>
+      <ThingDef>AestheticNoseStellar</ThingDef>
+      <HediffDef>AestheticNoseStellar</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Removing stellar aesthetic nose.</jobString>
+    <removesHediff>AestheticNoseStellar</removesHediff>
+  </RecipeDef>
+
+  <!-- Reprocessor stomach -->
+
+  <HediffDef ParentName="AddedBodyPartBase">
+    <defName>ReprocessorStomachStellar</defName>
+    <label>stellar reprocessor stomach</label>
+    <labelNoun>a stellar reprocessor stomach</labelNoun>
+    <description>An installed stellar reprocessor stomach.</description>
+    <descriptionHyperlinks>
+      <ThingDef>ReprocessorStomachStellar</ThingDef>
+    </descriptionHyperlinks>
+    <spawnThingOnRemoved>ReprocessorStomachStellar</spawnThingOnRemoved>
+    <addedPartProps>
+      <solid>true</solid>
+      <partEfficiency>1.35</partEfficiency>
+      <betterThanNatural>true</betterThanNatural>
+    </addedPartProps>
+    <stages>
+      <li>
+        <hungerRateFactor>0.5</hungerRateFactor>
+      </li>
+    </stages>
+    <comps>
+      <li Class="HediffCompProperties_ReactOnDamage">
+        <damageDefIncoming>EMP</damageDefIncoming>
+        <vomit>true</vomit>
+      </li>
+    </comps>
+  </HediffDef>
+
+  <ThingDef ParentName="BodyPartAOTCStellarBase">
+    <defName>ReprocessorStomachStellar</defName>
+    <label>stellar reprocessor stomach</label>
+    <description>An advanced chemical processing system breaks down nutrients the body could normally never use, leading to increased efficiency.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>InstallReprocessorStomachStellar</RecipeDef>
+    </descriptionHyperlinks>
+
+  </ThingDef>
+
+  <RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase">
+    <defName>InstallReprocessorStomachStellar</defName>
+    <label>install stellar reprocessor stomach</label>
+    <description>Install a reprocessor stomach.</description>
+    <descriptionHyperlinks>
+      <ThingDef>ReprocessorStomachStellar</ThingDef>
+      <HediffDef>ReprocessorStomachStellar</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing stellar reprocessor stomach.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>ReprocessorStomachStellar</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>ReprocessorStomachStellar</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Stomach</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>ReprocessorStomachStellar</addsHediff>
+  </RecipeDef>
+  <!-- Circadian assistant -->
+
+  <HediffDef ParentName="ImplantHediffBase">
+    <defName>CircadianAssistantStellar</defName>
+    <label>stellar circadian assistant</label>
+    <labelNoun>a stellar circadian assistant</labelNoun>
+    <description>An installed stellar circadian assistant.</description>
+    <descriptionHyperlinks>
+      <ThingDef>CircadianAssistantStellar</ThingDef>
+    </descriptionHyperlinks>
+    <spawnThingOnRemoved>CircadianAssistantStellar</spawnThingOnRemoved>
+    <stages>
+      <li>
+        <statOffsets>
+          <RestFallRateFactor>-0.4</RestFallRateFactor>
+        </statOffsets>
+      </li>
+    </stages>
+    <comps>
+      <li Class="HediffCompProperties_ReactOnDamage">
+        <damageDefIncoming>EMP</damageDefIncoming>
+        <createHediff>BrainShock</createHediff>
+      </li>
+    </comps>
+  </HediffDef>
+
+  <ThingDef ParentName="BodyPartAOTCStellarBase">
+    <defName>CircadianAssistantStellar</defName>
+    <label>stellar circadian assistant</label>
+    <description>An artificial gland. Produces chemicals and nanomachines that clear toxin buildup from the brain.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>InstallCircadianAssistantStellar</RecipeDef>
+    </descriptionHyperlinks>
+
+  </ThingDef>
+
+  <RecipeDef ParentName="SurgeryInstallImplantAOTCStellarBase">
+    <defName>InstallCircadianAssistantStellar</defName>
+    <label>install stellar circadian assistant</label>
+    <description>Install a circadian assistant.</description>
+    <descriptionHyperlinks>
+      <ThingDef>CircadianAssistantStellar</ThingDef>
+      <HediffDef>CircadianAssistantStellar</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing stellar circadian assistant.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>CircadianAssistantStellar</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>CircadianAssistantStellar</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Brain</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>CircadianAssistantStellar</addsHediff>
+  </RecipeDef>
+
+  <RecipeDef ParentName="SurgeryRemoveImplantBase">
+    <defName>RemoveCircadianAssistantStellar</defName>
+    <label>stellar remove circadian assistant</label>
+    <description>Remove circadian assistant.</description>
+    <descriptionHyperlinks>
+      <ThingDef>CircadianAssistantStellar</ThingDef>
+      <HediffDef>CircadianAssistantStellar</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Removing stellar circadian assistant.</jobString>
+    <removesHediff>CircadianAssistantStellar</removesHediff>
+  </RecipeDef>
+
+  <!-- Circadian half-cycler -->
+
+  <HediffDef ParentName="ImplantHediffBase">
+    <defName>CircadianHalfCyclerStellar</defName>
+    <label>stellar circadian half-cycler</label>
+    <labelNoun>a stellar circadian half-cycler</labelNoun>
+    <description>An installed stellar circadian half-cycler.</description>
+    <descriptionHyperlinks>
+      <ThingDef>CircadianHalfCyclerStellar</ThingDef>
+    </descriptionHyperlinks>
+    <spawnThingOnRemoved>CircadianHalfCyclerStellar</spawnThingOnRemoved>
+    <disablesNeeds>
+      <li>Rest</li>
+    </disablesNeeds>
+    <stages>
+      <li>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <offset>-0.125</offset>
+          </li>
+        </capMods>
+      </li>
+    </stages>
+    <comps>
+      <li Class="HediffCompProperties_ReactOnDamage">
+        <damageDefIncoming>EMP</damageDefIncoming>
+        <createHediff>BrainShock</createHediff>
+      </li>
+    </comps>
+  </HediffDef>
+
+  <ThingDef ParentName="BodyPartAOTCStellarBase">
+    <defName>CircadianHalfCyclerStellar</defName>
+    <label>stellar circadian half-cycler</label>
+    <description>A signal redirector which isolates half of the brain, allowing the other half to sleep while the user remains outwardly awake. By alternating brain halves, the user never needs to sleep. Unfortunately, two hemispheres are better than one - working with half a brain causes a reduction in consciousness.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>InstallCircadianHalfCyclerStellar</RecipeDef>
+    </descriptionHyperlinks>
+
+  </ThingDef>
+
+  <RecipeDef ParentName="SurgeryInstallImplantAOTCStellarBase">
+    <defName>InstallCircadianHalfCyclerStellar</defName>
+    <label>install stellar circadian half-cycler</label>
+    <description>Install a circadian half-cycler.</description>
+    <descriptionHyperlinks>
+      <ThingDef>CircadianHalfCyclerStellar</ThingDef>
+      <HediffDef>CircadianHalfCyclerStellar</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing stellar circadian half-cycler.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>CircadianHalfCyclerStellar</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>CircadianHalfCyclerStellar</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Brain</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>CircadianHalfCyclerStellar</addsHediff>
+  </RecipeDef>
+
+  <RecipeDef ParentName="SurgeryRemoveImplantBase">
+    <defName>RemoveCircadianHalfCyclerStellar</defName>
+    <label>stellar remove circadian half-cycler</label>
+    <description>Remove circadian half-cycler.</description>
+    <descriptionHyperlinks>
+      <ThingDef>CircadianHalfCyclerStellar</ThingDef>
+      <HediffDef>CircadianHalfCyclerStellar</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Removing stellar circadian half-cycler.</jobString>
+    <removesHediff>CircadianHalfCyclerStellar</removesHediff>
+  </RecipeDef>
+
+</Defs>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>Synthetik - Vehicle</li>
+		</mods>
+		<match Class="PatchOperationAdd">
+			<xpath>/Defs</xpath>
+			<!-- ==================== Ammo ========================== -->
+			<value>
+				<ThingDef Class="CombatExtended.AmmoDef" ParentName="76mmMissileBase">
+					<defName>BOR_Ammo_76mmMissile_CMi</defName>
+					<label>76mm Missile (CM-i)</label>
+					<graphicData>
+						<texPath>Synthetik/Ammo/Rocket/76mmDumbfire</texPath>
+						<graphicClass>Graphic_StackCount</graphicClass>
+					</graphicData>
+					<statBases>
+						<MarketValue>450</MarketValue>
+						<Mass>30</Mass>
+						<Bulk>24.85</Bulk>
+					</statBases>
+					<ammoClass>BOR_CMi_AmmoClass</ammoClass>
+					<detonateProjectile>BOR_Bullet_76mmMissile_CMi</detonateProjectile>
+					<generateCommonality>0.01</generateCommonality>
+				</ThingDef>
+
+				<!-- ================== Projectiles ================== -->
+
+				<ThingDef Class="CombatExtended.AmmoDef" ParentName="Base76mmMissile">
+					<defName>BOR_Bullet_76mmMissile_CMi</defName>
+					<label>76mm Missile (CM-i)</label>
+					<projectile Class="CombatExtended.ProjectilePropertiesCE">
+						<damageDef>Bomb</damageDef>
+						<damageAmountBase>495</damageAmountBase>
+						<explosionRadius>6.1</explosionRadius>
+						<soundExplode>Synthetik_HE_Explode</soundExplode>
+						<applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
+					</projectile>
+					<comps>
+						<li Class="CombatExtended.CompProperties_Fragments">
+							<fragments>
+								<Fragment_Cosmic>15</Fragment_Cosmic>
+								<Fragment_Stellar>40</Fragment_Stellar>
+							</fragments>
+						</li>
+					</comps>
+					<generateCommonality>0.01</generateCommonality>
+				</ThingDef>
+
+				<!-- ==================== Recipes ========================== -->
+
+				<RecipeDef ParentName="LauncherAmmoRecipeBase">
+					<defName>MakeBOR_Ammo_76mmMissile_CMi</defName>
+					<label>make 76mm CM-i Missile launch tube x5</label>
+					<description>Craft 5 76mm CM-i Missile launch tube.</description>
+					<jobString>Making 76mm CM-i Missile launch tube.</jobString>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>BOR_QuasarAlloy</li>
+								</thingDefs>
+							</filter>
+							<count>42</count>
+						</li>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>BOR_Sunsteel</li>
+								</thingDefs>
+							</filter>
+							<count>42</count>
+						</li>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>BOR_Neutronium</li>
+								</thingDefs>
+							</filter>
+							<count>7</count>
+						</li>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>ComponentSpacer</li>
+								</thingDefs>
+							</filter>
+							<count>4</count>
+						</li>
+					</ingredients>
+					<fixedIngredientFilter>
+						<thingDefs>
+							<li>BOR_QuasarAlloy</li>
+							<li>BOR_Sunsteel</li>
+							<li>BOR_Neutronium</li>
+							<li>ComponentSpacer</li>
+						</thingDefs>
+					</fixedIngredientFilter>
+					<products>
+						<BOR_Ammo_76mmMissile_CMi>1</BOR_Ammo_76mmMissile_CMi>
+					</products>
+					<workAmount>16600</workAmount>
+				</RecipeDef>
+			</value>
+		</match>
+	</Operation>
+</Patch>

@@ -1,0 +1,688 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- Mindscrew -->
+
+  <HediffDef ParentName="ImplantHediffBase">
+    <defName>MindscrewStellar</defName>
+    <label>stellar mindscrew</label>
+    <labelNoun>a stellar mindscrew</labelNoun>
+    <description>An installed stellar mindscrew.</description>
+    <descriptionHyperlinks>
+      <ThingDef>MindscrewStellar</ThingDef>
+    </descriptionHyperlinks>
+    <spawnThingOnRemoved>MindscrewStellar</spawnThingOnRemoved>
+    <priceOffset>-220</priceOffset>
+    <stages>
+      <li>
+        <painOffset>0.4</painOffset>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <ThingDef ParentName="BodyPartAOTCStellarBase">
+    <defName>MindscrewStellar</defName>
+    <label>stellar mindscrew</label>
+    <description>Inflicts continuous pain on the user. Mindscrews are used by some authorities as a long-term punishment. Some even install them voluntarily as a demonstration of ideological or religious devotion.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>InstallMindscrewStellar</RecipeDef>
+    </descriptionHyperlinks>
+    <techHediffsTags>
+      <li>PainCauser</li>
+    </techHediffsTags>
+
+  </ThingDef>
+
+  <RecipeDef ParentName="SurgeryInstallImplantAOTCStellarBase">
+    <defName>InstallMindscrewStellar</defName>
+    <label>install stellar mindscrew</label>
+    <description>Install a mindscrew.</description>
+    <descriptionHyperlinks>
+      <ThingDef>MindscrewStellar</ThingDef>
+      <HediffDef>MindscrewStellar</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing stellar mindscrew.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>MindscrewStellar</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>MindscrewStellar</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Brain</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>MindscrewStellar</addsHediff>
+  </RecipeDef>
+
+  <!-- Drill arm -->
+
+  <HediffDef ParentName="AddedBodyPartBase">
+    <defName>DrillArmStellar</defName>
+    <label>stellar drill arm</label>
+    <labelNoun>a stellar drill arm</labelNoun>
+    <description>An installed stellar drill arm.</description>
+    <descriptionHyperlinks>
+      <ThingDef>DrillArmStellar</ThingDef>
+    </descriptionHyperlinks>
+    <addedPartProps>
+      <solid>true</solid>
+    </addedPartProps>
+    <stages>
+      <li>
+        <statOffsets>
+          <MiningSpeed>3.20</MiningSpeed>
+          <DeepDrillingSpeed>1.4</DeepDrillingSpeed>
+        </statOffsets>
+        <capMods>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>-0.06</offset>
+          </li>
+        </capMods>
+      </li>
+    </stages>
+    <comps>
+      <li Class="HediffCompProperties_VerbGiver">
+        <tools>
+          <li>
+            <label>stellar drill</label>
+            <capacities>
+              <li>Stab</li>
+            </capacities>
+            <power>26</power>
+            <cooldownTime>2</cooldownTime>
+            <alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+            <soundMeleeHit>MeleeHit_DrillArm</soundMeleeHit>
+            <soundMeleeMiss>MeleeMiss_DrillArm</soundMeleeMiss>
+          </li>
+        </tools>
+      </li>
+    </comps>
+    <spawnThingOnRemoved>DrillArmStellar</spawnThingOnRemoved>
+  </HediffDef>
+
+  <ThingDef ParentName="BodyPartAOTCStellarBase">
+    <defName>DrillArmStellar</defName>
+    <label>stellar drill arm</label>
+    <description>A mechanical arm replacement for speeding up mining. It has a built-in snake drill, which allows the miner to rapidly find and exploit weak lines in the rock. It also has a general-purpose manipulator. It is somewhat ungainly, which slows down movement slightly.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>InstallDrillArmStellar</RecipeDef>
+    </descriptionHyperlinks>
+
+    <techHediffsTags>
+      <li>DrillArm</li>
+    </techHediffsTags>
+  </ThingDef>
+
+  <RecipeDef ParentName="SurgeryInstallBodyPartProstheticBase">
+    <defName>InstallDrillArmStellar</defName>
+    <label>install stellar drill arm</label>
+    <description>Install a drill arm.</description>
+    <descriptionHyperlinks>
+      <ThingDef>DrillArmStellar</ThingDef>
+      <HediffDef>DrillArmStellar</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing stellar drill arm.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>DrillArmStellar</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>DrillArmStellar</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Arm</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>DrillArmStellar</addsHediff>
+  </RecipeDef>
+
+  <!-- Field hand -->
+
+  <HediffDef ParentName="AddedBodyPartBase">
+    <defName>FieldHandStellar</defName>
+    <label>stellar field hand</label>
+    <labelNoun>a stellar field hand</labelNoun>
+    <description>An installed stellar field hand.</description>
+    <descriptionHyperlinks>
+      <ThingDef>FieldHandStellar</ThingDef>
+    </descriptionHyperlinks>
+    <addedPartProps>
+      <solid>true</solid>
+    </addedPartProps>
+    <stages>
+      <li>
+        <statOffsets>
+          <PlantWorkSpeed>3.20</PlantWorkSpeed>
+        </statOffsets>
+        <capMods>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>-0.06</offset>
+          </li>
+        </capMods>
+      </li>
+    </stages>
+    <comps>
+      <li Class="HediffCompProperties_VerbGiver">
+        <tools>
+          <li>
+            <label>stellar knuckle</label>
+            <capacities>
+              <li>Blunt</li>
+            </capacities>
+            <power>18</power>
+            <cooldownTime>2</cooldownTime>
+            <alwaysTreatAsWeapon>false</alwaysTreatAsWeapon>
+            <soundMeleeHit>MeleeHit_FieldHand</soundMeleeHit>
+            <soundMeleeMiss>MeleeMiss_FieldHand</soundMeleeMiss>
+          </li>
+        </tools>
+      </li>
+    </comps>
+    <spawnThingOnRemoved>FieldHandStellar</spawnThingOnRemoved>
+  </HediffDef>
+
+  <ThingDef ParentName="BodyPartAOTCStellarBase">
+    <defName>FieldHandStellar</defName>
+    <label>stellar field hand</label>
+    <description>This mechanical hand replacement is made to speed up the sowing and harvesting tasks of a farmer. Multiple telescoping finger-like protrusions can simultaneously harvest from several points on the same plant, or precisely sow several holes at once. It also has a general-purpose manipulator. It is somewhat ungainly, which slows down movement slightly.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>InstallFieldHandStellar</RecipeDef>
+    </descriptionHyperlinks>
+
+    <techHediffsTags>
+      <li>FieldHand</li>
+    </techHediffsTags>
+  </ThingDef>
+
+  <RecipeDef ParentName="SurgeryInstallBodyPartProstheticBase">
+    <defName>InstallFieldHandStellar</defName>
+    <label>install stellar field hand</label>
+    <description>Install a field hand.</description>
+    <descriptionHyperlinks>
+      <ThingDef>FieldHandStellar</ThingDef>
+      <HediffDef>FieldHandStellar</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing stellar field hand.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>FieldHandStellar</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>FieldHandStellar</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Hand</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>FieldHandStellar</addsHediff>
+  </RecipeDef>
+
+  <!-- Hand talon -->
+
+  <HediffDef ParentName="ImplantHediffBase">
+    <defName>HandTalonStellar</defName>
+    <label>stellar hand talon</label>
+    <labelNoun>a stellar hand talon</labelNoun>
+    <description>An installed stellar hand talon.</description>
+    <descriptionHyperlinks>
+      <ThingDef>HandTalonStellar</ThingDef>
+    </descriptionHyperlinks>
+    <addedPartProps>
+      <solid>true</solid>
+    </addedPartProps>
+    <comps>
+      <li Class="HediffCompProperties_VerbGiver">
+        <tools>
+          <li>
+            <label>stellar talon</label>
+            <capacities>
+              <li>Scratch</li>
+            </capacities>
+            <power>30</power>  <!-- Lower damage means lower AP than other compact weapons, but it's faster with more raw DPS -->
+            <armorPenetration>0.3</armorPenetration>
+            <cooldownTime>1.0</cooldownTime>
+            <alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+            <soundMeleeHit>MeleeHit_BionicSlash</soundMeleeHit>
+            <soundMeleeMiss>MeleeMiss_BionicSlash</soundMeleeMiss>
+          </li>
+        </tools>
+      </li>
+    </comps>
+    <spawnThingOnRemoved>HandTalonStellar</spawnThingOnRemoved>
+  </HediffDef>
+
+  <ThingDef ParentName="BodyPartAOTCStellarBase">
+    <defName>HandTalonStellar</defName>
+    <label>stellar hand talon</label>
+    <description>A razor-sharp talon which extends from a hidden opening between the middle and ring fingers. The talon is longer than the palm, but it becomes flexible upon retracting, allowing the user to curl it up and conceal it inside the hand. It can perform rapid slashing attacks, but is poor at penetrating armor.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>InstallHandTalonStellar</RecipeDef>
+    </descriptionHyperlinks>
+
+    <violentTechHediff>true</violentTechHediff>
+    <techHediffsTags>
+      <li>AdvancedWeapon</li>
+    </techHediffsTags>
+  </ThingDef>
+
+  <RecipeDef ParentName="SurgeryInstallImplantAOTCStellarBase">
+    <defName>InstallHandTalonStellar</defName>
+    <label>install stellar hand talon</label>
+    <description>Install a hand talon.</description>
+    <descriptionHyperlinks>
+      <ThingDef>HandTalonStellar</ThingDef>
+      <HediffDef>HandTalonStellar</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing stellar hand talon.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>HandTalonStellar</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>HandTalonStellar</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Hand</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>HandTalonStellar</addsHediff>
+  </RecipeDef>
+
+  <RecipeDef ParentName="SurgeryRemoveImplantBase">
+    <defName>RemoveHandTalonStellar</defName>
+    <label>stellar remove hand talon</label>
+    <description>Remove hand talon.</description>
+    <descriptionHyperlinks>
+      <ThingDef>HandTalonStellar</ThingDef>
+      <HediffDef>HandTalonStellar</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Removing stellar hand talon.</jobString>
+    <removesHediff>HandTalonStellar</removesHediff>
+  </RecipeDef>
+
+  <!-- Elbow blade -->
+
+  <HediffDef ParentName="ImplantHediffBase">
+    <defName>ElbowBladeStellar</defName>
+    <label>stellar elbow blade</label>
+    <labelNoun>a stellarn elbow blade</labelNoun>
+    <description>An installed stellar elbow blade.</description>
+    <descriptionHyperlinks>
+      <ThingDef>ElbowBladeStellar</ThingDef>
+    </descriptionHyperlinks>
+    <addedPartProps>
+      <solid>true</solid>
+    </addedPartProps>
+    <comps>
+      <li Class="HediffCompProperties_VerbGiver">
+        <tools>
+          <li>
+            <label>stellar blade</label>
+            <capacities>
+              <li>Cut</li>
+            </capacities>
+            <power>36</power>
+            <cooldownTime>2</cooldownTime>
+            <alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+            <soundMeleeHit>MeleeHit_BionicSlash</soundMeleeHit>
+            <soundMeleeMiss>MeleeMiss_BionicSlash</soundMeleeMiss>
+          </li>
+        </tools>
+      </li>
+    </comps>
+    <spawnThingOnRemoved>ElbowBladeStellar</spawnThingOnRemoved>
+  </HediffDef>
+
+  <ThingDef ParentName="BodyPartAOTCStellarBase">
+    <defName>ElbowBladeStellar</defName>
+    <label>stellar elbow blade</label>
+    <description>A razor-sharp blade that extends at will from a hidden opening at the end of the ulna. Appearing without warning, it can be used for devastating slice attacks.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>InstallElbowBladeStellar</RecipeDef>
+    </descriptionHyperlinks>
+
+    <violentTechHediff>true</violentTechHediff>
+    <techHediffsTags>
+      <li>AdvancedWeapon</li>
+    </techHediffsTags>
+  </ThingDef>
+
+  <RecipeDef ParentName="SurgeryInstallImplantAOTCStellarBase">
+    <defName>InstallElbowBladeStellar</defName>
+    <label>install stellar elbow blade</label>
+    <description>Install an elbow blade.</description>
+    <descriptionHyperlinks>
+      <ThingDef>ElbowBladeStellar</ThingDef>
+      <HediffDef>ElbowBladeStellar</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing stellar elbow blade.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>ElbowBladeStellar</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>ElbowBladeStellar</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Arm</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>ElbowBladeStellar</addsHediff>
+  </RecipeDef>
+
+  <RecipeDef ParentName="SurgeryRemoveImplantBase">
+    <defName>RemoveElbowBladeStellar</defName>
+    <label>stellar remove elbow blade</label>
+    <description>Remove elbow blade.</description>
+    <descriptionHyperlinks>
+      <ThingDef>ElbowBladeStellar</ThingDef>
+      <HediffDef>ElbowBladeStellar</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Removing stellar elbow blade.</jobString>
+    <removesHediff>ElbowBladeStellar</removesHediff>
+  </RecipeDef>
+
+  <!-- Knee spike -->
+
+  <HediffDef ParentName="ImplantHediffBase">
+    <defName>KneeSpikeStellar</defName>
+    <label>stellar knee spike</label>
+    <labelNoun>a stellar knee spike</labelNoun>
+    <description>An installed stellar knee spike.</description>
+    <descriptionHyperlinks>
+      <ThingDef>KneeSpikeStellar</ThingDef>
+    </descriptionHyperlinks>
+    <addedPartProps>
+      <solid>true</solid>
+    </addedPartProps>
+    <comps>
+      <li Class="HediffCompProperties_VerbGiver">
+        <tools>
+          <li>
+            <label>stellar spike</label>
+            <capacities>
+              <li>Stab</li>
+            </capacities>
+            <power>44</power> <!-- More power and AP but slower than other compact weapons -->
+            <armorPenetration>0.76</armorPenetration>
+            <cooldownTime>2.3</cooldownTime>
+            <alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+            <soundMeleeHit>MeleeHit_BionicSlash</soundMeleeHit>
+            <soundMeleeMiss>MeleeMiss_BionicSlash</soundMeleeMiss>
+          </li>
+        </tools>
+      </li>
+    </comps>
+    <spawnThingOnRemoved>KneeSpikeStellar</spawnThingOnRemoved>
+  </HediffDef>
+
+  <ThingDef ParentName="BodyPartAOTCStellarBase">
+    <defName>KneeSpikeStellar</defName>
+    <label>stellar knee spike</label>
+    <description>A spike that extends at will from a hidden opening on the front of the knee. Appearing without warning, it can be used for devastating stabbing attacks which penetrate even thick armor.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>InstallKneeSpikeStellar</RecipeDef>
+    </descriptionHyperlinks>
+
+    <violentTechHediff>true</violentTechHediff>
+    <techHediffsTags>
+      <li>AdvancedWeapon</li>
+    </techHediffsTags>
+  </ThingDef>
+
+  <RecipeDef ParentName="SurgeryInstallImplantAOTCStellarBase">
+    <defName>InstallKneeSpikeStellar</defName>
+    <label>install stellar knee spike</label>
+    <description>Install a knee spike.</description>
+    <descriptionHyperlinks>
+      <ThingDef>KneeSpikeStellar</ThingDef>
+      <HediffDef>KneeSpikeStellar</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing stellar knee spike.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>KneeSpikeStellar</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>KneeSpikeStellar</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Leg</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>KneeSpikeStellar</addsHediff>
+  </RecipeDef>
+
+  <RecipeDef ParentName="SurgeryRemoveImplantBase">
+    <defName>RemoveKneeSpikeStellar</defName>
+    <label>stellar remove knee spike</label>
+    <description>Remove knee spike.</description>
+    <descriptionHyperlinks>
+      <ThingDef>KneeSpikeStellar</ThingDef>
+      <HediffDef>KneeSpikeStellar</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Removing stellar knee spike.</jobString>
+    <removesHediff>KneeSpikeStellar</removesHediff>
+  </RecipeDef>
+
+  <!-- venom fangs -->
+
+  <HediffDef ParentName="ImplantHediffBase">
+    <defName>VenomFangsStellar</defName>
+    <label>stellar venom fangs</label>
+    <labelNoun>a stellar set of venom fangs</labelNoun>
+    <description>An installed stellar set of venom fangs.</description>
+    <descriptionHyperlinks>
+      <ThingDef>VenomFangsStellar</ThingDef>
+    </descriptionHyperlinks>
+    <addedPartProps>
+      <solid>true</solid>
+    </addedPartProps>
+    <comps>
+      <li Class="HediffCompProperties_VerbGiver">
+        <tools>
+          <li>
+            <label>stellar venom fangs</label>
+            <capacities>
+              <li>ToxicBite</li>
+            </capacities>
+            <power>30</power>
+            <cooldownTime>2</cooldownTime>
+            <alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+          </li>
+        </tools>
+      </li>
+    </comps>
+    <spawnThingOnRemoved>VenomFangsStellar</spawnThingOnRemoved>
+  </HediffDef>
+
+  <ThingDef ParentName="BodyPartAOTCStellarBase">
+    <defName>VenomFangsStellar</defName>
+    <label>stellar venom fangs</label>
+    <description>A pair of injectors implanted through the canine teeth, connected to a venom pump. The user can bite an enemy, extend the injectors, and pump venom into the target.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>InstallVenomFangsStellar</RecipeDef>
+    </descriptionHyperlinks>
+
+    <violentTechHediff>true</violentTechHediff>
+    <techHediffsTags>
+      <li>AdvancedWeapon</li>
+    </techHediffsTags>
+  </ThingDef>
+
+  <RecipeDef ParentName="SurgeryInstallImplantAOTCStellarBase">
+    <defName>InstallVenomFangsStellar</defName>
+    <label>install stellar venom fangs</label>
+    <description>Install venom fangs.</description>
+    <descriptionHyperlinks>
+      <ThingDef>VenomFangsStellar</ThingDef>
+      <HediffDef>VenomFangsStellar</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing stellar venom fangs.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>VenomFangsStellar</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>VenomFangsStellar</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyPartGroups>
+      <li>Teeth</li>
+    </appliedOnFixedBodyPartGroups>
+    <addsHediff>VenomFangsStellar</addsHediff>
+  </RecipeDef>
+
+  <RecipeDef ParentName="SurgeryRemoveImplantBase">
+    <defName>RemoveVenomFangsStellar</defName>
+    <label>stellar remove venom fangs</label>
+    <description>Remove venom fangs.</description>
+    <descriptionHyperlinks>
+      <ThingDef>VenomFangsStellar</ThingDef>
+      <HediffDef>VenomFangsStellar</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Removing stellar venom fangs.</jobString>
+    <removesHediff>VenomFangsStellar</removesHediff>
+  </RecipeDef>
+
+  <!-- venom talon -->
+
+  <HediffDef ParentName="ImplantHediffBase">
+    <defName>VenomTalonStellar</defName>
+    <label>stellar venom talon</label>
+    <labelNoun>a stellar venom talon</labelNoun>
+    <description>An installed stellar venom talon.</description>
+    <descriptionHyperlinks>
+      <ThingDef>VenomTalonStellar</ThingDef>
+    </descriptionHyperlinks>
+    <comps>
+      <li Class="HediffCompProperties_VerbGiver">
+        <tools>
+          <li>
+            <label>stellar venom talon</label>
+            <capacities>
+              <li>ScratchToxic</li>
+            </capacities>
+            <power>22</power> <!-- Toxic and fast but with poor armor penetration -->
+            <armorPenetration>0.3</armorPenetration>
+            <cooldownTime>1.0</cooldownTime>
+            <alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+            <soundMeleeHit>MeleeHit_BionicSlash</soundMeleeHit>
+            <soundMeleeMiss>MeleeMiss_BionicSlash</soundMeleeMiss>
+          </li>
+        </tools>
+      </li>
+    </comps>
+    <spawnThingOnRemoved>VenomTalonStellar</spawnThingOnRemoved>
+  </HediffDef>
+
+  <ThingDef ParentName="BodyPartAOTCStellarBase">
+    <defName>VenomTalonStellar</defName>
+    <label>stellar venom talon</label>
+    <description>A retractable finger talon connected to a venom pump in the lower arm. The user can scratch an enemy while squirting venom into the wound. The talon is designed to be installed in the middle finger. It's fast, but poor at penetrating armor.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>InstallVenomTalonStellar</RecipeDef>
+    </descriptionHyperlinks>
+
+    <violentTechHediff>true</violentTechHediff>
+    <techHediffsTags>
+      <li>AdvancedWeapon</li>
+    </techHediffsTags>
+  </ThingDef>
+
+  <RecipeDef ParentName="SurgeryInstallImplantAOTCStellarBase">
+    <defName>InstallVenomTalonStellar</defName>
+    <label>install stellar venom talon</label>
+    <description>Install a venom talon.</description>
+    <descriptionHyperlinks>
+      <ThingDef>VenomTalonStellar</ThingDef>
+      <HediffDef>VenomTalonStellar</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing stellar venom talon.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>VenomTalonStellar</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>VenomTalonStellar</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyPartGroups>
+      <li>MiddleFingers</li>
+    </appliedOnFixedBodyPartGroups>
+    <addsHediff>VenomTalonStellar</addsHediff>
+  </RecipeDef>
+
+  <RecipeDef ParentName="SurgeryRemoveImplantBase">
+    <defName>RemoveVenomTalonStellar</defName>
+    <label>stellar remove venom talon</label>
+    <description>Remove venom talon.</description>
+    <descriptionHyperlinks>
+      <ThingDef>VenomTalonStellar</ThingDef>
+      <HediffDef>VenomTalonStellar</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Removing stellar venom talon.</jobString>
+    <removesHediff>VenomTalonStellar</removesHediff>
+  </RecipeDef>
+
+</Defs>

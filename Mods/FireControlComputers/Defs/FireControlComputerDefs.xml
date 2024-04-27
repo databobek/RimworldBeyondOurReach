@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+    <ThingDef ParentName="FC_ComputerBase">
+        <defName>FC_FireControl_Enigmatic</defName>
+        <label>enigmatic fire control computer</label>
+        <description>Spiting the archotechs, we can build our own autonomous fire control computers.</description>
+        <size>(5,5)</size>
+        <rotatable>false</rotatable>
+        <graphicData>
+            <graphicClass>Graphic_Single</graphicClass>
+            <texPath>ModRetex/FireControl3</texPath>
+            <drawSize>(6,6)</drawSize>
+            <drawOffset>(0,3,0.25)</drawOffset>
+        </graphicData>
+        <statBases>
+            <MaxHitPoints>1000</MaxHitPoints>
+            <WorkToBuild>15000</WorkToBuild>
+            <Mass>1000</Mass>
+            <MarketValue>100000</MarketValue>
+        </statBases>
+        <costList>
+            <BOR_QuasarAlloy>500</BOR_QuasarAlloy>
+            <BOR_Tenebrite>100</BOR_Tenebrite>
+            <BOR_Sunsteel>1000</BOR_Sunsteel>
+            <BOR_Femtoclusters>5</BOR_Femtoclusters>
+            <AIPersonaCore>1</AIPersonaCore>
+        </costList>
+        <researchPrerequisites>
+            <li>BOR_Research_Enigmatic_FCC</li>
+        </researchPrerequisites>
+        <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+        <constructionSkillPrerequisite>15</constructionSkillPrerequisite>
+        <hasInteractionCell>false</hasInteractionCell>
+        <comps>
+            <li Class="CompProperties_Power">
+                <compClass>CompPowerTrader</compClass>
+                <basePowerConsumption>5000</basePowerConsumption>
+                <idlePowerDraw>2500</idlePowerDraw>
+            </li>
+            <li Class="FireControl.CompProperties_FireControl">
+                <auto>true</auto>
+                <efficiency>0.8</efficiency>
+                <maxTurrets>25</maxTurrets>
+            </li>
+        </comps>
+    </ThingDef>
+</Defs>

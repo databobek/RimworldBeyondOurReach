@@ -1,0 +1,233 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- Psychic sensitizer -->
+
+  <HediffDef ParentName="ImplantHediffBase">
+    <defName>PsychicSensitizerCosmic</defName>
+    <label>cosmic psychic sensitizer</label>
+    <labelNoun>a cosmic psychic sensitizer</labelNoun>
+    <description>An installed cosmic psychic sensitizer implant.</description>
+    <descriptionHyperlinks>
+      <ThingDef>PsychicSensitizerCosmic</ThingDef>
+    </descriptionHyperlinks>
+    <spawnThingOnRemoved>PsychicSensitizerCosmic</spawnThingOnRemoved>
+    <stages>
+      <li>
+        <statOffsets>
+          <PsychicSensitivity>0.75</PsychicSensitivity>
+        </statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <ThingDef ParentName="BodyPartAOTCCosmicBase">
+    <defName>PsychicSensitizerCosmic</defName>
+    <label>cosmic psychic sensitizer</label>
+    <description>This brain implant stimulates growth in the regions of the brain related to psychic interaction, thus increasing psychic sensitivity.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>InstallPsychicSensitizerCosmic</RecipeDef>
+    </descriptionHyperlinks>
+  </ThingDef>
+
+  <RecipeDef ParentName="SurgeryInstallImplantAOTCCosmicBase">
+    <defName>InstallPsychicSensitizerCosmic</defName>
+    <label>install cosmic psychic sensitizer</label>
+    <description>Install a psychic sensitizer.</description>
+    <descriptionHyperlinks>
+      <ThingDef>PsychicSensitizerCosmic</ThingDef>
+      <HediffDef>PsychicSensitizerCosmic</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing cosmic psychic sensitizer.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>PsychicSensitizerCosmic</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>PsychicSensitizerCosmic</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Brain</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>PsychicSensitizerCosmic</addsHediff>
+  </RecipeDef>
+
+  <RecipeDef ParentName="SurgeryRemoveImplantBase">
+    <defName>RemovePsychicSensitizerCosmic</defName>
+    <label>cosmic remove psychic sensitizer</label>
+    <description>Remove psychic sensitizer.</description>
+    <descriptionHyperlinks>
+      <ThingDef>PsychicSensitizerCosmic</ThingDef>
+      <HediffDef>PsychicSensitizerCosmic</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Removing cosmic psychic sensitizer.</jobString>
+    <removesHediff>PsychicSensitizerCosmic</removesHediff>
+  </RecipeDef>
+
+  <!-- Psychic harmonizer -->
+
+  <ThoughtDef>
+    <defName>PsychicHarmonizationCosmic</defName>
+    <thoughtClass>Thought_PsychicHarmonizer</thoughtClass>
+    <effectMultiplyingStat>PsychicSensitivity</effectMultiplyingStat>
+    <stackLimit>100</stackLimit>
+    <developmentalStageFilter>Baby, Child, Adult</developmentalStageFilter>
+    <stages>
+      <li>
+        <label>cosmic psychic harmony: {HARMONIZER_labelShort}</label>
+        <description>The psychic harmonizer implant makes me feel some of the emotions of the person using it as long as we're close together.</description>
+        <baseMoodEffect>15</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <HediffDef ParentName="ImplantHediffBase">
+    <defName>PsychicHarmonizerCosmic</defName>
+    <label>cosmic psychic harmonizer</label>
+    <labelNoun>a cosmic psychic harmonizer</labelNoun>
+    <description>An installed cosmic psychic harmonizer implant.</description>
+    <descriptionHyperlinks>
+      <ThingDef>PsychicHarmonizerCosmic</ThingDef>
+    </descriptionHyperlinks>
+    <spawnThingOnRemoved>PsychicHarmonizerCosmic</spawnThingOnRemoved>
+    <comps>
+      <li Class="HediffCompProperties_PsychicHarmonizer">
+        <range>55</range>
+        <thought>PsychicHarmonization</thought>
+      </li>
+    </comps>
+  </HediffDef>
+
+  <ThingDef ParentName="BodyPartAOTCCosmicBase">
+    <defName>PsychicHarmonizerCosmic</defName>
+    <label>cosmic psychic harmonizer</label>
+    <description>This brain implant projects the user's mood in a spherical psychic field, forcing others nearby to feel a blurred, simplified version of their emotions. It can be a powerful tool to keep morale high, but if the user becomes unhappy, it can lead to collective disaster.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>InstallPsychicHarmonizerCosmic</RecipeDef>
+    </descriptionHyperlinks>
+  </ThingDef>
+
+  <RecipeDef ParentName="SurgeryInstallImplantAOTCCosmicBase">
+    <defName>InstallPsychicHarmonizerCosmic</defName>
+    <label>install cosmic psychic harmonizer</label>
+    <description>Install a psychic harmonizer.</description>
+    <descriptionHyperlinks>
+      <ThingDef>PsychicHarmonizerCosmic</ThingDef>
+      <HediffDef>PsychicHarmonizerCosmic</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing cosmic psychic harmonizer.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>PsychicHarmonizerCosmic</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>PsychicHarmonizerCosmic</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Brain</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>PsychicHarmonizerCosmic</addsHediff>
+  </RecipeDef>
+
+  <RecipeDef ParentName="SurgeryRemoveImplantBase">
+    <defName>RemovePsychicHarmonizerCosmic</defName>
+    <label>cosmic remove psychic harmonizer</label>
+    <description>Remove psychic harmonizer.</description>
+    <descriptionHyperlinks>
+      <ThingDef>PsychicHarmonizerCosmic</ThingDef>
+      <HediffDef>PsychicHarmonizerCosmic</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Removing cosmic psychic harmonizer.</jobString>
+    <removesHediff>PsychicHarmonizerCosmic</removesHediff>
+  </RecipeDef>
+
+  <!-- Psychic reader -->
+
+  <HediffDef ParentName="ImplantHediffBase">
+    <defName>PsychicReaderCosmic</defName>
+    <label>cosmic psychic reader</label>
+    <labelNoun>a cosmic psychic reader</labelNoun>
+    <description>An installed cosmic psychic reader implant.</description>
+    <descriptionHyperlinks>
+      <ThingDef>PsychicReaderCosmic</ThingDef>
+    </descriptionHyperlinks>
+    <spawnThingOnRemoved>PsychicReaderCosmic</spawnThingOnRemoved>
+    <stages>
+      <li>
+        <statOffsets>
+          <NegotiationAbility>0.75</NegotiationAbility>
+          <TradePriceImprovement>0.35</TradePriceImprovement>
+        </statOffsets>
+        <statOffsetEffectMultiplier>PsychicSensitivity</statOffsetEffectMultiplier>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <ThingDef ParentName="BodyPartAOTCCosmicBase">
+    <defName>PsychicReaderCosmic</defName>
+    <label>cosmic psychic reader</label>
+    <description>Gives limited mind-reading ability, improving the user's ability to get the upper hand in negotiations and social situations. The effect is proportional to the user's psychic sensitivity.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>InstallPsychicReaderCosmic</RecipeDef>
+    </descriptionHyperlinks>
+  </ThingDef>
+
+  <RecipeDef ParentName="SurgeryInstallImplantAOTCCosmicBase">
+    <defName>InstallPsychicReaderCosmic</defName>
+    <label>install cosmic psychic reader</label>
+    <description>Install a psychic reader.</description>
+    <descriptionHyperlinks>
+      <ThingDef>PsychicReaderCosmic</ThingDef>
+      <HediffDef>PsychicReaderCosmic</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing cosmic psychic reader.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>PsychicReaderCosmic</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>PsychicReaderCosmic</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Brain</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>PsychicReaderCosmic</addsHediff>
+  </RecipeDef>
+
+  <RecipeDef ParentName="SurgeryRemoveImplantBase">
+    <defName>RemovePsychicReaderCosmic</defName>
+    <label>cosmic remove psychic reader</label>
+    <description>Remove psychic reader.</description>
+    <descriptionHyperlinks>
+      <ThingDef>PsychicReaderCosmic</ThingDef>
+      <HediffDef>PsychicReaderCosmic</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Removing cosmic psychic reader.</jobString>
+    <removesHediff>PsychicReaderCosmic</removesHediff>
+  </RecipeDef>
+
+</Defs>

@@ -1,0 +1,719 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+    <!-- 75x350 -->
+    <ThingDef Class="CombatExtended.AmmoDef" ParentName="Ammo75x350mmRBase">
+        <defName>BOR_Ammo_75x350mmR_CaP</defName>
+        <label>75x350mmR cartridge (Ca-P)</label>
+        <graphicData>
+			<texPath>Things/Ammo/Cannon/Tank/APHE</texPath>
+            <graphicClass>Graphic_StackCount</graphicClass>
+        </graphicData>
+        <statBases>
+            <MarketValue>50</MarketValue>
+            <Bulk>15</Bulk>
+        </statBases>
+        <ammoClass>BOR_CaP_AmmoClass</ammoClass>
+        <detonateProjectile>BOR_Bullet_75x350mmR_CaP</detonateProjectile>
+		<generateCommonality>0.01</generateCommonality>
+    </ThingDef>
+
+    <ThingDef Class="CombatExtended.AmmoDef" ParentName="Ammo75x350mmRBase">
+        <defName>BOR_Ammo_75x350mmR_CMi</defName>
+        <label>75x350mmR cartridge (CM-i)</label>
+        <graphicData>
+			<texPath>Things/Ammo/Cannon/Tank/HE</texPath>
+            <graphicClass>Graphic_StackCount</graphicClass>
+        </graphicData>
+        <statBases>
+            <MarketValue>90</MarketValue>
+            <Bulk>16</Bulk>
+        </statBases>
+        <ammoClass>BOR_CMi_AmmoClass</ammoClass>
+        <detonateProjectile>BOR_Bullet_75x350mmR_CMi</detonateProjectile>
+		<generateCommonality>0.01</generateCommonality>
+    </ThingDef>
+
+    <ThingDef ParentName="Base75x350mmRBullet">
+        <defName>BOR_Bullet_75x350mmR_CaP</defName>
+        <label>75x350mmR bullet (Ca-P)</label>
+        <projectile Class="CombatExtended.ProjectilePropertiesCE">
+            <damageDef>Bullet</damageDef>
+            <speed>180</speed>
+            <damageAmountBase>300</damageAmountBase>
+            <armorPenetrationSharp>132</armorPenetrationSharp>
+            <armorPenetrationBlunt>36000</armorPenetrationBlunt>
+        </projectile>
+    </ThingDef>
+
+    <ThingDef ParentName="Base75x350mmRBullet">
+        <defName>BOR_Bullet_75x350mmR_CMi</defName>
+        <label>75x350mmR bullet (CM-i)</label>
+        <projectile Class="CombatExtended.ProjectilePropertiesCE">
+            <damageDef>Bomb</damageDef>
+            <speed>138</speed>
+            <damageAmountBase>150</damageAmountBase>
+            <explosionRadius>3</explosionRadius>
+            <soundExplode>MortarBomb_Explode</soundExplode>
+            <applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
+        </projectile>
+        <comps>
+            <li Class="CombatExtended.CompProperties_Fragments">
+                <fragments>
+                    <Fragment_Cosmic>33</Fragment_Cosmic>
+                    <Fragment_Stellar>20</Fragment_Stellar>
+                </fragments>
+            </li>
+        </comps>
+    </ThingDef>
+
+    <RecipeDef ParentName="AmmoRecipeBase">
+        <defName>MakeBOR_Ammo_75x350mmR_CaP</defName>
+        <label>make 75x350mmR (Ca-P) shells x10</label>
+        <description>Craft 10 75x350mmR (Ca-P) shells.</description>
+        <jobString>Making 75x350mmR (Ca-P) shells.</jobString>
+        <ingredients>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>BOR_QuasarAlloy</li>
+                    </thingDefs>
+                </filter>
+                <count>88</count>
+            </li>
+        </ingredients>
+        <fixedIngredientFilter>
+            <thingDefs>
+                <li>BOR_QuasarAlloy</li>
+            </thingDefs>
+        </fixedIngredientFilter>
+        <products>
+            <BOR_Ammo_75x350mmR_CaP>10</BOR_Ammo_75x350mmR_CaP>
+        </products>
+        <skillRequirements>
+            <Crafting>6</Crafting>
+        </skillRequirements>
+        <workAmount>15560</workAmount>
+    </RecipeDef>
+
+    <RecipeDef ParentName="AmmoRecipeBase">
+        <defName>MakeBOR_Ammo_75x350mmR_CMi</defName>
+        <label>make 75x350mmR (CM-i) cartridge x10</label>
+        <description>Craft 10 75x350mmR (CM-i) cartridges.</description>
+        <jobString>Making 75x350mmR (CM-i) cartridges.</jobString>
+        <ingredients>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>BOR_QuasarAlloy</li>
+                    </thingDefs>
+                </filter>
+                <count>88</count>
+            </li>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>ComponentSpacer</li>
+                    </thingDefs>
+                </filter>
+                <count>2</count>
+            </li>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>BOR_Neutronium</li>
+                    </thingDefs>
+                </filter>
+                <count>6</count>
+            </li>
+        </ingredients>
+        <fixedIngredientFilter>
+            <thingDefs>
+                <li>BOR_QuasarAlloy</li>
+                <li>ComponentSpacer</li>
+                <li>BOR_Neutronium</li>
+            </thingDefs>
+        </fixedIngredientFilter>
+        <products>
+            <BOR_Ammo_75x350mmR_CMi>10</BOR_Ammo_75x350mmR_CMi>
+        </products>
+        <skillRequirements>
+            <Crafting>6</Crafting>
+        </skillRequirements>
+        <workAmount>16400</workAmount>
+    </RecipeDef>
+    <!-- 120mm -->
+
+    <ThingDef Class="CombatExtended.AmmoDef" ParentName="120mmCannonShellBase">
+        <defName>BOR_Ammo_120mmCannonShell_CMiAT</defName>
+        <label>120mm cannon shell (CM-iAT)</label>
+        <graphicData>
+			<texPath>Things/Ammo/Cannon/Tank/HEATFS</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+        </graphicData>
+        <statBases>
+            <MarketValue>225</MarketValue>
+        </statBases>
+        <ammoClass>BOR_CMiAT_AmmoClass</ammoClass>
+        <detonateProjectile>BOR_Bullet_120mmCannonShell_CMiAT</detonateProjectile>
+    </ThingDef>
+
+    <ThingDef Class="CombatExtended.AmmoDef" ParentName="120mmCannonShellBase">
+        <defName>BOR_Ammo_120mmCannonShell_CMi</defName>
+        <label>120mm cannon shell (CM-i)</label>
+        <graphicData>
+			<texPath>Things/Ammo/Cannon/Tank/HE</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+        </graphicData>
+        <statBases>
+            <MarketValue>250</MarketValue>
+        </statBases>
+        <ammoClass>BOR_CMi_AmmoClass</ammoClass>
+        <detonateProjectile>BOR_Bullet_120mmCannonShell_CMi</detonateProjectile>
+    </ThingDef>
+
+    <ThingDef ParentName="Base120mmCannonShell">
+        <defName>BOR_Bullet_120mmCannonShell_CMiAT</defName>
+        <label>120mm cannon shell (CM-iAT)</label>
+        <graphicData>
+			<texPath>Things/Ammo/Cannon/Tank/HEATFS</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+        </graphicData>
+        <projectile Class="CombatExtended.ProjectilePropertiesCE">
+            <damageDef>Bullet</damageDef>
+            <damageAmountBase>600</damageAmountBase>
+            <soundExplode>MortarBomb_Explode</soundExplode>
+            <armorPenetrationSharp>630</armorPenetrationSharp>
+            <armorPenetrationBlunt>90</armorPenetrationBlunt>
+        </projectile>
+        <comps>
+            <li Class="CombatExtended.CompProperties_ExplosiveCE">
+                <damageAmountBase>312</damageAmountBase>
+                <explosiveDamageType>Bomb</explosiveDamageType>
+                <explosiveRadius>2.25</explosiveRadius>
+                <applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
+            </li>
+            <li Class="CombatExtended.CompProperties_Fragments">
+                <fragments>
+                    <Fragment_Cosmic>27</Fragment_Cosmic>
+                    <Fragment_Stellar>32</Fragment_Stellar>
+                </fragments>
+            </li>
+        </comps>
+    </ThingDef>
+
+    <ThingDef ParentName="Base120mmCannonShell">
+        <defName>BOR_Bullet_120mmCannonShell_CMi</defName>
+        <label>120mm cannon shell (CM-i)</label>
+        <thingClass>CombatExtended.ProjectileCE_Explosive</thingClass>
+        <graphicData>
+			<texPath>Things/Ammo/Cannon/Tank/HE</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+        </graphicData>
+        <projectile Class="CombatExtended.ProjectilePropertiesCE">
+            <damageDef>Bomb</damageDef>
+            <damageAmountBase>421</damageAmountBase>
+            <explosionRadius>6</explosionRadius>
+            <soundExplode>MortarBomb_Explode</soundExplode>
+            <applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
+        </projectile>
+        <comps>
+            <li Class="CombatExtended.CompProperties_Fragments">
+                <fragments>
+                    <Fragment_Cosmic>45</Fragment_Cosmic>
+                    <Fragment_Stellar>120</Fragment_Stellar>
+                </fragments>
+            </li>
+        </comps>
+    </ThingDef>
+
+    <RecipeDef ParentName="AmmoRecipeBase">
+        <defName>MakeBOR_Ammo_120mmCannonShell_CMiAT</defName>
+        <label>make 120mm CMiAT cannon shells x2</label>
+        <description>Craft 2 120mm CMiAT cannon shells.</description>
+        <jobString>Making 120mm CMiAT cannon shells.</jobString>
+        <workAmount>20000</workAmount>
+        <ingredients>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>BOR_QuasarAlloy</li>
+                    </thingDefs>
+                </filter>
+                <count>90</count>
+            </li>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>ComponentSpacer</li>
+                    </thingDefs>
+                </filter>
+                <count>2</count>
+            </li>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>BOR_Neutronium</li>
+                    </thingDefs>
+                </filter>
+                <count>7</count>
+            </li>
+        </ingredients>
+        <fixedIngredientFilter>
+            <thingDefs>
+                <li>BOR_QuasarAlloy</li>
+                <li>ComponentSpacer</li>
+                <li>BOR_Neutronium</li>
+            </thingDefs>
+        </fixedIngredientFilter>
+        <products>
+            <BOR_Ammo_120mmCannonShell_CMiAT>2</BOR_Ammo_120mmCannonShell_CMiAT>
+        </products>
+        <skillRequirements>
+            <Crafting>6</Crafting>
+        </skillRequirements>
+    </RecipeDef>
+
+    <RecipeDef ParentName="AmmoRecipeBase">
+        <defName>MakeBOR_Ammo_120mmCannonShell_CMi</defName>
+        <label>make 120mm CMi cannon shells x2</label>
+        <description>Craft 2 120mm CMi cannon shells.</description>
+        <jobString>Making 120mm CMi cannon shells.</jobString>
+        <workAmount>25400</workAmount>
+        <ingredients>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>BOR_QuasarAlloy</li>
+                    </thingDefs>
+                </filter>
+                <count>90</count>
+            </li>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>ComponentSpacer</li>
+                    </thingDefs>
+                </filter>
+                <count>2</count>
+            </li>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>BOR_Neutronium</li>
+                    </thingDefs>
+                </filter>
+                <count>13</count>
+            </li>
+        </ingredients>
+        <fixedIngredientFilter>
+            <thingDefs>
+                <li>BOR_QuasarAlloy</li>
+                <li>ComponentSpacer</li>
+                <li>BOR_Neutronium</li>
+            </thingDefs>
+        </fixedIngredientFilter>
+        <products>
+            <BOR_Ammo_120mmCannonShell_CMi>2</BOR_Ammo_120mmCannonShell_CMi>
+        </products>
+        <skillRequirements>
+            <Crafting>6</Crafting>
+        </skillRequirements>
+    </RecipeDef>
+
+    <!-- 105x617mm -->
+
+    <ThingDef Class="CombatExtended.AmmoDef" ParentName="105x617mmRCannonShellBase">
+        <defName>BOR_Ammo_105x617mmRCannonShell_CMiAT</defName>
+        <label>105x617mmR cannon shell (CM-iAT)</label>
+        <graphicData>
+			<texPath>Things/Ammo/Cannon/Tank/HEATFS</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+        </graphicData>
+        <statBases>
+            <MarketValue>225</MarketValue>
+            <Bulk>66</Bulk>
+            <Mass>33</Mass>
+        </statBases>
+        <ammoClass>BOR_CMiAT_AmmoClass</ammoClass>
+        <detonateProjectile>BOR_Bullet_105x617mmRCannonShell_CMiAT</detonateProjectile>
+		<generateCommonality>0.01</generateCommonality>
+    </ThingDef>
+
+    <ThingDef Class="CombatExtended.AmmoDef" ParentName="105x617mmRCannonShellBase">
+        <defName>BOR_Ammo_105x617mmRCannonShell_CMi</defName>
+        <label>105x617mmR cannon shell (CM-i)</label>
+        <graphicData>
+			<texPath>Things/Ammo/Cannon/Tank/HE</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+        </graphicData>
+        <statBases>
+            <MarketValue>225</MarketValue>
+            <Bulk>66</Bulk>
+            <Mass>34</Mass>
+        </statBases>
+        <ammoClass>BOR_CMi_AmmoClass</ammoClass>
+        <detonateProjectile>BOR_Bullet_105x617mmRCannonShell_CMi</detonateProjectile>
+		<generateCommonality>0.01</generateCommonality>
+    </ThingDef>
+
+    <ThingDef ParentName="Base105x617mmRCannonShell">
+        <defName>BOR_Bullet_105x617mmRCannonShell_CMiAT</defName>
+        <label>105x617mmR cannon shell (CM-iAT)</label>
+        <graphicData>
+            <texPath>Things/Projectile/Cannon/HEAT</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <projectile Class="CombatExtended.ProjectilePropertiesCE">
+            <damageDef>Bullet</damageDef>
+            <speed>300</speed>
+            <damageAmountBase>460</damageAmountBase>
+            <soundExplode>MortarBomb_Explode</soundExplode>
+            <armorPenetrationSharp>585</armorPenetrationSharp>
+            <armorPenetrationBlunt>69</armorPenetrationBlunt>
+        </projectile>
+        <comps>
+            <li Class="CombatExtended.CompProperties_ExplosiveCE">
+                <damageAmountBase>225</damageAmountBase>
+                <explosiveDamageType>Bomb</explosiveDamageType>
+                <explosiveRadius>2.25</explosiveRadius>
+                <applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
+            </li>
+            <li Class="CombatExtended.CompProperties_Fragments">
+                <fragments>
+                    <Fragment_Cosmic>34</Fragment_Cosmic>
+                    <Fragment_Stellar>20</Fragment_Stellar>
+                </fragments>
+            </li>
+        </comps>
+    </ThingDef>
+
+    <ThingDef ParentName="Base105x617mmRCannonShell">
+        <defName>BOR_Bullet_105x617mmRCannonShell_CMi</defName>
+        <label>105x617mmR cannon shell (CM-i)</label>
+        <thingClass>CombatExtended.ProjectileCE_Explosive</thingClass>
+        <graphicData>
+            <texPath>Things/Projectile/Cannon/HE</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <projectile Class="CombatExtended.ProjectilePropertiesCE">
+            <damageDef>Bomb</damageDef>
+            <speed>201</speed>
+            <damageAmountBase>298</damageAmountBase>
+            <explosionRadius>5</explosionRadius>
+            <soundExplode>MortarBomb_Explode</soundExplode>
+            <applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
+        </projectile>
+        <comps>
+            <li Class="CombatExtended.CompProperties_Fragments">
+                <fragments>
+                    <Fragment_Cosmic>57</Fragment_Cosmic>
+                    <Fragment_Stellar>57</Fragment_Stellar>
+                </fragments>
+            </li>
+        </comps>
+    </ThingDef>
+
+    <RecipeDef ParentName="AmmoRecipeBase">
+        <defName>MakeBOR_Ammo_105x617mmRCannonShell_CMiAT</defName>
+        <label>make 105x617mmR HEAT cannon shells x2</label>
+        <description>Craft 2 105x617mmR HEAT cannon shells.</description>
+        <jobString>Making 105x617mmR HEAT cannon shells.</jobString>
+        <workAmount>21800</workAmount>
+        <ingredients>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>BOR_QuasarAlloy</li>
+                    </thingDefs>
+                </filter>
+                <count>90</count>
+            </li>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>BOR_Neutronium</li>
+                    </thingDefs>
+                </filter>
+                <count>4</count>
+            </li>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>ComponentSpacer</li>
+                    </thingDefs>
+                </filter>
+                <count>2</count>
+            </li>
+        </ingredients>
+        <fixedIngredientFilter>
+            <thingDefs>
+                <li>BOR_QuasarAlloy</li>
+                <li>BOR_Neutronium</li>
+                <li>ComponentSpacer</li>
+            </thingDefs>
+        </fixedIngredientFilter>
+        <products>
+            <BOR_Ammo_105x617mmRCannonShell_CMiAT>2</BOR_Ammo_105x617mmRCannonShell_CMiAT>
+        </products>
+        <skillRequirements>
+            <Crafting>6</Crafting>
+        </skillRequirements>
+    </RecipeDef>
+
+    <RecipeDef ParentName="AmmoRecipeBase">
+        <defName>MakeBOR_Ammo_105x617mmRCannonShell_CMi</defName>
+        <label>make 105x617mmR HE cannon shells x2</label>
+        <description>Craft 2 105x617mmR HE cannon shells.</description>
+        <jobString>Making 105x617mmR HE cannon shells.</jobString>
+        <workAmount>23000</workAmount>
+        <ingredients>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>BOR_QuasarAlloy</li>
+                    </thingDefs>
+                </filter>
+                <count>94</count>
+            </li>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>BOR_Neutronium</li>
+                    </thingDefs>
+                </filter>
+                <count>6</count>
+            </li>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>ComponentSpacer</li>
+                    </thingDefs>
+                </filter>
+                <count>2</count>
+            </li>
+        </ingredients>
+        <fixedIngredientFilter>
+            <thingDefs>
+                <li>BOR_QuasarAlloy</li>
+                <li>BOR_Neutronium</li>
+                <li>ComponentSpacer</li>
+            </thingDefs>
+        </fixedIngredientFilter>
+        <products>
+            <BOR_Ammo_105x617mmRCannonShell_CMi>2</BOR_Ammo_105x617mmRCannonShell_CMi>
+        </products>
+        <skillRequirements>
+            <Crafting>6</Crafting>
+        </skillRequirements>
+    </RecipeDef>
+    <!-- 762x51mm -->
+
+    <ThingDef Class="CombatExtended.AmmoDef" ParentName="762x51mmNATOBase">
+        <defName>BOR_Ammo_762x51mmNATO_EC</defName>
+        <label>7.62x51mm NATO cartridge (EC)</label>
+        <graphicData>
+            <texPath>Things/Ammo/Rifle/Battlerifle/Sabot</texPath>
+            <graphicClass>Graphic_StackCount</graphicClass>
+        </graphicData>
+        <statBases>
+            <MarketValue>0.18</MarketValue>
+            <Mass>0.03</Mass>
+        </statBases>
+        <ammoClass>BOR_EC_AmmoClass</ammoClass>
+        <cookOffProjectile>BOR_Bullet_762x51mmNATO_EC</cookOffProjectile>
+		<generateCommonality>0.01</generateCommonality>
+    </ThingDef>
+
+    <ThingDef ParentName="Base762x51mmNATOBullet">
+        <defName>BOR_Bullet_762x51mmNATO_EC</defName>
+        <label>7.62mm NATO bullet (EC)</label>
+        <projectile Class="CombatExtended.ProjectilePropertiesCE">
+            <damageAmountBase>15</damageAmountBase>
+            <armorPenetrationSharp>37</armorPenetrationSharp>
+            <armorPenetrationBlunt>129</armorPenetrationBlunt>
+            <speed>316</speed>
+        </projectile>
+    </ThingDef>
+
+    <RecipeDef ParentName="AdvancedAmmoRecipeBase">
+        <defName>MakeBOR_Ammo_762x51mmNATO_EC</defName>
+        <label>make 7.62x51mm NATO (EC) cartridge x500</label>
+        <description>Craft 500 7.62x51mm NATO (EC) cartridges.</description>
+        <jobString>Making 7.62x51mm NATO (EC) cartridges.</jobString>
+        <ingredients>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>BOR_QuasarAlloy</li>
+                    </thingDefs>
+                </filter>
+                <count>16</count>
+            </li>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>BOR_Tenebrite</li>
+                    </thingDefs>
+                </filter>
+                <count>3</count>
+            </li>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>BOR_Neutronium</li>
+                    </thingDefs>
+                </filter>
+                <count>3</count>
+            </li>
+        </ingredients>
+        <fixedIngredientFilter>
+            <thingDefs>
+                <li>BOR_QuasarAlloy</li>
+                <li>BOR_Tenebrite</li>
+                <li>BOR_Neutronium</li>
+            </thingDefs>
+        </fixedIngredientFilter>
+        <products>
+            <BOR_Ammo_762x51mmNATO_EC>500</BOR_Ammo_762x51mmNATO_EC>
+        </products>
+        <workAmount>12500</workAmount>
+    </RecipeDef>
+    <!-- 57x307mm -->
+
+    <ThingDef Class="CombatExtended.AmmoDef" ParentName="Ammo57x307mmRBase">
+        <defName>BOR_Ammo_57x307mmR_CaP</defName>
+        <label>57x307mmR cartridge (Ca-P)</label>
+        <graphicData>
+			<texPath>Things/Ammo/Cannon/Tank/APHE</texPath>
+            <graphicClass>Graphic_StackCount</graphicClass>
+        </graphicData>
+        <statBases>
+            <MarketValue>26</MarketValue>
+        </statBases>
+        <ammoClass>BOR_CaP_AmmoClass</ammoClass>
+        <detonateProjectile>BOR_Bullet_57x307mmR_CaP</detonateProjectile>
+		<generateCommonality>0.01</generateCommonality>
+    </ThingDef>
+
+    <ThingDef Class="CombatExtended.AmmoDef" ParentName="Ammo57x307mmRBase">
+        <defName>BOR_Ammo_57x307mmR_CMi</defName>
+        <label>57x307mmR cartridge (CM-i)</label>
+        <graphicData>
+			<texPath>Things/Ammo/Cannon/Tank/HE</texPath>
+            <graphicClass>Graphic_StackCount</graphicClass>
+        </graphicData>
+        <statBases>
+            <MarketValue>37</MarketValue>
+        </statBases>
+        <ammoClass>BOR_CMi_AmmoClass</ammoClass>
+        <detonateProjectile>BOR_Bullet_57x307mmR_CMi</detonateProjectile>
+		<generateCommonality>0.01</generateCommonality>
+    </ThingDef>
+
+    <ThingDef ParentName="Base57x307mmRBullet">
+        <defName>BOR_Bullet_57x307mmR_CaP</defName>
+        <label>57x307mmR bullet (Ca-P)</label>
+        <projectile Class="CombatExtended.ProjectilePropertiesCE">
+            <damageDef>Bullet</damageDef>
+            <damageAmountBase>150</damageAmountBase>
+            <armorPenetrationSharp>48</armorPenetrationSharp>
+            <armorPenetrationBlunt>7000</armorPenetrationBlunt>
+        </projectile>
+    </ThingDef>
+
+    <ThingDef ParentName="Base57x307mmRBullet">
+        <defName>BOR_Bullet_57x307mmR_CMi</defName>
+        <label>57x307mmR bullet (CM-i)</label>
+        <projectile Class="CombatExtended.ProjectilePropertiesCE">
+            <damageDef>Bomb</damageDef>
+            <damageAmountBase>50</damageAmountBase>
+            <explosionRadius>1.5</explosionRadius>
+            <soundExplode>MortarBomb_Explode</soundExplode>
+            <applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
+        </projectile>
+        <comps>
+            <li Class="CombatExtended.CompProperties_Fragments">
+                <fragments>
+                    <Fragment_Cosmic>15</Fragment_Cosmic>
+                    <Fragment_Stellar>3</Fragment_Stellar>
+                </fragments>
+            </li>
+        </comps>
+    </ThingDef>
+
+    <RecipeDef ParentName="AmmoRecipeBase">
+        <defName>MakeBOR_Ammo_57x307mmR_CaP</defName>
+        <label>make 57x307mmR (Ca-P) shells x10</label>
+        <description>Craft 10 57x307mmR (Ca-P) shells.</description>
+        <jobString>Making 57x307mmR (Ca-P) shells.</jobString>
+        <ingredients>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>BOR_QuasarAlloy</li>
+                    </thingDefs>
+                </filter>
+                <count>86</count>
+            </li>
+        </ingredients>
+        <fixedIngredientFilter>
+            <thingDefs>
+                <li>BOR_QuasarAlloy</li>
+            </thingDefs>
+        </fixedIngredientFilter>
+        <products>
+            <BOR_Ammo_57x307mmR_CaP>10</BOR_Ammo_57x307mmR_CaP>
+        </products>
+        <skillRequirements>
+            <Crafting>6</Crafting>
+        </skillRequirements>
+        <workAmount>15320</workAmount>
+    </RecipeDef>
+
+    <RecipeDef ParentName="AmmoRecipeBase">
+        <defName>MakeBOR_Ammo_57x307mmR_CMi</defName>
+        <label>make 57x307mmR (CM-i) cartridge x10</label>
+        <description>Craft 10 57x307mmR (CM-i) cartridges.</description>
+        <jobString>Making 57x307mmR (CM-i) cartridges.</jobString>
+        <ingredients>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>BOR_QuasarAlloy</li>
+                    </thingDefs>
+                </filter>
+                <count>86</count>
+            </li>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>ComponentSpacer</li>
+                    </thingDefs>
+                </filter>
+                <count>2</count>
+            </li>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>BOR_Neutronium</li>
+                    </thingDefs>
+                </filter>
+                <count>2</count>
+            </li>
+        </ingredients>
+        <fixedIngredientFilter>
+            <thingDefs>
+                <li>BOR_QuasarAlloy</li>
+                <li>ComponentSpacer</li>
+                <li>BOR_Neutronium</li>
+            </thingDefs>
+        </fixedIngredientFilter>
+        <products>
+            <BOR_Ammo_57x307mmR_CMi>10</BOR_Ammo_57x307mmR_CMi>
+        </products>
+        <skillRequirements>
+            <Crafting>6</Crafting>
+        </skillRequirements>
+        <workAmount>15600</workAmount>
+    </RecipeDef>
+</Defs>

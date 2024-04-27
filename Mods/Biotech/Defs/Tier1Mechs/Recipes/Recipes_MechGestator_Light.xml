@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+
+  <RecipeDef Name="BaseStellarMechanoidRecipe" Abstract="True">
+    <jobString>Gestating stellar mech.</jobString>
+    <workAmount>2400</workAmount>
+    <gestationCycles>1</gestationCycles>
+    <formingTicks>120000</formingTicks> 
+    <mechanitorOnlyRecipe>true</mechanitorOnlyRecipe>
+    <workSpeedStat>MechFormingSpeed</workSpeedStat>
+    <soundWorking>MechGestatorCycle_Initiating</soundWorking>
+  </RecipeDef>
+
+  <RecipeDef Name="LightStellarMechanoidRecipe" ParentName="BaseStellarMechanoidRecipe" Abstract="True">
+    <researchPrerequisite>BasicStellarMechtech</researchPrerequisite>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Plasteel</li>
+          </thingDefs>
+        </filter>
+        <count>50</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>SubcoreBasic</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+  </RecipeDef>
+
+  <RecipeDef ParentName="LightStellarMechanoidRecipe">
+    <defName>BOR_Stellar_Militor</defName>
+    <label>gestate stellar militor</label>
+    <description>Gestate a stellar militor mechanoid.</description>
+    <products>
+      <BOR_Stellar_Mech_Militor>1</BOR_Stellar_Mech_Militor>
+    </products>
+    <descriptionHyperlinks>
+      <ThingDef>BOR_Stellar_Mech_Militor</ThingDef>
+    </descriptionHyperlinks>
+  </RecipeDef>
+
+  <RecipeDef ParentName="LightStellarMechanoidRecipe">
+    <defName>BOR_Stellar_Lifter</defName>
+    <label>gestate stellar lifter</label>
+    <description>Gestate a stellar lifter mechanoid.</description>
+    <products>
+      <BOR_Stellar_Mech_Lifter>1</BOR_Stellar_Mech_Lifter>
+    </products>
+    <descriptionHyperlinks>
+      <ThingDef>BOR_Stellar_Mech_Lifter</ThingDef>
+    </descriptionHyperlinks>
+  </RecipeDef>
+
+  <RecipeDef ParentName="LightStellarMechanoidRecipe">
+    <defName>BOR_Stellar_Constructoid</defName>
+    <label>gestate stellar constructoid</label>
+    <description>Gestate a stellar constructoid mechanoid.</description>
+    <products>
+      <BOR_Stellar_Mech_Constructoid>1</BOR_Stellar_Mech_Constructoid>
+    </products>
+    <descriptionHyperlinks>
+      <ThingDef>BOR_Stellar_Mech_Constructoid</ThingDef>
+    </descriptionHyperlinks>
+  </RecipeDef>
+
+  <RecipeDef ParentName="LightStellarMechanoidRecipe">
+    <defName>BOR_Stellar_Fabricor</defName>
+    <label>gestate stellar fabricor</label>
+    <description>Gestate a stellar fabricor mechanoid.</description>
+    <researchPrerequisite>HighStellarMechtech</researchPrerequisite>
+    <ingredients Inherit="False">
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Plasteel</li>
+          </thingDefs>
+        </filter>
+        <count>100</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>SubcoreHigh</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <products>
+      <BOR_Stellar_Mech_Fabricor>1</BOR_Stellar_Mech_Fabricor>
+    </products>
+    <descriptionHyperlinks>
+      <ThingDef>BOR_Stellar_Mech_Fabricor</ThingDef>
+    </descriptionHyperlinks>
+  </RecipeDef>
+
+  <RecipeDef ParentName="LightStellarMechanoidRecipe">
+    <defName>BOR_Stellar_Agrihand</defName>
+    <label>gestate a stellargrihand</label>
+    <description>Gestate a stellarn agrihand mechanoid.</description>
+    <researchPrerequisite>BasicStellarMechtech</researchPrerequisite>
+    <products>
+      <BOR_Stellar_Mech_Agrihand>1</BOR_Stellar_Mech_Agrihand>
+    </products>
+    <descriptionHyperlinks>
+      <ThingDef>BOR_Stellar_Mech_Agrihand</ThingDef>
+    </descriptionHyperlinks>
+  </RecipeDef>
+
+  <RecipeDef ParentName="LightStellarMechanoidRecipe">
+    <defName>BOR_Stellar_Cleansweeper</defName>
+    <label>gestate stellar cleansweeper</label>
+    <description>Gestate a stellar cleansweeper mechanoid.</description>
+    <researchPrerequisite>BasicStellarMechtech</researchPrerequisite>
+    <products>
+      <BOR_Stellar_Mech_Cleansweeper>1</BOR_Stellar_Mech_Cleansweeper>
+    </products>
+    <descriptionHyperlinks>
+      <ThingDef>BOR_Stellar_Mech_Cleansweeper</ThingDef>
+    </descriptionHyperlinks>
+  </RecipeDef>
+
+  <RecipeDef ParentName="LightStellarMechanoidRecipe">
+    <defName>BOR_Stellar_Paramedic</defName>
+    <label>gestate stellar paramedic</label>
+    <description>Gestate a stellar paramedic mechanoid.</description>
+    <researchPrerequisite>HighStellarMechtech</researchPrerequisite>
+    <ingredients Inherit="False">
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Plasteel</li>
+          </thingDefs>
+        </filter>
+        <count>100</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>SubcoreHigh</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <products>
+      <BOR_Stellar_Mech_Paramedic>1</BOR_Stellar_Mech_Paramedic>
+    </products>
+    <descriptionHyperlinks>
+      <ThingDef>BOR_Stellar_Mech_Paramedic</ThingDef>
+    </descriptionHyperlinks>
+  </RecipeDef>
+
+</Defs>
