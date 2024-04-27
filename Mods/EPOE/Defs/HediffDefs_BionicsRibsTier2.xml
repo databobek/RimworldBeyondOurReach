@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Defs>
-	<ThingDef Name="EPIA_BodyPartBionicRibBaseBAOTCCosmic" ParentName="EPIASyntheticBase" Abstract="True">
+	<ThingDef Name="EPIA_BodyPartBionicRibBaseBAOTCQuasar" ParentName="EPIASyntheticBase" Abstract="True">
 		<recipeMaker>
 			<soundWorking>Recipe_Smith</soundWorking>
 			<recipeUsers Inherit="False">
-				<li>Table_SNS_BionicCraftingStation_GenII</li>
+				<li>Table_BOR_BionicCraftingStation_GenII</li>
 			</recipeUsers>
 			<researchPrerequisite>RibReplacements</researchPrerequisite>
 			<skillRequirements>
@@ -17,7 +17,7 @@
 		</statBases>
 	</ThingDef>
 
-	<RecipeDef ParentName="SurgeryInstallImplantBase" Name="SurgeryInstallImplantBaseBAOTCCosmic" Abstract="True">
+	<RecipeDef ParentName="SurgeryInstallImplantBase" Name="SurgeryInstallImplantBaseBAOTCQuasar" Abstract="True">
 		<recipeUsers>
 			<li>Human</li>
 		</recipeUsers>
@@ -28,7 +28,7 @@
 			<li>
 				<filter>
 					<thingDefs>
-						<li>SNS_Medicine_GenII</li>
+						<li>BOR_Medicine_GenII</li>
 					</thingDefs>
 				</filter>
 				<count>3</count>
@@ -44,7 +44,7 @@
 		</ingredients>
 		<fixedIngredientFilter>
 			<thingDefs>
-				<li>SNS_Medicine_GenII</li>
+				<li>BOR_Medicine_GenII</li>
 				<li>BOR_Picoclusters</li>
 			</thingDefs>
 		</fixedIngredientFilter>
@@ -53,14 +53,14 @@
 	<!-- Medical rib -->
 
 	<HediffDef ParentName="addedPartBionicsRib">
-		<defName>MedicalRibCosmic</defName>
-		<label>cosmic medical rib</label>
-		<labelNoun>a cosmic medical rib</labelNoun>
-		<description>An installed cosmic medical rib implant.</description>
+		<defName>MedicalRibQuasar</defName>
+		<label>kwazaari medical rib</label>
+		<labelNoun>a kwazaari medical rib</labelNoun>
+		<description>An installed kwazaari medical rib implant.</description>
 		<descriptionHyperlinks>
-			<ThingDef>MedicalRibCosmic</ThingDef>
+			<ThingDef>MedicalRibQuasar</ThingDef>
 		</descriptionHyperlinks>
-		<spawnThingOnRemoved>MedicalRibCosmic</spawnThingOnRemoved>
+		<spawnThingOnRemoved>MedicalRibQuasar</spawnThingOnRemoved>
 		<hediffClass>Hediff_Implant</hediffClass>
 		<stages>
 			<li>
@@ -77,18 +77,18 @@
 		</tags>
 	</HediffDef>
 
-	<ThingDef ParentName="EPIA_BodyPartBionicRibBaseBAOTCCosmic">
-		<defName>MedicalRibCosmic</defName>
-		<label>medical cosmic rib implant</label>
-		<description>An artificial cosmic rib, equipped with little blood filters and antibiotics-dispensers to keep the user healthy.</description>
+	<ThingDef ParentName="EPIA_BodyPartBionicRibBaseBAOTCQuasar">
+		<defName>MedicalRibQuasar</defName>
+		<label>medical kwazaari rib implant</label>
+		<description>An artificial kwazaari rib, equipped with little blood filters and antibiotics-dispensers to keep the user healthy.</description>
 		<descriptionHyperlinks>
-			<RecipeDef>InstallMedicalRibCosmic</RecipeDef>
+			<RecipeDef>InstallMedicalRibQuasar</RecipeDef>
 		</descriptionHyperlinks>
 		<costList>
 			<BOR_QuasarAlloy>10</BOR_QuasarAlloy>
 			<BOR_ComponentII>1</BOR_ComponentII>
 			<Neutroamine>3</Neutroamine>
-			<SNS_Aeterno>10</SNS_Aeterno>
+			<BOR_Castra>10</BOR_Castra>
 		</costList>
 		<statBases>
 			<Mass>0.3</Mass>
@@ -96,20 +96,20 @@
 	</ThingDef>
 
 
-	<RecipeDef ParentName="SurgeryInstallImplantBaseBAOTCCosmic">
-		<defName>InstallMedicalRibCosmic</defName>
-		<label>install cosmic medical rib implant</label>
-		<description>Installs a cosmic medical rib implant.</description>
+	<RecipeDef ParentName="SurgeryInstallImplantBaseBAOTCQuasar">
+		<defName>InstallMedicalRibQuasar</defName>
+		<label>install kwazaari medical rib implant</label>
+		<description>Installs a kwazaari medical rib implant.</description>
 		<descriptionHyperlinks>
-			<ThingDef>MedicalRibCosmic</ThingDef>
-			<HediffDef>MedicalRibCosmic</HediffDef>
+			<ThingDef>MedicalRibQuasar</ThingDef>
+			<HediffDef>MedicalRibQuasar</HediffDef>
 		</descriptionHyperlinks>
-		<jobString>Installing a cosmic medical rib.</jobString>
+		<jobString>Installing a kwazaari medical rib.</jobString>
 		<ingredients>
 			<li>
 				<filter>
 					<thingDefs>
-						<li>MedicalRibCosmic</li>
+						<li>MedicalRibQuasar</li>
 					</thingDefs>
 				</filter>
 				<count>1</count>
@@ -117,14 +117,14 @@
 		</ingredients>
 		<fixedIngredientFilter>
 			<thingDefs>
-				<li>MedicalRibCosmic</li>
+				<li>MedicalRibQuasar</li>
 			</thingDefs>
 		</fixedIngredientFilter>
 		<appliedOnFixedBodyParts>
 			<li>Ribcage</li>
 		</appliedOnFixedBodyParts>
-		<addsHediff>MedicalRibCosmic</addsHediff>
-		<uiIconThing>MedicalRibCosmic</uiIconThing>
+		<addsHediff>MedicalRibQuasar</addsHediff>
+		<uiIconThing>MedicalRibQuasar</uiIconThing>
 		<incompatibleWithHediffTags>
 			<li>MedicalRib</li>
 			<li>LuciferiumRib</li>
@@ -132,28 +132,28 @@
 	</RecipeDef>
 
 	<RecipeDef ParentName="SurgeryRemoveImplantBase">
-		<defName>RemoveMedicalRibCosmic</defName>
-		<label>remove cosmic medical rib implant</label>
-		<description>Remove a cosmic medical rib implant.</description>
+		<defName>RemoveMedicalRibQuasar</defName>
+		<label>remove kwazaari medical rib implant</label>
+		<description>Remove a kwazaari medical rib implant.</description>
 		<descriptionHyperlinks>
-			<ThingDef>MedicalRibCosmic</ThingDef>
-			<HediffDef>MedicalRibCosmic</HediffDef>
+			<ThingDef>MedicalRibQuasar</ThingDef>
+			<HediffDef>MedicalRibQuasar</HediffDef>
 		</descriptionHyperlinks>
-		<jobString>Removing cosmic rib implant.</jobString>
-		<removesHediff>MedicalRibCosmic</removesHediff>
+		<jobString>Removing kwazaari rib implant.</jobString>
+		<removesHediff>MedicalRibQuasar</removesHediff>
 	</RecipeDef>
 
 	<!-- Drugged rib -->
 
 	<HediffDef ParentName="addedPartBionicsRib">
-		<defName>DruggedRibCosmic</defName>
-		<label>drugged cosmic rib</label>
-		<labelNoun>a drugged cosmic rib</labelNoun>
-		<description>An installed drugged cosmic rib implant.</description>
+		<defName>DruggedRibQuasar</defName>
+		<label>drugged kwazaari rib</label>
+		<labelNoun>a drugged kwazaari rib</labelNoun>
+		<description>An installed drugged kwazaari rib implant.</description>
 		<descriptionHyperlinks>
-			<ThingDef>DruggedRibCosmic</ThingDef>
+			<ThingDef>DruggedRibQuasar</ThingDef>
 		</descriptionHyperlinks>
-		<spawnThingOnRemoved>DruggedRibCosmic</spawnThingOnRemoved>
+		<spawnThingOnRemoved>DruggedRibQuasar</spawnThingOnRemoved>
 		<hediffClass>Hediff_Implant</hediffClass>
 		<stages>
 			<li>
@@ -170,10 +170,10 @@
 		</tags>
 	</HediffDef>
 
-	<ThingDef ParentName="EPIA_BodyPartBionicRibBaseBAOTCCosmic">
-		<defName>DruggedRibCosmic</defName>
-		<label>drugged rib cosmic implant</label>
-		<description>An artificial cosmic rib, equipped with little flake-dispensers to keep the user happy. Side effects of feeling high and unfocused.</description>
+	<ThingDef ParentName="EPIA_BodyPartBionicRibBaseBAOTCQuasar">
+		<defName>DruggedRibQuasar</defName>
+		<label>drugged rib kwazaari implant</label>
+		<description>An artificial kwazaari rib, equipped with little flake-dispensers to keep the user happy. Side effects of feeling high and unfocused.</description>
 		<descriptionHyperlinks>
 			<RecipeDef>InstallDruggedRib</RecipeDef>
 		</descriptionHyperlinks>
@@ -181,7 +181,7 @@
 			<BOR_QuasarAlloy>10</BOR_QuasarAlloy>
 			<BOR_ComponentII>1</BOR_ComponentII>
 			<Neutroamine>3</Neutroamine>
-			<SNS_Lux>20</SNS_Lux>
+			<BOR_Sunlite>20</BOR_Sunlite>
 		</costList>
 		<statBases>
 			<Mass>0.3</Mass>
@@ -189,20 +189,20 @@
 	</ThingDef>
 
 
-	<RecipeDef ParentName="SurgeryInstallImplantBaseBAOTCCosmic">
-		<defName>InstallDruggedRibCosmic</defName>
-		<label>install drugged cosmic rib implant</label>
-		<description>Installs a drugged cosmic rib implant.</description>
+	<RecipeDef ParentName="SurgeryInstallImplantBaseBAOTCQuasar">
+		<defName>InstallDruggedRibQuasar</defName>
+		<label>install drugged kwazaari rib implant</label>
+		<description>Installs a drugged kwazaari rib implant.</description>
 		<descriptionHyperlinks>
-			<ThingDef>DruggedRibCosmic</ThingDef>
-			<HediffDef>DruggedRibCosmic</HediffDef>
+			<ThingDef>DruggedRibQuasar</ThingDef>
+			<HediffDef>DruggedRibQuasar</HediffDef>
 		</descriptionHyperlinks>
-		<jobString>Installing a cosmic drugged rib.</jobString>
+		<jobString>Installing a kwazaari drugged rib.</jobString>
 		<ingredients>
 			<li>
 				<filter>
 					<thingDefs>
-						<li>DruggedRibCosmic</li>
+						<li>DruggedRibQuasar</li>
 					</thingDefs>
 				</filter>
 				<count>1</count>
@@ -210,14 +210,14 @@
 		</ingredients>
 		<fixedIngredientFilter>
 			<thingDefs>
-				<li>DruggedRibCosmic</li>
+				<li>DruggedRibQuasar</li>
 			</thingDefs>
 		</fixedIngredientFilter>
 		<appliedOnFixedBodyParts>
 			<li>Ribcage</li>
 		</appliedOnFixedBodyParts>
-		<addsHediff>DruggedRibCosmic</addsHediff>
-		<uiIconThing>DruggedRibCosmic</uiIconThing>
+		<addsHediff>DruggedRibQuasar</addsHediff>
+		<uiIconThing>DruggedRibQuasar</uiIconThing>
 		<incompatibleWithHediffTags>
 			<li>DruggedRib</li>
 			<li>LuciferiumRib</li>
@@ -225,28 +225,28 @@
 	</RecipeDef>
 
 	<RecipeDef ParentName="SurgeryRemoveImplantBase">
-		<defName>RemoveDruggedRibCosmic</defName>
-		<label>remove drugged cosmic rib implant</label>
-		<description>Remove a drugged cosmic rib implant.</description>
+		<defName>RemoveDruggedRibQuasar</defName>
+		<label>remove drugged kwazaari rib implant</label>
+		<description>Remove a drugged kwazaari rib implant.</description>
 		<descriptionHyperlinks>
-			<ThingDef>DruggedRibCosmic</ThingDef>
-			<HediffDef>DruggedRibCosmic</HediffDef>
+			<ThingDef>DruggedRibQuasar</ThingDef>
+			<HediffDef>DruggedRibQuasar</HediffDef>
 		</descriptionHyperlinks>
-		<jobString>Removing cosmic rib implant.</jobString>
-		<removesHediff>DruggedRibCosmic</removesHediff>
+		<jobString>Removing kwazaari rib implant.</jobString>
+		<removesHediff>DruggedRibQuasar</removesHediff>
 	</RecipeDef>
 
 	<!-- Adrenaline rib -->
 
 	<HediffDef ParentName="addedPartBionicsRib">
-		<defName>AdrenalineRibCosmic</defName>
-		<label>cosmic adrenaline rib</label>
-		<labelNoun>a cosmic adrenaline rib</labelNoun>
-		<description>An installed cosmic adrenaline rib implant.</description>
+		<defName>AdrenalineRibQuasar</defName>
+		<label>kwazaari adrenaline rib</label>
+		<labelNoun>a kwazaari adrenaline rib</labelNoun>
+		<description>An installed kwazaari adrenaline rib implant.</description>
 		<descriptionHyperlinks>
-			<ThingDef>AdrenalineRibCosmic</ThingDef>
+			<ThingDef>AdrenalineRibQuasar</ThingDef>
 		</descriptionHyperlinks>
-		<spawnThingOnRemoved>AdrenalineRibCosmic</spawnThingOnRemoved>
+		<spawnThingOnRemoved>AdrenalineRibQuasar</spawnThingOnRemoved>
 		<hediffClass>Hediff_Implant</hediffClass>
 		<stages>
 			<li>
@@ -263,12 +263,12 @@
 		</tags>
 	</HediffDef>
 
-	<ThingDef ParentName="EPIA_BodyPartBionicRibBaseBAOTCCosmic">
-		<defName>AdrenalineRibCosmic</defName>
-		<label>adrenaline cosmic rib implant</label>
-		<description>An artificial cosmic rib, equipped with little adrenaline-dispensers to keep the user fit and awake.</description>
+	<ThingDef ParentName="EPIA_BodyPartBionicRibBaseBAOTCQuasar">
+		<defName>AdrenalineRibQuasar</defName>
+		<label>adrenaline kwazaari rib implant</label>
+		<description>An artificial kwazaari rib, equipped with little adrenaline-dispensers to keep the user fit and awake.</description>
 		<descriptionHyperlinks>
-			<RecipeDef>InstallAdrenalineRibCosmic</RecipeDef>
+			<RecipeDef>InstallAdrenalineRibQuasar</RecipeDef>
 		</descriptionHyperlinks>
 		<costList>
 			<BOR_QuasarAlloy>10</BOR_QuasarAlloy>
@@ -282,20 +282,20 @@
 	</ThingDef>
 
 
-	<RecipeDef ParentName="SurgeryInstallImplantBaseBAOTCCosmic">
-		<defName>InstallAdrenalineRibCosmic</defName>
-		<label>install a cosmic adrenaline rib implant</label>
-		<description>Installs a a cosmic adrenaline rib implant.</description>
+	<RecipeDef ParentName="SurgeryInstallImplantBaseBAOTCQuasar">
+		<defName>InstallAdrenalineRibQuasar</defName>
+		<label>install a kwazaari adrenaline rib implant</label>
+		<description>Installs a a kwazaari adrenaline rib implant.</description>
 		<descriptionHyperlinks>
-			<ThingDef>AdrenalineRibCosmic</ThingDef>
-			<HediffDef>AdrenalineRibCosmic</HediffDef>
+			<ThingDef>AdrenalineRibQuasar</ThingDef>
+			<HediffDef>AdrenalineRibQuasar</HediffDef>
 		</descriptionHyperlinks>
-		<jobString>Installing a cosmic adrenaline rib.</jobString>
+		<jobString>Installing a kwazaari adrenaline rib.</jobString>
 		<ingredients>
 			<li>
 				<filter>
 					<thingDefs>
-						<li>AdrenalineRibCosmic</li>
+						<li>AdrenalineRibQuasar</li>
 					</thingDefs>
 				</filter>
 				<count>1</count>
@@ -303,14 +303,14 @@
 		</ingredients>
 		<fixedIngredientFilter>
 			<thingDefs>
-				<li>AdrenalineRibCosmic</li>
+				<li>AdrenalineRibQuasar</li>
 			</thingDefs>
 		</fixedIngredientFilter>
 		<appliedOnFixedBodyParts>
 			<li>Ribcage</li>
 		</appliedOnFixedBodyParts>
-		<addsHediff>AdrenalineRibCosmic</addsHediff>
-		<uiIconThing>AdrenalineRibCosmic</uiIconThing>
+		<addsHediff>AdrenalineRibQuasar</addsHediff>
+		<uiIconThing>AdrenalineRibQuasar</uiIconThing>
 		<incompatibleWithHediffTags>
 			<li>AdrenalineRib</li>
 			<li>LuciferiumRib</li>
@@ -318,28 +318,28 @@
 	</RecipeDef>
 
 	<RecipeDef ParentName="SurgeryRemoveImplantBase">
-		<defName>RemoveAdrenalineRibCosmic</defName>
-		<label>remove cosmic adrenaline rib implant</label>
-		<description>Remove a cosmic adrenaline rib implant.</description>
+		<defName>RemoveAdrenalineRibQuasar</defName>
+		<label>remove kwazaari adrenaline rib implant</label>
+		<description>Remove a kwazaari adrenaline rib implant.</description>
 		<descriptionHyperlinks>
-			<ThingDef>AdrenalineRibCosmic</ThingDef>
-			<HediffDef>AdrenalineRibCosmic</HediffDef>
+			<ThingDef>AdrenalineRibQuasar</ThingDef>
+			<HediffDef>AdrenalineRibQuasar</HediffDef>
 		</descriptionHyperlinks>
-		<jobString>Removing a cosmic rib implant.</jobString>
-		<removesHediff>AdrenalineRibCosmic</removesHediff>
+		<jobString>Removing a kwazaari rib implant.</jobString>
+		<removesHediff>AdrenalineRibQuasar</removesHediff>
 	</RecipeDef>
 
 	<!-- Painkiller rib -->
 
 	<HediffDef ParentName="addedPartBionicsRib">
-		<defName>PainkillerRibCosmic</defName>
-		<label>cosmic painkiller rib</label>
-		<labelNoun>a cosmic painkiller rib</labelNoun>
-		<description>An installed cosmic painkiller rib implant.</description>
+		<defName>PainkillerRibQuasar</defName>
+		<label>kwazaari painkiller rib</label>
+		<labelNoun>a kwazaari painkiller rib</labelNoun>
+		<description>An installed kwazaari painkiller rib implant.</description>
 		<descriptionHyperlinks>
-			<ThingDef>PainkillerRibCosmic</ThingDef>
+			<ThingDef>PainkillerRibQuasar</ThingDef>
 		</descriptionHyperlinks>
-		<spawnThingOnRemoved>PainkillerRibCosmic</spawnThingOnRemoved>
+		<spawnThingOnRemoved>PainkillerRibQuasar</spawnThingOnRemoved>
 		<hediffClass>Hediff_Implant</hediffClass>
 		<stages>
 			<li>
@@ -352,39 +352,39 @@
 		</tags>
 	</HediffDef>
 
-	<ThingDef ParentName="EPIA_BodyPartBionicRibBaseBAOTCCosmic">
-		<defName>PainkillerRibCosmic</defName>
-		<label>cosmic painkiller rib implant</label>
-		<description>An artificial cosmic rib, equipped with little morphine-dispensers to numb the user's pain.</description>
+	<ThingDef ParentName="EPIA_BodyPartBionicRibBaseBAOTCQuasar">
+		<defName>PainkillerRibQuasar</defName>
+		<label>kwazaari painkiller rib implant</label>
+		<description>An artificial kwazaari rib, equipped with little morphine-dispensers to numb the user's pain.</description>
 		<descriptionHyperlinks>
-			<RecipeDef>InstallPainkillerRibCosmic</RecipeDef>
+			<RecipeDef>InstallPainkillerRibQuasar</RecipeDef>
 		</descriptionHyperlinks>
 		<costList>
 			<BOR_QuasarAlloy>10</BOR_QuasarAlloy>
 			<BOR_ComponentII>1</BOR_ComponentII>
 			<Neutroamine>3</Neutroamine>
 			<GoJuice>5</GoJuice>
-			<SNS_Lux>5</SNS_Lux>
+			<BOR_Sunlite>5</BOR_Sunlite>
 		</costList>
 		<statBases>
 			<Mass>0.3</Mass>
 		</statBases>
 	</ThingDef>
 
-	<RecipeDef ParentName="SurgeryInstallImplantBaseBAOTCCosmic">
-		<defName>InstallPainkillerRibCosmic</defName>
-		<label>install a cosmic painkiller rib implant</label>
-		<description>Installs a cosmic painkiller rib implant.</description>
+	<RecipeDef ParentName="SurgeryInstallImplantBaseBAOTCQuasar">
+		<defName>InstallPainkillerRibQuasar</defName>
+		<label>install a kwazaari painkiller rib implant</label>
+		<description>Installs a kwazaari painkiller rib implant.</description>
 		<descriptionHyperlinks>
-			<ThingDef>PainkillerRibCosmic</ThingDef>
-			<HediffDef>PainkillerRibCosmic</HediffDef>
+			<ThingDef>PainkillerRibQuasar</ThingDef>
+			<HediffDef>PainkillerRibQuasar</HediffDef>
 		</descriptionHyperlinks>
-		<jobString>Installing a cosmic painkiller rib.</jobString>
+		<jobString>Installing a kwazaari painkiller rib.</jobString>
 		<ingredients>
 			<li>
 				<filter>
 					<thingDefs>
-						<li>PainkillerRibCosmic</li>
+						<li>PainkillerRibQuasar</li>
 					</thingDefs>
 				</filter>
 				<count>1</count>
@@ -392,14 +392,14 @@
 		</ingredients>
 		<fixedIngredientFilter>
 			<thingDefs>
-				<li>PainkillerRibCosmic</li>
+				<li>PainkillerRibQuasar</li>
 			</thingDefs>
 		</fixedIngredientFilter>
 		<appliedOnFixedBodyParts>
 			<li>Ribcage</li>
 		</appliedOnFixedBodyParts>
-		<addsHediff>PainkillerRibCosmic</addsHediff>
-		<uiIconThing>PainkillerRibCosmic</uiIconThing>
+		<addsHediff>PainkillerRibQuasar</addsHediff>
+		<uiIconThing>PainkillerRibQuasar</uiIconThing>
 		<incompatibleWithHediffTags>
 			<li>PainkillerRib</li>
 			<li>LuciferiumRib</li>
@@ -407,27 +407,27 @@
 	</RecipeDef>
 
 	<RecipeDef ParentName="SurgeryRemoveImplantBase">
-		<defName>RemovePainkillerRibCosmic</defName>
-		<label>remove a cosmic painkiller rib implant</label>
-		<description>Remove a cosmic painkiller rib implant.</description>
+		<defName>RemovePainkillerRibQuasar</defName>
+		<label>remove a kwazaari painkiller rib implant</label>
+		<description>Remove a kwazaari painkiller rib implant.</description>
 		<descriptionHyperlinks>
-			<ThingDef>PainkillerRibCosmic</ThingDef>
-			<HediffDef>PainkillerRibCosmic</HediffDef>
+			<ThingDef>PainkillerRibQuasar</ThingDef>
+			<HediffDef>PainkillerRibQuasar</HediffDef>
 		</descriptionHyperlinks>
-		<jobString>Removing a cosmic rib implant.</jobString>
-		<removesHediff>PainkillerRibCosmic</removesHediff>
+		<jobString>Removing a kwazaari rib implant.</jobString>
+		<removesHediff>PainkillerRibQuasar</removesHediff>
 	</RecipeDef>
 
 	<!-- Heater rib -->
 
 	<HediffDef ParentName="addedPartBionicsRib">
-		<defName>HeaterRibCosmic</defName>
-		<label>cosmic heating rib</label>
-		<description>An installed cosmic heater rib implant.</description>
+		<defName>HeaterRibQuasar</defName>
+		<label>kwazaari heating rib</label>
+		<description>An installed kwazaari heater rib implant.</description>
 		<descriptionHyperlinks>
-			<ThingDef>HeaterRibCosmic</ThingDef>
+			<ThingDef>HeaterRibQuasar</ThingDef>
 		</descriptionHyperlinks>
-		<spawnThingOnRemoved>HeaterRibCosmic</spawnThingOnRemoved>
+		<spawnThingOnRemoved>HeaterRibQuasar</spawnThingOnRemoved>
 		<hediffClass>Hediff_Implant</hediffClass>
 		<stages>
 			<li>
@@ -442,12 +442,12 @@
 		</tags>
 	</HediffDef>
 
-	<ThingDef ParentName="EPIA_BodyPartBionicRibBaseBAOTCCosmic">
-		<defName>HeaterRibCosmic</defName>
-		<label>cosmic heating rib implant</label>
-		<description>An artificial cosmic rib, containing a micro-reactor powered, heat inducing spiral to warm the body from the inside.</description>
+	<ThingDef ParentName="EPIA_BodyPartBionicRibBaseBAOTCQuasar">
+		<defName>HeaterRibQuasar</defName>
+		<label>kwazaari heating rib implant</label>
+		<description>An artificial kwazaari rib, containing a micro-reactor powered, heat inducing spiral to warm the body from the inside.</description>
 		<descriptionHyperlinks>
-			<RecipeDef>InstallHeaterRibCosmic</RecipeDef>
+			<RecipeDef>InstallHeaterRibQuasar</RecipeDef>
 		</descriptionHyperlinks>
 		<costList>
 			<BOR_QuasarAlloy>10</BOR_QuasarAlloy>
@@ -460,20 +460,20 @@
 	</ThingDef>
 
 
-	<RecipeDef ParentName="SurgeryInstallImplantBaseBAOTCCosmic">
-		<defName>InstallHeaterRibCosmic</defName>
+	<RecipeDef ParentName="SurgeryInstallImplantBaseBAOTCQuasar">
+		<defName>InstallHeaterRibQuasar</defName>
 		<label>install as tellar heating rib implant</label>
-		<description>Installs a cosmic heating rib implant.</description>
+		<description>Installs a kwazaari heating rib implant.</description>
 		<descriptionHyperlinks>
-			<ThingDef>HeaterRibCosmic</ThingDef>
-			<HediffDef>HeaterRibCosmic</HediffDef>
+			<ThingDef>HeaterRibQuasar</ThingDef>
+			<HediffDef>HeaterRibQuasar</HediffDef>
 		</descriptionHyperlinks>
-		<jobString>Installing a cosmic heating rib.</jobString>
+		<jobString>Installing a kwazaari heating rib.</jobString>
 		<ingredients>
 			<li>
 				<filter>
 					<thingDefs>
-						<li>HeaterRibCosmic</li>
+						<li>HeaterRibQuasar</li>
 					</thingDefs>
 				</filter>
 				<count>1</count>
@@ -481,14 +481,14 @@
 		</ingredients>
 		<fixedIngredientFilter>
 			<thingDefs>
-				<li>HeaterRibCosmic</li>
+				<li>HeaterRibQuasar</li>
 			</thingDefs>
 		</fixedIngredientFilter>
 		<appliedOnFixedBodyParts>
 			<li>Ribcage</li>
 		</appliedOnFixedBodyParts>
-		<addsHediff>HeaterRibCosmic</addsHediff>
-		<uiIconThing>HeaterRibCosmic</uiIconThing>
+		<addsHediff>HeaterRibQuasar</addsHediff>
+		<uiIconThing>HeaterRibQuasar</uiIconThing>
 		<incompatibleWithHediffTags>
 			<li>HeaterRib</li>
 			<li>LuciferiumRib</li>
@@ -496,27 +496,27 @@
 	</RecipeDef>
 
 	<RecipeDef ParentName="SurgeryRemoveImplantBase">
-		<defName>RemoveHeaterRibCosmic</defName>
-		<label>remove a cosmic heating rib implant</label>
-		<description>Remove a cosmic heating rib implant.</description>
+		<defName>RemoveHeaterRibQuasar</defName>
+		<label>remove a kwazaari heating rib implant</label>
+		<description>Remove a kwazaari heating rib implant.</description>
 		<descriptionHyperlinks>
-			<ThingDef>HeaterRibCosmic</ThingDef>
-			<HediffDef>HeaterRibCosmic</HediffDef>
+			<ThingDef>HeaterRibQuasar</ThingDef>
+			<HediffDef>HeaterRibQuasar</HediffDef>
 		</descriptionHyperlinks>
-		<jobString>Removing cosmic rib implant.</jobString>
-		<removesHediff>HeaterRibCosmic</removesHediff>
+		<jobString>Removing kwazaari rib implant.</jobString>
+		<removesHediff>HeaterRibQuasar</removesHediff>
 	</RecipeDef>
 
 	<!-- Cooler rib -->
 
 	<HediffDef ParentName="addedPartBionicsRib">
-		<defName>CoolerRibCosmic</defName>
-		<label>cosmic cooling rib</label>
-		<description>An installed cosmic cooler rib implant.</description>
+		<defName>CoolerRibQuasar</defName>
+		<label>kwazaari cooling rib</label>
+		<description>An installed kwazaari cooler rib implant.</description>
 		<descriptionHyperlinks>
-			<ThingDef>CoolerRibCosmic</ThingDef>
+			<ThingDef>CoolerRibQuasar</ThingDef>
 		</descriptionHyperlinks>
-		<spawnThingOnRemoved>CoolerRibCosmic</spawnThingOnRemoved>
+		<spawnThingOnRemoved>CoolerRibQuasar</spawnThingOnRemoved>
 		<hediffClass>Hediff_Implant</hediffClass>
 		<stages>
 			<li>
@@ -527,16 +527,16 @@
 			</li>
 		</stages>
 		<tags>
-			<li>CoolerRibCosmic</li>
+			<li>CoolerRibQuasar</li>
 		</tags>
 	</HediffDef>
 
-	<ThingDef ParentName="EPIA_BodyPartBionicRibBaseBAOTCCosmic">
-		<defName>CoolerRibCosmic</defName>
-		<label>cosmic cooling rib implant</label>
-		<description>An artificial cosmic rib with a micro coolant system, increasing the effectiveness of heat exchange via dermal exhausts.</description>
+	<ThingDef ParentName="EPIA_BodyPartBionicRibBaseBAOTCQuasar">
+		<defName>CoolerRibQuasar</defName>
+		<label>kwazaari cooling rib implant</label>
+		<description>An artificial kwazaari rib with a micro coolant system, increasing the effectiveness of heat exchange via dermal exhausts.</description>
 		<descriptionHyperlinks>
-			<RecipeDef>InstallCoolerRibCosmic</RecipeDef>
+			<RecipeDef>InstallCoolerRibQuasar</RecipeDef>
 		</descriptionHyperlinks>
 		<costList>
 			<BOR_QuasarAlloy>10</BOR_QuasarAlloy>
@@ -548,20 +548,20 @@
 		</statBases>
 	</ThingDef>
 
-	<RecipeDef ParentName="SurgeryInstallImplantBaseBAOTCCosmic">
-		<defName>InstallCoolerRibCosmic</defName>
-		<label>install a cosmiccooling rib implant</label>
-		<description>Installs a cosmic cooling rib implant.</description>
+	<RecipeDef ParentName="SurgeryInstallImplantBaseBAOTCQuasar">
+		<defName>InstallCoolerRibQuasar</defName>
+		<label>install a kwazaaricooling rib implant</label>
+		<description>Installs a kwazaari cooling rib implant.</description>
 		<descriptionHyperlinks>
-			<ThingDef>CoolerRibCosmic</ThingDef>
-			<HediffDef>CoolerRibCosmic</HediffDef>
+			<ThingDef>CoolerRibQuasar</ThingDef>
+			<HediffDef>CoolerRibQuasar</HediffDef>
 		</descriptionHyperlinks>
-		<jobString>Installing a cosmic cooling rib.</jobString>
+		<jobString>Installing a kwazaari cooling rib.</jobString>
 		<ingredients>
 			<li>
 				<filter>
 					<thingDefs>
-						<li>CoolerRibCosmic</li>
+						<li>CoolerRibQuasar</li>
 					</thingDefs>
 				</filter>
 				<count>1</count>
@@ -569,14 +569,14 @@
 		</ingredients>
 		<fixedIngredientFilter>
 			<thingDefs>
-				<li>CoolerRibCosmic</li>
+				<li>CoolerRibQuasar</li>
 			</thingDefs>
 		</fixedIngredientFilter>
 		<appliedOnFixedBodyParts>
 			<li>Ribcage</li>
 		</appliedOnFixedBodyParts>
-		<addsHediff>CoolerRibCosmic</addsHediff>
-		<uiIconThing>CoolerRibCosmic</uiIconThing>
+		<addsHediff>CoolerRibQuasar</addsHediff>
+		<uiIconThing>CoolerRibQuasar</uiIconThing>
 		<incompatibleWithHediffTags>
 			<li>CoolerRib</li>
 			<li>LuciferiumRib</li>
@@ -584,27 +584,27 @@
 	</RecipeDef>
 
 	<RecipeDef ParentName="SurgeryRemoveImplantBase">
-		<defName>RemoveCoolerRibCosmic</defName>
-		<label>remove a cosmic cooling rib implant</label>
-		<description>Remove a cosmic cooling rib implant.</description>
+		<defName>RemoveCoolerRibQuasar</defName>
+		<label>remove a kwazaari cooling rib implant</label>
+		<description>Remove a kwazaari cooling rib implant.</description>
 		<descriptionHyperlinks>
-			<ThingDef>CoolerRibCosmic</ThingDef>
-			<HediffDef>CoolerRibCosmic</HediffDef>
+			<ThingDef>CoolerRibQuasar</ThingDef>
+			<HediffDef>CoolerRibQuasar</HediffDef>
 		</descriptionHyperlinks>
-		<jobString>Removing a cosmic rib implant.</jobString>
-		<removesHediff>CoolerRibCosmic</removesHediff>
+		<jobString>Removing a kwazaari rib implant.</jobString>
+		<removesHediff>CoolerRibQuasar</removesHediff>
 	</RecipeDef>
 
 	<!-- Coagulator rib -->
 
 	<HediffDef ParentName="addedPartBionicsRib">
-		<defName>CoagulatorRibCosmic</defName>
-		<label>cosmic coagulator rib</label>
-		<description>An installed cosmic coagulator rib implant.</description>
+		<defName>CoagulatorRibQuasar</defName>
+		<label>kwazaari coagulator rib</label>
+		<description>An installed kwazaari coagulator rib implant.</description>
 		<descriptionHyperlinks>
-			<ThingDef>CoagulatorRibCosmic</ThingDef>
+			<ThingDef>CoagulatorRibQuasar</ThingDef>
 		</descriptionHyperlinks>
-		<spawnThingOnRemoved>CoagulatorRibCosmic</spawnThingOnRemoved>
+		<spawnThingOnRemoved>CoagulatorRibQuasar</spawnThingOnRemoved>
 		<hediffClass>Hediff_Implant</hediffClass>
 		<stages>
 			<li>
@@ -616,38 +616,38 @@
 		</tags>
 	</HediffDef>
 
-	<ThingDef ParentName="EPIA_BodyPartBionicRibBaseBAOTCCosmic">
-		<defName>CoagulatorRibCosmic</defName>
-		<label>cosmic coagulator rib implant</label>
-		<description>An artificial cosmic rib, equipped with little coagulator-dispensers that responds to blood loss, which will make the blood clot easier, in an effort to reduce bleeding.</description>
+	<ThingDef ParentName="EPIA_BodyPartBionicRibBaseBAOTCQuasar">
+		<defName>CoagulatorRibQuasar</defName>
+		<label>kwazaari coagulator rib implant</label>
+		<description>An artificial kwazaari rib, equipped with little coagulator-dispensers that responds to blood loss, which will make the blood clot easier, in an effort to reduce bleeding.</description>
 		<descriptionHyperlinks>
-			<RecipeDef>InstallCoagulatorRibCosmic</RecipeDef>
+			<RecipeDef>InstallCoagulatorRibQuasar</RecipeDef>
 		</descriptionHyperlinks>
 		<costList>
 			<BOR_QuasarAlloy>10</BOR_QuasarAlloy>
 			<BOR_ComponentII>1</BOR_ComponentII>
 			<Neutroamine>3</Neutroamine>
-			<SNS_Medicine_GenII>5</SNS_Medicine_GenII>
+			<BOR_Medicine_GenII>5</BOR_Medicine_GenII>
 		</costList>
 		<statBases>
 			<Mass>0.3</Mass>
 		</statBases>
 	</ThingDef>
 
-	<RecipeDef ParentName="SurgeryInstallImplantBaseBAOTCCosmic">
-		<defName>InstallCoagulatorRibCosmic</defName>
-		<label>install a cosmic coagulator rib implant</label>
-		<description>Installs a cosmic coagulator rib implant.</description>
+	<RecipeDef ParentName="SurgeryInstallImplantBaseBAOTCQuasar">
+		<defName>InstallCoagulatorRibQuasar</defName>
+		<label>install a kwazaari coagulator rib implant</label>
+		<description>Installs a kwazaari coagulator rib implant.</description>
 		<descriptionHyperlinks>
-			<ThingDef>CoagulatorRibCosmic</ThingDef>
-			<HediffDef>CoagulatorRibCosmic</HediffDef>
+			<ThingDef>CoagulatorRibQuasar</ThingDef>
+			<HediffDef>CoagulatorRibQuasar</HediffDef>
 		</descriptionHyperlinks>
-		<jobString>Installing a cosmic coagulator rib.</jobString>
+		<jobString>Installing a kwazaari coagulator rib.</jobString>
 		<ingredients>
 			<li>
 				<filter>
 					<thingDefs>
-						<li>CoagulatorRibCosmic</li>
+						<li>CoagulatorRibQuasar</li>
 					</thingDefs>
 				</filter>
 				<count>1</count>
@@ -655,14 +655,14 @@
 		</ingredients>
 		<fixedIngredientFilter>
 			<thingDefs>
-				<li>CoagulatorRibCosmic</li>
+				<li>CoagulatorRibQuasar</li>
 			</thingDefs>
 		</fixedIngredientFilter>
 		<appliedOnFixedBodyParts>
 			<li>Ribcage</li>
 		</appliedOnFixedBodyParts>
-		<addsHediff>CoagulatorRibCosmic</addsHediff>
-		<uiIconThing>CoagulatorRibCosmic</uiIconThing>
+		<addsHediff>CoagulatorRibQuasar</addsHediff>
+		<uiIconThing>CoagulatorRibQuasar</uiIconThing>
 		<incompatibleWithHediffTags>
 			<li>CoagulatorRib</li>
 			<li>LuciferiumRib</li>
@@ -670,27 +670,27 @@
 	</RecipeDef>
 
 	<RecipeDef ParentName="SurgeryRemoveImplantBase">
-		<defName>RemoveCoagulatorRibCosmic</defName>
-		<label>remove a cosmic coagulator rib implant</label>
-		<description>Remove a cosmic coagulator rib implant.</description>
+		<defName>RemoveCoagulatorRibQuasar</defName>
+		<label>remove a kwazaari coagulator rib implant</label>
+		<description>Remove a kwazaari coagulator rib implant.</description>
 		<descriptionHyperlinks>
-			<ThingDef>CoagulatorRibCosmic</ThingDef>
-			<HediffDef>CoagulatorRibCosmic</HediffDef>
+			<ThingDef>CoagulatorRibQuasar</ThingDef>
+			<HediffDef>CoagulatorRibQuasar</HediffDef>
 		</descriptionHyperlinks>
-		<jobString>Removing a cosmic rib implant.</jobString>
-		<removesHediff>CoagulatorRibCosmic</removesHediff>
+		<jobString>Removing a kwazaari rib implant.</jobString>
+		<removesHediff>CoagulatorRibQuasar</removesHediff>
 	</RecipeDef>
 
 	<!-- Respiration rib -->
 
 	<HediffDef ParentName="addedPartBionicsRib">
-		<defName>RespirationRibCosmic</defName>
-		<label>cosmic respiration rib</label>
-		<description>An installed cosmic respiration rib implant.</description>
+		<defName>RespirationRibQuasar</defName>
+		<label>kwazaari respiration rib</label>
+		<description>An installed kwazaari respiration rib implant.</description>
 		<descriptionHyperlinks>
-			<ThingDef>RespirationRibCosmic</ThingDef>
+			<ThingDef>RespirationRibQuasar</ThingDef>
 		</descriptionHyperlinks>
-		<spawnThingOnRemoved>RespirationRibCosmic</spawnThingOnRemoved>
+		<spawnThingOnRemoved>RespirationRibQuasar</spawnThingOnRemoved>
 		<hediffClass>Hediff_Implant</hediffClass>
 		<stages>
 			<li>
@@ -710,12 +710,12 @@
 		</tags>
 	</HediffDef>
 
-	<ThingDef ParentName="EPIA_BodyPartBionicRibBaseBAOTCCosmic">
-		<defName>RespirationRibCosmic</defName>
-		<label>cosmic respiration rib implant</label>
-		<description>An artificial cosmic rib, that works with the diaphragm to assist with regulating breathing pattern for increased efficiency and coping with stress.</description>
+	<ThingDef ParentName="EPIA_BodyPartBionicRibBaseBAOTCQuasar">
+		<defName>RespirationRibQuasar</defName>
+		<label>kwazaari respiration rib implant</label>
+		<description>An artificial kwazaari rib, that works with the diaphragm to assist with regulating breathing pattern for increased efficiency and coping with stress.</description>
 		<descriptionHyperlinks>
-			<RecipeDef>InstallRespirationRibCosmic</RecipeDef>
+			<RecipeDef>InstallRespirationRibQuasar</RecipeDef>
 		</descriptionHyperlinks>
 		<costList>
 			<BOR_QuasarAlloy>20</BOR_QuasarAlloy>
@@ -726,20 +726,20 @@
 		</statBases>
 	</ThingDef>
 
-	<RecipeDef ParentName="SurgeryInstallImplantBaseBAOTCCosmic">
-		<defName>InstallRespirationRibCosmic</defName>
-		<label>install a cosmic respiration rib implant</label>
-		<description>Installs a cosmic respiration rib implant.</description>
+	<RecipeDef ParentName="SurgeryInstallImplantBaseBAOTCQuasar">
+		<defName>InstallRespirationRibQuasar</defName>
+		<label>install a kwazaari respiration rib implant</label>
+		<description>Installs a kwazaari respiration rib implant.</description>
 		<descriptionHyperlinks>
-			<ThingDef>RespirationRibCosmic</ThingDef>
-			<HediffDef>RespirationRibCosmic</HediffDef>
+			<ThingDef>RespirationRibQuasar</ThingDef>
+			<HediffDef>RespirationRibQuasar</HediffDef>
 		</descriptionHyperlinks>
-		<jobString>Installing a cosmic respiration rib.</jobString>
+		<jobString>Installing a kwazaari respiration rib.</jobString>
 		<ingredients>
 			<li>
 				<filter>
 					<thingDefs>
-						<li>RespirationRibCosmic</li>
+						<li>RespirationRibQuasar</li>
 					</thingDefs>
 				</filter>
 				<count>1</count>
@@ -747,14 +747,14 @@
 		</ingredients>
 		<fixedIngredientFilter>
 			<thingDefs>
-				<li>RespirationRibCosmic</li>
+				<li>RespirationRibQuasar</li>
 			</thingDefs>
 		</fixedIngredientFilter>
 		<appliedOnFixedBodyParts>
 			<li>Ribcage</li>
 		</appliedOnFixedBodyParts>
-		<addsHediff>RespirationRibCosmic</addsHediff>
-		<uiIconThing>RespirationRibCosmic</uiIconThing>
+		<addsHediff>RespirationRibQuasar</addsHediff>
+		<uiIconThing>RespirationRibQuasar</uiIconThing>
 		<incompatibleWithHediffTags>
 			<li>RespirationRib</li>
 			<li>LuciferiumRib</li>
@@ -762,27 +762,27 @@
 	</RecipeDef>
 
 	<RecipeDef ParentName="SurgeryRemoveImplantBase">
-		<defName>RemoveRespirationRibCosmic</defName>
-		<label>remove a cosmic respiration rib implant</label>
-		<description>Remove a cosmic respiration rib implant.</description>
+		<defName>RemoveRespirationRibQuasar</defName>
+		<label>remove a kwazaari respiration rib implant</label>
+		<description>Remove a kwazaari respiration rib implant.</description>
 		<descriptionHyperlinks>
-			<ThingDef>RespirationRibCosmic</ThingDef>
-			<HediffDef>RespirationRibCosmic</HediffDef>
+			<ThingDef>RespirationRibQuasar</ThingDef>
+			<HediffDef>RespirationRibQuasar</HediffDef>
 		</descriptionHyperlinks>
-		<jobString>Removing a cosmic rib implant.</jobString>
-		<removesHediff>RespirationRibCosmic</removesHediff>
+		<jobString>Removing a kwazaari rib implant.</jobString>
+		<removesHediff>RespirationRibQuasar</removesHediff>
 	</RecipeDef>
 
 	<!-- Wake-up rib -->
 
 	<HediffDef ParentName="addedPartBionicsRib">
-		<defName>WakeUpRibCosmic</defName>
-		<label>cosmic STIM_VII rib</label>
-		<description>An installed cosmic STIM_VII rib implant.</description>
+		<defName>WakeUpRibQuasar</defName>
+		<label>kwazaari STIM_VII rib</label>
+		<description>An installed kwazaari STIM_VII rib implant.</description>
 		<descriptionHyperlinks>
-			<ThingDef>WakeUpRibCosmic</ThingDef>
+			<ThingDef>WakeUpRibQuasar</ThingDef>
 		</descriptionHyperlinks>
-		<spawnThingOnRemoved>WakeUpRibCosmic</spawnThingOnRemoved>
+		<spawnThingOnRemoved>WakeUpRibQuasar</spawnThingOnRemoved>
 		<hediffClass>Hediff_Implant</hediffClass>
 		<stages>
 			<li>
@@ -803,12 +803,12 @@
 		</tags>
 	</HediffDef>
 
-	<ThingDef ParentName="EPIA_BodyPartBionicRibBaseBAOTCCosmic">
-		<defName>WakeUpRibCosmic</defName>
-		<label>cosmic STIM_VII rib implant</label>
-		<description>An artificial cosmic rib, equipped with little STIM_VII-dispensers to keep the user awake and focused.</description>
+	<ThingDef ParentName="EPIA_BodyPartBionicRibBaseBAOTCQuasar">
+		<defName>WakeUpRibQuasar</defName>
+		<label>kwazaari STIM_VII rib implant</label>
+		<description>An artificial kwazaari rib, equipped with little STIM_VII-dispensers to keep the user awake and focused.</description>
 		<descriptionHyperlinks>
-			<RecipeDef>InstallWakeUpRibCosmic</RecipeDef>
+			<RecipeDef>InstallWakeUpRibQuasar</RecipeDef>
 		</descriptionHyperlinks>
 		<costList>
 			<BOR_QuasarAlloy>10</BOR_QuasarAlloy>
@@ -821,20 +821,20 @@
 		</statBases>
 	</ThingDef>
 
-	<RecipeDef ParentName="SurgeryInstallImplantBaseBAOTCCosmic">
-		<defName>InstallWakeUpRibCosmic</defName>
-		<label>install a cosmic STIM_VII rib implant</label>
-		<description>Installs a cosmic STIM_VII rib implant.</description>
+	<RecipeDef ParentName="SurgeryInstallImplantBaseBAOTCQuasar">
+		<defName>InstallWakeUpRibQuasar</defName>
+		<label>install a kwazaari STIM_VII rib implant</label>
+		<description>Installs a kwazaari STIM_VII rib implant.</description>
 		<descriptionHyperlinks>
-			<ThingDef>WakeUpRibCosmic</ThingDef>
-			<HediffDef>WakeUpRibCosmic</HediffDef>
+			<ThingDef>WakeUpRibQuasar</ThingDef>
+			<HediffDef>WakeUpRibQuasar</HediffDef>
 		</descriptionHyperlinks>
-		<jobString>Installing a cosmic STIM_VII rib.</jobString>
+		<jobString>Installing a kwazaari STIM_VII rib.</jobString>
 		<ingredients>
 			<li>
 				<filter>
 					<thingDefs>
-						<li>WakeUpRibCosmic</li>
+						<li>WakeUpRibQuasar</li>
 					</thingDefs>
 				</filter>
 				<count>1</count>
@@ -842,14 +842,14 @@
 		</ingredients>
 		<fixedIngredientFilter>
 			<thingDefs>
-				<li>WakeUpRibCosmic</li>
+				<li>WakeUpRibQuasar</li>
 			</thingDefs>
 		</fixedIngredientFilter>
 		<appliedOnFixedBodyParts>
 			<li>Ribcage</li>
 		</appliedOnFixedBodyParts>
-		<addsHediff>WakeUpRibCosmic</addsHediff>
-		<uiIconThing>WakeUpRibCosmic</uiIconThing>
+		<addsHediff>WakeUpRibQuasar</addsHediff>
+		<uiIconThing>WakeUpRibQuasar</uiIconThing>
 		<incompatibleWithHediffTags>
 			<li>WakeUpRib</li>
 			<li>LuciferiumRib</li>
@@ -857,15 +857,15 @@
 	</RecipeDef>
 
 	<RecipeDef ParentName="SurgeryRemoveImplantBase">
-		<defName>RemoveWakeUpRibCosmic</defName>
-		<label>remove a cosmic STIM_VII rib implant</label>
-		<description>Remove a cosmic STIM_VII rib implant.</description>
+		<defName>RemoveWakeUpRibQuasar</defName>
+		<label>remove a kwazaari STIM_VII rib implant</label>
+		<description>Remove a kwazaari STIM_VII rib implant.</description>
 		<descriptionHyperlinks>
-			<ThingDef>WakeUpRibCosmic</ThingDef>
-			<HediffDef>WakeUpRibCosmic</HediffDef>
+			<ThingDef>WakeUpRibQuasar</ThingDef>
+			<HediffDef>WakeUpRibQuasar</HediffDef>
 		</descriptionHyperlinks>
-		<jobString>Removing a cosmic rib implant.</jobString>
-		<removesHediff>WakeUpRibCosmic</removesHediff>
+		<jobString>Removing a kwazaari rib implant.</jobString>
+		<removesHediff>WakeUpRibQuasar</removesHediff>
 	</RecipeDef>
 
 </Defs>

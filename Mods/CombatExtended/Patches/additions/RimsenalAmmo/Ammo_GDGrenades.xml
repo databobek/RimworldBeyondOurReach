@@ -11,8 +11,8 @@
 					<value>
 
 						<ThingDef Class="CombatExtended.AmmoDef" ParentName="25x40mmGrenadeBase">
-							<defName>BOR_Ammo_25x40mmGrenade_Eternium</defName>
-							<label>25x40mm grenade (Eternium pellet)</label>
+							<defName>BOR_Ammo_25x40mmGrenade_Tenebrite</defName>
+							<label>25x40mm grenade (Tenebrite pellet)</label>
 							<graphicData>
 								<texPath>ThirdParty/Rimsenal/GrenadeLauncher/BS</texPath>
 								<graphicClass>Graphic_StackCount</graphicClass>
@@ -20,15 +20,15 @@
 							<statBases>
 								<MarketValue>1.44</MarketValue>
 							</statBases>
-							<ammoClass>BOR_Ef_AmmoClass</ammoClass>
-							<cookOffProjectile>BOR_Bullet_25mmGauge_Eternium</cookOffProjectile>
+							<ammoClass>BOR_Tf_AmmoClass</ammoClass>
+							<cookOffProjectile>BOR_Bullet_25mmGauge_Tenebrite</cookOffProjectile>
 							<generateAllowChance>0.1</generateAllowChance>
 							<generateCommonality>0.01</generateCommonality>
 						</ThingDef>
 
 						<ThingDef Class="CombatExtended.AmmoDef" ParentName="25x40mmGrenadeBase">
-							<defName>BOR_Ammo_25x40mmGrenade_CMc</defName>
-							<label>25x40mm grenade (CM-c)</label>
+							<defName>BOR_Ammo_25x40mmGrenade_Nc</defName>
+							<label>25x40mm grenade (N-c)</label>
 							<graphicData>
 								<texPath>ThirdParty/Rimsenal/GrenadeLauncher/INC</texPath>
 								<graphicClass>Graphic_StackCount</graphicClass>
@@ -36,7 +36,7 @@
 							<statBases>
 								<MarketValue>1.44</MarketValue>
 							</statBases>
-							<ammoClass>BOR_CMc_AmmoClass</ammoClass>
+							<ammoClass>BOR_Nc_AmmoClass</ammoClass>
 							<comps>
 								<li Class="CombatExtended.CompProperties_ExplosiveCE">
 									<damageAmountBase>2</damageAmountBase>
@@ -52,8 +52,8 @@
 
 
 						<ThingDef ParentName="Base12GaugeBullet">
-							<defName>BOR_Bullet_25mmGauge_Eternium</defName>
-							<label>eternium pellet</label>
+							<defName>BOR_Bullet_25mmGauge_Tenebrite</defName>
+							<label>tenebrite pellet</label>
 							<graphicData>
 								<texPath>Things/Projectile/Shotgun_Pellet</texPath>
 								<graphicClass>Graphic_Single</graphicClass>
@@ -69,8 +69,8 @@
 						</ThingDef>
 
 						<ThingDef ParentName="Base25x40mmGrenadeBullet">
-							<defName>BOR_Bullet_25x40mmGrenade_CMc</defName>
-							<label>25x40mm grenade (CM-c)</label>
+							<defName>BOR_Bullet_25x40mmGrenade_Nc</defName>
+							<label>25x40mm grenade (N-c)</label>
 							<projectile Class="CombatExtended.ProjectilePropertiesCE">
 								<explosionRadius>2</explosionRadius>
 								<damageDef>PrometheumFlame</damageDef>
@@ -89,10 +89,10 @@
 					<value>
 
 						<RecipeDef ParentName="AmmoRecipeBase">
-							<defName>MakeBOR_Ammo_25x40mmGrenade_Eternium</defName>
-							<label>make 25x40mm eternium pellet rounds x100</label>
-							<description>Craft 100 25x40mm eternium pellet rounds.</description>
-							<jobString>Making 25x40mm eternium pellet rounds.</jobString>
+							<defName>MakeBOR_Ammo_25x40mmGrenade_Tenebrite</defName>
+							<label>make 25x40mm tenebrite pellet rounds x100</label>
+							<description>Craft 100 25x40mm tenebrite pellet rounds.</description>
+							<jobString>Making 25x40mm tenebrite pellet rounds.</jobString>
 							<ingredients>
 								<li>
 									<filter>
@@ -109,16 +109,16 @@
 								</thingDefs>
 							</fixedIngredientFilter>
 							<products>
-								<BOR_Ammo_25x40mmGrenade_Eternium>100</BOR_Ammo_25x40mmGrenade_Eternium>
+								<BOR_Ammo_25x40mmGrenade_Tenebrite>100</BOR_Ammo_25x40mmGrenade_Tenebrite>
 							</products>
 							<workAmount>3200</workAmount>
 						</RecipeDef>
 
 						<RecipeDef ParentName="AmmoRecipeBase">
-							<defName>MakeBOR_Ammo_25x40mmGrenade_CMc</defName>
-							<label>make 25x40mm CM-c grenades x100</label>
-							<description>Craft 100 25x40mm CM-c grenades.</description>
-							<jobString>Making 25x40mm CM-c grenades.</jobString>
+							<defName>MakeBOR_Ammo_25x40mmGrenade_Nc</defName>
+							<label>make 25x40mm N-c grenades x100</label>
+							<description>Craft 100 25x40mm N-c grenades.</description>
+							<jobString>Making 25x40mm N-c grenades.</jobString>
 							<ingredients>
 								<li>
 									<filter>
@@ -153,7 +153,7 @@
 								</thingDefs>
 							</fixedIngredientFilter>
 							<products>
-								<BOR_Ammo_25x40mmGrenade_CMc>100</BOR_Ammo_25x40mmGrenade_CMc>
+								<BOR_Ammo_25x40mmGrenade_Nc>100</BOR_Ammo_25x40mmGrenade_Nc>
 							</products>
 							<workAmount>600</workAmount>
 						</RecipeDef>
@@ -165,8 +165,8 @@
 				<li Class="PatchOperationAdd">
 					<xpath>Defs/CombatExtended.AmmoSetDef[defName="AmmoSet_25x40mmGrenade"]/ammoTypes</xpath>
 					<value>
-						<BOR_Ammo_25x40mmGrenade_Eternium>BOR_Bullet_25mmGauge_Eternium</BOR_Ammo_25x40mmGrenade_Eternium>
-						<BOR_Ammo_25x40mmGrenade_CMc>BOR_Bullet_25x40mmGrenade_CMc</BOR_Ammo_25x40mmGrenade_CMc>
+						<BOR_Ammo_25x40mmGrenade_Tenebrite>BOR_Bullet_25mmGauge_Tenebrite</BOR_Ammo_25x40mmGrenade_Tenebrite>
+						<BOR_Ammo_25x40mmGrenade_Nc>BOR_Bullet_25x40mmGrenade_Nc</BOR_Ammo_25x40mmGrenade_Nc>
 					</value>
 				</li>
 

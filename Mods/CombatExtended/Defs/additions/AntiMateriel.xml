@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Defs>
 
-	<!-- full starsteel jacket -->
+	<!-- full sunsteel jacket -->
 	<ThingDef ParentName="Base50BMGBullet">
 		<defName>BOR_Bullet_AntiMat_FSJ</defName>
 		<label>Anti Materiel bullet (FSJ)</label>
@@ -12,10 +12,10 @@
 		</projectile>
 	</ThingDef>
 
-	<!-- Cosmic-alloy Penetrating -->
+	<!-- Quasar-alloy Penetrating -->
 	<ThingDef ParentName="Base50BMGBullet">
-		<defName>BOR_Bullet_AntiMat_CaP</defName>
-		<label>Anti Materiel bullet (CaP)</label>
+		<defName>BOR_Bullet_AntiMat_QaP</defName>
+		<label>Anti Materiel bullet (QaP)</label>
 		<projectile Class="CombatExtended.ProjectilePropertiesCE">
 			<damageAmountBase>39</damageAmountBase>
 			<armorPenetrationSharp>42</armorPenetrationSharp>
@@ -23,10 +23,10 @@
 		</projectile>
 	</ThingDef>
 
-	<!-- Cosmic Matter infused -->
+	<!-- Neutronium infused -->
 	<ThingDef ParentName="Base50BMGBullet">
-		<defName>BOR_Bullet_AntiMat_CMi</defName>
-		<label>Anti Materiel bullet (CMi)</label>
+		<defName>BOR_Bullet_AntiMat_Ni</defName>
+		<label>Anti Materiel bullet (Ni)</label>
 		<projectile Class="CombatExtended.ProjectilePropertiesCE">
 			<damageAmountBase>63</damageAmountBase>
 			<armorPenetrationSharp>21</armorPenetrationSharp>
@@ -40,10 +40,10 @@
 		</projectile>
 	</ThingDef>
 
-	<!-- Eternium Coated -->
+	<!-- Tenebrite Coated -->
 	<ThingDef ParentName="Base50BMGBullet">
-		<defName>BOR_Bullet_AntiMat_EC</defName>
-		<label>Anti Materiel bullet (EC)</label>
+		<defName>BOR_Bullet_AntiMat_TC</defName>
+		<label>Anti Materiel bullet (TC)</label>
 		<projectile Class="CombatExtended.ProjectilePropertiesCE">
 			<damageAmountBase>33</damageAmountBase>
 			<armorPenetrationSharp>73.5</armorPenetrationSharp>
@@ -70,8 +70,8 @@
 	</ThingDef>
 
 	<ThingDef Class="CombatExtended.AmmoDef" ParentName="AmmoAntiMaterielBase">
-		<defName>BOR_Ammo_AntiMateriel_CaP</defName>
-		<label>anti-materiel cartridge (CaP)</label>
+		<defName>BOR_Ammo_AntiMateriel_QaP</defName>
+		<label>anti-materiel cartridge (QaP)</label>
 		<graphicData>
 			<texPath>Things/Ammo/STACK_RANGED/HighCaliber/AP</texPath>
 			<graphicClass>CombatExtended.Graphic_StackCountRanged</graphicClass>
@@ -79,15 +79,15 @@
 		<statBases>
 			<MarketValue>0.75</MarketValue>
 		</statBases>
-		<ammoClass>BOR_CaP_AmmoClass</ammoClass>
-		<cookOffProjectile>BOR_Bullet_AntiMat_CaP</cookOffProjectile>
+		<ammoClass>BOR_QaP_AmmoClass</ammoClass>
+		<cookOffProjectile>BOR_Bullet_AntiMat_QaP</cookOffProjectile>
 		<generateAllowChance>0.1</generateAllowChance>
 		<generateCommonality>0.1</generateCommonality>
 	</ThingDef>
 
 	<ThingDef Class="CombatExtended.AmmoDef" ParentName="AmmoAntiMaterielBase">
-		<defName>BOR_Ammo_AntiMateriel_CMi</defName>
-		<label>anti-materiel cartridge (CMi)</label>
+		<defName>BOR_Ammo_AntiMateriel_Ni</defName>
+		<label>anti-materiel cartridge (Ni)</label>
 		<graphicData>
 			<texPath>Things/Ammo/STACK_RANGED/HighCaliber/HE</texPath>
 			<graphicClass>CombatExtended.Graphic_StackCountRanged</graphicClass>
@@ -95,15 +95,15 @@
 		<statBases>
 			<MarketValue>1.2</MarketValue>
 		</statBases>
-		<ammoClass>BOR_CMi_AmmoClass</ammoClass>
-		<cookOffProjectile>BOR_Bullet_AntiMat_CMi</cookOffProjectile>
+		<ammoClass>BOR_Ni_AmmoClass</ammoClass>
+		<cookOffProjectile>BOR_Bullet_AntiMat_Ni</cookOffProjectile>
 		<generateAllowChance>0.1</generateAllowChance>
 		<generateCommonality>0.1</generateCommonality>
 	</ThingDef>
 
 	<ThingDef Class="CombatExtended.AmmoDef" ParentName="AmmoAntiMaterielBase">
-		<defName>BOR_Ammo_AntiMateriel_EC</defName>
-		<label>anti-materiel cartridge (EC)</label>
+		<defName>BOR_Ammo_AntiMateriel_TC</defName>
+		<label>anti-materiel cartridge (TC)</label>
 		<graphicData>
 			<texPath>Things/Ammo/STACK_RANGED/HighCaliber/Sabot</texPath>
 			<graphicClass>CombatExtended.Graphic_StackCountRanged</graphicClass>
@@ -112,8 +112,8 @@
 			<MarketValue>0.85</MarketValue>
 			<Mass>0.15</Mass>
 		</statBases>
-		<ammoClass>BOR_EC_AmmoClass</ammoClass>
-		<cookOffProjectile>BOR_Bullet_AntiMat_EC</cookOffProjectile>
+		<ammoClass>BOR_TC_AmmoClass</ammoClass>
+		<cookOffProjectile>BOR_Bullet_AntiMat_TC</cookOffProjectile>
 		<generateAllowChance>0.1</generateAllowChance>
 		<generateCommonality>0.1</generateCommonality>
 	</ThingDef>
@@ -145,10 +145,10 @@
 	</RecipeDef>
 
 	<RecipeDef ParentName="AmmoRecipeBase">
-		<defName>MakeBOR_Ammo_AntiMateriel_CaP</defName>
-		<label>make anti-materiel (CaP) cartridge x200</label>
-		<description>Craft 200 anti-materiel (CaP) cartridges.</description>
-		<jobString>Making anti-materiel (CaP) cartridges.</jobString>
+		<defName>MakeBOR_Ammo_AntiMateriel_QaP</defName>
+		<label>make anti-materiel (QaP) cartridge x200</label>
+		<description>Craft 200 anti-materiel (QaP) cartridges.</description>
+		<jobString>Making anti-materiel (QaP) cartridges.</jobString>
 		<ingredients>
 			<li>
 				<filter>
@@ -165,16 +165,16 @@
 			</thingDefs>
 		</fixedIngredientFilter>
 		<products>
-			<BOR_Ammo_AntiMateriel_CaP>200</BOR_Ammo_AntiMateriel_CaP>
+			<BOR_Ammo_AntiMateriel_QaP>200</BOR_Ammo_AntiMateriel_QaP>
 		</products>
 		<workAmount>9000</workAmount>
 	</RecipeDef>
 
 	<RecipeDef ParentName="AdvancedAmmoRecipeBase">
-		<defName>MakeBOR_Ammo_AntiMateriel_CMi</defName>
-		<label>make anti-materiel (CMi) cartridge x200</label>
-		<description>Craft 200 anti-materiel (CMi) cartridges.</description>
-		<jobString>Making anti-materiel (CMi) cartridges.</jobString>
+		<defName>MakeBOR_Ammo_AntiMateriel_Ni</defName>
+		<label>make anti-materiel (Ni) cartridge x200</label>
+		<description>Craft 200 anti-materiel (Ni) cartridges.</description>
+		<jobString>Making anti-materiel (Ni) cartridges.</jobString>
 		<ingredients>
 			<li>
 				<filter>
@@ -200,16 +200,16 @@
 			</thingDefs>
 		</fixedIngredientFilter>
 		<products>
-			<BOR_Ammo_AntiMateriel_CMi>200</BOR_Ammo_AntiMateriel_CMi>
+			<BOR_Ammo_AntiMateriel_Ni>200</BOR_Ammo_AntiMateriel_Ni>
 		</products>
 		<workAmount>13500</workAmount>
 	</RecipeDef>
 
 	<RecipeDef ParentName="AdvancedAmmoRecipeBase">
-		<defName>MakeBOR_Ammo_AntiMateriel_EC</defName>
-		<label>make anti-materiel (EC) cartridge x200</label>
-		<description>Craft 200 anti-materiel (EC) cartridges.</description>
-		<jobString>Making anti-materiel (EC) cartridges.</jobString>
+		<defName>MakeBOR_Ammo_AntiMateriel_TC</defName>
+		<label>make anti-materiel (TC) cartridge x200</label>
+		<description>Craft 200 anti-materiel (TC) cartridges.</description>
+		<jobString>Making anti-materiel (TC) cartridges.</jobString>
 		<ingredients>
 			<li>
 				<filter>
@@ -244,7 +244,7 @@
 			</thingDefs>
 		</fixedIngredientFilter>
 		<products>
-			<BOR_Ammo_AntiMateriel_EC>200</BOR_Ammo_AntiMateriel_EC>
+			<BOR_Ammo_AntiMateriel_TC>200</BOR_Ammo_AntiMateriel_TC>
 		</products>
 		<workAmount>9900</workAmount>
 	</RecipeDef>

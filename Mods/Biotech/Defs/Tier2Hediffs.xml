@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Defs>
-  <ThingDef Abstract="True" Name="MechanitorImplantCraftableCosmicBase" ParentName="MechanitorImplantBase">
+  <ThingDef Abstract="True" Name="MechanitorImplantCraftableQuasarBase" ParentName="MechanitorImplantBase">
     <statBases>
       <MaxHitPoints>100</MaxHitPoints>
       <Beauty>-4</Beauty>
@@ -18,7 +18,7 @@
     <recipeMaker>
       <unfinishedThingDef>UnfinishedHealthItemProsthetic</unfinishedThingDef>
       <recipeUsers>
-        <li>Table_SNS_BionicCraftingStation_GenII</li>
+        <li>Table_BOR_BionicCraftingStation_GenII</li>
       </recipeUsers>
       <useIngredientsForColor>false</useIngredientsForColor>
       <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
@@ -37,19 +37,19 @@
   </ThingDef>
 
   <!-- Control sublink -->
-  <ThingDef Abstract="True" Name="ControlSublinkBaseCosmic" ParentName="MechanitorImplantCraftableBase">
+  <ThingDef Abstract="True" Name="ControlSublinkBaseQuasar" ParentName="MechanitorImplantCraftableBase">
     <descriptionHyperlinks>
-      <HediffDef>ControlSublinkImplantCosmic</HediffDef>
+      <HediffDef>ControlSublinkImplantQuasar</HediffDef>
     </descriptionHyperlinks>
     <statBases>
       <MaxInstallCount>5</MaxInstallCount>
     </statBases>
   </ThingDef>
 
-  <ThingDef ParentName="ControlSublinkBaseCosmic">
-    <defName>ControlSublinkCosmic</defName>
-    <label>cosmic control sublink (standard)</label>
-    <description>A neural cosmic implant which gives a mechanitor an additional control group. Additionally, the sublink slightly increases the work speed of any mechanoids controlled by the mechanitor.\n\nThis standard-tier sublink can only increase the control group count up to 3. To go higher, a higher-tier sublink implant must be used.\n\nIt can be self-installed without surgery.\n\nThis implant can be installed up to 3 times to increase its effect.</description>
+  <ThingDef ParentName="ControlSublinkBaseQuasar">
+    <defName>ControlSublinkQuasar</defName>
+    <label>kwazaari control sublink (standard)</label>
+    <description>A neural kwazaari implant which gives a mechanitor an additional control group. Additionally, the sublink slightly increases the work speed of any mechanoids controlled by the mechanitor.\n\nThis standard-tier sublink can only increase the control group count up to 3. To go higher, a higher-tier sublink implant must be used.\n\nIt can be self-installed without surgery.\n\nThis implant can be installed up to 3 times to increase its effect.</description>
     <costList>
       <SignalChip>1</SignalChip>
       <BOR_ComponentII>4</BOR_ComponentII>
@@ -65,7 +65,7 @@
         <userMustHaveHediff>MechlinkImplant</userMustHaveHediff>
       </li>
       <li Class="CompProperties_UseEffectInstallImplant">
-        <hediffDef>ControlSublinkImplantCosmic</hediffDef>
+        <hediffDef>ControlSublinkImplantQuasar</hediffDef>
         <bodyPart>Brain</bodyPart>
         <canUpgrade>true</canUpgrade>
         <maxSeverity>3</maxSeverity>
@@ -73,10 +73,10 @@
     </comps>
   </ThingDef>
 
-  <ThingDef ParentName="ControlSublinkBaseCosmic">
-    <defName>ControlSublinkHighCosmic</defName>
-    <label>cosmic control sublink (high)</label>
-    <description>A neural cosmic implant which gives a mechanitor an additional control group. Additionally, the sublink slightly increases the work speed of any mechanoids controlled by the mechanitor.\n\nThis high-tier implant can increase the control group count up to 6.\n\nIt can be self-installed without surgery.\n\nThis implant can be installed up to 3 times to increase its effect.</description>
+  <ThingDef ParentName="ControlSublinkBaseQuasar">
+    <defName>ControlSublinkHighQuasar</defName>
+    <label>kwazaari control sublink (high)</label>
+    <description>A neural kwazaari implant which gives a mechanitor an additional control group. Additionally, the sublink slightly increases the work speed of any mechanoids controlled by the mechanitor.\n\nThis high-tier implant can increase the control group count up to 6.\n\nIt can be self-installed without surgery.\n\nThis implant can be installed up to 3 times to increase its effect.</description>
     <costList>
       <PowerfocusChip>1</PowerfocusChip>
       <BOR_ComponentII>3</BOR_ComponentII>
@@ -93,7 +93,7 @@
         <userMustHaveHediff>MechlinkImplant</userMustHaveHediff>
       </li>
       <li Class="CompProperties_UseEffectInstallImplant">
-        <hediffDef>ControlSublinkImplantCosmic</hediffDef>
+        <hediffDef>ControlSublinkImplantQuasar</hediffDef>
         <bodyPart>Brain</bodyPart>
         <canUpgrade>true</canUpgrade>
         <requiresExistingHediff>true</requiresExistingHediff>
@@ -103,13 +103,13 @@
   </ThingDef>
 
   <HediffDef>
-    <defName>ControlSublinkImplantCosmic</defName>
+    <defName>ControlSublinkImplantQuasar</defName>
     <hediffClass>Hediff_Level</hediffClass>
     <descriptionHyperlinks>
-      <ThingDef>ControlSublinkCosmic</ThingDef>
+      <ThingDef>ControlSublinkQuasar</ThingDef>
     </descriptionHyperlinks>
-    <label>cosmic control sublink</label>
-    <description>A cosmic implant which increases a mechanitor's control group count and the work speed of a mechanitor's mechs.\n\nThis implant can be installed up to 6 times to increase its effect.</description>
+    <label>kwazaari control sublink</label>
+    <description>A kwazaari implant which increases a mechanitor's control group count and the work speed of a mechanitor's mechs.\n\nThis implant can be installed up to 6 times to increase its effect.</description>
     <defaultLabelColor>(0.6, 0.6, 1.0)</defaultLabelColor>
     <isBad>false</isBad>
     <priceImpact>true</priceImpact>
@@ -166,11 +166,11 @@
 
   <!-- Remote repairer -->
   <ThingDef ParentName="MechanitorImplantCraftableBase">
-    <defName>RemoteRepairerCosmic</defName>
-    <label>cosmic remote repairer</label>
-    <description>A cosmic mechlink upgrade which allows the mechanitor to repair mechs from a distance. The user links with the mechanoid and uses their own brain to psychically guide its self-repair mechanites.\n\nThis implant can be self-installed without surgery.\n\nThis implant can be installed up to 3 times to increase its range.</description>
+    <defName>RemoteRepairerQuasar</defName>
+    <label>kwazaari remote repairer</label>
+    <description>A kwazaari mechlink upgrade which allows the mechanitor to repair mechs from a distance. The user links with the mechanoid and uses their own brain to psychically guide its self-repair mechanites.\n\nThis implant can be self-installed without surgery.\n\nThis implant can be installed up to 3 times to increase its range.</description>
     <descriptionHyperlinks>
-      <HediffDef>RemoteRepairerImplantCosmic</HediffDef>
+      <HediffDef>RemoteRepairerImplantQuasar</HediffDef>
     </descriptionHyperlinks>
     <costList>
       <PowerfocusChip>1</PowerfocusChip>
@@ -190,7 +190,7 @@
         <userMustHaveHediff>MechlinkImplant</userMustHaveHediff>
       </li>
       <li Class="CompProperties_UseEffectInstallImplant">
-        <hediffDef>RemoteRepairerImplantCosmic</hediffDef>
+        <hediffDef>RemoteRepairerImplantQuasar</hediffDef>
         <bodyPart>Brain</bodyPart>
         <canUpgrade>true</canUpgrade>
       </li>
@@ -198,13 +198,13 @@
   </ThingDef>
 
   <HediffDef>
-    <defName>RemoteRepairerImplantCosmic</defName>
+    <defName>RemoteRepairerImplantQuasar</defName>
     <hediffClass>Hediff_Level</hediffClass>
     <descriptionHyperlinks>
-      <ThingDef>RemoteRepairerCosmic</ThingDef>
+      <ThingDef>RemoteRepairerQuasar</ThingDef>
     </descriptionHyperlinks>
-    <label>cosmic remote repairer</label>
-    <description>A cosmic mechlink upgrade which allows the mechanitor to repair mechs from a distance. The user links with the mechanoid and uses their own brain to psychically guide its self-repair mechanites.\n\nThis implant can be installed up to 3 times to increase its range.</description>
+    <label>kwazaari remote repairer</label>
+    <description>A kwazaari mechlink upgrade which allows the mechanitor to repair mechs from a distance. The user links with the mechanoid and uses their own brain to psychically guide its self-repair mechanites.\n\nThis implant can be installed up to 3 times to increase its range.</description>
     <descriptionShort>An implant which allows the user to repair mechs from a distance. This can be installed up to 3 times.</descriptionShort>
     <defaultLabelColor>(0.6, 0.6, 1.0)</defaultLabelColor>
     <isBad>false</isBad>
@@ -245,11 +245,11 @@
 
   <!-- Mech gestation processorr -->
   <ThingDef ParentName="MechanitorImplantCraftableBase">
-    <defName>MechFormfeederCosmic</defName>
-    <label>mech cosmic gestation processor</label>
-    <description>A cosmic implant which increases the speed at which a mechanitor can produce mechs in a mech gestator. The processor optimizes the behavior of the mechanites in the mech forming tank.\n\nThis implant can be self-installed in the same way as the mechlink.\n\nThis implant can be installed up to 6 times to increase its effect.</description>
+    <defName>MechFormfeederQuasar</defName>
+    <label>mech kwazaari gestation processor</label>
+    <description>A kwazaari implant which increases the speed at which a mechanitor can produce mechs in a mech gestator. The processor optimizes the behavior of the mechanites in the mech forming tank.\n\nThis implant can be self-installed in the same way as the mechlink.\n\nThis implant can be installed up to 6 times to increase its effect.</description>
     <descriptionHyperlinks>
-      <HediffDef>MechFormfeederImplantCosmic</HediffDef>
+      <HediffDef>MechFormfeederImplantQuasar</HediffDef>
     </descriptionHyperlinks>
     <costList>
       <SignalChip>1</SignalChip>
@@ -269,7 +269,7 @@
         <userMustHaveHediff>MechlinkImplant</userMustHaveHediff>
       </li>
       <li Class="CompProperties_UseEffectInstallImplant">
-        <hediffDef>MechFormfeederImplantCosmic</hediffDef>
+        <hediffDef>MechFormfeederImplantQuasar</hediffDef>
         <bodyPart>Brain</bodyPart>
         <canUpgrade>true</canUpgrade>
       </li>
@@ -277,13 +277,13 @@
   </ThingDef>
 
   <HediffDef>
-    <defName>MechFormfeederImplantCosmic</defName>
+    <defName>MechFormfeederImplantQuasar</defName>
     <hediffClass>Hediff_Level</hediffClass>
     <descriptionHyperlinks>
-      <ThingDef>MechFormfeederCosmic</ThingDef>
+      <ThingDef>MechFormfeederQuasar</ThingDef>
     </descriptionHyperlinks>
-    <label>cosmic mech gestation processor</label>
-    <description>A cosmic implant which increases the speed at which a mechanitor can produce mechs in a mech gestator. The processor optimizes the behavior of the mechanites in the mech forming tank.\n\nThis implant can be self-installed in the same way as the mechlink.\n\nThis implant can be installed up to 6 times to increase its effect.</description>
+    <label>kwazaari mech gestation processor</label>
+    <description>A kwazaari implant which increases the speed at which a mechanitor can produce mechs in a mech gestator. The processor optimizes the behavior of the mechanites in the mech forming tank.\n\nThis implant can be self-installed in the same way as the mechlink.\n\nThis implant can be installed up to 6 times to increase its effect.</description>
     <descriptionShort>As tellar implant which lets a mechanitor gestate new mechs faster. This can be installed up to 6 times to increase the effect.</descriptionShort>
     <defaultLabelColor>(0.6, 0.6, 1.0)</defaultLabelColor>
     <isBad>false</isBad>
@@ -335,11 +335,11 @@
 
   <!-- Remote shielder -->
   <ThingDef ParentName="MechanitorImplantCraftableBase">
-    <defName>RemoteShielderCosmic</defName>
-    <label>cosmic remote shielder</label>
-    <description>A cosmic implant which allows the mechanitor to place a personal defense shield on a mech. The mechanitor must continuously focus on the mech in order to maintain the shield.\n\nPlacing a shield at a distance requires a substantial amount of focused energy. It can be used to save a mech at a critical moment.\n\nThis implant can be self-installed in the same way as the mechlink.\n\nThis implant can be installed up to 3 times to increase its range and shield energy.</description>
+    <defName>RemoteShielderQuasar</defName>
+    <label>kwazaari remote shielder</label>
+    <description>A kwazaari implant which allows the mechanitor to place a personal defense shield on a mech. The mechanitor must continuously focus on the mech in order to maintain the shield.\n\nPlacing a shield at a distance requires a substantial amount of focused energy. It can be used to save a mech at a critical moment.\n\nThis implant can be self-installed in the same way as the mechlink.\n\nThis implant can be installed up to 3 times to increase its range and shield energy.</description>
     <descriptionHyperlinks>
-      <HediffDef>RemoteShielderImplantCosmic</HediffDef>
+      <HediffDef>RemoteShielderImplantQuasar</HediffDef>
     </descriptionHyperlinks>
     <costList>
       <PowerfocusChip>1</PowerfocusChip>
@@ -359,7 +359,7 @@
         <userMustHaveHediff>MechlinkImplant</userMustHaveHediff>
       </li>
       <li Class="CompProperties_UseEffectInstallImplant">
-        <hediffDef>RemoteShielderImplantCosmic</hediffDef>
+        <hediffDef>RemoteShielderImplantQuasar</hediffDef>
         <bodyPart>Brain</bodyPart>
         <canUpgrade>true</canUpgrade>
       </li>
@@ -367,13 +367,13 @@
   </ThingDef>
 
   <HediffDef>
-    <defName>RemoteShielderImplantCosmic</defName>
+    <defName>RemoteShielderImplantQuasar</defName>
     <hediffClass>Hediff_Level</hediffClass>
     <descriptionHyperlinks>
-      <ThingDef>RemoteShielderCosmic</ThingDef>
+      <ThingDef>RemoteShielderQuasar</ThingDef>
     </descriptionHyperlinks>
-    <label>cosmic remote shielder</label>
-    <description>A cosmic implant which allows the mechanitor to place a personal defense shield on a mech. The mechanitor must continuously focus on the mech in order to maintain the shield. It can be used to save a mech at a critical moment.\n\nThis implant can be installed up to 3 times to increase its range and shield energy.</description>
+    <label>kwazaari remote shielder</label>
+    <description>A kwazaari implant which allows the mechanitor to place a personal defense shield on a mech. The mechanitor must continuously focus on the mech in order to maintain the shield. It can be used to save a mech at a critical moment.\n\nThis implant can be installed up to 3 times to increase its range and shield energy.</description>
     <defaultLabelColor>(0.6, 0.6, 1.0)</defaultLabelColor>
     <isBad>false</isBad>
     <priceImpact>true</priceImpact>
@@ -417,11 +417,11 @@
   <!-- Repair probe -->
 
   <ThingDef ParentName="MechanitorImplantCraftableBase">
-    <defName>RepairProbeCosmic</defName>
-    <label>cosmic repair probe</label>
-    <description>A cosmic implant which increases the speed at which a mechanitor can repair a mechanoid. This does not affect the overall energy needed to repair a mechanoid.\n\nThe implant allows the mechanitor to plug directly into a mechanoid while they are repairing it. This allows them to more quickly understand the mech's injuries, and better-direct the mech's self-repair mechanites to assist with the repair.\n\nThis implant can be self-installed in the same way as the mechlink.\n\nThis implant can be installed up to 6 times to increase its effect.</description>
+    <defName>RepairProbeQuasar</defName>
+    <label>kwazaari repair probe</label>
+    <description>A kwazaari implant which increases the speed at which a mechanitor can repair a mechanoid. This does not affect the overall energy needed to repair a mechanoid.\n\nThe implant allows the mechanitor to plug directly into a mechanoid while they are repairing it. This allows them to more quickly understand the mech's injuries, and better-direct the mech's self-repair mechanites to assist with the repair.\n\nThis implant can be self-installed in the same way as the mechlink.\n\nThis implant can be installed up to 6 times to increase its effect.</description>
     <descriptionHyperlinks>
-      <HediffDef>RepairProbeImplantCosmic</HediffDef>
+      <HediffDef>RepairProbeImplantQuasar</HediffDef>
     </descriptionHyperlinks>
     <costList>
       <NanostructuringChip>1</NanostructuringChip>
@@ -441,7 +441,7 @@
         <userMustHaveHediff>MechlinkImplant</userMustHaveHediff>
       </li>
       <li Class="CompProperties_UseEffectInstallImplant">
-        <hediffDef>RepairProbeImplantCosmic</hediffDef>
+        <hediffDef>RepairProbeImplantQuasar</hediffDef>
         <bodyPart>Brain</bodyPart>
         <canUpgrade>true</canUpgrade>
       </li>
@@ -449,14 +449,14 @@
   </ThingDef>
 
   <HediffDef>
-    <defName>RepairProbeImplantCosmic</defName>
+    <defName>RepairProbeImplantQuasar</defName>
     <hediffClass>Hediff_Level</hediffClass>
     <descriptionHyperlinks>
-      <ThingDef>RepairProbeCosmic</ThingDef>
+      <ThingDef>RepairProbeQuasar</ThingDef>
     </descriptionHyperlinks>
-    <label>cosmic repair probe</label>
-    <description>A cosmic implant which increases a mechanitor's mech repair speed. This does not affect the overall energy needed to repair a mechanoid.\n\nThe implant allows the mechanitor to plug directly into a mechanoid while repairing it and better-direct the mech's self-repair mechanites.\n\nThis implant can be installed up to 6 times to increase its effect.</description>
-    <descriptionShort>A cosmic implant which lets a mechanitor repair mechs faster. This can be installed up to 6 times.</descriptionShort>
+    <label>kwazaari repair probe</label>
+    <description>A kwazaari implant which increases a mechanitor's mech repair speed. This does not affect the overall energy needed to repair a mechanoid.\n\nThe implant allows the mechanitor to plug directly into a mechanoid while repairing it and better-direct the mech's self-repair mechanites.\n\nThis implant can be installed up to 6 times to increase its effect.</description>
+    <descriptionShort>A kwazaari implant which lets a mechanitor repair mechs faster. This can be installed up to 6 times.</descriptionShort>
     <defaultLabelColor>(0.6, 0.6, 1.0)</defaultLabelColor>
     <isBad>false</isBad>
     <priceImpact>true</priceImpact>

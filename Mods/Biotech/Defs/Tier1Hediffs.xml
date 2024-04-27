@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Defs>
-  <ThingDef Abstract="True" Name="MechanitorImplantCraftableStellarBase" ParentName="MechanitorImplantBase">
+  <ThingDef Abstract="True" Name="MechanitorImplantCraftableSolarBase" ParentName="MechanitorImplantBase">
     <statBases>
       <MaxHitPoints>100</MaxHitPoints>
       <Beauty>-4</Beauty>
@@ -18,7 +18,7 @@
     <recipeMaker>
       <unfinishedThingDef>UnfinishedHealthItemProsthetic</unfinishedThingDef>
       <recipeUsers>
-        <li>Table_SNS_BionicCraftingStation_GenI</li>
+        <li>Table_BOR_BionicCraftingStation_GenI</li>
       </recipeUsers>
       <useIngredientsForColor>false</useIngredientsForColor>
       <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
@@ -37,19 +37,19 @@
   </ThingDef>
 
   <!-- Control sublink -->
-  <ThingDef Abstract="True" Name="ControlSublinkBaseStellar" ParentName="MechanitorImplantCraftableBase">
+  <ThingDef Abstract="True" Name="ControlSublinkBaseSolar" ParentName="MechanitorImplantCraftableBase">
     <descriptionHyperlinks>
-      <HediffDef>ControlSublinkImplantStellar</HediffDef>
+      <HediffDef>ControlSublinkImplantSolar</HediffDef>
     </descriptionHyperlinks>
     <statBases>
       <MaxInstallCount>5</MaxInstallCount>
     </statBases>
   </ThingDef>
 
-  <ThingDef ParentName="ControlSublinkBaseStellar">
-    <defName>ControlSublinkStellar</defName>
-    <label>stellar control sublink (standard)</label>
-    <description>A neural stellar implant which gives a mechanitor an additional control group. Additionally, the sublink slightly increases the work speed of any mechanoids controlled by the mechanitor.\n\nThis standard-tier sublink can only increase the control group count up to 3. To go higher, a higher-tier sublink implant must be used.\n\nIt can be self-installed without surgery.\n\nThis implant can be installed up to 3 times to increase its effect.</description>
+  <ThingDef ParentName="ControlSublinkBaseSolar">
+    <defName>ControlSublinkSolar</defName>
+    <label>solar control sublink (standard)</label>
+    <description>A neural solar implant which gives a mechanitor an additional control group. Additionally, the sublink slightly increases the work speed of any mechanoids controlled by the mechanitor.\n\nThis standard-tier sublink can only increase the control group count up to 3. To go higher, a higher-tier sublink implant must be used.\n\nIt can be self-installed without surgery.\n\nThis implant can be installed up to 3 times to increase its effect.</description>
     <costList>
       <SignalChip>1</SignalChip>
       <ComponentSpacer>4</ComponentSpacer>
@@ -65,7 +65,7 @@
         <userMustHaveHediff>MechlinkImplant</userMustHaveHediff>
       </li>
       <li Class="CompProperties_UseEffectInstallImplant">
-        <hediffDef>ControlSublinkImplantStellar</hediffDef>
+        <hediffDef>ControlSublinkImplantSolar</hediffDef>
         <bodyPart>Brain</bodyPart>
         <canUpgrade>true</canUpgrade>
         <maxSeverity>3</maxSeverity>
@@ -73,10 +73,10 @@
     </comps>
   </ThingDef>
 
-  <ThingDef ParentName="ControlSublinkBaseStellar">
-    <defName>ControlSublinkHighStellar</defName>
-    <label>stellar control sublink (high)</label>
-    <description>A neural stellar implant which gives a mechanitor an additional control group. Additionally, the sublink slightly increases the work speed of any mechanoids controlled by the mechanitor.\n\nThis high-tier implant can increase the control group count up to 6.\n\nIt can be self-installed without surgery.\n\nThis implant can be installed up to 3 times to increase its effect.</description>
+  <ThingDef ParentName="ControlSublinkBaseSolar">
+    <defName>ControlSublinkHighSolar</defName>
+    <label>solar control sublink (high)</label>
+    <description>A neural solar implant which gives a mechanitor an additional control group. Additionally, the sublink slightly increases the work speed of any mechanoids controlled by the mechanitor.\n\nThis high-tier implant can increase the control group count up to 6.\n\nIt can be self-installed without surgery.\n\nThis implant can be installed up to 3 times to increase its effect.</description>
     <costList>
       <PowerfocusChip>1</PowerfocusChip>
       <ComponentSpacer>6</ComponentSpacer>
@@ -92,7 +92,7 @@
         <userMustHaveHediff>MechlinkImplant</userMustHaveHediff>
       </li>
       <li Class="CompProperties_UseEffectInstallImplant">
-        <hediffDef>ControlSublinkImplantStellar</hediffDef>
+        <hediffDef>ControlSublinkImplantSolar</hediffDef>
         <bodyPart>Brain</bodyPart>
         <canUpgrade>true</canUpgrade>
         <requiresExistingHediff>true</requiresExistingHediff>
@@ -102,13 +102,13 @@
   </ThingDef>
 
   <HediffDef>
-    <defName>ControlSublinkImplantStellar</defName>
+    <defName>ControlSublinkImplantSolar</defName>
     <hediffClass>Hediff_Level</hediffClass>
     <descriptionHyperlinks>
-      <ThingDef>ControlSublinkStellar</ThingDef>
+      <ThingDef>ControlSublinkSolar</ThingDef>
     </descriptionHyperlinks>
-    <label>stellar control sublink</label>
-    <description>A stellar implant which increases a mechanitor's control group count and the work speed of a mechanitor's mechs.\n\nThis implant can be installed up to 6 times to increase its effect.</description>
+    <label>solar control sublink</label>
+    <description>A solar implant which increases a mechanitor's control group count and the work speed of a mechanitor's mechs.\n\nThis implant can be installed up to 6 times to increase its effect.</description>
     <defaultLabelColor>(0.6, 0.6, 1.0)</defaultLabelColor>
     <isBad>false</isBad>
     <priceImpact>true</priceImpact>
@@ -165,11 +165,11 @@
 
   <!-- Remote repairer -->
   <ThingDef ParentName="MechanitorImplantCraftableBase">
-    <defName>RemoteRepairerStellar</defName>
-    <label>stellar remote repairer</label>
-    <description>A stellar mechlink upgrade which allows the mechanitor to repair mechs from a distance. The user links with the mechanoid and uses their own brain to psychically guide its self-repair mechanites.\n\nThis implant can be self-installed without surgery.\n\nThis implant can be installed up to 3 times to increase its range.</description>
+    <defName>RemoteRepairerSolar</defName>
+    <label>solar remote repairer</label>
+    <description>A solar mechlink upgrade which allows the mechanitor to repair mechs from a distance. The user links with the mechanoid and uses their own brain to psychically guide its self-repair mechanites.\n\nThis implant can be self-installed without surgery.\n\nThis implant can be installed up to 3 times to increase its range.</description>
     <descriptionHyperlinks>
-      <HediffDef>RemoteRepairerImplantStellar</HediffDef>
+      <HediffDef>RemoteRepairerImplantSolar</HediffDef>
     </descriptionHyperlinks>
     <costList>
       <PowerfocusChip>1</PowerfocusChip>
@@ -189,7 +189,7 @@
         <userMustHaveHediff>MechlinkImplant</userMustHaveHediff>
       </li>
       <li Class="CompProperties_UseEffectInstallImplant">
-        <hediffDef>RemoteRepairerImplantStellar</hediffDef>
+        <hediffDef>RemoteRepairerImplantSolar</hediffDef>
         <bodyPart>Brain</bodyPart>
         <canUpgrade>true</canUpgrade>
       </li>
@@ -197,13 +197,13 @@
   </ThingDef>
 
   <HediffDef>
-    <defName>RemoteRepairerImplantStellar</defName>
+    <defName>RemoteRepairerImplantSolar</defName>
     <hediffClass>Hediff_Level</hediffClass>
     <descriptionHyperlinks>
-      <ThingDef>RemoteRepairerStellar</ThingDef>
+      <ThingDef>RemoteRepairerSolar</ThingDef>
     </descriptionHyperlinks>
-    <label>stellar remote repairer</label>
-    <description>A stellar mechlink upgrade which allows the mechanitor to repair mechs from a distance. The user links with the mechanoid and uses their own brain to psychically guide its self-repair mechanites.\n\nThis implant can be installed up to 3 times to increase its range.</description>
+    <label>solar remote repairer</label>
+    <description>A solar mechlink upgrade which allows the mechanitor to repair mechs from a distance. The user links with the mechanoid and uses their own brain to psychically guide its self-repair mechanites.\n\nThis implant can be installed up to 3 times to increase its range.</description>
     <descriptionShort>An implant which allows the user to repair mechs from a distance. This can be installed up to 3 times.</descriptionShort>
     <defaultLabelColor>(0.6, 0.6, 1.0)</defaultLabelColor>
     <isBad>false</isBad>
@@ -244,11 +244,11 @@
 
   <!-- Mech gestation processorr -->
   <ThingDef ParentName="MechanitorImplantCraftableBase">
-    <defName>MechFormfeederStellar</defName>
-    <label>mech stellar gestation processor</label>
-    <description>A stellar implant which increases the speed at which a mechanitor can produce mechs in a mech gestator. The processor optimizes the behavior of the mechanites in the mech forming tank.\n\nThis implant can be self-installed in the same way as the mechlink.\n\nThis implant can be installed up to 6 times to increase its effect.</description>
+    <defName>MechFormfeederSolar</defName>
+    <label>mech solar gestation processor</label>
+    <description>A solar implant which increases the speed at which a mechanitor can produce mechs in a mech gestator. The processor optimizes the behavior of the mechanites in the mech forming tank.\n\nThis implant can be self-installed in the same way as the mechlink.\n\nThis implant can be installed up to 6 times to increase its effect.</description>
     <descriptionHyperlinks>
-      <HediffDef>MechFormfeederImplantStellar</HediffDef>
+      <HediffDef>MechFormfeederImplantSolar</HediffDef>
     </descriptionHyperlinks>
     <costList>
       <SignalChip>1</SignalChip>
@@ -268,7 +268,7 @@
         <userMustHaveHediff>MechlinkImplant</userMustHaveHediff>
       </li>
       <li Class="CompProperties_UseEffectInstallImplant">
-        <hediffDef>MechFormfeederImplantStellar</hediffDef>
+        <hediffDef>MechFormfeederImplantSolar</hediffDef>
         <bodyPart>Brain</bodyPart>
         <canUpgrade>true</canUpgrade>
       </li>
@@ -276,13 +276,13 @@
   </ThingDef>
 
   <HediffDef>
-    <defName>MechFormfeederImplantStellar</defName>
+    <defName>MechFormfeederImplantSolar</defName>
     <hediffClass>Hediff_Level</hediffClass>
     <descriptionHyperlinks>
-      <ThingDef>MechFormfeederStellar</ThingDef>
+      <ThingDef>MechFormfeederSolar</ThingDef>
     </descriptionHyperlinks>
-    <label>stellar mech gestation processor</label>
-    <description>A stellar implant which increases the speed at which a mechanitor can produce mechs in a mech gestator. The processor optimizes the behavior of the mechanites in the mech forming tank.\n\nThis implant can be self-installed in the same way as the mechlink.\n\nThis implant can be installed up to 6 times to increase its effect.</description>
+    <label>solar mech gestation processor</label>
+    <description>A solar implant which increases the speed at which a mechanitor can produce mechs in a mech gestator. The processor optimizes the behavior of the mechanites in the mech forming tank.\n\nThis implant can be self-installed in the same way as the mechlink.\n\nThis implant can be installed up to 6 times to increase its effect.</description>
     <descriptionShort>As tellar implant which lets a mechanitor gestate new mechs faster. This can be installed up to 6 times to increase the effect.</descriptionShort>
     <defaultLabelColor>(0.6, 0.6, 1.0)</defaultLabelColor>
     <isBad>false</isBad>
@@ -334,11 +334,11 @@
 
   <!-- Remote shielder -->
   <ThingDef ParentName="MechanitorImplantCraftableBase">
-    <defName>RemoteShielderStellar</defName>
-    <label>stellar remote shielder</label>
-    <description>A stellar implant which allows the mechanitor to place a personal defense shield on a mech. The mechanitor must continuously focus on the mech in order to maintain the shield.\n\nPlacing a shield at a distance requires a substantial amount of focused energy. It can be used to save a mech at a critical moment.\n\nThis implant can be self-installed in the same way as the mechlink.\n\nThis implant can be installed up to 3 times to increase its range and shield energy.</description>
+    <defName>RemoteShielderSolar</defName>
+    <label>solar remote shielder</label>
+    <description>A solar implant which allows the mechanitor to place a personal defense shield on a mech. The mechanitor must continuously focus on the mech in order to maintain the shield.\n\nPlacing a shield at a distance requires a substantial amount of focused energy. It can be used to save a mech at a critical moment.\n\nThis implant can be self-installed in the same way as the mechlink.\n\nThis implant can be installed up to 3 times to increase its range and shield energy.</description>
     <descriptionHyperlinks>
-      <HediffDef>RemoteShielderImplantStellar</HediffDef>
+      <HediffDef>RemoteShielderImplantSolar</HediffDef>
     </descriptionHyperlinks>
     <costList>
       <PowerfocusChip>1</PowerfocusChip>
@@ -358,7 +358,7 @@
         <userMustHaveHediff>MechlinkImplant</userMustHaveHediff>
       </li>
       <li Class="CompProperties_UseEffectInstallImplant">
-        <hediffDef>RemoteShielderImplantStellar</hediffDef>
+        <hediffDef>RemoteShielderImplantSolar</hediffDef>
         <bodyPart>Brain</bodyPart>
         <canUpgrade>true</canUpgrade>
       </li>
@@ -366,13 +366,13 @@
   </ThingDef>
 
   <HediffDef>
-    <defName>RemoteShielderImplantStellar</defName>
+    <defName>RemoteShielderImplantSolar</defName>
     <hediffClass>Hediff_Level</hediffClass>
     <descriptionHyperlinks>
-      <ThingDef>RemoteShielderStellar</ThingDef>
+      <ThingDef>RemoteShielderSolar</ThingDef>
     </descriptionHyperlinks>
-    <label>stellar remote shielder</label>
-    <description>A stellar implant which allows the mechanitor to place a personal defense shield on a mech. The mechanitor must continuously focus on the mech in order to maintain the shield. It can be used to save a mech at a critical moment.\n\nThis implant can be installed up to 3 times to increase its range and shield energy.</description>
+    <label>solar remote shielder</label>
+    <description>A solar implant which allows the mechanitor to place a personal defense shield on a mech. The mechanitor must continuously focus on the mech in order to maintain the shield. It can be used to save a mech at a critical moment.\n\nThis implant can be installed up to 3 times to increase its range and shield energy.</description>
     <defaultLabelColor>(0.6, 0.6, 1.0)</defaultLabelColor>
     <isBad>false</isBad>
     <priceImpact>true</priceImpact>
@@ -416,11 +416,11 @@
   <!-- Repair probe -->
 
   <ThingDef ParentName="MechanitorImplantCraftableBase">
-    <defName>RepairProbeStellar</defName>
-    <label>stellar repair probe</label>
-    <description>A stellar implant which increases the speed at which a mechanitor can repair a mechanoid. This does not affect the overall energy needed to repair a mechanoid.\n\nThe implant allows the mechanitor to plug directly into a mechanoid while they are repairing it. This allows them to more quickly understand the mech's injuries, and better-direct the mech's self-repair mechanites to assist with the repair.\n\nThis implant can be self-installed in the same way as the mechlink.\n\nThis implant can be installed up to 6 times to increase its effect.</description>
+    <defName>RepairProbeSolar</defName>
+    <label>solar repair probe</label>
+    <description>A solar implant which increases the speed at which a mechanitor can repair a mechanoid. This does not affect the overall energy needed to repair a mechanoid.\n\nThe implant allows the mechanitor to plug directly into a mechanoid while they are repairing it. This allows them to more quickly understand the mech's injuries, and better-direct the mech's self-repair mechanites to assist with the repair.\n\nThis implant can be self-installed in the same way as the mechlink.\n\nThis implant can be installed up to 6 times to increase its effect.</description>
     <descriptionHyperlinks>
-      <HediffDef>RepairProbeImplantStellar</HediffDef>
+      <HediffDef>RepairProbeImplantSolar</HediffDef>
     </descriptionHyperlinks>
     <costList>
       <NanostructuringChip>1</NanostructuringChip>
@@ -440,7 +440,7 @@
         <userMustHaveHediff>MechlinkImplant</userMustHaveHediff>
       </li>
       <li Class="CompProperties_UseEffectInstallImplant">
-        <hediffDef>RepairProbeImplantStellar</hediffDef>
+        <hediffDef>RepairProbeImplantSolar</hediffDef>
         <bodyPart>Brain</bodyPart>
         <canUpgrade>true</canUpgrade>
       </li>
@@ -448,14 +448,14 @@
   </ThingDef>
 
   <HediffDef>
-    <defName>RepairProbeImplantStellar</defName>
+    <defName>RepairProbeImplantSolar</defName>
     <hediffClass>Hediff_Level</hediffClass>
     <descriptionHyperlinks>
-      <ThingDef>RepairProbeStellar</ThingDef>
+      <ThingDef>RepairProbeSolar</ThingDef>
     </descriptionHyperlinks>
-    <label>stellar repair probe</label>
-    <description>A stellar implant which increases a mechanitor's mech repair speed. This does not affect the overall energy needed to repair a mechanoid.\n\nThe implant allows the mechanitor to plug directly into a mechanoid while repairing it and better-direct the mech's self-repair mechanites.\n\nThis implant can be installed up to 6 times to increase its effect.</description>
-    <descriptionShort>A stellar implant which lets a mechanitor repair mechs faster. This can be installed up to 6 times.</descriptionShort>
+    <label>solar repair probe</label>
+    <description>A solar implant which increases a mechanitor's mech repair speed. This does not affect the overall energy needed to repair a mechanoid.\n\nThe implant allows the mechanitor to plug directly into a mechanoid while repairing it and better-direct the mech's self-repair mechanites.\n\nThis implant can be installed up to 6 times to increase its effect.</description>
+    <descriptionShort>A solar implant which lets a mechanitor repair mechs faster. This can be installed up to 6 times.</descriptionShort>
     <defaultLabelColor>(0.6, 0.6, 1.0)</defaultLabelColor>
     <isBad>false</isBad>
     <priceImpact>true</priceImpact>
