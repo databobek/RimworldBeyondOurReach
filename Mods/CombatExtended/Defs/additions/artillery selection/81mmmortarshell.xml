@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+	<!-- ==================== Ammo ========================== -->
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="81mmMortarShellBaseCraftableBase">
+		<defName>BOR_Shell_Mortar_Ni</defName>
+		<label>81mm mortar shell (Ni)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Mortar/HE</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>75</MarketValue>
+			<Mass>7.5</Mass>
+			<Bulk>12</Bulk>
+		</statBases>
+		<ammoClass>BOR_Ni_AmmoClass</ammoClass>
+		<detonateProjectile>BOR_Bullet_81mmMortarShell_Ni</detonateProjectile>
+		<generateCommonality>0.01</generateCommonality>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="81mmMortarShellBaseCraftableBase">
+		<defName>BOR_Shell_Mortar_Nc</defName>
+		<label>81mm mortar shell (Nc)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Mortar/Incendiary</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>63</MarketValue>
+			<Mass>7.5</Mass>
+			<Bulk>14</Bulk>
+		</statBases>
+		<ammoClass>BOR_Nc_AmmoClass</ammoClass>
+		<detonateProjectile>BOR_Bullet_81mmMortarShell_Nc</detonateProjectile>
+		<generateCommonality>0.01</generateCommonality>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="81mmMortarShellBaseCraftableBase">
+		<defName>BOR_Shell_Mortar_Ion_CM</defName>
+		<label>81mm mortar shell (iCM)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Mortar/EMP</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>180</MarketValue>
+			<Mass>7.7</Mass>
+			<Bulk>12</Bulk>
+		</statBases>
+		<ammoClass>BOR_Ion_CM_AmmoClass</ammoClass>
+		<detonateProjectile>BOR_Bullet_81mmMortarShell_Ion_CM</detonateProjectile>
+		<generateCommonality>0.01</generateCommonality>
+	</ThingDef>
+
+	<!-- ================== Projectiles ================== -->
+
+	<ThingDef ParentName="Base81mmMortarShell">
+		<defName>BOR_Bullet_81mmMortarShell_Ni</defName>
+		<label>81mm mortar shell (Ni)</label>
+		<graphicData>
+			<texPath>Things/Projectile/Mortar/HE</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Bomb</damageDef>
+			<damageAmountBase>225</damageAmountBase>
+			<explosionRadius>3.75</explosionRadius>
+			<flyOverhead>true</flyOverhead>
+			<soundExplode>MortarBomb_Explode</soundExplode>
+			<applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
+			<ai_IsIncendiary>true</ai_IsIncendiary>
+		</projectile>
+		<comps>
+			<li Class="CombatExtended.CompProperties_Fragments">
+				<fragments>
+					<Fragment_Quasar>16</Fragment_Quasar>
+					<Fragment_Solar>25</Fragment_Solar>
+				</fragments>
+			</li>
+		</comps>
+	</ThingDef>
+
+	<ThingDef ParentName="Base81mmMortarShell">
+		<defName>BOR_Bullet_81mmMortarShell_Nc</defName>
+		<label>81mm mortar shell (Nc)</label>
+		<graphicData>
+			<texPath>Things/Projectile/Mortar/Incendiary</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>PrometheumFlame</damageDef>
+			<damageAmountBase>18</damageAmountBase>
+			<explosionRadius>9</explosionRadius>
+			<flyOverhead>true</flyOverhead>
+			<preExplosionSpawnThingDef>FilthPrometheum</preExplosionSpawnThingDef>
+			<preExplosionSpawnChance>0.075</preExplosionSpawnChance>
+			<soundExplode>MortarIncendiary_Explode</soundExplode>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base81mmMortarShell">
+		<defName>BOR_Bullet_81mmMortarShell_Ion_CM</defName>
+		<label>81mm mortar shell (iCM)</label>
+		<graphicData>
+			<texPath>Things/Projectile/Mortar/EMP</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>EMP</damageDef>
+			<damageAmountBase>225</damageAmountBase>
+			<flyOverhead>true</flyOverhead>
+			<explosionRadius>7.75</explosionRadius>
+		</projectile>
+	</ThingDef>
+
+	<!-- ==================== Recipes ========================== -->
+
+	<RecipeDef ParentName="AmmoRecipeBase">
+		<defName>MakeBOR_Shell_Mortar_Ni</defName>
+		<label>make 81mm Ni mortar shells x5</label>
+		<description>Craft 5 81mm Ni mortar shells.</description>
+		<jobString>Making 81mm Ni mortar shells.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Sunsteel</li>
+					</thingDefs>
+				</filter>
+				<count>54</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Neutronium</li>
+					</thingDefs>
+				</filter>
+				<count>10</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>ComponentSpacer</li>
+					</thingDefs>
+				</filter>
+				<count>2</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>BOR_Sunsteel</li>
+				<li>BOR_Neutronium</li>
+				<li>ComponentSpacer</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<BOR_Shell_Mortar_Ni>5</BOR_Shell_Mortar_Ni>
+		</products>
+		<skillRequirements>
+			<Crafting>8</Crafting>
+		</skillRequirements>
+		<workAmount>15600</workAmount>
+	</RecipeDef>
+
+	<RecipeDef ParentName="AmmoRecipeBase">
+		<defName>MakeBOR_Shell_Mortar_Nc</defName>
+		<label>make 81mm Nc mortar shells x5</label>
+		<description>Craft 5 81mm Nc mortar shells.</description>
+		<jobString>Making 81mm Nc mortar shells.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Sunsteel</li>
+					</thingDefs>
+				</filter>
+				<count>58</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Prometheum</li>
+					</thingDefs>
+				</filter>
+				<count>5</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Neutronium</li>
+					</thingDefs>
+				</filter>
+				<count>5</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>ComponentSpacer</li>
+					</thingDefs>
+				</filter>
+				<count>2</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>BOR_Sunsteel</li>
+				<li>Prometheum</li>
+				<li>BOR_Neutronium</li>
+				<li>ComponentSpacer</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<BOR_Shell_Mortar_Nc>5</BOR_Shell_Mortar_Nc>
+		</products>
+		<skillRequirements>
+			<Crafting>8</Crafting>
+		</skillRequirements>
+		<workAmount>14500</workAmount>
+	</RecipeDef>
+
+	<RecipeDef ParentName="AmmoRecipeBase">
+		<defName>MakeBOR_Shell_Mortar_Ion_CM</defName>
+		<label>make 81mm iCM mortar shells x5</label>
+		<description>Craft 5 81mm iCM mortar shells.</description>
+		<jobString>Making 81mm iCM mortar shells.</jobString>
+		<!-- <researchPrerequisite>BOR_Research_III_weaponry</researchPrerequisite> -->
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Sunsteel</li>
+					</thingDefs>
+				</filter>
+				<count>54</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>ComponentSpacer</li>
+					</thingDefs>
+				</filter>
+				<count>5</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Neutronium</li>
+					</thingDefs>
+				</filter>
+				<count>50</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>BOR_Sunsteel</li>
+				<li>ComponentSpacer</li>
+				<li>BOR_Neutronium</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<BOR_Shell_Mortar_Ion_CM>5</BOR_Shell_Mortar_Ion_CM>
+		</products>
+		<skillRequirements>
+			<Crafting>9</Crafting>
+		</skillRequirements>
+		<workAmount>16500</workAmount>
+	</RecipeDef>
+
+</Defs>

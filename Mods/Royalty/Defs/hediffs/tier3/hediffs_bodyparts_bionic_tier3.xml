@@ -1,0 +1,1088 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- Neurocalculator -->
+
+  <HediffDef ParentName="ImplantHediffBase">
+    <defName>NeurocalculatorTenebral</defName>
+    <label>tenebral neurocalculator</label>
+    <labelNoun>an tenebral neurocalculator</labelNoun>
+    <description>An installed tenebral neurocalculator.</description>
+    <descriptionHyperlinks>
+      <ThingDef>NeurocalculatorTenebral</ThingDef>
+    </descriptionHyperlinks>
+    <spawnThingOnRemoved>NeurocalculatorTenebral</spawnThingOnRemoved>
+    <stages>
+      <li>
+        <statOffsets>
+          <ResearchSpeed>1.2</ResearchSpeed>
+        </statOffsets>
+      </li>
+    </stages>
+    <comps>
+      <li Class="HediffCompProperties_ReactOnDamage">
+        <damageDefIncoming>EMP</damageDefIncoming>
+        <createHediff>BrainShock</createHediff>
+      </li>
+    </comps>
+  </HediffDef>
+
+  <ThingDef ParentName="BodyPartBORTenebralBase">
+    <defName>NeurocalculatorTenebral</defName>
+    <label>tenebral neurocalculator</label>
+    <description>A non-intelligent microcomputer controlled by a visual/tactile neural interface. It assists with memory and calculation, like a calculator and notepad embedded in the brain.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>InstallNeurocalculatorTenebral</RecipeDef>
+    </descriptionHyperlinks>
+    <graphicData>
+      <texPath>Things/Item/Health/HealthItem</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>0.80</drawSize>
+      <color>(189,169,118)</color>
+    </graphicData>
+
+  </ThingDef>
+
+  <RecipeDef ParentName="SurgeryInstallImplantBORTenebralBase">
+    <defName>InstallNeurocalculatorTenebral</defName>
+    <label>install tenebral neurocalculator</label>
+    <description>Install a neurocalculator.</description>
+    <descriptionHyperlinks>
+      <ThingDef>NeurocalculatorTenebral</ThingDef>
+      <HediffDef>NeurocalculatorTenebral</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing tenebral neurocalculator.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>NeurocalculatorTenebral</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>NeurocalculatorTenebral</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Brain</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>NeurocalculatorTenebral</addsHediff>
+  </RecipeDef>
+
+  <RecipeDef ParentName="SurgeryRemoveImplantBase">
+    <defName>RemoveNeurocalculatorTenebral</defName>
+    <label>remove tenebral neurocalculator</label>
+    <description>Remove neurocalculator.</description>
+    <descriptionHyperlinks>
+      <ThingDef>NeurocalculatorTenebral</ThingDef>
+      <HediffDef>NeurocalculatorTenebral</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Removing tenebral neurocalculator.</jobString>
+    <removesHediff>NeurocalculatorTenebral</removesHediff>
+  </RecipeDef>
+
+  <!-- Learning assistant -->
+
+  <HediffDef ParentName="ImplantHediffBase">
+    <defName>LearningAssistantTenebral</defName>
+    <label>tenebral learning assistant</label>
+    <labelNoun>an tenebral learning assistant</labelNoun>
+    <description>An installed tenebral learning assistant.</description>
+    <descriptionHyperlinks>
+      <ThingDef>LearningAssistantTenebral</ThingDef>
+    </descriptionHyperlinks>
+    <spawnThingOnRemoved>LearningAssistantTenebral</spawnThingOnRemoved>
+    <stages>
+      <li>
+        <statOffsets>
+          <GlobalLearningFactor>1.2</GlobalLearningFactor>
+        </statOffsets>
+      </li>
+    </stages>
+    <comps>
+      <li Class="HediffCompProperties_ReactOnDamage">
+        <damageDefIncoming>EMP</damageDefIncoming>
+        <createHediff>BrainShock</createHediff>
+      </li>
+    </comps>
+  </HediffDef>
+
+  <ThingDef ParentName="BodyPartBORTenebralBase">
+    <defName>LearningAssistantTenebral</defName>
+    <label>tenebral learning assistant</label>
+    <description>A sensory recording system that replays important experiences during sleep, strengthening the formation of new memories.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>InstallLearningAssistantTenebral</RecipeDef>
+    </descriptionHyperlinks>
+
+  </ThingDef>
+
+  <RecipeDef ParentName="SurgeryInstallImplantBORTenebralBase">
+    <defName>InstallLearningAssistantTenebral</defName>
+    <label>install tenebral learning assistant</label>
+    <description>Install a learning assistant.</description>
+    <descriptionHyperlinks>
+      <ThingDef>LearningAssistantTenebral</ThingDef>
+      <HediffDef>LearningAssistantTenebral</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing tenebral learning assistant.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>LearningAssistantTenebral</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>LearningAssistantTenebral</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Brain</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>LearningAssistantTenebral</addsHediff>
+  </RecipeDef>
+
+  <RecipeDef ParentName="SurgeryRemoveImplantBase">
+    <defName>RemoveLearningAssistantTenebral</defName>
+    <label>remove tenebral learning assistant</label>
+    <description>Remove learning assistant.</description>
+    <descriptionHyperlinks>
+      <ThingDef>LearningAssistantTenebral</ThingDef>
+      <HediffDef>LearningAssistantTenebral</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Removing tenebral learning assistant.</jobString>
+    <removesHediff>LearningAssistantTenebral</removesHediff>
+  </RecipeDef>
+
+  <!-- Gastro-analyzer -->
+
+  <HediffDef ParentName="ImplantHediffBase">
+    <defName>GastroAnalyzerTenebral</defName>
+    <label>tenebral gastro-analyzer</label>
+    <labelNoun>an tenebral gastro-analyzer</labelNoun>
+    <description>An installed tenebral gastro-analyzer.</description>
+    <descriptionHyperlinks>
+      <ThingDef>GastroAnalyzerTenebral</ThingDef>
+    </descriptionHyperlinks>
+    <addedPartProps>
+      <solid>true</solid>
+    </addedPartProps>
+    <stages>
+      <li>
+        <statOffsets>
+          <CookSpeed>15</CookSpeed>
+        </statOffsets>
+      </li>
+    </stages>
+    <spawnThingOnRemoved>GastroAnalyzerTenebral</spawnThingOnRemoved>
+  </HediffDef>
+
+  <ThingDef ParentName="BodyPartBORTenebralBase">
+    <defName>GastroAnalyzerTenebral</defName>
+    <label>tenebral gastro-analyzer</label>
+    <description>This bionic nose implant enhances the sense of smell, with a focus towards food-related smells. A multi-layered ultrafine absorption mesh detects compounds in the air. A microprocessor formats the readings into an olfactory nerve signal to send to the brain through a nerve-link interface. The result is that the user can smell foods with a depth, richness, and precision unknown among unenhanced humans, allowing them to cook more effectively. The whole unit is small enough to be installed in the nose without affecting the user's appearance.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>InstallGastroAnalyzerTenebral</RecipeDef>
+    </descriptionHyperlinks>
+
+  </ThingDef>
+
+  <RecipeDef ParentName="SurgeryInstallImplantBORTenebralBase">
+    <defName>InstallGastroAnalyzerTenebral</defName>
+    <label>install tenebral gastro-analyzer</label>
+    <description>Install a gastro-analyzer.</description>
+    <descriptionHyperlinks>
+      <ThingDef>GastroAnalyzerTenebral</ThingDef>
+      <HediffDef>GastroAnalyzerTenebral</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing tenebral gastro-analyzer.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>GastroAnalyzerTenebral</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>GastroAnalyzerTenebral</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Nose</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>GastroAnalyzerTenebral</addsHediff>
+  </RecipeDef>
+
+  <RecipeDef ParentName="SurgeryRemoveImplantBase">
+    <defName>RemoveGastroAnalyzerTenebral</defName>
+    <label>remove tenebral gastro-analyzer</label>
+    <description>Remove gastro-analyzer.</description>
+    <descriptionHyperlinks>
+      <ThingDef>GastroAnalyzerTenebral</ThingDef>
+      <HediffDef>GastroAnalyzerTenebral</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Removing tenebral gastro-analyzer.</jobString>
+    <removesHediff>GastroAnalyzerTenebral</removesHediff>
+  </RecipeDef>
+
+  <!-- Immunoenhancer -->
+
+  <HediffDef ParentName="ImplantHediffBase">
+    <defName>ImmunoenhancerTenebral</defName>
+    <label>tenebral immunoenhancer</label>
+    <labelNoun>an tenebral immunoenhancer</labelNoun>
+    <description>An installed tenebral immunoenhancer.</description>
+    <descriptionHyperlinks>
+      <ThingDef>ImmunoenhancerTenebral</ThingDef>
+    </descriptionHyperlinks>
+    <spawnThingOnRemoved>ImmunoenhancerTenebral</spawnThingOnRemoved>
+    <stages>
+      <li>
+        <statOffsets>
+          <ImmunityGainSpeed>0.75</ImmunityGainSpeed>
+        </statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <ThingDef ParentName="BodyPartBORTenebralBase">
+    <defName>ImmunoenhancerTenebral</defName>
+    <label>tenebral immunoenhancer</label>
+    <description>An analysis computer inspects the bloodstream, classifies pathogens, and rapidly prompts the body's natural immune system to respond to them faster than it could alone. This speeds immunity gain significantly.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>InstallImmunoenhancerTenebral</RecipeDef>
+    </descriptionHyperlinks>
+
+  </ThingDef>
+
+  <RecipeDef ParentName="SurgeryInstallImplantBORTenebralBase">
+    <defName>InstallImmunoenhancerTenebral</defName>
+    <label>install tenebral immunoenhancer</label>
+    <description>Install an immunoenhancer.</description>
+    <descriptionHyperlinks>
+      <ThingDef>ImmunoenhancerTenebral</ThingDef>
+      <HediffDef>ImmunoenhancerTenebral</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing tenebral immunoenhancer.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>ImmunoenhancerTenebral</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>ImmunoenhancerTenebral</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Kidney</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>ImmunoenhancerTenebral</addsHediff>
+  </RecipeDef>
+
+  <RecipeDef ParentName="SurgeryRemoveImplantBase">
+    <defName>RemoveImmunoenhancerTenebral</defName>
+    <label>remove tenebral immunoenhancer</label>
+    <description>Remove immunoenhancer.</description>
+    <descriptionHyperlinks>
+      <ThingDef>ImmunoenhancerTenebral</ThingDef>
+      <HediffDef>ImmunoenhancerTenebral</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Removing tenebral immunoenhancer.</jobString>
+    <removesHediff>ImmunoenhancerTenebral</removesHediff>
+  </RecipeDef>
+
+  <!-- Coagulator -->
+
+  <HediffDef ParentName="ImplantHediffBase">
+    <defName>CoagulatorTenebral</defName>
+    <label>tenebral coagulator</label>
+    <labelNoun>an tenebral coagulator</labelNoun>
+    <description>An installed tenebral coagulator implant.</description>
+    <descriptionHyperlinks>
+      <ThingDef>CoagulatorTenebral</ThingDef>
+    </descriptionHyperlinks>
+    <spawnThingOnRemoved>CoagulatorTenebral</spawnThingOnRemoved>
+    <stages>
+      <li>
+        <totalBleedFactor>0.1</totalBleedFactor>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <ThingDef ParentName="BodyPartBORTenebralBase">
+    <defName>CoagulatorTenebral</defName>
+    <label>tenebral coagulator</label>
+    <description>Releases coagulating factors in response to blood loss, reducing bleeding rates significantly.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>InstallCoagulatorTenebral</RecipeDef>
+    </descriptionHyperlinks>
+
+  </ThingDef>
+
+  <RecipeDef ParentName="SurgeryInstallImplantBORTenebralBase">
+    <defName>InstallCoagulatorTenebral</defName>
+    <label>install tenebral coagulator</label>
+    <description>Install a coagulator.</description>
+    <descriptionHyperlinks>
+      <ThingDef>CoagulatorTenebral</ThingDef>
+      <HediffDef>CoagulatorTenebral</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing tenebral coagulator.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>CoagulatorTenebral</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>CoagulatorTenebral</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Torso</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>CoagulatorTenebral</addsHediff>
+  </RecipeDef>
+
+  <RecipeDef ParentName="SurgeryRemoveImplantBase">
+    <defName>RemoveCoagulatorTenebral</defName>
+    <label>remove tenebral coagulator</label>
+    <description>Remove coagulator.</description>
+    <descriptionHyperlinks>
+      <ThingDef>CoagulatorTenebral</ThingDef>
+      <HediffDef>CoagulatorTenebral</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Removing tenebral coagulator.</jobString>
+    <removesHediff>CoagulatorTenebral</removesHediff>
+  </RecipeDef>
+
+  <!-- Healing enhancer -->
+
+  <HediffDef ParentName="ImplantHediffBase">
+    <defName>HealingEnhancerTenebral</defName>
+    <label>tenebral healing enhancer</label>
+    <labelNoun>an tenebral healing enhancer</labelNoun>
+    <description>An installed tenebral healing enhancer implant.</description>
+    <descriptionHyperlinks>
+      <ThingDef>HealingEnhancerTenebral</ThingDef>
+    </descriptionHyperlinks>
+    <spawnThingOnRemoved>HealingEnhancerTenebral</spawnThingOnRemoved>
+    <stages>
+      <li>
+        <naturalHealingFactor>5.0</naturalHealingFactor>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <ThingDef ParentName="BodyPartBORTenebralBase">
+    <defName>HealingEnhancerTenebral</defName>
+    <label>tenebral healing enhancer</label>
+    <description>Releases nanomachines and healing factors that speed up wound healing. This implant only helps with physical wounds, and does nothing to combat disease or other health problems.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>InstallHealingEnhancerTenebral</RecipeDef>
+    </descriptionHyperlinks>
+
+  </ThingDef>
+
+  <RecipeDef ParentName="SurgeryInstallImplantBORTenebralBase">
+    <defName>InstallHealingEnhancerTenebral</defName>
+    <label>install tenebral healing enhancer</label>
+    <description>Install a healing enhancer.</description>
+    <descriptionHyperlinks>
+      <ThingDef>HealingEnhancerTenebral</ThingDef>
+      <HediffDef>HealingEnhancerTenebral</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing tenebral healing enhancer.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>HealingEnhancerTenebral</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>HealingEnhancerTenebral</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Torso</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>HealingEnhancerTenebral</addsHediff>
+  </RecipeDef>
+
+  <RecipeDef ParentName="SurgeryRemoveImplantBase">
+    <defName>RemoveHealingEnhancerTenebral</defName>
+    <label>remove tenebral healing enhancer</label>
+    <description>Remove healing enhancer.</description>
+    <descriptionHyperlinks>
+      <ThingDef>HealingEnhancerTenebral</ThingDef>
+      <HediffDef>HealingEnhancerTenebral</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Removing tenebral healing enhancer.</jobString>
+    <removesHediff>HealingEnhancerTenebral</removesHediff>
+  </RecipeDef>
+
+  <!-- Toughskin gland -->
+
+  <HediffDef ParentName="ImplantHediffBase">
+    <defName>ToughskinGlandTenebral</defName>
+    <label>tenebral toughskin gland</label>
+    <labelNoun>an tenebral toughskin gland</labelNoun>
+    <description>An installed tenebral toughskin gland.</description>
+    <descriptionHyperlinks>
+      <ThingDef>ToughskinGlandTenebral</ThingDef>
+    </descriptionHyperlinks>
+    <spawnThingOnRemoved>ToughskinGlandTenebral</spawnThingOnRemoved>
+    <stages>
+      <li>
+        <capMods>
+          <li>
+            <capacity>Moving</capacity>
+            <postFactor>0.75</postFactor>
+          </li>
+        </capMods>
+        <statOffsets>
+          <ArmorRating_Sharp>0.9</ArmorRating_Sharp>
+          <ArmorRating_Blunt>0.75</ArmorRating_Blunt>
+          <ArmorRating_Heat>0.9</ArmorRating_Heat>
+        </statOffsets>
+      </li>
+    </stages>
+    <tags>
+      <li>ArmorGland</li>
+    </tags>
+  </HediffDef>
+
+  <ThingDef ParentName="BodyPartBORTenebralBase">
+    <defName>ToughskinGlandTenebral</defName>
+    <label>tenebral toughskin gland</label>
+    <description>This bionic gland releases chemicals and nanomachines that toughen the skin, making it somewhat more resistant to damage. While it doesn't add as much protection as some other skin-hardening glands, the toughskin gland has the advantage of not noticeably altering the user's appearance.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>InstallToughskinGlandTenebral</RecipeDef>
+    </descriptionHyperlinks>
+
+  </ThingDef>
+
+  <RecipeDef ParentName="SurgeryInstallImplantBORTenebralBase">
+    <defName>InstallToughskinGlandTenebral</defName>
+    <label>install tenebral toughskin gland</label>
+    <description>Install a toughskin gland.</description>
+    <descriptionHyperlinks>
+      <ThingDef>ToughskinGlandTenebral</ThingDef>
+      <HediffDef>ToughskinGlandTenebral</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing tenebral toughskin gland.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>ToughskinGlandTenebral</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>ToughskinGlandTenebral</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Torso</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>ToughskinGlandTenebral</addsHediff>
+    <incompatibleWithHediffTags>
+      <li>ArmorGland</li>
+    </incompatibleWithHediffTags>
+  </RecipeDef>
+
+  <RecipeDef ParentName="SurgeryRemoveImplantBase">
+    <defName>RemoveToughskinGlandTenebral</defName>
+    <label>remove tenebral toughskin gland</label>
+    <description>Remove toughskin gland.</description>
+    <descriptionHyperlinks>
+      <ThingDef>ToughskinGlandTenebral</ThingDef>
+      <HediffDef>ToughskinGlandTenebral</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Removing tenebral toughskin gland.</jobString>
+    <removesHediff>ToughskinGlandTenebral</removesHediff>
+  </RecipeDef>
+
+  <!-- Armorskin gland -->
+
+  <HediffDef ParentName="ImplantHediffBase">
+    <defName>ArmorskinGlandTenebral</defName>
+    <label>tenebral armorskin gland</label>
+    <labelNoun>an tenebral armorskin gland</labelNoun>
+    <description>An installed tenebral armorskin gland.</description>
+    <descriptionHyperlinks>
+      <ThingDef>ArmorskinGlandTenebral</ThingDef>
+    </descriptionHyperlinks>
+    <spawnThingOnRemoved>ArmorskinGlandTenebral</spawnThingOnRemoved>
+    <stages>
+      <li>
+        <capMods>
+          <li>
+            <capacity>Moving</capacity>
+            <postFactor>0.65</postFactor>
+          </li>
+        </capMods>
+        <statOffsets>
+          <ArmorRating_Sharp>0.9</ArmorRating_Sharp>
+          <ArmorRating_Blunt>0.9</ArmorRating_Blunt>
+          <ArmorRating_Heat>0.9</ArmorRating_Heat>
+          <PawnBeauty>-1</PawnBeauty>
+        </statOffsets>
+      </li>
+    </stages>
+    <tags>
+      <li>ArmorGland</li>
+    </tags>
+  </HediffDef>
+
+  <ThingDef ParentName="BodyPartBORTenebralBase">
+    <defName>ArmorskinGlandTenebral</defName>
+    <label>tenebral armorskin gland</label>
+    <description>This bionic gland releases chemicals and nanomachines that toughen the skin and add flexible subdermal keratin plates at strategic points. This makes the user more resistant to damage across their whole body. Unfortunately, these changes make the skin appear leathery, with wrinkles across the whole body and face, which is generally considered ugly.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>InstallArmorskinGlandTenebral</RecipeDef>
+    </descriptionHyperlinks>
+
+  </ThingDef>
+
+  <RecipeDef ParentName="SurgeryInstallImplantBORTenebralBase">
+    <defName>InstallArmorskinGlandTenebral</defName>
+    <label>install tenebral armorskin gland</label>
+    <description>Install an armorskin gland.</description>
+    <descriptionHyperlinks>
+      <ThingDef>ArmorskinGlandTenebral</ThingDef>
+      <HediffDef>ArmorskinGlandTenebral</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing tenebral armorskin gland.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>ArmorskinGlandTenebral</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>ArmorskinGlandTenebral</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Torso</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>ArmorskinGlandTenebral</addsHediff>
+    <incompatibleWithHediffTags>
+      <li>ArmorGland</li>
+    </incompatibleWithHediffTags>
+  </RecipeDef>
+
+  <RecipeDef ParentName="SurgeryRemoveImplantBase">
+    <defName>RemoveArmorskinGlandTenebral</defName>
+    <label>remove tenebral armorskin gland</label>
+    <description>Remove armorskin gland.</description>
+    <descriptionHyperlinks>
+      <ThingDef>ArmorskinGlandTenebral</ThingDef>
+    </descriptionHyperlinks>
+    <jobString>Removing tenebral armorskin gland.</jobString>
+    <removesHediff>ArmorskinGlandTenebral</removesHediff>
+  </RecipeDef>
+
+  <!-- Stoneskin gland -->
+
+  <HediffDef ParentName="ImplantHediffBase">
+    <defName>StoneskinGlandTenebral</defName>
+    <label>tenebral stoneskin gland</label>
+    <labelNoun>an tenebral stoneskin gland</labelNoun>
+    <description>An installed tenebral stoneskin gland.</description>
+    <descriptionHyperlinks>
+      <ThingDef>StoneskinGlandTenebral</ThingDef>
+    </descriptionHyperlinks>
+    <spawnThingOnRemoved>StoneskinGlandTenebral</spawnThingOnRemoved>
+    <stages>
+      <li>
+        <capMods>
+          <li>
+            <capacity>Moving</capacity>
+            <postFactor>0.65</postFactor>
+          </li>
+        </capMods>
+        <statOffsets>
+          <ArmorRating_Sharp>0.95</ArmorRating_Sharp>
+          <ArmorRating_Blunt>0.95</ArmorRating_Blunt>
+          <ArmorRating_Heat>0.95</ArmorRating_Heat>
+          <PawnBeauty>-4</PawnBeauty>
+        </statOffsets>
+      </li>
+    </stages>
+    <tags>
+      <li>ArmorGland</li>
+    </tags>
+  </HediffDef>
+
+  <ThingDef ParentName="BodyPartBORTenebralBase">
+    <defName>StoneskinGlandTenebral</defName>
+    <label>tenebral stoneskin gland</label>
+    <description>This bionic gland releases chemical and nanomachines that transform the user's skin into a built-in suit of armor. The whole epidermis thickens and hardens to resist burns, while jointed exterior keratin plates form everywhere they can - including the head and face. While it's very difficult to physically hurt someone using this implant, the plates and hard skin significantly reduces the user's physical attractiveness.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>InstallStoneskinGlandTenebral</RecipeDef>
+    </descriptionHyperlinks>
+
+  </ThingDef>
+
+  <RecipeDef ParentName="SurgeryInstallImplantBORTenebralBase">
+    <defName>InstallStoneskinGlandTenebral</defName>
+    <label>install tenebral stoneskin gland</label>
+    <description>Install a stoneskin gland.</description>
+    <descriptionHyperlinks>
+      <ThingDef>StoneskinGlandTenebral</ThingDef>
+      <HediffDef>StoneskinGlandTenebral</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing tenebral stoneskin gland.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>StoneskinGlandTenebral</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>StoneskinGlandTenebral</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Torso</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>StoneskinGlandTenebral</addsHediff>
+    <incompatibleWithHediffTags>
+      <li>ArmorGland</li>
+    </incompatibleWithHediffTags>
+  </RecipeDef>
+
+  <RecipeDef ParentName="SurgeryRemoveImplantBase">
+    <defName>RemoveStoneskinGlandTenebral</defName>
+    <label>remove tenebral stoneskin gland</label>
+    <description>Remove stoneskin gland.</description>
+    <descriptionHyperlinks>
+      <ThingDef>StoneskinGlandTenebral</ThingDef>
+    </descriptionHyperlinks>
+    <jobString>Removing tenebral stoneskin gland.</jobString>
+    <removesHediff>StoneskinGlandTenebral</removesHediff>
+  </RecipeDef>
+
+  <!-- Aesthetic shaper -->
+
+  <HediffDef ParentName="ImplantHediffBase">
+    <defName>AestheticShaperTenebral</defName>
+    <label>tenebral aesthetic shaper</label>
+    <labelNoun>an tenebral aesthetic shaper</labelNoun>
+    <description>An installed tenebral aesthetic shaper.</description>
+    <descriptionHyperlinks>
+      <ThingDef>AestheticShaperTenebral</ThingDef>
+    </descriptionHyperlinks>
+    <spawnThingOnRemoved>AestheticShaperTenebral</spawnThingOnRemoved>
+    <stages>
+      <li>
+        <statOffsets>
+          <PawnBeauty>4</PawnBeauty>
+        </statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <ThingDef ParentName="BodyPartBORTenebralBase">
+    <defName>AestheticShaperTenebral</defName>
+    <label>tenebral aesthetic shaper</label>
+    <description>A sophisticated package of hormonal and mechanite influences shapes the muscles and fat on the body, adding non-functional aesthetic tissue where needed to achieve a desired appearance. This implant can be configured to form various body shapes according to the user's taste - or that of their partner.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>InstallAestheticShaperTenebral</RecipeDef>
+    </descriptionHyperlinks>
+
+  </ThingDef>
+
+  <RecipeDef ParentName="SurgeryInstallImplantBORTenebralBase">
+    <defName>InstallAestheticShaperTenebral</defName>
+    <label>install tenebral aesthetic shaper</label>
+    <description>Install an aesthetic shaper.</description>
+    <descriptionHyperlinks>
+      <ThingDef>AestheticShaperTenebral</ThingDef>
+      <HediffDef>AestheticShaperTenebral</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing tenebral aesthetic shaper.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>AestheticShaperTenebral</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>AestheticShaperTenebral</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Torso</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>AestheticShaperTenebral</addsHediff>
+  </RecipeDef>
+
+  <RecipeDef ParentName="SurgeryRemoveImplantBase">
+    <defName>RemoveAestheticShaperTenebral</defName>
+    <label>remove tenebral aesthetic shaper</label>
+    <description>Remove aesthetic shaper.</description>
+    <descriptionHyperlinks>
+      <ThingDef>AestheticShaperTenebral</ThingDef>
+      <HediffDef>AestheticShaperTenebral</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Removing tenebral aesthetic shaper.</jobString>
+    <removesHediff>AestheticShaperTenebral</removesHediff>
+  </RecipeDef>
+
+  <!-- Aesthetic nose -->
+
+  <HediffDef ParentName="AddedBodyPartBase">
+    <defName>AestheticNoseTenebral</defName>
+    <label>tenebral aesthetic nose</label>
+    <labelNoun>an tenebral aesthetic nose</labelNoun>
+    <description>An installed tenebral aesthetic nose.</description>
+    <descriptionHyperlinks>
+      <ThingDef>AestheticNoseTenebral</ThingDef>
+    </descriptionHyperlinks>
+    <spawnThingOnRemoved>AestheticNoseTenebral</spawnThingOnRemoved>
+    <addedPartProps>
+      <partEfficiency>2</partEfficiency>
+    </addedPartProps>
+    <stages>
+      <li>
+        <statOffsets>
+          <PawnBeauty>2</PawnBeauty>
+        </statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <ThingDef ParentName="BodyPartBORTenebralBase">
+    <defName>AestheticNoseTenebral</defName>
+    <label>tenebral aesthetic nose</label>
+    <description>The nose is shaped to the user's desired form, matching prevalent beauty standards and enhancing physical impressions.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>InstallAestheticNoseTenebral</RecipeDef>
+    </descriptionHyperlinks>
+
+  </ThingDef>
+
+  <RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase">
+    <defName>InstallAestheticNoseTenebral</defName>
+    <label>install tenebral aesthetic nose</label>
+    <description>Install an aesthetic nose.</description>
+    <descriptionHyperlinks>
+      <ThingDef>AestheticNoseTenebral</ThingDef>
+      <HediffDef>AestheticNoseTenebral</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing tenebral aesthetic nose.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>AestheticNoseTenebral</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>AestheticNoseTenebral</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Nose</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>AestheticNoseTenebral</addsHediff>
+  </RecipeDef>
+
+  <RecipeDef ParentName="SurgeryRemoveImplantBase">
+    <defName>RemoveAestheticNoseTenebral</defName>
+    <label>remove tenebral aesthetic nose</label>
+    <description>Remove aesthetic nose.</description>
+    <descriptionHyperlinks>
+      <ThingDef>AestheticNoseTenebral</ThingDef>
+      <HediffDef>AestheticNoseTenebral</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Removing tenebral aesthetic nose.</jobString>
+    <removesHediff>AestheticNoseTenebral</removesHediff>
+  </RecipeDef>
+
+  <!-- Reprocessor stomach -->
+
+  <HediffDef ParentName="AddedBodyPartBase">
+    <defName>ReprocessorStomachTenebral</defName>
+    <label>tenebral reprocessor stomach</label>
+    <labelNoun>an tenebral reprocessor stomach</labelNoun>
+    <description>An installed tenebral reprocessor stomach.</description>
+    <descriptionHyperlinks>
+      <ThingDef>ReprocessorStomachTenebral</ThingDef>
+    </descriptionHyperlinks>
+    <spawnThingOnRemoved>ReprocessorStomachTenebral</spawnThingOnRemoved>
+    <addedPartProps>
+      <solid>true</solid>
+      <partEfficiency>2</partEfficiency>
+      <betterThanNatural>true</betterThanNatural>
+    </addedPartProps>
+    <stages>
+      <li>
+        <hungerRateFactor>0.1</hungerRateFactor>
+      </li>
+    </stages>
+    <comps>
+      <li Class="HediffCompProperties_ReactOnDamage">
+        <damageDefIncoming>EMP</damageDefIncoming>
+        <vomit>true</vomit>
+      </li>
+    </comps>
+  </HediffDef>
+
+  <ThingDef ParentName="BodyPartBORTenebralBase">
+    <defName>ReprocessorStomachTenebral</defName>
+    <label>tenebral reprocessor stomach</label>
+    <description>An advanced chemical processing system breaks down nutrients the body could normally never use, leading to increased efficiency.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>InstallReprocessorStomachTenebral</RecipeDef>
+    </descriptionHyperlinks>
+
+  </ThingDef>
+
+  <RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase">
+    <defName>InstallReprocessorStomachTenebral</defName>
+    <label>install tenebral reprocessor stomach</label>
+    <description>Install a reprocessor stomach.</description>
+    <descriptionHyperlinks>
+      <ThingDef>ReprocessorStomachTenebral</ThingDef>
+      <HediffDef>ReprocessorStomachTenebral</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing tenebral reprocessor stomach.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>ReprocessorStomachTenebral</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>ReprocessorStomachTenebral</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Stomach</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>ReprocessorStomachTenebral</addsHediff>
+  </RecipeDef>
+  <!-- Circadian assistant -->
+
+  <HediffDef ParentName="ImplantHediffBase">
+    <defName>CircadianAssistantTenebral</defName>
+    <label>tenebral circadian assistant</label>
+    <labelNoun>an tenebral circadian assistant</labelNoun>
+    <description>An installed tenebral circadian assistant.</description>
+    <descriptionHyperlinks>
+      <ThingDef>CircadianAssistantTenebral</ThingDef>
+    </descriptionHyperlinks>
+    <spawnThingOnRemoved>CircadianAssistantTenebral</spawnThingOnRemoved>
+    <stages>
+      <li>
+        <statOffsets>
+          <RestFallRateFactor>-0.8</RestFallRateFactor>
+        </statOffsets>
+      </li>
+    </stages>
+    <comps>
+      <li Class="HediffCompProperties_ReactOnDamage">
+        <damageDefIncoming>EMP</damageDefIncoming>
+        <createHediff>BrainShock</createHediff>
+      </li>
+    </comps>
+  </HediffDef>
+
+  <ThingDef ParentName="BodyPartBORTenebralBase">
+    <defName>CircadianAssistantTenebral</defName>
+    <label>tenebral circadian assistant</label>
+    <description>An artificial gland. Produces chemicals and nanomachines that clear toxin buildup from the brain.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>InstallCircadianAssistantTenebral</RecipeDef>
+    </descriptionHyperlinks>
+
+  </ThingDef>
+
+  <RecipeDef ParentName="SurgeryInstallImplantBORTenebralBase">
+    <defName>InstallCircadianAssistantTenebral</defName>
+    <label>install tenebral circadian assistant</label>
+    <description>Install a circadian assistant.</description>
+    <descriptionHyperlinks>
+      <ThingDef>CircadianAssistantTenebral</ThingDef>
+      <HediffDef>CircadianAssistantTenebral</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing tenebral circadian assistant.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>CircadianAssistantTenebral</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>CircadianAssistantTenebral</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Brain</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>CircadianAssistantTenebral</addsHediff>
+  </RecipeDef>
+
+  <RecipeDef ParentName="SurgeryRemoveImplantBase">
+    <defName>RemoveCircadianAssistantTenebral</defName>
+    <label>remove tenebral circadian assistant</label>
+    <description>Remove circadian assistant.</description>
+    <descriptionHyperlinks>
+      <ThingDef>CircadianAssistantTenebral</ThingDef>
+      <HediffDef>CircadianAssistantTenebral</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Removing tenebral circadian assistant.</jobString>
+    <removesHediff>CircadianAssistantTenebral</removesHediff>
+  </RecipeDef>
+
+  <!-- Circadian half-cycler -->
+
+  <HediffDef ParentName="ImplantHediffBase">
+    <defName>CircadianHalfCyclerTenebral</defName>
+    <label>tenebral circadian half-cycler</label>
+    <labelNoun>an tenebral circadian half-cycler</labelNoun>
+    <description>An installed tenebral circadian half-cycler.</description>
+    <descriptionHyperlinks>
+      <ThingDef>CircadianHalfCyclerTenebral</ThingDef>
+    </descriptionHyperlinks>
+    <spawnThingOnRemoved>CircadianHalfCyclerTenebral</spawnThingOnRemoved>
+    <disablesNeeds>
+      <li>Rest</li>
+    </disablesNeeds>
+    <stages>
+      <li>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <offset>-0.2</offset>
+          </li>
+        </capMods>
+      </li>
+    </stages>
+    <comps>
+      <li Class="HediffCompProperties_ReactOnDamage">
+        <damageDefIncoming>EMP</damageDefIncoming>
+        <createHediff>BrainShock</createHediff>
+      </li>
+    </comps>
+  </HediffDef>
+
+  <ThingDef ParentName="BodyPartBORTenebralBase">
+    <defName>CircadianHalfCyclerTenebral</defName>
+    <label>tenebral circadian half-cycler</label>
+    <description>A signal redirector which isolates half of the brain, allowing the other half to sleep while the user remains outwardly awake. By alternating brain halves, the user never needs to sleep. Unfortunately, two hemispheres are better than one - working with half a brain causes a reduction in consciousness.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>InstallCircadianHalfCyclerTenebral</RecipeDef>
+    </descriptionHyperlinks>
+
+  </ThingDef>
+
+  <RecipeDef ParentName="SurgeryInstallImplantBORTenebralBase">
+    <defName>InstallCircadianHalfCyclerTenebral</defName>
+    <label>install tenebral circadian half-cycler</label>
+    <description>Install a circadian half-cycler.</description>
+    <descriptionHyperlinks>
+      <ThingDef>CircadianHalfCyclerTenebral</ThingDef>
+      <HediffDef>CircadianHalfCyclerTenebral</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing tenebral circadian half-cycler.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>CircadianHalfCyclerTenebral</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>CircadianHalfCyclerTenebral</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Brain</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>CircadianHalfCyclerTenebral</addsHediff>
+  </RecipeDef>
+
+  <RecipeDef ParentName="SurgeryRemoveImplantBase">
+    <defName>RemoveCircadianHalfCyclerTenebral</defName>
+    <label>remove tenebral circadian half-cycler</label>
+    <description>Remove circadian half-cycler.</description>
+    <descriptionHyperlinks>
+      <ThingDef>CircadianHalfCyclerTenebral</ThingDef>
+      <HediffDef>CircadianHalfCyclerTenebral</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Removing tenebral circadian half-cycler.</jobString>
+    <removesHediff>CircadianHalfCyclerTenebral</removesHediff>
+  </RecipeDef>
+
+</Defs>

@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+    <!-- research -->
+    <Operation Class="PatchOperationReplace">
+        <xpath>/Defs/ResearchProjectDef[defName="MolecularNutrientResequencing"]/researchViewX</xpath>
+        <value>
+            <researchViewX>27.00</researchViewX>
+        </value>
+    </Operation>
+    <Operation Class="PatchOperationReplace">
+        <xpath>/Defs/ResearchProjectDef[defName="MolecularNutrientResequencing"]/researchViewY</xpath>
+        <value>
+            <researchViewY>5.40</researchViewY>
+        </value>
+    </Operation>
+    <Operation Class="PatchOperationReplace">
+        <xpath>/Defs/ResearchProjectDef[defName="MolecularNutrientResequencing"]/baseCost</xpath>
+        <value>
+            <baseCost>50000</baseCost>
+        </value>
+    </Operation>
+    <Operation Class="PatchOperationReplace">
+        <xpath>/Defs/ResearchProjectDef[defName="MolecularNutrientResequencing"]/techLevel</xpath>
+        <value>
+            <techLevel>Archotech</techLevel>
+        </value>
+    </Operation>
+    <Operation Class="PatchOperationReplace">
+        <xpath>/Defs/ResearchProjectDef[defName="MolecularNutrientResequencing"]/prerequisites</xpath>
+        <value>
+            <prerequisites>
+                <li>BOR_Research_III_food</li>
+            </prerequisites>
+        </value>
+    </Operation>
+    <Operation Class="PatchOperationAdd">
+        <xpath>/Defs/ResearchProjectDef[defName="MolecularNutrientResequencing"]/requiredResearchFacilities</xpath>
+        <value>
+            <li>BOR_Linkable_Unlocker_GenII</li>
+        </value>
+    </Operation>
+    <!-- costs -->
+    <Operation Class="PatchOperationReplace">
+        <xpath>/Defs/ThingDef[defName="ReplimatTerminal"]/costList</xpath>
+        <value>
+            <costList>
+                <BOR_Sunsteel>50</BOR_Sunsteel>
+                <BOR_Component_GenII>5</BOR_Component_GenII>
+                <BOR_QuasarAlloy>20</BOR_QuasarAlloy>
+            </costList>
+        </value>
+    </Operation>
+    <Operation Class="PatchOperationReplace">
+        <xpath>/Defs/ThingDef[defName="ReplimatAnimalFeeder"]/costList</xpath>
+        <value>
+            <costList>
+                <BOR_Sunsteel>5</BOR_Sunsteel>
+                <BOR_Component_GenII>2</BOR_Component_GenII>
+                <BOR_QuasarAlloy>2</BOR_QuasarAlloy>
+            </costList>
+        </value>
+    </Operation>
+    <Operation Class="PatchOperationReplace">
+        <xpath>/Defs/ThingDef[defName="ReplimatHopper"]/costList</xpath>
+        <value>
+            <costList>
+                <BOR_Sunsteel>80</BOR_Sunsteel>
+                <BOR_Component_GenII>8</BOR_Component_GenII>
+                <ComponentSpacer>10</ComponentSpacer>
+                <BOR_QuasarAlloy>50</BOR_QuasarAlloy>
+            </costList>
+        </value>
+    </Operation>
+    <Operation Class="PatchOperationReplace">
+        <xpath>/Defs/ThingDef[defName="ReplimatHopper"]/size</xpath>
+        <value>
+            <size>(2,1)</size>
+        </value>
+    </Operation>
+    <Operation Class="PatchOperationAdd">
+        <xpath>/Defs/ThingDef[defName="ReplimatHopper"]/graphicData</xpath>
+        <value>
+            <drawOffset>(0,4,0)</drawOffset>
+        </value>
+    </Operation>
+    <Operation Class="PatchOperationReplace">
+        <xpath>/Defs/ThingDef[defName="ReplimatHopper"]/graphicData/drawSize</xpath>
+        <value>
+            <drawSize>(2.5,2.5)</drawSize>
+        </value>
+    </Operation>
+    <Operation Class="PatchOperationAdd">
+        <xpath>/Defs/ThingDef[defName="ReplimatHopper"]/comps/li[@Class="Replimat.CompProperties_SecondLayer"]/graphicData</xpath>
+        <value>
+            <drawOffset>(0,3,0)</drawOffset>
+        </value>
+    </Operation>
+    <Operation Class="PatchOperationReplace">
+        <xpath>/Defs/ThingDef[defName="ReplimatHopper"]/comps/li[@Class="Replimat.CompProperties_SecondLayer"]/graphicData/drawSize</xpath>
+        <value>
+            <drawSize>(2.5,2.5)</drawSize>
+        </value>
+    </Operation>
+    <Operation Class="PatchOperationReplace">
+        <xpath>/Defs/ThingDef[defName="ReplimatCorpseRecycler"]/costList</xpath>
+        <value>
+            <costList>
+                <BOR_Sunsteel>100</BOR_Sunsteel>
+                <BOR_Component_GenII>8</BOR_Component_GenII>
+                <ComponentSpacer>10</ComponentSpacer>
+                <BOR_QuasarAlloy>80</BOR_QuasarAlloy>
+            </costList>
+        </value>
+    </Operation>
+    <Operation Class="PatchOperationReplace">
+        <xpath>/Defs/ThingDef[defName="ReplimatComputer"]/costList</xpath>
+        <value>
+            <costList>
+                <BOR_Sunsteel>80</BOR_Sunsteel>
+                <BOR_Component_GenII>12</BOR_Component_GenII>
+                <ComponentSpacer>8</ComponentSpacer>
+                <BOR_QuasarAlloy>60</BOR_QuasarAlloy>
+                <IsolinearModule>1</IsolinearModule>
+            </costList>
+        </value>
+    </Operation>
+    <Operation Class="PatchOperationReplace">
+        <xpath>/Defs/ThingDef[defName="ReplimatFeedTank"]/costList</xpath>
+        <value>
+            <costList>
+                <BOR_Sunsteel>25</BOR_Sunsteel>
+                <BOR_Component_GenII>1</BOR_Component_GenII>
+                <ComponentSpacer>5</ComponentSpacer>
+                <BOR_QuasarAlloy>75</BOR_QuasarAlloy>
+            </costList>
+        </value>
+    </Operation>
+    <Operation Class="PatchOperationReplace">
+        <xpath>/Defs/ThingDef[defName="ReplimatFeedTank"]/comps/li[@Class="CompProperties_Power"]/basePowerConsumption</xpath>
+        <value>
+            <basePowerConsumption>5000</basePowerConsumption>
+        </value>
+    </Operation>
+    <Operation Class="PatchOperationReplace">
+        <xpath>/Defs/ThingDef[defName="ReplimatComputer"]/comps/li[@Class="CompProperties_Power"]/basePowerConsumption</xpath>
+        <value>
+            <basePowerConsumption>25000</basePowerConsumption>
+        </value>
+    </Operation>
+    <!-- category -->
+    <Operation Class="PatchOperationReplace">
+        <xpath>/Defs/ThingDef[@Name="ReplimatBase"]/designationCategory</xpath>
+        <value>
+            <designationCategory>BOR</designationCategory>
+        </value>
+    </Operation>
+    <!-- dropdown -->
+    <Operation Class="PatchOperationAdd">
+        <xpath>/Defs/ThingDef[@Name="ReplimatBase"]</xpath>
+        <value>
+            <designatorDropdown>BOR_Replimat</designatorDropdown>
+        </value>
+    </Operation>
+    <Operation Class="PatchOperationRemove">
+        <xpath>/Defs/DesignationCategoryDef[defName="Replimat_Replimat"]</xpath>
+    </Operation>
+    <!-- luxpod -->
+    <Operation Class="PatchOperationFindMod">
+        <mods>
+            <li>Dubs Bad Hygiene</li>
+        </mods>
+        <match Class="PatchOperationSequence">
+            <operations>
+                <li Class="PatchOperationReplace">
+                    <xpath>/Defs/ThingDef[defName="ReplimatSewageRecycler"]/costList</xpath>
+                    <value>
+                        <costList>
+                            <ComponentSpacer>10</ComponentSpacer>
+                            <BOR_Component_GenII>8</BOR_Component_GenII>
+                            <BOR_QuasarAlloy>50</BOR_QuasarAlloy>
+                            <BOR_Sunsteel>80</BOR_Sunsteel>
+                        </costList>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace">
+                    <xpath>/Defs/ThingDef[defName="ReplimatSewageRecycler"]/comps/li[@Class="Replimat.CompProperties_StateDependentPowerUse"]/activeModePowerConsumption</xpath>
+                    <value>
+                        <activeModePowerConsumption>30000</activeModePowerConsumption>
+                    </value>
+                </li>
+            </operations>
+        </match>
+    </Operation>
+</Patch>
