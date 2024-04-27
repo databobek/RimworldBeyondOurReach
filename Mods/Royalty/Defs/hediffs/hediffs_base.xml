@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
 
-  <RecipeDef Name="SurgeryInstallImplantBORSolarBase" ParentName="SurgeryFlesh" Abstract="True">
+  <RecipeDef Name="SurgeryInstallImplantAOTCSolarBase" ParentName="SurgeryFlesh" Abstract="True">
     <workerClass>Recipe_InstallImplant</workerClass>
     <workAmount>5000</workAmount>
     <developmentalStageFilter>Child, Adult</developmentalStageFilter>
@@ -15,7 +15,7 @@
       <li>
         <filter>
           <thingDefs>
-            <li>BOR_Medicine_GenI</li>
+            <li>BOR_MedicineI</li>
           </thingDefs>
         </filter>
         <count>3</count>
@@ -31,13 +31,13 @@
     </ingredients>
     <fixedIngredientFilter>
       <thingDefs>
-        <li>BOR_Medicine_GenI</li>
+        <li>BOR_MedicineI</li>
         <li>BOR_Nanoclusters</li>
       </thingDefs>
     </fixedIngredientFilter>
   </RecipeDef>
 
-  <RecipeDef Name="SurgeryInstallImplantBORQuasarBase" ParentName="SurgeryFlesh" Abstract="True">
+  <RecipeDef Name="SurgeryInstallImplantAOTCQuasarBase" ParentName="SurgeryFlesh" Abstract="True">
     <workerClass>Recipe_InstallImplant</workerClass>
     <workAmount>10000</workAmount>
     <developmentalStageFilter>Child, Adult</developmentalStageFilter>
@@ -51,7 +51,7 @@
       <li>
         <filter>
           <thingDefs>
-            <li>BOR_Medicine_GenII</li>
+            <li>BOR_MedicineII</li>
           </thingDefs>
         </filter>
         <count>3</count>
@@ -67,13 +67,13 @@
     </ingredients>
     <fixedIngredientFilter>
       <thingDefs>
-        <li>BOR_Medicine_GenII</li>
+        <li>BOR_MedicineII</li>
         <li>BOR_Picoclusters</li>
       </thingDefs>
     </fixedIngredientFilter>
   </RecipeDef>
 
-  <RecipeDef Name="SurgeryInstallImplantBORTenebralBase" ParentName="SurgeryFlesh" Abstract="True">
+  <RecipeDef Name="SurgeryInstallImplantAOTCTenebralBase" ParentName="SurgeryFlesh" Abstract="True">
     <workerClass>Recipe_InstallImplant</workerClass>
     <workAmount>20000</workAmount>
     <developmentalStageFilter>Child, Adult</developmentalStageFilter>
@@ -87,7 +87,7 @@
       <li>
         <filter>
           <thingDefs>
-            <li>BOR_Medicine_GenIII</li>
+            <li>BOR_MedicineIII</li>
           </thingDefs>
         </filter>
         <count>3</count>
@@ -103,31 +103,31 @@
     </ingredients>
     <fixedIngredientFilter>
       <thingDefs>
-        <li>BOR_Medicine_GenIII</li>
+        <li>BOR_MedicineIII</li>
         <li>BOR_Femtoclusters</li>
       </thingDefs>
     </fixedIngredientFilter>
   </RecipeDef>
 
-  <ThingDef Name="BodyPartBORBase" ParentName="BodyPartArchotechBase" Abstract="True">
+  <ThingDef Name="BodyPartAOTCBase" ParentName="BodyPartArchotechBase" Abstract="True">
     <thingSetMakerTags>
-      <li>ImplantEmpireBOR</li>
+      <li>ImplantEmpireAOTC</li>
     </thingSetMakerTags>
     <tradeTags>
-      <li>ImplantEmpireBOR</li>
+      <li>ImplantEmpireAOTC</li>
     </tradeTags>
     <techHediffsTags>
-      <li>ImplantEmpireBOR</li>
+      <li>ImplantEmpireAOTC</li>
     </techHediffsTags>
   </ThingDef>
 
-  <ThingDef Name="BodyPartBORSolarBase" ParentName="BodyPartBORBase" Abstract="True">
+  <ThingDef Name="BodyPartAOTCSolarBase" ParentName="BodyPartAOTCBase" Abstract="True">
     <costList>
       <BOR_Sunsteel>50</BOR_Sunsteel>
       <ComponentSpacer>4</ComponentSpacer>
     </costList>
     <recipeMaker>
-      <!-- <researchPrerequisite>BOR_Research_II_bionics</researchPrerequisite> -->
+      <researchPrerequisite>BOR_Research_II_bionics</researchPrerequisite>
       <recipeUsers>
         <li>Table_BOR_BionicCraftingStation_GenI</li>
       </recipeUsers>
@@ -141,13 +141,13 @@
     </statBases>
   </ThingDef>
 
-  <ThingDef Name="BodyPartBORQuasarBase" ParentName="BodyPartBORBase" Abstract="True">
+  <ThingDef Name="BodyPartAOTCQuasarBase" ParentName="BodyPartAOTCBase" Abstract="True">
     <costList>
       <BOR_QuasarAlloy>50</BOR_QuasarAlloy>
-      <BOR_Component_GenII>4</BOR_Component_GenII>
+      <BOR_ComponentII>4</BOR_ComponentII>
     </costList>
     <recipeMaker>
-      <!-- <researchPrerequisite>BOR_Research_III_bionics</researchPrerequisite> -->
+      <researchPrerequisite>BOR_Research_III_bionics</researchPrerequisite>
       <recipeUsers>
         <li>Table_BOR_BionicCraftingStation_GenII</li>
       </recipeUsers>
@@ -161,13 +161,13 @@
     </statBases>
   </ThingDef>
 
-  <ThingDef Name="BodyPartBORTenebralBase" ParentName="BodyPartBORBase" Abstract="True">
+  <ThingDef Name="BodyPartAOTCTenebralBase" ParentName="BodyPartAOTCBase" Abstract="True">
     <costList>
       <BOR_Tenebrite>50</BOR_Tenebrite>
-      <BOR_Component_GenIII>4</BOR_Component_GenIII>
+      <BOR_ComponentIII>4</BOR_ComponentIII>
     </costList>
     <recipeMaker>
-      <!-- <researchPrerequisite>BOR_Research_VI_bionics</researchPrerequisite> -->
+      <researchPrerequisite>BOR_Research_VI_bionics</researchPrerequisite>
       <recipeUsers>
         <li>Table_BOR_BionicCraftingStation_GenIII</li>
       </recipeUsers>

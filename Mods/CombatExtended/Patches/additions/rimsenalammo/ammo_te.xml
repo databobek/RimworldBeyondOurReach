@@ -13,7 +13,7 @@
 
 						<ThingDef Class="CombatExtended.AmmoDef" ParentName="TEPowerCoreBase">
 							<defName>BOR_Ammo_TEPowerCell</defName>
-							<label>TE Universal Power Cell (CM-K)</label>
+							<label>TE Universal Power Cell (N-K)</label>
 							<graphicData>
 								<texPath>ThirdParty/Rimsenal/TE</texPath>
 								<graphicClass>Graphic_StackCount</graphicClass>
@@ -21,17 +21,17 @@
 							<statBases>
 								<MarketValue>2.25</MarketValue>
 							</statBases>
-							<ammoClass>BOR_CM_K_AmmoClass</ammoClass>
+							<ammoClass>BOR_N_K_AmmoClass</ammoClass>
 							<generateAllowChance>0.1</generateAllowChance>
 							<generateCommonality>0.01</generateCommonality>
 						</ThingDef>
 
-
+						
 						<RecipeDef ParentName="AmmoRecipeBase">
 							<defName>MakeBOR_Ammo_TEPowerCell</defName>
-							<label>make TE Universal CM-K Power Cell x500</label>
-							<description>Craft 500 TE Universal CM-K Power Cell.</description>
-							<jobString>Making TE Universal CM-K Power Cell.</jobString>
+							<label>make TE Universal N-K Power Cell x500</label>
+							<description>Craft 500 TE Universal N-K Power Cell.</description>
+							<jobString>Making TE Universal N-K Power Cell.</jobString>
 							<ingredients>
 								<li>
 									<filter>
@@ -65,7 +65,7 @@
 									<li>ComponentSpacer</li>
 								</thingDefs>
 							</fixedIngredientFilter>
-							<!-- <researchPrerequisite>KineticTech</researchPrerequisite> -->
+							<researchPrerequisite>KineticTech</researchPrerequisite>
 							<recipeUsers Inherit="False">
 								<li>TETable</li>
 							</recipeUsers>
@@ -77,7 +77,7 @@
 
 						<ThingDef Class="CombatExtended.Lasers.LaserBeamDefCE" ParentName="LaserBulletPurple">
 							<defName>BOR_Bullet_TEPowerCore_KE</defName>
-							<label>TE energy blast (CM-K)</label>
+							<label>TE energy blast (N-K)</label>
 							<graphicData>
 								<texPath>Things/Projectile/ImpactL</texPath>
 								<graphicClass>Graphic_Single</graphicClass>
@@ -98,10 +98,11 @@
 							</comps>
 						</ThingDef>
 
+						
 
 						<ThingDef ParentName="Base556x45mmNATOBullet">
 							<defName>BOR_Bullet_TEPowerCharge_KE</defName>
-							<label>TE energy blast (CM-K)</label>
+							<label>TE energy blast (N-K)</label>
 							<graphicData>
 								<texPath>Things/Projectile/ImpactM</texPath>
 								<graphicClass>Graphic_Single</graphicClass>
@@ -115,11 +116,12 @@
 							</projectile>
 						</ThingDef>
 
+						
 
 						<ThingDef ParentName="Base30x29mmGrenadeBullet">
 							<defName>BOR_Bullet_TEEnergyCanister_KE</defName>
 							<thingClass>CombatExtended.ProjectileCE_Explosive</thingClass>
-							<label>TE energy blast (CM-K)</label>
+							<label>TE energy blast (N-K)</label>
 							<graphicData>
 								<texPath>Things/Projectile/ImpactB</texPath>
 								<graphicClass>Graphic_Single</graphicClass>
@@ -137,10 +139,11 @@
 							</comps>
 						</ThingDef>
 
+						
 
 						<ThingDef ParentName="Base556x45mmNATOBullet">
-							<defName>BOR_Bullet_TEConcentratedPowerCharge_KE</defName>
-							<label>TE energy blast (CM-K)</label>
+							<defName>BOR_Bullet_TTConcentratedPowerCharge_KE</defName>
+							<label>TE energy blast (N-K)</label>
 							<graphicData>
 								<texPath>Things/Projectile/ImpactL</texPath>
 								<graphicClass>Graphic_Single</graphicClass>
@@ -169,9 +172,9 @@
 					</value>
 				</li>
 				<li Class="PatchOperationAdd">
-					<xpath>/Defs/CombatExtended.AmmoSetDef[defName="AmmoSet_TEConcentratedPowerCharge"]/ammoTypes</xpath>
+					<xpath>/Defs/CombatExtended.AmmoSetDef[defName="AmmoSet_TTConcentratedPowerCharge"]/ammoTypes</xpath>
 					<value>
-						<BOR_Ammo_TEPowerCell>BOR_Bullet_TEConcentratedPowerCharge_KE</BOR_Ammo_TEPowerCell>
+						<BOR_Ammo_TEPowerCell>BOR_Bullet_TTConcentratedPowerCharge_KE</BOR_Ammo_TEPowerCell>
 					</value>
 				</li>
 				<li Class="PatchOperationAdd">
