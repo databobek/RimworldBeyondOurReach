@@ -44,11 +44,6 @@
       <li>ITab_Bills</li>
     </inspectorTabs>
     <comps>
-      <li Class="PipeSystem.CompProperties_ResourceTrader">
-        <pipeNet>BOR_NeutroniumNet</pipeNet>
-        <consumptionPerTick>30</consumptionPerTick>
-        <idleConsumptionPerTick>0</idleConsumptionPerTick>
-      </li>
       <li Class="CompProperties_Power">
         <compClass>CompPowerTrader</compClass>
         <shortCircuitInRain>true</shortCircuitInRain>
@@ -87,7 +82,7 @@
       <graphicClass>Graphic_Single</graphicClass>
       <drawRotated>false</drawRotated>
       <drawSize>(4.5, 4.5)</drawSize>
-      <drawOffset>(0,4,0.5)</drawOffset>
+      <drawOffset>(0,4,0.25)</drawOffset>
     </graphicData>
     <castEdgeShadows>true</castEdgeShadows>
     <staticSunShadowHeight>0.20</staticSunShadowHeight>
@@ -110,7 +105,7 @@
     <passability>PassThroughOnly</passability>
     <pathCost>50</pathCost>
     <hasInteractionCell>True</hasInteractionCell>
-    <interactionCellOffset>(0,0,-1)</interactionCellOffset>
+    <interactionCellOffset>(0,0,-2)</interactionCellOffset>
     <surfaceType>Item</surfaceType>
     <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
     <constructionSkillPrerequisite>6</constructionSkillPrerequisite>
@@ -223,5 +218,70 @@
       <li>DrugProduction</li>
     </researchPrerequisites> -->
     <designatorDropdown>BOR_MedicineBenches</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>BOR_HydroponicsBasin_III</defName>
+    <label>tenebral hydrogrower</label>
+    <description>An artificial nutrient bath for growing plants. The nutrients pumps must work continuously; the plants will die if power is cut.</description>
+    <thingClass>Building_PlantGrower</thingClass>
+    <graphicData>
+      <texPath>BOR/Things/Building/tier1/hydroponics</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawSize>(1,4)</drawSize>
+      <drawOffsetEast>(0,0,0.15)</drawOffsetEast>
+      <drawOffsetWest>(0,0,0.15)</drawOffsetWest>
+      <drawOffsetSouth>(0,0,0.15)</drawOffsetSouth>
+      <drawOffsetNorth>(0,0,0.15)</drawOffsetNorth>
+      <damageData>
+        <cornerTL>Damage/Corner</cornerTL>
+        <cornerTR>Damage/Corner</cornerTR>
+        <cornerBL>Damage/Corner</cornerBL>
+        <cornerBR>Damage/Corner</cornerBR>
+      </damageData>
+    </graphicData>
+    <castEdgeShadows>true</castEdgeShadows>
+    <altitudeLayer>LowPlant</altitudeLayer>
+    <defaultPlacingRot>East</defaultPlacingRot>
+    <passability>PassThroughOnly</passability>
+    <pathCost>30</pathCost>
+    <constructEffect>ConstructMetal</constructEffect>
+    <fillPercent>0.30</fillPercent>
+    <canOverlapZones>false</canOverlapZones>
+    <constructionSkillPrerequisite>4</constructionSkillPrerequisite>
+    <statBases>
+      <WorkToBuild>9450</WorkToBuild>
+      <MaxHitPoints>609</MaxHitPoints>
+      <Flammability>0.3</Flammability>
+      <Cleanliness>-1.5</Cleanliness>
+    </statBases>
+    <size>(1,4)</size>
+    <costList>
+      <BOR_Tenerbite>100</BOR_Tenerbite>
+      <BOR_ComponentIII>1</BOR_ComponentIII>
+    </costList>
+    <fertility>9.45</fertility>
+    <building>
+      <defaultPlantToGrow>Plant_Rice</defaultPlantToGrow>
+      <sowTag>Hydroponic</sowTag>
+      <buildingTags>
+        <li>Production</li>
+      </buildingTags>
+    </building>
+    <tickerType>Rare</tickerType>
+    <comps>
+      <li Class="CompProperties_Forbiddable" />
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>4000</basePowerConsumption>
+      </li>
+      <li Class="CompProperties_Flickable" />
+    </comps>
+    <!-- todo -->
+    <!-- <researchPrerequisites>
+      <li>Hydroponics</li>
+    </researchPrerequisites> -->
+    <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+    <designationCategory>Production</designationCategory>
   </ThingDef>
 </Defs>
