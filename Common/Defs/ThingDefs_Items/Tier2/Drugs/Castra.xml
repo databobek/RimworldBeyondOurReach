@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Defs>
 
   <ThingDef ParentName="MakeableDrugPillBase">
@@ -6,7 +6,9 @@
     <label>castra</label>
     <description>A drug for preventing infections before they take hold. Blocks malaria, sleeping sickness, plague. Must be taken every five days to remain effective.\n\nThis drug only prevents new infections. It does not cure existing infections - even those that are not yet discovered.</description>
     <possessionCount>3</possessionCount>
-    <descriptionHyperlinks><HediffDef>BOR_CastraHigh</HediffDef></descriptionHyperlinks>
+    <descriptionHyperlinks>
+      <HediffDef>BOR_CastraHigh</HediffDef>
+    </descriptionHyperlinks>
     <graphicData>
       <texPath>BOR/Things/Item/Drugs/Tier2/Immune</texPath>
       <graphicClass>Graphic_StackCount</graphicClass>
@@ -42,12 +44,12 @@
     </costList>
     <comps>
       <li Class="CompProperties_Drug">
-        <listOrder>1000</listOrder>
+        <listOrder>1002</listOrder>
         <overdoseSeverityOffset>0.056~0.09</overdoseSeverityOffset>
       </li>
     </comps>
   </ThingDef>
-  
+
   <HediffDef>
     <defName>BOR_CastraHigh</defName>
     <hediffClass>Hediff_High</hediffClass>
@@ -63,21 +65,24 @@
         <showHoursToRecover>true</showHoursToRecover>
       </li>
     </comps>
-      <stages>
-        <li>
-          <makeImmuneTo>
-            <li>Malaria</li>
-            <li>SleepingSickness</li>
-            <li>Plague</li>
-            <li>GutWorms</li>
-            <li>MuscleParasites</li>
-            <li>WoundInfection</li>
-            <li>Flu</li>
-            <li>FibrousMechanites</li>
-            <li>SensoryMechanites</li>
-          </makeImmuneTo>
-        </li>
-      </stages>
+    <stages>
+      <li>
+        <makeImmuneTo>
+          <li>Malaria</li>
+          <li>SleepingSickness</li>
+          <li>Plague</li>
+          <li>GutWorms</li>
+          <li>MuscleParasites</li>
+          <li>WoundInfection</li>
+          <li>Flu</li>
+          <li>FibrousMechanites</li>
+          <li>SensoryMechanites</li>
+          <li>ToxicBuildup</li>
+          <li>WoundInfection</li>
+          <li>Carcinoma</li>
+        </makeImmuneTo>
+      </li>
+    </stages>
   </HediffDef>
-  
+
 </Defs>

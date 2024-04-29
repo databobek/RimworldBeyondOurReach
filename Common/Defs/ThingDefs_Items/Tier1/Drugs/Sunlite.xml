@@ -8,7 +8,7 @@
     <descriptionHyperlinks>
       <HediffDef>BOR_SunliteHigh</HediffDef>
       <HediffDef>BOR_Chemical_SunweaveTolerance</HediffDef>
-      <HediffDef>BOR_Chemical_SunweaveAddiction</HediffDef>
+      <HediffDef>BOR_Sunweave_Chemical_Addiction</HediffDef>
       <HediffDef>ChemicalDamageSevere</HediffDef>
     </descriptionHyperlinks>
     <graphicData>
@@ -73,6 +73,18 @@
     <costList>
       <BOR_Sunweave>12</BOR_Sunweave>
     </costList>
+    <comps>
+      <li Class="CompProperties_Drug">
+        <chemical>BOR_Chemical_Sunweave</chemical>
+        <addictiveness>0.0216</addictiveness>
+        <existingAddictionSeverityOffset>0.16</existingAddictionSeverityOffset>
+        <needLevelOffset>0.9</needLevelOffset>
+        <isCombatEnhancingDrug>true</isCombatEnhancingDrug>
+        <listOrder>201</listOrder>
+        <overdoseSeverityOffset>0.15~0.291</overdoseSeverityOffset>
+        <largeOverdoseChance>0.004</largeOverdoseChance>
+      </li>
+    </comps>
     <allowedArchonexusCount>200</allowedArchonexusCount>
   </ThingDef>
 
@@ -128,7 +140,7 @@
   <ChemicalDef>
     <defName>BOR_Chemical_Sunweave</defName>
     <label>BOR_Chemical_Sunweave</label>
-    <addictionHediff>BOR_Chemical_SunweaveAddiction</addictionHediff>
+    <addictionHediff>BOR_Sunweave_Chemical_Addiction</addictionHediff>
     <toleranceHediff>BOR_Chemical_SunweaveTolerance</toleranceHediff>
     <onGeneratedAddictedToleranceChance>0.66</onGeneratedAddictedToleranceChance>
     <onGeneratedAddictedEvents>
@@ -184,7 +196,7 @@
   </HediffDef>
 
   <HediffDef ParentName="AddictionBase">
-    <defName>BOR_Chemical_SunweaveAddiction</defName>
+    <defName>BOR_Sunweave_Chemical_Addiction</defName>
     <label>BOR_Chemical_Sunweave addiction</label>
     <description>A chemical addiction to BOR_Chemical_Sunweave. Long-term presence of BOR_Chemical_Sunweave has caused neurological adaptations at the cellular level, so the brain can no longer function properly without the drug. \nWithout regular doses of BOR_Chemical_Sunweave from drugs like flake or yayo, withdrawal symptoms will begin. However, extended abstinence will force the brain to adapt back to its normal state, resolving the addiction.</description>
     <hediffClass>Hediff_Addiction</hediffClass>
@@ -234,7 +246,7 @@
   <ThoughtDef>
     <defName>BOR_Chemical_SunweaveWithdrawal</defName>
     <workerClass>ThoughtWorker_Hediff</workerClass>
-    <hediff>BOR_Chemical_SunweaveAddiction</hediff>
+    <hediff>BOR_Sunweave_Chemical_Addiction</hediff>
     <validWhileDespawned>true</validWhileDespawned>
     <developmentalStageFilter>Baby, Child, Adult</developmentalStageFilter>
     <stages>

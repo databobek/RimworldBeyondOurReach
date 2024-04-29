@@ -6,7 +6,7 @@
     <description>A work station for assembling Sunsteel-based technology.</description>
     <thingClass>Building_WorkTable</thingClass>
     <graphicData>
-      <texPath>Things/Building/tier1/production_bench</texPath>
+      <texPath>BOR/Things/Building/tier1/production_bench</texPath>
       <graphicClass>Graphic_Single</graphicClass>
       <drawSize>(2.8, 2.8)</drawSize>
       <drawRotated>false</drawRotated>
@@ -86,7 +86,7 @@
     <description>Extracts usable metal from slag chunks and other mixed metal items. Consumes a lot of power.</description>
     <thingClass>PipeSystem.Building_ResourceWorkTable</thingClass>
     <graphicData>
-      <texPath>Things/Building/tier1/smelter</texPath>
+      <texPath>BOR/Things/Building/tier1/smelter</texPath>
       <graphicClass>Graphic_Single</graphicClass>
       <shaderType>CutoutComplex</shaderType>
       <drawRotated>false</drawRotated>
@@ -151,4 +151,63 @@
     </researchPrerequisites>
     <rotatable>false</rotatable>
   </ThingDef>
+
+
+  <ThingDef ParentName="BenchBase">
+    <defName>BOR_MedicineBench_I</defName>
+    <label>medical fabricator</label>
+    <description>A work bench equipped with containers, heaters, and measurement devices for producing various drugs.</description>
+    <thingClass>Building_WorkTable</thingClass>
+    <graphicData>
+      <texPath>BOR/Things/Building/tier1/medicine_bench</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(3.5,3.5)</drawSize>
+      <drawOffset>(0,4,0.35)</drawOffset>
+    </graphicData>
+    <castEdgeShadows>true</castEdgeShadows>
+    <staticSunShadowHeight>0.20</staticSunShadowHeight>
+    <costList>
+      <BOR_Sunsteel>125</BOR_Sunsteel>
+      <ComponentSpacer>6</ComponentSpacer>
+    </costList>
+    <altitudeLayer>Building</altitudeLayer>
+    <fillPercent>0.5</fillPercent>
+    <useHitPoints>True</useHitPoints>
+    <statBases>
+      <WorkToBuild>5250</WorkToBuild>
+      <MaxHitPoints>180</MaxHitPoints>
+      <Flammability>0.833</Flammability>
+    </statBases>
+    <size>(2,2)</size>
+    <designationCategory>Production</designationCategory>
+    <passability>PassThroughOnly</passability>
+    <pathCost>50</pathCost>
+    <hasInteractionCell>True</hasInteractionCell>
+    <interactionCellOffset>(0,0,-1)</interactionCellOffset>
+    <surfaceType>Item</surfaceType>
+    <constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+    <inspectorTabs>
+      <li>ITab_Bills</li>
+    </inspectorTabs>
+    <building>
+      <spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+      <paintable>true</paintable>
+    </building>
+    <comps>
+      <li Class="CompProperties_AffectedByFacilities">
+        <linkableFacilities>
+          <li>ToolCabinet</li>
+        </linkableFacilities>
+      </li>
+    </comps>
+    <placeWorkers>
+      <li>PlaceWorker_ShowFacilitiesConnections</li>
+      <li>PlaceWorker_PreventInteractionSpotOverlap</li>
+    </placeWorkers>
+    <!-- todo -->
+    <!-- <researchPrerequisites>
+      <li>DrugProduction</li>
+    </researchPrerequisites> -->
+  </ThingDef>
+
 </Defs>
