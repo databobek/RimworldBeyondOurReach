@@ -204,18 +204,19 @@
             <BOR_Neutronium>50</BOR_Neutronium>
         </products>
     </RecipeDef>
+    
     <RecipeDef>
-        <defName>BOR_Shape_Fuel_Rods</defName>
-        <label>Shape Sunsteel into Fuel Rods</label>
-        <description>.</description>
+        <defName>BOR_Make_QuasarAlloy_Bad</defName>
+        <label>forge quasar alloy</label>
+        <description>Forge quasar alloy from plasteel.</description>
         <ingredients>
             <li>
                 <filter>
                     <thingDefs>
-                        <li>BOR_Sunsteel</li>
+                        <li>Gold</li>
                     </thingDefs>
                 </filter>
-                <count>5</count>
+                <count>4</count>
             </li>
             <li>
                 <filter>
@@ -223,187 +224,39 @@
                         <li>Uranium</li>
                     </thingDefs>
                 </filter>
-                <count>10</count>
+                <count>4</count>
+            </li>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>BOR_Sunsteel</li>
+                    </thingDefs>
+                </filter>
+                <count>35</count>
             </li>
         </ingredients>
         <fixedIngredientFilter>
             <thingDefs>
-                <li>BOR_Sunsteel</li>
+                <li>Gold</li>
                 <li>Uranium</li>
-            </thingDefs>
-        </fixedIngredientFilter>
-        <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
-        <workSkill>Crafting</workSkill>
-        <workAmount>1250</workAmount>
-        <soundWorking>Recipe_Machining</soundWorking>
-        <unfinishedThingDef>UnfinishedComponent</unfinishedThingDef>
-        <skillRequirements>
-            <Crafting>6</Crafting>
-        </skillRequirements>
-        <jobString>Shaping fuel rods.</jobString>
-        <recipeUsers>
-            <li>BOR_Bench_I</li>
-        </recipeUsers>
-        <products>
-            <BOR_FuelRod>10</BOR_FuelRod>
-        </products>
-        <!-- <researchPrerequisite>BOR_Research_II_pwr</researchPrerequisite> -->
-    </RecipeDef>
-    <RecipeDef>
-        <defName>BOR_Shape_Fuel_Rods_Bulk</defName>
-        <label>Shape bulk Sunsteel into Fuel Rods</label>
-        <description>.</description>
-        <ingredients>
-            <li>
-                <filter>
-                    <thingDefs>
-                        <li>BOR_Sunsteel</li>
-                    </thingDefs>
-                </filter>
-                <count>50</count>
-            </li>
-            <li>
-                <filter>
-                    <thingDefs>
-                        <li>Uranium</li>
-                    </thingDefs>
-                </filter>
-                <count>100</count>
-            </li>
-        </ingredients>
-        <fixedIngredientFilter>
-            <thingDefs>
                 <li>BOR_Sunsteel</li>
-                <li>Uranium</li>
             </thingDefs>
         </fixedIngredientFilter>
         <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
         <workSkill>Crafting</workSkill>
-        <workAmount>10000</workAmount>
+        <workAmount>5000</workAmount>
         <soundWorking>Recipe_Machining</soundWorking>
         <unfinishedThingDef>UnfinishedComponent</unfinishedThingDef>
         <skillRequirements>
-            <Crafting>10</Crafting>
+            <Crafting>15</Crafting>
         </skillRequirements>
-        <jobString>Shaping fuel rods.</jobString>
+        <jobString>Forging Quasar Alloy</jobString>
         <recipeUsers>
-            <li>BOR_Bench_I</li>
+            <li>BOR_Bench_II</li>
         </recipeUsers>
         <products>
-            <BOR_FuelRod>100</BOR_FuelRod>
+            <BOR_QuasarAlloy>25</BOR_QuasarAlloy>
         </products>
-        <!-- <researchPrerequisite>BOR_Research_II_pwr</researchPrerequisite> -->
-    </RecipeDef>
-
-    <RecipeDef>
-        <defName>BOR_Craft_Medicine_I</defName>
-        <label>craft solarite medicine</label>
-        <description>.</description>
-        <ingredients>
-            <li>
-                <filter>
-                    <thingDefs>
-                        <li>MedicineIndustrial</li>
-                    </thingDefs>
-                </filter>
-                <count>1</count>
-            </li>
-            <li>
-                <filter>
-                    <thingDefs>
-                        <li>BOR_Sunsteel</li>
-                    </thingDefs>
-                </filter>
-                <count>5</count>
-            </li>
-            <li>
-                <filter>
-                    <thingDefs>
-                        <li>BOR_Sunweave</li>
-                    </thingDefs>
-                </filter>
-                <count>10</count>
-            </li>
-        </ingredients>
-        <fixedIngredientFilter>
-            <thingDefs>
-                <li>MedicineIndustrial</li>
-                <li>BOR_Sunsteel</li>
-                <li>BOR_Sunweave</li>
-            </thingDefs>
-        </fixedIngredientFilter>
-        <workSkill>Crafting</workSkill>
-        <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
-        <workAmount>1500</workAmount>
-        <soundWorking>Recipe_Machining</soundWorking>
-        <unfinishedThingDef>UnfinishedComponent</unfinishedThingDef>
-        <skillRequirements>
-            <Crafting>12</Crafting>
-            <Intellectual>8</Intellectual>
-        </skillRequirements>
-        <jobString>Crafting Solarite medicine</jobString>
-        <recipeUsers>
-            <li>BOR_Bench_I</li>
-        </recipeUsers>
-        <products>
-            <BOR_MedicineI>1</BOR_MedicineI>
-        </products>
-        <!-- <researchPrerequisite>BOR_Research_II_medicine</researchPrerequisite> -->
-    </RecipeDef>
-
-    <RecipeDef>
-        <defName>BOR_Craft_Medicine_Bulk_I</defName>
-        <label>craft solarite medicine in bulk</label>
-        <description>.</description>
-        <ingredients>
-            <li>
-                <filter>
-                    <thingDefs>
-                        <li>MedicineIndustrial</li>
-                    </thingDefs>
-                </filter>
-                <count>10</count>
-            </li>
-            <li>
-                <filter>
-                    <thingDefs>
-                        <li>BOR_Sunsteel</li>
-                    </thingDefs>
-                </filter>
-                <count>50</count>
-            </li>
-            <li>
-                <filter>
-                    <thingDefs>
-                        <li>BOR_Sunweave</li>
-                    </thingDefs>
-                </filter>
-                <count>100</count>
-            </li>
-        </ingredients>
-        <fixedIngredientFilter>
-            <thingDefs>
-                <li>MedicineIndustrial</li>
-                <li>BOR_Sunsteel</li>
-                <li>BOR_Sunweave</li>
-            </thingDefs>
-        </fixedIngredientFilter>
-        <workSkill>Crafting</workSkill>
-        <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
-        <workAmount>12500</workAmount>
-        <soundWorking>Recipe_Machining</soundWorking>
-        <unfinishedThingDef>UnfinishedComponent</unfinishedThingDef>
-        <skillRequirements>
-            <Crafting>14</Crafting>
-            <Intellectual>10</Intellectual>
-        </skillRequirements>
-        <jobString>Crafting Solarite medicine in bulk</jobString>
-        <recipeUsers>
-            <li>BOR_Bench_I</li>
-        </recipeUsers>
-        <products>
-            <BOR_MedicineI>10</BOR_MedicineI>
-        </products>
-        <!-- <researchPrerequisite>BOR_Research_II_medicine</researchPrerequisite> -->
+        <!-- <researchPrerequisite>BOR_Bench_I</researchPrerequisite> -->
     </RecipeDef>
 </Defs>

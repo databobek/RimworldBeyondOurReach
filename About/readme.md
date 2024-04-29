@@ -47,7 +47,7 @@ Please mind that some of the buildings have been resized for balance and looks. 
 New functionalities introduced are mostly related to the Vanilla Expanded team's pipeline network, which is now the main way to interact with the Neutronium, which lore-wise is the center of the technological advancements in AotC.
 
 * Neutronium is produced in the Quasar Fabricator
-* You should use it to feed the Neutronium pipeline, which is built using Starsteel (again, lore accurate).
+* You should use it to feed the Neutronium pipeline, which is built using sunsteel (again, lore accurate).
 * Atomic Fabricator and the R.I.F.T. Fabricator no longer use Neutronium as ingredients, but use *nothing* as ingredients. This makes them follow the same logic as the ultimate workbench - the Utopia Device - which does not use ingredients either.
 * Atomic Fabricator recipes no longer take a constant amount of work to complete, they all vary and the speed is based on the old value of the amount of Neutronium used for a recipe.
 * All the recipes should now use the General Labor Speed as the base of the speed of creation.
@@ -103,7 +103,7 @@ One of the main stoppers and your nemesis on the road to eternity will be the so
 
 ### Fire Control Computers
 Since I'm the inventor of this mod (developed by legodude17), I couldn't leave it unattended. It's integrated in the following way:
-* Ultratech Fire Control Tower is now considered Generation 1 and uses Starsteel to be built
+* Ultratech Fire Control Tower is now considered Generation 1 and uses sunsteel to be built
 * Quasar Fire Control Tower is now Generation 2 and has a new texture to fit to it
 * Enigmatic Fire Control Tower is introduced to Generation 3 as mockery of the Archotech Fire Control Tower (both are the same in function, but Archotech can be received as reward).
 
@@ -133,7 +133,7 @@ One of my all-time favorites, the Omni Core Drill allows you to drill the planet
 * Requires a lot of AotC's resources to be built
 * Needs 20000W, not 2000W
     * Change also reflected if you use the Re-Powered mod
-* Locked behind Advanced Starsteel Production with its custom research project.
+* Locked behind Advanced sunsteel Production with its custom research project.
 
 ### EGI Holograms and Projectors (TBD)
 Beautiful addition for the high-tech colonies, the projectors are integrated:

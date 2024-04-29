@@ -1,5 +1,80 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Defs>
+  <ThingDef ParentName="BuildingBase">
+    <defName>BOR_SolarGeothermalPowerGenerator</defName>
+    <label>solar geothermal generator</label>
+    <description>This solar geothermal generator not only produces a lot of power, [DBH]but can also double as water generator.[/DBH]</description>
+    <thingClass>Building</thingClass>
+    <graphicData>
+      <texPath>BOR/Retextures/geothermaltier1</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(7.5,8)</drawSize>
+      <shadowData>
+        <volume>(6.03,1.0,5.25)</volume>
+        <offset>(0,0,-0.25)</offset>
+      </shadowData>
+      <damageData>
+        <rect>(0.3,0,5.4,6)</rect>
+      </damageData>
+    </graphicData>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>Impassable</passability>
+    <blockWind>true</blockWind>
+    <scatterableOnMapGen>false</scatterableOnMapGen>
+    <fillPercent>1</fillPercent>
+    <blockLight>true</blockLight>
+    <canOverlapZones>false</canOverlapZones>
+    <statBases>
+      <MaxHitPoints>1000</MaxHitPoints>
+      <WorkToBuild>36000</WorkToBuild>
+      <Flammability>0.5</Flammability>
+      <Beauty>-5</Beauty>
+    </statBases>
+    <tickerType>Normal</tickerType>
+    <size>(6,6)</size>
+    <costList>
+      <BOR_Sunsteel>300</BOR_Sunsteel>
+      <ComponentSpacer>6</ComponentSpacer>
+    </costList>
+    <comps>
+      <li MayRequire="dubwise.dubsbadhygiene" Class="DubsBadHygiene.CompProperties_Pipe">
+        <mode>Sewage</mode>
+      </li>
+      <li MayRequire="dubwise.dubsbadhygiene" Class="DubsBadHygiene.CompProperties_WaterInlet">
+        <Radius>500.9</Radius>
+      </li>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerPlantSteam</compClass>
+        <basePowerConsumption>-15000</basePowerConsumption>
+        <transmitsPower>true</transmitsPower>
+      </li>
+      <li Class="CompProperties_Breakdownable" />
+    </comps>
+    <rotatable>false</rotatable>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+    <designationCategory>Power</designationCategory>
+    <placeWorkers>
+      <li MayRequire="dubwise.dubsbadhygiene">DubsBadHygiene.PlaceWorker_WaterGrid</li>
+      <li MayRequire="dubwise.dubsbadhygiene">DubsBadHygiene.PlaceWorker_SewageGrid</li>
+      <li MayRequire="dubwise.dubsbadhygiene">DubsBadHygiene.PlaceWorker_UserGrid</li>
+      <li>PlaceWorker_OnSteamGeyser</li>
+    </placeWorkers>
+    <building>
+      <ai_chillDestination>false</ai_chillDestination>
+      <soundAmbient>GeothermalPlant_Ambience</soundAmbient>
+      <destroySound>BuildingDestroyed_Metal_Big</destroySound>
+    </building>
+    <constructEffect>ConstructMetal</constructEffect>
+    <designationHotKey>Misc6</designationHotKey>
+    <researchPrerequisites>
+      <li>BOR_Research_I</li>
+      <li>GeothermalPower</li>
+    </researchPrerequisites>
+    <modExtensions>
+      <li MayRequire="dubwise.dubsbadhygiene" Class="DubsBadHygiene.BuildWaterExt" />
+    </modExtensions>
+    <constructionSkillPrerequisite>12</constructionSkillPrerequisite>
+  </ThingDef>
 
   <ThingDef ParentName="BuildingBase">
     <defName>BOR_Reactor_I</defName>
@@ -84,6 +159,7 @@
       <li>Electricity</li>
     </researchPrerequisites>
     <constructionSkillPrerequisite>9</constructionSkillPrerequisite>
+    <designatorDropdown>BOR_Reactors</designatorDropdown>
   </ThingDef>
 
 
@@ -156,6 +232,7 @@
     <researchPrerequisites>
       <li>Batteries</li>
     </researchPrerequisites>
+    <designatorDropdown>BOR_Batteries</designatorDropdown>
   </ThingDef>
 
 </Defs>

@@ -74,6 +74,7 @@
       <li>PlaceWorker_ShowFacilitiesConnections</li>
       <li>PlaceWorker_PreventInteractionSpotOverlap</li>
     </placeWorkers>
+    <designatorDropdown>BOR_Workbenches</designatorDropdown>
   </ThingDef>
 
   <ThingDef ParentName="BenchBase">
@@ -142,5 +143,71 @@
       <li>Electricity</li>
     </researchPrerequisites>
     <rotatable>false</rotatable>
+    <designatorDropdown>BOR_Workbenches</designatorDropdown>
+  </ThingDef>
+
+
+  <ThingDef ParentName="BenchBase">
+    <defName>BOR_MedicineBench_II</defName>
+    <label>kwazaari medical fabricator</label>
+    <description>A work bench equipped with containers, heaters, and measurement devices for producing various drugs.</description>
+    <thingClass>Building_WorkTable</thingClass>
+    <graphicData>
+      <texPath>BOR/Things/Building/tier2/medicine_bench</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawSize>(4,4)</drawSize>
+      <drawOffset>(0,4,0.05)</drawOffset>
+    </graphicData>
+    <castEdgeShadows>true</castEdgeShadows>
+    <staticSunShadowHeight>0.20</staticSunShadowHeight>
+    <costList>
+      <BOR_QuasarAlloy>125</BOR_QuasarAlloy>
+      <BOR_ComponentII>6</BOR_ComponentII>
+    </costList>
+    <altitudeLayer>Building</altitudeLayer>
+    <fillPercent>0.5</fillPercent>
+    <useHitPoints>True</useHitPoints>
+    <statBases>
+      <WorkToBuild>7875</WorkToBuild>
+      <MaxHitPoints>270</MaxHitPoints>
+      <Flammability>0.694</Flammability>
+    </statBases>
+    <size>(1,1)</size>
+    <designationCategory>Production</designationCategory>
+    <passability>PassThroughOnly</passability>
+    <pathCost>50</pathCost>
+    <hasInteractionCell>True</hasInteractionCell>
+    <interactionCellOffset>(0,0,-1)</interactionCellOffset>
+    <surfaceType>Item</surfaceType>
+    <constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+    <inspectorTabs>
+      <li>ITab_Bills</li>
+    </inspectorTabs>
+    <building>
+      <spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+      <paintable>true</paintable>
+    </building>
+    <comps>
+      <li Class="CompProperties_AffectedByFacilities">
+        <linkableFacilities>
+          <li>ToolCabinet</li>
+        </linkableFacilities>
+      </li>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerPlant</compClass>
+        <basePowerConsumption>-15000</basePowerConsumption>
+        <transmitsPower>true</transmitsPower>
+        <shortCircuitInRain>false</shortCircuitInRain>
+      </li>
+    </comps>
+    <placeWorkers>
+      <li>PlaceWorker_ShowFacilitiesConnections</li>
+      <li>PlaceWorker_PreventInteractionSpotOverlap</li>
+    </placeWorkers>
+    <!-- todo -->
+    <!-- <researchPrerequisites>
+      <li>DrugProduction</li>
+    </researchPrerequisites> -->
+    <designatorDropdown>BOR_MedicineBenches</designatorDropdown>
   </ThingDef>
 </Defs>

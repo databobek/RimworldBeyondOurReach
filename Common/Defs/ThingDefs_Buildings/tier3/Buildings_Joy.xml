@@ -65,6 +65,7 @@
     <tradeTags>
       <li>Television</li>
     </tradeTags>
+    <designatorDropdown>BOR_TVs</designatorDropdown>
   </ThingDef>
 
   <ThingDef ParentName="BuildingBase">
@@ -116,6 +117,74 @@
       <li>PlaceWorker_NotUnderRoof</li>
       <li>PlaceWorker_PreventInteractionSpotOverlap</li>
     </placeWorkers>
+    <designatorDropdown>BOR_Telescopes</designatorDropdown>
   </ThingDef>
 
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>BOR_PC_III</defName>
+    <label>tenebral personal computer</label>
+    <description>A high tech computer with utilising an LCD monitor and better performance parts that are less prone to crashing. Gives a boost to learning after use.</description>
+    <graphicData>
+      <texPath>BOR/Things/Building/tier3/computer</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawOffsetNorth>(0.25, 0, 0.1)</drawOffsetNorth>
+      <drawOffsetSouth>(-0.25, 0, 0.1)</drawOffsetSouth>
+    </graphicData>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <altitudeLayer>Building</altitudeLayer>
+    <drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+    <rotatable>true</rotatable>
+    <socialPropernessMatters>true</socialPropernessMatters>
+    <thingCategories>
+      <li>BuildingsJoy</li>
+    </thingCategories>
+    <statBases>
+      <MaxHitPoints>337</MaxHitPoints>
+      <WorkToBuild>67500</WorkToBuild>
+      <Mass>10</Mass>
+      <Flammability>0.6625</Flammability>
+      <JoyGainFactor>3.7125</JoyGainFactor>
+    </statBases>
+    <size>(2,1)</size>
+    <defaultPlacingRot>South</defaultPlacingRot>
+    <!-- todo -->
+    <!-- <researchPrerequisites>
+      <li>FlatscreenTelevision</li>
+    </researchPrerequisites> -->
+    <constructionSkillPrerequisite>15</constructionSkillPrerequisite>
+    <building>
+      <joyKind>BOR_GamerFun</joyKind>
+      <watchBuildingStandDistanceRange>
+        <min>1</min>
+        <max>1</max>
+      </watchBuildingStandDistanceRange>
+      <watchBuildingStandRectWidth>2</watchBuildingStandRectWidth>
+      <paintable>true</paintable>
+    </building>
+    <costList>
+      <BOR_Tenebrite>100</BOR_Tenebrite>
+      <BOR_ComponentIII>10</BOR_ComponentIII>
+    </costList>
+    <pathCost>40</pathCost>
+    <designationCategory>Joy</designationCategory>
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <shortCircuitInRain>true</shortCircuitInRain>
+        <basePowerConsumption>6075</basePowerConsumption>
+      </li>
+      <li Class="CompProperties_Flickable" />
+    </comps>
+    <tradeTags>
+      <li>Television</li>
+    </tradeTags>
+    <uiIconScale>1</uiIconScale>
+    <hasInteractionCell>True</hasInteractionCell>
+    <interactionCellOffset>(0,0,1)</interactionCellOffset>
+    <placeWorkers>
+      <li>PlaceWorker_PreventInteractionSpotOverlap</li>
+    </placeWorkers>
+    <designatorDropdown>BOR_PCs</designatorDropdown>
+  </ThingDef>
 </Defs>

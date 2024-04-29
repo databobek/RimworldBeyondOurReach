@@ -78,6 +78,7 @@
       <li>PlaceWorker_ShowFacilitiesConnections</li>
       <li>PlaceWorker_PreventInteractionSpotOverlap</li>
     </placeWorkers>
+    <designatorDropdown>BOR_Workbenches</designatorDropdown>
   </ThingDef>
 
   <ThingDef ParentName="BenchBase">
@@ -150,12 +151,13 @@
       <li>Electricity</li>
     </researchPrerequisites>
     <rotatable>false</rotatable>
+    <designatorDropdown>BOR_Workbenches</designatorDropdown>
   </ThingDef>
 
 
   <ThingDef ParentName="BenchBase">
     <defName>BOR_MedicineBench_I</defName>
-    <label>medical fabricator</label>
+    <label>solar medical fabricator</label>
     <description>A work bench equipped with containers, heaters, and measurement devices for producing various drugs.</description>
     <thingClass>Building_WorkTable</thingClass>
     <graphicData>
@@ -199,6 +201,12 @@
           <li>ToolCabinet</li>
         </linkableFacilities>
       </li>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerPlant</compClass>
+        <basePowerConsumption>-7500</basePowerConsumption>
+        <transmitsPower>true</transmitsPower>
+        <shortCircuitInRain>false</shortCircuitInRain>
+      </li>
     </comps>
     <placeWorkers>
       <li>PlaceWorker_ShowFacilitiesConnections</li>
@@ -208,6 +216,7 @@
     <!-- <researchPrerequisites>
       <li>DrugProduction</li>
     </researchPrerequisites> -->
+    <designatorDropdown>BOR_MedicineBenches</designatorDropdown>
   </ThingDef>
 
 </Defs>
