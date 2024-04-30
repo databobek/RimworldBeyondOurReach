@@ -17,7 +17,7 @@ I've wanted to share my meta-concept with other gamers, so I've decided ot cobbl
 Let's delve *beyond* the Ambition of the Quasar.
 
 ## Design decisions
-While I didn't really want to change or interfere with the lore of the AotC in any way, I did find the artistic direction lacking. Thus why the retextured assets now all have very distinct look and feel between the "Generations" of the technologies.
+While I didn't really want to change or interfere with the lore of the BOR in any way, I did find the artistic direction lacking. Thus why the retextured assets now all have very distinct look and feel between the "Generations" of the technologies.
 
 *Solar*, the first generation is colorful and quite flashy with blues and oranges sprinkled atop silvery constructs. These buildings do not favor form over function, so we tried to make them both utilitarian and pretty. Think of it a bit of a pre-glitter, approaching Star Trek levels of technology - peak of humanity which people refer to in stories of the civilizations long gone.
 
@@ -26,11 +26,11 @@ While I didn't really want to change or interfere with the lore of the AotC in a
 *Enigmatic*, the last generation is shrouded in the black and red tints, which we called the *faux-archotech*. These buildings favor form over function, their function is *tenebral* and they serve as a spite to the golden archotechs. Think of it as the technology of the far future, held by people no longer considering themselves human and yet desperately clinging to the last shreds of their souls. This technology is as ominous as grasping the threads of reality itself.
 
 ---
-AotC itself offers a plethora of great content, starting with bionics that elegantly extend the gameplay from surviving to becoming technological gods, ending with infinite power sources and fabricators creating resources out of the void itself. However, I've found it misses 2 pieces of the "puzzle".
+BOR itself offers a plethora of great content, starting with bionics that elegantly extend the gameplay from surviving to becoming technological gods, ending with infinite power sources and fabricators creating resources out of the void itself. However, I've found it misses 2 pieces of the "puzzle".
 
 First thing I didn't like is the obvious lack of automation. These walking gods, knowing everything about everything have to still manually go into the machine to pull out whatever they need - handling the ubiquitous yet mysterious Neutronium with their bare hands?
 
-Second thing I didn't like was that there's dozens of high-tech mods which would very obviously translate into the concepts built by AotC, yet there was no effort to try to integrate them. (This can also be extrapolated to Rimworld modding in general, where most of the mods live in their own disconnected universes).
+Second thing I didn't like was that there's dozens of high-tech mods which would very obviously translate into the concepts built by BOR, yet there was no effort to try to integrate them. (This can also be extrapolated to Rimworld modding in general, where most of the mods live in their own disconnected universes).
 
 ## Changes and guide
 This part aims to tell the new player where the new content fits, how to activate it and how is it useful.
@@ -40,11 +40,11 @@ When loading BOR for the first time, you'll want to start a new save. There's a 
 
 First thing you'll notice is that all the buildings, resources and some of the equipment looks different. That's right - all the buildings have been retextured. Hope you like it!
 
-There's also another "first" thing you'll notice, and that's the *UI QOL improvements* I've decided to implements. All of the buildings that relate to each other have now been placed in designator dropdowns - you might remember them from how Bionic tables are handled in base AotC. All the buildings related to AotC are now found in a separate Architect tab called "Beyond" -- this also extend to *integrated mods*.
+There's also another "first" thing you'll notice, and that's the *UI QOL improvements* I've decided to implements. All of the buildings that relate to each other have now been placed in designator dropdowns - you might remember them from how Bionic tables are handled in base BOR. All the buildings related to BOR are now found in a separate Architect tab called "Beyond" -- this also extend to *integrated mods*.
 
 Please mind that some of the buildings have been resized for balance and looks. Mostly for looks! For example the Portable Reactors are now *high* not *deep*.
 
-New functionalities introduced are mostly related to the Vanilla Expanded team's pipeline network, which is now the main way to interact with the Neutronium, which lore-wise is the center of the technological advancements in AotC.
+New functionalities introduced are mostly related to the Vanilla Expanded team's pipeline network, which is now the main way to interact with the Neutronium, which lore-wise is the center of the technological advancements in BOR.
 
 * Neutronium is produced in the Quasar Fabricator
 * You should use it to feed the Neutronium pipeline, which is built using sunsteel (again, lore accurate).
@@ -76,16 +76,16 @@ MedPod is one of my favourite mods, because of how unusual it is. While most oth
 
 * MedPods now sit in *Beyond* tab
 * MedPods are all under one designator dropdown
-* Building MedPods uses AotC's resources
+* Building MedPods uses BOR's resources
 * MedPods need **a lot** of power
 * MedPod research is locked behind 2nd Generation's medicine research
 * MedPod research takes **a lot of effort**.
 
 ### Replimat
-Similarly to *MedPod*, Replimat takes a job away from your colony - this time, you don't need cooks. Replimat fits perfectly into AotC's high-tech theme, and is also integrated:
+Similarly to *MedPod*, Replimat takes a job away from your colony - this time, you don't need cooks. Replimat fits perfectly into BOR's high-tech theme, and is also integrated:
 * Replimats now sit in *Beyond* tab
 * Replimat buildings are under one designator dropdown
-* Building Replimat network uses AotC's resources
+* Building Replimat network uses BOR's resources
 * Replimat buildings use 10x more power than original
 * Replimat research is locked behind 2nd Generation's food research
 * Replimat research takes far more effort than in original.
@@ -94,7 +94,7 @@ Similarly to *MedPod*, Replimat takes a job away from your colony - this time, y
 One of the main stoppers and your nemesis on the road to eternity will be the solar flare event. Being cut away from all your fancy tech, refineries and fabricators can be super annoying in the later stages of the game. I've integrated the RT Solar Flare Shield:
 
 * Solar Flare Shield now sits in *Beyond* Tab
-* Solar Flare Shield uses AotC's resources to be built
+* Solar Flare Shield uses BOR's resources to be built
 * Solar Flare Shield now has **3 tiers**
     * Generation 1 is worse than the original, takes more power and generates more heat
     * Generation 2 unchanged from the original in its function
@@ -114,8 +114,8 @@ In the theme of removing a problem, Quantum Cooler was an old mod that introduce
 
 * In *Beyond* tab
 * Have their own designator dropdown
-* Uses AotC's materials now
-* Aside from the *prototype* it's now locked behind AotC's various researches with increased costs
+* Uses BOR's materials now
+* Aside from the *prototype* it's now locked behind BOR's various researches with increased costs
 * Patched for use with *Proxy Heat* mod
 * Highest tier buildings, the generators have been changed entirely:
     * they produce 250000W, not 2500W
@@ -124,20 +124,20 @@ In the theme of removing a problem, Quantum Cooler was an old mod that introduce
     * integration with Proxy Heat means that deploying them is highly dangerous (high risk/high reward)
 
 ### Rimmunizations
-Mod that fits with the meta-concept of removing a problem (illnesses) but doesn't really fit with the high-techness. Very simple integration: you can't have AotC drugs without going through the entire Rimmunization tree first.
+Mod that fits with the meta-concept of removing a problem (illnesses) but doesn't really fit with the high-techness. Very simple integration: you can't have BOR drugs without going through the entire Rimmunization tree first.
 
 ### Omni Core Drill
 One of my all-time favorites, the Omni Core Drill allows you to drill the planet for the resources, removing the need for mining/trading expeditions. Integration as follows
 * Sits in *Beyond* tab
 * has new texture!
-* Requires a lot of AotC's resources to be built
+* Requires a lot of BOR's resources to be built
 * Needs 20000W, not 2000W
     * Change also reflected if you use the Re-Powered mod
 * Locked behind Advanced sunsteel Production with its custom research project.
 
 ### EGI Holograms and Projectors (TBD)
 Beautiful addition for the high-tech colonies, the projectors are integrated:
-* production uses AotC's materials
+* production uses BOR's materials
 * expanded and separated research for the many variants of the items in the mod
 * uses more power, because they tend to be OP sometimes.
 
@@ -146,11 +146,11 @@ Very nice use of the linkable functionality that fits well with the never-stoppi
 
 * Each Rimputer research now needs the previous Rimputer connected to the research bench
 * Each Rimputer sits in a designator dropdown (TBD)
-* Quantum Computer is required for each AotC research
+* Quantum Computer is required for each BOR research
 * Quantum Computer has a new texture! (tbd)
 
 ### Archotech Expanded
-In many ways a parallel to the AoTC, Archotech Expanded introduces crazy powerful stuff to build with and crazy bionics.
+In many ways a parallel to the BOR, Archotech Expanded introduces crazy powerful stuff to build with and crazy bionics.
 
 * Nano-, Pico- and Attomachinery is removed entirely
 * the above resources are fully replaced with nano-, pico- and femtoclusters
@@ -172,25 +172,25 @@ All Royalty specific bionics are available in scaled-up versions (Solar, Quasar,
 When Simple Learning is loaded, Solar, Quasar and Enigmatic PCs can be used for learning with better results, scaling with the tier.
 
 ### EPOE Forked
-When EPOE Forked is loaded, you can build and install solar, quasar and tenebral tiers of rib implants, which use the AotC drugs and materials to be built.
+When EPOE Forked is loaded, you can build and install solar, quasar and tenebral tiers of rib implants, which use the BOR drugs and materials to be built.
 
 ### Dub's Bad Hygiene
 When Bad Hygiene is loaded, the DBH bionics are expanded with three more tiers to allow you to inhumanize your humans even more.
 
 ### Star Crafter's Armory
-With Star Crafter's Armory, you're getting all the armours in the three AotC tiers.
+With Star Crafter's Armory, you're getting all the armours in the three BOR tiers.
 
 ### Royal Arsenal
-With Royal Arsenal, you're getting all the armours in the three AotC tiers.
+With Royal Arsenal, you're getting all the armours in the three BOR tiers.
 
 ### Vanilla Armours Expanded
-With Vanilla Armours Expanded, you're getting all the armours in the three AotC tiers.
+With Vanilla Armours Expanded, you're getting all the armours in the three BOR tiers.
 
 ### Rimsenal - Core
-With Rimsenal - Core, you're getting all the armours in the three AotC tiers.
+With Rimsenal - Core, you're getting all the armours in the three BOR tiers.
 
 ### Rimsenal - Augmented Vanilla Pack
-With Rimsenal - Augmented Vanilla Pack, you're getting all the armours in the three AotC tiers.
+With Rimsenal - Augmented Vanilla Pack, you're getting all the armours in the three BOR tiers.
 
 ### Combat Extended
 All the armours described above have their respective CE patches.
