@@ -63,7 +63,7 @@
         <xpath>/Defs/ResearchProjectDef[defName="ArchotechMimicry"]/prerequisites</xpath>
         <value>
             <prerequisites>
-                <li>BOR_Research_V_breakthrough</li>
+                <li>BOR_Research_Production_GenIII</li>
             </prerequisites>
         </value>
     </Operation>
@@ -75,11 +75,19 @@
         </value>
     </Operation>
 
-    <Operation Class="PatchOperationAttributeAdd">
-        <xpath>/Defs/ResearchProjectDef[defName="ArchotechMimicry"]</xpath>
-        <attribute>ParentName</attribute>
-        <value>BOR_Research_Base_GenIII</value>
+    <Operation Class="PatchOperationAdd">
+        <xpath>/Defs/ResearchProjectDef[defName="ArchotechMimicry"]/requiredResearchFacilities</xpath>
+        <value>
+          <li>BOR_Research_Unlocker_III</li>
+        </value>
     </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/ResearchProjectDef[defName="ArchotechMimicry"]</xpath>
+    <value>
+      <tab>BOR_Research_Tab</tab>
+    </value>
+  </Operation>
 
     <Operation Class="PatchOperationReplace">
         <xpath>/Defs/TerrainTemplateDef[defName="NanomachineryFloor"]/costList</xpath>
@@ -214,13 +222,13 @@
     <Operation Class="PatchOperationReplace">
         <xpath>/Defs/ResearchProjectDef[defName="ArchotechMimicry"]/researchViewX</xpath>
         <value>
-            <researchViewX>28.00</researchViewX>
+            <researchViewX>12.00</researchViewX>
         </value>
     </Operation>
     <Operation Class="PatchOperationReplace">
         <xpath>/Defs/ResearchProjectDef[defName="ArchotechMimicry"]/researchViewY</xpath>
         <value>
-            <researchViewY>3.80</researchViewY>
+            <researchViewY>1.25</researchViewY>
         </value>
     </Operation>
 
