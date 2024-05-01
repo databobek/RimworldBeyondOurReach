@@ -1,166 +1,173 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Patch>
-    <Operation Class="PatchOperationReplace">
-        <xpath>/Defs/ResearchProjectDef[defName="AcceleratedCellularRegeneration"]/researchViewX</xpath>
-        <value>
-            <researchViewX>27.00</researchViewX>
-        </value>
-    </Operation>
-    <Operation Class="PatchOperationReplace">
-        <xpath>/Defs/ResearchProjectDef[defName="AcceleratedCellularRegeneration"]/researchViewY</xpath>
-        <value>
-            <researchViewY>3.70</researchViewY>
-        </value>
-    </Operation>
-    <!-- research -->
-    <Operation Class="PatchOperationReplace">
-        <xpath>/Defs/ResearchProjectDef[defName="AcceleratedCellularRegeneration"]/baseCost</xpath>
-        <value>
-            <baseCost>3000000</baseCost>
-        </value>
-    </Operation>
-    <Operation Class="PatchOperationReplace">
-        <xpath>/Defs/ResearchProjectDef[defName="AcceleratedCellularRegeneration"]/techLevel</xpath>
-        <value>
-            <techLevel>Archotech</techLevel>
-        </value>
-    </Operation>
-    <Operation Class="PatchOperationReplace">
-        <xpath>/Defs/ResearchProjectDef[defName="AcceleratedCellularRegeneration"]/prerequisites</xpath>
-        <value>
-            <prerequisites>
-                <li>BOR_Research_III_medicine</li>
-            </prerequisites>
-        </value>
-    </Operation>
-    <Operation Class="PatchOperationAdd">
-        <xpath>/Defs/ResearchProjectDef[defName="AcceleratedCellularRegeneration"]/requiredResearchFacilities</xpath>
-        <value>
-            <li>BOR_Linkable_Unlocker_GenII</li>
-        </value>
-    </Operation>
-    <!-- costs -->
-    <Operation Class="PatchOperationReplace">
-        <xpath>/Defs/ThingDef[defName="MedPodStandard" or defName="MedPodAnimalMedium"]/costList</xpath>
-        <value>
+  <!-- research -->
+  <Operation Class="PatchOperationReplace">
+    <xpath>/Defs/ResearchProjectDef[defName="AcceleratedCellularRegeneration"]/researchViewX</xpath>
+    <value>
+      <researchViewX>14.00</researchViewX>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace">
+    <xpath>/Defs/ResearchProjectDef[defName="AcceleratedCellularRegeneration"]/researchViewY</xpath>
+    <value>
+      <researchViewY>3.75</researchViewY>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace">
+    <xpath>/Defs/ResearchProjectDef[defName="AcceleratedCellularRegeneration"]/baseCost</xpath>
+    <value>
+      <baseCost>3000000</baseCost>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace">
+    <xpath>/Defs/ResearchProjectDef[defName="AcceleratedCellularRegeneration"]/techLevel</xpath>
+    <value>
+      <techLevel>Archotech</techLevel>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace">
+    <xpath>/Defs/ResearchProjectDef[defName="AcceleratedCellularRegeneration"]/prerequisites</xpath>
+    <value>
+      <prerequisites>
+        <li>BOR_Research_Medicine_GenIII</li>
+      </prerequisites>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/ResearchProjectDef[defName="AcceleratedCellularRegeneration"]/requiredResearchFacilities</xpath>
+    <value>
+      <li>BOR_Linkable_Unlocker_III</li>
+      <li MayRequireAnyOf="joeyjoejoeshabidoo.rimputers1.4,hol.rimputersforked">Rimputer_quantumcomputer</li>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/ResearchProjectDef[defName="AcceleratedCellularRegeneration"]</xpath>
+    <value>
+      <tab>BOR_Research_Tab</tab>
+    </value>
+  </Operation>
+  <!-- costs -->
+  <Operation Class="PatchOperationReplace">
+    <xpath>/Defs/ThingDef[defName="MedPodStandard" or defName="MedPodAnimalMedium"]/costList</xpath>
+    <value>
+      <costList>
+        <ComponentSpacer>12</ComponentSpacer>
+        <BOR_ComponentII>8</BOR_ComponentII>
+        <IsolinearProcessor>1</IsolinearProcessor>
+        <BOR_QuasarAlloy>200</BOR_QuasarAlloy>
+        <BOR_Sunsteel>80</BOR_Sunsteel>
+        <BOR_Picoclusters>1</BOR_Picoclusters>
+      </costList>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace">
+    <xpath>/Defs/ThingDef[defName="MedPodAnimal"]/costList</xpath>
+    <value>
+      <costList>
+        <ComponentSpacer>6</ComponentSpacer>
+        <BOR_ComponentII>4</BOR_ComponentII>
+        <IsolinearProcessor>1</IsolinearProcessor>
+        <BOR_QuasarAlloy>100</BOR_QuasarAlloy>
+        <BOR_Sunsteel>40</BOR_Sunsteel>
+        <BOR_Picoclusters>1</BOR_Picoclusters>
+      </costList>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace">
+    <xpath>/Defs/ThingDef[defName="MedPodAnimalBig"]/costList</xpath>
+    <value>
+      <costList>
+        <ComponentSpacer>16</ComponentSpacer>
+        <BOR_ComponentII>12</BOR_ComponentII>
+        <IsolinearProcessor>1</IsolinearProcessor>
+        <BOR_QuasarAlloy>300</BOR_QuasarAlloy>
+        <BOR_Sunsteel>120</BOR_Sunsteel>
+        <BOR_Picoclusters>1</BOR_Picoclusters>
+      </costList>
+    </value>
+  </Operation>
+  <!-- power -->
+  <Operation Class="PatchOperationReplace">
+    <xpath>/Defs/ThingDef[defName="MedPodStandard"]/comps/li[@Class="CompProperties_Power"]/basePowerConsumption</xpath>
+    <value>
+      <basePowerConsumption>50000</basePowerConsumption>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace">
+    <xpath>/Defs/ThingDef[defName="MedPodAnimal"]/comps/li[@Class="CompProperties_Power"]/basePowerConsumption</xpath>
+    <value>
+      <basePowerConsumption>15000</basePowerConsumption>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace">
+    <xpath>/Defs/ThingDef[defName="MedPodAnimalMedium"]/comps/li[@Class="CompProperties_Power"]/basePowerConsumption</xpath>
+    <value>
+      <basePowerConsumption>30000</basePowerConsumption>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace">
+    <xpath>/Defs/ThingDef[defName="MedPodAnimalBig"]/comps/li[@Class="CompProperties_Power"]/basePowerConsumption</xpath>
+    <value>
+      <basePowerConsumption>65000</basePowerConsumption>
+    </value>
+  </Operation>
+  <!-- category -->
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/ThingDef[defName="MedPodAnimalBig" or defName="MedPodAnimalMedium" or defName="MedPodAnimal" or defName="MedPodStandard"]</xpath>
+    <value>
+      <designationCategory>BOR</designationCategory>
+    </value>
+  </Operation>
+  <!-- dropdown -->
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/ThingDef[defName="MedPodAnimalBig" or defName="MedPodAnimalMedium" or defName="MedPodAnimal" or defName="MedPodStandard"]</xpath>
+    <value>
+      <designatorDropdown>BOR_MedPod</designatorDropdown>
+    </value>
+  </Operation>
+  <!-- luxpod -->
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>Royalty</li>
+    </mods>
+    <match Class="PatchOperationSequence">
+      <operations>
+        <li Class="PatchOperationReplace">
+          <xpath>/Defs/ThingDef[defName="MedPodLux"]/costList</xpath>
+          <value>
             <costList>
-                <ComponentSpacer>12</ComponentSpacer>
-                <BOR_ComponentII>8</BOR_ComponentII>
-                <IsolinearProcessor>1</IsolinearProcessor>
-                <BOR_QuasarAlloy>200</BOR_QuasarAlloy>
-                <BOR_Sunsteel>80</BOR_Sunsteel>
-                <BOR_Picoclusters>1</BOR_Picoclusters>
+              <ComponentSpacer>16</ComponentSpacer>
+              <BOR_ComponentII>12</BOR_ComponentII>
+              <IsolinearProcessor>1</IsolinearProcessor>
+              <BOR_QuasarAlloy>300</BOR_QuasarAlloy>
+              <BOR_Sunsteel>120</BOR_Sunsteel>
+              <BOR_Picoclusters>1</BOR_Picoclusters>
+              <Gold>500</Gold>
             </costList>
-        </value>
-    </Operation>
-    <Operation Class="PatchOperationReplace">
-        <xpath>/Defs/ThingDef[defName="MedPodAnimal"]/costList</xpath>
-        <value>
-            <costList>
-                <ComponentSpacer>6</ComponentSpacer>
-                <BOR_ComponentII>4</BOR_ComponentII>
-                <IsolinearProcessor>1</IsolinearProcessor>
-                <BOR_QuasarAlloy>100</BOR_QuasarAlloy>
-                <BOR_Sunsteel>40</BOR_Sunsteel>
-                <BOR_Picoclusters>1</BOR_Picoclusters>
-            </costList>
-        </value>
-    </Operation>
-    <Operation Class="PatchOperationReplace">
-        <xpath>/Defs/ThingDef[defName="MedPodAnimalBig"]/costList</xpath>
-        <value>
-            <costList>
-                <ComponentSpacer>16</ComponentSpacer>
-                <BOR_ComponentII>12</BOR_ComponentII>
-                <IsolinearProcessor>1</IsolinearProcessor>
-                <BOR_QuasarAlloy>300</BOR_QuasarAlloy>
-                <BOR_Sunsteel>120</BOR_Sunsteel>
-                <BOR_Picoclusters>1</BOR_Picoclusters>
-            </costList>
-        </value>
-    </Operation>
-    <!-- power -->
-    <Operation Class="PatchOperationReplace">
-        <xpath>/Defs/ThingDef[defName="MedPodStandard"]/comps/li[@Class="CompProperties_Power"]/basePowerConsumption</xpath>
-        <value>
+          </value>
+        </li>
+        <!-- power -->
+        <li Class="PatchOperationReplace">
+          <xpath>/Defs/ThingDef[defName="MedPodLux"]/comps/li[@Class="CompProperties_Power"]/basePowerConsumption</xpath>
+          <value>
             <basePowerConsumption>50000</basePowerConsumption>
-        </value>
-    </Operation>
-    <Operation Class="PatchOperationReplace">
-        <xpath>/Defs/ThingDef[defName="MedPodAnimal"]/comps/li[@Class="CompProperties_Power"]/basePowerConsumption</xpath>
-        <value>
-            <basePowerConsumption>15000</basePowerConsumption>
-        </value>
-    </Operation>
-    <Operation Class="PatchOperationReplace">
-        <xpath>/Defs/ThingDef[defName="MedPodAnimalMedium"]/comps/li[@Class="CompProperties_Power"]/basePowerConsumption</xpath>
-        <value>
-            <basePowerConsumption>30000</basePowerConsumption>
-        </value>
-    </Operation>
-    <Operation Class="PatchOperationReplace">
-        <xpath>/Defs/ThingDef[defName="MedPodAnimalBig"]/comps/li[@Class="CompProperties_Power"]/basePowerConsumption</xpath>
-        <value>
-            <basePowerConsumption>65000</basePowerConsumption>
-        </value>
-    </Operation>
-    <!-- category -->
-    <Operation Class="PatchOperationAdd">
-        <xpath>/Defs/ThingDef[defName="MedPodAnimalBig" or defName="MedPodAnimalMedium" or defName="MedPodAnimal" or defName="MedPodStandard"]</xpath>
-        <value>
+          </value>
+        </li>
+        <!-- category -->
+        <li Class="PatchOperationAdd">
+          <xpath>/Defs/ThingDef[defName="MedPodLux"]</xpath>
+          <value>
             <designationCategory>BOR</designationCategory>
-        </value>
-    </Operation>
-    <!-- dropdown -->
-    <Operation Class="PatchOperationAdd">
-        <xpath>/Defs/ThingDef[defName="MedPodAnimalBig" or defName="MedPodAnimalMedium" or defName="MedPodAnimal" or defName="MedPodStandard"]</xpath>
-        <value>
+          </value>
+        </li>
+        <!-- dropdown -->
+        <li Class="PatchOperationAdd">
+          <xpath>/Defs/ThingDef[defName="MedPodLux"]</xpath>
+          <value>
             <designatorDropdown>BOR_MedPod</designatorDropdown>
-        </value>
-    </Operation>
-    <!-- luxpod -->
-    <Operation Class="PatchOperationFindMod">
-        <mods>
-            <li>Royalty</li>
-        </mods>
-        <match Class="PatchOperationSequence">
-            <operations>
-                <li Class="PatchOperationReplace">
-                    <xpath>/Defs/ThingDef[defName="MedPodLux"]/costList</xpath>
-                    <value>
-                        <costList>
-                            <ComponentSpacer>16</ComponentSpacer>
-                            <BOR_ComponentII>12</BOR_ComponentII>
-                            <IsolinearProcessor>1</IsolinearProcessor>
-                            <BOR_QuasarAlloy>300</BOR_QuasarAlloy>
-                            <BOR_Sunsteel>120</BOR_Sunsteel>
-                            <BOR_Picoclusters>1</BOR_Picoclusters>
-                            <Gold>500</Gold>
-                        </costList>
-                    </value>
-                </li>
-                <!-- power -->
-                <li Class="PatchOperationReplace">
-                    <xpath>/Defs/ThingDef[defName="MedPodLux"]/comps/li[@Class="CompProperties_Power"]/basePowerConsumption</xpath>
-                    <value>
-                        <basePowerConsumption>50000</basePowerConsumption>
-                    </value>
-                </li>
-                <!-- category -->
-                <li Class="PatchOperationAdd">
-                    <xpath>/Defs/ThingDef[defName="MedPodLux"]</xpath>
-                    <value>
-                        <designationCategory>BOR</designationCategory>
-                    </value>
-                </li>
-                <!-- dropdown -->
-                <li Class="PatchOperationAdd">
-                    <xpath>/Defs/ThingDef[defName="MedPodLux"]</xpath>
-                    <value>
-                        <designatorDropdown>BOR_MedPod</designatorDropdown>
-                    </value>
-                </li>
-            </operations>
-        </match>
-    </Operation>
+          </value>
+        </li>
+      </operations>
+    </match>
+  </Operation>
 </Patch>
