@@ -1,19 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Patch>
-    <Operation Class="PatchOperationInsert">
+    <Operation Class="PatchOperationConditional">
         <xpath>/Defs/RecipeDef/ingredients/li/filter/thingDefs/li[contains(text(), "MedicineUltratech")]</xpath>
-        <value>
-            <li>BOR_MedicineI</li>
-            <li>BOR_MedicineII</li>
-            <li>BOR_MedicineIII</li>
-        </value>
+        <match Class="PatchOperationInsert">
+            <xpath>/Defs/RecipeDef/ingredients/li/filter/thingDefs/li[contains(text(), "MedicineUltratech")]</xpath>
+            <value>
+                <li>BOR_MedicineI</li>
+                <li>BOR_MedicineII</li>
+                <li>BOR_MedicineIII</li>
+            </value>
+        </match>
     </Operation>
-    <Operation Class="PatchOperationInsert">
+    <Operation Class="PatchOperationConditional">
         <xpath>/Defs/RecipeDef/fixedIngredientFilter/thingDefs/li[contains(text(), "MedicineUltratech")]</xpath>
-        <value>
-            <li>BOR_MedicineI</li>
-            <li>BOR_MedicineII</li>
-            <li>BOR_MedicineIII</li>
-        </value>
+        <match Class="PatchOperationInsert">
+            <xpath>/Defs/RecipeDef/fixedIngredientFilter/thingDefs/li[contains(text(), "MedicineUltratech")]</xpath>
+            <value>
+                <li>BOR_MedicineI</li>
+                <li>BOR_MedicineII</li>
+                <li>BOR_MedicineIII</li>
+            </value>
+        </match>
     </Operation>
 </Patch>
