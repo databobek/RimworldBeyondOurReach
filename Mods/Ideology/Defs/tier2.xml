@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>BOR_Quasar_SleepAccelerator</defName>
+    <label>quasarite sleep accelerator</label>
+    <description>A quasarite bedside device that accelerates the sleeper's circadian rhythm. This speeds up sleep, but consumes a lot of electricity and also causes increased hunger. It must be placed directly adjacent to and facing the head of the bed. Placing more than one sleep accelerator near the same bed has no effect.</description>
+    <graphicData>
+      <texPath>Ideo/Tier2/SleepAccelerator</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
+      <shadowData>
+        <volume>(0.55, 0.30, 0.40)</volume>
+      </shadowData>
+      <damageData>
+        <rectN>(0.078125,0.46875,0.859375,0.53125)</rectN>
+        <rectS>(0.078125,0.46875,0.859375,0.53125)</rectS>
+        <rectE>(0.125,0.46875,0.625,0.296875)</rectE>
+        <rectW>(0.25,0.46875,0.625,0.296875)</rectW>
+        <cornerTR>Damage/Corner</cornerTR>
+      </damageData>
+    </graphicData>
+    <uiIconScale>0.7</uiIconScale>
+    <defaultPlacingRot>South</defaultPlacingRot>
+    <researchPrerequisites>
+      <li>BOR_Research_Medicine_II</li>
+    </researchPrerequisites>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <fillPercent>0.2</fillPercent>
+    <statBases>
+      <MaxHitPoints>150</MaxHitPoints>
+      <WorkToBuild>9000</WorkToBuild>
+      <Mass>20</Mass>
+      <Flammability>0.5</Flammability>
+    </statBases>
+    <size>(1,1)</size>
+    <costList>
+      <BOR_QuasarAlloy>50</BOR_QuasarAlloy>
+      <BOR_ComponentII>5</BOR_ComponentII>
+    </costList>
+    <constructionSkillPrerequisite>12</constructionSkillPrerequisite>
+    <building>
+      <destroySound>BuildingDestroyed_Metal_Small</destroySound>
+    </building>
+    <designationCategory>Ideology</designationCategory>
+    <uiOrder>2510</uiOrder>
+    <canGenerateDefaultDesignator>false</canGenerateDefaultDesignator>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <thingCategories>
+      <li>BuildingsMisc</li>
+    </thingCategories>
+    <tickerType>Normal</tickerType>
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>500</basePowerConsumption>
+      </li>
+      <li Class="CompProperties_FacilityInUse">
+        <inUsePowerConsumption>1200</inUsePowerConsumption>
+        <effectInUse>SleepAcceleratorActive</effectInUse>
+      </li>
+      <li Class="CompProperties_Flickable" />
+      <li Class="CompProperties_Facility">
+        <statOffsets>
+          <BedRestEffectiveness>0.787</BedRestEffectiveness>
+          <BedHungerRateFactor>0.2</BedHungerRateFactor>
+        </statOffsets>
+        <maxSimultaneous>1</maxSimultaneous>
+        <mustBePlacedAdjacent>true</mustBePlacedAdjacent>
+        <mustBePlacedAdjacentCardinalToAndFacingBedHead>true</mustBePlacedAdjacentCardinalToAndFacingBedHead>
+      </li>
+    </comps>
+    <placeWorkers>
+      <li>PlaceWorker_ShowFacilitiesConnections</li>
+    </placeWorkers>
+  </ThingDef>
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>BOR_Quasar_BiosculpterPod</defName>
+    <label>quasarite biosculpter pod</label>
+    <description>A quasarite immersion pod full of bioactive gel. It can perform a variety of biological alterations including age reversal and pleasure-giving.\n\nThe pod biotunes to its user at the end of a cycle. While biotuned, it cannot be used by anyone else, but cycles will complete 25% more quickly. Biotuning resets if the pod is unused for 80 days.\n\nThe pod consumess 200W of power while working, but only 50W on standby.</description>
+    <containedPawnsSelectable>true</containedPawnsSelectable>
+    <graphicData>
+      <texPath>Ideo/Tier2/BiosculpterPod</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <shadowData>
+        <volume>(2.9,0.6,1.9)</volume>
+      </shadowData>
+      <drawSize>(3, 2)</drawSize>
+    </graphicData>
+    <drawerType>RealtimeOnly</drawerType>
+    <drawGUIOverlay>true</drawGUIOverlay>
+    <defaultPlacingRot>South</defaultPlacingRot>
+    <researchPrerequisites>
+      <li>Biosculpting</li>
+      <li>BOR_Research_Medicine_II</li>
+    </researchPrerequisites>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <pathCost>42</pathCost>
+    <blockWind>true</blockWind>
+    <fillPercent>0.5</fillPercent>
+    <canOverlapZones>false</canOverlapZones>
+    <statBases>
+      <MaxHitPoints>562</MaxHitPoints>
+      <WorkToBuild>63000</WorkToBuild>
+      <Mass>30</Mass>
+      <Flammability>0.3</Flammability>
+      <BiosculpterPodSpeedFactor>2.25</BiosculpterPodSpeedFactor>
+      <Beauty>-3</Beauty>
+    </statBases>
+    <size>(3,2)</size>
+    <interactionCellOffset>(0,0,2)</interactionCellOffset>
+    <hasInteractionCell>true</hasInteractionCell>
+    <costList>
+      <BOR_QuasarAlloy>120</BOR_QuasarAlloy>
+      <BOR_ComponentII>4</BOR_ComponentII>
+    </costList>
+    <constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+    <building>
+      <destroySound>BuildingDestroyed_Metal_Big</destroySound>
+      <haulToContainerDuration>80</haulToContainerDuration>
+      <uninstallWork>1400</uninstallWork>
+      <fixedStorageSettings>
+        <filter>
+          <categories>
+            <li>Foods</li>
+          </categories>
+          <specialFiltersToDisallow>
+            <li>AllowPlantFood</li>
+          </specialFiltersToDisallow>
+          <disallowedThingDefs>
+            <li>Hay</li>
+          </disallowedThingDefs>
+        </filter>
+      </fixedStorageSettings>
+      <defaultStorageSettings>
+        <filter>
+          <categories>
+            <li>Foods</li>
+          </categories>
+          <disallowedCategories>
+            <li>EggsFertilized</li>
+          </disallowedCategories>
+          <disallowedThingDefs>
+            <li>InsectJelly</li>
+            <li>MealLavish</li>
+            <li>MealLavish_Veg</li>
+            <li>MealLavish_Meat</li>
+            <li>Chocolate</li>
+            <li MayRequire="Ludeon.RimWorld.Biotech">HemogenPack</li>
+          </disallowedThingDefs>
+        </filter>
+      </defaultStorageSettings>
+    </building>
+    <resourcesFractionWhenDeconstructed>0.5625</resourcesFractionWhenDeconstructed>
+    <designationCategory>Ideology</designationCategory>
+    <uiOrder>2500</uiOrder>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <thingCategories>
+      <li>BuildingsMisc</li>
+    </thingCategories>
+    <tickerType>Normal</tickerType>
+    <inspectorTabs>
+      <li>ITab_BiosculpterNutritionStorage</li>
+    </inspectorTabs>
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>1000</basePowerConsumption>
+        <idlePowerDraw>250</idlePowerDraw>
+      </li>
+      <li Class="CompProperties_Flickable" />
+      <li Class="CompProperties_BiosculpterPod">
+        <enterSound>BiosculpterPod_Enter</enterSound>
+        <exitSound>BiosculpterPod_Exit</exitSound>
+        <operatingEffecter>BiosculpterPod_Operating</operatingEffecter>
+        <readyEffecter>BiosculpterPod_Ready</readyEffecter>
+        <selectCycleColor>(0.321, 1, 0.349)</selectCycleColor>
+        <biotunedCycleSpeedFactor>1.875</biotunedCycleSpeedFactor>
+      </li>
+      <li Class="CompProperties_BiosculpterPod_HealingCycle">
+        <compClass>CompBiosculpterPod_MedicCycle</compClass>
+        <key>medic</key>
+        <label>medic</label>
+        <description>Heal all fresh wounds, blood loss, and one random infectious disease.</description>
+        <iconPath>UI/Gizmos/BiosculpterCycleHealing</iconPath>
+        <durationDays>4</durationDays>
+        <operatingColor>(0.554,0.887,1.000)</operatingColor>
+        <conditionsToPossiblyCure>
+          <li>Malaria</li>
+          <li>SleepingSickness</li>
+          <li>Flu</li>
+          <li>Plague</li>
+          <li>GutWorms</li>
+          <li>MuscleParasites</li>
+          <li>WoundInfection</li>
+          <li>FibrousMechanites</li>
+          <li>SensoryMechanites</li>
+          <li>FoodPoisoning</li>
+          <li>ToxicBuildup</li>
+          <li>WoundInfection</li>
+        </conditionsToPossiblyCure>
+      </li>
+      <li Class="CompProperties_BiosculpterPod_HealingCycle">
+        <compClass>CompBiosculpterPod_RegenerationCycle</compClass>
+        <key>bioregeneration</key>
+        <label>bioregeneration</label>
+        <description>Heal all fresh wounds, heal one random permanent injury, and restore small missing body parts like fingers and toes.</description>
+        <iconPath>UI/Gizmos/BiosculpterCycleBioregeneration</iconPath>
+        <durationDays>16</durationDays>
+        <operatingColor>(0.554,0.887,1.000)</operatingColor>
+        <extraRequiredIngredients>
+          <BOR_MedicineII>2</BOR_MedicineII>
+        </extraRequiredIngredients>
+        <requiredResearch>
+          <li>Bioregeneration</li>
+          <li>BOR_Research_Medicine_II</li>
+        </requiredResearch>
+        <bodyPartsToRestore>
+          <li>Eye</li>
+          <li>Ear</li>
+          <li>Nose</li>
+          <li>Finger</li>
+          <li>Toe</li>
+          <li>Tongue</li>
+        </bodyPartsToRestore>
+        <conditionsToPossiblyCure>
+          <li>Asthma</li>
+          <li>BadBack</li>
+          <li>Cataract</li>
+          <li>Blindness</li>
+          <li>Frail</li>
+          <li>HearingLoss</li>
+          <li>HeartArteryBlockage</li>
+          <li>FibrousMechanites</li>
+          <li>SensoryMechanites</li>
+          <li>Carcinoma</li>
+          <li>Dementia</li>
+          <li>Alzheimers</li>
+        </conditionsToPossiblyCure>
+      </li>
+      <li Class="CompProperties_BiosculpterPod_AgeReversalCycle">
+        <key>ageReversal</key>
+        <label>age reversal</label>
+        <description>Reverse {DURATION} of aging.</description>
+        <iconPath>UI/Gizmos/BiosculpterCycleAgeReversal</iconPath>
+        <durationDays>5</durationDays>
+        <gainThoughtOnCompletion>AgeReversalReceived</gainThoughtOnCompletion>
+        <operatingColor>(1.000,0.585,0.158)</operatingColor>
+      </li>
+      <li Class="CompProperties_BiosculpterPod_PleasureCycle">
+        <key>pleasure</key>
+        <label>pleasure</label>
+        <description>Temporarily reshape the nervous system to deliver elevated levels of happiness for a time.</description>
+        <iconPath>UI/Gizmos/BiosculpterCyclePleasure</iconPath>
+        <durationDays>4</durationDays>
+        <operatingColor>(1.000,0.918,0.000)</operatingColor>
+      </li>
+    </comps>
+    <placeWorkers>
+      <li>PlaceWorker_PreventInteractionSpotOverlap</li>
+    </placeWorkers>
+  </ThingDef>
+
+</Defs>
