@@ -9,14 +9,14 @@
 			<operations>
 
 				<li Class="PatchOperationReplace">
-					<xpath>Defs/PawnKindDef[defName="BAOTC_Stellar_Mech_Militor"]/combatPower</xpath>
+					<xpath>Defs/PawnKindDef[defName="BOR_Tenebral_Mech_Militor"]/combatPower</xpath>
 					<value>
 						<combatPower>60</combatPower>
 					</value>
 				</li>
 
 				<li Class="PatchOperationAddModExtension">
-					<xpath>Defs/PawnKindDef[defName="BAOTC_Stellar_Mech_Militor"]</xpath>
+					<xpath>Defs/PawnKindDef[defName="BOR_Tenebral_Mech_Militor"]</xpath>
 					<value>
 						<li Class="CombatExtended.LoadoutPropertiesExtension">
 							<primaryMagazineCount>
@@ -29,24 +29,24 @@
 
 
 				<li Class="PatchOperationReplace">
-					<xpath>Defs/ThingDef[@Name="LightStellarMechanoid"]/statBases/ArmorRating_Blunt</xpath>
+					<xpath>Defs/ThingDef[@Name="LightTenebralMechanoid"]/statBases/ArmorRating_Blunt</xpath>
 					<value>
-						<ArmorRating_Blunt>5</ArmorRating_Blunt>
+						<ArmorRating_Blunt>18</ArmorRating_Blunt>
 					</value>
 				</li>
 
 				<li Class="PatchOperationReplace">
-					<xpath>Defs/ThingDef[@Name="LightStellarMechanoid"]/statBases/ArmorRating_Sharp</xpath>
+					<xpath>Defs/ThingDef[@Name="LightTenebralMechanoid"]/statBases/ArmorRating_Sharp</xpath>
 					<value>
-						<ArmorRating_Sharp>3</ArmorRating_Sharp>
+						<ArmorRating_Sharp>12</ArmorRating_Sharp>
 					</value>
 				</li>
 
 				<li Class="PatchOperationAdd">
-					<xpath>Defs/ThingDef[@Name="LightStellarMechanoid"]/statBases</xpath>
+					<xpath>Defs/ThingDef[@Name="LightTenebralMechanoid"]/statBases</xpath>
 					<value>
-						<CarryWeight>75</CarryWeight>
-						<CarryBulk>16</CarryBulk>
+						<CarryWeight>255</CarryWeight>
+						<CarryBulk>8</CarryBulk>
 						<MeleeDodgeChance>0.1</MeleeDodgeChance>
 						<MeleeCritChance>0.04</MeleeCritChance>
 						<MeleeParryChance>0.04</MeleeParryChance>
@@ -54,7 +54,7 @@
 				</li>
 
 				<li Class="PatchOperationReplace">
-					<xpath>Defs/ThingDef[@Name="LightStellarMechanoid"]/tools</xpath>
+					<xpath>Defs/ThingDef[@Name="LightTenebralMechanoid"]/tools</xpath>
 					<value>
 						<tools>
 							<li Class="CombatExtended.ToolCE">
@@ -63,19 +63,19 @@
 									<li>Blunt</li>
 								</capacities>
 								<power>4</power>
-								<cooldownTime>1</cooldownTime>
+								<cooldownTime>0.5</cooldownTime>
 								<linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
 								<ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
-								<armorPenetrationBlunt>0.75</armorPenetrationBlunt>
+								<armorPenetrationBlunt>2.532</armorPenetrationBlunt>
 							</li>
 						</tools>
 					</value>
 				</li>
 
 				<li Class="PatchOperationConditional">
-					<xpath>Defs/ThingDef[defName="BAOTC_Stellar_Mech_Militor"]/comps</xpath>
+					<xpath>Defs/ThingDef[defName="BOR_Tenebral_Mech_Militor"]/comps</xpath>
 					<nomatch Class="PatchOperationAdd">
-						<xpath>Defs/ThingDef[defName="BAOTC_Stellar_Mech_Militor"]</xpath>
+						<xpath>Defs/ThingDef[defName="BOR_Tenebral_Mech_Militor"]</xpath>
 						<value>
 							<comps />
 						</value>
@@ -83,9 +83,9 @@
 				</li>
 
 				<li Class="PatchOperationConditional">
-					<xpath>Defs/ThingDef[defName="BAOTC_Stellar_Mech_Lifter"]/comps</xpath>
+					<xpath>Defs/ThingDef[defName="BOR_Tenebral_Mech_Lifter"]/comps</xpath>
 					<nomatch Class="PatchOperationAdd">
-						<xpath>Defs/ThingDef[defName="BAOTC_Stellar_Mech_Lifter"]</xpath>
+						<xpath>Defs/ThingDef[defName="BOR_Tenebral_Mech_Lifter"]</xpath>
 						<value>
 							<comps />
 						</value>
@@ -93,9 +93,9 @@
 				</li>
 
 				<li Class="PatchOperationConditional">
-					<xpath>Defs/ThingDef[defName="BAOTC_Stellar_Mech_Constructoid"]/comps</xpath>
+					<xpath>Defs/ThingDef[defName="BOR_Tenebral_Mech_Constructoid"]/comps</xpath>
 					<nomatch Class="PatchOperationAdd">
-						<xpath>Defs/ThingDef[defName="BAOTC_Stellar_Mech_Constructoid"]</xpath>
+						<xpath>Defs/ThingDef[defName="BOR_Tenebral_Mech_Constructoid"]</xpath>
 						<value>
 							<comps />
 						</value>
@@ -103,9 +103,9 @@
 				</li>
 
 				<li Class="PatchOperationConditional">
-					<xpath>Defs/ThingDef[defName="BAOTC_Stellar_Mech_Fabricor"]/comps</xpath>
+					<xpath>Defs/ThingDef[defName="BOR_Tenebral_Mech_Fabricor"]/comps</xpath>
 					<nomatch Class="PatchOperationAdd">
-						<xpath>Defs/ThingDef[defName="BAOTC_Stellar_Mech_Fabricor"]</xpath>
+						<xpath>Defs/ThingDef[defName="BOR_Tenebral_Mech_Fabricor"]</xpath>
 						<value>
 							<comps />
 						</value>
@@ -113,9 +113,9 @@
 				</li>
 
 				<li Class="PatchOperationConditional">
-					<xpath>Defs/ThingDef[defName="BAOTC_Stellar_Mech_Agrihand"]/comps</xpath>
+					<xpath>Defs/ThingDef[defName="BOR_Tenebral_Mech_Agrihand"]/comps</xpath>
 					<nomatch Class="PatchOperationAdd">
-						<xpath>Defs/ThingDef[defName="BAOTC_Stellar_Mech_Agrihand"]</xpath>
+						<xpath>Defs/ThingDef[defName="BOR_Tenebral_Mech_Agrihand"]</xpath>
 						<value>
 							<comps />
 						</value>
@@ -123,9 +123,9 @@
 				</li>
 
 				<li Class="PatchOperationConditional">
-					<xpath>Defs/ThingDef[defName="BAOTC_Stellar_Mech_Paramedic"]/comps</xpath>
+					<xpath>Defs/ThingDef[defName="BOR_Tenebral_Mech_Paramedic"]/comps</xpath>
 					<nomatch Class="PatchOperationAdd">
-						<xpath>Defs/ThingDef[defName="BAOTC_Stellar_Mech_Paramedic"]</xpath>
+						<xpath>Defs/ThingDef[defName="BOR_Tenebral_Mech_Paramedic"]</xpath>
 						<value>
 							<comps />
 						</value>
@@ -133,7 +133,7 @@
 				</li>
 
 				<li Class="PatchOperationAdd">
-					<xpath>Defs/ThingDef[defName="BAOTC_Stellar_Mech_Militor" or defName="BAOTC_Stellar_Mech_Lifter" or defName="BAOTC_Stellar_Mech_Constructoid" or defName="BAOTC_Stellar_Mech_Fabricor" or defName="BAOTC_Stellar_Mech_Agrihand" or defName="BAOTC_Stellar_Mech_Paramedic"]/comps</xpath>
+					<xpath>Defs/ThingDef[defName="BOR_Tenebral_Mech_Militor" or defName="BOR_Tenebral_Mech_Lifter" or defName="BOR_Tenebral_Mech_Constructoid" or defName="BOR_Tenebral_Mech_Fabricor" or defName="BOR_Tenebral_Mech_Agrihand" or defName="BOR_Tenebral_Mech_Paramedic"]/comps</xpath>
 					<value>
 						<li Class="CombatExtended.CompProperties_ArmorDurability">
 							<Durability>700</Durability>
@@ -142,8 +142,7 @@
 							<RegenValue>5</RegenValue>
 							<Repairable>true</Repairable>
 							<RepairIngredients>
-								<Plasteel>5</Plasteel>
-								<SNS_Unobtainium>5</SNS_Unobtainium>
+								<BOR_Tenebrite>10</BOR_Tenebrite>
 							</RepairIngredients>
 							<RepairTime>300</RepairTime>
 							<RepairValue>200</RepairValue>
@@ -156,7 +155,7 @@
 
 
 				<li Class="PatchOperationAddModExtension">
-					<xpath>Defs/ThingDef[defName="BAOTC_Stellar_Mech_Militor"]</xpath>
+					<xpath>Defs/ThingDef[defName="BOR_Tenebral_Mech_Militor"]</xpath>
 					<value>
 						<li Class="CombatExtended.RacePropertiesExtensionCE">
 							<bodyShape>Humanoid</bodyShape>
@@ -165,22 +164,22 @@
 				</li>
 
 				<li Class="PatchOperationAdd">
-					<xpath>Defs/ThingDef[defName="BAOTC_Stellar_Mech_Militor"]/statBases</xpath>
+					<xpath>Defs/ThingDef[defName="BOR_Tenebral_Mech_Militor"]/statBases</xpath>
 					<value>
-						<ArmorRating_Blunt>6</ArmorRating_Blunt>
-						<ArmorRating_Sharp>3.75</ArmorRating_Sharp>
-						<AimingAccuracy>2</AimingAccuracy>
-						<ShootingAccuracyPawn>1.875</ShootingAccuracyPawn>
+						<ArmorRating_Blunt>21</ArmorRating_Blunt>
+						<ArmorRating_Sharp>12.657</ArmorRating_Sharp>
+						<AimingAccuracy>8</AimingAccuracy>
+						<ShootingAccuracyPawn>6.327</ShootingAccuracyPawn>
 						<MeleeDodgeChance>0.13</MeleeDodgeChance>
 						<MeleeCritChance>0.05</MeleeCritChance>
 						<MeleeParryChance>0.05</MeleeParryChance>
-						<MaxHitPoints>225</MaxHitPoints>
+						<MaxHitPoints>761</MaxHitPoints>
 					</value>
 				</li>
 
 
 				<li Class="PatchOperationAddModExtension">
-					<xpath>Defs/ThingDef[defName="BAOTC_Stellar_Mech_Lifter"]</xpath>
+					<xpath>Defs/ThingDef[defName="BOR_Tenebral_Mech_Lifter"]</xpath>
 					<value>
 						<li Class="CombatExtended.RacePropertiesExtensionCE">
 							<bodyShape>Humanoid</bodyShape>
@@ -189,16 +188,16 @@
 				</li>
 
 				<li Class="PatchOperationAdd">
-					<xpath>Defs/ThingDef[defName="BAOTC_Stellar_Mech_Lifter"]/statBases</xpath>
+					<xpath>Defs/ThingDef[defName="BOR_Tenebral_Mech_Lifter"]/statBases</xpath>
 					<value>
-						<CarryWeight>90</CarryWeight>
-						<CarryBulk>20</CarryBulk>
+						<CarryWeight>305</CarryWeight>
+						<CarryBulk>10</CarryBulk>
 					</value>
 				</li>
 
 
 				<li Class="PatchOperationAddModExtension">
-					<xpath>Defs/ThingDef[defName="BAOTC_Stellar_Mech_Constructoid"]</xpath>
+					<xpath>Defs/ThingDef[defName="BOR_Tenebral_Mech_Constructoid"]</xpath>
 					<value>
 						<li Class="CombatExtended.RacePropertiesExtensionCE">
 							<bodyShape>Vehicle</bodyShape>
@@ -207,7 +206,7 @@
 				</li>
 
 				<li Class="PatchOperationReplace">
-					<xpath>Defs/ThingDef[defName="BAOTC_Stellar_Mech_Constructoid"]/tools</xpath>
+					<xpath>Defs/ThingDef[defName="BOR_Tenebral_Mech_Constructoid"]/tools</xpath>
 					<value>
 						<tools>
 							<li Class="CombatExtended.ToolCE">
@@ -216,10 +215,10 @@
 									<li>Blunt</li>
 								</capacities>
 								<power>10</power>
-								<cooldownTime>2</cooldownTime>
+								<cooldownTime>0.5</cooldownTime>
 								<linkedBodyPartsGroup>Torso</linkedBodyPartsGroup>
 								<ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
-								<armorPenetrationBlunt>12</armorPenetrationBlunt>
+								<armorPenetrationBlunt>41</armorPenetrationBlunt>
 							</li>
 						</tools>
 					</value>
@@ -227,7 +226,7 @@
 
 
 				<li Class="PatchOperationAddModExtension">
-					<xpath>Defs/ThingDef[defName="BAOTC_Stellar_Mech_Fabricor"]</xpath>
+					<xpath>Defs/ThingDef[defName="BOR_Tenebral_Mech_Fabricor"]</xpath>
 					<value>
 						<li Class="CombatExtended.RacePropertiesExtensionCE">
 							<bodyShape>Humanoid</bodyShape>
@@ -237,7 +236,7 @@
 
 
 				<li Class="PatchOperationAddModExtension">
-					<xpath>Defs/ThingDef[defName="BAOTC_Stellar_Mech_Agrihand"]</xpath>
+					<xpath>Defs/ThingDef[defName="BOR_Tenebral_Mech_Agrihand"]</xpath>
 					<value>
 						<li Class="CombatExtended.RacePropertiesExtensionCE">
 							<bodyShape>Vehicle</bodyShape>
@@ -246,7 +245,7 @@
 				</li>
 
 				<li Class="PatchOperationReplace">
-					<xpath>Defs/ThingDef[defName="BAOTC_Stellar_Mech_Agrihand"]/tools</xpath>
+					<xpath>Defs/ThingDef[defName="BOR_Tenebral_Mech_Agrihand"]/tools</xpath>
 					<value>
 						<tools>
 							<li Class="CombatExtended.ToolCE">
@@ -255,10 +254,10 @@
 									<li>Cut</li>
 								</capacities>
 								<power>17</power>
-								<cooldownTime>1.725</cooldownTime>
+								<cooldownTime>0.998</cooldownTime>
 								<linkedBodyPartsGroup>RightBlade</linkedBodyPartsGroup>
-								<armorPenetrationSharp>1.35</armorPenetrationSharp>
-								<armorPenetrationBlunt>3.3</armorPenetrationBlunt>
+								<armorPenetrationSharp>4.556</armorPenetrationSharp>
+								<armorPenetrationBlunt>11.137</armorPenetrationBlunt>
 								<alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
 							</li>
 							<li Class="CombatExtended.ToolCE">
@@ -267,10 +266,10 @@
 									<li>Stab</li>
 								</capacities>
 								<power>10</power>
-								<cooldownTime>1.108</cooldownTime>
+								<cooldownTime>0.641</cooldownTime>
 								<linkedBodyPartsGroup>RightBlade</linkedBodyPartsGroup>
-								<armorPenetrationSharp>24</armorPenetrationSharp>
-								<armorPenetrationBlunt>12</armorPenetrationBlunt>
+								<armorPenetrationSharp>81</armorPenetrationSharp>
+								<armorPenetrationBlunt>41</armorPenetrationBlunt>
 								<alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
 							</li>
 						</tools>
@@ -279,7 +278,7 @@
 
 
 				<li Class="PatchOperationAddModExtension">
-					<xpath>Defs/ThingDef[defName="BAOTC_Stellar_Mech_Cleansweeper"]</xpath>
+					<xpath>Defs/ThingDef[defName="BOR_Tenebral_Mech_Cleansweeper"]</xpath>
 					<value>
 						<li Class="CombatExtended.RacePropertiesExtensionCE">
 							<bodyShape>Vehicle</bodyShape>
@@ -288,9 +287,9 @@
 				</li>
 
 				<li Class="PatchOperationConditional">
-					<xpath>Defs/ThingDef[defName="BAOTC_Stellar_Mech_Cleansweeper"]/comps</xpath>
+					<xpath>Defs/ThingDef[defName="BOR_Tenebral_Mech_Cleansweeper"]/comps</xpath>
 					<nomatch Class="PatchOperationAdd">
-						<xpath>Defs/ThingDef[defName="BAOTC_Stellar_Mech_Cleansweeper"]</xpath>
+						<xpath>Defs/ThingDef[defName="BOR_Tenebral_Mech_Cleansweeper"]</xpath>
 						<value>
 							<comps />
 						</value>
@@ -298,7 +297,7 @@
 				</li>
 
 				<li Class="PatchOperationAdd">
-					<xpath>Defs/ThingDef[defName="BAOTC_Stellar_Mech_Cleansweeper"]/comps</xpath>
+					<xpath>Defs/ThingDef[defName="BOR_Tenebral_Mech_Cleansweeper"]/comps</xpath>
 					<value>
 						<li Class="CombatExtended.CompProperties_ArmorDurability">
 							<Durability>500</Durability>
@@ -307,8 +306,7 @@
 							<RegenValue>5</RegenValue>
 							<Repairable>true</Repairable>
 							<RepairIngredients>
-								<Plasteel>5</Plasteel>
-								<SNS_Unobtainium>5</SNS_Unobtainium>
+								<BOR_Tenebrite>10</BOR_Tenebrite>
 							</RepairIngredients>
 							<RepairTime>300</RepairTime>
 							<RepairValue>200</RepairValue>
@@ -321,7 +319,7 @@
 
 
 				<li Class="PatchOperationAddModExtension">
-					<xpath>Defs/ThingDef[defName="BAOTC_Stellar_Mech_WarUrchin"]</xpath>
+					<xpath>Defs/ThingDef[defName="BOR_Tenebral_Mech_WarUrchin"]</xpath>
 					<value>
 						<li Class="CombatExtended.RacePropertiesExtensionCE">
 							<bodyShape>Vehicle</bodyShape>
@@ -330,12 +328,12 @@
 				</li>
 
 				<li Class="PatchOperationAdd">
-					<xpath>Defs/ThingDef[defName="BAOTC_Stellar_Mech_WarUrchin"]/statBases</xpath>
+					<xpath>Defs/ThingDef[defName="BOR_Tenebral_Mech_WarUrchin"]/statBases</xpath>
 					<value>
-						<ArmorRating_Blunt>6</ArmorRating_Blunt>
-						<ArmorRating_Sharp>3.75</ArmorRating_Sharp>
-						<AimingAccuracy>2</AimingAccuracy>
-						<ShootingAccuracyPawn>2.25</ShootingAccuracyPawn>
+						<ArmorRating_Blunt>21</ArmorRating_Blunt>
+						<ArmorRating_Sharp>12.657</ArmorRating_Sharp>
+						<AimingAccuracy>8</AimingAccuracy>
+						<ShootingAccuracyPawn>7.593</ShootingAccuracyPawn>
 						<MeleeDodgeChance>0.14</MeleeDodgeChance>
 						<MeleeCritChance>0.06</MeleeCritChance>
 						<MeleeParryChance>0.05</MeleeParryChance>
@@ -343,9 +341,9 @@
 				</li>
 
 				<li Class="PatchOperationConditional">
-					<xpath>Defs/ThingDef[defName="BAOTC_Stellar_Mech_WarUrchin"]/comps</xpath>
+					<xpath>Defs/ThingDef[defName="BOR_Tenebral_Mech_WarUrchin"]/comps</xpath>
 					<nomatch Class="PatchOperationAdd">
-						<xpath>Defs/ThingDef[defName="BAOTC_Stellar_Mech_WarUrchin"]</xpath>
+						<xpath>Defs/ThingDef[defName="BOR_Tenebral_Mech_WarUrchin"]</xpath>
 						<value>
 							<comps />
 						</value>
@@ -353,7 +351,7 @@
 				</li>
 
 				<li Class="PatchOperationAdd">
-					<xpath>Defs/ThingDef[defName="BAOTC_Stellar_Mech_WarUrchin"]/comps</xpath>
+					<xpath>Defs/ThingDef[defName="BOR_Tenebral_Mech_WarUrchin"]/comps</xpath>
 					<value>
 						<li Class="CombatExtended.CompProperties_ArmorDurability">
 							<Durability>1000</Durability>
@@ -362,8 +360,7 @@
 							<RegenValue>5</RegenValue>
 							<Repairable>true</Repairable>
 							<RepairIngredients>
-								<Plasteel>5</Plasteel>
-								<SNS_Unobtainium>5</SNS_Unobtainium>
+								<BOR_Tenebrite>10</BOR_Tenebrite>
 							</RepairIngredients>
 							<RepairTime>300</RepairTime>
 							<RepairValue>200</RepairValue>
@@ -376,7 +373,7 @@
 
 
 				<li Class="PatchOperationAddModExtension">
-					<xpath>Defs/ThingDef[defName="BAOTC_Stellar_Mech_Paramedic"]</xpath>
+					<xpath>Defs/ThingDef[defName="BOR_Tenebral_Mech_Paramedic"]</xpath>
 					<value>
 						<li Class="CombatExtended.RacePropertiesExtensionCE">
 							<bodyShape>Humanoid</bodyShape>

@@ -10,8 +10,8 @@
 			<!-- ==================== Ammo ========================== -->
 			<value>
 				<ThingDef Class="CombatExtended.AmmoDef" ParentName="76mmMissileBase">
-					<defName>BAOTC_Ammo_76mmMissile_CMi</defName>
-					<label>76mm Missile (CM-i)</label>
+					<defName>BOR_Ammo_76mmMissile_Ni</defName>
+					<label>76mm Missile (N-i)</label>
 					<graphicData>
 						<texPath>Synthetik/Ammo/Rocket/76mmDumbfire</texPath>
 						<graphicClass>Graphic_StackCount</graphicClass>
@@ -21,16 +21,16 @@
 						<Mass>30</Mass>
 						<Bulk>24.85</Bulk>
 					</statBases>
-					<ammoClass>BAOTC_CMi_AmmoClass</ammoClass>
-					<detonateProjectile>BAOTC_Bullet_76mmMissile_CMi</detonateProjectile>
+					<ammoClass>BOR_Ni_AmmoClass</ammoClass>
+					<detonateProjectile>BOR_Bullet_76mmMissile_Ni</detonateProjectile>
 					<generateCommonality>0.01</generateCommonality>
 				</ThingDef>
 
 				<!-- ================== Projectiles ================== -->
 
 				<ThingDef Class="CombatExtended.AmmoDef" ParentName="Base76mmMissile">
-					<defName>BAOTC_Bullet_76mmMissile_CMi</defName>
-					<label>76mm Missile (CM-i)</label>
+					<defName>BOR_Bullet_76mmMissile_Ni</defName>
+					<label>76mm Missile (N-i)</label>
 					<projectile Class="CombatExtended.ProjectilePropertiesCE">
 						<damageDef>Bomb</damageDef>
 						<damageAmountBase>495</damageAmountBase>
@@ -41,8 +41,8 @@
 					<comps>
 						<li Class="CombatExtended.CompProperties_Fragments">
 							<fragments>
-								<Fragment_Cosmic>15</Fragment_Cosmic>
-								<Fragment_Stellar>40</Fragment_Stellar>
+								<Fragment_Quasar>15</Fragment_Quasar>
+								<Fragment_Solar>40</Fragment_Solar>
 							</fragments>
 						</li>
 					</comps>
@@ -52,15 +52,15 @@
 				<!-- ==================== Recipes ========================== -->
 
 				<RecipeDef ParentName="LauncherAmmoRecipeBase">
-					<defName>MakeBAOTC_Ammo_76mmMissile_CMi</defName>
-					<label>make 76mm CM-i Missile launch tube x5</label>
-					<description>Craft 5 76mm CM-i Missile launch tube.</description>
-					<jobString>Making 76mm CM-i Missile launch tube.</jobString>
+					<defName>MakeBOR_Ammo_76mmMissile_Ni</defName>
+					<label>make 76mm N-i Missile launch tube x5</label>
+					<description>Craft 5 76mm N-i Missile launch tube.</description>
+					<jobString>Making 76mm N-i Missile launch tube.</jobString>
 					<ingredients>
 						<li>
 							<filter>
 								<thingDefs>
-									<li>SNS_CosmicAlloy</li>
+									<li>BOR_QuasarAlloy</li>
 								</thingDefs>
 							</filter>
 							<count>42</count>
@@ -68,7 +68,7 @@
 						<li>
 							<filter>
 								<thingDefs>
-									<li>SNS_Unobtainium</li>
+									<li>BOR_Sunsteel</li>
 								</thingDefs>
 							</filter>
 							<count>42</count>
@@ -76,10 +76,10 @@
 						<li>
 							<filter>
 								<thingDefs>
-									<li>SNS_CosmicMatter</li>
+									<li>BOR_Neutronium</li>
 								</thingDefs>
 							</filter>
-							<count>7</count>
+							<count>70</count>
 						</li>
 						<li>
 							<filter>
@@ -92,14 +92,14 @@
 					</ingredients>
 					<fixedIngredientFilter>
 						<thingDefs>
-							<li>SNS_CosmicAlloy</li>
-							<li>SNS_Unobtainium</li>
-							<li>SNS_CosmicMatter</li>
+							<li>BOR_QuasarAlloy</li>
+							<li>BOR_Sunsteel</li>
+							<li>BOR_Neutronium</li>
 							<li>ComponentSpacer</li>
 						</thingDefs>
 					</fixedIngredientFilter>
 					<products>
-						<BAOTC_Ammo_76mmMissile_CMi>1</BAOTC_Ammo_76mmMissile_CMi>
+						<BOR_Ammo_76mmMissile_Ni>1</BOR_Ammo_76mmMissile_Ni>
 					</products>
 					<workAmount>16600</workAmount>
 				</RecipeDef>
