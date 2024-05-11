@@ -1,0 +1,176 @@
+<Patch>
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>Rimsenal - Core</li>
+		</mods>
+		<match Class="PatchOperationSequence">
+			<operations>
+
+				<li Class="PatchOperationAdd">
+					<xpath>Defs</xpath>
+					<value>
+
+						<ThingDef Class="CombatExtended.AmmoDef" ParentName="25x40mmGrenadeBase">
+							<defName>BAOTC_Ammo_25x40mmGrenade_Eternium</defName>
+							<label>25x40mm grenade (Eternium pellet)</label>
+							<graphicData>
+								<texPath>ThirdParty/Rimsenal/GrenadeLauncher/BS</texPath>
+								<graphicClass>Graphic_StackCount</graphicClass>
+							</graphicData>
+							<statBases>
+								<MarketValue>1.44</MarketValue>
+							</statBases>
+							<ammoClass>BAOTC_Ef_AmmoClass</ammoClass>
+							<cookOffProjectile>BAOTC_Bullet_25mmGauge_Eternium</cookOffProjectile>
+							<generateAllowChance>0.1</generateAllowChance>
+							<generateCommonality>0.01</generateCommonality>
+						</ThingDef>
+
+						<ThingDef Class="CombatExtended.AmmoDef" ParentName="25x40mmGrenadeBase">
+							<defName>BAOTC_Ammo_25x40mmGrenade_CMc</defName>
+							<label>25x40mm grenade (CM-c)</label>
+							<graphicData>
+								<texPath>ThirdParty/Rimsenal/GrenadeLauncher/INC</texPath>
+								<graphicClass>Graphic_StackCount</graphicClass>
+							</graphicData>
+							<statBases>
+								<MarketValue>1.44</MarketValue>
+							</statBases>
+							<ammoClass>BAOTC_CMc_AmmoClass</ammoClass>
+							<comps>
+								<li Class="CombatExtended.CompProperties_ExplosiveCE">
+									<damageAmountBase>2</damageAmountBase>
+									<explosiveDamageType>PrometheumFlame</explosiveDamageType>
+									<explosiveRadius>0.5</explosiveRadius>
+									<preExplosionSpawnThingDef>FilthPrometheum</preExplosionSpawnThingDef>
+									<preExplosionSpawnChance>1</preExplosionSpawnChance>
+								</li>
+							</comps>
+							<generateAllowChance>0.1</generateAllowChance>
+							<generateCommonality>0.01</generateCommonality>
+						</ThingDef>
+
+
+						<ThingDef ParentName="Base12GaugeBullet">
+							<defName>BAOTC_Bullet_25mmGauge_Eternium</defName>
+							<label>eternium pellet</label>
+							<graphicData>
+								<texPath>Things/Projectile/Shotgun_Pellet</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+							</graphicData>
+							<projectile Class="CombatExtended.ProjectilePropertiesCE">
+								<damageAmountBase>14</damageAmountBase>
+								<pelletCount>24</pelletCount>
+								<armorPenetrationSharp>6</armorPenetrationSharp>
+								<armorPenetrationBlunt>8.55</armorPenetrationBlunt>
+								<spreadMult>33</spreadMult>
+								<dropsCasings>false</dropsCasings>
+							</projectile>
+						</ThingDef>
+
+						<ThingDef ParentName="Base25x40mmGrenadeBullet">
+							<defName>BAOTC_Bullet_25x40mmGrenade_CMc</defName>
+							<label>25x40mm grenade (CM-c)</label>
+							<projectile Class="CombatExtended.ProjectilePropertiesCE">
+								<explosionRadius>2</explosionRadius>
+								<damageDef>PrometheumFlame</damageDef>
+								<damageAmountBase>6</damageAmountBase>
+								<preExplosionSpawnThingDef>FilthPrometheum</preExplosionSpawnThingDef>
+								<preExplosionSpawnChance>1</preExplosionSpawnChance>
+							</projectile>
+						</ThingDef>
+
+					</value>
+				</li>
+
+
+				<li Class="PatchOperationAdd">
+					<xpath>Defs</xpath>
+					<value>
+
+						<RecipeDef ParentName="AmmoRecipeBase">
+							<defName>MakeBAOTC_Ammo_25x40mmGrenade_Eternium</defName>
+							<label>make 25x40mm eternium pellet rounds x100</label>
+							<description>Craft 100 25x40mm eternium pellet rounds.</description>
+							<jobString>Making 25x40mm eternium pellet rounds.</jobString>
+							<ingredients>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>SNS_Eternium</li>
+										</thingDefs>
+									</filter>
+									<count>32</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter>
+								<thingDefs>
+									<li>SNS_Eternium</li>
+								</thingDefs>
+							</fixedIngredientFilter>
+							<products>
+								<BAOTC_Ammo_25x40mmGrenade_Eternium>100</BAOTC_Ammo_25x40mmGrenade_Eternium>
+							</products>
+							<workAmount>3200</workAmount>
+						</RecipeDef>
+
+						<RecipeDef ParentName="AmmoRecipeBase">
+							<defName>MakeBAOTC_Ammo_25x40mmGrenade_CMc</defName>
+							<label>make 25x40mm CM-c grenades x100</label>
+							<description>Craft 100 25x40mm CM-c grenades.</description>
+							<jobString>Making 25x40mm CM-c grenades.</jobString>
+							<ingredients>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>Plasteel</li>
+										</thingDefs>
+									</filter>
+									<count>32</count>
+								</li>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>Prometheum</li>
+										</thingDefs>
+									</filter>
+									<count>4</count>
+								</li>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>ComponentSpacer</li>
+										</thingDefs>
+									</filter>
+									<count>2</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter>
+								<thingDefs>
+									<li>Plasteel</li>
+									<li>Prometheum</li>
+									<li>ComponentSpacer</li>
+								</thingDefs>
+							</fixedIngredientFilter>
+							<products>
+								<BAOTC_Ammo_25x40mmGrenade_CMc>100</BAOTC_Ammo_25x40mmGrenade_CMc>
+							</products>
+							<workAmount>600</workAmount>
+						</RecipeDef>
+
+					</value>
+				</li>
+
+
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/CombatExtended.AmmoSetDef[defName="AmmoSet_25x40mmGrenade"]/ammoTypes</xpath>
+					<value>
+						<BAOTC_Ammo_25x40mmGrenade_Eternium>BAOTC_Bullet_25mmGauge_Eternium</BAOTC_Ammo_25x40mmGrenade_Eternium>
+						<BAOTC_Ammo_25x40mmGrenade_CMc>BAOTC_Bullet_25x40mmGrenade_CMc</BAOTC_Ammo_25x40mmGrenade_CMc>
+					</value>
+				</li>
+
+			</operations>
+		</match>
+	</Operation>
+</Patch>

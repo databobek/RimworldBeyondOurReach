@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>Synthetik - Vehicle</li>
+		</mods>
+		<match Class="PatchOperationAdd">
+			<xpath>/Defs</xpath>
+			<!-- ==================== Ammo ========================== -->
+			<value>
+				<ThingDef Class="CombatExtended.AmmoDef" ParentName="100mmEnergyCanisterBase">
+					<defName>BAOTC_Ammo_100mmEnergyCanister_CMi</defName>
+					<label>100x640mm energy canister (CM-i)</label>
+					<graphicData>
+						<texPath>Synthetik/Ammo/100mmEnergyCanister/Radiation</texPath>
+						<graphicClass>Graphic_StackCount</graphicClass>
+					</graphicData>
+					<statBases>
+						<MarketValue>345</MarketValue>
+					</statBases>
+					<ammoClass>BAOTC_CMi_AmmoClass</ammoClass>
+					<detonateProjectile>BAOTC_Bullet_100mmEnergyCanister_CMi</detonateProjectile>
+					<generateCommonality>0.01</generateCommonality>
+				</ThingDef>
+
+				<ThingDef Class="CombatExtended.AmmoDef" ParentName="100mmEnergyCanisterBase">
+					<defName>BAOTC_Ammo_100mmEnergyCanister_Ion_CM</defName>
+					<label>100x640mm energy canister (iCM)</label>
+					<graphicData>
+						<texPath>Synthetik/Ammo/100mmEnergyCanister/Ion</texPath>
+						<graphicClass>Graphic_StackCount</graphicClass>
+					</graphicData>
+					<statBases>
+						<MarketValue>705</MarketValue>
+					</statBases>
+					<ammoClass>BAOTC_Ion_CM_AmmoClass</ammoClass>
+					<detonateProjectile>BAOTC_Bullet_100mmEnergyCanister_Ion_CM</detonateProjectile>
+					<generateCommonality>0.01</generateCommonality>
+				</ThingDef>
+
+				<ThingDef Class="CombatExtended.AmmoDef" ParentName="100mmEnergyCanisterBase">
+					<defName>BAOTC_Ammo_100mmEnergyCanister_ECP</defName>
+					<label>100x640mm energy canister (EC-P)</label>
+					<graphicData>
+						<texPath>Synthetik/Ammo/100mmEnergyCanister/Plasma</texPath>
+						<graphicClass>Graphic_StackCount</graphicClass>
+					</graphicData>
+					<statBases>
+						<MarketValue>450</MarketValue>
+					</statBases>
+					<ammoClass>BAOTC_Plasma_Eternium_AmmoClass</ammoClass>
+					<detonateProjectile>BAOTC_Bullet_100mmEnergyCanister_ECP</detonateProjectile>
+					<generateCommonality>0.01</generateCommonality>
+				</ThingDef>
+
+				<!-- ================== Projectiles ================== -->
+
+				<ThingDef ParentName="Base100mmEnergyCanister">
+					<defName>BAOTC_Bullet_100mmEnergyCanister_CMi</defName>
+					<label>100mm energy bolt (CM-i)</label>
+					<graphicData>
+						<texPath>Synthetik/Projectile/Radiation_Projectile</texPath>
+						<graphicClass>Graphic_Single</graphicClass>
+						<drawSize>(3,4)</drawSize>
+					</graphicData>
+					<projectile Class="CombatExtended.ProjectilePropertiesCE">
+						<damageDef>Thermobaric</damageDef>
+						<damageAmountBase>579</damageAmountBase>
+						<explosionRadius>6.75</explosionRadius>
+						<explosionEffect>GiantExplosion</explosionEffect>
+						<soundExplode>Synthetik_HE_Explode</soundExplode>
+						<applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
+					</projectile>
+				</ThingDef>
+
+				<ThingDef ParentName="Base100mmEnergyCanister">
+					<defName>BAOTC_Bullet_100mmEnergyCanister_Ion_CM</defName>
+					<label>100mm energy bolt (iCM)</label>
+					<graphicData>
+						<texPath>Synthetik/Projectile/Ion_Projectile</texPath>
+						<graphicClass>Graphic_Single</graphicClass>
+						<drawSize>(3,4)</drawSize>
+					</graphicData>
+					<projectile Class="CombatExtended.ProjectilePropertiesCE">
+						<damageDef>EMP</damageDef>
+						<damageAmountBase>579</damageAmountBase>
+						<explosionRadius>13.5</explosionRadius>
+						<explosionEffect>IonExplosion</explosionEffect>
+						<soundExplode>Synthetik_Ion_Explode</soundExplode>
+						<applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
+					</projectile>
+				</ThingDef>
+
+				<ThingDef ParentName="Base100mmEnergyCanister">
+					<defName>BAOTC_Bullet_100mmEnergyCanister_ECP</defName>
+					<label>100mm energy bolt (EC-P)</label>
+					<thingClass>CombatExtended.BulletCE</thingClass>
+					<graphicData>
+						<texPath>Synthetik/Projectile/Plasma_Projectile</texPath>
+						<graphicClass>Graphic_Single</graphicClass>
+						<drawSize>(3,4)</drawSize>
+					</graphicData>
+					<projectile Class="CombatExtended.ProjectilePropertiesCE">
+						<damageDef>Bomb</damageDef>
+						<damageAmountBase>579</damageAmountBase>
+						<explosionRadius>6.75</explosionRadius>
+						<explosionEffect>PlasmaExplosion</explosionEffect>
+						<soundExplode>Synthetik_Plasma_Explode</soundExplode>
+						<applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
+						<explosionDamageFalloff>false</explosionDamageFalloff>
+						<secondaryDamage>
+							<li>
+								<def>Flame_Secondary</def>
+								<amount>1470</amount>
+							</li>
+						</secondaryDamage>
+					</projectile>
+				</ThingDef>
+
+				<!-- ==================== Recipes ========================== -->
+
+				<RecipeDef ParentName="AdvancedAmmoRecipeBase">
+					<defName>MakeBAOTC_Ammo_100mmEnergyCanister_CMi</defName>
+					<label>make 100x640mm energy (CMi) canister x1</label>
+					<description>Craft 1 100x640mm energy (CM-i) canister.</description>
+					<jobString>Making 100x640mm energy (CM-i) canister.</jobString>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>SNS_Unobtainium</li>
+								</thingDefs>
+							</filter>
+							<count>12</count>
+						</li>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>SNS_CosmicMatter</li>
+								</thingDefs>
+							</filter>
+							<count>10</count>
+						</li>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>ComponentSpacer</li>
+								</thingDefs>
+							</filter>
+							<count>4</count>
+						</li>
+					</ingredients>
+					<fixedIngredientFilter>
+						<thingDefs>
+							<li>SNS_Unobtainium</li>
+							<li>SNS_CosmicMatter</li>
+							<li>ComponentSpacer</li>
+						</thingDefs>
+					</fixedIngredientFilter>
+					<products>
+						<BAOTC_Ammo_100mmEnergyCanister_CMi>1</BAOTC_Ammo_100mmEnergyCanister_CMi>
+					</products>
+					<workAmount>7600</workAmount>
+				</RecipeDef>
+
+				<RecipeDef ParentName="AdvancedAmmoRecipeBase">
+					<defName>MakeBAOTC_Ammo_100mmEnergyCanister_Ion_CM</defName>
+					<label>make 100x640mm energy (iCM) canister x1</label>
+					<description>Craft 1 100x640mm energy (iCM) canister.</description>
+					<jobString>Making 100x640mm energy (iCM) canister.</jobString>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>SNS_Unobtainium</li>
+								</thingDefs>
+							</filter>
+							<count>12</count>
+						</li>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>ComponentSpacer</li>
+								</thingDefs>
+							</filter>
+							<count>14</count>
+						</li>
+					</ingredients>
+					<fixedIngredientFilter>
+						<thingDefs>
+							<li>SNS_Unobtainium</li>
+							<li>ComponentSpacer</li>
+						</thingDefs>
+					</fixedIngredientFilter>
+					<products>
+						<BAOTC_Ammo_100mmEnergyCanister_Ion_CM>1</BAOTC_Ammo_100mmEnergyCanister_Ion_CM>
+					</products>
+					<workAmount>14600</workAmount>
+				</RecipeDef>
+
+				<RecipeDef ParentName="AdvancedAmmoRecipeBase">
+					<defName>MakeBAOTC_Ammo_100mmEnergyCanister_ECP</defName>
+					<label>make 100x640mm energy (EC-P) canister x1</label>
+					<description>Craft 1 100x640mm energy (EC-P) canister.</description>
+					<jobString>Making 100x640mm energy (EC-P) canister.</jobString>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>SNS_Eternium</li>
+								</thingDefs>
+							</filter>
+							<count>2</count>
+						</li>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>SNS_CosmicAlloy</li>
+								</thingDefs>
+							</filter>
+							<count>17</count>
+						</li>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>ComponentSpacer</li>
+								</thingDefs>
+							</filter>
+							<count>4</count>
+						</li>
+					</ingredients>
+					<fixedIngredientFilter>
+						<thingDefs>
+							<li>SNS_Eternium</li>
+							<li>SNS_CosmicAlloy</li>
+							<li>ComponentSpacer</li>
+						</thingDefs>
+					</fixedIngredientFilter>
+					<products>
+						<BAOTC_Ammo_100mmEnergyCanister_ECP>1</BAOTC_Ammo_100mmEnergyCanister_ECP>
+					</products>
+					<workAmount>13400</workAmount>
+				</RecipeDef>
+			</value>
+		</match>
+	</Operation>
+</Patch>
