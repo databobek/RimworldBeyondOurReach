@@ -25,7 +25,7 @@
 
   <RoyalTitlePermitDef Name="DropResourcesBase" Abstract="True">
     <workerClass>RoyalTitlePermitWorker_DropResources</workerClass>
-    <faction>BOR_Faction_I</faction>
+    <faction>BOR_KwazaarBazaar</faction>
     <permitPointCost>1</permitPointCost>
     <cooldownDays>45</cooldownDays>
     <usableOnWorldMap>true</usableOnWorldMap>
@@ -33,28 +33,28 @@
       <targetingRange>39.9</targetingRange>
     </royalAid>
   </RoyalTitlePermitDef>
-
+<!-- sunsteel for juniors -->
   <RoyalTitlePermitDef ParentName="DropResourcesBase">
     <defName>BOR_SunsteelDrop</defName>
     <label>sunsteel drop</label>
     <description>Call for a drop of 250 sunsteel.</description>
-    <minTitle>Acolyte</minTitle>
-    <faction>Empire</faction>
+    <minTitle>BOR_Junior</minTitle>
+    <faction>BOR_KwazaarBazaar</faction>
     <permitPointCost>1</permitPointCost>
     <uiPosition>(0,0)</uiPosition>
     <royalAid>
       <itemsToDrop>
-        <Steel>250</Steel>
+        <BOR_Sunsteel>250</BOR_Sunsteel>
       </itemsToDrop>
       <favorCost>4</favorCost>
     </royalAid>
   </RoyalTitlePermitDef>
-
+<!--  sunweave for juniors -->
   <RoyalTitlePermitDef ParentName="DropResourcesBase">
-    <defName>FoodDrop</defName>
+    <defName>BOR_FoodDrop</defName>
     <label>food drop</label>
     <description>Call for a drop of 20 packaged survival meals.</description>
-    <minTitle>Acolyte</minTitle>
+    <minTitle>BOR_Junior</minTitle>
     <uiPosition>(0,1)</uiPosition>
     <royalAid>
       <itemsToDrop>
@@ -63,12 +63,12 @@
       <favorCost>4</favorCost>
     </royalAid>
   </RoyalTitlePermitDef>
-
+<!-- quasar alloy for associates -->
   <RoyalTitlePermitDef ParentName="DropResourcesBase">
     <defName>SilverDrop</defName>
     <label>silver drop</label>
     <description>Call for a drop of 500 silver.</description>
-    <minTitle>Knight</minTitle>
+    <minTitle>BOR_Junior</minTitle>
     <uiPosition>(0,4)</uiPosition>
     <royalAid>
       <itemsToDrop>
@@ -77,12 +77,12 @@
       <favorCost>6</favorCost>
     </royalAid>
   </RoyalTitlePermitDef>
-
+<!-- quasar weave for associates -->
   <RoyalTitlePermitDef ParentName="DropResourcesBase">
     <defName>GlitterMedDrop</defName>
     <label>glitter med drop</label>
     <description>Call for a drop of 5 glitterworld medicine.</description>
-    <minTitle>Baron</minTitle>
+    <minTitle>BOR_Junior</minTitle>
     <uiPosition>(0,8)</uiPosition>
     <royalAid>
       <itemsToDrop>
@@ -97,13 +97,13 @@
     <label>call laborer team</label>
     <description>Call a group of 4 laborers to assist you for 4 days. These workers can only do general labor tasks. You can control them as though they were your own colonists. You are required to keep them safe.</description>
     <workerClass>RoyalTitlePermitWorker_CallLaborers</workerClass>
-    <minTitle>Acolyte</minTitle>
-    <faction>Empire</faction>
+    <minTitle>BOR_Junior</minTitle>
+    <faction>BOR_KwazaarBazaar</faction>
     <permitPointCost>1</permitPointCost>
     <uiPosition>(0,2)</uiPosition>
     <royalAid>
       <favorCost>4</favorCost>
-      <pawnKindDef>Empire_Common_Laborer</pawnKindDef>
+      <pawnKindDef>BOR_Citizen_II</pawnKindDef>
       <pawnCount>4</pawnCount>
       <aidDurationDays>4</aidDurationDays>
       <targetingRange>44.9</targetingRange>
@@ -117,14 +117,14 @@
     <label>call laborer gang</label>
     <description>Call a group of 8 laborers to assist you for 4 days. These workers can only do general labor tasks. You can control them as though they were your own colonists. You are required to keep them safe.</description>
     <workerClass>RoyalTitlePermitWorker_CallLaborers</workerClass>
-    <minTitle>Count</minTitle>
-    <faction>Empire</faction>
+    <minTitle>BOR_Junior</minTitle>
+    <faction>BOR_KwazaarBazaar</faction>
     <permitPointCost>1</permitPointCost>
     <prerequisite>CallLaborerTeam</prerequisite>
     <uiPosition>(1,2)</uiPosition>
     <royalAid>
       <favorCost>8</favorCost>
-      <pawnKindDef>Empire_Common_Laborer</pawnKindDef>
+      <pawnKindDef>BOR_Citizen_II</pawnKindDef>
       <pawnCount>8</pawnCount>
       <aidDurationDays>4</aidDurationDays>
       <targetingRange>44.9</targetingRange>
@@ -139,15 +139,15 @@
   <RoyalTitlePermitDef>
     <defName>CallMilitaryAidSmall</defName>
     <label>call trooper squad</label>
-    <description>Call a group of 4 light troopers to aid you in battle.</description>
+    <description>Call a group of 4 kwazaari warriors to aid you in battle.</description>
     <workerClass>RoyalTitlePermitWorker_CallAid</workerClass>
-    <minTitle>Acolyte</minTitle>
-    <faction>Empire</faction>
+    <minTitle>BOR_Junior</minTitle>
+    <faction>BOR_KwazaarBazaar</faction>
     <permitPointCost>1</permitPointCost>
     <uiPosition>(0,3)</uiPosition>
     <royalAid>
       <favorCost>4</favorCost>
-      <pawnKindDef>Empire_Fighter_Trooper</pawnKindDef>
+      <pawnKindDef>BOR_Kwazaari_Warrior</pawnKindDef>
       <pawnCount>4</pawnCount>
       <targetingRange>39.9</targetingRange>
     </royalAid>
@@ -157,16 +157,16 @@
   <RoyalTitlePermitDef>
     <defName>CallMilitaryAidLarge</defName>
     <label>call janissary squad</label>
-    <description>Call a group of 4 professional janissaries to aid you in battle.</description>
+    <description>Call a group of 6 kwazaari warriors to aid you in battle.</description>
     <workerClass>RoyalTitlePermitWorker_CallAid</workerClass>
-    <minTitle>Praetor</minTitle>
-    <faction>Empire</faction>
+    <minTitle>BOR_Junior</minTitle>
+    <faction>BOR_KwazaarBazaar</faction>
     <permitPointCost>1</permitPointCost>
     <uiPosition>(0,7)</uiPosition>
     <royalAid>
       <favorCost>6</favorCost>
-      <pawnKindDef>Empire_Fighter_Janissary</pawnKindDef>
-      <pawnCount>4</pawnCount>
+      <pawnKindDef>BOR_Kwazaari_Warrior</pawnKindDef>
+      <pawnCount>6</pawnCount>
       <targetingRange>39.9</targetingRange>
     </royalAid>
     <cooldownDays>50</cooldownDays>
@@ -175,16 +175,16 @@
   <RoyalTitlePermitDef>
     <defName>CallMilitaryAidGrand</defName>
     <label>call cataphract squad</label>
-    <description>Call a group of 4 heavy cataphracts to aid you in battle.</description>
+    <description>Call a group of 10 kwazaari warriors to aid you in battle.</description>
     <workerClass>RoyalTitlePermitWorker_CallAid</workerClass>
-    <minTitle>Count</minTitle>
-    <faction>Empire</faction>
+    <minTitle>BOR_Junior</minTitle>
+    <faction>BOR_KwazaarBazaar</faction>
     <permitPointCost>1</permitPointCost>
     <prerequisite>CallMilitaryAidLarge</prerequisite>
     <uiPosition>(1,7)</uiPosition>
     <royalAid>
       <favorCost>8</favorCost>
-      <pawnKindDef>Empire_Fighter_Cataphract</pawnKindDef>
+      <pawnKindDef>BOR_Kwazaari_Warrior</pawnKindDef>
       <pawnCount>4</pawnCount>
       <targetingRange>39.9</targetingRange>
     </royalAid>
@@ -196,8 +196,8 @@
     <label>call aerodrone strike</label>
     <description>Call a single-impact aerodrone strike at a target position.</description>
     <workerClass>RoyalTitlePermitWorker_OrbitalStrike</workerClass>
-    <minTitle>Knight</minTitle>
-    <faction>Empire</faction>
+    <minTitle>BOR_Junior</minTitle>
+    <faction>BOR_KwazaarBazaar</faction>
     <permitPointCost>1</permitPointCost>
     <cooldownDays>45</cooldownDays>
     <uiPosition>(0,5)</uiPosition>
@@ -217,8 +217,8 @@
     <label>call aerodrone salvo</label>
     <description>Call a salvo of aerodrone strikes around a target position.</description>
     <workerClass>RoyalTitlePermitWorker_OrbitalStrike</workerClass>
-    <minTitle>Praetor</minTitle>
-    <faction>Empire</faction>
+    <minTitle>BOR_Junior</minTitle>
+    <faction>BOR_KwazaarBazaar</faction>
     <permitPointCost>1</permitPointCost>
     <prerequisite>CallOrbitalStrike</prerequisite>
     <cooldownDays>60</cooldownDays>
@@ -242,8 +242,8 @@
     <label>call transport shuttle</label>
     <description>Call a shuttle for your own use. It will transport colonists, items, and animals anywhere you like within 70 world tiles.</description>
     <workerClass>RoyalTitlePermitWorker_CallShuttle</workerClass>
-    <minTitle>Knight</minTitle>
-    <faction>Empire</faction>
+    <minTitle>BOR_Junior</minTitle>
+    <faction>BOR_KwazaarBazaar</faction>
     <permitPointCost>1</permitPointCost>
     <cooldownDays>40</cooldownDays>
     <usableOnWorldMap>true</usableOnWorldMap>

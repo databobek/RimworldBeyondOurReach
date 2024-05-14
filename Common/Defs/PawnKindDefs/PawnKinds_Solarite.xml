@@ -9,24 +9,21 @@
 		<minGenerationAge>18</minGenerationAge>
 		<maxGenerationAge>50</maxGenerationAge>
 		<combatEnhancingDrugsChance>0.05</combatEnhancingDrugsChance>
-		<apparelIgnoreSeasons>true</apparelIgnoreSeasons>
+		<apparelIgnoreSeasons>false</apparelIgnoreSeasons>
 		<combatEnhancingDrugsCount>
 			<min>1</min>
 			<max>2</max>
 		</combatEnhancingDrugsCount>
 		<initialWillRange>9~12</initialWillRange>
 		<initialResistanceRange>12~20</initialResistanceRange>
-		<apparelTags>
-			<li>IndustrialAdvanced</li>
-		</apparelTags>
 		<techHediffsChance>0.75</techHediffsChance>
-		<techHediffsMoney>1500~6000</techHediffsMoney>
-		<techHediffsTags>
-			<li>Ultra</li>
-			<li>BOR_Bionics_I</li>
-		</techHediffsTags>
+		<techHediffsMoney>15000~60000</techHediffsMoney>
 		<techHediffsRequired>
-			<li>DeathAcidifier</li>
+			<li>BOR_SolarBionicEye</li>
+			<li>BOR_SolarBionicSpine</li>
+			<li MayRequire="dubwise.dubsbadhygiene">SolarBladder</li>
+			<li MayRequire="vat.epoeforked">MedicalRibSolar</li>
+			<li MayRequire="Ludeon.Rimworld.Royalty">ImmunoenhancerSolar</li>
 		</techHediffsRequired>
 		<biocodeWeaponChance>0.6</biocodeWeaponChance>
 		<defaultFactionType>BOR_SolarRepublic</defaultFactionType>
@@ -41,24 +38,25 @@
 		<minGenerationAge>18</minGenerationAge>
 		<maxGenerationAge>32</maxGenerationAge>
 		<combatEnhancingDrugsChance>0.45</combatEnhancingDrugsChance>
-		<apparelIgnoreSeasons>true</apparelIgnoreSeasons>
+		<apparelIgnoreSeasons>false</apparelIgnoreSeasons>
 		<combatEnhancingDrugsCount>
 			<min>1</min>
 			<max>1</max>
 		</combatEnhancingDrugsCount>
 		<initialWillRange>20~22</initialWillRange>
 		<initialResistanceRange>10~14</initialResistanceRange>
-		<apparelTags>
-			<li>IndustrialAdvanced</li>
-		</apparelTags>
 		<techHediffsChance>0.95</techHediffsChance>
-		<techHediffsMoney>3000~5000</techHediffsMoney>
-		<techHediffsTags>
-			<li>BOR_Implant_Royal</li>
-			<li>BOR_Bionics_I</li>
-		</techHediffsTags>
+		<techHediffsMoney>30000~50000</techHediffsMoney>
 		<techHediffsRequired>
+			<li>BOR_SolarBionicEye</li>
+			<li>BOR_SolarBionicArm</li>
+			<li>BOR_SolarBionicLeg</li>
+			<li>BOR_SolarBionicSpine</li>
+			<li MayRequire="dubwise.dubsbadhygiene">SolarBladder</li>
 			<li>DeathAcidifier</li>
+			<li MayRequire="vat.epoeforked">AdrenalineRibSolar</li>
+			<li MayRequire="vat.epoeforked">PainkillerRibSolar</li>
+			<li MayRequire="Ludeon.Rimworld.Royalty">ImmunoenhancerSolar</li>
 		</techHediffsRequired>
 		<biocodeWeaponChance>0.85</biocodeWeaponChance>
 		<defaultFactionType>BOR_SolarRepublic</defaultFactionType>
@@ -77,7 +75,13 @@
 			<li>BOR_Pistol_I</li>
 		</weaponTags>
 		<weaponMoney>830~830</weaponMoney>
-		<apparelMoney>600~800</apparelMoney>
+		<apparelMoney>6000~8000</apparelMoney>
+		<apparelRequired>
+			<li>BOR_Solar_Apparel_FlakVest</li>
+			<li>Apparel_Duster</li>
+			<li>Apparel_CollarShirt</li>
+			<li>Apparel_Pants</li>
+		</apparelRequired>
 		<apparelAllowHeadgearChance>0.6</apparelAllowHeadgearChance>
 	</PawnKindDef>
 	<!-- Solarite Trader -->
@@ -94,14 +98,16 @@
 		</weaponTags>
 		<weaponMoney>1000~1000</weaponMoney>
 		<apparelMoney>1200~1600</apparelMoney>
-		<apparelTags>
-			<li>IndustrialMilitaryBasic</li>
-			<li>IndustrialMilitaryAdvanced</li>
-			<li>BeltDefensePop</li>
-		</apparelTags>
 		<apparelRequired>
+			<li>BOR_Solar_Apparel_FlakVest</li>
+			<li>Apparel_Duster</li>
+			<li>Apparel_CollarShirt</li>
+			<li>Apparel_Pants</li>
 			<li>Apparel_BowlerHat</li>
 		</apparelRequired>
+		<techHediffsRequired>
+			<li MayRequire="Ludeon.Rimworld.Royalty">PsychicReaderSolar</li>
+		</techHediffsRequired>
 	</PawnKindDef>
 
 	<PawnKindDef ParentName="BOR_BasePawn">
@@ -123,6 +129,12 @@
 		</weaponTags>
 		<weaponMoney>500~1250</weaponMoney>
 		<apparelMoney>2000~4000</apparelMoney>
+		<apparelRequired>
+			<li>BOR_Solar_Apparel_FlakVest</li>
+			<li>Apparel_Duster</li>
+			<li>Apparel_CollarShirt</li>
+			<li>Apparel_Pants</li>
+		</apparelRequired>
 		<apparelAllowHeadgearChance>0.4</apparelAllowHeadgearChance>
 	</PawnKindDef>
 
@@ -143,14 +155,18 @@
 			<li>BOR_Pistol_I</li>
 		</weaponTags>
 		<apparelRequired>
+			<li>BOR_Solar_Apparel_FlakVest</li>
+			<li>Apparel_Duster</li>
+			<li>Apparel_CollarShirt</li>
+			<li>Apparel_Pants</li>
 			<li>Apparel_CowboyHat</li>
 		</apparelRequired>
 		<weaponMoney>830~1250</weaponMoney>
 		<apparelMoney>2000~4000</apparelMoney>
 		<apparelAllowHeadgearChance>0.4</apparelAllowHeadgearChance>
-		<techHediffsTags>
-			<li>FieldHand</li>
-		</techHediffsTags>
+		<techHediffsRequired>
+			<li MayRequire="Ludeon.Rimworld.Royalty">FieldHandSolar</li>
+		</techHediffsRequired>
 	</PawnKindDef>
 
 	<PawnKindDef ParentName="BOR_BasePawn">
@@ -172,9 +188,97 @@
 		<weaponMoney>830~1200</weaponMoney>
 		<apparelMoney>200~400</apparelMoney>
 		<apparelAllowHeadgearChance>0.4</apparelAllowHeadgearChance>
-		<techHediffsTags>
-			<li>DrillArm</li>
-		</techHediffsTags>
+		<apparelRequired>
+			<li>BOR_Solar_Apparel_FlakVest</li>
+			<li>Apparel_Duster</li>
+			<li>Apparel_CollarShirt</li>
+			<li>Apparel_Pants</li>
+		</apparelRequired>
+		<techHediffsRequired>
+			<li MayRequire="Ludeon.Rimworld.Royalty">DrillArmSolar</li>
+		</techHediffsRequired>
+	</PawnKindDef>
+
+	<!-- Solarite Marksman -->
+
+	<PawnKindDef ParentName="BOR_ElitePawn">
+		<defName>BOR_Solarite_Marksman</defName>
+		<label>marksman</label>
+		<labelPlural>marksmen</labelPlural>
+		<apparelTags>
+			<li>IndustrialBasic</li>
+			<li>IndustrialAdvanced</li>
+			<li>IndustrialMilitaryBasic</li>
+			<li>IndustrialMilitaryAdvanced</li>
+		</apparelTags>
+		<apparelDisallowTags>
+			<li>Western</li>
+		</apparelDisallowTags>
+		<weaponTags>
+			<li>BOR_SniperRifle_I</li>
+		</weaponTags>
+		<weaponMoney>
+			<min>17000</min>
+			<max>17000</max>
+		</weaponMoney>
+		<combatPower>150</combatPower>
+		<isFighter>true</isFighter>
+		<canBeSapper>false</canBeSapper>
+		<apparelMoney>
+			<min>15000</min>
+			<max>25000</max>
+		</apparelMoney>
+		<apparelRequired>
+			<li>BOR_Solar_Apparel_ArmorHelmetRecon</li>
+			<li>BOR_Solar_Apparel_ArmorRecon</li>
+		</apparelRequired>
+		<skills>
+			<li>
+				<skill>Shooting</skill>
+				<range>12~16</range>
+			</li>
+		</skills>
+	</PawnKindDef>
+
+	<!-- Solarite Marine -->
+
+	<PawnKindDef ParentName="BOR_ElitePawn">
+		<defName>BOR_Solarite_Marine</defName>
+		<label>marine</label>
+		<labelPlural>marines</labelPlural>
+		<apparelTags>
+			<li>IndustrialBasic</li>
+			<li>IndustrialAdvanced</li>
+			<li>IndustrialMilitaryBasic</li>
+			<li>IndustrialMilitaryAdvanced</li>
+		</apparelTags>
+		<apparelDisallowTags>
+			<li>Western</li>
+		</apparelDisallowTags>
+		<weaponTags>
+			<li>BOR_ShortShots_I</li>
+		</weaponTags>
+		<weaponMoney>
+			<min>17000</min>
+			<max>17000</max>
+		</weaponMoney>
+		<combatPower>150</combatPower>
+		<isFighter>true</isFighter>
+		<canBeSapper>false</canBeSapper>
+		<apparelMoney>
+			<min>15000</min>
+			<max>25000</max>
+		</apparelMoney>
+		<apparelRequired>
+			<li>BOR_Solar_Apparel_PowerArmorHelmet</li>
+			<li>BOR_Solar_Apparel_PowerArmor</li>
+		</apparelRequired>
+		<skills>
+			<li>
+				<skill>Shooting</skill>
+				<range>16~18</range>
+			</li>
+		</skills>
 	</PawnKindDef>
 
 	<!-- Solarite Warrior -->
@@ -197,7 +301,7 @@
 			<min>15000</min>
 			<max>25000</max>
 		</apparelMoney>
-		<apparelTags>
+		<apparelTags Inherit="False">
 			<li>BOR_Military_I</li>
 			<li>BOR_HiTechArmor_I</li>
 			<li>BOR_Apparel</li>
@@ -231,7 +335,7 @@
 			<min>12000</min>
 			<max>12000</max>
 		</apparelMoney>
-		<apparelTags>
+		<apparelTags Inherit="False">
 			<li>BOR_Military_I</li>
 			<li>BOR_HiTechArmor_I</li>
 			<li>BOR_Apparel</li>

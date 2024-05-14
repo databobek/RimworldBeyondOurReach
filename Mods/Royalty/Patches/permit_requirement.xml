@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/TraderKindDef[defName="BOR_Caravan_II"]</xpath>
+        <value>
+            <permitRequiredForTrading>BOR_TradeCaravan_II</permitRequiredForTrading>
+        </value>
+    </Operation>
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/TraderKindDef[defName="BOR_Base_II"]</xpath>
+        <value>
+            <permitRequiredForTrading>BOR_TradeSettlement_II</permitRequiredForTrading>
+        </value>
+    </Operation>
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/FactionDef[defName="BOR_KwazaarBazaar"]</xpath>
+        <value>
+            <royalTitleTags>
+                <li>BOR_CorporateTitle</li>
+            </royalTitleTags>
+            <royalTitleInheritanceWorkerClass>RoyalTitleInheritanceWorker</royalTitleInheritanceWorkerClass>
+            <royalTitleInheritanceRelations>
+                <li>Child</li>
+                <li>Spouse</li>
+            </royalTitleInheritanceRelations>
+        </value>
+    </Operation>
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/PawnKindDef[defName="BOR_Town_Trader_II"]</xpath>
+        <value>
+            <royalTitleChance>0.8</royalTitleChance>
+            <titleSelectOne>
+                <li>BOR_Senior</li>
+                <li>BOR_TeamLeader</li>
+            </titleSelectOne>
+        </value>
+    </Operation>
+</Patch>
