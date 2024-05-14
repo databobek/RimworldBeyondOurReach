@@ -1,25 +1,26 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Defs>
 
   <!-- ============== Empire titles - Player gettable non-psycaster ============================= -->
 
-  <RoyalTitleDef Abstract="True" Name="BaseEmpireTitle" >
+  <RoyalTitleDef Abstract="True" Name="BaseCorporateTitle">
     <tags>
-      <li>EmpireTitle</li>
+      <li>BOR_CorporateTitle</li>
     </tags>
-    <awardThought>GainedTitle</awardThought>
-    <lostThought>LostTitle</lostThought>
+    <awardThought>BOR_GainedTitle</awardThought>
+    <lostThought>BOR_LostTitle</lostThought>
+    <awardWorkerClass>RoyalTitleAwardWorker_Instant</awardWorkerClass>
+    <allowDignifiedMeditationFocus>False</allowDignifiedMeditationFocus>
   </RoyalTitleDef>
 
   <RoyalTitleDef ParentName="BaseEmpireTitle">
-    <defName>Freeholder</defName>
+    <defName>BOR_Freeholder</defName>
     <label>freeholder</label>
     <description>The Imperial title of freeholder is used by the Empire to signifies a fully-respected individual. Most Imperial citizens earn it while young through volunteer work or military service. The title is also offered to outsiders who act with honor in the eyes of the Empire.</description>
     <seniority>0</seniority>
     <favorCost>1</favorCost>
     <changeHeirQuestPoints>1000</changeHeirQuestPoints>
     <allowDignifiedMeditationFocus>False</allowDignifiedMeditationFocus>
-    <awardWorkerClass>RoyalTitleAwardWorker_Instant</awardWorkerClass>
   </RoyalTitleDef>
 
   <!-- ============== Empire titles - Player gettable psycaster ============================= -->
@@ -113,22 +114,30 @@
       </li>
       <li Class="RoomRequirement_ForbiddenBuildings">
         <labelKey>RoomRequirementNoProductionFacilities</labelKey>
-        <buildingTags><li>Production</li></buildingTags>
+        <buildingTags>
+          <li>Production</li>
+        </buildingTags>
       </li>
       <li Class="RoomRequirement_ForbiddenBuildings">
         <labelKey>RoomRequirementNoBeds</labelKey>
-        <buildingTags><li>Bed</li></buildingTags>
+        <buildingTags>
+          <li>Bed</li>
+        </buildingTags>
       </li>
       <li MayRequire="Ludeon.RimWorld.Ideology" Class="RoomRequirement_ForbidAltars">
         <labelKey>RoomRequirementNoAltars</labelKey>
       </li>
       <li Class="RoomRequirement_ForbiddenBuildings" MayRequire="Ludeon.RimWorld.Biotech">
         <labelKey>RoomRequirementNoBiotechBuildings</labelKey>
-        <buildingTags><li>Biotech</li></buildingTags>
+        <buildingTags>
+          <li>Biotech</li>
+        </buildingTags>
       </li>
       <li Class="RoomRequirement_ForbiddenBuildings" MayRequire="Ludeon.RimWorld.Anomaly">
         <labelKey>RoomRequirementNoAnomalyBuildings</labelKey>
-        <buildingTags><li>Anomaly</li></buildingTags>
+        <buildingTags>
+          <li>Anomaly</li>
+        </buildingTags>
       </li>
     </throneRoomRequirements>
     <bedroomRequirements>
@@ -154,15 +163,21 @@
       </li>
       <li Class="RoomRequirement_ForbiddenBuildings">
         <labelKey>RoomRequirementNoProductionFacilities</labelKey>
-        <buildingTags><li>Production</li></buildingTags>
+        <buildingTags>
+          <li>Production</li>
+        </buildingTags>
       </li>
       <li Class="RoomRequirement_ForbiddenBuildings" MayRequire="Ludeon.RimWorld.Biotech">
         <labelKey>RoomRequirementNoBiotechBuildings</labelKey>
-        <buildingTags><li>Biotech</li></buildingTags>
+        <buildingTags>
+          <li>Biotech</li>
+        </buildingTags>
       </li>
       <li Class="RoomRequirement_ForbiddenBuildings" MayRequire="Ludeon.RimWorld.Anomaly">
         <labelKey>RoomRequirementNoAnomalyBuildings</labelKey>
-        <buildingTags><li>Anomaly</li></buildingTags>
+        <buildingTags>
+          <li>Anomaly</li>
+        </buildingTags>
       </li>
     </bedroomRequirements>
     <foodRequirement>
@@ -279,22 +294,30 @@
       </li>
       <li Class="RoomRequirement_ForbiddenBuildings">
         <labelKey>RoomRequirementNoProductionFacilities</labelKey>
-        <buildingTags><li>Production</li></buildingTags>
+        <buildingTags>
+          <li>Production</li>
+        </buildingTags>
       </li>
       <li Class="RoomRequirement_ForbiddenBuildings">
         <labelKey>RoomRequirementNoBeds</labelKey>
-        <buildingTags><li>Bed</li></buildingTags>
+        <buildingTags>
+          <li>Bed</li>
+        </buildingTags>
       </li>
       <li MayRequire="Ludeon.RimWorld.Ideology" Class="RoomRequirement_ForbidAltars">
         <labelKey>RoomRequirementNoAltars</labelKey>
       </li>
       <li Class="RoomRequirement_ForbiddenBuildings" MayRequire="Ludeon.RimWorld.Biotech">
         <labelKey>RoomRequirementNoBiotechBuildings</labelKey>
-        <buildingTags><li>Biotech</li></buildingTags>
+        <buildingTags>
+          <li>Biotech</li>
+        </buildingTags>
       </li>
       <li Class="RoomRequirement_ForbiddenBuildings" MayRequire="Ludeon.RimWorld.Anomaly">
         <labelKey>RoomRequirementNoAnomalyBuildings</labelKey>
-        <buildingTags><li>Anomaly</li></buildingTags>
+        <buildingTags>
+          <li>Anomaly</li>
+        </buildingTags>
       </li>
     </throneRoomRequirements>
     <bedroomRequirements>
@@ -329,15 +352,21 @@
       </li>
       <li Class="RoomRequirement_ForbiddenBuildings">
         <labelKey>RoomRequirementNoProductionFacilities</labelKey>
-        <buildingTags><li>Production</li></buildingTags>
+        <buildingTags>
+          <li>Production</li>
+        </buildingTags>
       </li>
       <li Class="RoomRequirement_ForbiddenBuildings" MayRequire="Ludeon.RimWorld.Biotech">
         <labelKey>RoomRequirementNoBiotechBuildings</labelKey>
-        <buildingTags><li>Biotech</li></buildingTags>
+        <buildingTags>
+          <li>Biotech</li>
+        </buildingTags>
       </li>
       <li Class="RoomRequirement_ForbiddenBuildings" MayRequire="Ludeon.RimWorld.Anomaly">
         <labelKey>RoomRequirementNoAnomalyBuildings</labelKey>
-        <buildingTags><li>Anomaly</li></buildingTags>
+        <buildingTags>
+          <li>Anomaly</li>
+        </buildingTags>
       </li>
     </bedroomRequirements>
     <foodRequirement>
@@ -459,22 +488,30 @@
       </li>
       <li Class="RoomRequirement_ForbiddenBuildings">
         <labelKey>RoomRequirementNoProductionFacilities</labelKey>
-        <buildingTags><li>Production</li></buildingTags>
+        <buildingTags>
+          <li>Production</li>
+        </buildingTags>
       </li>
       <li Class="RoomRequirement_ForbiddenBuildings">
         <labelKey>RoomRequirementNoBeds</labelKey>
-        <buildingTags><li>Bed</li></buildingTags>
+        <buildingTags>
+          <li>Bed</li>
+        </buildingTags>
       </li>
       <li MayRequire="Ludeon.RimWorld.Ideology" Class="RoomRequirement_ForbidAltars">
         <labelKey>RoomRequirementNoAltars</labelKey>
       </li>
       <li Class="RoomRequirement_ForbiddenBuildings" MayRequire="Ludeon.RimWorld.Biotech">
         <labelKey>RoomRequirementNoBiotechBuildings</labelKey>
-        <buildingTags><li>Biotech</li></buildingTags>
+        <buildingTags>
+          <li>Biotech</li>
+        </buildingTags>
       </li>
       <li Class="RoomRequirement_ForbiddenBuildings" MayRequire="Ludeon.RimWorld.Anomaly">
         <labelKey>RoomRequirementNoAnomalyBuildings</labelKey>
-        <buildingTags><li>Anomaly</li></buildingTags>
+        <buildingTags>
+          <li>Anomaly</li>
+        </buildingTags>
       </li>
     </throneRoomRequirements>
     <bedroomRequirements>
@@ -509,15 +546,21 @@
       </li>
       <li Class="RoomRequirement_ForbiddenBuildings">
         <labelKey>RoomRequirementNoProductionFacilities</labelKey>
-        <buildingTags><li>Production</li></buildingTags>
+        <buildingTags>
+          <li>Production</li>
+        </buildingTags>
       </li>
       <li Class="RoomRequirement_ForbiddenBuildings" MayRequire="Ludeon.RimWorld.Biotech">
         <labelKey>RoomRequirementNoBiotechBuildings</labelKey>
-        <buildingTags><li>Biotech</li></buildingTags>
+        <buildingTags>
+          <li>Biotech</li>
+        </buildingTags>
       </li>
       <li Class="RoomRequirement_ForbiddenBuildings" MayRequire="Ludeon.RimWorld.Anomaly">
         <labelKey>RoomRequirementNoAnomalyBuildings</labelKey>
-        <buildingTags><li>Anomaly</li></buildingTags>
+        <buildingTags>
+          <li>Anomaly</li>
+        </buildingTags>
       </li>
     </bedroomRequirements>
     <foodRequirement>
@@ -529,7 +572,9 @@
         <li>RawBerries</li>
       </allowedDefs>
     </foodRequirement>
-    <grantedAbilities><li>Speech</li></grantedAbilities>
+    <grantedAbilities>
+      <li>Speech</li>
+    </grantedAbilities>
     <speechCooldown>1200000</speechCooldown>
     <maxPsylinkLevel>4</maxPsylinkLevel>
   </RoyalTitleDef>
@@ -613,7 +658,9 @@
     </requiredApparel>
     <throneRoomRequirements>
       <li Class="RoomRequirement_HasAssignedThroneAnyOf">
-        <things><li>GrandThrone</li></things>
+        <things>
+          <li>GrandThrone</li>
+        </things>
       </li>
       <li Class="RoomRequirement_Area">
         <area>60</area>
@@ -657,22 +704,30 @@
       </li>
       <li Class="RoomRequirement_ForbiddenBuildings">
         <labelKey>RoomRequirementNoProductionFacilities</labelKey>
-        <buildingTags><li>Production</li></buildingTags>
+        <buildingTags>
+          <li>Production</li>
+        </buildingTags>
       </li>
       <li Class="RoomRequirement_ForbiddenBuildings">
         <labelKey>RoomRequirementNoBeds</labelKey>
-        <buildingTags><li>Bed</li></buildingTags>
+        <buildingTags>
+          <li>Bed</li>
+        </buildingTags>
       </li>
       <li MayRequire="Ludeon.RimWorld.Ideology" Class="RoomRequirement_ForbidAltars">
         <labelKey>RoomRequirementNoAltars</labelKey>
       </li>
       <li Class="RoomRequirement_ForbiddenBuildings" MayRequire="Ludeon.RimWorld.Biotech">
         <labelKey>RoomRequirementNoBiotechBuildings</labelKey>
-        <buildingTags><li>Biotech</li></buildingTags>
+        <buildingTags>
+          <li>Biotech</li>
+        </buildingTags>
       </li>
       <li Class="RoomRequirement_ForbiddenBuildings" MayRequire="Ludeon.RimWorld.Anomaly">
         <labelKey>RoomRequirementNoAnomalyBuildings</labelKey>
-        <buildingTags><li>Anomaly</li></buildingTags>
+        <buildingTags>
+          <li>Anomaly</li>
+        </buildingTags>
       </li>
     </throneRoomRequirements>
     <bedroomRequirements>
@@ -710,15 +765,21 @@
       </li>
       <li Class="RoomRequirement_ForbiddenBuildings">
         <labelKey>RoomRequirementNoProductionFacilities</labelKey>
-        <buildingTags><li>Production</li></buildingTags>
+        <buildingTags>
+          <li>Production</li>
+        </buildingTags>
       </li>
       <li Class="RoomRequirement_ForbiddenBuildings" MayRequire="Ludeon.RimWorld.Biotech">
         <labelKey>RoomRequirementNoBiotechBuildings</labelKey>
-        <buildingTags><li>Biotech</li></buildingTags>
+        <buildingTags>
+          <li>Biotech</li>
+        </buildingTags>
       </li>
       <li Class="RoomRequirement_ForbiddenBuildings" MayRequire="Ludeon.RimWorld.Anomaly">
         <labelKey>RoomRequirementNoAnomalyBuildings</labelKey>
-        <buildingTags><li>Anomaly</li></buildingTags>
+        <buildingTags>
+          <li>Anomaly</li>
+        </buildingTags>
       </li>
     </bedroomRequirements>
     <foodRequirement>
@@ -731,7 +792,9 @@
         <li>InsectJelly</li>
       </allowedDefs>
     </foodRequirement>
-    <grantedAbilities><li>Speech</li></grantedAbilities>
+    <grantedAbilities>
+      <li>Speech</li>
+    </grantedAbilities>
     <speechCooldown>900000</speechCooldown>
     <maxPsylinkLevel>5</maxPsylinkLevel>
   </RoyalTitleDef>
@@ -831,7 +894,9 @@
     </requiredApparel>
     <throneRoomRequirements>
       <li Class="RoomRequirement_HasAssignedThroneAnyOf">
-        <things><li>GrandThrone</li></things>
+        <things>
+          <li>GrandThrone</li>
+        </things>
       </li>
       <li Class="RoomRequirement_Area">
         <area>80</area>
@@ -872,22 +937,30 @@
       </li>
       <li Class="RoomRequirement_ForbiddenBuildings">
         <labelKey>RoomRequirementNoProductionFacilities</labelKey>
-        <buildingTags><li>Production</li></buildingTags>
+        <buildingTags>
+          <li>Production</li>
+        </buildingTags>
       </li>
       <li Class="RoomRequirement_ForbiddenBuildings">
         <labelKey>RoomRequirementNoBeds</labelKey>
-        <buildingTags><li>Bed</li></buildingTags>
+        <buildingTags>
+          <li>Bed</li>
+        </buildingTags>
       </li>
       <li MayRequire="Ludeon.RimWorld.Ideology" Class="RoomRequirement_ForbidAltars">
         <labelKey>RoomRequirementNoAltars</labelKey>
       </li>
       <li Class="RoomRequirement_ForbiddenBuildings" MayRequire="Ludeon.RimWorld.Biotech">
         <labelKey>RoomRequirementNoBiotechBuildings</labelKey>
-        <buildingTags><li>Biotech</li></buildingTags>
+        <buildingTags>
+          <li>Biotech</li>
+        </buildingTags>
       </li>
       <li Class="RoomRequirement_ForbiddenBuildings" MayRequire="Ludeon.RimWorld.Anomaly">
         <labelKey>RoomRequirementNoAnomalyBuildings</labelKey>
-        <buildingTags><li>Anomaly</li></buildingTags>
+        <buildingTags>
+          <li>Anomaly</li>
+        </buildingTags>
       </li>
     </throneRoomRequirements>
     <bedroomRequirements>
@@ -924,15 +997,21 @@
       </li>
       <li Class="RoomRequirement_ForbiddenBuildings">
         <labelKey>RoomRequirementNoProductionFacilities</labelKey>
-        <buildingTags><li>Production</li></buildingTags>
+        <buildingTags>
+          <li>Production</li>
+        </buildingTags>
       </li>
       <li Class="RoomRequirement_ForbiddenBuildings" MayRequire="Ludeon.RimWorld.Biotech">
         <labelKey>RoomRequirementNoBiotechBuildings</labelKey>
-        <buildingTags><li>Biotech</li></buildingTags>
+        <buildingTags>
+          <li>Biotech</li>
+        </buildingTags>
       </li>
       <li Class="RoomRequirement_ForbiddenBuildings" MayRequire="Ludeon.RimWorld.Anomaly">
         <labelKey>RoomRequirementNoAnomalyBuildings</labelKey>
-        <buildingTags><li>Anomaly</li></buildingTags>
+        <buildingTags>
+          <li>Anomaly</li>
+        </buildingTags>
       </li>
     </bedroomRequirements>
     <foodRequirement>
@@ -945,7 +1024,9 @@
         <li>InsectJelly</li>
       </allowedDefs>
     </foodRequirement>
-    <grantedAbilities><li>Speech</li></grantedAbilities>
+    <grantedAbilities>
+      <li>Speech</li>
+    </grantedAbilities>
     <speechCooldown>600000</speechCooldown>
     <maxPsylinkLevel>6</maxPsylinkLevel>
   </RoyalTitleDef>
@@ -953,7 +1034,7 @@
   <!-- ============== Empire titles - NPC only psycaster ============================= -->
 
 
-  <RoyalTitleDef Abstract="True" Name="BaseEmpireTitleNPC" ParentName="BaseEmpireTitle" >
+  <RoyalTitleDef Abstract="True" Name="BaseEmpireTitleNPC" ParentName="BaseEmpireTitle">
     <minExpectation>Royal</minExpectation>
     <requiredMinimumApparelQuality>Normal</requiredMinimumApparelQuality>
     <suppressIdleAlert>true</suppressIdleAlert>
@@ -1011,7 +1092,9 @@
     </requiredApparel>
     <throneRoomRequirements>
       <li Class="RoomRequirement_HasAssignedThroneAnyOf">
-        <things><li>GrandThrone</li></things>
+        <things>
+          <li>GrandThrone</li>
+        </things>
       </li>
       <li Class="RoomRequirement_Area">
         <area>80</area>
@@ -1048,22 +1131,30 @@
       </li>
       <li Class="RoomRequirement_ForbiddenBuildings">
         <labelKey>RoomRequirementNoProductionFacilities</labelKey>
-        <buildingTags><li>Production</li></buildingTags>
+        <buildingTags>
+          <li>Production</li>
+        </buildingTags>
       </li>
       <li Class="RoomRequirement_ForbiddenBuildings">
         <labelKey>RoomRequirementNoBeds</labelKey>
-        <buildingTags><li>Bed</li></buildingTags>
+        <buildingTags>
+          <li>Bed</li>
+        </buildingTags>
       </li>
       <li MayRequire="Ludeon.RimWorld.Ideology" Class="RoomRequirement_ForbidAltars">
         <labelKey>RoomRequirementNoAltars</labelKey>
       </li>
       <li Class="RoomRequirement_ForbiddenBuildings" MayRequire="Ludeon.RimWorld.Biotech">
         <labelKey>RoomRequirementNoBiotechBuildings</labelKey>
-        <buildingTags><li>Biotech</li></buildingTags>
+        <buildingTags>
+          <li>Biotech</li>
+        </buildingTags>
       </li>
       <li Class="RoomRequirement_ForbiddenBuildings" MayRequire="Ludeon.RimWorld.Anomaly">
         <labelKey>RoomRequirementNoAnomalyBuildings</labelKey>
-        <buildingTags><li>Anomaly</li></buildingTags>
+        <buildingTags>
+          <li>Anomaly</li>
+        </buildingTags>
       </li>
     </throneRoomRequirements>
     <bedroomRequirements>
@@ -1100,15 +1191,21 @@
       </li>
       <li Class="RoomRequirement_ForbiddenBuildings">
         <labelKey>RoomRequirementNoProductionFacilities</labelKey>
-        <buildingTags><li>Production</li></buildingTags>
+        <buildingTags>
+          <li>Production</li>
+        </buildingTags>
       </li>
       <li Class="RoomRequirement_ForbiddenBuildings" MayRequire="Ludeon.RimWorld.Biotech">
         <labelKey>RoomRequirementNoBiotechBuildings</labelKey>
-        <buildingTags><li>Biotech</li></buildingTags>
+        <buildingTags>
+          <li>Biotech</li>
+        </buildingTags>
       </li>
       <li Class="RoomRequirement_ForbiddenBuildings" MayRequire="Ludeon.RimWorld.Anomaly">
         <labelKey>RoomRequirementNoAnomalyBuildings</labelKey>
-        <buildingTags><li>Anomaly</li></buildingTags>
+        <buildingTags>
+          <li>Anomaly</li>
+        </buildingTags>
       </li>
     </bedroomRequirements>
     <foodRequirement>
@@ -1121,7 +1218,9 @@
         <li>InsectJelly</li>
       </allowedDefs>
     </foodRequirement>
-    <grantedAbilities><li>Speech</li></grantedAbilities>
+    <grantedAbilities>
+      <li>Speech</li>
+    </grantedAbilities>
     <speechCooldown>600000</speechCooldown>
     <maxPsylinkLevel>6</maxPsylinkLevel>
   </RoyalTitleDef>
