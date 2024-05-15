@@ -18,6 +18,9 @@
 		<initialResistanceRange>12~20</initialResistanceRange>
 		<techHediffsChance>0.75</techHediffsChance>
 		<techHediffsMoney>15000~60000</techHediffsMoney>
+		<apparelTags>
+			<li>IndustrialBasic</li>
+		</apparelTags>
 		<techHediffsRequired>
 			<li>BOR_SolarBionicEye</li>
 			<li>BOR_SolarBionicSpine</li>
@@ -82,7 +85,7 @@
 			<li>Apparel_CollarShirt</li>
 			<li>Apparel_Pants</li>
 		</apparelRequired>
-		<apparelAllowHeadgearChance>0.6</apparelAllowHeadgearChance>
+		<apparelAllowHeadgearChance>0</apparelAllowHeadgearChance>
 	</PawnKindDef>
 	<!-- Solarite Trader -->
 
@@ -135,7 +138,7 @@
 			<li>Apparel_CollarShirt</li>
 			<li>Apparel_Pants</li>
 		</apparelRequired>
-		<apparelAllowHeadgearChance>0.4</apparelAllowHeadgearChance>
+		<apparelAllowHeadgearChance>0</apparelAllowHeadgearChance>
 	</PawnKindDef>
 
 	<PawnKindDef ParentName="BOR_BasePawn">
@@ -163,7 +166,7 @@
 		</apparelRequired>
 		<weaponMoney>830~1250</weaponMoney>
 		<apparelMoney>2000~4000</apparelMoney>
-		<apparelAllowHeadgearChance>0.4</apparelAllowHeadgearChance>
+		<apparelAllowHeadgearChance>0</apparelAllowHeadgearChance>
 		<techHediffsRequired>
 			<li MayRequire="Ludeon.Rimworld.Royalty">FieldHandSolar</li>
 		</techHediffsRequired>
@@ -281,14 +284,23 @@
 		</skills>
 	</PawnKindDef>
 
-	<!-- Solarite Warrior -->
+	<!-- Solarite Guardsman -->
 
 	<PawnKindDef ParentName="BOR_ElitePawn">
-		<defName>BOR_Solarite_Warrior</defName>
-		<label>warrior</label>
-		<labelPlural>warriors</labelPlural>
+		<defName>BOR_Solarite_Guardsman</defName>
+		<label>guardsman</label>
+		<labelPlural>guardsmen</labelPlural>
+		<apparelTags>
+			<li>IndustrialBasic</li>
+			<li>IndustrialAdvanced</li>
+			<li>IndustrialMilitaryBasic</li>
+			<li>IndustrialMilitaryAdvanced</li>
+		</apparelTags>
+		<apparelDisallowTags>
+			<li>Western</li>
+		</apparelDisallowTags>
 		<weaponTags>
-			<li>BOR_Military_I</li>
+			<li>BOR_AssaultRifle_I</li>
 		</weaponTags>
 		<weaponMoney>
 			<min>17000</min>
@@ -301,17 +313,15 @@
 			<min>15000</min>
 			<max>25000</max>
 		</apparelMoney>
-		<apparelTags Inherit="False">
-			<li>BOR_Military_I</li>
-			<li>BOR_HiTechArmor_I</li>
-			<li>BOR_Apparel</li>
-			<li>BOR_Armor_I</li>
-		</apparelTags>
-		<apparelAllowHeadgearChance>1</apparelAllowHeadgearChance>
+		<apparelRequired>
+			<li>BOR_Solar_Apparel_FlakPants</li>
+			<li>BOR_Solar_Apparel_FlakJacket</li>
+			<li>Apparel_AdvancedHelmet</li>
+		</apparelRequired>
 		<skills>
 			<li>
 				<skill>Shooting</skill>
-				<range>12~16</range>
+				<range>8~14</range>
 			</li>
 		</skills>
 	</PawnKindDef>
