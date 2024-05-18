@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+    <ThingDef ParentName="BaseGrenadeProjectile">
+        <defName>BOR_Proj_Dunder_I</defName>
+        <label>Satchel charge</label>
+        <thingClass>Projectile_Explosive</thingClass>
+        <graphicData>
+            <color>(0, 0.75, 0.9)</color>
+            <texPath>Things/Projectile/Dunder</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <projectile>
+            <explosionRadius>9</explosionRadius>
+            <damageDef>Bomb</damageDef>
+            <damageAmountBase>450</damageAmountBase>
+            <explosionDelay>350</explosionDelay>
+        </projectile>
+    </ThingDef>
+
+    <ThingDef ParentName="BaseRSGrenade">
+        <defName>BOR_JI_Dunder_I</defName>
+        <equipmentType>Primary</equipmentType>
+        <label>solar satchel charge</label>
+        <description>A "Dunder II" solar Satchel charge. Combat engineer's best friend.</description>
+        <graphicData>
+            <color>(0, 0.75, 0.9)</color>
+            <texPath>Things/A16/Dunder</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <soundInteract>Interact_Grenade</soundInteract>
+        <techLevel>Ultra</techLevel>
+        <statBases>
+            <Mass>3</Mass>
+            <RangedWeapon_Cooldown>1.85</RangedWeapon_Cooldown>
+        </statBases>
+        <weaponTags>
+            <li>GrenadeDestructive</li>
+        </weaponTags>
+        <thingCategories>
+            <li>Grenades</li>
+        </thingCategories>
+        <recipeMaker>
+            <researchPrerequisite>BOR_Research_Weapons_I</researchPrerequisite>
+            <skillRequirements>
+                <Crafting>13</Crafting>
+            </skillRequirements>
+            <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+            <workSkill>Crafting</workSkill>
+            <effectWorking>Smith</effectWorking>
+            <soundWorking>Recipe_Smith</soundWorking>
+            <recipeUsers>
+                <li>BOR_Bench_I</li>
+                <li>BOR_Bench_IV</li>
+            </recipeUsers>
+            <unfinishedThingDef>UnfinishedGun</unfinishedThingDef>
+        </recipeMaker>
+        <costList>
+            <ComponentSpacer>5</ComponentSpacer>
+            <BOR_Sunsteel>55</BOR_Sunsteel>
+            <BOR_Neutronium>150</BOR_Neutronium>
+        </costList>
+        <verbs>
+            <li>
+                <label>throw solar satchel charge</label>
+                <verbClass>Verb_LaunchProjectile</verbClass>
+                <hasStandardCommand>true</hasStandardCommand>
+                <range>13.275</range>
+                <forcedMissRadius>0.5</forcedMissRadius>
+                <warmupTime>2.22</warmupTime>
+                <noiseRadius>5.55</noiseRadius>
+                <ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
+                <soundCast>ThrowGrenade</soundCast>
+                <targetParams>
+                    <canTargetLocations>true</canTargetLocations>
+                </targetParams>
+                <defaultProjectile>BOR_Proj_Dunder_I</defaultProjectile>
+            </li>
+        </verbs>
+    </ThingDef>
+</Defs>
