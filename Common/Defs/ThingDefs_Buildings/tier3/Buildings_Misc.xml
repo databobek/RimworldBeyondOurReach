@@ -64,4 +64,66 @@
     <designatorDropdown>BOR_Unlockers</designatorDropdown>
   </ThingDef>
 
+  <ThingDef ParentName="BuildingBase">
+    <defName>BOR_ToolCabinet_III</defName>
+    <label>dark manufacturer</label>
+    <designatorDropdown>BOR_ToolCabinets</designatorDropdown>
+    <description>Increases work speed when placed near a workbench. One workbench can use up to five dark manufacturers.</description>
+    <graphicData>
+      <texPath>BOR/Things/Building/tier3/production_bench_linkable/production_bench_linkable</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawSize>(5.7,5.7)</drawSize>
+      <drawOffset>(0,4,0.4)</drawOffset>
+      <drawOffsetWest>(0,4,0)</drawOffsetWest>
+      <drawOffsetEast>(0,4,0)</drawOffsetEast>
+    </graphicData>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <castEdgeShadows>true</castEdgeShadows>
+    <staticSunShadowHeight>0.35</staticSunShadowHeight>
+    <fillPercent>0.5</fillPercent>
+    <canOverlapZones>false</canOverlapZones>
+    <pathCost>32</pathCost>
+    <statBases>
+      <MaxHitPoints>337</MaxHitPoints>
+      <WorkToBuild>6075</WorkToBuild>
+      <Mass>10</Mass>
+      <Flammability>0.2</Flammability>
+    </statBases>
+    <size>(4,1)</size>
+    <costList>
+      <BOR_Tenebrite>200</BOR_Tenebrite>
+      <BOR_ComponentIII>2</BOR_ComponentIII>
+    </costList>
+    <building>
+      <destroySound>BuildingDestroyed_Metal_Small</destroySound>
+    </building>
+    <researchPrerequisites>
+      <li>ComplexFurniture</li>
+      <li>BOR_Research_Production_III</li>
+    </researchPrerequisites>
+    <designationCategory>BOR</designationCategory>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <constructionSkillPrerequisite>9</constructionSkillPrerequisite>
+    <thingCategories>
+      <li>BuildingsMisc</li>
+    </thingCategories>
+    <comps>
+      <li Class="CompProperties_Facility">
+        <statOffsets>
+          <WorkTableWorkSpeedFactor>0.2025</WorkTableWorkSpeedFactor>
+        </statOffsets>
+        <maxSimultaneous>5</maxSimultaneous>
+      </li>
+      <li MayRequire="hobbes.bamba.evenmorelinkables" Class="Hobbes.MoreLinkablesProduction.CompProperties_WorkHelper">
+        <radius>7</radius>
+        <tickInterval>2000</tickInterval>
+        <reductionAmt>500</reductionAmt>
+      </li>
+    </comps>
+    <designationHotKey>Misc6</designationHotKey>
+    <placeWorkers>
+      <li>PlaceWorker_ShowFacilitiesConnections</li>
+    </placeWorkers>
+  </ThingDef>
 </Defs>

@@ -64,4 +64,61 @@
     <designatorDropdown>BOR_Unlockers</designatorDropdown>
   </ThingDef>
 
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>BOR_ToolCabinet_II</defName>
+    <label>tool kwaazbinet</label>
+    <designatorDropdown>BOR_ToolCabinets</designatorDropdown>
+    <description>Increases work speed when placed near a workbench. One workbench can use up to four kwaazbinets.</description>
+    <graphicData>
+      <texPath>BOR/Things/Building/tier2/bench_linkable/bench_linkable</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawOffsetEast>(0,4,-0.15)</drawOffsetEast>
+      <drawOffsetNorth>(0,3,0)</drawOffsetNorth>
+      <drawSize>(4,4)</drawSize>
+    </graphicData>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <castEdgeShadows>true</castEdgeShadows>
+    <staticSunShadowHeight>0.35</staticSunShadowHeight>
+    <fillPercent>0.5</fillPercent>
+    <canOverlapZones>false</canOverlapZones>
+    <pathCost>32</pathCost>
+    <statBases>
+      <MaxHitPoints>225</MaxHitPoints>
+      <WorkToBuild>4050</WorkToBuild>
+      <Mass>14</Mass>
+      <Flammability>0.35</Flammability>
+    </statBases>
+    <size>(3,1)</size>
+    <costList>
+      <BOR_QuasarAlloy>200</BOR_QuasarAlloy>
+      <BOR_ComponentII>2</BOR_ComponentII>
+    </costList>
+    <building>
+      <destroySound>BuildingDestroyed_Metal_Small</destroySound>
+    </building>
+    <researchPrerequisites>
+      <li>ComplexFurniture</li>
+      <li>BOR_Research_Production_II</li>
+    </researchPrerequisites>
+    <designationCategory>BOR</designationCategory>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <constructionSkillPrerequisite>9</constructionSkillPrerequisite>
+    <thingCategories>
+      <li>BuildingsMisc</li>
+    </thingCategories>
+    <comps>
+      <li Class="CompProperties_Facility">
+        <statOffsets>
+          <WorkTableWorkSpeedFactor>0.135</WorkTableWorkSpeedFactor>
+        </statOffsets>
+        <maxSimultaneous>4</maxSimultaneous>
+      </li>
+    </comps>
+    <designationHotKey>Misc6</designationHotKey>
+    <placeWorkers>
+      <li>PlaceWorker_ShowFacilitiesConnections</li>
+    </placeWorkers>
+  </ThingDef>
 </Defs>
