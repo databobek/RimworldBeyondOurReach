@@ -1,699 +1,665 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Defs>
+	<!--Tab-->
+	<ResearchTabDef>
+		<defName>BOR_Research_Tab</defName>
+		<label>beyond</label>
+		<generalTitle>Beyond Our Reach research projects</generalTitle>
+		<generalDescription>Unlock solar, quasaric, tenebrite, and umbra technologies by researching at a hi-tech research bench. You can only have one active project at a time.</generalDescription>
+	</ResearchTabDef>
+	<!--Base Defs-->
+	<ResearchProjectDef Name="BOR_Research_Base" Abstract="True">
+		<requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+		<requiredResearchFacilities>
+			<li>MultiAnalyzer</li>
+		</requiredResearchFacilities>
+		<tab>BOR_Research_Tab</tab>
+	</ResearchProjectDef>
+	<ResearchProjectDef Name="BOR_Research_Base_I" ParentName="BOR_Research_Base" Abstract="True">
+		<requiredResearchFacilities>
+			<li>BOR_Research_Unlocker_I</li>
+		</requiredResearchFacilities>
+	</ResearchProjectDef>
+	<ResearchProjectDef Name="BOR_Research_Base_II" ParentName="BOR_Research_Base" Abstract="True">
+		<requiredResearchFacilities>
+			<li>BOR_Research_Unlocker_II</li>
+		</requiredResearchFacilities>
+	</ResearchProjectDef>
+	<ResearchProjectDef Name="BOR_Research_Base_III" ParentName="BOR_Research_Base" Abstract="True">
+		<requiredResearchFacilities>
+			<li>BOR_Research_Unlocker_III</li>
+		</requiredResearchFacilities>
+	</ResearchProjectDef>
+	<ResearchProjectDef Name="BOR_Research_Base_IV" ParentName="BOR_Research_Base" Abstract="True">
+		<requiredResearchFacilities>
+			<li>BOR_Research_Unlocker_IV</li>
+		</requiredResearchFacilities>
+	</ResearchProjectDef>
+	<!--~~~~~~~~~~~~~~~~~-->
+	<!--Research Projects-->
+	<!--~~~~~~~~~~~~~~~~~-->
+	<!--Tier 1-->
+	<ResearchProjectDef ParentName="BOR_Research_Base">
+		<defName>BOR_Research_Analyzer_I</defName>
+		<label>solar analyzer</label>
+		<description>Build a solar analyzer, which models this world's sun to aid research and unlock solar-tier research projects. Reverse-engineer the secrets of Solar Republic society through the study of heliophysics.</description>
+		<baseCost>10000</baseCost>
+		<techLevel>Ultra</techLevel>
+		<prerequisites>
+			<li>ShipCryptosleep</li>
+			<li>ShipReactor</li>
+			<li>ShipEngine</li>
+			<li>ShipComputerCore</li>
+			<li>ShipSensorCluster</li>
+		</prerequisites>
+		<researchViewX>0.00</researchViewX>
+		<researchViewY>3.00</researchViewY>
+	</ResearchProjectDef>
+	<ResearchProjectDef ParentName="BOR_Research_Base_I">
+		<defName>BOR_Research_Production_I</defName>
+		<label>nuclear metallurgy</label>
+		<description>Produce sunsteel from plasteel, gold, and uranium at a smelter. Build the sunsteel shaper to form sunsteel into solarite buildings and weapons.</description>
+		<baseCost>20000</baseCost>
+		<techLevel>Ultra</techLevel>
+		<prerequisites>
+			<li>BOR_Research_Analyzer_I</li>
+		</prerequisites>
+		<researchViewX>1.00</researchViewX>
+		<researchViewY>3.00</researchViewY>
+	</ResearchProjectDef>
+	<ResearchProjectDef ParentName="BOR_Research_Base_I">
+		<defName>BOR_Research_Power_I</defName>
+		<label>solar energy</label>
+		<description>Generate power the way Solarites do: splitting their sunsteel in a specially-tooled reactor. Craft Solarite fuel rods for use in the Solarite reactor.</description>
+		<baseCost>35000</baseCost>
+		<techLevel>Ultra</techLevel>
+		<prerequisites>
+			<li>BOR_Research_Production_I</li>
+		</prerequisites>
+		<researchViewX>2.00</researchViewX>
+		<researchViewY>1.75</researchViewY>
+	</ResearchProjectDef>
+	<ResearchProjectDef ParentName="BOR_Research_Base_I">
+		<defName>BOR_Research_Battery_I</defName>
+		<label>solar battery</label>
+		<description>Build stronger batteries from sunsteel to hold greater amounts of power.</description>
+		<baseCost>10000</baseCost>
+		<techLevel>Ultra</techLevel>
+		<prerequisites>
+			<li>BOR_Research_Power_I</li>
+			<li>Batteries</li>
+		</prerequisites>
+		<researchViewX>3.00</researchViewX>
+		<researchViewY>1.75</researchViewY>
+	</ResearchProjectDef>
+	<ResearchProjectDef ParentName="BOR_Research_Base_I">
+		<defName>BOR_Research_Quarks_I</defName>
+		<label>strong force manipulation</label>
+		<description>Harness the strong nuclear force to stitch neutrons into the ultradense Neutronium. You can already control the electromagnetic force with the literal flick of a switch; why stop at mastery over one fundamental force? Imagine - a neutron star in your own backyard!</description>
+		<baseCost>50000</baseCost>
+		<techLevel>Ultra</techLevel>
+		<prerequisites>
+			<li>BOR_Research_Power_I</li>
+		</prerequisites>
+		<researchViewX>3.00</researchViewX>
+		<researchViewY>0.75</researchViewY>
+	</ResearchProjectDef>
+	<ResearchProjectDef ParentName="BOR_Research_Base_I">
+		<defName>BOR_Research_Armor_I</defName>
+		<label>solar armor</label>
+		<description>Manufacture power armor typical of Solarite military personnel.</description>
+		<baseCost>35000</baseCost>
+		<techLevel>Ultra</techLevel>
+		<prerequisites>
+			<li>BOR_Research_Production_I</li>
+			<li>PoweredArmor</li>
+		</prerequisites>
+		<researchViewX>2.00</researchViewX>
+		<researchViewY>2.25</researchViewY>
+	</ResearchProjectDef>
+	<ResearchProjectDef ParentName="BOR_Research_Base_I">
+		<defName>BOR_Research_Weapons_I</defName>
+		<label>solar weaponry</label>
+		<description>Build weapons that exploit the inherent instability of sunsteel for ease-of-use, efficiency, and extreme damage.</description>
+		<baseCost>35000</baseCost>
+		<techLevel>Ultra</techLevel>
+		<prerequisites>
+			<li>BOR_Research_Production_I</li>
+			<li>ChargedShot</li>
+		</prerequisites>
+		<researchViewX>2.00</researchViewX>
+		<researchViewY>2.75</researchViewY>
+	</ResearchProjectDef>
+	<ResearchProjectDef ParentName="BOR_Research_Base_I">
+		<defName>BOR_Research_Medicine_I</defName>
+		<label>solar medicine production</label>
+		<description>Produce medicinal products on-par with Solarite nation-states at the Solar medical fabricator.</description>
+		<baseCost>35000</baseCost>
+		<techLevel>Ultra</techLevel>
+		<prerequisites>
+			<li>BOR_Research_Production_I</li>
+			<li>MedicineProduction</li>
+		</prerequisites>
+		<researchViewX>2.00</researchViewX>
+		<researchViewY>3.50</researchViewY>
+	</ResearchProjectDef>
+	<ResearchProjectDef ParentName="BOR_Research_Base_I">
+		<defName>BOR_Research_Bionics_I</defName>
+		<label>solar bionics</label>
+		<description>Build Solarite body parts to replace missing appendages and organs or supplant natural flesh. Requires nanoclusters and a skilled doctor to attach.</description>
+		<baseCost>10000</baseCost>
+		<techLevel>Ultra</techLevel>
+		<prerequisites>
+			<li>BOR_Research_Medicine_I</li>
+			<li>Bionics</li>
+		</prerequisites>
+		<researchViewX>3.00</researchViewX>
+		<researchViewY>3.25</researchViewY>
+	</ResearchProjectDef>
+	<ResearchProjectDef ParentName="BOR_Research_Base_I">
+		<defName>BOR_Research_Drugs_I</defName>
+		<label>solar drug production</label>
+		<description>Produce drugs found among Solarite communities.
 
-  <!--Tab-->
+Aegis is a powerful disease prevention drug that blocks many common ailments - including infection - before they are contracted, more so than penoxycyline.
 
-  <ResearchTabDef>
-    <defName>BOR_Research_Tab</defName>
-    <label>beyond</label>
-    <generalTitle>Beyond Our Reach research projects</generalTitle>
-    <generalDescription>Unlock solar, quasaric, tenebrite, and umbra technologies by researching at a hi-tech research bench. You can only have one active project at a time.</generalDescription>
-  </ResearchTabDef>
+Sunlite is a euphoria-inducing drink refined from sunweave. While it reduces the need for rest and suppresses pain, it is extremely addictive, albeit less so than psychite-based drugs.
 
-  <!--Base Defs-->
+Trot is a synthetic combat drug used by Solarite militaries to improve shooting, melee, and movement while dulling pain in the user.
 
-  <ResearchProjectDef Name="BOR_Research_Base" Abstract="True">
-    <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
-    <requiredResearchFacilities>
-      <li>MultiAnalyzer</li>
-    </requiredResearchFacilities>
-    <tab>BOR_Research_Tab</tab>
-  </ResearchProjectDef>
+Wide-a-wake is a productivity-enhancement drug which significantly reduces the users need to sleep.</description>
+		<baseCost>10000</baseCost>
+		<techLevel>Ultra</techLevel>
+		<prerequisites>
+			<li>BOR_Research_Medicine_I</li>
+			<li>WakeUpProduction</li>
+			<li>GoJuiceProduction</li>
+			<li>PenoxycylineProduction</li>
+		</prerequisites>
+		<researchViewX>3.00</researchViewX>
+		<researchViewY>3.75</researchViewY>
+	</ResearchProjectDef>
+	<ResearchProjectDef ParentName="BOR_Research_Base_I">
+		<defName>BOR_Research_Joy_I</defName>
+		<label>solar recreation</label>
+		<description>Match your technological prowess with the equivalent recreational facilities. After all, all work and no play makes Jack a dull boy.</description>
+		<baseCost>35000</baseCost>
+		<techLevel>Ultra</techLevel>
+		<prerequisites>
+			<li>BOR_Research_Production_I</li>
+			<li>ComplexFurniture</li>
+		</prerequisites>
+		<researchViewX>2.00</researchViewX>
+		<researchViewY>4.25</researchViewY>
+	</ResearchProjectDef>
+	<ResearchProjectDef ParentName="BOR_Research_Base_I">
+		<defName>BOR_Research_Hydroponics_I</defName>
+		<label>solar hydroponics</label>
+		<description>Build sunsteel hydroponics basins to better cultivate crops indoors.</description>
+		<baseCost>35000</baseCost>
+		<techLevel>Ultra</techLevel>
+		<prerequisites>
+			<li>BOR_Research_Production_I</li>
+			<li>Hydroponics</li>
+		</prerequisites>
+		<researchViewX>2.00</researchViewX>
+		<researchViewY>4.75</researchViewY>
+	</ResearchProjectDef>
+	<ResearchProjectDef ParentName="BOR_Research_Base_I">
+		<defName>BOR_Research_NSynth_I</defName>
+		<label>basic n-synthesis</label>
+		<description>Transmute neutronium into any material known to you. Through induced beta-decay, your refineries can shift neutronium into any element, in any configuration.</description>
+		<baseCost>70000</baseCost>
+		<techLevel>Ultra</techLevel>
+		<prerequisites>
+			<li>BOR_Research_Quarks_I</li>
+		</prerequisites>
+		<researchViewX>4.00</researchViewX>
+		<researchViewY>0.75</researchViewY>
+	</ResearchProjectDef>
+	<!--Tier 2-->
+	<ResearchProjectDef ParentName="BOR_Research_Base_I">
+		<defName>BOR_Research_Analyzer_II</defName>
+		<label>quasaric analyzer</label>
+		<description>Build a quasaric analyzer, which simulates the quasi-stellar object at the center of your galaxy to aid research and unlock quasar-tier research projects. The Kwazaari will enjoy their monopoly no longer.</description>
+		<baseCost>100000</baseCost>
+		<techLevel>Ultra</techLevel>
+		<prerequisites>
+			<li>BOR_Research_Production_I</li>
+		</prerequisites>
+		<researchViewX>5.00</researchViewX>
+		<researchViewY>3.00</researchViewY>
+	</ResearchProjectDef>
+	<ResearchProjectDef ParentName="BOR_Research_Base_II">
+		<defName>BOR_Research_Production_II</defName>
+		<label>accretic condenser</label>
+		<description>Produce quasar alloy from sunsteel, gold, and uranium at a sunsteel shaper. Build the neutronium refabricator and theta forge to craft quasar alloy products. Craft Kwazaari universal parts, uniquely-tooled components for most quasar buildings.</description>
+		<baseCost>130000</baseCost>
+		<techLevel>Ultra</techLevel>
+		<prerequisites>
+			<li>BOR_Research_Analyzer_II</li>
+		</prerequisites>
+		<researchViewX>6.00</researchViewX>
+		<researchViewY>3.00</researchViewY>
+	</ResearchProjectDef>
+	<ResearchProjectDef ParentName="BOR_Research_Base_II">
+		<defName>BOR_Research_Power_II</defName>
+		<label>quasar energy</label>
+		<description>Generate power in amounts fit to compete with the Kwazaari Corporation themselves. Build a neutronium reactor to exploit the unique interaction between dissoluted neutronium and the permittivity of quasar alloy.</description>
+		<baseCost>170000</baseCost>
+		<techLevel>Ultra</techLevel>
+		<prerequisites>
+			<li>BOR_Research_Production_II</li>
+		</prerequisites>
+		<hiddenPrerequisites>
+			<li>BOR_Research_Power_I</li>
+		</hiddenPrerequisites>
+		<researchViewX>7.00</researchViewX>
+		<researchViewY>1.75</researchViewY>
+	</ResearchProjectDef>
+	<ResearchProjectDef ParentName="BOR_Research_Base_II">
+		<defName>BOR_Research_Battery_II</defName>
+		<label>quasar battery</label>
+		<description>Build stronger batteries from quasar alloy to hold ever-greater amounts of power.</description>
+		<baseCost>40000</baseCost>
+		<techLevel>Ultra</techLevel>
+		<prerequisites>
+			<li>BOR_Research_Power_II</li>
+		</prerequisites>
+		<hiddenPrerequisites>
+			<li>BOR_Research_Battery_I</li>
+		</hiddenPrerequisites>
+		<researchViewX>8.00</researchViewX>
+		<researchViewY>1.75</researchViewY>
+	</ResearchProjectDef>
+	<ResearchProjectDef ParentName="BOR_Research_Base_II">
+		<defName>BOR_Research_Armor_II</defName>
+		<label>quasar armor</label>
+		<description>Manufacture power armor typical of Kwazaari private military contractors.</description>
+		<baseCost>170000</baseCost>
+		<techLevel>Ultra</techLevel>
+		<prerequisites>
+			<li>BOR_Research_Production_II</li>
+		</prerequisites>
+		<hiddenPrerequisites>
+			<li>BOR_Research_Armor_I</li>
+		</hiddenPrerequisites>
+		<researchViewX>7.00</researchViewX>
+		<researchViewY>2.25</researchViewY>
+	</ResearchProjectDef>
+	<ResearchProjectDef ParentName="BOR_Research_Base_II">
+		<defName>BOR_Research_Weapons_II</defName>
+		<label>quasar weaponry</label>
+		<description>Craft kwazaari weapons that utilize the superior properties of quasar alloy to propel charge shots at high velocities</description>
+		<baseCost>170000</baseCost>
+		<techLevel>Ultra</techLevel>
+		<prerequisites>
+			<li>BOR_Research_Production_II</li>
+		</prerequisites>
+		<hiddenPrerequisites>
+			<li>BOR_Research_Weapons_I</li>
+		</hiddenPrerequisites>
+		<researchViewX>7.00</researchViewX>
+		<researchViewY>2.75</researchViewY>
+	</ResearchProjectDef>
+	<ResearchProjectDef ParentName="BOR_Research_Base_II">
+		<defName>BOR_Research_Medicine_II</defName>
+		<label>quasar medicine production</label>
+		<description>Produce medical items common to Kwazaari Quiklinic-brand private healthcare facilities.</description>
+		<baseCost>170000</baseCost>
+		<techLevel>Ultra</techLevel>
+		<prerequisites>
+			<li>BOR_Research_Production_II</li>
+		</prerequisites>
+		<hiddenPrerequisites>
+			<li>BOR_Research_Medicine_I</li>
+		</hiddenPrerequisites>
+		<researchViewX>7.00</researchViewX>
+		<researchViewY>3.60</researchViewY>
+	</ResearchProjectDef>
+	<ResearchProjectDef ParentName="BOR_Research_Base_II">
+		<defName>BOR_Research_Bionics_II</defName>
+		<label>quasar bionics</label>
+		<description>Build Kwazaari body parts to replace missing appendages and organs or supplant natural flesh. Requires picoclusters and a skilled doctor to attach.</description>
+		<baseCost>40000</baseCost>
+		<techLevel>Ultra</techLevel>
+		<prerequisites>
+			<li>BOR_Research_Medicine_II</li>
+		</prerequisites>
+		<hiddenPrerequisites>
+			<li>BOR_Research_Bionics_I</li>
+		</hiddenPrerequisites>
+		<researchViewX>8.00</researchViewX>
+		<researchViewY>3.30</researchViewY>
+	</ResearchProjectDef>
+	<ResearchProjectDef ParentName="BOR_Research_Base_II">
+		<defName>BOR_Research_Drugs_II</defName>
+		<label>quasar drug production</label>
+		<description>Produce drugs found among Kwazaari employees and corpo-slaves alike.
 
-  <ResearchProjectDef Name="BOR_Research_Base_I" ParentName="BOR_Research_Base" Abstract="True">
-    <requiredResearchFacilities>
-      <li>BOR_Research_Unlocker_I</li>
-    </requiredResearchFacilities>
-  </ResearchProjectDef>
+Castra is a powerful disease prevention drug that blocks many common ailments - including infection - before they are contracted, more so than Aegis.
 
-  <ResearchProjectDef Name="BOR_Research_Base_II" ParentName="BOR_Research_Base" Abstract="True">
-    <requiredResearchFacilities>
-      <li>BOR_Research_Unlocker_II</li>
-    </requiredResearchFacilities>
-  </ResearchProjectDef>
+Sunlight is a euphoria-inducing drink refined from sunweave. While it reduces the need for rest and suppresses pain, it is extremely addictive, albeit less so than sunlite.
 
-  <ResearchProjectDef Name="BOR_Research_Base_III" ParentName="BOR_Research_Base" Abstract="True">
-    <requiredResearchFacilities>
-      <li>BOR_Research_Unlocker_III</li>
-    </requiredResearchFacilities>
-  </ResearchProjectDef>
+Canter is a synthetic combat drug used by Solarite militaries to improve shooting, melee, and movement while dulling pain in the user.
 
-  <ResearchProjectDef Name="BOR_Research_Base_IV" ParentName="BOR_Research_Base" Abstract="True">
-    <requiredResearchFacilities>
-      <li>BOR_Research_Unlocker_IV</li>
-    </requiredResearchFacilities>
-  </ResearchProjectDef>
+Sleepquitin is a productivity-enhancement drug which significantly reduces the users need to sleep.</description>
+		<baseCost>40000</baseCost>
+		<techLevel>Ultra</techLevel>
+		<prerequisites>
+			<li>BOR_Research_Medicine_II</li>
+		</prerequisites>
+		<hiddenPrerequisites>
+			<li>BOR_Research_Drugs_I</li>
+		</hiddenPrerequisites>
+		<researchViewX>8.00</researchViewX>
+		<researchViewY>3.90</researchViewY>
+	</ResearchProjectDef>
+	<ResearchProjectDef ParentName="BOR_Research_Base_II">
+		<defName>BOR_Research_Joy_II</defName>
+		<label>quasar recreation</label>
+		<description>Build recreational facilities comparable to those of Kwazaari C-suite executives. Lucky!</description>
+		<baseCost>170000</baseCost>
+		<techLevel>Ultra</techLevel>
+		<prerequisites>
+			<li>BOR_Research_Production_II</li>
+		</prerequisites>
+		<hiddenPrerequisites>
+			<li>BOR_Research_Joy_I</li>
+		</hiddenPrerequisites>
+		<researchViewX>7.00</researchViewX>
+		<researchViewY>4.50</researchViewY>
+	</ResearchProjectDef>
+	<ResearchProjectDef ParentName="BOR_Research_Base_II">
+		<defName>BOR_Research_Hydroponics_II</defName>
+		<label>quasar hydroponics</label>
+		<description>Build the superior hydroponics system from quasar alloy.</description>
+		<baseCost>170000</baseCost>
+		<techLevel>Ultra</techLevel>
+		<prerequisites>
+			<li>BOR_Research_Production_II</li>
+		</prerequisites>
+		<hiddenPrerequisites>
+			<li>BOR_Research_Hydroponics_I</li>
+		</hiddenPrerequisites>
+		<researchViewX>7.00</researchViewX>
+		<researchViewY>5.10</researchViewY>
+	</ResearchProjectDef>
+	<ResearchProjectDef ParentName="BOR_Research_Base_II">
+		<defName>BOR_Research_NSynth_II</defName>
+		<label>standard n-synthesis</label>
+		<description>Build the [missing] refinery, which uses quasar alloy and Kwazaari universal parts to lose less neutronium during the synthesis stage, granting you much more efficient neutronosynthesis recipes.</description>
+		<baseCost>210000</baseCost>
+		<techLevel>Ultra</techLevel>
+		<prerequisites>
+			<li>BOR_Research_NSynth_I</li>
+			<li>BOR_Research_Power_II</li>
+		</prerequisites>
+		<researchViewX>8.00</researchViewX>
+		<researchViewY>0.75</researchViewY>
+	</ResearchProjectDef>
+	<!--Tier 3-->
+	<ResearchProjectDef ParentName="BOR_Research_Base_II">
+		<defName>BOR_Research_Analyzer_III</defName>
+		<label>galactic analyzer</label>
+		<description>Build a dark mirror, an extreme astronomical device that scrutinizes interstellar space for insights into dark matter. The dark mirror greatly aids your research and unlocks Tenebral research projects. In emulating Tenebral society you may, one day, join them.</description>
+		<baseCost>340000</baseCost>
+		<techLevel>Archotech</techLevel>
+		<prerequisites>
+			<li>BOR_Research_Production_II</li>
+		</prerequisites>
+		<researchViewX>10.00</researchViewX>
+		<researchViewY>3.00</researchViewY>
+	</ResearchProjectDef>
+	<ResearchProjectDef ParentName="BOR_Research_Base_III">
+		<defName>BOR_Research_Production_III</defName>
+		<label>gravitic crystal shaping</label>
+		<description>Produce tenebrite, a crystalline material derived from quasar alloy and stray dark matter. Craft crystalline joints from tenebrite, crucial components in tenebrite products. Build tenebrite structures and craft tenebrite tools and weapons; they will be supreme to nearly all others.</description>
+		<baseCost>420000</baseCost>
+		<techLevel>Archotech</techLevel>
+		<prerequisites>
+			<li>BOR_Research_Analyzer_III</li>
+		</prerequisites>
+		<researchViewX>11.00</researchViewX>
+		<researchViewY>3.00</researchViewY>
+	</ResearchProjectDef>
+	<ResearchProjectDef ParentName="BOR_Research_Base_III">
+		<defName>BOR_Research_Power_III</defName>
+		<label>tenebrite energy</label>
+		<description>Build the dark reactor, which captures energy from stray, non-interacting particles to freely generate power.</description>
+		<baseCost>500000</baseCost>
+		<techLevel>Archotech</techLevel>
+		<prerequisites>
+			<li>BOR_Research_Production_III</li>
+		</prerequisites>
+		<hiddenPrerequisites>
+			<li>BOR_Research_Power_II</li>
+		</hiddenPrerequisites>
+		<researchViewX>12.00</researchViewX>
+		<researchViewY>1.75</researchViewY>
+	</ResearchProjectDef>
+	<ResearchProjectDef ParentName="BOR_Research_Base_III">
+		<defName>BOR_Research_Battery_III</defName>
+		<label>tenebrite battery</label>
+		<description>Build tenebral batteries to store supreme amounts of power.</description>
+		<baseCost>125000</baseCost>
+		<techLevel>Archotech</techLevel>
+		<prerequisites>
+			<li>BOR_Research_Power_III</li>
+		</prerequisites>
+		<hiddenPrerequisites>
+			<li>BOR_Research_Battery_II</li>
+		</hiddenPrerequisites>
+		<researchViewX>13.00</researchViewX>
+		<researchViewY>1.75</researchViewY>
+	</ResearchProjectDef>
+	<ResearchProjectDef ParentName="BOR_Research_Base_III">
+		<defName>BOR_Research_Armor_III</defName>
+		<label>tenebrite armor</label>
+		<description>Fabricate tenebral power armor, a shadowy suit of armor to set your footing equal to Tenebral communes.</description>
+		<baseCost>500000</baseCost>
+		<techLevel>Archotech</techLevel>
+		<prerequisites>
+			<li>BOR_Research_Production_III</li>
+		</prerequisites>
+		<hiddenPrerequisites>
+			<li>BOR_Research_Armor_II</li>
+		</hiddenPrerequisites>
+		<researchViewX>12.00</researchViewX>
+		<researchViewY>2.25</researchViewY>
+	</ResearchProjectDef>
+	<ResearchProjectDef ParentName="BOR_Research_Base_III">
+		<defName>BOR_Research_Weapons_III</defName>
+		<label>tenebrite weaponry</label>
+		<description>Craft pistols, shotguns, automatic rifles, and snipers from tenebrite and crystalline joints.</description>
+		<baseCost>500000</baseCost>
+		<techLevel>Archotech</techLevel>
+		<prerequisites>
+			<li>BOR_Research_Production_III</li>
+		</prerequisites>
+		<hiddenPrerequisites>
+			<li>BOR_Research_Weapons_II</li>
+		</hiddenPrerequisites>
+		<researchViewX>12.00</researchViewX>
+		<researchViewY>2.75</researchViewY>
+	</ResearchProjectDef>
+	<ResearchProjectDef ParentName="BOR_Research_Base_III">
+		<defName>BOR_Research_Medicine_III</defName>
+		<label>tenebrite medicine production</label>
+		<description>Produce dark medicine, the tenebral medical fabricator, and femtoclusters: small machines that give your doctors agency in small places, needed for tenebral medical procedures.</description>
+		<baseCost>500000</baseCost>
+		<techLevel>Archotech</techLevel>
+		<prerequisites>
+			<li>BOR_Research_Production_III</li>
+		</prerequisites>
+		<hiddenPrerequisites>
+			<li>BOR_Research_Medicine_II</li>
+		</hiddenPrerequisites>
+		<researchViewX>12.00</researchViewX>
+		<researchViewY>3.60</researchViewY>
+	</ResearchProjectDef>
+	<ResearchProjectDef ParentName="BOR_Research_Base_III">
+		<defName>BOR_Research_Bionics_III</defName>
+		<label>tenebrite bionics</label>
+		<description>Build tenebral body parts to supercede natural flesh. Requires femtoclusters and a skilled doctor to attach.</description>
+		<baseCost>125000</baseCost>
+		<techLevel>Archotech</techLevel>
+		<prerequisites>
+			<li>BOR_Research_Medicine_III</li>
+		</prerequisites>
+		<hiddenPrerequisites>
+			<li>BOR_Research_Bionics_II</li>
+		</hiddenPrerequisites>
+		<researchViewX>13.00</researchViewX>
+		<researchViewY>3.30</researchViewY>
+	</ResearchProjectDef>
+	<ResearchProjectDef ParentName="BOR_Research_Base_III">
+		<defName>BOR_Research_Drugs_III</defName>
+		<label>tenebrite drug production</label>
+		<description>Produce drugs commonly enjoyed in tenebral space communes.
 
-  <!--~~~~~~~~~~~~~~~~~-->
-  <!--Research Projects-->
-  <!--~~~~~~~~~~~~~~~~~-->
+Pax is a powerful disease prevention drug that blocks virtually all ailments - including infection and neurodegenerative disorders like dementia.
 
-  <!--Tier 1-->
+Crewmates are euphoria-inducing gummy candies refined from sunweave. While it reduces the need for rest and suppresses pain, it is extremely addictive, albeit less so than sunlight. Note: keep away from children!
 
-  <ResearchProjectDef ParentName="BOR_Research_Base">
-    <defName>BOR_Research_Analyzer_I</defName>
-    <label>solar analyzer</label>
-    <description>Build a solar analyzer, which uses advanced models of this world's sun to aid research and unlock solar-tier research projects. Explore the hellish corona of a star or simulate the effects of supernovae on spacecraft. Reverse-engineer the secrets of Solar Republic society.</description>
-    <baseCost>10000</baseCost>
-    <techLevel>Ultra</techLevel>
-    <prerequisites>
-      <li>ShipCryptosleep</li>
-      <li>ShipReactor</li>
-      <li>ShipEngine</li>
-      <li>ShipComputerCore</li>
-      <li>ShipSensorCluster</li>
-    </prerequisites>
-    <researchViewX>0.00</researchViewX>
-    <researchViewY>3.00</researchViewY>
-  </ResearchProjectDef>
+Gallop is a synthetic combat drug used by tenebral offensive units to improve shooting, melee, and movement while dulling pain in the user.
 
-  <ResearchProjectDef ParentName="BOR_Research_Base_I">
-    <defName>BOR_Research_Production_I</defName>
-    <label>nuclear metallurgy</label>
-    <description>Placeholder.</description>
-    <baseCost>20000</baseCost>
-    <techLevel>Ultra</techLevel>
-    <prerequisites>
-      <li>BOR_Research_Analyzer_I</li>
-    </prerequisites>
-    <researchViewX>1.00</researchViewX>
-    <researchViewY>3.00</researchViewY>
-  </ResearchProjectDef>
-
-  <ResearchProjectDef ParentName="BOR_Research_Base_I">
-    <defName>BOR_Research_Power_I</defName>
-    <label>solar energy</label>
-    <description>Placeholder.</description>
-    <baseCost>35000</baseCost>
-    <techLevel>Ultra</techLevel>
-    <prerequisites>
-      <li>BOR_Research_Production_I</li>
-    </prerequisites>
-    <researchViewX>2.00</researchViewX>
-    <researchViewY>1.75</researchViewY>
-  </ResearchProjectDef>
-
-  <ResearchProjectDef ParentName="BOR_Research_Base_I">
-    <defName>BOR_Research_Battery_I</defName>
-    <label>solar battery</label>
-    <description>Placeholder.</description>
-    <baseCost>10000</baseCost>
-    <techLevel>Ultra</techLevel>
-    <prerequisites>
-      <li>BOR_Research_Power_I</li>
-      <li>Batteries</li>
-    </prerequisites>
-    <researchViewX>3.00</researchViewX>
-    <researchViewY>1.75</researchViewY>
-  </ResearchProjectDef>
-
-  <ResearchProjectDef ParentName="BOR_Research_Base_I">
-    <defName>BOR_Research_Quarks_I</defName>
-    <label>strong force manipulation</label>
-    <description>We can control the electromagnetic force with the literal flick of a switch; why stop at mastery over one fundamental force? Harness the strong nuclear force to stitch neutrons into the ultradense material Neutronium. Imagine, a sliver of a neutron star in our own backyard!</description>
-    <baseCost>50000</baseCost>
-    <techLevel>Ultra</techLevel>
-    <prerequisites>
-      <li>BOR_Research_Power_I</li>
-    </prerequisites>
-    <researchViewX>3.00</researchViewX>
-    <researchViewY>0.75</researchViewY>
-  </ResearchProjectDef>
-
-  <ResearchProjectDef ParentName="BOR_Research_Base_I">
-    <defName>BOR_Research_Armor_I</defName>
-    <label>solar armor</label>
-    <description>Placeholder.</description>
-    <baseCost>35000</baseCost>
-    <techLevel>Ultra</techLevel>
-    <prerequisites>
-      <li>BOR_Research_Production_I</li>
-      <li>PoweredArmor</li>
-    </prerequisites>
-    <researchViewX>2.00</researchViewX>
-    <researchViewY>2.25</researchViewY>
-  </ResearchProjectDef>
-
-  <ResearchProjectDef ParentName="BOR_Research_Base_I">
-    <defName>BOR_Research_Weapons_I</defName>
-    <label>solar weaponry</label>
-    <description>Placeholder.</description>
-    <baseCost>35000</baseCost>
-    <techLevel>Ultra</techLevel>
-    <prerequisites>
-      <li>BOR_Research_Production_I</li>
-      <li>ChargedShot</li>
-    </prerequisites>
-    <researchViewX>2.00</researchViewX>
-    <researchViewY>2.75</researchViewY>
-  </ResearchProjectDef>
-
-  <ResearchProjectDef ParentName="BOR_Research_Base_I">
-    <defName>BOR_Research_Medicine_I</defName>
-    <label>solar medicine production</label>
-    <description>Placeholder.</description>
-    <baseCost>35000</baseCost>
-    <techLevel>Ultra</techLevel>
-    <prerequisites>
-      <li>BOR_Research_Production_I</li>
-      <li>MedicineProduction</li>
-    </prerequisites>
-    <researchViewX>2.00</researchViewX>
-    <researchViewY>3.50</researchViewY>
-  </ResearchProjectDef>
-
-  <ResearchProjectDef ParentName="BOR_Research_Base_I">
-    <defName>BOR_Research_Bionics_I</defName>
-    <label>solar bionics</label>
-    <description>Placeholder.</description>
-    <baseCost>10000</baseCost>
-    <techLevel>Ultra</techLevel>
-    <prerequisites>
-      <li>BOR_Research_Medicine_I</li>
-      <li>Bionics</li>
-    </prerequisites>
-    <researchViewX>3.00</researchViewX>
-    <researchViewY>3.25</researchViewY>
-  </ResearchProjectDef>
-
-  <ResearchProjectDef ParentName="BOR_Research_Base_I">
-    <defName>BOR_Research_Drugs_I</defName>
-    <label>solar drug production</label>
-    <description>Placeholder.</description>
-    <baseCost>10000</baseCost>
-    <techLevel>Ultra</techLevel>
-    <prerequisites>
-      <li>BOR_Research_Medicine_I</li>
-      <li>WakeUpProduction</li>
-      <li>GoJuiceProduction</li>
-      <li>PenoxycylineProduction</li>
-    </prerequisites>
-    <researchViewX>3.00</researchViewX>
-    <researchViewY>3.75</researchViewY>
-  </ResearchProjectDef>
-
-  <ResearchProjectDef ParentName="BOR_Research_Base_I">
-    <defName>BOR_Research_Joy_I</defName>
-    <label>solar recreation</label>
-    <description>Placeholder.</description>
-    <baseCost>35000</baseCost>
-    <techLevel>Ultra</techLevel>
-    <prerequisites>
-      <li>BOR_Research_Production_I</li>
-      <li>ComplexFurniture</li>
-    </prerequisites>
-    <researchViewX>2.00</researchViewX>
-    <researchViewY>4.25</researchViewY>
-  </ResearchProjectDef>
-
-  <ResearchProjectDef ParentName="BOR_Research_Base_I">
-    <defName>BOR_Research_Hydroponics_I</defName>
-    <label>solar hydroponics</label>
-    <description>Placeholder.</description>
-    <baseCost>35000</baseCost>
-    <techLevel>Ultra</techLevel>
-    <prerequisites>
-      <li>BOR_Research_Production_I</li>
-      <li>Hydroponics</li>
-    </prerequisites>
-    <researchViewX>2.00</researchViewX>
-    <researchViewY>4.75</researchViewY>
-  </ResearchProjectDef>
-
-  <ResearchProjectDef ParentName="BOR_Research_Base_I">
-    <defName>BOR_Research_NSynth_I</defName>
-    <label>basic n-synthesis</label>
-    <description>We can control the electromagnetic force with the literal flick of a switch; why stop at mastery over one fundamental force? Harness the strong nuclear force to stitch neutrons into the ultradense material Neutronium. Imagine, a sliver of a neutron star in our own backyard!</description>
-    <baseCost>70000</baseCost>
-    <techLevel>Ultra</techLevel>
-    <prerequisites>
-      <li>BOR_Research_Quarks_I</li>
-    </prerequisites>
-    <researchViewX>4.00</researchViewX>
-    <researchViewY>0.75</researchViewY>
-  </ResearchProjectDef>
-
-  <!--Tier 2-->
-
-  <ResearchProjectDef ParentName="BOR_Research_Base_I">
-    <defName>BOR_Research_Analyzer_II</defName>
-    <label>quasaric analyzer</label>
-    <description>Build a solar analyzer, which uses advanced models of this world's sun to aid research and unlock solar-tier research projects. Explore the hellish corona of a star or simulate the effects of supernovae on spacecraft. Reverse-engineer the secrets of Solar Republic society.</description>
-    <baseCost>100000</baseCost>
-    <techLevel>Ultra</techLevel>
-    <prerequisites>
-      <li>BOR_Research_Production_I</li>
-    </prerequisites>
-    <researchViewX>5.00</researchViewX>
-    <researchViewY>3.00</researchViewY>
-  </ResearchProjectDef>
-
-  <ResearchProjectDef ParentName="BOR_Research_Base_II">
-    <defName>BOR_Research_Production_II</defName>
-    <label>accretic condenser</label>
-    <description>Placeholder.</description>
-    <baseCost>130000</baseCost>
-    <techLevel>Ultra</techLevel>
-    <prerequisites>
-      <li>BOR_Research_Analyzer_II</li>
-    </prerequisites>
-    <researchViewX>6.00</researchViewX>
-    <researchViewY>3.00</researchViewY>
-  </ResearchProjectDef>
-
-  <ResearchProjectDef ParentName="BOR_Research_Base_II">
-    <defName>BOR_Research_Power_II</defName>
-    <label>quasar energy</label>
-    <description>Placeholder.</description>
-    <baseCost>170000</baseCost>
-    <techLevel>Ultra</techLevel>
-    <prerequisites>
-      <li>BOR_Research_Production_II</li>
-    </prerequisites>
-    <hiddenPrerequisites>
-      <li>BOR_Research_Power_I</li>
-    </hiddenPrerequisites>
-    <researchViewX>7.00</researchViewX>
-    <researchViewY>1.75</researchViewY>
-  </ResearchProjectDef>
-
-  <ResearchProjectDef ParentName="BOR_Research_Base_II">
-    <defName>BOR_Research_Battery_II</defName>
-    <label>quasar battery</label>
-    <description>Placeholder.</description>
-    <baseCost>40000</baseCost>
-    <techLevel>Ultra</techLevel>
-    <prerequisites>
-      <li>BOR_Research_Power_II</li>
-    </prerequisites>
-    <hiddenPrerequisites>
-      <li>BOR_Research_Battery_I</li>
-    </hiddenPrerequisites>
-    <researchViewX>8.00</researchViewX>
-    <researchViewY>1.75</researchViewY>
-  </ResearchProjectDef>
-
-  <ResearchProjectDef ParentName="BOR_Research_Base_II">
-    <defName>BOR_Research_Armor_II</defName>
-    <label>quasar armor</label>
-    <description>Placeholder.</description>
-    <baseCost>170000</baseCost>
-    <techLevel>Ultra</techLevel>
-    <prerequisites>
-      <li>BOR_Research_Production_II</li>
-    </prerequisites>
-    <hiddenPrerequisites>
-      <li>BOR_Research_Armor_I</li>
-    </hiddenPrerequisites>
-    <researchViewX>7.00</researchViewX>
-    <researchViewY>2.25</researchViewY>
-  </ResearchProjectDef>
-
-  <ResearchProjectDef ParentName="BOR_Research_Base_II">
-    <defName>BOR_Research_Weapons_II</defName>
-    <label>quasar weaponry</label>
-    <description>Placeholder.</description>
-    <baseCost>170000</baseCost>
-    <techLevel>Ultra</techLevel>
-    <prerequisites>
-      <li>BOR_Research_Production_II</li>
-    </prerequisites>
-    <hiddenPrerequisites>
-      <li>BOR_Research_Weapons_I</li>
-    </hiddenPrerequisites>
-    <researchViewX>7.00</researchViewX>
-    <researchViewY>2.75</researchViewY>
-  </ResearchProjectDef>
-
-  <ResearchProjectDef ParentName="BOR_Research_Base_II">
-    <defName>BOR_Research_Medicine_II</defName>
-    <label>quasar medicine production</label>
-    <description>Placeholder.</description>
-    <baseCost>170000</baseCost>
-    <techLevel>Ultra</techLevel>
-    <prerequisites>
-      <li>BOR_Research_Production_II</li>
-    </prerequisites>
-    <hiddenPrerequisites>
-      <li>BOR_Research_Medicine_I</li>
-    </hiddenPrerequisites>
-    <researchViewX>7.00</researchViewX>
-    <researchViewY>3.60</researchViewY>
-  </ResearchProjectDef>
-
-  <ResearchProjectDef ParentName="BOR_Research_Base_II">
-    <defName>BOR_Research_Bionics_II</defName>
-    <label>quasar bionics</label>
-    <description>Placeholder.</description>
-    <baseCost>40000</baseCost>
-    <techLevel>Ultra</techLevel>
-    <prerequisites>
-      <li>BOR_Research_Medicine_II</li>
-    </prerequisites>
-    <hiddenPrerequisites>
-      <li>BOR_Research_Bionics_I</li>
-    </hiddenPrerequisites>
-    <researchViewX>8.00</researchViewX>
-    <researchViewY>3.30</researchViewY>
-  </ResearchProjectDef>
-
-  <ResearchProjectDef ParentName="BOR_Research_Base_II">
-    <defName>BOR_Research_Drugs_II</defName>
-    <label>quasar drug production</label>
-    <description>Placeholder.</description>
-    <baseCost>40000</baseCost>
-    <techLevel>Ultra</techLevel>
-    <prerequisites>
-      <li>BOR_Research_Medicine_II</li>
-    </prerequisites>
-    <hiddenPrerequisites>
-      <li>BOR_Research_Drugs_I</li>
-    </hiddenPrerequisites>
-    <researchViewX>8.00</researchViewX>
-    <researchViewY>3.90</researchViewY>
-  </ResearchProjectDef>
-
-  <ResearchProjectDef ParentName="BOR_Research_Base_II">
-    <defName>BOR_Research_Joy_II</defName>
-    <label>quasar recreation</label>
-    <description>Placeholder.</description>
-    <baseCost>170000</baseCost>
-    <techLevel>Ultra</techLevel>
-    <prerequisites>
-      <li>BOR_Research_Production_II</li>
-    </prerequisites>
-    <hiddenPrerequisites>
-      <li>BOR_Research_Joy_I</li>
-    </hiddenPrerequisites>
-    <researchViewX>7.00</researchViewX>
-    <researchViewY>4.50</researchViewY>
-  </ResearchProjectDef>
-
-  <ResearchProjectDef ParentName="BOR_Research_Base_II">
-    <defName>BOR_Research_Hydroponics_II</defName>
-    <label>quasar hydroponics</label>
-    <description>Placeholder.</description>
-    <baseCost>170000</baseCost>
-    <techLevel>Ultra</techLevel>
-    <prerequisites>
-      <li>BOR_Research_Production_II</li>
-    </prerequisites>
-    <hiddenPrerequisites>
-      <li>BOR_Research_Hydroponics_I</li>
-    </hiddenPrerequisites>
-    <researchViewX>7.00</researchViewX>
-    <researchViewY>5.10</researchViewY>
-  </ResearchProjectDef>
-
-  <ResearchProjectDef ParentName="BOR_Research_Base_II">
-    <defName>BOR_Research_NSynth_II</defName>
-    <label>standard n-synthesis</label>
-    <description>We can control the electromagnetic force with the literal flick of a switch; why stop at mastery over one fundamental force? Harness the strong nuclear force to stitch neutrons into the ultradense material Neutronium. Imagine, a sliver of a neutron star in our own backyard!</description>
-    <baseCost>210000</baseCost>
-    <techLevel>Ultra</techLevel>
-    <prerequisites>
-      <li>BOR_Research_NSynth_I</li>
-      <li>BOR_Research_Power_II</li>
-    </prerequisites>
-    <researchViewX>8.00</researchViewX>
-    <researchViewY>0.75</researchViewY>
-  </ResearchProjectDef>
-
-  <!--Tier 3-->
-
-  <ResearchProjectDef ParentName="BOR_Research_Base_II">
-    <defName>BOR_Research_Analyzer_III</defName>
-    <label>galactic analyzer</label>
-    <description>Build a solar analyzer, which uses advanced models of this world's sun to aid research and unlock solar-tier research projects. Explore the hellish corona of a star or simulate the effects of supernovae on spacecraft. Reverse-engineer the secrets of Solar Republic society.</description>
-    <baseCost>340000</baseCost>
-    <techLevel>Archotech</techLevel>
-    <prerequisites>
-      <li>BOR_Research_Production_II</li>
-    </prerequisites>
-    <researchViewX>10.00</researchViewX>
-    <researchViewY>3.00</researchViewY>
-  </ResearchProjectDef>
-
-  <ResearchProjectDef ParentName="BOR_Research_Base_III">
-    <defName>BOR_Research_Production_III</defName>
-    <label>gravitic crystal shaping</label>
-    <description>Placeholder.</description>
-    <baseCost>420000</baseCost>
-    <techLevel>Archotech</techLevel>
-    <prerequisites>
-      <li>BOR_Research_Analyzer_III</li>
-    </prerequisites>
-    <researchViewX>11.00</researchViewX>
-    <researchViewY>3.00</researchViewY>
-  </ResearchProjectDef>
-
-  <ResearchProjectDef ParentName="BOR_Research_Base_III">
-    <defName>BOR_Research_Power_III</defName>
-    <label>tenebrite energy</label>
-    <description>Placeholder.</description>
-    <baseCost>500000</baseCost>
-    <techLevel>Archotech</techLevel>
-    <prerequisites>
-      <li>BOR_Research_Production_III</li>
-    </prerequisites>
-    <hiddenPrerequisites>
-      <li>BOR_Research_Power_II</li>
-    </hiddenPrerequisites>
-    <researchViewX>12.00</researchViewX>
-    <researchViewY>1.75</researchViewY>
-  </ResearchProjectDef>
-
-  <ResearchProjectDef ParentName="BOR_Research_Base_III">
-    <defName>BOR_Research_Battery_III</defName>
-    <label>tenebrite battery</label>
-    <description>Placeholder.</description>
-    <baseCost>125000</baseCost>
-    <techLevel>Archotech</techLevel>
-    <prerequisites>
-      <li>BOR_Research_Power_III</li>
-    </prerequisites>
-    <hiddenPrerequisites>
-      <li>BOR_Research_Battery_II</li>
-    </hiddenPrerequisites>
-    <researchViewX>13.00</researchViewX>
-    <researchViewY>1.75</researchViewY>
-  </ResearchProjectDef>
-
-  <ResearchProjectDef ParentName="BOR_Research_Base_III">
-    <defName>BOR_Research_Armor_III</defName>
-    <label>tenebrite armor</label>
-    <description>Placeholder.</description>
-    <baseCost>500000</baseCost>
-    <techLevel>Archotech</techLevel>
-    <prerequisites>
-      <li>BOR_Research_Production_III</li>
-    </prerequisites>
-    <hiddenPrerequisites>
-      <li>BOR_Research_Armor_II</li>
-    </hiddenPrerequisites>
-    <researchViewX>12.00</researchViewX>
-    <researchViewY>2.25</researchViewY>
-  </ResearchProjectDef>
-
-  <ResearchProjectDef ParentName="BOR_Research_Base_III">
-    <defName>BOR_Research_Weapons_III</defName>
-    <label>tenebrite weaponry</label>
-    <description>Placeholder.</description>
-    <baseCost>500000</baseCost>
-    <techLevel>Archotech</techLevel>
-    <prerequisites>
-      <li>BOR_Research_Production_III</li>
-    </prerequisites>
-    <hiddenPrerequisites>
-      <li>BOR_Research_Weapons_II</li>
-    </hiddenPrerequisites>
-    <researchViewX>12.00</researchViewX>
-    <researchViewY>2.75</researchViewY>
-  </ResearchProjectDef>
-
-  <ResearchProjectDef ParentName="BOR_Research_Base_III">
-    <defName>BOR_Research_Medicine_III</defName>
-    <label>tenebrite medicine production</label>
-    <description>Placeholder.</description>
-    <baseCost>500000</baseCost>
-    <techLevel>Archotech</techLevel>
-    <prerequisites>
-      <li>BOR_Research_Production_III</li>
-    </prerequisites>
-    <hiddenPrerequisites>
-      <li>BOR_Research_Medicine_II</li>
-    </hiddenPrerequisites>
-    <researchViewX>12.00</researchViewX>
-    <researchViewY>3.60</researchViewY>
-  </ResearchProjectDef>
-
-  <ResearchProjectDef ParentName="BOR_Research_Base_III">
-    <defName>BOR_Research_Bionics_III</defName>
-    <label>tenebrite bionics</label>
-    <description>Placeholder.</description>
-    <baseCost>125000</baseCost>
-    <techLevel>Archotech</techLevel>
-    <prerequisites>
-      <li>BOR_Research_Medicine_III</li>
-    </prerequisites>
-    <hiddenPrerequisites>
-      <li>BOR_Research_Bionics_II</li>
-    </hiddenPrerequisites>
-    <researchViewX>13.00</researchViewX>
-    <researchViewY>3.30</researchViewY>
-  </ResearchProjectDef>
-
-  <ResearchProjectDef ParentName="BOR_Research_Base_III">
-    <defName>BOR_Research_Drugs_III</defName>
-    <label>tenebrite drug production</label>
-    <description>Placeholder.</description>
-    <baseCost>125000</baseCost>
-    <techLevel>Archotech</techLevel>
-    <prerequisites>
-      <li>BOR_Research_Medicine_III</li>
-    </prerequisites>
-    <hiddenPrerequisites>
-      <li>BOR_Research_Drugs_II</li>
-    </hiddenPrerequisites>
-    <researchViewX>13.00</researchViewX>
-    <researchViewY>3.90</researchViewY>
-  </ResearchProjectDef>
-
-  <ResearchProjectDef ParentName="BOR_Research_Base_III">
-    <defName>BOR_Research_Joy_III</defName>
-    <label>tenebrite recreation</label>
-    <description>Placeholder.</description>
-    <baseCost>500000</baseCost>
-    <techLevel>Archotech</techLevel>
-    <prerequisites>
-      <li>BOR_Research_Production_III</li>
-    </prerequisites>
-    <hiddenPrerequisites>
-      <li>BOR_Research_Joy_II</li>
-    </hiddenPrerequisites>
-    <researchViewX>12.00</researchViewX>
-    <researchViewY>4.50</researchViewY>
-  </ResearchProjectDef>
-
-  <ResearchProjectDef ParentName="BOR_Research_Base_III">
-    <defName>BOR_Research_Hydroponics_III</defName>
-    <label>tenebrite hydroponics</label>
-    <description>Placeholder.</description>
-    <baseCost>500000</baseCost>
-    <techLevel>Archotech</techLevel>
-    <prerequisites>
-      <li>BOR_Research_Production_III</li>
-    </prerequisites>
-    <hiddenPrerequisites>
-      <li>BOR_Research_Hydroponics_II</li>
-    </hiddenPrerequisites>
-    <researchViewX>12.00</researchViewX>
-    <researchViewY>5.10</researchViewY>
-  </ResearchProjectDef>
-
-  <ResearchProjectDef ParentName="BOR_Research_Base_III">
-    <defName>BOR_Research_NSynth_III</defName>
-    <label>high n-synthesis</label>
-    <description>We can control the electromagnetic force with the literal flick of a switch; why stop at mastery over one fundamental force? Harness the strong nuclear force to stitch neutrons into the ultradense material Neutronium. Imagine, a sliver of a neutron star in our own backyard!</description>
-    <baseCost>700000</baseCost>
-    <techLevel>Archotech</techLevel>
-    <prerequisites>
-      <li>BOR_Research_NSynth_II</li>
-      <li>BOR_Research_Power_III</li>
-    </prerequisites>
-    <researchViewX>13.00</researchViewX>
-    <researchViewY>0.75</researchViewY>
-  </ResearchProjectDef>
-
-
-  <ResearchProjectDef ParentName="BOR_Research_Base_III">
-    <defName>BOR_Research_NSynth_IV</defName>
-    <label>laborless neutronium brew</label>
-    <description>Placeholder.</description>
-    <baseCost>1800000</baseCost>
-    <techLevel>Archotech</techLevel>
-    <prerequisites>
-      <li>BOR_Research_NSynth_III</li>
-      <li>BOR_Research_Power_III</li>
-    </prerequisites>
-    <researchViewX>14.00</researchViewX>
-    <researchViewY>1.00</researchViewY>
-  </ResearchProjectDef>
-
-  <!--Tier 4-->
-
-  <ResearchProjectDef ParentName="BOR_Research_Base_III">
-    <defName>BOR_Research_Gate_IV</defName>
-    <label>ultimate research gate</label>
-    <description>Placeholder.</description>
-    <baseCost>1000000</baseCost>
-    <techLevel>Archotech</techLevel>
-    <prerequisites>
-      <li>BOR_Research_Production_III</li>
-    </prerequisites>
-    <hiddenPrerequisites>
-      <li>BOR_Research_Battery_III</li>
-      <li>BOR_Research_Bionics_III</li>
-      <li>BOR_Research_Drugs_III</li>
-      <li>BOR_Research_Armor_III</li>
-      <li>BOR_Research_Weapons_III</li>
-      <li>BOR_Research_Joy_III</li>
-      <li>BOR_Research_Hydroponics_III</li>
-    </hiddenPrerequisites>
-    <researchViewX>15.00</researchViewX>
-    <researchViewY>2.30</researchViewY>
-  </ResearchProjectDef>
-
-  <ResearchProjectDef ParentName="BOR_Research_Base_IV">
-    <defName>BOR_Research_Power_IV</defName>
-    <label>unlimited power</label>
-    <description>Placeholder.</description>
-    <baseCost>1200000</baseCost>
-    <techLevel>Archotech</techLevel>
-    <prerequisites>
-      <li>BOR_Research_Gate_IV</li>
-    </prerequisites>
-    <researchViewX>18.00</researchViewX>
-    <researchViewY>2.00</researchViewY>
-  </ResearchProjectDef>
-
-  <ResearchProjectDef ParentName="BOR_Research_Base_IV">
-    <defName>BOR_Research_Production_IV</defName>
-    <label>unlimited production</label>
-    <description>Placeholder.</description>
-    <baseCost>1200000</baseCost>
-    <techLevel>Archotech</techLevel>
-    <prerequisites>
-      <li>BOR_Research_Gate_IV</li>
-    </prerequisites>
-    <researchViewX>18.00</researchViewX>
-    <researchViewY>5.00</researchViewY>
-  </ResearchProjectDef>
-
-  <ResearchProjectDef ParentName="BOR_Research_Base_IV">
-    <defName>BOR_Research_Bionics_IV</defName>
-    <label>umbral bionics</label>
-    <description>Placeholder.</description>
-    <baseCost>1200000</baseCost>
-    <techLevel>Archotech</techLevel>
-    <prerequisites>
-      <li>BOR_Research_Gate_IV</li>
-    </prerequisites>
-    <researchViewX>18.00</researchViewX>
-    <researchViewY>6.00</researchViewY>
-  </ResearchProjectDef>
-
-  <ResearchProjectDef ParentName="BOR_Research_Base_IV">
-    <defName>BOR_Research_NeutProc_IV</defName>
-    <label>self-sustaining production</label>
-    <description>Placeholder.</description>
-    <baseCost>1200000</baseCost>
-    <techLevel>Archotech</techLevel>
-    <prerequisites>
-      <li>BOR_Research_Gate_IV</li>
-    </prerequisites>
-    <researchViewX>18.00</researchViewX>
-    <researchViewY>4.00</researchViewY>
-  </ResearchProjectDef>
-
+Adreamoline is a productivity-enhancement drug which significantly reduces the users need to sleep.</description>
+		<baseCost>125000</baseCost>
+		<techLevel>Archotech</techLevel>
+		<prerequisites>
+			<li>BOR_Research_Medicine_III</li>
+		</prerequisites>
+		<hiddenPrerequisites>
+			<li>BOR_Research_Drugs_II</li>
+		</hiddenPrerequisites>
+		<researchViewX>13.00</researchViewX>
+		<researchViewY>3.90</researchViewY>
+	</ResearchProjectDef>
+	<ResearchProjectDef ParentName="BOR_Research_Base_III">
+		<defName>BOR_Research_Joy_III</defName>
+		<label>tenebrite recreation</label>
+		<description>Build recreational facilities you might find in Tenebral apartments. They frequently go unused in their namesake's abode; perhaps you can make better use of them.</description>
+		<baseCost>500000</baseCost>
+		<techLevel>Archotech</techLevel>
+		<prerequisites>
+			<li>BOR_Research_Production_III</li>
+		</prerequisites>
+		<hiddenPrerequisites>
+			<li>BOR_Research_Joy_II</li>
+		</hiddenPrerequisites>
+		<researchViewX>12.00</researchViewX>
+		<researchViewY>4.50</researchViewY>
+	</ResearchProjectDef>
+	<ResearchProjectDef ParentName="BOR_Research_Base_III">
+		<defName>BOR_Research_Hydroponics_III</defName>
+		<label>tenebrite hydroponics</label>
+		<description>Build the superior hydroponics system from tenebrite crystals.</description>
+		<baseCost>500000</baseCost>
+		<techLevel>Archotech</techLevel>
+		<prerequisites>
+			<li>BOR_Research_Production_III</li>
+		</prerequisites>
+		<hiddenPrerequisites>
+			<li>BOR_Research_Hydroponics_II</li>
+		</hiddenPrerequisites>
+		<researchViewX>12.00</researchViewX>
+		<researchViewY>5.10</researchViewY>
+	</ResearchProjectDef>
+	<ResearchProjectDef ParentName="BOR_Research_Base_III">
+		<defName>BOR_Research_NSynth_III</defName>
+		<label>high n-synthesis</label>
+		<description>Build the [missing] refinery, which uses quasar alloy and Kwazaari universal parts to lose less neutronium during the synthesis stage, granting you much more efficient neutronosynthesis recipes.</description>
+		<baseCost>700000</baseCost>
+		<techLevel>Archotech</techLevel>
+		<prerequisites>
+			<li>BOR_Research_NSynth_II</li>
+			<li>BOR_Research_Power_III</li>
+		</prerequisites>
+		<researchViewX>13.00</researchViewX>
+		<researchViewY>0.75</researchViewY>
+	</ResearchProjectDef>
+	<ResearchProjectDef ParentName="BOR_Research_Base_III">
+		<defName>BOR_Research_NSynth_IV</defName>
+		<label>laborless neutronium brew</label>
+		<description>Construct the umbral neutronium selfsustained generator, which turns energy into neutronium and other materials.</description>
+		<baseCost>1800000</baseCost>
+		<techLevel>Archotech</techLevel>
+		<prerequisites>
+			<li>BOR_Research_NSynth_III</li>
+			<li>BOR_Research_Power_III</li>
+		</prerequisites>
+		<researchViewX>14.00</researchViewX>
+		<researchViewY>1.00</researchViewY>
+	</ResearchProjectDef>
+	<!--Tier 4-->
+	<ResearchProjectDef ParentName="BOR_Research_Base_III">
+		<defName>BOR_Research_Gate_IV</defName>
+		<label>ultimate research gate</label>
+		<description>All of your technological efforts so far have been toward recreating preestablished human tech. But now, you have reached the end of rediscovery. Now is the opportunity for something yours - something new. What was once beyond your reach is now yours for the taking.</description>
+		<baseCost>1000000</baseCost>
+		<techLevel>Archotech</techLevel>
+		<prerequisites>
+			<li>BOR_Research_Production_III</li>
+		</prerequisites>
+		<hiddenPrerequisites>
+			<li>BOR_Research_Battery_III</li>
+			<li>BOR_Research_Bionics_III</li>
+			<li>BOR_Research_Drugs_III</li>
+			<li>BOR_Research_Armor_III</li>
+			<li>BOR_Research_Weapons_III</li>
+			<li>BOR_Research_Joy_III</li>
+			<li>BOR_Research_Hydroponics_III</li>
+		</hiddenPrerequisites>
+		<researchViewX>15.00</researchViewX>
+		<researchViewY>2.30</researchViewY>
+	</ResearchProjectDef>
+	<ResearchProjectDef ParentName="BOR_Research_Base_IV">
+		<defName>BOR_Research_Power_IV</defName>
+		<label>unlimited power</label>
+		<description>Construct the umbral reactor, a source of free energy (as far as you're concerned).</description>
+		<baseCost>1200000</baseCost>
+		<techLevel>Archotech</techLevel>
+		<prerequisites>
+			<li>BOR_Research_Gate_IV</li>
+		</prerequisites>
+		<researchViewX>18.00</researchViewX>
+		<researchViewY>2.00</researchViewY>
+	</ResearchProjectDef>
+	<ResearchProjectDef ParentName="BOR_Research_Base_IV">
+		<defName>BOR_Research_Production_IV</defName>
+		<label>unlimited production</label>
+		<description>Construct the umbral creation engine, which turns energy into neutronium and other materials.</description>
+		<baseCost>1200000</baseCost>
+		<techLevel>Archotech</techLevel>
+		<prerequisites>
+			<li>BOR_Research_Gate_IV</li>
+		</prerequisites>
+		<researchViewX>18.00</researchViewX>
+		<researchViewY>5.00</researchViewY>
+	</ResearchProjectDef>
+	<ResearchProjectDef ParentName="BOR_Research_Base_IV">
+		<defName>BOR_Research_Bionics_IV</defName>
+		<label>umbral bionics</label>
+		<description>Does nothing right now!</description>
+		<baseCost>1200000</baseCost>
+		<techLevel>Archotech</techLevel>
+		<prerequisites>
+			<li>BOR_Research_Gate_IV</li>
+		</prerequisites>
+		<researchViewX>18.00</researchViewX>
+		<researchViewY>6.00</researchViewY>
+	</ResearchProjectDef>
+	<ResearchProjectDef ParentName="BOR_Research_Base_IV">
+		<defName>BOR_Research_NeutProc_IV</defName>
+		<label>self-sustaining production</label>
+		<description>Construct the umbral forge, which turns energy into neutronium and other materials.</description>
+		<baseCost>1200000</baseCost>
+		<techLevel>Archotech</techLevel>
+		<prerequisites>
+			<li>BOR_Research_Gate_IV</li>
+		</prerequisites>
+		<researchViewX>18.00</researchViewX>
+		<researchViewY>4.00</researchViewY>
+	</ResearchProjectDef>
 </Defs>

@@ -1,742 +1,703 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
-
-    <!-- Base: Bionic body part (spacer tech) -->
-    <RecipeDef Name="BOR_SolarSurgeryInstallBodyPartArtificialBase" ParentName="SurgeryInstallBodyPartArtificialBase" Abstract="True">
-        <researchPrerequisite>BOR_Research_Bionics_I</researchPrerequisite>
-        <skillRequirements>
-            <Medicine>12</Medicine>
-        </skillRequirements>
-        <ingredients Inherit="False">
-            <li>
-                <filter>
-                    <thingDefs>
-                        <li>BOR_MedicineI</li>
-                    </thingDefs>
-                </filter>
-                <count>1</count>
-            </li>
-        </ingredients>
-        <fixedIngredientFilter>
-            <thingDefs>
-                <li>BOR_MedicineI</li>
-            </thingDefs>
-        </fixedIngredientFilter>
-    </RecipeDef>
-
-    <ThingDef Name="SolarBodyPartBionicBase" ParentName="BodyPartBase" Abstract="True">
-        <techLevel>Ultra</techLevel>
-        <thingCategories>
-            <li>BOR_Bionics_I</li>
-        </thingCategories>
-        <graphicData>
-            <texPath>Things/Item/Health/HealthItem</texPath>
-            <graphicClass>Graphic_Single</graphicClass>
-            <drawSize>0.80</drawSize>
-            <color>(104, 160, 168)</color>
-        </graphicData>
-        <tradeTags>
-            <li>BOR_Bionic_I</li>
-        </tradeTags>
-        <techHediffsTags>
-            <li>Ultra</li>
-            <li>BOR_Bionics_I</li>
-        </techHediffsTags>
-        <statBases>
-            <WorkToMake>39000</WorkToMake>
-        </statBases>
-        <recipeMaker>
-            <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
-            <workSkill>Crafting</workSkill>
-            <effectWorking>Smith</effectWorking>
-            <soundWorking>Recipe_Smith</soundWorking>
-            <unfinishedThingDef>UnfinishedHealthItemBionic</unfinishedThingDef>
-            <skillRequirements>
-                <Crafting>12</Crafting>
-            </skillRequirements>
-            <researchPrerequisite>BOR_Research_Bionics_I</researchPrerequisite>
-            <recipeUsers>
-                <li>BOR_MedicineBench_I</li>
-                <li>BOR_Bench_IV</li>
-            </recipeUsers>
-            <displayPriority>300</displayPriority>
-        </recipeMaker>
-    </ThingDef>
-
-    <!-- Bionic eye -->
-
-    <HediffDef ParentName="AddedBodyPartBase">
-        <defName>BOR_SolarBionicEye</defName>
-        <label>solar bionic eye</label>
-        <labelNoun>a solar bionic eye</labelNoun>
-        <description>An installed solar bionic eye. With its biogel nerve-link, internal signal pre-processor, and wide-spectrum sensors, it is better than a biological eye in almost every way. A lattice-dust healing system allows it to recover from damage.</description>
-        <descriptionHyperlinks>
-            <ThingDef>BOR_SolarBionicEye</ThingDef>
-        </descriptionHyperlinks>
-        <spawnThingOnRemoved>BOR_SolarBionicEye</spawnThingOnRemoved>
-        <addedPartProps>
-            <solid>true</solid>
-            <partEfficiency>1.875</partEfficiency>
-            <betterThanNatural>true</betterThanNatural>
-        </addedPartProps>
-    </HediffDef>
-
-    <ThingDef ParentName="SolarBodyPartBionicBase">
-        <defName>BOR_SolarBionicEye</defName>
-        <label>solar bionic eye</label>
-        <description>An advanced artificial eye. With its biogel nerve-link, internal signal pre-processor, and wide-spectrum sensors, it is better than a biological eye in almost every way. A lattice-dust healing system allows it to recover from damage.</description>
-        <descriptionHyperlinks>
-            <RecipeDef>BOR_InstallSolarBionicEye</RecipeDef>
-        </descriptionHyperlinks>
-        <costList>
-            <BOR_Sunsteel>15</BOR_Sunsteel>
-            <ComponentSpacer>4</ComponentSpacer>
-        </costList>
-        <thingSetMakerTags>
-            <li>RewardStandardMidFreq</li>
-        </thingSetMakerTags>
-        <statBases>
-            <Mass>0.25</Mass>
-        </statBases>
-    </ThingDef>
-
-    <RecipeDef ParentName="BOR_SolarSurgeryInstallBodyPartArtificialBase">
-        <defName>BOR_InstallSolarBionicEye</defName>
-        <label>install solar bionic eye</label>
-        <description>Install a solar bionic eye.</description>
-        <descriptionHyperlinks>
-            <ThingDef>BOR_SolarBionicEye</ThingDef>
-            <HediffDef>BOR_SolarBionicEye</HediffDef>
-        </descriptionHyperlinks>
-        <jobString>Installing solar bionic eye.</jobString>
-        <ingredients>
-            <li>
-                <filter>
-                    <thingDefs>
-                        <li>BOR_SolarBionicEye</li>
-                    </thingDefs>
-                </filter>
-                <count>1</count>
-            </li>
-            <li>
-                <filter>
-                    <thingDefs>
-                        <li>BOR_Nanoclusters</li>
-                    </thingDefs>
-                </filter>
-                <count>1</count>
-            </li>
-        </ingredients>
-        <fixedIngredientFilter>
-            <thingDefs>
-                <li>BOR_SolarBionicEye</li>
-                <li>BOR_Nanoclusters</li>
-            </thingDefs>
-        </fixedIngredientFilter>
-        <appliedOnFixedBodyParts>
-            <li>Eye</li>
-        </appliedOnFixedBodyParts>
-        <addsHediff>BOR_SolarBionicEye</addsHediff>
-    </RecipeDef>
-
-    <!-- Bionic arm -->
-
-    <HediffDef ParentName="AddedBodyPartBase">
-        <defName>BOR_SolarBionicArm</defName>
-        <label>solar bionic arm</label>
-        <labelNoun>a solar bionic arm</labelNoun>
-        <description>An installed solar bionic arm. Silenced mini-servos give great strength, while the biogel nerve-link gives exquisite control. A lattice-dust healing system allows it to recover from damage. It is better than a biological arm in almost every way.</description>
-        <descriptionHyperlinks>
-            <ThingDef>BOR_SolarBionicArm</ThingDef>
-        </descriptionHyperlinks>
-        <comps>
-            <li Class="HediffCompProperties_VerbGiver">
-                <tools>
-                    <li>
-                        <label>fist</label>
-                        <capacities>
-                            <li>Blunt</li>
-                        </capacities>
-                        <power>18</power>
-                        <cooldownTime>1.66</cooldownTime>
-                        <soundMeleeHit>MeleeHit_BionicPunch</soundMeleeHit>
-                        <soundMeleeMiss>MeleeMiss_BionicPunch</soundMeleeMiss>
-                    </li>
-                </tools>
-            </li>
-        </comps>
-        <spawnThingOnRemoved>BOR_SolarBionicArm</spawnThingOnRemoved>
-        <addedPartProps>
-            <solid>true</solid>
-            <partEfficiency>1.875</partEfficiency>
-            <betterThanNatural>true</betterThanNatural>
-        </addedPartProps>
-    </HediffDef>
-
-    <ThingDef ParentName="SolarBodyPartBionicBase">
-        <defName>BOR_SolarBionicArm</defName>
-        <label>solar bionic arm</label>
-        <description>An advanced artificial arm. Silenced mini-servos give great strength, while the biogel nerve-link gives exquisite control. A lattice-dust healing system allows it to recover from damage. It is better than a biological arm in almost every way.</description>
-        <descriptionHyperlinks>
-            <RecipeDef>BOR_InstallSolarBionicArm</RecipeDef>
-        </descriptionHyperlinks>
-        <costList>
-            <BOR_Sunsteel>15</BOR_Sunsteel>
-            <ComponentSpacer>4</ComponentSpacer>
-        </costList>
-        <thingSetMakerTags>
-            <li>RewardStandardMidFreq</li>
-        </thingSetMakerTags>
-        <statBases>
-            <Mass>4.16</Mass>
-        </statBases>
-    </ThingDef>
-
-    <RecipeDef ParentName="BOR_SolarSurgeryInstallBodyPartArtificialBase">
-        <defName>BOR_InstallSolarBionicArm</defName>
-        <label>install solar bionic arm</label>
-        <description>Install a solar bionic arm.</description>
-        <descriptionHyperlinks>
-            <ThingDef>BOR_SolarBionicArm</ThingDef>
-            <HediffDef>BOR_SolarBionicArm</HediffDef>
-        </descriptionHyperlinks>
-        <jobString>Installing solar bionic arm.</jobString>
-        <ingredients>
-            <li>
-                <filter>
-                    <thingDefs>
-                        <li>BOR_SolarBionicArm</li>
-                    </thingDefs>
-                </filter>
-                <count>1</count>
-            </li>
-            <li>
-                <filter>
-                    <thingDefs>
-                        <li>BOR_Nanoclusters</li>
-                    </thingDefs>
-                </filter>
-                <count>1</count>
-            </li>
-        </ingredients>
-        <fixedIngredientFilter>
-            <thingDefs>
-                <li>BOR_SolarBionicArm</li>
-                <li>BOR_Nanoclusters</li>
-            </thingDefs>
-        </fixedIngredientFilter>
-        <appliedOnFixedBodyParts>
-            <li>Shoulder</li>
-        </appliedOnFixedBodyParts>
-        <addsHediff>BOR_SolarBionicArm</addsHediff>
-    </RecipeDef>
-
-    <!-- Bionic leg -->
-
-    <HediffDef ParentName="AddedBodyPartBase">
-        <defName>BOR_SolarBionicLeg</defName>
-        <label>solar bionic leg</label>
-        <labelNoun>a solar bionic leg</labelNoun>
-        <description>An installed solar bionic leg. With its biogel nerve-link, powerful mini-servos, and lattice-dust healing system, it is better than a biological leg in almost every way.</description>
-        <descriptionHyperlinks>
-            <ThingDef>BOR_SolarBionicLeg</ThingDef>
-        </descriptionHyperlinks>
-        <spawnThingOnRemoved>BOR_SolarBionicLeg</spawnThingOnRemoved>
-        <addedPartProps>
-            <solid>true</solid>
-            <partEfficiency>1.875</partEfficiency>
-            <betterThanNatural>true</betterThanNatural>
-        </addedPartProps>
-    </HediffDef>
-
-    <ThingDef ParentName="SolarBodyPartBionicBase">
-        <defName>BOR_SolarBionicLeg</defName>
-        <label>solar bionic leg</label>
-        <description>An advanced artificial leg. With its biogel nerve-link, powerful mini-servos, and lattice-dust healing system, it is better than a biological leg in almost every way.</description>
-        <descriptionHyperlinks>
-            <RecipeDef>BOR_InstallSolarBionicLeg</RecipeDef>
-        </descriptionHyperlinks>
-        <costList>
-            <BOR_Sunsteel>15</BOR_Sunsteel>
-            <ComponentSpacer>4</ComponentSpacer>
-        </costList>
-        <thingSetMakerTags>
-            <li>RewardStandardMidFreq</li>
-        </thingSetMakerTags>
-        <statBases>
-            <Mass>6.66</Mass>
-        </statBases>
-    </ThingDef>
-
-    <RecipeDef ParentName="BOR_SolarSurgeryInstallBodyPartArtificialBase">
-        <defName>BOR_InstallSolarBionicLeg</defName>
-        <label>install solar bionic leg</label>
-        <description>Install a solar bionic leg.</description>
-        <descriptionHyperlinks>
-            <ThingDef>BOR_SolarBionicLeg</ThingDef>
-            <HediffDef>BOR_SolarBionicLeg</HediffDef>
-        </descriptionHyperlinks>
-        <jobString>Installing solar bionic leg.</jobString>
-        <ingredients>
-            <li>
-                <filter>
-                    <thingDefs>
-                        <li>BOR_SolarBionicLeg</li>
-                    </thingDefs>
-                </filter>
-                <count>1</count>
-            </li>
-            <li>
-                <filter>
-                    <thingDefs>
-                        <li>BOR_Nanoclusters</li>
-                    </thingDefs>
-                </filter>
-                <count>1</count>
-            </li>
-        </ingredients>
-        <fixedIngredientFilter>
-            <thingDefs>
-                <li>BOR_SolarBionicLeg</li>
-                <li>BOR_Nanoclusters</li>
-            </thingDefs>
-        </fixedIngredientFilter>
-        <appliedOnFixedBodyParts>
-            <li>Leg</li>
-        </appliedOnFixedBodyParts>
-        <addsHediff>BOR_SolarBionicLeg</addsHediff>
-    </RecipeDef>
-
-    <!-- Bionic spine -->
-
-    <HediffDef ParentName="AddedBodyPartBase">
-        <defName>BOR_SolarBionicSpine</defName>
-        <label>solar bionic spine</label>
-        <labelNoun>a solar bionic spine</labelNoun>
-        <description>An installed solar bionic spine. A biogel nerve bundle runs down an articulated plasteel core, surrounded by a lattice-dust healing system. It matches the performance of a biological spine.</description>
-        <descriptionHyperlinks>
-            <ThingDef>BOR_SolarBionicSpine</ThingDef>
-        </descriptionHyperlinks>
-        <spawnThingOnRemoved>BOR_SolarBionicSpine</spawnThingOnRemoved>
-        <addedPartProps>
-            <solid>true</solid>
-            <betterThanNatural>true</betterThanNatural>
-            <partEfficiency>1.875</partEfficiency>
-        </addedPartProps>
-    </HediffDef>
-
-    <ThingDef ParentName="SolarBodyPartBionicBase">
-        <defName>BOR_SolarBionicSpine</defName>
-        <label>solar bionic spine</label>
-        <description>An advanced artificial spine. A biogel nerve bundle runs down an articulated plasteel core, surrounded by a lattice-dust healing system. It matches the performance of a biological spine.</description>
-        <descriptionHyperlinks>
-            <RecipeDef>BOR_InstallSolarBionicSpine</RecipeDef>
-        </descriptionHyperlinks>
-        <costList>
-            <BOR_Sunsteel>15</BOR_Sunsteel>
-            <ComponentSpacer>4</ComponentSpacer>
-        </costList>
-        <statBases>
-            <Mass>1.66</Mass>
-        </statBases>
-    </ThingDef>
-
-    <RecipeDef ParentName="BOR_SolarSurgeryInstallBodyPartArtificialBase">
-        <defName>BOR_InstallSolarBionicSpine</defName>
-        <label>install solar bionic spine</label>
-        <description>Install a solar bionic spine.</description>
-        <descriptionHyperlinks>
-            <ThingDef>BOR_SolarBionicSpine</ThingDef>
-            <HediffDef>BOR_SolarBionicSpine</HediffDef>
-        </descriptionHyperlinks>
-        <jobString>Installing solar bionic spine.</jobString>
-        <ingredients>
-            <li>
-                <filter>
-                    <thingDefs>
-                        <li>BOR_SolarBionicSpine</li>
-                    </thingDefs>
-                </filter>
-                <count>1</count>
-            </li>
-            <li>
-                <filter>
-                    <thingDefs>
-                        <li>BOR_Nanoclusters</li>
-                    </thingDefs>
-                </filter>
-                <count>1</count>
-            </li>
-        </ingredients>
-        <fixedIngredientFilter>
-            <thingDefs>
-                <li>BOR_SolarBionicSpine</li>
-                <li>BOR_Nanoclusters</li>
-            </thingDefs>
-        </fixedIngredientFilter>
-        <appliedOnFixedBodyParts>
-            <li>Spine</li>
-        </appliedOnFixedBodyParts>
-        <addsHediff>BOR_SolarBionicSpine</addsHediff>
-    </RecipeDef>
-
-    <!-- Bionic heart -->
-
-    <HediffDef ParentName="AddedBodyPartBase">
-        <defName>BOR_SolarBionicHeart</defName>
-        <label>solar bionic heart</label>
-        <labelNoun>a solar bionic heart</labelNoun>
-        <description>An installed solar bionic heart. It has synthetic muscle fibers for a realistic heartbeat, plus a high-flow pump for rapid circulation during high stress. It is better than a biological heart in almost every way.</description>
-        <descriptionHyperlinks>
-            <ThingDef>BOR_SolarBionicHeart</ThingDef>
-        </descriptionHyperlinks>
-        <spawnThingOnRemoved>BOR_SolarBionicHeart</spawnThingOnRemoved>
-        <addedPartProps>
-            <solid>true</solid>
-            <partEfficiency>1.875</partEfficiency>
-            <betterThanNatural>true</betterThanNatural>
-        </addedPartProps>
-    </HediffDef>
-
-    <ThingDef ParentName="SolarBodyPartBionicBase">
-        <defName>BOR_SolarBionicHeart</defName>
-        <label>solar bionic heart</label>
-        <description>An advanced artificial heart. It has synthetic muscle fibers for a realistic heartbeat, plus a high-flow pump for rapid circulation during high stress. It is better than a biological heart in almost every way.</description>
-        <descriptionHyperlinks>
-            <RecipeDef>BOR_InstallSolarBionicHeart</RecipeDef>
-        </descriptionHyperlinks>
-        <costList>
-            <BOR_Sunsteel>15</BOR_Sunsteel>
-            <ComponentSpacer>4</ComponentSpacer>
-        </costList>
-    </ThingDef>
-
-    <RecipeDef ParentName="BOR_SolarSurgeryInstallBodyPartArtificialBase">
-        <defName>BOR_InstallSolarBionicHeart</defName>
-        <label>install solar bionic heart</label>
-        <description>Install a solar bionic heart.</description>
-        <descriptionHyperlinks>
-            <ThingDef>BOR_SolarBionicHeart</ThingDef>
-            <HediffDef>BOR_SolarBionicHeart</HediffDef>
-        </descriptionHyperlinks>
-        <jobString>Installing solar bionic heart.</jobString>
-        <ingredients>
-            <li>
-                <filter>
-                    <thingDefs>
-                        <li>BOR_SolarBionicHeart</li>
-                    </thingDefs>
-                </filter>
-                <count>1</count>
-            </li>
-            <li>
-                <filter>
-                    <thingDefs>
-                        <li>BOR_Nanoclusters</li>
-                    </thingDefs>
-                </filter>
-                <count>1</count>
-            </li>
-        </ingredients>
-        <fixedIngredientFilter>
-            <thingDefs>
-                <li>BOR_SolarBionicHeart</li>
-                <li>BOR_Nanoclusters</li>
-            </thingDefs>
-        </fixedIngredientFilter>
-        <appliedOnFixedBodyParts>
-            <li>Heart</li>
-        </appliedOnFixedBodyParts>
-        <addsHediff>BOR_SolarBionicHeart</addsHediff>
-    </RecipeDef>
-
-    <!-- Bionic stomach -->
-
-    <HediffDef ParentName="AddedBodyPartBase">
-        <defName>BOR_SolarBionicStomach</defName>
-        <label>solar bionic stomach</label>
-        <labelNoun>a solar bionic stomach</labelNoun>
-        <description>An installed solar bionic stomach. A person with this has a much lower chance of getting food poisoning, and is immune to some stomach diseases. An integrated lattice-dust healing system automatically repairs any damage to the artificial organ. It is better than a biological stomach in almost every way.</description>
-        <descriptionHyperlinks>
-            <ThingDef>BOR_SolarBionicStomach</ThingDef>
-        </descriptionHyperlinks>
-        <spawnThingOnRemoved>BOR_SolarBionicStomach</spawnThingOnRemoved>
-        <stages>
-            <li>
-                <makeImmuneTo>
-                    <li>GutWorms</li>
-                </makeImmuneTo>
-                <foodPoisoningChanceFactor>0.75</foodPoisoningChanceFactor>
-            </li>
-        </stages>
-        <addedPartProps>
-            <solid>true</solid>
-            <partEfficiency>1.875</partEfficiency>
-            <betterThanNatural>true</betterThanNatural>
-        </addedPartProps>
-    </HediffDef>
-
-    <ThingDef ParentName="SolarBodyPartBionicBase">
-        <defName>BOR_SolarBionicStomach</defName>
-        <label>solar bionic stomach</label>
-        <description>An advanced artificial stomach with sensors and chemical synthesizers that efficiently digest nearly any energy-bearing foodstuff. A person with this has a much lower chance of getting food poisoning, and is immune to some stomach diseases. An integrated lattice-dust healing system automatically repairs any damage to the artificial organ. It is better than a biological stomach in almost every way.</description>
-        <descriptionHyperlinks>
-            <RecipeDef>BOR_InstallSolarBionicStomach</RecipeDef>
-        </descriptionHyperlinks>
-        <costList>
-            <BOR_Sunsteel>10</BOR_Sunsteel>
-            <ComponentSpacer>3</ComponentSpacer>
-        </costList>
-        <statBases>
-            <Mass>1.66</Mass>
-        </statBases>
-    </ThingDef>
-
-    <RecipeDef ParentName="BOR_SolarSurgeryInstallBodyPartArtificialBase">
-        <defName>BOR_InstallSolarBionicStomach</defName>
-        <label>install solar bionic stomach</label>
-        <description>Install a solar bionic stomach.</description>
-        <descriptionHyperlinks>
-            <ThingDef>BOR_SolarBionicStomach</ThingDef>
-            <HediffDef>BOR_SolarBionicStomach</HediffDef>
-        </descriptionHyperlinks>
-        <jobString>Installing solar bionic stomach.</jobString>
-        <ingredients>
-            <li>
-                <filter>
-                    <thingDefs>
-                        <li>BOR_SolarBionicStomach</li>
-                    </thingDefs>
-                </filter>
-                <count>1</count>
-            </li>
-            <li>
-                <filter>
-                    <thingDefs>
-                        <li>BOR_Nanoclusters</li>
-                    </thingDefs>
-                </filter>
-                <count>1</count>
-            </li>
-        </ingredients>
-        <fixedIngredientFilter>
-            <thingDefs>
-                <li>BOR_SolarBionicStomach</li>
-                <li>BOR_Nanoclusters</li>
-            </thingDefs>
-        </fixedIngredientFilter>
-        <appliedOnFixedBodyParts>
-            <li>Stomach</li>
-        </appliedOnFixedBodyParts>
-        <addsHediff>BOR_SolarBionicStomach</addsHediff>
-    </RecipeDef>
-
-    <!-- Bionic ear -->
-
-    <HediffDef ParentName="AddedBodyPartBase">
-        <defName>BOR_SolarBionicEar</defName>
-        <label>solar bionic ear</label>
-        <labelNoun>a solar bionic ear</labelNoun>
-        <description>An installed solar bionic ear. A collection of invisible subdermal microphones capture sound and transmit it to a biogel nerve interface that links directly with the auditory nerve. It's sensitive enough to hear a cat before you see it, can't be damaged by loud noise, and automatically tunes itself to pick out meaningful sounds in noisy environments.</description>
-        <descriptionHyperlinks>
-            <ThingDef>BOR_SolarBionicEar</ThingDef>
-        </descriptionHyperlinks>
-        <spawnThingOnRemoved>BOR_SolarBionicEar</spawnThingOnRemoved>
-        <addedPartProps>
-            <solid>true</solid>
-            <partEfficiency>1.875</partEfficiency>
-            <betterThanNatural>true</betterThanNatural>
-        </addedPartProps>
-    </HediffDef>
-
-    <ThingDef ParentName="SolarBodyPartBionicBase">
-        <defName>BOR_SolarBionicEar</defName>
-        <label>solar bionic ear</label>
-        <description>An advanced artificial ear implant. A collection of invisible subdermal microphones capture sound and transmit it to a biogel nerve interface that links directly with the auditory nerve. It's sensitive enough to hear a cat before you see it, can't be damaged by loud noise, and automatically tunes itself to pick out meaningful sounds in noisy environments.</description>
-        <descriptionHyperlinks>
-            <RecipeDef>BOR_InstallSolarBionicEar</RecipeDef>
-        </descriptionHyperlinks>
-        <costList>
-            <BOR_Sunsteel>10</BOR_Sunsteel>
-            <ComponentSpacer>3</ComponentSpacer>
-        </costList>
-    </ThingDef>
-
-    <RecipeDef ParentName="BOR_SolarSurgeryInstallBodyPartArtificialBase">
-        <defName>BOR_InstallSolarBionicEar</defName>
-        <label>install solar bionic ear</label>
-        <description>Install a solar bionic ear.</description>
-        <descriptionHyperlinks>
-            <ThingDef>BOR_SolarBionicEar</ThingDef>
-            <HediffDef>BOR_SolarBionicEar</HediffDef>
-        </descriptionHyperlinks>
-        <jobString>Installing solar bionic ear.</jobString>
-        <ingredients>
-            <li>
-                <filter>
-                    <thingDefs>
-                        <li>BOR_SolarBionicEar</li>
-                    </thingDefs>
-                </filter>
-                <count>1</count>
-            </li>
-            <li>
-                <filter>
-                    <thingDefs>
-                        <li>BOR_Nanoclusters</li>
-                    </thingDefs>
-                </filter>
-                <count>1</count>
-            </li>
-        </ingredients>
-        <fixedIngredientFilter>
-            <thingDefs>
-                <li>BOR_SolarBionicEar</li>
-                <li>BOR_Nanoclusters</li>
-            </thingDefs>
-        </fixedIngredientFilter>
-        <appliedOnFixedBodyParts>
-            <li>Ear</li>
-        </appliedOnFixedBodyParts>
-        <addsHediff>BOR_SolarBionicEar</addsHediff>
-    </RecipeDef>
-
-    <!-- Bionic tongue -->
-
-    <HediffDef ParentName="AddedBodyPartBase">
-        <defName>BOR_SolarBionicTongue</defName>
-        <label>solar bionic tongue</label>
-        <labelNoun>a solar bionic tongue</labelNoun>
-        <description>An installed solar bionic tongue. Made of synthetic smooth-fibers and connected through a neurogel interface, it can match the performance of a natural tongue in speaking, eating, and tasting.</description>
-        <descriptionHyperlinks>
-            <ThingDef>BOR_SolarBionicTongue</ThingDef>
-        </descriptionHyperlinks>
-        <spawnThingOnRemoved>BOR_SolarBionicTongue</spawnThingOnRemoved>
-        <addedPartProps>
-            <solid>true</solid>
-            <partEfficiency>1.5</partEfficiency>
-        </addedPartProps>
-    </HediffDef>
-
-    <ThingDef ParentName="SolarBodyPartBionicBase">
-        <defName>BOR_SolarBionicTongue</defName>
-        <label>solar bionic tongue</label>
-        <description>An artificial tongue replacement. Made of synthetic smooth-fibers and connected through a neurogel interface, it can match the performance of a natural tongue in speaking, eating, and tasting.</description>
-        <descriptionHyperlinks>
-            <RecipeDef>BOR_InstallSolarBionicTongue</RecipeDef>
-        </descriptionHyperlinks>
-        <costList>
-            <BOR_Sunsteel>8</BOR_Sunsteel>
-            <ComponentSpacer>2</ComponentSpacer>
-        </costList>
-    </ThingDef>
-
-    <RecipeDef ParentName="BOR_SolarSurgeryInstallBodyPartArtificialBase">
-        <defName>BOR_InstallSolarBionicTongue</defName>
-        <label>install solar bionic tongue</label>
-        <description>Install a solar bionic tongue.</description>
-        <descriptionHyperlinks>
-            <ThingDef>BOR_SolarBionicTongue</ThingDef>
-            <HediffDef>BOR_SolarBionicTongue</HediffDef>
-        </descriptionHyperlinks>
-        <jobString>Installing solar bionic tongue.</jobString>
-        <ingredients>
-            <li>
-                <filter>
-                    <thingDefs>
-                        <li>BOR_SolarBionicTongue</li>
-                    </thingDefs>
-                </filter>
-                <count>1</count>
-            </li>
-            <li>
-                <filter>
-                    <thingDefs>
-                        <li>BOR_Nanoclusters</li>
-                    </thingDefs>
-                </filter>
-                <count>1</count>
-            </li>
-        </ingredients>
-        <fixedIngredientFilter>
-            <thingDefs>
-                <li>BOR_SolarBionicTongue</li>
-                <li>BOR_Nanoclusters</li>
-            </thingDefs>
-        </fixedIngredientFilter>
-        <appliedOnFixedBodyParts>
-            <li>Tongue</li>
-        </appliedOnFixedBodyParts>
-        <addsHediff>BOR_SolarBionicTongue</addsHediff>
-    </RecipeDef>
-
-    <!-- Bionic Jaw -->
-
-    <HediffDef ParentName="AddedBodyPartBase">
-        <defName>BOR_SolarBionicJaw</defName>
-        <label>solar bionic jaw</label>
-        <labelNoun>a solar bionic jaw</labelNoun>
-        <description>An installed solar bionic jaw. Made out of biosynthetic bone, with plasteel tooth replacements and a set of micro servomotors for the full range of motion.</description>
-        <descriptionHyperlinks>
-            <ThingDef>BOR_SolarBionicJaw</ThingDef>
-        </descriptionHyperlinks>
-        <spawnThingOnRemoved>BOR_SolarBionicJaw</spawnThingOnRemoved>
-        <addedPartProps>
-            <solid>true</solid>
-            <partEfficiency>1.875</partEfficiency>
-            <betterThanNatural>true</betterThanNatural>
-        </addedPartProps>
-    </HediffDef>
-
-    <ThingDef ParentName="SolarBodyPartBionicBase">
-        <defName>BOR_SolarBionicJaw</defName>
-        <label>solar bionic jaw</label>
-        <description>An artificial jaw replacement. Made out of biosynthetic bone, with plasteel tooth replacements and a set of micro servomotors for the full range of motion.</description>
-        <descriptionHyperlinks>
-            <RecipeDef>BOR_InstallSolarBionicJaw</RecipeDef>
-        </descriptionHyperlinks>
-        <costList>
-            <BOR_Sunsteel>10</BOR_Sunsteel>
-            <ComponentSpacer>3</ComponentSpacer>
-        </costList>
-        <statBases>
-            <Mass>2.25</Mass>
-        </statBases>
-    </ThingDef>
-
-    <RecipeDef ParentName="BOR_SolarSurgeryInstallBodyPartArtificialBase">
-        <defName>BOR_InstallSolarBionicJaw</defName>
-        <label>Install solar bionic jaw</label>
-        <description>Install solar bionic jaw.</description>
-        <jobString>Installing solar bionic jaw.</jobString>
-        <ingredients>
-            <li>
-                <filter>
-                    <thingDefs>
-                        <li>BOR_SolarBionicJaw</li>
-                    </thingDefs>
-                </filter>
-                <count>1</count>
-            </li>
-            <li>
-                <filter>
-                    <thingDefs>
-                        <li>BOR_Nanoclusters</li>
-                    </thingDefs>
-                </filter>
-                <count>1</count>
-            </li>
-        </ingredients>
-        <fixedIngredientFilter>
-            <thingDefs>
-                <li>BOR_SolarBionicJaw</li>
-                <li>BOR_Nanoclusters</li>
-            </thingDefs>
-        </fixedIngredientFilter>
-        <appliedOnFixedBodyParts>
-            <li>Jaw</li>
-        </appliedOnFixedBodyParts>
-        <addsHediff>BOR_SolarBionicJaw</addsHediff>
-    </RecipeDef>
-
+	<!-- Base: Bionic body part (spacer tech) -->
+	<RecipeDef Name="BOR_SolarSurgeryInstallBodyPartArtificialBase" ParentName="SurgeryInstallBodyPartArtificialBase" Abstract="True">
+		<researchPrerequisite>BOR_Research_Bionics_I</researchPrerequisite>
+		<skillRequirements>
+			<Medicine>12</Medicine>
+		</skillRequirements>
+		<ingredients Inherit="False">
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_MedicineI</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>BOR_MedicineI</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+	</RecipeDef>
+	<ThingDef Name="SolarBodyPartBionicBase" ParentName="BodyPartBase" Abstract="True">
+		<techLevel>Ultra</techLevel>
+		<thingCategories>
+			<li>BOR_Bionics_I</li>
+		</thingCategories>
+		<graphicData>
+			<texPath>Things/Item/Health/HealthItem</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>0.80</drawSize>
+			<color>(104, 160, 168)</color>
+		</graphicData>
+		<tradeTags>
+			<li>BOR_Bionic_I</li>
+		</tradeTags>
+		<techHediffsTags>
+			<li>Ultra</li>
+			<li>BOR_Bionics_I</li>
+		</techHediffsTags>
+		<statBases>
+			<WorkToMake>39000</WorkToMake>
+		</statBases>
+		<recipeMaker>
+			<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+			<workSkill>Crafting</workSkill>
+			<effectWorking>Smith</effectWorking>
+			<soundWorking>Recipe_Smith</soundWorking>
+			<unfinishedThingDef>UnfinishedHealthItemBionic</unfinishedThingDef>
+			<skillRequirements>
+				<Crafting>12</Crafting>
+			</skillRequirements>
+			<researchPrerequisite>BOR_Research_Bionics_I</researchPrerequisite>
+			<recipeUsers>
+				<li>BOR_MedicineBench_I</li>
+				<li>BOR_Bench_IV</li>
+			</recipeUsers>
+			<displayPriority>300</displayPriority>
+		</recipeMaker>
+	</ThingDef>
+	<!-- Bionic eye -->
+	<HediffDef ParentName="AddedBodyPartBase">
+		<defName>BOR_SolarBionicEye</defName>
+		<label>solar bionic eye</label>
+		<labelNoun>a solar bionic eye</labelNoun>
+		<description>An installed solar eye. With its biogel nerve-link, internal signal pre-processor, and wide-spectrum sensors, it is better than a biological eye in almost every way. A lattice-dust healing system allows it to recover from damage.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_SolarBionicEye</ThingDef>
+		</descriptionHyperlinks>
+		<spawnThingOnRemoved>BOR_SolarBionicEye</spawnThingOnRemoved>
+		<addedPartProps>
+			<solid>true</solid>
+			<partEfficiency>1.875</partEfficiency>
+			<betterThanNatural>true</betterThanNatural>
+		</addedPartProps>
+	</HediffDef>
+	<ThingDef ParentName="SolarBodyPartBionicBase">
+		<defName>BOR_SolarBionicEye</defName>
+		<label>solar bionic eye</label>
+		<description>An advanced artificial eye. With its biogel nerve-link, internal signal pre-processor, and wide-spectrum sensors, it is better than a biological eye in almost every way. A lattice-dust healing system allows it to recover from damage.</description>
+		<descriptionHyperlinks>
+			<RecipeDef>BOR_InstallSolarBionicEye</RecipeDef>
+		</descriptionHyperlinks>
+		<costList>
+			<BOR_Sunsteel>15</BOR_Sunsteel>
+			<ComponentSpacer>4</ComponentSpacer>
+		</costList>
+		<thingSetMakerTags>
+			<li>RewardStandardMidFreq</li>
+		</thingSetMakerTags>
+		<statBases>
+			<Mass>0.25</Mass>
+		</statBases>
+	</ThingDef>
+	<RecipeDef ParentName="BOR_SolarSurgeryInstallBodyPartArtificialBase">
+		<defName>BOR_InstallSolarBionicEye</defName>
+		<label>install solar bionic eye</label>
+		<description>Install a solar eye.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_SolarBionicEye</ThingDef>
+			<HediffDef>BOR_SolarBionicEye</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing solar bionic eye.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_SolarBionicEye</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Nanoclusters</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>BOR_SolarBionicEye</li>
+				<li>BOR_Nanoclusters</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Eye</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>BOR_SolarBionicEye</addsHediff>
+	</RecipeDef>
+	<!-- Bionic arm -->
+	<HediffDef ParentName="AddedBodyPartBase">
+		<defName>BOR_SolarBionicArm</defName>
+		<label>solar bionic arm</label>
+		<labelNoun>a solar bionic arm</labelNoun>
+		<description>An installed solar arm. Silenced mini-servos give great strength, while the biogel nerve-link gives exquisite control. A lattice-dust healing system allows it to recover from damage. It is better than a biological arm in almost every way.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_SolarBionicArm</ThingDef>
+		</descriptionHyperlinks>
+		<comps>
+			<li Class="HediffCompProperties_VerbGiver">
+				<tools>
+					<li>
+						<label>fist</label>
+						<capacities>
+							<li>Blunt</li>
+						</capacities>
+						<power>18</power>
+						<cooldownTime>1.66</cooldownTime>
+						<soundMeleeHit>MeleeHit_BionicPunch</soundMeleeHit>
+						<soundMeleeMiss>MeleeMiss_BionicPunch</soundMeleeMiss>
+					</li>
+				</tools>
+			</li>
+		</comps>
+		<spawnThingOnRemoved>BOR_SolarBionicArm</spawnThingOnRemoved>
+		<addedPartProps>
+			<solid>true</solid>
+			<partEfficiency>1.875</partEfficiency>
+			<betterThanNatural>true</betterThanNatural>
+		</addedPartProps>
+	</HediffDef>
+	<ThingDef ParentName="SolarBodyPartBionicBase">
+		<defName>BOR_SolarBionicArm</defName>
+		<label>solar bionic arm</label>
+		<description>An advanced artificial arm. Silenced mini-servos give great strength, while the biogel nerve-link gives exquisite control. A lattice-dust healing system allows it to recover from damage. It is better than a biological arm in almost every way.</description>
+		<descriptionHyperlinks>
+			<RecipeDef>BOR_InstallSolarBionicArm</RecipeDef>
+		</descriptionHyperlinks>
+		<costList>
+			<BOR_Sunsteel>15</BOR_Sunsteel>
+			<ComponentSpacer>4</ComponentSpacer>
+		</costList>
+		<thingSetMakerTags>
+			<li>RewardStandardMidFreq</li>
+		</thingSetMakerTags>
+		<statBases>
+			<Mass>4.16</Mass>
+		</statBases>
+	</ThingDef>
+	<RecipeDef ParentName="BOR_SolarSurgeryInstallBodyPartArtificialBase">
+		<defName>BOR_InstallSolarBionicArm</defName>
+		<label>install solar bionic arm</label>
+		<description>Install a solar arm.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_SolarBionicArm</ThingDef>
+			<HediffDef>BOR_SolarBionicArm</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing solar bionic arm.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_SolarBionicArm</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Nanoclusters</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>BOR_SolarBionicArm</li>
+				<li>BOR_Nanoclusters</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Shoulder</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>BOR_SolarBionicArm</addsHediff>
+	</RecipeDef>
+	<!-- Bionic leg -->
+	<HediffDef ParentName="AddedBodyPartBase">
+		<defName>BOR_SolarBionicLeg</defName>
+		<label>solar bionic leg</label>
+		<labelNoun>a solar bionic leg</labelNoun>
+		<description>An installed solar leg. With its biogel nerve-link, powerful mini-servos, and lattice-dust healing system, it is better than a biological leg in almost every way.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_SolarBionicLeg</ThingDef>
+		</descriptionHyperlinks>
+		<spawnThingOnRemoved>BOR_SolarBionicLeg</spawnThingOnRemoved>
+		<addedPartProps>
+			<solid>true</solid>
+			<partEfficiency>1.875</partEfficiency>
+			<betterThanNatural>true</betterThanNatural>
+		</addedPartProps>
+	</HediffDef>
+	<ThingDef ParentName="SolarBodyPartBionicBase">
+		<defName>BOR_SolarBionicLeg</defName>
+		<label>solar bionic leg</label>
+		<description>An advanced artificial leg. With its biogel nerve-link, powerful mini-servos, and lattice-dust healing system, it is better than a biological leg in almost every way.</description>
+		<descriptionHyperlinks>
+			<RecipeDef>BOR_InstallSolarBionicLeg</RecipeDef>
+		</descriptionHyperlinks>
+		<costList>
+			<BOR_Sunsteel>15</BOR_Sunsteel>
+			<ComponentSpacer>4</ComponentSpacer>
+		</costList>
+		<thingSetMakerTags>
+			<li>RewardStandardMidFreq</li>
+		</thingSetMakerTags>
+		<statBases>
+			<Mass>6.66</Mass>
+		</statBases>
+	</ThingDef>
+	<RecipeDef ParentName="BOR_SolarSurgeryInstallBodyPartArtificialBase">
+		<defName>BOR_InstallSolarBionicLeg</defName>
+		<label>install solar bionic leg</label>
+		<description>Install a solar leg.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_SolarBionicLeg</ThingDef>
+			<HediffDef>BOR_SolarBionicLeg</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing solar bionic leg.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_SolarBionicLeg</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Nanoclusters</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>BOR_SolarBionicLeg</li>
+				<li>BOR_Nanoclusters</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Leg</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>BOR_SolarBionicLeg</addsHediff>
+	</RecipeDef>
+	<!-- Bionic spine -->
+	<HediffDef ParentName="AddedBodyPartBase">
+		<defName>BOR_SolarBionicSpine</defName>
+		<label>solar bionic spine</label>
+		<labelNoun>a solar bionic spine</labelNoun>
+		<description>An installed solar spine. A biogel nerve bundle runs down an articulated plasteel core, surrounded by a lattice-dust healing system. It matches the performance of a biological spine.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_SolarBionicSpine</ThingDef>
+		</descriptionHyperlinks>
+		<spawnThingOnRemoved>BOR_SolarBionicSpine</spawnThingOnRemoved>
+		<addedPartProps>
+			<solid>true</solid>
+			<betterThanNatural>true</betterThanNatural>
+			<partEfficiency>1.875</partEfficiency>
+		</addedPartProps>
+	</HediffDef>
+	<ThingDef ParentName="SolarBodyPartBionicBase">
+		<defName>BOR_SolarBionicSpine</defName>
+		<label>solar bionic spine</label>
+		<description>An advanced artificial spine. A biogel nerve bundle runs down an articulated plasteel core, surrounded by a lattice-dust healing system. It matches the performance of a biological spine.</description>
+		<descriptionHyperlinks>
+			<RecipeDef>BOR_InstallSolarBionicSpine</RecipeDef>
+		</descriptionHyperlinks>
+		<costList>
+			<BOR_Sunsteel>15</BOR_Sunsteel>
+			<ComponentSpacer>4</ComponentSpacer>
+		</costList>
+		<statBases>
+			<Mass>1.66</Mass>
+		</statBases>
+	</ThingDef>
+	<RecipeDef ParentName="BOR_SolarSurgeryInstallBodyPartArtificialBase">
+		<defName>BOR_InstallSolarBionicSpine</defName>
+		<label>install solar bionic spine</label>
+		<description>Install a solar spine.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_SolarBionicSpine</ThingDef>
+			<HediffDef>BOR_SolarBionicSpine</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing solar bionic spine.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_SolarBionicSpine</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Nanoclusters</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>BOR_SolarBionicSpine</li>
+				<li>BOR_Nanoclusters</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Spine</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>BOR_SolarBionicSpine</addsHediff>
+	</RecipeDef>
+	<!-- Bionic heart -->
+	<HediffDef ParentName="AddedBodyPartBase">
+		<defName>BOR_SolarBionicHeart</defName>
+		<label>solar bionic heart</label>
+		<labelNoun>a solar bionic heart</labelNoun>
+		<description>An installed solar heart. It has synthetic muscle fibers for a realistic heartbeat, plus a high-flow pump for rapid circulation during high stress. It is better than a biological heart in almost every way.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_SolarBionicHeart</ThingDef>
+		</descriptionHyperlinks>
+		<spawnThingOnRemoved>BOR_SolarBionicHeart</spawnThingOnRemoved>
+		<addedPartProps>
+			<solid>true</solid>
+			<partEfficiency>1.875</partEfficiency>
+			<betterThanNatural>true</betterThanNatural>
+		</addedPartProps>
+	</HediffDef>
+	<ThingDef ParentName="SolarBodyPartBionicBase">
+		<defName>BOR_SolarBionicHeart</defName>
+		<label>solar bionic heart</label>
+		<description>An advanced artificial heart. It has synthetic muscle fibers for a realistic heartbeat, plus a high-flow pump for rapid circulation during high stress. It is better than a biological heart in almost every way.</description>
+		<descriptionHyperlinks>
+			<RecipeDef>BOR_InstallSolarBionicHeart</RecipeDef>
+		</descriptionHyperlinks>
+		<costList>
+			<BOR_Sunsteel>15</BOR_Sunsteel>
+			<ComponentSpacer>4</ComponentSpacer>
+		</costList>
+	</ThingDef>
+	<RecipeDef ParentName="BOR_SolarSurgeryInstallBodyPartArtificialBase">
+		<defName>BOR_InstallSolarBionicHeart</defName>
+		<label>install solar bionic heart</label>
+		<description>Install a solar heart.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_SolarBionicHeart</ThingDef>
+			<HediffDef>BOR_SolarBionicHeart</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing solar bionic heart.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_SolarBionicHeart</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Nanoclusters</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>BOR_SolarBionicHeart</li>
+				<li>BOR_Nanoclusters</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Heart</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>BOR_SolarBionicHeart</addsHediff>
+	</RecipeDef>
+	<!-- Bionic stomach -->
+	<HediffDef ParentName="AddedBodyPartBase">
+		<defName>BOR_SolarBionicStomach</defName>
+		<label>solar bionic stomach</label>
+		<labelNoun>a solar bionic stomach</labelNoun>
+		<description>An installed solar stomach. A person with this has a much lower chance of getting food poisoning, and is immune to some stomach diseases. An integrated lattice-dust healing system automatically repairs any damage to the artificial organ. It is better than a biological stomach in almost every way.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_SolarBionicStomach</ThingDef>
+		</descriptionHyperlinks>
+		<spawnThingOnRemoved>BOR_SolarBionicStomach</spawnThingOnRemoved>
+		<stages>
+			<li>
+				<makeImmuneTo>
+					<li>GutWorms</li>
+				</makeImmuneTo>
+				<foodPoisoningChanceFactor>0.75</foodPoisoningChanceFactor>
+			</li>
+		</stages>
+		<addedPartProps>
+			<solid>true</solid>
+			<partEfficiency>1.875</partEfficiency>
+			<betterThanNatural>true</betterThanNatural>
+		</addedPartProps>
+	</HediffDef>
+	<ThingDef ParentName="SolarBodyPartBionicBase">
+		<defName>BOR_SolarBionicStomach</defName>
+		<label>solar bionic stomach</label>
+		<description>An advanced artificial stomach with sensors and chemical synthesizers that efficiently digest nearly any energy-bearing foodstuff. A person with this has a much lower chance of getting food poisoning, and is immune to some stomach diseases. An integrated lattice-dust healing system automatically repairs any damage to the artificial organ. It is better than a biological stomach in almost every way.</description>
+		<descriptionHyperlinks>
+			<RecipeDef>BOR_InstallSolarBionicStomach</RecipeDef>
+		</descriptionHyperlinks>
+		<costList>
+			<BOR_Sunsteel>10</BOR_Sunsteel>
+			<ComponentSpacer>3</ComponentSpacer>
+		</costList>
+		<statBases>
+			<Mass>1.66</Mass>
+		</statBases>
+	</ThingDef>
+	<RecipeDef ParentName="BOR_SolarSurgeryInstallBodyPartArtificialBase">
+		<defName>BOR_InstallSolarBionicStomach</defName>
+		<label>install solar bionic stomach</label>
+		<description>Install a solar stomach.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_SolarBionicStomach</ThingDef>
+			<HediffDef>BOR_SolarBionicStomach</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing solar bionic stomach.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_SolarBionicStomach</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Nanoclusters</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>BOR_SolarBionicStomach</li>
+				<li>BOR_Nanoclusters</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Stomach</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>BOR_SolarBionicStomach</addsHediff>
+	</RecipeDef>
+	<!-- Bionic ear -->
+	<HediffDef ParentName="AddedBodyPartBase">
+		<defName>BOR_SolarBionicEar</defName>
+		<label>solar bionic ear</label>
+		<labelNoun>a solar bionic ear</labelNoun>
+		<description>An installed solar ear. A collection of invisible subdermal microphones capture sound and transmit it to a biogel nerve interface that links directly with the auditory nerve. It's sensitive enough to hear a cat before you see it, can't be damaged by loud noise, and automatically tunes itself to pick out meaningful sounds in noisy environments.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_SolarBionicEar</ThingDef>
+		</descriptionHyperlinks>
+		<spawnThingOnRemoved>BOR_SolarBionicEar</spawnThingOnRemoved>
+		<addedPartProps>
+			<solid>true</solid>
+			<partEfficiency>1.875</partEfficiency>
+			<betterThanNatural>true</betterThanNatural>
+		</addedPartProps>
+	</HediffDef>
+	<ThingDef ParentName="SolarBodyPartBionicBase">
+		<defName>BOR_SolarBionicEar</defName>
+		<label>solar bionic ear</label>
+		<description>An advanced artificial ear implant. A collection of invisible subdermal microphones capture sound and transmit it to a biogel nerve interface that links directly with the auditory nerve. It's sensitive enough to hear a cat before you see it, can't be damaged by loud noise, and automatically tunes itself to pick out meaningful sounds in noisy environments.</description>
+		<descriptionHyperlinks>
+			<RecipeDef>BOR_InstallSolarBionicEar</RecipeDef>
+		</descriptionHyperlinks>
+		<costList>
+			<BOR_Sunsteel>10</BOR_Sunsteel>
+			<ComponentSpacer>3</ComponentSpacer>
+		</costList>
+	</ThingDef>
+	<RecipeDef ParentName="BOR_SolarSurgeryInstallBodyPartArtificialBase">
+		<defName>BOR_InstallSolarBionicEar</defName>
+		<label>install solar bionic ear</label>
+		<description>Install a solar ear.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_SolarBionicEar</ThingDef>
+			<HediffDef>BOR_SolarBionicEar</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing solar bionic ear.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_SolarBionicEar</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Nanoclusters</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>BOR_SolarBionicEar</li>
+				<li>BOR_Nanoclusters</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Ear</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>BOR_SolarBionicEar</addsHediff>
+	</RecipeDef>
+	<!-- Bionic tongue -->
+	<HediffDef ParentName="AddedBodyPartBase">
+		<defName>BOR_SolarBionicTongue</defName>
+		<label>solar bionic tongue</label>
+		<labelNoun>a solar bionic tongue</labelNoun>
+		<description>An installed solar tongue. Made of synthetic smooth-fibers and connected through a neurogel interface, it can match the performance of a natural tongue in speaking, eating, and tasting.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_SolarBionicTongue</ThingDef>
+		</descriptionHyperlinks>
+		<spawnThingOnRemoved>BOR_SolarBionicTongue</spawnThingOnRemoved>
+		<addedPartProps>
+			<solid>true</solid>
+			<partEfficiency>1.5</partEfficiency>
+		</addedPartProps>
+	</HediffDef>
+	<ThingDef ParentName="SolarBodyPartBionicBase">
+		<defName>BOR_SolarBionicTongue</defName>
+		<label>solar bionic tongue</label>
+		<description>An artificial tongue replacement. Made of synthetic smooth-fibers and connected through a neurogel interface, it can match the performance of a natural tongue in speaking, eating, and tasting.</description>
+		<descriptionHyperlinks>
+			<RecipeDef>BOR_InstallSolarBionicTongue</RecipeDef>
+		</descriptionHyperlinks>
+		<costList>
+			<BOR_Sunsteel>8</BOR_Sunsteel>
+			<ComponentSpacer>2</ComponentSpacer>
+		</costList>
+	</ThingDef>
+	<RecipeDef ParentName="BOR_SolarSurgeryInstallBodyPartArtificialBase">
+		<defName>BOR_InstallSolarBionicTongue</defName>
+		<label>install solar bionic tongue</label>
+		<description>Install a solar tongue.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_SolarBionicTongue</ThingDef>
+			<HediffDef>BOR_SolarBionicTongue</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing solar bionic tongue.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_SolarBionicTongue</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Nanoclusters</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>BOR_SolarBionicTongue</li>
+				<li>BOR_Nanoclusters</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Tongue</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>BOR_SolarBionicTongue</addsHediff>
+	</RecipeDef>
+	<!-- Bionic Jaw -->
+	<HediffDef ParentName="AddedBodyPartBase">
+		<defName>BOR_SolarBionicJaw</defName>
+		<label>solar bionic jaw</label>
+		<labelNoun>a solar bionic jaw</labelNoun>
+		<description>An installed solar jaw. Made out of biosynthetic bone, with plasteel tooth replacements and a set of micro servomotors for the full range of motion.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_SolarBionicJaw</ThingDef>
+		</descriptionHyperlinks>
+		<spawnThingOnRemoved>BOR_SolarBionicJaw</spawnThingOnRemoved>
+		<addedPartProps>
+			<solid>true</solid>
+			<partEfficiency>1.875</partEfficiency>
+			<betterThanNatural>true</betterThanNatural>
+		</addedPartProps>
+	</HediffDef>
+	<ThingDef ParentName="SolarBodyPartBionicBase">
+		<defName>BOR_SolarBionicJaw</defName>
+		<label>solar bionic jaw</label>
+		<description>An artificial jaw replacement. Made out of biosynthetic bone, with plasteel tooth replacements and a set of micro servomotors for the full range of motion.</description>
+		<descriptionHyperlinks>
+			<RecipeDef>BOR_InstallSolarBionicJaw</RecipeDef>
+		</descriptionHyperlinks>
+		<costList>
+			<BOR_Sunsteel>10</BOR_Sunsteel>
+			<ComponentSpacer>3</ComponentSpacer>
+		</costList>
+		<statBases>
+			<Mass>2.25</Mass>
+		</statBases>
+	</ThingDef>
+	<RecipeDef ParentName="BOR_SolarSurgeryInstallBodyPartArtificialBase">
+		<defName>BOR_InstallSolarBionicJaw</defName>
+		<label>Install solar bionic jaw</label>
+		<description>Install solar jaw.</description>
+		<jobString>Installing solar bionic jaw.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_SolarBionicJaw</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Nanoclusters</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>BOR_SolarBionicJaw</li>
+				<li>BOR_Nanoclusters</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Jaw</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>BOR_SolarBionicJaw</addsHediff>
+	</RecipeDef>
 </Defs>
