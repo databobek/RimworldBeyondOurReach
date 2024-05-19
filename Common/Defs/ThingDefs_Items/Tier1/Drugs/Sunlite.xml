@@ -1,271 +1,261 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Defs>
-
-  <ThingDef ParentName="MakeableDrugBase">
-    <defName>BOR_Sunlite</defName>
-    <label>sunlite</label>
-    <description>A refined powdery preparation of the Sunweave-based Chemicals drug. When snorted, it produces a rapid euphoric high, dramatically reduces the user's need for rest, and suppresses pain. Like all forms of BOR_Chemical_Sunweave, it is addictive, though it is not as addictive as the cruder flake.\n\nBecause of its high cost and refined appearance, many cultures associate yayo with degenerate wealth. Whether in the throneroom or the boardroom, many hare-brained policy schemes have been developed during yayo-fueled binge parties.</description>
-    <tradeTags Inherit="False">
-      <li>BOR_Drugs_I</li>
-    </tradeTags>
-    <thingCategories>
-      <li>BOR_Drugs_I</li>
-    </thingCategories>
-    <descriptionHyperlinks>
-      <HediffDef>BOR_SunliteHigh</HediffDef>
-      <HediffDef>BOR_Chemical_SunweaveTolerance</HediffDef>
-      <HediffDef>BOR_Sunweave_Chemical_Addiction</HediffDef>
-      <HediffDef>ChemicalDamageSevere</HediffDef>
-    </descriptionHyperlinks>
-    <graphicData>
-      <texPath>BOR/Things/Item/Drugs/Tier1/Happy</texPath>
-      <graphicClass>Graphic_StackCount</graphicClass>
-      <drawSize>0.75</drawSize>
-    </graphicData>
-    <rotatable>false</rotatable>
-    <statBases>
-      <WorkToMake>425</WorkToMake>
-      <MarketValue>32</MarketValue>
-      <Mass>0.04</Mass>
-    </statBases>
-    <techLevel>Ultra</techLevel>
-    <minRewardCount>5</minRewardCount>
-    <ingestible>
-      <foodType>Processed</foodType>
-      <joyKind>Chemical</joyKind>
-      <joy>1.2</joy>
-      <drugCategory>Social</drugCategory>
-      <baseIngestTicks>125</baseIngestTicks>
-      <ingestSound>Ingest_Drink</ingestSound>
-      <ingestHoldOffsetStanding>
-        <northDefault>
-          <offset>(0.21,0,0.05)</offset>
-        </northDefault>
-      </ingestHoldOffsetStanding>
-      <ingestHoldUsesTable>false</ingestHoldUsesTable>
-      <ingestCommandString>drinking {0}</ingestCommandString>
-      <ingestReportString>Drinking {0}.</ingestReportString>
-      <useEatingSpeedStat>false</useEatingSpeedStat>
-      <outcomeDoers>
-        <li Class="IngestionOutcomeDoer_GiveHediff">
-          <hediffDef>BOR_SunliteHigh</hediffDef>
-          <severity>1</severity>
-          <toleranceChemical>BOR_Chemical_Sunweave</toleranceChemical>
-        </li>
-        <li Class="IngestionOutcomeDoer_OffsetNeed">
-          <need>Rest</need>
-          <offset>0.6</offset>
-          <toleranceChemical>BOR_Chemical_Sunweave</toleranceChemical>
-        </li>
-        <li Class="IngestionOutcomeDoer_GiveHediff">
-          <hediffDef>BOR_Chemical_SunweaveTolerance</hediffDef>
-          <toleranceChemical>BOR_Chemical_Sunweave</toleranceChemical>
-          <severity>0.035</severity>
-          <divideByBodySize>true</divideByBodySize>
-          <multiplyByGeneToleranceFactors>true</multiplyByGeneToleranceFactors>
-        </li>
-      </outcomeDoers>
-    </ingestible>
-    <recipeMaker>
-      <!-- todo -->
-      <researchPrerequisite>BOR_Research_Drugs_I</researchPrerequisite>
-      <recipeUsers>
-        <!-- todo -->
-        <li>BOR_MedicineBench_I</li>
-        <li>BOR_Bench_IV</li>
-      </recipeUsers>
-      <soundWorking>Recipe_Drug</soundWorking>
-      <displayPriority>1700</displayPriority>
-    </recipeMaker>
-    <costList>
-      <BOR_Sunweave>12</BOR_Sunweave>
-    </costList>
-    <comps>
-      <li Class="CompProperties_Drug">
-        <chemical>BOR_Chemical_Sunweave</chemical>
-        <addictiveness>0.0216</addictiveness>
-        <existingAddictionSeverityOffset>0.16</existingAddictionSeverityOffset>
-        <needLevelOffset>0.9</needLevelOffset>
-        <isCombatEnhancingDrug>true</isCombatEnhancingDrug>
-        <listOrder>201</listOrder>
-        <overdoseSeverityOffset>0.15~0.291</overdoseSeverityOffset>
-        <largeOverdoseChance>0.004</largeOverdoseChance>
-      </li>
-    </comps>
-    <allowedArchonexusCount>200</allowedArchonexusCount>
-  </ThingDef>
-
-  <HediffDef>
-    <defName>BOR_SunliteHigh</defName>
-    <label>sunlite blessed</label>
-    <labelNoun>a sunlite blessing</labelNoun>
-    <description>Active sunlite in the bloodstream. Generates an euphoric high.</description>
-    <hediffClass>Hediff_High</hediffClass>
-    <defaultLabelColor>(1,0,0.5)</defaultLabelColor>
-    <scenarioCanAdd>true</scenarioCanAdd>
-    <maxSeverity>1.0</maxSeverity>
-    <isBad>false</isBad>
-    <comps>
-      <li Class="HediffCompProperties_SeverityPerDay">
-        <severityPerDay>-1.25</severityPerDay>
-        <showHoursToRecover>true</showHoursToRecover>
-      </li>
-    </comps>
-    <stages>
-      <li>
-        <painFactor>0.4</painFactor>
-        <statFactors>
-          <RestFallRateFactor>0.275</RestFallRateFactor>
-        </statFactors>
-        <capMods>
-          <li>
-            <capacity>Moving</capacity>
-            <offset>0.225</offset>
-          </li>
-        </capMods>
-      </li>
-    </stages>
-  </HediffDef>
-
-  <ThoughtDef>
-    <defName>BOR_SunliteHigh</defName>
-    <workerClass>ThoughtWorker_Hediff</workerClass>
-    <hediff>BOR_SunliteHigh</hediff>
-    <validWhileDespawned>true</validWhileDespawned>
-    <developmentalStageFilter>Baby, Child, Adult</developmentalStageFilter>
-    <stages>
-      <li>
-        <label>blessed by sunlite</label>
-        <description>Feeling great! Praise the sun!</description>
-        <baseMoodEffect>52.5</baseMoodEffect>
-      </li>
-    </stages>
-  </ThoughtDef>
-
-  <!-- Sunweave-based Chemicals addiction -->
-
-  <ChemicalDef>
-    <defName>BOR_Chemical_Sunweave</defName>
-    <label>Sunweave-based Chemicals</label>
-    <addictionHediff>BOR_Sunweave_Chemical_Addiction</addictionHediff>
-    <toleranceHediff>BOR_Chemical_SunweaveTolerance</toleranceHediff>
-    <onGeneratedAddictedToleranceChance>0.66</onGeneratedAddictedToleranceChance>
-    <onGeneratedAddictedEvents>
-      <li>
-        <hediff>ChemicalDamageSevere</hediff>
-        <chance>0.125</chance>
-        <partsToAffect>
-          <li>Kidney</li>
-        </partsToAffect>
-      </li>
-    </onGeneratedAddictedEvents>
-    <geneToleranceBuildupFactorResist>0.75</geneToleranceBuildupFactorResist>
-    <geneToleranceBuildupFactorImmune>0</geneToleranceBuildupFactorImmune>
-    <geneOverdoseChanceFactorResist>0.75</geneOverdoseChanceFactorResist>
-    <geneOverdoseChanceFactorImmune>0</geneOverdoseChanceFactorImmune>
-  </ChemicalDef>
-
-  <NeedDef ParentName="DrugAddictionNeedBase">
-    <defName>Chemical_BOR_Chemical_Sunweave</defName>
-    <needClass>Need_Chemical</needClass>
-    <label>Sunweave-based Chemicals</label>
-    <description>Because of a Sunweave-based Chemicals addiction, this person needs to regularly consume the drug to avoid withdrawal symptoms.</description>
-    <listPriority>50</listPriority>
-  </NeedDef>
-
-  <HediffDef ParentName="DrugToleranceBase">
-    <defName>BOR_Chemical_SunweaveTolerance</defName>
-    <label>Sunweave-based Chemicals tolerance</label>
-    <description>A built-up tolerance to BOR_Chemical_Sunweave. The more severe this tolerance is, the more BOR_Chemical_Sunweave-based drugs like yayo or flake it takes to get the same effect.</description>
-    <comps>
-      <li Class="HediffCompProperties_SeverityPerDay">
-        <severityPerDay>-0.0225</severityPerDay>
-      </li>
-      <li Class="HediffCompProperties_DrugEffectFactor">
-        <chemical>BOR_Chemical_Sunweave</chemical>
-      </li>
-    </comps>
-    <hediffGivers>
-      <li Class="HediffGiver_RandomDrugEffect">
-        <hediff>ChemicalDamageSevere</hediff>
-        <severityToMtbDaysCurve>
-          <points>
-            <li>(0.675, 99999)</li>
-            <li>(0.75, 180)</li>
-            <li>(1, 135)</li>
-          </points>
-        </severityToMtbDaysCurve>
-        <partsToAffect>
-          <li>Liver</li>
-        </partsToAffect>
-      </li>
-    </hediffGivers>
-  </HediffDef>
-
-  <HediffDef ParentName="AddictionBase">
-    <defName>BOR_Sunweave_Chemical_Addiction</defName>
-    <label>Sunweave-based Chemicals addiction</label>
-    <description>A chemical addiction to BOR_Chemical_Sunweave. Long-term presence of Sunweave-based Chemicals has caused neurological adaptations at the cellular level, so the brain can no longer function properly without the drug. \nWithout regular doses of Sunweave-based Chemicals from drugs like flake or yayo, withdrawal symptoms will begin. However, extended abstinence will force the brain to adapt back to its normal state, resolving the addiction.</description>
-    <hediffClass>Hediff_Addiction</hediffClass>
-    <causesNeed>Chemical_BOR_Chemical_Sunweave</causesNeed>
-    <comps>
-      <li Class="HediffCompProperties_SeverityPerDay">
-        <severityPerDay>-0.04995</severityPerDay>
-        <showDaysToRecover>true</showDaysToRecover>
-      </li>
-    </comps>
-    <stages>
-      <li> </li>
-      <li>
-        <label>withdrawal</label>
-        <socialFightChanceFactor>2.5</socialFightChanceFactor>
-        <statOffsets>
-          <RestFallRateFactor>0.25</RestFallRateFactor>
-        </statOffsets>
-        <capMods>
-          <li>
-            <capacity>Consciousness</capacity>
-            <offset>-0.166</offset>
-          </li>
-          <li>
-            <capacity>Moving</capacity>
-            <offset>-0.166</offset>
-          </li>
-          <li>
-            <capacity>Manipulation</capacity>
-            <offset>-0.166</offset>
-          </li>
-        </capMods>
-        <mentalStateGivers>
-          <li>
-            <mentalState>Binging_DrugExtreme</mentalState>
-            <mtbDays>60</mtbDays>
-          </li>
-          <li>
-            <mentalState>Wander_Psychotic</mentalState>
-            <mtbDays>15</mtbDays>
-          </li>
-        </mentalStateGivers>
-      </li>
-    </stages>
-  </HediffDef>
-
-  <ThoughtDef>
-    <defName>BOR_Chemical_SunweaveWithdrawal</defName>
-    <workerClass>ThoughtWorker_Hediff</workerClass>
-    <hediff>BOR_Sunweave_Chemical_Addiction</hediff>
-    <validWhileDespawned>true</validWhileDespawned>
-    <developmentalStageFilter>Baby, Child, Adult</developmentalStageFilter>
-    <stages>
-      <li>
-        <visible>false</visible>
-      </li>
-      <li>
-        <label>Sunweave Chemical withdrawal</label>
-        <description>Lightless life I live...</description>
-        <baseMoodEffect>-29</baseMoodEffect>
-      </li>
-    </stages>
-  </ThoughtDef>
-
+	<ThingDef ParentName="MakeableDrugBase">
+		<defName>BOR_Sunlite</defName>
+		<label>sunlite</label>
+		<description>A refined powdery preparation of the Sunweave-based Chemicals drug. When snorted, it produces a rapid euphoric high, dramatically reduces the user's need for rest, and suppresses pain. Like all forms of BOR_Chemical_Sunweave, it is addictive, though it is not as addictive as the cruder flake.\n\nBecause of its high cost and refined appearance, many cultures associate yayo with degenerate wealth. Whether in the throneroom or the boardroom, many hare-brained policy schemes have been developed during yayo-fueled binge parties.</description>
+		<tradeTags Inherit="False">
+			<li>BOR_Drugs_I</li>
+		</tradeTags>
+		<thingCategories>
+			<li>BOR_Drugs_I</li>
+		</thingCategories>
+		<descriptionHyperlinks>
+			<HediffDef>BOR_SunliteHigh</HediffDef>
+			<HediffDef>BOR_Chemical_SunweaveTolerance</HediffDef>
+			<HediffDef>BOR_Sunweave_Chemical_Addiction</HediffDef>
+			<HediffDef>ChemicalDamageSevere</HediffDef>
+		</descriptionHyperlinks>
+		<graphicData>
+			<texPath>BOR/Things/Item/Drugs/Tier1/Happy</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+			<drawSize>0.75</drawSize>
+		</graphicData>
+		<rotatable>false</rotatable>
+		<statBases>
+			<WorkToMake>425</WorkToMake>
+			<MarketValue>32</MarketValue>
+			<Mass>0.04</Mass>
+		</statBases>
+		<techLevel>Ultra</techLevel>
+		<minRewardCount>5</minRewardCount>
+		<ingestible>
+			<foodType>Processed</foodType>
+			<joyKind>Chemical</joyKind>
+			<joy>1.2</joy>
+			<drugCategory>Social</drugCategory>
+			<baseIngestTicks>125</baseIngestTicks>
+			<ingestSound>Ingest_Drink</ingestSound>
+			<ingestHoldOffsetStanding>
+				<northDefault>
+					<offset>(0.21,0,0.05)</offset>
+				</northDefault>
+			</ingestHoldOffsetStanding>
+			<ingestHoldUsesTable>false</ingestHoldUsesTable>
+			<ingestCommandString>drinking {0}</ingestCommandString>
+			<ingestReportString>Drinking {0}.</ingestReportString>
+			<useEatingSpeedStat>false</useEatingSpeedStat>
+			<outcomeDoers>
+				<li Class="IngestionOutcomeDoer_GiveHediff">
+					<hediffDef>BOR_SunliteHigh</hediffDef>
+					<severity>1</severity>
+					<toleranceChemical>BOR_Chemical_Sunweave</toleranceChemical>
+				</li>
+				<li Class="IngestionOutcomeDoer_OffsetNeed">
+					<need>Rest</need>
+					<offset>0.6</offset>
+					<toleranceChemical>BOR_Chemical_Sunweave</toleranceChemical>
+				</li>
+				<li Class="IngestionOutcomeDoer_GiveHediff">
+					<hediffDef>BOR_Chemical_SunweaveTolerance</hediffDef>
+					<toleranceChemical>BOR_Chemical_Sunweave</toleranceChemical>
+					<severity>0.035</severity>
+					<divideByBodySize>true</divideByBodySize>
+					<multiplyByGeneToleranceFactors>true</multiplyByGeneToleranceFactors>
+				</li>
+			</outcomeDoers>
+		</ingestible>
+		<recipeMaker>
+			<!-- todo -->
+			<researchPrerequisite>BOR_Research_Drugs_I</researchPrerequisite>
+			<recipeUsers>
+				<!-- todo -->
+				<li>BOR_MedicineBench_I</li>
+				<li>BOR_Bench_IV</li>
+			</recipeUsers>
+			<soundWorking>Recipe_Drug</soundWorking>
+			<displayPriority>1700</displayPriority>
+		</recipeMaker>
+		<costList>
+			<BOR_Sunweave>12</BOR_Sunweave>
+		</costList>
+		<comps>
+			<li Class="CompProperties_Drug">
+				<chemical>BOR_Chemical_Sunweave</chemical>
+				<addictiveness>0.0216</addictiveness>
+				<existingAddictionSeverityOffset>0.16</existingAddictionSeverityOffset>
+				<needLevelOffset>0.9</needLevelOffset>
+				<isCombatEnhancingDrug>true</isCombatEnhancingDrug>
+				<listOrder>201</listOrder>
+				<overdoseSeverityOffset>0.15~0.291</overdoseSeverityOffset>
+				<largeOverdoseChance>0.004</largeOverdoseChance>
+			</li>
+		</comps>
+		<allowedArchonexusCount>200</allowedArchonexusCount>
+	</ThingDef>
+	<HediffDef>
+		<defName>BOR_SunliteHigh</defName>
+		<label>sunlite blessed</label>
+		<labelNoun>a sunlite blessing</labelNoun>
+		<description>Active sunlite in the bloodstream. Generates an euphoric high.</description>
+		<hediffClass>Hediff_High</hediffClass>
+		<defaultLabelColor>(1,0,0.5)</defaultLabelColor>
+		<scenarioCanAdd>true</scenarioCanAdd>
+		<maxSeverity>1.0</maxSeverity>
+		<isBad>false</isBad>
+		<comps>
+			<li Class="HediffCompProperties_SeverityPerDay">
+				<severityPerDay>-1.25</severityPerDay>
+				<showHoursToRecover>true</showHoursToRecover>
+			</li>
+		</comps>
+		<stages>
+			<li>
+				<painFactor>0.4</painFactor>
+				<statFactors>
+					<RestFallRateFactor>0.275</RestFallRateFactor>
+				</statFactors>
+				<capMods>
+					<li>
+						<capacity>Moving</capacity>
+						<offset>0.225</offset>
+					</li>
+				</capMods>
+			</li>
+		</stages>
+	</HediffDef>
+	<ThoughtDef>
+		<defName>BOR_SunliteHigh</defName>
+		<workerClass>ThoughtWorker_Hediff</workerClass>
+		<hediff>BOR_SunliteHigh</hediff>
+		<validWhileDespawned>true</validWhileDespawned>
+		<developmentalStageFilter>Baby, Child, Adult</developmentalStageFilter>
+		<stages>
+			<li>
+				<label>blessed by sunlite</label>
+				<description>Feeling great! Praise the sun!</description>
+				<baseMoodEffect>52.5</baseMoodEffect>
+			</li>
+		</stages>
+	</ThoughtDef>
+	<!-- Sunweave-based Chemicals addiction -->
+	<ChemicalDef>
+		<defName>BOR_Chemical_Sunweave</defName>
+		<label>Sunweave-based Chemicals</label>
+		<addictionHediff>BOR_Sunweave_Chemical_Addiction</addictionHediff>
+		<toleranceHediff>BOR_Chemical_SunweaveTolerance</toleranceHediff>
+		<onGeneratedAddictedToleranceChance>0.66</onGeneratedAddictedToleranceChance>
+		<onGeneratedAddictedEvents>
+			<li>
+				<hediff>ChemicalDamageSevere</hediff>
+				<chance>0.125</chance>
+				<partsToAffect>
+					<li>Kidney</li>
+				</partsToAffect>
+			</li>
+		</onGeneratedAddictedEvents>
+		<geneToleranceBuildupFactorResist>0.75</geneToleranceBuildupFactorResist>
+		<geneToleranceBuildupFactorImmune>0</geneToleranceBuildupFactorImmune>
+		<geneOverdoseChanceFactorResist>0.75</geneOverdoseChanceFactorResist>
+		<geneOverdoseChanceFactorImmune>0</geneOverdoseChanceFactorImmune>
+	</ChemicalDef>
+	<NeedDef ParentName="DrugAddictionNeedBase">
+		<defName>Chemical_BOR_Chemical_Sunweave</defName>
+		<needClass>Need_Chemical</needClass>
+		<label>sunweave-based chemicals</label>
+		<description>Because of a Sunweave-based Chemicals addiction, this person needs to regularly consume the drug to avoid withdrawal symptoms.</description>
+		<listPriority>50</listPriority>
+	</NeedDef>
+	<HediffDef ParentName="DrugToleranceBase">
+		<defName>BOR_Chemical_SunweaveTolerance</defName>
+		<label>sunweave-based chemicals tolerance</label>
+		<description>A built-up tolerance to BOR_Chemical_Sunweave. The more severe this tolerance is, the more BOR_Chemical_Sunweave-based drugs like yayo or flake it takes to get the same effect.</description>
+		<comps>
+			<li Class="HediffCompProperties_SeverityPerDay">
+				<severityPerDay>-0.0225</severityPerDay>
+			</li>
+			<li Class="HediffCompProperties_DrugEffectFactor">
+				<chemical>BOR_Chemical_Sunweave</chemical>
+			</li>
+		</comps>
+		<hediffGivers>
+			<li Class="HediffGiver_RandomDrugEffect">
+				<hediff>ChemicalDamageSevere</hediff>
+				<severityToMtbDaysCurve>
+					<points>
+						<li>(0.675, 99999)</li>
+						<li>(0.75, 180)</li>
+						<li>(1, 135)</li>
+					</points>
+				</severityToMtbDaysCurve>
+				<partsToAffect>
+					<li>Liver</li>
+				</partsToAffect>
+			</li>
+		</hediffGivers>
+	</HediffDef>
+	<HediffDef ParentName="AddictionBase">
+		<defName>BOR_Sunweave_Chemical_Addiction</defName>
+		<label>sunweave-based chemicals addiction</label>
+		<description>A chemical addiction to BOR_Chemical_Sunweave. Long-term presence of Sunweave-based Chemicals has caused neurological adaptations at the cellular level, so the brain can no longer function properly without the drug. \nWithout regular doses of Sunweave-based Chemicals from drugs like flake or yayo, withdrawal symptoms will begin. However, extended abstinence will force the brain to adapt back to its normal state, resolving the addiction.</description>
+		<hediffClass>Hediff_Addiction</hediffClass>
+		<causesNeed>Chemical_BOR_Chemical_Sunweave</causesNeed>
+		<comps>
+			<li Class="HediffCompProperties_SeverityPerDay">
+				<severityPerDay>-0.04995</severityPerDay>
+				<showDaysToRecover>true</showDaysToRecover>
+			</li>
+		</comps>
+		<stages>
+			<li/>
+			<li>
+				<label>withdrawal</label>
+				<socialFightChanceFactor>2.5</socialFightChanceFactor>
+				<statOffsets>
+					<RestFallRateFactor>0.25</RestFallRateFactor>
+				</statOffsets>
+				<capMods>
+					<li>
+						<capacity>Consciousness</capacity>
+						<offset>-0.166</offset>
+					</li>
+					<li>
+						<capacity>Moving</capacity>
+						<offset>-0.166</offset>
+					</li>
+					<li>
+						<capacity>Manipulation</capacity>
+						<offset>-0.166</offset>
+					</li>
+				</capMods>
+				<mentalStateGivers>
+					<li>
+						<mentalState>Binging_DrugExtreme</mentalState>
+						<mtbDays>60</mtbDays>
+					</li>
+					<li>
+						<mentalState>Wander_Psychotic</mentalState>
+						<mtbDays>15</mtbDays>
+					</li>
+				</mentalStateGivers>
+			</li>
+		</stages>
+	</HediffDef>
+	<ThoughtDef>
+		<defName>BOR_Chemical_SunweaveWithdrawal</defName>
+		<workerClass>ThoughtWorker_Hediff</workerClass>
+		<hediff>BOR_Sunweave_Chemical_Addiction</hediff>
+		<validWhileDespawned>true</validWhileDespawned>
+		<developmentalStageFilter>Baby, Child, Adult</developmentalStageFilter>
+		<stages>
+			<li>
+				<visible>false</visible>
+			</li>
+			<li>
+				<label>Sunweave Chemical withdrawal</label>
+				<description>Lightless life I live...</description>
+				<baseMoodEffect>-29</baseMoodEffect>
+			</li>
+		</stages>
+	</ThoughtDef>
 </Defs>

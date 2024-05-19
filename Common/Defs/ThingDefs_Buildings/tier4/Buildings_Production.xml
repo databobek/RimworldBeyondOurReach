@@ -1,136 +1,135 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Defs>
-  <ThingDef ParentName="BenchBase">
-    <defName>BOR_Bench_IV</defName>
-    <label>Umbral Creation Engine</label>
-    <description>A work station for assembling whatever you want.</description>
-    <thingClass>Building_WorkTable</thingClass>
-    <graphicData>
-      <texPath>BOR/Things/Building/tier4/production_bench</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
-      <drawSize>(2,2)</drawSize>
-      <drawOffset>(0, 0, 0.2)</drawOffset>
-      <drawRotated>false</drawRotated>
-    </graphicData>
-    <rotatable>false</rotatable>
-    <castEdgeShadows>true</castEdgeShadows>
-    <staticSunShadowHeight>0.20</staticSunShadowHeight>
-    <costList>
-      <BOR_Tenebrite>1500</BOR_Tenebrite>
-      <BOR_ComponentIII>50</BOR_ComponentIII>
-    </costList>
-    <altitudeLayer>Building</altitudeLayer>
-    <fillPercent>0.5</fillPercent>
-    <useHitPoints>True</useHitPoints>
-    <statBases>
-      <WorkToBuild>10125</WorkToBuild>
-      <MaxHitPoints>910</MaxHitPoints>
-      <Flammability>0.525</Flammability>
-      <Cleanliness>-1.11</Cleanliness>
-    </statBases>
-    <size>(1,1)</size>
-    <designationCategory>BOR</designationCategory>
-    <uiOrder>2520</uiOrder>
-    <passability>PassThroughOnly</passability>
-    <pathCost>50</pathCost>
-    <hasInteractionCell>True</hasInteractionCell>
-    <interactionCellOffset>(0,0,-2)</interactionCellOffset>
-    <surfaceType>Item</surfaceType>
-    <constructionSkillPrerequisite>4</constructionSkillPrerequisite>
-    <recipes>
-      <li>ButcherCorpseMechanoid</li>
-    </recipes>
-    <inspectorTabs>
-      <li>ITab_Bills</li>
-    </inspectorTabs>
-    <comps>
-      <li Class="CompProperties_Power">
-        <compClass>CompPowerTrader</compClass>
-        <shortCircuitInRain>true</shortCircuitInRain>
-        <basePowerConsumption>5000000</basePowerConsumption>
-      </li>
-      <li Class="CompProperties_Flickable" />
-      <li Class="CompProperties_Breakdownable" />
-    </comps>
-    <building>
-      <spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
-    </building>
-    <constructEffect>ConstructMetal</constructEffect>
-    <researchPrerequisites>
-      <li>BOR_Research_Production_IV</li>
-    </researchPrerequisites>
-    <designationHotKey>Misc7</designationHotKey>
-    <placeWorkers>
-      <li>PlaceWorker_ShowFacilitiesConnections</li>
-      <li>PlaceWorker_PreventInteractionSpotOverlap</li>
-    </placeWorkers>
-    <designatorDropdown>BOR_Workbenches</designatorDropdown>
-  </ThingDef>
-
-  <ThingDef ParentName="BenchBase">
-    <defName>BOR_Forge_IV</defName>
-    <label>Umbral Forge</label>
-    <description>Extracts usable metal from slag chunks and other mixed metal items. Consumes a lot of power.</description>
-    <thingClass>Building_WorkTable</thingClass>
-    <graphicData>
-      <texPath>BOR/Things/Building/tier4/forge/forge</texPath>
-      <graphicClass>Graphic_Multi</graphicClass>
-      <drawSize>(5,5)</drawSize>
-      <drawOffset>(0, 3.5, 0.25)</drawOffset>
-    </graphicData>
-    <castEdgeShadows>true</castEdgeShadows>
-    <staticSunShadowHeight>0.20</staticSunShadowHeight>
-    <constructEffect>ConstructMetal</constructEffect>
-    <costList>
-      <BOR_Tenebrite>1000</BOR_Tenebrite>
-      <BOR_ComponentIII>50</BOR_ComponentIII>
-    </costList>
-    <altitudeLayer>Building</altitudeLayer>
-    <fillPercent>0.4</fillPercent>
-    <useHitPoints>True</useHitPoints>
-    <statBases>
-      <WorkToBuild>7875</WorkToBuild>
-      <MaxHitPoints>40</MaxHitPoints>
-      <Flammability>0.716</Flammability>
-    </statBases>
-    <size>(3,3)</size>
-    <designationCategory>BOR</designationCategory>
-    <uiOrder>2310</uiOrder>
-    <passability>PassThroughOnly</passability>
-    <pathCost>50</pathCost>
-    <hasInteractionCell>True</hasInteractionCell>
-    <interactionCellOffset>(0,0,-2)</interactionCellOffset>
-    <surfaceType>Item</surfaceType>
-    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
-    <constructionSkillPrerequisite>6</constructionSkillPrerequisite>
-    <inspectorTabs>
-      <li>ITab_Bills</li>
-    </inspectorTabs>
-    <comps>
-      <li Class="CompProperties_Power">
-        <compClass>CompPowerTrader</compClass>
-        <basePowerConsumption>500000</basePowerConsumption>
-        <shortCircuitInRain>true</shortCircuitInRain>
-      </li>
-      <li Class="CompProperties_Flickable" />
-      <li Class="CompProperties_HeatPusher">
-        <compClass>CompHeatPusherPowered</compClass>
-        <heatPerSecond>14</heatPerSecond>
-      </li>
-      <li Class="CompProperties_Breakdownable" />
-    </comps>
-    <building>
-      <spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
-      <heatPerTickWhileWorking>0.5</heatPerTickWhileWorking>
-    </building>
-    <designationHotKey>Misc10</designationHotKey>
-    <placeWorkers>
-      <li>PlaceWorker_PreventInteractionSpotOverlap</li>
-    </placeWorkers>
-    <researchPrerequisites>
-      <li>BOR_Research_NeutProc_IV</li>
-    </researchPrerequisites>
-    <rotatable>true</rotatable>
-    <designatorDropdown>BOR_Workbenches</designatorDropdown>
-  </ThingDef>
+	<ThingDef ParentName="BenchBase">
+		<defName>BOR_Bench_IV</defName>
+		<label>umbral creation engine</label>
+		<description>A work station for assembling whatever you want.</description>
+		<thingClass>Building_WorkTable</thingClass>
+		<graphicData>
+			<texPath>BOR/Things/Building/tier4/production_bench</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(2,2)</drawSize>
+			<drawOffset>(0, 0, 0.2)</drawOffset>
+			<drawRotated>false</drawRotated>
+		</graphicData>
+		<rotatable>false</rotatable>
+		<castEdgeShadows>true</castEdgeShadows>
+		<staticSunShadowHeight>0.20</staticSunShadowHeight>
+		<costList>
+			<BOR_Tenebrite>1500</BOR_Tenebrite>
+			<BOR_ComponentIII>50</BOR_ComponentIII>
+		</costList>
+		<altitudeLayer>Building</altitudeLayer>
+		<fillPercent>0.5</fillPercent>
+		<useHitPoints>True</useHitPoints>
+		<statBases>
+			<WorkToBuild>10125</WorkToBuild>
+			<MaxHitPoints>910</MaxHitPoints>
+			<Flammability>0.525</Flammability>
+			<Cleanliness>-1.11</Cleanliness>
+		</statBases>
+		<size>(1,1)</size>
+		<designationCategory>BOR</designationCategory>
+		<uiOrder>2520</uiOrder>
+		<passability>PassThroughOnly</passability>
+		<pathCost>50</pathCost>
+		<hasInteractionCell>True</hasInteractionCell>
+		<interactionCellOffset>(0,0,-2)</interactionCellOffset>
+		<surfaceType>Item</surfaceType>
+		<constructionSkillPrerequisite>4</constructionSkillPrerequisite>
+		<recipes>
+			<li>ButcherCorpseMechanoid</li>
+		</recipes>
+		<inspectorTabs>
+			<li>ITab_Bills</li>
+		</inspectorTabs>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<shortCircuitInRain>true</shortCircuitInRain>
+				<basePowerConsumption>5000000</basePowerConsumption>
+			</li>
+			<li Class="CompProperties_Flickable"/>
+			<li Class="CompProperties_Breakdownable"/>
+		</comps>
+		<building>
+			<spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+		</building>
+		<constructEffect>ConstructMetal</constructEffect>
+		<researchPrerequisites>
+			<li>BOR_Research_Production_IV</li>
+		</researchPrerequisites>
+		<designationHotKey>Misc7</designationHotKey>
+		<placeWorkers>
+			<li>PlaceWorker_ShowFacilitiesConnections</li>
+			<li>PlaceWorker_PreventInteractionSpotOverlap</li>
+		</placeWorkers>
+		<designatorDropdown>BOR_Workbenches</designatorDropdown>
+	</ThingDef>
+	<ThingDef ParentName="BenchBase">
+		<defName>BOR_Forge_IV</defName>
+		<label>umbral forge</label>
+		<description>Extracts usable metal from slag chunks and other mixed metal items. Consumes a lot of power.</description>
+		<thingClass>Building_WorkTable</thingClass>
+		<graphicData>
+			<texPath>BOR/Things/Building/tier4/forge/forge</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(5,5)</drawSize>
+			<drawOffset>(0, 3.5, 0.25)</drawOffset>
+		</graphicData>
+		<castEdgeShadows>true</castEdgeShadows>
+		<staticSunShadowHeight>0.20</staticSunShadowHeight>
+		<constructEffect>ConstructMetal</constructEffect>
+		<costList>
+			<BOR_Tenebrite>1000</BOR_Tenebrite>
+			<BOR_ComponentIII>50</BOR_ComponentIII>
+		</costList>
+		<altitudeLayer>Building</altitudeLayer>
+		<fillPercent>0.4</fillPercent>
+		<useHitPoints>True</useHitPoints>
+		<statBases>
+			<WorkToBuild>7875</WorkToBuild>
+			<MaxHitPoints>40</MaxHitPoints>
+			<Flammability>0.716</Flammability>
+		</statBases>
+		<size>(3,3)</size>
+		<designationCategory>BOR</designationCategory>
+		<uiOrder>2310</uiOrder>
+		<passability>PassThroughOnly</passability>
+		<pathCost>50</pathCost>
+		<hasInteractionCell>True</hasInteractionCell>
+		<interactionCellOffset>(0,0,-2)</interactionCellOffset>
+		<surfaceType>Item</surfaceType>
+		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+		<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+		<inspectorTabs>
+			<li>ITab_Bills</li>
+		</inspectorTabs>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>500000</basePowerConsumption>
+				<shortCircuitInRain>true</shortCircuitInRain>
+			</li>
+			<li Class="CompProperties_Flickable"/>
+			<li Class="CompProperties_HeatPusher">
+				<compClass>CompHeatPusherPowered</compClass>
+				<heatPerSecond>14</heatPerSecond>
+			</li>
+			<li Class="CompProperties_Breakdownable"/>
+		</comps>
+		<building>
+			<spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+			<heatPerTickWhileWorking>0.5</heatPerTickWhileWorking>
+		</building>
+		<designationHotKey>Misc10</designationHotKey>
+		<placeWorkers>
+			<li>PlaceWorker_PreventInteractionSpotOverlap</li>
+		</placeWorkers>
+		<researchPrerequisites>
+			<li>BOR_Research_NeutProc_IV</li>
+		</researchPrerequisites>
+		<rotatable>true</rotatable>
+		<designatorDropdown>BOR_Workbenches</designatorDropdown>
+	</ThingDef>
 </Defs>
