@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!---->
+	<HediffDef ParentName="DiseaseBase" Name="MechanoidHediffBase" Abstract="true">
+		<defaultLabelColor>(0.36, 0.5, 0.7)</defaultLabelColor>
+		<isBad>false</isBad>
+	</HediffDef>
+	<!---->
+	<HediffDef ParentName="MechanoidHediffBase">
+		<defName>BOR_MechanoidChip_II</defName>
+		<label>Kwazaari-tech Chip</label>
+		<description>Part of the microcircuit connected to the AI center. Mechanoid seems to have scrapped it off some Kwazaari tech.</description>
+		<stages>
+			<li>
+				<label>detection</label>
+				<statFactors>
+					<MeleeHitChance>3.375</MeleeHitChance>
+				</statFactors>
+			</li>
+			<li>
+				<label>agility</label>
+				<minSeverity>0.25</minSeverity>
+				<statFactors>
+					<MeleeDodgeChance>3.375</MeleeDodgeChance>
+				</statFactors>
+			</li>
+			<li>
+				<label>tracking</label>
+				<minSeverity>0.5</minSeverity>
+				<statFactors>
+					<ShootingAccuracyPawn>3.375</ShootingAccuracyPawn>
+				</statFactors>
+			</li>
+			<li>
+				<label>resilience</label>
+				<minSeverity>0.75</minSeverity>
+				<statFactors>
+					<PsychicSensitivity>0</PsychicSensitivity>
+				</statFactors>
+			</li>
+		</stages>
+	</HediffDef>
+	<!---->
+	<HediffDef ParentName="MechanoidHediffBase">
+		<defName>BOR_MechanoidMicrocircuit_II</defName>
+		<label>Kwazaari microcircuit</label>
+		<description>Microchip for a robotic brain. Expands the possibilities of control and consciousness. Seems to have been taken off some Kwazaari bionic.</description>
+		<stages>
+			<li>
+				<label>QM1</label>
+				<capMods>
+					<li>
+						<capacity>Consciousness</capacity>
+						<postFactor>3.375</postFactor>
+					</li>
+				</capMods>
+			</li>
+			<li>
+				<label>QM2</label>
+				<minSeverity>0.35</minSeverity>
+				<capMods>
+					<li>
+						<capacity>Consciousness</capacity>
+						<postFactor>2.925</postFactor>
+					</li>
+				</capMods>
+			</li>
+			<li>
+				<label>QM3</label>
+				<minSeverity>0.65</minSeverity>
+				<capMods>
+					<li>
+						<capacity>Consciousness</capacity>
+						<postFactor>3.375</postFactor>
+					</li>
+				</capMods>
+			</li>
+		</stages>
+	</HediffDef>
+	<!---->
+	<HediffDef ParentName="MechanoidHediffBase">
+		<defName>BOR_MechanoidEquipmentModule_II</defName>
+		<label>Kwazaari equipment module</label>
+		<description>Equipment not included in the standard assembly scheme. These seem to have been sourced from Kwazaari remains.</description>
+		<stages>
+			<li>
+				<label>quasar alloy shockproof plates</label>
+				<statFactors>
+					<ArmorRating_Blunt>3.375</ArmorRating_Blunt>
+				</statFactors>
+			</li>
+			<li>
+				<label>quasar alloy ablation plates</label>
+				<minSeverity>0.35</minSeverity>
+				<statFactors>
+					<ArmorRating_Sharp>3.375</ArmorRating_Sharp>
+				</statFactors>
+			</li>
+			<li>
+				<label>kwazaari boosters</label>
+				<minSeverity>0.7</minSeverity>
+				<statFactors>
+					<MoveSpeed>2.8125</MoveSpeed>
+				</statFactors>
+			</li>
+		</stages>
+	</HediffDef>
+	<!---->
+	<HediffDef ParentName="MechanoidHediffBase">
+		<defName>BOR_MechanoidSensor_II</defName>
+		<label>kwazaari sensor</label>
+		<description>Additional ultra-advanced sensor for faster environmental response. Might have been scavenged from a Kwazaari vehicle.</description>
+		<stages>
+			<li>
+				<label>kwazaari combat module</label>
+				<statFactors>
+					<MeleeHitChance>2.8125</MeleeHitChance>
+					<MeleeDodgeChance>2.8125</MeleeDodgeChance>
+				</statFactors>
+			</li>
+			<li>
+				<label>kwazaari sniper module</label>
+				<minSeverity>0.5</minSeverity>
+				<statFactors>
+					<ShootingAccuracyPawn>2.8125</ShootingAccuracyPawn>
+				</statFactors>
+			</li>
+		</stages>
+	</HediffDef>
+	<!---->
+	<HediffDef ParentName="MechanoidHediffBase">
+		<defName>BOR_MechanoidLaserEye_II</defName>
+		<label>Neutronium quaser eye</label>
+		<description>A powerful technological eyepiece that assists the mechanoid through quaser guidance. These quasers seem to be Neutronium-based.</description>
+		<stages>
+			<li>
+				<capMods>
+					<li>
+						<capacity>Sight</capacity>
+						<postFactor>6.75</postFactor>
+					</li>
+				</capMods>
+			</li>
+		</stages>
+	</HediffDef>
+	<!---->
+	<HediffDef ParentName="MechanoidHediffBase">
+		<defName>BOR_MechanoidAntennaModule_II</defName>
+		<label>Quasar alloy antenna module</label>
+		<description>Antenna module reinforced with quasar alloy for capturing the slightest auditory vibrations.</description>
+		<stages>
+			<li>
+				<capMods>
+					<li>
+						<capacity>Hearing</capacity>
+						<postFactor>6.75</postFactor>
+					</li>
+				</capMods>
+			</li>
+		</stages>
+	</HediffDef>
+	<!---->
+	<HediffDef ParentName="RoleStatBuff">
+		<defName>BOR_MechanoidShieldModule_II</defName>
+		<label>Neutronium quashield module</label>
+		<description>A large EMP quashield module that enhances protection for surrounding mechanoids by using Neutronium.</description>
+		<hediffClass>HediffWithComps</hediffClass>
+		<comps>
+			<li Class="HediffCompProperties_DisappearsOnDeath" />
+			<li Class="MechanoidHediffs.HediffCompProperties_GiveHediffsInRangeExtended">
+				<range>19.9</range>
+				<mote>Mote_ShieldModule</mote>
+				<hideMoteWhenNotDrafted>false</hideMoteWhenNotDrafted>
+				<targetingParameters>
+					<canTargetBuildings>false</canTargetBuildings>
+					<canTargetAnimals>false</canTargetAnimals>
+					<canTargetPawns>true</canTargetPawns>
+					<canTargetMechs>true</canTargetMechs>
+					<canTargetHumans>false</canTargetHumans>
+					<onlyTargetColonists>false</onlyTargetColonists>
+				</targetingParameters>
+				<hediff>MechanoidShieldModuleBuff</hediff>
+				<onlyPawnsInSameFaction>true</onlyPawnsInSameFaction>
+			</li>
+		</comps>
+		<isBad>false</isBad>
+	</HediffDef>
+	<!---->
+	<HediffDef ParentName="RoleStatBuff">
+		<defName>BOR_MechanoidShieldModuleBuff_II</defName>
+		<label>Neutronium quashield module</label>
+		<description>A mechanoid with a neutronium quashield module nearby grants a bonus.</description>
+		<hediffClass>HediffWithComps</hediffClass>
+		<comps>
+			<li Class="HediffCompProperties_Disappears">
+				<showRemainingTime>false</showRemainingTime>
+			</li>
+			<li Class="HediffCompProperties_DisappearsOnDeath" />
+			<li Class="HediffCompProperties_Link">
+				<requireLinkOnOtherPawn>false</requireLinkOnOtherPawn>
+				<maxDistance>22</maxDistance>
+				<customMote>Mote_ShieldModuleLinkLine</customMote>
+			</li>
+		</comps>
+		<isBad>false</isBad>
+		<stages>
+			<li>
+				<statFactors>
+					<ArmorRating_Blunt>3.375</ArmorRating_Blunt>
+					<ArmorRating_Sharp>3.375</ArmorRating_Sharp>
+				</statFactors>
+			</li>
+		</stages>
+	</HediffDef>
+	<!---->
+</Defs>
