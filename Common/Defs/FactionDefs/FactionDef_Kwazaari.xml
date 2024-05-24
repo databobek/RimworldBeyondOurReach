@@ -166,21 +166,38 @@
 		</disallowedPrecepts>
 		<raidLootValueFromPointsCurve>
 			<points>
-				<li>(35, 15)</li>
-				<li>(100, 120)</li>
-				<li>(1000, 500)</li>
-				<li>(2000, 800)</li>
-				<li>(4000, 1000)</li>
+				<li>(35, 1000)</li>
+				<li>(100, 2400)</li>
+				<li>(1000, 10000)</li>
+				<li>(2000, 16000)</li>
+				<li>(4000, 20000)</li>
 			</points>
 		</raidLootValueFromPointsCurve>
 		<allowedArrivalTemperatureRange>
 			<min>-150</min>
 			<max>150</max>
 		</allowedArrivalTemperatureRange>
-		<raidLootMaker>OutlanderRaidLootMaker</raidLootMaker>
+		<raidLootMaker>BOR_LootMaker_II</raidLootMaker>
 		<maxConfigurableAtWorldCreation>999</maxConfigurableAtWorldCreation>
 		<visitorTraderKinds>
-			<li>Visitor_Outlander_Standard</li>
+			<li>BOR_Visitor_II</li>
 		</visitorTraderKinds>
 	</FactionDef>
+
+	<ThingSetMakerDef>
+		<defName>BOR_LootMaker_II</defName>
+		<root Class="ThingSetMaker_MarketValue">
+			<fixedParams>
+				<filter>
+					<thingDefs>
+						<li>BOR_Picoclusters</li>
+						<li>BOR_MedicineII</li>
+						<li>BOR_ComponentII</li>
+						<li>BOR_QuasarAlloyWeave</li>
+						<li>BOR_QuasarAlloy</li>
+					</thingDefs>
+				</filter>
+			</fixedParams>
+		</root>
+	</ThingSetMakerDef>
 </Defs>
