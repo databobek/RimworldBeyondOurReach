@@ -91,7 +91,7 @@ def replaceLabelAndDesc(path, type, name, label, desc):
     labNode = getChildByTagName(node, 'label')
     changeLab = labNode.childNodes[0].data != label.replace('\ufffd', '\'')
     descNode = getChildByTagName(node, 'description')
-    changeDesc = descNode.childNodes[0].data != desc.replace('\ufffd', '\'')
+    changeDesc = not descNode is None and descNode.childNodes[0].data != desc.replace('\ufffd', '\'')
 
     if not changeLab and not changeDesc:
         log(f'No changes necessary.')
