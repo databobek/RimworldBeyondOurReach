@@ -1,130 +1,128 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Defs>
-
-  <ThingDef ParentName="BuildingBase">
-    <defName>BOR_Research_Unlocker_III</defName>
-    <label>dark mirror</label>
-    <description>Increases research speed when placed near hi-tech research bench and unlocks Solarite research projects. Each research bench can only use one Solarite self-computing mainframe.</description>
-    <graphicData>
-      <texPath>BOR/Things/Building/tier3/research_unlocker/research_unlocker</texPath>
-      <graphicClass>Graphic_Multi</graphicClass>
-      <drawSize>(4,4)</drawSize>
-      <drawOffset>(0,4,0.4)</drawOffset>
-    </graphicData>
-    <uiIconScale>0.85</uiIconScale>
-    <researchPrerequisites>
-      <li>BOR_Research_Analyzer_III</li>
-    </researchPrerequisites>
-    <size>(3,1)</size>
-    <rotatable>true</rotatable>
-    <altitudeLayer>Building</altitudeLayer>
-    <passability>PassThroughOnly</passability>
-    <castEdgeShadows>true</castEdgeShadows>
-    <fillPercent>0.5</fillPercent>
-    <designationHotKey>Misc4</designationHotKey>
-    <designationCategory>BOR</designationCategory>
-    <minifiedDef>MinifiedThing</minifiedDef>
-    <canOverlapZones>false</canOverlapZones>
-    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
-    <thingCategories>
-      <li>BuildingsMisc</li>
-    </thingCategories>
-    <statBases>
-      <MaxHitPoints>787</MaxHitPoints>
-      <WorkToBuild>33750</WorkToBuild>
-      <Mass>62</Mass>
-      <Flammability>0.578</Flammability>
-    </statBases>
-    <costList>
-      <BOR_Sunsteel>40</BOR_Sunsteel>
-      <BOR_Tenebrite>50</BOR_Tenebrite>
-      <BOR_ComponentIII>8</BOR_ComponentIII>
-    </costList>
-    <building>
-      <destroySound>BuildingDestroyed_Metal_Medium</destroySound>
-    </building>
-    <comps>
-      <li Class="CompProperties_Power">
-        <compClass>CompPowerTrader</compClass>
-        <shortCircuitInRain>true</shortCircuitInRain>
-        <basePowerConsumption>100000</basePowerConsumption>
-      </li>
-      <li Class="CompProperties_Flickable" />
-      <li Class="CompProperties_Facility">
-        <statOffsets>
-          <ResearchSpeedFactor>0.7425</ResearchSpeedFactor>
-        </statOffsets>
-        <maxSimultaneous>1</maxSimultaneous>
-      </li>
-    </comps>
-    <placeWorkers>
-      <li>PlaceWorker_ShowFacilitiesConnections</li>
-    </placeWorkers>
-    <constructionSkillPrerequisite>20</constructionSkillPrerequisite>
-    <designatorDropdown>BOR_Unlockers</designatorDropdown>
-  </ThingDef>
-
-  <ThingDef ParentName="BuildingBase">
-    <defName>BOR_ToolCabinet_III</defName>
-    <label>dark manufacturer</label>
-    <designatorDropdown>BOR_ToolCabinets</designatorDropdown>
-    <description>Increases work speed when placed near a workbench. One workbench can use up to five dark manufacturers.</description>
-    <graphicData>
-      <texPath>BOR/Things/Building/tier3/production_bench_linkable/production_bench_linkable</texPath>
-      <graphicClass>Graphic_Multi</graphicClass>
-      <drawSize>(5.7,5.7)</drawSize>
-      <drawOffset>(0,4,0.4)</drawOffset>
-      <drawOffsetWest>(0,4,0)</drawOffsetWest>
-      <drawOffsetEast>(0,4,0)</drawOffsetEast>
-    </graphicData>
-    <rotatable>true</rotatable>
-    <altitudeLayer>Building</altitudeLayer>
-    <passability>PassThroughOnly</passability>
-    <castEdgeShadows>true</castEdgeShadows>
-    <staticSunShadowHeight>0.35</staticSunShadowHeight>
-    <fillPercent>0.5</fillPercent>
-    <canOverlapZones>false</canOverlapZones>
-    <pathCost>32</pathCost>
-    <statBases>
-      <MaxHitPoints>337</MaxHitPoints>
-      <WorkToBuild>6075</WorkToBuild>
-      <Mass>10</Mass>
-      <Flammability>0.2</Flammability>
-    </statBases>
-    <size>(4,1)</size>
-    <costList>
-      <BOR_Tenebrite>200</BOR_Tenebrite>
-      <BOR_ComponentIII>2</BOR_ComponentIII>
-    </costList>
-    <building>
-      <destroySound>BuildingDestroyed_Metal_Small</destroySound>
-    </building>
-    <researchPrerequisites>
-      <li>ComplexFurniture</li>
-      <li>BOR_Research_Production_III</li>
-    </researchPrerequisites>
-    <designationCategory>BOR</designationCategory>
-    <minifiedDef>MinifiedThing</minifiedDef>
-    <constructionSkillPrerequisite>9</constructionSkillPrerequisite>
-    <thingCategories>
-      <li>BuildingsMisc</li>
-    </thingCategories>
-    <comps>
-      <li Class="CompProperties_Facility">
-        <statOffsets>
-          <WorkTableWorkSpeedFactor>0.30375</WorkTableWorkSpeedFactor>
-        </statOffsets>
-        <maxSimultaneous>5</maxSimultaneous>
-      </li>
-      <li MayRequire="hobbes.bamba.evenmorelinkables" Class="Hobbes.MoreLinkablesProduction.CompProperties_WorkHelper">
-        <radius>7</radius>
-        <tickInterval>2000</tickInterval>
-        <reductionAmt>500</reductionAmt>
-      </li>
-    </comps>
-    <designationHotKey>Misc6</designationHotKey>
-    <placeWorkers>
-      <li>PlaceWorker_ShowFacilitiesConnections</li>
-    </placeWorkers>
-  </ThingDef>
+	<ThingDef ParentName="BuildingBase">
+		<defName>BOR_Research_Unlocker_III</defName>
+		<label>dark mirror</label>
+		<description>Increases research speed when placed near hi-tech research bench and unlocks tenebral research projects. Each research bench can only use one tenebral self-computing mainframe.</description>
+		<graphicData>
+			<texPath>BOR/Things/Building/tier3/research_unlocker/research_unlocker</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(4,4)</drawSize>
+			<drawOffset>(0,4,0.4)</drawOffset>
+		</graphicData>
+		<uiIconScale>0.85</uiIconScale>
+		<researchPrerequisites>
+			<li>BOR_Research_Analyzer_III</li>
+		</researchPrerequisites>
+		<size>(3,1)</size>
+		<rotatable>true</rotatable>
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<castEdgeShadows>true</castEdgeShadows>
+		<fillPercent>0.5</fillPercent>
+		<designationHotKey>Misc4</designationHotKey>
+		<designationCategory>BOR</designationCategory>
+		<minifiedDef>MinifiedThing</minifiedDef>
+		<canOverlapZones>false</canOverlapZones>
+		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+		<thingCategories>
+			<li>BuildingsMisc</li>
+		</thingCategories>
+		<statBases>
+			<MaxHitPoints>787</MaxHitPoints>
+			<WorkToBuild>33750</WorkToBuild>
+			<Mass>62</Mass>
+			<Flammability>0.578</Flammability>
+		</statBases>
+		<costList>
+			<BOR_Sunsteel>40</BOR_Sunsteel>
+			<BOR_Tenebrite>50</BOR_Tenebrite>
+			<BOR_ComponentIII>8</BOR_ComponentIII>
+		</costList>
+		<building>
+			<destroySound>BuildingDestroyed_Metal_Medium</destroySound>
+		</building>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<shortCircuitInRain>true</shortCircuitInRain>
+				<basePowerConsumption>100000</basePowerConsumption>
+			</li>
+			<li Class="CompProperties_Flickable"/>
+			<li Class="CompProperties_Facility">
+				<statOffsets>
+					<ResearchSpeedFactor>0.7425</ResearchSpeedFactor>
+				</statOffsets>
+				<maxSimultaneous>1</maxSimultaneous>
+			</li>
+		</comps>
+		<placeWorkers>
+			<li>PlaceWorker_ShowFacilitiesConnections</li>
+		</placeWorkers>
+		<constructionSkillPrerequisite>20</constructionSkillPrerequisite>
+		<designatorDropdown>BOR_Unlockers</designatorDropdown>
+	</ThingDef>
+	<ThingDef ParentName="BuildingBase">
+		<defName>BOR_ToolCabinet_III</defName>
+		<label>dark manufacturer</label>
+		<designatorDropdown>BOR_ToolCabinets</designatorDropdown>
+		<description>Increases work speed when placed near a workbench. One workbench can use up to five dark manufacturers.</description>
+		<graphicData>
+			<texPath>BOR/Things/Building/tier3/production_bench_linkable/production_bench_linkable</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(5.7,5.7)</drawSize>
+			<drawOffset>(0,4,0.4)</drawOffset>
+			<drawOffsetWest>(0,4,0)</drawOffsetWest>
+			<drawOffsetEast>(0,4,0)</drawOffsetEast>
+		</graphicData>
+		<rotatable>true</rotatable>
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<castEdgeShadows>true</castEdgeShadows>
+		<staticSunShadowHeight>0.35</staticSunShadowHeight>
+		<fillPercent>0.5</fillPercent>
+		<canOverlapZones>false</canOverlapZones>
+		<pathCost>32</pathCost>
+		<statBases>
+			<MaxHitPoints>337</MaxHitPoints>
+			<WorkToBuild>6075</WorkToBuild>
+			<Mass>10</Mass>
+			<Flammability>0.2</Flammability>
+		</statBases>
+		<size>(4,1)</size>
+		<costList>
+			<BOR_Tenebrite>200</BOR_Tenebrite>
+			<BOR_ComponentIII>2</BOR_ComponentIII>
+		</costList>
+		<building>
+			<destroySound>BuildingDestroyed_Metal_Small</destroySound>
+		</building>
+		<researchPrerequisites>
+			<li>ComplexFurniture</li>
+			<li>BOR_Research_Production_III</li>
+		</researchPrerequisites>
+		<designationCategory>BOR</designationCategory>
+		<minifiedDef>MinifiedThing</minifiedDef>
+		<constructionSkillPrerequisite>9</constructionSkillPrerequisite>
+		<thingCategories>
+			<li>BuildingsMisc</li>
+		</thingCategories>
+		<comps>
+			<li Class="CompProperties_Facility">
+				<statOffsets>
+					<WorkTableWorkSpeedFactor>0.30375</WorkTableWorkSpeedFactor>
+				</statOffsets>
+				<maxSimultaneous>5</maxSimultaneous>
+			</li>
+			<li MayRequire="hobbes.bamba.evenmorelinkables" Class="Hobbes.MoreLinkablesProduction.CompProperties_WorkHelper">
+				<radius>7</radius>
+				<tickInterval>2000</tickInterval>
+				<reductionAmt>500</reductionAmt>
+			</li>
+		</comps>
+		<designationHotKey>Misc6</designationHotKey>
+		<placeWorkers>
+			<li>PlaceWorker_ShowFacilitiesConnections</li>
+		</placeWorkers>
+	</ThingDef>
 </Defs>

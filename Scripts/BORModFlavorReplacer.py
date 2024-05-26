@@ -3,7 +3,7 @@ import pandas as pd
 import os
 import re
 
-path = "xml\\"
+path = "..\\Common\\"
 out_path = "data.csv"
 debug_msg = True
 
