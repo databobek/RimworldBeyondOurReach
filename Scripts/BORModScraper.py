@@ -3,7 +3,6 @@ import pandas as pd
 import os
 
 path = "..\\Common\\Defs"
-out_path = "data.csv"
 debug_msg = True
 
 def debug(message):
@@ -39,7 +38,7 @@ def all_files_in_dir(dirPath = path):
         debug(f'Found {len(flist)} files to process')
     return flist
 
-def scrape_files_for_descs():
+def scrape_files_for_descs(out_path):
     data = {"file_name": [], "type": [], "name": [], "label": [], "desc": []}
     for file in all_files_in_dir():
         scrape_file_for_descs(data, file)
@@ -70,10 +69,11 @@ def scrape_resources(files):
                     resources.append(resource.tagName)
     return set(resources)
 
-def scrape_files_for_promo():
+def scrape_files_for_promo(out_path):
     data = {"file_name": [], "type": [], "name": [], "label": [], "desc": [], "texPath": []}
     files = all_files_in_dir()
     resources = scrape_resources(files)
+    debug("found resources: " + str(resources))
     for resourceName in resources:
         data[resourceName] = []
     for file in files:
@@ -93,9 +93,9 @@ def scrape_file_for_promo(data, file, resources):
             data["name"].append(element.getElementsByTagName("defName")[0].childNodes[0].data)
             data["label"].append(element.getElementsByTagName("label")[0].childNodes[0].data)
             desc = ""
-            descElements = element.getElementsByTagName("desc")
+            descElements = element.getElementsByTagName("description")
             if len(descElements) != 0:
-                desc = element.getElementsByTagName("description")[0].childNodes[0].data
+                desc = descElements[0].childNodes[0].data
             data["desc"].append(desc)
             texPath = ""
             texPathElements = element.getElementsByTagName("texPath")
@@ -116,4 +116,4 @@ def scrape_file_for_promo(data, file, resources):
 
 
 if __name__ == "__main__":
-    scrape_files_for_promo()
+    scrape_files_for_promo("promo.csv")
