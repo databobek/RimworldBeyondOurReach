@@ -1,147 +1,151 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Defs>
-	<ThingDef ParentName="BuildingBase">
-		<defName>BOR_Reactor_III</defName>
-		<label>dark reactor</label>
-		<description>Produces power by stealing momentum from ubiquitous non-interacting particles - what amounts to free energy.</description>
-		<thingClass>Building</thingClass>
-		<drawerType>MapMeshAndRealTime</drawerType>
-		<graphicData>
-			<texPath>BOR/Things/Building/tier3/reactor</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
-			<drawSize>(10,10)</drawSize>
-			<drawOffset>(0,4,0.7)</drawOffset>
-		</graphicData>
-		<altitudeLayer>Building</altitudeLayer>
-		<passability>PassThroughOnly</passability>
-		<fillPercent>0.9</fillPercent>
-		<pathCost>150</pathCost>
-		<rotatable>false</rotatable>
-		<blockWind>true</blockWind>
-		<statBases>
-			<MaxHitPoints>1012</MaxHitPoints>
-			<WorkToBuild>8437</WorkToBuild>
-			<Flammability>0.578</Flammability>
-			<Beauty>22</Beauty>
-		</statBases>
-		<tickerType>Normal</tickerType>
-		<canOverlapZones>false</canOverlapZones>
-		<size>(7,7)</size>
-		<costList>
-			<BOR_Tenebrite>100</BOR_Tenebrite>
-			<BOR_ComponentIII>3</BOR_ComponentIII>
-		</costList>
-		<comps>
-			<li Class="CompProperties_Power">
-				<compClass>PipeSystem.CompPowerPlantNeedResource</compClass>
-				<basePowerConsumption>-1000000</basePowerConsumption>
-				<transmitsPower>true</transmitsPower>
-				<shortCircuitInRain>false</shortCircuitInRain>
-			</li>
-			<li Class="CompProperties_Flickable"/>
-			<li Class="CompProperties_Glower">
-				<glowRadius>8</glowRadius>
-				<glowColor>(151,199,193,0)</glowColor>
-			</li>
-			<li Class="CompProperties_HeatPusher">
-				<compClass>CompHeatPusherPowered</compClass>
-				<heatPerSecond>7.125</heatPerSecond>
-			</li>
-			<li Class="CompProperties_Breakdownable"/>
-			<li Class="CompProperties_Explosive">
-				<explosiveRadius>250</explosiveRadius>
-				<explosiveDamageType>Flame</explosiveDamageType>
-				<destroyThingOnExplosionSize>2</destroyThingOnExplosionSize>
-				<startWickHitPointsPercent>0.333</startWickHitPointsPercent>
-				<wickTicks>150~250</wickTicks>
-			</li>
-			<li Class="CompProperties_Stunnable">
-				<useLargeEMPEffecter>true</useLargeEMPEffecter>
-				<affectedDamageDefs>
-					<li>EMP</li>
-				</affectedDamageDefs>
-			</li>
-		</comps>
-		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
-		<designationCategory>BOR</designationCategory>
-		<uiOrder>2100</uiOrder>
-		<designationHotKey>Misc4</designationHotKey>
-		<constructEffect>ConstructMetal</constructEffect>
-		<researchPrerequisites>
-			<li>BOR_Research_Power_III</li>
-		</researchPrerequisites>
-		<constructionSkillPrerequisite>15</constructionSkillPrerequisite>
-		<designatorDropdown>BOR_Reactors</designatorDropdown>
-	</ThingDef>
-	<ThingDef ParentName="BuildingBase">
-		<defName>BOR_Battery_III</defName>
-		<label>tenebral battery</label>
-		<description>Stores electricity for later use. Charged batteries explode when exposed to rain or fire.</description>
-		<drawerType>MapMeshAndRealTime</drawerType>
-		<thingClass>Building_Battery</thingClass>
-		<graphicData>
-			<texPath>BOR/Things/Building/tier3/battery/battery3</texPath>
-			<graphicClass>Graphic_Multi</graphicClass>
-			<drawOffset>(0,0,-0.25)</drawOffset>
-			<drawSize>(7,7)</drawSize>
-			<damageData>
-				<cornerTL>Damage/Corner</cornerTL>
-				<cornerTR>Damage/Corner</cornerTR>
-				<cornerBL>Damage/Corner</cornerBL>
-				<cornerBR>Damage/Corner</cornerBR>
-			</damageData>
-		</graphicData>
-		<altitudeLayer>Building</altitudeLayer>
-		<passability>PassThroughOnly</passability>
-		<pathCost>50</pathCost>
-		<blockWind>true</blockWind>
-		<castEdgeShadows>true</castEdgeShadows>
-		<fillPercent>0.40</fillPercent>
-		<tickerType>Normal</tickerType>
-		<minifiedDef>MinifiedThing</minifiedDef>
-		<thingCategories>
-			<li>BuildingsPower</li>
-		</thingCategories>
-		<statBases>
-			<MaxHitPoints>505</MaxHitPoints>
-			<WorkToBuild>4500</WorkToBuild>
-			<Mass>11</Mass>
-			<Flammability>0.45</Flammability>
-			<Beauty>-6.66</Beauty>
-		</statBases>
-		<size>(2,5)</size>
-		<building>
-			<destroySound>BuildingDestroyed_Metal_Medium</destroySound>
-		</building>
-		<costList>
-			<BOR_Tenebrite>70</BOR_Tenebrite>
-			<BOR_ComponentIII>2</BOR_ComponentIII>
-		</costList>
-		<comps>
-			<li Class="CompProperties_Battery">
-				<storedEnergyMax>100000</storedEnergyMax>
-				<efficiency>0.95</efficiency>
-				<shortCircuitInRain>true</shortCircuitInRain>
-				<transmitsPower>true</transmitsPower>
-			</li>
-			<li Class="CompProperties_Breakdownable"/>
-			<li Class="CompProperties_Stunnable">
-				<useLargeEMPEffecter>true</useLargeEMPEffecter>
-				<affectedDamageDefs>
-					<li>EMP</li>
-				</affectedDamageDefs>
-			</li>
-		</comps>
-		<terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
-		<designationCategory>BOR</designationCategory>
-		<uiOrder>2020</uiOrder>
-		<staticSunShadowHeight>0.2</staticSunShadowHeight>
-		<constructEffect>ConstructMetal</constructEffect>
-		<designationHotKey>Misc4</designationHotKey>
-		<canOverlapZones>false</canOverlapZones>
-		<researchPrerequisites>
-			<li>BOR_Research_Battery_III</li>
-		</researchPrerequisites>
-		<designatorDropdown>BOR_Batteries</designatorDropdown>
-	</ThingDef>
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>BOR_Reactor_III</defName>
+    <label>dark reactor</label>
+    <description>Produces power by existing.</description>
+    <thingClass>Building</thingClass>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <graphicData>
+      <texPath>BOR/Things/Building/tier3/reactor</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(10,10)</drawSize>
+      <drawOffset>(0,4,0.7)</drawOffset>
+    </graphicData>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <fillPercent>0.9</fillPercent>
+    <pathCost>150</pathCost>
+    <rotatable>false</rotatable>
+    <blockWind>true</blockWind>
+    <statBases>
+      <MaxHitPoints>1012</MaxHitPoints>
+      <WorkToBuild>8437</WorkToBuild>
+      <Flammability>0.578</Flammability>
+      <Beauty>22</Beauty>
+    </statBases>
+    <tickerType>Normal</tickerType>
+    <canOverlapZones>false</canOverlapZones>
+    <size>(7,7)</size>
+    <costList>
+      <BOR_Tenebrite>100</BOR_Tenebrite>
+      <BOR_ComponentIII>3</BOR_ComponentIII>
+    </costList>
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>PipeSystem.CompPowerPlantNeedResource</compClass>
+        <basePowerConsumption>-1000000</basePowerConsumption>
+        <transmitsPower>true</transmitsPower>
+        <shortCircuitInRain>false</shortCircuitInRain>
+      </li>
+      <li Class="CompProperties_Flickable" />
+      <li Class="CompProperties_Glower">
+        <glowRadius>8</glowRadius>
+        <glowColor>(151,199,193,0)</glowColor>
+      </li>
+      <li Class="CompProperties_HeatPusher">
+        <compClass>CompHeatPusherPowered</compClass>
+        <heatPerSecond>7.125</heatPerSecond>
+      </li>
+      <li Class="CompProperties_Breakdownable" />
+      <li Class="CompProperties_Explosive">
+        <explosiveRadius>250</explosiveRadius>
+        <explosiveDamageType>Flame</explosiveDamageType>
+        <destroyThingOnExplosionSize>2</destroyThingOnExplosionSize>
+        <startWickHitPointsPercent>0.333</startWickHitPointsPercent>
+        <wickTicks>150~250</wickTicks>
+      </li>
+      <li Class="CompProperties_Stunnable">
+        <useLargeEMPEffecter>true</useLargeEMPEffecter>
+        <affectedDamageDefs>
+          <li>EMP</li>
+        </affectedDamageDefs>
+      </li>
+    </comps>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+    <designationCategory>BOR</designationCategory>
+    <uiOrder>2100</uiOrder>
+    <designationHotKey>Misc4</designationHotKey>
+    <constructEffect>ConstructMetal</constructEffect>
+    <researchPrerequisites>
+      <li>BOR_Research_Power_III</li>
+    </researchPrerequisites>
+    <constructionSkillPrerequisite>15</constructionSkillPrerequisite>
+    <designatorDropdown>BOR_Reactors</designatorDropdown>
+  </ThingDef>
+
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>BOR_Battery_III</defName>
+    <label>tenebral battery</label>
+    <description>Stores electricity for later use. Charged batteries explode when exposed to rain or fire.</description>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <thingClass>Building_Battery</thingClass>
+    <graphicData>
+      <texPath>BOR/Things/Building/tier3/battery/battery3</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawOffset>(0,0,-0.25)</drawOffset>
+      <drawSize>(7,7)</drawSize>
+      <damageData>
+        <cornerTL>Damage/Corner</cornerTL>
+        <cornerTR>Damage/Corner</cornerTR>
+        <cornerBL>Damage/Corner</cornerBL>
+        <cornerBR>Damage/Corner</cornerBR>
+      </damageData>
+    </graphicData>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <pathCost>50</pathCost>
+    <blockWind>true</blockWind>
+    <castEdgeShadows>true</castEdgeShadows>
+    <fillPercent>0.40</fillPercent>
+    <tickerType>Normal</tickerType>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <thingCategories>
+      <li>BuildingsPower</li>
+    </thingCategories>
+    <statBases>
+      <MaxHitPoints>505</MaxHitPoints>
+      <WorkToBuild>4500</WorkToBuild>
+      <Mass>11</Mass>
+      <Flammability>0.45</Flammability>
+      <Beauty>-6.66</Beauty>
+    </statBases>
+    <size>(2,5)</size>
+    <building>
+      <destroySound>BuildingDestroyed_Metal_Medium</destroySound>
+    </building>
+    <costList>
+      <BOR_Tenebrite>70</BOR_Tenebrite>
+      <BOR_ComponentIII>2</BOR_ComponentIII>
+    </costList>
+    <comps>
+      <li Class="CompProperties_Battery">
+        <storedEnergyMax>100000</storedEnergyMax>
+        <efficiency>0.95</efficiency>
+        <shortCircuitInRain>true</shortCircuitInRain>
+        <transmitsPower>true</transmitsPower>
+      </li>
+      <li Class="CompProperties_Breakdownable" />
+      <li Class="CompProperties_Stunnable">
+        <useLargeEMPEffecter>true</useLargeEMPEffecter>
+        <affectedDamageDefs>
+          <li>EMP</li>
+        </affectedDamageDefs>
+      </li>
+    </comps>
+    <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+    <designationCategory>BOR</designationCategory>
+    <uiOrder>2020</uiOrder>
+    <staticSunShadowHeight>0.2</staticSunShadowHeight>
+    <constructEffect>ConstructMetal</constructEffect>
+    <designationHotKey>Misc4</designationHotKey>
+    <canOverlapZones>false</canOverlapZones>
+    <researchPrerequisites>
+      <li>BOR_Research_Battery_III</li>
+    </researchPrerequisites>
+    <designatorDropdown>BOR_Batteries</designatorDropdown>
+  </ThingDef>
+
 </Defs>

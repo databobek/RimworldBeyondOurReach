@@ -1,159 +1,171 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Defs>
-	<ThingDef ParentName="BuildingBase">
-		<defName>BOR_Reactor_II</defName>
-		<label>epsilon-class neutronium reactor</label>
-		<description>Produces power by splitting neutronium into electrons and protons. Must be fuelled via pipelines.</description>
-		<thingClass>Building</thingClass>
-		<drawerType>MapMeshAndRealTime</drawerType>
-		<graphicData>
-			<texPath>BOR/Things/Building/tier2/reactor</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
-			<drawSize>(3.3,3.3)</drawSize>
-			<drawOffset>(0,4,0.15)</drawOffset>
-		</graphicData>
-		<altitudeLayer>Building</altitudeLayer>
-		<passability>PassThroughOnly</passability>
-		<fillPercent>0.9</fillPercent>
-		<pathCost>150</pathCost>
-		<rotatable>false</rotatable>
-		<blockWind>true</blockWind>
-		<statBases>
-			<MaxHitPoints>675</MaxHitPoints>
-			<WorkToBuild>5625</WorkToBuild>
-			<Flammability>0.694</Flammability>
-			<Beauty>15</Beauty>
-		</statBases>
-		<tickerType>Normal</tickerType>
-		<canOverlapZones>false</canOverlapZones>
-		<size>(3,3)</size>
-		<costList>
-			<BOR_QuasarAlloy>100</BOR_QuasarAlloy>
-			<BOR_ComponentII>3</BOR_ComponentII>
-		</costList>
-		<comps>
-			<li Class="CompProperties_Power">
-				<compClass>PipeSystem.CompPowerPlantNeedResource</compClass>
-				<basePowerConsumption>-100000</basePowerConsumption>
-				<transmitsPower>true</transmitsPower>
-				<shortCircuitInRain>false</shortCircuitInRain>
-			</li>
-			<li Class="CompProperties_Flickable"/>
-			<!--<li Class="CompProperties_Refuelable"><fuelConsumptionRate>10.0</fuelConsumptionRate><fuelFilter><thingDefs><li>BOR_Neutronium</li></thingDefs></fuelFilter><showAllowAutoRefuelToggle>true</showAllowAutoRefuelToggle></li> -->
-			<li Class="CompProperties_Glower">
-				<glowRadius>8</glowRadius>
-				<glowColor>(151,199,193,0)</glowColor>
-			</li>
-			<li Class="PipeSystem.CompProperties_ResourceTrader">
-				<pipeNet>BOR_NeutroniumNet</pipeNet>
-				<consumptionPerTick>10</consumptionPerTick>
-			</li>
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>BOR_Reactor_II</defName>
+    <label>epsilon-class neutronium reactor</label>
+    <description>Produces power by consuming neutronium. Must be fuelled via pipelines.</description>
+    <thingClass>Building</thingClass>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <graphicData>
+      <texPath>BOR/Things/Building/tier2/reactor</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(3.3,3.3)</drawSize>
+      <drawOffset>(0,4,0.15)</drawOffset>
+    </graphicData>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <fillPercent>0.9</fillPercent>
+    <pathCost>150</pathCost>
+    <rotatable>false</rotatable>
+    <blockWind>true</blockWind>
+    <statBases>
+      <MaxHitPoints>675</MaxHitPoints>
+      <WorkToBuild>5625</WorkToBuild>
+      <Flammability>0.694</Flammability>
+      <Beauty>15</Beauty>
+    </statBases>
+    <tickerType>Normal</tickerType>
+    <canOverlapZones>false</canOverlapZones>
+    <size>(3,3)</size>
+    <costList>
+      <BOR_QuasarAlloy>100</BOR_QuasarAlloy>
+      <BOR_ComponentII>3</BOR_ComponentII>
+    </costList>
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>PipeSystem.CompPowerPlantNeedResource</compClass>
+        <basePowerConsumption>-100000</basePowerConsumption>
+        <transmitsPower>true</transmitsPower>
+        <shortCircuitInRain>false</shortCircuitInRain>
+      </li>
+      <li Class="CompProperties_Flickable" />
+      <!-- <li Class="CompProperties_Refuelable">
+        <fuelConsumptionRate>10.0</fuelConsumptionRate>
+        <fuelFilter>
+          <thingDefs>
+            <li>BOR_Neutronium</li>
+          </thingDefs>
+        </fuelFilter>
+        <showAllowAutoRefuelToggle>true</showAllowAutoRefuelToggle>
+      </li> -->
+      <li Class="CompProperties_Glower">
+        <glowRadius>8</glowRadius>
+        <glowColor>(151,199,193,0)</glowColor>
+      </li>
+      <li Class="PipeSystem.CompProperties_ResourceTrader">
+        <pipeNet>BOR_NeutroniumNet</pipeNet>
+        <consumptionPerTick>10</consumptionPerTick>
+      </li>
 			<li Class="PipeSystem.CompProperties_Resource">
 				<pipeNet>BOR_NeutroniumNet</pipeNet>
 			</li>
-			<li Class="CompProperties_HeatPusher">
-				<compClass>CompHeatPusherPowered</compClass>
-				<heatPerSecond>4.75</heatPerSecond>
-			</li>
-			<li Class="CompProperties_Breakdownable"/>
-			<li Class="CompProperties_Explosive">
-				<explosiveRadius>100</explosiveRadius>
-				<explosiveExpandPerFuel>0.95</explosiveExpandPerFuel>
-				<explosiveDamageType>Flame</explosiveDamageType>
-				<destroyThingOnExplosionSize>2</destroyThingOnExplosionSize>
-				<startWickHitPointsPercent>0.333</startWickHitPointsPercent>
-				<preExplosionSpawnThingDef>Filth_Fuel</preExplosionSpawnThingDef>
-				<preExplosionSpawnChance>1</preExplosionSpawnChance>
-				<wickTicks>70~150</wickTicks>
-			</li>
-			<li Class="CompProperties_Stunnable">
-				<useLargeEMPEffecter>true</useLargeEMPEffecter>
-				<affectedDamageDefs>
-					<li>EMP</li>
-				</affectedDamageDefs>
-			</li>
-		</comps>
-		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
-		<designationCategory>BOR</designationCategory>
-		<uiOrder>2100</uiOrder>
-		<designationHotKey>Misc4</designationHotKey>
-		<constructEffect>ConstructMetal</constructEffect>
-		<researchPrerequisites>
-			<li>BOR_Research_Power_II</li>
-			<li>BOR_Research_NSynth_II</li>
-		</researchPrerequisites>
-		<constructionSkillPrerequisite>9</constructionSkillPrerequisite>
-		<designatorDropdown>BOR_Reactors</designatorDropdown>
-	</ThingDef>
-	<ThingDef ParentName="BuildingBase">
-		<defName>BOR_Battery_II</defName>
-		<label>quasar battery</label>
-		<description>Stores electricity for later use. Charged batteries explode when exposed to rain or fire.</description>
-		<drawerType>MapMeshAndRealTime</drawerType>
-		<thingClass>Building_Battery</thingClass>
-		<graphicData>
-			<texPath>BOR/Things/Building/tier2/battery/battery2</texPath>
-			<graphicClass>Graphic_Multi</graphicClass>
-			<drawOffset>(0,3,0)</drawOffset>
-			<drawSize>(4.8,4.8)</drawSize>
-			<damageData>
-				<cornerTL>Damage/Corner</cornerTL>
-				<cornerTR>Damage/Corner</cornerTR>
-				<cornerBL>Damage/Corner</cornerBL>
-				<cornerBR>Damage/Corner</cornerBR>
-			</damageData>
-		</graphicData>
-		<altitudeLayer>Building</altitudeLayer>
-		<passability>PassThroughOnly</passability>
-		<pathCost>50</pathCost>
-		<blockWind>true</blockWind>
-		<castEdgeShadows>true</castEdgeShadows>
-		<fillPercent>0.40</fillPercent>
-		<tickerType>Normal</tickerType>
-		<minifiedDef>MinifiedThing</minifiedDef>
-		<thingCategories>
-			<li>BuildingsPower</li>
-		</thingCategories>
-		<statBases>
-			<MaxHitPoints>337</MaxHitPoints>
-			<WorkToBuild>3000</WorkToBuild>
-			<Mass>13.33</Mass>
-			<Flammability>0.5</Flammability>
-			<Beauty>-8</Beauty>
-		</statBases>
-		<size>(1,3)</size>
-		<building>
-			<destroySound>BuildingDestroyed_Metal_Medium</destroySound>
-		</building>
-		<costList>
-			<BOR_QuasarAlloy>70</BOR_QuasarAlloy>
-			<BOR_ComponentII>2</BOR_ComponentII>
-		</costList>
-		<comps>
-			<li Class="CompProperties_Battery">
-				<storedEnergyMax>60000</storedEnergyMax>
-				<efficiency>0.9</efficiency>
-				<shortCircuitInRain>true</shortCircuitInRain>
-				<transmitsPower>true</transmitsPower>
-			</li>
-			<li Class="CompProperties_Breakdownable"/>
-			<li Class="CompProperties_Stunnable">
-				<useLargeEMPEffecter>true</useLargeEMPEffecter>
-				<affectedDamageDefs>
-					<li>EMP</li>
-				</affectedDamageDefs>
-			</li>
-		</comps>
-		<terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
-		<designationCategory>BOR</designationCategory>
-		<uiOrder>2020</uiOrder>
-		<staticSunShadowHeight>0.2</staticSunShadowHeight>
-		<constructEffect>ConstructMetal</constructEffect>
-		<designationHotKey>Misc4</designationHotKey>
-		<canOverlapZones>false</canOverlapZones>
-		<researchPrerequisites>
-			<li>BOR_Research_Battery_II</li>
-		</researchPrerequisites>
-		<designatorDropdown>BOR_Batteries</designatorDropdown>
-	</ThingDef>
+      <li Class="CompProperties_HeatPusher">
+        <compClass>CompHeatPusherPowered</compClass>
+        <heatPerSecond>4.75</heatPerSecond>
+      </li>
+      <li Class="CompProperties_Breakdownable" />
+      <li Class="CompProperties_Explosive">
+        <explosiveRadius>100</explosiveRadius>
+        <explosiveExpandPerFuel>0.95</explosiveExpandPerFuel>
+        <explosiveDamageType>Flame</explosiveDamageType>
+        <destroyThingOnExplosionSize>2</destroyThingOnExplosionSize>
+        <startWickHitPointsPercent>0.333</startWickHitPointsPercent>
+        <preExplosionSpawnThingDef>Filth_Fuel</preExplosionSpawnThingDef>
+        <preExplosionSpawnChance>1</preExplosionSpawnChance>
+        <wickTicks>70~150</wickTicks>
+      </li>
+      <li Class="CompProperties_Stunnable">
+        <useLargeEMPEffecter>true</useLargeEMPEffecter>
+        <affectedDamageDefs>
+          <li>EMP</li>
+        </affectedDamageDefs>
+      </li>
+    </comps>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+    <designationCategory>BOR</designationCategory>
+    <uiOrder>2100</uiOrder>
+    <designationHotKey>Misc4</designationHotKey>
+    <constructEffect>ConstructMetal</constructEffect>
+    <researchPrerequisites>
+      <li>BOR_Research_Power_II</li>
+      <li>BOR_Research_NSynth_II</li>
+    </researchPrerequisites>
+    <constructionSkillPrerequisite>9</constructionSkillPrerequisite>
+    <designatorDropdown>BOR_Reactors</designatorDropdown>
+  </ThingDef>
+
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>BOR_Battery_II</defName>
+    <label>quasar battery</label>
+    <description>Stores electricity for later use. Charged batteries explode when exposed to rain or fire.</description>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <thingClass>Building_Battery</thingClass>
+    <graphicData>
+      <texPath>BOR/Things/Building/tier2/battery/battery2</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawOffset>(0,3,0)</drawOffset>
+      <drawSize>(4.8,4.8)</drawSize>
+      <damageData>
+        <cornerTL>Damage/Corner</cornerTL>
+        <cornerTR>Damage/Corner</cornerTR>
+        <cornerBL>Damage/Corner</cornerBL>
+        <cornerBR>Damage/Corner</cornerBR>
+      </damageData>
+    </graphicData>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <pathCost>50</pathCost>
+    <blockWind>true</blockWind>
+    <castEdgeShadows>true</castEdgeShadows>
+    <fillPercent>0.40</fillPercent>
+    <tickerType>Normal</tickerType>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <thingCategories>
+      <li>BuildingsPower</li>
+    </thingCategories>
+    <statBases>
+      <MaxHitPoints>337</MaxHitPoints>
+      <WorkToBuild>3000</WorkToBuild>
+      <Mass>13.33</Mass>
+      <Flammability>0.5</Flammability>
+      <Beauty>-8</Beauty>
+    </statBases>
+    <size>(1,3)</size>
+    <building>
+      <destroySound>BuildingDestroyed_Metal_Medium</destroySound>
+    </building>
+    <costList>
+      <BOR_QuasarAlloy>70</BOR_QuasarAlloy>
+      <BOR_ComponentII>2</BOR_ComponentII>
+    </costList>
+    <comps>
+      <li Class="CompProperties_Battery">
+        <storedEnergyMax>60000</storedEnergyMax>
+        <efficiency>0.9</efficiency>
+        <shortCircuitInRain>true</shortCircuitInRain>
+        <transmitsPower>true</transmitsPower>
+      </li>
+      <li Class="CompProperties_Breakdownable" />
+      <li Class="CompProperties_Stunnable">
+        <useLargeEMPEffecter>true</useLargeEMPEffecter>
+        <affectedDamageDefs>
+          <li>EMP</li>
+        </affectedDamageDefs>
+      </li>
+    </comps>
+    <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+    <designationCategory>BOR</designationCategory>
+    <uiOrder>2020</uiOrder>
+    <staticSunShadowHeight>0.2</staticSunShadowHeight>
+    <constructEffect>ConstructMetal</constructEffect>
+    <designationHotKey>Misc4</designationHotKey>
+    <canOverlapZones>false</canOverlapZones>
+    <researchPrerequisites>
+      <li>BOR_Research_Battery_II</li>
+    </researchPrerequisites>
+    <designatorDropdown>BOR_Batteries</designatorDropdown>
+  </ThingDef>
+
 </Defs>
