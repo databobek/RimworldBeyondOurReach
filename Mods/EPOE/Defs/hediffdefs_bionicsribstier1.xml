@@ -17,10 +17,10 @@
 			<MarketValue>10000</MarketValue>
 		</statBases>
 		<graphicData>
-		  <texPath>Things/Item/Health/HealthItem</texPath>
-		  <graphicClass>Graphic_Single</graphicClass>
-		  <drawSize>0.80</drawSize>
-		  <color>(104, 160, 168)</color>
+			<texPath>Things/Item/Health/HealthItem</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>0.80</drawSize>
+			<color>(104, 160, 168)</color>
 		</graphicData>
 		<thingCategories Inherit="False">
 			<li>BOR_Bionics_I</li>
@@ -61,7 +61,14 @@
 
 	<!-- Medical rib -->
 
-	<HediffDef ParentName="addedPartBionicsRib">
+	<HediffDef ParentName="addedPartBionicsRib" Abstract="True" Name="BOR_addedPartBionicsSolarRib">
+		<comps>
+			<li MayRequire="v1024.ebframework" Class="EBF.Hediffs.HediffCompProperties_MaxHPAdjust">
+				<scaleAdjustment>1.5</scaleAdjustment>
+			</li>
+		</comps>
+	</HediffDef>
+	<HediffDef ParentName="BOR_addedPartBionicsSolarRib">
 		<defName>MedicalRibSolar</defName>
 		<label>solar medical rib</label>
 		<labelNoun>a solar medical rib</labelNoun>
@@ -153,7 +160,7 @@
 
 	<!-- Drugged rib -->
 
-	<HediffDef ParentName="addedPartBionicsRib">
+	<HediffDef ParentName="BOR_addedPartBionicsSolarRib">
 		<defName>DruggedRibSolar</defName>
 		<label>drugged solar rib</label>
 		<labelNoun>a drugged solar rib</labelNoun>
@@ -245,7 +252,7 @@
 
 	<!-- Adrenaline rib -->
 
-	<HediffDef ParentName="addedPartBionicsRib">
+	<HediffDef ParentName="BOR_addedPartBionicsSolarRib">
 		<defName>AdrenalineRibSolar</defName>
 		<label>solar adrenaline rib</label>
 		<labelNoun>a solar adrenaline rib</labelNoun>
@@ -337,7 +344,7 @@
 
 	<!-- Painkiller rib -->
 
-	<HediffDef ParentName="addedPartBionicsRib">
+	<HediffDef ParentName="BOR_addedPartBionicsSolarRib">
 		<defName>PainkillerRibSolar</defName>
 		<label>solar painkiller rib</label>
 		<labelNoun>a solar painkiller rib</labelNoun>
@@ -425,7 +432,7 @@
 
 	<!-- Heater rib -->
 
-	<HediffDef ParentName="addedPartBionicsRib">
+	<HediffDef ParentName="BOR_addedPartBionicsSolarRib">
 		<defName>HeaterRibSolar</defName>
 		<label>solar heating rib</label>
 		<description>An installed solar heater rib implant.</description>
@@ -513,7 +520,7 @@
 
 	<!-- Cooler rib -->
 
-	<HediffDef ParentName="addedPartBionicsRib">
+	<HediffDef ParentName="BOR_addedPartBionicsSolarRib">
 		<defName>CoolerRibSolar</defName>
 		<label>solar cooling rib</label>
 		<description>An installed solar cooler rib implant.</description>
@@ -602,7 +609,7 @@
 
 	<!-- Coagulator rib -->
 
-	<HediffDef ParentName="addedPartBionicsRib">
+	<HediffDef ParentName="BOR_addedPartBionicsSolarRib">
 		<defName>CoagulatorRibSolar</defName>
 		<label>solar coagulator rib</label>
 		<description>An installed solar coagulator rib implant.</description>
@@ -688,7 +695,7 @@
 
 	<!-- Respiration rib -->
 
-	<HediffDef ParentName="addedPartBionicsRib">
+	<HediffDef ParentName="BOR_addedPartBionicsSolarRib">
 		<defName>RespirationRibSolar</defName>
 		<label>solar respiration rib</label>
 		<description>An installed solar respiration rib implant.</description>
@@ -781,7 +788,7 @@
 
 	<!-- Wake-up rib -->
 
-	<HediffDef ParentName="addedPartBionicsRib">
+	<HediffDef ParentName="BOR_addedPartBionicsSolarRib">
 		<defName>WakeUpRibSolar</defName>
 		<label>solar STIM-IV rib</label>
 		<description>An installed solar STIM-IV rib implant.</description>
