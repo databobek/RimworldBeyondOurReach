@@ -105,6 +105,9 @@
 			<RecipeDef>BOR_InstallTenebralBionicEye</RecipeDef>
 			<RecipeDef>BOR_InstallTenebralBionicSpine</RecipeDef>
 			<RecipeDef>BOR_InstallTenebralBionicHeart</RecipeDef>
+			<RecipeDef>BOR_InstallTenebralBionicLiver</RecipeDef>
+			<RecipeDef>BOR_InstallTenebralBionicKidney</RecipeDef>
+			<RecipeDef>BOR_InstallTenebralBionicLung</RecipeDef>
 			<RecipeDef>BOR_InstallTenebralBionicStomach</RecipeDef>
 			<RecipeDef>BOR_InstallTenebralBionicJaw</RecipeDef>
 		</descriptionHyperlinks>
@@ -624,5 +627,168 @@
 			<li>Jaw</li>
 		</appliedOnFixedBodyParts>
 		<addsHediff>BOR_TenebralBionicJaw</addsHediff>
+	</RecipeDef>
+	
+	<!-- Bionic kidney -->
+	<HediffDef ParentName="BOR_AddedTenebralBodyPartBase">
+		<defName>BOR_TenebralBionicKidney</defName>
+		<label>tenebral kidney</label>
+		<labelNoun>a Tenebral bionic kidney</labelNoun>
+		<description>An installed Tenebral kidney. It has synthetic muscle fibers for a realistic kidneybeat, plus a high-flow pump for rapid circulation during high stress. It is better than a biological kidney in almost every way.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_TenebralOrgan</ThingDef>
+		</descriptionHyperlinks>
+		<spawnThingOnRemoved>BOR_TenebralOrgan</spawnThingOnRemoved>
+		<addedPartProps>
+			<solid>true</solid>
+			<partEfficiency>4.21875</partEfficiency>
+			<betterThanNatural>true</betterThanNatural>
+		</addedPartProps>
+	</HediffDef>
+	<RecipeDef ParentName="BOR_TenebralSurgeryInstallBodyPartArtificialBase">
+		<defName>BOR_InstallTenebralBionicKidney</defName>
+		<label>install tenebral kidney</label>
+		<description>Install a Tenebral kidney.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_TenebralOrgan</ThingDef>
+			<HediffDef>BOR_TenebralBionicKidney</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing Tenebral bionic kidney.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_TenebralOrgan</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Femtoclusters</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>BOR_TenebralOrgan</li>
+				<li>BOR_Femtoclusters</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Kidney</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>BOR_TenebralBionicKidney</addsHediff>
+	</RecipeDef>
+	<!-- Bionic liver -->
+	<HediffDef ParentName="BOR_AddedTenebralBodyPartBase">
+		<defName>BOR_TenebralBionicLiver</defName>
+		<label>tenebral liver</label>
+		<labelNoun>a Tenebral bionic liver</labelNoun>
+		<description>An installed Tenebral liver. It has synthetic muscle fibers for a realistic liverbeat, plus a high-flow pump for rapid circulation during high stress. It is better than a biological liver in almost every way.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_TenebralOrgan</ThingDef>
+		</descriptionHyperlinks>
+		<spawnThingOnRemoved>BOR_TenebralOrgan</spawnThingOnRemoved>
+		<addedPartProps>
+			<solid>true</solid>
+			<partEfficiency>4.21875</partEfficiency>
+			<betterThanNatural>true</betterThanNatural>
+		</addedPartProps>
+	</HediffDef>
+	<RecipeDef ParentName="BOR_TenebralSurgeryInstallBodyPartArtificialBase">
+		<defName>BOR_InstallTenebralBionicLiver</defName>
+		<label>install tenebral liver</label>
+		<description>Install a Tenebral liver.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_TenebralOrgan</ThingDef>
+			<HediffDef>BOR_TenebralBionicLiver</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing Tenebral bionic liver.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_TenebralOrgan</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Femtoclusters</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>BOR_TenebralOrgan</li>
+				<li>BOR_Femtoclusters</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Liver</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>BOR_TenebralBionicLiver</addsHediff>
+	</RecipeDef>
+	<!-- Bionic lung -->
+	<HediffDef ParentName="BOR_AddedTenebralBodyPartBase">
+		<defName>BOR_TenebralBionicLung</defName>
+		<label>tenebral lung</label>
+		<labelNoun>a Tenebral bionic lung</labelNoun>
+		<description>An installed Tenebral lung. It has synthetic muscle fibers for a realistic lungbeat, plus a high-flow pump for rapid circulation during high stress. It is better than a biological lung in almost every way.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_TenebralOrgan</ThingDef>
+		</descriptionHyperlinks>
+		<spawnThingOnRemoved>BOR_TenebralOrgan</spawnThingOnRemoved>
+		<addedPartProps>
+			<solid>true</solid>
+			<partEfficiency>4.21875</partEfficiency>
+			<betterThanNatural>true</betterThanNatural>
+		</addedPartProps>
+	</HediffDef>
+	<RecipeDef ParentName="BOR_TenebralSurgeryInstallBodyPartArtificialBase">
+		<defName>BOR_InstallTenebralBionicLung</defName>
+		<label>install tenebral lung</label>
+		<description>Install a Tenebral lung.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_TenebralOrgan</ThingDef>
+			<HediffDef>BOR_TenebralBionicLung</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing Tenebral bionic lung.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_TenebralOrgan</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Femtoclusters</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>BOR_TenebralOrgan</li>
+				<li>BOR_Femtoclusters</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Lung</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>BOR_TenebralBionicLung</addsHediff>
 	</RecipeDef>
 </Defs>
