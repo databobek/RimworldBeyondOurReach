@@ -1,13 +1,13 @@
 <Patch>
     <Operation Class="PatchOperationReplace">
-        <xpath>Defs/ThingDef[defName="BOR_LMG_II"]/description</xpath>
+        <xpath>Defs/ThingDef[defName="BOR_Gun_LMG_TII"]/description</xpath>
         <value>
             <description>Second generation, kwazaari light machine gun, throwing enormous amounts of reality-bending bullets towards the enemy.</description>
         </value>
     </Operation>
 
-    <Operation Class="PatchOperationAdd">
-        <xpath>Defs/ThingDef[defName="BOR_LMG_II" or defName="BOR_Rifle_II" or defName="BOR_Sniper_II" or defName="BOR_Shotgun_II"]</xpath>
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="BOR_Gun_LMG_TII" or defName="BOR_Gun_AssaultRifle_TII" or defName="BOR_Gun_SniperRifle_TII" or defName="BOR_Gun_ChainShotgun_TII"]/tools</xpath>
         <value>
             <tools>
                 <li Class="CombatExtended.ToolCE">
@@ -45,8 +45,8 @@
         </value>
     </Operation>
 
-    <Operation Class="PatchOperationAdd">
-        <xpath>Defs/ThingDef[defName="BOR_Pistol_II"]</xpath>
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="BOR_Gun_Autopistol_TII"]/tools</xpath>
         <value>
             <tools>
                 <li Class="CombatExtended.ToolCE">
@@ -75,8 +75,8 @@
     </Operation>
 
 
-    <Operation Class="CombatExtended.PatchOperationMakeGunCTCompatible">
-        <defName>BOR_Rifle_II</defName>
+    <Operation Class="CombatExtended.PatchOperationMakeGunCECompatible">
+        <defName>BOR_Gun_AssaultRifle_TII</defName>
         <statBases>
             <Mass>0.966</Mass>
             <RangedWeapon_Cooldown>0.36</RangedWeapon_Cooldown>
@@ -117,12 +117,12 @@
         <weaponTags>
             <li>CE_AI_AR</li>
         </weaponTags>
-        <researchPrerequisite>BOR_Research_II_wep</researchPrerequisite>
+        <researchPrerequisite>BOR_Research_Weapons_II</researchPrerequisite>
     </Operation>
 
 
-    <Operation Class="CombatExtended.PatchOperationMakeGunCTCompatible">
-        <defName>BOR_Sniper_II</defName>
+    <Operation Class="CombatExtended.PatchOperationMakeGunCECompatible">
+        <defName>BOR_Gun_SniperRifle_TII</defName>
         <statBases>
             <Mass>2.874</Mass>
             <RangedWeapon_Cooldown>1.55</RangedWeapon_Cooldown>
@@ -160,13 +160,13 @@
             <li>CE_AI_SR</li>
             <li>Bipod_DMR</li>
         </weaponTags>
-        <researchPrerequisite>BOR_Research_II_wep</researchPrerequisite>
+        <researchPrerequisite>BOR_Research_Weapons_II</researchPrerequisite>
         <AllowWithRunAndGun>false</AllowWithRunAndGun>
     </Operation>
 
 
-    <Operation Class="CombatExtended.PatchOperationMakeGunCTCompatible">
-        <defName>BOR_Shotgun_II</defName>
+    <Operation Class="CombatExtended.PatchOperationMakeGunCECompatible">
+        <defName>BOR_Gun_ChainShotgun_TII</defName>
         <statBases>
             <Mass>0.919</Mass>
             <RangedWeapon_Cooldown>1.00</RangedWeapon_Cooldown>
@@ -205,12 +205,12 @@
         <weaponTags>
             <li>CE_AI_BROOM</li>
         </weaponTags>
-        <researchPrerequisite>BOR_Research_II_wep</researchPrerequisite>
+        <researchPrerequisite>BOR_Research_Weapons_II</researchPrerequisite>
     </Operation>
 
 
-    <Operation Class="CombatExtended.PatchOperationMakeGunCTCompatible">
-        <defName>BOR_LMG_II</defName>
+    <Operation Class="CombatExtended.PatchOperationMakeGunCECompatible">
+        <defName>BOR_Gun_LMG_TII</defName>
         <statBases>
             <Mass>5.185</Mass>
             <RangedWeapon_Cooldown>0.35</RangedWeapon_Cooldown>
@@ -250,13 +250,13 @@
             <li>CE_AI_Suppressive</li>
             <li>Bipod_LMG</li>
         </weaponTags>
-        <researchPrerequisite>BOR_Research_II_wep</researchPrerequisite>
+        <researchPrerequisite>BOR_Research_Weapons_II</researchPrerequisite>
         <AllowWithRunAndGun>false</AllowWithRunAndGun>
     </Operation>
 
 
-    <Operation Class="CombatExtended.PatchOperationMakeGunCTCompatible">
-        <defName>BOR_Pistol_II</defName>
+    <Operation Class="CombatExtended.PatchOperationMakeGunCECompatible">
+        <defName>BOR_Gun_Autopistol_TII</defName>
         <statBases>
             <Mass>0.557</Mass>
             <RangedWeapon_Cooldown>0.6</RangedWeapon_Cooldown>
@@ -295,7 +295,70 @@
             <li>CE_AI_BROOM</li>
             <li>CE_OneHandedWeapon</li>
         </weaponTags>
-        <researchPrerequisite>BOR_Research_II_wep</researchPrerequisite>
+        <researchPrerequisite>BOR_Research_Weapons_II</researchPrerequisite>
     </Operation>
+<!-- ========== Longsword ========== -->
+
+	<!-- Patch stats -->
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="BOR_Longsword"]/tools</xpath>
+		<value>
+			<tools>
+				<li Class="CombatExtended.ToolCE">
+					<label>handle</label>
+					<capacities>
+						<li>Poke</li>
+					</capacities>
+					<power>13.5</power>
+					<cooldownTime>1.03</cooldownTime>
+					<chanceFactor>0.10</chanceFactor>
+					<armorPenetrationBlunt>3.375</armorPenetrationBlunt>
+					<linkedBodyPartsGroup>Handle</linkedBodyPartsGroup>
+				</li>
+				<li Class="CombatExtended.ToolCE">
+					<label>point</label>
+					<capacities>
+						<li>Stab</li>
+					</capacities>
+					<power>60.75</power>
+					<cooldownTime>1.03</cooldownTime>
+					<armorPenetrationBlunt>3.375</armorPenetrationBlunt>
+					<armorPenetrationBlunt>6.75</armorPenetrationBlunt>
+					<linkedBodyPartsGroup>Point</linkedBodyPartsGroup>
+				</li>
+				<li Class="CombatExtended.ToolCE">
+					<label>edge</label>
+					<capacities>
+						<li>Cut</li>
+					</capacities>
+					<power>135</power>
+					<cooldownTime>0.95</cooldownTime>
+					<armorPenetrationBlunt>10.9</armorPenetrationBlunt>
+					<armorPenetrationSharp>2.43</armorPenetrationSharp>
+					<linkedBodyPartsGroup>Edge</linkedBodyPartsGroup>
+				</li>
+			</tools>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[defName="BOR_Longsword"]/statBases</xpath>
+		<value>
+			<Bulk>4.64</Bulk>
+			<MeleeCounterParryBonus>2.7</MeleeCounterParryBonus>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[defName="BOR_Longsword"]</xpath>
+		<value>
+			<equippedStatOffsets>
+				<MeleeCritChance>1.6875</MeleeCritChance>
+				<MeleeParryChance>2.025</MeleeParryChance>
+				<MeleeDodgeChance>1.35</MeleeDodgeChance>
+			</equippedStatOffsets>
+		</value>
+	</Operation>
 
 </Patch>
