@@ -304,4 +304,72 @@
 		<designationCategory>BOR</designationCategory>
 		<designatorDropdown>BOR_Hydroponics</designatorDropdown>
 	</ThingDef>
+    
+    <ThingDef ParentName="BuildingBase">
+        <defName>BOR_HydroponicsBasin_Tileable_II</defName>
+        <label>hydrokwaesar 630 mini</label>
+        <description>An artificial nutrient bath for growing plants. The nutrients pumps must work continuously; the plants will die if power is cut. This one is small and can be arranged in any fashion.</description>
+        <thingClass>Building_PlantGrower</thingClass>
+        <graphicData>
+	        <texPath>BOR/Things/Building/tier2/QuasarHydroponics_Tileable_Atlas</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>(1,1)</drawSize>
+            <linkType>Basic</linkType>
+            <linkFlags>
+                <li>Custom1</li>
+            </linkFlags>
+            <damageData>
+                <cornerTL>Damage/Corner</cornerTL>
+                <cornerTR>Damage/Corner</cornerTR>
+                <cornerBL>Damage/Corner</cornerBL>
+                <cornerBR>Damage/Corner</cornerBR>
+            </damageData>
+        </graphicData>
+        <uiIconPath>BOR/Things/Building/tier2/QuasarHydroponics_Tileable_Icon</uiIconPath>
+        <castEdgeShadows>true</castEdgeShadows>
+        <altitudeLayer>LowPlant</altitudeLayer>
+        <placingDraggableDimensions>2</placingDraggableDimensions>
+        <passability>PassThroughOnly</passability>
+        <pathCost>30</pathCost>
+        <constructEffect>ConstructMetal</constructEffect>
+        <fillPercent>0.30</fillPercent>
+        <canOverlapZones>false</canOverlapZones>
+        <constructionSkillPrerequisite>4</constructionSkillPrerequisite>
+        <statBases>
+            <WorkToBuild>1500</WorkToBuild>
+            <MaxHitPoints>200</MaxHitPoints>
+            <Flammability>0.35</Flammability>
+            <Cleanliness>-2</Cleanliness>
+        </statBases>
+        <size>(1,1)</size>
+        <costList>
+            <BOR_QuasarAlloy>25</BOR_QuasarAlloy>
+            <BOR_ComponentII>1</BOR_ComponentII>
+        </costList>
+        <fertility>6.3</fertility>
+        <building>
+            <defaultPlantToGrow>Plant_Rice</defaultPlantToGrow>
+            <sowTag>Hydroponic</sowTag>
+        </building>
+        <tickerType>Rare</tickerType>
+        <comps>
+            <li Class="CompProperties_Forbiddable" />
+            <li Class="CompProperties_Flickable" />
+            <li Class="CompProperties_Power">
+                <compClass>CompPowerTrader</compClass>
+                <basePowerConsumption>50</basePowerConsumption>
+            </li>
+            <!--<li Class="CompProperties_Glower">
+                <overlightRadius>1.42</overlightRadius>
+                <glowRadius>1.42</glowRadius>
+                <glowColor>(370,370,370,0)</glowColor>
+            </li>-->
+        </comps>
+        <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+        <designationCategory>BOR</designationCategory>
+        <designatorDropdown>BOR_Hydroponics</designatorDropdown>
+        <researchPrerequisites>
+            <li>BOR_Research_Hydroponics_II</li>
+        </researchPrerequisites>
+    </ThingDef>
 </Defs>
