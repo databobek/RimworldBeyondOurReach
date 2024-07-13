@@ -2,7 +2,7 @@
 <Patch>
     <Operation Class="PatchOperationFindMod">
         <mods>
-            <li>Combat Extended</li>
+            <li>Rimsenal - Core</li>
         </mods>
         <match Class="PatchOperationSequence">
             <operations>
@@ -10,21 +10,21 @@
 
                 <!-- ========== Remove Recipe Maker & Verbs ========== -->
                 <li Class="PatchOperationRemove">
-                    <xpath>Defs/ThingDef[defName="BOR_JI_Dunder_III"]/recipeMaker </xpath>
+                    <xpath>Defs/ThingDef[defName="BOR_JI_Dunder_I"]/recipeMaker </xpath>
                 </li>
 
                 <li Class="PatchOperationRemove">
-                    <xpath>Defs/ThingDef[defName="BOR_JI_Dunder_III"]/costList </xpath>
+                    <xpath>Defs/ThingDef[defName="BOR_JI_Dunder_I"]/costList </xpath>
                 </li>
 
                 <!-- Without this mod, Grief and Bobcat don't work, and it logs at ForcedMissRadius error.-->
                 <li Class="PatchOperationRemove">
-                    <xpath>Defs/ThingDef[defName="BOR_JI_Dunder_III"]/verbs </xpath>
+                    <xpath>Defs/ThingDef[defName="BOR_JI_Dunder_I"]/verbs </xpath>
                 </li>
 
                 <!-- Change TickerType.-->
                 <li Class="PatchOperationAdd">
-                    <xpath>Defs/ThingDef[defName="BOR_JI_Dunder_III"] </xpath>
+                    <xpath>Defs/ThingDef[defName="BOR_JI_Dunder_I"] </xpath>
                     <value>
                         <tickerType>Normal</tickerType>
                     </value>
@@ -33,7 +33,7 @@
                 <!-- ========== Projectile thingClass ========== -->
 
                 <li Class="PatchOperationReplace">
-                    <xpath>Defs/ThingDef[defName="BOR_Proj_Dunder_III"]/thingClass </xpath>
+                    <xpath>Defs/ThingDef[defName="BOR_Proj_Dunder_I"]/thingClass </xpath>
                     <value>
                         <thingClass>CombatExtended.ProjectileCE_Explosive</thingClass>
                     </value>
@@ -43,15 +43,15 @@
 
 
                 <li Class="PatchOperationReplace">
-                    <xpath>Defs/ThingDef[defName="BOR_Proj_Dunder_III"]/projectile</xpath>
+                    <xpath>Defs/ThingDef[defName="BOR_Proj_Dunder_I"]/projectile</xpath>
                     <value>
                         <projectile Class="CombatExtended.ProjectilePropertiesCE">
-                            <explosionRadius>15.875</explosionRadius>
+                            <explosionRadius>6.75</explosionRadius>
                             <damageDef>Bomb</damageDef>
-                            <damageAmountBase>675</damageAmountBase>
-                            <explosionDelay>250</explosionDelay>
+                            <damageAmountBase>300</damageAmountBase>
+                            <explosionDelay>400</explosionDelay>
                             <dropsCasings>false</dropsCasings>
-                            <speed>33</speed>
+                            <speed>15</speed>
                             <casingMoteDefname>Fleck_GrenadePin</casingMoteDefname>
                             <casingFilthDefname>Filth_GrenadeAmmoCasings</casingFilthDefname>
                             <applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
@@ -62,9 +62,9 @@
 
 
                 <li Class="PatchOperationConditional">
-                    <xpath>Defs/ThingDef[defName="BOR_Proj_Dunder_III"]/comps</xpath>
+                    <xpath>Defs/ThingDef[defName="BOR_Proj_Dunder_I"]/comps</xpath>
                     <nomatch Class="PatchOperationAdd">
-                        <xpath>Defs/ThingDef[defName="BOR_Proj_Dunder_III"]</xpath>
+                        <xpath>Defs/ThingDef[defName="BOR_Proj_Dunder_I"]</xpath>
                         <value>
                             <comps />
                         </value>
@@ -74,11 +74,11 @@
                 <!-- ========== Add Fragmentation ========== -->
 
                 <li Class="PatchOperationAdd">
-                    <xpath>Defs/ThingDef[defName="BOR_Proj_Dunder_III"]/comps</xpath>
+                    <xpath>Defs/ThingDef[defName="BOR_Proj_Dunder_I"]/comps</xpath>
                     <value>
                         <li Class="CombatExtended.CompProperties_Fragments">
                             <fragments>
-                                <Fragment_Tenebral>0</Fragment_Tenebral>
+                                <Fragment_Solar>0</Fragment_Solar>
                             </fragments>
                         </li>
                     </value>
@@ -87,14 +87,14 @@
                 <!-- Weapon Stack and Appearance -->
 
                 <li Class="PatchOperationAdd">
-                    <xpath>Defs/ThingDef[defName="BOR_JI_Dunder_III"]/graphicData </xpath>
+                    <xpath>Defs/ThingDef[defName="BOR_JI_Dunder_I"]/graphicData </xpath>
                     <value>
                         <onGroundRandomRotateAngle>0</onGroundRandomRotateAngle>
                     </value>
                 </li>
 
                 <li Class="PatchOperationAdd">
-                    <xpath>Defs/ThingDef[defName="BOR_JI_Dunder_III"] </xpath>
+                    <xpath>Defs/ThingDef[defName="BOR_JI_Dunder_I"] </xpath>
                     <value>
                         <thingClass>CombatExtended.AmmoThing</thingClass>
                         <stackLimit>75</stackLimit>
@@ -103,7 +103,7 @@
                 </li>
 
                 <li Class="PatchOperationAttributeSet">
-                    <xpath>Defs/ThingDef[defName="BOR_JI_Dunder_III"] </xpath>
+                    <xpath>Defs/ThingDef[defName="BOR_JI_Dunder_I"] </xpath>
                     <attribute>Class</attribute>
                     <value>CombatExtended.AmmoDef</value>
                 </li>
@@ -111,9 +111,9 @@
                 <!-- Weapon Check Comps -->
 
                 <li Class="PatchOperationConditional">
-                    <xpath>Defs/ThingDef[defName="BOR_JI_Dunder_III"]/comps</xpath>
+                    <xpath>Defs/ThingDef[defName="BOR_JI_Dunder_I"]/comps</xpath>
                     <nomatch Class="PatchOperationAdd">
-                        <xpath>Defs/ThingDef[defName="BOR_JI_Dunder_III"]</xpath>
+                        <xpath>Defs/ThingDef[defName="BOR_JI_Dunder_I"]</xpath>
                         <value>
                             <comps />
                         </value>
@@ -122,44 +122,44 @@
                 <!-- Weapon Values -->
 
                 <li Class="PatchOperationAdd">
-                    <xpath>Defs/ThingDef[defName="BOR_JI_Dunder_III"]/comps</xpath>
+                    <xpath>Defs/ThingDef[defName="BOR_JI_Dunder_I"]/comps</xpath>
                     <value>
                         <li Class="CombatExtended.CompProperties_ExplosiveCE">
-                            <damageAmountBase>135</damageAmountBase>
+                            <damageAmountBase>60</damageAmountBase>
                             <explosiveDamageType>Bomb</explosiveDamageType>
-                            <explosiveRadius>6.4</explosiveRadius>
+                            <explosiveRadius>2.75</explosiveRadius>
 
                         </li>
                         <li Class="CombatExtended.CompProperties_Fragments">
                             <fragments>
-                                <Fragment_Tenebral>50</Fragment_Tenebral>
+                                <Fragment_Solar>50</Fragment_Solar>
                             </fragments>
                         </li>
                     </value>
                 </li>
 
                 <li Class="CombatExtended.PatchOperationMakeGunCECompatible">
-                    <defName>BOR_JI_Dunder_III</defName>
+                    <defName>BOR_JI_Dunder_I</defName>
                     <statBases>
-                        <Mass>1.4</Mass>
-                        <MarketValue>24.5</MarketValue>
-                        <RangedWeapon_Cooldown>0.58</RangedWeapon_Cooldown>
-                        <SightsEfficiency>3.125</SightsEfficiency>
+                        <Mass>2.08</Mass>
+                        <MarketValue>10.875</MarketValue>
+                        <RangedWeapon_Cooldown>0.83</RangedWeapon_Cooldown>
+                        <SightsEfficiency>1.5</SightsEfficiency>
                     </statBases>
                     <Properties>
-                        <label>throw tenebral satchel charge</label>
+                        <label>throw solar satchel charge</label>
                         <verbClass>CombatExtended.Verb_ShootCEOneUse</verbClass>
                         <hasStandardCommand>true</hasStandardCommand>
-                        <range>33.75</range>
+                        <range>15.0</range>
                         <minRange>3</minRange>
-                        <warmupTime>0.35</warmupTime>
-                        <noiseRadius>2</noiseRadius>
+                        <warmupTime>0.65</warmupTime>
+                        <noiseRadius>3</noiseRadius>
                         <ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
                         <soundCast>ThrowGrenade</soundCast>
                         <targetParams>
                             <canTargetLocations>true</canTargetLocations>
                         </targetParams>
-                        <defaultProjectile>BOR_Proj_Dunder_III</defaultProjectile>
+                        <defaultProjectile>BOR_Proj_Dunder_I</defaultProjectile>
                         <onlyManualCast>true</onlyManualCast>
                         <ignorePartialLoSBlocker>true</ignorePartialLoSBlocker>
                     </Properties>
@@ -177,15 +177,15 @@
                             <soundWorking>Recipe_Smith</soundWorking>
                             <workSkill>Crafting</workSkill>
                             <unfinishedThingDef>UnfinishedGun</unfinishedThingDef>
-                            <defName>BOR_Craft_10_Dunder_III</defName>
-                            <label>Craft 10 tenebral satchel charges</label>
-                            <description>Craft 10 Dunder IV tenebral satchel charges.</description>
-                            <jobString>Crafting tenebral satchel charges</jobString>
+                            <defName>BOR_Craft_10_Dunder_I</defName>
+                            <label>Craft 10 solar satchel charges</label>
+                            <description>Craft 10 Dunder II solar satchel charges.</description>
+                            <jobString>Crafting solar satchel charges</jobString>
                             <ingredients>
                                 <li>
                                     <filter>
                                         <thingDefs>
-                                            <li>BOR_ComponentIII</li>
+                                            <li>ComponentSpacer</li>
                                         </thingDefs>
                                     </filter>
                                     <count>2</count>
@@ -193,48 +193,40 @@
                                 <li>
                                     <filter>
                                         <thingDefs>
-                                            <li>BOR_Sunsteel</li>
+                                            <li>Plasteel</li>
                                         </thingDefs>
                                     </filter>
-                                    <count>10</count>
+                                    <count>30</count>
                                 </li>
                                 <li>
                                     <filter>
                                         <thingDefs>
-                                            <li>BOR_Tenebrite</li>
+                                            <li>FSX</li>
                                         </thingDefs>
                                     </filter>
                                     <count>20</count>
                                 </li>
-                                <li>
-                                    <filter>
-                                        <thingDefs>
-                                            <li>BOR_Neutronium</li>
-                                        </thingDefs>
-                                    </filter>
-                                    <count>47</count>
-                                </li>
                             </ingredients>
                             <fixedIngredientFilter>
                                 <thingDefs>
-                                    <li>BOR_Sunsteel</li>
-                                    <li>BOR_ComponentIII</li>
-                                    <li>BOR_Neutronium</li>
+                                    <li>Plasteel</li>
+                                    <li>ComponentSpacer</li>
+                                    <li>FSX</li>
                                 </thingDefs>
                             </fixedIngredientFilter>
                             <researchPrerequisites>
-                                <li>BOR_Research_Weapons_III</li>
+                                <li>BOR_Research_Weapons_I</li>
                                 <li>MoltenTech</li>
                             </researchPrerequisites>
                             <skillRequirements>
-                                <Crafting>18</Crafting>
+                                <Crafting>12</Crafting>
                             </skillRequirements>
                             <products>
-                                <BOR_JI_Dunder_III>10</BOR_JI_Dunder_III>
+                                <BOR_JI_Dunder_I>10</BOR_JI_Dunder_I>
                             </products>
-                            <workAmount>65000</workAmount>
+                            <workAmount>35000</workAmount>
                             <recipeUsers>
-                                <li>BOR_Bench_III</li>
+                                <li>BOR_Bench_I</li>
                                 <li>BOR_Bench_IV</li>
                             </recipeUsers>
                         </RecipeDef>
