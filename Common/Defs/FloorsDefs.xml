@@ -19,6 +19,24 @@
         <texturePath>BOR/Terrain/Surfaces/sunsteelfloor</texturePath>
     </TerrainDef>
     <TerrainDef ParentName="TileMetalBase">
+        <defName>BOR_QuasarTile</defName>
+        <label>kwazaari tile</label>
+        <renderPrecedence>240</renderPrecedence>
+        <description>Kwazaari flooring, just as one might find in kwazaari trade outposts.</description>
+        <statBases>
+            <WorkToBuild>3200</WorkToBuild>
+            <Beauty>12</Beauty>
+            <Cleanliness>0.75</Cleanliness>
+            <CleaningTimeFactor>0.4</CleaningTimeFactor>
+        </statBases>
+        <costList>
+            <BOR_QuasarAlloy>7</BOR_QuasarAlloy>
+        </costList>
+        <designationHotKey>Misc7</designationHotKey>
+        <uiOrder>5000</uiOrder>
+        <texturePath>BOR/Terrain/Surfaces/quasaralloytile</texturePath>
+    </TerrainDef>
+    <TerrainDef ParentName="TileMetalBase">
         <defName>BOR_TenebriteTile</defName>
         <label>tenebrite tile</label>
         <renderPrecedence>240</renderPrecedence>
@@ -36,4 +54,44 @@
         <uiOrder>5001</uiOrder>
         <texturePath>BOR/Terrain/Surfaces/tenebritetile</texturePath>
     </TerrainDef>
+
+    
+
+  <TerrainTemplateDef>
+    <defName>BOR_CarpetFine</defName>
+    <label>kwazaari fine carpet</label>
+    <description>Luxurious, ornately-patterned carpet made from fibers dyed a single color. Beautiful to look at, but cleaning it is a labor-intensive process.</description>
+    <texturePath>BOR/Terrain/Surfaces/quasaralloycarpet</texturePath>
+    <researchPrerequisites>
+      <li>CarpetMaking</li>
+      <li>BOR_Research_Analyzer_II</li>
+    </researchPrerequisites>
+    <burnedDef>BurnedCarpet</burnedDef>
+    <designatorDropdown>BOR_Floor_Carpet_Fine</designatorDropdown>
+    <ignoreIllegalLabelCharacterConfigError>true</ignoreIllegalLabelCharacterConfigError>
+    <costList>
+      <BOR_QuasarAlloyWeave>35</BOR_QuasarAlloyWeave>
+    </costList>
+    <statBases>
+      <Beauty>8</Beauty>
+      <Flammability>0.15</Flammability>
+      <WorkToBuild>8000</WorkToBuild>
+      <CleaningTimeFactor>2</CleaningTimeFactor>
+    </statBases>
+    <tags>
+      <li>Floor</li>
+      <li>FineFloor</li>
+    </tags>
+    <constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+    <uiOrder>2110</uiOrder>
+    <renderPrecedenceStart>200</renderPrecedenceStart>
+  </TerrainTemplateDef>
+  
+  <DesignatorDropdownGroupDef>
+    <defName>BOR_Floor_Carpet_Fine</defName>
+    <label>fine kwazaari carpet</label>
+    <iconSource>Placed</iconSource>
+    <useGridMenu>true</useGridMenu>
+    <includeEyeDropperTool>true</includeEyeDropperTool>
+  </DesignatorDropdownGroupDef>
 </Defs>
