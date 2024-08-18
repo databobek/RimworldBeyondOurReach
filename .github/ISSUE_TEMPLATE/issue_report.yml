@@ -1,0 +1,91 @@
+#For more details
+# https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/syntax-for-issue-forms
+# https://docs.gitea.com/1.19/usage/issue-pull-request-templates
+#Be sure to check the docs
+#
+#Format
+#- type: | markdown | textarea | input | checkboxes |
+#  id:   | just an id, no actual relevance |
+#  attributes:
+#    label:       | Box title |
+#    description: | Box small text - Description |
+#
+name: "Issue Report"
+#title: "[Bug]: " | if you want to have a have it automatically say [Bug] when they start the form
+description: "File an issue report to make us aware of a bug or issue."
+#labels: [Bug] | Auto labels the post, as we do not use this, commenting out, purely as reference
+
+body:
+  - type: markdown
+    attributes:
+      value: Thanks for taking the time to fill out this issue report! Don't forget to give it a meaningful title so users can find the report easily.
+
+  - type: input
+    id: version
+    attributes:
+      label: Rimworld Version
+      description: "What Rimworld version were you using when the issue occurred? (Find this looking at the top left of your startup menu after loading in.) (Required)"
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Issue Description
+      description: What is the problem? (Required)
+      placeholder: I tried picking up a gun but ended up on the arctic!
+    validations:
+      required: true
+
+  - type: textarea
+    id: what-expected
+    attributes:
+      label: What did you expect to happen?
+      description: Why do you think this is an issue?
+      placeholder: I expected to pick up a gun.
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened instead?
+      description: How is what happened different from what you expected?
+      placeholder: I got sent to across the world and died.
+
+  - type: textarea
+    id: why-bad
+    attributes:
+      label: Why is this bad/What are the consequences?
+      description: Why do you think this is an important issue?
+      placeholder: People picking up guns should not be sent across the planet and die.
+
+  - type: textarea
+    id: how-to-reproduce
+    attributes:
+      label: Steps to reproduce the issue.
+      description: The most important section. Review everything you did leading up to causing the issue. (Required)
+      placeholder: Find a gun, pick it up, be sent miles away.
+    validations:
+      required: true
+
+  - type: textarea
+    id: when-problem-start
+    attributes:
+      label: When did the problem start happening?
+      description: If your report is about something that used to work but no longer does, when was the last time you remember it working? (Required)
+      placeholder: I could pick guns up fine last week, so sometime around then.
+    validations:
+      required: true
+
+  - type: textarea
+    id: extra-information
+    attributes:
+      label: Extra information
+      description: Anything else you can tell us.
+      placeholder: "I think this issue was introduced in the following PR https://github.com/databobek/RimworldBeyondOurReach/pull/5"
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant log output/runtime error
+      description: Please copy and paste any relevant log output or runtime if you have access to this. Please censor any usernames or IP addresses.
+      render: DM
