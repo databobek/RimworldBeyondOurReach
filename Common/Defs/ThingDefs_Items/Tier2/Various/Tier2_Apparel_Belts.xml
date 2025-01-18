@@ -1,0 +1,76 @@
+﻿<Defs>
+
+  <ThingDef ParentName="ApparelBase">
+    <defName>BOR_Quasar_Apparel_ShieldBelt</defName>
+    <label>quasar shield belt</label>
+    <description>A quasar projectile-repulsion device. It will attempt to stop incoming projectiles or shrapnel, but does nothing against melee attacks or heat. It prevents the wearer from firing out, and shuts down instantly if hit by EMP.</description>
+    <thingClass>Apparel</thingClass>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/ShieldBelt/ShieldBelt</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <color>(0.36, 0.5, 0.7)</color>
+    </graphicData>
+    <tickerType>Normal</tickerType>
+    <techLevel>Ultra</techLevel>
+    <statBases>
+      <Mass>1</Mass>
+      <WorkToMake>31500</WorkToMake>
+      <Flammability>0.278</Flammability>
+      <EnergyShieldRechargeRate>0.292</EnergyShieldRechargeRate>
+      <EnergyShieldEnergyMax>2.475</EnergyShieldEnergyMax>
+      <EquipDelay>0</EquipDelay>
+    </statBases>
+    <thingSetMakerTags>
+      <li>RewardStandardQualitySuper</li>
+    </thingSetMakerTags>
+    <costList>
+      <SNS_Component_GenII>2</SNS_Component_GenII>
+      <SNS_Unobtainium>50</SNS_Unobtainium>
+      <SNS_CosmicAlloy>20</SNS_CosmicAlloy>
+    </costList>
+    <recipeMaker>
+      <unfinishedThingDef>UnfinishedBelt</unfinishedThingDef>
+      <researchPrerequisite>ShieldBelt</researchPrerequisite>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Smith</effectWorking>
+      <soundWorking>Recipe_Machining</soundWorking>
+      <recipeUsers Inherit="False">
+        <li>BOR_Bench_II</li>
+        <li>BOR_Bench_IV</li>
+      </recipeUsers>
+      <useIngredientsForColor>false</useIngredientsForColor>
+      <skillRequirements>
+        <Crafting>14</Crafting>
+      </skillRequirements>
+      <displayPriority>300</displayPriority>
+    </recipeMaker>
+    <thingCategories>
+      <li>ApparelUtility</li>
+    </thingCategories>
+    <apparel>
+      <countsAsClothingForNudity>false</countsAsClothingForNudity>
+      <careIfWornByCorpse>false</careIfWornByCorpse>
+      <careIfDamaged>false</careIfDamaged>
+      <wearPerDay>0</wearPerDay>
+      <bodyPartGroups>
+        <li>Waist</li>
+      </bodyPartGroups>
+      <layers>
+        <li>Belt</li>
+      </layers>
+      <tags>
+        <li>BeltDefense</li>
+      </tags>
+      <developmentalStageFilter>Child, Adult</developmentalStageFilter>
+    </apparel>
+    <comps>
+      <li Class="CompProperties_Shield" />
+    </comps>
+    <allowedArchonexusCount>1</allowedArchonexusCount>
+    <tradeTags>
+      <li>BOR_Tech_II</li>
+    </tradeTags>
+  </ThingDef>
+
+</Defs>
