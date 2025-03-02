@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+    <Operation Class="PatchOperationSequence">
+        <operations>
+            <li Class="PatchOperationAdd" MayRequire="smartkar.athenaframework">
+                <xpath>/Defs/HediffDef[defName="BOR_SolarBionicEye" or defName="BOR_QuasarBionicEye" or defName="BOR_TenebralBionicEye" or defName="BOR_UmbralBionicEye"]</xpath>
+                <value>
+                    <hediffClass>AthenaFramework.Hediff_ModularAddedPart</hediffClass>
+                    <comps>
+                        <li Class="AthenaFramework.HediffCompProperties_Modular">
+                            <slots>
+                                <li>
+                                    <slotID>LTS_EyeModuleSlot</slotID>
+                                    <slotName>eye module slot</slotName>
+                                    <capacity>-1</capacity>
+                                </li>
+                            </slots>
+                        </li>
+                    </comps>
+                </value>
+            </li>
+            <li Class="PatchOperationAdd" MayRequire="smartkar.athenaframework">
+                <xpath>/Defs/HediffDef[defName="BOR_SolarBionicArm" or defName="BOR_QuasarBionicArm" or defName="BOR_TenebralBionicArm" or defName="BOR_UmbralBionicArm"]</xpath>
+                <value>
+                    <hediffClass>AthenaFramework.Hediff_ModularAddedPart</hediffClass>
+                </value>
+            </li>
+            <li Class="PatchOperationAdd" MayRequire="smartkar.athenaframework">
+                <xpath>/Defs/HediffDef[defName="BOR_SolarBionicArm" or defName="BOR_QuasarBionicArm" or defName="BOR_TenebralBionicArm" or defName="BOR_UmbralBionicArm"]/comps</xpath>
+                <value>
+                    <li Class="AthenaFramework.HediffCompProperties_Modular">
+                        <slots>
+                            <li>
+                                <slotID>LTS_ArmModuleSlot</slotID>
+                                <slotName>arm module slot</slotName>
+                                <capacity>-1</capacity>
+                            </li>
+                        </slots>
+                    </li>
+                </value>
+            </li>
+            <li Class="PatchOperationAdd" MayRequire="smartkar.athenaframework">
+                <xpath>/Defs/HediffDef[defName="BOR_SolarBionicLeg" or defName="BOR_QuasarBionicLeg" or defName="BOR_TenebralBionicLeg" or defName="BOR_UmbralBionicLeg"]</xpath>
+                <value>
+                    <hediffClass>AthenaFramework.Hediff_ModularAddedPart</hediffClass>
+                    <comps>
+                        <li Class="AthenaFramework.HediffCompProperties_Modular">
+                            <slots>
+                                <li>
+                                    <slotID>LTS_LegModuleSlot</slotID>
+                                    <slotName>leg module slot</slotName>
+                                    <capacity>-1</capacity>
+                                </li>
+                            </slots>
+                        </li>
+                    </comps>
+                </value>
+            </li>
+        </operations>
+    </Operation>
+</Patch>
