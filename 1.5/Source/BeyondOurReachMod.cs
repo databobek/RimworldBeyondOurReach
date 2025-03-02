@@ -1,21 +1,20 @@
 ﻿using Verse;
-using RimWorld;
 using UnityEngine;
-using System.Linq;
-using RimWorld.Planet;
 
 namespace BeyondOurReachModSettings
 {
 	public class BeyondOurReachMod : Mod
 	{
 		private static Vector2 ScrollPos = Vector2.zero;
-
+		private BeyondOurReachModSettings settings;
 
 		public BeyondOurReachMod(ModContentPack content) : base(content) { }
 
 
 		public override void DoSettingsWindowContents(Rect inRect)
 		{
+			this.settings ??= GetSettings<BeyondOurReachModSettings>();
+
 			// Doing it in the constructor gives 0 results as Mod gets initialized before loading defs
 			foreach (ModSettingDef modSettingDef in ModSettingDefFetcher.AllModSettingsOrdered)
 			{
@@ -44,7 +43,6 @@ namespace BeyondOurReachModSettings
 			{
 				listing.End();
 				Widgets.EndScrollView();
-				WriteSettings();
 			}
 		}
 

@@ -15,7 +15,7 @@ namespace BeyondOurReachModSettings
 
 		protected override bool ApplyWorker(XmlDocument xml)
 		{
-			var contentEnabled = BeyondOurReachModSettings.SettingsDict.TryGetValue(modSettingDef, true);
+			var contentEnabled = BeyondOurReachModSettings.SettingsDict.TryGetValue(modSettingDef);
 
 			if (contentEnabled)
 			{
