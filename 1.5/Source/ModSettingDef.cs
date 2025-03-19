@@ -7,5 +7,7 @@ namespace BeyondOurReachModSettings
 	{
 		public string settingLabel;
 		public string settingDesc;
+		public string dependingModPackageID;
+		public string excludingModPackageID;
 	}
 }

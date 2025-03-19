@@ -1,227 +1,233 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Patch>
-
     <Operation Class="PatchOperationFindMod">
-        <mods>
-            <li>Combat Extended</li>
-        </mods>
-        <nomatch Class="PatchOperationAdd">
-            <xpath>/Defs</xpath>
-            <value>
+		<mods>
+			<li>Combat Extended</li>
+		</mods>
+		<nomatch Class="BeyondOurReachModSettings.PatchOperationModSettings">
+			<modSettingDef>BOR_Setting_AddNewShellVariants</modSettingDef>
+			<enabled Class="PatchOperationSequence">
+				<operations>
+                    <li Class="PatchOperationAdd">
+                        <xpath>Defs</xpath>
+                        <value>
 
-                <ThingDef Name="BOR_ShellBase" ParentName="ShellBase" Abstract="True">
-                    <techLevel>Ultra</techLevel>
-                    <statBases>
-                        <MaxHitPoints>200</MaxHitPoints>
-                        <MarketValue>100</MarketValue>
-                        <Mass>1.0</Mass>
-                        <Flammability>1.0</Flammability>
-                        <DeteriorationRate>1.0</DeteriorationRate>
-                    </statBases>
-                </ThingDef>
+                            <ThingDef Name="BOR_ShellBase" ParentName="ShellBase" Abstract="True">
+                                <techLevel>Ultra</techLevel>
+                                <statBases>
+                                    <MaxHitPoints>200</MaxHitPoints>
+                                    <MarketValue>100</MarketValue>
+                                    <Mass>1.0</Mass>
+                                    <Flammability>1.0</Flammability>
+                                    <DeteriorationRate>1.0</DeteriorationRate>
+                                </statBases>
+                            </ThingDef>
 
-                <ThingDef Name="BOR_MakeableShellBase" ParentName="BOR_ShellBase" Abstract="True">
-                    <recipeMaker>
-                        <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
-                        <effectWorking>Cook</effectWorking>
-                        <soundWorking>Recipe_Machining</soundWorking>
-                        <workAmount>1500</workAmount>
-                        <targetCountAdjustment>5</targetCountAdjustment>
-                        <workSkill>Crafting</workSkill>
-                        <recipeUsers>
-                            <li>BOR_Bench_I</li>
-                            <li>BOR_Bench_II</li>
-                            <li>BOR_Bench_III</li>
-                            <li>BOR_Bench_IV</li>
-                        </recipeUsers>
-                        <skillRequirements>
-                            <Crafting>10</Crafting>
-                        </skillRequirements>
-                        <displayPriority>100</displayPriority>
-                    </recipeMaker>
-                </ThingDef>
+                            <ThingDef Name="BOR_MakeableShellBase" ParentName="BOR_ShellBase" Abstract="True">
+                                <recipeMaker>
+                                    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+                                    <effectWorking>Cook</effectWorking>
+                                    <soundWorking>Recipe_Machining</soundWorking>
+                                    <workAmount>1500</workAmount>
+                                    <targetCountAdjustment>5</targetCountAdjustment>
+                                    <workSkill>Crafting</workSkill>
+                                    <recipeUsers>
+                                        <li>BOR_Bench_I</li>
+                                        <li>BOR_Bench_II</li>
+                                        <li>BOR_Bench_III</li>
+                                        <li>BOR_Bench_IV</li>
+                                    </recipeUsers>
+                                    <skillRequirements>
+                                        <Crafting>10</Crafting>
+                                    </skillRequirements>
+                                    <displayPriority>100</displayPriority>
+                                </recipeMaker>
+                            </ThingDef>
 
-                <!-- High-explosive -->
+                            <!-- High-explosive -->
 
-                <ThingDef ParentName="BOR_MakeableShellBase">
-                    <defName>BOR_Shell_Mortar_Ni</defName>
-                    <label>neutronium shell</label>
-                    <description>A shell filled with neutronium. Can be fired from mortars. Explodes when damaged.</description>
-                    <possessionCount>1</possessionCount>
-                    <graphicData>
-                        <texPath>Things/Item/Resource/Shell/Shell_HighExplosive</texPath>
-                        <graphicClass>Graphic_StackCount</graphicClass>
-                    </graphicData>
-                    <comps>
-                        <li Class="CompProperties_Explosive">
-                            <explosiveRadius>6.9</explosiveRadius>
-                            <explosiveDamageType>Bomb</explosiveDamageType>
-                            <explosiveExpandPerStackcount>0.9</explosiveExpandPerStackcount>
-                            <startWickHitPointsPercent>0.7</startWickHitPointsPercent>
-                            <wickTicks>30~60</wickTicks>
-                        </li>
-                    </comps>
-                    <projectileWhenLoaded>BOR_Bullet_81mmMortarShell_Ni</projectileWhenLoaded>
-                    <costList>
-                        <BOR_Sunsteel>15</BOR_Sunsteel>
-                        <BOR_Neutronium>1500</BOR_Neutronium>
-                    </costList>
-                    <costListForDifficulty>
-                        <difficultyVar>classicMortars</difficultyVar>
-                        <costList>
-                            <BOR_Sunsteel>25</BOR_Sunsteel>
-                            <BOR_Neutronium>1500</BOR_Neutronium>
-                        </costList>
-                    </costListForDifficulty>
-                    <recipeMaker>
-                        <researchPrerequisite>Mortars</researchPrerequisite>
-                    </recipeMaker>
-                </ThingDef>
+                            <ThingDef ParentName="BOR_MakeableShellBase">
+                                <defName>BOR_Shell_Mortar_Ni</defName>
+                                <label>neutronium shell</label>
+                                <description>A shell filled with neutronium. Can be fired from mortars. Explodes when damaged.</description>
+                                <possessionCount>1</possessionCount>
+                                <graphicData>
+                                    <texPath>Things/Item/Resource/Shell/Shell_HighExplosive</texPath>
+                                    <graphicClass>Graphic_StackCount</graphicClass>
+                                </graphicData>
+                                <comps>
+                                    <li Class="CompProperties_Explosive">
+                                        <explosiveRadius>6.9</explosiveRadius>
+                                        <explosiveDamageType>Bomb</explosiveDamageType>
+                                        <explosiveExpandPerStackcount>0.9</explosiveExpandPerStackcount>
+                                        <startWickHitPointsPercent>0.7</startWickHitPointsPercent>
+                                        <wickTicks>30~60</wickTicks>
+                                    </li>
+                                </comps>
+                                <projectileWhenLoaded>BOR_Bullet_81mmMortarShell_Ni</projectileWhenLoaded>
+                                <costList>
+                                    <BOR_Sunsteel>15</BOR_Sunsteel>
+                                    <BOR_Neutronium>1500</BOR_Neutronium>
+                                </costList>
+                                <costListForDifficulty>
+                                    <difficultyVar>classicMortars</difficultyVar>
+                                    <costList>
+                                        <BOR_Sunsteel>25</BOR_Sunsteel>
+                                        <BOR_Neutronium>1500</BOR_Neutronium>
+                                    </costList>
+                                </costListForDifficulty>
+                                <recipeMaker>
+                                    <researchPrerequisite>Mortars</researchPrerequisite>
+                                </recipeMaker>
+                            </ThingDef>
 
-                <ThingDef ParentName="BaseBullet">
-                    <defName>BOR_Bullet_81mmMortarShell_Ni</defName>
-                    <label>neutronium shell</label>
-                    <graphicData>
-                        <texPath>Things/Projectile/ShellHighExplosive</texPath>
-                        <graphicClass>Graphic_Single</graphicClass>
-                        <shaderType>TransparentPostLight</shaderType>
-                    </graphicData>
-                    <thingClass>Projectile_Explosive</thingClass>
-                    <projectile>
-                        <damageDef>Bomb</damageDef>
-                        <damageAmountBase>225</damageAmountBase>
-                        <speed>92</speed>
-                        <explosionRadius>6.9</explosionRadius>
-                        <flyOverhead>true</flyOverhead>
-                        <soundHitThickRoof>Artillery_HitThickRoof</soundHitThickRoof>
-                        <soundExplode>MortarBomb_Explode</soundExplode>
-                        <soundImpactAnticipate>MortarRound_PreImpact</soundImpactAnticipate>
-                        <soundAmbient>MortarRound_Ambient</soundAmbient>
-                    </projectile>
-                </ThingDef>
+                            <ThingDef ParentName="BaseBullet">
+                                <defName>BOR_Bullet_81mmMortarShell_Ni</defName>
+                                <label>neutronium shell</label>
+                                <graphicData>
+                                    <texPath>Things/Projectile/ShellHighExplosive</texPath>
+                                    <graphicClass>Graphic_Single</graphicClass>
+                                    <shaderType>TransparentPostLight</shaderType>
+                                </graphicData>
+                                <thingClass>Projectile_Explosive</thingClass>
+                                <projectile>
+                                    <damageDef>Bomb</damageDef>
+                                    <damageAmountBase>225</damageAmountBase>
+                                    <speed>92</speed>
+                                    <explosionRadius>6.9</explosionRadius>
+                                    <flyOverhead>true</flyOverhead>
+                                    <soundHitThickRoof>Artillery_HitThickRoof</soundHitThickRoof>
+                                    <soundExplode>MortarBomb_Explode</soundExplode>
+                                    <soundImpactAnticipate>MortarRound_PreImpact</soundImpactAnticipate>
+                                    <soundAmbient>MortarRound_Ambient</soundAmbient>
+                                </projectile>
+                            </ThingDef>
 
-                <!-- Incendiary -->
+                            <!-- Incendiary -->
 
-                <ThingDef ParentName="BOR_MakeableShellBase">
-                    <defName>BOR_Shell_Mortar_Nc</defName>
-                    <label>incendiary neutronium shell</label>
-                    <description>A shell filled with flammable neutronium gel and a small explosive charge. Starts fires when detonated. Can be fired from mortars. Explodes when damaged.</description>
-                    <possessionCount>1</possessionCount>
-                    <graphicData>
-                        <texPath>Things/Item/Resource/Shell/Shell_Incendiary</texPath>
-                        <graphicClass>Graphic_StackCount</graphicClass>
-                    </graphicData>
-                    <comps>
-                        <li Class="CompProperties_Explosive">
-                            <explosiveRadius>6.9</explosiveRadius>
-                            <explosiveDamageType>Flame</explosiveDamageType>
-                            <explosiveExpandPerStackcount>0.9</explosiveExpandPerStackcount>
-                            <startWickHitPointsPercent>0.7</startWickHitPointsPercent>
-                            <wickTicks>30~60</wickTicks>
-                        </li>
-                    </comps>
-                    <projectileWhenLoaded>BOR_Bullet_81mmMortarShell_Nc</projectileWhenLoaded>
-                    <costList>
-                        <BOR_Sunsteel>10</BOR_Sunsteel>
-                        <BOR_Neutronium>20</BOR_Neutronium>
-                    </costList>
-                    <costListForDifficulty>
-                        <difficultyVar>classicMortars</difficultyVar>
-                        <costList>
-                            <BOR_Sunsteel>20</BOR_Sunsteel>
-                            <BOR_Neutronium>20</BOR_Neutronium>
-                        </costList>
-                    </costListForDifficulty>
-                    <recipeMaker>
-                        <researchPrerequisite>Mortars</researchPrerequisite>
-                    </recipeMaker>
-                </ThingDef>
+                            <ThingDef ParentName="BOR_MakeableShellBase">
+                                <defName>BOR_Shell_Mortar_Nc</defName>
+                                <label>incendiary neutronium shell</label>
+                                <description>A shell filled with flammable neutronium gel and a small explosive charge. Starts fires when detonated. Can be fired from mortars. Explodes when damaged.</description>
+                                <possessionCount>1</possessionCount>
+                                <graphicData>
+                                    <texPath>Things/Item/Resource/Shell/Shell_Incendiary</texPath>
+                                    <graphicClass>Graphic_StackCount</graphicClass>
+                                </graphicData>
+                                <comps>
+                                    <li Class="CompProperties_Explosive">
+                                        <explosiveRadius>6.9</explosiveRadius>
+                                        <explosiveDamageType>Flame</explosiveDamageType>
+                                        <explosiveExpandPerStackcount>0.9</explosiveExpandPerStackcount>
+                                        <startWickHitPointsPercent>0.7</startWickHitPointsPercent>
+                                        <wickTicks>30~60</wickTicks>
+                                    </li>
+                                </comps>
+                                <projectileWhenLoaded>BOR_Bullet_81mmMortarShell_Nc</projectileWhenLoaded>
+                                <costList>
+                                    <BOR_Sunsteel>10</BOR_Sunsteel>
+                                    <BOR_Neutronium>20</BOR_Neutronium>
+                                </costList>
+                                <costListForDifficulty>
+                                    <difficultyVar>classicMortars</difficultyVar>
+                                    <costList>
+                                        <BOR_Sunsteel>20</BOR_Sunsteel>
+                                        <BOR_Neutronium>20</BOR_Neutronium>
+                                    </costList>
+                                </costListForDifficulty>
+                                <recipeMaker>
+                                    <researchPrerequisite>Mortars</researchPrerequisite>
+                                </recipeMaker>
+                            </ThingDef>
 
-                <ThingDef ParentName="BaseBullet">
-                    <defName>BOR_Bullet_81mmMortarShell_Nc</defName>
-                    <label>incendiary neutronium shell</label>
-                    <graphicData>
-                        <texPath>Things/Projectile/ShellIncendiary</texPath>
-                        <graphicClass>Graphic_Single</graphicClass>
-                        <shaderType>TransparentPostLight</shaderType>
-                    </graphicData>
-                    <thingClass>Projectile_Explosive</thingClass>
-                    <projectile>
-                        <damageDef>Flame</damageDef>
-                        <damageAmountBase>225</damageAmountBase>
-                        <speed>92</speed>
-                        <explosionRadius>6.9</explosionRadius>
-                        <preExplosionSpawnThingDef>Filth_Fuel</preExplosionSpawnThingDef>
-                        <preExplosionSpawnChance>0.25</preExplosionSpawnChance>
-                        <flyOverhead>true</flyOverhead>
-                        <soundHitThickRoof>Artillery_HitThickRoof</soundHitThickRoof>
-                        <soundExplode>MortarIncendiary_Explode</soundExplode>
-                        <soundImpactAnticipate>MortarRound_PreImpact</soundImpactAnticipate>
-                        <soundAmbient>MortarRound_Ambient</soundAmbient>
-                        <ai_IsIncendiary>true</ai_IsIncendiary>
-                    </projectile>
-                </ThingDef>
+                            <ThingDef ParentName="BaseBullet">
+                                <defName>BOR_Bullet_81mmMortarShell_Nc</defName>
+                                <label>incendiary neutronium shell</label>
+                                <graphicData>
+                                    <texPath>Things/Projectile/ShellIncendiary</texPath>
+                                    <graphicClass>Graphic_Single</graphicClass>
+                                    <shaderType>TransparentPostLight</shaderType>
+                                </graphicData>
+                                <thingClass>Projectile_Explosive</thingClass>
+                                <projectile>
+                                    <damageDef>Flame</damageDef>
+                                    <damageAmountBase>225</damageAmountBase>
+                                    <speed>92</speed>
+                                    <explosionRadius>6.9</explosionRadius>
+                                    <preExplosionSpawnThingDef>Filth_Fuel</preExplosionSpawnThingDef>
+                                    <preExplosionSpawnChance>0.25</preExplosionSpawnChance>
+                                    <flyOverhead>true</flyOverhead>
+                                    <soundHitThickRoof>Artillery_HitThickRoof</soundHitThickRoof>
+                                    <soundExplode>MortarIncendiary_Explode</soundExplode>
+                                    <soundImpactAnticipate>MortarRound_PreImpact</soundImpactAnticipate>
+                                    <soundAmbient>MortarRound_Ambient</soundAmbient>
+                                    <ai_IsIncendiary>true</ai_IsIncendiary>
+                                </projectile>
+                            </ThingDef>
 
-                <!-- EMP -->
+                            <!-- EMP -->
 
-                <ThingDef ParentName="BOR_MakeableShellBase">
-                    <defName>BOR_Shell_Mortar_Ion_N</defName>
-                    <label>kwazaari EMP shell</label>
-                    <description>A shell filled with quasar batteries and antennas, for generating an electromagnetic pulse when detonated. Electromagnetic pulses temporarily disable electrical devices and mechanoids. Can be fired from mortars. Explodes when damaged.</description>
-                    <possessionCount>1</possessionCount>
-                    <graphicData>
-                        <texPath>Things/Item/Resource/Shell/Shell_EMP</texPath>
-                        <graphicClass>Graphic_StackCount</graphicClass>
-                    </graphicData>
-                    <comps>
-                        <li Class="CompProperties_Explosive">
-                            <explosiveRadius>24.9</explosiveRadius>
-                            <explosiveDamageType>EMP</explosiveDamageType>
-                            <explosiveExpandPerStackcount>0.4</explosiveExpandPerStackcount>
-                            <startWickHitPointsPercent>0.7</startWickHitPointsPercent>
-                            <wickTicks>30~60</wickTicks>
-                        </li>
-                    </comps>
-                    <projectileWhenLoaded>BOR_Bullet_81mmMortarShell_Ion_N</projectileWhenLoaded>
-                    <costList>
-                        <BOR_Sunsteel>15</BOR_Sunsteel>
-                        <ComponentSpacer>2</ComponentSpacer>
-                    </costList>
-                    <costListForDifficulty>
-                        <difficultyVar>classicMortars</difficultyVar>
-                        <costList>
-                            <BOR_Sunsteel>25</BOR_Sunsteel>
-                            <ComponentSpacer>2</ComponentSpacer>
-                        </costList>
-                    </costListForDifficulty>
-                    <recipeMaker>
-                        <researchPrerequisite>MicroelectronicsBasics</researchPrerequisite>
-                    </recipeMaker>
-                </ThingDef>
+                            <ThingDef ParentName="BOR_MakeableShellBase">
+                                <defName>BOR_Shell_Mortar_Ion_N</defName>
+                                <label>kwazaari EMP shell</label>
+                                <description>A shell filled with quasar batteries and antennas, for generating an electromagnetic pulse when detonated. Electromagnetic pulses temporarily disable electrical devices and mechanoids. Can be fired from mortars. Explodes when damaged.</description>
+                                <possessionCount>1</possessionCount>
+                                <graphicData>
+                                    <texPath>Things/Item/Resource/Shell/Shell_EMP</texPath>
+                                    <graphicClass>Graphic_StackCount</graphicClass>
+                                </graphicData>
+                                <comps>
+                                    <li Class="CompProperties_Explosive">
+                                        <explosiveRadius>24.9</explosiveRadius>
+                                        <explosiveDamageType>EMP</explosiveDamageType>
+                                        <explosiveExpandPerStackcount>0.4</explosiveExpandPerStackcount>
+                                        <startWickHitPointsPercent>0.7</startWickHitPointsPercent>
+                                        <wickTicks>30~60</wickTicks>
+                                    </li>
+                                </comps>
+                                <projectileWhenLoaded>BOR_Bullet_81mmMortarShell_Ion_N</projectileWhenLoaded>
+                                <costList>
+                                    <BOR_Sunsteel>15</BOR_Sunsteel>
+                                    <ComponentSpacer>2</ComponentSpacer>
+                                </costList>
+                                <costListForDifficulty>
+                                    <difficultyVar>classicMortars</difficultyVar>
+                                    <costList>
+                                        <BOR_Sunsteel>25</BOR_Sunsteel>
+                                        <ComponentSpacer>2</ComponentSpacer>
+                                    </costList>
+                                </costListForDifficulty>
+                                <recipeMaker>
+                                    <researchPrerequisite>MicroelectronicsBasics</researchPrerequisite>
+                                </recipeMaker>
+                            </ThingDef>
 
-                <ThingDef ParentName="BaseBullet">
-                    <defName>BOR_Bullet_81mmMortarShell_Ion_N</defName>
-                    <label>kwazaari EMP shell</label>
-                    <graphicData>
-                        <texPath>Things/Projectile/ShellEMP</texPath>
-                        <graphicClass>Graphic_Single</graphicClass>
-                        <shaderType>TransparentPostLight</shaderType>
-                    </graphicData>
-                    <thingClass>Projectile_Explosive</thingClass>
-                    <projectile>
-                        <damageDef>EMP</damageDef>
-                        <damageAmountBase>150</damageAmountBase>
-                        <speed>92</speed>
-                        <explosionRadius>18.9</explosionRadius>
-                        <flyOverhead>true</flyOverhead>
-                        <soundHitThickRoof>Artillery_HitThickRoof</soundHitThickRoof>
-                        <soundExplode>Explosion_EMP</soundExplode>
-                        <soundImpactAnticipate>MortarRound_PreImpact</soundImpactAnticipate>
-                        <soundAmbient>MortarRound_Ambient</soundAmbient>
-                    </projectile>
-                </ThingDef>
+                            <ThingDef ParentName="BaseBullet">
+                                <defName>BOR_Bullet_81mmMortarShell_Ion_N</defName>
+                                <label>kwazaari EMP shell</label>
+                                <graphicData>
+                                    <texPath>Things/Projectile/ShellEMP</texPath>
+                                    <graphicClass>Graphic_Single</graphicClass>
+                                    <shaderType>TransparentPostLight</shaderType>
+                                </graphicData>
+                                <thingClass>Projectile_Explosive</thingClass>
+                                <projectile>
+                                    <damageDef>EMP</damageDef>
+                                    <damageAmountBase>150</damageAmountBase>
+                                    <speed>92</speed>
+                                    <explosionRadius>18.9</explosionRadius>
+                                    <flyOverhead>true</flyOverhead>
+                                    <soundHitThickRoof>Artillery_HitThickRoof</soundHitThickRoof>
+                                    <soundExplode>Explosion_EMP</soundExplode>
+                                    <soundImpactAnticipate>MortarRound_PreImpact</soundImpactAnticipate>
+                                    <soundAmbient>MortarRound_Ambient</soundAmbient>
+                                </projectile>
+                            </ThingDef>
 
-            </value>
-        </nomatch>
-    </Operation>
+                        </value>
+                    </li>
+				</operations>
+			</enabled>
+		</nomatch>
+	</Operation>
 </Patch>

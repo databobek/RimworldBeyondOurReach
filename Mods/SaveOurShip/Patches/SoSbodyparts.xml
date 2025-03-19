@@ -1,55 +1,63 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Patch>
-	<!-- Tier 1 (solar) -->
-	<Operation Class="PatchOperationAdd">
-		<xpath>/Defs/HediffDef[defName="BOR_SolarBionicLung"]</xpath>
-		<value>
-			<stages>
-				<li>
-					<statOffsets>
-						<HypoxiaResistance>0.75</HypoxiaResistance>
-					</statOffsets>
+	<Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
+		<modSettingDef>BOR_Setting_AddSOS2HypoxiaResistanceToBORLungs</modSettingDef>
+		<enabled Class="PatchOperationSequence">
+            <operations>
+				<!-- Tier 1 (solar) -->
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/HediffDef[defName="BOR_SolarBionicLung"]</xpath>
+					<value>
+						<stages>
+							<li>
+								<statOffsets>
+									<HypoxiaResistance>0.75</HypoxiaResistance>
+								</statOffsets>
+							</li>
+						</stages>
+					</value>
 				</li>
-			</stages>
-		</value>
-	</Operation>
-	<!-- Tier 2 (quasar) -->
-	<Operation Class="PatchOperationAdd">
-		<xpath>/Defs/HediffDef[defName="BOR_QuasarBionicLung"]</xpath>
-		<value>
-			<stages>
-				<li>
-					<statOffsets>
-						<HypoxiaResistance>0.85</HypoxiaResistance>
-					</statOffsets>
+				<!-- Tier 2 (quasar) -->
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/HediffDef[defName="BOR_QuasarBionicLung"]</xpath>
+					<value>
+						<stages>
+							<li>
+								<statOffsets>
+									<HypoxiaResistance>0.85</HypoxiaResistance>
+								</statOffsets>
+							</li>
+						</stages>
+					</value>
 				</li>
-			</stages>
-		</value>
-	</Operation>
-	<!-- Tier 3 (tenebral) -->
-	<Operation Class="PatchOperationAdd">
-		<xpath>/Defs/HediffDef[defName="BOR_TenebralBionicLung"]</xpath>
-		<value>
-			<stages>
-				<li>
-					<statOffsets>
-						<HypoxiaResistance>0.95</HypoxiaResistance>
-					</statOffsets>
+				<!-- Tier 3 (tenebral) -->
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/HediffDef[defName="BOR_TenebralBionicLung"]</xpath>
+					<value>
+						<stages>
+							<li>
+								<statOffsets>
+									<HypoxiaResistance>0.95</HypoxiaResistance>
+								</statOffsets>
+							</li>
+						</stages>
+					</value>
 				</li>
-			</stages>
-		</value>
-	</Operation>
-	<!-- Tier 4 (umbral) -->
-	<Operation Class="PatchOperationAdd">
-		<xpath>/Defs/HediffDef[defName="BOR_UmbralBionicLung"]</xpath>
-		<value>
-			<stages>
-				<li>
-					<statOffsets>
-						<HypoxiaResistance>1</HypoxiaResistance>
-					</statOffsets>
+				<!-- Tier 4 (umbral) -->
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/HediffDef[defName="BOR_UmbralBionicLung"]</xpath>
+					<value>
+						<stages>
+							<li>
+								<statOffsets>
+									<HypoxiaResistance>1</HypoxiaResistance>
+								</statOffsets>
+							</li>
+						</stages>
+					</value>
 				</li>
-			</stages>
-		</value>
-	</Operation>
+            </operations>
+        </enabled>
+    </Operation>
+
 </Patch>

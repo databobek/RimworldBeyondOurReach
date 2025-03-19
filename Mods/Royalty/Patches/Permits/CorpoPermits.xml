@@ -1,0 +1,513 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
+		<modSettingDef>BOR_Setting_KwazaariRoyaltyPermits</modSettingDef>
+		<enabled Class="PatchOperationSequence">
+      <operations>
+				
+        <!-- ============================= Permits from corporate titles ============================= -->
+
+				<li Class="PatchOperationAdd">
+					<xpath>Defs</xpath>
+					<value>
+						<RoyalTitlePermitDef>
+              <defName>BOR_TradeSettlement_II</defName>
+              <label>trade with kwazaari settlements</label>
+            </RoyalTitlePermitDef>
+					</value>
+				</li>
+        <li Class="PatchOperationAdd">
+					<xpath>Defs</xpath>
+					<value>
+	          <RoyalTitlePermitDef>
+              <defName>BOR_TradeOrbital_II</defName>
+              <label>trade with kwazaari orbital traders</label>
+            </RoyalTitlePermitDef>
+					</value>
+				</li>
+        <li Class="PatchOperationAdd">
+					<xpath>Defs</xpath>
+					<value>
+	          <RoyalTitlePermitDef>
+              <defName>BOR_TradeCaravan_II</defName>
+              <label>trade with kwazaari caravans</label>
+            </RoyalTitlePermitDef>
+					</value>
+				</li>
+
+        <!-- ============================= Faction permits ============================= -->
+
+        <!-- Econ -->
+        <li Class="PatchOperationAdd">
+					<xpath>Defs</xpath>
+					<value>
+            <RoyalTitlePermitDef Name="DropResourcesBase" Abstract="True">
+              <workerClass>RoyalTitlePermitWorker_DropResources</workerClass>
+              <faction>BOR_KwazaarBazaar</faction>
+              <permitPointCost>1</permitPointCost>
+              <cooldownDays>45</cooldownDays>
+              <usableOnWorldMap>true</usableOnWorldMap>
+              <royalAid>
+                <targetingRange>39.9</targetingRange>
+              </royalAid>
+            </RoyalTitlePermitDef>
+					</value>
+				</li>
+        <li Class="PatchOperationAdd">
+					<xpath>Defs</xpath>
+					<value>
+            <RoyalTitlePermitDef ParentName="DropResourcesBase">
+              <defName>BOR_SunsteelDrop</defName>
+              <label>sunsteel drop</label>
+              <description>Call for a drop of 500 sunsteel.</description>
+              <minTitle>BOR_Junior</minTitle>
+              <faction>BOR_KwazaarBazaar</faction>
+              <permitPointCost>1</permitPointCost>
+              <uiPosition>(0,0)</uiPosition>
+              <royalAid>
+                <itemsToDrop>
+                  <BOR_Sunsteel>500</BOR_Sunsteel>
+                </itemsToDrop>
+                <favorCost>3</favorCost>
+              </royalAid>
+            </RoyalTitlePermitDef>
+					</value>
+				</li>
+        <li Class="PatchOperationAdd">
+					<xpath>Defs</xpath>
+					<value>
+            <RoyalTitlePermitDef ParentName="DropResourcesBase">
+              <defName>BOR_AlloyDrop</defName>
+              <label>quasar alloy drop</label>
+              <description>Call for a drop of 500 quasar alloy.</description>
+              <minTitle>BOR_Associate</minTitle>
+              <faction>BOR_KwazaarBazaar</faction>
+              <permitPointCost>2</permitPointCost>
+              <uiPosition>(1,0)</uiPosition>
+              <prerequisite>BOR_SunsteelDrop</prerequisite>
+              <royalAid>
+                <itemsToDrop>
+                  <BOR_QuasarAlloy>500</BOR_QuasarAlloy>
+                </itemsToDrop>
+                <favorCost>5</favorCost>
+              </royalAid>
+            </RoyalTitlePermitDef>
+					</value>
+				</li>
+        <li Class="PatchOperationAdd">
+					<xpath>Defs</xpath>
+					<value>
+            <RoyalTitlePermitDef ParentName="DropResourcesBase">
+              <defName>BOR_SunweaveDrop</defName>
+              <label>sunweave drop</label>
+              <description>Call for a drop of 500 sunweave.</description>
+              <minTitle>BOR_Junior</minTitle>
+              <faction>BOR_KwazaarBazaar</faction>
+              <permitPointCost>1</permitPointCost>
+              <uiPosition>(0,1)</uiPosition>
+              <royalAid>
+                <itemsToDrop>
+                  <BOR_Sunweave>500</BOR_Sunweave>
+                </itemsToDrop>
+                <favorCost>3</favorCost>
+              </royalAid>
+            </RoyalTitlePermitDef>
+					</value>
+				</li>
+        <li Class="PatchOperationAdd">
+					<xpath>Defs</xpath>
+					<value>
+            <RoyalTitlePermitDef ParentName="DropResourcesBase">
+              <defName>BOR_WeaveDrop</defName>
+              <label>quasar alloy drop</label>
+              <description>Call for a drop of 500 quasar weave.</description>
+              <minTitle>BOR_Associate</minTitle>
+              <faction>BOR_KwazaarBazaar</faction>
+              <permitPointCost>2</permitPointCost>
+              <uiPosition>(1,1)</uiPosition>
+              <prerequisite>BOR_SunweaveDrop</prerequisite>
+              <royalAid>
+                <itemsToDrop>
+                  <BOR_QuasarAlloyWeave>500</BOR_QuasarAlloyWeave>
+                </itemsToDrop>
+                <favorCost>5</favorCost>
+              </royalAid>
+            </RoyalTitlePermitDef>
+					</value>
+				</li>
+        <li Class="PatchOperationAdd">
+					<xpath>Defs</xpath>
+					<value>
+            <RoyalTitlePermitDef ParentName="DropResourcesBase">
+              <defName>BOR_FoodDrop</defName>
+              <label>food drop</label>
+              <description>Call for a drop of 200 packaged survival meals.</description>
+              <minTitle>BOR_Junior</minTitle>
+              <uiPosition>(0,2)</uiPosition>
+              <royalAid>
+                <itemsToDrop>
+                  <MealSurvivalPack>200</MealSurvivalPack>
+                </itemsToDrop>
+                <favorCost>3</favorCost>
+              </royalAid>
+            </RoyalTitlePermitDef>
+					</value>
+				</li>
+        <li Class="PatchOperationAdd">
+					<xpath>Defs</xpath>
+					<value>
+            <RoyalTitlePermitDef ParentName="DropResourcesBase">
+              <defName>BOR_MedDropI</defName>
+              <label>solar medicine drop</label>
+              <description>Call for a drop of 50 solar medicine kits.</description>
+              <minTitle>BOR_Junior</minTitle>
+              <uiPosition>(1,2)</uiPosition>
+              <prerequisite>BOR_FoodDrop</prerequisite>
+              <royalAid>
+                <itemsToDrop>
+                  <BOR_MedicineII>50</BOR_MedicineII>
+                </itemsToDrop>
+                <favorCost>18</favorCost>
+              </royalAid>
+            </RoyalTitlePermitDef>
+					</value>
+				</li>
+        <li Class="PatchOperationAdd">
+					<xpath>Defs</xpath>
+					<value>
+            <RoyalTitlePermitDef ParentName="DropResourcesBase">
+              <defName>BOR_MedDropII</defName>
+              <label>First Kwaed Kit drop</label>
+              <description>Call for a drop of 50 first kwaed kits.</description>
+              <minTitle>BOR_Associate</minTitle>
+              <uiPosition>(2,2)</uiPosition>
+              <prerequisite>BOR_MedDropI</prerequisite>
+              <royalAid>
+                <itemsToDrop>
+                  <BOR_MedicineII>50</BOR_MedicineII>
+                </itemsToDrop>
+                <favorCost>18</favorCost>
+              </royalAid>
+            </RoyalTitlePermitDef>
+					</value>
+				</li>
+        <li Class="PatchOperationAdd">
+					<xpath>Defs</xpath>
+					<value>
+            <RoyalTitlePermitDef ParentName="DropResourcesBase">
+              <defName>BOR_NeutroniumDropI</defName>
+              <label>Neutronium drop</label>
+              <description>Call for a drop of 500 000 neutronium.</description>
+              <minTitle>BOR_Junior</minTitle>
+              <uiPosition>(0,3)</uiPosition>
+              <royalAid>
+                <itemsToDrop>
+                  <BOR_Neutronium>5000000</BOR_Neutronium>
+                </itemsToDrop>
+                <favorCost>1</favorCost>
+              </royalAid>
+            </RoyalTitlePermitDef>
+					</value>
+				</li>
+        <li Class="PatchOperationAdd">
+					<xpath>Defs</xpath>
+					<value>
+            <RoyalTitlePermitDef ParentName="DropResourcesBase">
+              <defName>BOR_NeutroniumDropII</defName>
+              <label>Big neutronium drop</label>
+              <description>Call for a drop of 1 000 000 neutronium.</description>
+              <minTitle>BOR_Associate</minTitle>
+              <uiPosition>(1,3)</uiPosition>
+              <prerequisite>BOR_NeutroniumDropI</prerequisite>
+              <royalAid>
+                <itemsToDrop>
+                  <BOR_Neutronium>1000000</BOR_Neutronium>
+                </itemsToDrop>
+                <favorCost>2</favorCost>
+              </royalAid>
+            </RoyalTitlePermitDef>
+					</value>
+				</li>
+        <li Class="PatchOperationAdd">
+					<xpath>Defs</xpath>
+					<value>
+            <RoyalTitlePermitDef ParentName="DropResourcesBase">
+              <defName>BOR_NeutroniumDropIII</defName>
+              <label>Enormous neutronium drop</label>
+              <description>Call for a drop of 10 000 000 neutronium.</description>
+              <minTitle>BOR_Senior</minTitle>
+              <uiPosition>(2,3)</uiPosition>
+              <prerequisite>BOR_NeutroniumDropII</prerequisite>
+              <royalAid>
+                <itemsToDrop>
+                  <BOR_Neutronium>10000000</BOR_Neutronium>
+                </itemsToDrop>
+                <favorCost>8</favorCost>
+              </royalAid>
+            </RoyalTitlePermitDef>
+					</value>
+				</li>
+        <li Class="PatchOperationAdd">
+					<xpath>Defs</xpath>
+					<value>
+            <RoyalTitlePermitDef>
+              <defName>BOR_CallLaborerTeam</defName>
+              <label>call kwazaari labor team</label>
+              <description>Call a group of 4 laborers to assist you for 4 days. These workers can do a lot of specialist tasks. You can control them as though they were your own colonists. You are required to keep them safe.</description>
+              <workerClass>RoyalTitlePermitWorker_CallLaborers</workerClass>
+              <minTitle>BOR_Senior</minTitle>
+              <faction>BOR_KwazaarBazaar</faction>
+              <permitPointCost>1</permitPointCost>
+              <uiPosition>(0,4)</uiPosition>
+              <royalAid>
+                <favorCost>8</favorCost>
+                <pawnKindDef>BOR_Laborer_II</pawnKindDef>
+                <pawnCount>4</pawnCount>
+                <aidDurationDays>4</aidDurationDays>
+                <targetingRange>44.9</targetingRange>
+                <targetingRequireLOS>false</targetingRequireLOS>
+              </royalAid>
+              <cooldownDays>60</cooldownDays>
+            </RoyalTitlePermitDef>
+					</value>
+				</li>
+        <li Class="PatchOperationAdd">
+					<xpath>Defs</xpath>
+					<value>
+            <RoyalTitlePermitDef>
+              <defName>BOR_CallLaborerGang</defName>
+              <label>call kwazaari labor gang</label>
+              <description>Call a group of 8 laborers to assist you for 4 days. These workers can do a lot of specialist tasks. You can control them as though they were your own colonists. You are required to keep them safe.</description>
+              <workerClass>RoyalTitlePermitWorker_CallLaborers</workerClass>
+              <minTitle>BOR_TeamLeader</minTitle>
+              <faction>BOR_KwazaarBazaar</faction>
+              <permitPointCost>1</permitPointCost>
+              <prerequisite>BOR_CallLaborerTeam</prerequisite>
+              <uiPosition>(1,4)</uiPosition>
+              <royalAid>
+                <favorCost>16</favorCost>
+                <pawnKindDef>BOR_Laborer_II</pawnKindDef>
+                <pawnCount>8</pawnCount>
+                <aidDurationDays>4</aidDurationDays>
+                <targetingRange>44.9</targetingRange>
+                <targetingRequireLOS>false</targetingRequireLOS>
+              </royalAid>
+              <cooldownDays>60</cooldownDays>
+            </RoyalTitlePermitDef>
+					</value>
+				</li>
+        <li Class="PatchOperationAdd">
+					<xpath>Defs</xpath>
+					<value>
+            <RoyalTitlePermitDef>
+              <defName>BOR_CallLaborerCompany</defName>
+              <label>call kwazaari labor company</label>
+              <description>Call a group of 16 laborers to assist you for 15 days. These workers can do a lot of specialist tasks. You can control them as though they were your own colonists. You are required to keep them safe.</description>
+              <workerClass>RoyalTitlePermitWorker_CallLaborers</workerClass>
+              <minTitle>BOR_BranchManager</minTitle>
+              <faction>BOR_KwazaarBazaar</faction>
+              <permitPointCost>1</permitPointCost>
+              <prerequisite>BOR_CallLaborerGang</prerequisite>
+              <uiPosition>(2,4)</uiPosition>
+              <royalAid>
+                <favorCost>60</favorCost>
+                <pawnKindDef>BOR_Laborer_II</pawnKindDef>
+                <pawnCount>16</pawnCount>
+                <aidDurationDays>15</aidDurationDays>
+                <targetingRange>44.9</targetingRange>
+                <targetingRequireLOS>false</targetingRequireLOS>
+              </royalAid>
+              <cooldownDays>60</cooldownDays>
+            </RoyalTitlePermitDef>
+					</value>
+				</li>
+        <li Class="PatchOperationAdd">
+					<xpath>Defs</xpath>
+					<value>
+            <RoyalTitlePermitDef>
+              <defName>BOR_CallMilitaryAidSmall</defName>
+              <label>call guardsmen squad</label>
+              <description>Call a group of 4 kwazaari guardsmen to aid you in battle.</description>
+              <workerClass>RoyalTitlePermitWorker_CallAid</workerClass>
+              <minTitle>BOR_Junior</minTitle>
+              <faction>BOR_KwazaarBazaar</faction>
+              <permitPointCost>1</permitPointCost>
+              <uiPosition>(0,5)</uiPosition>
+              <royalAid>
+                <favorCost>15</favorCost>
+                <pawnKindDef>BOR_Kwazaari_Guardsman</pawnKindDef>
+                <pawnCount>4</pawnCount>
+                <targetingRange>39.9</targetingRange>
+              </royalAid>
+              <cooldownDays>40</cooldownDays>
+            </RoyalTitlePermitDef>
+					</value>
+				</li>
+        <li Class="PatchOperationAdd">
+					<xpath>Defs</xpath>
+					<value>
+            <RoyalTitlePermitDef>
+              <defName>BOR_CallMilitaryAidLarge</defName>
+              <label>call marine squad</label>
+              <description>Call a group of 6 kwazaari marines to aid you in battle.</description>
+              <workerClass>RoyalTitlePermitWorker_CallAid</workerClass>
+              <minTitle>BOR_Senior</minTitle>
+              <faction>BOR_KwazaarBazaar</faction>
+              <permitPointCost>1</permitPointCost>
+              <uiPosition>(1,5)</uiPosition>
+              <prerequisite>BOR_CallMilitaryAidSmall</prerequisite>
+              <royalAid>
+                <favorCost>25</favorCost>
+                <pawnKindDef>BOR_Kwazaari_Marine</pawnKindDef>
+                <pawnCount>6</pawnCount>
+                <targetingRange>39.9</targetingRange>
+              </royalAid>
+              <cooldownDays>50</cooldownDays>
+            </RoyalTitlePermitDef>
+					</value>
+				</li>
+        <li Class="PatchOperationAdd">
+					<xpath>Defs</xpath>
+					<value>
+            <RoyalTitlePermitDef>
+              <defName>BOR_CallMilitaryAidGrand</defName>
+              <label>call heavy marine squad</label>
+              <description>Call a group of 4 kwazaari heavy marines to aid you in battle.</description>
+              <workerClass>RoyalTitlePermitWorker_CallAid</workerClass>
+              <minTitle>BOR_TeamLeader</minTitle>
+              <faction>BOR_KwazaarBazaar</faction>
+              <permitPointCost>1</permitPointCost>
+              <prerequisite>BOR_CallMilitaryAidLarge</prerequisite>
+              <uiPosition>(2,5)</uiPosition>
+              <royalAid>
+                <favorCost>35</favorCost>
+                <pawnKindDef>BOR_Kwazaari_Heavy_Marine</pawnKindDef>
+                <pawnCount>4</pawnCount>
+                <targetingRange>39.9</targetingRange>
+              </royalAid>
+              <cooldownDays>60</cooldownDays>
+            </RoyalTitlePermitDef>
+					</value>
+				</li>
+        <li Class="PatchOperationAdd">
+					<xpath>Defs</xpath>
+					<value>
+            <RoyalTitlePermitDef>
+              <defName>BOR_CallTransportShuttle</defName>
+              <label>call transport shuttle</label>
+              <description>Call a shuttle for your own use. It will transport colonists, items, and animals anywhere you like within 70 world tiles.</description>
+              <workerClass>RoyalTitlePermitWorker_CallShuttle</workerClass>
+              <minTitle>BOR_TeamLeader</minTitle>
+              <faction>BOR_KwazaarBazaar</faction>
+              <permitPointCost>1</permitPointCost>
+              <cooldownDays>5</cooldownDays>
+              <usableOnWorldMap>true</usableOnWorldMap>
+              <uiPosition>(0,6)</uiPosition>
+              <royalAid>
+                <favorCost>10</favorCost>
+                <targetingRange>44.9</targetingRange>
+                <targetingRequireLOS>false</targetingRequireLOS>
+              </royalAid>
+            </RoyalTitlePermitDef>
+					</value>
+				</li>
+        <li Class="PatchOperationAdd">
+					<xpath>Defs</xpath>
+					<value>
+            <RoyalTitlePermitDef>
+              <defName>BOR_CallOrbitalStrike</defName>
+              <label>call aerodrone strike</label>
+              <description>Call a single-impact aerodrone strike at a target position.</description>
+              <workerClass>RoyalTitlePermitWorker_OrbitalStrike</workerClass>
+              <minTitle>BOR_TeamLeader</minTitle>
+              <faction>BOR_KwazaarBazaar</faction>
+              <permitPointCost>1</permitPointCost>
+              <cooldownDays>15</cooldownDays>
+              <uiPosition>(1,6)</uiPosition>
+              <royalAid>
+                <favorCost>15</favorCost>
+                <targetingRange>44.9</targetingRange>
+                <radius>2.9</radius>
+                <explosionRadiusRange>7.9</explosionRadiusRange>
+                <explosionCount>1</explosionCount>
+                <intervalTicks>60</intervalTicks>
+                <warmupTicks>120</warmupTicks>
+              </royalAid>
+            </RoyalTitlePermitDef>
+					</value>
+				</li>
+        <li Class="PatchOperationAdd">
+					<xpath>Defs</xpath>
+					<value>
+            <RoyalTitlePermitDef>
+              <defName>BOR_CallOrbitalSalvo</defName>
+              <label>call aerodrone salvo</label>
+              <description>Call a salvo of aerodrone strikes around a target position.</description>
+              <workerClass>RoyalTitlePermitWorker_OrbitalStrike</workerClass>
+              <minTitle>BOR_BranchManager</minTitle>
+              <faction>BOR_KwazaarBazaar</faction>
+              <permitPointCost>1</permitPointCost>
+              <cooldownDays>30</cooldownDays>
+              <uiPosition>(2,6)</uiPosition>
+              <royalAid>
+                <favorCost>12</favorCost>
+                <targetingRange>44.9</targetingRange>
+                <radius>7.9</radius>
+                <explosionRadiusRange>5.9</explosionRadiusRange>
+                <explosionCount>6</explosionCount>
+                <intervalTicks>60</intervalTicks>
+                <warmupTicks>120</warmupTicks>
+              </royalAid>
+            </RoyalTitlePermitDef>
+					</value>
+				</li>
+        <li Class="PatchOperationAdd">
+					<xpath>Defs</xpath>
+					<value>
+            <RoyalTitlePermitDef ParentName="DropResourcesBase">
+              <defName>BOR_AnalyzerDropII</defName>
+              <label>sigma-class sagittary autoscope drop</label>
+              <description>Call for a drop of a sigma-class sagittary autoscope.</description>
+              <minTitle>BOR_TeamLeader</minTitle>
+              <faction>BOR_KwazaarBazaar</faction>
+              <permitPointCost>1</permitPointCost>
+              <uiPosition>(3,7)</uiPosition>
+              <cooldownDays>50</cooldownDays>
+              <royalAid>
+                <itemsToDrop>
+                  <BOR_Research_Unlocker_II>1</BOR_Research_Unlocker_II>
+                </itemsToDrop>
+                <favorCost>20</favorCost>
+              </royalAid>
+            </RoyalTitlePermitDef>
+					</value>
+				</li>
+        <li Class="PatchOperationAdd">
+					<xpath>Defs</xpath>
+					<value>
+            <RoyalTitlePermitDef ParentName="DropResourcesBase">
+              <defName>BOR_AnalyzerDropIII</defName>
+              <label>drop of resources for tenebral analyzer</label>
+              <description>Call for a drop of resources needed to construct a dark mirror. Manual not attached.</description>
+              <minTitle>BOR_BranchManager</minTitle>
+              <faction>BOR_KwazaarBazaar</faction>
+              <permitPointCost>1</permitPointCost>
+              <cooldownDays>150</cooldownDays>
+              <uiPosition>(5,7)</uiPosition>
+              <royalAid>
+                <itemsToDrop>
+                  <BOR_Sunsteel>40</BOR_Sunsteel>
+                  <BOR_Tenebrite>50</BOR_Tenebrite>
+                  <BOR_ComponentIII>8</BOR_ComponentIII>
+                </itemsToDrop>
+                <favorCost>50</favorCost>
+              </royalAid>
+            </RoyalTitlePermitDef>
+					</value>
+				</li>
+
+      </operations>
+    </enabled>
+  </Operation>
+
+</Patch>
