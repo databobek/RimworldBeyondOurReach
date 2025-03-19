@@ -7,6 +7,6 @@ namespace BeyondOurReachModSettings
 	[StaticConstructorOnStartup]
 	internal static class ModSettingDefFetcher
 	{
-		internal static readonly List<ModSettingDef> AllModSettingsOrdered = [.. DefDatabase<ModSettingDef>.AllDefsListForReading.OrderBy(x => x.label)];
+		internal static readonly List<ModSettingDef> AllModSettingsOrdered = [.. DefDatabase<ModSettingDef>.AllDefsListForReading.OrderBy(x => x.settingLabel)];
 	}
 }

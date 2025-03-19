@@ -1,7 +1,4 @@
-﻿using RimWorld;
-using System.Collections.Generic;
-using System.Linq;
-using System.Xml;
+﻿using System.Xml;
 using Verse;
 
 namespace BeyondOurReachModSettings
@@ -9,24 +6,23 @@ namespace BeyondOurReachModSettings
 #pragma warning disable CS0649
 	public class PatchOperationModSettings : PatchOperationPathed
 	{
-		private PatchOperation match;
-		private PatchOperation nomatch;
-		private ModSettingDef modSettingDef;
+		private PatchOperation enabled;
+		private PatchOperation disabled;
+		private string modSettingDef;
 
 		protected override bool ApplyWorker(XmlDocument xml)
 		{
 			var contentEnabled = BeyondOurReachModSettings.SettingsDict.TryGetValue(modSettingDef);
-
 			if (contentEnabled)
 			{
-				if (match != null)
+				if (enabled != null)
 				{
-					return match.Apply(xml);
+					return enabled.Apply(xml);
 				}
 			}
-			else if (nomatch != null)
+			else if (disabled != null)
 			{
-				return nomatch.Apply(xml);
+				return disabled.Apply(xml);
 			}
 			return true;
 		}

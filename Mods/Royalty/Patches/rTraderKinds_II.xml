@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+    <Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
+		<modSettingDef>BOR_Setting_KwazaariRoyaltyPermits</modSettingDef>
+		<enabled Class="PatchOperationSequence">
+            <operations>
+				<li Class="PatchOperationAdd">
+                    <xpath>Defs</xpath>
+                    <value>
+    					<TraderKindDef>
+							<defName>BOR_TributeCollector_II</defName>
+							<label>kwazaari archeologist</label>
+							<requestable>False</requestable>
+							<commonality>1</commonality>
+							<category>TributeCollector</category>
+							<tradeCurrency>Favor</tradeCurrency>
+							<faction>BOR_KwazaarBazaar</faction>
+							<hideThingsNotWillingToTrade>True</hideThingsNotWillingToTrade>
+							<stockGenerators>
+								<li Class="StockGenerator_BuyTradeTag">
+									<tag>AnimalExotic</tag>
+								</li>
+								<li Class="StockGenerator_BuyTradeTag">
+									<tag>BOR_Tech_II</tag>
+								</li>
+								<li Class="StockGenerator_BuyTradeTag">
+									<tag>BOR_Tech_III</tag>
+								</li>
+							</stockGenerators>
+						</TraderKindDef>
+                    </value>
+                </li>
+			</operations>
+		</enabled>
+	</Operation>
+	
+</Patch>

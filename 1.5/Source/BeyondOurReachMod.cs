@@ -1,24 +1,32 @@
 ﻿using Verse;
 using UnityEngine;
+using System.Collections.Generic;
 
 namespace BeyondOurReachModSettings
 {
 	public class BeyondOurReachMod : Mod
 	{
 		private static Vector2 ScrollPos = Vector2.zero;
-		private BeyondOurReachModSettings settings;
+		private readonly BeyondOurReachModSettings settings;
+		List<ModSettingDef> cachedDefs;
 
-		public BeyondOurReachMod(ModContentPack content) : base(content) { }
+
+		public BeyondOurReachMod(ModContentPack content) : base(content)
+		{
+			this.settings ??= GetSettings<BeyondOurReachModSettings>();
+		}
 
 
 		public override void DoSettingsWindowContents(Rect inRect)
 		{
-			this.settings ??= GetSettings<BeyondOurReachModSettings>();
-
-			// Doing it in the constructor gives 0 results as Mod gets initialized before loading defs
-			foreach (ModSettingDef modSettingDef in ModSettingDefFetcher.AllModSettingsOrdered)
+			if (cachedDefs is null)
 			{
-				BeyondOurReachModSettings.SettingsDict.TryAdd(modSettingDef, true);
+				cachedDefs = [];
+				foreach (ModSettingDef def in DefDatabase<ModSettingDef>.AllDefsListForReading)
+				{
+					cachedDefs.Add(def);
+					BeyondOurReachModSettings.SettingsDict.TryAdd(def.defName, true);
+				}
 			}
 
 			base.DoSettingsWindowContents(inRect);
@@ -32,17 +40,44 @@ namespace BeyondOurReachModSettings
 
 			try
 			{
-				foreach (var modSetting in ModSettingDefFetcher.AllModSettingsOrdered)
+				foreach (var modSetting in cachedDefs)
 				{
-					var settingBool = BeyondOurReachModSettings.SettingsDict[modSetting];
-					listing.CheckboxLabeled(modSetting.settingLabel, ref settingBool, modSetting.settingDesc);
-					BeyondOurReachModSettings.SettingsDict[modSetting] = settingBool;
+					var settingBool = BeyondOurReachModSettings.SettingsDict[modSetting.defName];
+
+					bool hasExcludingMod = modSetting.excludingModPackageID is not null;
+					bool hasDependingMod = modSetting.dependingModPackageID is not null;
+					bool isDependingModActive = hasDependingMod && ModsConfig.IsActive(modSetting.dependingModPackageID);
+					bool isExcludingModInactive = hasExcludingMod && !ModsConfig.IsActive(modSetting.excludingModPackageID);
+
+					if (isDependingModActive || !hasDependingMod && !hasExcludingMod || isExcludingModInactive)
+					{
+						EnabledOption(listing, modSetting, settingBool);
+					}
+					else
+					{
+						DisabledOption(listing, modSetting);
+					}
 				}
 			}
 			finally
 			{
 				listing.End();
 				Widgets.EndScrollView();
+			}
+		}
+
+
+		private static void EnabledOption(Listing_Standard listing, ModSettingDef modSetting, bool settingBool)
+		{
+			listing.CheckboxLabeled(modSetting.settingLabel, ref settingBool, modSetting.settingDesc);
+			BeyondOurReachModSettings.SettingsDict[modSetting.defName] = settingBool;
+		}
+
+		private static void DisabledOption(Listing_Standard listing, ModSettingDef modSetting)
+		{
+			using (new TextBlock(Color.grey))
+			{
+				listing.Label(modSetting.settingLabel);
 			}
 		}
 

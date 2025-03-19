@@ -1,101 +1,98 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Patch>
-
-    <Operation Class="PatchOperationReplace">
-        <xpath>/Defs/ThingDef[defName = "ArchotechEye" or defName="ArchotechArm" or defName="ArchotechLeg" or @ParentName="ArchoPartNormal"]/costList</xpath>
-        <value>
-            <costList>
-                <BOR_Femtoclusters>2</BOR_Femtoclusters>
-                <BOR_Tenebrite>10</BOR_Tenebrite>
-            </costList>
-        </value>
-    </Operation>
-
-    <Operation Class="PatchOperationReplace">
-        <xpath>/Defs/ThingDef[@ParentName="ArchoPartAdvanced"]/costList</xpath>
-        <value>
-            <costList>
-                <BOR_Femtoclusters>4</BOR_Femtoclusters>
-                <BOR_Tenebrite>25</BOR_Tenebrite>
-            </costList>
-        </value>
-    </Operation>
-
-    <Operation Class="PatchOperationAdd">
-        <xpath>/Defs/RecipeDef[defName="InstallArchotechMembrane" or defName="InstallArchotechBrainMelder" or defName="InstallArchotechEar" or defName="InstallArchotechDenture" or defName="InstallArchotechStomach" or defName="InstallArchotechLung" or defName="InstallArchotechSpine" or defName="InstallArchotechPelvis" or defName="InstallArchotechLiver" or defName="InstallArchotechKidney" or defName="InstallArchotechHeart" or defName="InstallArchotechObliterator" or defName="InstallAdvancedArchotechArm" or defName="InstallAdvancedArchotechLeg" or defName="InstallArchotechEye" or defName="InstallArchotechArm" or defName="InstallArchotechLeg" or defName="InstallArchotechDeathClaw"]/fixedIngredientFilter/thingDefs</xpath>
-        <value>
-            <li>BOR_Femtoclusters</li>
-        </value>
-    </Operation>
-    <Operation Class="PatchOperationAdd">
-        <xpath>/Defs/RecipeDef[defName="InstallArchotechMembrane" or defName="InstallArchotechBrainMelder" or defName="InstallArchotechEar" or defName="InstallArchotechDenture" or defName="InstallArchotechStomach" or defName="InstallArchotechLung" or defName="InstallArchotechSpine" or defName="InstallArchotechPelvis" or defName="InstallArchotechLiver" or defName="InstallArchotechKidney" or defName="InstallArchotechHeart" or defName="InstallArchotechObliterator" or defName="InstallAdvancedArchotechArm" or defName="InstallAdvancedArchotechLeg" or defName="InstallArchotechEye" or defName="InstallArchotechArm" or defName="InstallArchotechLeg" or defName="InstallArchotechDeathClaw"]/ingredients</xpath>
-        <value>
-            <li>
-                <filter>
-                    <thingDefs>
+    <Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
+		<modSettingDef>BOR_Setting_MergeArcotechResources</modSettingDef>
+		<enabled Class="PatchOperationSequence">
+			<operations>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName = "ArchotechEye" or defName="ArchotechArm" or defName="ArchotechLeg" or @ParentName="ArchoPartNormal"]/costList</xpath>
+                    <value>
+                        <costList>
+                            <BOR_Femtoclusters>2</BOR_Femtoclusters>
+                            <BOR_Tenebrite>10</BOR_Tenebrite>
+                        </costList>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[@ParentName="ArchoPartAdvanced"]/costList</xpath>
+                    <value>
+                        <costList>
+                            <BOR_Femtoclusters>4</BOR_Femtoclusters>
+                            <BOR_Tenebrite>25</BOR_Tenebrite>
+                        </costList>
+                    </value>
+                </li>
+                <li Class="PatchOperationAdd">
+                    <xpath>Defs/RecipeDef[defName="InstallArchotechMembrane" or defName="InstallArchotechBrainMelder" or defName="InstallArchotechEar" or defName="InstallArchotechDenture" or defName="InstallArchotechStomach" or defName="InstallArchotechLung" or defName="InstallArchotechSpine" or defName="InstallArchotechPelvis" or defName="InstallArchotechLiver" or defName="InstallArchotechKidney" or defName="InstallArchotechHeart" or defName="InstallArchotechObliterator" or defName="InstallAdvancedArchotechArm" or defName="InstallAdvancedArchotechLeg" or defName="InstallArchotechEye" or defName="InstallArchotechArm" or defName="InstallArchotechLeg" or defName="InstallArchotechDeathClaw"]/fixedIngredientFilter/thingDefs</xpath>
+                    <value>
                         <li>BOR_Femtoclusters</li>
-                    </thingDefs>
-                </filter>
-                <count>1</count>
-            </li>
-        </value>
-    </Operation>
-
-    <Operation Class="PatchOperationRemove">
-        <xpath>/Defs/RecipeDef[defName="Make_NanoMachinery" or defName="Make_PicoMachinery" or defName="Make_AttoMachinery" or defName="Make_Bulk_NanoMachinery" or defName="Make_Bulk_PicoMachinery" or defName="Make_Bulk_AttoMachinery" or defName="Make_Spacer_Components" or defName="Distill_Silver"]</xpath>
-    </Operation>
-
-    <Operation Class="PatchOperationReplace">
-        <xpath>/Defs/TerrainTemplateDef[defName="NanomachineryFloor"]/costList</xpath>
-        <value>
-            <costList>
-                <BOR_Nanoclusters>1</BOR_Nanoclusters>
-            </costList>
-        </value>
-    </Operation>
-
-    <Operation Class="PatchOperationReplace">
-        <xpath>/Defs/TerrainTemplateDef[defName="PicomachineryFloor"]/costList</xpath>
-        <value>
-            <costList>
-                <BOR_Picoclusters>1</BOR_Picoclusters>
-            </costList>
-        </value>
-    </Operation>
-
-    <Operation Class="PatchOperationReplace">
-        <xpath>/Defs/TerrainTemplateDef[defName="AttomachineryFloor"]/costList</xpath>
-        <value>
-            <costList>
-                <BOR_Femtoclusters>1</BOR_Femtoclusters>
-            </costList>
-        </value>
-    </Operation>
-
-    <Operation Class="PatchOperationReplace">
-        <xpath>/Defs/TerrainDef[defName="NanomachineryNaturalsoil"]/costList</xpath>
-        <value>
-            <costList>
-                <BOR_Nanoclusters>1</BOR_Nanoclusters>
-            </costList>
-        </value>
-    </Operation>
-
-    <Operation Class="PatchOperationReplace">
-        <xpath>/Defs/TerrainDef[defName="PicomachineryNaturalsoil"]/costList</xpath>
-        <value>
-            <costList>
-                <BOR_Picoclusters>1</BOR_Picoclusters>
-            </costList>
-        </value>
-    </Operation>
-
-    <Operation Class="PatchOperationReplace">
-        <xpath>/Defs/TerrainDef[defName="AttomachineryNaturalsoil"]/costList</xpath>
-        <value>
-            <costList>
-                <BOR_Femtoclusters>1</BOR_Femtoclusters>
-            </costList>
-        </value>
-    </Operation>
+                    </value>
+                </li>
+                <li Class="PatchOperationAdd">
+                    <xpath>Defs/RecipeDef[defName="InstallArchotechMembrane" or defName="InstallArchotechBrainMelder" or defName="InstallArchotechEar" or defName="InstallArchotechDenture" or defName="InstallArchotechStomach" or defName="InstallArchotechLung" or defName="InstallArchotechSpine" or defName="InstallArchotechPelvis" or defName="InstallArchotechLiver" or defName="InstallArchotechKidney" or defName="InstallArchotechHeart" or defName="InstallArchotechObliterator" or defName="InstallAdvancedArchotechArm" or defName="InstallAdvancedArchotechLeg" or defName="InstallArchotechEye" or defName="InstallArchotechArm" or defName="InstallArchotechLeg" or defName="InstallArchotechDeathClaw"]/ingredients</xpath>
+                    <value>
+                        <li>
+                            <filter>
+                                <thingDefs>
+                                    <li>BOR_Femtoclusters</li>
+                                </thingDefs>
+                            </filter>
+                            <count>1</count>
+                        </li>
+                    </value>
+                </li>
+                <li Class="PatchOperationRemove">
+                    <xpath>Defs/RecipeDef[defName="Make_NanoMachinery" or defName="Make_PicoMachinery" or defName="Make_AttoMachinery" or defName="Make_Bulk_NanoMachinery" or defName="Make_Bulk_PicoMachinery" or defName="Make_Bulk_AttoMachinery" or defName="Make_Spacer_Components" or defName="Distill_Silver"]</xpath>
+                </li>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/TerrainTemplateDef[defName="NanomachineryFloor"]/costList</xpath>
+                    <value>
+                        <costList>
+                            <BOR_Nanoclusters>1</BOR_Nanoclusters>
+                        </costList>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/TerrainTemplateDef[defName="PicomachineryFloor"]/costList</xpath>
+                    <value>
+                        <costList>
+                            <BOR_Picoclusters>1</BOR_Picoclusters>
+                        </costList>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/TerrainTemplateDef[defName="AttomachineryFloor"]/costList</xpath>
+                    <value>
+                        <costList>
+                            <BOR_Femtoclusters>1</BOR_Femtoclusters>
+                        </costList>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/TerrainDef[defName="NanomachineryNaturalsoil"]/costList</xpath>
+                    <value>
+                        <costList>
+                            <BOR_Nanoclusters>1</BOR_Nanoclusters>
+                        </costList>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/TerrainDef[defName="PicomachineryNaturalsoil"]/costList</xpath>
+                    <value>
+                        <costList>
+                            <BOR_Picoclusters>1</BOR_Picoclusters>
+                        </costList>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/TerrainDef[defName="AttomachineryNaturalsoil"]/costList</xpath>
+                    <value>
+                        <costList>
+                            <BOR_Femtoclusters>1</BOR_Femtoclusters>
+                        </costList>
+                    </value>
+                </li>
+			</operations>
+		</enabled>
+	</Operation>
 </Patch>
