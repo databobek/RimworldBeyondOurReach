@@ -1,53 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Patch>
-  <Operation Class="PatchOperationReplace">
-    <xpath>Defs/ThingDef[defName="RH_RepairHub_Small"]/costList</xpath>
-    <value>
-      <costList>
-        <Plasteel>150</Plasteel>
-        <BOR_Sunsteel>50</BOR_Sunsteel>
-        <BOR_Nanoclusters>1</BOR_Nanoclusters>
-      </costList>
-    </value>
-  </Operation>
-  <Operation Class="PatchOperationReplace">
-    <xpath>Defs/ThingDef[defName="RH_RepairHub_Large"]/costList</xpath>
-    <value>
-      <costList>
-        <BOR_Sunsteel>300</BOR_Sunsteel>
-        <BOR_QuasarAlloy>100</BOR_QuasarAlloy>
-        <BOR_Picoclusters>2</BOR_Picoclusters>
-      </costList>
-    </value>
-  </Operation>
-  <Operation Class="PatchOperationReplace">
-    <xpath>Defs/ThingDef[defName="RH_RepairHub_Archotech"]/costList</xpath>
-    <value>
-      <costList>
-        <BOR_QuasarAlloy>70</BOR_QuasarAlloy>
-        <BOR_Sunsteel>30</BOR_Sunsteel>
-        <BOR_Picoclusters>3</BOR_Picoclusters>
-      </costList>
-    </value>
-  </Operation>
-  <Operation Class="PatchOperationReplace">
-    <xpath>Defs/ThingDef[defName="RH_Apparel_RepairBelt"]/costList</xpath>
-    <value>
-      <costList>
-        <BOR_Nanoclusters>1</BOR_Nanoclusters>
-        <Plasteel>50</Plasteel>
-        <BOR_Sunsteel>20</BOR_Sunsteel>
-      </costList>
-    </value>
-  </Operation>
-  <Operation Class="PatchOperationReplace">
-    <xpath>Defs/ThingDef[defName="RepairHubImplant"]/costList</xpath>
-    <value>
-      <costList>
-        <BOR_Sunsteel>15</BOR_Sunsteel>
-        <BOR_Nanoclusters>1</BOR_Nanoclusters>
-      </costList>
-    </value>
-  </Operation>
+  <Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
+    <modSettingDef>BOR_Setting_IntegrateRepairHubsIntoBORResearch</modSettingDef>
+    <enabled Class="PatchOperationSequence">
+      <operations>
 
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName="RH_RepairHub_Small"]/costList</xpath>
+          <value>
+            <costList>
+              <Plasteel>150</Plasteel>
+              <BOR_Sunsteel>50</BOR_Sunsteel>
+              <BOR_Nanoclusters>1</BOR_Nanoclusters>
+            </costList>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName="RH_RepairHub_Large"]/costList</xpath>
+          <value>
+            <costList>
+              <BOR_Sunsteel>300</BOR_Sunsteel>
+              <BOR_QuasarAlloy>100</BOR_QuasarAlloy>
+              <BOR_Picoclusters>2</BOR_Picoclusters>
+            </costList>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName="RH_RepairHub_Archotech"]/costList</xpath>
+          <value>
+            <costList>
+              <BOR_QuasarAlloy>70</BOR_QuasarAlloy>
+              <BOR_Sunsteel>30</BOR_Sunsteel>
+              <BOR_Picoclusters>3</BOR_Picoclusters>
+            </costList>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName="RH_Apparel_RepairBelt"]/costList</xpath>
+          <value>
+            <costList>
+              <BOR_Nanoclusters>1</BOR_Nanoclusters>
+              <Plasteel>50</Plasteel>
+              <BOR_Sunsteel>20</BOR_Sunsteel>
+            </costList>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName="RepairHubImplant"]/costList</xpath>
+          <value>
+            <costList>
+              <BOR_Sunsteel>15</BOR_Sunsteel>
+              <BOR_Nanoclusters>1</BOR_Nanoclusters>
+            </costList>
+          </value>
+        </li>
+
+      </operations>
+    </enabled>
+  </Operation>
 </Patch>

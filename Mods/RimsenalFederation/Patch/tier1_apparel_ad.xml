@@ -1,0 +1,528 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+
+	<Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
+		<modSettingDef>BOR_Setting_RimsenalFederationApparelVariants</modSettingDef>
+		<enabled Class="PatchOperationAdd">
+			<xpath>Defs</xpath>
+			<value>
+
+				<ThingDef ParentName="ApparelBase">
+					<defName>BOR_Solar_FedSuit</defName>
+					<label>solar federation jumpsuit</label>
+					<techLevel>Spacer</techLevel>
+					<description>A carbon crystalline fiber solar jumpsuit for military personnel. It is light and thin, but surprisingly sturdy. It is the uniform of the Federation.</description>
+					<graphicData>
+						<texPath>Things/Apparel/FedSuit</texPath>
+						<graphicClass>Graphic_Single</graphicClass>
+						<color>(0.36, 0.62, 0.68)</color>
+					</graphicData>
+					<statBases>
+						<Mass>1.0</Mass>
+						<MaxHitPoints>525</MaxHitPoints>
+						<ArmorRating_Sharp>0.225</ArmorRating_Sharp>
+						<ArmorRating_Heat>0.3</ArmorRating_Heat>
+						<Insulation_Cold>23</Insulation_Cold>
+						<Insulation_Heat>8</Insulation_Heat>
+						<EquipDelay>2</EquipDelay>
+					</statBases>
+					<costList>
+						<BOR_Sunsteel>20</BOR_Sunsteel>
+						<BOR_Sunweave>30</BOR_Sunweave>
+					</costList>
+					<thingCategories>
+						<li>BOR_Apparel</li>
+					</thingCategories>
+					<generateCommonality>0.05</generateCommonality>
+					<apparel>
+						<tags>
+							<li>ADJS</li>
+						</tags>
+						<defaultOutfitTags>
+							<li>Worker</li>
+							<li>Soldier</li>
+						</defaultOutfitTags>
+						<wornGraphicPath>Things/Apparel/FedSuit</wornGraphicPath>
+						<layers>
+							<li>OnSkin</li>
+						</layers>
+						<bodyPartGroups>
+							<li>Neck</li>
+							<li>Shoulders</li>
+							<li>Torso</li>
+							<li>Arms</li>
+							<li>Legs</li>
+						</bodyPartGroups>
+					</apparel>
+
+					<tradeTags>
+						<li>BOR_Tech_I</li>
+					</tradeTags>
+				</ThingDef>
+
+				<ThingDef ParentName="FedApparelMakeableBase">
+					<defName>BOR_Solar_Apparel_Judicator</defName>
+					<label>riot gear</label>
+					<techLevel>Spacer</techLevel>
+					<description>A "Judicator" solar riot gear was produced by Arms Dynamics for Federation human commanders. This is a really great personal armor if you can withstand from scornful eyes of the people.</description>
+					<graphicData>
+						<texPath>Things/Apparel/Judicator</texPath>
+						<graphicClass>Graphic_Single</graphicClass>
+						<color>(0.36, 0.62, 0.68)</color>
+					</graphicData>
+					<recipeMaker>
+						<unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+						<researchPrerequisites>
+							<li>BOR_Research_Armor_I</li>
+							<li>PoweredArmor</li>
+						</researchPrerequisites>
+						<skillRequirements>
+							<Crafting>14</Crafting>
+						</skillRequirements>
+					</recipeMaker>
+					<costList>
+						<CrucibleCore>8</CrucibleCore>
+						<BOR_Sunsteel>120</BOR_Sunsteel>
+						<BOR_ComponentII>4</BOR_ComponentII>
+					</costList>
+					<generateCommonality>0.05</generateCommonality>
+					<statBases>
+						<Mass>11</Mass>
+						<WorkToMake>93000</WorkToMake>
+						<MaxHitPoints>750</MaxHitPoints>
+						<Flammability>0.333</Flammability>
+						<ArmorRating_Sharp>1.8</ArmorRating_Sharp>
+						<ArmorRating_Blunt>0.15</ArmorRating_Blunt>
+						<ArmorRating_Heat>1.125</ArmorRating_Heat>
+						<Insulation_Cold>53</Insulation_Cold>
+						<Insulation_Heat>23</Insulation_Heat>
+						<EquipDelay>12</EquipDelay>
+					</statBases>
+					<thingCategories>
+						<li>BOR_Apparel</li>
+					</thingCategories>
+					<equippedStatOffsets>
+						<MoveSpeed>-0.2</MoveSpeed>
+						<SocialImpact>-0.1</SocialImpact>
+					</equippedStatOffsets>
+					<apparel>
+						<tags>
+							<li>ADJS</li>
+							<li>BOR_Military_I</li>
+							<li>BOR_Royal_I</li>
+						</tags>
+						<wornGraphicPath>Things/Apparel/Judicator</wornGraphicPath>
+						<layers>
+							<li>Middle</li>
+							<li>Shell</li>
+						</layers>
+						<bodyPartGroups>
+							<li>Neck</li>
+							<li>Shoulders</li>
+							<li>Torso</li>
+							<li>Arms</li>
+							<li>Legs</li>
+						</bodyPartGroups>
+						<defaultOutfitTags>
+							<li>Soldier</li>
+						</defaultOutfitTags>
+					</apparel>
+
+					<tradeTags>
+						<li>BOR_Tech_I</li>
+					</tradeTags>
+				</ThingDef>
+
+				<ThingDef ParentName="FedArmorHelmetMakeableBase">
+					<defName>BOR_Solar_Apparel_JudicatorH</defName>
+					<thingCategories>
+						<li>BOR_Armor_Headgear_I</li>
+					</thingCategories>
+					<label>solar riot gear helmet</label>
+					<techLevel>Spacer</techLevel>
+					<description>It is a solar helmet of the FPC riot gear. If you wear this, you will be an eyesore of your colony.</description>
+					<graphicData>
+						<texPath>Things/Apparel/JudicatorH</texPath>
+						<graphicClass>Graphic_Single</graphicClass>
+						<color>(0.36, 0.62, 0.68)</color>
+					</graphicData>
+					<recipeMaker>
+						<unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+						<researchPrerequisites>
+							<li>BOR_Research_Armor_I</li>
+							<li>PoweredArmor</li>
+						</researchPrerequisites>
+						<skillRequirements>
+							<Crafting>14</Crafting>
+						</skillRequirements>
+					</recipeMaker>
+					<costList>
+						<CrucibleCore>4</CrucibleCore>
+						<BOR_Sunsteel>60</BOR_Sunsteel>
+						<ComponentSpacer>6</ComponentSpacer>
+					</costList>
+					<statBases>
+						<Mass>2.0</Mass>
+						<WorkToMake>34500</WorkToMake>
+						<MaxHitPoints>675</MaxHitPoints>
+						<Flammability>0.333</Flammability>
+						<ArmorRating_Sharp>1.65</ArmorRating_Sharp>
+						<ArmorRating_Blunt>0.15</ArmorRating_Blunt>
+						<ArmorRating_Heat>1.05</ArmorRating_Heat>
+						<Insulation_Cold>8</Insulation_Cold>
+						<Insulation_Heat>8</Insulation_Heat>
+						<EquipDelay>3</EquipDelay>
+					</statBases>
+					<equippedStatOffsets>
+						<SocialImpact>-0.1</SocialImpact>
+					</equippedStatOffsets>
+					<generateCommonality>0.05</generateCommonality>
+					<apparel>
+						<defaultOutfitTags>
+							<li>Soldier</li>
+						</defaultOutfitTags>
+						<tags>
+							<li>ADJS</li>
+							<li>BOR_Military_I</li>
+							<li>BOR_Royal_I</li>
+						</tags>
+						<wornGraphicPath>Things/Apparel/JudicatorH</wornGraphicPath>
+						<layers>
+							<li>Overhead</li>
+						</layers>
+						<bodyPartGroups>
+							<li>FullHead</li>
+						</bodyPartGroups>
+					</apparel>
+
+					<tradeTags>
+						<li>BOR_Tech_I</li>
+					</tradeTags>
+				</ThingDef>
+
+
+				<ThingDef ParentName="FedApparelMakeableBase">
+					<defName>BOR_Solar_Apparel_MarksmanGear</defName>
+					<label>solar marksman gear</label>
+					<techLevel>Spacer</techLevel>
+					<description>Arms Dynamics "Condemner" solar Marksman gear. With joint stabilizer unit, this outfit assure steady aim. Standard issue gear of the Federation Peacebringer assassin corps.</description>
+					<graphicData>
+						<texPath>Things/Apparel/Condemner</texPath>
+						<graphicClass>Graphic_Single</graphicClass>
+						<color>(0.36, 0.62, 0.68)</color>
+					</graphicData>
+					<thingCategories>
+						<li>BOR_Apparel</li>
+					</thingCategories>
+					<recipeMaker>
+						<unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+						<researchPrerequisites>
+							<li>BOR_Research_Armor_I</li>
+							<li>PoweredArmor</li>
+						</researchPrerequisites>
+						<skillRequirements>
+							<Crafting>11</Crafting>
+						</skillRequirements>
+					</recipeMaker>
+					<costList>
+						<CrucibleCore>4</CrucibleCore>
+						<BOR_Sunsteel>100</BOR_Sunsteel>
+						<ComponentSpacer>10</ComponentSpacer>
+					</costList>
+					<statBases>
+						<Mass>5.417</Mass>
+						<WorkToMake>78000</WorkToMake>
+						<MaxHitPoints>225</MaxHitPoints>
+						<ArmorRating_Blunt>0.075</ArmorRating_Blunt>
+						<ArmorRating_Sharp>0.45</ArmorRating_Sharp>
+						<ArmorRating_Heat>0.3</ArmorRating_Heat>
+						<Insulation_Cold>38</Insulation_Cold>
+						<Insulation_Heat>23</Insulation_Heat>
+						<EquipDelay>6</EquipDelay>
+					</statBases>
+					<equippedStatOffsets>
+						<AimingDelayFactor>-0.167</AimingDelayFactor>
+						<SocialImpact>-0.1</SocialImpact>
+					</equippedStatOffsets>
+					<generateCommonality>0.05</generateCommonality>
+					<apparel>
+						<tags>
+							<li>ADJS</li>
+							<li>BOR_Military_I</li>
+							<li>BOR_Royal_I</li>
+						</tags>
+						<wornGraphicPath>Things/Apparel/Condemner</wornGraphicPath>
+						<layers>
+							<li>Middle</li>
+							<li>Shell</li>
+						</layers>
+						<bodyPartGroups>
+							<li>Neck</li>
+							<li>Shoulders</li>
+							<li>Torso</li>
+							<li>Arms</li>
+							<li>Legs</li>
+						</bodyPartGroups>
+						<defaultOutfitTags>
+							<li>Soldier</li>
+						</defaultOutfitTags>
+					</apparel>
+
+					<tradeTags>
+						<li>BOR_Tech_I</li>
+					</tradeTags>
+				</ThingDef>
+
+				<ThingDef ParentName="FedArmorHelmetMakeableBase">
+					<defName>BOR_Solar_Apparel_MarksmanGearH</defName>
+					<thingCategories>
+						<li>BOR_Armor_Headgear_I</li>
+					</thingCategories>
+					<label>marksmangear helmet</label>
+					<techLevel>Spacer</techLevel>
+					<description>It is a solar helmet of the "Condemner" marksman gear. Integrated target designator guarantees high accuracy.</description>
+					<graphicData>
+						<texPath>Things/Apparel/CondemnerH</texPath>
+						<graphicClass>Graphic_Single</graphicClass>
+						<color>(0.36, 0.62, 0.68)</color>
+					</graphicData>
+					<recipeMaker>
+						<unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+						<researchPrerequisites>
+							<li>BOR_Research_Armor_I</li>
+							<li>ReconArmor</li>
+						</researchPrerequisites>
+						<skillRequirements>
+							<Crafting>11</Crafting>
+						</skillRequirements>
+					</recipeMaker>
+					<costList>
+						<CrucibleCore>2</CrucibleCore>
+						<BOR_Sunsteel>40</BOR_Sunsteel>
+						<ComponentSpacer>5</ComponentSpacer>
+					</costList>
+					<statBases>
+						<Mass>1.833</Mass>
+						<WorkToMake>27000</WorkToMake>
+						<MaxHitPoints>225</MaxHitPoints>
+						<ArmorRating_Blunt>0.075</ArmorRating_Blunt>
+						<ArmorRating_Sharp>0.45</ArmorRating_Sharp>
+						<ArmorRating_Heat>0.3</ArmorRating_Heat>
+						<Insulation_Cold>8</Insulation_Cold>
+						<Insulation_Heat>8</Insulation_Heat>
+						<EquipDelay>2</EquipDelay>
+					</statBases>
+					<equippedStatOffsets>
+						<AimingDelayFactor>-0.167</AimingDelayFactor>
+						<SocialImpact>-0.1</SocialImpact>
+					</equippedStatOffsets>
+					<generateCommonality>0.05</generateCommonality>
+					<apparel>
+						<defaultOutfitTags>
+							<li>Soldier</li>
+						</defaultOutfitTags>
+						<tags>
+							<li>ADJS</li>
+							<li>BOR_Military_I</li>
+							<li>BOR_Royal_I</li>
+						</tags>
+						<wornGraphicPath>Things/Apparel/CondemnerH</wornGraphicPath>
+						<layers>
+							<li>Overhead</li>
+						</layers>
+						<bodyPartGroups>
+							<li>FullHead</li>
+						</bodyPartGroups>
+					</apparel>
+
+					<tradeTags>
+						<li>BOR_Tech_I</li>
+					</tradeTags>
+				</ThingDef>
+
+
+				<ThingDef ParentName="FedApparelMakeableBase">
+					<defName>BOR_Solar_Apparel_UGCuirass</defName>
+					<label>unity guard solar cuirass</label>
+					<techLevel>Spacer</techLevel>
+					<description>Standard issue solar body armor of the federation unity guards.</description>
+					<graphicData>
+						<texPath>Things/Apparel/UGCuirass</texPath>
+						<graphicClass>Graphic_Single</graphicClass>
+						<color>(0.36, 0.62, 0.68)</color>
+					</graphicData>
+					<thingCategories>
+						<li>BOR_Apparel</li>
+					</thingCategories>
+					<recipeMaker>
+						<unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+						<researchPrerequisites>
+							<li>BOR_Research_Armor_I</li>
+							<li>CrucibleTech</li>
+						</researchPrerequisites>
+						<skillRequirements>
+							<Crafting>8</Crafting>
+						</skillRequirements>
+					</recipeMaker>
+					<costList>
+						<BOR_Sunsteel>100</BOR_Sunsteel>
+						<ComponentSpacer>8</ComponentSpacer>
+					</costList>
+					<statBases>
+						<Mass>5.417</Mass>
+						<WorkToMake>58500</WorkToMake>
+						<MaxHitPoints>300</MaxHitPoints>
+						<ArmorRating_Sharp>1.65</ArmorRating_Sharp>
+						<ArmorRating_Heat>0.45</ArmorRating_Heat>
+						<EquipDelay>4</EquipDelay>
+					</statBases>
+					<equippedStatOffsets>
+						<MoveSpeed>-0.1</MoveSpeed>
+					</equippedStatOffsets>
+					<generateCommonality>0.05</generateCommonality>
+					<apparel>
+						<tags>
+							<li>ADJS</li>
+							<li>FedUnity</li>
+						</tags>
+						<wornGraphicPath>Things/Apparel/UGCuirass</wornGraphicPath>
+						<layers>
+							<li>Middle</li>
+						</layers>
+						<bodyPartGroups>
+							<li>Torso</li>
+							<li>Shoulders</li>
+							<li>Arms</li>
+							<li>Neck</li>
+						</bodyPartGroups>
+						<defaultOutfitTags>
+							<li>Soldier</li>
+						</defaultOutfitTags>
+					</apparel>
+
+					<tradeTags>
+						<li>BOR_Tech_I</li>
+					</tradeTags>
+				</ThingDef>
+
+				<ThingDef ParentName="FedArmorHelmetMakeableBase">
+					<defName>BOR_Solar_Apparel_UGHelmet</defName>
+					<label>unity guard solar helmet</label>
+					<thingCategories>
+						<li>BOR_Armor_Headgear_I</li>
+					</thingCategories>
+					<techLevel>Spacer</techLevel>
+					<description>Standard issue solar helmet of the federation unity guards.</description>
+					<graphicData>
+						<texPath>Things/Apparel/UGHelmet</texPath>
+						<graphicClass>Graphic_Single</graphicClass>
+						<color>(0.36, 0.62, 0.68)</color>
+					</graphicData>
+					<recipeMaker>
+						<unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+						<researchPrerequisites>
+							<li>BOR_Research_Armor_I</li>
+							<li>CrucibleTech</li>
+						</researchPrerequisites>
+						<skillRequirements>
+							<Crafting>8</Crafting>
+						</skillRequirements>
+					</recipeMaker>
+					<costList>
+						<BOR_Sunsteel>70</BOR_Sunsteel>
+						<ComponentSpacer>5</ComponentSpacer>
+					</costList>
+					<statBases>
+						<Mass>1.833</Mass>
+						<WorkToMake>21000</WorkToMake>
+						<MaxHitPoints>225</MaxHitPoints>
+						<ArmorRating_Sharp>1.65</ArmorRating_Sharp>
+						<ArmorRating_Heat>0.45</ArmorRating_Heat>
+						<Insulation_Cold>8</Insulation_Cold>
+						<Insulation_Heat>8</Insulation_Heat>
+						<EquipDelay>2</EquipDelay>
+					</statBases>
+					<equippedStatOffsets>
+						<SocialImpact>-0.1</SocialImpact>
+					</equippedStatOffsets>
+					<generateCommonality>0.05</generateCommonality>
+					<apparel>
+						<defaultOutfitTags>
+							<li>Soldier</li>
+						</defaultOutfitTags>
+						<tags>
+							<li>ADJS</li>
+							<li>FedUnity</li>
+						</tags>
+						<wornGraphicPath>Things/Apparel/UGHelmet</wornGraphicPath>
+						<layers>
+							<li>Overhead</li>
+						</layers>
+						<bodyPartGroups>
+							<li>FullHead</li>
+						</bodyPartGroups>
+					</apparel>
+
+					<tradeTags>
+						<li>BOR_Tech_I</li>
+					</tradeTags>
+				</ThingDef>
+
+
+				<ThingDef ParentName="ApparelBase">
+					<defName>BOR_Solar_Apparel_UGCloak</defName>
+					<label>unity guard solar cloak</label>
+					<techLevel>Spacer</techLevel>
+					<description>Solar cloak that usually worn by the federation unity guards. It's more like to ornament than practical outfit.</description>
+					<graphicData>
+						<texPath>Things/Apparel/UGCloak</texPath>
+						<graphicClass>Graphic_Single</graphicClass>
+						<color>(0.36, 0.62, 0.68)</color>
+					</graphicData>
+					<statBases>
+						<Mass>0.417</Mass>
+						<MarketValue>150</MarketValue>
+						<MaxHitPoints>225</MaxHitPoints>
+						<ArmorRating_Blunt>0.075</ArmorRating_Blunt>
+						<ArmorRating_Sharp>0.075</ArmorRating_Sharp>
+						<ArmorRating_Heat>0.075</ArmorRating_Heat>
+						<Insulation_Cold>8</Insulation_Cold>
+						<Insulation_Heat>5</Insulation_Heat>
+						<EquipDelay>2</EquipDelay>
+					</statBases>
+					<costList>
+						<BOR_Sunsteel>5</BOR_Sunsteel>
+						<BOR_Sunweave>20</BOR_Sunweave>
+					</costList>
+					<thingCategories>
+						<li>BOR_Apparel</li>
+					</thingCategories>
+					<generateCommonality>0.05</generateCommonality>
+					<apparel>
+						<tags>
+							<li>ADJS</li>
+							<li>FedUnity</li>
+						</tags>
+						<defaultOutfitTags>
+							<li>Worker</li>
+							<li>Soldier</li>
+						</defaultOutfitTags>
+						<wornGraphicPath>Things/Apparel/UGCloak</wornGraphicPath>
+						<layers>
+							<li>Shell</li>
+						</layers>
+						<bodyPartGroups>
+							<li>Shoulders</li>
+							<li>Arms</li>
+						</bodyPartGroups>
+					</apparel>
+
+					<tradeTags>
+						<li>BOR_Tech_I</li>
+					</tradeTags>
+				</ThingDef>
+			
+			</value>
+		</enabled>
+	</Operation>
+</Patch>

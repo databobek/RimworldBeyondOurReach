@@ -1,175 +1,142 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Patch>
   <Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
-		<modSettingDef>BOR_Setting_KwazaariRoyaltyPermits</modSettingDef>
-		<enabled Class="PatchOperationSequence">
-      <operations>
-				
+    <modSettingDef>BOR_Setting_KwazaariRoyaltyPermits</modSettingDef>
+    <enabled Class="PatchOperationAdd">
+      <xpath>Defs</xpath>
+      <value>
+
         <!-- ============================= Thoughts related to corpo titles ============================= -->
 
-				<li Class="PatchOperationAdd">
-					<xpath>Defs</xpath>
-					<value>
-	          <ThoughtDef>
-              <defName>BOR_GainedTitle</defName>
-              <durationDays>3</durationDays>
-              <thoughtClass>Thought_MemoryRoyalTitle</thoughtClass>
-              <nullifyingTraits>
-                <li>Ascetic</li>
-              </nullifyingTraits>
-              <stages>
-                <li>
-                  <label>Received {TITLE} position</label>
-                  <description>I have been given the position of a {TITLE}. I love the recognition!</description>
-                  <baseMoodEffect>5</baseMoodEffect>
-                </li>
-              </stages>
-            </ThoughtDef>
-					</value>
-				</li>
-        <li Class="PatchOperationAdd">
-					<xpath>Defs</xpath>
-					<value>
-	          <ThoughtDef>
-              <defName>BOR_LostTitle</defName>
-              <durationDays>3</durationDays>
-              <thoughtClass>Thought_MemoryRoyalTitle</thoughtClass>
-              <nullifyingTraits>
-                <li>Ascetic</li>
-              </nullifyingTraits>
-              <stages>
-                <li>
-                  <label>Lost the {TITLE} position</label>
-                  <description>I lost my {TITLE} position.</description>
-                  <baseMoodEffect>-5</baseMoodEffect>
-                </li>
-              </stages>
-            </ThoughtDef>
-					</value>
-				</li>
-        <li Class="PatchOperationAdd">
-					<xpath>Defs</xpath>
-					<value>
-	          <ThoughtDef>
-              <defName>TitleApparelRequirementNotMet</defName>
-              <workerClass>ThoughtWorker_RoyalTitleApparelRequirementNotMet</workerClass>
-              <validWhileDespawned>true</validWhileDespawned>
-              <nullifyingTraits>
-                <li>Ascetic</li>
-              </nullifyingTraits>
-              <developmentalStageFilter>Adult</developmentalStageFilter>
-              <stages>
-                <li>
-                  <label>want {TITLE_label}-specific apparel</label>
-                  <description>Would be nice if I could actually look the part of a {TITLE_indefinite}.\n\n{0}</description>
-                  <baseMoodEffect>-2</baseMoodEffect>
-                </li>
-              </stages>
-            </ThoughtDef>
-					</value>
-				</li>
-        <li Class="PatchOperationAdd">
-					<xpath>Defs</xpath>
-					<value>
-	          <ThoughtDef>
-              <defName>TitleApparelMinQualityNotMet</defName>
-              <workerClass>ThoughtWorker_RoyalTitleApparelMinQualityNotMet</workerClass>
-              <validWhileDespawned>true</validWhileDespawned>
-              <nullifyingTraits>
-                <li>Ascetic</li>
-              </nullifyingTraits>
-              <stages>
-                <li>
-                  <label>want {TITLE_label}-quality apparel</label>
-                  <description>As a {TITLE_indefinite} I should afford {QUALITY} clothes!</description>
-                  <baseMoodEffect>-2</baseMoodEffect>
-                </li>
-              </stages>
-            </ThoughtDef>
-					</value>
-				</li>
-        <li Class="PatchOperationAdd">
-					<xpath>Defs</xpath>
-					<value>
-	          <ThoughtDef>
-              <defName>TitleThroneroomRequirementsNotMet</defName>
-              <workerClass>ThoughtWorker_ThroneRoomRequirementsNotMet</workerClass>
-              <validWhileDespawned>true</validWhileDespawned>
-              <nullifyingTraits>
-                <li>Ascetic</li>
-              </nullifyingTraits>
-              <stages>
-                <li>
-                  <label>unergonomic office </label>
-                  <description>I am a {TITLE_indefinite} and I cannot work without:\n\n{0}</description>
-                  <baseMoodEffect>-4</baseMoodEffect>
-                </li>
-              </stages>
-            </ThoughtDef>
-					</value>
-				</li>
-        <li Class="PatchOperationAdd">
-					<xpath>Defs</xpath>
-					<value>
-	          <ThoughtDef>
-              <defName>TitleBedroomRequirementsNotMet</defName>
-              <workerClass>ThoughtWorker_BedroomRequirementsNotMet</workerClass>
-              <validWhileDespawned>true</validWhileDespawned>
-              <nullifyingTraits>
-                <li>Ascetic</li>
-              </nullifyingTraits>
-              <stages>
-                <li>
-                  <label>poor bedroom</label>
-                  <description>A {TITLE_indefinite} like myself should afford the basic bedroom appliances:\n\n{0}</description>
-                  <baseMoodEffect>-4</baseMoodEffect>
-                </li>
-              </stages>
-            </ThoughtDef>
-					</value>
-				</li>
-        <li Class="PatchOperationAdd">
-					<xpath>Defs</xpath>
-					<value>
-	          <ThoughtDef>
-              <defName>TitleNoThroneRoom</defName>
-              <workerClass>ThoughtWorker_NoThroneroom</workerClass>
-              <validWhileDespawned>true</validWhileDespawned>
-              <nullifyingTraits>
-                <li>Ascetic</li>
-              </nullifyingTraits>
-              <stages>
-                <li>
-                  <label>no office</label>
-                  <description>Where is my cubicle?</description>
-                  <baseMoodEffect>-4</baseMoodEffect>
-                </li>
-              </stages>
-            </ThoughtDef>
-					</value>
-				</li>
-        <li Class="PatchOperationAdd">
-					<xpath>Defs</xpath>
-					<value>
-	  <ThoughtDef>
-      <defName>TitleNoPersonalBedroom</defName>
-      <workerClass>ThoughtWorker_NoPersonalBedroom</workerClass>
-      <validWhileDespawned>true</validWhileDespawned>
-      <nullifyingTraits>
-        <li>Ascetic</li>
-      </nullifyingTraits>
-      <stages>
-        <li>
-          <label>no personal bedroom</label>
-          <description>A {TITLE_indefinite} should have a personal bedroom.</description>
-          <baseMoodEffect>-3</baseMoodEffect>
-        </li>
-      </stages>
-    </ThoughtDef>
-					</value>
-				</li>
+        <ThoughtDef>
+          <defName>BOR_GainedTitle</defName>
+          <durationDays>3</durationDays>
+          <thoughtClass>Thought_MemoryRoyalTitle</thoughtClass>
+          <nullifyingTraits>
+            <li>Ascetic</li>
+          </nullifyingTraits>
+          <stages>
+            <li>
+              <label>Received {TITLE} position</label>
+              <description>I have been given the position of a {TITLE}. I love the recognition!</description>
+              <baseMoodEffect>5</baseMoodEffect>
+            </li>
+          </stages>
+        </ThoughtDef>
 
-      </operations>
+        <ThoughtDef>
+          <defName>BOR_LostTitle</defName>
+          <durationDays>3</durationDays>
+          <thoughtClass>Thought_MemoryRoyalTitle</thoughtClass>
+          <nullifyingTraits>
+            <li>Ascetic</li>
+          </nullifyingTraits>
+          <stages>
+            <li>
+              <label>Lost the {TITLE} position</label>
+              <description>I lost my {TITLE} position.</description>
+              <baseMoodEffect>-5</baseMoodEffect>
+            </li>
+          </stages>
+        </ThoughtDef>
+
+        <ThoughtDef>
+          <defName>TitleApparelRequirementNotMet</defName>
+          <workerClass>ThoughtWorker_RoyalTitleApparelRequirementNotMet</workerClass>
+          <validWhileDespawned>true</validWhileDespawned>
+          <nullifyingTraits>
+            <li>Ascetic</li>
+          </nullifyingTraits>
+          <developmentalStageFilter>Adult</developmentalStageFilter>
+          <stages>
+            <li>
+              <label>want {TITLE_label}-specific apparel</label>
+              <description>Would be nice if I could actually look the part of a {TITLE_indefinite}.\n\n{0}</description>
+              <baseMoodEffect>-2</baseMoodEffect>
+            </li>
+          </stages>
+        </ThoughtDef>
+
+        <ThoughtDef>
+          <defName>TitleApparelMinQualityNotMet</defName>
+          <workerClass>ThoughtWorker_RoyalTitleApparelMinQualityNotMet</workerClass>
+          <validWhileDespawned>true</validWhileDespawned>
+          <nullifyingTraits>
+            <li>Ascetic</li>
+          </nullifyingTraits>
+          <stages>
+            <li>
+              <label>want {TITLE_label}-quality apparel</label>
+              <description>As a {TITLE_indefinite} I should afford {QUALITY} clothes!</description>
+              <baseMoodEffect>-2</baseMoodEffect>
+            </li>
+          </stages>
+        </ThoughtDef>
+
+        <ThoughtDef>
+          <defName>TitleThroneroomRequirementsNotMet</defName>
+          <workerClass>ThoughtWorker_ThroneRoomRequirementsNotMet</workerClass>
+          <validWhileDespawned>true</validWhileDespawned>
+          <nullifyingTraits>
+            <li>Ascetic</li>
+          </nullifyingTraits>
+          <stages>
+            <li>
+              <label>unergonomic office </label>
+              <description>I am a {TITLE_indefinite} and I cannot work without:\n\n{0}</description>
+              <baseMoodEffect>-4</baseMoodEffect>
+            </li>
+          </stages>
+        </ThoughtDef>
+
+        <ThoughtDef>
+          <defName>TitleBedroomRequirementsNotMet</defName>
+          <workerClass>ThoughtWorker_BedroomRequirementsNotMet</workerClass>
+          <validWhileDespawned>true</validWhileDespawned>
+          <nullifyingTraits>
+            <li>Ascetic</li>
+          </nullifyingTraits>
+          <stages>
+            <li>
+              <label>poor bedroom</label>
+              <description>A {TITLE_indefinite} like myself should afford the basic bedroom appliances:\n\n{0}</description>
+              <baseMoodEffect>-4</baseMoodEffect>
+            </li>
+          </stages>
+        </ThoughtDef>
+
+        <ThoughtDef>
+          <defName>TitleNoThroneRoom</defName>
+          <workerClass>ThoughtWorker_NoThroneroom</workerClass>
+          <validWhileDespawned>true</validWhileDespawned>
+          <nullifyingTraits>
+            <li>Ascetic</li>
+          </nullifyingTraits>
+          <stages>
+            <li>
+              <label>no office</label>
+              <description>Where is my cubicle?</description>
+              <baseMoodEffect>-4</baseMoodEffect>
+            </li>
+          </stages>
+        </ThoughtDef>
+
+        <ThoughtDef>
+          <defName>TitleNoPersonalBedroom</defName>
+          <workerClass>ThoughtWorker_NoPersonalBedroom</workerClass>
+          <validWhileDespawned>true</validWhileDespawned>
+          <nullifyingTraits>
+            <li>Ascetic</li>
+          </nullifyingTraits>
+          <stages>
+            <li>
+              <label>no personal bedroom</label>
+              <description>A {TITLE_indefinite} should have a personal bedroom.</description>
+              <baseMoodEffect>-3</baseMoodEffect>
+            </li>
+          </stages>
+        </ThoughtDef>
+      </value>
     </enabled>
   </Operation>
 </Patch>

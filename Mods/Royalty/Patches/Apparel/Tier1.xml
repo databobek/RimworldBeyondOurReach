@@ -3,828 +3,748 @@
 
   <Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
     <modSettingDef>BOR_Setting_RoyaltyPrestigeBORArmor</modSettingDef>
-    <enabled Class="PatchOperationSequence">
-      <operations>
-
+    <enabled Class="PatchOperationAdd">
+      <xpath>Defs</xpath>
+      <value>
         <!-- Prestige recon armor-->
 
-        <li Class="PatchOperationAdd">
-          <xpath>Defs</xpath>
-          <value>
-            <ThingDef ParentName="ApparelArmorReconSolarBase">
-              <defName>BOR_Solar_Apparel_ArmorReconPrestige</defName>
-              <label>prestige solar recon armor</label>
-              <description>A suit of light partially-powered solar armor, designed to permit quick movement. Starsteel-weave plates block attacks without compromising mobility, and neuro-memetic assistors in the lower body allow a human to wear the armor and still move easily.\n\nExpensive and beautiful, prestige armor like this is usually made for those of high status. Embedded eltex threads also enhance the wearer's psychic sensitivity.</description>
-              <graphicData>
-                <texPath>
-                  Things/Pawn/Humanlike/Apparel/PrestigeReconArmor/PrestigeReconArmor</texPath>
-                <shaderType>CutoutComplex</shaderType>
-                <color>(0.36, 0.62, 0.68)</color>
-              </graphicData>
-              <statBases>
-                <WorkToMake>135000</WorkToMake>
-              </statBases>
-              <equippedStatOffsets>
-                <ToxicEnvironmentResistance>0.6</ToxicEnvironmentResistance>
-                <PsychicSensitivity>0.075</PsychicSensitivity>
-                <PsychicEntropyRecoveryRate>0.05</PsychicEntropyRecoveryRate>
-              </equippedStatOffsets>
-              <costList>
-                <Gold>15</Gold>
-                <BOR_Sunsteel>100</BOR_Sunsteel>
-                <VPE_Eltex MayRequire="vanillaexpanded.vpsycastse">2</VPE_Eltex>
-              </costList>
-              <apparel>
-                <tags>
-                  <li>BOR_Royal_I</li>
-                </tags>
-                <wornGraphicPath>
-                  Things/Pawn/Humanlike/Apparel/PrestigeReconArmor/PrestigeReconArmor</wornGraphicPath>
-                <useWornGraphicMask>true</useWornGraphicMask>
-              </apparel>
-              <recipeMaker>
-                <displayPriority>145</displayPriority>
-              </recipeMaker>
-            </ThingDef>
-          </value>
-        </li>
-        <li Class="PatchOperationAdd">
-          <xpath>Defs</xpath>
-          <value>
-            <ThingDef ParentName="ApparelArmorHelmetReconSolarBase">
-              <defName>BOR_Solar_Apparel_ArmorHelmetReconPrestige</defName>
-              <label>prestige solar recon helmet</label>
-              <description>A high-tech armored helmet with a built-in status computer and a protective starsteel-weave plate.\n\nExpensive and beautiful, prestige armor like this is usually made for those of high status. Embedded eltex threads also enhance the wearer's psychic sensitivity.</description>
-              <graphicData>
-                <texPath>
-                  Things/Pawn/Humanlike/Apparel/PrestigeReconHelmet/PrestigeReconHelmet</texPath>
-                <shaderType>CutoutComplex</shaderType>
-                <drawSize>(0.9, 0.9)</drawSize>
-                <color>(0.36, 0.62, 0.68)</color>
-              </graphicData>
-              <statBases>
-                <WorkToMake>31500</WorkToMake>
-              </statBases>
-              <equippedStatOffsets>
-                <ToxicEnvironmentResistance>0.6</ToxicEnvironmentResistance>
-                <PsychicSensitivity>0.075</PsychicSensitivity>
-                <PsychicEntropyRecoveryRate>0.05</PsychicEntropyRecoveryRate>
-              </equippedStatOffsets>
-              <costList>
-                <Gold>6</Gold>
-                <BOR_Sunsteel>40</BOR_Sunsteel>
-                <VPE_Eltex MayRequire="vanillaexpanded.vpsycastse">2</VPE_Eltex>
-              </costList>
-              <apparel>
-                <tags>
-                  <li>BOR_Royal_I</li>
-                </tags>
-                <wornGraphicPath>
-                  Things/Pawn/Humanlike/Apparel/PrestigeReconHelmet/PrestigeReconHelmet</wornGraphicPath>
-                <forceEyesVisibleForRotations>
-                  <li>1</li>
-                  <li>2</li>
-                  <li>3</li>
-                </forceEyesVisibleForRotations>
-                <useWornGraphicMask>true</useWornGraphicMask>
-              </apparel>
-              <tradeTags>
-                <li>BOR_Tech_I</li>
-                <li>BOR_Armor_I</li>
-              </tradeTags>
-              <recipeMaker>
-                <displayPriority>140</displayPriority>
-              </recipeMaker>
-            </ThingDef>
-          </value>
-        </li>
+        <ThingDef ParentName="ApparelArmorReconSolarBase">
+          <defName>BOR_Solar_Apparel_ArmorReconPrestige</defName>
+          <label>prestige solar recon armor</label>
+          <description>A suit of light partially-powered solar armor, designed to permit quick movement. Starsteel-weave plates block attacks without compromising mobility, and neuro-memetic assistors in the lower body allow a human to wear the armor and still move easily.\n\nExpensive and beautiful, prestige armor like this is usually made for those of high status. Embedded eltex threads also enhance the wearer's psychic sensitivity.</description>
+          <graphicData>
+            <texPath>Things/Pawn/Humanlike/Apparel/PrestigeReconArmor/PrestigeReconArmor</texPath>
+            <shaderType>CutoutComplex</shaderType>
+            <color>(0.36, 0.62, 0.68)</color>
+          </graphicData>
+          <statBases>
+            <WorkToMake>135000</WorkToMake>
+          </statBases>
+          <equippedStatOffsets>
+            <ToxicEnvironmentResistance>0.6</ToxicEnvironmentResistance>
+            <PsychicSensitivity>0.075</PsychicSensitivity>
+            <PsychicEntropyRecoveryRate>0.05</PsychicEntropyRecoveryRate>
+          </equippedStatOffsets>
+          <costList>
+            <Gold>15</Gold>
+            <BOR_Sunsteel>100</BOR_Sunsteel>
+            <VPE_Eltex MayRequire="vanillaexpanded.vpsycastse">2</VPE_Eltex>
+          </costList>
+          <apparel>
+            <tags>
+              <li>BOR_Royal_I</li>
+            </tags>
+            <wornGraphicPath>
+              Things/Pawn/Humanlike/Apparel/PrestigeReconArmor/PrestigeReconArmor</wornGraphicPath>
+            <useWornGraphicMask>true</useWornGraphicMask>
+          </apparel>
+          <recipeMaker>
+            <displayPriority>145</displayPriority>
+          </recipeMaker>
+        </ThingDef>
+
+        <ThingDef ParentName="ApparelArmorHelmetReconSolarBase">
+          <defName>BOR_Solar_Apparel_ArmorHelmetReconPrestige</defName>
+          <label>prestige solar recon helmet</label>
+          <description>A high-tech armored helmet with a built-in status computer and a protective starsteel-weave plate.\n\nExpensive and beautiful, prestige armor like this is usually made for those of high status. Embedded eltex threads also enhance the wearer's psychic sensitivity.</description>
+          <graphicData>
+            <texPath>Things/Pawn/Humanlike/Apparel/PrestigeReconHelmet/PrestigeReconHelmet</texPath>
+            <shaderType>CutoutComplex</shaderType>
+            <drawSize>(0.9, 0.9)</drawSize>
+            <color>(0.36, 0.62, 0.68)</color>
+          </graphicData>
+          <statBases>
+            <WorkToMake>31500</WorkToMake>
+          </statBases>
+          <equippedStatOffsets>
+            <ToxicEnvironmentResistance>0.6</ToxicEnvironmentResistance>
+            <PsychicSensitivity>0.075</PsychicSensitivity>
+            <PsychicEntropyRecoveryRate>0.05</PsychicEntropyRecoveryRate>
+          </equippedStatOffsets>
+          <costList>
+            <Gold>6</Gold>
+            <BOR_Sunsteel>40</BOR_Sunsteel>
+            <VPE_Eltex MayRequire="vanillaexpanded.vpsycastse">2</VPE_Eltex>
+          </costList>
+          <apparel>
+            <tags>
+              <li>BOR_Royal_I</li>
+            </tags>
+            <wornGraphicPath>
+              Things/Pawn/Humanlike/Apparel/PrestigeReconHelmet/PrestigeReconHelmet</wornGraphicPath>
+            <forceEyesVisibleForRotations>
+              <li>1</li>
+              <li>2</li>
+              <li>3</li>
+            </forceEyesVisibleForRotations>
+            <useWornGraphicMask>true</useWornGraphicMask>
+          </apparel>
+          <tradeTags>
+            <li>BOR_Tech_I</li>
+            <li>BOR_Armor_I</li>
+          </tradeTags>
+          <recipeMaker>
+            <displayPriority>140</displayPriority>
+          </recipeMaker>
+        </ThingDef>
 
         <!-- Prestige marine armor -->
 
-        <li Class="PatchOperationAdd">
-          <xpath>Defs</xpath>
-          <value>
-            <ThingDef ParentName="ApparelArmorHelmetReconSolarBase">
-              <defName>BOR_Solar_Apparel_ArmorHelmetReconPrestige</defName>
-              <label>prestige solar recon helmet</label>
-              <description>A high-tech armored helmet with a built-in status computer and a protective starsteel-weave plate.\n\nExpensive and beautiful, prestige armor like this is usually made for those of high status. Embedded eltex threads also enhance the wearer's psychic sensitivity.</description>
-              <graphicData>
-                <texPath>
-                  Things/Pawn/Humanlike/Apparel/PrestigeReconHelmet/PrestigeReconHelmet</texPath>
-                <shaderType>CutoutComplex</shaderType>
-                <drawSize>(0.9, 0.9)</drawSize>
-                <color>(0.36, 0.62, 0.68)</color>
-              </graphicData>
-              <statBases>
-                <WorkToMake>31500</WorkToMake>
-              </statBases>
-              <equippedStatOffsets>
-                <ToxicEnvironmentResistance>0.6</ToxicEnvironmentResistance>
-                <PsychicSensitivity>0.075</PsychicSensitivity>
-                <PsychicEntropyRecoveryRate>0.05</PsychicEntropyRecoveryRate>
-              </equippedStatOffsets>
-              <costList>
-                <Gold>6</Gold>
-                <BOR_Sunsteel>40</BOR_Sunsteel>
-                <VPE_Eltex MayRequire="vanillaexpanded.vpsycastse">2</VPE_Eltex>
-              </costList>
-              <apparel>
-                <tags>
-                  <li>BOR_Royal_I</li>
-                </tags>
-                <wornGraphicPath>
-                  Things/Pawn/Humanlike/Apparel/PrestigeReconHelmet/PrestigeReconHelmet</wornGraphicPath>
-                <forceEyesVisibleForRotations>
-                  <li>1</li>
-                  <li>2</li>
-                  <li>3</li>
-                </forceEyesVisibleForRotations>
-                <useWornGraphicMask>true</useWornGraphicMask>
-              </apparel>
-              <tradeTags>
-                <li>BOR_Tech_I</li>
-                <li>BOR_Armor_I</li>
-              </tradeTags>
-              <recipeMaker>
-                <displayPriority>140</displayPriority>
-              </recipeMaker>
-            </ThingDef>
-          </value>
-        </li>
-        <li Class="PatchOperationAdd">
-          <xpath>Defs</xpath>
-          <value>
-            <ThingDef ParentName="ApparelArmorPowerSolarBase">
-              <defName>BOR_Solar_Apparel_ArmorMarinePrestige</defName>
-              <label>prestige solar marine armor</label>
-              <description>A suit of powered armor. Layered starsteel-weave plates are very effective at stopping attacks, with few vulnerable joint sections. Neuro-memetic assistors allow a human to wear the armor and still move easily.\n\nExpensive and beautiful, prestige armor like this is usually made for those of high status. Embedded eltex threads also enhance the wearer's psychic sensitivity.</description>
-              <graphicData>
-                <texPath>
-                  Things/Pawn/Humanlike/Apparel/PrestigeMarineArmor/PrestigeMarineArmor</texPath>
-                <shaderType>CutoutComplex</shaderType>
-                <color>(0.36, 0.62, 0.68)</color>
-              </graphicData>
-              <statBases>
-                <WorkToMake>180000</WorkToMake>
-              </statBases>
-              <equippedStatOffsets>
-                <ToxicEnvironmentResistance>0.6</ToxicEnvironmentResistance>
-                <PsychicSensitivity>0.075</PsychicSensitivity>
-                <PsychicEntropyRecoveryRate>0.05</PsychicEntropyRecoveryRate>
-              </equippedStatOffsets>
-              <costList>
-                <Gold>10</Gold>
-                <BOR_Sunsteel>120</BOR_Sunsteel>
-                <VPE_Eltex MayRequire="vanillaexpanded.vpsycastse">2</VPE_Eltex>
-              </costList>
-              <apparel>
-                <tags>
-                  <li>BOR_Royal_I</li>
-                </tags>
-                <wornGraphicPath>
-                  Things/Pawn/Humanlike/Apparel/PrestigeMarineArmor/PrestigeMarineArmor</wornGraphicPath>
-                <forceEyesVisibleForRotations>
-                  <li>1</li>
-                  <li>2</li>
-                  <li>3</li>
-                </forceEyesVisibleForRotations>
-                <useWornGraphicMask>true</useWornGraphicMask>
-              </apparel>
-              <recipeMaker>
-                <displayPriority>155</displayPriority>
-              </recipeMaker>
-            </ThingDef>
-          </value>
-        </li>
-        <li Class="PatchOperationAdd">
-          <xpath>Defs</xpath>
-          <value>
-            <ThingDef ParentName="ApparelArmorHelmetPowerSolarBase">
-              <defName>BOR_Solar_Apparel_ArmorMarineHelmetPrestige</defName>
-              <label>prestige solar marine helmet</label>
-              <description>A marine armor helmet, with a built-in status computer and layered starsteel-weave plates.\n\nExpensive and beautiful, prestige armor like this is usually made for those of high status. Embedded eltex threads also enhance the wearer's psychic sensitivity.</description>
-              <graphicData>
-                <texPath>
-                  Things/Pawn/Humanlike/Apparel/PrestigeMarineHelmet/PrestigeMarineHelmet</texPath>
-                <shaderType>CutoutComplex</shaderType>
-                <color>(0.36, 0.62, 0.68)</color>
-              </graphicData>
-              <statBases>
-                <WorkToMake>42000</WorkToMake>
-              </statBases>
-              <equippedStatOffsets>
-                <ToxicEnvironmentResistance>0.6</ToxicEnvironmentResistance>
-                <PsychicSensitivity>0.05</PsychicSensitivity>
-                <PsychicEntropyRecoveryRate>0.033</PsychicEntropyRecoveryRate>
-              </equippedStatOffsets>
-              <costList>
-                <Gold>5</Gold>
-                <BOR_Sunsteel>50</BOR_Sunsteel>
-                <VPE_Eltex MayRequire="vanillaexpanded.vpsycastse">2</VPE_Eltex>
-              </costList>
-              <randomStyleChance>0.5</randomStyleChance>
-              <randomStyle>
-                <li>
-                  <styleDef>PrestigeMarineHelmet_Samurai</styleDef>
-                </li>
-              </randomStyle>
-              <apparel>
-                <tags>
-                  <li>BOR_Royal_I</li>
-                </tags>
-                <wornGraphicPath>
-                  Things/Pawn/Humanlike/Apparel/PrestigeMarineHelmet/PrestigeMarineHelmet</wornGraphicPath>
-                <useWornGraphicMask>true</useWornGraphicMask>
-              </apparel>
-              <recipeMaker>
-                <displayPriority>150</displayPriority>
-              </recipeMaker>
-            </ThingDef>
-          </value>
-        </li>
+        <ThingDef ParentName="ApparelArmorHelmetReconSolarBase">
+          <defName>BOR_Solar_Apparel_ArmorHelmetReconPrestige</defName>
+          <label>prestige solar recon helmet</label>
+          <description>A high-tech armored helmet with a built-in status computer and a protective starsteel-weave plate.\n\nExpensive and beautiful, prestige armor like this is usually made for those of high status. Embedded eltex threads also enhance the wearer's psychic sensitivity.</description>
+          <graphicData>
+            <texPath>Things/Pawn/Humanlike/Apparel/PrestigeReconHelmet/PrestigeReconHelmet</texPath>
+            <shaderType>CutoutComplex</shaderType>
+            <drawSize>(0.9, 0.9)</drawSize>
+            <color>(0.36, 0.62, 0.68)</color>
+          </graphicData>
+          <statBases>
+            <WorkToMake>31500</WorkToMake>
+          </statBases>
+          <equippedStatOffsets>
+            <ToxicEnvironmentResistance>0.6</ToxicEnvironmentResistance>
+            <PsychicSensitivity>0.075</PsychicSensitivity>
+            <PsychicEntropyRecoveryRate>0.05</PsychicEntropyRecoveryRate>
+          </equippedStatOffsets>
+          <costList>
+            <Gold>6</Gold>
+            <BOR_Sunsteel>40</BOR_Sunsteel>
+            <VPE_Eltex MayRequire="vanillaexpanded.vpsycastse">2</VPE_Eltex>
+          </costList>
+          <apparel>
+            <tags>
+              <li>BOR_Royal_I</li>
+            </tags>
+            <wornGraphicPath>
+              Things/Pawn/Humanlike/Apparel/PrestigeReconHelmet/PrestigeReconHelmet</wornGraphicPath>
+            <forceEyesVisibleForRotations>
+              <li>1</li>
+              <li>2</li>
+              <li>3</li>
+            </forceEyesVisibleForRotations>
+            <useWornGraphicMask>true</useWornGraphicMask>
+          </apparel>
+          <tradeTags>
+            <li>BOR_Tech_I</li>
+            <li>BOR_Armor_I</li>
+          </tradeTags>
+          <recipeMaker>
+            <displayPriority>140</displayPriority>
+          </recipeMaker>
+        </ThingDef>
+
+        <ThingDef ParentName="ApparelArmorPowerSolarBase">
+          <defName>BOR_Solar_Apparel_ArmorMarinePrestige</defName>
+          <label>prestige solar marine armor</label>
+          <description>A suit of powered armor. Layered starsteel-weave plates are very effective at stopping attacks, with few vulnerable joint sections. Neuro-memetic assistors allow a human to wear the armor and still move easily.\n\nExpensive and beautiful, prestige armor like this is usually made for those of high status. Embedded eltex threads also enhance the wearer's psychic sensitivity.</description>
+          <graphicData>
+            <texPath>Things/Pawn/Humanlike/Apparel/PrestigeMarineArmor/PrestigeMarineArmor</texPath>
+            <shaderType>CutoutComplex</shaderType>
+            <color>(0.36, 0.62, 0.68)</color>
+          </graphicData>
+          <statBases>
+            <WorkToMake>180000</WorkToMake>
+          </statBases>
+          <equippedStatOffsets>
+            <ToxicEnvironmentResistance>0.6</ToxicEnvironmentResistance>
+            <PsychicSensitivity>0.075</PsychicSensitivity>
+            <PsychicEntropyRecoveryRate>0.05</PsychicEntropyRecoveryRate>
+          </equippedStatOffsets>
+          <costList>
+            <Gold>10</Gold>
+            <BOR_Sunsteel>120</BOR_Sunsteel>
+            <VPE_Eltex MayRequire="vanillaexpanded.vpsycastse">2</VPE_Eltex>
+          </costList>
+          <apparel>
+            <tags>
+              <li>BOR_Royal_I</li>
+            </tags>
+            <wornGraphicPath>
+              Things/Pawn/Humanlike/Apparel/PrestigeMarineArmor/PrestigeMarineArmor</wornGraphicPath>
+            <forceEyesVisibleForRotations>
+              <li>1</li>
+              <li>2</li>
+              <li>3</li>
+            </forceEyesVisibleForRotations>
+            <useWornGraphicMask>true</useWornGraphicMask>
+          </apparel>
+          <recipeMaker>
+            <displayPriority>155</displayPriority>
+          </recipeMaker>
+        </ThingDef>
+
+        <ThingDef ParentName="ApparelArmorHelmetPowerSolarBase">
+          <defName>BOR_Solar_Apparel_ArmorMarineHelmetPrestige</defName>
+          <label>prestige solar marine helmet</label>
+          <description>A marine armor helmet, with a built-in status computer and layered starsteel-weave plates.\n\nExpensive and beautiful, prestige armor like this is usually made for those of high status. Embedded eltex threads also enhance the wearer's psychic sensitivity.</description>
+          <graphicData>
+            <texPath>Things/Pawn/Humanlike/Apparel/PrestigeMarineHelmet/PrestigeMarineHelmet</texPath>
+            <shaderType>CutoutComplex</shaderType>
+            <color>(0.36, 0.62, 0.68)</color>
+          </graphicData>
+          <statBases>
+            <WorkToMake>42000</WorkToMake>
+          </statBases>
+          <equippedStatOffsets>
+            <ToxicEnvironmentResistance>0.6</ToxicEnvironmentResistance>
+            <PsychicSensitivity>0.05</PsychicSensitivity>
+            <PsychicEntropyRecoveryRate>0.033</PsychicEntropyRecoveryRate>
+          </equippedStatOffsets>
+          <costList>
+            <Gold>5</Gold>
+            <BOR_Sunsteel>50</BOR_Sunsteel>
+            <VPE_Eltex MayRequire="vanillaexpanded.vpsycastse">2</VPE_Eltex>
+          </costList>
+          <randomStyleChance>0.5</randomStyleChance>
+          <randomStyle>
+            <li>
+              <styleDef>PrestigeMarineHelmet_Samurai</styleDef>
+            </li>
+          </randomStyle>
+          <apparel>
+            <tags>
+              <li>BOR_Royal_I</li>
+            </tags>
+            <wornGraphicPath>
+              Things/Pawn/Humanlike/Apparel/PrestigeMarineHelmet/PrestigeMarineHelmet</wornGraphicPath>
+            <useWornGraphicMask>true</useWornGraphicMask>
+          </apparel>
+          <recipeMaker>
+            <displayPriority>150</displayPriority>
+          </recipeMaker>
+        </ThingDef>
 
         <!-- Cataphract armor base -->
 
-        <li Class="PatchOperationAdd">
-          <xpath>Defs</xpath>
-          <value>
-            <ThingDef Name="ApparelArmorCataphractSolarBase" ParentName="ArmorMachineableBase" Abstract="True">
-              <techLevel>Ultra</techLevel>
-              <recipeMaker>
-                <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
-                <researchPrerequisites>
-                  <li>BOR_Research_Armor_I</li>
-                  <li>CataphractArmor</li>
-                </researchPrerequisites>
-                <skillRequirements>
-                  <Crafting>12</Crafting>
-                </skillRequirements>
-                <recipeUsers Inherit="False">
-                  <li>BOR_Bench_I</li>
-                  <li>BOR_Bench_IV</li>
-                </recipeUsers>
-              </recipeMaker>
-              <graphicData>
-                <texPath>
-                  Things/Pawn/Humanlike/Apparel/CataphractArmor/CataphractArmor</texPath>
-                <graphicClass>Graphic_Single</graphicClass>
-                <color>(0.36, 0.62, 0.68)</color>
-              </graphicData>
-              <uiIconScale>1.25</uiIconScale>
-              <generateCommonality>2</generateCommonality>
-              <statBases>
-                <WorkToMake>112500</WorkToMake>
-                <MaxHitPoints>600</MaxHitPoints>
-                <Mass>13</Mass>
-                <Flammability>0.3</Flammability>
-                <ArmorRating_Sharp>1.8</ArmorRating_Sharp>
-                <ArmorRating_Blunt>0.75</ArmorRating_Blunt>
-                <ArmorRating_Heat>0.9</ArmorRating_Heat>
-                <Insulation_Cold>54</Insulation_Cold>
-                <Insulation_Heat>18</Insulation_Heat>
-                <EquipDelay>15</EquipDelay>
-              </statBases>
-              <equippedStatOffsets>
-                <ToxicEnvironmentResistance>0.6</ToxicEnvironmentResistance>
-                <MoveSpeed>-0.7</MoveSpeed>
-              </equippedStatOffsets>
-              <tradeTags>
-                <li>BOR_HiTechArmor_I</li>
-                <li>BOR_Tech_I</li>
-              </tradeTags>
-              <thingCategories>
-                <li>BOR_Armor_I</li>
-              </thingCategories>
-              <costList>
-                <ComponentSpacer>6</ComponentSpacer>
-                <BOR_Sunsteel>150</BOR_Sunsteel>
-                <Uranium>50</Uranium>
-                <VPE_Eltex MayRequire="vanillaexpanded.vpsycastse">2</VPE_Eltex>
-              </costList>
-              <apparel>
-                <bodyPartGroups>
-                  <li>Torso</li>
-                  <li>Neck</li>
-                  <li>Shoulders</li>
-                  <li>Arms</li>
-                  <li>Legs</li>
-                  <li>Hands</li>
-                  <li>Feet</li>
-                </bodyPartGroups>
-                <wornGraphicPath>
-                  Things/Pawn/Humanlike/Apparel/CataphractArmor/CataphractArmor</wornGraphicPath>
-                <layers>
-                  <li>Middle</li>
-                  <li>Shell</li>
-                </layers>
-                <defaultOutfitTags>
-                  <li>Soldier</li>
-                </defaultOutfitTags>
-                <useDeflectMetalEffect>true</useDeflectMetalEffect>
-              </apparel>
-              <comps>
-                <li Class="CompProperties_Biocodable" />
-              </comps>
-              <thingSetMakerTags>
-                <li>RewardStandardHighFreq</li>
-              </thingSetMakerTags>
-            </ThingDef>
-          </value>
-        </li>
-        <li Class="PatchOperationAdd">
-          <xpath>Defs</xpath>
-          <value>
-            <ThingDef Name="ApparelArmorHelmetCataphractSolarBase" ParentName="ArmorHelmetMakeableBase" Abstract="True">
-              <techLevel>Ultra</techLevel>
-              <thingCategories>
-                <li>BOR_Armor_Headgear_I</li>
-              </thingCategories>
-              <recipeMaker>
-                <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
-                <researchPrerequisites>
-                  <li>BOR_Research_Armor_I</li>
-                  <li>CataphractArmor</li>
-                </researchPrerequisites>
-                <skillRequirements>
-                  <Crafting>8</Crafting>
-                </skillRequirements>
-                <recipeUsers Inherit="False">
-                  <li>BOR_Bench_I</li>
-                  <li>BOR_Bench_IV</li>
-                </recipeUsers>
-              </recipeMaker>
-              <graphicData>
-                <texPath>
-                  Things/Pawn/Humanlike/Apparel/CataphractArmorHelmet/CataphractHelmet</texPath>
-                <graphicClass>Graphic_Single</graphicClass>
-                <drawSize>(0.9, 0.9)</drawSize>
-                <color>(0.36, 0.62, 0.68)</color>
-              </graphicData>
-              <tradeTags>
-                <li>BOR_HiTechArmor_I</li>
-                <li>BOR_Tech_I</li>
-                <li>BOR_Armor_I</li>
-              </tradeTags>
-              <generateCommonality>1.5</generateCommonality>
-              <statBases>
-                <WorkToMake>39375</WorkToMake>
-                <MaxHitPoints>270</MaxHitPoints>
-                <Mass>1.75</Mass>
-                <Flammability>0.3</Flammability>
-                <ArmorRating_Sharp>1.8</ArmorRating_Sharp>
-                <ArmorRating_Blunt>0.75</ArmorRating_Blunt>
-                <ArmorRating_Heat>0.9</ArmorRating_Heat>
-                <Insulation_Cold>6</Insulation_Cold>
-                <Insulation_Heat>3</Insulation_Heat>
-                <EquipDelay>5</EquipDelay>
-              </statBases>
-              <costList>
-                <ComponentSpacer>1</ComponentSpacer>
-                <BOR_Sunsteel>50</BOR_Sunsteel>
-                <VPE_Eltex MayRequire="vanillaexpanded.vpsycastse">2</VPE_Eltex>
-              </costList>
-              <apparel>
-                <immuneToToxGasExposure>true</immuneToToxGasExposure>
-                <bodyPartGroups>
-                  <li>FullHead</li>
-                </bodyPartGroups>
-                <wornGraphicPath>
-                  Things/Pawn/Humanlike/Apparel/CataphractArmorHelmet/CataphractHelmet</wornGraphicPath>
-                <layers>
-                  <li>Overhead</li>
-                </layers>
-                <defaultOutfitTags>
-                  <li>Soldier</li>
-                </defaultOutfitTags>
-                <useDeflectMetalEffect>true</useDeflectMetalEffect>
-              </apparel>
-              <comps>
-                <li Class="CompProperties_Biocodable" />
-              </comps>
-              <thingSetMakerTags>
-                <li>RewardStandardHighFreq</li>
-              </thingSetMakerTags>
-            </ThingDef>
-          </value>
-        </li>
+        <ThingDef Name="ApparelArmorCataphractSolarBase" ParentName="ArmorMachineableBase" Abstract="True">
+          <techLevel>Ultra</techLevel>
+          <recipeMaker>
+            <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+            <researchPrerequisites>
+              <li>BOR_Research_Armor_I</li>
+              <li>CataphractArmor</li>
+            </researchPrerequisites>
+            <skillRequirements>
+              <Crafting>12</Crafting>
+            </skillRequirements>
+            <recipeUsers Inherit="False">
+              <li>BOR_Bench_I</li>
+              <li>BOR_Bench_IV</li>
+            </recipeUsers>
+          </recipeMaker>
+          <graphicData>
+            <texPath>Things/Pawn/Humanlike/Apparel/CataphractArmor/CataphractArmor</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <color>(0.36, 0.62, 0.68)</color>
+          </graphicData>
+          <uiIconScale>1.25</uiIconScale>
+          <generateCommonality>2</generateCommonality>
+          <statBases>
+            <WorkToMake>112500</WorkToMake>
+            <MaxHitPoints>600</MaxHitPoints>
+            <Mass>13</Mass>
+            <Flammability>0.3</Flammability>
+            <ArmorRating_Sharp>1.8</ArmorRating_Sharp>
+            <ArmorRating_Blunt>0.75</ArmorRating_Blunt>
+            <ArmorRating_Heat>0.9</ArmorRating_Heat>
+            <Insulation_Cold>54</Insulation_Cold>
+            <Insulation_Heat>18</Insulation_Heat>
+            <EquipDelay>15</EquipDelay>
+          </statBases>
+          <equippedStatOffsets>
+            <ToxicEnvironmentResistance>0.6</ToxicEnvironmentResistance>
+            <MoveSpeed>-0.7</MoveSpeed>
+          </equippedStatOffsets>
+          <tradeTags>
+            <li>BOR_HiTechArmor_I</li>
+            <li>BOR_Tech_I</li>
+          </tradeTags>
+          <thingCategories>
+            <li>BOR_Armor_I</li>
+          </thingCategories>
+          <costList>
+            <ComponentSpacer>6</ComponentSpacer>
+            <BOR_Sunsteel>150</BOR_Sunsteel>
+            <Uranium>50</Uranium>
+            <VPE_Eltex MayRequire="vanillaexpanded.vpsycastse">2</VPE_Eltex>
+          </costList>
+          <apparel>
+            <bodyPartGroups>
+              <li>Torso</li>
+              <li>Neck</li>
+              <li>Shoulders</li>
+              <li>Arms</li>
+              <li>Legs</li>
+              <li>Hands</li>
+              <li>Feet</li>
+            </bodyPartGroups>
+            <wornGraphicPath>
+              Things/Pawn/Humanlike/Apparel/CataphractArmor/CataphractArmor</wornGraphicPath>
+            <layers>
+              <li>Middle</li>
+              <li>Shell</li>
+            </layers>
+            <defaultOutfitTags>
+              <li>Soldier</li>
+            </defaultOutfitTags>
+            <useDeflectMetalEffect>true</useDeflectMetalEffect>
+          </apparel>
+          <comps>
+            <li Class="CompProperties_Biocodable" />
+          </comps>
+          <thingSetMakerTags>
+            <li>RewardStandardHighFreq</li>
+          </thingSetMakerTags>
+        </ThingDef>
+
+        <ThingDef Name="ApparelArmorHelmetCataphractSolarBase" ParentName="ArmorHelmetMakeableBase" Abstract="True">
+          <techLevel>Ultra</techLevel>
+          <thingCategories>
+            <li>BOR_Armor_Headgear_I</li>
+          </thingCategories>
+          <recipeMaker>
+            <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+            <researchPrerequisites>
+              <li>BOR_Research_Armor_I</li>
+              <li>CataphractArmor</li>
+            </researchPrerequisites>
+            <skillRequirements>
+              <Crafting>8</Crafting>
+            </skillRequirements>
+            <recipeUsers Inherit="False">
+              <li>BOR_Bench_I</li>
+              <li>BOR_Bench_IV</li>
+            </recipeUsers>
+          </recipeMaker>
+          <graphicData>
+            <texPath>Things/Pawn/Humanlike/Apparel/CataphractArmorHelmet/CataphractHelmet</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>(0.9, 0.9)</drawSize>
+            <color>(0.36, 0.62, 0.68)</color>
+          </graphicData>
+          <tradeTags>
+            <li>BOR_HiTechArmor_I</li>
+            <li>BOR_Tech_I</li>
+            <li>BOR_Armor_I</li>
+          </tradeTags>
+          <generateCommonality>1.5</generateCommonality>
+          <statBases>
+            <WorkToMake>39375</WorkToMake>
+            <MaxHitPoints>270</MaxHitPoints>
+            <Mass>1.75</Mass>
+            <Flammability>0.3</Flammability>
+            <ArmorRating_Sharp>1.8</ArmorRating_Sharp>
+            <ArmorRating_Blunt>0.75</ArmorRating_Blunt>
+            <ArmorRating_Heat>0.9</ArmorRating_Heat>
+            <Insulation_Cold>6</Insulation_Cold>
+            <Insulation_Heat>3</Insulation_Heat>
+            <EquipDelay>5</EquipDelay>
+          </statBases>
+          <costList>
+            <ComponentSpacer>1</ComponentSpacer>
+            <BOR_Sunsteel>50</BOR_Sunsteel>
+            <VPE_Eltex MayRequire="vanillaexpanded.vpsycastse">2</VPE_Eltex>
+          </costList>
+          <apparel>
+            <immuneToToxGasExposure>true</immuneToToxGasExposure>
+            <bodyPartGroups>
+              <li>FullHead</li>
+            </bodyPartGroups>
+            <wornGraphicPath>
+              Things/Pawn/Humanlike/Apparel/CataphractArmorHelmet/CataphractHelmet</wornGraphicPath>
+            <layers>
+              <li>Overhead</li>
+            </layers>
+            <defaultOutfitTags>
+              <li>Soldier</li>
+            </defaultOutfitTags>
+            <useDeflectMetalEffect>true</useDeflectMetalEffect>
+          </apparel>
+          <comps>
+            <li Class="CompProperties_Biocodable" />
+          </comps>
+          <thingSetMakerTags>
+            <li>RewardStandardHighFreq</li>
+          </thingSetMakerTags>
+        </ThingDef>
 
         <!-- Cataphract armor -->
 
-        <li Class="PatchOperationAdd">
-          <xpath>Defs</xpath>
-          <value>
-            <ThingDef ParentName="ApparelArmorCataphractSolarBase">
-              <defName>BOR_Solar_Apparel_ArmorCataphract</defName>
-              <label>solar cataphract armor</label>
-              <description>A suit of heavy powered solar armor, built for maximum protection at the cost of mobility. Heavy layered starsteel-weave plates with solid ablative coatings stop all but the most well-aimed or powerful attacks. Neuro-memetic assistors prevent the suit's massive weight from immobilizing the wearer entirely, but the suit is still quite cumbersome.\n\nArmor like this is used by imperial cataphracts to break heavily fortified positions in frontal assaults when no other option is available.</description>
-              <tradeTags>
-                <li>BOR_Tech_I</li>
-                <li>BOR_Armor_I</li>
-              </tradeTags>
-              <recipeMaker>
-                <displayPriority>125</displayPriority>
-              </recipeMaker>
-            </ThingDef>
-          </value>
-        </li>
-        <li Class="PatchOperationAdd">
-          <xpath>Defs</xpath>
-          <value>
-            <ThingDef ParentName="ApparelArmorHelmetCataphractSolarBase">
-              <defName>BOR_Solar_Apparel_ArmorHelmetCataphract</defName>
-              <label>solar cataphract helmet</label>
-              <description>A heavily-armored solar-tech helmet, with a solid starsteel-weave shell and indirect visual system for non-frontal view angles. It protects against all but the most powerful or luckily-aimed shots.\n\nArmor like this is used by imperial cataphracts to break heavily fortified positions in frontal assaults when no other option is available.</description>
-              <recipeMaker>
-                <displayPriority>120</displayPriority>
-              </recipeMaker>
-            </ThingDef>
-          </value>
-        </li>
+        <ThingDef ParentName="ApparelArmorCataphractSolarBase">
+          <defName>BOR_Solar_Apparel_ArmorCataphract</defName>
+          <label>solar cataphract armor</label>
+          <description>A suit of heavy powered solar armor, built for maximum protection at the cost of mobility. Heavy layered starsteel-weave plates with solid ablative coatings stop all but the most well-aimed or powerful attacks. Neuro-memetic assistors prevent the suit's massive weight from immobilizing the wearer entirely, but the suit is still quite cumbersome.\n\nArmor like this is used by imperial cataphracts to break heavily fortified positions in frontal assaults when no other option is available.</description>
+          <tradeTags>
+            <li>BOR_Tech_I</li>
+            <li>BOR_Armor_I</li>
+          </tradeTags>
+          <recipeMaker>
+            <displayPriority>125</displayPriority>
+          </recipeMaker>
+        </ThingDef>
+
+        <ThingDef ParentName="ApparelArmorHelmetCataphractSolarBase">
+          <defName>BOR_Solar_Apparel_ArmorHelmetCataphract</defName>
+          <label>solar cataphract helmet</label>
+          <description>A heavily-armored solar-tech helmet, with a solid starsteel-weave shell and indirect visual system for non-frontal view angles. It protects against all but the most powerful or luckily-aimed shots.\n\nArmor like this is used by imperial cataphracts to break heavily fortified positions in frontal assaults when no other option is available.</description>
+          <recipeMaker>
+            <displayPriority>120</displayPriority>
+          </recipeMaker>
+        </ThingDef>
 
         <!-- Prestige cataphract armor -->
 
-        <li Class="PatchOperationAdd">
-          <xpath>Defs</xpath>
-          <value>
-            <ThingDef ParentName="ApparelArmorCataphractSolarBase">
-              <defName>BOR_Solar_Apparel_ArmorCataphractPrestige</defName>
-              <label>prestige solar cataphract armor</label>
-              <description>A suit of heavy powered solar armor, built for maximum protection at the cost of mobility. Heavy layered starsteel-weave plates with solid ablative coatings stop all but the most well-aimed or powerful attacks. Neuro-memetic assistors prevent the suit's massive weight from immobilizing the wearer entirely, but the suit is still quite cumbersome.\n\nExpensive and beautiful, prestige armor like this is usually made for those of high status. Embedded eltex threads also enhance the wearer's psychic sensitivity.</description>
-              <graphicData>
-                <texPath>
-                  Things/Pawn/Humanlike/Apparel/PrestigeCataphractArmor/PrestigeCataphractArmor</texPath>
-                <shaderType>CutoutComplex</shaderType>
-                <color>(0.36, 0.62, 0.68)</color>
-              </graphicData>
-              <statBases>
-                <WorkToMake>225000</WorkToMake>
-              </statBases>
-              <equippedStatOffsets>
-                <ToxicEnvironmentResistance>0.6</ToxicEnvironmentResistance>
-                <PsychicSensitivity>0.075</PsychicSensitivity>
-                <PsychicEntropyRecoveryRate>0.05</PsychicEntropyRecoveryRate>
-              </equippedStatOffsets>
-              <costList>
-                <Gold>27</Gold>
-                <BOR_Sunsteel>190</BOR_Sunsteel>
-                <VPE_Eltex MayRequire="vanillaexpanded.vpsycastse">2</VPE_Eltex>
-              </costList>
-              <apparel>
-                <tags>
-                  <li>BOR_Royal_I</li>
-                </tags>
-                <wornGraphicPath>
-                  Things/Pawn/Humanlike/Apparel/PrestigeCataphractArmor/PrestigeCataphractArmor</wornGraphicPath>
-                <useWornGraphicMask>true</useWornGraphicMask>
-              </apparel>
-              <tradeTags>
-                <li>BOR_Tech_I</li>
-                <li>BOR_Armor_I</li>
-              </tradeTags>
-              <recipeMaker>
-                <displayPriority>165</displayPriority>
-              </recipeMaker>
-            </ThingDef>
-          </value>
-        </li>
-        <li Class="PatchOperationAdd">
-          <xpath>Defs</xpath>
-          <value>
-            <ThingDef ParentName="ApparelArmorHelmetCataphractSolarBase">
-              <defName>BOR_Solar_Apparel_ArmorHelmetCataphractPrestige</defName>
-              <label>prestige solar cataphract helmet</label>
-              <description>A heavily-armored solar-tech helmet, with a solid starsteel-weave shell and indirect visual system for non-frontal view angles. It protects against all but the most powerful or luckily-aimed shots.\n\nExpensive and beautiful, prestige armor like this is usually made for those of high status. Embedded eltex threads also enhance the wearer's psychic sensitivity.</description>
-              <graphicData>
-                <texPath>
-                  Things/Pawn/Humanlike/Apparel/PrestigeCataphractHelmet/PrestigeCataphractHelmet</texPath>
-                <shaderType>CutoutComplex</shaderType>
-                <drawSize>(0.9, 0.9)</drawSize>
-                <color>(0.36, 0.62, 0.68)</color>
-              </graphicData>
-              <statBases>
-                <WorkToMake>78750</WorkToMake>
-              </statBases>
-              <equippedStatOffsets>
-                <ToxicEnvironmentResistance>0.6</ToxicEnvironmentResistance>
-                <PsychicSensitivity>0.075</PsychicSensitivity>
-                <PsychicEntropyRecoveryRate>0.05</PsychicEntropyRecoveryRate>
-              </equippedStatOffsets>
-              <costList>
-                <Gold>14</Gold>
-                <BOR_Sunsteel>75</BOR_Sunsteel>
-                <VPE_Eltex MayRequire="vanillaexpanded.vpsycastse">2</VPE_Eltex>
-              </costList>
-              <apparel>
-                <tags>
-                  <li>BOR_Royal_I</li>
-                </tags>
-                <wornGraphicPath>
-                  Things/Pawn/Humanlike/Apparel/PrestigeCataphractHelmet/PrestigeCataphractHelmet</wornGraphicPath>
-                <useWornGraphicMask>true</useWornGraphicMask>
-              </apparel>
-              <recipeMaker>
-                <displayPriority>160</displayPriority>
-              </recipeMaker>
-            </ThingDef>
-          </value>
-        </li>
+        <ThingDef ParentName="ApparelArmorCataphractSolarBase">
+          <defName>BOR_Solar_Apparel_ArmorCataphractPrestige</defName>
+          <label>prestige solar cataphract armor</label>
+          <description>A suit of heavy powered solar armor, built for maximum protection at the cost of mobility. Heavy layered starsteel-weave plates with solid ablative coatings stop all but the most well-aimed or powerful attacks. Neuro-memetic assistors prevent the suit's massive weight from immobilizing the wearer entirely, but the suit is still quite cumbersome.\n\nExpensive and beautiful, prestige armor like this is usually made for those of high status. Embedded eltex threads also enhance the wearer's psychic sensitivity.</description>
+          <graphicData>
+            <texPath>Things/Pawn/Humanlike/Apparel/PrestigeCataphractArmor/PrestigeCataphractArmor</texPath>
+            <shaderType>CutoutComplex</shaderType>
+            <color>(0.36, 0.62, 0.68)</color>
+          </graphicData>
+          <statBases>
+            <WorkToMake>225000</WorkToMake>
+          </statBases>
+          <equippedStatOffsets>
+            <ToxicEnvironmentResistance>0.6</ToxicEnvironmentResistance>
+            <PsychicSensitivity>0.075</PsychicSensitivity>
+            <PsychicEntropyRecoveryRate>0.05</PsychicEntropyRecoveryRate>
+          </equippedStatOffsets>
+          <costList>
+            <Gold>27</Gold>
+            <BOR_Sunsteel>190</BOR_Sunsteel>
+            <VPE_Eltex MayRequire="vanillaexpanded.vpsycastse">2</VPE_Eltex>
+          </costList>
+          <apparel>
+            <tags>
+              <li>BOR_Royal_I</li>
+            </tags>
+            <wornGraphicPath>
+              Things/Pawn/Humanlike/Apparel/PrestigeCataphractArmor/PrestigeCataphractArmor</wornGraphicPath>
+            <useWornGraphicMask>true</useWornGraphicMask>
+          </apparel>
+          <tradeTags>
+            <li>BOR_Tech_I</li>
+            <li>BOR_Armor_I</li>
+          </tradeTags>
+          <recipeMaker>
+            <displayPriority>165</displayPriority>
+          </recipeMaker>
+        </ThingDef>
+
+        <ThingDef ParentName="ApparelArmorHelmetCataphractSolarBase">
+          <defName>BOR_Solar_Apparel_ArmorHelmetCataphractPrestige</defName>
+          <label>prestige solar cataphract helmet</label>
+          <description>A heavily-armored solar-tech helmet, with a solid starsteel-weave shell and indirect visual system for non-frontal view angles. It protects against all but the most powerful or luckily-aimed shots.\n\nExpensive and beautiful, prestige armor like this is usually made for those of high status. Embedded eltex threads also enhance the wearer's psychic sensitivity.</description>
+          <graphicData>
+            <texPath>Things/Pawn/Humanlike/Apparel/PrestigeCataphractHelmet/PrestigeCataphractHelmet</texPath>
+            <shaderType>CutoutComplex</shaderType>
+            <drawSize>(0.9, 0.9)</drawSize>
+            <color>(0.36, 0.62, 0.68)</color>
+          </graphicData>
+          <statBases>
+            <WorkToMake>78750</WorkToMake>
+          </statBases>
+          <equippedStatOffsets>
+            <ToxicEnvironmentResistance>0.6</ToxicEnvironmentResistance>
+            <PsychicSensitivity>0.075</PsychicSensitivity>
+            <PsychicEntropyRecoveryRate>0.05</PsychicEntropyRecoveryRate>
+          </equippedStatOffsets>
+          <costList>
+            <Gold>14</Gold>
+            <BOR_Sunsteel>75</BOR_Sunsteel>
+            <VPE_Eltex MayRequire="vanillaexpanded.vpsycastse">2</VPE_Eltex>
+          </costList>
+          <apparel>
+            <tags>
+              <li>BOR_Royal_I</li>
+            </tags>
+            <wornGraphicPath>
+              Things/Pawn/Humanlike/Apparel/PrestigeCataphractHelmet/PrestigeCataphractHelmet</wornGraphicPath>
+            <useWornGraphicMask>true</useWornGraphicMask>
+          </apparel>
+          <recipeMaker>
+            <displayPriority>160</displayPriority>
+          </recipeMaker>
+        </ThingDef>
 
         <!-- variant armors -->
 
-        <li Class="PatchOperationAdd">
-          <xpath>Defs</xpath>
-          <value>
-            <ThingDef ParentName="ApparelArmorReconSolarBase">
-              <defName>BOR_Solar_Apparel_ArmorLocust</defName>
-              <label>solar locust armor</label>
-              <description>A variant of solar recon armor with an integrated burst rocket for short-ranged flight. Locust armor is slightly less protective than standard recon armor. Each jump consumes a burst of fuel, so the armor must be reloaded after several uses.\n\nUnlike most ultratech military units, locusts train primarily with melee weapons. They usually avoid static shootouts, preferring to jump straight into enemy fortifications and fight hand-to-hand. They do poorly in static defense or confined quarters, but excel in mixed cover or shipcracking operations.</description>
-              <statBases>
-                <ArmorRating_Sharp>1.305</ArmorRating_Sharp>
-                <ArmorRating_Blunt>0.525</ArmorRating_Blunt>
-                <ArmorRating_Heat>0.615</ArmorRating_Heat>
-                <JumpRange MayRequire="ludeon.rimworld.royalty">35.85</JumpRange>
-              </statBases>
-              <recipeMaker>
-                <researchPrerequisites>
-                  <li>JumpPack</li>
-                  <li>BOR_Research_Armor_I</li>
-                </researchPrerequisites>
-                <displayPriority>125</displayPriority>
-              </recipeMaker>
-              <graphicData>
-                <texPath>Things/Pawn/Humanlike/Apparel/LocustArmor/LocustArmor</texPath>
-                <graphicClass>Graphic_Single</graphicClass>
-                <color>(0.36, 0.62, 0.68)</color>
-              </graphicData>
-              <apparel>
-                <scoreOffset>4</scoreOffset>
-                <wornGraphicPath>Things/Pawn/Humanlike/Apparel/LocustArmor/LocustArmor</wornGraphicPath>
-              </apparel>
-              <costList>
-                <BOR_Sunsteel>120</BOR_Sunsteel>
-                <ComponentSpacer>3</ComponentSpacer>
-                <Chemfuel>100</Chemfuel>
-              </costList>
-              <comps>
-                <li Class="CompProperties_ApparelReloadable">
-                  <maxCharges>6</maxCharges>
-                  <ammoDef>Chemfuel</ammoDef>
-                  <ammoCountPerCharge>30</ammoCountPerCharge>
-                  <baseReloadTicks>40</baseReloadTicks>
-                  <soundReload>Standard_Reload</soundReload>
-                  <hotKey>Misc4</hotKey>
-                  <chargeNoun>jump</chargeNoun>
-                  <displayGizmoWhileUndrafted>false</displayGizmoWhileUndrafted>
-                </li>
-              </comps>
-              <verbs>
-                <li>
-                  <verbClass>Verb_Jump</verbClass>
-                  <label>jump</label>
-                  <commandIcon>Things/Pawn/Humanlike/Apparel/JumpPack/JumpPack</commandIcon>
-                  <violent>false</violent>
-                  <hasStandardCommand>true</hasStandardCommand>
-                  <onlyManualCast>True</onlyManualCast>
-                  <forceNormalTimeSpeed>false</forceNormalTimeSpeed>
-                  <warmupTime>0.4</warmupTime>
-                  <warmupEffecter>JumpWarmupEffect</warmupEffecter>
-                  <flightEffecterDef>JumpFlightEffect</flightEffecterDef>
-                  <requireLineOfSight>true</requireLineOfSight>
-                  <targetParams>
-                    <canTargetLocations>true</canTargetLocations>
-                    <canTargetPawns>false</canTargetPawns>
-                    <canTargetBuildings>false</canTargetBuildings>
-                  </targetParams>
-                </li>
-              </verbs>
-            </ThingDef>
-          </value>
-        </li>
-        <li Class="PatchOperationAdd">
-          <xpath>Defs</xpath>
-          <value>
-            <ThingDef ParentName="ApparelArmorPowerSolarBase">
-              <defName>BOR_Solar_Apparel_ArmorMarineGrenadier</defName>
-              <label>solar grenadier armor</label>
-              <description>A variant of solar marine armor with an integrated frag launcher on the shoulder. The armor is slightly less protective than standard marine armor. The launcher can only hold a limited amount of ammo and must be reloaded after use.\n\nGrenadiers usually specialize in breaching buildings or internal ship bulkheads. While not effective at very long range, grenadiers can be surprisingly deadly in confined quarters.</description>
-              <costList>
-                <Plasteel>75</Plasteel>
-                <ComponentSpacer>4</ComponentSpacer>
-              </costList>
-              <statBases>
-                <ArmorRating_Sharp>1.5</ArmorRating_Sharp>
-                <ArmorRating_Blunt>0.60</ArmorRating_Blunt>
-                <ArmorRating_Heat>0.75</ArmorRating_Heat>
-              </statBases>
-              <graphicData>
-                <texPath>Things/Pawn/Humanlike/Apparel/GrenadierArmor/GrenadierArmor</texPath>
-                <graphicClass>Graphic_Single</graphicClass>
-                <color>(0.36, 0.62, 0.68)</color>
-              </graphicData>
-              <apparel>
-                <scoreOffset>6</scoreOffset>
-                <wornGraphicPath>Things/Pawn/Humanlike/Apparel/GrenadierArmor/GrenadierArmor</wornGraphicPath>
-              </apparel>
-              <comps>
-                <li Class="CompProperties_ApparelReloadable">
-                  <maxCharges>3</maxCharges>
-                  <ammoDef>Plasteel</ammoDef>
-                  <ammoCountPerCharge>38</ammoCountPerCharge>
-                  <baseReloadTicks>40</baseReloadTicks>
-                  <soundReload>Standard_Reload</soundReload>
-                  <hotKey>Misc4</hotKey>
-                  <chargeNoun>grenade</chargeNoun>
-                  <displayGizmoWhileUndrafted>false</displayGizmoWhileUndrafted>
-                </li>
-              </comps>
-              <verbs>
-                <li>
-                  <label>launch solar frag grenade</label>
-                  <verbClass>Verb_LaunchProjectileStatic</verbClass>
-                  <hasStandardCommand>true</hasStandardCommand>
-                  <onlyManualCast>True</onlyManualCast>
-                  <range>18.9</range>
-                  <forcedMissRadius>1.4</forcedMissRadius>
-                  <warmupTime>1.0</warmupTime>
-                  <noiseRadius>3</noiseRadius>
-                  <ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
-                  <soundCast>Shot_IncendiaryLauncher</soundCast>
-                  <soundCastTail>GunTail_Medium</soundCastTail>
-                  <muzzleFlashScale>14</muzzleFlashScale>
-                  <drawHighlightWithLineOfSight>true</drawHighlightWithLineOfSight>
-                  <targetParams>
-                    <canTargetLocations>true</canTargetLocations>
-                  </targetParams>
-                  <defaultProjectile>BOR_Solar_Proj_GrenadierGrenade</defaultProjectile>
-                  <rangedFireRulepack>Combat_RangedFire_Thrown</rangedFireRulepack>
-                </li>
-              </verbs>
-              <recipeMaker>
-                <displayPriority>130</displayPriority>
-              </recipeMaker>
-            </ThingDef>
-            <ThingDef ParentName="BaseFragGrenadeProjectile">
-              <defName>BOR_Solar_Proj_GrenadierGrenade</defName>
-              <label>solar frag grenade</label>
-              <projectile>
-                <speed>24</speed>
-              </projectile>
-            </ThingDef>
-          </value>
-        </li>
-        <li Class="PatchOperationAdd">
-          <xpath>Defs</xpath>
-          <value>
-            <ThingDef ParentName="ApparelArmorCataphractSolarBase">
-              <defName>BOR_Solar_Apparel_ArmorCataphractPhoenix</defName>
-              <label>solar phoenix armor</label>
-              <description>A variant of solar cataphract armor with a shoulder-mounted flamebolt launcher. This armor is slightly less protective than standard cataphract armor against normal damage, but is especially flame-resistant. The flamebolt launcher has very limited ammo and must be reloaded after use.\n\nPhoenixes specialize in clearing out very confined spaces full of enemies, as in underground or shipborne operations. They can absorb hits while moving down a corridor, fill rooms with flame, and emerge from the smoke unscathed.</description>
-              <statBases>
-                <Flammability>0.08</Flammability>
-                <ArmorRating_Sharp>1.725</ArmorRating_Sharp>
-                <ArmorRating_Blunt>0.675</ArmorRating_Blunt>
-                <ArmorRating_Heat>1.125</ArmorRating_Heat>
-                <Insulation_Heat>150</Insulation_Heat>
-              </statBases>
-              <equippedStatOffsets>
-                <ToxicEnvironmentResistance>0.6</ToxicEnvironmentResistance>
-                <Flammability>-0.8</Flammability>
-              </equippedStatOffsets>
-              <costList>
-                <Plasteel>75</Plasteel>
-                <ComponentSpacer>4</ComponentSpacer>
-                <Chemfuel>40</Chemfuel>
-              </costList>
-              <graphicData>
-                <texPath>Things/Pawn/Humanlike/Apparel/PhoenixArmor/PhoenixArmor</texPath>
-                <graphicClass>Graphic_Single</graphicClass>
-                <color>(0.36, 0.62, 0.68)</color>
-              </graphicData>
-              <apparel>
-                <scoreOffset>6</scoreOffset>
-                <wornGraphicPath>Things/Pawn/Humanlike/Apparel/PhoenixArmor/PhoenixArmor</wornGraphicPath>
-              </apparel>
-              <comps>
-                <li Class="CompProperties_ApparelReloadable">
-                  <maxCharges>2</maxCharges>
-                  <ammoDef>Chemfuel</ammoDef>
-                  <ammoCountPerCharge>60</ammoCountPerCharge>
-                  <baseReloadTicks>40</baseReloadTicks>
-                  <soundReload>Standard_Reload</soundReload>
-                  <hotKey>Misc4</hotKey>
-                  <chargeNoun>incendiary</chargeNoun>
-                  <displayGizmoWhileUndrafted>false</displayGizmoWhileUndrafted>
-                </li>
-              </comps>
-              <verbs>
-                <li>
-                  <label>launch solar incendiary</label>
-                  <verbClass>Verb_LaunchProjectileStatic</verbClass>
-                  <hasStandardCommand>true</hasStandardCommand>
-                  <onlyManualCast>True</onlyManualCast>
-                  <range>18.9</range>
-                  <forcedMissRadius>1.4</forcedMissRadius>
-                  <warmupTime>1.0</warmupTime>
-                  <noiseRadius>3</noiseRadius>
-                  <soundCast>Shot_IncendiaryLauncher</soundCast>
-                  <soundCastTail>GunTail_Medium</soundCastTail>
-                  <muzzleFlashScale>14</muzzleFlashScale>
-                  <drawHighlightWithLineOfSight>true</drawHighlightWithLineOfSight>
-                  <targetParams>
-                    <canTargetLocations>true</canTargetLocations>
-                  </targetParams>
-                  <defaultProjectile>BOR_Solar_Proj_GrenadePhoenixFire</defaultProjectile>
-                  <rangedFireRulepack>Combat_RangedFire_Thrown</rangedFireRulepack>
-                </li>
-              </verbs>
-              <tradeTags>
-                <li>BOR_Tech_I</li>
-                <li>BOR_Armor_I</li>
-              </tradeTags>
-              <recipeMaker>
-                <displayPriority>135</displayPriority>
-              </recipeMaker>
-            </ThingDef>
-          </value>
-        </li>
-        <li Class="PatchOperationAdd">
-          <xpath>Defs</xpath>
-          <value>
-            <ThingDef ParentName="BaseIncendiaryProjectile">
-              <defName>BOR_Solar_Proj_GrenadePhoenixFire</defName>
-              <label>solar incendiary grenade</label>
-              <graphicData>
-                <texPath>Things/Projectile/LauncherShot</texPath>
-                <graphicClass>Graphic_Single</graphicClass>
-                <shaderType>TransparentPostLight</shaderType>
-                <color>(254,189,58)</color>
-              </graphicData>
-              <projectile>
-                <speed>27</speed>
-                <explosionRadius>4.35</explosionRadius>
-                <arcHeightFactor>0.4</arcHeightFactor>
-              </projectile>
-            </ThingDef>
-          </value>
-        </li>
-        <li Class="PatchOperationAdd">
-          <xpath>Defs</xpath>
-          <value>
-            <ThingDef ParentName="ApparelArmorHelmetReconSolarBase">
-              <defName>BOR_Solar_Apparel_Gunlink</defName>
-              <label>gunlink</label>
-              <description>A solar targeting computer that helps the user aim. It detects and analyzes targets using infrared, visible, and millimeter-wave electromagnetic sensors. An onboard targeting computer displays firing solutions on a retinal projection. It offers no protection at all.</description>
-              <graphicData>
-                <texPath>Things/Pawn/Humanlike/Apparel/Gunlink/Gunlink</texPath>
-                <graphicClass>Graphic_Single</graphicClass>
-                <color>(0.36, 0.62, 0.68)</color>
-              </graphicData>
-              <equippedStatOffsets>
-                <ToxicEnvironmentResistance>0.6</ToxicEnvironmentResistance>
-                <ShootingAccuracyPawn>4.5</ShootingAccuracyPawn>
-              </equippedStatOffsets>
-              <statBases>
-                <ArmorRating_Sharp>0</ArmorRating_Sharp>
-                <ArmorRating_Blunt>0</ArmorRating_Blunt>
-                <ArmorRating_Heat>0</ArmorRating_Heat>
-                <Insulation_Cold>0</Insulation_Cold>
-                <Insulation_Heat>0</Insulation_Heat>
-              </statBases>
-              <recipeMaker>
-                <researchPrerequisites>
-                  <li>BOR_Research_Armor_I</li>
-                  <li>Gunlink</li>
-                </researchPrerequisites>
-                <displayPriority>400</displayPriority>
-              </recipeMaker>
-              <costList>
-                <ComponentSpacer>1</ComponentSpacer>
-                <BOR_Sunsteel>10</BOR_Sunsteel>
-              </costList>
-              <apparel>
-                <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Gunlink/Gunlink</wornGraphicPath>
-                <renderSkipFlags>
-                  <li>None</li>
-                </renderSkipFlags>
-                <countsAsClothingForNudity>false</countsAsClothingForNudity>
-                <bodyPartGroups Inherit="False">
-                  <li>UpperHead</li>
-                </bodyPartGroups>
-                <tags Inherit="False">
-                  <li>Gunlink</li>
-                </tags>
-              </apparel>
-              <tradeTags>
-                <li>BOR_Clothing_I</li>
-              </tradeTags>
-              <thingSetMakerTags Inherit="False">
-                <li>RewardStandardLowFreq</li>
-              </thingSetMakerTags>
-            </ThingDef>
-          </value>
-        </li>
-      </operations>
+        <ThingDef ParentName="ApparelArmorReconSolarBase">
+          <defName>BOR_Solar_Apparel_ArmorLocust</defName>
+          <label>solar locust armor</label>
+          <description>A variant of solar recon armor with an integrated burst rocket for short-ranged flight. Locust armor is slightly less protective than standard recon armor. Each jump consumes a burst of fuel, so the armor must be reloaded after several uses.\n\nUnlike most ultratech military units, locusts train primarily with melee weapons. They usually avoid static shootouts, preferring to jump straight into enemy fortifications and fight hand-to-hand. They do poorly in static defense or confined quarters, but excel in mixed cover or shipcracking operations.</description>
+          <statBases>
+            <ArmorRating_Sharp>1.305</ArmorRating_Sharp>
+            <ArmorRating_Blunt>0.525</ArmorRating_Blunt>
+            <ArmorRating_Heat>0.615</ArmorRating_Heat>
+            <JumpRange MayRequire="ludeon.rimworld.royalty">35.85</JumpRange>
+          </statBases>
+          <recipeMaker>
+            <researchPrerequisites>
+              <li>JumpPack</li>
+              <li>BOR_Research_Armor_I</li>
+            </researchPrerequisites>
+            <displayPriority>125</displayPriority>
+          </recipeMaker>
+          <graphicData>
+            <texPath>Things/Pawn/Humanlike/Apparel/LocustArmor/LocustArmor</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <color>(0.36, 0.62, 0.68)</color>
+          </graphicData>
+          <apparel>
+            <scoreOffset>4</scoreOffset>
+            <wornGraphicPath>Things/Pawn/Humanlike/Apparel/LocustArmor/LocustArmor</wornGraphicPath>
+          </apparel>
+          <costList>
+            <BOR_Sunsteel>120</BOR_Sunsteel>
+            <ComponentSpacer>3</ComponentSpacer>
+            <Chemfuel>100</Chemfuel>
+          </costList>
+          <comps>
+            <li Class="CompProperties_ApparelReloadable">
+              <maxCharges>6</maxCharges>
+              <ammoDef>Chemfuel</ammoDef>
+              <ammoCountPerCharge>30</ammoCountPerCharge>
+              <baseReloadTicks>40</baseReloadTicks>
+              <soundReload>Standard_Reload</soundReload>
+              <hotKey>Misc4</hotKey>
+              <chargeNoun>jump</chargeNoun>
+              <displayGizmoWhileUndrafted>false</displayGizmoWhileUndrafted>
+            </li>
+          </comps>
+          <verbs>
+            <li>
+              <verbClass>Verb_Jump</verbClass>
+              <label>jump</label>
+              <commandIcon>Things/Pawn/Humanlike/Apparel/JumpPack/JumpPack</commandIcon>
+              <violent>false</violent>
+              <hasStandardCommand>true</hasStandardCommand>
+              <onlyManualCast>True</onlyManualCast>
+              <forceNormalTimeSpeed>false</forceNormalTimeSpeed>
+              <warmupTime>0.4</warmupTime>
+              <warmupEffecter>JumpWarmupEffect</warmupEffecter>
+              <flightEffecterDef>JumpFlightEffect</flightEffecterDef>
+              <requireLineOfSight>true</requireLineOfSight>
+              <targetParams>
+                <canTargetLocations>true</canTargetLocations>
+                <canTargetPawns>false</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+              </targetParams>
+            </li>
+          </verbs>
+        </ThingDef>
+
+        <ThingDef ParentName="ApparelArmorPowerSolarBase">
+          <defName>BOR_Solar_Apparel_ArmorMarineGrenadier</defName>
+          <label>solar grenadier armor</label>
+          <description>A variant of solar marine armor with an integrated frag launcher on the shoulder. The armor is slightly less protective than standard marine armor. The launcher can only hold a limited amount of ammo and must be reloaded after use.\n\nGrenadiers usually specialize in breaching buildings or internal ship bulkheads. While not effective at very long range, grenadiers can be surprisingly deadly in confined quarters.</description>
+          <costList>
+            <Plasteel>75</Plasteel>
+            <ComponentSpacer>4</ComponentSpacer>
+          </costList>
+          <statBases>
+            <ArmorRating_Sharp>1.5</ArmorRating_Sharp>
+            <ArmorRating_Blunt>0.60</ArmorRating_Blunt>
+            <ArmorRating_Heat>0.75</ArmorRating_Heat>
+          </statBases>
+          <graphicData>
+            <texPath>Things/Pawn/Humanlike/Apparel/GrenadierArmor/GrenadierArmor</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <color>(0.36, 0.62, 0.68)</color>
+          </graphicData>
+          <apparel>
+            <scoreOffset>6</scoreOffset>
+            <wornGraphicPath>Things/Pawn/Humanlike/Apparel/GrenadierArmor/GrenadierArmor</wornGraphicPath>
+          </apparel>
+          <comps>
+            <li Class="CompProperties_ApparelReloadable">
+              <maxCharges>3</maxCharges>
+              <ammoDef>Plasteel</ammoDef>
+              <ammoCountPerCharge>38</ammoCountPerCharge>
+              <baseReloadTicks>40</baseReloadTicks>
+              <soundReload>Standard_Reload</soundReload>
+              <hotKey>Misc4</hotKey>
+              <chargeNoun>grenade</chargeNoun>
+              <displayGizmoWhileUndrafted>false</displayGizmoWhileUndrafted>
+            </li>
+          </comps>
+          <verbs>
+            <li>
+              <label>launch solar frag grenade</label>
+              <verbClass>Verb_LaunchProjectileStatic</verbClass>
+              <hasStandardCommand>true</hasStandardCommand>
+              <onlyManualCast>True</onlyManualCast>
+              <range>18.9</range>
+              <forcedMissRadius>1.4</forcedMissRadius>
+              <warmupTime>1.0</warmupTime>
+              <noiseRadius>3</noiseRadius>
+              <ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
+              <soundCast>Shot_IncendiaryLauncher</soundCast>
+              <soundCastTail>GunTail_Medium</soundCastTail>
+              <muzzleFlashScale>14</muzzleFlashScale>
+              <drawHighlightWithLineOfSight>true</drawHighlightWithLineOfSight>
+              <targetParams>
+                <canTargetLocations>true</canTargetLocations>
+              </targetParams>
+              <defaultProjectile>BOR_Solar_Proj_GrenadierGrenade</defaultProjectile>
+              <rangedFireRulepack>Combat_RangedFire_Thrown</rangedFireRulepack>
+            </li>
+          </verbs>
+          <recipeMaker>
+            <displayPriority>130</displayPriority>
+          </recipeMaker>
+        </ThingDef>
+        <ThingDef ParentName="BaseFragGrenadeProjectile">
+          <defName>BOR_Solar_Proj_GrenadierGrenade</defName>
+          <label>solar frag grenade</label>
+          <projectile>
+            <speed>24</speed>
+          </projectile>
+        </ThingDef>
+
+        <ThingDef ParentName="ApparelArmorCataphractSolarBase">
+          <defName>BOR_Solar_Apparel_ArmorCataphractPhoenix</defName>
+          <label>solar phoenix armor</label>
+          <description>A variant of solar cataphract armor with a shoulder-mounted flamebolt launcher. This armor is slightly less protective than standard cataphract armor against normal damage, but is especially flame-resistant. The flamebolt launcher has very limited ammo and must be reloaded after use.\n\nPhoenixes specialize in clearing out very confined spaces full of enemies, as in underground or shipborne operations. They can absorb hits while moving down a corridor, fill rooms with flame, and emerge from the smoke unscathed.</description>
+          <statBases>
+            <Flammability>0.08</Flammability>
+            <ArmorRating_Sharp>1.725</ArmorRating_Sharp>
+            <ArmorRating_Blunt>0.675</ArmorRating_Blunt>
+            <ArmorRating_Heat>1.125</ArmorRating_Heat>
+            <Insulation_Heat>150</Insulation_Heat>
+          </statBases>
+          <equippedStatOffsets>
+            <ToxicEnvironmentResistance>0.6</ToxicEnvironmentResistance>
+            <Flammability>-0.8</Flammability>
+          </equippedStatOffsets>
+          <costList>
+            <Plasteel>75</Plasteel>
+            <ComponentSpacer>4</ComponentSpacer>
+            <Chemfuel>40</Chemfuel>
+          </costList>
+          <graphicData>
+            <texPath>Things/Pawn/Humanlike/Apparel/PhoenixArmor/PhoenixArmor</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <color>(0.36, 0.62, 0.68)</color>
+          </graphicData>
+          <apparel>
+            <scoreOffset>6</scoreOffset>
+            <wornGraphicPath>Things/Pawn/Humanlike/Apparel/PhoenixArmor/PhoenixArmor</wornGraphicPath>
+          </apparel>
+          <comps>
+            <li Class="CompProperties_ApparelReloadable">
+              <maxCharges>2</maxCharges>
+              <ammoDef>Chemfuel</ammoDef>
+              <ammoCountPerCharge>60</ammoCountPerCharge>
+              <baseReloadTicks>40</baseReloadTicks>
+              <soundReload>Standard_Reload</soundReload>
+              <hotKey>Misc4</hotKey>
+              <chargeNoun>incendiary</chargeNoun>
+              <displayGizmoWhileUndrafted>false</displayGizmoWhileUndrafted>
+            </li>
+          </comps>
+          <verbs>
+            <li>
+              <label>launch solar incendiary</label>
+              <verbClass>Verb_LaunchProjectileStatic</verbClass>
+              <hasStandardCommand>true</hasStandardCommand>
+              <onlyManualCast>True</onlyManualCast>
+              <range>18.9</range>
+              <forcedMissRadius>1.4</forcedMissRadius>
+              <warmupTime>1.0</warmupTime>
+              <noiseRadius>3</noiseRadius>
+              <soundCast>Shot_IncendiaryLauncher</soundCast>
+              <soundCastTail>GunTail_Medium</soundCastTail>
+              <muzzleFlashScale>14</muzzleFlashScale>
+              <drawHighlightWithLineOfSight>true</drawHighlightWithLineOfSight>
+              <targetParams>
+                <canTargetLocations>true</canTargetLocations>
+              </targetParams>
+              <defaultProjectile>BOR_Solar_Proj_GrenadePhoenixFire</defaultProjectile>
+              <rangedFireRulepack>Combat_RangedFire_Thrown</rangedFireRulepack>
+            </li>
+          </verbs>
+          <tradeTags>
+            <li>BOR_Tech_I</li>
+            <li>BOR_Armor_I</li>
+          </tradeTags>
+          <recipeMaker>
+            <displayPriority>135</displayPriority>
+          </recipeMaker>
+        </ThingDef>
+
+        <ThingDef ParentName="BaseIncendiaryProjectile">
+          <defName>BOR_Solar_Proj_GrenadePhoenixFire</defName>
+          <label>solar incendiary grenade</label>
+          <graphicData>
+            <texPath>Things/Projectile/LauncherShot</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <shaderType>TransparentPostLight</shaderType>
+            <color>(254,189,58)</color>
+          </graphicData>
+          <projectile>
+            <speed>27</speed>
+            <explosionRadius>4.35</explosionRadius>
+            <arcHeightFactor>0.4</arcHeightFactor>
+          </projectile>
+        </ThingDef>
+
+        <ThingDef ParentName="ApparelArmorHelmetReconSolarBase">
+          <defName>BOR_Solar_Apparel_Gunlink</defName>
+          <label>gunlink</label>
+          <description>A solar targeting computer that helps the user aim. It detects and analyzes targets using infrared, visible, and millimeter-wave electromagnetic sensors. An onboard targeting computer displays firing solutions on a retinal projection. It offers no protection at all.</description>
+          <graphicData>
+            <texPath>Things/Pawn/Humanlike/Apparel/Gunlink/Gunlink</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <color>(0.36, 0.62, 0.68)</color>
+          </graphicData>
+          <equippedStatOffsets>
+            <ToxicEnvironmentResistance>0.6</ToxicEnvironmentResistance>
+            <ShootingAccuracyPawn>4.5</ShootingAccuracyPawn>
+          </equippedStatOffsets>
+          <statBases>
+            <ArmorRating_Sharp>0</ArmorRating_Sharp>
+            <ArmorRating_Blunt>0</ArmorRating_Blunt>
+            <ArmorRating_Heat>0</ArmorRating_Heat>
+            <Insulation_Cold>0</Insulation_Cold>
+            <Insulation_Heat>0</Insulation_Heat>
+          </statBases>
+          <recipeMaker>
+            <researchPrerequisites>
+              <li>BOR_Research_Armor_I</li>
+              <li>Gunlink</li>
+            </researchPrerequisites>
+            <displayPriority>400</displayPriority>
+          </recipeMaker>
+          <costList>
+            <ComponentSpacer>1</ComponentSpacer>
+            <BOR_Sunsteel>10</BOR_Sunsteel>
+          </costList>
+          <apparel>
+            <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Gunlink/Gunlink</wornGraphicPath>
+            <renderSkipFlags>
+              <li>None</li>
+            </renderSkipFlags>
+            <countsAsClothingForNudity>false</countsAsClothingForNudity>
+            <bodyPartGroups Inherit="False">
+              <li>UpperHead</li>
+            </bodyPartGroups>
+            <tags Inherit="False">
+              <li>Gunlink</li>
+            </tags>
+          </apparel>
+          <tradeTags>
+            <li>BOR_Clothing_I</li>
+          </tradeTags>
+          <thingSetMakerTags Inherit="False">
+            <li>RewardStandardLowFreq</li>
+          </thingSetMakerTags>
+        </ThingDef>
+      </value>
     </enabled>
   </Operation>
-
 </Patch>

@@ -1,0 +1,211 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
+    <modSettingDef>BOR_Setting_RoyaltyImplantsVariants</modSettingDef>
+    <enabled Class="PatchOperationAdd">
+      <xpath>Defs</xpath>
+      <value>
+
+        <!-- Psychic sensitizer -->
+
+        <HediffDef ParentName="BOR_ImplantUmbralHediffBase">
+          <defName>PsychicSensitizerUmbral</defName>
+          <label>umbral psychic sensitizer</label>
+          <labelNoun>an umbral psychic sensitizer</labelNoun>
+          <description>An installed umbral psychic sensitizer implant.</description>
+          <descriptionHyperlinks>
+            <ThingDef>BOR_Femtoclusters</ThingDef>
+          </descriptionHyperlinks>
+          <stages>
+            <li>
+              <statOffsets>
+                <PsychicSensitivity>2.25</PsychicSensitivity>
+              </statOffsets>
+            </li>
+          </stages>
+        </HediffDef>
+
+        <RecipeDef ParentName="SurgeryInstallImplantBORUmbralBase">
+          <defName>InstallPsychicSensitizerUmbral</defName>
+          <label>install umbral psychic sensitizer</label>
+          <description>Install a psychic sensitizer.</description>
+          <descriptionHyperlinks>
+            <ThingDef>BOR_Femtoclusters</ThingDef>
+            <HediffDef>PsychicSensitizerUmbral</HediffDef>
+          </descriptionHyperlinks>
+          <jobString>Installing umbral psychic sensitizer.</jobString>
+          <ingredients>
+            <li>
+              <filter>
+                <thingDefs>
+                  <li>BOR_Femtoclusters</li>
+                </thingDefs>
+              </filter>
+              <count>5</count>
+            </li>
+          </ingredients>
+          <fixedIngredientFilter>
+            <thingDefs>
+              <li>BOR_Femtoclusters</li>
+            </thingDefs>
+          </fixedIngredientFilter>
+          <appliedOnFixedBodyParts>
+            <li>Brain</li>
+          </appliedOnFixedBodyParts>
+          <addsHediff>PsychicSensitizerUmbral</addsHediff>
+        </RecipeDef>
+
+        <RecipeDef ParentName="SurgeryRemoveImplantBase">
+          <defName>RemovePsychicSensitizerUmbral</defName>
+          <label>remove umbral psychic sensitizer</label>
+          <description>Remove psychic sensitizer.</description>
+          <descriptionHyperlinks>
+            <ThingDef>BOR_Femtoclusters</ThingDef>
+            <HediffDef>PsychicSensitizerUmbral</HediffDef>
+          </descriptionHyperlinks>
+          <jobString>Removing umbral psychic sensitizer.</jobString>
+          <removesHediff>PsychicSensitizerUmbral</removesHediff>
+        </RecipeDef>
+
+        <!-- Psychic harmonizer -->
+
+        <ThoughtDef>
+          <defName>PsychicHarmonizationUmbral</defName>
+          <thoughtClass>Thought_PsychicHarmonizer</thoughtClass>
+          <effectMultiplyingStat>PsychicSensitivity</effectMultiplyingStat>
+          <stackLimit>100</stackLimit>
+          <developmentalStageFilter>Baby, Child, Adult</developmentalStageFilter>
+          <stages>
+            <li>
+              <label>umbral psychic harmony: {HARMONIZER_labelShort}</label>
+              <description>The psychic harmonizer implant makes me feel some of the emotions of the person using it as long as we're close together.</description>
+              <baseMoodEffect>37</baseMoodEffect>
+            </li>
+          </stages>
+        </ThoughtDef>
+
+        <HediffDef ParentName="BOR_ImplantUmbralHediffBase">
+          <defName>PsychicHarmonizerUmbral</defName>
+          <label>umbral psychic harmonizer</label>
+          <labelNoun>an umbral psychic harmonizer</labelNoun>
+          <description>An installed umbral psychic harmonizer implant.</description>
+          <descriptionHyperlinks>
+            <ThingDef>BOR_Femtoclusters</ThingDef>
+          </descriptionHyperlinks>
+          <comps>
+            <li Class="HediffCompProperties_PsychicHarmonizer">
+              <range>99</range>
+              <thought>PsychicHarmonization</thought>
+            </li>
+          </comps>
+        </HediffDef>
+        <RecipeDef ParentName="SurgeryInstallImplantBORUmbralBase">
+          <defName>InstallPsychicHarmonizerUmbral</defName>
+          <label>install umbral psychic harmonizer</label>
+          <description>Install a psychic harmonizer.</description>
+          <descriptionHyperlinks>
+            <ThingDef>BOR_Femtoclusters</ThingDef>
+            <HediffDef>PsychicHarmonizerUmbral</HediffDef>
+          </descriptionHyperlinks>
+          <jobString>Installing umbral psychic harmonizer.</jobString>
+          <ingredients>
+            <li>
+              <filter>
+                <thingDefs>
+                  <li>BOR_Femtoclusters</li>
+                </thingDefs>
+              </filter>
+              <count>10</count>
+            </li>
+          </ingredients>
+          <fixedIngredientFilter>
+            <thingDefs>
+              <li>BOR_Femtoclusters</li>
+            </thingDefs>
+          </fixedIngredientFilter>
+          <appliedOnFixedBodyParts>
+            <li>Brain</li>
+          </appliedOnFixedBodyParts>
+          <addsHediff>PsychicHarmonizerUmbral</addsHediff>
+        </RecipeDef>
+
+        <RecipeDef ParentName="SurgeryRemoveImplantBase">
+          <defName>RemovePsychicHarmonizerUmbral</defName>
+          <label>remove umbral psychic harmonizer</label>
+          <description>Remove psychic harmonizer.</description>
+          <descriptionHyperlinks>
+            <ThingDef>BOR_Femtoclusters</ThingDef>
+            <HediffDef>PsychicHarmonizerUmbral</HediffDef>
+          </descriptionHyperlinks>
+          <jobString>Removing umbral psychic harmonizer.</jobString>
+          <removesHediff>PsychicHarmonizerUmbral</removesHediff>
+        </RecipeDef>
+
+        <!-- Psychic reader -->
+
+        <HediffDef ParentName="BOR_ImplantUmbralHediffBase">
+          <defName>PsychicReaderUmbral</defName>
+          <label>umbral psychic reader</label>
+          <labelNoun>an umbral psychic reader</labelNoun>
+          <description>An installed umbral psychic reader implant.</description>
+          <descriptionHyperlinks>
+            <ThingDef>BOR_Femtoclusters</ThingDef>
+          </descriptionHyperlinks>
+          <stages>
+            <li>
+              <statOffsets>
+                <NegotiationAbility>0.95</NegotiationAbility>
+                <TradePriceImprovement>0.85</TradePriceImprovement>
+              </statOffsets>
+              <statOffsetEffectMultiplier>PsychicSensitivity</statOffsetEffectMultiplier>
+            </li>
+          </stages>
+        </HediffDef>
+
+        <RecipeDef ParentName="SurgeryInstallImplantBORUmbralBase">
+          <defName>InstallPsychicReaderUmbral</defName>
+          <label>install umbral psychic reader</label>
+          <description>Install a psychic reader.</description>
+          <descriptionHyperlinks>
+            <ThingDef>BOR_Femtoclusters</ThingDef>
+            <HediffDef>PsychicReaderUmbral</HediffDef>
+          </descriptionHyperlinks>
+          <jobString>Installing umbral psychic reader.</jobString>
+          <ingredients>
+            <li>
+              <filter>
+                <thingDefs>
+                  <li>BOR_Femtoclusters</li>
+                </thingDefs>
+              </filter>
+              <count>10</count>
+            </li>
+          </ingredients>
+          <fixedIngredientFilter>
+            <thingDefs>
+              <li>BOR_Femtoclusters</li>
+            </thingDefs>
+          </fixedIngredientFilter>
+          <appliedOnFixedBodyParts>
+            <li>Brain</li>
+          </appliedOnFixedBodyParts>
+          <addsHediff>PsychicReaderUmbral</addsHediff>
+        </RecipeDef>
+
+        <RecipeDef ParentName="SurgeryRemoveImplantBase">
+          <defName>RemovePsychicReaderUmbral</defName>
+          <label>remove umbral psychic reader</label>
+          <description>Remove psychic reader.</description>
+          <descriptionHyperlinks>
+            <ThingDef>BOR_Femtoclusters</ThingDef>
+            <HediffDef>PsychicReaderUmbral</HediffDef>
+          </descriptionHyperlinks>
+          <jobString>Removing umbral psychic reader.</jobString>
+          <removesHediff>PsychicReaderUmbral</removesHediff>
+        </RecipeDef>
+
+      </value>
+    </enabled>
+  </Operation>
+</Patch>
