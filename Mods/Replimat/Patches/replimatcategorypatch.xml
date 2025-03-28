@@ -1,21 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Patch>
- 
+
   <!-- category -->
-  <Operation Class="PatchOperationReplace">
-    <xpath>Defs/ThingDef[@Name="ReplimatBase"]/designationCategory</xpath>
-    <value>
-      <designationCategory>BOR</designationCategory>
-    </value>
+  <Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
+    <modSettingDef>BOR_Setting_MoveReplimatBuildingsToBeyondTab</modSettingDef>
+    <enabled Class="PatchOperationReplace">
+      <xpath>Defs/ThingDef[@Name="ReplimatBase"]/designationCategory</xpath>
+      <value>
+        <designationCategory>BOR</designationCategory>
+      </value>
+    </enabled>
   </Operation>
+
   <!-- dropdown -->
-  <Operation Class="PatchOperationAdd">
-    <xpath>Defs/ThingDef[@Name="ReplimatBase"]</xpath>
-    <value>
-      <designatorDropdown>BOR_Replimat</designatorDropdown>
-    </value>
+  <Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
+    <modSettingDef>BOR_Setting_MoveReplimatBuildingsToBeyondTab</modSettingDef>
+    <enabled Class="PatchOperationAdd">
+      <xpath>Defs/ThingDef[@Name="ReplimatBase"]</xpath>
+      <value>
+        <designatorDropdown>BOR_Replimat</designatorDropdown>
+      </value>
+    </enabled>
   </Operation>
-  <Operation Class="PatchOperationRemove">
-    <xpath>Defs/DesignationCategoryDef[defName="Replimat_Replimat"]</xpath>
+  <Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
+    <modSettingDef>BOR_Setting_MoveReplimatBuildingsToBeyondTab</modSettingDef>
+    <enabled Class="PatchOperationRemove">
+      <xpath>Defs/DesignationCategoryDef[defName="Replimat_Replimat"]</xpath>
+    </enabled>
   </Operation>
+
 </Patch>

@@ -1,0 +1,752 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
+    <modSettingDef>BOR_Setting_RoyaltyImplantsVariants</modSettingDef>
+    <enabled Class="PatchOperationAdd">
+      <xpath>Defs</xpath>
+      <value>
+
+        <!-- Mindscrew -->
+
+        <HediffDef ParentName="BOR_ImplantQuasarHediffBase">
+          <defName>MindscrewQuasar</defName>
+          <label>quasar mindscrew</label>
+          <labelNoun>a quasar mindscrew</labelNoun>
+          <description>An installed quasar mindscrew.</description>
+          <descriptionHyperlinks>
+            <ThingDef>MindscrewQuasar</ThingDef>
+          </descriptionHyperlinks>
+          <spawnThingOnRemoved>MindscrewQuasar</spawnThingOnRemoved>
+          <priceOffset>-440</priceOffset>
+          <stages>
+            <li>
+              <painOffset>0.6</painOffset>
+            </li>
+          </stages>
+        </HediffDef>
+
+        <ThingDef ParentName="BodyPartBORQuasarBase">
+          <defName>MindscrewQuasar</defName>
+          <label>quasar mindscrew</label>
+          <description>Inflicts continuous pain on the user. Mindscrews are used by some authorities as a long-term punishment. Some even install them voluntarily as a demonstration of ideological or religious devotion.</description>
+          <descriptionHyperlinks>
+            <RecipeDef>InstallMindscrewQuasar</RecipeDef>
+          </descriptionHyperlinks>
+          <techHediffsTags>
+            <li>PainCauser</li>
+          </techHediffsTags>
+
+
+          <statBases>
+            <RoyalFavorValue>1</RoyalFavorValue>
+          </statBases>
+          <tradeTags>
+            <li>BOR_Tech_II</li>
+          </tradeTags>
+        </ThingDef>
+
+        <RecipeDef ParentName="SurgeryInstallImplantBORQuasarBase">
+          <defName>InstallMindscrewQuasar</defName>
+          <label>install quasar mindscrew</label>
+          <description>Install a mindscrew.</description>
+          <descriptionHyperlinks>
+            <ThingDef>MindscrewQuasar</ThingDef>
+            <HediffDef>MindscrewQuasar</HediffDef>
+          </descriptionHyperlinks>
+          <jobString>Installing quasar mindscrew.</jobString>
+          <ingredients>
+            <li>
+              <filter>
+                <thingDefs>
+                  <li>MindscrewQuasar</li>
+                </thingDefs>
+              </filter>
+              <count>1</count>
+            </li>
+          </ingredients>
+          <fixedIngredientFilter>
+            <thingDefs>
+              <li>MindscrewQuasar</li>
+            </thingDefs>
+          </fixedIngredientFilter>
+          <appliedOnFixedBodyParts>
+            <li>Brain</li>
+          </appliedOnFixedBodyParts>
+          <addsHediff>MindscrewQuasar</addsHediff>
+        </RecipeDef>
+
+        <!-- Drill arm -->
+
+        <HediffDef ParentName="AddedBodyPartBase">
+          <defName>DrillArmQuasar</defName>
+          <label>quasar drill arm</label>
+          <labelNoun>a quasar drill arm</labelNoun>
+          <description>An installed quasar drill arm.</description>
+          <descriptionHyperlinks>
+            <ThingDef>DrillArmQuasar</ThingDef>
+          </descriptionHyperlinks>
+          <addedPartProps>
+            <solid>true</solid>
+          </addedPartProps>
+          <stages>
+            <li>
+              <statOffsets>
+                <MiningSpeed>6.4</MiningSpeed>
+                <DeepDrillingSpeed>2.8</DeepDrillingSpeed>
+              </statOffsets>
+              <capMods>
+                <li>
+                  <capacity>Moving</capacity>
+                  <offset>-0.12</offset>
+                </li>
+              </capMods>
+            </li>
+          </stages>
+          <comps>
+            <li Class="HediffCompProperties_VerbGiver">
+              <tools>
+                <li>
+                  <label>quasar drill</label>
+                  <capacities>
+                    <li>Stab</li>
+                  </capacities>
+                  <power>52</power>
+                  <cooldownTime>3</cooldownTime>
+                  <alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+                  <soundMeleeHit>MeleeHit_DrillArm</soundMeleeHit>
+                  <soundMeleeMiss>MeleeMiss_DrillArm</soundMeleeMiss>
+                </li>
+              </tools>
+            </li>
+          </comps>
+          <spawnThingOnRemoved>DrillArmQuasar</spawnThingOnRemoved>
+        </HediffDef>
+
+        <ThingDef ParentName="BodyPartBORQuasarBase">
+          <defName>DrillArmQuasar</defName>
+          <label>quasar drill arm</label>
+          <description>A mechanical arm replacement for speeding up mining. It has a built-in snake drill, which allows the miner to rapidly find and exploit weak lines in the rock. It also has a general-purpose manipulator. It is somewhat ungainly, which slows down movement slightly.</description>
+          <descriptionHyperlinks>
+            <RecipeDef>InstallDrillArmQuasar</RecipeDef>
+          </descriptionHyperlinks>
+
+          <techHediffsTags>
+            <li>DrillArm</li>
+          </techHediffsTags>
+
+          <statBases>
+            <RoyalFavorValue>1</RoyalFavorValue>
+          </statBases>
+          <tradeTags>
+            <li>BOR_Tech_II</li>
+          </tradeTags>
+        </ThingDef>
+
+        <RecipeDef ParentName="SurgeryInstallImplantBORQuasarBase">
+          <defName>InstallDrillArmQuasar</defName>
+          <label>install quasar drill arm</label>
+          <description>Install a drill arm.</description>
+          <descriptionHyperlinks>
+            <ThingDef>DrillArmQuasar</ThingDef>
+            <HediffDef>DrillArmQuasar</HediffDef>
+          </descriptionHyperlinks>
+          <jobString>Installing quasar drill arm.</jobString>
+          <ingredients>
+            <li>
+              <filter>
+                <thingDefs>
+                  <li>DrillArmQuasar</li>
+                </thingDefs>
+              </filter>
+              <count>1</count>
+            </li>
+          </ingredients>
+          <fixedIngredientFilter>
+            <thingDefs>
+              <li>DrillArmQuasar</li>
+            </thingDefs>
+          </fixedIngredientFilter>
+          <appliedOnFixedBodyParts>
+            <li>Arm</li>
+          </appliedOnFixedBodyParts>
+          <addsHediff>DrillArmQuasar</addsHediff>
+        </RecipeDef>
+
+        <!-- Field hand -->
+
+        <HediffDef ParentName="AddedBodyPartBase">
+          <defName>FieldHandQuasar</defName>
+          <label>quasar field hand</label>
+          <labelNoun>a quasar field hand</labelNoun>
+          <description>An installed quasar field hand.</description>
+          <descriptionHyperlinks>
+            <ThingDef>FieldHandQuasar</ThingDef>
+          </descriptionHyperlinks>
+          <addedPartProps>
+            <solid>true</solid>
+          </addedPartProps>
+          <stages>
+            <li>
+              <statOffsets>
+                <PlantWorkSpeed>6.4</PlantWorkSpeed>
+              </statOffsets>
+              <capMods>
+                <li>
+                  <capacity>Moving</capacity>
+                  <offset>-0.12</offset>
+                </li>
+              </capMods>
+            </li>
+          </stages>
+          <comps>
+            <li Class="HediffCompProperties_VerbGiver">
+              <tools>
+                <li>
+                  <label>quasar knuckle</label>
+                  <capacities>
+                    <li>Blunt</li>
+                  </capacities>
+                  <power>36</power>
+                  <cooldownTime>3</cooldownTime>
+                  <alwaysTreatAsWeapon>false</alwaysTreatAsWeapon>
+                  <soundMeleeHit>MeleeHit_FieldHand</soundMeleeHit>
+                  <soundMeleeMiss>MeleeMiss_FieldHand</soundMeleeMiss>
+                </li>
+              </tools>
+            </li>
+          </comps>
+          <spawnThingOnRemoved>FieldHandQuasar</spawnThingOnRemoved>
+        </HediffDef>
+
+        <ThingDef ParentName="BodyPartBORQuasarBase">
+          <defName>FieldHandQuasar</defName>
+          <label>quasar field hand</label>
+          <description>This mechanical hand replacement is made to speed up the sowing and harvesting tasks of a farmer. Multiple telescoping finger-like protrusions can simultaneously harvest from several points on the same plant, or precisely sow several holes at once. It also has a general-purpose manipulator. It is somewhat ungainly, which slows down movement slightly.</description>
+          <descriptionHyperlinks>
+            <RecipeDef>InstallFieldHandQuasar</RecipeDef>
+          </descriptionHyperlinks>
+
+          <techHediffsTags>
+            <li>FieldHand</li>
+          </techHediffsTags>
+
+          <statBases>
+            <RoyalFavorValue>1</RoyalFavorValue>
+          </statBases>
+          <tradeTags>
+            <li>BOR_Tech_II</li>
+          </tradeTags>
+        </ThingDef>
+
+        <RecipeDef ParentName="SurgeryInstallImplantBORQuasarBase">
+          <defName>InstallFieldHandQuasar</defName>
+          <label>install quasar field hand</label>
+          <description>Install a field hand.</description>
+          <descriptionHyperlinks>
+            <ThingDef>FieldHandQuasar</ThingDef>
+            <HediffDef>FieldHandQuasar</HediffDef>
+          </descriptionHyperlinks>
+          <jobString>Installing quasar field hand.</jobString>
+          <ingredients>
+            <li>
+              <filter>
+                <thingDefs>
+                  <li>FieldHandQuasar</li>
+                </thingDefs>
+              </filter>
+              <count>1</count>
+            </li>
+          </ingredients>
+          <fixedIngredientFilter>
+            <thingDefs>
+              <li>FieldHandQuasar</li>
+            </thingDefs>
+          </fixedIngredientFilter>
+          <appliedOnFixedBodyParts>
+            <li>Hand</li>
+          </appliedOnFixedBodyParts>
+          <addsHediff>FieldHandQuasar</addsHediff>
+        </RecipeDef>
+
+        <!-- Hand talon -->
+
+        <HediffDef ParentName="BOR_ImplantQuasarHediffBase">
+          <defName>HandTalonQuasar</defName>
+          <label>quasar hand talon</label>
+          <labelNoun>a quasar hand talon</labelNoun>
+          <description>An installed quasar hand talon.</description>
+          <descriptionHyperlinks>
+            <ThingDef>HandTalonQuasar</ThingDef>
+          </descriptionHyperlinks>
+          <addedPartProps>
+            <solid>true</solid>
+          </addedPartProps>
+          <comps>
+            <li Class="HediffCompProperties_VerbGiver">
+              <tools>
+                <li>
+                  <label>quasar talon</label>
+                  <capacities>
+                    <li>Scratch</li>
+                  </capacities>
+                  <power>60</power>  <!-- Lower damage means lower AP than other compact weapons, but it's faster with more raw DPS -->
+                  <armorPenetration>0.5</armorPenetration>
+                  <cooldownTime>0.5</cooldownTime>
+                  <alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+                  <soundMeleeHit>MeleeHit_BionicSlash</soundMeleeHit>
+                  <soundMeleeMiss>MeleeMiss_BionicSlash</soundMeleeMiss>
+                </li>
+              </tools>
+            </li>
+          </comps>
+          <spawnThingOnRemoved>HandTalonQuasar</spawnThingOnRemoved>
+        </HediffDef>
+
+        <ThingDef ParentName="BodyPartBORQuasarBase">
+          <defName>HandTalonQuasar</defName>
+          <label>quasar hand talon</label>
+          <description>A razor-sharp talon which extends from a hidden opening between the middle and ring fingers. The talon is longer than the palm, but it becomes flexible upon retracting, allowing the user to curl it up and conceal it inside the hand. It can perform rapid slashing attacks, but is poor at penetrating armor.</description>
+          <descriptionHyperlinks>
+            <RecipeDef>InstallHandTalonQuasar</RecipeDef>
+          </descriptionHyperlinks>
+
+          <violentTechHediff>true</violentTechHediff>
+          <techHediffsTags>
+            <li>AdvancedWeapon</li>
+          </techHediffsTags>
+
+          <statBases>
+            <RoyalFavorValue>1</RoyalFavorValue>
+          </statBases>
+          <tradeTags>
+            <li>BOR_Tech_II</li>
+          </tradeTags>
+        </ThingDef>
+
+        <RecipeDef ParentName="SurgeryInstallImplantBORQuasarBase">
+          <defName>InstallHandTalonQuasar</defName>
+          <label>install quasar hand talon</label>
+          <description>Install a hand talon.</description>
+          <descriptionHyperlinks>
+            <ThingDef>HandTalonQuasar</ThingDef>
+            <HediffDef>HandTalonQuasar</HediffDef>
+          </descriptionHyperlinks>
+          <jobString>Installing quasar hand talon.</jobString>
+          <ingredients>
+            <li>
+              <filter>
+                <thingDefs>
+                  <li>HandTalonQuasar</li>
+                </thingDefs>
+              </filter>
+              <count>1</count>
+            </li>
+          </ingredients>
+          <fixedIngredientFilter>
+            <thingDefs>
+              <li>HandTalonQuasar</li>
+            </thingDefs>
+          </fixedIngredientFilter>
+          <appliedOnFixedBodyParts>
+            <li>Hand</li>
+          </appliedOnFixedBodyParts>
+          <addsHediff>HandTalonQuasar</addsHediff>
+        </RecipeDef>
+
+        <RecipeDef ParentName="SurgeryRemoveImplantBase">
+          <defName>RemoveHandTalonQuasar</defName>
+          <label>quasar remove hand talon</label>
+          <description>Remove hand talon.</description>
+          <descriptionHyperlinks>
+            <ThingDef>HandTalonQuasar</ThingDef>
+            <HediffDef>HandTalonQuasar</HediffDef>
+          </descriptionHyperlinks>
+          <jobString>Removing quasar hand talon.</jobString>
+          <removesHediff>HandTalonQuasar</removesHediff>
+        </RecipeDef>
+
+        <!-- Elbow blade -->
+
+        <HediffDef ParentName="BOR_ImplantQuasarHediffBase">
+          <defName>ElbowBladeQuasar</defName>
+          <label>quasar elbow blade</label>
+          <labelNoun>a quasarn elbow blade</labelNoun>
+          <description>An installed quasar elbow blade.</description>
+          <descriptionHyperlinks>
+            <ThingDef>ElbowBladeQuasar</ThingDef>
+          </descriptionHyperlinks>
+          <addedPartProps>
+            <solid>true</solid>
+          </addedPartProps>
+          <comps>
+            <li Class="HediffCompProperties_VerbGiver">
+              <tools>
+                <li>
+                  <label>quasar blade</label>
+                  <capacities>
+                    <li>Cut</li>
+                  </capacities>
+                  <power>72</power>
+                  <cooldownTime>4</cooldownTime>
+                  <alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+                  <soundMeleeHit>MeleeHit_BionicSlash</soundMeleeHit>
+                  <soundMeleeMiss>MeleeMiss_BionicSlash</soundMeleeMiss>
+                </li>
+              </tools>
+            </li>
+          </comps>
+          <spawnThingOnRemoved>ElbowBladeQuasar</spawnThingOnRemoved>
+        </HediffDef>
+
+        <ThingDef ParentName="BodyPartBORQuasarBase">
+          <defName>ElbowBladeQuasar</defName>
+          <label>quasar elbow blade</label>
+          <description>A razor-sharp blade that extends at will from a hidden opening at the end of the ulna. Appearing without warning, it can be used for devastating slice attacks.</description>
+          <descriptionHyperlinks>
+            <RecipeDef>InstallElbowBladeQuasar</RecipeDef>
+          </descriptionHyperlinks>
+
+          <violentTechHediff>true</violentTechHediff>
+          <techHediffsTags>
+            <li>AdvancedWeapon</li>
+          </techHediffsTags>
+
+          <statBases>
+            <RoyalFavorValue>1</RoyalFavorValue>
+          </statBases>
+          <tradeTags>
+            <li>BOR_Tech_II</li>
+          </tradeTags>
+        </ThingDef>
+
+        <RecipeDef ParentName="SurgeryInstallImplantBORQuasarBase">
+          <defName>InstallElbowBladeQuasar</defName>
+          <label>install quasar elbow blade</label>
+          <description>Install an elbow blade.</description>
+          <descriptionHyperlinks>
+            <ThingDef>ElbowBladeQuasar</ThingDef>
+            <HediffDef>ElbowBladeQuasar</HediffDef>
+          </descriptionHyperlinks>
+          <jobString>Installing quasar elbow blade.</jobString>
+          <ingredients>
+            <li>
+              <filter>
+                <thingDefs>
+                  <li>ElbowBladeQuasar</li>
+                </thingDefs>
+              </filter>
+              <count>1</count>
+            </li>
+          </ingredients>
+          <fixedIngredientFilter>
+            <thingDefs>
+              <li>ElbowBladeQuasar</li>
+            </thingDefs>
+          </fixedIngredientFilter>
+          <appliedOnFixedBodyParts>
+            <li>Arm</li>
+          </appliedOnFixedBodyParts>
+          <addsHediff>ElbowBladeQuasar</addsHediff>
+        </RecipeDef>
+
+        <RecipeDef ParentName="SurgeryRemoveImplantBase">
+          <defName>RemoveElbowBladeQuasar</defName>
+          <label>quasar remove elbow blade</label>
+          <description>Remove elbow blade.</description>
+          <descriptionHyperlinks>
+            <ThingDef>ElbowBladeQuasar</ThingDef>
+            <HediffDef>ElbowBladeQuasar</HediffDef>
+          </descriptionHyperlinks>
+          <jobString>Removing quasar elbow blade.</jobString>
+          <removesHediff>ElbowBladeQuasar</removesHediff>
+        </RecipeDef>
+
+        <!-- Knee spike -->
+
+        <HediffDef ParentName="BOR_ImplantQuasarHediffBase">
+          <defName>KneeSpikeQuasar</defName>
+          <label>quasar knee spike</label>
+          <labelNoun>a quasar knee spike</labelNoun>
+          <description>An installed quasar knee spike.</description>
+          <descriptionHyperlinks>
+            <ThingDef>KneeSpikeQuasar</ThingDef>
+          </descriptionHyperlinks>
+          <addedPartProps>
+            <solid>true</solid>
+          </addedPartProps>
+          <comps>
+            <li Class="HediffCompProperties_VerbGiver">
+              <tools>
+                <li>
+                  <label>quasar spike</label>
+                  <capacities>
+                    <li>Stab</li>
+                  </capacities>
+                  <power>88</power> <!-- More power and AP but slower than other compact weapons -->
+                  <armorPenetration>1.4</armorPenetration>
+                  <cooldownTime>3.0</cooldownTime>
+                  <alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+                  <soundMeleeHit>MeleeHit_BionicSlash</soundMeleeHit>
+                  <soundMeleeMiss>MeleeMiss_BionicSlash</soundMeleeMiss>
+                </li>
+              </tools>
+            </li>
+          </comps>
+          <spawnThingOnRemoved>KneeSpikeQuasar</spawnThingOnRemoved>
+        </HediffDef>
+
+        <ThingDef ParentName="BodyPartBORQuasarBase">
+          <defName>KneeSpikeQuasar</defName>
+          <label>quasar knee spike</label>
+          <description>A spike that extends at will from a hidden opening on the front of the knee. Appearing without warning, it can be used for devastating stabbing attacks which penetrate even thick armor.</description>
+          <descriptionHyperlinks>
+            <RecipeDef>InstallKneeSpikeQuasar</RecipeDef>
+          </descriptionHyperlinks>
+
+          <violentTechHediff>true</violentTechHediff>
+          <techHediffsTags>
+            <li>AdvancedWeapon</li>
+          </techHediffsTags>
+
+          <statBases>
+            <RoyalFavorValue>1</RoyalFavorValue>
+          </statBases>
+          <tradeTags>
+            <li>BOR_Tech_II</li>
+          </tradeTags>
+        </ThingDef>
+
+        <RecipeDef ParentName="SurgeryInstallImplantBORQuasarBase">
+          <defName>InstallKneeSpikeQuasar</defName>
+          <label>install quasar knee spike</label>
+          <description>Install a knee spike.</description>
+          <descriptionHyperlinks>
+            <ThingDef>KneeSpikeQuasar</ThingDef>
+            <HediffDef>KneeSpikeQuasar</HediffDef>
+          </descriptionHyperlinks>
+          <jobString>Installing quasar knee spike.</jobString>
+          <ingredients>
+            <li>
+              <filter>
+                <thingDefs>
+                  <li>KneeSpikeQuasar</li>
+                </thingDefs>
+              </filter>
+              <count>1</count>
+            </li>
+          </ingredients>
+          <fixedIngredientFilter>
+            <thingDefs>
+              <li>KneeSpikeQuasar</li>
+            </thingDefs>
+          </fixedIngredientFilter>
+          <appliedOnFixedBodyParts>
+            <li>Leg</li>
+          </appliedOnFixedBodyParts>
+          <addsHediff>KneeSpikeQuasar</addsHediff>
+        </RecipeDef>
+
+        <RecipeDef ParentName="SurgeryRemoveImplantBase">
+          <defName>RemoveKneeSpikeQuasar</defName>
+          <label>quasar remove knee spike</label>
+          <description>Remove knee spike.</description>
+          <descriptionHyperlinks>
+            <ThingDef>KneeSpikeQuasar</ThingDef>
+            <HediffDef>KneeSpikeQuasar</HediffDef>
+          </descriptionHyperlinks>
+          <jobString>Removing quasar knee spike.</jobString>
+          <removesHediff>KneeSpikeQuasar</removesHediff>
+        </RecipeDef>
+
+        <!-- venom fangs -->
+
+        <HediffDef ParentName="BOR_ImplantQuasarHediffBase">
+          <defName>VenomFangsQuasar</defName>
+          <label>quasar venom fangs</label>
+          <labelNoun>a quasar set of venom fangs</labelNoun>
+          <description>An installed quasar set of venom fangs.</description>
+          <descriptionHyperlinks>
+            <ThingDef>VenomFangsQuasar</ThingDef>
+          </descriptionHyperlinks>
+          <addedPartProps>
+            <solid>true</solid>
+          </addedPartProps>
+          <comps>
+            <li Class="HediffCompProperties_VerbGiver">
+              <tools>
+                <li>
+                  <label>quasar venom fangs</label>
+                  <capacities>
+                    <li>ToxicBite</li>
+                  </capacities>
+                  <power>60</power>
+                  <cooldownTime>3</cooldownTime>
+                  <alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+                </li>
+              </tools>
+            </li>
+          </comps>
+          <spawnThingOnRemoved>VenomFangsQuasar</spawnThingOnRemoved>
+        </HediffDef>
+
+        <ThingDef ParentName="BodyPartBORQuasarBase">
+          <defName>VenomFangsQuasar</defName>
+          <label>quasar venom fangs</label>
+          <description>A pair of injectors implanted through the canine teeth, connected to a venom pump. The user can bite an enemy, extend the injectors, and pump venom into the target.</description>
+          <descriptionHyperlinks>
+            <RecipeDef>InstallVenomFangsQuasar</RecipeDef>
+          </descriptionHyperlinks>
+
+          <violentTechHediff>true</violentTechHediff>
+          <techHediffsTags>
+            <li>AdvancedWeapon</li>
+          </techHediffsTags>
+
+          <statBases>
+            <RoyalFavorValue>1</RoyalFavorValue>
+          </statBases>
+          <tradeTags>
+            <li>BOR_Tech_II</li>
+          </tradeTags>
+        </ThingDef>
+
+        <RecipeDef ParentName="SurgeryInstallImplantBORQuasarBase">
+          <defName>InstallVenomFangsQuasar</defName>
+          <label>install quasar venom fangs</label>
+          <description>Install venom fangs.</description>
+          <descriptionHyperlinks>
+            <ThingDef>VenomFangsQuasar</ThingDef>
+            <HediffDef>VenomFangsQuasar</HediffDef>
+          </descriptionHyperlinks>
+          <jobString>Installing quasar venom fangs.</jobString>
+          <ingredients>
+            <li>
+              <filter>
+                <thingDefs>
+                  <li>VenomFangsQuasar</li>
+                </thingDefs>
+              </filter>
+              <count>1</count>
+            </li>
+          </ingredients>
+          <fixedIngredientFilter>
+            <thingDefs>
+              <li>VenomFangsQuasar</li>
+            </thingDefs>
+          </fixedIngredientFilter>
+          <appliedOnFixedBodyPartGroups>
+            <li>Teeth</li>
+          </appliedOnFixedBodyPartGroups>
+          <addsHediff>VenomFangsQuasar</addsHediff>
+        </RecipeDef>
+
+        <RecipeDef ParentName="SurgeryRemoveImplantBase">
+          <defName>RemoveVenomFangsQuasar</defName>
+          <label>quasar remove venom fangs</label>
+          <description>Remove venom fangs.</description>
+          <descriptionHyperlinks>
+            <ThingDef>VenomFangsQuasar</ThingDef>
+            <HediffDef>VenomFangsQuasar</HediffDef>
+          </descriptionHyperlinks>
+          <jobString>Removing quasar venom fangs.</jobString>
+          <removesHediff>VenomFangsQuasar</removesHediff>
+        </RecipeDef>
+
+        <!-- venom talon -->
+
+        <HediffDef ParentName="BOR_ImplantQuasarHediffBase">
+          <defName>VenomTalonQuasar</defName>
+          <label>quasar venom talon</label>
+          <labelNoun>a quasar venom talon</labelNoun>
+          <description>An installed quasar venom talon.</description>
+          <descriptionHyperlinks>
+            <ThingDef>VenomTalonQuasar</ThingDef>
+          </descriptionHyperlinks>
+          <comps>
+            <li Class="HediffCompProperties_VerbGiver">
+              <tools>
+                <li>
+                  <label>quasar venom talon</label>
+                  <capacities>
+                    <li>ScratchToxic</li>
+                  </capacities>
+                  <power>44</power> <!-- Toxic and fast but with poor armor penetration -->
+                  <armorPenetration>0.6</armorPenetration>
+                  <cooldownTime>1.0</cooldownTime>
+                  <alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+                  <soundMeleeHit>MeleeHit_BionicSlash</soundMeleeHit>
+                  <soundMeleeMiss>MeleeMiss_BionicSlash</soundMeleeMiss>
+                </li>
+              </tools>
+            </li>
+          </comps>
+          <spawnThingOnRemoved>VenomTalonQuasar</spawnThingOnRemoved>
+        </HediffDef>
+
+        <ThingDef ParentName="BodyPartBORQuasarBase">
+          <defName>VenomTalonQuasar</defName>
+          <label>quasar venom talon</label>
+          <description>A retractable finger talon connected to a venom pump in the lower arm. The user can scratch an enemy while squirting venom into the wound. The talon is designed to be installed in the middle finger. It's fast, but poor at penetrating armor.</description>
+          <descriptionHyperlinks>
+            <RecipeDef>InstallVenomTalonQuasar</RecipeDef>
+          </descriptionHyperlinks>
+
+          <violentTechHediff>true</violentTechHediff>
+          <techHediffsTags>
+            <li>AdvancedWeapon</li>
+          </techHediffsTags>
+
+          <statBases>
+            <RoyalFavorValue>1</RoyalFavorValue>
+          </statBases>
+          <tradeTags>
+            <li>BOR_Tech_II</li>
+          </tradeTags>
+        </ThingDef>
+
+        <RecipeDef ParentName="SurgeryInstallImplantBORQuasarBase">
+          <defName>InstallVenomTalonQuasar</defName>
+          <label>install quasar venom talon</label>
+          <description>Install a venom talon.</description>
+          <descriptionHyperlinks>
+            <ThingDef>VenomTalonQuasar</ThingDef>
+            <HediffDef>VenomTalonQuasar</HediffDef>
+          </descriptionHyperlinks>
+          <jobString>Installing quasar venom talon.</jobString>
+          <ingredients>
+            <li>
+              <filter>
+                <thingDefs>
+                  <li>VenomTalonQuasar</li>
+                </thingDefs>
+              </filter>
+              <count>1</count>
+            </li>
+          </ingredients>
+          <fixedIngredientFilter>
+            <thingDefs>
+              <li>VenomTalonQuasar</li>
+            </thingDefs>
+          </fixedIngredientFilter>
+          <appliedOnFixedBodyPartGroups>
+            <li>MiddleFingers</li>
+          </appliedOnFixedBodyPartGroups>
+          <addsHediff>VenomTalonQuasar</addsHediff>
+        </RecipeDef>
+
+        <RecipeDef ParentName="SurgeryRemoveImplantBase">
+          <defName>RemoveVenomTalonQuasar</defName>
+          <label>quasar remove venom talon</label>
+          <description>Remove venom talon.</description>
+          <descriptionHyperlinks>
+            <ThingDef>VenomTalonQuasar</ThingDef>
+            <HediffDef>VenomTalonQuasar</HediffDef>
+          </descriptionHyperlinks>
+          <jobString>Removing quasar venom talon.</jobString>
+          <removesHediff>VenomTalonQuasar</removesHediff>
+        </RecipeDef>
+      </value>
+    </enabled>
+  </Operation>
+</Patch>

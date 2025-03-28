@@ -1,0 +1,1223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
+    <modSettingDef>BOR_Setting_RoyaltyImplantsVariants</modSettingDef>
+    <enabled Class="PatchOperationAdd">
+      <xpath>Defs</xpath>
+      <value>
+
+        <!-- Neurocalculator -->
+
+        <HediffDef ParentName="BOR_ImplantSolarHediffBase">
+          <defName>NeurocalculatorSolar</defName>
+          <label>solar neurocalculator</label>
+          <labelNoun>a solar neurocalculator</labelNoun>
+          <description>An installed solar neurocalculator.</description>
+          <descriptionHyperlinks>
+            <ThingDef>NeurocalculatorSolar</ThingDef>
+          </descriptionHyperlinks>
+          <spawnThingOnRemoved>NeurocalculatorSolar</spawnThingOnRemoved>
+          <stages>
+            <li>
+              <statOffsets>
+                <ResearchSpeed>0.4</ResearchSpeed>
+              </statOffsets>
+            </li>
+          </stages>
+          <comps>
+            <li Class="HediffCompProperties_ReactOnDamage">
+              <damageDefIncoming>EMP</damageDefIncoming>
+              <createHediff>BrainShock</createHediff>
+            </li>
+          </comps>
+          <tags>
+            <li>neurocalculator</li>
+          </tags>
+        </HediffDef>
+
+        <ThingDef ParentName="BodyPartBORSolarBase">
+          <defName>NeurocalculatorSolar</defName>
+          <label>solar neurocalculator</label>
+          <description>A non-intelligent microcomputer controlled by a visual/tactile neural interface. It assists with memory and calculation, like a calculator and notepad embedded in the brain.</description>
+          <descriptionHyperlinks>
+            <RecipeDef>InstallNeurocalculatorSolar</RecipeDef>
+          </descriptionHyperlinks>
+          <graphicData>
+            <texPath>Things/Item/Health/HealthItem</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>0.80</drawSize>
+            <color>(104, 160, 168)</color>
+          </graphicData>
+
+          <tradeTags>
+            <li>BOR_Tech_I</li>
+          </tradeTags>
+        </ThingDef>
+
+        <RecipeDef ParentName="SurgeryInstallImplantBORSolarBase">
+          <defName>InstallNeurocalculatorSolar</defName>
+          <label>install solar neurocalculator</label>
+          <description>Install a neurocalculator.</description>
+          <descriptionHyperlinks>
+            <ThingDef>NeurocalculatorSolar</ThingDef>
+            <HediffDef>NeurocalculatorSolar</HediffDef>
+          </descriptionHyperlinks>
+          <jobString>Installing solar neurocalculator.</jobString>
+          <ingredients>
+            <li>
+              <filter>
+                <thingDefs>
+                  <li>NeurocalculatorSolar</li>
+                </thingDefs>
+              </filter>
+              <count>1</count>
+            </li>
+          </ingredients>
+          <fixedIngredientFilter>
+            <thingDefs>
+              <li>NeurocalculatorSolar</li>
+            </thingDefs>
+          </fixedIngredientFilter>
+          <appliedOnFixedBodyParts>
+            <li>Brain</li>
+          </appliedOnFixedBodyParts>
+          <addsHediff>NeurocalculatorSolar</addsHediff>
+          <incompatibleWithHediffTags>
+            <li>neurocalculator</li>
+          </incompatibleWithHediffTags>
+        </RecipeDef>
+
+        <RecipeDef ParentName="SurgeryRemoveImplantBase">
+          <defName>RemoveNeurocalculatorSolar</defName>
+          <label>solar remove neurocalculator</label>
+          <description>Remove neurocalculator.</description>
+          <descriptionHyperlinks>
+            <ThingDef>NeurocalculatorSolar</ThingDef>
+            <HediffDef>NeurocalculatorSolar</HediffDef>
+          </descriptionHyperlinks>
+          <jobString>Removing solar neurocalculator.</jobString>
+          <removesHediff>NeurocalculatorSolar</removesHediff>
+        </RecipeDef>
+
+        <!-- Learning assistant -->
+
+        <HediffDef ParentName="BOR_ImplantSolarHediffBase">
+          <defName>LearningAssistantSolar</defName>
+          <label>solar learning assistant</label>
+          <labelNoun>a solar learning assistant</labelNoun>
+          <description>An installed solar learning assistant.</description>
+          <descriptionHyperlinks>
+            <ThingDef>LearningAssistantSolar</ThingDef>
+          </descriptionHyperlinks>
+          <spawnThingOnRemoved>LearningAssistantSolar</spawnThingOnRemoved>
+          <stages>
+            <li>
+              <statOffsets>
+                <GlobalLearningFactor>0.4</GlobalLearningFactor>
+              </statOffsets>
+            </li>
+          </stages>
+          <comps>
+            <li Class="HediffCompProperties_ReactOnDamage">
+              <damageDefIncoming>EMP</damageDefIncoming>
+              <createHediff>BrainShock</createHediff>
+            </li>
+          </comps>
+          <tags>
+            <li>learningAssistant</li>
+          </tags>
+        </HediffDef>
+
+        <ThingDef ParentName="BodyPartBORSolarBase">
+          <defName>LearningAssistantSolar</defName>
+          <label>solar learning assistant</label>
+          <description>A sensory recording system that replays important experiences during sleep, strengthening the formation of new memories.</description>
+          <descriptionHyperlinks>
+            <RecipeDef>InstallLearningAssistantSolar</RecipeDef>
+          </descriptionHyperlinks>
+
+          <tradeTags>
+            <li>BOR_Tech_I</li>
+          </tradeTags>
+        </ThingDef>
+
+        <RecipeDef ParentName="SurgeryInstallImplantBORSolarBase">
+          <defName>InstallLearningAssistantSolar</defName>
+          <label>install solar learning assistant</label>
+          <description>Install a learning assistant.</description>
+          <descriptionHyperlinks>
+            <ThingDef>LearningAssistantSolar</ThingDef>
+            <HediffDef>LearningAssistantSolar</HediffDef>
+          </descriptionHyperlinks>
+          <jobString>Installing solar learning assistant.</jobString>
+          <ingredients>
+            <li>
+              <filter>
+                <thingDefs>
+                  <li>LearningAssistantSolar</li>
+                </thingDefs>
+              </filter>
+              <count>1</count>
+            </li>
+          </ingredients>
+          <fixedIngredientFilter>
+            <thingDefs>
+              <li>LearningAssistantSolar</li>
+            </thingDefs>
+          </fixedIngredientFilter>
+          <appliedOnFixedBodyParts>
+            <li>Brain</li>
+          </appliedOnFixedBodyParts>
+          <addsHediff>LearningAssistantSolar</addsHediff>
+          <incompatibleWithHediffTags>
+            <li>learningAssistant</li>
+          </incompatibleWithHediffTags>
+        </RecipeDef>
+
+        <RecipeDef ParentName="SurgeryRemoveImplantBase">
+          <defName>RemoveLearningAssistantSolar</defName>
+          <label>solar remove learning assistant</label>
+          <description>Remove learning assistant.</description>
+          <descriptionHyperlinks>
+            <ThingDef>LearningAssistantSolar</ThingDef>
+            <HediffDef>LearningAssistantSolar</HediffDef>
+          </descriptionHyperlinks>
+          <jobString>Removing solar learning assistant.</jobString>
+          <removesHediff>LearningAssistantSolar</removesHediff>
+        </RecipeDef>
+
+        <!-- Gastro-analyzer -->
+
+        <HediffDef ParentName="BOR_ImplantSolarHediffBase">
+          <defName>GastroAnalyzerSolar</defName>
+          <label>solar gastro-analyzer</label>
+          <labelNoun>a solar gastro-analyzer</labelNoun>
+          <description>An installed solar gastro-analyzer.</description>
+          <descriptionHyperlinks>
+            <ThingDef>GastroAnalyzerSolar</ThingDef>
+          </descriptionHyperlinks>
+          <addedPartProps>
+            <solid>true</solid>
+          </addedPartProps>
+          <stages>
+            <li>
+              <statOffsets>
+                <CookSpeed>7.5</CookSpeed>
+              </statOffsets>
+            </li>
+          </stages>
+          <spawnThingOnRemoved>GastroAnalyzerSolar</spawnThingOnRemoved>
+          <tags>
+            <li>gastroAnalyzer</li>
+          </tags>
+        </HediffDef>
+
+        <ThingDef ParentName="BodyPartBORSolarBase">
+          <defName>GastroAnalyzerSolar</defName>
+          <label>solar gastro-analyzer</label>
+          <description>This bionic nose implant enhances the sense of smell, with a focus towards food-related smells. A multi-layered ultrafine absorption mesh detects compounds in the air. A microprocessor formats the readings into an olfactory nerve signal to send to the brain through a nerve-link interface. The result is that the user can smell foods with a depth, richness, and precision unknown among unenhanced humans, allowing them to cook more effectively. The whole unit is small enough to be installed in the nose without affecting the user's appearance.</description>
+          <descriptionHyperlinks>
+            <RecipeDef>InstallGastroAnalyzerSolar</RecipeDef>
+          </descriptionHyperlinks>
+
+          <tradeTags>
+            <li>BOR_Tech_I</li>
+          </tradeTags>
+        </ThingDef>
+
+        <RecipeDef ParentName="SurgeryInstallImplantBORSolarBase">
+          <defName>InstallGastroAnalyzerSolar</defName>
+          <label>install solar gastro-analyzer</label>
+          <description>Install a gastro-analyzer.</description>
+          <descriptionHyperlinks>
+            <ThingDef>GastroAnalyzerSolar</ThingDef>
+            <HediffDef>GastroAnalyzerSolar</HediffDef>
+          </descriptionHyperlinks>
+          <jobString>Installing solar gastro-analyzer.</jobString>
+          <ingredients>
+            <li>
+              <filter>
+                <thingDefs>
+                  <li>GastroAnalyzerSolar</li>
+                </thingDefs>
+              </filter>
+              <count>1</count>
+            </li>
+          </ingredients>
+          <fixedIngredientFilter>
+            <thingDefs>
+              <li>GastroAnalyzerSolar</li>
+            </thingDefs>
+          </fixedIngredientFilter>
+          <appliedOnFixedBodyParts>
+            <li>Nose</li>
+          </appliedOnFixedBodyParts>
+          <addsHediff>GastroAnalyzerSolar</addsHediff>
+          <incompatibleWithHediffTags>
+            <li>gastroAnalyzer</li>
+          </incompatibleWithHediffTags>
+        </RecipeDef>
+
+        <RecipeDef ParentName="SurgeryRemoveImplantBase">
+          <defName>RemoveGastroAnalyzerSolar</defName>
+          <label>solar remove gastro-analyzer</label>
+          <description>Remove gastro-analyzer.</description>
+          <descriptionHyperlinks>
+            <ThingDef>GastroAnalyzerSolar</ThingDef>
+            <HediffDef>GastroAnalyzerSolar</HediffDef>
+          </descriptionHyperlinks>
+          <jobString>Removing solar gastro-analyzer.</jobString>
+          <removesHediff>GastroAnalyzerSolar</removesHediff>
+        </RecipeDef>
+
+        <!-- Immunoenhancer -->
+
+        <HediffDef ParentName="BOR_ImplantSolarHediffBase">
+          <defName>ImmunoenhancerSolar</defName>
+          <label>solar immunoenhancer</label>
+          <labelNoun>a solarn immunoenhancer</labelNoun>
+          <description>An installed solar immunoenhancer.</description>
+          <descriptionHyperlinks>
+            <ThingDef>ImmunoenhancerSolar</ThingDef>
+          </descriptionHyperlinks>
+          <spawnThingOnRemoved>ImmunoenhancerSolar</spawnThingOnRemoved>
+          <stages>
+            <li>
+              <statOffsets>
+                <ImmunityGainSpeed>0.16</ImmunityGainSpeed>
+              </statOffsets>
+            </li>
+          </stages>
+          <tags>
+            <li>immunoEnhancer</li>
+          </tags>
+        </HediffDef>
+
+        <ThingDef ParentName="BodyPartBORSolarBase">
+          <defName>ImmunoenhancerSolar</defName>
+          <label>solar immunoenhancer</label>
+          <description>An analysis computer inspects the bloodstream, classifies pathogens, and rapidly prompts the body's natural immune system to respond to them faster than it could alone. This speeds immunity gain significantly.</description>
+          <descriptionHyperlinks>
+            <RecipeDef>InstallImmunoenhancerSolar</RecipeDef>
+          </descriptionHyperlinks>
+
+          <tradeTags>
+            <li>BOR_Tech_I</li>
+          </tradeTags>
+        </ThingDef>
+
+        <RecipeDef ParentName="SurgeryInstallImplantBORSolarBase">
+          <defName>InstallImmunoenhancerSolar</defName>
+          <label>install solar immunoenhancer</label>
+          <description>Install an immunoenhancer.</description>
+          <descriptionHyperlinks>
+            <ThingDef>ImmunoenhancerSolar</ThingDef>
+            <HediffDef>ImmunoenhancerSolar</HediffDef>
+          </descriptionHyperlinks>
+          <jobString>Installing solar immunoenhancer.</jobString>
+          <ingredients>
+            <li>
+              <filter>
+                <thingDefs>
+                  <li>ImmunoenhancerSolar</li>
+                </thingDefs>
+              </filter>
+              <count>1</count>
+            </li>
+          </ingredients>
+          <fixedIngredientFilter>
+            <thingDefs>
+              <li>ImmunoenhancerSolar</li>
+            </thingDefs>
+          </fixedIngredientFilter>
+          <appliedOnFixedBodyParts>
+            <li>Kidney</li>
+          </appliedOnFixedBodyParts>
+          <addsHediff>ImmunoenhancerSolar</addsHediff>
+          <incompatibleWithHediffTags>
+            <li>immunoEnhancer</li>
+          </incompatibleWithHediffTags>
+        </RecipeDef>
+
+        <RecipeDef ParentName="SurgeryRemoveImplantBase">
+          <defName>RemoveImmunoenhancerSolar</defName>
+          <label>solar remove immunoenhancer</label>
+          <description>Remove immunoenhancer.</description>
+          <descriptionHyperlinks>
+            <ThingDef>ImmunoenhancerSolar</ThingDef>
+            <HediffDef>ImmunoenhancerSolar</HediffDef>
+          </descriptionHyperlinks>
+          <jobString>Removing solar immunoenhancer.</jobString>
+          <removesHediff>ImmunoenhancerSolar</removesHediff>
+        </RecipeDef>
+
+        <!-- Coagulator -->
+
+        <HediffDef ParentName="BOR_ImplantSolarHediffBase">
+          <defName>CoagulatorSolar</defName>
+          <label>solar coagulator</label>
+          <labelNoun>a solar coagulator</labelNoun>
+          <description>An installed solar coagulator implant.</description>
+          <descriptionHyperlinks>
+            <ThingDef>CoagulatorSolar</ThingDef>
+          </descriptionHyperlinks>
+          <spawnThingOnRemoved>CoagulatorSolar</spawnThingOnRemoved>
+          <stages>
+            <li>
+              <totalBleedFactor>0.35</totalBleedFactor>
+            </li>
+          </stages>
+          <tags>
+            <li>coagulator</li>
+          </tags>
+        </HediffDef>
+
+        <ThingDef ParentName="BodyPartBORSolarBase">
+          <defName>CoagulatorSolar</defName>
+          <label>solar coagulator</label>
+          <description>Releases coagulating factors in response to blood loss, reducing bleeding rates significantly.</description>
+          <descriptionHyperlinks>
+            <RecipeDef>InstallCoagulatorSolar</RecipeDef>
+          </descriptionHyperlinks>
+
+          <tradeTags>
+            <li>BOR_Tech_I</li>
+          </tradeTags>
+        </ThingDef>
+
+        <RecipeDef ParentName="SurgeryInstallImplantBORSolarBase">
+          <defName>InstallCoagulatorSolar</defName>
+          <label>install solar coagulator</label>
+          <description>Install a coagulator.</description>
+          <descriptionHyperlinks>
+            <ThingDef>CoagulatorSolar</ThingDef>
+            <HediffDef>CoagulatorSolar</HediffDef>
+          </descriptionHyperlinks>
+          <jobString>Installing solar coagulator.</jobString>
+          <ingredients>
+            <li>
+              <filter>
+                <thingDefs>
+                  <li>CoagulatorSolar</li>
+                </thingDefs>
+              </filter>
+              <count>1</count>
+            </li>
+          </ingredients>
+          <fixedIngredientFilter>
+            <thingDefs>
+              <li>CoagulatorSolar</li>
+            </thingDefs>
+          </fixedIngredientFilter>
+          <appliedOnFixedBodyParts>
+            <li>Torso</li>
+          </appliedOnFixedBodyParts>
+          <addsHediff>CoagulatorSolar</addsHediff>
+          <incompatibleWithHediffTags>
+            <li>coagulator</li>
+          </incompatibleWithHediffTags>
+        </RecipeDef>
+
+        <RecipeDef ParentName="SurgeryRemoveImplantBase">
+          <defName>RemoveCoagulatorSolar</defName>
+          <label>solar remove coagulator</label>
+          <description>Remove coagulator.</description>
+          <descriptionHyperlinks>
+            <ThingDef>CoagulatorSolar</ThingDef>
+            <HediffDef>CoagulatorSolar</HediffDef>
+          </descriptionHyperlinks>
+          <jobString>Removing solar coagulator.</jobString>
+          <removesHediff>CoagulatorSolar</removesHediff>
+        </RecipeDef>
+
+        <!-- Healing enhancer -->
+
+        <HediffDef ParentName="BOR_ImplantSolarHediffBase">
+          <defName>HealingEnhancerSolar</defName>
+          <label>solar healing enhancer</label>
+          <labelNoun>a solar healing enhancer</labelNoun>
+          <description>An installed solar healing enhancer implant.</description>
+          <descriptionHyperlinks>
+            <ThingDef>HealingEnhancerSolar</ThingDef>
+          </descriptionHyperlinks>
+          <spawnThingOnRemoved>HealingEnhancerSolar</spawnThingOnRemoved>
+          <stages>
+            <li>
+              <naturalHealingFactor>2.5</naturalHealingFactor>
+            </li>
+          </stages>
+          <tags>
+            <li>healingEnhancer</li>
+          </tags>
+        </HediffDef>
+
+        <ThingDef ParentName="BodyPartBORSolarBase">
+          <defName>HealingEnhancerSolar</defName>
+          <label>solar healing enhancer</label>
+          <description>Releases nanomachines and healing factors that speed up wound healing. This implant only helps with physical wounds, and does nothing to combat disease or other health problems.</description>
+          <descriptionHyperlinks>
+            <RecipeDef>InstallHealingEnhancerSolar</RecipeDef>
+          </descriptionHyperlinks>
+
+          <tradeTags>
+            <li>BOR_Tech_I</li>
+          </tradeTags>
+        </ThingDef>
+
+        <RecipeDef ParentName="SurgeryInstallImplantBORSolarBase">
+          <defName>InstallHealingEnhancerSolar</defName>
+          <label>install solar healing enhancer</label>
+          <description>Install a healing enhancer.</description>
+          <descriptionHyperlinks>
+            <ThingDef>HealingEnhancerSolar</ThingDef>
+            <HediffDef>HealingEnhancerSolar</HediffDef>
+          </descriptionHyperlinks>
+          <jobString>Installing solar healing enhancer.</jobString>
+          <ingredients>
+            <li>
+              <filter>
+                <thingDefs>
+                  <li>HealingEnhancerSolar</li>
+                </thingDefs>
+              </filter>
+              <count>1</count>
+            </li>
+          </ingredients>
+          <fixedIngredientFilter>
+            <thingDefs>
+              <li>HealingEnhancerSolar</li>
+            </thingDefs>
+          </fixedIngredientFilter>
+          <appliedOnFixedBodyParts>
+            <li>Torso</li>
+          </appliedOnFixedBodyParts>
+          <addsHediff>HealingEnhancerSolar</addsHediff>
+          <incompatibleWithHediffTags>
+            <li>healingEnhancer</li>
+          </incompatibleWithHediffTags>
+        </RecipeDef>
+
+        <RecipeDef ParentName="SurgeryRemoveImplantBase">
+          <defName>RemoveHealingEnhancerSolar</defName>
+          <label>solar remove healing enhancer</label>
+          <description>Remove healing enhancer.</description>
+          <descriptionHyperlinks>
+            <ThingDef>HealingEnhancerSolar</ThingDef>
+            <HediffDef>HealingEnhancerSolar</HediffDef>
+          </descriptionHyperlinks>
+          <jobString>Removing solar healing enhancer.</jobString>
+          <removesHediff>HealingEnhancerSolar</removesHediff>
+        </RecipeDef>
+
+        <!-- Toughskin gland -->
+
+        <HediffDef ParentName="BOR_ImplantSolarHediffBase">
+          <defName>ToughskinGlandSolar</defName>
+          <label>solar toughskin gland</label>
+          <labelNoun>a solar toughskin gland</labelNoun>
+          <description>An installed solar toughskin gland.</description>
+          <descriptionHyperlinks>
+            <ThingDef>ToughskinGlandSolar</ThingDef>
+          </descriptionHyperlinks>
+          <spawnThingOnRemoved>ToughskinGlandSolar</spawnThingOnRemoved>
+          <stages>
+            <li>
+              <capMods>
+                <li>
+                  <capacity>Moving</capacity>
+                  <postFactor>0.95</postFactor>
+                </li>
+              </capMods>
+              <statOffsets>
+                <ArmorRating_Sharp>0.55</ArmorRating_Sharp>
+                <ArmorRating_Blunt>0.2</ArmorRating_Blunt>
+                <ArmorRating_Heat>0.45</ArmorRating_Heat>
+              </statOffsets>
+            </li>
+          </stages>
+          <tags>
+            <li>ArmorGland</li>
+          </tags>
+        </HediffDef>
+
+        <ThingDef ParentName="BodyPartBORSolarBase">
+          <defName>ToughskinGlandSolar</defName>
+          <label>solar toughskin gland</label>
+          <description>This bionic gland releases chemicals and nanomachines that toughen the skin, making it somewhat more resistant to damage. While it doesn't add as much protection as some other skin-hardening glands, the toughskin gland has the advantage of not noticeably altering the user's appearance.</description>
+          <descriptionHyperlinks>
+            <RecipeDef>InstallToughskinGlandSolar</RecipeDef>
+          </descriptionHyperlinks>
+
+          <tradeTags>
+            <li>BOR_Tech_I</li>
+          </tradeTags>
+        </ThingDef>
+
+        <RecipeDef ParentName="SurgeryInstallImplantBORSolarBase">
+          <defName>InstallToughskinGlandSolar</defName>
+          <label>install solar toughskin gland</label>
+          <description>Install a toughskin gland.</description>
+          <descriptionHyperlinks>
+            <ThingDef>ToughskinGlandSolar</ThingDef>
+            <HediffDef>ToughskinGlandSolar</HediffDef>
+          </descriptionHyperlinks>
+          <jobString>Installing solar toughskin gland.</jobString>
+          <ingredients>
+            <li>
+              <filter>
+                <thingDefs>
+                  <li>ToughskinGlandSolar</li>
+                </thingDefs>
+              </filter>
+              <count>1</count>
+            </li>
+          </ingredients>
+          <fixedIngredientFilter>
+            <thingDefs>
+              <li>ToughskinGlandSolar</li>
+            </thingDefs>
+          </fixedIngredientFilter>
+          <appliedOnFixedBodyParts>
+            <li>Torso</li>
+          </appliedOnFixedBodyParts>
+          <addsHediff>ToughskinGlandSolar</addsHediff>
+          <incompatibleWithHediffTags>
+            <li>ArmorGland</li>
+          </incompatibleWithHediffTags>
+        </RecipeDef>
+
+        <RecipeDef ParentName="SurgeryRemoveImplantBase">
+          <defName>RemoveToughskinGlandSolar</defName>
+          <label>solar remove toughskin gland</label>
+          <description>Remove toughskin gland.</description>
+          <descriptionHyperlinks>
+            <ThingDef>ToughskinGlandSolar</ThingDef>
+            <HediffDef>ToughskinGlandSolar</HediffDef>
+          </descriptionHyperlinks>
+          <jobString>Removing solar toughskin gland.</jobString>
+          <removesHediff>ToughskinGlandSolar</removesHediff>
+        </RecipeDef>
+
+        <!-- Armorskin gland -->
+
+        <HediffDef ParentName="BOR_ImplantSolarHediffBase">
+          <defName>ArmorskinGlandSolar</defName>
+          <label>solar armorskin gland</label>
+          <labelNoun>a solar armorskin gland</labelNoun>
+          <description>An installed solar armorskin gland.</description>
+          <descriptionHyperlinks>
+            <ThingDef>ArmorskinGlandSolar</ThingDef>
+          </descriptionHyperlinks>
+          <spawnThingOnRemoved>ArmorskinGlandSolar</spawnThingOnRemoved>
+          <stages>
+            <li>
+              <capMods>
+                <li>
+                  <capacity>Moving</capacity>
+                  <postFactor>0.85</postFactor>
+                </li>
+              </capMods>
+              <statOffsets>
+                <ArmorRating_Sharp>0.68</ArmorRating_Sharp>
+                <ArmorRating_Blunt>0.4</ArmorRating_Blunt>
+                <ArmorRating_Heat>0.6</ArmorRating_Heat>
+                <PawnBeauty>-1</PawnBeauty>
+              </statOffsets>
+            </li>
+          </stages>
+          <tags>
+            <li>ArmorGland</li>
+          </tags>
+        </HediffDef>
+
+        <ThingDef ParentName="BodyPartBORSolarBase">
+          <defName>ArmorskinGlandSolar</defName>
+          <label>solar armorskin gland</label>
+          <description>This bionic gland releases chemicals and nanomachines that toughen the skin and add flexible subdermal keratin plates at strategic points. This makes the user more resistant to damage across their whole body. Unfortunately, these changes make the skin appear leathery, with wrinkles across the whole body and face, which is generally considered ugly.</description>
+          <descriptionHyperlinks>
+            <RecipeDef>InstallArmorskinGlandSolar</RecipeDef>
+          </descriptionHyperlinks>
+
+          <tradeTags>
+            <li>BOR_Tech_I</li>
+          </tradeTags>
+        </ThingDef>
+
+        <RecipeDef ParentName="SurgeryInstallImplantBORSolarBase">
+          <defName>InstallArmorskinGlandSolar</defName>
+          <label>install solar armorskin gland</label>
+          <description>Install an armorskin gland.</description>
+          <descriptionHyperlinks>
+            <ThingDef>ArmorskinGlandSolar</ThingDef>
+            <HediffDef>ArmorskinGlandSolar</HediffDef>
+          </descriptionHyperlinks>
+          <jobString>Installing solar armorskin gland.</jobString>
+          <ingredients>
+            <li>
+              <filter>
+                <thingDefs>
+                  <li>ArmorskinGlandSolar</li>
+                </thingDefs>
+              </filter>
+              <count>1</count>
+            </li>
+          </ingredients>
+          <fixedIngredientFilter>
+            <thingDefs>
+              <li>ArmorskinGlandSolar</li>
+            </thingDefs>
+          </fixedIngredientFilter>
+          <appliedOnFixedBodyParts>
+            <li>Torso</li>
+          </appliedOnFixedBodyParts>
+          <addsHediff>ArmorskinGlandSolar</addsHediff>
+          <incompatibleWithHediffTags>
+            <li>ArmorGland</li>
+          </incompatibleWithHediffTags>
+        </RecipeDef>
+
+        <RecipeDef ParentName="SurgeryRemoveImplantBase">
+          <defName>RemoveArmorskinGlandSolar</defName>
+          <label>solar remove armorskin gland</label>
+          <description>Remove armorskin gland.</description>
+          <descriptionHyperlinks>
+            <ThingDef>ArmorskinGlandSolar</ThingDef>
+          </descriptionHyperlinks>
+          <jobString>Removing solar armorskin gland.</jobString>
+          <removesHediff>ArmorskinGlandSolar</removesHediff>
+        </RecipeDef>
+
+        <!-- Stoneskin gland -->
+
+        <HediffDef ParentName="BOR_ImplantSolarHediffBase">
+          <defName>StoneskinGlandSolar</defName>
+          <label>solar stoneskin gland</label>
+          <labelNoun>a solar stoneskin gland</labelNoun>
+          <description>An installed solar stoneskin gland.</description>
+          <descriptionHyperlinks>
+            <ThingDef>StoneskinGlandSolar</ThingDef>
+          </descriptionHyperlinks>
+          <spawnThingOnRemoved>StoneskinGlandSolar</spawnThingOnRemoved>
+          <stages>
+            <li>
+              <capMods>
+                <li>
+                  <capacity>Moving</capacity>
+                  <postFactor>0.8</postFactor>
+                </li>
+              </capMods>
+              <statOffsets>
+                <ArmorRating_Sharp>0.85</ArmorRating_Sharp>
+                <ArmorRating_Blunt>0.5</ArmorRating_Blunt>
+                <ArmorRating_Heat>0.55</ArmorRating_Heat>
+                <PawnBeauty>-2</PawnBeauty>
+              </statOffsets>
+            </li>
+          </stages>
+          <tags>
+            <li>ArmorGland</li>
+          </tags>
+        </HediffDef>
+
+        <ThingDef ParentName="BodyPartBORSolarBase">
+          <defName>StoneskinGlandSolar</defName>
+          <label>solar stoneskin gland</label>
+          <description>This bionic gland releases chemical and nanomachines that transform the user's skin into a built-in suit of armor. The whole epidermis thickens and hardens to resist burns, while jointed exterior keratin plates form everywhere they can - including the head and face. While it's very difficult to physically hurt someone using this implant, the plates and hard skin significantly reduces the user's physical attractiveness.</description>
+          <descriptionHyperlinks>
+            <RecipeDef>InstallStoneskinGlandSolar</RecipeDef>
+          </descriptionHyperlinks>
+
+
+          <tradeTags>
+            <li>BOR_Tech_I</li>
+          </tradeTags>
+        </ThingDef>
+
+        <RecipeDef ParentName="SurgeryInstallImplantBORSolarBase">
+          <defName>InstallStoneskinGlandSolar</defName>
+          <label>install solar stoneskin gland</label>
+          <description>Install a stoneskin gland.</description>
+          <descriptionHyperlinks>
+            <ThingDef>StoneskinGlandSolar</ThingDef>
+            <HediffDef>StoneskinGlandSolar</HediffDef>
+          </descriptionHyperlinks>
+          <jobString>Installing solar stoneskin gland.</jobString>
+          <ingredients>
+            <li>
+              <filter>
+                <thingDefs>
+                  <li>StoneskinGlandSolar</li>
+                </thingDefs>
+              </filter>
+              <count>1</count>
+            </li>
+          </ingredients>
+          <fixedIngredientFilter>
+            <thingDefs>
+              <li>StoneskinGlandSolar</li>
+            </thingDefs>
+          </fixedIngredientFilter>
+          <appliedOnFixedBodyParts>
+            <li>Torso</li>
+          </appliedOnFixedBodyParts>
+          <addsHediff>StoneskinGlandSolar</addsHediff>
+          <incompatibleWithHediffTags>
+            <li>ArmorGland</li>
+          </incompatibleWithHediffTags>
+        </RecipeDef>
+
+        <RecipeDef ParentName="SurgeryRemoveImplantBase">
+          <defName>RemoveStoneskinGlandSolar</defName>
+          <label>solar remove stoneskin gland</label>
+          <description>Remove stoneskin gland.</description>
+          <descriptionHyperlinks>
+            <ThingDef>StoneskinGlandSolar</ThingDef>
+          </descriptionHyperlinks>
+          <jobString>Removing solar stoneskin gland.</jobString>
+          <removesHediff>StoneskinGlandSolar</removesHediff>
+        </RecipeDef>
+
+        <!-- Aesthetic shaper -->
+
+        <HediffDef ParentName="BOR_ImplantSolarHediffBase">
+          <defName>AestheticShaperSolar</defName>
+          <label>solar aesthetic shaper</label>
+          <labelNoun>a solarn aesthetic shaper</labelNoun>
+          <description>An installed solar aesthetic shaper.</description>
+          <descriptionHyperlinks>
+            <ThingDef>AestheticShaperSolar</ThingDef>
+          </descriptionHyperlinks>
+          <spawnThingOnRemoved>AestheticShaperSolar</spawnThingOnRemoved>
+          <stages>
+            <li>
+              <statOffsets>
+                <PawnBeauty>1.5</PawnBeauty>
+              </statOffsets>
+            </li>
+          </stages>
+          <tags>
+            <li>aestheticShaper</li>
+          </tags>
+        </HediffDef>
+
+        <ThingDef ParentName="BodyPartBORSolarBase">
+          <defName>AestheticShaperSolar</defName>
+          <label>solar aesthetic shaper</label>
+          <description>A sophisticated package of hormonal and mechanite influences shapes the muscles and fat on the body, adding non-functional aesthetic tissue where needed to achieve a desired appearance. This implant can be configured to form various body shapes according to the user's taste - or that of their partner.</description>
+          <descriptionHyperlinks>
+            <RecipeDef>InstallAestheticShaperSolar</RecipeDef>
+          </descriptionHyperlinks>
+
+
+          <tradeTags>
+            <li>BOR_Tech_I</li>
+          </tradeTags>
+        </ThingDef>
+
+        <RecipeDef ParentName="SurgeryInstallImplantBORSolarBase">
+          <defName>InstallAestheticShaperSolar</defName>
+          <label>install solar aesthetic shaper</label>
+          <description>Install an aesthetic shaper.</description>
+          <descriptionHyperlinks>
+            <ThingDef>AestheticShaperSolar</ThingDef>
+            <HediffDef>AestheticShaperSolar</HediffDef>
+          </descriptionHyperlinks>
+          <jobString>Installing solar aesthetic shaper.</jobString>
+          <ingredients>
+            <li>
+              <filter>
+                <thingDefs>
+                  <li>AestheticShaperSolar</li>
+                </thingDefs>
+              </filter>
+              <count>1</count>
+            </li>
+          </ingredients>
+          <fixedIngredientFilter>
+            <thingDefs>
+              <li>AestheticShaperSolar</li>
+            </thingDefs>
+          </fixedIngredientFilter>
+          <appliedOnFixedBodyParts>
+            <li>Torso</li>
+          </appliedOnFixedBodyParts>
+          <addsHediff>AestheticShaperSolar</addsHediff>
+          <incompatibleWithHediffTags>
+            <li>aestheticShaper</li>
+          </incompatibleWithHediffTags>
+        </RecipeDef>
+
+        <RecipeDef ParentName="SurgeryRemoveImplantBase">
+          <defName>RemoveAestheticShaperSolar</defName>
+          <label>solar remove aesthetic shaper</label>
+          <description>Remove aesthetic shaper.</description>
+          <descriptionHyperlinks>
+            <ThingDef>AestheticShaperSolar</ThingDef>
+            <HediffDef>AestheticShaperSolar</HediffDef>
+          </descriptionHyperlinks>
+          <jobString>Removing solar aesthetic shaper.</jobString>
+          <removesHediff>AestheticShaperSolar</removesHediff>
+        </RecipeDef>
+
+        <!-- Aesthetic nose -->
+
+        <HediffDef ParentName="AddedBodyPartBase">
+          <defName>AestheticNoseSolar</defName>
+          <label>solar aesthetic nose</label>
+          <labelNoun>a solarn aesthetic nose</labelNoun>
+          <description>An installed solar aesthetic nose.</description>
+          <descriptionHyperlinks>
+            <ThingDef>AestheticNoseSolar</ThingDef>
+          </descriptionHyperlinks>
+          <spawnThingOnRemoved>AestheticNoseSolar</spawnThingOnRemoved>
+          <addedPartProps>
+            <partEfficiency>1.25</partEfficiency>
+          </addedPartProps>
+          <stages>
+            <li>
+              <statOffsets>
+                <PawnBeauty>1.25</PawnBeauty>
+              </statOffsets>
+            </li>
+          </stages>
+          <tags>
+            <li>aestheticNose</li>
+          </tags>
+        </HediffDef>
+
+        <ThingDef ParentName="BodyPartBORSolarBase">
+          <defName>AestheticNoseSolar</defName>
+          <label>solar aesthetic nose</label>
+          <description>The nose is shaped to the user's desired form, matching prevalent beauty standards and enhancing physical impressions.</description>
+          <descriptionHyperlinks>
+            <RecipeDef>InstallAestheticNoseSolar</RecipeDef>
+          </descriptionHyperlinks>
+
+
+          <tradeTags>
+            <li>BOR_Tech_I</li>
+          </tradeTags>
+        </ThingDef>
+
+        <RecipeDef ParentName="SurgeryInstallImplantBORSolarBase">
+          <defName>InstallAestheticNoseSolar</defName>
+          <label>install solar aesthetic nose</label>
+          <description>Install an aesthetic nose.</description>
+          <descriptionHyperlinks>
+            <ThingDef>AestheticNoseSolar</ThingDef>
+            <HediffDef>AestheticNoseSolar</HediffDef>
+          </descriptionHyperlinks>
+          <jobString>Installing solar aesthetic nose.</jobString>
+          <ingredients>
+            <li>
+              <filter>
+                <thingDefs>
+                  <li>AestheticNoseSolar</li>
+                </thingDefs>
+              </filter>
+              <count>1</count>
+            </li>
+          </ingredients>
+          <fixedIngredientFilter>
+            <thingDefs>
+              <li>AestheticNoseSolar</li>
+            </thingDefs>
+          </fixedIngredientFilter>
+          <appliedOnFixedBodyParts>
+            <li>Nose</li>
+          </appliedOnFixedBodyParts>
+          <addsHediff>AestheticNoseSolar</addsHediff>
+          <incompatibleWithHediffTags>
+            <li>aestheticNose</li>
+          </incompatibleWithHediffTags>
+        </RecipeDef>
+
+        <RecipeDef ParentName="SurgeryRemoveImplantBase">
+          <defName>RemoveAestheticNoseSolar</defName>
+          <label>solar remove aesthetic nose</label>
+          <description>Remove aesthetic nose.</description>
+          <descriptionHyperlinks>
+            <ThingDef>AestheticNoseSolar</ThingDef>
+            <HediffDef>AestheticNoseSolar</HediffDef>
+          </descriptionHyperlinks>
+          <jobString>Removing solar aesthetic nose.</jobString>
+          <removesHediff>AestheticNoseSolar</removesHediff>
+        </RecipeDef>
+
+        <!-- Reprocessor stomach -->
+
+        <HediffDef ParentName="AddedBodyPartBase">
+          <defName>ReprocessorStomachSolar</defName>
+          <label>solar reprocessor stomach</label>
+          <labelNoun>a solar reprocessor stomach</labelNoun>
+          <description>An installed solar reprocessor stomach.</description>
+          <descriptionHyperlinks>
+            <ThingDef>ReprocessorStomachSolar</ThingDef>
+          </descriptionHyperlinks>
+          <spawnThingOnRemoved>ReprocessorStomachSolar</spawnThingOnRemoved>
+          <addedPartProps>
+            <solid>true</solid>
+            <partEfficiency>1.35</partEfficiency>
+            <betterThanNatural>true</betterThanNatural>
+          </addedPartProps>
+          <stages>
+            <li>
+              <hungerRateFactor>0.5</hungerRateFactor>
+            </li>
+          </stages>
+          <comps>
+            <li Class="HediffCompProperties_ReactOnDamage">
+              <damageDefIncoming>EMP</damageDefIncoming>
+              <vomit>true</vomit>
+            </li>
+          </comps>
+          <tags>
+            <li>reprocessorStomach</li>
+          </tags>
+        </HediffDef>
+
+        <ThingDef ParentName="BodyPartBORSolarBase">
+          <defName>ReprocessorStomachSolar</defName>
+          <label>solar reprocessor stomach</label>
+          <description>An advanced chemical processing system breaks down nutrients the body could normally never use, leading to increased efficiency.</description>
+          <descriptionHyperlinks>
+            <RecipeDef>InstallReprocessorStomachSolar</RecipeDef>
+          </descriptionHyperlinks>
+
+
+          <tradeTags>
+            <li>BOR_Tech_I</li>
+          </tradeTags>
+        </ThingDef>
+
+        <RecipeDef ParentName="SurgeryRemoveImplantBase">
+          <defName>RemoveReprocessorStomachSolar</defName>
+          <label>remove solar reprocessor stomach</label>
+          <description>Remove reprocessor stomach.</description>
+          <descriptionHyperlinks>
+            <ThingDef>ReprocessorStomachSolar</ThingDef>
+            <HediffDef>ReprocessorStomachSolar</HediffDef>
+          </descriptionHyperlinks>
+          <jobString>Removing solar reprocessor stomach.</jobString>
+          <removesHediff>ReprocessorStomachSolar</removesHediff>
+        </RecipeDef>
+
+        <RecipeDef ParentName="SurgeryInstallImplantBORSolarBase">
+          <defName>InstallReprocessorStomachSolar</defName>
+          <label>install solar reprocessor stomach</label>
+          <description>Install a reprocessor stomach.</description>
+          <descriptionHyperlinks>
+            <ThingDef>ReprocessorStomachSolar</ThingDef>
+            <HediffDef>ReprocessorStomachSolar</HediffDef>
+          </descriptionHyperlinks>
+          <jobString>Installing solar reprocessor stomach.</jobString>
+          <ingredients>
+            <li>
+              <filter>
+                <thingDefs>
+                  <li>ReprocessorStomachSolar</li>
+                </thingDefs>
+              </filter>
+              <count>1</count>
+            </li>
+          </ingredients>
+          <fixedIngredientFilter>
+            <thingDefs>
+              <li>ReprocessorStomachSolar</li>
+            </thingDefs>
+          </fixedIngredientFilter>
+          <appliedOnFixedBodyParts>
+            <li>Stomach</li>
+          </appliedOnFixedBodyParts>
+          <addsHediff>ReprocessorStomachSolar</addsHediff>
+          <incompatibleWithHediffTags>
+            <li>reprocessorStomach</li>
+          </incompatibleWithHediffTags>
+        </RecipeDef>
+        <!-- Circadian assistant -->
+
+        <HediffDef ParentName="BOR_ImplantSolarHediffBase">
+          <defName>CircadianAssistantSolar</defName>
+          <label>solar circadian assistant</label>
+          <labelNoun>a solar circadian assistant</labelNoun>
+          <description>An installed solar circadian assistant.</description>
+          <descriptionHyperlinks>
+            <ThingDef>CircadianAssistantSolar</ThingDef>
+          </descriptionHyperlinks>
+          <spawnThingOnRemoved>CircadianAssistantSolar</spawnThingOnRemoved>
+          <stages>
+            <li>
+              <statOffsets>
+                <RestFallRateFactor>-0.4</RestFallRateFactor>
+              </statOffsets>
+            </li>
+          </stages>
+          <comps>
+            <li Class="HediffCompProperties_ReactOnDamage">
+              <damageDefIncoming>EMP</damageDefIncoming>
+              <createHediff>BrainShock</createHediff>
+            </li>
+          </comps>
+          <tags>
+            <li>circadianAssistant</li>
+          </tags>
+        </HediffDef>
+
+        <ThingDef ParentName="BodyPartBORSolarBase">
+          <defName>CircadianAssistantSolar</defName>
+          <label>solar circadian assistant</label>
+          <description>An artificial gland. Produces chemicals and nanomachines that clear toxin buildup from the brain.</description>
+          <descriptionHyperlinks>
+            <RecipeDef>InstallCircadianAssistantSolar</RecipeDef>
+          </descriptionHyperlinks>
+
+
+          <tradeTags>
+            <li>BOR_Tech_I</li>
+          </tradeTags>
+        </ThingDef>
+
+        <RecipeDef ParentName="SurgeryInstallImplantBORSolarBase">
+          <defName>InstallCircadianAssistantSolar</defName>
+          <label>install solar circadian assistant</label>
+          <description>Install a circadian assistant.</description>
+          <descriptionHyperlinks>
+            <ThingDef>CircadianAssistantSolar</ThingDef>
+            <HediffDef>CircadianAssistantSolar</HediffDef>
+          </descriptionHyperlinks>
+          <jobString>Installing solar circadian assistant.</jobString>
+          <ingredients>
+            <li>
+              <filter>
+                <thingDefs>
+                  <li>CircadianAssistantSolar</li>
+                </thingDefs>
+              </filter>
+              <count>1</count>
+            </li>
+          </ingredients>
+          <fixedIngredientFilter>
+            <thingDefs>
+              <li>CircadianAssistantSolar</li>
+            </thingDefs>
+          </fixedIngredientFilter>
+          <appliedOnFixedBodyParts>
+            <li>Brain</li>
+          </appliedOnFixedBodyParts>
+          <addsHediff>CircadianAssistantSolar</addsHediff>
+          <incompatibleWithHediffTags>
+            <li>circadianAssistant</li>
+          </incompatibleWithHediffTags>
+        </RecipeDef>
+
+        <RecipeDef ParentName="SurgeryRemoveImplantBase">
+          <defName>RemoveCircadianAssistantSolar</defName>
+          <label>solar remove circadian assistant</label>
+          <description>Remove circadian assistant.</description>
+          <descriptionHyperlinks>
+            <ThingDef>CircadianAssistantSolar</ThingDef>
+            <HediffDef>CircadianAssistantSolar</HediffDef>
+          </descriptionHyperlinks>
+          <jobString>Removing solar circadian assistant.</jobString>
+          <removesHediff>CircadianAssistantSolar</removesHediff>
+        </RecipeDef>
+
+        <!-- Circadian half-cycler -->
+
+        <HediffDef ParentName="BOR_ImplantSolarHediffBase">
+          <defName>CircadianHalfCyclerSolar</defName>
+          <label>solar circadian half-cycler</label>
+          <labelNoun>a solar circadian half-cycler</labelNoun>
+          <description>An installed solar circadian half-cycler.</description>
+          <descriptionHyperlinks>
+            <ThingDef>CircadianHalfCyclerSolar</ThingDef>
+          </descriptionHyperlinks>
+          <spawnThingOnRemoved>CircadianHalfCyclerSolar</spawnThingOnRemoved>
+          <disablesNeeds>
+            <li>Rest</li>
+          </disablesNeeds>
+          <stages>
+            <li>
+              <capMods>
+                <li>
+                  <capacity>Consciousness</capacity>
+                  <offset>-0.125</offset>
+                </li>
+              </capMods>
+            </li>
+          </stages>
+          <comps>
+            <li Class="HediffCompProperties_ReactOnDamage">
+              <damageDefIncoming>EMP</damageDefIncoming>
+              <createHediff>BrainShock</createHediff>
+            </li>
+          </comps>
+          <tags>
+            <li>circadianAssistant</li>
+          </tags>
+        </HediffDef>
+
+        <ThingDef ParentName="BodyPartBORSolarBase">
+          <defName>CircadianHalfCyclerSolar</defName>
+          <label>solar circadian half-cycler</label>
+          <description>A signal redirector which isolates half of the brain, allowing the other half to sleep while the user remains outwardly awake. By alternating brain halves, the user never needs to sleep. Unfortunately, two hemispheres are better than one - working with half a brain causes a reduction in consciousness.</description>
+          <descriptionHyperlinks>
+            <RecipeDef>InstallCircadianHalfCyclerSolar</RecipeDef>
+          </descriptionHyperlinks>
+
+
+          <tradeTags>
+            <li>BOR_Tech_I</li>
+          </tradeTags>
+        </ThingDef>
+
+        <RecipeDef ParentName="SurgeryInstallImplantBORSolarBase">
+          <defName>InstallCircadianHalfCyclerSolar</defName>
+          <label>install solar circadian half-cycler</label>
+          <description>Install a circadian half-cycler.</description>
+          <descriptionHyperlinks>
+            <ThingDef>CircadianHalfCyclerSolar</ThingDef>
+            <HediffDef>CircadianHalfCyclerSolar</HediffDef>
+          </descriptionHyperlinks>
+          <jobString>Installing solar circadian half-cycler.</jobString>
+          <ingredients>
+            <li>
+              <filter>
+                <thingDefs>
+                  <li>CircadianHalfCyclerSolar</li>
+                </thingDefs>
+              </filter>
+              <count>1</count>
+            </li>
+          </ingredients>
+          <fixedIngredientFilter>
+            <thingDefs>
+              <li>CircadianHalfCyclerSolar</li>
+            </thingDefs>
+          </fixedIngredientFilter>
+          <appliedOnFixedBodyParts>
+            <li>Brain</li>
+          </appliedOnFixedBodyParts>
+          <addsHediff>CircadianHalfCyclerSolar</addsHediff>
+          <incompatibleWithHediffTags>
+            <li>circadianAssistant</li>
+          </incompatibleWithHediffTags>
+        </RecipeDef>
+
+        <RecipeDef ParentName="SurgeryRemoveImplantBase">
+          <defName>RemoveCircadianHalfCyclerSolar</defName>
+          <label>solar remove circadian half-cycler</label>
+          <description>Remove circadian half-cycler.</description>
+          <descriptionHyperlinks>
+            <ThingDef>CircadianHalfCyclerSolar</ThingDef>
+            <HediffDef>CircadianHalfCyclerSolar</HediffDef>
+          </descriptionHyperlinks>
+          <jobString>Removing solar circadian half-cycler.</jobString>
+          <removesHediff>CircadianHalfCyclerSolar</removesHediff>
+        </RecipeDef>
+
+      </value>
+    </enabled>
+  </Operation>
+</Patch>

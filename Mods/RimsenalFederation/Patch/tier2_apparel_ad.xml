@@ -1,0 +1,544 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+
+	<Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
+		<modSettingDef>BOR_Setting_RimsenalFederationApparelVariants</modSettingDef>
+		<enabled Class="PatchOperationAdd">
+			<xpath>Defs</xpath>
+			<value>
+
+				<ThingDef ParentName="ApparelBase">
+					<defName>BOR_Quasar_FedSuit</defName>
+					<label>kwazaari federation jumpsuit</label>
+					<techLevel>Spacer</techLevel>
+					<description>A carbon crystalline fiber kwazaari jumpsuit for military personnel. It is light and thin, but surprisingly sturdy. It is the uniform of the Federation.</description>
+					<graphicData>
+						<color>(0.36, 0.5, 0.7)</color>
+						<texPath>Things/Apparel/FedSuit</texPath>
+						<graphicClass>Graphic_Single</graphicClass>
+					</graphicData>
+					<statBases>
+						<Mass>0</Mass>
+						<MaxHitPoints>788</MaxHitPoints>
+						<ArmorRating_Sharp>0.338</ArmorRating_Sharp>
+						<ArmorRating_Heat>0.45</ArmorRating_Heat>
+						<Insulation_Cold>35</Insulation_Cold>
+						<Insulation_Heat>12</Insulation_Heat>
+						<EquipDelay>1</EquipDelay>
+
+						<RoyalFavorValue>3</RoyalFavorValue>
+					</statBases>
+					<costList>
+						<BOR_QuasarAlloy>20</BOR_QuasarAlloy>
+						<BOR_QuasarAlloyWeave>30</BOR_QuasarAlloyWeave>
+					</costList>
+					<thingCategories>
+						<li>BOR_Apparel</li>
+					</thingCategories>
+					<generateCommonality>0.03</generateCommonality>
+					<apparel>
+						<tags>
+							<li>ADJS</li>
+						</tags>
+						<defaultOutfitTags>
+							<li>Worker</li>
+							<li>Soldier</li>
+						</defaultOutfitTags>
+						<wornGraphicPath>Things/Apparel/FedSuit</wornGraphicPath>
+						<layers>
+							<li>OnSkin</li>
+						</layers>
+						<bodyPartGroups>
+							<li>Neck</li>
+							<li>Shoulders</li>
+							<li>Torso</li>
+							<li>Arms</li>
+							<li>Legs</li>
+						</bodyPartGroups>
+					</apparel>
+
+					<tradeTags>
+						<li>BOR_Tech_II</li>
+					</tradeTags>
+				</ThingDef>
+
+				<ThingDef ParentName="FedApparelMakeableBase">
+					<defName>BOR_Quasar_Apparel_Judicator</defName>
+					<label>riot gear</label>
+					<techLevel>Spacer</techLevel>
+					<description>A "Judicator" kwazaari riot gear was produced by Arms Dynamics for Federation human commanders. This is a really great personal armor if you can withstand from scornful eyes of the people.</description>
+					<graphicData>
+						<color>(0.36, 0.5, 0.7)</color>
+						<texPath>Things/Apparel/Judicator</texPath>
+						<graphicClass>Graphic_Single</graphicClass>
+					</graphicData>
+					<recipeMaker>
+						<unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+						<researchPrerequisites>
+							<li>BOR_Research_Armor_I</li>
+							<li>PoweredArmor</li>
+						</researchPrerequisites>
+						<skillRequirements>
+							<Crafting>20</Crafting>
+						</skillRequirements>
+					</recipeMaker>
+					<costList>
+						<CrucibleCore>8</CrucibleCore>
+						<BOR_QuasarAlloy>120</BOR_QuasarAlloy>
+						<BOR_ComponentIII>4</BOR_ComponentIII>
+					</costList>
+					<generateCommonality>0.03</generateCommonality>
+					<statBases>
+						<Mass>9</Mass>
+						<WorkToMake>139500</WorkToMake>
+						<MaxHitPoints>1125</MaxHitPoints>
+						<Flammability>0.278</Flammability>
+						<ArmorRating_Sharp>2.7</ArmorRating_Sharp>
+						<ArmorRating_Blunt>0.225</ArmorRating_Blunt>
+						<ArmorRating_Heat>1.688</ArmorRating_Heat>
+						<Insulation_Cold>80</Insulation_Cold>
+						<Insulation_Heat>35</Insulation_Heat>
+						<EquipDelay>10</EquipDelay>
+
+						<RoyalFavorValue>3</RoyalFavorValue>
+					</statBases>
+					<thingCategories>
+						<li>BOR_Apparel</li>
+					</thingCategories>
+					<equippedStatOffsets>
+						<MoveSpeed>-0.133</MoveSpeed>
+						<SocialImpact>-0.1</SocialImpact>
+					</equippedStatOffsets>
+					<apparel>
+						<tags>
+							<li>ADJS</li>
+							<li>BOR_Military_II</li>
+							<li>BOR_Royal_II</li>
+						</tags>
+						<wornGraphicPath>Things/Apparel/Judicator</wornGraphicPath>
+						<layers>
+							<li>Middle</li>
+							<li>Shell</li>
+						</layers>
+						<bodyPartGroups>
+							<li>Neck</li>
+							<li>Shoulders</li>
+							<li>Torso</li>
+							<li>Arms</li>
+							<li>Legs</li>
+						</bodyPartGroups>
+						<defaultOutfitTags>
+							<li>Soldier</li>
+						</defaultOutfitTags>
+					</apparel>
+
+					<tradeTags>
+						<li>BOR_Tech_II</li>
+					</tradeTags>
+				</ThingDef>
+
+				<ThingDef ParentName="FedArmorHelmetMakeableBase">
+					<defName>BOR_Quasar_Apparel_JudicatorH</defName>
+					<thingCategories>
+						<li>BOR_Armor_Headgear_II</li>
+					</thingCategories>
+					<label>kwazaari riot gear helmet</label>
+					<techLevel>Spacer</techLevel>
+					<description>It is a kwazaari helmet of the FPC riot gear. If you wear this, you will be an eyesore of your colony.</description>
+					<graphicData>
+						<color>(0.36, 0.5, 0.7)</color>
+						<texPath>Things/Apparel/JudicatorH</texPath>
+						<graphicClass>Graphic_Single</graphicClass>
+					</graphicData>
+					<recipeMaker>
+						<unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+						<researchPrerequisites>
+							<li>BOR_Research_Armor_I</li>
+							<li>PoweredArmor</li>
+						</researchPrerequisites>
+						<skillRequirements>
+							<Crafting>20</Crafting>
+						</skillRequirements>
+					</recipeMaker>
+					<costList>
+						<CrucibleCore>4</CrucibleCore>
+						<BOR_QuasarAlloy>60</BOR_QuasarAlloy>
+						<BOR_ComponentII>6</BOR_ComponentII>
+					</costList>
+					<statBases>
+						<Mass>1</Mass>
+						<WorkToMake>51750</WorkToMake>
+						<MaxHitPoints>1013</MaxHitPoints>
+						<Flammability>0.278</Flammability>
+						<ArmorRating_Sharp>2.475</ArmorRating_Sharp>
+						<ArmorRating_Blunt>0.225</ArmorRating_Blunt>
+						<ArmorRating_Heat>1.575</ArmorRating_Heat>
+						<Insulation_Cold>12</Insulation_Cold>
+						<Insulation_Heat>12</Insulation_Heat>
+						<EquipDelay>2</EquipDelay>
+
+						<RoyalFavorValue>3</RoyalFavorValue>
+					</statBases>
+					<equippedStatOffsets>
+						<SocialImpact>-0.1</SocialImpact>
+					</equippedStatOffsets>
+					<generateCommonality>0.03</generateCommonality>
+					<apparel>
+						<defaultOutfitTags>
+							<li>Soldier</li>
+						</defaultOutfitTags>
+						<tags>
+							<li>ADJS</li>
+							<li>BOR_Military_II</li>
+							<li>BOR_Royal_II</li>
+						</tags>
+						<wornGraphicPath>Things/Apparel/JudicatorH</wornGraphicPath>
+						<layers>
+							<li>Overhead</li>
+						</layers>
+						<bodyPartGroups>
+							<li>FullHead</li>
+						</bodyPartGroups>
+					</apparel>
+
+					<tradeTags>
+						<li>BOR_Tech_II</li>
+					</tradeTags>
+				</ThingDef>
+
+
+				<ThingDef ParentName="FedApparelMakeableBase">
+					<defName>BOR_Quasar_Apparel_MarksmanGear</defName>
+					<label>kwazaari marksman gear</label>
+					<techLevel>Spacer</techLevel>
+					<description>Arms Dynamics "Condemner" kwazaari Marksman gear. With joint stabilizer unit, this outfit assure steady aim. Standard issue gear of the Federation Peacebringer assassin corps.</description>
+					<graphicData>
+						<color>(0.36, 0.5, 0.7)</color>
+						<texPath>Things/Apparel/Condemner</texPath>
+						<graphicClass>Graphic_Single</graphicClass>
+					</graphicData>
+					<thingCategories>
+						<li>BOR_Apparel</li>
+					</thingCategories>
+					<recipeMaker>
+						<unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+						<researchPrerequisites>
+							<li>BOR_Research_Armor_I</li>
+							<li>PoweredArmor</li>
+						</researchPrerequisites>
+						<skillRequirements>
+							<Crafting>17</Crafting>
+						</skillRequirements>
+					</recipeMaker>
+					<costList>
+						<CrucibleCore>4</CrucibleCore>
+						<BOR_QuasarAlloy>100</BOR_QuasarAlloy>
+						<BOR_ComponentII>10</BOR_ComponentII>
+					</costList>
+					<statBases>
+						<Mass>4.514</Mass>
+						<WorkToMake>117000</WorkToMake>
+						<MaxHitPoints>338</MaxHitPoints>
+						<ArmorRating_Blunt>0.112</ArmorRating_Blunt>
+						<ArmorRating_Sharp>0.675</ArmorRating_Sharp>
+						<ArmorRating_Heat>0.45</ArmorRating_Heat>
+						<Insulation_Cold>57</Insulation_Cold>
+						<Insulation_Heat>35</Insulation_Heat>
+						<EquipDelay>5</EquipDelay>
+
+						<RoyalFavorValue>3</RoyalFavorValue>
+					</statBases>
+					<equippedStatOffsets>
+						<AimingDelayFactor>-0.139</AimingDelayFactor>
+						<SocialImpact>-0.1</SocialImpact>
+					</equippedStatOffsets>
+					<generateCommonality>0.03</generateCommonality>
+					<apparel>
+						<tags>
+							<li>ADJS</li>
+							<li>BOR_Military_II</li>
+							<li>BOR_Royal_II</li>
+						</tags>
+						<wornGraphicPath>Things/Apparel/Condemner</wornGraphicPath>
+						<layers>
+							<li>Middle</li>
+							<li>Shell</li>
+						</layers>
+						<bodyPartGroups>
+							<li>Neck</li>
+							<li>Shoulders</li>
+							<li>Torso</li>
+							<li>Arms</li>
+							<li>Legs</li>
+						</bodyPartGroups>
+						<defaultOutfitTags>
+							<li>Soldier</li>
+						</defaultOutfitTags>
+					</apparel>
+
+					<tradeTags>
+						<li>BOR_Tech_II</li>
+					</tradeTags>
+				</ThingDef>
+
+				<ThingDef ParentName="FedArmorHelmetMakeableBase">
+					<defName>BOR_Quasar_Apparel_MarksmanGearH</defName>
+					<thingCategories>
+						<li>BOR_Armor_Headgear_II</li>
+					</thingCategories>
+					<label>marksmangear helmet</label>
+					<techLevel>Spacer</techLevel>
+					<description>It is a kwazaari helmet of the "Condemner" marksman gear. Integrated target designator guarantees high accuracy.</description>
+					<graphicData>
+						<color>(0.36, 0.5, 0.7)</color>
+						<texPath>Things/Apparel/CondemnerH</texPath>
+						<graphicClass>Graphic_Single</graphicClass>
+					</graphicData>
+					<recipeMaker>
+						<unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+						<researchPrerequisites>
+							<li>BOR_Research_Armor_I</li>
+							<li>ReconArmor</li>
+						</researchPrerequisites>
+						<skillRequirements>
+							<Crafting>17</Crafting>
+						</skillRequirements>
+					</recipeMaker>
+					<costList>
+						<CrucibleCore>2</CrucibleCore>
+						<BOR_QuasarAlloy>40</BOR_QuasarAlloy>
+						<BOR_ComponentII>5</BOR_ComponentII>
+					</costList>
+					<statBases>
+						<Mass>1.528</Mass>
+						<WorkToMake>40500</WorkToMake>
+						<MaxHitPoints>338</MaxHitPoints>
+						<ArmorRating_Blunt>0.112</ArmorRating_Blunt>
+						<ArmorRating_Sharp>0.675</ArmorRating_Sharp>
+						<ArmorRating_Heat>0.45</ArmorRating_Heat>
+						<Insulation_Cold>12</Insulation_Cold>
+						<Insulation_Heat>12</Insulation_Heat>
+						<EquipDelay>1</EquipDelay>
+
+						<RoyalFavorValue>3</RoyalFavorValue>
+					</statBases>
+					<equippedStatOffsets>
+						<AimingDelayFactor>-0.139</AimingDelayFactor>
+						<SocialImpact>-0.1</SocialImpact>
+					</equippedStatOffsets>
+					<generateCommonality>0.03</generateCommonality>
+					<apparel>
+						<defaultOutfitTags>
+							<li>Soldier</li>
+						</defaultOutfitTags>
+						<tags>
+							<li>ADJS</li>
+							<li>BOR_Military_II</li>
+							<li>BOR_Royal_II</li>
+						</tags>
+						<wornGraphicPath>Things/Apparel/CondemnerH</wornGraphicPath>
+						<layers>
+							<li>Overhead</li>
+						</layers>
+						<bodyPartGroups>
+							<li>FullHead</li>
+						</bodyPartGroups>
+					</apparel>
+
+					<tradeTags>
+						<li>BOR_Tech_II</li>
+					</tradeTags>
+				</ThingDef>
+
+
+				<ThingDef ParentName="FedApparelMakeableBase">
+					<defName>BOR_Quasar_Apparel_UGCuirass</defName>
+					<label>unity guard kwazaari cuirass</label>
+					<techLevel>Spacer</techLevel>
+					<description>Standard issue kwazaari body armor of the federation unity guards.</description>
+					<graphicData>
+						<color>(0.36, 0.5, 0.7)</color>
+						<texPath>Things/Apparel/UGCuirass</texPath>
+						<graphicClass>Graphic_Single</graphicClass>
+					</graphicData>
+					<thingCategories>
+						<li>BOR_Apparel</li>
+					</thingCategories>
+					<recipeMaker>
+						<unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+						<researchPrerequisites>
+							<li>BOR_Research_Armor_I</li>
+							<li>CrucibleTech</li>
+						</researchPrerequisites>
+						<skillRequirements>
+							<Crafting>12</Crafting>
+						</skillRequirements>
+					</recipeMaker>
+					<costList>
+						<BOR_QuasarAlloy>100</BOR_QuasarAlloy>
+						<BOR_ComponentII>8</BOR_ComponentII>
+					</costList>
+					<statBases>
+						<Mass>4.514</Mass>
+						<WorkToMake>87750</WorkToMake>
+						<MaxHitPoints>450</MaxHitPoints>
+						<ArmorRating_Sharp>2.475</ArmorRating_Sharp>
+						<ArmorRating_Heat>0.675</ArmorRating_Heat>
+						<EquipDelay>3</EquipDelay>
+
+						<RoyalFavorValue>3</RoyalFavorValue>
+					</statBases>
+					<equippedStatOffsets>
+						<MoveSpeed>-0.067</MoveSpeed>
+					</equippedStatOffsets>
+					<generateCommonality>0.03</generateCommonality>
+					<apparel>
+						<tags>
+							<li>ADJS</li>
+							<li>FedUnity</li>
+						</tags>
+						<wornGraphicPath>Things/Apparel/UGCuirass</wornGraphicPath>
+						<layers>
+							<li>Middle</li>
+						</layers>
+						<bodyPartGroups>
+							<li>Torso</li>
+							<li>Shoulders</li>
+							<li>Arms</li>
+							<li>Neck</li>
+						</bodyPartGroups>
+						<defaultOutfitTags>
+							<li>Soldier</li>
+						</defaultOutfitTags>
+					</apparel>
+
+					<tradeTags>
+						<li>BOR_Tech_II</li>
+					</tradeTags>
+				</ThingDef>
+
+				<ThingDef ParentName="FedArmorHelmetMakeableBase">
+					<defName>BOR_Quasar_Apparel_UGHelmet</defName>
+					<thingCategories>
+						<li>BOR_Armor_Headgear_II</li>
+					</thingCategories>
+					<label>unity guard kwazaari helmet</label>
+					<techLevel>Spacer</techLevel>
+					<description>Standard issue kwazaari helmet of the federation unity guards.</description>
+					<graphicData>
+						<color>(0.36, 0.5, 0.7)</color>
+						<texPath>Things/Apparel/UGHelmet</texPath>
+						<graphicClass>Graphic_Single</graphicClass>
+					</graphicData>
+					<recipeMaker>
+						<unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+						<researchPrerequisites>
+							<li>BOR_Research_Armor_I</li>
+							<li>CrucibleTech</li>
+						</researchPrerequisites>
+						<skillRequirements>
+							<Crafting>12</Crafting>
+						</skillRequirements>
+					</recipeMaker>
+					<costList>
+						<BOR_QuasarAlloy>70</BOR_QuasarAlloy>
+						<BOR_ComponentII>5</BOR_ComponentII>
+					</costList>
+					<statBases>
+						<Mass>1.528</Mass>
+						<WorkToMake>31500</WorkToMake>
+						<MaxHitPoints>338</MaxHitPoints>
+						<ArmorRating_Sharp>2.475</ArmorRating_Sharp>
+						<ArmorRating_Heat>0.675</ArmorRating_Heat>
+						<Insulation_Cold>12</Insulation_Cold>
+						<Insulation_Heat>12</Insulation_Heat>
+						<EquipDelay>1</EquipDelay>
+
+						<RoyalFavorValue>3</RoyalFavorValue>
+					</statBases>
+					<equippedStatOffsets>
+						<SocialImpact>-0.1</SocialImpact>
+					</equippedStatOffsets>
+					<generateCommonality>0.03</generateCommonality>
+					<apparel>
+						<defaultOutfitTags>
+							<li>Soldier</li>
+						</defaultOutfitTags>
+						<tags>
+							<li>ADJS</li>
+							<li>FedUnity</li>
+						</tags>
+						<wornGraphicPath>Things/Apparel/UGHelmet</wornGraphicPath>
+						<layers>
+							<li>Overhead</li>
+						</layers>
+						<bodyPartGroups>
+							<li>FullHead</li>
+						</bodyPartGroups>
+					</apparel>
+
+					<tradeTags>
+						<li>BOR_Tech_II</li>
+					</tradeTags>
+				</ThingDef>
+
+
+				<ThingDef ParentName="ApparelBase">
+					<defName>BOR_Quasar_Apparel_UGCloak</defName>
+					<label>unity guard kwazaari cloak</label>
+					<techLevel>Spacer</techLevel>
+					<description>Quasar cloak that usually worn by the federation unity guards. It's more like to ornament than practical outfit.</description>
+					<graphicData>
+						<color>(0.36, 0.5, 0.7)</color>
+						<texPath>Things/Apparel/UGCloak</texPath>
+						<graphicClass>Graphic_Single</graphicClass>
+					</graphicData>
+					<statBases>
+						<Mass>0.347</Mass>
+						<MarketValue>225</MarketValue>
+						<MaxHitPoints>338</MaxHitPoints>
+						<ArmorRating_Blunt>0.112</ArmorRating_Blunt>
+						<ArmorRating_Sharp>0.112</ArmorRating_Sharp>
+						<ArmorRating_Heat>0.112</ArmorRating_Heat>
+						<Insulation_Cold>12</Insulation_Cold>
+						<Insulation_Heat>8</Insulation_Heat>
+						<EquipDelay>1</EquipDelay>
+
+						<RoyalFavorValue>3</RoyalFavorValue>
+					</statBases>
+					<costList>
+						<BOR_QuasarAlloy>5</BOR_QuasarAlloy>
+						<BOR_QuasarAlloyWeave>20</BOR_QuasarAlloyWeave>
+					</costList>
+					<thingCategories>
+						<li>BOR_Apparel</li>
+					</thingCategories>
+					<generateCommonality>0.03</generateCommonality>
+					<apparel>
+						<tags>
+							<li>ADJS</li>
+							<li>FedUnity</li>
+						</tags>
+						<defaultOutfitTags>
+							<li>Worker</li>
+							<li>Soldier</li>
+						</defaultOutfitTags>
+						<wornGraphicPath>Things/Apparel/UGCloak</wornGraphicPath>
+						<layers>
+							<li>Shell</li>
+						</layers>
+						<bodyPartGroups>
+							<li>Shoulders</li>
+							<li>Arms</li>
+						</bodyPartGroups>
+					</apparel>
+
+					<tradeTags>
+						<li>BOR_Tech_II</li>
+					</tradeTags>
+				</ThingDef>
+
+			</value>
+		</enabled>
+	</Operation>
+</Patch>

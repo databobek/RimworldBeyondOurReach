@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
+    <modSettingDef>BOR_Setting_RoyaltyImplantsVariants</modSettingDef>
+    <enabled Class="PatchOperationAdd">
+      <xpath>Defs</xpath>
+      <value>
+
+        <RecipeDef Name="SurgeryInstallImplantBORSolarBase" ParentName="SurgeryFlesh" Abstract="True">
+          <workerClass>Recipe_InstallImplant</workerClass>
+          <workAmount>5000</workAmount>
+          <developmentalStageFilter>Child, Adult</developmentalStageFilter>
+          <skillRequirements>
+            <Medicine>12</Medicine>
+          </skillRequirements>
+          <recipeUsers>
+            <li>Human</li>
+          </recipeUsers>
+          <ingredients>
+            <li>
+              <filter>
+                <thingDefs>
+                  <li>BOR_MedicineI</li>
+                </thingDefs>
+              </filter>
+              <count>3</count>
+            </li>
+            <li>
+              <filter>
+                <thingDefs>
+                  <li>BOR_Nanoclusters</li>
+                </thingDefs>
+              </filter>
+              <count>1</count>
+            </li>
+          </ingredients>
+          <fixedIngredientFilter>
+            <thingDefs>
+              <li>BOR_MedicineI</li>
+              <li>BOR_Nanoclusters</li>
+            </thingDefs>
+          </fixedIngredientFilter>
+          <researchPrerequisite>BOR_Research_Bionics_I</researchPrerequisite>
+        </RecipeDef>
+
+        <RecipeDef Name="SurgeryInstallImplantBORQuasarBase" ParentName="SurgeryFlesh" Abstract="True">
+          <workerClass>Recipe_InstallImplant</workerClass>
+          <workAmount>10000</workAmount>
+          <developmentalStageFilter>Child, Adult</developmentalStageFilter>
+          <skillRequirements>
+            <Medicine>15</Medicine>
+          </skillRequirements>
+          <recipeUsers>
+            <li>Human</li>
+          </recipeUsers>
+          <ingredients>
+            <li>
+              <filter>
+                <thingDefs>
+                  <li>BOR_MedicineII</li>
+                </thingDefs>
+              </filter>
+              <count>3</count>
+            </li>
+            <li>
+              <filter>
+                <thingDefs>
+                  <li>BOR_Picoclusters</li>
+                </thingDefs>
+              </filter>
+              <count>1</count>
+            </li>
+          </ingredients>
+          <fixedIngredientFilter>
+            <thingDefs>
+              <li>BOR_MedicineII</li>
+              <li>BOR_Picoclusters</li>
+            </thingDefs>
+          </fixedIngredientFilter>
+          <researchPrerequisite>BOR_Research_Bionics_II</researchPrerequisite>
+        </RecipeDef>
+
+        <RecipeDef Name="SurgeryInstallImplantBORTenebralBase" ParentName="SurgeryFlesh" Abstract="True">
+          <workerClass>Recipe_InstallImplant</workerClass>
+          <workAmount>20000</workAmount>
+          <developmentalStageFilter>Child, Adult</developmentalStageFilter>
+          <skillRequirements>
+            <Medicine>18</Medicine>
+          </skillRequirements>
+          <recipeUsers>
+            <li>Human</li>
+          </recipeUsers>
+          <ingredients>
+            <li>
+              <filter>
+                <thingDefs>
+                  <li>BOR_MedicineIII</li>
+                </thingDefs>
+              </filter>
+              <count>3</count>
+            </li>
+            <li>
+              <filter>
+                <thingDefs>
+                  <li>BOR_Femtoclusters</li>
+                </thingDefs>
+              </filter>
+              <count>1</count>
+            </li>
+          </ingredients>
+          <fixedIngredientFilter>
+            <thingDefs>
+              <li>BOR_MedicineIII</li>
+              <li>BOR_Femtoclusters</li>
+            </thingDefs>
+          </fixedIngredientFilter>
+          <researchPrerequisite>BOR_Research_Bionics_III</researchPrerequisite>
+        </RecipeDef>
+
+        <RecipeDef Name="SurgeryInstallImplantBORUmbralBase" ParentName="SurgeryFlesh" Abstract="True">
+          <workerClass>Recipe_InstallImplant</workerClass>
+          <workAmount>50000</workAmount>
+          <developmentalStageFilter>Child, Adult</developmentalStageFilter>
+          <skillRequirements>
+            <Medicine>20</Medicine>
+          </skillRequirements>
+          <recipeUsers>
+            <li>Human</li>
+          </recipeUsers>
+          <ingredients>
+            <li>
+              <filter>
+                <thingDefs>
+                  <li>BOR_MedicineIII</li>
+                </thingDefs>
+              </filter>
+              <count>3</count>
+            </li>
+          </ingredients>
+          <fixedIngredientFilter>
+            <thingDefs>
+              <li>BOR_MedicineIII</li>
+            </thingDefs>
+          </fixedIngredientFilter>
+          <researchPrerequisite>BOR_Research_Bionics_IV</researchPrerequisite>
+        </RecipeDef>
+
+        <ThingDef Name="BodyPartBORBase" ParentName="BodyPartArchotechBase" Abstract="True">
+          <thingSetMakerTags>
+            <li>BOR_Implant_Royal</li>
+          </thingSetMakerTags>
+          <techHediffsTags>
+            <li>BOR_Implant_Royal</li>
+          </techHediffsTags>
+        </ThingDef>
+
+        <ThingDef Name="BodyPartBORSolarBase" ParentName="BodyPartBORBase" Abstract="True">
+          <costList>
+            <BOR_Sunsteel>50</BOR_Sunsteel>
+            <ComponentSpacer>4</ComponentSpacer>
+          </costList>
+          <tradeTags>
+            <li>BOR_Implant_Royal_I</li>
+          </tradeTags>
+          <recipeMaker>
+            <researchPrerequisite>BOR_Research_Bionics_I</researchPrerequisite>
+            <recipeUsers>
+              <li>BOR_MedicineBench_I</li>
+              <li>BOR_Bench_IV</li>
+            </recipeUsers>
+            <skillRequirements>
+              <Crafting>10</Crafting>
+            </skillRequirements>
+          </recipeMaker>
+          <statBases>
+            <WorkToMake>10000</WorkToMake>
+            <MarketValue>50000</MarketValue>
+          </statBases>
+          <graphicData>
+            <texPath>Things/Item/Health/HealthItem</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>0.80</drawSize>
+            <color>(104, 160, 168)</color>
+          </graphicData>
+          <thingCategories>
+            <li>BOR_Bionics_I</li>
+          </thingCategories>
+        </ThingDef>
+
+        <ThingDef Name="BodyPartBORQuasarBase" ParentName="BodyPartBORBase" Abstract="True">
+          <costList>
+            <BOR_QuasarAlloy>50</BOR_QuasarAlloy>
+            <BOR_ComponentII>4</BOR_ComponentII>
+          </costList>
+          <tradeTags>
+            <li>BOR_Implant_Royal_II</li>
+          </tradeTags>
+          <recipeMaker>
+            <researchPrerequisite>BOR_Research_Bionics_II</researchPrerequisite>
+            <recipeUsers>
+              <li>BOR_MedicineBench_II</li>
+              <li>BOR_Bench_IV</li>
+            </recipeUsers>
+            <skillRequirements>
+              <Crafting>15</Crafting>
+            </skillRequirements>
+          </recipeMaker>
+          <statBases>
+            <WorkToMake>15000</WorkToMake>
+            <MarketValue>75000</MarketValue>
+          </statBases>
+          <graphicData>
+            <texPath>Things/Item/Health/HealthItem</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>0.80</drawSize>
+            <color>(155, 185, 186)</color>
+          </graphicData>
+          <thingCategories>
+            <li>BOR_Bionics_II</li>
+          </thingCategories>
+        </ThingDef>
+
+        <ThingDef Name="BodyPartBORTenebralBase" ParentName="BodyPartBORBase" Abstract="True">
+          <costList>
+            <BOR_Tenebrite>50</BOR_Tenebrite>
+            <BOR_ComponentIII>4</BOR_ComponentIII>
+          </costList>
+          <tradeTags>
+            <li>BOR_Implant_Royal_III</li>
+          </tradeTags>
+          <recipeMaker>
+            <researchPrerequisite>BOR_Research_Bionics_III</researchPrerequisite>
+            <recipeUsers>
+              <li>BOR_MedicineBench_III</li>
+              <li>BOR_Bench_IV</li>
+            </recipeUsers>
+            <skillRequirements>
+              <Crafting>20</Crafting>
+            </skillRequirements>
+          </recipeMaker>
+          <statBases>
+            <WorkToMake>20000</WorkToMake>
+            <MarketValue>100000</MarketValue>
+          </statBases>
+          <graphicData>
+            <texPath>Things/Item/Health/HealthItem</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>0.80</drawSize>
+            <color>(69, 32, 41)</color>
+          </graphicData>
+          <thingCategories>
+            <li>BOR_Bionics_III</li>
+          </thingCategories>
+        </ThingDef>
+      </value>
+    </enabled>
+  </Operation>
+</Patch>

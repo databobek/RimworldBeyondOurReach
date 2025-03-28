@@ -1,0 +1,580 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
+    <modSettingDef>BOR_Setting_RoyaltyImplantsVariants</modSettingDef>
+    <enabled Class="PatchOperationAdd">
+      <xpath>Defs</xpath>
+      <value>
+
+        <!-- Mindscrew -->
+
+        <HediffDef ParentName="BOR_ImplantUmbralHediffBase">
+          <defName>MindscrewUmbral</defName>
+          <label>umbral mindscrew</label>
+          <labelNoun>an umbral mindscrew</labelNoun>
+          <description>An installed umbral mindscrew.</description>
+          <descriptionHyperlinks>
+            <ThingDef>BOR_Femtoclusters</ThingDef>
+          </descriptionHyperlinks>
+          <priceOffset>-660</priceOffset>
+          <stages>
+            <li>
+              <painOffset>0.9</painOffset>
+            </li>
+          </stages>
+        </HediffDef>
+
+        <RecipeDef ParentName="SurgeryInstallImplantBORUmbralBase">
+          <defName>InstallMindscrewUmbral</defName>
+          <label>install umbral mindscrew</label>
+          <description>Install a mindscrew.</description>
+          <descriptionHyperlinks>
+            <ThingDef>BOR_Femtoclusters</ThingDef>
+            <HediffDef>MindscrewUmbral</HediffDef>
+          </descriptionHyperlinks>
+          <jobString>Installing umbral mindscrew.</jobString>
+          <ingredients>
+            <li>
+              <filter>
+                <thingDefs>
+                  <li>BOR_Femtoclusters</li>
+                </thingDefs>
+              </filter>
+              <count>10</count>
+            </li>
+          </ingredients>
+          <fixedIngredientFilter>
+            <thingDefs>
+              <li>BOR_Femtoclusters</li>
+            </thingDefs>
+          </fixedIngredientFilter>
+          <appliedOnFixedBodyParts>
+            <li>Brain</li>
+          </appliedOnFixedBodyParts>
+          <addsHediff>MindscrewUmbral</addsHediff>
+        </RecipeDef>
+
+        <!-- Drill arm -->
+
+        <HediffDef ParentName="AddedBodyPartBase">
+          <defName>DrillArmUmbral</defName>
+          <label>umbral drill arm</label>
+          <labelNoun>an umbral drill arm</labelNoun>
+          <description>An installed umbral drill arm.</description>
+          <descriptionHyperlinks>
+            <ThingDef>BOR_Femtoclusters</ThingDef>
+          </descriptionHyperlinks>
+          <addedPartProps>
+            <solid>true</solid>
+          </addedPartProps>
+          <stages>
+            <li>
+              <statOffsets>
+                <MiningSpeed>9.6</MiningSpeed>
+                <DeepDrillingSpeed>4.2</DeepDrillingSpeed>
+              </statOffsets>
+              <capMods>
+                <li>
+                  <capacity>Moving</capacity>
+                  <offset>-0.1</offset>
+                </li>
+              </capMods>
+            </li>
+          </stages>
+          <comps>
+            <li Class="HediffCompProperties_VerbGiver">
+              <tools>
+                <li>
+                  <label>umbral drill</label>
+                  <capacities>
+                    <li>Stab</li>
+                  </capacities>
+                  <power>77</power>
+                  <cooldownTime>2</cooldownTime>
+                  <alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+                  <soundMeleeHit>MeleeHit_DrillArm</soundMeleeHit>
+                  <soundMeleeMiss>MeleeMiss_DrillArm</soundMeleeMiss>
+                </li>
+              </tools>
+            </li>
+          </comps>
+        </HediffDef>
+
+        <RecipeDef ParentName="SurgeryInstallImplantBORUmbralBase">
+          <defName>InstallDrillArmUmbral</defName>
+          <label>install umbral drill arm</label>
+          <description>Install a drill arm.</description>
+          <descriptionHyperlinks>
+            <ThingDef>BOR_Femtoclusters</ThingDef>
+            <HediffDef>DrillArmUmbral</HediffDef>
+          </descriptionHyperlinks>
+          <jobString>Installing umbral drill arm.</jobString>
+          <ingredients>
+            <li>
+              <filter>
+                <thingDefs>
+                  <li>BOR_Femtoclusters</li>
+                </thingDefs>
+              </filter>
+              <count>10</count>
+            </li>
+          </ingredients>
+          <fixedIngredientFilter>
+            <thingDefs>
+              <li>BOR_Femtoclusters</li>
+            </thingDefs>
+          </fixedIngredientFilter>
+          <appliedOnFixedBodyParts>
+            <li>Arm</li>
+          </appliedOnFixedBodyParts>
+          <addsHediff>DrillArmUmbral</addsHediff>
+        </RecipeDef>
+
+        <!-- Field hand -->
+
+        <HediffDef ParentName="AddedBodyPartBase">
+          <defName>FieldHandUmbral</defName>
+          <label>umbral field hand</label>
+          <labelNoun>an umbral field hand</labelNoun>
+          <description>An installed umbral field hand.</description>
+          <descriptionHyperlinks>
+            <ThingDef>BOR_Femtoclusters</ThingDef>
+          </descriptionHyperlinks>
+          <addedPartProps>
+            <solid>true</solid>
+          </addedPartProps>
+          <stages>
+            <li>
+              <statOffsets>
+                <PlantWorkSpeed>9.6</PlantWorkSpeed>
+              </statOffsets>
+              <capMods>
+                <li>
+                  <capacity>Moving</capacity>
+                  <offset>-0.1</offset>
+                </li>
+              </capMods>
+            </li>
+          </stages>
+          <comps>
+            <li Class="HediffCompProperties_VerbGiver">
+              <tools>
+                <li>
+                  <label>umbral knuckle</label>
+                  <capacities>
+                    <li>Blunt</li>
+                  </capacities>
+                  <power>54</power>
+                  <cooldownTime>2</cooldownTime>
+                  <alwaysTreatAsWeapon>false</alwaysTreatAsWeapon>
+                  <soundMeleeHit>MeleeHit_FieldHand</soundMeleeHit>
+                  <soundMeleeMiss>MeleeMiss_FieldHand</soundMeleeMiss>
+                </li>
+              </tools>
+            </li>
+          </comps>
+        </HediffDef>
+
+        <RecipeDef ParentName="SurgeryInstallImplantBORUmbralBase">
+          <defName>InstallFieldHandUmbral</defName>
+          <label>install umbral field hand</label>
+          <description>Install a field hand.</description>
+          <descriptionHyperlinks>
+            <ThingDef>BOR_Femtoclusters</ThingDef>
+            <HediffDef>FieldHandUmbral</HediffDef>
+          </descriptionHyperlinks>
+          <jobString>Installing umbral field hand.</jobString>
+          <ingredients>
+            <li>
+              <filter>
+                <thingDefs>
+                  <li>BOR_Femtoclusters</li>
+                </thingDefs>
+              </filter>
+              <count>10</count>
+            </li>
+          </ingredients>
+          <fixedIngredientFilter>
+            <thingDefs>
+              <li>BOR_Femtoclusters</li>
+            </thingDefs>
+          </fixedIngredientFilter>
+          <appliedOnFixedBodyParts>
+            <li>Hand</li>
+          </appliedOnFixedBodyParts>
+          <addsHediff>FieldHandUmbral</addsHediff>
+        </RecipeDef>
+
+        <!-- Hand talon -->
+
+        <HediffDef ParentName="BOR_ImplantUmbralHediffBase">
+          <defName>HandTalonUmbral</defName>
+          <label>umbral hand talon</label>
+          <labelNoun>an umbral hand talon</labelNoun>
+          <description>An installed umbral hand talon.</description>
+          <descriptionHyperlinks>
+            <ThingDef>BOR_Femtoclusters</ThingDef>
+          </descriptionHyperlinks>
+          <addedPartProps>
+            <solid>true</solid>
+          </addedPartProps>
+          <comps>
+            <li Class="HediffCompProperties_VerbGiver">
+              <tools>
+                <li>
+                  <label>umbral talon</label>
+                  <capacities>
+                    <li>Scratch</li>
+                  </capacities>
+                  <power>90</power>  <!-- Lower damage means lower AP than other compact weapons, but it's faster with more raw DPS -->
+                  <armorPenetration>0.75</armorPenetration>
+                  <cooldownTime>0.4</cooldownTime>
+                  <alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+                  <soundMeleeHit>MeleeHit_BionicSlash</soundMeleeHit>
+                  <soundMeleeMiss>MeleeMiss_BionicSlash</soundMeleeMiss>
+                </li>
+              </tools>
+            </li>
+          </comps>
+        </HediffDef>
+
+        <RecipeDef ParentName="SurgeryInstallImplantBORUmbralBase">
+          <defName>InstallHandTalonUmbral</defName>
+          <label>install umbral hand talon</label>
+          <description>Install a hand talon.</description>
+          <descriptionHyperlinks>
+            <ThingDef>BOR_Femtoclusters</ThingDef>
+            <HediffDef>HandTalonUmbral</HediffDef>
+          </descriptionHyperlinks>
+          <jobString>Installing umbral hand talon.</jobString>
+          <ingredients>
+            <li>
+              <filter>
+                <thingDefs>
+                  <li>BOR_Femtoclusters</li>
+                </thingDefs>
+              </filter>
+              <count>10</count>
+            </li>
+          </ingredients>
+          <fixedIngredientFilter>
+            <thingDefs>
+              <li>BOR_Femtoclusters</li>
+            </thingDefs>
+          </fixedIngredientFilter>
+          <appliedOnFixedBodyParts>
+            <li>Hand</li>
+          </appliedOnFixedBodyParts>
+          <addsHediff>HandTalonUmbral</addsHediff>
+        </RecipeDef>
+
+        <RecipeDef ParentName="SurgeryRemoveImplantBase">
+          <defName>RemoveHandTalonUmbral</defName>
+          <label>remove umbral hand talon</label>
+          <description>Remove hand talon.</description>
+          <descriptionHyperlinks>
+            <ThingDef>BOR_Femtoclusters</ThingDef>
+            <HediffDef>HandTalonUmbral</HediffDef>
+          </descriptionHyperlinks>
+          <jobString>Removing umbral hand talon.</jobString>
+          <removesHediff>HandTalonUmbral</removesHediff>
+        </RecipeDef>
+
+        <!-- Elbow blade -->
+
+        <HediffDef ParentName="BOR_ImplantUmbralHediffBase">
+          <defName>ElbowBladeUmbral</defName>
+          <label>umbral elbow blade</label>
+          <labelNoun>an umbral elbow blade</labelNoun>
+          <description>An installed umbral elbow blade.</description>
+          <descriptionHyperlinks>
+            <ThingDef>BOR_Femtoclusters</ThingDef>
+          </descriptionHyperlinks>
+          <addedPartProps>
+            <solid>true</solid>
+          </addedPartProps>
+          <comps>
+            <li Class="HediffCompProperties_VerbGiver">
+              <tools>
+                <li>
+                  <label>umbral blade</label>
+                  <capacities>
+                    <li>Cut</li>
+                  </capacities>
+                  <power>108</power>
+                  <cooldownTime>3</cooldownTime>
+                  <alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+                  <soundMeleeHit>MeleeHit_BionicSlash</soundMeleeHit>
+                  <soundMeleeMiss>MeleeMiss_BionicSlash</soundMeleeMiss>
+                </li>
+              </tools>
+            </li>
+          </comps>
+        </HediffDef>
+
+        <RecipeDef ParentName="SurgeryInstallImplantBORUmbralBase">
+          <defName>InstallElbowBladeUmbral</defName>
+          <label>install umbral elbow blade</label>
+          <description>Install an elbow blade.</description>
+          <descriptionHyperlinks>
+            <ThingDef>BOR_Femtoclusters</ThingDef>
+            <HediffDef>ElbowBladeUmbral</HediffDef>
+          </descriptionHyperlinks>
+          <jobString>Installing umbral elbow blade.</jobString>
+          <ingredients>
+            <li>
+              <filter>
+                <thingDefs>
+                  <li>BOR_Femtoclusters</li>
+                </thingDefs>
+              </filter>
+              <count>10</count>
+            </li>
+          </ingredients>
+          <fixedIngredientFilter>
+            <thingDefs>
+              <li>BOR_Femtoclusters</li>
+            </thingDefs>
+          </fixedIngredientFilter>
+          <appliedOnFixedBodyParts>
+            <li>Arm</li>
+          </appliedOnFixedBodyParts>
+          <addsHediff>ElbowBladeUmbral</addsHediff>
+        </RecipeDef>
+
+        <RecipeDef ParentName="SurgeryRemoveImplantBase">
+          <defName>RemoveElbowBladeUmbral</defName>
+          <label>remove umbral elbow blade</label>
+          <description>Remove elbow blade.</description>
+          <descriptionHyperlinks>
+            <ThingDef>BOR_Femtoclusters</ThingDef>
+            <HediffDef>ElbowBladeUmbral</HediffDef>
+          </descriptionHyperlinks>
+          <jobString>Removing umbral elbow blade.</jobString>
+          <removesHediff>ElbowBladeUmbral</removesHediff>
+        </RecipeDef>
+
+        <!-- Knee spike -->
+
+        <HediffDef ParentName="BOR_ImplantUmbralHediffBase">
+          <defName>KneeSpikeUmbral</defName>
+          <label>umbral knee spike</label>
+          <labelNoun>an umbral knee spike</labelNoun>
+          <description>An installed umbral knee spike.</description>
+          <descriptionHyperlinks>
+            <ThingDef>BOR_Femtoclusters</ThingDef>
+          </descriptionHyperlinks>
+          <addedPartProps>
+            <solid>true</solid>
+          </addedPartProps>
+          <comps>
+            <li Class="HediffCompProperties_VerbGiver">
+              <tools>
+                <li>
+                  <label>umbral spike</label>
+                  <capacities>
+                    <li>Stab</li>
+                  </capacities>
+                  <power>120</power> <!-- More power and AP but slower than other compact weapons -->
+                  <armorPenetration>2.1</armorPenetration>
+                  <cooldownTime>2.5</cooldownTime>
+                  <alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+                  <soundMeleeHit>MeleeHit_BionicSlash</soundMeleeHit>
+                  <soundMeleeMiss>MeleeMiss_BionicSlash</soundMeleeMiss>
+                </li>
+              </tools>
+            </li>
+          </comps>
+        </HediffDef>
+
+        <RecipeDef ParentName="SurgeryInstallImplantBORUmbralBase">
+          <defName>InstallKneeSpikeUmbral</defName>
+          <label>install umbral knee spike</label>
+          <description>Install a knee spike.</description>
+          <descriptionHyperlinks>
+            <ThingDef>BOR_Femtoclusters</ThingDef>
+            <HediffDef>KneeSpikeUmbral</HediffDef>
+          </descriptionHyperlinks>
+          <jobString>Installing umbral knee spike.</jobString>
+          <ingredients>
+            <li>
+              <filter>
+                <thingDefs>
+                  <li>BOR_Femtoclusters</li>
+                </thingDefs>
+              </filter>
+              <count>10</count>
+            </li>
+          </ingredients>
+          <fixedIngredientFilter>
+            <thingDefs>
+              <li>BOR_Femtoclusters</li>
+            </thingDefs>
+          </fixedIngredientFilter>
+          <appliedOnFixedBodyParts>
+            <li>Leg</li>
+          </appliedOnFixedBodyParts>
+          <addsHediff>KneeSpikeUmbral</addsHediff>
+        </RecipeDef>
+
+        <RecipeDef ParentName="SurgeryRemoveImplantBase">
+          <defName>RemoveKneeSpikeUmbral</defName>
+          <label>remove umbral knee spike</label>
+          <description>Remove knee spike.</description>
+          <descriptionHyperlinks>
+            <ThingDef>BOR_Femtoclusters</ThingDef>
+            <HediffDef>KneeSpikeUmbral</HediffDef>
+          </descriptionHyperlinks>
+          <jobString>Removing umbral knee spike.</jobString>
+          <removesHediff>KneeSpikeUmbral</removesHediff>
+        </RecipeDef>
+
+        <!-- venom fangs -->
+
+        <HediffDef ParentName="BOR_ImplantUmbralHediffBase">
+          <defName>VenomFangsUmbral</defName>
+          <label>umbral venom fangs</label>
+          <labelNoun>an umbral set of venom fangs</labelNoun>
+          <description>An installed umbral set of venom fangs.</description>
+          <descriptionHyperlinks>
+            <ThingDef>BOR_Femtoclusters</ThingDef>
+          </descriptionHyperlinks>
+          <addedPartProps>
+            <solid>true</solid>
+          </addedPartProps>
+          <comps>
+            <li Class="HediffCompProperties_VerbGiver">
+              <tools>
+                <li>
+                  <label>umbral venom fangs</label>
+                  <capacities>
+                    <li>ToxicBite</li>
+                  </capacities>
+                  <power>90</power>
+                  <cooldownTime>2</cooldownTime>
+                  <alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+                </li>
+              </tools>
+            </li>
+          </comps>
+        </HediffDef>
+
+        <RecipeDef ParentName="SurgeryInstallImplantBORUmbralBase">
+          <defName>InstallVenomFangsUmbral</defName>
+          <label>install umbral venom fangs</label>
+          <description>Install venom fangs.</description>
+          <descriptionHyperlinks>
+            <ThingDef>BOR_Femtoclusters</ThingDef>
+            <HediffDef>VenomFangsUmbral</HediffDef>
+          </descriptionHyperlinks>
+          <jobString>Installing umbral venom fangs.</jobString>
+          <ingredients>
+            <li>
+              <filter>
+                <thingDefs>
+                  <li>BOR_Femtoclusters</li>
+                </thingDefs>
+              </filter>
+              <count>10</count>
+            </li>
+          </ingredients>
+          <fixedIngredientFilter>
+            <thingDefs>
+              <li>BOR_Femtoclusters</li>
+            </thingDefs>
+          </fixedIngredientFilter>
+          <appliedOnFixedBodyPartGroups>
+            <li>Teeth</li>
+          </appliedOnFixedBodyPartGroups>
+          <addsHediff>VenomFangsUmbral</addsHediff>
+        </RecipeDef>
+
+        <RecipeDef ParentName="SurgeryRemoveImplantBase">
+          <defName>RemoveVenomFangsUmbral</defName>
+          <label>remove umbral venom fangs</label>
+          <description>Remove venom fangs.</description>
+          <descriptionHyperlinks>
+            <ThingDef>BOR_Femtoclusters</ThingDef>
+            <HediffDef>VenomFangsUmbral</HediffDef>
+          </descriptionHyperlinks>
+          <jobString>Removing umbral venom fangs.</jobString>
+          <removesHediff>VenomFangsUmbral</removesHediff>
+        </RecipeDef>
+
+        <!-- venom talon -->
+
+        <HediffDef ParentName="BOR_ImplantUmbralHediffBase">
+          <defName>VenomTalonUmbral</defName>
+          <label>umbral venom talon</label>
+          <labelNoun>an umbral venom talon</labelNoun>
+          <description>An installed umbral venom talon.</description>
+          <descriptionHyperlinks>
+            <ThingDef>BOR_Femtoclusters</ThingDef>
+          </descriptionHyperlinks>
+          <comps>
+            <li Class="HediffCompProperties_VerbGiver">
+              <tools>
+                <li>
+                  <label>umbral venom talon</label>
+                  <capacities>
+                    <li>ScratchToxic</li>
+                  </capacities>
+                  <power>66</power> <!-- Toxic and fast but with poor armor penetration -->
+                  <armorPenetration>0.9</armorPenetration>
+                  <cooldownTime>0.833</cooldownTime>
+                  <alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+                  <soundMeleeHit>MeleeHit_BionicSlash</soundMeleeHit>
+                  <soundMeleeMiss>MeleeMiss_BionicSlash</soundMeleeMiss>
+                </li>
+              </tools>
+            </li>
+          </comps>
+        </HediffDef>
+
+        <RecipeDef ParentName="SurgeryInstallImplantBORUmbralBase">
+          <defName>InstallVenomTalonUmbral</defName>
+          <label>install umbral venom talon</label>
+          <description>Install a venom talon.</description>
+          <descriptionHyperlinks>
+            <ThingDef>BOR_Femtoclusters</ThingDef>
+            <HediffDef>VenomTalonUmbral</HediffDef>
+          </descriptionHyperlinks>
+          <jobString>Installing umbral venom talon.</jobString>
+          <ingredients>
+            <li>
+              <filter>
+                <thingDefs>
+                  <li>BOR_Femtoclusters</li>
+                </thingDefs>
+              </filter>
+              <count>10</count>
+            </li>
+          </ingredients>
+          <fixedIngredientFilter>
+            <thingDefs>
+              <li>BOR_Femtoclusters</li>
+            </thingDefs>
+          </fixedIngredientFilter>
+          <appliedOnFixedBodyPartGroups>
+            <li>MiddleFingers</li>
+          </appliedOnFixedBodyPartGroups>
+          <addsHediff>VenomTalonUmbral</addsHediff>
+        </RecipeDef>
+
+        <RecipeDef ParentName="SurgeryRemoveImplantBase">
+          <defName>RemoveVenomTalonUmbral</defName>
+          <label>remove umbral venom talon</label>
+          <description>Remove venom talon.</description>
+          <descriptionHyperlinks>
+            <ThingDef>BOR_Femtoclusters</ThingDef>
+            <HediffDef>VenomTalonUmbral</HediffDef>
+          </descriptionHyperlinks>
+          <jobString>Removing umbral venom talon.</jobString>
+          <removesHediff>VenomTalonUmbral</removesHediff>
+        </RecipeDef>
+
+      </value>
+    </enabled>
+  </Operation>
+</Patch>

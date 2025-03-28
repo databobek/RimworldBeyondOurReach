@@ -1,137 +1,147 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Patch> <!-- costs -->
-    <Operation Class="PatchOperationReplace">
-        <xpath>Defs/ThingDef[defName="ReplimatTerminal"]/costList</xpath>
-        <value>
-            <costList>
-                <BOR_Sunsteel>50</BOR_Sunsteel>
-                <BOR_ComponentII>5</BOR_ComponentII>
-                <BOR_QuasarAlloy>20</BOR_QuasarAlloy>
-            </costList>
-        </value>
-    </Operation>
-    <Operation Class="PatchOperationReplace">
-        <xpath>Defs/ThingDef[defName="ReplimatAnimalFeeder"]/costList</xpath>
-        <value>
-            <costList>
-                <BOR_Sunsteel>5</BOR_Sunsteel>
-                <BOR_ComponentII>2</BOR_ComponentII>
-                <BOR_QuasarAlloy>2</BOR_QuasarAlloy>
-            </costList>
-        </value>
-    </Operation>
-    <Operation Class="PatchOperationReplace">
-        <xpath>Defs/ThingDef[defName="ReplimatHopper"]/costList</xpath>
-        <value>
-            <costList>
-                <BOR_Sunsteel>80</BOR_Sunsteel>
-                <BOR_ComponentII>8</BOR_ComponentII>
-                <ComponentSpacer>10</ComponentSpacer>
-                <BOR_QuasarAlloy>50</BOR_QuasarAlloy>
-            </costList>
-        </value>
-    </Operation>
-    <Operation Class="PatchOperationReplace">
-        <xpath>Defs/ThingDef[defName="ReplimatHopper"]/size</xpath>
-        <value>
-            <size>(2,1)</size>
-        </value>
-    </Operation>
-    <Operation Class="PatchOperationAdd">
-        <xpath>Defs/ThingDef[defName="ReplimatHopper"]/graphicData</xpath>
-        <value>
-            <drawOffset>(0,4,0)</drawOffset>
-        </value>
-    </Operation>
-    <Operation Class="PatchOperationReplace">
-        <xpath>Defs/ThingDef[defName="ReplimatHopper"]/graphicData/drawSize</xpath>
-        <value>
-            <drawSize>(2.5,2.5)</drawSize>
-        </value>
-    </Operation>
-    <Operation Class="PatchOperationAdd">
-        <xpath>Defs/ThingDef[defName="ReplimatHopper"]/comps/li[@Class="Replimat.CompProperties_SecondLayer"]/graphicData</xpath>
-        <value>
-            <drawOffset>(0,3,0)</drawOffset>
-        </value>
-    </Operation>
-    <Operation Class="PatchOperationReplace">
-        <xpath>Defs/ThingDef[defName="ReplimatHopper"]/comps/li[@Class="Replimat.CompProperties_SecondLayer"]/graphicData/drawSize</xpath>
-        <value>
-            <drawSize>(2.5,2.5)</drawSize>
-        </value>
-    </Operation>
-    <Operation Class="PatchOperationReplace">
-        <xpath>Defs/ThingDef[defName="ReplimatCorpseRecycler"]/costList</xpath>
-        <value>
-            <costList>
-                <BOR_Sunsteel>100</BOR_Sunsteel>
-                <BOR_ComponentII>8</BOR_ComponentII>
-                <ComponentSpacer>10</ComponentSpacer>
-                <BOR_QuasarAlloy>80</BOR_QuasarAlloy>
-            </costList>
-        </value>
-    </Operation>
-    <Operation Class="PatchOperationReplace">
-        <xpath>Defs/ThingDef[defName="ReplimatComputer"]/costList</xpath>
-        <value>
-            <costList>
-                <BOR_Sunsteel>80</BOR_Sunsteel>
-                <BOR_ComponentII>12</BOR_ComponentII>
-                <ComponentSpacer>8</ComponentSpacer>
-                <BOR_QuasarAlloy>60</BOR_QuasarAlloy>
-                <IsolinearModule>1</IsolinearModule>
-            </costList>
-        </value>
-    </Operation>
-    <Operation Class="PatchOperationReplace">
-        <xpath>Defs/ThingDef[defName="ReplimatFeedTank"]/costList</xpath>
-        <value>
-            <costList>
-                <BOR_Sunsteel>25</BOR_Sunsteel>
-                <BOR_ComponentII>1</BOR_ComponentII>
-                <ComponentSpacer>5</ComponentSpacer>
-                <BOR_QuasarAlloy>75</BOR_QuasarAlloy>
-            </costList>
-        </value>
-    </Operation>
-    <Operation Class="PatchOperationReplace">
-        <xpath>Defs/ThingDef[defName="ReplimatFeedTank"]/comps/li[@Class="CompProperties_Power"]/basePowerConsumption</xpath>
-        <value>
-            <basePowerConsumption>5000</basePowerConsumption>
-        </value>
-    </Operation>
-    <Operation Class="PatchOperationReplace">
-        <xpath>Defs/ThingDef[defName="ReplimatComputer"]/comps/li[@Class="CompProperties_Power"]/basePowerConsumption</xpath>
-        <value>
-            <basePowerConsumption>25000</basePowerConsumption>
-        </value>
-    </Operation>
-    <!-- Sewage -->
-    <Operation Class="PatchOperationFindMod">
-        <mods>
-            <li>Dubs Bad Hygiene</li>
-        </mods>
-        <match Class="PatchOperationSequence">
+<Patch>
+    <Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
+        <modSettingDef>BOR_Setting_RebalanceReplimatBuildings</modSettingDef>
+        <enabled Class="PatchOperationSequence">
             <operations>
+                <!-- costs -->
                 <li Class="PatchOperationReplace">
-                    <xpath>Defs/ThingDef[defName="ReplimatSewageRecycler"]/costList</xpath>
+                    <xpath>Defs/ThingDef[defName="ReplimatTerminal"]/costList</xpath>
                     <value>
                         <costList>
-                            <ComponentSpacer>10</ComponentSpacer>
-                            <BOR_ComponentII>8</BOR_ComponentII>
-                            <BOR_QuasarAlloy>50</BOR_QuasarAlloy>
-                            <BOR_Sunsteel>80</BOR_Sunsteel>
+                            <BOR_Sunsteel>50</BOR_Sunsteel>
+                            <BOR_ComponentII>5</BOR_ComponentII>
+                            <BOR_QuasarAlloy>20</BOR_QuasarAlloy>
                         </costList>
                     </value>
                 </li>
                 <li Class="PatchOperationReplace">
-                    <xpath>Defs/ThingDef[defName="ReplimatSewageRecycler"]/comps/li[@Class="Replimat.CompProperties_StateDependentPowerUse"]/activeModePowerConsumption</xpath>
+                    <xpath>Defs/ThingDef[defName="ReplimatAnimalFeeder"]/costList</xpath>
                     <value>
-                        <activeModePowerConsumption>30000</activeModePowerConsumption>
+                        <costList>
+                            <BOR_Sunsteel>5</BOR_Sunsteel>
+                            <BOR_ComponentII>2</BOR_ComponentII>
+                            <BOR_QuasarAlloy>2</BOR_QuasarAlloy>
+                        </costList>
                     </value>
                 </li>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="ReplimatHopper"]/costList</xpath>
+                    <value>
+                        <costList>
+                            <BOR_Sunsteel>80</BOR_Sunsteel>
+                            <BOR_ComponentII>8</BOR_ComponentII>
+                            <ComponentSpacer>10</ComponentSpacer>
+                            <BOR_QuasarAlloy>50</BOR_QuasarAlloy>
+                        </costList>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="ReplimatHopper"]/size</xpath>
+                    <value>
+                        <size>(2,1)</size>
+                    </value>
+                </li>
+                <li Class="PatchOperationAdd">
+                    <xpath>Defs/ThingDef[defName="ReplimatHopper"]/graphicData</xpath>
+                    <value>
+                        <drawOffset>(0,4,0)</drawOffset>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="ReplimatHopper"]/graphicData/drawSize</xpath>
+                    <value>
+                        <drawSize>(2.5,2.5)</drawSize>
+                    </value>
+                </li>
+                <li Class="PatchOperationAdd">
+                    <xpath>Defs/ThingDef[defName="ReplimatHopper"]/comps/li[@Class="Replimat.CompProperties_SecondLayer"]/graphicData</xpath>
+                    <value>
+                        <drawOffset>(0,3,0)</drawOffset>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="ReplimatHopper"]/comps/li[@Class="Replimat.CompProperties_SecondLayer"]/graphicData/drawSize</xpath>
+                    <value>
+                        <drawSize>(2.5,2.5)</drawSize>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="ReplimatCorpseRecycler"]/costList</xpath>
+                    <value>
+                        <costList>
+                            <BOR_Sunsteel>100</BOR_Sunsteel>
+                            <BOR_ComponentII>8</BOR_ComponentII>
+                            <ComponentSpacer>10</ComponentSpacer>
+                            <BOR_QuasarAlloy>80</BOR_QuasarAlloy>
+                        </costList>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="ReplimatComputer"]/costList</xpath>
+                    <value>
+                        <costList>
+                            <BOR_Sunsteel>80</BOR_Sunsteel>
+                            <BOR_ComponentII>12</BOR_ComponentII>
+                            <ComponentSpacer>8</ComponentSpacer>
+                            <BOR_QuasarAlloy>60</BOR_QuasarAlloy>
+                            <IsolinearModule>1</IsolinearModule>
+                        </costList>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="ReplimatFeedTank"]/costList</xpath>
+                    <value>
+                        <costList>
+                            <BOR_Sunsteel>25</BOR_Sunsteel>
+                            <BOR_ComponentII>1</BOR_ComponentII>
+                            <ComponentSpacer>5</ComponentSpacer>
+                            <BOR_QuasarAlloy>75</BOR_QuasarAlloy>
+                        </costList>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="ReplimatFeedTank"]/comps/li[@Class="CompProperties_Power"]/basePowerConsumption</xpath>
+                    <value>
+                        <basePowerConsumption>5000</basePowerConsumption>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="ReplimatComputer"]/comps/li[@Class="CompProperties_Power"]/basePowerConsumption</xpath>
+                    <value>
+                        <basePowerConsumption>25000</basePowerConsumption>
+                    </value>
+                </li>
+                <!-- Sewage -->
+                <li Class="PatchOperationFindMod">
+                    <mods>
+                        <li>Dubs Bad Hygiene</li>
+                    </mods>
+                    <match Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationReplace">
+                                <xpath>Defs/ThingDef[defName="ReplimatSewageRecycler"]/costList</xpath>
+                                <value>
+                                    <costList>
+                                        <ComponentSpacer>10</ComponentSpacer>
+                                        <BOR_ComponentII>8</BOR_ComponentII>
+                                        <BOR_QuasarAlloy>50</BOR_QuasarAlloy>
+                                        <BOR_Sunsteel>80</BOR_Sunsteel>
+                                    </costList>
+                                </value>
+                            </li>
+                            <li Class="PatchOperationReplace">
+                                <xpath>Defs/ThingDef[defName="ReplimatSewageRecycler"]/comps/li[@Class="Replimat.CompProperties_StateDependentPowerUse"]/activeModePowerConsumption</xpath>
+                                <value>
+                                    <activeModePowerConsumption>30000</activeModePowerConsumption>
+                                </value>
+                            </li>
+                        </operations>
+                    </match>
+                </li>
             </operations>
-        </match>
+        </enabled>
     </Operation>
+
+
 </Patch>
