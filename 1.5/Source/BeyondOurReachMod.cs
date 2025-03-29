@@ -1,6 +1,7 @@
 ﻿using Verse;
 using UnityEngine;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace BeyondOurReachModSettings
 {
@@ -8,6 +9,7 @@ namespace BeyondOurReachModSettings
 	{
 		private static Vector2 ScrollPos = Vector2.zero;
 		private readonly BeyondOurReachModSettings settings;
+		private const float ListingVerticalSpacing = 2f;
 		List<ModSettingDef> cachedDefs;
 
 
@@ -22,7 +24,7 @@ namespace BeyondOurReachModSettings
 			if (cachedDefs is null)
 			{
 				cachedDefs = [];
-				foreach (ModSettingDef def in DefDatabase<ModSettingDef>.AllDefsListForReading)
+				foreach (ModSettingDef def in ModSettingDefFetcher.AllModSettingsOrdered)
 				{
 					cachedDefs.Add(def);
 					BeyondOurReachModSettings.SettingsDict.TryAdd(def.defName, true);
@@ -31,13 +33,13 @@ namespace BeyondOurReachModSettings
 
 			base.DoSettingsWindowContents(inRect);
 
-			Rect scrollRect = inRect.ContractedBy(32f);
-			scrollRect.height = inRect.height;
+			Rect scrollRect = inRect.ContractedBy(16f);
+			scrollRect.height = cachedDefs.Count * (Listing_Standard.PinnableActionHeight + ListingVerticalSpacing);
+
 
 			Widgets.BeginScrollView(inRect, ref ScrollPos, scrollRect);
 			Listing_Standard listing = new();
 			listing.Begin(scrollRect);
-
 			try
 			{
 				foreach (var modSetting in cachedDefs)
