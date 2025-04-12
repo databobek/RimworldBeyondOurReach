@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+
+  <Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
+    <modSettingDef>BOR_Setting_Biotech_TODO</modSettingDef>
+    <enabled Class="PatchOperationAdd">
+      <xpath>Defs</xpath>
+      <value>
+
+        <RecipeDef Name="BaseQuasarMechanoidRecipe" Abstract="True">
+          <jobString>Gestating quasar mech.</jobString>
+          <workAmount>2400</workAmount>
+          <gestationCycles>1</gestationCycles>
+          <formingTicks>120000</formingTicks>
+          <mechanitorOnlyRecipe>true</mechanitorOnlyRecipe>
+          <workSpeedStat>MechFormingSpeed</workSpeedStat>
+          <soundWorking>MechGestatorCycle_Initiating</soundWorking>
+        </RecipeDef>
+
+        <RecipeDef Name="LightQuasarMechanoidRecipe" ParentName="BaseQuasarMechanoidRecipe" Abstract="True">
+          <researchPrerequisite>BOR_Research_Mechtech_II</researchPrerequisite>
+          <ingredients>
+            <li>
+              <filter>
+                <thingDefs>
+                  <li>BOR_Sunsteel</li>
+                </thingDefs>
+              </filter>
+              <count>50</count>
+            </li>
+            <li>
+              <filter>
+                <thingDefs>
+                  <li>SubcoreBasic</li>
+                </thingDefs>
+              </filter>
+              <count>1</count>
+            </li>
+          </ingredients>
+        </RecipeDef>
+
+        <RecipeDef ParentName="LightQuasarMechanoidRecipe">
+          <defName>BOR_Quasar_Militor</defName>
+          <label>gestate quasar militor</label>
+          <description>Gestate a quasar militor mechanoid.</description>
+          <products>
+            <BOR_Quasar_Mech_Militor>1</BOR_Quasar_Mech_Militor>
+          </products>
+          <descriptionHyperlinks>
+            <ThingDef>BOR_Quasar_Mech_Militor</ThingDef>
+          </descriptionHyperlinks>
+        </RecipeDef>
+
+        <RecipeDef ParentName="LightQuasarMechanoidRecipe">
+          <defName>BOR_Quasar_Lifter</defName>
+          <label>gestate quasar lifter</label>
+          <description>Gestate a quasar lifter mechanoid.</description>
+          <products>
+            <BOR_Quasar_Mech_Lifter>1</BOR_Quasar_Mech_Lifter>
+          </products>
+          <descriptionHyperlinks>
+            <ThingDef>BOR_Quasar_Mech_Lifter</ThingDef>
+          </descriptionHyperlinks>
+        </RecipeDef>
+
+        <RecipeDef ParentName="LightQuasarMechanoidRecipe">
+          <defName>BOR_Quasar_Constructoid</defName>
+          <label>gestate quasar constructoid</label>
+          <description>Gestate a quasar constructoid mechanoid.</description>
+          <products>
+            <BOR_Quasar_Mech_Constructoid>1</BOR_Quasar_Mech_Constructoid>
+          </products>
+          <descriptionHyperlinks>
+            <ThingDef>BOR_Quasar_Mech_Constructoid</ThingDef>
+          </descriptionHyperlinks>
+        </RecipeDef>
+
+        <RecipeDef ParentName="LightQuasarMechanoidRecipe">
+          <defName>BOR_Quasar_Fabricor</defName>
+          <label>gestate quasar fabricor</label>
+          <description>Gestate a quasar fabricor mechanoid.</description>
+          <researchPrerequisite>BOR_Research_Mechtech_II</researchPrerequisite>
+          <ingredients Inherit="False">
+            <li>
+              <filter>
+                <thingDefs>
+                  <li>BOR_Sunsteel</li>
+                </thingDefs>
+              </filter>
+              <count>100</count>
+            </li>
+            <li>
+              <filter>
+                <thingDefs>
+                  <li>SubcoreHigh</li>
+                </thingDefs>
+              </filter>
+              <count>1</count>
+            </li>
+          </ingredients>
+          <products>
+            <BOR_Quasar_Mech_Fabricor>1</BOR_Quasar_Mech_Fabricor>
+          </products>
+          <descriptionHyperlinks>
+            <ThingDef>BOR_Quasar_Mech_Fabricor</ThingDef>
+          </descriptionHyperlinks>
+        </RecipeDef>
+
+        <RecipeDef ParentName="LightQuasarMechanoidRecipe">
+          <defName>BOR_Quasar_Agrihand</defName>
+          <label>gestate a quasar agrihand</label>
+          <description>Gestate a quasar agrihand mechanoid.</description>
+          <researchPrerequisite>BOR_Research_Mechtech_II</researchPrerequisite>
+          <products>
+            <BOR_Quasar_Mech_Agrihand>1</BOR_Quasar_Mech_Agrihand>
+          </products>
+          <descriptionHyperlinks>
+            <ThingDef>BOR_Quasar_Mech_Agrihand</ThingDef>
+          </descriptionHyperlinks>
+        </RecipeDef>
+
+        <RecipeDef ParentName="LightQuasarMechanoidRecipe">
+          <defName>BOR_Quasar_Cleansweeper</defName>
+          <label>gestate quasar cleansweeper</label>
+          <description>Gestate a quasar cleansweeper mechanoid.</description>
+          <researchPrerequisite>BOR_Research_Mechtech_II</researchPrerequisite>
+          <products>
+            <BOR_Quasar_Mech_Cleansweeper>1</BOR_Quasar_Mech_Cleansweeper>
+          </products>
+          <descriptionHyperlinks>
+            <ThingDef>BOR_Quasar_Mech_Cleansweeper</ThingDef>
+          </descriptionHyperlinks>
+        </RecipeDef>
+
+        <RecipeDef ParentName="LightQuasarMechanoidRecipe">
+          <defName>BOR_Quasar_Paramedic</defName>
+          <label>gestate quasar paramedic</label>
+          <description>Gestate a quasar paramedic mechanoid.</description>
+          <researchPrerequisite>BOR_Research_Mechtech_II</researchPrerequisite>
+          <ingredients Inherit="False">
+            <li>
+              <filter>
+                <thingDefs>
+                  <li>BOR_Sunsteel</li>
+                </thingDefs>
+              </filter>
+              <count>100</count>
+            </li>
+            <li>
+              <filter>
+                <thingDefs>
+                  <li>SubcoreHigh</li>
+                </thingDefs>
+              </filter>
+              <count>1</count>
+            </li>
+          </ingredients>
+          <products>
+            <BOR_Quasar_Mech_Paramedic>1</BOR_Quasar_Mech_Paramedic>
+          </products>
+          <descriptionHyperlinks>
+            <ThingDef>BOR_Quasar_Mech_Paramedic</ThingDef>
+          </descriptionHyperlinks>
+        </RecipeDef>
+
+      </value>
+    </enabled>
+  </Operation>
+
+
+</Patch>

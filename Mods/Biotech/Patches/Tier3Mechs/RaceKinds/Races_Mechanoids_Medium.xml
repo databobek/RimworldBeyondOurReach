@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+
+  <Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
+    <modSettingDef>BOR_Setting_Biotech_TODO</modSettingDef>
+    <enabled Class="PatchOperationAdd">
+      <xpath>Defs</xpath>
+      <value>
+
+        <ThingDef ParentName="LancerMechanoidWalker">
+          <defName>BOR_Tenebral_Mech_Legionary</defName>
+          <label>tenebral legionary</label>
+          <description>A tenebral combat support mechanoid with a wide-range bullet shield and mid-range needle gun. Designed to support other mechanoids, the legionary is vulnerable to anyone who can get inside its shield.</description>
+          <statBases>
+            <MarketValue>4050</MarketValue>
+            <MoveSpeed>14.513</MoveSpeed>
+            <EnergyShieldRechargeRate>0.843</EnergyShieldRechargeRate>
+            <EnergyShieldEnergyMax>5.062</EnergyShieldEnergyMax>
+            <BandwidthCost>2</BandwidthCost>
+            <ControlTakingTime>18</ControlTakingTime>
+          </statBases>
+          <race>
+            <mechFixedSkillLevel>20</mechFixedSkillLevel>
+            <lifeStageAges Inherit="False">
+              <li>
+                <def>MechanoidFullyFormed</def>
+                <minAge>0</minAge>
+                <soundWounded>Pawn_Mech_Legionary_Wounded</soundWounded>
+                <soundDeath>Pawn_Mech_Legionary_Death</soundDeath>
+                <soundCall>Pawn_Mech_Legionary_Call</soundCall>
+              </li>
+              <li>
+                <def>MechanoidFullyFormed</def>
+                <minAge>100</minAge>
+                <soundWounded>Pawn_Mech_Legionary_Wounded</soundWounded>
+                <soundDeath>Pawn_Mech_Legionary_Death</soundDeath>
+                <soundCall>Pawn_Mech_Legionary_Call</soundCall>
+              </li>
+            </lifeStageAges>
+          </race>
+          <comps>
+            <li Class="CompProperties_ProjectileInterceptor">
+              <radius>3</radius>
+              <interceptGroundProjectiles>true</interceptGroundProjectiles>
+              <color>(0.4, 0.4, 0.4)</color>
+              <reactivateEffect>BulletShieldGenerator_Reactivate</reactivateEffect>
+              <activeSound>BulletShield_Ambience</activeSound>
+              <hitPoints>200</hitPoints>
+              <hitPointsRestoreInstantlyAfterCharge>true</hitPointsRestoreInstantlyAfterCharge>
+              <chargeDurationTicks>5400</chargeDurationTicks>
+              <drawWithNoSelection>True</drawWithNoSelection>
+              <disarmedByEmpForTicks>1500</disarmedByEmpForTicks>
+              <gizmoTipKey>ProjectileInterceptorTip</gizmoTipKey>
+            </li>
+          </comps>
+        </ThingDef>
+
+        <PawnKindDef ParentName="BaseMechanoidKind">
+          <defName>BOR_Tenebral_Mech_Legionary</defName>
+          <label>tenebral legionary</label>
+          <race>BOR_Tenebral_Mech_Legionary</race>
+          <combatPower>150</combatPower>
+          <allowInMechClusters>false</allowInMechClusters>
+          <lifeStages>
+            <li>
+              <bodyGraphicData>
+                <texPath>Things/Pawn/Mechanoid/Legionary</texPath>
+                <maskPath>Things/Pawn/Mechanoid/AllegianceOverlays/Mech_Legionary</maskPath>
+                <shaderType>CutoutWithOverlay</shaderType>
+                <drawSize>1.5</drawSize>
+                <color>(46, 31, 30)</color>
+              </bodyGraphicData>
+            </li>
+            <li>
+              <bodyGraphicData>
+                <texPath>Things/Pawn/Mechanoid/LegionaryAncient</texPath>
+                <maskPath>Things/Pawn/Mechanoid/AllegianceOverlays/Mech_Legionary</maskPath>
+                <shaderType>CutoutWithOverlay</shaderType>
+                <drawSize>1.5</drawSize>
+                <color>(46, 31, 30)</color>
+              </bodyGraphicData>
+            </li>
+          </lifeStages>
+          <weaponMoney>9999~9999</weaponMoney>
+          <weaponTags>
+            <li>TenebralMechanoidGunNeedleLauncher</li>
+          </weaponTags>
+          <techHediffsChance>1</techHediffsChance>
+          <techHediffsMoney>9999~9999</techHediffsMoney>
+          <controlGroupPortraitZoom>1.2</controlGroupPortraitZoom>
+        </PawnKindDef>
+
+
+        <ThingDef ParentName="LancerMechanoidWalker">
+          <defName>BOR_Tenebral_Mech_Tesseron</defName>
+          <label>tenebral tesseron</label>
+          <description>A tenebral medium-range combat mechanoid. While it is fairly vulnerable to attacks, the tesseron's sweeping beam graser can pierce thick armor and even ignite shielded targets.</description>
+          <race>
+            <lifeStageAges Inherit="False">
+              <li>
+                <def>MechanoidFullyFormed</def>
+                <minAge>0</minAge>
+                <soundWounded>Pawn_Mech_Tesseron_Wounded</soundWounded>
+                <soundDeath>Pawn_Mech_Tesseron_Death</soundDeath>
+                <soundCall>Pawn_Mech_Tesseron_Call</soundCall>
+              </li>
+              <li>
+                <def>MechanoidFullyFormed</def>
+                <minAge>100</minAge>
+                <soundWounded>Pawn_Mech_Tesseron_Wounded</soundWounded>
+                <soundDeath>Pawn_Mech_Tesseron_Death</soundDeath>
+                <soundCall>Pawn_Mech_Tesseron_Call</soundCall>
+              </li>
+            </lifeStageAges>
+          </race>
+          <statBases>
+            <BandwidthCost>3</BandwidthCost>
+            <ControlTakingTime>18</ControlTakingTime>
+          </statBases>
+        </ThingDef>
+
+        <PawnKindDef ParentName="BaseMechanoidKind">
+          <defName>BOR_Tenebral_Mech_Tesseron</defName>
+          <label>tenebral tesseron</label>
+          <race>BOR_Tenebral_Mech_Tesseron</race>
+          <combatPower>150</combatPower>
+          <lifeStages>
+            <li>
+              <bodyGraphicData>
+                <texPath>Things/Pawn/Mechanoid/Tesseron</texPath>
+                <maskPath>Things/Pawn/Mechanoid/AllegianceOverlays/Mech_Beamstrider</maskPath>
+                <shaderType>CutoutWithOverlay</shaderType>
+                <graphicClass>Graphic_Multi</graphicClass>
+                <drawSize>1.5</drawSize>
+                <color>(46, 31, 30)</color>
+              </bodyGraphicData>
+            </li>
+            <li>
+              <bodyGraphicData>
+                <texPath>Things/Pawn/Mechanoid/TesseronAncient</texPath>
+                <maskPath>Things/Pawn/Mechanoid/AllegianceOverlays/Mech_Beamstrider</maskPath>
+                <shaderType>CutoutWithOverlay</shaderType>
+                <graphicClass>Graphic_Multi</graphicClass>
+                <drawSize>1.5</drawSize>
+                <color>(46, 31, 30)</color>
+              </bodyGraphicData>
+            </li>
+          </lifeStages>
+          <weaponMoney>9999~9999</weaponMoney>
+          <weaponTags>
+            <li>BeamGraserGun</li>
+          </weaponTags>
+          <techHediffsChance>1</techHediffsChance>
+          <techHediffsMoney>9999~9999</techHediffsMoney>
+        </PawnKindDef>
+
+
+        <ThingDef ParentName="BaseMechanoidWalker">
+          <defName>BOR_Tenebral_Mech_Scorcher</defName>
+          <label>tenebral scorcher</label>
+          <description>A close-approach tenebral war mechanoid that specializes in incendiary attacks. Its flame burst attack has little reach, but once it closes on a group of defenders it can ignite and disrupt them with blasts of searing flame.</description>
+          <statBases>
+            <MoveSpeed>15.188</MoveSpeed>
+            <BandwidthCost>1</BandwidthCost>
+          </statBases>
+          <tools>
+            <li>
+              <label>tenebral front left leg</label>
+              <capacities>
+                <li>Blunt</li>
+              </capacities>
+              <power>12.0</power>
+              <cooldownTime>0.5</cooldownTime>
+              <linkedBodyPartsGroup>FrontLeftLeg</linkedBodyPartsGroup>
+              <alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+            </li>
+            <li>
+              <label>tenebral front right leg</label>
+              <capacities>
+                <li>Blunt</li>
+              </capacities>
+              <power>12.0</power>
+              <cooldownTime>0.5</cooldownTime>
+              <linkedBodyPartsGroup>FrontRightLeg</linkedBodyPartsGroup>
+              <alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+            </li>
+            <li>
+              <label>tenebral head</label>
+              <capacities>
+                <li>Blunt</li>
+              </capacities>
+              <power>8.5</power>
+              <cooldownTime>0.5</cooldownTime>
+              <linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
+              <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+              <chanceFactor>0.2</chanceFactor>
+            </li>
+          </tools>
+          <race>
+            <body>Scorcher</body>
+            <baseHealthScale>0.7</baseHealthScale>
+            <soundMeleeHitPawn>Pawn_Melee_Punch_HitPawn</soundMeleeHitPawn>
+            <soundMeleeHitBuilding>Pawn_Melee_Punch_HitBuilding_Metal</soundMeleeHitBuilding>
+            <soundMeleeMiss>Pawn_Melee_Punch_Miss</soundMeleeMiss>
+            <lifeStageAges Inherit="False">
+              <li>
+                <def>MechanoidFullyFormed</def>
+                <minAge>0</minAge>
+                <soundWounded>Pawn_Mech_Scorcher_Wounded</soundWounded>
+                <soundDeath>Pawn_Mech_Scorcher_Death</soundDeath>
+                <soundCall>Pawn_Mech_Scorcher_Call</soundCall>
+              </li>
+              <li>
+                <def>MechanoidFullyFormed</def>
+                <minAge>100</minAge>
+                <soundWounded>Pawn_Mech_Scorcher_Wounded</soundWounded>
+                <soundDeath>Pawn_Mech_Scorcher_Death</soundDeath>
+                <soundCall>Pawn_Mech_Scorcher_Call</soundCall>
+              </li>
+            </lifeStageAges>
+            <mechWeightClass>Medium</mechWeightClass>
+          </race>
+        </ThingDef>
+
+        <PawnKindDef ParentName="BaseMechanoidKind">
+          <defName>BOR_Tenebral_Mech_Scorcher</defName>
+          <label>tenebral scorcher</label>
+          <labelPlural>tenebral scorchers</labelPlural>
+          <race>BOR_Tenebral_Mech_Scorcher</race>
+          <combatPower>75</combatPower>
+          <lifeStages>
+            <li>
+              <bodyGraphicData>
+                <texPath>Things/Pawn/Mechanoid/Scorcher</texPath>
+                <maskPath>Things/Pawn/Mechanoid/AllegianceOverlays/Mech_Scorcher</maskPath>
+                <shaderType>CutoutWithOverlay</shaderType>
+                <graphicClass>Graphic_Multi</graphicClass>
+                <drawSize>1.8</drawSize>
+                <color>(46, 31, 30)</color>
+              </bodyGraphicData>
+            </li>
+            <li>
+              <bodyGraphicData>
+                <texPath>Things/Pawn/Mechanoid/ScorcherAncient</texPath>
+                <maskPath>Things/Pawn/Mechanoid/AllegianceOverlays/Mech_Scorcher</maskPath>
+                <shaderType>CutoutWithOverlay</shaderType>
+                <graphicClass>Graphic_Multi</graphicClass>
+                <drawSize>1.8</drawSize>
+                <color>(46, 31, 30)</color>
+              </bodyGraphicData>
+            </li>
+          </lifeStages>
+          <weaponMoney>9999~9999</weaponMoney>
+          <weaponTags>
+            <li>TenebralMechanoidGunMiniFlameblaster</li>
+          </weaponTags>
+          <techHediffsChance>1</techHediffsChance>
+          <techHediffsMoney>9999~9999</techHediffsMoney>
+        </PawnKindDef>
+
+
+        <ThingDef ParentName="BaseMechanoidWalker">
+          <defName>BOR_Tenebral_Mech_Apocriton</defName>
+          <label>tenebral apocriton</label>
+          <description>A tenebral mechanoid commander designed to coordinate and motivate other mechs during long extermination campaigns. Its most obvious power is its ability to resurrect recently-killed mechs by supercharging their self-repair processes. Less obviously, it is intelligent and psychically present, radiating hatred into the minds of anyone in a wide radius. It can also move quickly with its built-in jump launcher.\n\nWhile all mechanoids have a dim psychically-present intelligence, only the apocriton and a few others truly feel hatred for their victims and understand the suffering they inflict.</description>
+          <statBases>
+            <MarketValue>5400</MarketValue>
+            <MoveSpeed>10.8</MoveSpeed>
+            <EnergyShieldRechargeRate>0.843</EnergyShieldRechargeRate>
+            <EnergyShieldEnergyMax>5.062</EnergyShieldEnergyMax>
+            <BandwidthCost>2</BandwidthCost>
+            <ControlTakingTime>18</ControlTakingTime>
+            <EMPResistance>0.8</EMPResistance>
+            <ArmorRating_Blunt>1.35</ArmorRating_Blunt>
+            <ArmorRating_Sharp>2.532</ArmorRating_Sharp>
+          </statBases>
+          <race>
+            <body>Apocriton</body>
+            <lifeStageAges Inherit="False">
+              <li>
+                <def>MechanoidFullyFormed</def>
+                <minAge>0</minAge>
+                <soundWounded>Pawn_Mech_Apocriton_Wounded</soundWounded>
+                <soundAngry>Pawn_Mech_Apocriton_Call</soundAngry>
+                <soundDeath>Pawn_Mech_Apocriton_Death</soundDeath>
+                <soundCall>Pawn_Mech_Apocriton_Call</soundCall>
+              </li>
+              <li>
+                <def>MechanoidFullyFormed</def>
+                <minAge>100</minAge>
+                <soundWounded>Pawn_Mech_Apocriton_Wounded</soundWounded>
+                <soundAngry>Pawn_Mech_Apocriton_Call</soundAngry>
+                <soundDeath>Pawn_Mech_Apocriton_Death</soundDeath>
+                <soundCall>Pawn_Mech_Apocriton_Call</soundCall>
+              </li>
+            </lifeStageAges>
+            <baseHealthScale>5.2</baseHealthScale>
+            <soundMeleeHitPawn>Pawn_Melee_Punch_HitPawn</soundMeleeHitPawn>
+            <soundMeleeHitBuilding>Pawn_Melee_Punch_HitBuilding_Metal</soundMeleeHitBuilding>
+            <soundMeleeMiss>Pawn_Melee_Punch_Miss</soundMeleeMiss>
+            <soundAmbience>Pawn_Mech_Apocriton_Ambience</soundAmbience>
+          </race>
+          <tools>
+            <li>
+              <label>tenebral head</label>
+              <capacities>
+                <li>Blunt</li>
+              </capacities>
+              <power>9</power>
+              <cooldownTime>1.505</cooldownTime>
+              <linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
+              <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+            </li>
+          </tools>
+          <killedLeavingsPlayerHostile>
+            <NanostructuringChip>1</NanostructuringChip>
+          </killedLeavingsPlayerHostile>
+          <comps>
+            <li Class="CompProperties_Explosive">
+              <wickTicks>0</wickTicks>
+              <explosiveRadius>30.9</explosiveRadius>
+              <explodeOnKilled>true</explodeOnKilled>
+              <explosiveDamageType>MechBandShockwave</explosiveDamageType>
+              <propagationSpeed>0.5</propagationSpeed>
+              <chanceNeverExplodeFromDamage>1</chanceNeverExplodeFromDamage>
+              <extraInspectStringKey>MechStunPulseWarning</extraInspectStringKey>
+            </li>
+            <li Class="CompProperties_Effecter">
+              <effecterDef>ApocrionAttached</effecterDef>
+            </li>
+          </comps>
+        </ThingDef>
+
+        <PawnKindDef ParentName="BaseMechanoidKind">
+          <defName>BOR_Tenebral_Mech_Apocriton</defName>
+          <label>tenebral apocriton</label>
+          <race>BOR_Tenebral_Mech_Apocriton</race>
+          <combatPower>600</combatPower>
+          <maxPerGroup>3</maxPerGroup>
+          <allowInMechClusters>false</allowInMechClusters>
+          <lifeStages>
+            <li>
+              <bodyGraphicData>
+                <texPath>Things/Pawn/Mechanoid/Apocriton</texPath>
+                <maskPath>Things/Pawn/Mechanoid/AllegianceOverlays/Mech_Apocriton</maskPath>
+                <shaderType>CutoutWithOverlay</shaderType>
+                <graphicClass>Graphic_Multi</graphicClass>
+                <drawSize>2</drawSize>
+                <color>(46, 31, 30)</color>
+              </bodyGraphicData>
+            </li>
+            <li>
+              <bodyGraphicData>
+                <texPath>Things/Pawn/Mechanoid/ApocritonAncient</texPath>
+                <maskPath>Things/Pawn/Mechanoid/AllegianceOverlays/Mech_Apocriton</maskPath>
+                <shaderType>CutoutWithOverlay</shaderType>
+                <graphicClass>Graphic_Multi</graphicClass>
+                <drawSize>2</drawSize>
+                <color>(46, 31, 30)</color>
+              </bodyGraphicData>
+            </li>
+          </lifeStages>
+          <weaponMoney>9999~9999</weaponMoney>
+          <weaponTags>
+            <li>TenebralMechanoidGunToxicNeedle</li>
+          </weaponTags>
+          <techHediffsChance>1</techHediffsChance>
+          <techHediffsMoney>9999~9999</techHediffsMoney>
+          <abilities>
+            <li>LongjumpMech</li>
+            <li>ResurrectionMech</li>
+          </abilities>
+          <skipResistant>true</skipResistant>
+        </PawnKindDef>
+
+      </value>
+    </enabled>
+  </Operation>
+
+</Patch>
