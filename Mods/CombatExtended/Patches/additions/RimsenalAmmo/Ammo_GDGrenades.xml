@@ -1,186 +1,190 @@
 <Patch>
-	<Operation Class="PatchOperationFindMod">
-		<mods>
-			<li>Rimsenal - Core</li>
-		</mods>
-		<match Class="PatchOperationSequence">
-			<operations>
 
-				<li Class="PatchOperationAdd">
-					<xpath>Defs</xpath>
-					<value>
+	<Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
+		<modSettingDef>BOR_Setting_CE_TODO</modSettingDef>
+		<enabled Class="PatchOperationFindMod">
+			<mods>
+				<li>Rimsenal - Core</li>
+			</mods>
+			<match Class="PatchOperationSequence">
+				<operations>
 
-						<ThingDef Class="CombatExtended.AmmoDef" ParentName="25x40mmGrenadeBase">
-							<defName>BOR_Ammo_25x40mmGrenade_Tenebrite</defName>
-							<label>25x40mm grenade (Tenebrite pellet)</label>
-							<graphicData>
-								<texPath>ThirdParty/Rimsenal/GrenadeLauncher/BS</texPath>
-								<graphicClass>Graphic_StackCount</graphicClass>
-							</graphicData>
-							<statBases>
-								<MarketValue>1.44</MarketValue>
+					<li Class="PatchOperationAdd">
+						<xpath>Defs</xpath>
+						<value>
 
-								<RoyalFavorValue>0.0001</RoyalFavorValue>
-							</statBases>
-							<ammoClass>BOR_Tf_AmmoClass</ammoClass>
-							<cookOffProjectile>BOR_Bullet_25mmGauge_Tenebrite</cookOffProjectile>
-							<generateAllowChance>0.1</generateAllowChance>
-							<generateCommonality>0.01</generateCommonality>
-							<tradeTags>
-								<li>BOR_Tech_III</li>
-							</tradeTags>
-						</ThingDef>
+							<ThingDef Class="CombatExtended.AmmoDef" ParentName="25x40mmGrenadeBase">
+								<defName>BOR_Ammo_25x40mmGrenade_Tenebrite</defName>
+								<label>25x40mm grenade (Tenebrite pellet)</label>
+								<graphicData>
+									<texPath>ThirdParty/Rimsenal/GrenadeLauncher/BS</texPath>
+									<graphicClass>Graphic_StackCount</graphicClass>
+								</graphicData>
+								<statBases>
+									<MarketValue>1.44</MarketValue>
 
-						<ThingDef Class="CombatExtended.AmmoDef" ParentName="25x40mmGrenadeBase">
-							<defName>BOR_Ammo_25x40mmGrenade_Nc</defName>
-							<label>25x40mm grenade (N-c)</label>
-							<graphicData>
-								<texPath>ThirdParty/Rimsenal/GrenadeLauncher/INC</texPath>
-								<graphicClass>Graphic_StackCount</graphicClass>
-							</graphicData>
-							<statBases>
-								<MarketValue>1.44</MarketValue>
+									<RoyalFavorValue>0.0001</RoyalFavorValue>
+								</statBases>
+								<ammoClass>BOR_Tf_AmmoClass</ammoClass>
+								<cookOffProjectile>BOR_Bullet_25mmGauge_Tenebrite</cookOffProjectile>
+								<generateAllowChance>0.1</generateAllowChance>
+								<generateCommonality>0.01</generateCommonality>
+								<tradeTags>
+									<li>BOR_Tech_III</li>
+								</tradeTags>
+							</ThingDef>
 
-								<RoyalFavorValue>0.0001</RoyalFavorValue>
-							</statBases>
-							<ammoClass>BOR_Nc_AmmoClass</ammoClass>
-							<comps>
-								<li Class="CombatExtended.CompProperties_ExplosiveCE">
-									<damageAmountBase>2</damageAmountBase>
-									<explosiveDamageType>PrometheumFlame</explosiveDamageType>
-									<explosiveRadius>0.5</explosiveRadius>
+							<ThingDef Class="CombatExtended.AmmoDef" ParentName="25x40mmGrenadeBase">
+								<defName>BOR_Ammo_25x40mmGrenade_Nc</defName>
+								<label>25x40mm grenade (N-c)</label>
+								<graphicData>
+									<texPath>ThirdParty/Rimsenal/GrenadeLauncher/INC</texPath>
+									<graphicClass>Graphic_StackCount</graphicClass>
+								</graphicData>
+								<statBases>
+									<MarketValue>1.44</MarketValue>
+
+									<RoyalFavorValue>0.0001</RoyalFavorValue>
+								</statBases>
+								<ammoClass>BOR_Nc_AmmoClass</ammoClass>
+								<comps>
+									<li Class="CombatExtended.CompProperties_ExplosiveCE">
+										<damageAmountBase>2</damageAmountBase>
+										<explosiveDamageType>PrometheumFlame</explosiveDamageType>
+										<explosiveRadius>0.5</explosiveRadius>
+										<preExplosionSpawnThingDef>FilthPrometheum</preExplosionSpawnThingDef>
+										<preExplosionSpawnChance>1</preExplosionSpawnChance>
+									</li>
+								</comps>
+								<tradeTags>
+									<li>BOR_Tech_I</li>
+								</tradeTags>
+								<generateAllowChance>0.1</generateAllowChance>
+								<generateCommonality>0.01</generateCommonality>
+							</ThingDef>
+
+
+							<ThingDef ParentName="Base12GaugeBullet">
+								<defName>BOR_Bullet_25mmGauge_Tenebrite</defName>
+								<label>tenebrite pellet</label>
+								<graphicData>
+									<texPath>Things/Projectile/Shotgun_Pellet</texPath>
+									<graphicClass>Graphic_Single</graphicClass>
+								</graphicData>
+								<projectile Class="CombatExtended.ProjectilePropertiesCE">
+									<damageAmountBase>31</damageAmountBase>
+									<pelletCount>24</pelletCount>
+									<armorPenetrationSharp>14</armorPenetrationSharp>
+									<armorPenetrationBlunt>19</armorPenetrationBlunt>
+									<spreadMult>33</spreadMult>
+									<dropsCasings>false</dropsCasings>
+								</projectile>
+							</ThingDef>
+
+							<ThingDef ParentName="Base25x40mmGrenadeBullet">
+								<defName>BOR_Bullet_25x40mmGrenade_Nc</defName>
+								<label>25x40mm grenade (N-c)</label>
+								<projectile Class="CombatExtended.ProjectilePropertiesCE">
+									<explosionRadius>2</explosionRadius>
+									<damageDef>PrometheumFlame</damageDef>
+									<damageAmountBase>6</damageAmountBase>
 									<preExplosionSpawnThingDef>FilthPrometheum</preExplosionSpawnThingDef>
 									<preExplosionSpawnChance>1</preExplosionSpawnChance>
-								</li>
-							</comps>
-							<tradeTags>
-								<li>BOR_Tech_I</li>
-							</tradeTags>
-							<generateAllowChance>0.1</generateAllowChance>
-							<generateCommonality>0.01</generateCommonality>
-						</ThingDef>
+								</projectile>
+							</ThingDef>
+
+						</value>
+					</li>
 
 
-						<ThingDef ParentName="Base12GaugeBullet">
-							<defName>BOR_Bullet_25mmGauge_Tenebrite</defName>
-							<label>tenebrite pellet</label>
-							<graphicData>
-								<texPath>Things/Projectile/Shotgun_Pellet</texPath>
-								<graphicClass>Graphic_Single</graphicClass>
-							</graphicData>
-							<projectile Class="CombatExtended.ProjectilePropertiesCE">
-								<damageAmountBase>31</damageAmountBase>
-								<pelletCount>24</pelletCount>
-								<armorPenetrationSharp>14</armorPenetrationSharp>
-								<armorPenetrationBlunt>19</armorPenetrationBlunt>
-								<spreadMult>33</spreadMult>
-								<dropsCasings>false</dropsCasings>
-							</projectile>
-						</ThingDef>
+					<li Class="PatchOperationAdd">
+						<xpath>Defs</xpath>
+						<value>
 
-						<ThingDef ParentName="Base25x40mmGrenadeBullet">
-							<defName>BOR_Bullet_25x40mmGrenade_Nc</defName>
-							<label>25x40mm grenade (N-c)</label>
-							<projectile Class="CombatExtended.ProjectilePropertiesCE">
-								<explosionRadius>2</explosionRadius>
-								<damageDef>PrometheumFlame</damageDef>
-								<damageAmountBase>6</damageAmountBase>
-								<preExplosionSpawnThingDef>FilthPrometheum</preExplosionSpawnThingDef>
-								<preExplosionSpawnChance>1</preExplosionSpawnChance>
-							</projectile>
-						</ThingDef>
+							<RecipeDef ParentName="AmmoRecipeBase">
+								<defName>MakeBOR_Ammo_25x40mmGrenade_Tenebrite</defName>
+								<label>make 25x40mm tenebrite pellet rounds x100</label>
+								<description>Craft 100 25x40mm tenebrite pellet rounds.</description>
+								<jobString>Making 25x40mm tenebrite pellet rounds.</jobString>
+								<ingredients>
+									<li>
+										<filter>
+											<thingDefs>
+												<li>BOR_Tenebrite</li>
+											</thingDefs>
+										</filter>
+										<count>32</count>
+									</li>
+								</ingredients>
+								<fixedIngredientFilter>
+									<thingDefs>
+										<li>BOR_Tenebrite</li>
+									</thingDefs>
+								</fixedIngredientFilter>
+								<products>
+									<BOR_Ammo_25x40mmGrenade_Tenebrite>100</BOR_Ammo_25x40mmGrenade_Tenebrite>
+								</products>
+								<workAmount>3200</workAmount>
+							</RecipeDef>
 
-					</value>
-				</li>
+							<RecipeDef ParentName="AmmoRecipeBase">
+								<defName>MakeBOR_Ammo_25x40mmGrenade_Nc</defName>
+								<label>make 25x40mm N-c grenades x100</label>
+								<description>Craft 100 25x40mm N-c grenades.</description>
+								<jobString>Making 25x40mm N-c grenades.</jobString>
+								<ingredients>
+									<li>
+										<filter>
+											<thingDefs>
+												<li>Plasteel</li>
+											</thingDefs>
+										</filter>
+										<count>32</count>
+									</li>
+									<li>
+										<filter>
+											<thingDefs>
+												<li>Prometheum</li>
+											</thingDefs>
+										</filter>
+										<count>4</count>
+									</li>
+									<li>
+										<filter>
+											<thingDefs>
+												<li>ComponentSpacer</li>
+											</thingDefs>
+										</filter>
+										<count>2</count>
+									</li>
+								</ingredients>
+								<fixedIngredientFilter>
+									<thingDefs>
+										<li>Plasteel</li>
+										<li>Prometheum</li>
+										<li>ComponentSpacer</li>
+									</thingDefs>
+								</fixedIngredientFilter>
+								<products>
+									<BOR_Ammo_25x40mmGrenade_Nc>100</BOR_Ammo_25x40mmGrenade_Nc>
+								</products>
+								<workAmount>600</workAmount>
+							</RecipeDef>
 
-
-				<li Class="PatchOperationAdd">
-					<xpath>Defs</xpath>
-					<value>
-
-						<RecipeDef ParentName="AmmoRecipeBase">
-							<defName>MakeBOR_Ammo_25x40mmGrenade_Tenebrite</defName>
-							<label>make 25x40mm tenebrite pellet rounds x100</label>
-							<description>Craft 100 25x40mm tenebrite pellet rounds.</description>
-							<jobString>Making 25x40mm tenebrite pellet rounds.</jobString>
-							<ingredients>
-								<li>
-									<filter>
-										<thingDefs>
-											<li>BOR_Tenebrite</li>
-										</thingDefs>
-									</filter>
-									<count>32</count>
-								</li>
-							</ingredients>
-							<fixedIngredientFilter>
-								<thingDefs>
-									<li>BOR_Tenebrite</li>
-								</thingDefs>
-							</fixedIngredientFilter>
-							<products>
-								<BOR_Ammo_25x40mmGrenade_Tenebrite>100</BOR_Ammo_25x40mmGrenade_Tenebrite>
-							</products>
-							<workAmount>3200</workAmount>
-						</RecipeDef>
-
-						<RecipeDef ParentName="AmmoRecipeBase">
-							<defName>MakeBOR_Ammo_25x40mmGrenade_Nc</defName>
-							<label>make 25x40mm N-c grenades x100</label>
-							<description>Craft 100 25x40mm N-c grenades.</description>
-							<jobString>Making 25x40mm N-c grenades.</jobString>
-							<ingredients>
-								<li>
-									<filter>
-										<thingDefs>
-											<li>Plasteel</li>
-										</thingDefs>
-									</filter>
-									<count>32</count>
-								</li>
-								<li>
-									<filter>
-										<thingDefs>
-											<li>Prometheum</li>
-										</thingDefs>
-									</filter>
-									<count>4</count>
-								</li>
-								<li>
-									<filter>
-										<thingDefs>
-											<li>ComponentSpacer</li>
-										</thingDefs>
-									</filter>
-									<count>2</count>
-								</li>
-							</ingredients>
-							<fixedIngredientFilter>
-								<thingDefs>
-									<li>Plasteel</li>
-									<li>Prometheum</li>
-									<li>ComponentSpacer</li>
-								</thingDefs>
-							</fixedIngredientFilter>
-							<products>
-								<BOR_Ammo_25x40mmGrenade_Nc>100</BOR_Ammo_25x40mmGrenade_Nc>
-							</products>
-							<workAmount>600</workAmount>
-						</RecipeDef>
-
-					</value>
-				</li>
+						</value>
+					</li>
 
 
-				<li Class="PatchOperationAdd">
-					<xpath>Defs/CombatExtended.AmmoSetDef[defName="AmmoSet_25x40mmGrenade"]/ammoTypes</xpath>
-					<value>
-						<BOR_Ammo_25x40mmGrenade_Tenebrite>BOR_Bullet_25mmGauge_Tenebrite</BOR_Ammo_25x40mmGrenade_Tenebrite>
-						<BOR_Ammo_25x40mmGrenade_Nc>BOR_Bullet_25x40mmGrenade_Nc</BOR_Ammo_25x40mmGrenade_Nc>
-					</value>
-				</li>
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/CombatExtended.AmmoSetDef[defName="AmmoSet_25x40mmGrenade"]/ammoTypes</xpath>
+						<value>
+							<BOR_Ammo_25x40mmGrenade_Tenebrite>BOR_Bullet_25mmGauge_Tenebrite</BOR_Ammo_25x40mmGrenade_Tenebrite>
+							<BOR_Ammo_25x40mmGrenade_Nc>BOR_Bullet_25x40mmGrenade_Nc</BOR_Ammo_25x40mmGrenade_Nc>
+						</value>
+					</li>
 
-			</operations>
-		</match>
+				</operations>
+			</match>
+		</enabled>
 	</Operation>
 </Patch>
