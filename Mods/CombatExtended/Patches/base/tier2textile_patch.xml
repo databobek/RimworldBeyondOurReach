@@ -1,64 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Patch> <!-- BOR_QuasarAlloyWeave -->
+<Patch>
 
-    <Operation Class="PatchOperationAdd">
-        <xpath>Defs/ThingDef[defName="BOR_QuasarAlloyWeave"]/statBases</xpath>
-        <value>
-            <Bulk>0.025</Bulk>
-            <WornBulk>0.25</WornBulk>
-        </value>
+    <Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
+        <modSettingDef>BOR_Setting_CE_TODO</modSettingDef>
+        <enabled Class="PatchOperationSequence">
+            <operations>
+
+                <!-- BOR_QuasarAlloyWeave -->
+
+                <li Class="PatchOperationAdd">
+                    <xpath>Defs/ThingDef[defName="BOR_QuasarAlloyWeave"]/statBases</xpath>
+                    <value>
+                        <Bulk>0.025</Bulk>
+                        <WornBulk>0.25</WornBulk>
+                    </value>
+                </li>
+
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="BOR_QuasarAlloyWeave"]/statBases/StuffPower_Armor_Sharp</xpath>
+                    <value>
+                        <StuffPower_Armor_Sharp>4</StuffPower_Armor_Sharp>
+                    </value>
+                </li>
+
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="BOR_QuasarAlloyWeave"]/statBases/StuffPower_Armor_Blunt</xpath>
+                    <value>
+                        <StuffPower_Armor_Blunt>6.0</StuffPower_Armor_Blunt>
+                    </value>
+                </li>
+
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="BOR_QuasarAlloyWeave"]/statBases/StuffPower_Armor_Heat</xpath>
+                    <value>
+                        <StuffPower_Armor_Heat>0.4</StuffPower_Armor_Heat>
+                    </value>
+                </li>
+
+                <li Class="PatchOperationAdd">
+                    <xpath>Defs/ThingDef[defName="BOR_QuasarAlloyWeave"]/stuffProps/statFactors</xpath>
+                    <value>
+                        <Mass>0.45</Mass>
+                    </value>
+                </li>
+
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="BOR_QuasarAlloyWeave"]/stuffProps/statFactors/Flammability</xpath>
+                    <value>
+                        <Flammability>0.025</Flammability>
+                    </value>
+                </li>
+
+                <li Class="PatchOperationConditional">
+                    <xpath>Defs/ThingDef[defName="BOR_QuasarAlloyWeave"]/stuffProps/categories</xpath>
+                    <nomatch Class="PatchOperationAdd">
+                        <xpath>Defs/ThingDef[defName="BOR_QuasarAlloyWeave"]/stuffProps</xpath>
+                        <value>
+                            <categories>
+                                <li>SoftArmor</li>
+                            </categories>
+                        </value>
+                    </nomatch>
+                    <match Class="PatchOperationAdd">
+                        <xpath>Defs/ThingDef[defName="BOR_QuasarAlloyWeave"]/stuffProps/categories</xpath>
+                        <value>
+                            <li>SoftArmor</li>
+                        </value>
+                    </match>
+                </li>
+
+            </operations>
+        </enabled>
     </Operation>
 
-    <Operation Class="PatchOperationReplace">
-        <xpath>Defs/ThingDef[defName="BOR_QuasarAlloyWeave"]/statBases/StuffPower_Armor_Sharp</xpath>
-        <value>
-            <StuffPower_Armor_Sharp>4</StuffPower_Armor_Sharp>
-        </value>
-    </Operation>
-
-    <Operation Class="PatchOperationReplace">
-        <xpath>Defs/ThingDef[defName="BOR_QuasarAlloyWeave"]/statBases/StuffPower_Armor_Blunt</xpath>
-        <value>
-            <StuffPower_Armor_Blunt>6.0</StuffPower_Armor_Blunt>
-        </value>
-    </Operation>
-
-    <Operation Class="PatchOperationReplace">
-        <xpath>Defs/ThingDef[defName="BOR_QuasarAlloyWeave"]/statBases/StuffPower_Armor_Heat</xpath>
-        <value>
-            <StuffPower_Armor_Heat>0.4</StuffPower_Armor_Heat>
-        </value>
-    </Operation>
-
-    <Operation Class="PatchOperationAdd">
-        <xpath>Defs/ThingDef[defName="BOR_QuasarAlloyWeave"]/stuffProps/statFactors</xpath>
-        <value>
-            <Mass>0.45</Mass>
-        </value>
-    </Operation>
-
-    <Operation Class="PatchOperationReplace">
-        <xpath>Defs/ThingDef[defName="BOR_QuasarAlloyWeave"]/stuffProps/statFactors/Flammability</xpath>
-        <value>
-            <Flammability>0.025</Flammability>
-        </value>
-    </Operation>
-
-    <Operation Class="PatchOperationConditional">
-        <xpath>Defs/ThingDef[defName="BOR_QuasarAlloyWeave"]/stuffProps/categories</xpath>
-        <nomatch Class="PatchOperationAdd">
-            <xpath>Defs/ThingDef[defName="BOR_QuasarAlloyWeave"]/stuffProps</xpath>
-            <value>
-                <categories>
-                    <li>SoftArmor</li>
-                </categories>
-            </value>
-        </nomatch>
-        <match Class="PatchOperationAdd">
-            <xpath>Defs/ThingDef[defName="BOR_QuasarAlloyWeave"]/stuffProps/categories</xpath>
-            <value>
-                <li>SoftArmor</li>
-            </value>
-        </match>
-    </Operation>
 </Patch>

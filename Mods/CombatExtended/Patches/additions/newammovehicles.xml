@@ -1,195 +1,204 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Patch>
-
-    <!-- Normal Ammo -->
-    <Operation Class="PatchOperationAdd">
-        <xpath>Defs/CombatExtended.AmmoSetDef[defName="AmmoSet_75x350mmR"]/ammoTypes</xpath>
-        <value>
-            <BOR_Ammo_75x350mmR_QaP>BOR_Bullet_75x350mmR_QaP</BOR_Ammo_75x350mmR_QaP>
-            <BOR_Ammo_75x350mmR_Ni>BOR_Bullet_75x350mmR_Ni</BOR_Ammo_75x350mmR_Ni>
-        </value>
-    </Operation>
-
-    <Operation Class="PatchOperationAdd">
-        <xpath>Defs/CombatExtended.AmmoSetDef[defName="AmmoSet_120mmCannonShell"]/ammoTypes</xpath>
-        <value>
-            <BOR_Ammo_120mmCannonShell_NiAT>BOR_Bullet_120mmCannonShell_NiAT</BOR_Ammo_120mmCannonShell_NiAT>
-            <BOR_Ammo_120mmCannonShell_Ni>BOR_Bullet_120mmCannonShell_Ni</BOR_Ammo_120mmCannonShell_Ni>
-        </value>
-    </Operation>
-
-    <Operation Class="PatchOperationAdd">
-        <xpath>Defs/CombatExtended.AmmoSetDef[defName="AmmoSet_105x617mmRCannonShell"]/ammoTypes</xpath>
-        <value>
-            <BOR_Ammo_105x617mmRCannonShell_NiAT>BOR_Bullet_105x617mmRCannonShell_NiAT</BOR_Ammo_105x617mmRCannonShell_NiAT>
-            <BOR_Ammo_105x617mmRCannonShell_Ni>BOR_Bullet_105x617mmRCannonShell_Ni</BOR_Ammo_105x617mmRCannonShell_Ni>
-        </value>
-    </Operation>
-
-    <Operation Class="PatchOperationAdd">
-        <xpath>Defs/CombatExtended.AmmoSetDef[defName="AmmoSet_762x51mmNATO"]/ammoTypes</xpath>
-        <value>
-            <BOR_Ammo_762x51mmNATO_TC>BOR_Bullet_762x51mmNATO_TC</BOR_Ammo_762x51mmNATO_TC>
-        </value>
-    </Operation>
-
-    <Operation Class="PatchOperationAdd">
-        <xpath>Defs/CombatExtended.AmmoSetDef[defName="AmmoSet_57x307mmR"]/ammoTypes</xpath>
-        <value>
-            <BOR_Ammo_57x307mmR_QaP>BOR_Bullet_57x307mmR_QaP</BOR_Ammo_57x307mmR_QaP>
-            <BOR_Ammo_57x307mmR_Ni>BOR_Bullet_57x307mmR_Ni</BOR_Ammo_57x307mmR_Ni>
-        </value>
-    </Operation>
-
-    <!-- generic ammo -->
-
-    <Operation Class="PatchOperationAdd">
-        <xpath>Defs/CombatExtended.AmmoSetDef[defName="AmmoSet_HeavyCannon"]/ammoTypes</xpath>
-        <value>
-            <BOR_Ammo_120mmCannonShell_NiAT>BOR_Bullet_120mmCannonShell_NiAT</BOR_Ammo_120mmCannonShell_NiAT>
-            <BOR_Ammo_120mmCannonShell_Ni>BOR_Bullet_120mmCannonShell_Ni</BOR_Ammo_120mmCannonShell_Ni>
-            <BOR_Ammo_105x617mmRCannonShell_NiAT>BOR_Bullet_105x617mmRCannonShell_NiAT</BOR_Ammo_105x617mmRCannonShell_NiAT>
-            <BOR_Ammo_105x617mmRCannonShell_Ni>BOR_Bullet_105x617mmRCannonShell_Ni</BOR_Ammo_105x617mmRCannonShell_Ni>
-            <BOR_Ammo_28cmSpgrShell_Ni>BOR_Bullet_28cmSpgrShell_Ni</BOR_Ammo_28cmSpgrShell_Ni>
-        </value>
-    </Operation>
-
-    <Operation Class="PatchOperationAdd">
-        <xpath>Defs/CombatExtended.AmmoSetDef[defName="AmmoSet_LightCannon"]/ammoTypes</xpath>
-        <value>
-            <BOR_Ammo_57x307mmR_QaP>BOR_Bullet_57x307mmR_QaP</BOR_Ammo_57x307mmR_QaP>
-            <BOR_Ammo_57x307mmR_Ni>BOR_Bullet_57x307mmR_Ni</BOR_Ammo_57x307mmR_Ni>
-            <BOR_Ammo_75x350mmR_QaP>BOR_Bullet_75x350mmR_QaP</BOR_Ammo_75x350mmR_QaP>
-            <BOR_Ammo_75x350mmR_Ni>BOR_Bullet_75x350mmR_Ni</BOR_Ammo_75x350mmR_Ni>
-        </value>
-    </Operation>
-
-    <Operation Class="PatchOperationAdd">
-        <xpath>Defs/CombatExtended.AmmoSetDef[defName="AmmoSet_Rifle"]/ammoTypes</xpath>
-        <value>
-            <BOR_Ammo_762x51mmNATO_TC>BOR_Bullet_762x51mmNATO_TC</BOR_Ammo_762x51mmNATO_TC>
-        </value>
-    </Operation>
-
-
-    <!-- Additional shell for devastator turret -->
-    <Operation Class="PatchOperationFindMod">
-        <mods>
-            <li>Vanilla Vehicles Expanded</li>
-        </mods>
-        <match Class="PatchOperationSequence">
+    <Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
+        <modSettingDef>BOR_Setting_CE_TODO</modSettingDef>
+        <enabled Class="PatchOperationSequence">
             <operations>
-                <!-- Tango Bullet_20x102mmNATO_AP -> Autocannon -->
+
+                <!-- Normal Ammo -->
                 <li Class="PatchOperationAdd">
-                    <xpath>Defs/Vehicles.VehicleTurretDef[defName="Tango_MainTurret"]/ammunition/thingDefs</xpath>
+                    <xpath>Defs/CombatExtended.AmmoSetDef[defName="AmmoSet_75x350mmR"]/ammoTypes</xpath>
                     <value>
-                        <li>BOR_Ammo_Autocannon_Nc</li>
-                        <li>BOR_Ammo_Autocannon_Ni</li>
-                        <li>BOR_Ammo_Autocannon_QaP</li>
-                        <li>BOR_Ammo_Autocannon_TC</li>
+                        <BOR_Ammo_75x350mmR_QaP>BOR_Bullet_75x350mmR_QaP</BOR_Ammo_75x350mmR_QaP>
+                        <BOR_Ammo_75x350mmR_Ni>BOR_Bullet_75x350mmR_Ni</BOR_Ammo_75x350mmR_Ni>
                     </value>
                 </li>
-                <!-- Bulldog Bullet_75x350mmR_HE -->
-                <li Class="PatchOperationAdd">
-                    <xpath>Defs/Vehicles.VehicleTurretDef[defName="Bulldog_MainTurret"]/ammunition/thingDefs</xpath>
-                    <value>
-                        <li>BOR_Ammo_75x350mmR_QaP</li>
-                        <li>BOR_Ammo_75x350mmR_Ni</li>
-                    </value>
-                </li>
-                <!-- Highwayman Bullet_762x51mmNATO_FMJ -->
 
                 <li Class="PatchOperationAdd">
-                    <xpath>Defs/Vehicles.VehicleTurretDef[defName="Highwayman_MainTurret"]/ammunition/thingDefs</xpath>
+                    <xpath>Defs/CombatExtended.AmmoSetDef[defName="AmmoSet_120mmCannonShell"]/ammoTypes</xpath>
                     <value>
-                        <li>BOR_Ammo_762x51mmNATO_TC</li>
+                        <BOR_Ammo_120mmCannonShell_NiAT>BOR_Bullet_120mmCannonShell_NiAT</BOR_Ammo_120mmCannonShell_NiAT>
+                        <BOR_Ammo_120mmCannonShell_Ni>BOR_Bullet_120mmCannonShell_Ni</BOR_Ammo_120mmCannonShell_Ni>
                     </value>
                 </li>
-                <!-- Roadkill Bullet_57x307mmR_HE -->
 
                 <li Class="PatchOperationAdd">
-                    <xpath>Defs/Vehicles.VehicleTurretDef[defName="Roadkill_MainTurret"]/ammunition/thingDefs</xpath>
+                    <xpath>Defs/CombatExtended.AmmoSetDef[defName="AmmoSet_105x617mmRCannonShell"]/ammoTypes</xpath>
                     <value>
-                        <li>BOR_Ammo_57x307mmR_QaP</li>
-                        <li>BOR_Ammo_57x307mmR_Ni</li>
+                        <BOR_Ammo_105x617mmRCannonShell_NiAT>BOR_Bullet_105x617mmRCannonShell_NiAT</BOR_Ammo_105x617mmRCannonShell_NiAT>
+                        <BOR_Ammo_105x617mmRCannonShell_Ni>BOR_Bullet_105x617mmRCannonShell_Ni</BOR_Ammo_105x617mmRCannonShell_Ni>
                     </value>
                 </li>
+
+                <li Class="PatchOperationAdd">
+                    <xpath>Defs/CombatExtended.AmmoSetDef[defName="AmmoSet_762x51mmNATO"]/ammoTypes</xpath>
+                    <value>
+                        <BOR_Ammo_762x51mmNATO_TC>BOR_Bullet_762x51mmNATO_TC</BOR_Ammo_762x51mmNATO_TC>
+                    </value>
+                </li>
+
+                <li Class="PatchOperationAdd">
+                    <xpath>Defs/CombatExtended.AmmoSetDef[defName="AmmoSet_57x307mmR"]/ammoTypes</xpath>
+                    <value>
+                        <BOR_Ammo_57x307mmR_QaP>BOR_Bullet_57x307mmR_QaP</BOR_Ammo_57x307mmR_QaP>
+                        <BOR_Ammo_57x307mmR_Ni>BOR_Bullet_57x307mmR_Ni</BOR_Ammo_57x307mmR_Ni>
+                    </value>
+                </li>
+
+                <!-- generic ammo -->
+
+                <li Class="PatchOperationAdd">
+                    <xpath>Defs/CombatExtended.AmmoSetDef[defName="AmmoSet_HeavyCannon"]/ammoTypes</xpath>
+                    <value>
+                        <BOR_Ammo_120mmCannonShell_NiAT>BOR_Bullet_120mmCannonShell_NiAT</BOR_Ammo_120mmCannonShell_NiAT>
+                        <BOR_Ammo_120mmCannonShell_Ni>BOR_Bullet_120mmCannonShell_Ni</BOR_Ammo_120mmCannonShell_Ni>
+                        <BOR_Ammo_105x617mmRCannonShell_NiAT>BOR_Bullet_105x617mmRCannonShell_NiAT</BOR_Ammo_105x617mmRCannonShell_NiAT>
+                        <BOR_Ammo_105x617mmRCannonShell_Ni>BOR_Bullet_105x617mmRCannonShell_Ni</BOR_Ammo_105x617mmRCannonShell_Ni>
+                        <BOR_Ammo_28cmSpgrShell_Ni>BOR_Bullet_28cmSpgrShell_Ni</BOR_Ammo_28cmSpgrShell_Ni>
+                    </value>
+                </li>
+
+                <li Class="PatchOperationAdd">
+                    <xpath>Defs/CombatExtended.AmmoSetDef[defName="AmmoSet_LightCannon"]/ammoTypes</xpath>
+                    <value>
+                        <BOR_Ammo_57x307mmR_QaP>BOR_Bullet_57x307mmR_QaP</BOR_Ammo_57x307mmR_QaP>
+                        <BOR_Ammo_57x307mmR_Ni>BOR_Bullet_57x307mmR_Ni</BOR_Ammo_57x307mmR_Ni>
+                        <BOR_Ammo_75x350mmR_QaP>BOR_Bullet_75x350mmR_QaP</BOR_Ammo_75x350mmR_QaP>
+                        <BOR_Ammo_75x350mmR_Ni>BOR_Bullet_75x350mmR_Ni</BOR_Ammo_75x350mmR_Ni>
+                    </value>
+                </li>
+
+                <li Class="PatchOperationAdd">
+                    <xpath>Defs/CombatExtended.AmmoSetDef[defName="AmmoSet_Rifle"]/ammoTypes</xpath>
+                    <value>
+                        <BOR_Ammo_762x51mmNATO_TC>BOR_Bullet_762x51mmNATO_TC</BOR_Ammo_762x51mmNATO_TC>
+                    </value>
+                </li>
+
+
+                <!-- Additional shell for devastator turret -->
+                <li Class="PatchOperationFindMod">
+                    <mods>
+                        <li>Vanilla Vehicles Expanded</li>
+                    </mods>
+                    <match Class="PatchOperationSequence">
+                        <operations>
+                            <!-- Tango Bullet_20x102mmNATO_AP -> Autocannon -->
+                            <li Class="PatchOperationAdd">
+                                <xpath>Defs/Vehicles.VehicleTurretDef[defName="Tango_MainTurret"]/ammunition/thingDefs</xpath>
+                                <value>
+                                    <li>BOR_Ammo_Autocannon_Nc</li>
+                                    <li>BOR_Ammo_Autocannon_Ni</li>
+                                    <li>BOR_Ammo_Autocannon_QaP</li>
+                                    <li>BOR_Ammo_Autocannon_TC</li>
+                                </value>
+                            </li>
+                            <!-- Bulldog Bullet_75x350mmR_HE -->
+                            <li Class="PatchOperationAdd">
+                                <xpath>Defs/Vehicles.VehicleTurretDef[defName="Bulldog_MainTurret"]/ammunition/thingDefs</xpath>
+                                <value>
+                                    <li>BOR_Ammo_75x350mmR_QaP</li>
+                                    <li>BOR_Ammo_75x350mmR_Ni</li>
+                                </value>
+                            </li>
+                            <!-- Highwayman Bullet_762x51mmNATO_FMJ -->
+
+                            <li Class="PatchOperationAdd">
+                                <xpath>Defs/Vehicles.VehicleTurretDef[defName="Highwayman_MainTurret"]/ammunition/thingDefs</xpath>
+                                <value>
+                                    <li>BOR_Ammo_762x51mmNATO_TC</li>
+                                </value>
+                            </li>
+                            <!-- Roadkill Bullet_57x307mmR_HE -->
+
+                            <li Class="PatchOperationAdd">
+                                <xpath>Defs/Vehicles.VehicleTurretDef[defName="Roadkill_MainTurret"]/ammunition/thingDefs</xpath>
+                                <value>
+                                    <li>BOR_Ammo_57x307mmR_QaP</li>
+                                    <li>BOR_Ammo_57x307mmR_Ni</li>
+                                </value>
+                            </li>
+                        </operations>
+                    </match>
+                </li>
+
+                <li Class="PatchOperationFindMod">
+                    <mods>
+                        <li>RimThunder - Roaring Tiger</li>
+                    </mods>
+                    <match Class="PatchOperationSequence">
+                        <operations>
+                            <!-- M1A2 Bullet_120mmCannonShell_HEAT -->
+
+                            <li Class="PatchOperationAdd">
+                                <xpath>Defs/Vehicles.VehicleTurretDef[defName="RT_M1A2_Tank_Turret"]/ammunition/thingDefs</xpath>
+                                <value>
+                                    <li>BOR_Ammo_120mmCannonShell_NiAT</li>
+                                    <li>BOR_Ammo_120mmCannonShell_Ni</li>
+                                </value>
+                            </li>
+
+                            <!-- m48H Bullet_105x617mmRCannonShell_HEAT -->
+
+                            <li Class="PatchOperationAdd">
+                                <xpath>Defs/Vehicles.VehicleTurretDef[defName="RT_M48H_Tank_Turret"]/ammunition/thingDefs</xpath>
+                                <value>
+                                    <li>BOR_Ammo_105x617mmRCannonShell_NiAT</li>
+                                    <li>BOR_Ammo_105x617mmRCannonShell_Ni</li>
+                                </value>
+                            </li>
+                            <!-- RT_M113M_APC_Turret 81mm -->
+
+                            <li Class="PatchOperationAdd">
+                                <xpath>Defs/Vehicles.VehicleTurretDef[defName="RT_M113M_APC_Turret"]/ammunition/thingDefs</xpath>
+                                <value>
+                                    <li>BOR_Shell_Mortar_Ni</li>
+                                    <li>BOR_Shell_Mortar_Nc</li>
+                                    <li>BOR_Shell_Mortar_Ion_N</li>
+                                    <li MayRequire="paradox.morevanillaturrets">BOR_Shell_NDev</li>
+                                </value>
+                            </li>
+
+                            <!-- RT Turrets -->
+                            <li Class="PatchOperationAdd">
+                                <xpath>Defs/Vehicles.VehicleTurretDef[defName="RT_M1A2T_SecondaryTurret"]/ammunition/thingDefs</xpath>
+                                <value>
+                                    <li>BOR_Ammo_AntiMateriel_FSJ</li>
+                                    <li>BOR_Ammo_AntiMateriel_Ni</li>
+                                    <li>BOR_Ammo_AntiMateriel_QaP</li>
+                                    <li>BOR_Ammo_AntiMateriel_TC</li>
+                                </value>
+                            </li>
+
+                            <li Class="PatchOperationAdd">
+                                <xpath> Defs/Vehicles.VehicleTurretDef[defName="RT_M2HB_MGTurret"]/ammunition/thingDefs</xpath>
+                                <value>
+                                    <li>BOR_Ammo_AntiMateriel_FSJ</li>
+                                    <li>BOR_Ammo_AntiMateriel_Ni</li>
+                                    <li>BOR_Ammo_AntiMateriel_QaP</li>
+                                    <li>BOR_Ammo_AntiMateriel_TC</li>
+                                </value>
+                            </li>
+
+                            <li Class="PatchOperationAdd">
+                                <xpath> Defs/Vehicles.VehicleTurretDef[defName="RT_M249_MGTurret"]/ammunition/thingDefs</xpath>
+                                <value>
+                                    <li>BOR_Ammo_762x51mmNATO_TC</li>
+                                </value>
+                            </li>
+
+                            <li Class="PatchOperationAdd">
+                                <xpath> Defs/Vehicles.VehicleTurretDef[defName="RT_M249_MGTurret_HEMTT"]/ammunition/thingDefs</xpath>
+                                <value>
+                                    <li>BOR_Ammo_762x51mmNATO_TC</li>
+                                </value>
+                            </li>
+                        </operations>
+                    </match>
+                </li>
+
             </operations>
-        </match>
+        </enabled>
     </Operation>
 
-    <Operation Class="PatchOperationFindMod">
-        <mods>
-            <li>RimThunder - Roaring Tiger</li>
-        </mods>
-        <match Class="PatchOperationSequence">
-            <operations>
-                <!-- M1A2 Bullet_120mmCannonShell_HEAT -->
-
-                <li Class="PatchOperationAdd">
-                    <xpath>Defs/Vehicles.VehicleTurretDef[defName="RT_M1A2_Tank_Turret"]/ammunition/thingDefs</xpath>
-                    <value>
-                        <li>BOR_Ammo_120mmCannonShell_NiAT</li>
-                        <li>BOR_Ammo_120mmCannonShell_Ni</li>
-                    </value>
-                </li>
-
-                <!-- m48H Bullet_105x617mmRCannonShell_HEAT -->
-
-                <li Class="PatchOperationAdd">
-                    <xpath>Defs/Vehicles.VehicleTurretDef[defName="RT_M48H_Tank_Turret"]/ammunition/thingDefs</xpath>
-                    <value>
-                        <li>BOR_Ammo_105x617mmRCannonShell_NiAT</li>
-                        <li>BOR_Ammo_105x617mmRCannonShell_Ni</li>
-                    </value>
-                </li>
-                <!-- RT_M113M_APC_Turret 81mm -->
-
-                <li Class="PatchOperationAdd">
-                    <xpath>Defs/Vehicles.VehicleTurretDef[defName="RT_M113M_APC_Turret"]/ammunition/thingDefs</xpath>
-                    <value>
-                        <li>BOR_Shell_Mortar_Ni</li>
-                        <li>BOR_Shell_Mortar_Nc</li>
-                        <li>BOR_Shell_Mortar_Ion_N</li>
-                        <li MayRequire="paradox.morevanillaturrets">BOR_Shell_NDev</li>
-                    </value>
-                </li>
-
-                <!-- RT Turrets -->
-                <li Class="PatchOperationAdd">
-                    <xpath>Defs/Vehicles.VehicleTurretDef[defName="RT_M1A2T_SecondaryTurret"]/ammunition/thingDefs</xpath>
-                    <value>
-                        <li>BOR_Ammo_AntiMateriel_FSJ</li>
-                        <li>BOR_Ammo_AntiMateriel_Ni</li>
-                        <li>BOR_Ammo_AntiMateriel_QaP</li>
-                        <li>BOR_Ammo_AntiMateriel_TC</li>
-                    </value>
-                </li>
-
-                <li Class="PatchOperationAdd">
-                    <xpath> Defs/Vehicles.VehicleTurretDef[defName="RT_M2HB_MGTurret"]/ammunition/thingDefs</xpath>
-                    <value>
-                        <li>BOR_Ammo_AntiMateriel_FSJ</li>
-                        <li>BOR_Ammo_AntiMateriel_Ni</li>
-                        <li>BOR_Ammo_AntiMateriel_QaP</li>
-                        <li>BOR_Ammo_AntiMateriel_TC</li>
-                    </value>
-                </li>
-
-                <li Class="PatchOperationAdd">
-                    <xpath> Defs/Vehicles.VehicleTurretDef[defName="RT_M249_MGTurret"]/ammunition/thingDefs</xpath>
-                    <value>
-                        <li>BOR_Ammo_762x51mmNATO_TC</li>
-                    </value>
-                </li>
-
-                <li Class="PatchOperationAdd">
-                    <xpath> Defs/Vehicles.VehicleTurretDef[defName="RT_M249_MGTurret_HEMTT"]/ammunition/thingDefs</xpath>
-                    <value>
-                        <li>BOR_Ammo_762x51mmNATO_TC</li>
-                    </value>
-                </li>
-            </operations>
-        </match>
-    </Operation>
 </Patch>

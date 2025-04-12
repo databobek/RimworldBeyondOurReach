@@ -1,400 +1,411 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Patch>
-	<Operation Class="PatchOperationAdd">
-		<xpath>Defs/ThingDef[defName="BOR_Tenebral_Apparel_FlakVest"]/statBases</xpath>
-		<value>
-			<Bulk>2</Bulk>
-			<WornBulk>1</WornBulk>
-		</value>
+
+	<Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
+		<modSettingDef>BOR_Setting_CE_TODO</modSettingDef>
+		<enabled Class="PatchOperationSequence">
+			<operations>
+
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[defName="BOR_Tenebral_Apparel_FlakVest"]/statBases</xpath>
+					<value>
+						<Bulk>2</Bulk>
+						<WornBulk>1</WornBulk>
+					</value>
+				</li>
+
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="BOR_Tenebral_Apparel_FlakVest"]/statBases/MaxHitPoints</xpath>
+					<value>
+						<MaxHitPoints>420</MaxHitPoints>
+					</value>
+				</li>
+
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="BOR_Tenebral_Apparel_FlakVest"]/statBases/Mass</xpath>
+					<value>
+						<Mass>5</Mass>
+					</value>
+				</li>
+
+				<li Class="PatchOperationAddModExtension">
+					<xpath>Defs/ThingDef[defName="BOR_Tenebral_Apparel_FlakVest"]</xpath>
+					<value>
+						<li Class="CombatExtended.PartialArmorExt">
+							<stats>
+								<li>
+									<ArmorRating_Sharp>2.025</ArmorRating_Sharp>
+									<parts>
+										<li>Neck</li>
+										<li>Shoulder</li>
+									</parts>
+								</li>
+								<li>
+									<ArmorRating_Blunt>2.025</ArmorRating_Blunt>
+									<parts>
+										<li>Neck</li>
+										<li>Shoulder</li>
+									</parts>
+								</li>
+							</stats>
+						</li>
+					</value>
+				</li>
+
+
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="BOR_Tenebral_Apparel_FlakVest"]/recipeMaker/unfinishedThingDef</xpath>
+					<value>
+						<unfinishedThingDef>UnfinishedSteeledTechArmor</unfinishedThingDef>
+					</value>
+				</li>
+
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="BOR_Tenebral_Apparel_FlakJacket"]/statBases/ArmorRating_Sharp</xpath>
+					<value>
+						<Bulk>2</Bulk>
+						<WornBulk>1.447</WornBulk>
+						<ArmorRating_Sharp>6</ArmorRating_Sharp>
+					</value>
+				</li>
+
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="BOR_Tenebral_Apparel_FlakJacket"]/statBases/ArmorRating_Blunt</xpath>
+					<value>
+						<ArmorRating_Blunt>5.062</ArmorRating_Blunt>
+					</value>
+				</li>
+
+
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="BOR_Tenebral_Apparel_FlakJacket"]/statBases/Mass</xpath>
+					<value>
+						<Mass>1</Mass>
+					</value>
+				</li>
+
+
+				<li Class="PatchOperationAddModExtension">
+					<xpath>Defs/ThingDef[defName="BOR_Tenebral_Apparel_FlakJacket"]</xpath>
+					<value>
+						<li Class="CombatExtended.PartialArmorExt">
+							<stats>
+								<li>
+									<ArmorRating_Sharp>2.7</ArmorRating_Sharp>
+									<parts>
+										<li>Neck</li>
+									</parts>
+								</li>
+								<li>
+									<ArmorRating_Blunt>2.7</ArmorRating_Blunt>
+									<parts>
+										<li>Neck</li>
+									</parts>
+								</li>
+							</stats>
+						</li>
+					</value>
+				</li>
+
+
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="BOR_Tenebral_Apparel_FlakPants"]/statBases/Mass</xpath>
+					<value>
+						<Mass>1.447</Mass>
+					</value>
+				</li>
+
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="BOR_Tenebral_Apparel_FlakPants"]/statBases/ArmorRating_Sharp</xpath>
+					<value>
+						<Bulk>1</Bulk>
+						<WornBulk>1.447</WornBulk>
+						<ArmorRating_Sharp>6</ArmorRating_Sharp>
+					</value>
+				</li>
+
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="BOR_Tenebral_Apparel_FlakPants"]/statBases/ArmorRating_Blunt</xpath>
+					<value>
+						<ArmorRating_Blunt>5.062</ArmorRating_Blunt>
+					</value>
+				</li>
+
+
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="BOR_Tenebral_Apparel_FlakPants"]/costList</xpath>
+					<value>
+						<costList>
+							<BOR_QuasarAlloy>15</BOR_QuasarAlloy>
+						</costList>
+					</value>
+				</li>
+
+
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[@Name="ApparelArmorPowerTenebralBase"]/statBases</xpath>
+					<value>
+						<Bulk>57</Bulk>
+						<WornBulk>8</WornBulk>
+					</value>
+				</li>
+
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[@Name="ApparelArmorPowerTenebralBase"]/statBases/MaxHitPoints</xpath>
+					<value>
+						<MaxHitPoints>1687</MaxHitPoints>
+					</value>
+				</li>
+
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[@Name="ApparelArmorPowerTenebralBase"]/statBases/Mass</xpath>
+					<value>
+						<Mass>28</Mass>
+					</value>
+				</li>
+
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[@Name="ApparelArmorPowerTenebralBase"]/statBases/Flammability</xpath>
+					<value>
+						<Flammability>0</Flammability>
+					</value>
+				</li>
+
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[@Name="ApparelArmorPowerTenebralBase"]/statBases/ArmorRating_Sharp</xpath>
+					<value>
+						<ArmorRating_Sharp>67</ArmorRating_Sharp>
+					</value>
+				</li>
+
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[@Name="ApparelArmorPowerTenebralBase"]/statBases/ArmorRating_Blunt</xpath>
+					<value>
+						<ArmorRating_Blunt>150</ArmorRating_Blunt>
+					</value>
+				</li>
+
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[@Name="ApparelArmorPowerTenebralBase"]/costList</xpath>
+					<value>
+						<DevilstrandCloth>50</DevilstrandCloth>
+					</value>
+				</li>
+
+
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[@Name="ApparelArmorPowerTenebralBase"]/equippedStatOffsets</xpath>
+					<value>
+						<CarryWeight>80</CarryWeight>
+						<CarryBulk>10</CarryBulk>
+						<ShootingAccuracyPawn>0.507</ShootingAccuracyPawn>
+					</value>
+				</li>
+
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[@Name="ApparelArmorPowerTenebralBase"]/apparel/bodyPartGroups</xpath>
+					<value>
+						<li>Hands</li>
+						<li>Feet</li>
+					</value>
+				</li>
+
+				<li Class="PatchOperationAddModExtension">
+					<xpath>Defs/ThingDef[@Name="ApparelArmorPowerTenebralBase"]</xpath>
+					<value>
+						<li Class="CombatExtended.PartialArmorExt">
+							<stats>
+								<li>
+									<ArmorRating_Sharp>2.7</ArmorRating_Sharp>
+									<parts>
+										<li>Neck</li>
+									</parts>
+								</li>
+								<li>
+									<ArmorRating_Blunt>2.7</ArmorRating_Blunt>
+									<parts>
+										<li>Neck</li>
+									</parts>
+								</li>
+								<li>
+									<ArmorRating_Sharp>3.037</ArmorRating_Sharp>
+									<parts>
+										<li>Arm</li>
+									</parts>
+								</li>
+								<li>
+									<ArmorRating_Blunt>3.037</ArmorRating_Blunt>
+									<parts>
+										<li>Arm</li>
+									</parts>
+								</li>
+								<li>
+									<ArmorRating_Sharp>2.362</ArmorRating_Sharp>
+									<parts>
+										<li>Hand</li>
+									</parts>
+								</li>
+								<li>
+									<ArmorRating_Blunt>2.362</ArmorRating_Blunt>
+									<parts>
+										<li>Hand</li>
+									</parts>
+								</li>
+							</stats>
+						</li>
+					</value>
+				</li>
+
+
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[@Name="ApparelArmorPowerTenebralBase"]/costList/BOR_Tenebrite</xpath>
+					<value>
+						<BOR_Tenebrite>180</BOR_Tenebrite>
+					</value>
+				</li>
+
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[@Name="ApparelArmorPowerTenebralBase"]/costList/Uranium</xpath>
+					<value>
+						<Uranium>135</Uranium>
+					</value>
+				</li>
+
+
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[@Name="ApparelArmorReconTenebralBase"]/statBases</xpath>
+					<value>
+						<Bulk>45</Bulk>
+						<WornBulk>6</WornBulk>
+					</value>
+				</li>
+
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[@Name="ApparelArmorReconTenebralBase"]/statBases/MaxHitPoints</xpath>
+					<value>
+						<MaxHitPoints>1350</MaxHitPoints>
+					</value>
+				</li>
+
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[@Name="ApparelArmorReconTenebralBase"]/statBases/Mass</xpath>
+					<value>
+						<Mass>16</Mass>
+					</value>
+				</li>
+
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[@Name="ApparelArmorReconTenebralBase"]/statBases/Flammability</xpath>
+					<value>
+						<Flammability>0.116</Flammability>
+					</value>
+				</li>
+
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[@Name="ApparelArmorReconTenebralBase"]/statBases/ArmorRating_Sharp</xpath>
+					<value>
+						<ArmorRating_Sharp>54</ArmorRating_Sharp>
+					</value>
+				</li>
+
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[@Name="ApparelArmorReconTenebralBase"]/statBases/ArmorRating_Blunt</xpath>
+					<value>
+						<ArmorRating_Blunt>114</ArmorRating_Blunt>
+					</value>
+				</li>
+
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[@Name="ApparelArmorReconTenebralBase"]/costList</xpath>
+					<value>
+						<DevilstrandCloth>40</DevilstrandCloth>
+					</value>
+				</li>
+
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[@Name="ApparelArmorReconTenebralBase"]</xpath>
+					<value>
+						<equippedStatOffsets>
+							<CarryWeight>50</CarryWeight>
+							<CarryBulk>8</CarryBulk>
+							<MoveSpeed>1.35</MoveSpeed>
+						</equippedStatOffsets>
+					</value>
+				</li>
+
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[@Name="ApparelArmorReconTenebralBase"]/apparel/bodyPartGroups</xpath>
+					<value>
+						<li>Hands</li>
+						<li>Feet</li>
+					</value>
+				</li>
+
+				<li Class="PatchOperationAddModExtension">
+					<xpath>Defs/ThingDef[@Name="ApparelArmorReconTenebralBase"]</xpath>
+					<value>
+						<li Class="CombatExtended.PartialArmorExt">
+							<stats>
+								<li>
+									<ArmorRating_Sharp>2.025</ArmorRating_Sharp>
+									<parts>
+										<li>Neck</li>
+										<li>Hand</li>
+									</parts>
+								</li>
+								<li>
+									<ArmorRating_Blunt>2.025</ArmorRating_Blunt>
+									<parts>
+										<li>Neck</li>
+										<li>Hand</li>
+									</parts>
+								</li>
+								<li>
+									<ArmorRating_Sharp>3.037</ArmorRating_Sharp>
+									<parts>
+										<li>Leg</li>
+									</parts>
+								</li>
+								<li>
+									<ArmorRating_Blunt>3.037</ArmorRating_Blunt>
+									<parts>
+										<li>Leg</li>
+									</parts>
+								</li>
+								<li>
+									<ArmorRating_Sharp>2.7</ArmorRating_Sharp>
+									<parts>
+										<li>Arm</li>
+									</parts>
+								</li>
+								<li>
+									<ArmorRating_Blunt>2.7</ArmorRating_Blunt>
+									<parts>
+										<li>Arm</li>
+									</parts>
+								</li>
+							</stats>
+						</li>
+					</value>
+				</li>
+
+
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[@Name="ApparelArmorReconTenebralBase"]/costList/BOR_Tenebrite</xpath>
+					<value>
+						<BOR_Tenebrite>140</BOR_Tenebrite>
+					</value>
+				</li>
+
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[@Name="ApparelArmorReconTenebralBase"]/costList/Uranium</xpath>
+					<value>
+						<Uranium>67</Uranium>
+					</value>
+				</li>
+
+			</operations>
+		</enabled>
 	</Operation>
 
-	<Operation Class="PatchOperationReplace">
-		<xpath>Defs/ThingDef[defName="BOR_Tenebral_Apparel_FlakVest"]/statBases/MaxHitPoints</xpath>
-		<value>
-			<MaxHitPoints>420</MaxHitPoints>
-		</value>
-	</Operation>
-
-	<Operation Class="PatchOperationReplace">
-		<xpath>Defs/ThingDef[defName="BOR_Tenebral_Apparel_FlakVest"]/statBases/Mass</xpath>
-		<value>
-			<Mass>5</Mass>
-		</value>
-	</Operation>
-
-	<Operation Class="PatchOperationAddModExtension">
-		<xpath>Defs/ThingDef[defName="BOR_Tenebral_Apparel_FlakVest"]</xpath>
-		<value>
-			<li Class="CombatExtended.PartialArmorExt">
-				<stats>
-					<li>
-						<ArmorRating_Sharp>2.025</ArmorRating_Sharp>
-						<parts>
-							<li>Neck</li>
-							<li>Shoulder</li>
-						</parts>
-					</li>
-					<li>
-						<ArmorRating_Blunt>2.025</ArmorRating_Blunt>
-						<parts>
-							<li>Neck</li>
-							<li>Shoulder</li>
-						</parts>
-					</li>
-				</stats>
-			</li>
-		</value>
-	</Operation>
-
-
-	<Operation Class="PatchOperationReplace">
-		<xpath>Defs/ThingDef[defName="BOR_Tenebral_Apparel_FlakVest"]/recipeMaker/unfinishedThingDef</xpath>
-		<value>
-			<unfinishedThingDef>UnfinishedSteeledTechArmor</unfinishedThingDef>
-		</value>
-	</Operation>
-
-	<Operation Class="PatchOperationReplace">
-		<xpath>Defs/ThingDef[defName="BOR_Tenebral_Apparel_FlakJacket"]/statBases/ArmorRating_Sharp</xpath>
-		<value>
-			<Bulk>2</Bulk>
-			<WornBulk>1.447</WornBulk>
-			<ArmorRating_Sharp>6</ArmorRating_Sharp>
-		</value>
-	</Operation>
-
-	<Operation Class="PatchOperationReplace">
-		<xpath>Defs/ThingDef[defName="BOR_Tenebral_Apparel_FlakJacket"]/statBases/ArmorRating_Blunt</xpath>
-		<value>
-			<ArmorRating_Blunt>5.062</ArmorRating_Blunt>
-		</value>
-	</Operation>
-
-
-	<Operation Class="PatchOperationReplace">
-		<xpath>Defs/ThingDef[defName="BOR_Tenebral_Apparel_FlakJacket"]/statBases/Mass</xpath>
-		<value>
-			<Mass>1</Mass>
-		</value>
-	</Operation>
-
-
-	<Operation Class="PatchOperationAddModExtension">
-		<xpath>Defs/ThingDef[defName="BOR_Tenebral_Apparel_FlakJacket"]</xpath>
-		<value>
-			<li Class="CombatExtended.PartialArmorExt">
-				<stats>
-					<li>
-						<ArmorRating_Sharp>2.7</ArmorRating_Sharp>
-						<parts>
-							<li>Neck</li>
-						</parts>
-					</li>
-					<li>
-						<ArmorRating_Blunt>2.7</ArmorRating_Blunt>
-						<parts>
-							<li>Neck</li>
-						</parts>
-					</li>
-				</stats>
-			</li>
-		</value>
-	</Operation>
-
-
-	<Operation Class="PatchOperationReplace">
-		<xpath>Defs/ThingDef[defName="BOR_Tenebral_Apparel_FlakPants"]/statBases/Mass</xpath>
-		<value>
-			<Mass>1.447</Mass>
-		</value>
-	</Operation>
-
-	<Operation Class="PatchOperationReplace">
-		<xpath>Defs/ThingDef[defName="BOR_Tenebral_Apparel_FlakPants"]/statBases/ArmorRating_Sharp</xpath>
-		<value>
-			<Bulk>1</Bulk>
-			<WornBulk>1.447</WornBulk>
-			<ArmorRating_Sharp>6</ArmorRating_Sharp>
-		</value>
-	</Operation>
-
-	<Operation Class="PatchOperationReplace">
-		<xpath>Defs/ThingDef[defName="BOR_Tenebral_Apparel_FlakPants"]/statBases/ArmorRating_Blunt</xpath>
-		<value>
-			<ArmorRating_Blunt>5.062</ArmorRating_Blunt>
-		</value>
-	</Operation>
-
-
-	<Operation Class="PatchOperationReplace">
-		<xpath>Defs/ThingDef[defName="BOR_Tenebral_Apparel_FlakPants"]/costList</xpath>
-		<value>
-			<costList>
-				<BOR_QuasarAlloy>15</BOR_QuasarAlloy>
-			</costList>
-		</value>
-	</Operation>
-
-
-	<Operation Class="PatchOperationAdd">
-		<xpath>Defs/ThingDef[@Name="ApparelArmorPowerTenebralBase"]/statBases</xpath>
-		<value>
-			<Bulk>57</Bulk>
-			<WornBulk>8</WornBulk>
-		</value>
-	</Operation>
-
-	<Operation Class="PatchOperationReplace">
-		<xpath>Defs/ThingDef[@Name="ApparelArmorPowerTenebralBase"]/statBases/MaxHitPoints</xpath>
-		<value>
-			<MaxHitPoints>1687</MaxHitPoints>
-		</value>
-	</Operation>
-
-	<Operation Class="PatchOperationReplace">
-		<xpath>Defs/ThingDef[@Name="ApparelArmorPowerTenebralBase"]/statBases/Mass</xpath>
-		<value>
-			<Mass>28</Mass>
-		</value>
-	</Operation>
-
-	<Operation Class="PatchOperationReplace">
-		<xpath>Defs/ThingDef[@Name="ApparelArmorPowerTenebralBase"]/statBases/Flammability</xpath>
-		<value>
-			<Flammability>0</Flammability>
-		</value>
-	</Operation>
-
-	<Operation Class="PatchOperationReplace">
-		<xpath>Defs/ThingDef[@Name="ApparelArmorPowerTenebralBase"]/statBases/ArmorRating_Sharp</xpath>
-		<value>
-			<ArmorRating_Sharp>67</ArmorRating_Sharp>
-		</value>
-	</Operation>
-
-	<Operation Class="PatchOperationReplace">
-		<xpath>Defs/ThingDef[@Name="ApparelArmorPowerTenebralBase"]/statBases/ArmorRating_Blunt</xpath>
-		<value>
-			<ArmorRating_Blunt>150</ArmorRating_Blunt>
-		</value>
-	</Operation>
-
-	<Operation Class="PatchOperationAdd">
-		<xpath>Defs/ThingDef[@Name="ApparelArmorPowerTenebralBase"]/costList</xpath>
-		<value>
-			<DevilstrandCloth>50</DevilstrandCloth>
-		</value>
-	</Operation>
-
-
-	<Operation Class="PatchOperationAdd">
-		<xpath>Defs/ThingDef[@Name="ApparelArmorPowerTenebralBase"]/equippedStatOffsets</xpath>
-		<value>
-			<CarryWeight>80</CarryWeight>
-			<CarryBulk>10</CarryBulk>
-			<ShootingAccuracyPawn>0.507</ShootingAccuracyPawn>
-		</value>
-	</Operation>
-
-	<Operation Class="PatchOperationAdd">
-		<xpath>Defs/ThingDef[@Name="ApparelArmorPowerTenebralBase"]/apparel/bodyPartGroups</xpath>
-		<value>
-			<li>Hands</li>
-			<li>Feet</li>
-		</value>
-	</Operation>
-
-	<Operation Class="PatchOperationAddModExtension">
-		<xpath>Defs/ThingDef[@Name="ApparelArmorPowerTenebralBase"]</xpath>
-		<value>
-			<li Class="CombatExtended.PartialArmorExt">
-				<stats>
-					<li>
-						<ArmorRating_Sharp>2.7</ArmorRating_Sharp>
-						<parts>
-							<li>Neck</li>
-						</parts>
-					</li>
-					<li>
-						<ArmorRating_Blunt>2.7</ArmorRating_Blunt>
-						<parts>
-							<li>Neck</li>
-						</parts>
-					</li>
-					<li>
-						<ArmorRating_Sharp>3.037</ArmorRating_Sharp>
-						<parts>
-							<li>Arm</li>
-						</parts>
-					</li>
-					<li>
-						<ArmorRating_Blunt>3.037</ArmorRating_Blunt>
-						<parts>
-							<li>Arm</li>
-						</parts>
-					</li>
-					<li>
-						<ArmorRating_Sharp>2.362</ArmorRating_Sharp>
-						<parts>
-							<li>Hand</li>
-						</parts>
-					</li>
-					<li>
-						<ArmorRating_Blunt>2.362</ArmorRating_Blunt>
-						<parts>
-							<li>Hand</li>
-						</parts>
-					</li>
-				</stats>
-			</li>
-		</value>
-	</Operation>
-
-
-	<Operation Class="PatchOperationReplace">
-		<xpath>Defs/ThingDef[@Name="ApparelArmorPowerTenebralBase"]/costList/BOR_Tenebrite</xpath>
-		<value>
-			<BOR_Tenebrite>180</BOR_Tenebrite>
-		</value>
-	</Operation>
-
-	<Operation Class="PatchOperationReplace">
-		<xpath>Defs/ThingDef[@Name="ApparelArmorPowerTenebralBase"]/costList/Uranium</xpath>
-		<value>
-			<Uranium>135</Uranium>
-		</value>
-	</Operation>
-
-
-	<Operation Class="PatchOperationAdd">
-		<xpath>Defs/ThingDef[@Name="ApparelArmorReconTenebralBase"]/statBases</xpath>
-		<value>
-			<Bulk>45</Bulk>
-			<WornBulk>6</WornBulk>
-		</value>
-	</Operation>
-
-	<Operation Class="PatchOperationReplace">
-		<xpath>Defs/ThingDef[@Name="ApparelArmorReconTenebralBase"]/statBases/MaxHitPoints</xpath>
-		<value>
-			<MaxHitPoints>1350</MaxHitPoints>
-		</value>
-	</Operation>
-
-	<Operation Class="PatchOperationReplace">
-		<xpath>Defs/ThingDef[@Name="ApparelArmorReconTenebralBase"]/statBases/Mass</xpath>
-		<value>
-			<Mass>16</Mass>
-		</value>
-	</Operation>
-
-	<Operation Class="PatchOperationReplace">
-		<xpath>Defs/ThingDef[@Name="ApparelArmorReconTenebralBase"]/statBases/Flammability</xpath>
-		<value>
-			<Flammability>0.116</Flammability>
-		</value>
-	</Operation>
-
-	<Operation Class="PatchOperationReplace">
-		<xpath>Defs/ThingDef[@Name="ApparelArmorReconTenebralBase"]/statBases/ArmorRating_Sharp</xpath>
-		<value>
-			<ArmorRating_Sharp>54</ArmorRating_Sharp>
-		</value>
-	</Operation>
-
-	<Operation Class="PatchOperationReplace">
-		<xpath>Defs/ThingDef[@Name="ApparelArmorReconTenebralBase"]/statBases/ArmorRating_Blunt</xpath>
-		<value>
-			<ArmorRating_Blunt>114</ArmorRating_Blunt>
-		</value>
-	</Operation>
-
-	<Operation Class="PatchOperationAdd">
-		<xpath>Defs/ThingDef[@Name="ApparelArmorReconTenebralBase"]/costList</xpath>
-		<value>
-			<DevilstrandCloth>40</DevilstrandCloth>
-		</value>
-	</Operation>
-
-	<Operation Class="PatchOperationAdd">
-		<xpath>Defs/ThingDef[@Name="ApparelArmorReconTenebralBase"]</xpath>
-		<value>
-			<equippedStatOffsets>
-				<CarryWeight>50</CarryWeight>
-				<CarryBulk>8</CarryBulk>
-				<MoveSpeed>1.35</MoveSpeed>
-			</equippedStatOffsets>
-		</value>
-	</Operation>
-
-	<Operation Class="PatchOperationAdd">
-		<xpath>Defs/ThingDef[@Name="ApparelArmorReconTenebralBase"]/apparel/bodyPartGroups</xpath>
-		<value>
-			<li>Hands</li>
-			<li>Feet</li>
-		</value>
-	</Operation>
-
-	<Operation Class="PatchOperationAddModExtension">
-		<xpath>Defs/ThingDef[@Name="ApparelArmorReconTenebralBase"]</xpath>
-		<value>
-			<li Class="CombatExtended.PartialArmorExt">
-				<stats>
-					<li>
-						<ArmorRating_Sharp>2.025</ArmorRating_Sharp>
-						<parts>
-							<li>Neck</li>
-							<li>Hand</li>
-						</parts>
-					</li>
-					<li>
-						<ArmorRating_Blunt>2.025</ArmorRating_Blunt>
-						<parts>
-							<li>Neck</li>
-							<li>Hand</li>
-						</parts>
-					</li>
-					<li>
-						<ArmorRating_Sharp>3.037</ArmorRating_Sharp>
-						<parts>
-							<li>Leg</li>
-						</parts>
-					</li>
-					<li>
-						<ArmorRating_Blunt>3.037</ArmorRating_Blunt>
-						<parts>
-							<li>Leg</li>
-						</parts>
-					</li>
-					<li>
-						<ArmorRating_Sharp>2.7</ArmorRating_Sharp>
-						<parts>
-							<li>Arm</li>
-						</parts>
-					</li>
-					<li>
-						<ArmorRating_Blunt>2.7</ArmorRating_Blunt>
-						<parts>
-							<li>Arm</li>
-						</parts>
-					</li>
-				</stats>
-			</li>
-		</value>
-	</Operation>
-
-
-	<Operation Class="PatchOperationReplace">
-		<xpath>Defs/ThingDef[@Name="ApparelArmorReconTenebralBase"]/costList/BOR_Tenebrite</xpath>
-		<value>
-			<BOR_Tenebrite>140</BOR_Tenebrite>
-		</value>
-	</Operation>
-
-	<Operation Class="PatchOperationReplace">
-		<xpath>Defs/ThingDef[@Name="ApparelArmorReconTenebralBase"]/costList/Uranium</xpath>
-		<value>
-			<Uranium>67</Uranium>
-		</value>
-	</Operation>
 </Patch>
