@@ -1,179 +1,190 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Patch>
-    <!-- category -->
-    <Operation Class="PatchOperationAdd">
-        <xpath>Defs/ThingDef[defName="SmallProjector" or defName="LargeProjector" or defName="GrandProjector" or defName="ProjectorThrone" or defName="GrandProjectorThrone" ]</xpath>
-        <value>
-            <designationCategory>BOR</designationCategory>
-        </value>
-    </Operation>
-    <!-- dropdown -->
-    <Operation Class="PatchOperationAdd">
-        <xpath>Defs/ThingDef[defName="SmallProjector" or defName="LargeProjector" or defName="GrandProjector" or defName="ProjectorThrone" or defName="GrandProjectorThrone" ]</xpath>
-        <value>
-            <designatorDropdown>BOR_Holo</designatorDropdown>
-        </value>
+
+    <Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
+        <modSettingDef>BOR_Setting_Biotech_TODO</modSettingDef>
+        <enabled Class="PatchOperationSequence">
+            <operations>
+
+                <!-- category -->
+                <Operation Class="PatchOperationAdd">
+                    <xpath>Defs/ThingDef[defName="SmallProjector" or defName="LargeProjector" or defName="GrandProjector" or defName="ProjectorThrone" or defName="GrandProjectorThrone" ]</xpath>
+                    <value>
+                        <designationCategory>BOR</designationCategory>
+                    </value>
+                </Operation>
+                <!-- dropdown -->
+                <Operation Class="PatchOperationAdd">
+                    <xpath>Defs/ThingDef[defName="SmallProjector" or defName="LargeProjector" or defName="GrandProjector" or defName="ProjectorThrone" or defName="GrandProjectorThrone" ]</xpath>
+                    <value>
+                        <designatorDropdown>BOR_Holo</designatorDropdown>
+                    </value>
+                </Operation>
+
+                <Operation Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="SmallProjector"]/recipeMaker/researchPrerequisite</xpath>
+                    <value>
+                        <researchPrerequisites>
+                            <li>BOR_SmallProjectors</li>
+                        </researchPrerequisites>
+                    </value>
+                </Operation>
+
+                <Operation Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="LargeProjector" or defName="ProjectorThrone"]/recipeMaker/researchPrerequisite</xpath>
+                    <value>
+                        <researchPrerequisites>
+                            <li>BOR_LargeProjectors</li>
+                        </researchPrerequisites>
+                    </value>
+                </Operation>
+
+                <Operation Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="GrandProjector" or defName="GrandProjectorThrone"]/recipeMaker/researchPrerequisite</xpath>
+                    <value>
+                        <researchPrerequisites>
+                            <li>BOR_GrandProjectors</li>
+                        </researchPrerequisites>
+                    </value>
+                </Operation>
+
+                <Operation Class="PatchOperationAdd">
+                    <xpath>Defs/ThingDef[defName="SmallProjector"]</xpath>
+                    <value>
+                        <researchPrerequisites>
+                            <li>BOR_SmallProjectors</li>
+                        </researchPrerequisites>
+                    </value>
+                </Operation>
+
+                <Operation Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="ProjectorThrone"]/researchPrerequisites</xpath>
+                    <value>
+                        <researchPrerequisites>
+                            <li>BOR_LargeProjectors</li>
+                        </researchPrerequisites>
+                    </value>
+                </Operation>
+
+                <Operation Class="PatchOperationAdd">
+                    <xpath>Defs/ThingDef[defName="LargeProjector"]</xpath>
+                    <value>
+                        <researchPrerequisites>
+                            <li>BOR_LargeProjectors</li>
+                        </researchPrerequisites>
+                    </value>
+                </Operation>
+
+                <Operation Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="GrandProjector" or defName="GrandProjectorThrone"]/researchPrerequisites</xpath>
+                    <value>
+                        <researchPrerequisites>
+                            <li>BOR_GrandProjectors</li>
+                        </researchPrerequisites>
+                    </value>
+                </Operation>
+
+                <Operation Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="SmallProjector"]/costList</xpath>
+                    <value>
+                        <costList>
+                            <BOR_ComponentII>1</BOR_ComponentII>
+                            <ComponentSpacer>2</ComponentSpacer>
+                            <BOR_Sunsteel>10</BOR_Sunsteel>
+                            <Plasteel>20</Plasteel>
+                        </costList>
+                    </value>
+                </Operation>
+
+                <Operation Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="SmallProjector"]/comps/li[@Class="CompProperties_Power"]/basePowerConsumption</xpath>
+                    <value>
+                        <basePowerConsumption>200</basePowerConsumption>
+                    </value>
+                </Operation>
+
+                <Operation Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="LargeProjector"]/costList</xpath>
+                    <value>
+                        <costList>
+                            <BOR_ComponentII>2</BOR_ComponentII>
+                            <ComponentSpacer>3</ComponentSpacer>
+                            <BOR_Sunsteel>25</BOR_Sunsteel>
+                            <Plasteel>50</Plasteel>
+                        </costList>
+                    </value>
+                </Operation>
+
+                <Operation Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="LargeProjector"]/comps/li[@Class="CompProperties_Power"]/basePowerConsumption</xpath>
+                    <value>
+                        <basePowerConsumption>500</basePowerConsumption>
+                    </value>
+                </Operation>
+
+                <Operation Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="GrandProjector"]/costList</xpath>
+                    <value>
+                        <costList>
+                            <BOR_ComponentIII>3</BOR_ComponentIII>
+                            <BOR_ComponentII>5</BOR_ComponentII>
+                            <BOR_QuasarAlloy>50</BOR_QuasarAlloy>
+                            <BOR_Sunsteel>100</BOR_Sunsteel>
+                        </costList>
+                    </value>
+                </Operation>
+
+                <Operation Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="GrandProjector"]/comps/li[@Class="CompProperties_Power"]/basePowerConsumption</xpath>
+                    <value>
+                        <basePowerConsumption>1500</basePowerConsumption>
+                    </value>
+                </Operation>
+
+                <Operation Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="ProjectorThrone"]/costList</xpath>
+                    <value>
+                        <costList>
+                            <BOR_ComponentII>4</BOR_ComponentII>
+                            <ComponentSpacer>7</ComponentSpacer>
+                            <BOR_Sunsteel>70</BOR_Sunsteel>
+                            <Plasteel>150</Plasteel>
+                        </costList>
+                    </value>
+                </Operation>
+
+                <Operation Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="ProjectorThrone"]/comps/li[@Class="CompProperties_Power"]/basePowerConsumption</xpath>
+                    <value>
+                        <basePowerConsumption>3000</basePowerConsumption>
+                    </value>
+                </Operation>
+
+                <Operation Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="GrandProjectorThrone"]/costList</xpath>
+                    <value>
+                        <costList>
+                            <BOR_ComponentIII>10</BOR_ComponentIII>
+                            <BOR_ComponentII>15</BOR_ComponentII>
+                            <BOR_QuasarAlloy>150</BOR_QuasarAlloy>
+                            <BOR_Sunsteel>300</BOR_Sunsteel>
+                        </costList>
+                    </value>
+                </Operation>
+
+                <Operation Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="GrandProjectorThrone"]/comps/li[@Class="CompProperties_Power"]/basePowerConsumption</xpath>
+                    <value>
+                        <basePowerConsumption>5000</basePowerConsumption>
+                    </value>
+                </Operation>
+
+                <Operation Class="PatchOperationRemove">
+                    <xpath>Defs/ResearchProjectDef[defName="Res_Projectors"]</xpath>
+                </Operation>
+
+            </operations>
+        </enabled>
     </Operation>
 
-    <Operation Class="PatchOperationReplace">
-        <xpath>Defs/ThingDef[defName="SmallProjector"]/recipeMaker/researchPrerequisite</xpath>
-        <value>
-            <researchPrerequisites>
-                <li>BOR_SmallProjectors</li>
-            </researchPrerequisites>
-        </value>
-    </Operation>
-
-    <Operation Class="PatchOperationReplace">
-        <xpath>Defs/ThingDef[defName="LargeProjector" or defName="ProjectorThrone"]/recipeMaker/researchPrerequisite</xpath>
-        <value>
-            <researchPrerequisites>
-                <li>BOR_LargeProjectors</li>
-            </researchPrerequisites>
-        </value>
-    </Operation>
-
-    <Operation Class="PatchOperationReplace">
-        <xpath>Defs/ThingDef[defName="GrandProjector" or defName="GrandProjectorThrone"]/recipeMaker/researchPrerequisite</xpath>
-        <value>
-            <researchPrerequisites>
-                <li>BOR_GrandProjectors</li>
-            </researchPrerequisites>
-        </value>
-    </Operation>
-
-    <Operation Class="PatchOperationAdd">
-        <xpath>Defs/ThingDef[defName="SmallProjector"]</xpath>
-        <value>
-            <researchPrerequisites>
-                <li>BOR_SmallProjectors</li>
-            </researchPrerequisites>
-        </value>
-    </Operation>
-
-    <Operation Class="PatchOperationReplace">
-        <xpath>Defs/ThingDef[defName="ProjectorThrone"]/researchPrerequisites</xpath>
-        <value>
-            <researchPrerequisites>
-                <li>BOR_LargeProjectors</li>
-            </researchPrerequisites>
-        </value>
-    </Operation>
-
-    <Operation Class="PatchOperationAdd">
-        <xpath>Defs/ThingDef[defName="LargeProjector"]</xpath>
-        <value>
-            <researchPrerequisites>
-                <li>BOR_LargeProjectors</li>
-            </researchPrerequisites>
-        </value>
-    </Operation>
-
-    <Operation Class="PatchOperationReplace">
-        <xpath>Defs/ThingDef[defName="GrandProjector" or defName="GrandProjectorThrone"]/researchPrerequisites</xpath>
-        <value>
-            <researchPrerequisites>
-                <li>BOR_GrandProjectors</li>
-            </researchPrerequisites>
-        </value>
-    </Operation>
-
-    <Operation Class="PatchOperationReplace">
-        <xpath>Defs/ThingDef[defName="SmallProjector"]/costList</xpath>
-        <value>
-            <costList>
-                <BOR_ComponentII>1</BOR_ComponentII>
-                <ComponentSpacer>2</ComponentSpacer>
-                <BOR_Sunsteel>10</BOR_Sunsteel>
-                <Plasteel>20</Plasteel>
-            </costList>
-        </value>
-    </Operation>
-
-    <Operation Class="PatchOperationReplace">
-        <xpath>Defs/ThingDef[defName="SmallProjector"]/comps/li[@Class="CompProperties_Power"]/basePowerConsumption</xpath>
-        <value>
-            <basePowerConsumption>200</basePowerConsumption>
-        </value>
-    </Operation>
-
-    <Operation Class="PatchOperationReplace">
-        <xpath>Defs/ThingDef[defName="LargeProjector"]/costList</xpath>
-        <value>
-            <costList>
-                <BOR_ComponentII>2</BOR_ComponentII>
-                <ComponentSpacer>3</ComponentSpacer>
-                <BOR_Sunsteel>25</BOR_Sunsteel>
-                <Plasteel>50</Plasteel>
-            </costList>
-        </value>
-    </Operation>
-
-    <Operation Class="PatchOperationReplace">
-        <xpath>Defs/ThingDef[defName="LargeProjector"]/comps/li[@Class="CompProperties_Power"]/basePowerConsumption</xpath>
-        <value>
-            <basePowerConsumption>500</basePowerConsumption>
-        </value>
-    </Operation>
-
-    <Operation Class="PatchOperationReplace">
-        <xpath>Defs/ThingDef[defName="GrandProjector"]/costList</xpath>
-        <value>
-            <costList>
-                <BOR_ComponentIII>3</BOR_ComponentIII>
-                <BOR_ComponentII>5</BOR_ComponentII>
-                <BOR_QuasarAlloy>50</BOR_QuasarAlloy>
-                <BOR_Sunsteel>100</BOR_Sunsteel>
-            </costList>
-        </value>
-    </Operation>
-
-    <Operation Class="PatchOperationReplace">
-        <xpath>Defs/ThingDef[defName="GrandProjector"]/comps/li[@Class="CompProperties_Power"]/basePowerConsumption</xpath>
-        <value>
-            <basePowerConsumption>1500</basePowerConsumption>
-        </value>
-    </Operation>
-
-    <Operation Class="PatchOperationReplace">
-        <xpath>Defs/ThingDef[defName="ProjectorThrone"]/costList</xpath>
-        <value>
-            <costList>
-                <BOR_ComponentII>4</BOR_ComponentII>
-                <ComponentSpacer>7</ComponentSpacer>
-                <BOR_Sunsteel>70</BOR_Sunsteel>
-                <Plasteel>150</Plasteel>
-            </costList>
-        </value>
-    </Operation>
-
-    <Operation Class="PatchOperationReplace">
-        <xpath>Defs/ThingDef[defName="ProjectorThrone"]/comps/li[@Class="CompProperties_Power"]/basePowerConsumption</xpath>
-        <value>
-            <basePowerConsumption>3000</basePowerConsumption>
-        </value>
-    </Operation>
-
-    <Operation Class="PatchOperationReplace">
-        <xpath>Defs/ThingDef[defName="GrandProjectorThrone"]/costList</xpath>
-        <value>
-            <costList>
-                <BOR_ComponentIII>10</BOR_ComponentIII>
-                <BOR_ComponentII>15</BOR_ComponentII>
-                <BOR_QuasarAlloy>150</BOR_QuasarAlloy>
-                <BOR_Sunsteel>300</BOR_Sunsteel>
-            </costList>
-        </value>
-    </Operation>
-
-    <Operation Class="PatchOperationReplace">
-        <xpath>Defs/ThingDef[defName="GrandProjectorThrone"]/comps/li[@Class="CompProperties_Power"]/basePowerConsumption</xpath>
-        <value>
-            <basePowerConsumption>5000</basePowerConsumption>
-        </value>
-    </Operation>
-
-    <Operation Class="PatchOperationRemove">
-        <xpath>Defs/ResearchProjectDef[defName="Res_Projectors"]</xpath>
-    </Operation>
 </Patch>
