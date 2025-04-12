@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+
+    <Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
+        <modSettingDef>BOR_Setting_EML_TODO</modSettingDef>
+        <enabled Class="PatchOperationAdd">
+            <xpath>Defs</xpath>
+            <value>
+
+                <ThingDef ParentName="HobbesLinkPower_Base">
+                    <defName>BOR_PowerLinkI</defName>
+                    <label>solarite power pylon</label>
+                    <description>Increases the power output of Solarite Reactor by 50%. Can connect up to 16.</description>
+                    <tickerType>Long</tickerType>
+                    <uiIconScale>0.5</uiIconScale>
+                    <graphicData>
+                        <texPath>BOR/Things/Building/tier1/power_linkable</texPath>
+                        <graphicClass>Graphic_Single</graphicClass>
+                        <drawSize>(2,2)</drawSize>
+                        <drawOffset>(0,4,0.5)</drawOffset>
+                    </graphicData>
+                    <rotatable>true</rotatable>
+                    <statBases>
+                        <WorkToBuild>2400</WorkToBuild>
+                        <Mass>20</Mass>
+                    </statBases>
+                    <size>(1,1)</size>
+                    <costList>
+                        <BOR_Sunsteel>150</BOR_Sunsteel>
+                        <ComponentSpacer>2</ComponentSpacer>
+                    </costList>
+                    <researchPrerequisites>
+                        <li>BOR_Research_Power_I</li>
+                    </researchPrerequisites>
+                    <comps>
+                        <li Class="CompProperties_Facility">
+                            <statOffsets>
+                                <PowerOutputFactor>0.5</PowerOutputFactor>
+                            </statOffsets>
+                            <maxSimultaneous>16</maxSimultaneous>
+                            <maxDistance>8</maxDistance>
+                        </li>
+                    </comps>
+                    <designatorDropdown>BOR_Reactors</designatorDropdown>
+                    <designationCategory>BOR</designationCategory>
+                </ThingDef>
+                <ThingDef ParentName="HobbesLinkPower_Base">
+                    <defName>BOR_PowerLinkII</defName>
+                    <label>kwazaari power pylon</label>
+                    <description>Increases the power output of Kwazaari Reactor by 25%. Can connect up to 8.</description>
+                    <tickerType>Long</tickerType>
+                    <uiIconScale>0.5</uiIconScale>
+                    <graphicData>
+                        <texPath>BOR/Things/Building/tier2/power_linkable</texPath>
+                        <graphicClass>Graphic_Single</graphicClass>
+                        <drawSize>(2,2)</drawSize>
+                        <drawOffset>(0,4,0.5)</drawOffset>
+                    </graphicData>
+                    <rotatable>true</rotatable>
+                    <statBases>
+                        <WorkToBuild>4800</WorkToBuild>
+                        <Mass>20</Mass>
+                    </statBases>
+                    <size>(1,1)</size>
+                    <costList>
+                        <BOR_QuasarAlloy>150</BOR_QuasarAlloy>
+                        <BOR_ComponentII>2</BOR_ComponentII>
+                    </costList>
+                    <researchPrerequisites>
+                        <li>BOR_Research_Power_II</li>
+                    </researchPrerequisites>
+                    <comps>
+                        <li Class="CompProperties_Facility">
+                            <statOffsets>
+                                <PowerOutputFactor>0.25</PowerOutputFactor>
+                            </statOffsets>
+                            <maxSimultaneous>8</maxSimultaneous>
+                            <maxDistance>8</maxDistance>
+                        </li>
+                    </comps>
+                    <designatorDropdown>BOR_Reactors</designatorDropdown>
+                    <designationCategory>BOR</designationCategory>
+                </ThingDef>
+
+            </value>
+        </enabled>
+    </Operation>
+
+</Patch>
