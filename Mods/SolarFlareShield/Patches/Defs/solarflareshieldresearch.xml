@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+
+	<Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
+		<modSettingDef>BOR_Setting_RTSolarFlareShield_TODO</modSettingDef>
+		<enabled Class="PatchOperationAdd">
+			<xpath>Defs</xpath>
+			<value>
+
+				<ResearchProjectDef ParentName="BOR_Research_Base_I">
+					<defName>BOR_Research_Solar_Flare_Shield_I</defName>
+					<label>Solar Electromagnetic Shielding</label>
+					<description>Sunsteel allows us to create machines that would repel a solar flare around our settlements. A pesky star will not be allowed to interfere with progress.</description>
+					<baseCost>35000</baseCost>
+					<techLevel>Ultra</techLevel>
+					<prerequisites>
+						<li>BOR_Research_Power_I</li>
+					</prerequisites>
+					<researchViewX>4.00</researchViewX>
+					<researchViewY>1.25</researchViewY>
+				</ResearchProjectDef>
+
+				<ResearchProjectDef ParentName="BOR_Research_Base_III">
+					<defName>BOR_Research_Solar_Flare_Shield_III</defName>
+					<label>Tenebral Electromagnetic Shielding</label>
+					<description>Our advancements into the very fabric of universe allow us to intercept the solar particles and turn them to our advantage. While this process produces enormous heat, it will also be a useful spike for our batteries.</description>
+					<baseCost>150000</baseCost>
+					<techLevel>Archotech</techLevel>
+					<prerequisites>
+						<li>BOR_Research_Weapons_III</li>
+						<li>BOR_Research_Power_III</li>
+					</prerequisites>
+					<hiddenPrerequisites>
+						<li>ResearchProject_RTMagneticShield</li>
+					</hiddenPrerequisites>
+					<researchViewX>14.00</researchViewX>
+					<researchViewY>1.25</researchViewY>
+				</ResearchProjectDef>
+
+			</value>
+		</enabled>
+	</Operation>    
+	
+</Patch>
