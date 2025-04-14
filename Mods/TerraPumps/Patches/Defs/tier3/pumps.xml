@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
+    <modSettingDef>BOR_Setting_Terrapumps_TODO</modSettingDef>
+    <enabled Class="PatchOperationAdd">
+      <xpath>Defs</xpath>
+      <value>
+
+        <ThingDef ParentName="BuildingBase">
+          <defName>BOR_ReverseMoisturePump_III</defName>
+          <label>tenebral reverse moisture pump</label>
+          <description>Very slowly unbalances moisture in nearby terrain, converting dry ground into shallow water. Does not affect sand.</description>
+          <graphicData>
+            <texPath>BOR/Tier3/TerrainPumpWet</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <shadowData>
+              <volume>(0.58, 0.35, 0.25)</volume>
+              <offset>(0,0,-0.1)</offset>
+            </shadowData>
+            <damageData>
+              <rect>(0.2,0.2,0.6,0.6)</rect>
+            </damageData>
+          </graphicData>
+          <comps>
+            <li Class="CompProperties_Forbiddable" />
+            <li Class="CompProperties_Power">
+              <compClass>CompPowerTrader</compClass>
+              <basePowerConsumption>1200</basePowerConsumption>
+            </li>
+            <li Class="TerraPumps.CompProperties_TerrainPumpWet">
+              <soundWorking>MoisturePump_Ambience</soundWorking>
+              <radius>48.9</radius>
+              <daysToRadius>7</daysToRadius>
+            </li>
+          </comps>
+          <tickerType>Rare</tickerType>
+          <altitudeLayer>Building</altitudeLayer>
+          <statBases>
+            <MaxHitPoints>400</MaxHitPoints>
+            <WorkToBuild>12000</WorkToBuild>
+            <Flammability>0.12</Flammability>
+            <Beauty>-1</Beauty>
+          </statBases>
+          <fillPercent>0.15</fillPercent>
+          <building>
+            <ai_chillDestination>false</ai_chillDestination>
+            <destroySound>BuildingDestroyed_Metal_Small</destroySound>
+          </building>
+          <costList>
+            <BOR_Tenebrite>75</BOR_Tenebrite>
+            <BOR_ComponentIII>4</BOR_ComponentIII>
+          </costList>
+          <specialDisplayRadius>48.9</specialDisplayRadius>
+          <pathCost>30</pathCost>
+          <passability>PassThroughOnly</passability>
+          <designationCategory>BOR</designationCategory>
+          <designatorDropdown>BOR_TPumps</designatorDropdown>
+          <rotatable>false</rotatable>
+          <researchPrerequisites>
+            <li>BOR_Research_Production_III</li>
+            <li>MoisturePump</li>
+          </researchPrerequisites>
+          <constructionSkillPrerequisite>13</constructionSkillPrerequisite>
+        </ThingDef>
+
+        <ThingDef ParentName="BuildingBase">
+          <defName>BOR_FertilizerPump_III</defName>
+          <label>tenebral fertilizer pump</label>
+          <description>Very slowly distributes fertilizer in nearby terrain, converting different soils into fertile land. Only affects farmable terrain.</description>
+          <graphicData>
+            <texPath>BOR/Tier3/TerrainPumpFertilizer</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <shadowData>
+              <volume>(0.58, 0.35, 0.25)</volume>
+              <offset>(0,0,-0.1)</offset>
+            </shadowData>
+            <damageData>
+              <rect>(0.2,0.2,0.6,0.6)</rect>
+            </damageData>
+          </graphicData>
+          <comps>
+            <li Class="CompProperties_Forbiddable" />
+            <li Class="CompProperties_Power">
+              <compClass>CompPowerTrader</compClass>
+              <basePowerConsumption>1600</basePowerConsumption>
+            </li>
+            <li Class="TerraPumps.CompProperties_TerrainPumpFert">
+              <soundWorking>MoisturePump_Ambience</soundWorking>
+              <radius>48.9</radius>
+              <daysToRadius>7</daysToRadius>
+            </li>
+          </comps>
+          <tickerType>Rare</tickerType>
+          <altitudeLayer>Building</altitudeLayer>
+          <statBases>
+            <MaxHitPoints>400</MaxHitPoints>
+            <WorkToBuild>12000</WorkToBuild>
+            <Flammability>0.12</Flammability>
+            <Beauty>-1</Beauty>
+          </statBases>
+          <fillPercent>0.15</fillPercent>
+          <building>
+            <ai_chillDestination>false</ai_chillDestination>
+            <destroySound>BuildingDestroyed_Metal_Small</destroySound>
+          </building>
+          <costList>
+            <BOR_Tenebrite>100</BOR_Tenebrite>
+            <BOR_ComponentIII>8</BOR_ComponentIII>
+            <BOR_Neutronium>200</BOR_Neutronium>
+          </costList>
+          <specialDisplayRadius>48.9</specialDisplayRadius>
+          <pathCost>30</pathCost>
+          <passability>PassThroughOnly</passability>
+          <designationCategory>BOR</designationCategory>
+          <designatorDropdown>BOR_TPumps</designatorDropdown>
+          <rotatable>false</rotatable>
+          <researchPrerequisites>
+            <li>BOR_Research_Production_III</li>
+            <li>SoilPump</li>
+          </researchPrerequisites>
+          <constructionSkillPrerequisite>13</constructionSkillPrerequisite>
+        </ThingDef>
+
+        <ThingDef ParentName="BuildingBase">
+          <defName>BOR_JackHammerPump_III</defName>
+          <label>tenebral jack hammer pump</label>
+          <description>Shakes apart stone terrain, very slowly converting rocky areas into stony soil. Will also affect your smoothed stone floors.</description>
+          <graphicData>
+            <texPath>BOR/Tier3/TerrainPumpJackHammer</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <shadowData>
+              <volume>(0.58, 0.35, 0.25)</volume>
+              <offset>(0,0,-0.1)</offset>
+            </shadowData>
+            <damageData>
+              <rect>(0.2,0.2,0.6,0.6)</rect>
+            </damageData>
+          </graphicData>
+          <comps>
+            <li Class="CompProperties_Forbiddable" />
+            <li Class="CompProperties_Power">
+              <compClass>CompPowerTrader</compClass>
+              <basePowerConsumption>1600</basePowerConsumption>
+            </li>
+            <li Class="TerraPumps.CompProperties_TerrainPumpJackHammer">
+              <soundWorking>MoisturePump_Ambience</soundWorking>
+              <radius>48.9</radius>
+              <daysToRadius>7</daysToRadius>
+            </li>
+          </comps>
+          <tickerType>Rare</tickerType>
+          <altitudeLayer>Building</altitudeLayer>
+          <statBases>
+            <MaxHitPoints>400</MaxHitPoints>
+            <WorkToBuild>12000</WorkToBuild>
+            <Flammability>0.12</Flammability>
+            <Beauty>-1</Beauty>
+          </statBases>
+          <fillPercent>0.15</fillPercent>
+          <building>
+            <ai_chillDestination>false</ai_chillDestination>
+            <destroySound>BuildingDestroyed_Metal_Small</destroySound>
+          </building>
+          <costList>
+            <BOR_Tenebrite>150</BOR_Tenebrite>
+            <BOR_ComponentIII>8</BOR_ComponentIII>
+          </costList>
+          <specialDisplayRadius>48.9</specialDisplayRadius>
+          <pathCost>30</pathCost>
+          <passability>PassThroughOnly</passability>
+          <designationCategory>BOR</designationCategory>
+          <designatorDropdown>BOR_TPumps</designatorDropdown>
+          <rotatable>false</rotatable>
+          <researchPrerequisites>
+            <li>BOR_Research_Production_III</li>
+            <li>SoilPump</li>
+          </researchPrerequisites>
+          <constructionSkillPrerequisite>17</constructionSkillPrerequisite>
+        </ThingDef>
+
+        <ThingDef ParentName="BuildingBase">
+          <defName>BOR_DeepWaterPump_III</defName>
+          <label>tenebral table-raiser moisture pump</label>
+          <description>Very slowly brings groundwater to the surface, converting shallow water into deep water. Does not work on rivers. Has a smaller area of effect than other pumps due to the limitations of this process.</description>
+          <graphicData>
+            <texPath>BOR/Tier3/TerrainPumpDeepWet</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <shadowData>
+              <volume>(0.58, 0.35, 0.25)</volume>
+              <offset>(0,0,-0.1)</offset>
+            </shadowData>
+            <damageData>
+              <rect>(0.2,0.2,0.6,0.6)</rect>
+            </damageData>
+          </graphicData>
+          <comps>
+            <li Class="CompProperties_Forbiddable" />
+            <li Class="CompProperties_Power">
+              <compClass>CompPowerTrader</compClass>
+              <basePowerConsumption>2400</basePowerConsumption>
+            </li>
+            <li Class="TerraPumps.CompProperties_TerrainPumpDeepWet">
+              <soundWorking>MoisturePump_Ambience</soundWorking>
+              <radius>32.9</radius>
+              <daysToRadius>6</daysToRadius>
+            </li>
+          </comps>
+          <tickerType>Rare</tickerType>
+          <terrainAffordanceNeeded>ShallowWater</terrainAffordanceNeeded>
+          <altitudeLayer>Building</altitudeLayer>
+          <statBases>
+            <MaxHitPoints>400</MaxHitPoints>
+            <WorkToBuild>12000</WorkToBuild>
+            <Flammability>0.12</Flammability>
+            <Beauty>-2</Beauty>
+          </statBases>
+          <fillPercent>0.15</fillPercent>
+          <building>
+            <ai_chillDestination>false</ai_chillDestination>
+            <destroySound>BuildingDestroyed_Metal_Small</destroySound>
+          </building>
+          <costList>
+            <BOR_Tenebrite>75</BOR_Tenebrite>
+            <BOR_Sunsteel>10</BOR_Sunsteel>
+            <BOR_ComponentIII>4</BOR_ComponentIII>
+          </costList>
+          <specialDisplayRadius>32.9</specialDisplayRadius>
+          <pathCost>30</pathCost>
+          <passability>PassThroughOnly</passability>
+          <designationCategory>BOR</designationCategory>
+          <designatorDropdown>BOR_TPumps</designatorDropdown>
+          <rotatable>false</rotatable>
+          <researchPrerequisites>
+            <li>BOR_Research_Production_III</li>
+            <li>DeepGroundPump</li>
+          </researchPrerequisites>
+          <constructionSkillPrerequisite>16</constructionSkillPrerequisite>
+        </ThingDef>
+
+        <ThingDef ParentName="BuildingBase">
+          <defName>BOR_ShallowerPump_III</defName>
+          <label>tenebral bed-raiser pump</label>
+          <description>Very slowly raises lake-beds and sea-beds, converting deep water into shallow water. Has a smaller area of effect than other pumps due to the limitations of this process.</description>
+          <graphicData>
+            <texPath>BOR/Tier3/TerrainPumpDeepDry</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <shadowData>
+              <volume>(0.58, 0.35, 0.25)</volume>
+              <offset>(0,0,-0.1)</offset>
+            </shadowData>
+            <damageData>
+              <rect>(0.2,0.2,0.6,0.6)</rect>
+            </damageData>
+          </graphicData>
+          <comps>
+            <li Class="CompProperties_Forbiddable" />
+            <li Class="CompProperties_Power">
+              <compClass>CompPowerTrader</compClass>
+              <basePowerConsumption>2400</basePowerConsumption>
+            </li>
+            <li Class="TerraPumps.CompProperties_TerrainPumpShallower">
+              <soundWorking>MoisturePump_Ambience</soundWorking>
+              <radius>32.9</radius>
+              <daysToRadius>6</daysToRadius>
+            </li>
+          </comps>
+          <tickerType>Rare</tickerType>
+          <terrainAffordanceNeeded>ShallowWater</terrainAffordanceNeeded>
+          <altitudeLayer>Building</altitudeLayer>
+          <statBases>
+            <MaxHitPoints>400</MaxHitPoints>
+            <WorkToBuild>12000</WorkToBuild>
+            <Flammability>0.12</Flammability>
+            <Beauty>-1</Beauty>
+          </statBases>
+          <fillPercent>0.15</fillPercent>
+          <building>
+            <ai_chillDestination>false</ai_chillDestination>
+            <destroySound>BuildingDestroyed_Metal_Small</destroySound>
+          </building>
+          <costList>
+            <BOR_Tenebrite>75</BOR_Tenebrite>
+            <BOR_Sunsteel>10</BOR_Sunsteel>
+            <BOR_ComponentIII>4</BOR_ComponentIII>
+          </costList>
+          <specialDisplayRadius>32.9</specialDisplayRadius>
+          <pathCost>30</pathCost>
+          <passability>PassThroughOnly</passability>
+          <designationCategory>BOR</designationCategory>
+          <designatorDropdown>BOR_TPumps</designatorDropdown>
+          <rotatable>false</rotatable>
+          <researchPrerequisites>
+            <li>BOR_Research_Production_III</li>
+            <li>DeepGroundPump</li>
+          </researchPrerequisites>
+          <constructionSkillPrerequisite>17</constructionSkillPrerequisite>
+        </ThingDef>
+
+      </value>
+    </enabled>
+  </Operation>
+
+</Patch>
