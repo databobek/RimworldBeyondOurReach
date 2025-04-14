@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Patch>
-    <Operation Class="PatchOperationFindMod">
-        <mods>
-            <li>Rimsenal</li>
-        </mods>
-        <match Class="BeyondOurReachModSettings.PatchOperationModSettings">
-			<modSettingDef>BOR_Setting_AddSOS2EVAToBORArmors</modSettingDef>
-			<enabled Class="PatchOperationSequence">
+    
+    <Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
+        <modSettingDef>BOR_Setting_AddSOS2EVAToBORArmors</modSettingDef>
+        <enabled Class="PatchOperationFindMod">
+            <mods>
+                <li>Rimsenal</li>
+            </mods>
+            <match Class="PatchOperationSequence">
                 <operations>
 
                     <li Class="PatchOperationReplace">
@@ -106,7 +107,7 @@
                     </li>
 
                 </operations>
-            </enabled>
-        </match>
+            </match>
+        </enabled>
     </Operation>
 </Patch>
