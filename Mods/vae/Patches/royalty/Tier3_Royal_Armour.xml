@@ -1,0 +1,762 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+
+  <Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
+    <modSettingDef>BOR_Setting_VAE_Armours</modSettingDef>
+    <enabled Class="PatchOperationSequence">
+	  <operations>
+	  
+	  <!-- patch sequence to patch in defs while proceeding to check for CE -->
+	  <li Class="PatchOperationAdd">
+      <xpath>Defs</xpath>
+      
+            <value>
+
+                <ThingDef MayRequire="ludeon.rimworld.royalty" ParentName="ArmorHelmetMakeableBase">
+                    <defName>BOR_Tenebral_Headgear_RoyalTrooperHelmet</defName>
+                    <label>prestige Tenebral trooper helmet</label>
+                    <description>A Tenebral-tech and lightweight armored helmet with a protective tenebrite-weave plate.\n\nExpensive and beautiful, prestige armor like this is usually made for those of high status. Embedded eltex threads also enhance the wearer's psychic sensitivity.</description>
+                    <techLevel>Archotech</techLevel>
+                    <tradeability>Sellable</tradeability>
+                    <graphicData>
+                        <color>(0.2, 0.2, 0.2)</color>
+                        <texPath>Things/Headgear/RoyalTrooperHelmet/RoyalTrooperHelmet</texPath>
+                        <graphicClass>Graphic_Single</graphicClass>
+                        <shaderType>CutoutComplex</shaderType>
+                        <drawSize>0.85</drawSize>
+                    </graphicData>
+                    <costList>
+                        <BOR_ComponentIII>1</BOR_ComponentIII>
+                        <BOR_Tenebrite>35</BOR_Tenebrite>
+                        <Gold>9</Gold>
+                        <VPE_Eltex MayRequire="vanillaexpanded.vpsycastse">8</VPE_Eltex>
+                    </costList>
+                    <statBases>
+                        <WorkToMake>48937</WorkToMake>
+                        <MaxHitPoints>387</MaxHitPoints>
+                        <Mass>0.521</Mass>
+                        <Flammability>0.232</Flammability>
+                        <ArmorRating_Sharp>2.565</ArmorRating_Sharp>
+                        <ArmorRating_Blunt>1.147</ArmorRating_Blunt>
+                        <ArmorRating_Heat>1.89</ArmorRating_Heat>
+                        <Insulation_Cold>6</Insulation_Cold>
+                        <Insulation_Heat>13</Insulation_Heat>
+                        <EquipDelay>1</EquipDelay>
+
+                        <RoyalFavorValue>7</RoyalFavorValue>
+                    </statBases>
+                    <equippedStatOffsets>
+                        <ToxicEnvironmentResistance>1.0</ToxicEnvironmentResistance>
+                        <MentalBreakThreshold>-0.05</MentalBreakThreshold>
+                        <PsychicSensitivity>0.168</PsychicSensitivity>
+                        <PsychicEntropyRecoveryRate>0.112</PsychicEntropyRecoveryRate>
+                    </equippedStatOffsets>
+                    <thingCategories Inherit="False">
+                        <li>BOR_Armor_Headgear_III</li>
+                    </thingCategories>
+                    <thingSetMakerTags>
+                        <li>RewardSpecial</li>
+                    </thingSetMakerTags>
+                    <apparel>
+                        <bodyPartGroups>
+                            <li>UpperHead</li>
+                        </bodyPartGroups>
+                        <wornGraphicPath>Things/Headgear/RoyalTrooperHelmet/RoyalTrooperHelmet</wornGraphicPath>
+                        <useWornGraphicMask>true</useWornGraphicMask>
+                        <layers>
+                            <li>Overhead</li>
+                        </layers>
+                        <tags>
+                            <li>BOR_Royal_III</li>
+                        </tags>
+                        <useDeflectMetalEffect>true</useDeflectMetalEffect>
+                    </apparel>
+                    <recipeMaker>
+                        <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+                        <researchPrerequisites>
+                            <li>BOR_Research_Armor_III</li>
+                            <li>VAE_TrooperArmor</li>
+                        </researchPrerequisites>
+                        <skillRequirements>
+                            <Crafting>19</Crafting>
+                        </skillRequirements>
+                        <recipeUsers Inherit="False">
+                            <li>BOR_Bench_III</li>
+                            <li>BOR_Bench_IV</li>
+                        </recipeUsers>
+                    </recipeMaker>
+
+                    <tradeTags>
+                        <li>BOR_Tech_III</li>
+                    </tradeTags>
+                </ThingDef>
+
+                <ThingDef MayRequire="ludeon.rimworld.royalty" ParentName="ArmorMachineableBase">
+                    <defName>BOR_Tenebral_Apparel_RoyalTrooperArmor</defName>
+                    <label>prestige Tenebral trooper armor</label>
+                    <description>A suit of light minimally-powered Tenebral armor. Lightweight tenebrite-weave plates block attacks, and neuro-memetic assistors in the lower body redistribute weight carried by its user. It is slimmer than other powered armor and can fit under clothes.\n\nExpensive and beautiful, prestige armor like this is usually made for those of high status. Embedded eltex threads also enhance the wearer's psychic sensitivity.</description>
+                    <graphicData>
+                        <color>(0.2, 0.2, 0.2)</color>
+                        <texPath>Things/Apparel/RoyalTrooperArmor/RoyalTrooperArmor</texPath>
+                        <graphicClass>Graphic_Single</graphicClass>
+                        <shaderType>CutoutComplex</shaderType>
+                    </graphicData>
+                    <techLevel>Archotech</techLevel>
+                    <tradeability>Sellable</tradeability>
+                    <costList>
+                        <BOR_ComponentIII>2</BOR_ComponentIII>
+                        <BOR_Tenebrite>90</BOR_Tenebrite>
+                        <Uranium>15</Uranium>
+                        <Gold>27</Gold>
+                        <VPE_Eltex MayRequire="vanillaexpanded.vpsycastse">8</VPE_Eltex>
+                    </costList>
+                    <statBases>
+                        <MaxHitPoints>810</MaxHitPoints>
+                        <WorkToMake>128250</WorkToMake>
+                        <Mass>4.34</Mass>
+                        <Flammability>0.232</Flammability>
+                        <ArmorRating_Sharp>2.193</ArmorRating_Sharp>
+                        <ArmorRating_Blunt>1.182</ArmorRating_Blunt>
+                        <ArmorRating_Heat>1.282</ArmorRating_Heat>
+                        <Insulation_Cold>67</Insulation_Cold>
+                        <Insulation_Heat>33</Insulation_Heat>
+                        <EquipDelay>5</EquipDelay>
+
+                        <RoyalFavorValue>7</RoyalFavorValue>
+                    </statBases>
+                    <equippedStatOffsets>
+                        <ToxicEnvironmentResistance>1.0</ToxicEnvironmentResistance>
+                        <MentalBreakThreshold>-0.05</MentalBreakThreshold>
+                        <PsychicSensitivity>0.168</PsychicSensitivity>
+                        <PsychicEntropyRecoveryRate>0.112</PsychicEntropyRecoveryRate>
+                        <MoveSpeed>1.688</MoveSpeed>
+                    </equippedStatOffsets>
+                    <thingCategories Inherit="False">
+                        <li>BOR_Armor_III</li>
+                    </thingCategories>
+                    <thingSetMakerTags>
+                        <li>RewardSpecial</li>
+                    </thingSetMakerTags>
+                    <apparel>
+                        <bodyPartGroups>
+                            <li>Neck</li>
+                            <li>Torso</li>
+                            <li>Shoulders</li>
+                            <li>Arms</li>
+                            <li>Legs</li>
+                        </bodyPartGroups>
+                        <wornGraphicPath>Things/Apparel/RoyalTrooperArmor/RoyalTrooperArmor</wornGraphicPath>
+                        <useWornGraphicMask>true</useWornGraphicMask>
+                        <layers>
+                            <li>Middle</li>
+                        </layers>
+                        <tags>
+                            <li>BOR_Royal_III</li>
+                        </tags>
+                        <useDeflectMetalEffect>true</useDeflectMetalEffect>
+                    </apparel>
+                    <recipeMaker>
+                        <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+                        <researchPrerequisites>
+                            <li>BOR_Research_Armor_III</li>
+                            <li>VAE_TrooperArmor</li>
+                        </researchPrerequisites>
+                        <skillRequirements>
+                            <Crafting>19</Crafting>
+                        </skillRequirements>
+                        <recipeUsers Inherit="False">
+                            <li>BOR_Bench_III</li>
+                            <li>BOR_Bench_IV</li>
+                        </recipeUsers>
+                    </recipeMaker>
+
+                    <tradeTags>
+                        <li>BOR_Tech_III</li>
+                    </tradeTags>
+                </ThingDef>
+
+                <ThingDef MayRequire="ludeon.rimworld.royalty" ParentName="ArmorHelmetMakeableBase">
+                    <defName>BOR_Tenebral_Headgear_RoyalSiegeHelmet</defName>
+                    <label>prestige Tenebral siegebreaker helmet</label>
+                    <description>A heavily-armored Tenebral-tech helmet, with a solid tenebrite-weave shell and omni-spectrum camera.\n\nExpensive and beautiful, prestige armor like this is usually made for those of high status. Embedded eltex threads also enhance the wearer's psychic sensitivity.</description>
+                    <techLevel>Archotech</techLevel>
+                    <tradeability>Sellable</tradeability>
+                    <graphicData>
+                        <color>(0.2, 0.2, 0.2)</color>
+                        <texPath>Things/Headgear/RoyalSiegebreakerHelmet/RoyalSiegebreakerHelmet</texPath>
+                        <graphicClass>Graphic_Single</graphicClass>
+                        <shaderType>CutoutComplex</shaderType>
+                        <drawSize>0.90</drawSize>
+                    </graphicData>
+                    <costList>
+                        <BOR_ComponentIII>2</BOR_ComponentIII>
+                        <BOR_Tenebrite>70</BOR_Tenebrite>
+                        <Gold>33</Gold>
+                        <VPE_Eltex MayRequire="vanillaexpanded.vpsycastse">8</VPE_Eltex>
+                    </costList>
+                    <statBases>
+                        <WorkToMake>197437</WorkToMake>
+                        <MaxHitPoints>573</MaxHitPoints>
+                        <Mass>1.447</Mass>
+                        <Flammability>0.232</Flammability>
+                        <ArmorRating_Sharp>3.982</ArmorRating_Sharp>
+                        <ArmorRating_Blunt>1.585</ArmorRating_Blunt>
+                        <ArmorRating_Heat>1.62</ArmorRating_Heat>
+                        <Insulation_Cold>13</Insulation_Cold>
+                        <Insulation_Heat>6</Insulation_Heat>
+                        <EquipDelay>3</EquipDelay>
+
+                        <RoyalFavorValue>7</RoyalFavorValue>
+                    </statBases>
+                    <equippedStatOffsets>
+                        <ToxicEnvironmentResistance>1.0</ToxicEnvironmentResistance>
+                        <PainShockThreshold>0.168</PainShockThreshold>
+                        <PsychicSensitivity>0.168</PsychicSensitivity>
+                        <PsychicEntropyRecoveryRate>0.112</PsychicEntropyRecoveryRate>
+                    </equippedStatOffsets>
+                    <thingCategories Inherit="False">
+                        <li>BOR_Armor_Headgear_III</li>
+                    </thingCategories>
+                    <thingSetMakerTags>
+                        <li>RewardSpecial</li>
+                    </thingSetMakerTags>
+                    <apparel>
+                        <bodyPartGroups>
+                            <li>FullHead</li>
+                        </bodyPartGroups>
+                        <wornGraphicPath>Things/Headgear/RoyalSiegebreakerHelmet/RoyalSiegebreakerHelmet</wornGraphicPath>
+                        <useWornGraphicMask>true</useWornGraphicMask>
+                        <layers>
+                            <li>Overhead</li>
+                        </layers>
+                        <tags>
+                            <li>BOR_Royal_III</li>
+                            <li>PresSiegebreakerArmorSet</li>
+                        </tags>
+                        <useDeflectMetalEffect>true</useDeflectMetalEffect>
+                    </apparel>
+                    <recipeMaker>
+                        <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+                        <researchPrerequisites>
+                            <li>BOR_Research_Armor_III</li>
+                            <li>VAE_SiegebreakerArmor</li>
+                        </researchPrerequisites>
+                        <skillRequirements>
+                            <Crafting>20</Crafting>
+                        </skillRequirements>
+                        <recipeUsers Inherit="False">
+                            <li>BOR_Bench_III</li>
+                            <li>BOR_Bench_IV</li>
+                        </recipeUsers>
+                    </recipeMaker>
+
+                    <tradeTags>
+                        <li>BOR_Tech_III</li>
+                    </tradeTags>
+                </ThingDef>
+
+                <ThingDef MayRequire="ludeon.rimworld.royalty" ParentName="ApparelArmorPowerTenebralBase">
+                    <defName>BOR_Tenebral_Apparel_RoyalSiegeArmor</defName>
+                    <label>prestige Tenebral siegebreaker armor</label>
+                    <description>A suit of heavy powered Tenebral armor, built for increased protection while still maintaining mobility. Heavy layered tenebrite-weave plates paired with a built-in energy shield emitter stop most attacks. Neuro-memetic assistors allow a human to wear this armor without immobilizing them entirely.\n\nExpensive and beautiful, prestige armor like this is usually made for those of high status. Embedded eltex threads also enhance the wearer's psychic sensitivity.</description>
+                    <graphicData>
+                        <color>(0.2, 0.2, 0.2)</color>
+                        <texPath>Things/Apparel/RoyalSiegebreakerArmor/RoyalSiegebreakerArmor</texPath>
+                        <graphicClass>Graphic_Single</graphicClass>
+                        <shaderType>CutoutComplex</shaderType>
+                    </graphicData>
+                    <uiIconScale>1.25</uiIconScale>
+                    <techLevel>Archotech</techLevel>
+                    <tradeability>Sellable</tradeability>
+                    <costList>
+                        <BOR_ComponentIII>6</BOR_ComponentIII>
+                        <BOR_Tenebrite>200</BOR_Tenebrite>
+                        <Uranium>135</Uranium>
+                        <Gold>60</Gold>
+                        <VPE_Eltex MayRequire="vanillaexpanded.vpsycastse">8</VPE_Eltex>
+                    </costList>
+                    <tickerType>Normal</tickerType>
+                    <statBases>
+                        <WorkToMake>533250</WorkToMake>
+                        <MaxHitPoints>1282</MaxHitPoints>
+                        <Mass>9</Mass>
+                        <Flammability>0.232</Flammability>
+                        <ArmorRating_Sharp>3.982</ArmorRating_Sharp>
+                        <ArmorRating_Blunt>1.585</ArmorRating_Blunt>
+                        <ArmorRating_Heat>1.62</ArmorRating_Heat>
+                        <Insulation_Cold>117</Insulation_Cold>
+                        <Insulation_Heat>36</Insulation_Heat>
+                        <EquipDelay>10</EquipDelay>
+                        <EnergyShieldRechargeRate>0.068</EnergyShieldRechargeRate>
+                        <EnergyShieldEnergyMax>1.35</EnergyShieldEnergyMax>
+
+                        <RoyalFavorValue>7</RoyalFavorValue>
+                    </statBases>
+                    <equippedStatOffsets>
+                        <ToxicEnvironmentResistance>1.0</ToxicEnvironmentResistance>
+                        <PainShockThreshold>0.168</PainShockThreshold>
+                        <PsychicSensitivity>0.168</PsychicSensitivity>
+                        <PsychicEntropyRecoveryRate>0.112</PsychicEntropyRecoveryRate>
+                        <MoveSpeed>-0.326</MoveSpeed>
+                    </equippedStatOffsets>
+                    <thingCategories Inherit="False">
+                        <li>BOR_Armor_III</li>
+                    </thingCategories>
+                    <thingSetMakerTags>
+                        <li>RewardSpecial</li>
+                    </thingSetMakerTags>
+                    <apparel>
+                        <bodyPartGroups>
+                            <li>Neck</li>
+                            <li>Torso</li>
+                            <li>Shoulders</li>
+                            <li>Arms</li>
+                            <li>Legs</li>
+                        </bodyPartGroups>
+                        <wornGraphicPath>Things/Apparel/RoyalSiegebreakerArmor/RoyalSiegebreakerArmor</wornGraphicPath>
+                        <useWornGraphicMask>true</useWornGraphicMask>
+                        <layers>
+                            <li>Middle</li>
+                            <li>Shell</li>
+                        </layers>
+                        <tags>
+                            <li>BOR_Royal_III</li>
+                            <li>PresSiegebreakerArmorSet</li>
+                        </tags>
+                        <useDeflectMetalEffect>true</useDeflectMetalEffect>
+                    </apparel>
+                    <recipeMaker>
+                        <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+                        <researchPrerequisites>
+                            <li>BOR_Research_Armor_III</li>
+                            <li>VAE_SiegebreakerArmor</li>
+                        </researchPrerequisites>
+                        <skillRequirements>
+                            <Crafting>20</Crafting>
+                        </skillRequirements>
+                        <recipeUsers Inherit="False">
+                            <li>BOR_Bench_III</li>
+                            <li>BOR_Bench_IV</li>
+                        </recipeUsers>
+                    </recipeMaker>
+                    <comps>
+                        <li Class="VFECore.CompProperties_ShieldBubble">
+                            <compClass>VFECore.CompShieldBubble</compClass>
+                            <blockRangedAttack>true</blockRangedAttack>
+                            <blockMeleeAttack>false</blockMeleeAttack>
+                            <showWhenDrafted>true</showWhenDrafted>
+                            <showOnHostiles>true</showOnHostiles>
+                            <showOnNeutralInCombat>true</showOnNeutralInCombat>
+                            <shieldTexPath>Other/ShieldBubble</shieldTexPath>
+                            <EnergyShieldRechargeRate>0.675</EnergyShieldRechargeRate>
+                            <EnergyShieldEnergyMax>337</EnergyShieldEnergyMax>
+                            <minShieldSize>4.725</minShieldSize>
+                            <maxShieldSize>6.075</maxShieldSize>
+                            <disableRotation>true</disableRotation>
+                        </li>
+                    </comps>
+
+                    <tradeTags>
+                        <li>BOR_Tech_III</li>
+                    </tradeTags>
+                </ThingDef>
+
+            </value>
+
+	  </li>
+	  
+	  <!-- check to see if CombatExtended is loaded as well, then modify the patched in defs to CE standards -->
+	  <li Class="PatchOperationFindMod">
+		<mods>
+		  <li>Combat Extended</li>
+		</mods>
+			<match Class="PatchOperationSequence">
+				<operations>
+
+					<li Class="PatchOperationAdd" MayRequire="ludeon.rimworld.royalty">
+						<xpath>Defs/ThingDef[defName="BOR_Tenebral_Headgear_RoyalTrooperHelmet"]/statBases</xpath>
+						<value>
+							<Bulk>1</Bulk>
+							<WornBulk>0.289</WornBulk>
+							<NightVisionEfficiency_Apparel>2.362</NightVisionEfficiency_Apparel>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Tenebral_Headgear_RoyalTrooperHelmet"]/statBases/ArmorRating_Sharp</xpath>
+						<value>
+							<ArmorRating_Sharp>35.438</ArmorRating_Sharp>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Tenebral_Headgear_RoyalTrooperHelmet"]/statBases/ArmorRating_Blunt</xpath>
+						<value>
+							<ArmorRating_Blunt>67</ArmorRating_Blunt>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Tenebral_Headgear_RoyalTrooperHelmet"]/statBases/Flammability</xpath>
+						<value>
+							<Flammability>0.144</Flammability>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Tenebral_Headgear_RoyalTrooperHelmet"]/statBases/MaxHitPoints</xpath>
+						<value>
+							<MaxHitPoints>640</MaxHitPoints>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace" MayRequire="ludeon.rimworld.royalty">
+						<xpath>Defs/ThingDef[defName="BOR_Tenebral_Headgear_RoyalTrooperHelmet"]/equippedStatOffsets/MentalBreakThreshold</xpath>
+						<value>
+							<AimingAccuracy>0.1</AimingAccuracy>
+						</value>
+					</li>
+
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[defName="BOR_Tenebral_Headgear_RoyalTrooperHelmet"]/costList</xpath>
+						<value>
+							<DevilstrandCloth>10</DevilstrandCloth>
+						</value>
+					</li>
+
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Tenebral_Apparel_RoyalTrooperArmor"]/statBases/Mass</xpath>
+						<value>
+							<Bulk>22</Bulk>
+							<WornBulk>3</WornBulk>
+							<Mass>10</Mass>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Tenebral_Apparel_RoyalTrooperArmor"]/statBases/ArmorRating_Sharp</xpath>
+						<value>
+							<ArmorRating_Sharp>46</ArmorRating_Sharp>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Tenebral_Apparel_RoyalTrooperArmor"]/statBases/ArmorRating_Blunt</xpath>
+						<value>
+							<ArmorRating_Blunt>94</ArmorRating_Blunt>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Tenebral_Apparel_RoyalTrooperArmor"]/statBases/Flammability</xpath>
+						<value>
+							<Flammability>0.144</Flammability>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Tenebral_Apparel_RoyalTrooperArmor"]/statBases/MaxHitPoints</xpath>
+						<value>
+							<MaxHitPoints>1350</MaxHitPoints>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Tenebral_Apparel_RoyalTrooperArmor"]/equippedStatOffsets/MoveSpeed</xpath>
+						<value>
+							<MoveSpeed>1.688</MoveSpeed>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Tenebral_Apparel_RoyalTrooperArmor"]/equippedStatOffsets/MentalBreakThreshold</xpath>
+						<value>
+							<CarryWeight>82</CarryWeight>
+							<CarryBulk>4.34</CarryBulk>
+							<ShootingAccuracyPawn>0.168</ShootingAccuracyPawn>
+						</value>
+					</li>
+
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[defName="BOR_Tenebral_Apparel_RoyalTrooperArmor"]/apparel/bodyPartGroups</xpath>
+						<value>
+							<li>Feet</li>
+						</value>
+					</li>
+
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="BOR_Tenebral_Apparel_RoyalSiegeArmor"]/statBases/EnergyShieldRechargeRate</xpath>
+					<value>
+						<EnergyShieldRechargeRate>0.102</EnergyShieldRechargeRate>
+					</value>
+				</li>
+
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[defName="BOR_Tenebral_Apparel_RoyalTrooperArmor"]/costList</xpath>
+						<value>
+							<DevilstrandCloth>30</DevilstrandCloth>
+						</value>
+					</li>
+
+					<li Class="PatchOperationAddModExtension">
+						<xpath>Defs/ThingDef[defName="BOR_Tenebral_Apparel_RoyalTrooperArmor"]</xpath>
+						<value>
+							<li Class="CombatExtended.PartialArmorExt">
+								<stats>
+									<li>
+										<ArmorRating_Sharp>2.025</ArmorRating_Sharp>
+										<parts>
+											<li>Neck</li>
+										</parts>
+									</li>
+									<li>
+										<ArmorRating_Blunt>2.025</ArmorRating_Blunt>
+										<parts>
+											<li>Neck</li>
+										</parts>
+									</li>
+									<li>
+										<ArmorRating_Sharp>3.037</ArmorRating_Sharp>
+										<parts>
+											<li>Leg</li>
+										</parts>
+									</li>
+									<li>
+										<ArmorRating_Blunt>3.037</ArmorRating_Blunt>
+										<parts>
+											<li>Leg</li>
+										</parts>
+									</li>
+									<li>
+										<ArmorRating_Sharp>2.7</ArmorRating_Sharp>
+										<parts>
+											<li>Arm</li>
+										</parts>
+									</li>
+									<li>
+										<ArmorRating_Blunt>2.7</ArmorRating_Blunt>
+										<parts>
+											<li>Arm</li>
+										</parts>
+									</li>
+								</stats>
+							</li>
+						</value>
+					</li>
+
+					<li Class="PatchOperationAdd" MayRequire="ludeon.rimworld.royalty">
+						<xpath>Defs/ThingDef[defName="BOR_Tenebral_Headgear_RoyalSiegeHelmet"]/statBases</xpath>
+						<value>
+							<Bulk>3</Bulk>
+							<WornBulk>1</WornBulk>
+							<NightVisionEfficiency_Apparel>2.532</NightVisionEfficiency_Apparel>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Tenebral_Headgear_RoyalSiegeHelmet"]/statBases/ArmorRating_Sharp</xpath>
+						<value>
+							<ArmorRating_Sharp>68.85</ArmorRating_Sharp>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Tenebral_Headgear_RoyalSiegeHelmet"]/statBases/ArmorRating_Blunt</xpath>
+						<value>
+							<ArmorRating_Blunt>168</ArmorRating_Blunt>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Tenebral_Headgear_RoyalSiegeHelmet"]/statBases/MaxHitPoints</xpath>
+						<value>
+							<MaxHitPoints>877</MaxHitPoints>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Tenebral_Headgear_RoyalSiegeHelmet"]/statBases/Flammability</xpath>
+						<value>
+							<Flammability>0</Flammability>
+						</value>
+					</li>
+
+					<li Class="PatchOperationConditional" MayRequire="ludeon.rimworld.royalty">
+						<xpath>Defs/ThingDef[defName="BOR_Tenebral_Headgear_RoyalSiegeHelmet"]/apparel/immuneToToxGasExposure</xpath>
+						<nomatch Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="BOR_Tenebral_Headgear_RoyalSiegeHelmet"]/apparel</xpath>
+							<value>
+								<immuneToToxGasExposure>true</immuneToToxGasExposure>
+							</value>
+						</nomatch>
+					</li>
+
+					<li Class="PatchOperationReplace" MayRequire="ludeon.rimworld.royalty">
+						<xpath>Defs/ThingDef[defName="BOR_Tenebral_Headgear_RoyalSiegeHelmet"]/equippedStatOffsets</xpath>
+						<value>
+							<equippedStatOffsets>
+								<AimingAccuracy>0.15</AimingAccuracy>
+								<ToxicEnvironmentResistance>1.688</ToxicEnvironmentResistance>
+								<SmokeSensitivity>-1</SmokeSensitivity>
+								<PsychicSensitivity>0.168</PsychicSensitivity>
+								<PsychicEntropyRecoveryRate>0.112</PsychicEntropyRecoveryRate>
+								<MeleeDodgeChance>-0.15</MeleeDodgeChance>
+							</equippedStatOffsets>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace" MayRequire="ludeon.rimworld.royalty">
+						<xpath>Defs/ThingDef[defName="BOR_Tenebral_Headgear_RoyalSiegeHelmet"]/costList</xpath>
+						<value>
+							<costList>
+								<BOR_Tenebrite>60</BOR_Tenebrite>
+								<DevilstrandCloth>25</DevilstrandCloth>
+								<Hyperweave>5</Hyperweave>
+								<BOR_ComponentIII>2</BOR_ComponentIII>
+								<Gold>33</Gold>
+							</costList>
+						</value>
+					</li>
+
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[defName="BOR_Tenebral_Headgear_RoyalSiegeHelmet"]/apparel/layers</xpath>
+						<value>
+							<li>OnHead</li>
+							<li>StrappedHead</li>
+						</value>
+					</li>
+
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Tenebral_Apparel_RoyalSiegeArmor"]/statBases/Mass</xpath>
+						<value>
+							<Bulk>57</Bulk>
+							<WornBulk>10</WornBulk>
+							<Mass>45</Mass>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Tenebral_Apparel_RoyalSiegeArmor"]/statBases/ArmorRating_Sharp</xpath>
+						<value>
+							<ArmorRating_Sharp>87</ArmorRating_Sharp>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Tenebral_Apparel_RoyalSiegeArmor"]/statBases/ArmorRating_Blunt</xpath>
+						<value>
+							<ArmorRating_Blunt>202</ArmorRating_Blunt>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Tenebral_Apparel_RoyalSiegeArmor"]/statBases/MaxHitPoints</xpath>
+						<value>
+							<MaxHitPoints>2025</MaxHitPoints>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Tenebral_Apparel_RoyalSiegeArmor"]/statBases/Flammability</xpath>
+						<value>
+							<Flammability>0</Flammability>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace" MayRequire="ludeon.rimworld.royalty">
+						<xpath>Defs/ThingDef[defName="BOR_Tenebral_Apparel_RoyalSiegeArmor"]/equippedStatOffsets</xpath>
+						<value>
+							<equippedStatOffsets>
+								<CarryWeight>337</CarryWeight>
+								<CarryBulk>10</CarryBulk>
+								<ShootingAccuracyPawn>0.507</ShootingAccuracyPawn>
+								<ToxicEnvironmentResistance>1.688</ToxicEnvironmentResistance>
+								<PsychicSensitivity>0.168</PsychicSensitivity>
+								<PsychicEntropyRecoveryRate>0.112</PsychicEntropyRecoveryRate>
+							</equippedStatOffsets>
+						</value>
+					</li>
+
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[defName="BOR_Tenebral_Apparel_RoyalSiegeArmor"]/apparel/bodyPartGroups</xpath>
+						<value>
+							<li>Hands</li>
+							<li>Feet</li>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace" MayRequire="ludeon.rimworld.royalty">
+						<xpath>Defs/ThingDef[defName="BOR_Tenebral_Apparel_RoyalSiegeArmor"]/costList</xpath>
+						<value>
+							<costList>
+								<BOR_Tenebrite>180</BOR_Tenebrite>
+								<DevilstrandCloth>50</DevilstrandCloth>
+								<Hyperweave>10</Hyperweave>
+								<Uranium>337</Uranium>
+								<BOR_ComponentIII>8</BOR_ComponentIII>
+								<Gold>60</Gold>
+							</costList>
+						</value>
+					</li>
+
+					<li Class="PatchOperationAddModExtension">
+						<xpath>Defs/ThingDef[defName="BOR_Tenebral_Apparel_RoyalSiegeArmor"]</xpath>
+						<value>
+							<li Class="CombatExtended.PartialArmorExt">
+								<stats>
+									<li>
+										<ArmorRating_Sharp>2.7</ArmorRating_Sharp>
+										<parts>
+											<li>Hand</li>
+										</parts>
+									</li>
+									<li>
+										<ArmorRating_Blunt>2.7</ArmorRating_Blunt>
+										<parts>
+											<li>Hand</li>
+										</parts>
+									</li>
+								</stats>
+							</li>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Tenebral_Apparel_RoyalSiegeArmor"]/statBases/EnergyShieldRechargeRate</xpath>
+						<value>
+							<EnergyShieldRechargeRate>0.102</EnergyShieldRechargeRate>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Tenebral_Apparel_RoyalSiegeArmor"]/statBases/EnergyShieldEnergyMax</xpath>
+						<value>
+							<EnergyShieldEnergyMax>2.025</EnergyShieldEnergyMax>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace" MayRequire="ludeon.rimworld.royalty">
+						<xpath>Defs/ThingDef[defName="BOR_Tenebral_Apparel_RoyalSiegeArmor"]/comps/li[@Class="VFECore.CompProperties_ShieldBubble"]/EnergyShieldRechargeRate</xpath>
+						<value>
+							<EnergyShieldRechargeRate>1.013</EnergyShieldRechargeRate>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Tenebral_Apparel_RoyalSiegeArmor"]/comps/li[@Class="VFECore.CompProperties_ShieldBubble"]/EnergyShieldEnergyMax</xpath>
+						<value>
+							<EnergyShieldEnergyMax>505</EnergyShieldEnergyMax>
+						</value>
+					</li>
+
+				</operations>
+
+			</match>
+	  </li>
+	 </operations>
+    </enabled>
+  </Operation>
+
+</Patch>

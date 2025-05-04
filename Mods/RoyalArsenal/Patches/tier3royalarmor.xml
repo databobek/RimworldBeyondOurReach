@@ -1,0 +1,2182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+
+  <Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
+    <modSettingDef>BOR_Setting_RoyalArsenalVariants</modSettingDef>
+    <enabled Class="PatchOperationSequence">
+	  <operations>
+	  
+	  <!-- patch sequence to patch in defs while proceeding to check for CE -->
+	  <li Class="PatchOperationAdd">
+      <xpath>Defs</xpath>
+      
+      <value>
+
+        <ThingDef Name="BOR_ArmorHelmetMakeableBase_III" ParentName="ArmorHelmetMakeableBase" Abstract="True">
+          <thingCategories Inherit="False">
+            <li>BOR_Armor_Headgear_III</li>
+          </thingCategories>
+        </ThingDef>
+
+        <ThingDef ParentName="ArmorMachineableBase">
+          <defName>BOR_Tenebral_RA_RanseurArmor</defName>
+          <label>tenebral ranseur armor</label>
+          <description>A highly specialized suit of light tenebral power-armor. Tenebral anseur armor cannot protect as well as standard Recon armor, but it is highly optimized for stealth and reconissance operations. It features an advanced cloaking device in its core that can render its wearer invisible for extended periods of time. \nRanseur armor requires excessive power when its cloaking device is active, and its reactor must be resupplied with uranium after sufficient use.</description>
+          <techLevel>Archotech</techLevel>
+          <statBases>
+            <ArmorRating_Sharp>2.835</ArmorRating_Sharp>
+            <ArmorRating_Blunt>1.08</ArmorRating_Blunt>
+            <ArmorRating_Heat>1.35</ArmorRating_Heat>
+            <WorkToMake>270000</WorkToMake>
+            <MaxHitPoints>945</MaxHitPoints>
+            <Mass>4</Mass>
+            <Flammability>0.208</Flammability>
+            <Insulation_Cold>108</Insulation_Cold>
+            <Insulation_Heat>30.375</Insulation_Heat>
+            <EquipDelay>5</EquipDelay>
+
+            <RoyalFavorValue>7</RoyalFavorValue>
+          </statBases>
+          <equippedStatOffsets>
+            <MoveSpeed>3.375</MoveSpeed>
+            <SlaveSuppressionOffset MayRequire="Ludeon.RimWorld.Ideology">-0.35</SlaveSuppressionOffset>
+          </equippedStatOffsets>
+          <recipeMaker>
+            <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+            <researchPrerequisites>
+              <li>RA_CloakingResearch</li>
+              <li>BOR_Research_Armor_III</li>
+            </researchPrerequisites>
+            <skillRequirements>
+              <Crafting>20</Crafting>
+            </skillRequirements>
+            <recipeUsers Inherit="False">
+              <li>BOR_Bench_III</li>
+              <li>BOR_Bench_IV</li>
+            </recipeUsers>
+          </recipeMaker>
+          <graphicData>
+            <color>(0.2, 0.2, 0.2)</color>
+            <texPath>Things/Items/Equipment/Apparel/RanseurArmor/RanseurArmor</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+          </graphicData>
+          <generateCommonality>0.38</generateCommonality>
+          <tradeTags>
+            <li>BOR_HiTechArmor_III</li>
+            <li>BOR_Tech_III</li>
+          </tradeTags>
+          <thingCategories>
+            <li>BOR_Armor_III</li>
+          </thingCategories>
+          <costList>
+            <BOR_ComponentIII>6</BOR_ComponentIII>
+            <BOR_Tenebrite>80</BOR_Tenebrite>
+            <Uranium>202</Uranium>
+          </costList>
+          <apparel>
+            <bodyPartGroups>
+              <li>Torso</li>
+              <li>Neck</li>
+              <li>Shoulders</li>
+              <li>Arms</li>
+              <li>Legs</li>
+              <li>Hands</li>
+              <li>Feet</li>
+            </bodyPartGroups>
+            <wornGraphicPath>Things/Items/Equipment/Apparel/RanseurArmor/RanseurArmor</wornGraphicPath>
+            <layers>
+              <li>Middle</li>
+              <li>Shell</li>
+            </layers>
+            <useDeflectMetalEffect>true</useDeflectMetalEffect>
+          </apparel>
+          <comps>
+            <li Class="CompProperties_Biocodable" />
+            <li Class="CompProperties_ApparelReloadable">
+              <maxCharges>10</maxCharges>
+              <ammoDef>Uranium</ammoDef>
+              <ammoCountPerCharge>67</ammoCountPerCharge>
+              <baseReloadTicks>27</baseReloadTicks>
+              <soundReload>Standard_Reload</soundReload>
+              <hotKey>Misc4</hotKey>
+              <chargeNoun>cloak</chargeNoun>
+              <displayGizmoWhileUndrafted>false</displayGizmoWhileUndrafted>
+            </li>
+          </comps>
+          <verbs>
+            <li>
+              <verbClass>RoyalArsenal.Verb_Cloak</verbClass>
+              <label>activate tenebral cloak</label>
+              <violent>false</violent>
+              <hasStandardCommand>true</hasStandardCommand>
+              <targetable>false</targetable>
+              <nonInterruptingSelfCast>true</nonInterruptingSelfCast>
+              <onlyManualCast>True</onlyManualCast>
+            </li>
+          </verbs>
+          <thingSetMakerTags>
+            <li>RewardStandardHighFreq</li>
+          </thingSetMakerTags>
+
+        </ThingDef>
+
+        <ThingDef ParentName="BOR_ArmorHelmetMakeableBase_III">
+          <defName>BOR_Tenebral_RA_RanseurArmorHelmet</defName>
+          <label>tenebral ranseur helmet</label>
+          <description>A high-tech armored helmet designed for use with a set of tenebral ranseur armor. It features an internal heads-up display with a targeting computer similar to those found in Gunlinks.</description>
+          <techLevel>Archotech</techLevel>
+          <recipeMaker>
+            <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+            <researchPrerequisites>
+              <li>RA_CloakingResearch</li>
+              <li>BOR_Research_Armor_III</li>
+            </researchPrerequisites>
+            <skillRequirements>
+              <Crafting>20</Crafting>
+            </skillRequirements>
+            <recipeUsers Inherit="False">
+              <li>BOR_Bench_III</li>
+              <li>BOR_Bench_IV</li>
+            </recipeUsers>
+          </recipeMaker>
+          <graphicData>
+            <color>(0.2, 0.2, 0.2)</color>
+            <texPath>Things/Items/Equipment/Apparel/RanseurArmorHelmet/RanseurArmorHelmet</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>(0.9, 0.9)</drawSize>
+          </graphicData>
+          <tradeTags>
+            <li>BOR_HiTechArmor_III</li>
+            <li>BOR_Tech_III</li>
+          </tradeTags>
+          <generateCommonality>0.38</generateCommonality>
+          <statBases>
+            <WorkToMake>101250</WorkToMake>
+            <MaxHitPoints>405</MaxHitPoints>
+            <Mass>0.521</Mass>
+            <Flammability>0.208</Flammability>
+            <ArmorRating_Sharp>2.835</ArmorRating_Sharp>
+            <ArmorRating_Blunt>1.08</ArmorRating_Blunt>
+            <ArmorRating_Heat>1.35</ArmorRating_Heat>
+            <Insulation_Cold>13</Insulation_Cold>
+            <Insulation_Heat>6</Insulation_Heat>
+            <EquipDelay>1.042</EquipDelay>
+
+            <RoyalFavorValue>7</RoyalFavorValue>
+          </statBases>
+          <costList>
+            <BOR_ComponentIII>4</BOR_ComponentIII>
+            <BOR_Tenebrite>30</BOR_Tenebrite>
+          </costList>
+          <apparel>
+            <immuneToToxGasExposure>true</immuneToToxGasExposure>
+            <bodyPartGroups>
+              <li>FullHead</li>
+            </bodyPartGroups>
+            <wornGraphicPath>Things/Items/Equipment/Apparel/RanseurArmorHelmet/RanseurArmorHelmet</wornGraphicPath>
+            <layers>
+              <li>Overhead</li>
+            </layers>
+            <useDeflectMetalEffect>true</useDeflectMetalEffect>
+          </apparel>
+          <equippedStatOffsets>
+            <ShootingAccuracyPawn>4.5</ShootingAccuracyPawn>
+          </equippedStatOffsets>
+          <comps>
+            <li Class="CompProperties_Biocodable" />
+          </comps>
+          <thingSetMakerTags>
+            <li>RewardStandardHighFreq</li>
+          </thingSetMakerTags>
+        </ThingDef>
+
+        <ThingDef ParentName="ApparelBase">
+          <defName>BOR_Tenebral_RA_StealthBelt</defName>
+          <label>personal tenebral cloaking system</label>
+          <description>An tenebral cloaking system worn on the belt. It is less efficient than a suit of tenebral ranseur armor, and it can only hold enough nuclear fuel for one charge at a time.</description>
+          <techLevel>Archotech</techLevel>
+          <comps>
+            <li Class="CompProperties_ApparelReloadable">
+              <maxCharges>4</maxCharges>
+              <ammoDef>Uranium</ammoDef>
+              <ammoCountPerCharge>135</ammoCountPerCharge>
+              <baseReloadTicks>27</baseReloadTicks>
+              <soundReload>Standard_Reload</soundReload>
+              <hotKey>Misc4</hotKey>
+              <chargeNoun>cloak</chargeNoun>
+              <displayGizmoWhileUndrafted>false</displayGizmoWhileUndrafted>
+            </li>
+          </comps>
+          <verbs>
+            <li>
+              <verbClass>RoyalArsenal.Verb_Cloak</verbClass>
+              <label>activate tenebral cloak</label>
+              <violent>false</violent>
+              <hasStandardCommand>true</hasStandardCommand>
+              <targetable>false</targetable>
+              <nonInterruptingSelfCast>true</nonInterruptingSelfCast>
+              <onlyManualCast>True</onlyManualCast>
+            </li>
+          </verbs>
+          <recipeMaker>
+            <unfinishedThingDef>UnfinishedPack</unfinishedThingDef>
+            <researchPrerequisites>
+              <li>BOR_Research_Armor_III</li>
+            </researchPrerequisites>
+            <recipeUsers>
+              <li>BOR_Bench_III</li>
+              <li>BOR_Bench_IV</li>
+            </recipeUsers>
+            <useIngredientsForColor>false</useIngredientsForColor>
+            <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+            <workSkill>Crafting</workSkill>
+            <effectWorking>Smith</effectWorking>
+            <soundWorking>Recipe_Smith</soundWorking>
+            <skillRequirements>
+              <Crafting>13</Crafting>
+            </skillRequirements>
+          </recipeMaker>
+          <costList>
+            <BOR_ComponentIII>2</BOR_ComponentIII>
+            <BOR_Tenebrite>20</BOR_Tenebrite>
+            <Uranium>135</Uranium>
+          </costList>
+          <graphicData>
+            <color>(0.2, 0.2, 0.2)</color>
+            <texPath>Things/Pawn/Humanlike/Apparel/SmokepopPack/SmokepopPack</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+          </graphicData>
+          <tickerType>Normal</tickerType>
+          <statBases>
+            <WorkToMake>101250</WorkToMake>
+            <Mass>0</Mass>
+            <Flammability>0.208</Flammability>
+            <EquipDelay>1.042</EquipDelay>
+
+            <RoyalFavorValue>7</RoyalFavorValue>
+          </statBases>
+          <thingCategories>
+            <li>ApparelUtility</li>
+          </thingCategories>
+          <generateAllowChance>0.15</generateAllowChance>
+          <apparel>
+            <countsAsClothingForNudity>false</countsAsClothingForNudity>
+            <careIfWornByCorpse>false</careIfWornByCorpse>
+            <careIfDamaged>false</careIfDamaged>
+            <wearPerDay>0</wearPerDay>
+            <bodyPartGroups>
+              <li>Waist</li>
+            </bodyPartGroups>
+            <layers>
+              <li>Belt</li>
+            </layers>
+          </apparel>
+        </ThingDef>
+
+        <ThingDef ParentName="ArmorMachineableBase">
+          <defName>BOR_Tenebral_RA_GuardianArmorBase</defName>
+          <label>tenebral guardian armor</label>
+          <description>A suit of specialty tenebral power armor designed with extra defensive measures. A personal countermeasure system is mounted on the back, capable of rapidly launching EMP grenades to disrupt turrets and energy shields.</description>
+          <techLevel>Archotech</techLevel>
+          <recipeMaker>
+            <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+            <researchPrerequisites>
+              <li>RA_RadioChaffResearch</li>
+              <li>BOR_Research_Armor_III</li>
+            </researchPrerequisites>
+            <skillRequirements>
+              <Crafting>20</Crafting>
+            </skillRequirements>
+            <recipeUsers Inherit="False">
+              <li>BOR_Bench_III</li>
+              <li>BOR_Bench_IV</li>
+            </recipeUsers>
+          </recipeMaker>
+          <graphicData>
+            <color>(0.2, 0.2, 0.2)</color>
+            <texPath>Things/Items/Equipment/Apparel/GuardianArmor/GuardianArmor</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+          </graphicData>
+          <generateCommonality>0.31</generateCommonality>
+          <statBases>
+            <WorkToMake>253125</WorkToMake>
+            <MaxHitPoints>1147</MaxHitPoints>
+            <Mass>6</Mass>
+            <Flammability>0.208</Flammability>
+            <ArmorRating_Sharp>3.915</ArmorRating_Sharp>
+            <ArmorRating_Blunt>1.8</ArmorRating_Blunt>
+            <ArmorRating_Heat>2.025</ArmorRating_Heat>
+            <Insulation_Cold>114</Insulation_Cold>
+            <Insulation_Heat>33</Insulation_Heat>
+            <EquipDelay>8</EquipDelay>
+
+            <RoyalFavorValue>7</RoyalFavorValue>
+          </statBases>
+          <equippedStatOffsets>
+            <MoveSpeed>-0.222</MoveSpeed>
+            <SlaveSuppressionOffset MayRequire="Ludeon.RimWorld.Ideology">-0.3</SlaveSuppressionOffset>
+          </equippedStatOffsets>
+          <thingCategories>
+            <li>BOR_Armor_III</li>
+          </thingCategories>
+          <tradeTags>
+            <li>BOR_HiTechArmor_III</li>
+            <li>BOR_Tech_III</li>
+          </tradeTags>
+          <costList>
+            <BOR_ComponentIII>4</BOR_ComponentIII>
+            <BOR_Tenebrite>130</BOR_Tenebrite>
+            <Uranium>45</Uranium>
+          </costList>
+          <apparel>
+            <bodyPartGroups>
+              <li>Torso</li>
+              <li>Neck</li>
+              <li>Shoulders</li>
+              <li>Arms</li>
+              <li>Legs</li>
+              <li>Hands</li>
+              <li>Feet</li>
+            </bodyPartGroups>
+            <wornGraphicPath>Things/Items/Equipment/Apparel/GuardianArmor/GuardianArmor</wornGraphicPath>
+            <layers>
+              <li>Middle</li>
+              <li>Shell</li>
+            </layers>
+            <useDeflectMetalEffect>true</useDeflectMetalEffect>
+          </apparel>
+          <comps>
+            <li Class="CompProperties_Biocodable" />
+            <li Class="CompProperties_ApparelReloadable">
+              <maxCharges>15</maxCharges>
+              <ammoDef>ComponentIndustrial</ammoDef>
+              <ammoCountPerCharge>4</ammoCountPerCharge>
+              <baseReloadTicks>27</baseReloadTicks>
+              <soundReload>Standard_Reload</soundReload>
+              <hotKey>Misc4</hotKey>
+              <chargeNoun>grenade</chargeNoun>
+              <displayGizmoWhileUndrafted>false</displayGizmoWhileUndrafted>
+            </li>
+          </comps>
+          <verbs>
+            <li>
+              <label>launch tenebral emp grenade</label>
+              <verbClass>Verb_LaunchProjectileStatic</verbClass>
+              <hasStandardCommand>true</hasStandardCommand>
+              <onlyManualCast>True</onlyManualCast>
+              <range>49.275</range>
+              <forcedMissRadius>1.4</forcedMissRadius>
+              <warmupTime>0.125</warmupTime>
+              <noiseRadius>1</noiseRadius>
+              <ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
+              <soundCast>Shot_IncendiaryLauncher</soundCast>
+              <soundCastTail>GunTail_Medium</soundCastTail>
+              <muzzleFlashScale>14</muzzleFlashScale>
+              <drawHighlightWithLineOfSight>true</drawHighlightWithLineOfSight>
+              <targetParams>
+                <canTargetLocations>true</canTargetLocations>
+              </targetParams>
+              <defaultProjectile>Proj_GrenadeEMP</defaultProjectile>
+              <rangedFireRulepack>Combat_RangedFire_Thrown</rangedFireRulepack>
+            </li>
+          </verbs>
+          <thingSetMakerTags>
+            <li>RewardStandardHighFreq</li>
+          </thingSetMakerTags>
+        </ThingDef>
+
+        <ThingDef ParentName="BOR_ArmorHelmetMakeableBase_III">
+          <defName>BOR_Tenebral_RA_GuardianArmorHelmet</defName>
+          <label>tenebral guardian helmet</label>
+          <description>A modified tenebral marine helmet with an added armor plate in the front. It offers improved protection over a standard tenebral marine helmet.</description>
+          <techLevel>Archotech</techLevel>
+          <recipeMaker>
+            <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+            <researchPrerequisites>
+              <li>RA_RadioChaffResearch</li>
+              <li>BOR_Research_Armor_III</li>
+            </researchPrerequisites>
+            <skillRequirements>
+              <Crafting>20</Crafting>
+            </skillRequirements>
+            <recipeUsers Inherit="False">
+              <li>BOR_Bench_III</li>
+              <li>BOR_Bench_IV</li>
+            </recipeUsers>
+          </recipeMaker>
+          <graphicData>
+            <color>(0.2, 0.2, 0.2)</color>
+            <texPath>Things/Items/Equipment/Apparel/GuardianArmorHelmet/GuardianArmorHelmet</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>(0.9, 0.9)</drawSize>
+          </graphicData>
+          <uiIconScale>1.25</uiIconScale>
+          <tradeTags>
+            <li>BOR_HiTechArmor_III</li>
+            <li>BOR_Tech_III</li>
+          </tradeTags>
+          <generateCommonality>0.31</generateCommonality>
+          <statBases>
+            <WorkToMake>70875</WorkToMake>
+            <MaxHitPoints>505</MaxHitPoints>
+            <Mass>0.868</Mass>
+            <Flammability>0.208</Flammability>
+            <ArmorRating_Sharp>4.725</ArmorRating_Sharp>
+            <ArmorRating_Blunt>2.362</ArmorRating_Blunt>
+            <ArmorRating_Heat>2.362</ArmorRating_Heat>
+            <Insulation_Cold>13</Insulation_Cold>
+            <Insulation_Heat>6</Insulation_Heat>
+            <EquipDelay>1</EquipDelay>
+
+            <RoyalFavorValue>7</RoyalFavorValue>
+          </statBases>
+          <equippedStatOffsets>
+            <SlaveSuppressionOffset MayRequire="Ludeon.RimWorld.Ideology">-0.1</SlaveSuppressionOffset>
+          </equippedStatOffsets>
+          <costList>
+            <BOR_ComponentIII>1</BOR_ComponentIII>
+            <BOR_Tenebrite>70</BOR_Tenebrite>
+          </costList>
+          <apparel>
+            <immuneToToxGasExposure>true</immuneToToxGasExposure>
+            <bodyPartGroups>
+              <li>FullHead</li>
+            </bodyPartGroups>
+            <wornGraphicPath>Things/Items/Equipment/Apparel/GuardianArmorHelmet/GuardianArmorHelmet</wornGraphicPath>
+            <layers>
+              <li>Overhead</li>
+            </layers>
+            <useDeflectMetalEffect>true</useDeflectMetalEffect>
+          </apparel>
+          <comps>
+            <li Class="CompProperties_Biocodable" />
+          </comps>
+          <thingSetMakerTags>
+            <li>RewardStandardHighFreq</li>
+          </thingSetMakerTags>
+        </ThingDef>
+
+        <ThingDef ParentName="ArmorMachineableBase">
+          <defName>BOR_Tenebral_RA_PhalanxArmor</defName>
+          <label>phalanx armor</label>
+          <description>A suit of heavy powered armor based on the standard Cataphract design. It features defensive improvements, including stronger armor plating and a reusable low-shield deployer. \nMechanites within the low-shield deployer can replicate the shield core in-between uses, but the unit must be resupplied with advanced components.</description>
+          <techLevel>Archotech</techLevel>
+          <recipeMaker>
+            <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+            <researchPrerequisites>
+              <li>BOR_Research_Armor_III</li>
+              <li>ShieldBelt</li>
+            </researchPrerequisites>
+            <skillRequirements>
+              <Crafting>20</Crafting>
+            </skillRequirements>
+            <recipeUsers Inherit="False">
+              <li>BOR_Bench_III</li>
+              <li>BOR_Bench_IV</li>
+            </recipeUsers>
+          </recipeMaker>
+          <graphicData>
+            <color>(0.2, 0.2, 0.2)</color>
+            <texPath>Things/Items/Equipment/Apparel/PhalanxArmor/PhalanxArmor</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+          </graphicData>
+          <uiIconScale>1.25</uiIconScale>
+          <generateCommonality>0.31</generateCommonality>
+          <statBases>
+            <WorkToMake>303750</WorkToMake>
+            <MaxHitPoints>1350</MaxHitPoints>
+            <Mass>8</Mass>
+            <Flammability>0.208</Flammability>
+            <ArmorRating_Sharp>4.275</ArmorRating_Sharp>
+            <ArmorRating_Blunt>2.025</ArmorRating_Blunt>
+            <ArmorRating_Heat>2.362</ArmorRating_Heat>
+            <Insulation_Cold>121</Insulation_Cold>
+            <Insulation_Heat>40</Insulation_Heat>
+            <EquipDelay>9</EquipDelay>
+
+            <RoyalFavorValue>7</RoyalFavorValue>
+          </statBases>
+          <equippedStatOffsets>
+            <MoveSpeed>-0.355</MoveSpeed>
+            <SlaveSuppressionOffset MayRequire="Ludeon.RimWorld.Ideology">-0.3</SlaveSuppressionOffset>
+          </equippedStatOffsets>
+          <tradeTags>
+            <li>BOR_HiTechArmor_III</li>
+            <li>BOR_Tech_III</li>
+          </tradeTags>
+          <thingCategories>
+            <li>BOR_Armor_III</li>
+          </thingCategories>
+          <costList>
+            <BOR_ComponentIII>7</BOR_ComponentIII>
+            <BroadshieldCore>1</BroadshieldCore>
+            <BOR_Tenebrite>180</BOR_Tenebrite>
+            <Uranium>112</Uranium>
+          </costList>
+          <apparel>
+            <bodyPartGroups>
+              <li>Torso</li>
+              <li>Neck</li>
+              <li>Shoulders</li>
+              <li>Arms</li>
+              <li>Legs</li>
+              <li>Hands</li>
+              <li>Feet</li>
+            </bodyPartGroups>
+            <wornGraphicPath>Things/Items/Equipment/Apparel/PhalanxArmor/PhalanxArmor</wornGraphicPath>
+            <layers>
+              <li>Middle</li>
+              <li>Shell</li>
+            </layers>
+            <useDeflectMetalEffect>true</useDeflectMetalEffect>
+          </apparel>
+          <comps>
+            <li Class="CompProperties_Biocodable" />
+            <li Class="CompProperties_ApparelReloadable">
+              <maxCharges>1</maxCharges>
+              <ammoDef>BOR_ComponentIII</ammoDef>
+              <ammoCountPerCharge>6</ammoCountPerCharge>
+              <baseReloadTicks>27</baseReloadTicks>
+              <soundReload>Standard_Reload</soundReload>
+              <hotKey>Misc4</hotKey>
+              <chargeNoun>shield</chargeNoun>
+              <displayGizmoWhileUndrafted>false</displayGizmoWhileUndrafted>
+            </li>
+          </comps>
+          <verbs>
+            <li>
+              <verbClass>Verb_DeployBroadshield</verbClass>
+              <label>deploy tenebral phalanx shield</label>
+              <violent>false</violent>
+              <hasStandardCommand>true</hasStandardCommand>
+              <targetable>false</targetable>
+              <nonInterruptingSelfCast>true</nonInterruptingSelfCast>
+              <onlyManualCast>True</onlyManualCast>
+            </li>
+          </verbs>
+          <thingSetMakerTags>
+            <li>RewardStandardHighFreq</li>
+          </thingSetMakerTags>
+
+        </ThingDef>
+
+
+        <ThingDef ParentName="BOR_ArmorHelmetMakeableBase_III">
+          <defName>BOR_Tenebral_RA_PhalanxArmorHelmet</defName>
+          <label>tenebral phalanx helmet</label>
+          <description>A heavy tenebral Phalanx helmet. It offers better protection than a standard tenebral Cataphract helmet, and it has a built-in filter that removes most toxins and other harmful chemicals from the air before the wearer can breathe them.</description>
+          <techLevel>Archotech</techLevel>
+          <recipeMaker>
+            <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+            <researchPrerequisites>
+              <li>BOR_Research_Armor_III</li>
+              <li>ShieldBelt</li>
+            </researchPrerequisites>
+            <skillRequirements>
+              <Crafting>20</Crafting>
+            </skillRequirements>
+            <recipeUsers Inherit="False">
+              <li>BOR_Bench_III</li>
+              <li>BOR_Bench_IV</li>
+            </recipeUsers>
+          </recipeMaker>
+          <graphicData>
+            <color>(0.2, 0.2, 0.2)</color>
+            <texPath>Things/Items/Equipment/Apparel/PhalanxArmorHelmet/PhalanxArmorHelmet</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>(0.9, 0.9)</drawSize>
+          </graphicData>
+          <tradeTags>
+            <li>BOR_HiTechArmor_III</li>
+            <li>BOR_Tech_III</li>
+          </tradeTags>
+          <generateCommonality>0.31</generateCommonality>
+          <statBases>
+            <WorkToMake>88593</WorkToMake>
+            <MaxHitPoints>607</MaxHitPoints>
+            <Mass>1.215</Mass>
+            <Flammability>0.208</Flammability>
+            <ArmorRating_Sharp>4.275</ArmorRating_Sharp>
+            <ArmorRating_Blunt>2.025</ArmorRating_Blunt>
+            <ArmorRating_Heat>2.362</ArmorRating_Heat>
+            <Insulation_Cold>13</Insulation_Cold>
+            <Insulation_Heat>6</Insulation_Heat>
+            <EquipDelay>3</EquipDelay>
+
+            <RoyalFavorValue>7</RoyalFavorValue>
+          </statBases>
+          <equippedStatOffsets>
+            <ToxicEnvironmentResistance>2.138</ToxicEnvironmentResistance>
+            <SlaveSuppressionOffset MayRequire="Ludeon.RimWorld.Ideology">-0.1</SlaveSuppressionOffset>
+          </equippedStatOffsets>
+          <costList>
+            <BOR_ComponentIII>2</BOR_ComponentIII>
+            <BOR_Tenebrite>80</BOR_Tenebrite>
+          </costList>
+          <apparel>
+            <immuneToToxGasExposure>true</immuneToToxGasExposure>
+            <bodyPartGroups>
+              <li>FullHead</li>
+            </bodyPartGroups>
+            <wornGraphicPath>Things/Items/Equipment/Apparel/PhalanxArmorHelmet/PhalanxArmorHelmet</wornGraphicPath>
+            <layers>
+              <li>Overhead</li>
+            </layers>
+            <useDeflectMetalEffect>true</useDeflectMetalEffect>
+          </apparel>
+          <comps>
+            <li Class="CompProperties_Biocodable" />
+          </comps>
+          <thingSetMakerTags>
+            <li>RewardStandardHighFreq</li>
+          </thingSetMakerTags>
+        </ThingDef>
+
+        <ThingDef ParentName="ArmorMachineableBase">
+          <defName>BOR_Tenebral_RA_RanseurArmor_Prestige</defName>
+          <label>prestige tenebral ranseur armor</label>
+          <description>A highly specialized suit of light tenebral power-armor. Tenebral ranseur armor cannot protect as well as standard Recon armor, but it is highly optimized for stealth and reconissance operations. It features an advanced cloaking device in its core that can render its wearer invisible for extended periods of time.\n\nExpensive and beautiful, prestige armor like this is usually made for those of high status. Embedded eltex threads also enhance the wearer's psychic sensitivity. \nRanseur armor requires excessive power when its cloaking device is active, and its reactor must be resupplied with uranium after sufficient use.</description>
+          <techLevel>Archotech</techLevel>
+          <statBases>
+            <ArmorRating_Sharp>2.835</ArmorRating_Sharp>
+            <ArmorRating_Blunt>1.08</ArmorRating_Blunt>
+            <ArmorRating_Heat>1.35</ArmorRating_Heat>
+            <WorkToMake>540000</WorkToMake>
+            <MaxHitPoints>945</MaxHitPoints>
+            <Mass>4</Mass>
+            <Flammability>0.208</Flammability>
+            <Insulation_Cold>108</Insulation_Cold>
+            <Insulation_Heat>30.375</Insulation_Heat>
+            <EquipDelay>5</EquipDelay>
+
+            <RoyalFavorValue>7</RoyalFavorValue>
+          </statBases>
+          <equippedStatOffsets>
+            <MoveSpeed>3.375</MoveSpeed>
+            <PsychicSensitivity>0.168</PsychicSensitivity>
+            <PsychicEntropyRecoveryRate>0.112</PsychicEntropyRecoveryRate>
+            <SlaveSuppressionOffset MayRequire="Ludeon.RimWorld.Ideology">-0.3</SlaveSuppressionOffset>
+          </equippedStatOffsets>
+          <recipeMaker>
+            <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+            <researchPrerequisites>
+              <li>RA_CloakingResearch</li>
+              <li>BOR_Research_Armor_III</li>
+            </researchPrerequisites>
+            <skillRequirements>
+              <Crafting>20</Crafting>
+            </skillRequirements>
+            <recipeUsers Inherit="False">
+              <li>BOR_Bench_III</li>
+              <li>BOR_Bench_IV</li>
+            </recipeUsers>
+          </recipeMaker>
+          <graphicData>
+            <color>(0.2, 0.2, 0.2)</color>
+            <texPath>Things/Items/Equipment/Apparel/PrestigeRanseurArmor/PrestigeRanseurArmor</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+          </graphicData>
+          <generateCommonality>0.5</generateCommonality>
+          <tradeTags>
+            <li>BOR_HiTechArmor_III</li>
+            <li>BOR_Tech_III</li>
+          </tradeTags>
+          <thingCategories>
+            <li>BOR_Armor_III</li>
+          </thingCategories>
+          <costList>
+            <BOR_ComponentIII>6</BOR_ComponentIII>
+            <BOR_Tenebrite>80</BOR_Tenebrite>
+            <Uranium>135</Uranium>
+            <Gold>30</Gold>
+            <VPE_Eltex MayRequire="vanillaexpanded.vpsycastse">8</VPE_Eltex>
+          </costList>
+          <apparel>
+            <tags>
+              <li>BOR_Royal_III</li>
+            </tags>
+            <bodyPartGroups>
+              <li>Torso</li>
+              <li>Neck</li>
+              <li>Shoulders</li>
+              <li>Arms</li>
+              <li>Legs</li>
+              <li>Hands</li>
+              <li>Feet</li>
+            </bodyPartGroups>
+            <wornGraphicPath>Things/Items/Equipment/Apparel/PrestigeRanseurArmor/PrestigeRanseurArmor</wornGraphicPath>
+            <layers>
+              <li>Middle</li>
+              <li>Shell</li>
+            </layers>
+            <useDeflectMetalEffect>true</useDeflectMetalEffect>
+          </apparel>
+          <comps>
+            <li Class="CompProperties_Biocodable" />
+            <li Class="CompProperties_ApparelReloadable">
+              <maxCharges>10</maxCharges>
+              <ammoDef>Uranium</ammoDef>
+              <ammoCountPerCharge>67</ammoCountPerCharge>
+              <baseReloadTicks>27</baseReloadTicks>
+              <soundReload>Standard_Reload</soundReload>
+              <hotKey>Misc4</hotKey>
+              <chargeNoun>cloak</chargeNoun>
+              <displayGizmoWhileUndrafted>false</displayGizmoWhileUndrafted>
+            </li>
+          </comps>
+          <verbs>
+            <li>
+              <verbClass>RoyalArsenal.Verb_Cloak</verbClass>
+              <label>activate tenebral cloak</label>
+              <violent>false</violent>
+              <hasStandardCommand>true</hasStandardCommand>
+              <targetable>false</targetable>
+              <nonInterruptingSelfCast>true</nonInterruptingSelfCast>
+              <onlyManualCast>True</onlyManualCast>
+            </li>
+          </verbs>
+          <thingSetMakerTags>
+            <li>RewardStandardHighFreq</li>
+          </thingSetMakerTags>
+        </ThingDef>
+
+        <ThingDef ParentName="BOR_ArmorHelmetMakeableBase_III">
+          <defName>BOR_Tenebral_RA_RanseurArmorHelmet_Prestige</defName>
+          <label>prestige tenebral ranseur helmet</label>
+          <description>A high-tech armored tenebral helmet designed for use with a set of tenebral ranseur armor. It features an internal heads-up display with a targeting computer similar to those found in Gunlinks.\n\nExpensive and beautiful, prestige armor like this is usually made for those of high status. Embedded eltex threads also enhance the wearer's psychic sensitivity.</description>
+          <techLevel>Archotech</techLevel>
+          <recipeMaker>
+            <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+            <researchPrerequisites>
+              <li>RA_CloakingResearch</li>
+              <li>BOR_Research_Armor_III</li>
+            </researchPrerequisites>
+            <skillRequirements>
+              <Crafting>20</Crafting>
+            </skillRequirements>
+            <recipeUsers Inherit="False">
+              <li>BOR_Bench_III</li>
+              <li>BOR_Bench_IV</li>
+            </recipeUsers>
+          </recipeMaker>
+          <graphicData>
+            <color>(0.2, 0.2, 0.2)</color>
+            <texPath>Things/Items/Equipment/Apparel/PrestigeRanseurArmorHelmet/PrestigeRanseurArmorHelmet</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>(0.9, 0.9)</drawSize>
+          </graphicData>
+          <tradeTags>
+            <li>BOR_HiTechArmor_III</li>
+            <li>BOR_Tech_III</li>
+          </tradeTags>
+          <generateCommonality>0.31</generateCommonality>
+          <statBases>
+            <WorkToMake>202500</WorkToMake>
+            <MaxHitPoints>405</MaxHitPoints>
+            <Mass>0.521</Mass>
+            <Flammability>0.208</Flammability>
+            <ArmorRating_Sharp>2.7</ArmorRating_Sharp>
+            <ArmorRating_Blunt>1.08</ArmorRating_Blunt>
+            <ArmorRating_Heat>1.35</ArmorRating_Heat>
+            <Insulation_Cold>13</Insulation_Cold>
+            <Insulation_Heat>6</Insulation_Heat>
+            <EquipDelay>1.215</EquipDelay>
+
+            <RoyalFavorValue>7</RoyalFavorValue>
+          </statBases>
+          <costList>
+            <BOR_ComponentIII>4</BOR_ComponentIII>
+            <BOR_Tenebrite>30</BOR_Tenebrite>
+            <Gold>13</Gold>
+            <VPE_Eltex MayRequire="vanillaexpanded.vpsycastse">8</VPE_Eltex>
+          </costList>
+          <apparel>
+            <tags>
+              <li>BOR_Royal_III</li>
+            </tags>
+            <immuneToToxGasExposure>true</immuneToToxGasExposure>
+            <bodyPartGroups>
+              <li>FullHead</li>
+            </bodyPartGroups>
+            <wornGraphicPath>Things/Items/Equipment/Apparel/PrestigeRanseurArmorHelmet/PrestigeRanseurArmorHelmet</wornGraphicPath>
+            <layers>
+              <li>Overhead</li>
+            </layers>
+            <useDeflectMetalEffect>true</useDeflectMetalEffect>
+          </apparel>
+          <equippedStatOffsets>
+            <PsychicSensitivity>0.168</PsychicSensitivity>
+            <PsychicEntropyRecoveryRate>0.112</PsychicEntropyRecoveryRate>
+            <ShootingAccuracyPawn>4.5</ShootingAccuracyPawn>
+          </equippedStatOffsets>
+          <comps>
+            <li Class="CompProperties_Biocodable" />
+          </comps>
+          <thingSetMakerTags>
+            <li>RewardStandardHighFreq</li>
+          </thingSetMakerTags>
+        </ThingDef>
+
+        <ThingDef ParentName="ArmorMachineableBase">
+          <defName>BOR_Tenebral_RA_GuardianArmorBase_Prestige</defName>
+          <label>prestige tenebral guardian armor</label>
+          <description>A suit of specialty tenebral power armor designed with extra defensive measures. A personal countermeasure system is mounted on the back, capable of rapidly launching EMP grenades to disrupt turrets and energy shields. \n\nExpensive and beautiful, prestige armor like this is usually made for those of high status. Embedded eltex threads also enhance the wearer's psychic sensitivity.</description>
+          <techLevel>Archotech</techLevel>
+          <recipeMaker>
+            <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+            <researchPrerequisites>
+              <li>RA_RadioChaffResearch</li>
+              <li>BOR_Research_Armor_III</li>
+            </researchPrerequisites>
+            <skillRequirements>
+              <Crafting>20</Crafting>
+            </skillRequirements>
+            <recipeUsers Inherit="False">
+              <li>BOR_Bench_III</li>
+              <li>BOR_Bench_IV</li>
+            </recipeUsers>
+          </recipeMaker>
+          <graphicData>
+            <color>(0.2, 0.2, 0.2)</color>
+            <texPath>Things/Items/Equipment/Apparel/PrestigeGuardianArmor/PrestigeGuardianArmor</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <shaderType>CutoutComplex</shaderType>
+          </graphicData>
+          <generateCommonality>0.31</generateCommonality>
+          <statBases>
+            <WorkToMake>472500</WorkToMake>
+            <MaxHitPoints>1147</MaxHitPoints>
+            <Mass>6</Mass>
+            <Flammability>0.208</Flammability>
+            <ArmorRating_Sharp>3.825</ArmorRating_Sharp>
+            <ArmorRating_Blunt>1.8</ArmorRating_Blunt>
+            <ArmorRating_Heat>2.16</ArmorRating_Heat>
+            <Insulation_Cold>114</Insulation_Cold>
+            <Insulation_Heat>33</Insulation_Heat>
+            <EquipDelay>7</EquipDelay>
+
+            <RoyalFavorValue>7</RoyalFavorValue>
+          </statBases>
+          <equippedStatOffsets>
+            <PsychicSensitivity>0.168</PsychicSensitivity>
+            <PsychicEntropyRecoveryRate>0.112</PsychicEntropyRecoveryRate>
+            <MoveSpeed>-0.178</MoveSpeed>
+            <SlaveSuppressionOffset MayRequire="Ludeon.RimWorld.Ideology">-0.3</SlaveSuppressionOffset>
+          </equippedStatOffsets>
+          <thingCategories>
+            <li>BOR_Armor_III</li>
+          </thingCategories>
+          <tradeTags>
+            <li>BOR_HiTechArmor_III</li>
+            <li>BOR_Tech_III</li>
+          </tradeTags>
+          <costList>
+            <BOR_ComponentIII>4</BOR_ComponentIII>
+            <BOR_Tenebrite>130</BOR_Tenebrite>
+            <Uranium>45</Uranium>
+            <Gold>33</Gold>
+            <VPE_Eltex MayRequire="vanillaexpanded.vpsycastse">8</VPE_Eltex>
+          </costList>
+          <apparel>
+            <tags>
+              <li>BOR_Royal_III</li>
+            </tags>
+            <bodyPartGroups>
+              <li>Torso</li>
+              <li>Neck</li>
+              <li>Shoulders</li>
+              <li>Arms</li>
+              <li>Legs</li>
+              <li>Hands</li>
+              <li>Feet</li>
+            </bodyPartGroups>
+            <wornGraphicPath>Things/Items/Equipment/Apparel/PrestigeGuardianArmor/PrestigeGuardianArmor</wornGraphicPath>
+            <useWornGraphicMask>true</useWornGraphicMask>
+            <layers>
+              <li>Middle</li>
+              <li>Shell</li>
+            </layers>
+            <useDeflectMetalEffect>true</useDeflectMetalEffect>
+          </apparel>
+          <comps>
+            <li Class="CompProperties_Biocodable" />
+            <li Class="CompProperties_ApparelReloadable">
+              <maxCharges>15</maxCharges>
+              <ammoDef>BOR_ComponentIII</ammoDef>
+              <ammoCountPerCharge>4</ammoCountPerCharge>
+              <baseReloadTicks>27</baseReloadTicks>
+              <soundReload>Standard_Reload</soundReload>
+              <hotKey>Misc4</hotKey>
+              <chargeNoun>grenade</chargeNoun>
+              <displayGizmoWhileUndrafted>false</displayGizmoWhileUndrafted>
+            </li>
+          </comps>
+          <verbs>
+            <li>
+              <label>launch tenebral emp grenade</label>
+              <verbClass>Verb_LaunchProjectileStatic</verbClass>
+              <hasStandardCommand>true</hasStandardCommand>
+              <onlyManualCast>True</onlyManualCast>
+              <range>49.275</range>
+              <forcedMissRadius>1.4</forcedMissRadius>
+              <warmupTime>0.122</warmupTime>
+              <noiseRadius>1</noiseRadius>
+              <ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
+              <soundCast>Shot_IncendiaryLauncher</soundCast>
+              <soundCastTail>GunTail_Medium</soundCastTail>
+              <muzzleFlashScale>14</muzzleFlashScale>
+              <drawHighlightWithLineOfSight>true</drawHighlightWithLineOfSight>
+              <targetParams>
+                <canTargetLocations>true</canTargetLocations>
+              </targetParams>
+              <defaultProjectile>Proj_GrenadeEMP</defaultProjectile>
+              <rangedFireRulepack>Combat_RangedFire_Thrown</rangedFireRulepack>
+            </li>
+          </verbs>
+          <thingSetMakerTags>
+            <li>RewardStandardHighFreq</li>
+          </thingSetMakerTags>
+        </ThingDef>
+
+
+        <ThingDef ParentName="BOR_ArmorHelmetMakeableBase_III">
+          <defName>BOR_Tenebral_RA_GuardianArmorHelmet_Prestige</defName>
+          <label>prestige tenebral guardian helmet</label>
+          <description>A modified tenebral marine helmet with an added armor plate in the front. It offers improved protection over a standard tenebral marine helmet.\n\nExpensive and beautiful, prestige armor like this is usually made for those of high status. Embedded eltex threads also enhance the wearer's psychic sensitivity.</description>
+          <techLevel>Archotech</techLevel>
+          <recipeMaker>
+            <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+            <researchPrerequisites>
+              <li>RA_RadioChaffResearch</li>
+              <li>BOR_Research_Armor_III</li>
+            </researchPrerequisites>
+            <skillRequirements>
+              <Crafting>20</Crafting>
+            </skillRequirements>
+            <recipeUsers Inherit="False">
+              <li>BOR_Bench_III</li>
+              <li>BOR_Bench_IV</li>
+            </recipeUsers>
+          </recipeMaker>
+          <graphicData>
+            <color>(0.2, 0.2, 0.2)</color>
+            <texPath>Things/Items/Equipment/Apparel/PrestigeGuardianArmorHelmet/PrestigeGuardianArmorHelmet</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <shaderType>CutoutComplex</shaderType>
+            <drawSize>(0.9, 0.9)</drawSize>
+          </graphicData>
+          <uiIconScale>1.25</uiIconScale>
+          <tradeTags>
+            <li>BOR_HiTechArmor_III</li>
+            <li>BOR_Tech_III</li>
+          </tradeTags>
+          <generateCommonality>0.31</generateCommonality>
+          <statBases>
+            <WorkToMake>141750</WorkToMake>
+            <MaxHitPoints>505</MaxHitPoints>
+            <Mass>0.764</Mass>
+            <Flammability>0.208</Flammability>
+            <ArmorRating_Sharp>4.725</ArmorRating_Sharp>
+            <ArmorRating_Blunt>2.362</ArmorRating_Blunt>
+            <ArmorRating_Heat>2.362</ArmorRating_Heat>
+            <Insulation_Cold>13</Insulation_Cold>
+            <Insulation_Heat>6</Insulation_Heat>
+            <EquipDelay>1</EquipDelay>
+
+            <RoyalFavorValue>7</RoyalFavorValue>
+          </statBases>
+          <equippedStatOffsets>
+            <PsychicSensitivity>0.168</PsychicSensitivity>
+            <PsychicEntropyRecoveryRate>0.135</PsychicEntropyRecoveryRate>
+            <SlaveSuppressionOffset MayRequire="Ludeon.RimWorld.Ideology">-0.1</SlaveSuppressionOffset>
+          </equippedStatOffsets>
+          <costList>
+            <BOR_ComponentIII>1</BOR_ComponentIII>
+            <BOR_Tenebrite>70</BOR_Tenebrite>
+            <Gold>17</Gold>
+            <VPE_Eltex MayRequire="vanillaexpanded.vpsycastse">8</VPE_Eltex>
+          </costList>
+          <apparel>
+            <tags>
+              <li>BOR_Royal_III</li>
+            </tags>
+            <immuneToToxGasExposure>true</immuneToToxGasExposure>
+            <bodyPartGroups>
+              <li>FullHead</li>
+            </bodyPartGroups>
+            <wornGraphicPath>Things/Items/Equipment/Apparel/PrestigeGuardianArmorHelmet/PrestigeGuardianArmorHelmet</wornGraphicPath>
+            <useWornGraphicMask>true</useWornGraphicMask>
+            <layers>
+              <li>Overhead</li>
+            </layers>
+            <useDeflectMetalEffect>true</useDeflectMetalEffect>
+          </apparel>
+          <comps>
+            <li Class="CompProperties_Biocodable" />
+          </comps>
+          <thingSetMakerTags>
+            <li>RewardStandardHighFreq</li>
+          </thingSetMakerTags>
+        </ThingDef>
+
+        <ThingDef ParentName="ArmorMachineableBase">
+          <defName>BOR_Tenebral_RA_PhalanxArmor_Prestige</defName>
+          <label>prestige tenebralphalanx armor</label>
+          <description>A suit of heavy tenebral powered armor based on the standard tenebral Cataphract design. It features defensive improvements, including stronger armor plating and a reusable low-shield deployer.\n\nExpensive and beautiful, prestige armor like this is usually made for those of high status. Embedded eltex threads also enhance the wearer's psychic sensitivity. \nMechanites within the low-shield deployer can replicate the shield core in-between uses, but the unit must be resupplied with advanced components.</description>
+          <techLevel>Archotech</techLevel>
+          <recipeMaker>
+            <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+            <researchPrerequisites>
+              <li>BOR_Research_Armor_III</li>
+              <li>ShieldBelt</li>
+            </researchPrerequisites>
+            <skillRequirements>
+              <Crafting>31</Crafting>
+            </skillRequirements>
+            <recipeUsers Inherit="False">
+              <li>BOR_Bench_III</li>
+              <li>BOR_Bench_IV</li>
+            </recipeUsers>
+          </recipeMaker>
+          <graphicData>
+            <color>(0.2, 0.2, 0.2)</color>
+            <texPath>Things/Items/Equipment/Apparel/PrestigePhalanxArmor/PrestigePhalanxArmor</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <shaderType>CutoutComplex</shaderType>
+          </graphicData>
+          <uiIconScale>1.25</uiIconScale>
+          <generateCommonality>0.31</generateCommonality>
+          <statBases>
+            <WorkToMake>540000</WorkToMake>
+            <MaxHitPoints>1350</MaxHitPoints>
+            <Mass>8</Mass>
+            <Flammability>0.208</Flammability>
+            <ArmorRating_Sharp>4.275</ArmorRating_Sharp>
+            <ArmorRating_Blunt>2.025</ArmorRating_Blunt>
+            <ArmorRating_Heat>2.362</ArmorRating_Heat>
+            <Insulation_Cold>121</Insulation_Cold>
+            <Insulation_Heat>40</Insulation_Heat>
+            <EquipDelay>9</EquipDelay>
+
+            <RoyalFavorValue>7</RoyalFavorValue>
+          </statBases>
+          <equippedStatOffsets>
+            <PsychicSensitivity>0.168</PsychicSensitivity>
+            <PsychicEntropyRecoveryRate>0.135</PsychicEntropyRecoveryRate>
+            <MoveSpeed>-0.333</MoveSpeed>
+            <SlaveSuppressionOffset MayRequire="Ludeon.RimWorld.Ideology">-0.3</SlaveSuppressionOffset>
+          </equippedStatOffsets>
+          <tradeTags>
+            <li>BOR_HiTechArmor_III</li>
+            <li>BOR_Tech_III</li>
+          </tradeTags>
+          <thingCategories>
+            <li>BOR_Armor_III</li>
+          </thingCategories>
+          <costList>
+            <BOR_ComponentIII>7</BOR_ComponentIII>
+            <BroadshieldCore>1</BroadshieldCore>
+            <BOR_Tenebrite>180</BOR_Tenebrite>
+            <Uranium>112</Uranium>
+            <Gold>54</Gold>
+            <VPE_Eltex MayRequire="vanillaexpanded.vpsycastse">8</VPE_Eltex>
+          </costList>
+          <apparel>
+            <tags>
+              <li>BOR_Royal_III</li>
+            </tags>
+            <bodyPartGroups>
+              <li>Torso</li>
+              <li>Neck</li>
+              <li>Shoulders</li>
+              <li>Arms</li>
+              <li>Legs</li>
+              <li>Hands</li>
+              <li>Feet</li>
+            </bodyPartGroups>
+            <wornGraphicPath>Things/Items/Equipment/Apparel/PrestigePhalanxArmor/PrestigePhalanxArmor</wornGraphicPath>
+            <useWornGraphicMask>true</useWornGraphicMask>
+            <layers>
+              <li>Middle</li>
+              <li>Shell</li>
+            </layers>
+            <useDeflectMetalEffect>true</useDeflectMetalEffect>
+          </apparel>
+          <comps>
+            <li Class="CompProperties_Biocodable" />
+            <li Class="CompProperties_ApparelReloadable">
+              <maxCharges>1</maxCharges>
+              <ammoDef>BOR_ComponentIII</ammoDef>
+              <ammoCountPerCharge>4</ammoCountPerCharge>
+              <baseReloadTicks>27</baseReloadTicks>
+              <soundReload>Standard_Reload</soundReload>
+              <hotKey>Misc4</hotKey>
+              <chargeNoun>shield</chargeNoun>
+              <displayGizmoWhileUndrafted>false</displayGizmoWhileUndrafted>
+            </li>
+          </comps>
+          <verbs>
+            <li>
+              <verbClass>Verb_DeployBroadshield</verbClass>
+              <label>deploy tenebral phalanx shield</label>
+              <violent>false</violent>
+              <hasStandardCommand>true</hasStandardCommand>
+              <targetable>false</targetable>
+              <nonInterruptingSelfCast>true</nonInterruptingSelfCast>
+              <onlyManualCast>True</onlyManualCast>
+            </li>
+          </verbs>
+          <thingSetMakerTags>
+            <li>RewardStandardHighFreq</li>
+          </thingSetMakerTags>
+        </ThingDef>
+
+        <ThingDef ParentName="BOR_ArmorHelmetMakeableBase_III">
+          <defName>BOR_Tenebral_RA_PhalanxArmorHelmet_Prestige</defName>
+          <label>prestige tenebral phalanx helmet</label>
+          <description>A heavy tenebral Phalanx helmet. It offers better protection than a standard tenebral Cataphract helmet, and it has a built-in filter that removes most toxins and other harmful chemicals from the air before the wearer can breathe them.\n\nExpensive and beautiful, prestige armor like this is usually made for those of high status. Embedded eltex threads also enhance the wearer's psychic sensitivity.</description>
+          <techLevel>Archotech</techLevel>
+          <recipeMaker>
+            <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+            <researchPrerequisites>
+              <li>BOR_Research_Armor_III</li>
+              <li>ShieldBelt</li>
+            </researchPrerequisites>
+            <skillRequirements>
+              <Crafting>20</Crafting>
+            </skillRequirements>
+            <recipeUsers Inherit="False">
+              <li>BOR_Bench_III</li>
+              <li>BOR_Bench_IV</li>
+            </recipeUsers>
+          </recipeMaker>
+          <graphicData>
+            <color>(0.2, 0.2, 0.2)</color>
+            <texPath>Things/Items/Equipment/Apparel/PrestigePhalanxArmorHelmet/PrestigePhalanxArmorHelmet</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <shaderType>CutoutComplex</shaderType>
+            <drawSize>(0.9, 0.9)</drawSize>
+          </graphicData>
+          <tradeTags>
+            <li>BOR_HiTechArmor_III</li>
+            <li>BOR_Tech_III</li>
+          </tradeTags>
+          <generateCommonality>0.31</generateCommonality>
+          <statBases>
+            <WorkToMake>177187</WorkToMake>
+            <MaxHitPoints>540</MaxHitPoints>
+            <Mass>1.042</Mass>
+            <Flammability>0.208</Flammability>
+            <ArmorRating_Sharp>4.275</ArmorRating_Sharp>
+            <ArmorRating_Blunt>2.025</ArmorRating_Blunt>
+            <ArmorRating_Heat>2.362</ArmorRating_Heat>
+            <Insulation_Cold>13</Insulation_Cold>
+            <Insulation_Heat>6</Insulation_Heat>
+            <EquipDelay>3</EquipDelay>
+
+            <RoyalFavorValue>7</RoyalFavorValue>
+          </statBases>
+          <equippedStatOffsets>
+            <PsychicSensitivity>0.168</PsychicSensitivity>
+            <PsychicEntropyRecoveryRate>0.112</PsychicEntropyRecoveryRate>
+            <ToxicEnvironmentResistance>2.138</ToxicEnvironmentResistance>
+            <SlaveSuppressionOffset MayRequire="Ludeon.RimWorld.Ideology">-0.1</SlaveSuppressionOffset>
+          </equippedStatOffsets>
+          <costList>
+            <BOR_ComponentIII>2</BOR_ComponentIII>
+            <BOR_Tenebrite>80</BOR_Tenebrite>
+            <Gold>33</Gold>
+            <VPE_Eltex MayRequire="vanillaexpanded.vpsycastse">8</VPE_Eltex>
+          </costList>
+          <apparel>
+            <tags>
+              <li>BOR_Royal_III</li>
+            </tags>
+            <immuneToToxGasExposure>true</immuneToToxGasExposure>
+            <bodyPartGroups>
+              <li>FullHead</li>
+            </bodyPartGroups>
+            <wornGraphicPath>Things/Items/Equipment/Apparel/PrestigePhalanxArmorHelmet/PrestigePhalanxArmorHelmet</wornGraphicPath>
+            <useWornGraphicMask>true</useWornGraphicMask>
+            <layers>
+              <li>Overhead</li>
+            </layers>
+            <useDeflectMetalEffect>true</useDeflectMetalEffect>
+          </apparel>
+          <comps>
+            <li Class="CompProperties_Biocodable" />
+          </comps>
+          <thingSetMakerTags>
+            <li>RewardStandardHighFreq</li>
+          </thingSetMakerTags>
+        </ThingDef>
+      
+      </value>
+
+	  </li>
+	  
+	  <!-- check to see if CombatExtended is loaded as well, then modify the patched in defs to CE standards -->
+	  <li Class="PatchOperationFindMod">
+		<mods>
+		  <li>Combat Extended</li>
+		</mods>
+			<match Class="PatchOperationSequence">
+                <operations>
+
+
+                    <li Class="PatchOperationAdd">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_RanseurArmor"]/statBases</xpath>
+                        <value>
+                            <Bulk>45</Bulk>
+                            <WornBulk>6</WornBulk>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_RanseurArmor"]/statBases/MaxHitPoints</xpath>
+                        <value>
+                            <MaxHitPoints>1350</MaxHitPoints>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_RanseurArmor"]/statBases/Mass</xpath>
+                        <value>
+                            <Mass>16</Mass>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_RanseurArmor"]/statBases/Flammability</xpath>
+                        <value>
+                            <Flammability>0</Flammability>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_RanseurArmor"]/statBases/ArmorRating_Sharp</xpath>
+                        <value>
+                            <ArmorRating_Sharp>46</ArmorRating_Sharp>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_RanseurArmor"]/statBases/ArmorRating_Blunt</xpath>
+                        <value>
+                            <ArmorRating_Blunt>117</ArmorRating_Blunt>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationAdd">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_RanseurArmor"]/costList</xpath>
+                        <value>
+                            <DevilstrandCloth>60</DevilstrandCloth>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationAdd">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_RanseurArmor"]/equippedStatOffsets</xpath>
+                        <value>
+                            <CarryWeight>168</CarryWeight>
+                            <CarryBulk>4</CarryBulk>
+                            <ToxicEnvironmentResistance>1.688</ToxicEnvironmentResistance>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationAdd">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_RanseurArmor"]/apparel/bodyPartGroups</xpath>
+                        <value>
+                            <li>Hands</li>
+                            <li>Feet</li>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_RanseurArmor"]/costList/BOR_Tenebrite</xpath>
+                        <value>
+                            <BOR_Tenebrite>120</BOR_Tenebrite>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_RanseurArmor"]/costList/Uranium</xpath>
+                        <value>
+                            <Uranium>235</Uranium>
+                        </value>
+                    </li>
+
+
+                    <li Class="PatchOperationAdd">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_RanseurArmorHelmet"]/statBases</xpath>
+                        <value>
+                            <Bulk>1</Bulk>
+                            <WornBulk>1</WornBulk>
+                            <NightVisionEfficiency_Apparel>3.037</NightVisionEfficiency_Apparel>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_RanseurArmorHelmet"]/statBases/MaxHitPoints</xpath>
+                        <value>
+                            <MaxHitPoints>640</MaxHitPoints>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_RanseurArmorHelmet"]/statBases/Mass</xpath>
+                        <value>
+                            <Mass>0</Mass>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_RanseurArmorHelmet"]/statBases/Flammability</xpath>
+                        <value>
+                            <Flammability>0</Flammability>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_RanseurArmorHelmet"]/statBases/ArmorRating_Sharp</xpath>
+                        <value>
+                            <ArmorRating_Sharp>28</ArmorRating_Sharp>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_RanseurArmorHelmet"]/statBases/ArmorRating_Blunt</xpath>
+                        <value>
+                            <ArmorRating_Blunt>81</ArmorRating_Blunt>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationAdd">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_RanseurArmorHelmet"]/costList</xpath>
+                        <value>
+                            <DevilstrandCloth>20</DevilstrandCloth>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationAdd">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_RanseurArmorHelmet"]/equippedStatOffsets</xpath>
+                        <value>
+                            <ToxicEnvironmentResistance>1.35</ToxicEnvironmentResistance>
+                            <PsychicSensitivity>-0.059</PsychicSensitivity>
+                            <SmokeSensitivity>-1</SmokeSensitivity>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_RanseurArmorHelmet"]/costList/BOR_Tenebrite</xpath>
+                        <value>
+                            <BOR_Tenebrite>40</BOR_Tenebrite>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationAdd">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_RanseurArmorHelmet"]/apparel/layers</xpath>
+                        <value>
+                            <li>OnHead</li>
+                            <li>StrappedHead</li>
+
+                        </value>
+                    </li>
+
+
+                    <li Class="PatchOperationAdd">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_GuardianArmorBase"]/statBases</xpath>
+                        <value>
+                            <Bulk>57</Bulk>
+                            <WornBulk>8</WornBulk>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_GuardianArmorBase"]/statBases/MaxHitPoints</xpath>
+                        <value>
+                            <MaxHitPoints>1687</MaxHitPoints>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_GuardianArmorBase"]/statBases/Mass</xpath>
+                        <value>
+                            <Mass>30</Mass>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_GuardianArmorBase"]/statBases/Flammability</xpath>
+                        <value>
+                            <Flammability>0</Flammability>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_GuardianArmorBase"]/statBases/ArmorRating_Sharp</xpath>
+                        <value>
+                            <ArmorRating_Sharp>96</ArmorRating_Sharp>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_GuardianArmorBase"]/statBases/ArmorRating_Blunt</xpath>
+                        <value>
+                            <ArmorRating_Blunt>202</ArmorRating_Blunt>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationAdd">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_GuardianArmorBase"]/costList</xpath>
+                        <value>
+                            <DevilstrandCloth>50</DevilstrandCloth>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationAdd">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_GuardianArmorBase"]/equippedStatOffsets</xpath>
+                        <value>
+                            <CarryWeight>270</CarryWeight>
+                            <CarryBulk>5</CarryBulk>
+                            <ToxicEnvironmentResistance>1.35</ToxicEnvironmentResistance>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationAdd">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_GuardianArmorBase"]/apparel/bodyPartGroups</xpath>
+                        <value>
+                            <li>Hands</li>
+                            <li>Feet</li>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_GuardianArmorBase"]/costList/BOR_Tenebrite</xpath>
+                        <value>
+                            <BOR_Tenebrite>200</BOR_Tenebrite>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_GuardianArmorBase"]/costList/Uranium</xpath>
+                        <value>
+                            <Uranium>135</Uranium>
+                        </value>
+                    </li>
+
+
+                    <li Class="PatchOperationAdd">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_GuardianArmorHelmet"]/statBases</xpath>
+                        <value>
+                            <Bulk>2</Bulk>
+                            <WornBulk>1</WornBulk>
+                            <NightVisionEfficiency_Apparel>1.688</NightVisionEfficiency_Apparel>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_GuardianArmorHelmet"]/statBases/MaxHitPoints</xpath>
+                        <value>
+                            <MaxHitPoints>810</MaxHitPoints>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_GuardianArmorHelmet"]/statBases/Mass</xpath>
+                        <value>
+                            <Mass>3.009</Mass>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_GuardianArmorHelmet"]/statBases/Flammability</xpath>
+                        <value>
+                            <Flammability>0</Flammability>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_GuardianArmorHelmet"]/statBases/ArmorRating_Sharp</xpath>
+                        <value>
+                            <ArmorRating_Sharp>69</ArmorRating_Sharp>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_GuardianArmorHelmet"]/statBases/ArmorRating_Blunt</xpath>
+                        <value>
+                            <ArmorRating_Blunt>168</ArmorRating_Blunt>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationAdd">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_GuardianArmorHelmet"]/costList</xpath>
+                        <value>
+                            <DevilstrandCloth>20</DevilstrandCloth>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationAdd">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_GuardianArmorHelmet"]/equippedStatOffsets</xpath>
+                        <value>
+                            <ToxicEnvironmentResistance>1.688</ToxicEnvironmentResistance>
+                            <PsychicSensitivity>-0.059</PsychicSensitivity>
+                            <SmokeSensitivity>-1</SmokeSensitivity>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_GuardianArmorHelmet"]/costList/BOR_Tenebrite</xpath>
+                        <value>
+                            <BOR_Tenebrite>90</BOR_Tenebrite>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationAdd">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_GuardianArmorHelmet"]/apparel/layers</xpath>
+                        <value>
+                            <li>OnHead</li>
+                            <li>StrappedHead</li>
+
+                        </value>
+                    </li>
+
+
+                    <li Class="PatchOperationAdd">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_PhalanxArmor"]/statBases</xpath>
+                        <value>
+                            <Bulk>57</Bulk>
+                            <WornBulk>10</WornBulk>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_PhalanxArmor"]/statBases/MaxHitPoints</xpath>
+                        <value>
+                            <MaxHitPoints>2193</MaxHitPoints>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_PhalanxArmor"]/statBases/Mass</xpath>
+                        <value>
+                            <Mass>45</Mass>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_PhalanxArmor"]/statBases/Flammability</xpath>
+                        <value>
+                            <Flammability>0</Flammability>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_PhalanxArmor"]/statBases/ArmorRating_Sharp</xpath>
+                        <value>
+                            <ArmorRating_Sharp>81</ArmorRating_Sharp>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_PhalanxArmor"]/statBases/ArmorRating_Blunt</xpath>
+                        <value>
+                            <ArmorRating_Blunt>168</ArmorRating_Blunt>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationAdd">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_PhalanxArmor"]/costList</xpath>
+                        <value>
+                            <DevilstrandCloth>80</DevilstrandCloth>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationAdd">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_PhalanxArmor"]/equippedStatOffsets</xpath>
+                        <value>
+                            <CarryWeight>270</CarryWeight>
+                            <CarryBulk>5</CarryBulk>
+                            <ToxicEnvironmentResistance>1.688</ToxicEnvironmentResistance>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationAdd">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_PhalanxArmor"]/apparel/bodyPartGroups</xpath>
+                        <value>
+                            <li>Hands</li>
+                            <li>Feet</li>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_PhalanxArmor"]/costList/BOR_Tenebrite</xpath>
+                        <value>
+                            <BOR_Tenebrite>220</BOR_Tenebrite>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_PhalanxArmor"]/costList/Uranium</xpath>
+                        <value>
+                            <Uranium>337</Uranium>
+                        </value>
+                    </li>
+
+
+                    <li Class="PatchOperationAdd">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_PhalanxArmorHelmet"]/statBases</xpath>
+                        <value>
+                            <Bulk>2</Bulk>
+                            <WornBulk>1</WornBulk>
+                            <NightVisionEfficiency_Apparel>1.688</NightVisionEfficiency_Apparel>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_PhalanxArmorHelmet"]/statBases/MaxHitPoints</xpath>
+                        <value>
+                            <MaxHitPoints>1080</MaxHitPoints>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_PhalanxArmorHelmet"]/statBases/Mass</xpath>
+                        <value>
+                            <Mass>3</Mass>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_PhalanxArmorHelmet"]/statBases/Flammability</xpath>
+                        <value>
+                            <Flammability>0</Flammability>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_PhalanxArmorHelmet"]/statBases/ArmorRating_Sharp</xpath>
+                        <value>
+                            <ArmorRating_Sharp>67</ArmorRating_Sharp>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_PhalanxArmorHelmet"]/statBases/ArmorRating_Blunt</xpath>
+                        <value>
+                            <ArmorRating_Blunt>168</ArmorRating_Blunt>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationAdd">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_PhalanxArmorHelmet"]/costList</xpath>
+                        <value>
+                            <DevilstrandCloth>30</DevilstrandCloth>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationAdd">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_PhalanxArmorHelmet"]/equippedStatOffsets</xpath>
+                        <value>
+                            <PsychicSensitivity>-0.059</PsychicSensitivity>
+                            <SmokeSensitivity>-1</SmokeSensitivity>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_PhalanxArmorHelmet"]/costList/BOR_Tenebrite</xpath>
+                        <value>
+                            <BOR_Tenebrite>100</BOR_Tenebrite>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationAdd">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_PhalanxArmorHelmet"]/apparel/layers</xpath>
+                        <value>
+                            <li>OnHead</li>
+                            <li>StrappedHead</li>
+
+                        </value>
+                    </li>
+
+
+                    <li Class="PatchOperationAdd">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_RanseurArmor_Prestige"]/statBases</xpath>
+                        <value>
+                            <Bulk>45</Bulk>
+                            <WornBulk>6</WornBulk>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_RanseurArmor_Prestige"]/statBases/MaxHitPoints</xpath>
+                        <value>
+                            <MaxHitPoints>1350</MaxHitPoints>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_RanseurArmor_Prestige"]/statBases/Mass</xpath>
+                        <value>
+                            <Mass>16</Mass>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_RanseurArmor_Prestige"]/statBases/Flammability</xpath>
+                        <value>
+                            <Flammability>0</Flammability>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_RanseurArmor_Prestige"]/statBases/ArmorRating_Sharp</xpath>
+                        <value>
+                            <ArmorRating_Sharp>46</ArmorRating_Sharp>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_RanseurArmor_Prestige"]/statBases/ArmorRating_Blunt</xpath>
+                        <value>
+                            <ArmorRating_Blunt>117</ArmorRating_Blunt>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationAdd">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_RanseurArmor_Prestige"]/costList</xpath>
+                        <value>
+                            <DevilstrandCloth>60</DevilstrandCloth>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationAdd">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_RanseurArmor_Prestige"]/equippedStatOffsets</xpath>
+                        <value>
+                            <CarryWeight>168</CarryWeight>
+                            <CarryBulk>4</CarryBulk>
+                            <ToxicEnvironmentResistance>1.013</ToxicEnvironmentResistance>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationAdd">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_RanseurArmor_Prestige"]/apparel/bodyPartGroups</xpath>
+                        <value>
+                            <li>Hands</li>
+                            <li>Feet</li>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_RanseurArmor_Prestige"]/costList/BOR_Tenebrite</xpath>
+                        <value>
+                            <BOR_Tenebrite>120</BOR_Tenebrite>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_RanseurArmor_Prestige"]/costList/Uranium</xpath>
+                        <value>
+                            <Uranium>235</Uranium>
+                        </value>
+                    </li>
+
+
+                    <li Class="PatchOperationAdd">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_RanseurArmorHelmet_Prestige"]/statBases</xpath>
+                        <value>
+                            <Bulk>1</Bulk>
+                            <WornBulk>1</WornBulk>
+                            <NightVisionEfficiency_Apparel>3.037</NightVisionEfficiency_Apparel>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_RanseurArmorHelmet_Prestige"]/statBases/MaxHitPoints</xpath>
+                        <value>
+                            <MaxHitPoints>640</MaxHitPoints>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_RanseurArmorHelmet_Prestige"]/statBases/Mass</xpath>
+                        <value>
+                            <Mass>0</Mass>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_RanseurArmorHelmet_Prestige"]/statBases/Flammability</xpath>
+                        <value>
+                            <Flammability>0</Flammability>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_RanseurArmorHelmet_Prestige"]/statBases/ArmorRating_Sharp</xpath>
+                        <value>
+                            <ArmorRating_Sharp>28</ArmorRating_Sharp>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_RanseurArmorHelmet_Prestige"]/statBases/ArmorRating_Blunt</xpath>
+                        <value>
+                            <ArmorRating_Blunt>81</ArmorRating_Blunt>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationAdd">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_RanseurArmorHelmet_Prestige"]/costList</xpath>
+                        <value>
+                            <DevilstrandCloth>20</DevilstrandCloth>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationAdd">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_RanseurArmorHelmet_Prestige"]/equippedStatOffsets</xpath>
+                        <value>
+                            <ToxicEnvironmentResistance>1.35</ToxicEnvironmentResistance>
+                            <SmokeSensitivity>-1</SmokeSensitivity>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_RanseurArmorHelmet_Prestige"]/costList/BOR_Tenebrite</xpath>
+                        <value>
+                            <BOR_Tenebrite>40</BOR_Tenebrite>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationAdd">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_RanseurArmorHelmet_Prestige"]/apparel/layers</xpath>
+                        <value>
+                            <li>OnHead</li>
+                            <li>StrappedHead</li>
+
+                        </value>
+                    </li>
+
+
+                    <li Class="PatchOperationAdd">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_GuardianArmorBase_Prestige"]/statBases</xpath>
+                        <value>
+                            <Bulk>57</Bulk>
+                            <WornBulk>8</WornBulk>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_GuardianArmorBase_Prestige"]/statBases/MaxHitPoints</xpath>
+                        <value>
+                            <MaxHitPoints>1687</MaxHitPoints>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_GuardianArmorBase_Prestige"]/statBases/Mass</xpath>
+                        <value>
+                            <Mass>30</Mass>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_GuardianArmorBase_Prestige"]/statBases/Flammability</xpath>
+                        <value>
+                            <Flammability>0</Flammability>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_GuardianArmorBase_Prestige"]/statBases/ArmorRating_Sharp</xpath>
+                        <value>
+                            <ArmorRating_Sharp>96</ArmorRating_Sharp>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_GuardianArmorBase_Prestige"]/statBases/ArmorRating_Blunt</xpath>
+                        <value>
+                            <ArmorRating_Blunt>202</ArmorRating_Blunt>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationAdd">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_GuardianArmorBase_Prestige"]/costList</xpath>
+                        <value>
+                            <DevilstrandCloth>50</DevilstrandCloth>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationAdd">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_GuardianArmorBase_Prestige"]/equippedStatOffsets</xpath>
+                        <value>
+                            <CarryWeight>270</CarryWeight>
+                            <CarryBulk>5</CarryBulk>
+                            <ToxicEnvironmentResistance>1.35</ToxicEnvironmentResistance>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationAdd">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_GuardianArmorBase_Prestige"]/apparel/bodyPartGroups</xpath>
+                        <value>
+                            <li>Hands</li>
+                            <li>Feet</li>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_GuardianArmorBase_Prestige"]/costList/BOR_Tenebrite</xpath>
+                        <value>
+                            <BOR_Tenebrite>200</BOR_Tenebrite>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_GuardianArmorBase_Prestige"]/costList/Uranium</xpath>
+                        <value>
+                            <Uranium>135</Uranium>
+                        </value>
+                    </li>
+
+
+                    <li Class="PatchOperationAdd">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_GuardianArmorHelmet_Prestige"]/statBases</xpath>
+                        <value>
+                            <Bulk>2</Bulk>
+                            <WornBulk>1</WornBulk>
+                            <NightVisionEfficiency_Apparel>1.688</NightVisionEfficiency_Apparel>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_GuardianArmorHelmet_Prestige"]/statBases/MaxHitPoints</xpath>
+                        <value>
+                            <MaxHitPoints>810</MaxHitPoints>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_GuardianArmorHelmet_Prestige"]/statBases/Mass</xpath>
+                        <value>
+                            <Mass>3.009</Mass>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_GuardianArmorHelmet_Prestige"]/statBases/Flammability</xpath>
+                        <value>
+                            <Flammability>0</Flammability>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_GuardianArmorHelmet_Prestige"]/statBases/ArmorRating_Sharp</xpath>
+                        <value>
+                            <ArmorRating_Sharp>69</ArmorRating_Sharp>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_GuardianArmorHelmet_Prestige"]/statBases/ArmorRating_Blunt</xpath>
+                        <value>
+                            <ArmorRating_Blunt>168</ArmorRating_Blunt>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationAdd">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_GuardianArmorHelmet_Prestige"]/costList</xpath>
+                        <value>
+                            <DevilstrandCloth>20</DevilstrandCloth>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationAdd">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_GuardianArmorHelmet_Prestige"]/equippedStatOffsets</xpath>
+                        <value>
+                            <ToxicEnvironmentResistance>1.688</ToxicEnvironmentResistance>
+                            <SmokeSensitivity>-1</SmokeSensitivity>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_GuardianArmorHelmet_Prestige"]/costList/BOR_Tenebrite</xpath>
+                        <value>
+                            <BOR_Tenebrite>90</BOR_Tenebrite>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationAdd">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_GuardianArmorHelmet_Prestige"]/apparel/layers</xpath>
+                        <value>
+                            <li>OnHead</li>
+                            <li>StrappedHead</li>
+
+                        </value>
+                    </li>
+
+
+                    <li Class="PatchOperationAdd">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_PhalanxArmor_Prestige"]/statBases</xpath>
+                        <value>
+                            <Bulk>57</Bulk>
+                            <WornBulk>10</WornBulk>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_PhalanxArmor_Prestige"]/statBases/MaxHitPoints</xpath>
+                        <value>
+                            <MaxHitPoints>2193</MaxHitPoints>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_PhalanxArmor_Prestige"]/statBases/Mass</xpath>
+                        <value>
+                            <Mass>45</Mass>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_PhalanxArmor_Prestige"]/statBases/Flammability</xpath>
+                        <value>
+                            <Flammability>0</Flammability>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_PhalanxArmor_Prestige"]/statBases/ArmorRating_Sharp</xpath>
+                        <value>
+                            <ArmorRating_Sharp>81</ArmorRating_Sharp>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_PhalanxArmor_Prestige"]/statBases/ArmorRating_Blunt</xpath>
+                        <value>
+                            <ArmorRating_Blunt>168</ArmorRating_Blunt>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationAdd">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_PhalanxArmor_Prestige"]/costList</xpath>
+                        <value>
+                            <DevilstrandCloth>80</DevilstrandCloth>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationAdd">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_PhalanxArmor_Prestige"]/equippedStatOffsets</xpath>
+                        <value>
+                            <CarryWeight>270</CarryWeight>
+                            <CarryBulk>5</CarryBulk>
+                            <ToxicEnvironmentResistance>1.688</ToxicEnvironmentResistance>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationAdd">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_PhalanxArmor_Prestige"]/apparel/bodyPartGroups</xpath>
+                        <value>
+                            <li>Hands</li>
+                            <li>Feet</li>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_PhalanxArmor_Prestige"]/costList/BOR_Tenebrite</xpath>
+                        <value>
+                            <BOR_Tenebrite>220</BOR_Tenebrite>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_PhalanxArmor_Prestige"]/costList/Uranium</xpath>
+                        <value>
+                            <Uranium>337</Uranium>
+                        </value>
+                    </li>
+
+
+                    <li Class="PatchOperationAdd">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_PhalanxArmorHelmet_Prestige"]/statBases</xpath>
+                        <value>
+                            <Bulk>2</Bulk>
+                            <WornBulk>1</WornBulk>
+                            <NightVisionEfficiency_Apparel>1.688</NightVisionEfficiency_Apparel>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_PhalanxArmorHelmet_Prestige"]/statBases/MaxHitPoints</xpath>
+                        <value>
+                            <MaxHitPoints>1080</MaxHitPoints>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_PhalanxArmorHelmet_Prestige"]/statBases/Mass</xpath>
+                        <value>
+                            <Mass>3</Mass>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_PhalanxArmorHelmet_Prestige"]/statBases/Flammability</xpath>
+                        <value>
+                            <Flammability>0</Flammability>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_PhalanxArmorHelmet_Prestige"]/statBases/ArmorRating_Sharp</xpath>
+                        <value>
+                            <ArmorRating_Sharp>67</ArmorRating_Sharp>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_PhalanxArmorHelmet_Prestige"]/statBases/ArmorRating_Blunt</xpath>
+                        <value>
+                            <ArmorRating_Blunt>168</ArmorRating_Blunt>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationAdd">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_PhalanxArmorHelmet_Prestige"]/costList</xpath>
+                        <value>
+                            <DevilstrandCloth>30</DevilstrandCloth>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationAdd">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_PhalanxArmorHelmet_Prestige"]/equippedStatOffsets</xpath>
+                        <value>
+                            <SmokeSensitivity>-1</SmokeSensitivity>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_PhalanxArmorHelmet_Prestige"]/costList/BOR_Tenebrite</xpath>
+                        <value>
+                            <BOR_Tenebrite>100</BOR_Tenebrite>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationAdd">
+                        <xpath>Defs/ThingDef[defName="BOR_Tenebral_RA_PhalanxArmorHelmet_Prestige"]/apparel/layers</xpath>
+                        <value>
+                            <li>OnHead</li>
+                            <li>StrappedHead</li>
+
+                        </value>
+                    </li>
+                </operations>
+
+			</match>
+	  </li>
+	 </operations>
+    </enabled>
+  </Operation>
+
+</Patch>

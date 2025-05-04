@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Patch>
 
-	<Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
-		<modSettingDef>BOR_Setting_EPOE</modSettingDef>
-		<enabled Class="PatchOperationAdd">
-			<xpath>Defs</xpath>
-			<value>
+  <Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
+    <modSettingDef>BOR_Setting_EPOE</modSettingDef>
+    <enabled Class="PatchOperationSequence">
+	  <operations>
+	  
+	  <!-- patch sequence to patch in defs while proceeding to check for pawnkinds to be updated -->
+	  <li Class="PatchOperationAdd">
+      <xpath>Defs</xpath>
+      
+	  <value>
 
 				<ThingDef Name="EPIA_BodyPartBionicRibBaseBBORSolar" ParentName="EPIASyntheticBase" Abstract="True">
 					<recipeMaker>
@@ -891,8 +896,52 @@
 					<removesHediff>WakeUpRibSolar</removesHediff>
 				</RecipeDef>
 
-			</value>
-		</enabled>
-	</Operation>
+      </value>
+	  </li>
+	  
+	  <!-- update pawnkinds techhediffs after the defs are loaded in -->
+	  <li Class="PatchOperationSequence">
+				<operations>
+				
+					<li Class="PatchOperationAdd">
+					  <xpath>Defs/PawnKindDef[@Name="BOR_BasePawn"]/techHediffsRequired
+					  </xpath>
+					  <value>
+						<li MayRequire="dubwise.dubsbadhygiene">MedicalRibSolar</li>
+					  </value>
+					</li>
+					
+					<li Class="PatchOperationAdd">
+					  <xpath>Defs/PawnKindDef[@Name="BOR_ElitePawn"]/techHediffsRequired
+					  </xpath>
+					  <value>
+						<li MayRequire="vat.epoeforked">AdrenalineRibSolar</li>
+						<li MayRequire="vat.epoeforked">PainkillerRibSolar</li>
+					  </value>
+					</li>
+				
+					<li Class="PatchOperationAdd">
+					  <xpath>Defs/PawnKindDef[@Name="BOR_BasePawn_II"]/techHediffsRequired
+					  </xpath>
+					  <value>
+						<li MayRequire="dubwise.dubsbadhygiene">MedicalRibQuasar</li>
+					  </value>
+					</li>
+					
+					<li Class="PatchOperationAdd">
+					  <xpath>Defs/PawnKindDef[@Name="BOR_ElitePawn_II"]/techHediffsRequired
+					  </xpath>
+					  <value>
+						<li MayRequire="vat.epoeforked">AdrenalineRibQuasar</li>
+						<li MayRequire="vat.epoeforked">PainkillerRibQuasar</li>
+					  </value>
+					</li>
+
+				</operations>
+			</match>
+	  </li>
+	 </operations>
+    </enabled>
+  </Operation>
 
 </Patch>

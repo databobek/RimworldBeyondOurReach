@@ -3,8 +3,13 @@
 
   <Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
     <modSettingDef>BOR_Setting_Biotech</modSettingDef>
-    <enabled Class="PatchOperationAdd">
+    <enabled Class="PatchOperationSequence">
+	  <operations>
+	  
+	  <!-- patch sequence to patch in defs while proceeding to check for CE -->
+	  <li Class="PatchOperationAdd">
       <xpath>Defs</xpath>
+      
       <value>
 
         <ThingDef ParentName="BaseGun">
@@ -198,6 +203,133 @@
         </ThingDef>
 
       </value>
+
+	  </li>
+	  
+	  <!-- check to see if CombatExtended is loaded as well, then modify the patched in defs to CE standards -->
+	  <li Class="PatchOperationFindMod" MayRequire="CETeam.CombatExtended">
+		<mods>
+		  <li>Combat Extended</li>
+		</mods>
+			<match Class="PatchOperationSequence">
+				<operations>
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Solar_Gun_BeamGraser"]/tools</xpath>
+						<value>
+							<tools>
+								<li Class="CombatExtended.ToolCE">
+									<label>barrel</label>
+									<capacities>
+										<li>Blunt</li>
+									</capacities>
+									<power>10</power>
+									<cooldownTime>2.033</cooldownTime>
+									<armorPenetrationBlunt>5.25</armorPenetrationBlunt>
+									<linkedBodyPartsGroup>Barrel</linkedBodyPartsGroup>
+								</li>
+							</tools>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Solar_Gun_ToxicNeedle"]/tools</xpath>
+						<value>
+							<tools>
+								<li Class="CombatExtended.ToolCE">
+									<label>barrel</label>
+									<capacities>
+										<li>Blunt</li>
+									</capacities>
+									<power>10</power>
+									<cooldownTime>2</cooldownTime>
+									<armorPenetrationBlunt>5.25</armorPenetrationBlunt>
+									<linkedBodyPartsGroup>Barrel</linkedBodyPartsGroup>
+								</li>
+							</tools>
+						</value>
+					</li>
+
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Solar_Gun_BeamGraser"]/statBases/RangedWeapon_Cooldown</xpath>
+						<value>
+							<RangedWeapon_Cooldown>0.56</RangedWeapon_Cooldown>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Solar_Gun_BeamGraser"]/verbs/li/warmupTime</xpath>
+						<value>
+							<warmupTime>1.083</warmupTime>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Solar_Gun_BeamGraser"]/verbs/li/range</xpath>
+						<value>
+							<range>60</range>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Solar_Gun_BeamGraser"]/verbs/li/burstShotCount</xpath>
+						<value>
+							<burstShotCount>10</burstShotCount>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Solar_Gun_BeamGraser"]/verbs/li/ticksBetweenBurstShots</xpath>
+						<value>
+							<ticksBetweenBurstShots>10</ticksBetweenBurstShots>
+						</value>
+					</li>
+
+
+					<li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+						<defName>BOR_Solar_Gun_ToxicNeedle</defName>
+						<statBases>
+							<RangedWeapon_Cooldown>0.38</RangedWeapon_Cooldown>
+							<SightsEfficiency>2</SightsEfficiency>
+							<ShotSpread>0.01</ShotSpread>
+							<SwayFactor>0.81</SwayFactor>
+							<Bulk>12</Bulk>
+						</statBases>
+						<Properties>
+							<recoilAmount>1.5</recoilAmount>
+							<verbClass>CombatExtended.Verb_ShootCE</verbClass>
+							<hasStandardCommand>true</hasStandardCommand>
+							<defaultProjectile>Bullet_5x50mmCaseless_Toxic</defaultProjectile>
+							<warmupTime>1.083</warmupTime>
+							<range>113</range>
+							<burstShotCount>1</burstShotCount>
+							<soundCast>Shot_ToxicNeedleGun</soundCast>
+							<soundCastTail>GunTail_Heavy</soundCastTail>
+							<muzzleFlashScale>9</muzzleFlashScale>
+						</Properties>
+						<AmmoUser>
+							<magazineSize>10</magazineSize>
+							<reloadTime>4</reloadTime>
+							<ammoSet>AmmoSet_5x50mmCaselessToxic</ammoSet>
+						</AmmoUser>
+						<FireModes>
+							<aiAimMode>AimedShot</aiAimMode>
+						</FireModes>
+						<weaponTags>
+							<li>CE_AI_Rifle</li>
+							<li>NoSwitch</li>
+						</weaponTags>
+					</li>
+
+
+					<li Class="PatchOperationRemove">
+						<xpath>Defs/ThingDef[defName="BOR_Solar_Gun_NeedleLauncher"]</xpath>
+					</li>
+				</operations>
+
+			</match>
+	  </li>
+	 </operations>
     </enabled>
   </Operation>
 

@@ -14,15 +14,23 @@
         </enabled>
     </Operation>
 
-    <!-- Rimputers No Dubs Bad Hygiene -->
+    <!-- Add designator dropdown to rimputers,  -->
+	<!-- Bamba says you dont need to write patches Blind One but  this patch is unfinished?! WHY Bamba?! Anyway this is a freebie -->
     <Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
         <modSettingDef>BOR_Setting_IntegrateRimputers15IntoBORTechTree</modSettingDef>
         <enabled Class="PatchOperationAdd">
-            <xpath>Defs</xpath>
+            <xpath>Defs/ThingDef[defName="RP_MechanicalCalculator"
+								or defName="RP_MechanicalCalculator"
+								or defName="RP_DifferenceEngine"
+								or defName="RP_TapeStorage"
+								or defName="RP_Server"
+								or defName="RP_SuperComputer"
+								or defName="Rimputer_quantumcomputer"]
+			</xpath>
             <value>
-                <DesignatorDropdownGroupDef>
+                <designatorDropdown>
                     <defName>BOR_Rimputers</defName>
-                </DesignatorDropdownGroupDef>
+                </designatorDropdown>
             </value>
         </enabled>
     </Operation>

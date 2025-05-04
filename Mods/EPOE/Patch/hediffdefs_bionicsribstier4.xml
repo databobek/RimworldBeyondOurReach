@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Patch>
 
-	<Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
-		<modSettingDef>BOR_Setting_EPOE</modSettingDef>
-		<enabled Class="PatchOperationAdd">
-			<xpath>Defs</xpath>
-			<value>
+  <Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
+    <modSettingDef>BOR_Setting_EPOE</modSettingDef>
+    <enabled Class="PatchOperationSequence">
+	  <operations>
+	  
+	  <!-- patch sequence to patch in defs while proceeding to check for pawnkinds to be updated -->
+	  <li Class="PatchOperationAdd">
+      <xpath>Defs</xpath>
+      
+	  <value>
 
 				<RecipeDef ParentName="SurgeryInstallImplantBase" Name="SurgeryInstallImplantBaseBBORUmbral" Abstract="True">
 					<recipeUsers>
@@ -564,8 +569,20 @@
 					<removesHediff>WakeUpRibUmbral</removesHediff>
 				</RecipeDef>
 
-			</value>
-		</enabled>
-	</Operation>
+      </value>
+	  </li>
+	  
+	  <!-- update pawnkinds techhediffs after the defs are loaded in -->
+	  <li Class="PatchOperationSequence">
+				<operations>
+				
+				<!-- just a placeholder for future sequence related patches -->
+
+				</operations>
+			</match>
+	  </li>
+	 </operations>
+    </enabled>
+  </Operation>
 
 </Patch>

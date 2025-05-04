@@ -1,0 +1,4299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+
+  <Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
+    <modSettingDef>BOR_Setting_RimsenalApparelVariants</modSettingDef>
+    <enabled Class="PatchOperationSequence">
+	  <operations>
+	  
+	  <!-- patch sequence to patch in defs while proceeding to check for CE -->
+	  <li Class="PatchOperationAdd">
+      <xpath>Defs</xpath>
+      
+      <value>
+
+        <ThingDef ParentName="ApparelMakeableBase">
+          <defName>BOR_Quasar_Carbonsuit</defName>
+          <label>kwazaari bodysuit</label>
+          <techLevel>Ultra</techLevel>
+          <description>A full kwazaari bodysuit made of kwazaari alloy crystalline fiber. It is light and thin, but surprisingly sturdy.</description>
+          <graphicData>
+            <color>(0.36, 0.5, 0.7)</color>
+            <texPath>Things/Apparel/Carbon</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+          </graphicData>
+          <statBases>
+            <Mass>1.188</Mass>
+            <WorkToMake>44662</WorkToMake>
+            <MaxHitPoints>787</MaxHitPoints>
+            <ArmorRating_Blunt>0.562</ArmorRating_Blunt>
+            <ArmorRating_Sharp>0.562</ArmorRating_Sharp>
+            <ArmorRating_Heat>0.562</ArmorRating_Heat>
+            <Insulation_Cold>67</Insulation_Cold>
+            <Insulation_Heat>55</Insulation_Heat>
+            <EquipDelay>1</EquipDelay>
+            <RoyalFavorValue>3</RoyalFavorValue>
+          </statBases>
+          <thingCategories>
+            <li>BOR_Apparel</li>
+          </thingCategories>
+          <generateCommonality>0.03</generateCommonality>
+          <apparel>
+            <defaultOutfitTags>
+              <li>Worker</li>
+              <li>Soldier</li>
+            </defaultOutfitTags>
+            <tags>
+              <li>BOR_Military_II</li>
+            </tags>
+            <wornGraphicPath>Things/Apparel/Carbon</wornGraphicPath>
+            <layers>
+              <li>OnSkin</li>
+            </layers>
+            <bodyPartGroups>
+              <li>Neck</li>
+              <li>Shoulders</li>
+              <li>Torso</li>
+              <li>Arms</li>
+              <li>Legs</li>
+              <li>Hands</li>
+              <li>Feet</li>
+            </bodyPartGroups>
+          </apparel>
+          <recipeMaker>
+            <unfinishedThingDef>UnfinishedApparel</unfinishedThingDef>
+            <recipeUsers Inherit="False">
+              <li>BOR_Bench_II</li>
+              <li>BOR_Bench_IV</li>
+            </recipeUsers>
+            <skillRequirements>
+              <Crafting>15</Crafting>
+            </skillRequirements>
+          </recipeMaker>
+          <costList>
+            <BOR_QuasarAlloy>10</BOR_QuasarAlloy>
+            <BOR_QuasarAlloyWeave>75</BOR_QuasarAlloyWeave>
+            <Hyperweave>10</Hyperweave>
+          </costList>
+
+          <tradeTags>
+            <li>BOR_Tech_II</li>
+          </tradeTags>
+          <comps>
+            <li MayRequire="kentington.saveourship2">
+              <compClass>SaveOurShip2.CompEVA</compClass>
+            </li>
+          </comps>
+        </ThingDef>
+
+
+        <ThingDef ParentName="GDArmorBase">
+          <defName>BOR_Quasar_Apparel_SecurityArmor</defName>
+          <label>kwazaari modular security armor</label>
+          <description>The kwazaari configuration of the Greydale modular body protection system, the "Warrior III" security armor provides modest protection for most body parts. If you have the proper equipment, It can be reassembled into other armor.</description>
+          <techLevel>Ultra</techLevel>
+          <graphicData>
+            <color>(0.36, 0.5, 0.7)</color>
+            <texPath>Things/Apparel/GDWarrior</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>0.90</drawSize>
+          </graphicData>
+          <thingCategories>
+            <li>BOR_Armor_II</li>
+          </thingCategories>
+          <recipeMaker>
+            <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+            <researchPrerequisites>
+              <li>BOR_Research_Armor_II</li>
+              <li>DefenceTech</li>
+            </researchPrerequisites>
+            <recipeUsers Inherit="False">
+              <li>BOR_Bench_II</li>
+            </recipeUsers>
+            <skillRequirements>
+              <Crafting>10</Crafting>
+            </skillRequirements>
+          </recipeMaker>
+          <costList>
+            <BOR_Sunsteel>80</BOR_Sunsteel>
+            <BOR_ComponentII>6</BOR_ComponentII>
+            <BOR_QuasarAlloy>40</BOR_QuasarAlloy>
+          </costList>
+          <statBases>
+            <WorkToMake>42750</WorkToMake>
+            <MaxHitPoints>787</MaxHitPoints>
+            <Mass>5</Mass>
+            <Flammability>0.278</Flammability>
+            <ArmorRating_Blunt>0.9</ArmorRating_Blunt>
+            <ArmorRating_Sharp>1.958</ArmorRating_Sharp>
+            <ArmorRating_Heat>0.9</ArmorRating_Heat>
+            <Insulation_Cold>22</Insulation_Cold>
+            <Insulation_Heat>22</Insulation_Heat>
+            <EquipDelay>5</EquipDelay>
+
+            <RoyalFavorValue>3</RoyalFavorValue>
+          </statBases>
+          <equippedStatOffsets>
+
+            <DecompressionResistance MayRequire="kentington.saveourship2">0.75</DecompressionResistance>
+            <VacuumSpeedMultiplier MayRequire="kentington.saveourship2">4</VacuumSpeedMultiplier>
+            <MoveSpeed>-0.089</MoveSpeed>
+          </equippedStatOffsets>
+          <generateCommonality>0.03</generateCommonality>
+          <apparel>
+            <bodyPartGroups>
+              <li>Neck</li>
+              <li>Torso</li>
+              <li>Shoulders</li>
+              <li>Arms</li>
+              <li>Legs</li>
+              <li>Hands</li>
+              <li>Feet</li>
+            </bodyPartGroups>
+            <wornGraphicPath>Things/Apparel/GDWarrior</wornGraphicPath>
+            <layers>
+              <li>Middle</li>
+              <li>Shell</li>
+            </layers>
+            <tags>
+              <li>BOR_Military_II</li>
+            </tags>
+            <defaultOutfitTags>
+              <li>Soldier</li>
+            </defaultOutfitTags>
+            <useDeflectMetalEffect>true</useDeflectMetalEffect>
+          </apparel>
+
+          <tradeTags>
+            <li>BOR_Tech_II</li>
+          </tradeTags>
+          <comps>
+            <li MayRequire="kentington.saveourship2">
+              <compClass>SaveOurShip2.CompEVA</compClass>
+            </li>
+          </comps>
+        </ThingDef>
+
+
+        <ThingDef ParentName="GDArmorBase">
+          <defName>BOR_Quasar_Apparel_SecurityHelmet</defName>
+          <thingCategories>
+            <li>BOR_Armor_Headgear_II</li>
+          </thingCategories>
+          <label>kwazaari security helmet</label>
+          <description>A kwazaari helmet of the "Warrior III" kwazaari security armor. A simple and robust protection gear.</description>
+          <techLevel>Ultra</techLevel>
+          <graphicData>
+            <color>(0.36, 0.5, 0.7)</color>
+            <texPath>Things/Apparel/GDWarriorH</texPath>
+            <drawSize>0.70</drawSize>
+            <graphicClass>Graphic_Single</graphicClass>
+          </graphicData>
+          <statBases>
+            <Mass>0.083</Mass>
+            <WorkToMake>27000</WorkToMake>
+            <MaxHitPoints>337</MaxHitPoints>
+            <Flammability>0.278</Flammability>
+            <ArmorRating_Blunt>0.945</ArmorRating_Blunt>
+            <ArmorRating_Sharp>1.688</ArmorRating_Sharp>
+            <ArmorRating_Heat>0.9</ArmorRating_Heat>
+            <Insulation_Cold>9</Insulation_Cold>
+            <Insulation_Heat>4</Insulation_Heat>
+            <EquipDelay>0</EquipDelay>
+
+            <RoyalFavorValue>3</RoyalFavorValue>
+          </statBases>
+          <recipeMaker>
+            <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+            <researchPrerequisites>
+              <li>BOR_Research_Armor_II</li>
+              <li>DefenceTech</li>
+            </researchPrerequisites>
+            <recipeUsers Inherit="False">
+              <li>BOR_Bench_II</li>
+            </recipeUsers>
+            <skillRequirements>
+              <Crafting>10</Crafting>
+            </skillRequirements>
+          </recipeMaker>
+          <costList>
+            <BOR_Sunsteel>45</BOR_Sunsteel>
+            <BOR_ComponentII>3</BOR_ComponentII>
+            <BOR_QuasarAlloy>15</BOR_QuasarAlloy>
+          </costList>
+          <generateCommonality>0.03</generateCommonality>
+          <apparel>
+            <immuneToToxGasExposure>true</immuneToToxGasExposure>
+            <bodyPartGroups>
+              <li>FullHead</li>
+            </bodyPartGroups>
+            <wornGraphicPath>Things/Apparel/GDWarriorH</wornGraphicPath>
+            <layers>
+              <li>Overhead</li>
+            </layers>
+            <tags>
+              <li>BOR_Military_II</li>
+              <li>RoyalCombatGear</li>
+            </tags>
+            <defaultOutfitTags>
+              <li>Soldier</li>
+            </defaultOutfitTags>
+          </apparel>
+
+          <tradeTags>
+            <li>BOR_Tech_II</li>
+          </tradeTags>
+          <comps>
+            <li MayRequire="kentington.saveourship2">
+              <compClass>SaveOurShip2.CompEVA</compClass>
+            </li>
+          </comps>
+        </ThingDef>
+
+
+        <ThingDef ParentName="GDArmorBase">
+          <defName>BOR_Quasar_Apparel_PioneerArmor</defName>
+          <label>kwazaari modular pioneer armor</label>
+          <description>A kwazaari armor designed primarily for combat engineer, Greydale "Laconian III" pioneer armor has integrated tool set. It's a pretty good gear for builds something while gunfight.</description>
+          <techLevel>Ultra</techLevel>
+          <graphicData>
+            <color>(0.36, 0.5, 0.7)</color>
+            <texPath>Things/Apparel/Laconian</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>1.20</drawSize>
+          </graphicData>
+          <recipeMaker>
+            <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+            <recipeUsers Inherit="False">
+              <li>BOR_Bench_II</li>
+            </recipeUsers>
+            <researchPrerequisites>
+              <li>BOR_Research_Armor_II</li>
+              <li>DefenceTech</li>
+            </researchPrerequisites>
+          </recipeMaker>
+          <costList>
+            <BOR_Quasar_Apparel_SecurityArmor>1</BOR_Quasar_Apparel_SecurityArmor>
+            <MBPSKit>1</MBPSKit>
+          </costList>
+          <statBases>
+            <Mass>9.583</Mass>
+            <WorkToMake>112</WorkToMake>
+            <MaxHitPoints>787</MaxHitPoints>
+            <ArmorRating_Blunt>0.9</ArmorRating_Blunt>
+            <ArmorRating_Sharp>2.183</ArmorRating_Sharp>
+            <ArmorRating_Heat>1.057</ArmorRating_Heat>
+            <Insulation_Cold>33</Insulation_Cold>
+            <Insulation_Heat>22</Insulation_Heat>
+            <EquipDelay>6</EquipDelay>
+
+            <RoyalFavorValue>3</RoyalFavorValue>
+          </statBases>
+          <equippedStatOffsets>
+
+            <DecompressionResistance MayRequire="kentington.saveourship2">0.75</DecompressionResistance>
+            <VacuumSpeedMultiplier MayRequire="kentington.saveourship2">4</VacuumSpeedMultiplier>
+            <ConstructionSpeed>0.45</ConstructionSpeed>
+            <SmoothingSpeed>0.675</SmoothingSpeed>
+            <MiningSpeed>0.675</MiningSpeed>
+            <DeepDrillingSpeed>0.675</DeepDrillingSpeed>
+            <MoveSpeed>-0.089</MoveSpeed>
+          </equippedStatOffsets>
+          <generateCommonality>0.03</generateCommonality>
+          <apparel>
+            <bodyPartGroups>
+              <li>Neck</li>
+              <li>Torso</li>
+              <li>Shoulders</li>
+              <li>Arms</li>
+              <li>Legs</li>
+              <li>Hands</li>
+              <li>Feet</li>
+            </bodyPartGroups>
+            <wornGraphicPath>Things/Apparel/Laconian</wornGraphicPath>
+            <layers>
+              <li>Middle</li>
+              <li>Shell</li>
+            </layers>
+            <tags>
+              <li>BOR_Military_II</li>
+            </tags>
+            <defaultOutfitTags>
+              <li>Soldier</li>
+            </defaultOutfitTags>
+            <useDeflectMetalEffect>true</useDeflectMetalEffect>
+          </apparel>
+
+          <tradeTags>
+            <li>BOR_Tech_II</li>
+          </tradeTags>
+          <comps>
+            <li MayRequire="kentington.saveourship2">
+              <compClass>SaveOurShip2.CompEVA</compClass>
+            </li>
+          </comps>
+        </ThingDef>
+
+
+        <ThingDef ParentName="GDArmorBase">
+          <defName>BOR_Quasar_Apparel_PioneerH</defName>
+          <thingCategories>
+            <li>BOR_Armor_Headgear_II</li>
+          </thingCategories>
+          <label>kwazaari pioneer helmet</label>
+          <description>A helmet of the "Laconian III" pioneer armor. A simple pain damper system integrated.</description>
+          <techLevel>Ultra</techLevel>
+          <graphicData>
+            <color>(0.36, 0.5, 0.7)</color>
+            <texPath>Things/Apparel/LaconianH</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+          </graphicData>
+          <statBases>
+            <Mass>1.458</Mass>
+            <WorkToMake>33750</WorkToMake>
+            <MaxHitPoints>337</MaxHitPoints>
+            <ArmorRating_Blunt>0.72</ArmorRating_Blunt>
+            <ArmorRating_Sharp>1.98</ArmorRating_Sharp>
+            <ArmorRating_Heat>1.8</ArmorRating_Heat>
+            <Insulation_Cold>9</Insulation_Cold>
+            <Insulation_Heat>4</Insulation_Heat>
+            <EquipDelay>1</EquipDelay>
+
+            <RoyalFavorValue>3</RoyalFavorValue>
+          </statBases>
+          <equippedStatOffsets>
+
+            <DecompressionResistance MayRequire="kentington.saveourship2">0.75</DecompressionResistance>
+            <VacuumSpeedMultiplier MayRequire="kentington.saveourship2">4</VacuumSpeedMultiplier>
+            <PainShockThreshold>0.562</PainShockThreshold>
+          </equippedStatOffsets>
+          <recipeMaker>
+            <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+            <researchPrerequisites>
+              <li>BOR_Research_Armor_II</li>
+              <li>DefenceTech</li>
+            </researchPrerequisites>
+            <recipeUsers Inherit="False">
+              <li>BOR_Bench_II</li>
+            </recipeUsers>
+            <skillRequirements>
+              <Crafting>18</Crafting>
+            </skillRequirements>
+          </recipeMaker>
+          <costList>
+            <BOR_Sunsteel>75</BOR_Sunsteel>
+            <BOR_ComponentII>6</BOR_ComponentII>
+            <BOR_QuasarAlloy>20</BOR_QuasarAlloy>
+          </costList>
+          <generateCommonality>0.03</generateCommonality>
+          <apparel>
+            <immuneToToxGasExposure>true</immuneToToxGasExposure>
+            <bodyPartGroups>
+              <li>FullHead</li>
+            </bodyPartGroups>
+            <wornGraphicPath>Things/Apparel/LaconianH</wornGraphicPath>
+            <layers>
+              <li>Overhead</li>
+            </layers>
+            <tags>
+              <li>BOR_Military_II</li>
+            </tags>
+            <defaultOutfitTags>
+              <li>Soldier</li>
+            </defaultOutfitTags>
+          </apparel>
+
+          <tradeTags>
+            <li>BOR_Tech_II</li>
+          </tradeTags>
+          <comps>
+            <li MayRequire="kentington.saveourship2">
+              <compClass>SaveOurShip2.CompEVA</compClass>
+            </li>
+          </comps>
+        </ThingDef>
+
+
+        <ThingDef ParentName="GDArmorBase">
+          <defName>BOR_Quasar_Apparel_NomadArmor</defName>
+          <label>kwazaari modular nomad armor</label>
+          <description>"Akicita III", the long-range kwazaari scout variant of the kwazaari "Warrior III" modular body protection system. This outfit recycles the wearer's body waste and moisture, provides heat and cold protection and sound dampening, and assists the wearer with servo motors and a lightweight exoskeleton. The wearer needs less sleep, moves faster, hunting quieter. Originally designed as a protective device for explorers, guerrillas and caravans of rimworlds soon realized the amazing potential of the equipment.</description>
+          <techLevel>Ultra</techLevel>
+          <graphicData>
+            <color>(0.36, 0.5, 0.7)</color>
+            <texPath>Things/Apparel/Akicita</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+          </graphicData>
+          <recipeMaker>
+            <researchPrerequisites>
+              <li>BOR_Research_Armor_II</li>
+              <li>DefenceTech</li>
+            </researchPrerequisites>
+            <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+            <recipeUsers Inherit="False">
+              <li>BOR_Bench_II</li>
+            </recipeUsers>
+          </recipeMaker>
+          <costList>
+            <BOR_Quasar_Apparel_SecurityArmor>1</BOR_Quasar_Apparel_SecurityArmor>
+            <MBPSKit>1</MBPSKit>
+          </costList>
+          <statBases>
+            <Mass>7</Mass>
+            <WorkToMake>112</WorkToMake>
+            <MaxHitPoints>337</MaxHitPoints>
+            <Flammability>0.278</Flammability>
+            <ArmorRating_Blunt>0.945</ArmorRating_Blunt>
+            <ArmorRating_Sharp>1.8</ArmorRating_Sharp>
+            <ArmorRating_Heat>0.9</ArmorRating_Heat>
+            <Insulation_Cold>55</Insulation_Cold>
+            <Insulation_Heat>45</Insulation_Heat>
+            <EquipDelay>6</EquipDelay>
+
+            <RoyalFavorValue>3</RoyalFavorValue>
+          </statBases>
+          <equippedStatOffsets>
+
+            <DecompressionResistance MayRequire="kentington.saveourship2">0.75</DecompressionResistance>
+            <VacuumSpeedMultiplier MayRequire="kentington.saveourship2">4</VacuumSpeedMultiplier>
+            <HuntingStealth>1.013</HuntingStealth>
+            <RestRateMultiplier>0.675</RestRateMultiplier>
+            <ImmunityGainSpeed>0.18</ImmunityGainSpeed>
+          </equippedStatOffsets>
+          <generateCommonality>0.03</generateCommonality>
+          <apparel>
+            <bodyPartGroups>
+              <li>Neck</li>
+              <li>Torso</li>
+              <li>Shoulders</li>
+              <li>Legs</li>
+            </bodyPartGroups>
+            <wornGraphicPath>Things/Apparel/Akicita</wornGraphicPath>
+            <layers>
+              <li>Middle</li>
+              <li>Shell</li>
+            </layers>
+            <tags>
+              <li>BOR_Military_II</li>
+            </tags>
+            <defaultOutfitTags>
+              <li>Soldier</li>
+            </defaultOutfitTags>
+            <useDeflectMetalEffect>true</useDeflectMetalEffect>
+          </apparel>
+
+          <tradeTags>
+            <li>BOR_Tech_II</li>
+          </tradeTags>
+          <comps>
+            <li MayRequire="kentington.saveourship2">
+              <compClass>SaveOurShip2.CompEVA</compClass>
+            </li>
+          </comps>
+        </ThingDef>
+
+
+        <ThingDef ParentName="GDArmorBase">
+          <defName>BOR_Quasar_Apparel_NomadH</defName>
+          <thingCategories>
+            <li>BOR_Armor_Headgear_II</li>
+          </thingCategories>
+          <label>kwazaari nomad helmet</label>
+          <description>A kwazaari helmet of the "Akicita III" kwazaari nomad armor. Its long-range observation equipment can also be used for aiming.</description>
+          <techLevel>Ultra</techLevel>
+          <graphicData>
+            <color>(0.36, 0.5, 0.7)</color>
+            <texPath>Things/Apparel/AkicitaH</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+          </graphicData>
+          <statBases>
+            <Mass>0.083</Mass>
+            <WorkToMake>27000</WorkToMake>
+            <MaxHitPoints>337</MaxHitPoints>
+            <Flammability>0.278</Flammability>
+            <ArmorRating_Blunt>0.945</ArmorRating_Blunt>
+            <ArmorRating_Sharp>1.688</ArmorRating_Sharp>
+            <ArmorRating_Heat>0.9</ArmorRating_Heat>
+            <Insulation_Cold>18</Insulation_Cold>
+            <Insulation_Heat>15</Insulation_Heat>
+            <EquipDelay>0</EquipDelay>
+
+            <RoyalFavorValue>3</RoyalFavorValue>
+          </statBases>
+          <equippedStatOffsets>
+
+            <DecompressionResistance MayRequire="kentington.saveourship2">0.75</DecompressionResistance>
+            <VacuumSpeedMultiplier MayRequire="kentington.saveourship2">4</VacuumSpeedMultiplier>
+            <ShootingAccuracyPawn>0.225</ShootingAccuracyPawn>
+          </equippedStatOffsets>
+          <recipeMaker>
+            <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+            <recipeUsers Inherit="False">
+              <li>BOR_Bench_II</li>
+            </recipeUsers>
+            <researchPrerequisites>
+              <li>BOR_Research_Armor_II</li>
+              <li>DefenceTech</li>
+            </researchPrerequisites>
+            <skillRequirements>
+              <Crafting>18</Crafting>
+            </skillRequirements>
+          </recipeMaker>
+          <costList>
+            <BOR_Sunsteel>65</BOR_Sunsteel>
+            <BOR_ComponentII>5</BOR_ComponentII>
+            <BOR_QuasarAlloy>10</BOR_QuasarAlloy>
+          </costList>
+          <generateCommonality>0.03</generateCommonality>
+          <apparel>
+            <immuneToToxGasExposure>true</immuneToToxGasExposure>
+            <bodyPartGroups>
+              <li>FullHead</li>
+            </bodyPartGroups>
+            <wornGraphicPath>Things/Apparel/AkicitaH</wornGraphicPath>
+            <layers>
+              <li>Overhead</li>
+            </layers>
+            <tags>
+              <li>BOR_Military_II</li>
+            </tags>
+            <defaultOutfitTags>
+              <li>Soldier</li>
+            </defaultOutfitTags>
+          </apparel>
+
+          <tradeTags>
+            <li>BOR_Tech_II</li>
+          </tradeTags>
+          <comps>
+            <li MayRequire="kentington.saveourship2">
+              <compClass>SaveOurShip2.CompEVA</compClass>
+            </li>
+          </comps>
+        </ThingDef>
+
+
+        <ThingDef ParentName="GDArmorBase">
+          <defName>BOR_Quasar_Apparel_MedicArmor</defName>
+          <label>kwazaari modular Medic armor</label>
+          <description>Designed for combat medics, the "Hospitaller III" kwazaari armor is the medical variant of the "Warrior III" kwazaari modular body protection system. The armor is equipped with a variety of medical tools and supplies, so the wearer can treat the injured in the field.</description>
+          <techLevel>Ultra</techLevel>
+          <graphicData>
+            <color>(0.36, 0.5, 0.7)</color>
+            <texPath>Things/Apparel/Hospitaller</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>1.20</drawSize>
+          </graphicData>
+          <recipeMaker>
+            <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+            <recipeUsers Inherit="False">
+              <li>BOR_Bench_II</li>
+            </recipeUsers>
+            <researchPrerequisites>
+              <li>BOR_Research_Armor_II</li>
+              <li>DefenceTech</li>
+            </researchPrerequisites>
+          </recipeMaker>
+          <costList>
+            <BOR_Quasar_Apparel_SecurityArmor>1</BOR_Quasar_Apparel_SecurityArmor>
+            <MBPSKit>1</MBPSKit>
+          </costList>
+          <statBases>
+            <Mass>8.889</Mass>
+            <WorkToMake>112</WorkToMake>
+            <MaxHitPoints>787</MaxHitPoints>
+            <ArmorRating_Blunt>0.9</ArmorRating_Blunt>
+            <ArmorRating_Sharp>2.183</ArmorRating_Sharp>
+            <ArmorRating_Heat>1.057</ArmorRating_Heat>
+            <Insulation_Cold>33</Insulation_Cold>
+            <Insulation_Heat>22</Insulation_Heat>
+            <EquipDelay>6</EquipDelay>
+
+            <RoyalFavorValue>3</RoyalFavorValue>
+          </statBases>
+          <equippedStatOffsets>
+
+            <DecompressionResistance MayRequire="kentington.saveourship2">0.75</DecompressionResistance>
+            <VacuumSpeedMultiplier MayRequire="kentington.saveourship2">4</VacuumSpeedMultiplier>
+            <MedicalTendQuality>0.45</MedicalTendQuality>
+            <MoveSpeed>-0.089</MoveSpeed>
+            <MedicalTendSpeed>1.125</MedicalTendSpeed>
+            <MedicalPotency>0.225</MedicalPotency>
+          </equippedStatOffsets>
+          <generateCommonality>0.03</generateCommonality>
+          <apparel>
+            <bodyPartGroups>
+              <li>Neck</li>
+              <li>Torso</li>
+              <li>Shoulders</li>
+              <li>Arms</li>
+              <li>Legs</li>
+              <li>Hands</li>
+              <li>Feet</li>
+            </bodyPartGroups>
+            <wornGraphicPath>Things/Apparel/Hospitaller</wornGraphicPath>
+            <layers>
+              <li>Middle</li>
+              <li>Shell</li>
+            </layers>
+            <tags>
+              <li>BOR_Military_II</li>
+            </tags>
+            <defaultOutfitTags>
+              <li>Soldier</li>
+            </defaultOutfitTags>
+            <useDeflectMetalEffect>true</useDeflectMetalEffect>
+          </apparel>
+
+          <tradeTags>
+            <li>BOR_Tech_II</li>
+          </tradeTags>
+          <comps>
+            <li MayRequire="kentington.saveourship2">
+              <compClass>SaveOurShip2.CompEVA</compClass>
+            </li>
+          </comps>
+        </ThingDef>
+
+
+        <ThingDef ParentName="GDArmorBase">
+          <defName>BOR_Quasar_Apparel_MedicH</defName>
+          <thingCategories>
+            <li>BOR_Armor_Headgear_II</li>
+          </thingCategories>
+          <label>kwazaari medic helmet</label>
+          <description>A kwazaari helmet of the "Hospitaller III" kwazaari Medic armor. The built-in AI medical interface assists the wearer during medical procedures.</description>
+          <techLevel>Ultra</techLevel>
+          <graphicData>
+            <color>(0.36, 0.5, 0.7)</color>
+            <texPath>Things/Apparel/HospitallerH</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <shaderType>TransparentPostLight</shaderType>
+          </graphicData>
+          <statBases>
+            <Mass>1.458</Mass>
+            <WorkToMake>27000</WorkToMake>
+            <MaxHitPoints>337</MaxHitPoints>
+            <ArmorRating_Blunt>0.72</ArmorRating_Blunt>
+            <ArmorRating_Sharp>1.98</ArmorRating_Sharp>
+            <ArmorRating_Heat>1.8</ArmorRating_Heat>
+            <Insulation_Cold>9</Insulation_Cold>
+            <Insulation_Heat>4</Insulation_Heat>
+            <EquipDelay>1</EquipDelay>
+
+            <RoyalFavorValue>3</RoyalFavorValue>
+          </statBases>
+          <equippedStatOffsets>
+
+            <DecompressionResistance MayRequire="kentington.saveourship2">0.75</DecompressionResistance>
+            <VacuumSpeedMultiplier MayRequire="kentington.saveourship2">4</VacuumSpeedMultiplier>
+            <SurgerySuccessChanceFactor>0.45</SurgerySuccessChanceFactor>
+            <MedicalPotency>0.225</MedicalPotency>
+            <MedicalOperationSpeed>0.2</MedicalOperationSpeed>
+          </equippedStatOffsets>
+          <recipeMaker>
+            <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+            <researchPrerequisites>
+              <li>BOR_Research_Armor_II</li>
+              <li>DefenceTech</li>
+            </researchPrerequisites>
+            <recipeUsers Inherit="False">
+              <li>BOR_Bench_II</li>
+            </recipeUsers>
+            <skillRequirements>
+              <Crafting>18</Crafting>
+            </skillRequirements>
+          </recipeMaker>
+          <costList>
+            <BOR_Sunsteel>75</BOR_Sunsteel>
+            <BOR_ComponentII>6</BOR_ComponentII>
+            <BOR_QuasarAlloy>20</BOR_QuasarAlloy>
+          </costList>
+          <generateCommonality>0.03</generateCommonality>
+          <apparel>
+            <immuneToToxGasExposure>true</immuneToToxGasExposure>
+            <bodyPartGroups>
+              <li>FullHead</li>
+            </bodyPartGroups>
+            <wornGraphicPath>Things/Apparel/HospitallerH</wornGraphicPath>
+            <layers>
+              <li>Overhead</li>
+            </layers>
+            <tags>
+              <li>BOR_Military_II</li>
+            </tags>
+            <defaultOutfitTags>
+              <li>Soldier</li>
+            </defaultOutfitTags>
+          </apparel>
+
+          <tradeTags>
+            <li>BOR_Tech_II</li>
+          </tradeTags>
+          <comps>
+            <li MayRequire="kentington.saveourship2">
+              <compClass>SaveOurShip2.CompEVA</compClass>
+            </li>
+          </comps>
+        </ThingDef>
+
+
+        <ThingDef ParentName="RSApparelMakeableBase">
+          <defName>BOR_Quasar_Apparel_Dropsuit</defName>
+          <label>kwazaari drop suit</label>
+          <techLevel>Ultra</techLevel>
+          <description>Yeonhwa Precision Quasar Drop Suit model 412f, 'JanYeong(shadow remains) III'. Built for the YeonHwa Aggresive Marketing Division's drop troops, this completely enclosed suit is designed to perform low orbit jump action. Its integrated long-ranged jump pack makes JanYeong ideal equipment for the rapid insertion mission.</description>
+          <graphicData>
+            <color>(0.36, 0.5, 0.7)</color>
+            <texPath>Things/Apparel/JanYeong</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+          </graphicData>
+          <thingCategories>
+            <li>BOR_Armor_II</li>
+          </thingCategories>
+          <recipeMaker>
+            <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+            <researchPrerequisites>
+              <li>ShardTech</li>
+              <li>BOR_Research_Armor_II</li>
+            </researchPrerequisites>
+            <recipeUsers Inherit="False">
+              <li>BOR_Bench_II</li>
+            </recipeUsers>
+            <skillRequirements>
+              <Crafting>19</Crafting>
+            </skillRequirements>
+          </recipeMaker>
+          <costList>
+            <BOR_ComponentII>5</BOR_ComponentII>
+            <BOR_QuasarAlloy>75</BOR_QuasarAlloy>
+            <Uranium>55</Uranium>
+            <Chemfuel>20</Chemfuel>
+          </costList>
+          <statBases>
+            <Mass>8</Mass>
+            <WorkToMake>162000</WorkToMake>
+            <MaxHitPoints>877</MaxHitPoints>
+            <ArmorRating_Blunt>1.125</ArmorRating_Blunt>
+            <ArmorRating_Sharp>2.138</ArmorRating_Sharp>
+            <ArmorRating_Heat>1.688</ArmorRating_Heat>
+            <Insulation_Cold>135</Insulation_Cold>
+            <Insulation_Heat>135</Insulation_Heat>
+            <EquipDelay>10</EquipDelay>
+            <JumpRange MayRequire="ludeon.rimworld.royalty">37.5</JumpRange>
+
+            <RoyalFavorValue>3</RoyalFavorValue>
+          </statBases>
+          <equippedStatOffsets>
+
+            <DecompressionResistance MayRequire="kentington.saveourship2">0.75</DecompressionResistance>
+            <VacuumSpeedMultiplier MayRequire="kentington.saveourship2">4</VacuumSpeedMultiplier>
+            <MoveSpeed>1.8</MoveSpeed>
+          </equippedStatOffsets>
+          <generateCommonality>0.03</generateCommonality>
+          <apparel>
+            <wornGraphicPath>Things/Apparel/JanYeong</wornGraphicPath>
+            <layers>
+              <li>Middle</li>
+              <li>Shell</li>
+            </layers>
+            <defaultOutfitTags>
+              <li>Soldier</li>
+            </defaultOutfitTags>
+            <bodyPartGroups>
+              <li>Neck</li>
+              <li>Shoulders</li>
+              <li>Torso</li>
+              <li>Arms</li>
+              <li>Legs</li>
+              <li>Hands</li>
+              <li>Feet</li>
+            </bodyPartGroups>
+            <tags>
+              <li>BOR_Military_II</li>
+              <li>Royal</li>
+              <li>EVA</li>
+            </tags>
+          </apparel>
+          <comps>
+            <li Class="CompProperties_ApparelReloadable">
+              <maxCharges>6</maxCharges>
+              <ammoDef>Chemfuel</ammoDef>
+              <ammoCountPerCharge>67</ammoCountPerCharge>
+              <baseReloadTicks>55</baseReloadTicks>
+              <soundReload>Standard_Reload</soundReload>
+              <hotKey>Misc4</hotKey>
+              <chargeNoun>jump</chargeNoun>
+              <displayGizmoWhileUndrafted>false</displayGizmoWhileUndrafted>
+            </li>
+            <li MayRequire="kentington.saveourship2">
+              <compClass>SaveOurShip2.CompEVA</compClass>
+            </li>
+          </comps>
+          <verbs>
+            <li MayRequire="ludeon.rimworld.royalty">
+              <verbClass>Verb_Jump</verbClass>
+              <label>jump</label>
+              <commandIcon>Things/Apparel/JanYeong</commandIcon>
+              <violent>false</violent>
+              <hasStandardCommand>true</hasStandardCommand>
+              <onlyManualCast>True</onlyManualCast>
+              <forceNormalTimeSpeed>false</forceNormalTimeSpeed>
+              <warmupTime>0.868</warmupTime>
+              <warmupEffecter>JumpWarmupEffect</warmupEffecter>
+              <requireLineOfSight>true</requireLineOfSight>
+              <targetParams>
+                <canTargetLocations>true</canTargetLocations>
+                <canTargetPawns>false</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+              </targetParams>
+            </li>
+          </verbs>
+
+          <tradeTags>
+            <li>BOR_Tech_II</li>
+          </tradeTags>
+        </ThingDef>
+
+        <ThingDef ParentName="RSArmorHelmetMakeableBase">
+          <defName>BOR_Quasar_Apparel_DropsuitH</defName>
+          <thingCategories>
+            <li>BOR_Armor_Headgear_II</li>
+          </thingCategories>
+          <label>kwazaari dropsuit helmet</label>
+          <techLevel>Archotech</techLevel>
+          <description>It is a state-of-the-art kwazaari helmet, optimized for EVA and orbital drop operations. This helmet has lots of shiny gadgets. Of course, all of these flashing toys are useless in the surface environment except the targeting assist pseudo A.I.</description>
+          <graphicData>
+            <color>(0.36, 0.5, 0.7)</color>
+            <texPath>Things/Apparel/JanYeongH</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+          </graphicData>
+          <recipeMaker>
+            <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+            <researchPrerequisites>
+              <li>ShardTech</li>
+              <li>BOR_Research_Armor_II</li>
+            </researchPrerequisites>
+            <recipeUsers Inherit="False">
+              <li>BOR_Bench_II</li>
+            </recipeUsers>
+            <skillRequirements>
+              <Crafting>19</Crafting>
+            </skillRequirements>
+          </recipeMaker>
+          <costList>
+            <BOR_ComponentII>2</BOR_ComponentII>
+            <BOR_QuasarAlloy>25</BOR_QuasarAlloy>
+          </costList>
+          <statBases>
+            <Mass>1.458</Mass>
+            <WorkToMake>60750</WorkToMake>
+            <MaxHitPoints>675</MaxHitPoints>
+            <ArmorRating_Blunt>1.013</ArmorRating_Blunt>
+            <ArmorRating_Sharp>1.912</ArmorRating_Sharp>
+            <ArmorRating_Heat>1.35</ArmorRating_Heat>
+            <Insulation_Cold>22</Insulation_Cold>
+            <Insulation_Heat>10</Insulation_Heat>
+            <EquipDelay>2</EquipDelay>
+
+            <RoyalFavorValue>3</RoyalFavorValue>
+          </statBases>
+          <equippedStatOffsets>
+
+            <DecompressionResistance MayRequire="kentington.saveourship2">0.75</DecompressionResistance>
+            <VacuumSpeedMultiplier MayRequire="kentington.saveourship2">4</VacuumSpeedMultiplier>
+            <ShootingAccuracyPawn>0.225</ShootingAccuracyPawn>
+            <AimingDelayFactor>-0.223</AimingDelayFactor>
+          </equippedStatOffsets>
+          <generateCommonality>0.03</generateCommonality>
+          <apparel>
+            <wornGraphicPath>Things/Apparel/JanYeongH</wornGraphicPath>
+            <layers>
+              <li>Overhead</li>
+            </layers>
+            <immuneToToxGasExposure>true</immuneToToxGasExposure>
+            <bodyPartGroups>
+              <li>FullHead</li>
+            </bodyPartGroups>
+            <defaultOutfitTags>
+              <li>Soldier</li>
+            </defaultOutfitTags>
+            <tags>
+              <li>BOR_Military_II</li>
+              <li>Royal</li>
+              <li>EVA</li>
+            </tags>
+          </apparel>
+
+          <tradeTags>
+            <li>BOR_Tech_II</li>
+          </tradeTags>
+          <comps>
+            <li MayRequire="kentington.saveourship2">
+              <compClass>SaveOurShip2.CompEVA</compClass>
+            </li>
+          </comps>
+        </ThingDef>
+
+
+        <ThingDef ParentName="RSApparelMakeableBase">
+          <defName>BOR_Quasar_Apparel_Strikesuit</defName>
+          <label>kwazaari strike suit</label>
+          <techLevel>Ultra</techLevel>
+          <description>Yeonhwa Precision Strike Suit model 383a, 'ChangWol(Azure Moon) III'. Designed for urban strike teams, this sophisticated suit have short-ranged, fast jump thrusters for rapid assault. In order to maximize the operational capacity of this suit, the wearer requires fast reaction speed and exceptional boldness.</description>
+          <graphicData>
+            <color>(0.36, 0.5, 0.7)</color>
+            <texPath>Things/Apparel/ChangWol</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+          </graphicData>
+          <thingCategories>
+            <li>BOR_Armor_II</li>
+          </thingCategories>
+          <recipeMaker>
+            <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+            <researchPrerequisites>
+              <li>ShardTech</li>
+              <li>BOR_Research_Armor_II</li>
+            </researchPrerequisites>
+            <recipeUsers Inherit="False">
+              <li>BOR_Bench_II</li>
+            </recipeUsers>
+            <skillRequirements>
+              <Crafting>15</Crafting>
+            </skillRequirements>
+          </recipeMaker>
+          <costList>
+            <BOR_Sunsteel>30</BOR_Sunsteel>
+            <BOR_ComponentII>6</BOR_ComponentII>
+            <BOR_QuasarAlloy>70</BOR_QuasarAlloy>
+          </costList>
+          <statBases>
+            <Mass>4.514</Mass>
+            <WorkToMake>157500</WorkToMake>
+            <MaxHitPoints>787</MaxHitPoints>
+            <ArmorRating_Blunt>0.675</ArmorRating_Blunt>
+            <ArmorRating_Sharp>1.62</ArmorRating_Sharp>
+            <ArmorRating_Heat>0.9</ArmorRating_Heat>
+            <Insulation_Cold>67</Insulation_Cold>
+            <Insulation_Heat>33</Insulation_Heat>
+            <EquipDelay>6</EquipDelay>
+            <JumpRange MayRequire="ludeon.rimworld.royalty">12.5</JumpRange>
+
+            <RoyalFavorValue>3</RoyalFavorValue>
+          </statBases>
+          <equippedStatOffsets>
+
+            <DecompressionResistance MayRequire="kentington.saveourship2">0.75</DecompressionResistance>
+            <VacuumSpeedMultiplier MayRequire="kentington.saveourship2">4</VacuumSpeedMultiplier>
+            <MoveSpeed>3.375</MoveSpeed>
+          </equippedStatOffsets>
+          <generateCommonality>0.03</generateCommonality>
+          <apparel>
+            <wornGraphicPath>Things/Apparel/ChangWol</wornGraphicPath>
+            <layers>
+              <li>Middle</li>
+              <li>Shell</li>
+            </layers>
+            <defaultOutfitTags>
+              <li>Soldier</li>
+            </defaultOutfitTags>
+            <bodyPartGroups>
+              <li>Neck</li>
+              <li>Shoulders</li>
+              <li>Torso</li>
+              <li>Arms</li>
+              <li>Legs</li>
+              <li>Hands</li>
+              <li>Feet</li>
+            </bodyPartGroups>
+            <tags>
+              <li>BOR_Military_II</li>
+              <li>Royal</li>
+            </tags>
+          </apparel>
+          <comps>
+            <li Class="CompProperties_ApparelReloadable">
+              <maxCharges>27</maxCharges>
+              <ammoDef>Chemfuel</ammoDef>
+              <ammoCountPerCharge>18</ammoCountPerCharge>
+              <baseReloadTicks>13</baseReloadTicks>
+              <soundReload>Standard_Reload</soundReload>
+              <hotKey>Misc4</hotKey>
+              <chargeNoun>jump</chargeNoun>
+              <displayGizmoWhileUndrafted>false</displayGizmoWhileUndrafted>
+            </li>
+            <li MayRequire="kentington.saveourship2">
+              <compClass>SaveOurShip2.CompEVA</compClass>
+            </li>
+          </comps>
+          <verbs>
+            <li MayRequire="ludeon.rimworld.royalty">
+              <verbClass>Verb_Jump</verbClass>
+              <label>jump</label>
+              <commandIcon>Things/Apparel/ChangWol</commandIcon>
+              <violent>false</violent>
+              <hasStandardCommand>true</hasStandardCommand>
+              <onlyManualCast>True</onlyManualCast>
+              <forceNormalTimeSpeed>false</forceNormalTimeSpeed>
+              <warmupTime>0.173</warmupTime>
+              <warmupEffecter>JumpWarmupEffect</warmupEffecter>
+              <requireLineOfSight>true</requireLineOfSight>
+              <targetParams>
+                <canTargetLocations>true</canTargetLocations>
+                <canTargetPawns>false</canTargetPawns>
+                <canTargetBuildings>false</canTargetBuildings>
+              </targetParams>
+            </li>
+          </verbs>
+
+          <tradeTags>
+            <li>BOR_Tech_II</li>
+          </tradeTags>
+        </ThingDef>
+
+        <ThingDef ParentName="RSArmorHelmetMakeableBase">
+          <defName>BOR_Quasar_Apparel_StrikesuitH</defName>
+          <thingCategories>
+            <li>BOR_Armor_Headgear_II</li>
+          </thingCategories>
+          <label>kwazaari strikesuit helmet</label>
+          <techLevel>Archotech</techLevel>
+          <description>A kwazaari helmet of the delicate kwazaari strike suit. Sophisticated nerve assist system inside this helmet makes the wearer act faster.</description>
+          <graphicData>
+            <color>(0.36, 0.5, 0.7)</color>
+            <texPath>Things/Apparel/ChangWolH</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+          </graphicData>
+          <recipeMaker>
+            <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+            <researchPrerequisites>
+              <li>ShardTech</li>
+              <li>BOR_Research_Armor_II</li>
+            </researchPrerequisites>
+            <recipeUsers Inherit="False">
+              <li>BOR_Bench_II</li>
+            </recipeUsers>
+            <skillRequirements>
+              <Crafting>15</Crafting>
+            </skillRequirements>
+          </recipeMaker>
+          <costList>
+            <BOR_Sunsteel>15</BOR_Sunsteel>
+            <BOR_ComponentII>2</BOR_ComponentII>
+            <BOR_QuasarAlloy>15</BOR_QuasarAlloy>
+          </costList>
+          <statBases>
+            <Mass>1.25</Mass>
+            <WorkToMake>65250</WorkToMake>
+            <MaxHitPoints>675</MaxHitPoints>
+            <ArmorRating_Blunt>0.675</ArmorRating_Blunt>
+            <ArmorRating_Sharp>1.507</ArmorRating_Sharp>
+            <ArmorRating_Heat>0.765</ArmorRating_Heat>
+            <Insulation_Cold>4</Insulation_Cold>
+            <Insulation_Heat>9</Insulation_Heat>
+            <EquipDelay>1</EquipDelay>
+
+            <RoyalFavorValue>3</RoyalFavorValue>
+          </statBases>
+          <equippedStatOffsets>
+
+            <DecompressionResistance MayRequire="kentington.saveourship2">0.75</DecompressionResistance>
+            <VacuumSpeedMultiplier MayRequire="kentington.saveourship2">4</VacuumSpeedMultiplier>
+            <AimingDelayFactor>-0.337</AimingDelayFactor>
+          </equippedStatOffsets>
+          <generateCommonality>0.03</generateCommonality>
+          <apparel>
+            <wornGraphicPath>Things/Apparel/ChangWolH</wornGraphicPath>
+            <layers>
+              <li>Overhead</li>
+            </layers>
+            <immuneToToxGasExposure>true</immuneToToxGasExposure>
+            <bodyPartGroups>
+              <li>FullHead</li>
+            </bodyPartGroups>
+            <defaultOutfitTags>
+              <li>Soldier</li>
+            </defaultOutfitTags>
+            <tags>
+              <li>BOR_Military_II</li>
+              <li>Royal</li>
+            </tags>
+          </apparel>
+
+          <tradeTags>
+            <li>BOR_Tech_II</li>
+          </tradeTags>
+          <comps>
+            <li MayRequire="kentington.saveourship2">
+              <compClass>SaveOurShip2.CompEVA</compClass>
+            </li>
+          </comps>
+        </ThingDef>
+
+
+        <ThingDef ParentName="RSApparelMakeableBase">
+          <defName>BOR_Quasar_Apparel_AssaultArmor</defName>
+          <techLevel>Ultra</techLevel>
+          <label>kwazaari assault armor</label>
+          <description>An Ultra-heavy kwazaari protective armor, "Bjorn III" cladded with layers of composite kwazaari alloy-weave and reactive armor plates. The wearer of this armor is practically become a walking tank. This armor achieved tremendous protection at the expense of moving speed. It has an integrated short-range EMP grenade launcher.</description>
+          <graphicData>
+            <color>(0.36, 0.5, 0.7)</color>
+            <texPath>Things/Apparel/Bjorn</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+          </graphicData>
+          <tickerType>Normal</tickerType>
+          <thingCategories>
+            <li>BOR_Armor_II</li>
+          </thingCategories>
+          <recipeMaker>
+            <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+            <researchPrerequisites>
+              <li>BOR_Research_Armor_II</li>
+              <li>MoltenTech</li>
+            </researchPrerequisites>
+            <recipeUsers Inherit="False">
+              <li>BOR_Bench_II</li>
+            </recipeUsers>
+            <skillRequirements>
+              <Crafting>19</Crafting>
+            </skillRequirements>
+          </recipeMaker>
+          <costList>
+            <BOR_ComponentII>3</BOR_ComponentII>
+            <BOR_QuasarAlloy>135</BOR_QuasarAlloy>
+            <Uranium>55</Uranium>
+          </costList>
+          <statBases>
+            <Mass>13.125</Mass>
+            <WorkToMake>166500</WorkToMake>
+            <MaxHitPoints>1462</MaxHitPoints>
+            <ArmorRating_Blunt>1.8</ArmorRating_Blunt>
+            <ArmorRating_Sharp>3.375</ArmorRating_Sharp>
+            <ArmorRating_Heat>1.575</ArmorRating_Heat>
+            <Insulation_Cold>100</Insulation_Cold>
+            <Insulation_Heat>33</Insulation_Heat>
+            <EquipDelay>11</EquipDelay>
+
+            <RoyalFavorValue>3</RoyalFavorValue>
+          </statBases>
+          <equippedStatOffsets>
+
+            <DecompressionResistance MayRequire="kentington.saveourship2">0.75</DecompressionResistance>
+            <VacuumSpeedMultiplier MayRequire="kentington.saveourship2">4</VacuumSpeedMultiplier>
+            <MoveSpeed>-0.467</MoveSpeed>
+          </equippedStatOffsets>
+          <generateCommonality>0.03</generateCommonality>
+          <apparel>
+            <wornGraphicPath>Things/Apparel/Bjorn</wornGraphicPath>
+            <layers>
+              <li>Middle</li>
+              <li>Shell</li>
+            </layers>
+            <bodyPartGroups>
+              <li>Neck</li>
+              <li>Shoulders</li>
+              <li>Torso</li>
+              <li>Arms</li>
+              <li>Legs</li>
+              <li>Hands</li>
+              <li>Feet</li>
+            </bodyPartGroups>
+            <defaultOutfitTags>
+              <li>Soldier</li>
+            </defaultOutfitTags>
+            <tags>
+              <li>BOR_Military_II</li>
+              <li>Royal</li>
+              <li>EVA</li>
+            </tags>
+          </apparel>
+          <comps>
+            <li Class="CompProperties_ApparelReloadable">
+              <maxCharges>1</maxCharges>
+              <ammoDef>Plasteel</ammoDef>
+              <ammoCountPerCharge>55</ammoCountPerCharge>
+              <baseReloadTicks>41</baseReloadTicks>
+              <soundReload>Standard_Reload</soundReload>
+              <hotKey>Misc4</hotKey>
+              <chargeNoun>grenade</chargeNoun>
+              <displayGizmoWhileUndrafted>false</displayGizmoWhileUndrafted>
+            </li>
+            <li MayRequire="kentington.saveourship2">
+              <compClass>SaveOurShip2.CompEVA</compClass>
+            </li>
+          </comps>
+          <verbs>
+            <li>
+              <label>launch kwazaari emp grenade</label>
+              <verbClass>Verb_LaunchProjectileStatic</verbClass>
+              <hasStandardCommand>true</hasStandardCommand>
+              <onlyManualCast>True</onlyManualCast>
+              <range>24.525</range>
+              <forcedMissRadius>1.9</forcedMissRadius>
+              <warmupTime>1.042</warmupTime>
+              <noiseRadius>2</noiseRadius>
+              <ai_IsBuildingDestroyer>false</ai_IsBuildingDestroyer>
+              <soundCast>Shot_IncendiaryLauncher</soundCast>
+              <soundCastTail>GunTail_Medium</soundCastTail>
+              <muzzleFlashScale>14</muzzleFlashScale>
+              <drawHighlightWithLineOfSight>true</drawHighlightWithLineOfSight>
+              <targetParams>
+                <canTargetLocations>true</canTargetLocations>
+              </targetParams>
+              <defaultProjectile>Proj_BjornGrenadeEMP</defaultProjectile>
+              <rangedFireRulepack>Combat_RangedFire_Thrown</rangedFireRulepack>
+            </li>
+          </verbs>
+
+          <tradeTags>
+            <li>BOR_Tech_II</li>
+          </tradeTags>
+        </ThingDef>
+
+        <ThingDef ParentName="BaseGrenadeProjectile">
+          <defName>BOR_Quasar_Proj_BjornGrenadeEMP</defName>
+          <label>EMP grenade</label>
+          <thingClass>Projectile_Explosive</thingClass>
+          <graphicData>
+            <color>(0.36, 0.5, 0.7)</color>
+            <texPath>Things/Projectile/GrenadeEMP</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+          </graphicData>
+          <projectile>
+            <speed>24</speed>
+            <explosionRadius>4.0</explosionRadius>
+            <damageDef>EMP</damageDef>
+            <explosionDelay>125</explosionDelay>
+          </projectile>
+
+          <tradeTags>
+            <li>BOR_Tech_II</li>
+          </tradeTags>
+          <comps>
+            <li MayRequire="kentington.saveourship2">
+              <compClass>SaveOurShip2.CompEVA</compClass>
+            </li>
+          </comps>
+        </ThingDef>
+
+        <ThingDef ParentName="RSArmorHelmetMakeableBase">
+          <defName>BOR_Quasar_Apparel_AssaultArmorH</defName>
+          <thingCategories>
+            <li>BOR_Armor_Headgear_II</li>
+          </thingCategories>
+          <label>kwazaari assault helmet</label>
+          <techLevel>Ultra</techLevel>
+          <description>Rugged and trustworthy kwazaari helmet of the kwazaari assault armor.</description>
+          <graphicData>
+            <color>(0.36, 0.5, 0.7)</color>
+            <texPath>Things/Apparel/BjornH</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+          </graphicData>
+          <recipeMaker>
+            <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+            <researchPrerequisites>
+              <li>BOR_Research_Armor_II</li>
+              <li>MoltenTech</li>
+            </researchPrerequisites>
+            <recipeUsers Inherit="False">
+              <li>BOR_Bench_II</li>
+            </recipeUsers>
+            <skillRequirements>
+              <Crafting>19</Crafting>
+            </skillRequirements>
+          </recipeMaker>
+          <costList>
+            <BOR_Sunsteel>30</BOR_Sunsteel>
+            <BOR_ComponentII>1</BOR_ComponentII>
+            <BOR_QuasarAlloy>50</BOR_QuasarAlloy>
+          </costList>
+          <statBases>
+            <Mass>2.848</Mass>
+            <WorkToMake>69750</WorkToMake>
+            <MaxHitPoints>1147</MaxHitPoints>
+            <ArmorRating_Blunt>1.575</ArmorRating_Blunt>
+            <ArmorRating_Sharp>3.15</ArmorRating_Sharp>
+            <ArmorRating_Heat>1.462</ArmorRating_Heat>
+            <Insulation_Cold>10</Insulation_Cold>
+            <Insulation_Heat>4</Insulation_Heat>
+            <EquipDelay>3</EquipDelay>
+
+            <RoyalFavorValue>3</RoyalFavorValue>
+          </statBases>
+          <equippedStatOffsets>
+
+            <DecompressionResistance MayRequire="kentington.saveourship2">0.75</DecompressionResistance>
+            <VacuumSpeedMultiplier MayRequire="kentington.saveourship2">4</VacuumSpeedMultiplier>
+            <MoveSpeed>-0.155</MoveSpeed>
+          </equippedStatOffsets>
+          <generateCommonality>0.03</generateCommonality>
+          <apparel>
+            <wornGraphicPath>Things/Apparel/BjornH</wornGraphicPath>
+            <layers>
+              <li>Overhead</li>
+            </layers>
+            <immuneToToxGasExposure>true</immuneToToxGasExposure>
+            <bodyPartGroups>
+              <li>FullHead</li>
+            </bodyPartGroups>
+            <defaultOutfitTags>
+              <li>Soldier</li>
+            </defaultOutfitTags>
+            <tags>
+              <li>BOR_Military_II</li>
+              <li>Royal</li>
+              <li>EVA</li>
+            </tags>
+          </apparel>
+
+          <tradeTags>
+            <li>BOR_Tech_II</li>
+          </tradeTags>
+          <comps>
+            <li MayRequire="kentington.saveourship2">
+              <compClass>SaveOurShip2.CompEVA</compClass>
+            </li>
+          </comps>
+        </ThingDef>
+
+
+        <ThingDef ParentName="RSApparelMakeableBase">
+          <defName>BOR_Quasar_Apparel_FSArmor</defName>
+          <techLevel>Ultra</techLevel>
+          <label>kwazaari fire support armor</label>
+          <description>If you need a walking turret, call the "Varg III" kwazaari fire support armor. Rapid reloading system, additional ammo container, built in fire control system, everything of the "Varg III" focused on fire support. In return, the Varg is very vulnerable to close combat.</description>
+          <graphicData>
+            <color>(0.36, 0.5, 0.7)</color>
+            <texPath>Things/Apparel/FSArmor</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+          </graphicData>
+          <tickerType>Normal</tickerType>
+          <thingCategories>
+            <li>BOR_Armor_II</li>
+          </thingCategories>
+          <recipeMaker>
+            <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+            <researchPrerequisites>
+              <li>BOR_Research_Armor_II</li>
+              <li>MoltenTech</li>
+            </researchPrerequisites>
+            <recipeUsers Inherit="False">
+              <li>BOR_Bench_II</li>
+            </recipeUsers>
+            <skillRequirements>
+              <Crafting>19</Crafting>
+            </skillRequirements>
+          </recipeMaker>
+          <costList>
+            <BOR_ComponentII>4</BOR_ComponentII>
+            <BOR_QuasarAlloy>120</BOR_QuasarAlloy>
+            <Uranium>135</Uranium>
+          </costList>
+          <statBases>
+            <Mass>12.848</Mass>
+            <WorkToMake>180000</WorkToMake>
+            <MaxHitPoints>1237</MaxHitPoints>
+            <ArmorRating_Sharp>2.002</ArmorRating_Sharp>
+            <ArmorRating_Blunt>0.9</ArmorRating_Blunt>
+            <ArmorRating_Heat>1.125</ArmorRating_Heat>
+            <Insulation_Cold>78</Insulation_Cold>
+            <Insulation_Heat>22</Insulation_Heat>
+            <EquipDelay>11</EquipDelay>
+
+            <RoyalFavorValue>3</RoyalFavorValue>
+          </statBases>
+          <equippedStatOffsets>
+
+            <DecompressionResistance MayRequire="kentington.saveourship2">0.75</DecompressionResistance>
+            <VacuumSpeedMultiplier MayRequire="kentington.saveourship2">4</VacuumSpeedMultiplier>
+            <MeleeHitChance>-0.45</MeleeHitChance>
+            <MoveSpeed>-0.378</MoveSpeed>
+            <AimingDelayFactor>-0.560</AimingDelayFactor>
+          </equippedStatOffsets>
+          <generateCommonality>0.03</generateCommonality>
+          <apparel>
+            <wornGraphicPath>Things/Apparel/FSArmor</wornGraphicPath>
+            <layers>
+              <li>Middle</li>
+              <li>Shell</li>
+            </layers>
+            <bodyPartGroups>
+              <li>Neck</li>
+              <li>Shoulders</li>
+              <li>Torso</li>
+              <li>Arms</li>
+              <li>Legs</li>
+              <li>Hands</li>
+              <li>Feet</li>
+            </bodyPartGroups>
+            <defaultOutfitTags>
+              <li>Soldier</li>
+            </defaultOutfitTags>
+            <tags>
+              <li>BOR_Military_II</li>
+              <li>Royal</li>
+            </tags>
+          </apparel>
+
+          <tradeTags>
+            <li>BOR_Tech_II</li>
+          </tradeTags>
+          <comps>
+            <li MayRequire="kentington.saveourship2">
+              <compClass>SaveOurShip2.CompEVA</compClass>
+            </li>
+          </comps>
+        </ThingDef>
+
+        <ThingDef ParentName="RSArmorHelmetMakeableBase">
+          <defName>BOR_Quasar_Apparel_FSArmorH</defName>
+          <thingCategories>
+            <li>BOR_Armor_Headgear_II</li>
+          </thingCategories>
+          <label>kwazaari fire support helmet</label>
+          <techLevel>Ultra</techLevel>
+          <description>Quasar helmet of the kwazaari "Varg III" fire support armor. Share the features with the fire support armor.</description>
+          <graphicData>
+            <color>(0.36, 0.5, 0.7)</color>
+            <texPath>Things/Apparel/FSArmorH</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+          </graphicData>
+          <recipeMaker>
+            <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+            <researchPrerequisites>
+              <li>BOR_Research_Armor_II</li>
+              <li>MoltenTech</li>
+            </researchPrerequisites>
+            <recipeUsers Inherit="False">
+              <li>BOR_Bench_II</li>
+            </recipeUsers>
+            <skillRequirements>
+              <Crafting>19</Crafting>
+            </skillRequirements>
+          </recipeMaker>
+          <costList>
+            <BOR_ComponentII>1</BOR_ComponentII>
+            <BOR_QuasarAlloy>40</BOR_QuasarAlloy>
+            <Uranium>45</Uranium>
+          </costList>
+          <statBases>
+            <Mass>1</Mass>
+            <WorkToMake>69750</WorkToMake>
+            <MaxHitPoints>1012</MaxHitPoints>
+            <ArmorRating_Sharp>1.8</ArmorRating_Sharp>
+            <ArmorRating_Blunt>0.675</ArmorRating_Blunt>
+            <ArmorRating_Heat>1.575</ArmorRating_Heat>
+            <Insulation_Cold>9</Insulation_Cold>
+            <Insulation_Heat>4</Insulation_Heat>
+            <EquipDelay>3</EquipDelay>
+
+            <RoyalFavorValue>3</RoyalFavorValue>
+          </statBases>
+          <equippedStatOffsets>
+
+            <DecompressionResistance MayRequire="kentington.saveourship2">0.75</DecompressionResistance>
+            <VacuumSpeedMultiplier MayRequire="kentington.saveourship2">4</VacuumSpeedMultiplier>
+            <MeleeHitChance>-0.15</MeleeHitChance>
+            <MoveSpeed>-0.133</MoveSpeed>
+            <AimingDelayFactor>-0.337</AimingDelayFactor>
+          </equippedStatOffsets>
+          <generateCommonality>0.03</generateCommonality>
+          <apparel>
+            <wornGraphicPath>Things/Apparel/FSArmorH</wornGraphicPath>
+            <layers>
+              <li>Overhead</li>
+            </layers>
+            <immuneToToxGasExposure>true</immuneToToxGasExposure>
+            <bodyPartGroups>
+              <li>FullHead</li>
+            </bodyPartGroups>
+            <defaultOutfitTags>
+              <li>Soldier</li>
+            </defaultOutfitTags>
+            <tags>
+              <li>BOR_Military_II</li>
+              <li>Royal</li>
+              <li>EVA</li>
+            </tags>
+          </apparel>
+
+          <tradeTags>
+            <li>BOR_Tech_II</li>
+          </tradeTags>
+          <comps>
+            <li MayRequire="kentington.saveourship2">
+              <compClass>SaveOurShip2.CompEVA</compClass>
+            </li>
+          </comps>
+        </ThingDef>
+
+
+        <ThingDef ParentName="RSApparelMakeableBase">
+          <defName>BOR_Quasar_Apparel_Korp</defName>
+          <techLevel>Ultra</techLevel>
+          <label>kwazaari artillery armor</label>
+          <description>A kwazaari variant of the "Varg III" kwazaari fire support armor, the "Korp(Raven) III" artillery armor originated from modified makeshift equipment of frontlines. All unnecessary equipment was removed from Korp to mount a huge mortar, "Crow feeder." The purpose of this equipment is simple; turn the wearer into walking artillery. The only ammunition this mortar can shoot is high-explosive shells.</description>
+          <graphicData>
+            <color>(0.36, 0.5, 0.7)</color>
+            <texPath>Things/Apparel/Korp</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+          </graphicData>
+          <tickerType>Normal</tickerType>
+          <thingCategories>
+            <li>BOR_Armor_II</li>
+          </thingCategories>
+          <recipeMaker>
+            <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+            <researchPrerequisites>
+              <li>SiegeTech</li>
+              <li>BOR_Research_Armor_I</li>
+            </researchPrerequisites>
+            <recipeUsers Inherit="False">
+              <li>BOR_Bench_II</li>
+            </recipeUsers>
+            <skillRequirements>
+              <Crafting>20</Crafting>
+            </skillRequirements>
+          </recipeMaker>
+          <costList>
+            <BOR_ComponentII>6</BOR_ComponentII>
+            <BOR_QuasarAlloy>140</BOR_QuasarAlloy>
+            <Uranium>180</Uranium>
+          </costList>
+          <statBases>
+            <Mass>13.542</Mass>
+            <WorkToMake>191250</WorkToMake>
+            <MaxHitPoints>1237</MaxHitPoints>
+            <ArmorRating_Sharp>2.002</ArmorRating_Sharp>
+            <ArmorRating_Blunt>0.9</ArmorRating_Blunt>
+            <ArmorRating_Heat>1.125</ArmorRating_Heat>
+            <Insulation_Cold>78</Insulation_Cold>
+            <Insulation_Heat>33</Insulation_Heat>
+            <EquipDelay>11</EquipDelay>
+
+            <RoyalFavorValue>3</RoyalFavorValue>
+          </statBases>
+          <equippedStatOffsets>
+
+            <DecompressionResistance MayRequire="kentington.saveourship2">0.75</DecompressionResistance>
+            <VacuumSpeedMultiplier MayRequire="kentington.saveourship2">4</VacuumSpeedMultiplier>
+            <MeleeHitChance>-0.45</MeleeHitChance>
+            <MoveSpeed>-0.378</MoveSpeed>
+          </equippedStatOffsets>
+          <generateCommonality>0.03</generateCommonality>
+          <apparel>
+            <wornGraphicPath>Things/Apparel/Korp</wornGraphicPath>
+            <layers>
+              <li>Middle</li>
+              <li>Shell</li>
+            </layers>
+            <bodyPartGroups>
+              <li>Neck</li>
+              <li>Shoulders</li>
+              <li>Torso</li>
+              <li>Arms</li>
+              <li>Legs</li>
+              <li>Hands</li>
+              <li>Feet</li>
+            </bodyPartGroups>
+            <defaultOutfitTags>
+              <li>Soldier</li>
+            </defaultOutfitTags>
+            <tags>
+              <li>BOR_Military_II</li>
+              <li>Royal</li>
+            </tags>
+          </apparel>
+          <comps>
+            <li Class="CompProperties_ApparelReloadable">
+              <maxCharges>1</maxCharges>
+              <ammoDef>Shell_HighExplosive</ammoDef>
+              <ammoCountPerCharge>1</ammoCountPerCharge>
+              <baseReloadTicks>375</baseReloadTicks>
+              <soundReload>Standard_Reload</soundReload>
+              <hotKey>Misc4</hotKey>
+              <chargeNoun>shell</chargeNoun>
+              <displayGizmoWhileUndrafted>false</displayGizmoWhileUndrafted>
+            </li>
+            <li MayRequire="kentington.saveourship2">
+              <compClass>SaveOurShip2.CompEVA</compClass>
+            </li>
+          </comps>
+          <verbs>
+            <li>
+              <label>launch kwazaari crow feeder</label>
+              <verbClass>Verb_LaunchProjectileStatic</verbClass>
+              <hasStandardCommand>true</hasStandardCommand>
+              <onlyManualCast>True</onlyManualCast>
+              <range>123</range>
+              <minRange>5</minRange>
+              <forcedMissRadius>5.5</forcedMissRadius>
+              <warmupTime>7.292</warmupTime>
+              <noiseRadius>13</noiseRadius>
+              <ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
+              <soundCast>RS_ShotGrendel</soundCast>
+              <muzzleFlashScale>16</muzzleFlashScale>
+              <drawHighlightWithLineOfSight>true</drawHighlightWithLineOfSight>
+              <targetParams>
+                <canTargetLocations>true</canTargetLocations>
+              </targetParams>
+              <requireLineOfSight>false</requireLineOfSight>
+              <defaultProjectile>Bullet_Crowfeeder</defaultProjectile>
+              <rangedFireRulepack>Combat_RangedFire_Thrown</rangedFireRulepack>
+            </li>
+          </verbs>
+
+          <tradeTags>
+            <li>BOR_Tech_II</li>
+          </tradeTags>
+        </ThingDef>
+
+        <ThingDef ParentName="BaseBullet">
+          <defName>BOR_Quasar_Bullet_Crowfeeder</defName>
+          <label>crow feeder kwazaari shell</label>
+          <graphicData>
+            <color>(0.36, 0.5, 0.7)</color>
+            <texPath>Things/Projectile/SCM</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <shaderType>TransparentPostLight</shaderType>
+          </graphicData>
+          <thingClass>Projectile_Explosive</thingClass>
+          <projectile>
+            <damageDef>Bomb</damageDef>
+
+            <speed>50</speed>
+            <explosionRadius>4.0</explosionRadius>
+            <flyOverhead>true</flyOverhead>
+            <soundHitThickRoof>Artillery_HitThickRoof</soundHitThickRoof>
+            <soundExplode>MortarBomb_Explode</soundExplode>
+            <soundImpactAnticipate>MortarRound_PreImpact</soundImpactAnticipate>
+            <soundAmbient>MortarRound_Ambient</soundAmbient>
+          </projectile>
+
+          <tradeTags>
+            <li>BOR_Tech_II</li>
+          </tradeTags>
+          <comps>
+            <li MayRequire="kentington.saveourship2">
+              <compClass>SaveOurShip2.CompEVA</compClass>
+            </li>
+          </comps>
+        </ThingDef>
+
+
+        <ThingDef ParentName="RSApparelMakeableBase">
+          <defName>BOR_Quasar_Apparel_ReflactorArmor</defName>
+          <label>kwazaari reflactor carapace</label>
+          <techLevel>Ultra</techLevel>
+          <description>The "Nemesis III" is a powered armor that created to hunt the Federation remnants. Almost immune to the heat energy, the Tisiphone Hunter Contingent provides this armor to their elite hunters.</description>
+          <graphicData>
+            <color>(0.36, 0.5, 0.7)</color>
+            <texPath>Things/Apparel/Nemesis</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <shaderType>TransparentPostLight</shaderType>
+          </graphicData>
+          <thingCategories>
+            <li>BOR_Armor_II</li>
+          </thingCategories>
+          <recipeMaker>
+            <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+            <researchPrerequisites>
+              <li>BOR_Research_Armor_II</li>
+              <li>KineticTech</li>
+            </researchPrerequisites>
+            <recipeUsers Inherit="False">
+              <li>BOR_Bench_II</li>
+            </recipeUsers>
+            <skillRequirements>
+              <Crafting>19</Crafting>
+            </skillRequirements>
+          </recipeMaker>
+          <costList>
+            <BOR_ComponentII>4</BOR_ComponentII>
+            <BOR_QuasarAlloy>90</BOR_QuasarAlloy>
+            <Uranium>67</Uranium>
+          </costList>
+          <statBases>
+            <Flammability>0.069</Flammability>
+            <Mass>9.652</Mass>
+            <WorkToMake>137250</WorkToMake>
+            <MaxHitPoints>675</MaxHitPoints>
+            <ArmorRating_Sharp>2.138</ArmorRating_Sharp>
+            <ArmorRating_Blunt>1.35</ArmorRating_Blunt>
+            <ArmorRating_Heat>4.455</ArmorRating_Heat>
+            <Insulation_Cold>78</Insulation_Cold>
+            <Insulation_Heat>337</Insulation_Heat>
+            <EquipDelay>10</EquipDelay>
+
+            <RoyalFavorValue>3</RoyalFavorValue>
+          </statBases>
+          <equippedStatOffsets>
+
+            <DecompressionResistance MayRequire="kentington.saveourship2">0.75</DecompressionResistance>
+            <VacuumSpeedMultiplier MayRequire="kentington.saveourship2">4</VacuumSpeedMultiplier>
+            <MoveSpeed>-0.133</MoveSpeed>
+          </equippedStatOffsets>
+          <generateCommonality>0.03</generateCommonality>
+          <apparel>
+            <wornGraphicPath>Things/Apparel/Nemesis</wornGraphicPath>
+            <layers>
+              <li>Middle</li>
+              <li>Shell</li>
+            </layers>
+            <bodyPartGroups>
+              <li>Neck</li>
+              <li>Shoulders</li>
+              <li>Torso</li>
+              <li>Arms</li>
+              <li>Legs</li>
+              <li>Hands</li>
+              <li>Feet</li>
+            </bodyPartGroups>
+            <defaultOutfitTags>
+              <li>Soldier</li>
+            </defaultOutfitTags>
+            <tags>
+              <li>BOR_Military_II</li>
+              <li>Royal</li>
+              <li>EVA</li>
+            </tags>
+          </apparel>
+
+          <tradeTags>
+            <li>BOR_Tech_II</li>
+          </tradeTags>
+          <comps>
+            <li MayRequire="kentington.saveourship2">
+              <compClass>SaveOurShip2.CompEVA</compClass>
+            </li>
+          </comps>
+        </ThingDef>
+
+        <ThingDef ParentName="RSArmorHelmetMakeableBase">
+          <defName>BOR_Quasar_Apparel_ReflactorArmorH</defName>
+          <thingCategories>
+            <li>BOR_Armor_Headgear_II</li>
+          </thingCategories>
+          <label>kwazaari reflactor helmet</label>
+          <techLevel>Ultra</techLevel>
+          <description>A kwazaari helmet with a complete set of heat deflector system.</description>
+          <graphicData>
+            <color>(0.36, 0.5, 0.7)</color>
+            <texPath>Things/Apparel/NemesisH</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+          </graphicData>
+          <recipeMaker>
+            <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+            <researchPrerequisites>
+              <li>BOR_Research_Armor_II</li>
+              <li>KineticTech</li>
+            </researchPrerequisites>
+            <recipeUsers Inherit="False">
+              <li>BOR_Bench_II</li>
+            </recipeUsers>
+            <skillRequirements>
+              <Crafting>19</Crafting>
+            </skillRequirements>
+          </recipeMaker>
+          <costList>
+            <BOR_ComponentII>1</BOR_ComponentII>
+            <BOR_QuasarAlloy>35</BOR_QuasarAlloy>
+            <Uranium>22</Uranium>
+          </costList>
+          <statBases>
+            <Flammability>0.069</Flammability>
+            <Mass>1.396</Mass>
+            <WorkToMake>58275</WorkToMake>
+            <MaxHitPoints>1012</MaxHitPoints>
+            <ArmorRating_Blunt>1.237</ArmorRating_Blunt>
+            <ArmorRating_Sharp>1.958</ArmorRating_Sharp>
+            <ArmorRating_Heat>4.455</ArmorRating_Heat>
+            <Insulation_Cold>10</Insulation_Cold>
+            <Insulation_Heat>112</Insulation_Heat>
+            <EquipDelay>2</EquipDelay>
+
+            <RoyalFavorValue>3</RoyalFavorValue>
+          </statBases>
+          <generateCommonality>0.05</generateCommonality>
+          <apparel>
+            <defaultOutfitTags>
+              <li>Soldier</li>
+            </defaultOutfitTags>
+            <wornGraphicPath>Things/Apparel/NemesisH</wornGraphicPath>
+            <layers>
+              <li>Overhead</li>
+            </layers>
+            <immuneToToxGasExposure>true</immuneToToxGasExposure>
+            <bodyPartGroups>
+              <li>FullHead</li>
+            </bodyPartGroups>
+            <tags>
+              <li>BOR_Military_II</li>
+              <li>Royal</li>
+              <li>EVA</li>
+            </tags>
+          </apparel>
+
+          <tradeTags>
+            <li>BOR_Tech_II</li>
+          </tradeTags>
+          <comps>
+            <li MayRequire="kentington.saveourship2">
+              <compClass>SaveOurShip2.CompEVA</compClass>
+            </li>
+          </comps>
+        </ThingDef>
+
+
+        <ThingDef ParentName="RSApparelMakeableBase">
+          <defName>BOR_Quasar_Apparel_HazardCarapace</defName>
+          <label>kwazaari hazard carapace</label>
+          <techLevel>Ultra</techLevel>
+          <description>The "Alecto III" kwazaari hazard carapace is designed to carry out mission even in the worst environment. In extreme cold area, in a heat wave, and even in radioactive wasteland, Tisiphone hunters can continue their endless hunting.</description>
+          <graphicData>
+            <color>(0.36, 0.5, 0.7)</color>
+            <texPath>Things/Apparel/HazardCarapace</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <shaderType>TransparentPostLight</shaderType>
+          </graphicData>
+          <thingCategories>
+            <li>BOR_Armor_II</li>
+          </thingCategories>
+          <recipeMaker>
+            <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+            <researchPrerequisites>
+              <li>BOR_Research_Armor_II</li>
+              <li>KineticTech</li>
+            </researchPrerequisites>
+            <recipeUsers Inherit="False">
+              <li>BOR_Bench_II</li>
+            </recipeUsers>
+            <skillRequirements>
+              <Crafting>19</Crafting>
+            </skillRequirements>
+          </recipeMaker>
+          <costList>
+            <BOR_ComponentII>4</BOR_ComponentII>
+            <BOR_QuasarAlloy>85</BOR_QuasarAlloy>
+            <Uranium>90</Uranium>
+          </costList>
+          <statBases>
+            <Flammability>0.208</Flammability>
+            <Mass>9.931</Mass>
+            <WorkToMake>393750</WorkToMake>
+            <MaxHitPoints>1125</MaxHitPoints>
+            <ArmorRating_Sharp>1.98</ArmorRating_Sharp>
+            <ArmorRating_Blunt>0.81</ArmorRating_Blunt>
+            <ArmorRating_Heat>2.7</ArmorRating_Heat>
+            <Insulation_Cold>337</Insulation_Cold>
+            <Insulation_Heat>337</Insulation_Heat>
+            <EquipDelay>10</EquipDelay>
+
+            <RoyalFavorValue>3</RoyalFavorValue>
+          </statBases>
+          <equippedStatOffsets>
+
+            <DecompressionResistance MayRequire="kentington.saveourship2">0.75</DecompressionResistance>
+            <VacuumSpeedMultiplier MayRequire="kentington.saveourship2">4</VacuumSpeedMultiplier>
+            <MoveSpeed>-0.133</MoveSpeed>
+            <PsychicSensitivity>-0.333</PsychicSensitivity>
+            <ToxicResistance>0.25</ToxicResistance>
+            <ToxicEnvironmentResistance>0.562</ToxicEnvironmentResistance>
+          </equippedStatOffsets>
+          <generateCommonality>0.03</generateCommonality>
+          <apparel>
+            <wornGraphicPath>Things/Apparel/HazardCarapace</wornGraphicPath>
+            <layers>
+              <li>Middle</li>
+              <li>Shell</li>
+            </layers>
+            <bodyPartGroups>
+              <li>Neck</li>
+              <li>Shoulders</li>
+              <li>Torso</li>
+              <li>Arms</li>
+              <li>Legs</li>
+              <li>Hands</li>
+              <li>Feet</li>
+            </bodyPartGroups>
+            <defaultOutfitTags>
+              <li>Soldier</li>
+            </defaultOutfitTags>
+            <tags>
+              <li>BOR_Military_II</li>
+              <li>Royal</li>
+              <li>EVA</li>
+            </tags>
+          </apparel>
+
+          <tradeTags>
+            <li>BOR_Tech_II</li>
+          </tradeTags>
+          <comps>
+            <li MayRequire="kentington.saveourship2">
+              <compClass>SaveOurShip2.CompEVA</compClass>
+            </li>
+          </comps>
+        </ThingDef>
+
+        <ThingDef ParentName="RSArmorHelmetMakeableBase">
+          <defName>BOR_Quasar_Apparel_HazardCarapaceH</defName>
+          <thingCategories>
+            <li>BOR_Armor_Headgear_II</li>
+          </thingCategories>
+          <label>kwazaari hazard helmet</label>
+          <techLevel>Ultra</techLevel>
+          <description>A kwazaari helmet of an "Alecto III" hazard carapace. This helmet provides excellent environmental protection.</description>
+          <graphicData>
+            <color>(0.36, 0.5, 0.7)</color>
+            <texPath>Things/Apparel/HazardCarapaceH</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+          </graphicData>
+          <recipeMaker>
+            <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+            <researchPrerequisites>
+              <li>BOR_Research_Armor_II</li>
+              <li>KineticTech</li>
+            </researchPrerequisites>
+            <recipeUsers Inherit="False">
+              <li>BOR_Bench_II</li>
+            </recipeUsers>
+            <skillRequirements>
+              <Crafting>19</Crafting>
+            </skillRequirements>
+          </recipeMaker>
+          <costList>
+            <BOR_ComponentII>1</BOR_ComponentII>
+            <BOR_QuasarAlloy>30</BOR_QuasarAlloy>
+            <Uranium>33</Uranium>
+          </costList>
+          <statBases>
+            <Flammability>0.208</Flammability>
+            <Mass>1.757</Mass>
+            <WorkToMake>65025</WorkToMake>
+            <MaxHitPoints>337</MaxHitPoints>
+            <ArmorRating_Blunt>0.72</ArmorRating_Blunt>
+            <ArmorRating_Sharp>1.845</ArmorRating_Sharp>
+            <ArmorRating_Heat>3.375</ArmorRating_Heat>
+            <Insulation_Cold>55</Insulation_Cold>
+            <Insulation_Heat>55</Insulation_Heat>
+            <EquipDelay>2</EquipDelay>
+
+            <RoyalFavorValue>3</RoyalFavorValue>
+          </statBases>
+          <equippedStatOffsets>
+
+            <DecompressionResistance MayRequire="kentington.saveourship2">0.75</DecompressionResistance>
+            <VacuumSpeedMultiplier MayRequire="kentington.saveourship2">4</VacuumSpeedMultiplier>
+            <PsychicSensitivity>-0.333</PsychicSensitivity>
+            <ToxicResistance>0.75</ToxicResistance>
+            <MoveSpeed>-0.045</MoveSpeed>
+            <ToxicEnvironmentResistance>0.562</ToxicEnvironmentResistance>
+          </equippedStatOffsets>
+          <generateCommonality>0.05</generateCommonality>
+          <apparel>
+            <defaultOutfitTags>
+              <li>Soldier</li>
+            </defaultOutfitTags>
+            <wornGraphicPath>Things/Apparel/HazardCarapaceH</wornGraphicPath>
+            <layers>
+              <li>Overhead</li>
+            </layers>
+            <bodyPartGroups>
+              <li>FullHead</li>
+            </bodyPartGroups>
+            <tags>
+              <li>BOR_Military_II</li>
+              <li>Royal</li>
+              <li>EVA</li>
+            </tags>
+            <immuneToToxGasExposure>true</immuneToToxGasExposure>
+          </apparel>
+
+          <tradeTags>
+            <li>BOR_Tech_II</li>
+          </tradeTags>
+          <comps>
+            <li MayRequire="kentington.saveourship2">
+              <compClass>SaveOurShip2.CompEVA</compClass>
+            </li>
+          </comps>
+        </ThingDef>
+
+
+        <ThingDef ParentName="ApparelMakeableBase">
+          <thingClass>Apparel</thingClass>
+          <defName>BOR_Quasar_Apparel_CloseCombatArmor</defName>
+          <tickerType>Normal</tickerType>
+          <label>kwazaari close combat armor</label>
+          <description>Quasar power armor with a built-in shield, "Excelsior III" is a close combat focused power armor with maneuverability, durability, and lethality.</description>
+          <techLevel>Ultra</techLevel>
+          <graphicData>
+            <color>(0.36, 0.5, 0.7)</color>
+            <texPath>Things/Apparel/CombatArmor</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+          </graphicData>
+          <thingCategories>
+            <li>BOR_Armor_II</li>
+          </thingCategories>
+          <recipeMaker>
+            <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+            <researchPrerequisites>
+              <li>BOR_Research_Armor_II</li>
+            </researchPrerequisites>
+            <recipeUsers Inherit="False">
+              <li>BOR_Bench_II</li>
+              <li>BOR_Bench_IV</li>
+            </recipeUsers>
+            <skillRequirements>
+              <Crafting>19</Crafting>
+            </skillRequirements>
+          </recipeMaker>
+          <costList>
+            <BOR_ComponentII>4</BOR_ComponentII>
+            <BOR_QuasarAlloy>100</BOR_QuasarAlloy>
+            <Uranium>180</Uranium>
+          </costList>
+          <statBases>
+            <WorkToMake>155250</WorkToMake>
+            <MaxHitPoints>675</MaxHitPoints>
+            <Mass>10</Mass>
+            <ArmorRating_Blunt>1.71</ArmorRating_Blunt>
+            <ArmorRating_Sharp>2.362</ArmorRating_Sharp>
+            <ArmorRating_Heat>1.575</ArmorRating_Heat>
+            <Insulation_Cold>100</Insulation_Cold>
+            <Insulation_Heat>33</Insulation_Heat>
+            <EnergyShieldRechargeRate>0.39</EnergyShieldRechargeRate>
+            <EnergyShieldEnergyMax>0.7</EnergyShieldEnergyMax>
+            <EquipDelay>10</EquipDelay>
+
+            <RoyalFavorValue>3</RoyalFavorValue>
+          </statBases>
+          <equippedStatOffsets>
+
+            <DecompressionResistance MayRequire="kentington.saveourship2">0.75</DecompressionResistance>
+            <VacuumSpeedMultiplier MayRequire="kentington.saveourship2">4</VacuumSpeedMultiplier>
+            <MoveSpeed>1.125</MoveSpeed>
+            <MeleeDodgeChance>2</MeleeDodgeChance>
+            <WorkSpeedGlobal>-0.08</WorkSpeedGlobal>
+          </equippedStatOffsets>
+          <generateCommonality>0.05</generateCommonality>
+          <comps>
+            <li Class="CompProperties_Shield" />
+            <li MayRequire="kentington.saveourship2">
+              <compClass>SaveOurShip2.CompEVA</compClass>
+            </li>
+          </comps>
+          <apparel>
+            <bodyPartGroups>
+              <li>Neck</li>
+              <li>Shoulders</li>
+              <li>Torso</li>
+              <li>Arms</li>
+              <li>Legs</li>
+              <li>Hands</li>
+              <li>Feet</li>
+            </bodyPartGroups>
+            <wornGraphicPath>Things/Apparel/CombatArmor</wornGraphicPath>
+            <layers>
+              <li>Middle</li>
+              <li>Shell</li>
+            </layers>
+            <tags>
+              <li>BOR_Military_II</li>
+              <li>Royal</li>
+              <li>RoyalTier2</li>
+              <li>EVA</li>
+            </tags>
+            <defaultOutfitTags>
+              <li>Soldier</li>
+            </defaultOutfitTags>
+          </apparel>
+
+          <tradeTags>
+            <li>BOR_Tech_II</li>
+          </tradeTags>
+        </ThingDef>
+
+        <ThingDef ParentName="ArmorHelmetMakeableBase">
+          <defName>BOR_Quasar_Apparel_CloseCombatHelmet</defName>
+          <thingCategories>
+            <li>BOR_Armor_Headgear_II</li>
+          </thingCategories>
+          <label>kwazaari close combat helmet</label>
+          <description>Quasar elmet of a "Excelsior III" close combat armor. It assist wearer with neural close combat enhancement system.</description>
+          <techLevel>Ultra</techLevel>
+          <graphicData>
+            <color>(0.36, 0.5, 0.7)</color>
+            <texPath>Things/Apparel/CombatHelmet</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+          </graphicData>
+          <statBases>
+            <Mass>1</Mass>
+            <WorkToMake>60750</WorkToMake>
+            <MaxHitPoints>427</MaxHitPoints>
+            <ArmorRating_Blunt>1.395</ArmorRating_Blunt>
+            <ArmorRating_Sharp>2.025</ArmorRating_Sharp>
+            <ArmorRating_Heat>1.912</ArmorRating_Heat>
+            <Insulation_Cold>10</Insulation_Cold>
+            <Insulation_Heat>10</Insulation_Heat>
+            <EquipDelay>2</EquipDelay>
+
+            <RoyalFavorValue>3</RoyalFavorValue>
+          </statBases>
+          <equippedStatOffsets>
+
+            <DecompressionResistance MayRequire="kentington.saveourship2">0.75</DecompressionResistance>
+            <VacuumSpeedMultiplier MayRequire="kentington.saveourship2">4</VacuumSpeedMultiplier>
+            <MeleeHitChance>0.4</MeleeHitChance>
+            <AimingDelayFactor>0.208</AimingDelayFactor>
+          </equippedStatOffsets>
+          <recipeMaker>
+            <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+            <researchPrerequisites>
+              <li>BOR_Research_Armor_II</li>
+            </researchPrerequisites>
+            <recipeUsers Inherit="False">
+              <li>BOR_Bench_II</li>
+              <li>BOR_Bench_IV</li>
+            </recipeUsers>
+            <skillRequirements>
+              <Crafting>19</Crafting>
+            </skillRequirements>
+          </recipeMaker>
+          <costList>
+            <BOR_ComponentII>1</BOR_ComponentII>
+            <BOR_QuasarAlloy>40</BOR_QuasarAlloy>
+          </costList>
+          <generateCommonality>0.05</generateCommonality>
+          <apparel>
+            <immuneToToxGasExposure>true</immuneToToxGasExposure>
+            <bodyPartGroups>
+              <li>FullHead</li>
+            </bodyPartGroups>
+            <wornGraphicPath>Things/Apparel/CombatHelmet</wornGraphicPath>
+            <layers>
+              <li>Overhead</li>
+            </layers>
+            <tags>
+              <li>BOR_Military_II</li>
+              <li>Royal</li>
+              <li>RoyalTier2</li>
+              <li>EVA</li>
+            </tags>
+            <defaultOutfitTags>
+              <li>Soldier</li>
+            </defaultOutfitTags>
+          </apparel>
+
+          <tradeTags>
+            <li>BOR_Tech_II</li>
+          </tradeTags>
+          <comps>
+            <li MayRequire="kentington.saveourship2">
+              <compClass>SaveOurShip2.CompEVA</compClass>
+            </li>
+          </comps>
+        </ThingDef>
+
+      </value>
+
+	  </li>
+	  
+	  <!-- check to see if CombatExtended is loaded as well, then modify the patched in defs to CE standards -->
+	  <li Class="PatchOperationFindMod">
+		<mods>
+		  <li>Combat Extended</li>
+		</mods>
+			<match Class="PatchOperationSequence">
+				<operations>
+
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Carbonsuit"]/statBases</xpath>
+						<value>
+							<Bulk>2</Bulk>
+						</value>
+					</li>
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Carbonsuit"]/statBases/ArmorRating_Sharp</xpath>
+						<value>
+							<ArmorRating_Sharp>1.5</ArmorRating_Sharp>
+						</value>
+					</li>
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Carbonsuit"]/statBases/ArmorRating_Blunt</xpath>
+						<value>
+							<ArmorRating_Blunt>9</ArmorRating_Blunt>
+						</value>
+					</li>
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Carbonsuit"]/statBases/ArmorRating_Heat</xpath>
+						<value>
+							<ArmorRating_Heat>1.125</ArmorRating_Heat>
+						</value>
+					</li>
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Carbonsuit"]/apparel/bodyPartGroups</xpath>
+						<value>
+							<li>Feet</li>
+						</value>
+					</li>
+
+
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_SecurityArmor"]/statBases</xpath>
+						<value>
+							<Bulk>69</Bulk>
+							<WornBulk>10</WornBulk>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_SecurityArmor"]/statBases/Mass</xpath>
+						<value>
+							<Mass>16</Mass>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_SecurityArmor"]/statBases/ArmorRating_Sharp</xpath>
+						<value>
+							<ArmorRating_Sharp>27</ArmorRating_Sharp>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_SecurityArmor"]/statBases/ArmorRating_Blunt</xpath>
+						<value>
+							<ArmorRating_Blunt>54</ArmorRating_Blunt>
+						</value>
+					</li>
+
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_SecurityArmor"]/costList</xpath>
+						<value>
+							<DevilstrandCloth>35</DevilstrandCloth>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_SecurityArmor"]/costList/BOR_Sunsteel</xpath>
+						<value>
+							<BOR_Sunsteel>130</BOR_Sunsteel>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_SecurityArmor"]/equippedStatOffsets/MoveSpeed</xpath>
+						<value>
+							<CarryWeight>22</CarryWeight>
+							<CarryBulk>6</CarryBulk>
+						</value>
+					</li>
+
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_SecurityArmor"]/apparel/bodyPartGroups</xpath>
+						<value>
+							<li>Hands</li>
+							<li>Feet</li>
+						</value>
+					</li>
+
+					<li Class="PatchOperationAddModExtension">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_SecurityArmor"]</xpath>
+						<value>
+							<li Class="CombatExtended.PartialArmorExt">
+								<stats>
+									<li>
+										<ArmorRating_Sharp>2.812</ArmorRating_Sharp>
+										<parts>
+											<li>Torso</li>
+										</parts>
+									</li>
+									<li>
+										<ArmorRating_Blunt>2.812</ArmorRating_Blunt>
+										<parts>
+											<li>Torso</li>
+										</parts>
+									</li>
+									<li>
+										<ArmorRating_Sharp>1.968</ArmorRating_Sharp>
+										<parts>
+											<li>Neck</li>
+											<li>Leg</li>
+										</parts>
+									</li>
+									<li>
+										<ArmorRating_Blunt>1.968</ArmorRating_Blunt>
+										<parts>
+											<li>Neck</li>
+											<li>Leg</li>
+										</parts>
+									</li>
+									<li>
+										<ArmorRating_Sharp>1.407</ArmorRating_Sharp>
+										<parts>
+											<li>Arm</li>
+											<li>Hand</li>
+										</parts>
+									</li>
+									<li>
+										<ArmorRating_Blunt>1.407</ArmorRating_Blunt>
+										<parts>
+											<li>Arm</li>
+											<li>Hand</li>
+										</parts>
+									</li>
+								</stats>
+							</li>
+						</value>
+					</li>
+
+
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_SecurityHelmet"]/statBases</xpath>
+						<value>
+							<Bulk>3</Bulk>
+							<WornBulk>1</WornBulk>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_SecurityHelmet"]/statBases/Mass</xpath>
+						<value>
+							<Mass>2</Mass>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_SecurityHelmet"]/statBases/ArmorRating_Sharp</xpath>
+						<value>
+							<ArmorRating_Sharp>27</ArmorRating_Sharp>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_SecurityHelmet"]/statBases/ArmorRating_Blunt</xpath>
+						<value>
+							<ArmorRating_Blunt>54</ArmorRating_Blunt>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_SecurityHelmet"]/costList/BOR_QuasarAlloy</xpath>
+						<value>
+							<BOR_QuasarAlloy>25</BOR_QuasarAlloy>
+							<DevilstrandCloth>10</DevilstrandCloth>
+						</value>
+					</li>
+
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_SecurityHelmet"]/apparel/layers</xpath>
+						<value>
+							<li>OnHead</li>
+							<li>StrappedHead</li>
+						</value>
+					</li>
+
+					<li Class="PatchOperationAddModExtension">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_SecurityHelmet"]</xpath>
+						<value>
+							<li Class="CombatExtended.PartialArmorExt">
+								<stats>
+									<li>
+										<ArmorRating_Sharp>1.125</ArmorRating_Sharp>
+										<parts>
+											<li>Eye</li>
+											<li>Nose</li>
+											<li>Jaw</li>
+										</parts>
+									</li>
+									<li>
+										<ArmorRating_Blunt>1.125</ArmorRating_Blunt>
+										<parts>
+											<li>Eye</li>
+											<li>Nose</li>
+											<li>Jaw</li>
+										</parts>
+									</li>
+								</stats>
+							</li>
+						</value>
+					</li>
+
+
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_PioneerArmor"]/statBases</xpath>
+						<value>
+							<Bulk>69</Bulk>
+							<WornBulk>16</WornBulk>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_PioneerArmor"]/statBases/Mass</xpath>
+						<value>
+							<Mass>30</Mass>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_PioneerArmor"]/statBases/ArmorRating_Sharp</xpath>
+						<value>
+							<ArmorRating_Sharp>40</ArmorRating_Sharp>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_PioneerArmor"]/statBases/ArmorRating_Blunt</xpath>
+						<value>
+							<ArmorRating_Blunt>94</ArmorRating_Blunt>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_PioneerArmor"]/equippedStatOffsets/MoveSpeed</xpath>
+						<value>
+							<CarryWeight>180</CarryWeight>
+							<CarryBulk>30</CarryBulk>
+						</value>
+					</li>
+
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_PioneerArmor"]/apparel/bodyPartGroups</xpath>
+						<value>
+							<li>Hands</li>
+							<li>Feet</li>
+						</value>
+					</li>
+
+					<li Class="PatchOperationAddModExtension">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_PioneerArmor"]</xpath>
+						<value>
+							<li Class="CombatExtended.PartialArmorExt">
+								<stats>
+									<li>
+										<ArmorRating_Sharp>1.575</ArmorRating_Sharp>
+										<parts>
+											<li>Neck</li>
+										</parts>
+									</li>
+									<li>
+										<ArmorRating_Blunt>1.575</ArmorRating_Blunt>
+										<parts>
+											<li>Neck</li>
+										</parts>
+									</li>
+									<li>
+										<ArmorRating_Sharp>1.8</ArmorRating_Sharp>
+										<parts>
+											<li>Arm</li>
+											<li>Leg</li>
+										</parts>
+									</li>
+									<li>
+										<ArmorRating_Blunt>1.8</ArmorRating_Blunt>
+										<parts>
+											<li>Arm</li>
+											<li>Leg</li>
+										</parts>
+									</li>
+									<li>
+										<ArmorRating_Sharp>1.35</ArmorRating_Sharp>
+										<parts>
+											<li>Hand</li>
+										</parts>
+									</li>
+									<li>
+										<ArmorRating_Blunt>1.35</ArmorRating_Blunt>
+										<parts>
+											<li>Hand</li>
+										</parts>
+									</li>
+								</stats>
+							</li>
+						</value>
+					</li>
+
+
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_PioneerH"]/statBases</xpath>
+						<value>
+							<Bulk>3</Bulk>
+							<WornBulk>1</WornBulk>
+							<NightVisionEfficiency_Apparel>1.125</NightVisionEfficiency_Apparel>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_PioneerH"]/statBases/Mass</xpath>
+						<value>
+							<Mass>3.125</Mass>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_PioneerH"]/statBases/ArmorRating_Sharp</xpath>
+						<value>
+							<ArmorRating_Sharp>36</ArmorRating_Sharp>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_PioneerH"]/statBases/ArmorRating_Blunt</xpath>
+						<value>
+							<ArmorRating_Blunt>90</ArmorRating_Blunt>
+						</value>
+					</li>
+
+					<li Class="PatchOperationConditional">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_PioneerH"]/apparel/immuneToToxGasExposure</xpath>
+						<nomatch Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_PioneerH"]/apparel</xpath>
+							<value>
+								<immuneToToxGasExposure>true</immuneToToxGasExposure>
+							</value>
+						</nomatch>
+					</li>
+
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_PioneerH"]/equippedStatOffsets</xpath>
+						<value>
+							<SmokeSensitivity>-1</SmokeSensitivity>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_PioneerH"]/costList/BOR_QuasarAlloy</xpath>
+						<value>
+							<BOR_QuasarAlloy>40</BOR_QuasarAlloy>
+							<DevilstrandCloth>10</DevilstrandCloth>
+							<BOR_ComponentIII>1</BOR_ComponentIII>
+						</value>
+					</li>
+
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_PioneerH"]/apparel/layers</xpath>
+						<value>
+							<li>OnHead</li>
+							<li>StrappedHead</li>
+						</value>
+					</li>
+
+					<li Class="PatchOperationAddModExtension">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_PioneerH"]</xpath>
+						<value>
+							<li Class="CombatExtended.PartialArmorExt">
+								<stats>
+									<li>
+										<ArmorRating_Sharp>1.912</ArmorRating_Sharp>
+										<parts>
+											<li>Eye</li>
+											<li>Nose</li>
+										</parts>
+									</li>
+									<li>
+										<ArmorRating_Blunt>1.912</ArmorRating_Blunt>
+										<parts>
+											<li>Eye</li>
+											<li>Nose</li>
+										</parts>
+									</li>
+								</stats>
+							</li>
+						</value>
+					</li>
+
+
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_NomadArmor"]/statBases</xpath>
+						<value>
+							<Bulk>69</Bulk>
+							<WornBulk>6</WornBulk>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_NomadArmor"]/statBases/Mass</xpath>
+						<value>
+							<Mass>24</Mass>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_NomadArmor"]/statBases/ArmorRating_Sharp</xpath>
+						<value>
+							<ArmorRating_Sharp>36</ArmorRating_Sharp>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_NomadArmor"]/statBases/ArmorRating_Blunt</xpath>
+						<value>
+							<ArmorRating_Blunt>90</ArmorRating_Blunt>
+						</value>
+					</li>
+
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_NomadArmor"]/equippedStatOffsets</xpath>
+						<value>
+							<CarryWeight>112</CarryWeight>
+							<CarryBulk>13</CarryBulk>
+						</value>
+					</li>
+
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_NomadArmor"]/apparel/bodyPartGroups</xpath>
+						<value>
+							<li>Hands</li>
+							<li>Feet</li>
+						</value>
+					</li>
+
+					<li Class="PatchOperationAddModExtension">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_NomadArmor"]</xpath>
+						<value>
+							<li Class="CombatExtended.PartialArmorExt">
+								<stats>
+									<li>
+										<ArmorRating_Sharp>1.575</ArmorRating_Sharp>
+										<parts>
+											<li>Neck</li>
+										</parts>
+									</li>
+									<li>
+										<ArmorRating_Blunt>1.575</ArmorRating_Blunt>
+										<parts>
+											<li>Neck</li>
+										</parts>
+									</li>
+									<li>
+										<ArmorRating_Sharp>1.8</ArmorRating_Sharp>
+										<parts>
+											<li>Arm</li>
+											<li>Leg</li>
+										</parts>
+									</li>
+									<li>
+										<ArmorRating_Blunt>1.8</ArmorRating_Blunt>
+										<parts>
+											<li>Arm</li>
+											<li>Leg</li>
+										</parts>
+									</li>
+									<li>
+										<ArmorRating_Sharp>1.35</ArmorRating_Sharp>
+										<parts>
+											<li>Hand</li>
+										</parts>
+									</li>
+									<li>
+										<ArmorRating_Blunt>1.35</ArmorRating_Blunt>
+										<parts>
+											<li>Hand</li>
+										</parts>
+									</li>
+								</stats>
+							</li>
+						</value>
+					</li>
+
+
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_NomadH"]/statBases</xpath>
+						<value>
+							<Bulk>3</Bulk>
+							<WornBulk>1</WornBulk>
+							<NightVisionEfficiency_Apparel>1</NightVisionEfficiency_Apparel>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_NomadH"]/statBases/Mass</xpath>
+						<value>
+							<Mass>1.944</Mass>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_NomadH"]/statBases/ArmorRating_Sharp</xpath>
+						<value>
+							<ArmorRating_Sharp>27</ArmorRating_Sharp>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_NomadH"]/statBases/ArmorRating_Blunt</xpath>
+						<value>
+							<ArmorRating_Blunt>67</ArmorRating_Blunt>
+						</value>
+					</li>
+
+					<li Class="PatchOperationConditional">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_NomadH"]/apparel/immuneToToxGasExposure</xpath>
+						<nomatch Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_NomadH"]/apparel</xpath>
+							<value>
+								<immuneToToxGasExposure>true</immuneToToxGasExposure>
+							</value>
+						</nomatch>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_NomadH"]/equippedStatOffsets/ShootingAccuracyPawn</xpath>
+						<value>
+							<SmokeSensitivity>-1</SmokeSensitivity>
+							<AimingAccuracy>0.15</AimingAccuracy>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_NomadH"]/costList/BOR_QuasarAlloy</xpath>
+						<value>
+							<BOR_QuasarAlloy>40</BOR_QuasarAlloy>
+							<DevilstrandCloth>10</DevilstrandCloth>
+							<BOR_ComponentIII>1</BOR_ComponentIII>
+						</value>
+					</li>
+
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_NomadH"]/apparel/layers</xpath>
+						<value>
+							<li>OnHead</li>
+							<li>StrappedHead</li>
+						</value>
+					</li>
+
+
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_MedicArmor"]/statBases</xpath>
+						<value>
+							<Bulk>69</Bulk>
+							<WornBulk>6</WornBulk>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_MedicArmor"]/statBases/Mass</xpath>
+						<value>
+							<Mass>30</Mass>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_MedicArmor"]/statBases/ArmorRating_Sharp</xpath>
+						<value>
+							<ArmorRating_Sharp>45</ArmorRating_Sharp>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_MedicArmor"]/statBases/ArmorRating_Blunt</xpath>
+						<value>
+							<ArmorRating_Blunt>67</ArmorRating_Blunt>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_MedicArmor"]/equippedStatOffsets/MoveSpeed</xpath>
+						<value>
+							<CarryWeight>135</CarryWeight>
+							<CarryBulk>16</CarryBulk>
+						</value>
+					</li>
+
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_MedicArmor"]/apparel/bodyPartGroups</xpath>
+						<value>
+							<li>Hands</li>
+							<li>Feet</li>
+						</value>
+					</li>
+
+					<li Class="PatchOperationAddModExtension">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_MedicArmor"]</xpath>
+						<value>
+							<li Class="CombatExtended.PartialArmorExt">
+								<stats>
+									<li>
+										<ArmorRating_Sharp>1.575</ArmorRating_Sharp>
+										<parts>
+											<li>Neck</li>
+										</parts>
+									</li>
+									<li>
+										<ArmorRating_Blunt>1.575</ArmorRating_Blunt>
+										<parts>
+											<li>Neck</li>
+										</parts>
+									</li>
+									<li>
+										<ArmorRating_Sharp>1.8</ArmorRating_Sharp>
+										<parts>
+											<li>Arm</li>
+											<li>Leg</li>
+										</parts>
+									</li>
+									<li>
+										<ArmorRating_Blunt>1.8</ArmorRating_Blunt>
+										<parts>
+											<li>Arm</li>
+											<li>Leg</li>
+										</parts>
+									</li>
+									<li>
+										<ArmorRating_Sharp>1.35</ArmorRating_Sharp>
+										<parts>
+											<li>Hand</li>
+										</parts>
+									</li>
+									<li>
+										<ArmorRating_Blunt>1.35</ArmorRating_Blunt>
+										<parts>
+											<li>Hand</li>
+										</parts>
+									</li>
+								</stats>
+							</li>
+						</value>
+					</li>
+
+
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_MedicH"]/statBases</xpath>
+						<value>
+							<Bulk>3</Bulk>
+							<WornBulk>1</WornBulk>
+							<NightVisionEfficiency_Apparel>0.9</NightVisionEfficiency_Apparel>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_MedicH"]/statBases/Mass</xpath>
+						<value>
+							<Mass>2.223</Mass>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_MedicH"]/statBases/ArmorRating_Sharp</xpath>
+						<value>
+							<ArmorRating_Sharp>45</ArmorRating_Sharp>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_MedicH"]/statBases/ArmorRating_Blunt</xpath>
+						<value>
+							<ArmorRating_Blunt>67</ArmorRating_Blunt>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_MedicH"]/costList/BOR_QuasarAlloy</xpath>
+						<value>
+							<BOR_QuasarAlloy>40</BOR_QuasarAlloy>
+							<DevilstrandCloth>10</DevilstrandCloth>
+							<BOR_ComponentIII>1</BOR_ComponentIII>
+						</value>
+					</li>
+
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_MedicH"]/apparel/layers</xpath>
+						<value>
+							<li>OnHead</li>
+							<li>StrappedHead</li>
+						</value>
+					</li>
+
+					<li Class="PatchOperationAddModExtension">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_MedicH"]</xpath>
+						<value>
+							<li Class="CombatExtended.PartialArmorExt">
+								<stats>
+									<li>
+										<ArmorRating_Sharp>1.688</ArmorRating_Sharp>
+										<parts>
+											<li>Eye</li>
+										</parts>
+									</li>
+									<li>
+										<ArmorRating_Blunt>1.688</ArmorRating_Blunt>
+										<parts>
+											<li>Eye</li>
+											<li>Jaw</li>
+											<li>Nose</li>
+										</parts>
+									</li>
+									<li>
+										<ArmorRating_Sharp>1.125</ArmorRating_Sharp>
+										<parts>
+											<li>Nose</li>
+											<li>Jaw</li>
+											<li>Nose</li>
+										</parts>
+									</li>
+								</stats>
+							</li>
+						</value>
+					</li>
+
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_Dropsuit"]/statBases/Mass</xpath>
+						<value>
+							<Mass>41</Mass>
+							<Bulk>62</Bulk>
+							<WornBulk>12</WornBulk>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_Dropsuit"]/costList/BOR_QuasarAlloy</xpath>
+						<value>
+							<BOR_QuasarAlloy>180</BOR_QuasarAlloy>
+							<DevilstrandCloth>40</DevilstrandCloth>
+						</value>
+					</li>
+
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_Dropsuit"]/apparel/bodyPartGroups</xpath>
+						<value>
+							<li>Hands</li>
+							<li>Feet</li>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_Dropsuit"]/equippedStatOffsets/MoveSpeed</xpath>
+						<value>
+							<CarryWeight>202</CarryWeight>
+							<CarryBulk>6</CarryBulk>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_Dropsuit"]/statBases/ArmorRating_Sharp</xpath>
+						<value>
+							<ArmorRating_Sharp>37</ArmorRating_Sharp>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_Dropsuit"]/statBases/ArmorRating_Blunt</xpath>
+						<value>
+							<ArmorRating_Blunt>114</ArmorRating_Blunt>
+						</value>
+					</li>
+
+					<li Class="PatchOperationConditional">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_Dropsuit"]/verbs</xpath>
+						<match Class="PatchOperationSequence">
+							<operations>
+								<li Class="PatchOperationReplace">
+									<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_Dropsuit"]/statBases/JumpRange</xpath>
+									<value>
+										<JumpRange MayRequire="ludeon.rimworld.royalty">105</JumpRange>
+									</value>
+								</li>
+							</operations>
+						</match>
+					</li>
+
+					<li Class="PatchOperationAddModExtension">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_Dropsuit"]</xpath>
+						<value>
+							<li Class="CombatExtended.PartialArmorExt">
+								<stats>
+									<li>
+										<ArmorRating_Sharp>2.025</ArmorRating_Sharp>
+										<parts>
+											<li>Neck</li>
+											<li>Arm</li>
+											<li>Leg</li>
+										</parts>
+									</li>
+									<li>
+										<ArmorRating_Blunt>2.025</ArmorRating_Blunt>
+										<parts>
+											<li>Neck</li>
+											<li>Arm</li>
+											<li>Leg</li>
+										</parts>
+									</li>
+									<li>
+										<ArmorRating_Sharp>1.575</ArmorRating_Sharp>
+										<parts>
+											<li>Hand</li>
+										</parts>
+									</li>
+									<li>
+										<ArmorRating_Blunt>1.575</ArmorRating_Blunt>
+										<parts>
+											<li>Hand</li>
+										</parts>
+									</li>
+								</stats>
+							</li>
+						</value>
+					</li>
+
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_DropsuitH"]/statBases/Mass</xpath>
+						<value>
+							<Bulk>3</Bulk>
+							<Mass>3</Mass>
+							<WornBulk>1</WornBulk>
+							<NightVisionEfficiency_Apparel>1.462</NightVisionEfficiency_Apparel>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_DropsuitH"]/statBases/ArmorRating_Sharp</xpath>
+						<value>
+							<ArmorRating_Sharp>31</ArmorRating_Sharp>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_DropsuitH"]/statBases/ArmorRating_Blunt</xpath>
+						<value>
+							<ArmorRating_Blunt>94</ArmorRating_Blunt>
+						</value>
+					</li>
+
+					<li Class="PatchOperationConditional">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_DropsuitH"]/apparel/immuneToToxGasExposure</xpath>
+						<nomatch Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_DropsuitH"]/apparel</xpath>
+							<value>
+								<immuneToToxGasExposure>true</immuneToToxGasExposure>
+							</value>
+						</nomatch>
+					</li>
+
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_DropsuitH"]/equippedStatOffsets</xpath>
+						<value>
+							<SmokeSensitivity>-1</SmokeSensitivity>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_DropsuitH"]/costList/BOR_QuasarAlloy</xpath>
+						<value>
+							<BOR_QuasarAlloy>60</BOR_QuasarAlloy>
+							<DevilstrandCloth>20</DevilstrandCloth>
+						</value>
+					</li>
+
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_DropsuitH"]/apparel/layers</xpath>
+						<value>
+							<li>OnHead</li>
+							<li>StrappedHead</li>
+						</value>
+					</li>
+
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_Strikesuit"]/statBases/Mass</xpath>
+						<value>
+							<Bulk>51</Bulk>
+							<Mass>13</Mass>
+							<WornBulk>6</WornBulk>
+						</value>
+					</li>
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_Strikesuit"]/apparel/bodyPartGroups</xpath>
+						<value>
+							<li>Hands</li>
+							<li>Feet</li>
+						</value>
+					</li>
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_Strikesuit"]/equippedStatOffsets</xpath>
+						<value>
+							<CarryWeight>112</CarryWeight>
+							<CarryBulk>6</CarryBulk>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_Strikesuit"]/costList/BOR_QuasarAlloy</xpath>
+						<value>
+							<BOR_QuasarAlloy>120</BOR_QuasarAlloy>
+							<DevilstrandCloth>40</DevilstrandCloth>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_Strikesuit"]/statBases/ArmorRating_Sharp</xpath>
+						<value>
+							<ArmorRating_Sharp>33</ArmorRating_Sharp>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_Strikesuit"]/statBases/ArmorRating_Blunt</xpath>
+						<value>
+							<ArmorRating_Blunt>50.625</ArmorRating_Blunt>
+						</value>
+					</li>
+
+					<li Class="PatchOperationAddModExtension">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_Strikesuit"]</xpath>
+						<value>
+							<li Class="CombatExtended.PartialArmorExt">
+								<stats>
+									<li>
+										<ArmorRating_Sharp>2.7</ArmorRating_Sharp>
+										<parts>
+											<li>Torso</li>
+										</parts>
+									</li>
+									<li>
+										<ArmorRating_Blunt>2.7</ArmorRating_Blunt>
+										<parts>
+											<li>Torso</li>
+										</parts>
+									</li>
+									<li>
+										<ArmorRating_Sharp>2.025</ArmorRating_Sharp>
+										<parts>
+											<li>Neck</li>
+											<li>Leg</li>
+											<li>Foot</li>
+										</parts>
+									</li>
+									<li>
+										<ArmorRating_Blunt>2.025</ArmorRating_Blunt>
+										<parts>
+											<li>Neck</li>
+											<li>Leg</li>
+											<li>Foot</li>
+										</parts>
+									</li>
+									<li>
+										<ArmorRating_Sharp>1.35</ArmorRating_Sharp>
+										<parts>
+											<li>Arm</li>
+											<li>Hand</li>
+										</parts>
+									</li>
+									<li>
+										<ArmorRating_Blunt>1.35</ArmorRating_Blunt>
+										<parts>
+											<li>Arm</li>
+											<li>Hand</li>
+										</parts>
+									</li>
+								</stats>
+							</li>
+						</value>
+					</li>
+
+
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_StrikesuitH"]/statBases</xpath>
+						<value>
+							<Bulk>1</Bulk>
+							<WornBulk>1</WornBulk>
+							<NightVisionEfficiency_Apparel>2.025</NightVisionEfficiency_Apparel>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_StrikesuitH"]/statBases/ArmorRating_Sharp</xpath>
+						<value>
+							<ArmorRating_Sharp>21.375</ArmorRating_Sharp>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_StrikesuitH"]/statBases/ArmorRating_Blunt</xpath>
+						<value>
+							<ArmorRating_Blunt>50.625</ArmorRating_Blunt>
+						</value>
+					</li>
+
+					<li Class="PatchOperationConditional">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_StrikesuitH"]/apparel/immuneToToxGasExposure</xpath>
+						<nomatch Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_StrikesuitH"]/apparel</xpath>
+							<value>
+								<immuneToToxGasExposure>true</immuneToToxGasExposure>
+							</value>
+						</nomatch>
+					</li>
+
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_StrikesuitH"]/equippedStatOffsets</xpath>
+						<value>
+							<Suppressability>-0.25</Suppressability>
+							<SmokeSensitivity>-1</SmokeSensitivity>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_StrikesuitH"]/costList/BOR_QuasarAlloy</xpath>
+						<value>
+							<BOR_QuasarAlloy>35</BOR_QuasarAlloy>
+							<DevilstrandCloth>10</DevilstrandCloth>
+						</value>
+					</li>
+
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_StrikesuitH"]/apparel/layers</xpath>
+						<value>
+							<li>OnHead</li>
+							<li>StrappedHead</li>
+						</value>
+					</li>
+
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_AssaultArmor"]/statBases/Mass</xpath>
+						<value>
+							<Mass>69</Mass>
+							<Bulk>83</Bulk>
+							<WornBulk>12</WornBulk>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_AssaultArmor"]/statBases/ArmorRating_Sharp</xpath>
+						<value>
+							<ArmorRating_Sharp>63</ArmorRating_Sharp>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_AssaultArmor"]/statBases/ArmorRating_Blunt</xpath>
+						<value>
+							<ArmorRating_Blunt>157</ArmorRating_Blunt>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_AssaultArmor"]/equippedStatOffsets/MoveSpeed</xpath>
+						<value>
+							<CarryWeight>258</CarryWeight>
+							<CarryBulk>10</CarryBulk>
+							<MoveSpeed>-0.245</MoveSpeed>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_AssaultArmor"]/costList/BOR_QuasarAlloy</xpath>
+						<value>
+							<BOR_QuasarAlloy>225</BOR_QuasarAlloy>
+							<DevilstrandCloth>60</DevilstrandCloth>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_AssaultArmor"]/costList/Uranium</xpath>
+						<value>
+							<Uranium>157</Uranium>
+						</value>
+					</li>
+
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_AssaultArmor"]/apparel/bodyPartGroups</xpath>
+						<value>
+							<li>Hands</li>
+							<li>Feet</li>
+						</value>
+					</li>
+
+					<li Class="PatchOperationAddModExtension">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_AssaultArmor"]</xpath>
+						<value>
+							<li Class="CombatExtended.PartialArmorExt">
+								<stats>
+									<li>
+										<ArmorRating_Sharp>1.8</ArmorRating_Sharp>
+										<parts>
+											<li>Hand</li>
+										</parts>
+									</li>
+									<li>
+										<ArmorRating_Blunt>1.8</ArmorRating_Blunt>
+										<parts>
+											<li>Hand</li>
+										</parts>
+									</li>
+								</stats>
+							</li>
+						</value>
+					</li>
+
+					<li Class="PatchOperationConditional">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_AssaultArmor"]/verbs</xpath>
+						<match Class="PatchOperationSequence">
+							<operations>
+
+								<li Class="PatchOperationReplace">
+									<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_AssaultArmor"]/verbs</xpath>
+									<value>
+										<verbs>
+											<li Class="CombatExtended.VerbPropertiesCE">
+												<label>launch EMP grenade</label>
+												<verbClass>CombatExtended.Verb_LaunchProjectileStaticCE</verbClass>
+												<hasStandardCommand>true</hasStandardCommand>
+												<onlyManualCast>True</onlyManualCast>
+												<warmupTime>1.042</warmupTime>
+												<range>90</range>
+												<minRange>5</minRange>
+												<ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
+												<soundCast>Shot_IncendiaryLauncher</soundCast>
+												<soundCastTail>GunTail_Medium</soundCastTail>
+												<muzzleFlashScale>14</muzzleFlashScale>
+												<drawHighlightWithLineOfSight>true</drawHighlightWithLineOfSight>
+												<targetParams>
+													<canTargetLocations>true</canTargetLocations>
+												</targetParams>
+												<ignorePartialLoSBlocker>true</ignorePartialLoSBlocker>
+												<defaultProjectile>Bullet_30x29mmGrenade_EMP</defaultProjectile>
+												<rangedFireRulepack>Combat_RangedFire_Thrown</rangedFireRulepack>
+											</li>
+										</verbs>
+									</value>
+								</li>
+
+								<li Class="PatchOperationReplace">
+									<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_AssaultArmor"]/comps/li[@Class="CompProperties_ApparelReloadable"]/ammoDef</xpath>
+									<value>
+										<ammoDef>Ammo_30x29mmGrenade_EMP</ammoDef>
+									</value>
+								</li>
+
+								<li Class="PatchOperationReplace">
+									<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_AssaultArmor"]/comps/li[@Class="CompProperties_ApparelReloadable"]/ammoCountPerCharge</xpath>
+									<value>
+										<ammoCountPerCharge>1</ammoCountPerCharge>
+									</value>
+								</li>
+
+							</operations>
+						</match>
+					</li>
+
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_AssaultArmorH"]/statBases/Mass</xpath>
+						<value>
+							<Mass>6</Mass>
+							<Bulk>13</Bulk>
+							<WornBulk>1</WornBulk>
+							<NightVisionEfficiency_Apparel>0.675</NightVisionEfficiency_Apparel>
+						</value>
+					</li>
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_AssaultArmorH"]/statBases/ArmorRating_Sharp</xpath>
+						<value>
+							<ArmorRating_Sharp>55</ArmorRating_Sharp>
+						</value>
+					</li>
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_AssaultArmorH"]/statBases/ArmorRating_Blunt</xpath>
+						<value>
+							<ArmorRating_Blunt>140.625</ArmorRating_Blunt>
+						</value>
+					</li>
+
+					<li Class="PatchOperationConditional">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_AssaultArmorH"]/apparel/immuneToToxGasExposure</xpath>
+						<nomatch Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_AssaultArmorH"]/apparel</xpath>
+							<value>
+								<immuneToToxGasExposure>true</immuneToToxGasExposure>
+							</value>
+						</nomatch>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_AssaultArmorH"]/equippedStatOffsets/MoveSpeed</xpath>
+						<value>
+							<MoveSpeed>-0.111</MoveSpeed>
+						</value>
+					</li>
+
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_AssaultArmorH"]/equippedStatOffsets</xpath>
+						<value>
+							<SmokeSensitivity>-1</SmokeSensitivity>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_AssaultArmorH"]/costList/BOR_QuasarAlloy</xpath>
+						<value>
+							<BOR_QuasarAlloy>70</BOR_QuasarAlloy>
+							<Uranium>33</Uranium>
+							<DevilstrandCloth>30</DevilstrandCloth>
+						</value>
+					</li>
+
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_AssaultArmorH"]/apparel/layers</xpath>
+						<value>
+							<li>OnHead</li>
+							<li>StrappedHead</li>
+						</value>
+					</li>
+
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_FSArmor"]/statBases/Mass</xpath>
+						<value>
+							<Mass>48</Mass>
+							<Bulk>55</Bulk>
+							<WornBulk>13</WornBulk>
+						</value>
+					</li>
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_FSArmor"]/statBases/ArmorRating_Sharp</xpath>
+						<value>
+							<ArmorRating_Sharp>33</ArmorRating_Sharp>
+						</value>
+					</li>
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_FSArmor"]/statBases/ArmorRating_Blunt</xpath>
+						<value>
+							<ArmorRating_Blunt>84.375</ArmorRating_Blunt>
+						</value>
+					</li>
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_FSArmor"]/equippedStatOffsets/MoveSpeed</xpath>
+						<value>
+							<CarryWeight>270</CarryWeight>
+							<CarryBulk>34</CarryBulk>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_FSArmor"]/equippedStatOffsets/AimingDelayFactor</xpath>
+						<value>
+							<AimingDelayFactor>-0.173</AimingDelayFactor>
+							<ReloadSpeed>0.5</ReloadSpeed>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_FSArmor"]/costList/BOR_QuasarAlloy</xpath>
+						<value>
+							<BOR_QuasarAlloy>175</BOR_QuasarAlloy>
+							<DevilstrandCloth>50</DevilstrandCloth>
+						</value>
+					</li>
+
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_FSArmor"]/apparel/bodyPartGroups</xpath>
+						<value>
+							<li>Hands</li>
+							<li>Feet</li>
+						</value>
+					</li>
+
+					<li Class="PatchOperationAddModExtension">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_FSArmor"]</xpath>
+						<value>
+							<li Class="CombatExtended.PartialArmorExt">
+								<stats>
+									<li>
+										<ArmorRating_Sharp>2.025</ArmorRating_Sharp>
+										<parts>
+											<li>Neck</li>
+										</parts>
+									</li>
+									<li>
+										<ArmorRating_Blunt>2.025</ArmorRating_Blunt>
+										<parts>
+											<li>Neck</li>
+										</parts>
+									</li>
+									<li>
+										<ArmorRating_Sharp>1.8</ArmorRating_Sharp>
+										<parts>
+											<li>Arm</li>
+										</parts>
+									</li>
+									<li>
+										<ArmorRating_Blunt>1.8</ArmorRating_Blunt>
+										<parts>
+											<li>Arm</li>
+										</parts>
+									</li>
+									<li>
+										<ArmorRating_Sharp>1.575</ArmorRating_Sharp>
+										<parts>
+											<li>Hand</li>
+										</parts>
+									</li>
+									<li>
+										<ArmorRating_Blunt>1.575</ArmorRating_Blunt>
+										<parts>
+											<li>Hand</li>
+										</parts>
+									</li>
+								</stats>
+							</li>
+						</value>
+					</li>
+
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_FSArmorH"]/statBases/Mass</xpath>
+						<value>
+							<Mass>3</Mass>
+							<Bulk>4</Bulk>
+							<WornBulk>1.042</WornBulk>
+							<NightVisionEfficiency_Apparel>2.025</NightVisionEfficiency_Apparel>
+						</value>
+					</li>
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_FSArmorH"]/statBases/ArmorRating_Sharp</xpath>
+						<value>
+							<ArmorRating_Sharp>31</ArmorRating_Sharp>
+						</value>
+					</li>
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_FSArmorH"]/statBases/ArmorRating_Blunt</xpath>
+						<value>
+							<ArmorRating_Blunt>78</ArmorRating_Blunt>
+						</value>
+					</li>
+
+					<li Class="PatchOperationConditional">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_FSArmorH"]/apparel/immuneToToxGasExposure</xpath>
+						<nomatch Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_FSArmorH"]/apparel</xpath>
+							<value>
+								<immuneToToxGasExposure>true</immuneToToxGasExposure>
+							</value>
+						</nomatch>
+					</li>
+
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_FSArmorH"]/equippedStatOffsets</xpath>
+						<value>
+							<SmokeSensitivity>-1</SmokeSensitivity>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_FSArmorH"]/costList/BOR_QuasarAlloy</xpath>
+						<value>
+							<BOR_QuasarAlloy>55</BOR_QuasarAlloy>
+							<DevilstrandCloth>20</DevilstrandCloth>
+						</value>
+					</li>
+
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_FSArmorH"]/apparel/layers</xpath>
+						<value>
+							<li>OnHead</li>
+							<li>StrappedHead</li>
+						</value>
+					</li>
+
+					<li Class="PatchOperationAddModExtension">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_FSArmorH"]</xpath>
+						<value>
+							<li Class="CombatExtended.PartialArmorExt">
+								<stats>
+									<li>
+										<ArmorRating_Sharp>2.025</ArmorRating_Sharp>
+										<parts>
+											<li>Eye</li>
+											<li>Nose</li>
+										</parts>
+									</li>
+									<li>
+										<ArmorRating_Blunt>2.025</ArmorRating_Blunt>
+										<parts>
+											<li>Eye</li>
+											<li>Nose</li>
+										</parts>
+									</li>
+								</stats>
+							</li>
+						</value>
+					</li>
+
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_Korp"]/statBases/Mass</xpath>
+						<value>
+							<Mass>58</Mass>
+							<Bulk>55</Bulk>
+							<WornBulk>13</WornBulk>
+						</value>
+					</li>
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_Korp"]/statBases/ArmorRating_Sharp</xpath>
+						<value>
+							<ArmorRating_Sharp>33</ArmorRating_Sharp>
+						</value>
+					</li>
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_Korp"]/statBases/ArmorRating_Blunt</xpath>
+						<value>
+							<ArmorRating_Blunt>84.375</ArmorRating_Blunt>
+						</value>
+					</li>
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_Korp"]/equippedStatOffsets/MoveSpeed</xpath>
+						<value>
+							<CarryWeight>225</CarryWeight>
+							<CarryBulk>20</CarryBulk>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_Korp"]/costList/BOR_QuasarAlloy</xpath>
+						<value>
+							<BOR_QuasarAlloy>175</BOR_QuasarAlloy>
+							<DevilstrandCloth>50</DevilstrandCloth>
+						</value>
+					</li>
+
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_Korp"]/apparel/bodyPartGroups</xpath>
+						<value>
+							<li>Hands</li>
+							<li>Feet</li>
+						</value>
+					</li>
+
+					<li Class="PatchOperationConditional">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_Korp"]/verbs</xpath>
+						<match Class="PatchOperationSequence">
+							<operations>
+
+								<li Class="PatchOperationReplace">
+									<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_Korp"]/verbs</xpath>
+									<value>
+										<verbs>
+											<li Class="CombatExtended.VerbPropertiesCE">
+												<label>launch crow feeder</label>
+												<verbClass>CombatExtended.Verb_LaunchProjectileStaticCE</verbClass>
+												<hasStandardCommand>true</hasStandardCommand>
+												<onlyManualCast>True</onlyManualCast>
+												<warmupTime>1.042</warmupTime>
+												<range>123</range>
+												<minRange>5</minRange>
+												<ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
+												<soundCast>RS_ShotGrendel</soundCast>
+												<soundCastTail>GunTail_Medium</soundCastTail>
+												<muzzleFlashScale>16</muzzleFlashScale>
+												<drawHighlightWithLineOfSight>true</drawHighlightWithLineOfSight>
+												<targetParams>
+													<canTargetLocations>true</canTargetLocations>
+												</targetParams>
+												<ignorePartialLoSBlocker>true</ignorePartialLoSBlocker>
+												<defaultProjectile>Bullet_JICrowFeeder</defaultProjectile>
+												<rangedFireRulepack>Combat_RangedFire_Thrown</rangedFireRulepack>
+											</li>
+										</verbs>
+									</value>
+								</li>
+
+								<li Class="PatchOperationReplace">
+									<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_Korp"]/comps/li[@Class="CompProperties_ApparelReloadable"]/ammoDef</xpath>
+									<value>
+										<ammoDef>Ammo_JI_Alloy</ammoDef>
+									</value>
+								</li>
+
+								<li Class="PatchOperationReplace">
+									<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_Korp"]/comps/li[@Class="CompProperties_ApparelReloadable"]/ammoCountPerCharge</xpath>
+									<value>
+										<ammoCountPerCharge>180</ammoCountPerCharge>
+									</value>
+								</li>
+
+							</operations>
+						</match>
+					</li>
+
+					<li Class="PatchOperationAddModExtension">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_Korp"]</xpath>
+						<value>
+							<li Class="CombatExtended.PartialArmorExt">
+								<stats>
+									<li>
+										<ArmorRating_Sharp>2.025</ArmorRating_Sharp>
+										<parts>
+											<li>Neck</li>
+										</parts>
+									</li>
+									<li>
+										<ArmorRating_Blunt>2.025</ArmorRating_Blunt>
+										<parts>
+											<li>Neck</li>
+										</parts>
+									</li>
+									<li>
+										<ArmorRating_Sharp>1.8</ArmorRating_Sharp>
+										<parts>
+											<li>Arm</li>
+										</parts>
+									</li>
+									<li>
+										<ArmorRating_Blunt>1.8</ArmorRating_Blunt>
+										<parts>
+											<li>Arm</li>
+										</parts>
+									</li>
+									<li>
+										<ArmorRating_Sharp>1.575</ArmorRating_Sharp>
+										<parts>
+											<li>Hand</li>
+										</parts>
+									</li>
+									<li>
+										<ArmorRating_Blunt>1.575</ArmorRating_Blunt>
+										<parts>
+											<li>Hand</li>
+										</parts>
+									</li>
+								</stats>
+							</li>
+						</value>
+					</li>
+
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_ReflactorArmor"]/statBases/Mass</xpath>
+						<value>
+							<Mass>41</Mass>
+							<Bulk>69</Bulk>
+							<WornBulk>12</WornBulk>
+						</value>
+					</li>
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_ReflactorArmor"]/statBases/ArmorRating_Sharp</xpath>
+						<value>
+							<ArmorRating_Sharp>40</ArmorRating_Sharp>
+						</value>
+					</li>
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_ReflactorArmor"]/statBases/ArmorRating_Heat</xpath>
+						<value>
+							<ArmorRating_Heat>22</ArmorRating_Heat>
+						</value>
+					</li>
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_ReflactorArmor"]/statBases/ArmorRating_Blunt</xpath>
+						<value>
+							<ArmorRating_Blunt>121</ArmorRating_Blunt>
+						</value>
+					</li>
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_ReflactorArmor"]/equippedStatOffsets/MoveSpeed</xpath>
+						<value>
+							<CarryWeight>202</CarryWeight>
+							<CarryBulk>10</CarryBulk>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_ReflactorArmor"]/costList/BOR_QuasarAlloy</xpath>
+						<value>
+							<BOR_QuasarAlloy>160</BOR_QuasarAlloy>
+							<DevilstrandCloth>75</DevilstrandCloth>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_ReflactorArmor"]/costList/Uranium</xpath>
+						<value>
+							<Uranium>135</Uranium>
+						</value>
+					</li>
+
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_ReflactorArmor"]/apparel/bodyPartGroups</xpath>
+						<value>
+							<li>Hands</li>
+							<li>Feet</li>
+						</value>
+					</li>
+
+					<li Class="PatchOperationAddModExtension">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_ReflactorArmor"]</xpath>
+						<value>
+							<li Class="CombatExtended.PartialArmorExt">
+								<stats>
+									<li>
+										<ArmorRating_Sharp>1.912</ArmorRating_Sharp>
+										<parts>
+											<li>Neck</li>
+										</parts>
+									</li>
+									<li>
+										<ArmorRating_Blunt>1.912</ArmorRating_Blunt>
+										<parts>
+											<li>Neck</li>
+										</parts>
+									</li>
+									<li>
+										<ArmorRating_Sharp>1.912</ArmorRating_Sharp>
+										<parts>
+											<li>Arm</li>
+										</parts>
+									</li>
+									<li>
+										<ArmorRating_Blunt>1.912</ArmorRating_Blunt>
+										<parts>
+											<li>Arm</li>
+										</parts>
+									</li>
+									<li>
+										<ArmorRating_Sharp>1.575</ArmorRating_Sharp>
+										<parts>
+											<li>Hand</li>
+										</parts>
+									</li>
+									<li>
+										<ArmorRating_Blunt>1.575</ArmorRating_Blunt>
+										<parts>
+											<li>Hand</li>
+										</parts>
+									</li>
+								</stats>
+							</li>
+						</value>
+					</li>
+
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_ReflactorArmorH"]/statBases/Mass</xpath>
+						<value>
+							<Mass>3.611</Mass>
+							<Bulk>4</Bulk>
+							<WornBulk>1.042</WornBulk>
+							<NightVisionEfficiency_Apparel>1.35</NightVisionEfficiency_Apparel>
+						</value>
+					</li>
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_ReflactorArmorH"]/statBases/ArmorRating_Sharp</xpath>
+						<value>
+							<ArmorRating_Sharp>33</ArmorRating_Sharp>
+						</value>
+					</li>
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_ReflactorArmorH"]/statBases/ArmorRating_Heat</xpath>
+						<value>
+							<ArmorRating_Heat>22</ArmorRating_Heat>
+						</value>
+					</li>
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_ReflactorArmorH"]/statBases/ArmorRating_Blunt</xpath>
+						<value>
+							<ArmorRating_Blunt>84.375</ArmorRating_Blunt>
+						</value>
+					</li>
+
+					<li Class="PatchOperationConditional">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_ReflactorArmorH"]/apparel/immuneToToxGasExposure</xpath>
+						<nomatch Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_ReflactorArmorH"]/apparel</xpath>
+							<value>
+								<immuneToToxGasExposure>true</immuneToToxGasExposure>
+							</value>
+						</nomatch>
+					</li>
+
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_ReflactorArmorH"]</xpath>
+						<value>
+							<equippedStatOffsets>
+								<SmokeSensitivity>-1</SmokeSensitivity>
+							</equippedStatOffsets>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_ReflactorArmorH"]/costList/BOR_QuasarAlloy</xpath>
+						<value>
+							<BOR_QuasarAlloy>60</BOR_QuasarAlloy>
+							<DevilstrandCloth>30</DevilstrandCloth>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_ReflactorArmorH"]/costList/Uranium</xpath>
+						<value>
+							<Uranium>45</Uranium>
+						</value>
+					</li>
+
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_ReflactorArmorH"]/apparel/layers</xpath>
+						<value>
+							<li>OnHead</li>
+							<li>StrappedHead</li>
+						</value>
+					</li>
+
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_HazardCarapace"]/statBases/Mass</xpath>
+						<value>
+							<Mass>30</Mass>
+							<Bulk>69</Bulk>
+							<WornBulk>10</WornBulk>
+						</value>
+					</li>
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_HazardCarapace"]/statBases/ArmorRating_Sharp</xpath>
+						<value>
+							<ArmorRating_Sharp>36</ArmorRating_Sharp>
+						</value>
+					</li>
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_HazardCarapace"]/statBases/ArmorRating_Blunt</xpath>
+						<value>
+							<ArmorRating_Blunt>81</ArmorRating_Blunt>
+						</value>
+					</li>
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_HazardCarapace"]/statBases/ArmorRating_Heat</xpath>
+						<value>
+							<ArmorRating_Heat>1</ArmorRating_Heat>
+							<ArmorRating_Electric>1</ArmorRating_Electric>
+						</value>
+					</li>
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_HazardCarapace"]/equippedStatOffsets/MoveSpeed</xpath>
+						<value>
+							<CarryWeight>180</CarryWeight>
+							<CarryBulk>16</CarryBulk>
+						</value>
+					</li>
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_HazardCarapace"]/costList/BOR_QuasarAlloy</xpath>
+						<value>
+							<BOR_QuasarAlloy>145</BOR_QuasarAlloy>
+							<DevilstrandCloth>50</DevilstrandCloth>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_HazardCarapace"]/costList/Uranium</xpath>
+						<value>
+							<Uranium>145</Uranium>
+						</value>
+					</li>
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_HazardCarapace"]/apparel/bodyPartGroups</xpath>
+						<value>
+							<li>Hands</li>
+							<li>Feet</li>
+						</value>
+					</li>
+
+					<li Class="PatchOperationAddModExtension">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_HazardCarapace"]</xpath>
+						<value>
+							<li Class="CombatExtended.PartialArmorExt">
+								<stats>
+									<li>
+										<ArmorRating_Sharp>2.138</ArmorRating_Sharp>
+										<parts>
+											<li>Neck</li>
+										</parts>
+									</li>
+									<li>
+										<ArmorRating_Blunt>2.138</ArmorRating_Blunt>
+										<parts>
+											<li>Neck</li>
+										</parts>
+									</li>
+									<li>
+										<ArmorRating_Sharp>2.025</ArmorRating_Sharp>
+										<parts>
+											<li>Hand</li>
+										</parts>
+									</li>
+									<li>
+										<ArmorRating_Blunt>2.025</ArmorRating_Blunt>
+										<parts>
+											<li>Hand</li>
+										</parts>
+									</li>
+								</stats>
+							</li>
+						</value>
+					</li>
+
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_HazardCarapaceH"]/statBases/Mass</xpath>
+						<value>
+							<Mass>4</Mass>
+							<Bulk>4</Bulk>
+							<WornBulk>1</WornBulk>
+							<NightVisionEfficiency_Apparel>1.575</NightVisionEfficiency_Apparel>
+						</value>
+					</li>
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_HazardCarapaceH"]/statBases/ArmorRating_Sharp</xpath>
+						<value>
+							<ArmorRating_Sharp>31</ArmorRating_Sharp>
+						</value>
+					</li>
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_HazardCarapaceH"]/statBases/ArmorRating_Blunt</xpath>
+						<value>
+							<ArmorRating_Blunt>70.875</ArmorRating_Blunt>
+						</value>
+					</li>
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_HazardCarapaceH"]/statBases/ArmorRating_Heat</xpath>
+						<value>
+							<ArmorRating_Heat>3.375</ArmorRating_Heat>
+						</value>
+					</li>
+
+					<li Class="PatchOperationConditional">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_HazardCarapaceH"]/apparel/immuneToToxGasExposure</xpath>
+						<nomatch Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_HazardCarapaceH"]/apparel</xpath>
+							<value>
+								<immuneToToxGasExposure>true</immuneToToxGasExposure>
+							</value>
+						</nomatch>
+					</li>
+
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_HazardCarapaceH"]/equippedStatOffsets</xpath>
+						<value>
+							<SmokeSensitivity>-1</SmokeSensitivity>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_HazardCarapaceH"]/costList/BOR_QuasarAlloy</xpath>
+						<value>
+							<BOR_QuasarAlloy>50</BOR_QuasarAlloy>
+							<DevilstrandCloth>10</DevilstrandCloth>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_HazardCarapaceH"]/costList/Uranium</xpath>
+						<value>
+							<Uranium>55</Uranium>
+						</value>
+					</li>
+
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_HazardCarapaceH"]/apparel/layers</xpath>
+						<value>
+							<li>OnHead</li>
+							<li>StrappedHead</li>
+						</value>
+					</li>
+
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_CloseCombatArmor"]/statBases/Mass</xpath>
+						<value>
+							<Mass>41</Mass>
+							<Bulk>45</Bulk>
+							<WornBulk>13</WornBulk>
+						</value>
+					</li>
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_CloseCombatArmor"]/statBases/ArmorRating_Sharp</xpath>
+						<value>
+							<ArmorRating_Sharp>45</ArmorRating_Sharp>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_CloseCombatArmor"]/statBases/ArmorRating_Blunt</xpath>
+						<value>
+							<ArmorRating_Blunt>135</ArmorRating_Blunt>
+						</value>
+					</li>
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_CloseCombatArmor"]/equippedStatOffsets</xpath>
+						<value>
+							<CarryWeight>180</CarryWeight>
+							<CarryBulk>13</CarryBulk>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_CloseCombatArmor"]/costList/BOR_QuasarAlloy</xpath>
+						<value>
+							<BOR_QuasarAlloy>145</BOR_QuasarAlloy>
+							<DevilstrandCloth>50</DevilstrandCloth>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_CloseCombatArmor"]/costList/Uranium</xpath>
+						<value>
+							<Uranium>247</Uranium>
+						</value>
+					</li>
+
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_CloseCombatArmor"]/apparel/bodyPartGroups</xpath>
+						<value>
+							<li>Hands</li>
+							<li>Feet</li>
+						</value>
+					</li>
+
+					<li Class="PatchOperationAddModExtension">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_CloseCombatArmor"]</xpath>
+						<value>
+							<li Class="CombatExtended.PartialArmorExt">
+								<stats>
+									<li>
+										<ArmorRating_Sharp>1.8</ArmorRating_Sharp>
+										<parts>
+											<li>Neck</li>
+										</parts>
+									</li>
+									<li>
+										<ArmorRating_Blunt>1.8</ArmorRating_Blunt>
+										<parts>
+											<li>Neck</li>
+										</parts>
+									</li>
+									<li>
+										<ArmorRating_Sharp>2.025</ArmorRating_Sharp>
+										<parts>
+											<li>Arm</li>
+										</parts>
+									</li>
+									<li>
+										<ArmorRating_Blunt>2.025</ArmorRating_Blunt>
+										<parts>
+											<li>Arm</li>
+										</parts>
+									</li>
+									<li>
+										<ArmorRating_Sharp>1.575</ArmorRating_Sharp>
+										<parts>
+											<li>Hand</li>
+										</parts>
+									</li>
+									<li>
+										<ArmorRating_Blunt>1.575</ArmorRating_Blunt>
+										<parts>
+											<li>Hand</li>
+										</parts>
+									</li>
+								</stats>
+							</li>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_CloseCombatArmor"]/equippedStatOffsets/MeleeDodgeChance</xpath>
+						<value>
+							<MeleeDodgeChance>0.55</MeleeDodgeChance>
+							<MeleeCritChance>0.2</MeleeCritChance>
+							<MeleeParryChance>0.25</MeleeParryChance>
+						</value>
+					</li>
+
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_CloseCombatHelmet"]/statBases/Mass</xpath>
+						<value>
+							<Mass>3</Mass>
+							<Bulk>3</Bulk>
+							<WornBulk>1</WornBulk>
+						</value>
+					</li>
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_CloseCombatHelmet"]/statBases/ArmorRating_Sharp</xpath>
+						<value>
+							<ArmorRating_Sharp>36</ArmorRating_Sharp>
+						</value>
+					</li>
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_CloseCombatHelmet"]/statBases/ArmorRating_Blunt</xpath>
+						<value>
+							<ArmorRating_Blunt>121</ArmorRating_Blunt>
+						</value>
+					</li>
+
+					<li Class="PatchOperationConditional">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_CloseCombatHelmet"]/apparel/immuneToToxGasExposure</xpath>
+						<nomatch Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_CloseCombatHelmet"]/apparel</xpath>
+							<value>
+								<immuneToToxGasExposure>true</immuneToToxGasExposure>
+							</value>
+						</nomatch>
+					</li>
+
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_CloseCombatHelmet"]/equippedStatOffsets</xpath>
+						<value>
+							<SmokeSensitivity>-1</SmokeSensitivity>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_CloseCombatHelmet"]/costList/BOR_QuasarAlloy</xpath>
+						<value>
+							<BOR_QuasarAlloy>65</BOR_QuasarAlloy>
+							<DevilstrandCloth>20</DevilstrandCloth>
+						</value>
+					</li>
+
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_CloseCombatHelmet"]/apparel/layers</xpath>
+						<value>
+							<li>OnHead</li>
+							<li>StrappedHead</li>
+						</value>
+					</li>
+
+					<li Class="PatchOperationAddModExtension">
+						<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_CloseCombatHelmet"]</xpath>
+						<value>
+							<li Class="CombatExtended.PartialArmorExt">
+								<stats>
+									<li>
+										<ArmorRating_Sharp>2.025</ArmorRating_Sharp>
+										<parts>
+											<li>Eye</li>
+											<li>Nose</li>
+										</parts>
+									</li>
+									<li>
+										<ArmorRating_Blunt>2.025</ArmorRating_Blunt>
+										<parts>
+											<li>Eye</li>
+											<li>Nose</li>
+										</parts>
+									</li>
+								</stats>
+							</li>
+						</value>
+					</li>
+
+				</operations>
+
+			</match>
+	  </li>
+	 </operations>
+    </enabled>
+  </Operation>
+
+</Patch>
