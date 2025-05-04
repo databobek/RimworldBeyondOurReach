@@ -2,19 +2,17 @@
 <Patch>
 
     <Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
-        <modSettingDef>BOR_Setting_RTSolarFlareShield_TODO</modSettingDef>
+        <modSettingDef>BOR_Setting_RTSolarFlareShield_Rebalance</modSettingDef>
         <enabled Class="PatchOperationSequence">
             <operations>
 
+				<!-- bamba cunt, you fucked up the prerequisites and had a duplicate elsewhere calling to replace it -->
                 <li Class="PatchOperationReplace">
                     <xpath>Defs/ResearchProjectDef[defName="ResearchProject_RTMagneticShield"]/prerequisites</xpath>
                     <value>
                         <prerequisites>
                             <li>BOR_Research_Power_II</li>
                         </prerequisites>
-                        <hiddenPrerequisites>
-                            <li>BOR_Research_Solar_Flare_Shield_I</li>
-                        </hiddenPrerequisites>
                     </value>
                 </li>
                 <li Class="PatchOperationReplace">
@@ -50,12 +48,6 @@
                     <xpath>Defs/ThingDef[defName="Building_RTMagneticShield"]/designationCategory</xpath>
                     <value>
                         <designationCategory>BOR</designationCategory>
-                    </value>
-                </li>
-                <li Class="PatchOperationAdd">
-                    <xpath>Defs/ThingDef[defName="Building_RTMagneticShield"]</xpath>
-                    <value>
-                        <designatorDropdown>BOR_SolarShield</designatorDropdown>
                     </value>
                 </li>
                 <li Class="PatchOperationReplace">

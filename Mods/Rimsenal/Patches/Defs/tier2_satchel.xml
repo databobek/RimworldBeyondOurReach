@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Patch>
-    <Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
-        <modSettingDef>BOR_Setting_RimsenalSatchelVariants</modSettingDef>
-        <enabled Class="PatchOperationAdd">
-            <xpath>Defs</xpath>
+
+  <Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
+    <modSettingDef>BOR_Setting_RimsenalSatchelVariants</modSettingDef>
+    <enabled Class="PatchOperationSequence">
+	  <operations>
+	  
+	  <!-- patch sequence to patch in defs while proceeding to check for CE -->
+	  <li Class="PatchOperationAdd">
+      <xpath>Defs</xpath>
+      
             <value>
 
                 <ThingDef ParentName="BaseGrenadeProjectile">
@@ -87,6 +93,257 @@
                 </ThingDef>
 
             </value>
-        </enabled>
-    </Operation>
+
+	  </li>
+	  
+	  <!-- check to see if CombatExtended is loaded as well, then modify the patched in defs to CE standards -->
+	  <li Class="PatchOperationFindMod">
+		<mods>
+		  <li>Combat Extended</li>
+		</mods>
+			<match Class="PatchOperationSequence">
+                <operations>
+
+
+                    <!-- ========== Remove Recipe Maker & Verbs ========== -->
+                    <li Class="PatchOperationRemove">
+                        <xpath>Defs/ThingDef[defName="BOR_JI_Dunder_II"]/recipeMaker </xpath>
+                    </li>
+
+                    <li Class="PatchOperationRemove">
+                        <xpath>Defs/ThingDef[defName="BOR_JI_Dunder_II"]/costList </xpath>
+                    </li>
+
+                    <!-- Without this mod, Grief and Bobcat don't work, and it logs at ForcedMissRadius error.-->
+                    <li Class="PatchOperationRemove">
+                        <xpath>Defs/ThingDef[defName="BOR_JI_Dunder_II"]/verbs </xpath>
+                    </li>
+
+                    <!-- Change TickerType.-->
+                    <li Class="PatchOperationAdd">
+                        <xpath>Defs/ThingDef[defName="BOR_JI_Dunder_II"] </xpath>
+                        <value>
+                            <tickerType>Normal</tickerType>
+                        </value>
+                    </li>
+
+                    <!-- ========== Projectile thingClass ========== -->
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Proj_Dunder_II"]/thingClass </xpath>
+                        <value>
+                            <thingClass>CombatExtended.ProjectileCE_Explosive</thingClass>
+                        </value>
+                    </li>
+
+                    <!-- ========== Projectile ========== -->
+
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Proj_Dunder_II"]/projectile</xpath>
+                        <value>
+                            <projectile Class="CombatExtended.ProjectilePropertiesCE">
+                                <explosionRadius>10.125</explosionRadius>
+                                <damageDef>Bomb</damageDef>
+                                <damageAmountBase>450</damageAmountBase>
+                                <explosionDelay>300</explosionDelay>
+                                <dropsCasings>false</dropsCasings>
+                                <speed>22</speed>
+                                <casingMoteDefname>Fleck_GrenadePin</casingMoteDefname>
+                                <casingFilthDefname>Filth_GrenadeAmmoCasings</casingFilthDefname>
+                                <applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
+                            </projectile>
+                        </value>
+                    </li>
+                    <!-- ========== Check Comp ========== -->
+
+
+                    <li Class="PatchOperationConditional">
+                        <xpath>Defs/ThingDef[defName="BOR_Proj_Dunder_II"]/comps</xpath>
+                        <nomatch Class="PatchOperationAdd">
+                            <xpath>Defs/ThingDef[defName="BOR_Proj_Dunder_II"]</xpath>
+                            <value>
+                                <comps />
+                            </value>
+                        </nomatch>
+                    </li>
+
+                    <!-- ========== Add Fragmentation ========== -->
+
+                    <li Class="PatchOperationAdd">
+                        <xpath>Defs/ThingDef[defName="BOR_Proj_Dunder_II"]/comps</xpath>
+                        <value>
+                            <li Class="CombatExtended.CompProperties_Fragments">
+                                <fragments>
+                                    <Fragment_Quasar>0</Fragment_Quasar>
+                                </fragments>
+                            </li>
+                        </value>
+                    </li>
+
+                    <!-- Weapon Stack and Appearance -->
+
+                    <li Class="PatchOperationAdd">
+                        <xpath>Defs/ThingDef[defName="BOR_JI_Dunder_II"]/graphicData </xpath>
+                        <value>
+                            <onGroundRandomRotateAngle>0</onGroundRandomRotateAngle>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationAdd">
+                        <xpath>Defs/ThingDef[defName="BOR_JI_Dunder_II"] </xpath>
+                        <value>
+                            <thingClass>CombatExtended.AmmoThing</thingClass>
+                            <stackLimit>75</stackLimit>
+                            <resourceReadoutPriority>First</resourceReadoutPriority>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationAttributeSet">
+                        <xpath>Defs/ThingDef[defName="BOR_JI_Dunder_II"] </xpath>
+                        <attribute>Class</attribute>
+                        <value>CombatExtended.AmmoDef</value>
+                    </li>
+
+                    <!-- Weapon Check Comps -->
+
+                    <li Class="PatchOperationConditional">
+                        <xpath>Defs/ThingDef[defName="BOR_JI_Dunder_II"]/comps</xpath>
+                        <nomatch Class="PatchOperationAdd">
+                            <xpath>Defs/ThingDef[defName="BOR_JI_Dunder_II"]</xpath>
+                            <value>
+                                <comps />
+                            </value>
+                        </nomatch>
+                    </li>
+                    <!-- Weapon Values -->
+
+                    <li Class="PatchOperationAdd">
+                        <xpath>Defs/ThingDef[defName="BOR_JI_Dunder_II"]/comps</xpath>
+                        <value>
+                            <li Class="CombatExtended.CompProperties_ExplosiveCE">
+                                <damageAmountBase>90</damageAmountBase>
+                                <explosiveDamageType>Bomb</explosiveDamageType>
+                                <explosiveRadius>4.125</explosiveRadius>
+
+                            </li>
+                            <li Class="CombatExtended.CompProperties_Fragments">
+                                <fragments>
+                                    <Fragment_Quasar>50</Fragment_Quasar>
+                                </fragments>
+                            </li>
+                        </value>
+                    </li>
+
+                    <li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+                        <defName>BOR_JI_Dunder_II</defName>
+                        <statBases>
+                            <Mass>1.73</Mass>
+                            <MarketValue>16.3125</MarketValue>
+                            <RangedWeapon_Cooldown>0.69</RangedWeapon_Cooldown>
+                            <SightsEfficiency>2.25</SightsEfficiency>
+                        </statBases>
+                        <Properties>
+                            <label>throw quasar satchel charge</label>
+                            <verbClass>CombatExtended.Verb_ShootCEOneUse</verbClass>
+                            <hasStandardCommand>true</hasStandardCommand>
+                            <range>22.5</range>
+                            <minRange>3</minRange>
+                            <warmupTime>0.45</warmupTime>
+                            <noiseRadius>3</noiseRadius>
+                            <ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
+                            <soundCast>ThrowGrenade</soundCast>
+                            <targetParams>
+                                <canTargetLocations>true</canTargetLocations>
+                            </targetParams>
+                            <defaultProjectile>BOR_Proj_Dunder_II</defaultProjectile>
+                            <onlyManualCast>true</onlyManualCast>
+                            <ignorePartialLoSBlocker>true</ignorePartialLoSBlocker>
+                        </Properties>
+                        <weaponTags>
+                            <li>CE_AI_Grenade</li>
+                            <li>CE_OneHandedWeapon</li>
+                        </weaponTags>
+                    </li>
+                    <li Class="PatchOperationAdd">
+                        <xpath>Defs</xpath>
+                        <value>
+                            <RecipeDef ParentName="RSExplosive_RecipeBase">
+                                <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+                                <effectWorking>Cook</effectWorking>
+                                <soundWorking>Recipe_Smith</soundWorking>
+                                <workSkill>Crafting</workSkill>
+                                <unfinishedThingDef>UnfinishedGun</unfinishedThingDef>
+                                <defName>BOR_Craft_10_Dunder_II</defName>
+                                <label>Craft 10 quasar satchel charges</label>
+                                <description>Craft 10 Dunder III quasar satchel charges.</description>
+                                <jobString>Crafting quasar satchel charges</jobString>
+                                <ingredients>
+                                    <li>
+                                        <filter>
+                                            <thingDefs>
+                                                <li>BOR_ComponentII</li>
+                                            </thingDefs>
+                                        </filter>
+                                        <count>2</count>
+                                    </li>
+                                    <li>
+                                        <filter>
+                                            <thingDefs>
+                                                <li>BOR_Sunsteel</li>
+                                            </thingDefs>
+                                        </filter>
+                                        <count>10</count>
+                                    </li>
+                                    <li>
+                                        <filter>
+                                            <thingDefs>
+                                                <li>BOR_QuasarAlloy</li>
+                                            </thingDefs>
+                                        </filter>
+                                        <count>20</count>
+                                    </li>
+                                    <li>
+                                        <filter>
+                                            <thingDefs>
+                                                <li>BOR_Neutronium</li>
+                                            </thingDefs>
+                                        </filter>
+                                        <count>35</count>
+                                    </li>
+                                </ingredients>
+                                <fixedIngredientFilter>
+                                    <thingDefs>
+                                        <li>BOR_Sunsteel</li>
+                                        <li>BOR_QuasarAlloy</li>
+                                        <li>BOR_ComponentII</li>
+                                        <li>BOR_Neutronium</li>
+                                    </thingDefs>
+                                </fixedIngredientFilter>
+                                <researchPrerequisites>
+                                    <li>BOR_Research_Weapons_II</li>
+                                    <li>MoltenTech</li>
+                                </researchPrerequisites>
+                                <skillRequirements>
+                                    <Crafting>15</Crafting>
+                                </skillRequirements>
+                                <products>
+                                    <BOR_JI_Dunder_II>10</BOR_JI_Dunder_II>
+                                </products>
+                                <workAmount>47500</workAmount>
+                                <recipeUsers>
+                                    <li>BOR_Bench_II</li>
+                                    <li>BOR_Bench_IV</li>
+                                </recipeUsers>
+                            </RecipeDef>
+                        </value>
+                    </li>
+                </operations>
+
+			</match>
+	  </li>
+	 </operations>
+    </enabled>
+  </Operation>
+
 </Patch>
