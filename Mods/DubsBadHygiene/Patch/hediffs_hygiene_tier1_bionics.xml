@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Patch>
 
-  <Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
+<Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
     <modSettingDef>BOR_Setting_DubsBadHygiene</modSettingDef>
     <enabled Class="PatchOperationSequence">
-	  <operations>
-	  
-	  <!-- patch sequence to patch in defs while proceeding to check for pawnkinds to be updated -->
-	  <li Class="PatchOperationAdd">
-      <xpath>Defs</xpath>
-      
-	  <value>
-	  
+	<operations>
+	
+	<!-- patch sequence to patch in defs while proceeding to check for pawnkinds to be updated -->
+	<li Class="PatchOperationAdd">
+    <xpath>Defs</xpath>
+    
+	<value>
+	
 				<HediffDef ParentName="BOR_ImplantSolarHediffBase">
 					<defName>SolarBladder</defName>
 					<label>solar bladder</label>
@@ -238,27 +238,27 @@
 					</appliedOnFixedBodyParts>
 				</RecipeDef>
 
-      </value>
-	  </li>
-	  
-	  <!-- update pawnkinds techhediffs after the defs are loaded in -->
-	  <li Class="PatchOperationSequence">
+    </value>
+	</li>
+	
+	<!-- update pawnkinds techhediffs after the defs are loaded in -->
+	<li Class="PatchOperationSequence">
 				<operations>
 
 					<li Class="PatchOperationAdd">
-					  <xpath>Defs/PawnKindDef[@Name="BOR_BasePawn" 
+					<xpath>Defs/PawnKindDef[@Name="BOR_BasePawn" 
 												or @Name="BOR_ElitePawn"]/techHediffsRequired
-					  </xpath>
-					  <value>
+					</xpath>
+					<value>
 						<li MayRequire="dubwise.dubsbadhygiene">QuasarBladder</li>
-					  </value>
+					</value>
 					</li>
 
 				</operations>
 			</match>
-	  </li>
-	 </operations>
+	</li>
+	</operations>
     </enabled>
-  </Operation>
+</Operation>
 
 </Patch>
