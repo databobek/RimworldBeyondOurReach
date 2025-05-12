@@ -9,10 +9,16 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v4
-    - name: List workspace files
+
+    - name: Debug: List workspace files
       run: ls -R
+
     - name: Download schema
       run: wget https://apps.nextcloud.com/schema/apps/info.xsd
+
+    - name: Debug: Verify schema file
+      run: ls -l ./info.xsd
+
     - name: Validate info.xml using XML schema info.xsd
       uses: ChristophWurst/xmllint-action@v1
       with:
