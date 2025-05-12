@@ -1,29 +1,17 @@
-name: XML Lint Check
+name: Lint
 
-on:
-  push:
-    paths:
-      - '**/*.xml'
-  pull_request:
-    paths:
-      - '**/*.xml'
+on: [push]
 
 jobs:
-  lint:
+  xml-linters:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.x'
-
-      - name: Install XML linter
-        run: pip install xmllint
-
-      - name: Lint XML files
-        run: |
-          find . -name "*.xml" -print0 | xargs -0 xmllint --noout
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: Download schema
+      run: wget https://apps.nextcloud.com/schema/apps/info.xsd
+    - name: Validate info.xml using XML schema info.xsd
+      uses: ChristophWurst/xmllint-action@v1
+      with:
+        xml-file: ./appinfo/info.xml
+        xml-schema-file: ./info.xsd
