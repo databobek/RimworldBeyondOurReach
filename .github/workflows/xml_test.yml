@@ -1,0 +1,29 @@
+name: XML Lint Check
+
+on:
+  push:
+    paths:
+      - '**/*.xml'
+  pull_request:
+    paths:
+      - '**/*.xml'
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install XML linter
+        run: pip install xmllint
+
+      - name: Lint XML files
+        run: |
+          find . -name "*.xml" -print0 | xargs -0 xmllint --noout
