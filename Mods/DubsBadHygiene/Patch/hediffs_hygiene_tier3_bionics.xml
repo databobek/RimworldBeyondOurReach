@@ -2,49 +2,49 @@
 <Patch>
 
   <Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
-    <modSettingDef>BOR_Setting_DubsBadHygiene</modSettingDef>
-    <enabled Class="PatchOperationSequence">
-      <operations>
-      
-      <!-- patch sequence to patch in defs while proceeding to check for pawnkinds to be updated -->
-      <li Class="PatchOperationAdd">
-      <xpath>Defs</xpath>
-      
-      <value>
-      
-                <HediffDef ParentName="BOR_ImplantTenebralHediffBase">
-                    <defName>TenebralBladder</defName>
-                    <label>tenebral bladder</label>
-                    <labelNoun>a tenebral bladder</labelNoun>
-                    <description>An installed tenebral bladder.</description>
-                    <descriptionHyperlinks>
-                        <ThingDef>TenebralBladder</ThingDef>
-                    </descriptionHyperlinks>
-                    <spawnThingOnRemoved>TenebralBladder</spawnThingOnRemoved>
-                    <stages>
-                        <li>
-                            <statOffsets>
-                                <BladderRateMultiplier>-0.85</BladderRateMultiplier>
-                                <ThirstRateMultiplier>-0.85</ThirstRateMultiplier>
-                            </statOffsets>
-                        </li>
-                    </stages>
-                </HediffDef>
+	<modSettingDef>BOR_Setting_DubsBadHygiene</modSettingDef>
+	<enabled Class="PatchOperationSequence">
+	  <operations>
+	  
+	  <!-- patch sequence to patch in defs while proceeding to check for pawnkinds to be updated -->
+	  <li Class="PatchOperationAdd">
+	  <xpath>Defs</xpath>
+	  
+	  <value>
+	  
+				<HediffDef ParentName="BOR_ImplantTenebralHediffBase">
+					<defName>TenebralBladder</defName>
+					<label>tenebral bladder</label>
+					<labelNoun>a tenebral bladder</labelNoun>
+					<description>An installed tenebral bladder.</description>
+					<descriptionHyperlinks>
+						<ThingDef>TenebralBladder</ThingDef>
+					</descriptionHyperlinks>
+					<spawnThingOnRemoved>TenebralBladder</spawnThingOnRemoved>
+					<stages>
+						<li>
+							<statOffsets>
+								<BladderRateMultiplier>-0.85</BladderRateMultiplier>
+								<ThirstRateMultiplier>-0.85</ThirstRateMultiplier>
+							</statOffsets>
+						</li>
+					</stages>
+				</HediffDef>
 
-                <ThingDef ParentName="BodyPartBionicBase">
-                    <defName>TenebralBladder</defName>
-                    <label>tenebral bladder</label>
-                    <description>An advanced tenebral-tech bladder. A chemical recycling system breaks down waste products from the body into molecules which are recycled with the remainder released as gas, the downside of this being that it gives the user gas.</description>
-                    <descriptionHyperlinks>
-                        <RecipeDef>InstallTenebralBladder</RecipeDef>
-                    </descriptionHyperlinks>
-                    <costList>
-                        <BOR_Tenebrite>10</BOR_Tenebrite>
-                        <BOR_ComponentIII>3</BOR_ComponentIII>
-                    </costList>
-                    <thingCategories Inherit="False">
-                        <li>BOR_Bionics_III</li>
-                    </thingCategories>
+				<ThingDef ParentName="BodyPartBionicBase">
+					<defName>TenebralBladder</defName>
+					<label>tenebral bladder</label>
+					<description>An advanced tenebral-tech bladder. A chemical recycling system breaks down waste products from the body into molecules which are recycled with the remainder released as gas, the downside of this being that it gives the user gas.</description>
+					<descriptionHyperlinks>
+						<RecipeDef>InstallTenebralBladder</RecipeDef>
+					</descriptionHyperlinks>
+					<costList>
+						<BOR_Tenebrite>10</BOR_Tenebrite>
+						<BOR_ComponentIII>3</BOR_ComponentIII>
+					</costList>
+					<thingCategories Inherit="False">
+						<li>BOR_Bionics_III</li>
+					</thingCategories>
 					<statBases>
 						<Mass>2</Mass>
 						<WorkToMake>30000</WorkToMake>
@@ -236,7 +236,7 @@
 					</appliedOnFixedBodyParts>
 				</RecipeDef>
 
-      </value>
+	  </value>
 	  </li>
 	  
 	  <!-- update pawnkinds techhediffs after the defs are loaded in -->
@@ -257,7 +257,7 @@
 				</operations>
 	</li>
 	 </operations>
-    </enabled>
+	</enabled>
   </Operation>
 
 </Patch>
