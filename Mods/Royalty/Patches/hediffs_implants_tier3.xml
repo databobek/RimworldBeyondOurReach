@@ -4,2020 +4,2020 @@
   <Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
     <modSettingDef>BOR_Setting_RoyaltyImplantsVariants</modSettingDef>
     <enabled Class="PatchOperationSequence">
-	  <operations>
-	  
-	  <!-- patch sequence to patch in defs while proceeding to check for CE -->
-	  <li Class="PatchOperationAdd">
-      <xpath>Defs</xpath>
-      
-	  <value>
-	  
-        <HediffDef ParentName="BOR_ImplantTenebralHediffBase">
-          <defName>MindscrewTenebral</defName>
-          <label>tenebral mindscrew</label>
-          <labelNoun>an tenebral mindscrew</labelNoun>
-          <description>An installed tenebral mindscrew.</description>
-          <descriptionHyperlinks>
-            <ThingDef>BOR_TenebralOrgan</ThingDef>
-          </descriptionHyperlinks>
-          <priceOffset>-440</priceOffset>
-          <stages>
-            <li>
-              <painOffset>0.6</painOffset>
-            </li>
-          </stages>
-        </HediffDef>
+      <operations>
 
-        <RecipeDef ParentName="SurgeryInstallImplantBORTenebralBase">
-          <defName>InstallMindscrewTenebral</defName>
-          <label>install tenebral mindscrew</label>
-          <description>Install a mindscrew.</description>
-          <descriptionHyperlinks>
-            <ThingDef>BOR_TenebralOrgan</ThingDef>
-            <HediffDef>MindscrewTenebral</HediffDef>
-          </descriptionHyperlinks>
-          <jobString>Installing tenebral mindscrew.</jobString>
-          <ingredients>
-            <li>
-              <filter>
+        <!-- patch sequence to patch in defs while proceeding to check for CE -->
+        <li Class="PatchOperationAdd">
+          <xpath>Defs</xpath>
+
+          <value>
+
+            <HediffDef ParentName="BOR_ImplantTenebralHediffBase">
+              <defName>MindscrewTenebral</defName>
+              <label>tenebral mindscrew</label>
+              <labelNoun>an tenebral mindscrew</labelNoun>
+              <description>An installed tenebral mindscrew.</description>
+              <descriptionHyperlinks>
+                <ThingDef>BOR_TenebralOrgan</ThingDef>
+              </descriptionHyperlinks>
+              <priceOffset>-440</priceOffset>
+              <stages>
+                <li>
+                  <painOffset>0.6</painOffset>
+                </li>
+              </stages>
+            </HediffDef>
+
+            <RecipeDef ParentName="SurgeryInstallImplantBORTenebralBase">
+              <defName>InstallMindscrewTenebral</defName>
+              <label>install tenebral mindscrew</label>
+              <description>Install a mindscrew.</description>
+              <descriptionHyperlinks>
+                <ThingDef>BOR_TenebralOrgan</ThingDef>
+                <HediffDef>MindscrewTenebral</HediffDef>
+              </descriptionHyperlinks>
+              <jobString>Installing tenebral mindscrew.</jobString>
+              <ingredients>
+                <li>
+                  <filter>
+                    <thingDefs>
+                      <li>BOR_TenebralOrgan</li>
+                    </thingDefs>
+                  </filter>
+                  <count>1</count>
+                </li>
+              </ingredients>
+              <fixedIngredientFilter>
                 <thingDefs>
                   <li>BOR_TenebralOrgan</li>
                 </thingDefs>
-              </filter>
-              <count>1</count>
-            </li>
-          </ingredients>
-          <fixedIngredientFilter>
-            <thingDefs>
-              <li>BOR_TenebralOrgan</li>
-            </thingDefs>
-          </fixedIngredientFilter>
-          <appliedOnFixedBodyParts>
-            <li>Brain</li>
-          </appliedOnFixedBodyParts>
-          <addsHediff>MindscrewTenebral</addsHediff>
-        </RecipeDef>
+              </fixedIngredientFilter>
+              <appliedOnFixedBodyParts>
+                <li>Brain</li>
+              </appliedOnFixedBodyParts>
+              <addsHediff>MindscrewTenebral</addsHediff>
+            </RecipeDef>
 
-        <!-- Drill arm -->
+            <!-- Drill arm -->
 
-        <HediffDef ParentName="AddedBodyPartBase">
-          <defName>DrillArmTenebral</defName>
-          <label>tenebral drill arm</label>
-          <labelNoun>an tenebral drill arm</labelNoun>
-          <description>An installed tenebral drill arm.</description>
-          <descriptionHyperlinks>
-            <ThingDef>BOR_TenebralAppendage</ThingDef>
-          </descriptionHyperlinks>
-          <addedPartProps>
-            <solid>true</solid>
-          </addedPartProps>
-          <stages>
-            <li>
-              <statOffsets>
-                <MiningSpeed>6.4</MiningSpeed>
-                <DeepDrillingSpeed>2.8</DeepDrillingSpeed>
-              </statOffsets>
-              <capMods>
+            <HediffDef ParentName="AddedBodyPartBase">
+              <defName>DrillArmTenebral</defName>
+              <label>tenebral drill arm</label>
+              <labelNoun>an tenebral drill arm</labelNoun>
+              <description>An installed tenebral drill arm.</description>
+              <descriptionHyperlinks>
+                <ThingDef>BOR_TenebralAppendage</ThingDef>
+              </descriptionHyperlinks>
+              <addedPartProps>
+                <solid>true</solid>
+              </addedPartProps>
+              <stages>
                 <li>
-                  <capacity>Moving</capacity>
-                  <offset>-0.12</offset>
+                  <statOffsets>
+                    <MiningSpeed>6.4</MiningSpeed>
+                    <DeepDrillingSpeed>2.8</DeepDrillingSpeed>
+                  </statOffsets>
+                  <capMods>
+                    <li>
+                      <capacity>Moving</capacity>
+                      <offset>-0.12</offset>
+                    </li>
+                  </capMods>
                 </li>
-              </capMods>
-            </li>
-          </stages>
-          <comps>
-            <li Class="HediffCompProperties_VerbGiver">
-              <tools>
-                <li>
-                  <label>tenebral drill</label>
-                  <capacities>
-                    <li>Stab</li>
-                  </capacities>
-                  <power>52</power>
-                  <cooldownTime>3</cooldownTime>
-                  <alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
-                  <soundMeleeHit>MeleeHit_DrillArm</soundMeleeHit>
-                  <soundMeleeMiss>MeleeMiss_DrillArm</soundMeleeMiss>
+              </stages>
+              <comps>
+                <li Class="HediffCompProperties_VerbGiver">
+                  <tools>
+                    <li>
+                      <label>tenebral drill</label>
+                      <capacities>
+                        <li>Stab</li>
+                      </capacities>
+                      <power>52</power>
+                      <cooldownTime>3</cooldownTime>
+                      <alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+                      <soundMeleeHit>MeleeHit_DrillArm</soundMeleeHit>
+                      <soundMeleeMiss>MeleeMiss_DrillArm</soundMeleeMiss>
+                    </li>
+                  </tools>
                 </li>
-              </tools>
-            </li>
-          </comps>
-        </HediffDef>
+              </comps>
+            </HediffDef>
 
-        <RecipeDef ParentName="SurgeryInstallImplantBORTenebralBase">
-          <defName>InstallDrillArmTenebral</defName>
-          <label>install tenebral drill arm</label>
-          <description>Install a drill arm.</description>
-          <descriptionHyperlinks>
-            <ThingDef>BOR_TenebralAppendage</ThingDef>
-            <HediffDef>DrillArmTenebral</HediffDef>
-          </descriptionHyperlinks>
-          <jobString>Installing tenebral drill arm.</jobString>
-          <ingredients>
-            <li>
-              <filter>
+            <RecipeDef ParentName="SurgeryInstallImplantBORTenebralBase">
+              <defName>InstallDrillArmTenebral</defName>
+              <label>install tenebral drill arm</label>
+              <description>Install a drill arm.</description>
+              <descriptionHyperlinks>
+                <ThingDef>BOR_TenebralAppendage</ThingDef>
+                <HediffDef>DrillArmTenebral</HediffDef>
+              </descriptionHyperlinks>
+              <jobString>Installing tenebral drill arm.</jobString>
+              <ingredients>
+                <li>
+                  <filter>
+                    <thingDefs>
+                      <li>BOR_TenebralAppendage</li>
+                    </thingDefs>
+                  </filter>
+                  <count>1</count>
+                </li>
+              </ingredients>
+              <fixedIngredientFilter>
                 <thingDefs>
                   <li>BOR_TenebralAppendage</li>
                 </thingDefs>
-              </filter>
-              <count>1</count>
-            </li>
-          </ingredients>
-          <fixedIngredientFilter>
-            <thingDefs>
-              <li>BOR_TenebralAppendage</li>
-            </thingDefs>
-          </fixedIngredientFilter>
-          <appliedOnFixedBodyParts>
-            <li>Arm</li>
-          </appliedOnFixedBodyParts>
-          <addsHediff>DrillArmTenebral</addsHediff>
-        </RecipeDef>
+              </fixedIngredientFilter>
+              <appliedOnFixedBodyParts>
+                <li>Arm</li>
+              </appliedOnFixedBodyParts>
+              <addsHediff>DrillArmTenebral</addsHediff>
+            </RecipeDef>
 
-        <!-- Field hand -->
+            <!-- Field hand -->
 
-        <HediffDef ParentName="AddedBodyPartBase">
-          <defName>FieldHandTenebral</defName>
-          <label>tenebral field hand</label>
-          <labelNoun>an tenebral field hand</labelNoun>
-          <description>An installed tenebral field hand.</description>
-          <descriptionHyperlinks>
-            <ThingDef>BOR_TenebralAppendage</ThingDef>
-          </descriptionHyperlinks>
-          <addedPartProps>
-            <solid>true</solid>
-          </addedPartProps>
-          <stages>
-            <li>
-              <statOffsets>
-                <PlantWorkSpeed>6.4</PlantWorkSpeed>
-              </statOffsets>
-              <capMods>
+            <HediffDef ParentName="AddedBodyPartBase">
+              <defName>FieldHandTenebral</defName>
+              <label>tenebral field hand</label>
+              <labelNoun>an tenebral field hand</labelNoun>
+              <description>An installed tenebral field hand.</description>
+              <descriptionHyperlinks>
+                <ThingDef>BOR_TenebralAppendage</ThingDef>
+              </descriptionHyperlinks>
+              <addedPartProps>
+                <solid>true</solid>
+              </addedPartProps>
+              <stages>
                 <li>
-                  <capacity>Moving</capacity>
-                  <offset>-0.12</offset>
+                  <statOffsets>
+                    <PlantWorkSpeed>6.4</PlantWorkSpeed>
+                  </statOffsets>
+                  <capMods>
+                    <li>
+                      <capacity>Moving</capacity>
+                      <offset>-0.12</offset>
+                    </li>
+                  </capMods>
                 </li>
-              </capMods>
-            </li>
-          </stages>
-          <comps>
-            <li Class="HediffCompProperties_VerbGiver">
-              <tools>
-                <li>
-                  <label>tenebral knuckle</label>
-                  <capacities>
-                    <li>Blunt</li>
-                  </capacities>
-                  <power>36</power>
-                  <cooldownTime>3</cooldownTime>
-                  <alwaysTreatAsWeapon>false</alwaysTreatAsWeapon>
-                  <soundMeleeHit>MeleeHit_FieldHand</soundMeleeHit>
-                  <soundMeleeMiss>MeleeMiss_FieldHand</soundMeleeMiss>
+              </stages>
+              <comps>
+                <li Class="HediffCompProperties_VerbGiver">
+                  <tools>
+                    <li>
+                      <label>tenebral knuckle</label>
+                      <capacities>
+                        <li>Blunt</li>
+                      </capacities>
+                      <power>36</power>
+                      <cooldownTime>3</cooldownTime>
+                      <alwaysTreatAsWeapon>false</alwaysTreatAsWeapon>
+                      <soundMeleeHit>MeleeHit_FieldHand</soundMeleeHit>
+                      <soundMeleeMiss>MeleeMiss_FieldHand</soundMeleeMiss>
+                    </li>
+                  </tools>
                 </li>
-              </tools>
-            </li>
-          </comps>
-        </HediffDef>
+              </comps>
+            </HediffDef>
 
-        <RecipeDef ParentName="SurgeryInstallImplantBORTenebralBase">
-          <defName>InstallFieldHandTenebral</defName>
-          <label>install tenebral field hand</label>
-          <description>Install a field hand.</description>
-          <descriptionHyperlinks>
-            <ThingDef>BOR_TenebralAppendage</ThingDef>
-            <HediffDef>FieldHandTenebral</HediffDef>
-          </descriptionHyperlinks>
-          <jobString>Installing tenebral field hand.</jobString>
-          <ingredients>
-            <li>
-              <filter>
+            <RecipeDef ParentName="SurgeryInstallImplantBORTenebralBase">
+              <defName>InstallFieldHandTenebral</defName>
+              <label>install tenebral field hand</label>
+              <description>Install a field hand.</description>
+              <descriptionHyperlinks>
+                <ThingDef>BOR_TenebralAppendage</ThingDef>
+                <HediffDef>FieldHandTenebral</HediffDef>
+              </descriptionHyperlinks>
+              <jobString>Installing tenebral field hand.</jobString>
+              <ingredients>
+                <li>
+                  <filter>
+                    <thingDefs>
+                      <li>BOR_TenebralAppendage</li>
+                    </thingDefs>
+                  </filter>
+                  <count>1</count>
+                </li>
+              </ingredients>
+              <fixedIngredientFilter>
                 <thingDefs>
                   <li>BOR_TenebralAppendage</li>
                 </thingDefs>
-              </filter>
-              <count>1</count>
-            </li>
-          </ingredients>
-          <fixedIngredientFilter>
-            <thingDefs>
-              <li>BOR_TenebralAppendage</li>
-            </thingDefs>
-          </fixedIngredientFilter>
-          <appliedOnFixedBodyParts>
-            <li>Hand</li>
-          </appliedOnFixedBodyParts>
-          <addsHediff>FieldHandTenebral</addsHediff>
-        </RecipeDef>
+              </fixedIngredientFilter>
+              <appliedOnFixedBodyParts>
+                <li>Hand</li>
+              </appliedOnFixedBodyParts>
+              <addsHediff>FieldHandTenebral</addsHediff>
+            </RecipeDef>
 
-        <!-- Hand talon -->
+            <!-- Hand talon -->
 
-        <HediffDef ParentName="BOR_ImplantTenebralHediffBase">
-          <defName>HandTalonTenebral</defName>
-          <label>tenebral hand talon</label>
-          <labelNoun>an tenebral hand talon</labelNoun>
-          <description>An installed tenebral hand talon.</description>
-          <descriptionHyperlinks>
-            <ThingDef>BOR_TenebralAppendage</ThingDef>
-          </descriptionHyperlinks>
-          <addedPartProps>
-            <solid>true</solid>
-          </addedPartProps>
-          <comps>
-            <li Class="HediffCompProperties_VerbGiver">
-              <tools>
-                <li>
-                  <label>tenebral talon</label>
-                  <capacities>
-                    <li>Scratch</li>
-                  </capacities>
-                  <power>60</power>  <!-- Lower damage means lower AP than other compact weapons, but it's faster with more raw DPS -->
-                  <armorPenetration>0.5</armorPenetration>
-                  <cooldownTime>0.5</cooldownTime>
-                  <alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
-                  <soundMeleeHit>MeleeHit_BionicSlash</soundMeleeHit>
-                  <soundMeleeMiss>MeleeMiss_BionicSlash</soundMeleeMiss>
+            <HediffDef ParentName="BOR_ImplantTenebralHediffBase">
+              <defName>HandTalonTenebral</defName>
+              <label>tenebral hand talon</label>
+              <labelNoun>an tenebral hand talon</labelNoun>
+              <description>An installed tenebral hand talon.</description>
+              <descriptionHyperlinks>
+                <ThingDef>BOR_TenebralAppendage</ThingDef>
+              </descriptionHyperlinks>
+              <addedPartProps>
+                <solid>true</solid>
+              </addedPartProps>
+              <comps>
+                <li Class="HediffCompProperties_VerbGiver">
+                  <tools>
+                    <li>
+                      <label>tenebral talon</label>
+                      <capacities>
+                        <li>Scratch</li>
+                      </capacities>
+                      <power>60</power>  <!-- Lower damage means lower AP than other compact weapons, but it's faster with more raw DPS -->
+                      <armorPenetration>0.5</armorPenetration>
+                      <cooldownTime>0.5</cooldownTime>
+                      <alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+                      <soundMeleeHit>MeleeHit_BionicSlash</soundMeleeHit>
+                      <soundMeleeMiss>MeleeMiss_BionicSlash</soundMeleeMiss>
+                    </li>
+                  </tools>
                 </li>
-              </tools>
-            </li>
-          </comps>
-        </HediffDef>
+              </comps>
+            </HediffDef>
 
-        <RecipeDef ParentName="SurgeryInstallImplantBORTenebralBase">
-          <defName>InstallHandTalonTenebral</defName>
-          <label>install tenebral hand talon</label>
-          <description>Install a hand talon.</description>
-          <descriptionHyperlinks>
-            <ThingDef>BOR_TenebralAppendage</ThingDef>
-            <HediffDef>HandTalonTenebral</HediffDef>
-          </descriptionHyperlinks>
-          <jobString>Installing tenebral hand talon.</jobString>
-          <ingredients>
-            <li>
-              <filter>
+            <RecipeDef ParentName="SurgeryInstallImplantBORTenebralBase">
+              <defName>InstallHandTalonTenebral</defName>
+              <label>install tenebral hand talon</label>
+              <description>Install a hand talon.</description>
+              <descriptionHyperlinks>
+                <ThingDef>BOR_TenebralAppendage</ThingDef>
+                <HediffDef>HandTalonTenebral</HediffDef>
+              </descriptionHyperlinks>
+              <jobString>Installing tenebral hand talon.</jobString>
+              <ingredients>
+                <li>
+                  <filter>
+                    <thingDefs>
+                      <li>BOR_TenebralAppendage</li>
+                    </thingDefs>
+                  </filter>
+                  <count>1</count>
+                </li>
+              </ingredients>
+              <fixedIngredientFilter>
                 <thingDefs>
                   <li>BOR_TenebralAppendage</li>
                 </thingDefs>
-              </filter>
-              <count>1</count>
-            </li>
-          </ingredients>
-          <fixedIngredientFilter>
-            <thingDefs>
-              <li>BOR_TenebralAppendage</li>
-            </thingDefs>
-          </fixedIngredientFilter>
-          <appliedOnFixedBodyParts>
-            <li>Hand</li>
-          </appliedOnFixedBodyParts>
-          <addsHediff>HandTalonTenebral</addsHediff>
-        </RecipeDef>
+              </fixedIngredientFilter>
+              <appliedOnFixedBodyParts>
+                <li>Hand</li>
+              </appliedOnFixedBodyParts>
+              <addsHediff>HandTalonTenebral</addsHediff>
+            </RecipeDef>
 
-        <RecipeDef ParentName="SurgeryRemoveImplantBase">
-          <defName>RemoveHandTalonTenebral</defName>
-          <label>remove tenebral hand talon</label>
-          <description>Remove hand talon.</description>
-          <descriptionHyperlinks>
-            <ThingDef>BOR_TenebralOrgan</ThingDef>
-            <HediffDef>HandTalonTenebral</HediffDef>
-          </descriptionHyperlinks>
-          <jobString>Removing tenebral hand talon.</jobString>
-          <removesHediff>HandTalonTenebral</removesHediff>
-        </RecipeDef>
+            <RecipeDef ParentName="SurgeryRemoveImplantBase">
+              <defName>RemoveHandTalonTenebral</defName>
+              <label>remove tenebral hand talon</label>
+              <description>Remove hand talon.</description>
+              <descriptionHyperlinks>
+                <ThingDef>BOR_TenebralOrgan</ThingDef>
+                <HediffDef>HandTalonTenebral</HediffDef>
+              </descriptionHyperlinks>
+              <jobString>Removing tenebral hand talon.</jobString>
+              <removesHediff>HandTalonTenebral</removesHediff>
+            </RecipeDef>
 
-        <!-- Elbow blade -->
+            <!-- Elbow blade -->
 
-        <HediffDef ParentName="BOR_ImplantTenebralHediffBase">
-          <defName>ElbowBladeTenebral</defName>
-          <label>tenebral elbow blade</label>
-          <labelNoun>an tenebral elbow blade</labelNoun>
-          <description>An installed tenebral elbow blade.</description>
-          <descriptionHyperlinks>
-            <ThingDef>BOR_TenebralAppendage</ThingDef>
-          </descriptionHyperlinks>
-          <addedPartProps>
-            <solid>true</solid>
-          </addedPartProps>
-          <comps>
-            <li Class="HediffCompProperties_VerbGiver">
-              <tools>
-                <li>
-                  <label>tenebral blade</label>
-                  <capacities>
-                    <li>Cut</li>
-                  </capacities>
-                  <power>72</power>
-                  <cooldownTime>4</cooldownTime>
-                  <alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
-                  <soundMeleeHit>MeleeHit_BionicSlash</soundMeleeHit>
-                  <soundMeleeMiss>MeleeMiss_BionicSlash</soundMeleeMiss>
+            <HediffDef ParentName="BOR_ImplantTenebralHediffBase">
+              <defName>ElbowBladeTenebral</defName>
+              <label>tenebral elbow blade</label>
+              <labelNoun>an tenebral elbow blade</labelNoun>
+              <description>An installed tenebral elbow blade.</description>
+              <descriptionHyperlinks>
+                <ThingDef>BOR_TenebralAppendage</ThingDef>
+              </descriptionHyperlinks>
+              <addedPartProps>
+                <solid>true</solid>
+              </addedPartProps>
+              <comps>
+                <li Class="HediffCompProperties_VerbGiver">
+                  <tools>
+                    <li>
+                      <label>tenebral blade</label>
+                      <capacities>
+                        <li>Cut</li>
+                      </capacities>
+                      <power>72</power>
+                      <cooldownTime>4</cooldownTime>
+                      <alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+                      <soundMeleeHit>MeleeHit_BionicSlash</soundMeleeHit>
+                      <soundMeleeMiss>MeleeMiss_BionicSlash</soundMeleeMiss>
+                    </li>
+                  </tools>
                 </li>
-              </tools>
-            </li>
-          </comps>
-        </HediffDef>
+              </comps>
+            </HediffDef>
 
-        <RecipeDef ParentName="SurgeryInstallImplantBORTenebralBase">
-          <defName>InstallElbowBladeTenebral</defName>
-          <label>install tenebral elbow blade</label>
-          <description>Install an elbow blade.</description>
-          <descriptionHyperlinks>
-            <ThingDef>BOR_TenebralAppendage</ThingDef>
-            <HediffDef>ElbowBladeTenebral</HediffDef>
-          </descriptionHyperlinks>
-          <jobString>Installing tenebral elbow blade.</jobString>
-          <ingredients>
-            <li>
-              <filter>
+            <RecipeDef ParentName="SurgeryInstallImplantBORTenebralBase">
+              <defName>InstallElbowBladeTenebral</defName>
+              <label>install tenebral elbow blade</label>
+              <description>Install an elbow blade.</description>
+              <descriptionHyperlinks>
+                <ThingDef>BOR_TenebralAppendage</ThingDef>
+                <HediffDef>ElbowBladeTenebral</HediffDef>
+              </descriptionHyperlinks>
+              <jobString>Installing tenebral elbow blade.</jobString>
+              <ingredients>
+                <li>
+                  <filter>
+                    <thingDefs>
+                      <li>BOR_TenebralAppendage</li>
+                    </thingDefs>
+                  </filter>
+                  <count>1</count>
+                </li>
+              </ingredients>
+              <fixedIngredientFilter>
                 <thingDefs>
                   <li>BOR_TenebralAppendage</li>
                 </thingDefs>
-              </filter>
-              <count>1</count>
-            </li>
-          </ingredients>
-          <fixedIngredientFilter>
-            <thingDefs>
-              <li>BOR_TenebralAppendage</li>
-            </thingDefs>
-          </fixedIngredientFilter>
-          <appliedOnFixedBodyParts>
-            <li>Arm</li>
-          </appliedOnFixedBodyParts>
-          <addsHediff>ElbowBladeTenebral</addsHediff>
-        </RecipeDef>
+              </fixedIngredientFilter>
+              <appliedOnFixedBodyParts>
+                <li>Arm</li>
+              </appliedOnFixedBodyParts>
+              <addsHediff>ElbowBladeTenebral</addsHediff>
+            </RecipeDef>
 
-        <RecipeDef ParentName="SurgeryRemoveImplantBase">
-          <defName>RemoveElbowBladeTenebral</defName>
-          <label>remove tenebral elbow blade</label>
-          <description>Remove elbow blade.</description>
-          <descriptionHyperlinks>
-            <ThingDef>BOR_TenebralOrgan</ThingDef>
-            <HediffDef>ElbowBladeTenebral</HediffDef>
-          </descriptionHyperlinks>
-          <jobString>Removing tenebral elbow blade.</jobString>
-          <removesHediff>ElbowBladeTenebral</removesHediff>
-        </RecipeDef>
+            <RecipeDef ParentName="SurgeryRemoveImplantBase">
+              <defName>RemoveElbowBladeTenebral</defName>
+              <label>remove tenebral elbow blade</label>
+              <description>Remove elbow blade.</description>
+              <descriptionHyperlinks>
+                <ThingDef>BOR_TenebralOrgan</ThingDef>
+                <HediffDef>ElbowBladeTenebral</HediffDef>
+              </descriptionHyperlinks>
+              <jobString>Removing tenebral elbow blade.</jobString>
+              <removesHediff>ElbowBladeTenebral</removesHediff>
+            </RecipeDef>
 
-        <!-- Knee spike -->
+            <!-- Knee spike -->
 
-        <HediffDef ParentName="BOR_ImplantTenebralHediffBase">
-          <defName>KneeSpikeTenebral</defName>
-          <label>tenebral knee spike</label>
-          <labelNoun>an tenebral knee spike</labelNoun>
-          <description>An installed tenebral knee spike.</description>
-          <descriptionHyperlinks>
-            <ThingDef>BOR_TenebralAppendage</ThingDef>
-          </descriptionHyperlinks>
-          <addedPartProps>
-            <solid>true</solid>
-          </addedPartProps>
-          <comps>
-            <li Class="HediffCompProperties_VerbGiver">
-              <tools>
-                <li>
-                  <label>tenebral spike</label>
-                  <capacities>
-                    <li>Stab</li>
-                  </capacities>
-                  <power>88</power> <!-- More power and AP but slower than other compact weapons -->
-                  <armorPenetration>1.4</armorPenetration>
-                  <cooldownTime>3.0</cooldownTime>
-                  <alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
-                  <soundMeleeHit>MeleeHit_BionicSlash</soundMeleeHit>
-                  <soundMeleeMiss>MeleeMiss_BionicSlash</soundMeleeMiss>
+            <HediffDef ParentName="BOR_ImplantTenebralHediffBase">
+              <defName>KneeSpikeTenebral</defName>
+              <label>tenebral knee spike</label>
+              <labelNoun>an tenebral knee spike</labelNoun>
+              <description>An installed tenebral knee spike.</description>
+              <descriptionHyperlinks>
+                <ThingDef>BOR_TenebralAppendage</ThingDef>
+              </descriptionHyperlinks>
+              <addedPartProps>
+                <solid>true</solid>
+              </addedPartProps>
+              <comps>
+                <li Class="HediffCompProperties_VerbGiver">
+                  <tools>
+                    <li>
+                      <label>tenebral spike</label>
+                      <capacities>
+                        <li>Stab</li>
+                      </capacities>
+                      <power>88</power> <!-- More power and AP but slower than other compact weapons -->
+                      <armorPenetration>1.4</armorPenetration>
+                      <cooldownTime>3.0</cooldownTime>
+                      <alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+                      <soundMeleeHit>MeleeHit_BionicSlash</soundMeleeHit>
+                      <soundMeleeMiss>MeleeMiss_BionicSlash</soundMeleeMiss>
+                    </li>
+                  </tools>
                 </li>
-              </tools>
-            </li>
-          </comps>
-        </HediffDef>
+              </comps>
+            </HediffDef>
 
-        <RecipeDef ParentName="SurgeryInstallImplantBORTenebralBase">
-          <defName>InstallKneeSpikeTenebral</defName>
-          <label>install tenebral knee spike</label>
-          <description>Install a knee spike.</description>
-          <descriptionHyperlinks>
-            <ThingDef>BOR_TenebralAppendage</ThingDef>
-            <HediffDef>KneeSpikeTenebral</HediffDef>
-          </descriptionHyperlinks>
-          <jobString>Installing tenebral knee spike.</jobString>
-          <ingredients>
-            <li>
-              <filter>
+            <RecipeDef ParentName="SurgeryInstallImplantBORTenebralBase">
+              <defName>InstallKneeSpikeTenebral</defName>
+              <label>install tenebral knee spike</label>
+              <description>Install a knee spike.</description>
+              <descriptionHyperlinks>
+                <ThingDef>BOR_TenebralAppendage</ThingDef>
+                <HediffDef>KneeSpikeTenebral</HediffDef>
+              </descriptionHyperlinks>
+              <jobString>Installing tenebral knee spike.</jobString>
+              <ingredients>
+                <li>
+                  <filter>
+                    <thingDefs>
+                      <li>BOR_TenebralAppendage</li>
+                    </thingDefs>
+                  </filter>
+                  <count>1</count>
+                </li>
+              </ingredients>
+              <fixedIngredientFilter>
                 <thingDefs>
                   <li>BOR_TenebralAppendage</li>
                 </thingDefs>
-              </filter>
-              <count>1</count>
-            </li>
-          </ingredients>
-          <fixedIngredientFilter>
-            <thingDefs>
-              <li>BOR_TenebralAppendage</li>
-            </thingDefs>
-          </fixedIngredientFilter>
-          <appliedOnFixedBodyParts>
-            <li>Leg</li>
-          </appliedOnFixedBodyParts>
-          <addsHediff>KneeSpikeTenebral</addsHediff>
-        </RecipeDef>
+              </fixedIngredientFilter>
+              <appliedOnFixedBodyParts>
+                <li>Leg</li>
+              </appliedOnFixedBodyParts>
+              <addsHediff>KneeSpikeTenebral</addsHediff>
+            </RecipeDef>
 
-        <RecipeDef ParentName="SurgeryRemoveImplantBase">
-          <defName>RemoveKneeSpikeTenebral</defName>
-          <label>remove tenebral knee spike</label>
-          <description>Remove knee spike.</description>
-          <descriptionHyperlinks>
-            <ThingDef>BOR_TenebralOrgan</ThingDef>
-            <HediffDef>KneeSpikeTenebral</HediffDef>
-          </descriptionHyperlinks>
-          <jobString>Removing tenebral knee spike.</jobString>
-          <removesHediff>KneeSpikeTenebral</removesHediff>
-        </RecipeDef>
+            <RecipeDef ParentName="SurgeryRemoveImplantBase">
+              <defName>RemoveKneeSpikeTenebral</defName>
+              <label>remove tenebral knee spike</label>
+              <description>Remove knee spike.</description>
+              <descriptionHyperlinks>
+                <ThingDef>BOR_TenebralOrgan</ThingDef>
+                <HediffDef>KneeSpikeTenebral</HediffDef>
+              </descriptionHyperlinks>
+              <jobString>Removing tenebral knee spike.</jobString>
+              <removesHediff>KneeSpikeTenebral</removesHediff>
+            </RecipeDef>
 
-        <!-- venom fangs -->
+            <!-- venom fangs -->
 
-        <HediffDef ParentName="BOR_ImplantTenebralHediffBase">
-          <defName>VenomFangsTenebral</defName>
-          <label>tenebral venom fangs</label>
-          <labelNoun>an tenebral set of venom fangs</labelNoun>
-          <description>An installed tenebral set of venom fangs.</description>
-          <descriptionHyperlinks>
-            <ThingDef>BOR_TenebralOrgan</ThingDef>
-          </descriptionHyperlinks>
-          <addedPartProps>
-            <solid>true</solid>
-          </addedPartProps>
-          <comps>
-            <li Class="HediffCompProperties_VerbGiver">
-              <tools>
-                <li>
-                  <label>tenebral venom fangs</label>
-                  <capacities>
-                    <li>ToxicBite</li>
-                  </capacities>
-                  <power>60</power>
-                  <cooldownTime>3</cooldownTime>
-                  <alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+            <HediffDef ParentName="BOR_ImplantTenebralHediffBase">
+              <defName>VenomFangsTenebral</defName>
+              <label>tenebral venom fangs</label>
+              <labelNoun>an tenebral set of venom fangs</labelNoun>
+              <description>An installed tenebral set of venom fangs.</description>
+              <descriptionHyperlinks>
+                <ThingDef>BOR_TenebralOrgan</ThingDef>
+              </descriptionHyperlinks>
+              <addedPartProps>
+                <solid>true</solid>
+              </addedPartProps>
+              <comps>
+                <li Class="HediffCompProperties_VerbGiver">
+                  <tools>
+                    <li>
+                      <label>tenebral venom fangs</label>
+                      <capacities>
+                        <li>ToxicBite</li>
+                      </capacities>
+                      <power>60</power>
+                      <cooldownTime>3</cooldownTime>
+                      <alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+                    </li>
+                  </tools>
                 </li>
-              </tools>
-            </li>
-          </comps>
-        </HediffDef>
+              </comps>
+            </HediffDef>
 
-        <RecipeDef ParentName="SurgeryInstallImplantBORTenebralBase">
-          <defName>InstallVenomFangsTenebral</defName>
-          <label>install tenebral venom fangs</label>
-          <description>Install venom fangs.</description>
-          <descriptionHyperlinks>
-            <ThingDef>BOR_TenebralOrgan</ThingDef>
-            <HediffDef>VenomFangsTenebral</HediffDef>
-          </descriptionHyperlinks>
-          <jobString>Installing tenebral venom fangs.</jobString>
-          <ingredients>
-            <li>
-              <filter>
-                <thingDefs>
-                  <li>BOR_TenebralOrgan</li>
-                </thingDefs>
-              </filter>
-              <count>1</count>
-            </li>
-          </ingredients>
-          <fixedIngredientFilter>
-            <thingDefs>
-              <li>BOR_TenebralOrgan</li>
-            </thingDefs>
-          </fixedIngredientFilter>
-          <appliedOnFixedBodyPartGroups>
-            <li>Teeth</li>
-          </appliedOnFixedBodyPartGroups>
-          <addsHediff>VenomFangsTenebral</addsHediff>
-        </RecipeDef>
-
-        <RecipeDef ParentName="SurgeryRemoveImplantBase">
-          <defName>RemoveVenomFangsTenebral</defName>
-          <label>remove tenebral venom fangs</label>
-          <description>Remove venom fangs.</description>
-          <descriptionHyperlinks>
-            <ThingDef>BOR_TenebralOrgan</ThingDef>
-            <HediffDef>VenomFangsTenebral</HediffDef>
-          </descriptionHyperlinks>
-          <jobString>Removing tenebral venom fangs.</jobString>
-          <removesHediff>VenomFangsTenebral</removesHediff>
-        </RecipeDef>
-
-        <!-- venom talon -->
-
-        <HediffDef ParentName="BOR_ImplantTenebralHediffBase">
-          <defName>VenomTalonTenebral</defName>
-          <label>tenebral venom talon</label>
-          <labelNoun>an tenebral venom talon</labelNoun>
-          <description>An installed tenebral venom talon.</description>
-          <descriptionHyperlinks>
-            <ThingDef>BOR_TenebralOrgan</ThingDef>
-          </descriptionHyperlinks>
-          <comps>
-            <li Class="HediffCompProperties_VerbGiver">
-              <tools>
+            <RecipeDef ParentName="SurgeryInstallImplantBORTenebralBase">
+              <defName>InstallVenomFangsTenebral</defName>
+              <label>install tenebral venom fangs</label>
+              <description>Install venom fangs.</description>
+              <descriptionHyperlinks>
+                <ThingDef>BOR_TenebralOrgan</ThingDef>
+                <HediffDef>VenomFangsTenebral</HediffDef>
+              </descriptionHyperlinks>
+              <jobString>Installing tenebral venom fangs.</jobString>
+              <ingredients>
                 <li>
-                  <label>tenebral venom talon</label>
-                  <capacities>
-                    <li>ScratchToxic</li>
-                  </capacities>
-                  <power>44</power> <!-- Toxic and fast but with poor armor penetration -->
-                  <armorPenetration>0.6</armorPenetration>
-                  <cooldownTime>1.0</cooldownTime>
-                  <alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
-                  <soundMeleeHit>MeleeHit_BionicSlash</soundMeleeHit>
-                  <soundMeleeMiss>MeleeMiss_BionicSlash</soundMeleeMiss>
+                  <filter>
+                    <thingDefs>
+                      <li>BOR_TenebralOrgan</li>
+                    </thingDefs>
+                  </filter>
+                  <count>1</count>
                 </li>
-              </tools>
-            </li>
-          </comps>
-        </HediffDef>
-
-        <RecipeDef ParentName="SurgeryInstallImplantBORTenebralBase">
-          <defName>InstallVenomTalonTenebral</defName>
-          <label>install tenebral venom talon</label>
-          <description>Install a venom talon.</description>
-          <descriptionHyperlinks>
-            <ThingDef>BOR_TenebralOrgan</ThingDef>
-            <HediffDef>VenomTalonTenebral</HediffDef>
-          </descriptionHyperlinks>
-          <jobString>Installing tenebral venom talon.</jobString>
-          <ingredients>
-            <li>
-              <filter>
+              </ingredients>
+              <fixedIngredientFilter>
                 <thingDefs>
                   <li>BOR_TenebralOrgan</li>
                 </thingDefs>
-              </filter>
-              <count>1</count>
-            </li>
-          </ingredients>
-          <fixedIngredientFilter>
-            <thingDefs>
-              <li>BOR_TenebralOrgan</li>
-            </thingDefs>
-          </fixedIngredientFilter>
-          <appliedOnFixedBodyPartGroups>
-            <li>MiddleFingers</li>
-          </appliedOnFixedBodyPartGroups>
-          <addsHediff>VenomTalonTenebral</addsHediff>
-        </RecipeDef>
+              </fixedIngredientFilter>
+              <appliedOnFixedBodyPartGroups>
+                <li>Teeth</li>
+              </appliedOnFixedBodyPartGroups>
+              <addsHediff>VenomFangsTenebral</addsHediff>
+            </RecipeDef>
 
-        <RecipeDef ParentName="SurgeryRemoveImplantBase">
-          <defName>RemoveVenomTalonTenebral</defName>
-          <label>remove tenebral venom talon</label>
-          <description>Remove venom talon.</description>
-          <descriptionHyperlinks>
-            <ThingDef>BOR_TenebralOrgan</ThingDef>
-            <HediffDef>VenomTalonTenebral</HediffDef>
-          </descriptionHyperlinks>
-          <jobString>Removing tenebral venom talon.</jobString>
-          <removesHediff>VenomTalonTenebral</removesHediff>
-        </RecipeDef>
-		
-        <!-- Neurocalculator -->
+            <RecipeDef ParentName="SurgeryRemoveImplantBase">
+              <defName>RemoveVenomFangsTenebral</defName>
+              <label>remove tenebral venom fangs</label>
+              <description>Remove venom fangs.</description>
+              <descriptionHyperlinks>
+                <ThingDef>BOR_TenebralOrgan</ThingDef>
+                <HediffDef>VenomFangsTenebral</HediffDef>
+              </descriptionHyperlinks>
+              <jobString>Removing tenebral venom fangs.</jobString>
+              <removesHediff>VenomFangsTenebral</removesHediff>
+            </RecipeDef>
 
-        <HediffDef ParentName="BOR_ImplantTenebralHediffBase">
-          <defName>NeurocalculatorTenebral</defName>
-          <label>tenebral neurocalculator</label>
-          <labelNoun>an tenebral neurocalculator</labelNoun>
-          <description>An installed tenebral neurocalculator.</description>
-          <descriptionHyperlinks>
-            <ThingDef>BOR_TenebralOrgan</ThingDef>
-          </descriptionHyperlinks>
-          <stages>
-            <li>
-              <statOffsets>
-                <ResearchSpeed>1.2</ResearchSpeed>
-              </statOffsets>
-            </li>
-          </stages>
-          <comps>
-            <li Class="HediffCompProperties_ReactOnDamage">
-              <damageDefIncoming>EMP</damageDefIncoming>
-              <createHediff>BrainShock</createHediff>
-            </li>
-          </comps>
-          <tags>
-            <li>neurocalculator</li>
-          </tags>
-        </HediffDef>
+            <!-- venom talon -->
 
-        <RecipeDef ParentName="SurgeryInstallImplantBORTenebralBase">
-          <defName>InstallNeurocalculatorTenebral</defName>
-          <label>install tenebral neurocalculator</label>
-          <description>Install a neurocalculator.</description>
-          <descriptionHyperlinks>
-            <ThingDef>BOR_TenebralOrgan</ThingDef>
-            <HediffDef>NeurocalculatorTenebral</HediffDef>
-          </descriptionHyperlinks>
-          <jobString>Installing tenebral neurocalculator.</jobString>
-          <ingredients>
-            <li>
-              <filter>
-                <thingDefs>
-                  <li>BOR_TenebralOrgan</li>
-                </thingDefs>
-              </filter>
-              <count>1</count>
-            </li>
-          </ingredients>
-          <fixedIngredientFilter>
-            <thingDefs>
-              <li>BOR_TenebralOrgan</li>
-            </thingDefs>
-          </fixedIngredientFilter>
-          <appliedOnFixedBodyParts>
-            <li>Brain</li>
-          </appliedOnFixedBodyParts>
-          <addsHediff>NeurocalculatorTenebral</addsHediff>
-          <incompatibleWithHediffTags>
-            <li>neurocalculator</li>
-          </incompatibleWithHediffTags>
-        </RecipeDef>
+            <HediffDef ParentName="BOR_ImplantTenebralHediffBase">
+              <defName>VenomTalonTenebral</defName>
+              <label>tenebral venom talon</label>
+              <labelNoun>an tenebral venom talon</labelNoun>
+              <description>An installed tenebral venom talon.</description>
+              <descriptionHyperlinks>
+                <ThingDef>BOR_TenebralOrgan</ThingDef>
+              </descriptionHyperlinks>
+              <comps>
+                <li Class="HediffCompProperties_VerbGiver">
+                  <tools>
+                    <li>
+                      <label>tenebral venom talon</label>
+                      <capacities>
+                        <li>ScratchToxic</li>
+                      </capacities>
+                      <power>44</power> <!-- Toxic and fast but with poor armor penetration -->
+                      <armorPenetration>0.6</armorPenetration>
+                      <cooldownTime>1.0</cooldownTime>
+                      <alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+                      <soundMeleeHit>MeleeHit_BionicSlash</soundMeleeHit>
+                      <soundMeleeMiss>MeleeMiss_BionicSlash</soundMeleeMiss>
+                    </li>
+                  </tools>
+                </li>
+              </comps>
+            </HediffDef>
 
-        <RecipeDef ParentName="SurgeryRemoveImplantBase">
-          <defName>RemoveNeurocalculatorTenebral</defName>
-          <label>remove tenebral neurocalculator</label>
-          <description>Remove neurocalculator.</description>
-          <descriptionHyperlinks>
-            <ThingDef>BOR_TenebralOrgan</ThingDef>
-            <HediffDef>NeurocalculatorTenebral</HediffDef>
-          </descriptionHyperlinks>
-          <jobString>Removing tenebral neurocalculator.</jobString>
-          <removesHediff>NeurocalculatorTenebral</removesHediff>
-        </RecipeDef>
-
-        <!-- Learning assistant -->
-
-        <HediffDef ParentName="BOR_ImplantTenebralHediffBase">
-          <defName>LearningAssistantTenebral</defName>
-          <label>tenebral learning assistant</label>
-          <labelNoun>an tenebral learning assistant</labelNoun>
-          <description>An installed tenebral learning assistant.</description>
-          <descriptionHyperlinks>
-            <ThingDef>BOR_TenebralOrgan</ThingDef>
-          </descriptionHyperlinks>
-          <stages>
-            <li>
-              <statOffsets>
-                <GlobalLearningFactor>1.2</GlobalLearningFactor>
-              </statOffsets>
-            </li>
-          </stages>
-          <comps>
-            <li Class="HediffCompProperties_ReactOnDamage">
-              <damageDefIncoming>EMP</damageDefIncoming>
-              <createHediff>BrainShock</createHediff>
-            </li>
-          </comps>
-          <tags>
-            <li>learningAssistant</li>
-          </tags>
-        </HediffDef>
-
-        <RecipeDef ParentName="SurgeryInstallImplantBORTenebralBase">
-          <defName>InstallLearningAssistantTenebral</defName>
-          <label>install tenebral learning assistant</label>
-          <description>Install a learning assistant.</description>
-          <descriptionHyperlinks>
-            <ThingDef>BOR_TenebralOrgan</ThingDef>
-            <HediffDef>LearningAssistantTenebral</HediffDef>
-          </descriptionHyperlinks>
-          <jobString>Installing tenebral learning assistant.</jobString>
-          <ingredients>
-            <li>
-              <filter>
-                <thingDefs>
-                  <li>BOR_TenebralOrgan</li>
-                </thingDefs>
-              </filter>
-              <count>1</count>
-            </li>
-          </ingredients>
-          <fixedIngredientFilter>
-            <thingDefs>
-              <li>BOR_TenebralOrgan</li>
-            </thingDefs>
-          </fixedIngredientFilter>
-          <appliedOnFixedBodyParts>
-            <li>Brain</li>
-          </appliedOnFixedBodyParts>
-          <addsHediff>LearningAssistantTenebral</addsHediff>
-          <incompatibleWithHediffTags>
-            <li>learningAssistant</li>
-          </incompatibleWithHediffTags>
-        </RecipeDef>
-
-        <RecipeDef ParentName="SurgeryRemoveImplantBase">
-          <defName>RemoveLearningAssistantTenebral</defName>
-          <label>remove tenebral learning assistant</label>
-          <description>Remove learning assistant.</description>
-          <descriptionHyperlinks>
-            <ThingDef>BOR_TenebralOrgan</ThingDef>
-            <HediffDef>LearningAssistantTenebral</HediffDef>
-          </descriptionHyperlinks>
-          <jobString>Removing tenebral learning assistant.</jobString>
-          <removesHediff>LearningAssistantTenebral</removesHediff>
-        </RecipeDef>
-
-        <!-- Gastro-analyzer -->
-
-        <HediffDef ParentName="BOR_ImplantTenebralHediffBase">
-          <defName>GastroAnalyzerTenebral</defName>
-          <label>tenebral gastro-analyzer</label>
-          <labelNoun>an tenebral gastro-analyzer</labelNoun>
-          <description>An installed tenebral gastro-analyzer.</description>
-          <descriptionHyperlinks>
-            <ThingDef>BOR_TenebralOrgan</ThingDef>
-          </descriptionHyperlinks>
-          <addedPartProps>
-            <solid>true</solid>
-          </addedPartProps>
-          <stages>
-            <li>
-              <statOffsets>
-                <CookSpeed>15</CookSpeed>
-              </statOffsets>
-            </li>
-          </stages>
-          <tags>
-            <li>gastroAnalyzer</li>
-          </tags>
-        </HediffDef>
-
-        <RecipeDef ParentName="SurgeryInstallImplantBORTenebralBase">
-          <defName>InstallGastroAnalyzerTenebral</defName>
-          <label>install tenebral gastro-analyzer</label>
-          <description>Install a gastro-analyzer.</description>
-          <descriptionHyperlinks>
-            <ThingDef>BOR_TenebralOrgan</ThingDef>
-            <HediffDef>GastroAnalyzerTenebral</HediffDef>
-          </descriptionHyperlinks>
-          <jobString>Installing tenebral gastro-analyzer.</jobString>
-          <ingredients>
-            <li>
-              <filter>
-                <thingDefs>
-                  <li>BOR_TenebralOrgan</li>
-                </thingDefs>
-              </filter>
-              <count>1</count>
-            </li>
-          </ingredients>
-          <fixedIngredientFilter>
-            <thingDefs>
-              <li>BOR_TenebralOrgan</li>
-            </thingDefs>
-          </fixedIngredientFilter>
-          <appliedOnFixedBodyParts>
-            <li>Nose</li>
-          </appliedOnFixedBodyParts>
-          <addsHediff>GastroAnalyzerTenebral</addsHediff>
-          <incompatibleWithHediffTags>
-            <li>gastroAnalyzer</li>
-          </incompatibleWithHediffTags>
-        </RecipeDef>
-
-        <RecipeDef ParentName="SurgeryRemoveImplantBase">
-          <defName>RemoveGastroAnalyzerTenebral</defName>
-          <label>remove tenebral gastro-analyzer</label>
-          <description>Remove gastro-analyzer.</description>
-          <descriptionHyperlinks>
-            <ThingDef>BOR_TenebralOrgan</ThingDef>
-            <HediffDef>GastroAnalyzerTenebral</HediffDef>
-          </descriptionHyperlinks>
-          <jobString>Removing tenebral gastro-analyzer.</jobString>
-          <removesHediff>GastroAnalyzerTenebral</removesHediff>
-        </RecipeDef>
-
-        <!-- Immunoenhancer -->
-
-        <HediffDef ParentName="BOR_ImplantTenebralHediffBase">
-          <defName>ImmunoenhancerTenebral</defName>
-          <label>tenebral immunoenhancer</label>
-          <labelNoun>an tenebral immunoenhancer</labelNoun>
-          <description>An installed tenebral immunoenhancer.</description>
-          <descriptionHyperlinks>
-            <ThingDef>BOR_TenebralOrgan</ThingDef>
-          </descriptionHyperlinks>
-          <stages>
-            <li>
-              <statOffsets>
-                <ImmunityGainSpeed>0.75</ImmunityGainSpeed>
-              </statOffsets>
-            </li>
-          </stages>
-          <tags>
-            <li>immunoEnhancer</li>
-          </tags>
-        </HediffDef>
-
-        <RecipeDef ParentName="SurgeryInstallImplantBORTenebralBase">
-          <defName>InstallImmunoenhancerTenebral</defName>
-          <label>install tenebral immunoenhancer</label>
-          <description>Install an immunoenhancer.</description>
-          <descriptionHyperlinks>
-            <ThingDef>BOR_TenebralOrgan</ThingDef>
-            <HediffDef>ImmunoenhancerTenebral</HediffDef>
-          </descriptionHyperlinks>
-          <jobString>Installing tenebral immunoenhancer.</jobString>
-          <ingredients>
-            <li>
-              <filter>
-                <thingDefs>
-                  <li>BOR_TenebralOrgan</li>
-                </thingDefs>
-              </filter>
-              <count>1</count>
-            </li>
-          </ingredients>
-          <fixedIngredientFilter>
-            <thingDefs>
-              <li>BOR_TenebralOrgan</li>
-            </thingDefs>
-          </fixedIngredientFilter>
-          <appliedOnFixedBodyParts>
-            <li>Kidney</li>
-          </appliedOnFixedBodyParts>
-          <addsHediff>ImmunoenhancerTenebral</addsHediff>
-          <incompatibleWithHediffTags>
-            <li>immunoEnhancer</li>
-          </incompatibleWithHediffTags>
-        </RecipeDef>
-
-        <RecipeDef ParentName="SurgeryRemoveImplantBase">
-          <defName>RemoveImmunoenhancerTenebral</defName>
-          <label>remove tenebral immunoenhancer</label>
-          <description>Remove immunoenhancer.</description>
-          <descriptionHyperlinks>
-            <ThingDef>BOR_TenebralOrgan</ThingDef>
-            <HediffDef>ImmunoenhancerTenebral</HediffDef>
-          </descriptionHyperlinks>
-          <jobString>Removing tenebral immunoenhancer.</jobString>
-          <removesHediff>ImmunoenhancerTenebral</removesHediff>
-        </RecipeDef>
-
-        <!-- Coagulator -->
-
-        <HediffDef ParentName="BOR_ImplantTenebralHediffBase">
-          <defName>CoagulatorTenebral</defName>
-          <label>tenebral coagulator</label>
-          <labelNoun>an tenebral coagulator</labelNoun>
-          <description>An installed tenebral coagulator implant.</description>
-          <descriptionHyperlinks>
-            <ThingDef>BOR_TenebralOrgan</ThingDef>
-          </descriptionHyperlinks>
-          <stages>
-            <li>
-              <totalBleedFactor>0.1</totalBleedFactor>
-            </li>
-          </stages>
-          <tags>
-            <li>coagulator</li>
-          </tags>
-        </HediffDef>
-
-        <RecipeDef ParentName="SurgeryInstallImplantBORTenebralBase">
-          <defName>InstallCoagulatorTenebral</defName>
-          <label>install tenebral coagulator</label>
-          <description>Install a coagulator.</description>
-          <descriptionHyperlinks>
-            <ThingDef>BOR_TenebralOrgan</ThingDef>
-            <HediffDef>CoagulatorTenebral</HediffDef>
-          </descriptionHyperlinks>
-          <jobString>Installing tenebral coagulator.</jobString>
-          <ingredients>
-            <li>
-              <filter>
-                <thingDefs>
-                  <li>BOR_TenebralOrgan</li>
-                </thingDefs>
-              </filter>
-              <count>1</count>
-            </li>
-          </ingredients>
-          <fixedIngredientFilter>
-            <thingDefs>
-              <li>BOR_TenebralOrgan</li>
-            </thingDefs>
-          </fixedIngredientFilter>
-          <appliedOnFixedBodyParts>
-            <li>Torso</li>
-          </appliedOnFixedBodyParts>
-          <addsHediff>CoagulatorTenebral</addsHediff>
-          <incompatibleWithHediffTags>
-            <li>coagulator</li>
-          </incompatibleWithHediffTags>
-        </RecipeDef>
-
-        <RecipeDef ParentName="SurgeryRemoveImplantBase">
-          <defName>RemoveCoagulatorTenebral</defName>
-          <label>remove tenebral coagulator</label>
-          <description>Remove coagulator.</description>
-          <descriptionHyperlinks>
-            <ThingDef>BOR_TenebralOrgan</ThingDef>
-            <HediffDef>CoagulatorTenebral</HediffDef>
-          </descriptionHyperlinks>
-          <jobString>Removing tenebral coagulator.</jobString>
-          <removesHediff>CoagulatorTenebral</removesHediff>
-        </RecipeDef>
-
-        <!-- Healing enhancer -->
-
-        <HediffDef ParentName="BOR_ImplantTenebralHediffBase">
-          <defName>HealingEnhancerTenebral</defName>
-          <label>tenebral healing enhancer</label>
-          <labelNoun>an tenebral healing enhancer</labelNoun>
-          <description>An installed tenebral healing enhancer implant.</description>
-          <descriptionHyperlinks>
-            <ThingDef>BOR_TenebralOrgan</ThingDef>
-          </descriptionHyperlinks>
-          <stages>
-            <li>
-              <naturalHealingFactor>5.0</naturalHealingFactor>
-            </li>
-          </stages>
-          <tags>
-            <li>healingEnhancer</li>
-          </tags>
-        </HediffDef>
-
-        <RecipeDef ParentName="SurgeryInstallImplantBORTenebralBase">
-          <defName>InstallHealingEnhancerTenebral</defName>
-          <label>install tenebral healing enhancer</label>
-          <description>Install a healing enhancer.</description>
-          <descriptionHyperlinks>
-            <ThingDef>BOR_TenebralOrgan</ThingDef>
-            <HediffDef>HealingEnhancerTenebral</HediffDef>
-          </descriptionHyperlinks>
-          <jobString>Installing tenebral healing enhancer.</jobString>
-          <ingredients>
-            <li>
-              <filter>
-                <thingDefs>
-                  <li>BOR_TenebralOrgan</li>
-                </thingDefs>
-              </filter>
-              <count>1</count>
-            </li>
-          </ingredients>
-          <fixedIngredientFilter>
-            <thingDefs>
-              <li>BOR_TenebralOrgan</li>
-            </thingDefs>
-          </fixedIngredientFilter>
-          <appliedOnFixedBodyParts>
-            <li>Torso</li>
-          </appliedOnFixedBodyParts>
-          <addsHediff>HealingEnhancerTenebral</addsHediff>
-          <incompatibleWithHediffTags>
-            <li>healingEnhancer</li>
-          </incompatibleWithHediffTags>
-        </RecipeDef>
-
-        <RecipeDef ParentName="SurgeryRemoveImplantBase">
-          <defName>RemoveHealingEnhancerTenebral</defName>
-          <label>remove tenebral healing enhancer</label>
-          <description>Remove healing enhancer.</description>
-          <descriptionHyperlinks>
-            <ThingDef>BOR_TenebralOrgan</ThingDef>
-            <HediffDef>HealingEnhancerTenebral</HediffDef>
-          </descriptionHyperlinks>
-          <jobString>Removing tenebral healing enhancer.</jobString>
-          <removesHediff>HealingEnhancerTenebral</removesHediff>
-        </RecipeDef>
-
-        <!-- Toughskin gland -->
-
-        <HediffDef ParentName="BOR_ImplantTenebralHediffBase">
-          <defName>ToughskinGlandTenebral</defName>
-          <label>tenebral toughskin gland</label>
-          <labelNoun>an tenebral toughskin gland</labelNoun>
-          <description>An installed tenebral toughskin gland.</description>
-          <descriptionHyperlinks>
-            <ThingDef>BOR_TenebralOrgan</ThingDef>
-          </descriptionHyperlinks>
-          <stages>
-            <li>
-              <capMods>
+            <RecipeDef ParentName="SurgeryInstallImplantBORTenebralBase">
+              <defName>InstallVenomTalonTenebral</defName>
+              <label>install tenebral venom talon</label>
+              <description>Install a venom talon.</description>
+              <descriptionHyperlinks>
+                <ThingDef>BOR_TenebralOrgan</ThingDef>
+                <HediffDef>VenomTalonTenebral</HediffDef>
+              </descriptionHyperlinks>
+              <jobString>Installing tenebral venom talon.</jobString>
+              <ingredients>
                 <li>
-                  <capacity>Moving</capacity>
-                  <postFactor>0.75</postFactor>
+                  <filter>
+                    <thingDefs>
+                      <li>BOR_TenebralOrgan</li>
+                    </thingDefs>
+                  </filter>
+                  <count>1</count>
                 </li>
-              </capMods>
-              <statOffsets>
-                <ArmorRating_Sharp>0.9</ArmorRating_Sharp>
-                <ArmorRating_Blunt>0.75</ArmorRating_Blunt>
-                <ArmorRating_Heat>0.9</ArmorRating_Heat>
-              </statOffsets>
-            </li>
-          </stages>
-          <tags>
-            <li>ArmorGland</li>
-          </tags>
-        </HediffDef>
-
-        <RecipeDef ParentName="SurgeryInstallImplantBORTenebralBase">
-          <defName>InstallToughskinGlandTenebral</defName>
-          <label>install tenebral toughskin gland</label>
-          <description>Install a toughskin gland.</description>
-          <descriptionHyperlinks>
-            <ThingDef>BOR_TenebralOrgan</ThingDef>
-            <HediffDef>ToughskinGlandTenebral</HediffDef>
-          </descriptionHyperlinks>
-          <jobString>Installing tenebral toughskin gland.</jobString>
-          <ingredients>
-            <li>
-              <filter>
+              </ingredients>
+              <fixedIngredientFilter>
                 <thingDefs>
                   <li>BOR_TenebralOrgan</li>
                 </thingDefs>
-              </filter>
-              <count>1</count>
-            </li>
-          </ingredients>
-          <fixedIngredientFilter>
-            <thingDefs>
-              <li>BOR_TenebralOrgan</li>
-            </thingDefs>
-          </fixedIngredientFilter>
-          <appliedOnFixedBodyParts>
-            <li>Torso</li>
-          </appliedOnFixedBodyParts>
-          <addsHediff>ToughskinGlandTenebral</addsHediff>
-          <incompatibleWithHediffTags>
-            <li>ArmorGland</li>
-          </incompatibleWithHediffTags>
-        </RecipeDef>
+              </fixedIngredientFilter>
+              <appliedOnFixedBodyPartGroups>
+                <li>MiddleFingers</li>
+              </appliedOnFixedBodyPartGroups>
+              <addsHediff>VenomTalonTenebral</addsHediff>
+            </RecipeDef>
 
-        <RecipeDef ParentName="SurgeryRemoveImplantBase">
-          <defName>RemoveToughskinGlandTenebral</defName>
-          <label>remove tenebral toughskin gland</label>
-          <description>Remove toughskin gland.</description>
-          <descriptionHyperlinks>
-            <ThingDef>BOR_TenebralOrgan</ThingDef>
-            <HediffDef>ToughskinGlandTenebral</HediffDef>
-          </descriptionHyperlinks>
-          <jobString>Removing tenebral toughskin gland.</jobString>
-          <removesHediff>ToughskinGlandTenebral</removesHediff>
-        </RecipeDef>
+            <RecipeDef ParentName="SurgeryRemoveImplantBase">
+              <defName>RemoveVenomTalonTenebral</defName>
+              <label>remove tenebral venom talon</label>
+              <description>Remove venom talon.</description>
+              <descriptionHyperlinks>
+                <ThingDef>BOR_TenebralOrgan</ThingDef>
+                <HediffDef>VenomTalonTenebral</HediffDef>
+              </descriptionHyperlinks>
+              <jobString>Removing tenebral venom talon.</jobString>
+              <removesHediff>VenomTalonTenebral</removesHediff>
+            </RecipeDef>
 
-        <!-- Armorskin gland -->
+            <!-- Neurocalculator -->
 
-        <HediffDef ParentName="BOR_ImplantTenebralHediffBase">
-          <defName>ArmorskinGlandTenebral</defName>
-          <label>tenebral armorskin gland</label>
-          <labelNoun>an tenebral armorskin gland</labelNoun>
-          <description>An installed tenebral armorskin gland.</description>
-          <descriptionHyperlinks>
-            <ThingDef>BOR_TenebralOrgan</ThingDef>
-          </descriptionHyperlinks>
-          <stages>
-            <li>
-              <capMods>
+            <HediffDef ParentName="BOR_ImplantTenebralHediffBase">
+              <defName>NeurocalculatorTenebral</defName>
+              <label>tenebral neurocalculator</label>
+              <labelNoun>an tenebral neurocalculator</labelNoun>
+              <description>An installed tenebral neurocalculator.</description>
+              <descriptionHyperlinks>
+                <ThingDef>BOR_TenebralOrgan</ThingDef>
+              </descriptionHyperlinks>
+              <stages>
                 <li>
-                  <capacity>Moving</capacity>
-                  <postFactor>0.65</postFactor>
+                  <statOffsets>
+                    <ResearchSpeed>1.2</ResearchSpeed>
+                  </statOffsets>
                 </li>
-              </capMods>
-              <statOffsets>
-                <ArmorRating_Sharp>0.9</ArmorRating_Sharp>
-                <ArmorRating_Blunt>0.9</ArmorRating_Blunt>
-                <ArmorRating_Heat>0.9</ArmorRating_Heat>
-                <PawnBeauty>-1</PawnBeauty>
-              </statOffsets>
-            </li>
-          </stages>
-          <tags>
-            <li>ArmorGland</li>
-          </tags>
-        </HediffDef>
+              </stages>
+              <comps>
+                <li Class="HediffCompProperties_ReactOnDamage">
+                  <damageDefIncoming>EMP</damageDefIncoming>
+                  <createHediff>BrainShock</createHediff>
+                </li>
+              </comps>
+              <tags>
+                <li>neurocalculator</li>
+              </tags>
+            </HediffDef>
 
-        <RecipeDef ParentName="SurgeryInstallImplantBORTenebralBase">
-          <defName>InstallArmorskinGlandTenebral</defName>
-          <label>install tenebral armorskin gland</label>
-          <description>Install an armorskin gland.</description>
-          <descriptionHyperlinks>
-            <ThingDef>BOR_TenebralOrgan</ThingDef>
-            <HediffDef>ArmorskinGlandTenebral</HediffDef>
-          </descriptionHyperlinks>
-          <jobString>Installing tenebral armorskin gland.</jobString>
-          <ingredients>
-            <li>
-              <filter>
-                <thingDefs>
-                  <li>BOR_TenebralOrgan</li>
-                </thingDefs>
-              </filter>
-              <count>1</count>
-            </li>
-          </ingredients>
-          <fixedIngredientFilter>
-            <thingDefs>
-              <li>BOR_TenebralOrgan</li>
-            </thingDefs>
-          </fixedIngredientFilter>
-          <appliedOnFixedBodyParts>
-            <li>Torso</li>
-          </appliedOnFixedBodyParts>
-          <addsHediff>ArmorskinGlandTenebral</addsHediff>
-          <incompatibleWithHediffTags>
-            <li>ArmorGland</li>
-          </incompatibleWithHediffTags>
-        </RecipeDef>
-
-        <RecipeDef ParentName="SurgeryRemoveImplantBase">
-          <defName>RemoveArmorskinGlandTenebral</defName>
-          <label>remove tenebral armorskin gland</label>
-          <description>Remove armorskin gland.</description>
-          <descriptionHyperlinks>
-            <ThingDef>BOR_TenebralOrgan</ThingDef>
-          </descriptionHyperlinks>
-          <jobString>Removing tenebral armorskin gland.</jobString>
-          <removesHediff>ArmorskinGlandTenebral</removesHediff>
-        </RecipeDef>
-
-        <!-- Stoneskin gland -->
-
-        <HediffDef ParentName="BOR_ImplantTenebralHediffBase">
-          <defName>StoneskinGlandTenebral</defName>
-          <label>tenebral stoneskin gland</label>
-          <labelNoun>an tenebral stoneskin gland</labelNoun>
-          <description>An installed tenebral stoneskin gland.</description>
-          <descriptionHyperlinks>
-            <ThingDef>BOR_TenebralOrgan</ThingDef>
-          </descriptionHyperlinks>
-          <stages>
-            <li>
-              <capMods>
+            <RecipeDef ParentName="SurgeryInstallImplantBORTenebralBase">
+              <defName>InstallNeurocalculatorTenebral</defName>
+              <label>install tenebral neurocalculator</label>
+              <description>Install a neurocalculator.</description>
+              <descriptionHyperlinks>
+                <ThingDef>BOR_TenebralOrgan</ThingDef>
+                <HediffDef>NeurocalculatorTenebral</HediffDef>
+              </descriptionHyperlinks>
+              <jobString>Installing tenebral neurocalculator.</jobString>
+              <ingredients>
                 <li>
-                  <capacity>Moving</capacity>
-                  <postFactor>0.65</postFactor>
+                  <filter>
+                    <thingDefs>
+                      <li>BOR_TenebralOrgan</li>
+                    </thingDefs>
+                  </filter>
+                  <count>1</count>
                 </li>
-              </capMods>
-              <statOffsets>
-                <ArmorRating_Sharp>0.95</ArmorRating_Sharp>
-                <ArmorRating_Blunt>0.95</ArmorRating_Blunt>
-                <ArmorRating_Heat>0.95</ArmorRating_Heat>
-                <PawnBeauty>-4</PawnBeauty>
-              </statOffsets>
-            </li>
-          </stages>
-          <tags>
-            <li>ArmorGland</li>
-          </tags>
-        </HediffDef>
-
-        <RecipeDef ParentName="SurgeryInstallImplantBORTenebralBase">
-          <defName>InstallStoneskinGlandTenebral</defName>
-          <label>install tenebral stoneskin gland</label>
-          <description>Install a stoneskin gland.</description>
-          <descriptionHyperlinks>
-            <ThingDef>BOR_TenebralOrgan</ThingDef>
-            <HediffDef>StoneskinGlandTenebral</HediffDef>
-          </descriptionHyperlinks>
-          <jobString>Installing tenebral stoneskin gland.</jobString>
-          <ingredients>
-            <li>
-              <filter>
+              </ingredients>
+              <fixedIngredientFilter>
                 <thingDefs>
                   <li>BOR_TenebralOrgan</li>
                 </thingDefs>
-              </filter>
-              <count>1</count>
-            </li>
-          </ingredients>
-          <fixedIngredientFilter>
-            <thingDefs>
-              <li>BOR_TenebralOrgan</li>
-            </thingDefs>
-          </fixedIngredientFilter>
-          <appliedOnFixedBodyParts>
-            <li>Torso</li>
-          </appliedOnFixedBodyParts>
-          <addsHediff>StoneskinGlandTenebral</addsHediff>
-          <incompatibleWithHediffTags>
-            <li>ArmorGland</li>
-          </incompatibleWithHediffTags>
-        </RecipeDef>
+              </fixedIngredientFilter>
+              <appliedOnFixedBodyParts>
+                <li>Brain</li>
+              </appliedOnFixedBodyParts>
+              <addsHediff>NeurocalculatorTenebral</addsHediff>
+              <incompatibleWithHediffTags>
+                <li>neurocalculator</li>
+              </incompatibleWithHediffTags>
+            </RecipeDef>
 
-        <RecipeDef ParentName="SurgeryRemoveImplantBase">
-          <defName>RemoveStoneskinGlandTenebral</defName>
-          <label>remove tenebral stoneskin gland</label>
-          <description>Remove stoneskin gland.</description>
-          <descriptionHyperlinks>
-            <ThingDef>BOR_TenebralOrgan</ThingDef>
-          </descriptionHyperlinks>
-          <jobString>Removing tenebral stoneskin gland.</jobString>
-          <removesHediff>StoneskinGlandTenebral</removesHediff>
-        </RecipeDef>
+            <RecipeDef ParentName="SurgeryRemoveImplantBase">
+              <defName>RemoveNeurocalculatorTenebral</defName>
+              <label>remove tenebral neurocalculator</label>
+              <description>Remove neurocalculator.</description>
+              <descriptionHyperlinks>
+                <ThingDef>BOR_TenebralOrgan</ThingDef>
+                <HediffDef>NeurocalculatorTenebral</HediffDef>
+              </descriptionHyperlinks>
+              <jobString>Removing tenebral neurocalculator.</jobString>
+              <removesHediff>NeurocalculatorTenebral</removesHediff>
+            </RecipeDef>
 
-        <!-- Aesthetic shaper -->
+            <!-- Learning assistant -->
 
-        <HediffDef ParentName="BOR_ImplantTenebralHediffBase">
-          <defName>AestheticShaperTenebral</defName>
-          <label>tenebral aesthetic shaper</label>
-          <labelNoun>an tenebral aesthetic shaper</labelNoun>
-          <description>An installed tenebral aesthetic shaper.</description>
-          <descriptionHyperlinks>
-            <ThingDef>BOR_TenebralOrgan</ThingDef>
-          </descriptionHyperlinks>
-          <stages>
-            <li>
-              <statOffsets>
-                <PawnBeauty>4</PawnBeauty>
-              </statOffsets>
-            </li>
-          </stages>
-          <tags>
-            <li>aestheticShaper</li>
-          </tags>
-        </HediffDef>
-
-        <RecipeDef ParentName="SurgeryInstallImplantBORTenebralBase">
-          <defName>InstallAestheticShaperTenebral</defName>
-          <label>install tenebral aesthetic shaper</label>
-          <description>Install an aesthetic shaper.</description>
-          <descriptionHyperlinks>
-            <ThingDef>BOR_TenebralOrgan</ThingDef>
-            <HediffDef>AestheticShaperTenebral</HediffDef>
-          </descriptionHyperlinks>
-          <jobString>Installing tenebral aesthetic shaper.</jobString>
-          <ingredients>
-            <li>
-              <filter>
-                <thingDefs>
-                  <li>BOR_TenebralOrgan</li>
-                </thingDefs>
-              </filter>
-              <count>1</count>
-            </li>
-          </ingredients>
-          <fixedIngredientFilter>
-            <thingDefs>
-              <li>BOR_TenebralOrgan</li>
-            </thingDefs>
-          </fixedIngredientFilter>
-          <appliedOnFixedBodyParts>
-            <li>Torso</li>
-          </appliedOnFixedBodyParts>
-          <addsHediff>AestheticShaperTenebral</addsHediff>
-          <incompatibleWithHediffTags>
-            <li>aestheticShaper</li>
-          </incompatibleWithHediffTags>
-        </RecipeDef>
-
-        <RecipeDef ParentName="SurgeryRemoveImplantBase">
-          <defName>RemoveAestheticShaperTenebral</defName>
-          <label>remove tenebral aesthetic shaper</label>
-          <description>Remove aesthetic shaper.</description>
-          <descriptionHyperlinks>
-            <ThingDef>BOR_TenebralOrgan</ThingDef>
-            <HediffDef>AestheticShaperTenebral</HediffDef>
-          </descriptionHyperlinks>
-          <jobString>Removing tenebral aesthetic shaper.</jobString>
-          <removesHediff>AestheticShaperTenebral</removesHediff>
-        </RecipeDef>
-
-        <!-- Aesthetic nose -->
-
-        <HediffDef ParentName="AddedBodyPartBase">
-          <defName>AestheticNoseTenebral</defName>
-          <label>tenebral aesthetic nose</label>
-          <labelNoun>an tenebral aesthetic nose</labelNoun>
-          <description>An installed tenebral aesthetic nose.</description>
-          <descriptionHyperlinks>
-            <ThingDef>BOR_TenebralOrgan</ThingDef>
-          </descriptionHyperlinks>
-          <addedPartProps>
-            <partEfficiency>2</partEfficiency>
-          </addedPartProps>
-          <stages>
-            <li>
-              <statOffsets>
-                <PawnBeauty>2</PawnBeauty>
-              </statOffsets>
-            </li>
-          </stages>
-          <tags>
-            <li>aestheticNose</li>
-          </tags>
-        </HediffDef>
-
-        <RecipeDef ParentName="SurgeryInstallImplantBORTenebralBase">
-          <defName>InstallAestheticNoseTenebral</defName>
-          <label>install tenebral aesthetic nose</label>
-          <description>Install an aesthetic nose.</description>
-          <descriptionHyperlinks>
-            <ThingDef>BOR_TenebralOrgan</ThingDef>
-            <HediffDef>AestheticNoseTenebral</HediffDef>
-          </descriptionHyperlinks>
-          <jobString>Installing tenebral aesthetic nose.</jobString>
-          <ingredients>
-            <li>
-              <filter>
-                <thingDefs>
-                  <li>BOR_TenebralOrgan</li>
-                </thingDefs>
-              </filter>
-              <count>1</count>
-            </li>
-          </ingredients>
-          <fixedIngredientFilter>
-            <thingDefs>
-              <li>BOR_TenebralOrgan</li>
-            </thingDefs>
-          </fixedIngredientFilter>
-          <appliedOnFixedBodyParts>
-            <li>Nose</li>
-          </appliedOnFixedBodyParts>
-          <addsHediff>AestheticNoseTenebral</addsHediff>
-          <incompatibleWithHediffTags>
-            <li>aestheticNose</li>
-          </incompatibleWithHediffTags>
-        </RecipeDef>
-
-        <RecipeDef ParentName="SurgeryRemoveImplantBase">
-          <defName>RemoveAestheticNoseTenebral</defName>
-          <label>remove tenebral aesthetic nose</label>
-          <description>Remove aesthetic nose.</description>
-          <descriptionHyperlinks>
-            <ThingDef>BOR_TenebralOrgan</ThingDef>
-            <HediffDef>AestheticNoseTenebral</HediffDef>
-          </descriptionHyperlinks>
-          <jobString>Removing tenebral aesthetic nose.</jobString>
-          <removesHediff>AestheticNoseTenebral</removesHediff>
-        </RecipeDef>
-
-        <!-- Reprocessor stomach -->
-
-        <HediffDef ParentName="AddedBodyPartBase">
-          <defName>ReprocessorStomachTenebral</defName>
-          <label>tenebral reprocessor stomach</label>
-          <labelNoun>an tenebral reprocessor stomach</labelNoun>
-          <description>An installed tenebral reprocessor stomach.</description>
-          <descriptionHyperlinks>
-            <ThingDef>BOR_TenebralOrgan</ThingDef>
-          </descriptionHyperlinks>
-          <addedPartProps>
-            <solid>true</solid>
-            <partEfficiency>2</partEfficiency>
-            <betterThanNatural>true</betterThanNatural>
-          </addedPartProps>
-          <stages>
-            <li>
-              <hungerRateFactor>0.1</hungerRateFactor>
-            </li>
-          </stages>
-          <comps>
-            <li Class="HediffCompProperties_ReactOnDamage">
-              <damageDefIncoming>EMP</damageDefIncoming>
-              <vomit>true</vomit>
-            </li>
-          </comps>
-          <tags>
-            <li>reprocessorStomach</li>
-          </tags>
-        </HediffDef>
-
-        <RecipeDef ParentName="SurgeryInstallImplantBORTenebralBase">
-          <defName>InstallReprocessorStomachTenebral</defName>
-          <label>install tenebral reprocessor stomach</label>
-          <description>Install a reprocessor stomach.</description>
-          <descriptionHyperlinks>
-            <ThingDef>BOR_TenebralOrgan</ThingDef>
-            <HediffDef>ReprocessorStomachTenebral</HediffDef>
-          </descriptionHyperlinks>
-          <jobString>Installing tenebral reprocessor stomach.</jobString>
-          <ingredients>
-            <li>
-              <filter>
-                <thingDefs>
-                  <li>BOR_TenebralOrgan</li>
-                </thingDefs>
-              </filter>
-              <count>1</count>
-            </li>
-          </ingredients>
-          <fixedIngredientFilter>
-            <thingDefs>
-              <li>BOR_TenebralOrgan</li>
-            </thingDefs>
-          </fixedIngredientFilter>
-          <appliedOnFixedBodyParts>
-            <li>Stomach</li>
-          </appliedOnFixedBodyParts>
-          <addsHediff>ReprocessorStomachTenebral</addsHediff>
-          <incompatibleWithHediffTags>
-            <li>reprocessorStomach</li>
-          </incompatibleWithHediffTags>
-        </RecipeDef>
-
-        <RecipeDef ParentName="SurgeryRemoveImplantBase">
-          <defName>RemoveReprocessorStomachTenebral</defName>
-          <label>remove tenebral reprocessor stomach</label>
-          <description>Remove reprocessor stomach.</description>
-          <descriptionHyperlinks>
-            <HediffDef>ReprocessorStomachTenebral</HediffDef>
-          </descriptionHyperlinks>
-          <jobString>Removing tenebral reprocessor stomach.</jobString>
-          <removesHediff>ReprocessorStomachTenebral</removesHediff>
-        </RecipeDef>
-        <!-- Circadian assistant -->
-
-        <HediffDef ParentName="BOR_ImplantTenebralHediffBase">
-          <defName>CircadianAssistantTenebral</defName>
-          <label>tenebral circadian assistant</label>
-          <labelNoun>an tenebral circadian assistant</labelNoun>
-          <description>An installed tenebral circadian assistant.</description>
-          <descriptionHyperlinks>
-            <ThingDef>BOR_TenebralOrgan</ThingDef>
-          </descriptionHyperlinks>
-          <stages>
-            <li>
-              <statOffsets>
-                <RestFallRateFactor>-0.8</RestFallRateFactor>
-              </statOffsets>
-            </li>
-          </stages>
-          <comps>
-            <li Class="HediffCompProperties_ReactOnDamage">
-              <damageDefIncoming>EMP</damageDefIncoming>
-              <createHediff>BrainShock</createHediff>
-            </li>
-          </comps>
-          <tags>
-            <li>circadianAssistant</li>
-          </tags>
-        </HediffDef>
-
-        <RecipeDef ParentName="SurgeryInstallImplantBORTenebralBase">
-          <defName>InstallCircadianAssistantTenebral</defName>
-          <label>install tenebral circadian assistant</label>
-          <description>Install a circadian assistant.</description>
-          <descriptionHyperlinks>
-            <ThingDef>BOR_TenebralOrgan</ThingDef>
-            <HediffDef>CircadianAssistantTenebral</HediffDef>
-          </descriptionHyperlinks>
-          <jobString>Installing tenebral circadian assistant.</jobString>
-          <ingredients>
-            <li>
-              <filter>
-                <thingDefs>
-                  <li>BOR_TenebralOrgan</li>
-                </thingDefs>
-              </filter>
-              <count>1</count>
-            </li>
-          </ingredients>
-          <fixedIngredientFilter>
-            <thingDefs>
-              <li>BOR_TenebralOrgan</li>
-            </thingDefs>
-          </fixedIngredientFilter>
-          <appliedOnFixedBodyParts>
-            <li>Brain</li>
-          </appliedOnFixedBodyParts>
-          <addsHediff>CircadianAssistantTenebral</addsHediff>
-          <incompatibleWithHediffTags>
-            <li>circadianAssistant</li>
-          </incompatibleWithHediffTags>
-        </RecipeDef>
-
-        <RecipeDef ParentName="SurgeryRemoveImplantBase">
-          <defName>RemoveCircadianAssistantTenebral</defName>
-          <label>remove tenebral circadian assistant</label>
-          <description>Remove circadian assistant.</description>
-          <descriptionHyperlinks>
-            <ThingDef>BOR_TenebralOrgan</ThingDef>
-            <HediffDef>CircadianAssistantTenebral</HediffDef>
-          </descriptionHyperlinks>
-          <jobString>Removing tenebral circadian assistant.</jobString>
-          <removesHediff>CircadianAssistantTenebral</removesHediff>
-        </RecipeDef>
-
-        <!-- Circadian half-cycler -->
-
-        <HediffDef ParentName="BOR_ImplantTenebralHediffBase">
-          <defName>CircadianHalfCyclerTenebral</defName>
-          <label>tenebral circadian half-cycler</label>
-          <labelNoun>an tenebral circadian half-cycler</labelNoun>
-          <description>An installed tenebral circadian half-cycler.</description>
-          <descriptionHyperlinks>
-            <ThingDef>BOR_TenebralOrgan</ThingDef>
-          </descriptionHyperlinks>
-          <disablesNeeds>
-            <li>Rest</li>
-          </disablesNeeds>
-          <stages>
-            <li>
-              <capMods>
+            <HediffDef ParentName="BOR_ImplantTenebralHediffBase">
+              <defName>LearningAssistantTenebral</defName>
+              <label>tenebral learning assistant</label>
+              <labelNoun>an tenebral learning assistant</labelNoun>
+              <description>An installed tenebral learning assistant.</description>
+              <descriptionHyperlinks>
+                <ThingDef>BOR_TenebralOrgan</ThingDef>
+              </descriptionHyperlinks>
+              <stages>
                 <li>
-                  <capacity>Consciousness</capacity>
-                  <offset>-0.2</offset>
+                  <statOffsets>
+                    <GlobalLearningFactor>1.2</GlobalLearningFactor>
+                  </statOffsets>
                 </li>
-              </capMods>
-            </li>
-          </stages>
-          <comps>
-            <li Class="HediffCompProperties_ReactOnDamage">
-              <damageDefIncoming>EMP</damageDefIncoming>
-              <createHediff>BrainShock</createHediff>
-            </li>
-          </comps>
-          <tags>
-            <li>circadianAssistant</li>
-          </tags>
-        </HediffDef>
+              </stages>
+              <comps>
+                <li Class="HediffCompProperties_ReactOnDamage">
+                  <damageDefIncoming>EMP</damageDefIncoming>
+                  <createHediff>BrainShock</createHediff>
+                </li>
+              </comps>
+              <tags>
+                <li>learningAssistant</li>
+              </tags>
+            </HediffDef>
 
-        <RecipeDef ParentName="SurgeryInstallImplantBORTenebralBase">
-          <defName>InstallCircadianHalfCyclerTenebral</defName>
-          <label>install tenebral circadian half-cycler</label>
-          <description>Install a circadian half-cycler.</description>
-          <descriptionHyperlinks>
-            <ThingDef>BOR_TenebralOrgan</ThingDef>
-            <HediffDef>CircadianHalfCyclerTenebral</HediffDef>
-          </descriptionHyperlinks>
-          <jobString>Installing tenebral circadian half-cycler.</jobString>
-          <ingredients>
-            <li>
-              <filter>
+            <RecipeDef ParentName="SurgeryInstallImplantBORTenebralBase">
+              <defName>InstallLearningAssistantTenebral</defName>
+              <label>install tenebral learning assistant</label>
+              <description>Install a learning assistant.</description>
+              <descriptionHyperlinks>
+                <ThingDef>BOR_TenebralOrgan</ThingDef>
+                <HediffDef>LearningAssistantTenebral</HediffDef>
+              </descriptionHyperlinks>
+              <jobString>Installing tenebral learning assistant.</jobString>
+              <ingredients>
+                <li>
+                  <filter>
+                    <thingDefs>
+                      <li>BOR_TenebralOrgan</li>
+                    </thingDefs>
+                  </filter>
+                  <count>1</count>
+                </li>
+              </ingredients>
+              <fixedIngredientFilter>
                 <thingDefs>
                   <li>BOR_TenebralOrgan</li>
                 </thingDefs>
-              </filter>
-              <count>1</count>
-            </li>
-          </ingredients>
-          <fixedIngredientFilter>
-            <thingDefs>
-              <li>BOR_TenebralOrgan</li>
-            </thingDefs>
-          </fixedIngredientFilter>
-          <appliedOnFixedBodyParts>
-            <li>Brain</li>
-          </appliedOnFixedBodyParts>
-          <addsHediff>CircadianHalfCyclerTenebral</addsHediff>
-          <incompatibleWithHediffTags>
-            <li>circadianAssistant</li>
-          </incompatibleWithHediffTags>
-        </RecipeDef>
+              </fixedIngredientFilter>
+              <appliedOnFixedBodyParts>
+                <li>Brain</li>
+              </appliedOnFixedBodyParts>
+              <addsHediff>LearningAssistantTenebral</addsHediff>
+              <incompatibleWithHediffTags>
+                <li>learningAssistant</li>
+              </incompatibleWithHediffTags>
+            </RecipeDef>
 
-        <RecipeDef ParentName="SurgeryRemoveImplantBase">
-          <defName>RemoveCircadianHalfCyclerTenebral</defName>
-          <label>remove tenebral circadian half-cycler</label>
-          <description>Remove circadian half-cycler.</description>
-          <descriptionHyperlinks>
-            <ThingDef>BOR_TenebralOrgan</ThingDef>
-            <HediffDef>CircadianHalfCyclerTenebral</HediffDef>
-          </descriptionHyperlinks>
-          <jobString>Removing tenebral circadian half-cycler.</jobString>
-          <removesHediff>CircadianHalfCyclerTenebral</removesHediff>
-        </RecipeDef>
-		
-        <!-- Psychic sensitizer -->
+            <RecipeDef ParentName="SurgeryRemoveImplantBase">
+              <defName>RemoveLearningAssistantTenebral</defName>
+              <label>remove tenebral learning assistant</label>
+              <description>Remove learning assistant.</description>
+              <descriptionHyperlinks>
+                <ThingDef>BOR_TenebralOrgan</ThingDef>
+                <HediffDef>LearningAssistantTenebral</HediffDef>
+              </descriptionHyperlinks>
+              <jobString>Removing tenebral learning assistant.</jobString>
+              <removesHediff>LearningAssistantTenebral</removesHediff>
+            </RecipeDef>
 
-        <HediffDef ParentName="BOR_ImplantTenebralHediffBase">
-          <defName>PsychicSensitizerTenebral</defName>
-          <label>tenebral psychic sensitizer</label>
-          <labelNoun>an tenebral psychic sensitizer</labelNoun>
-          <description>An installed tenebral psychic sensitizer implant.</description>
-          <descriptionHyperlinks>
-            <ThingDef>BOR_TenebralOrgan</ThingDef>
-          </descriptionHyperlinks>
-          <stages>
-            <li>
-              <statOffsets>
-                <PsychicSensitivity>1.5</PsychicSensitivity>
-              </statOffsets>
-            </li>
-          </stages>
-        </HediffDef>
+            <!-- Gastro-analyzer -->
 
-        <RecipeDef ParentName="SurgeryInstallImplantBORTenebralBase">
-          <defName>InstallPsychicSensitizerTenebral</defName>
-          <label>install tenebral psychic sensitizer</label>
-          <description>Install a psychic sensitizer.</description>
-          <descriptionHyperlinks>
-            <ThingDef>BOR_TenebralOrgan</ThingDef>
-            <HediffDef>PsychicSensitizerTenebral</HediffDef>
-          </descriptionHyperlinks>
-          <jobString>Installing tenebral psychic sensitizer.</jobString>
-          <ingredients>
-            <li>
-              <filter>
+            <HediffDef ParentName="BOR_ImplantTenebralHediffBase">
+              <defName>GastroAnalyzerTenebral</defName>
+              <label>tenebral gastro-analyzer</label>
+              <labelNoun>an tenebral gastro-analyzer</labelNoun>
+              <description>An installed tenebral gastro-analyzer.</description>
+              <descriptionHyperlinks>
+                <ThingDef>BOR_TenebralOrgan</ThingDef>
+              </descriptionHyperlinks>
+              <addedPartProps>
+                <solid>true</solid>
+              </addedPartProps>
+              <stages>
+                <li>
+                  <statOffsets>
+                    <CookSpeed>15</CookSpeed>
+                  </statOffsets>
+                </li>
+              </stages>
+              <tags>
+                <li>gastroAnalyzer</li>
+              </tags>
+            </HediffDef>
+
+            <RecipeDef ParentName="SurgeryInstallImplantBORTenebralBase">
+              <defName>InstallGastroAnalyzerTenebral</defName>
+              <label>install tenebral gastro-analyzer</label>
+              <description>Install a gastro-analyzer.</description>
+              <descriptionHyperlinks>
+                <ThingDef>BOR_TenebralOrgan</ThingDef>
+                <HediffDef>GastroAnalyzerTenebral</HediffDef>
+              </descriptionHyperlinks>
+              <jobString>Installing tenebral gastro-analyzer.</jobString>
+              <ingredients>
+                <li>
+                  <filter>
+                    <thingDefs>
+                      <li>BOR_TenebralOrgan</li>
+                    </thingDefs>
+                  </filter>
+                  <count>1</count>
+                </li>
+              </ingredients>
+              <fixedIngredientFilter>
                 <thingDefs>
                   <li>BOR_TenebralOrgan</li>
                 </thingDefs>
-              </filter>
-              <count>1</count>
-            </li>
-          </ingredients>
-          <fixedIngredientFilter>
-            <thingDefs>
-              <li>BOR_TenebralOrgan</li>
-            </thingDefs>
-          </fixedIngredientFilter>
-          <appliedOnFixedBodyParts>
-            <li>Brain</li>
-          </appliedOnFixedBodyParts>
-          <addsHediff>PsychicSensitizerTenebral</addsHediff>
-        </RecipeDef>
+              </fixedIngredientFilter>
+              <appliedOnFixedBodyParts>
+                <li>Nose</li>
+              </appliedOnFixedBodyParts>
+              <addsHediff>GastroAnalyzerTenebral</addsHediff>
+              <incompatibleWithHediffTags>
+                <li>gastroAnalyzer</li>
+              </incompatibleWithHediffTags>
+            </RecipeDef>
 
-        <RecipeDef ParentName="SurgeryRemoveImplantBase">
-          <defName>RemovePsychicSensitizerTenebral</defName>
-          <label>remove tenebral psychic sensitizer</label>
-          <description>Remove psychic sensitizer.</description>
-          <descriptionHyperlinks>
-            <ThingDef>BOR_TenebralOrgan</ThingDef>
-            <HediffDef>PsychicSensitizerTenebral</HediffDef>
-          </descriptionHyperlinks>
-          <jobString>Removing tenebral psychic sensitizer.</jobString>
-          <removesHediff>PsychicSensitizerTenebral</removesHediff>
-        </RecipeDef>
+            <RecipeDef ParentName="SurgeryRemoveImplantBase">
+              <defName>RemoveGastroAnalyzerTenebral</defName>
+              <label>remove tenebral gastro-analyzer</label>
+              <description>Remove gastro-analyzer.</description>
+              <descriptionHyperlinks>
+                <ThingDef>BOR_TenebralOrgan</ThingDef>
+                <HediffDef>GastroAnalyzerTenebral</HediffDef>
+              </descriptionHyperlinks>
+              <jobString>Removing tenebral gastro-analyzer.</jobString>
+              <removesHediff>GastroAnalyzerTenebral</removesHediff>
+            </RecipeDef>
 
-        <!-- Psychic harmonizer -->
+            <!-- Immunoenhancer -->
 
-        <ThoughtDef>
-          <defName>PsychicHarmonizationTenebral</defName>
-          <thoughtClass>Thought_PsychicHarmonizer</thoughtClass>
-          <effectMultiplyingStat>PsychicSensitivity</effectMultiplyingStat>
-          <stackLimit>100</stackLimit>
-          <developmentalStageFilter>Baby, Child, Adult</developmentalStageFilter>
-          <stages>
-            <li>
-              <label>tenebral psychic harmony: {HARMONIZER_labelShort}</label>
-              <description>The psychic harmonizer implant makes me feel some of the emotions of the person using it as long as we're close together.</description>
-              <baseMoodEffect>25</baseMoodEffect>
-            </li>
-          </stages>
-        </ThoughtDef>
+            <HediffDef ParentName="BOR_ImplantTenebralHediffBase">
+              <defName>ImmunoenhancerTenebral</defName>
+              <label>tenebral immunoenhancer</label>
+              <labelNoun>an tenebral immunoenhancer</labelNoun>
+              <description>An installed tenebral immunoenhancer.</description>
+              <descriptionHyperlinks>
+                <ThingDef>BOR_TenebralOrgan</ThingDef>
+              </descriptionHyperlinks>
+              <stages>
+                <li>
+                  <statOffsets>
+                    <ImmunityGainSpeed>0.75</ImmunityGainSpeed>
+                  </statOffsets>
+                </li>
+              </stages>
+              <tags>
+                <li>immunoEnhancer</li>
+              </tags>
+            </HediffDef>
 
-        <HediffDef ParentName="BOR_ImplantTenebralHediffBase">
-          <defName>PsychicHarmonizerTenebral</defName>
-          <label>tenebral psychic harmonizer</label>
-          <labelNoun>an tenebral psychic harmonizer</labelNoun>
-          <description>An installed tenebral psychic harmonizer implant.</description>
-          <descriptionHyperlinks>
-            <ThingDef>BOR_TenebralOrgan</ThingDef>
-          </descriptionHyperlinks>
-          <comps>
-            <li Class="HediffCompProperties_PsychicHarmonizer">
-              <range>75</range>
-              <thought>PsychicHarmonization</thought>
-            </li>
-          </comps>
-        </HediffDef>
-        <RecipeDef ParentName="SurgeryInstallImplantBORTenebralBase">
-          <defName>InstallPsychicHarmonizerTenebral</defName>
-          <label>install tenebral psychic harmonizer</label>
-          <description>Install a psychic harmonizer.</description>
-          <descriptionHyperlinks>
-            <ThingDef>BOR_TenebralOrgan</ThingDef>
-            <HediffDef>PsychicHarmonizerTenebral</HediffDef>
-          </descriptionHyperlinks>
-          <jobString>Installing tenebral psychic harmonizer.</jobString>
-          <ingredients>
-            <li>
-              <filter>
+            <RecipeDef ParentName="SurgeryInstallImplantBORTenebralBase">
+              <defName>InstallImmunoenhancerTenebral</defName>
+              <label>install tenebral immunoenhancer</label>
+              <description>Install an immunoenhancer.</description>
+              <descriptionHyperlinks>
+                <ThingDef>BOR_TenebralOrgan</ThingDef>
+                <HediffDef>ImmunoenhancerTenebral</HediffDef>
+              </descriptionHyperlinks>
+              <jobString>Installing tenebral immunoenhancer.</jobString>
+              <ingredients>
+                <li>
+                  <filter>
+                    <thingDefs>
+                      <li>BOR_TenebralOrgan</li>
+                    </thingDefs>
+                  </filter>
+                  <count>1</count>
+                </li>
+              </ingredients>
+              <fixedIngredientFilter>
                 <thingDefs>
                   <li>BOR_TenebralOrgan</li>
                 </thingDefs>
-              </filter>
-              <count>1</count>
-            </li>
-          </ingredients>
-          <fixedIngredientFilter>
-            <thingDefs>
-              <li>BOR_TenebralOrgan</li>
-            </thingDefs>
-          </fixedIngredientFilter>
-          <appliedOnFixedBodyParts>
-            <li>Brain</li>
-          </appliedOnFixedBodyParts>
-          <addsHediff>PsychicHarmonizerTenebral</addsHediff>
-        </RecipeDef>
+              </fixedIngredientFilter>
+              <appliedOnFixedBodyParts>
+                <li>Kidney</li>
+              </appliedOnFixedBodyParts>
+              <addsHediff>ImmunoenhancerTenebral</addsHediff>
+              <incompatibleWithHediffTags>
+                <li>immunoEnhancer</li>
+              </incompatibleWithHediffTags>
+            </RecipeDef>
 
-        <RecipeDef ParentName="SurgeryRemoveImplantBase">
-          <defName>RemovePsychicHarmonizerTenebral</defName>
-          <label>remove tenebral psychic harmonizer</label>
-          <description>Remove psychic harmonizer.</description>
-          <descriptionHyperlinks>
-            <ThingDef>BOR_TenebralOrgan</ThingDef>
-            <HediffDef>PsychicHarmonizerTenebral</HediffDef>
-          </descriptionHyperlinks>
-          <jobString>Removing tenebral psychic harmonizer.</jobString>
-          <removesHediff>PsychicHarmonizerTenebral</removesHediff>
-        </RecipeDef>
+            <RecipeDef ParentName="SurgeryRemoveImplantBase">
+              <defName>RemoveImmunoenhancerTenebral</defName>
+              <label>remove tenebral immunoenhancer</label>
+              <description>Remove immunoenhancer.</description>
+              <descriptionHyperlinks>
+                <ThingDef>BOR_TenebralOrgan</ThingDef>
+                <HediffDef>ImmunoenhancerTenebral</HediffDef>
+              </descriptionHyperlinks>
+              <jobString>Removing tenebral immunoenhancer.</jobString>
+              <removesHediff>ImmunoenhancerTenebral</removesHediff>
+            </RecipeDef>
 
-        <!-- Psychic reader -->
+            <!-- Coagulator -->
 
-        <HediffDef ParentName="BOR_ImplantTenebralHediffBase">
-          <defName>PsychicReaderTenebral</defName>
-          <label>tenebral psychic reader</label>
-          <labelNoun>an tenebral psychic reader</labelNoun>
-          <description>An installed tenebral psychic reader implant.</description>
-          <descriptionHyperlinks>
-            <ThingDef>BOR_TenebralOrgan</ThingDef>
-          </descriptionHyperlinks>
-          <stages>
-            <li>
-              <statOffsets>
-                <NegotiationAbility>0.9</NegotiationAbility>
-                <TradePriceImprovement>0.75</TradePriceImprovement>
-              </statOffsets>
-              <statOffsetEffectMultiplier>PsychicSensitivity</statOffsetEffectMultiplier>
-            </li>
-          </stages>
-        </HediffDef>
+            <HediffDef ParentName="BOR_ImplantTenebralHediffBase">
+              <defName>CoagulatorTenebral</defName>
+              <label>tenebral coagulator</label>
+              <labelNoun>an tenebral coagulator</labelNoun>
+              <description>An installed tenebral coagulator implant.</description>
+              <descriptionHyperlinks>
+                <ThingDef>BOR_TenebralOrgan</ThingDef>
+              </descriptionHyperlinks>
+              <stages>
+                <li>
+                  <totalBleedFactor>0.1</totalBleedFactor>
+                </li>
+              </stages>
+              <tags>
+                <li>coagulator</li>
+              </tags>
+            </HediffDef>
 
-        <RecipeDef ParentName="SurgeryInstallImplantBORTenebralBase">
-          <defName>InstallPsychicReaderTenebral</defName>
-          <label>install tenebral psychic reader</label>
-          <description>Install a psychic reader.</description>
-          <descriptionHyperlinks>
-            <ThingDef>BOR_TenebralOrgan</ThingDef>
-            <HediffDef>PsychicReaderTenebral</HediffDef>
-          </descriptionHyperlinks>
-          <jobString>Installing tenebral psychic reader.</jobString>
-          <ingredients>
-            <li>
-              <filter>
+            <RecipeDef ParentName="SurgeryInstallImplantBORTenebralBase">
+              <defName>InstallCoagulatorTenebral</defName>
+              <label>install tenebral coagulator</label>
+              <description>Install a coagulator.</description>
+              <descriptionHyperlinks>
+                <ThingDef>BOR_TenebralOrgan</ThingDef>
+                <HediffDef>CoagulatorTenebral</HediffDef>
+              </descriptionHyperlinks>
+              <jobString>Installing tenebral coagulator.</jobString>
+              <ingredients>
+                <li>
+                  <filter>
+                    <thingDefs>
+                      <li>BOR_TenebralOrgan</li>
+                    </thingDefs>
+                  </filter>
+                  <count>1</count>
+                </li>
+              </ingredients>
+              <fixedIngredientFilter>
                 <thingDefs>
                   <li>BOR_TenebralOrgan</li>
                 </thingDefs>
-              </filter>
-              <count>1</count>
-            </li>
-          </ingredients>
-          <fixedIngredientFilter>
-            <thingDefs>
-              <li>BOR_TenebralOrgan</li>
-            </thingDefs>
-          </fixedIngredientFilter>
-          <appliedOnFixedBodyParts>
-            <li>Brain</li>
-          </appliedOnFixedBodyParts>
-          <addsHediff>PsychicReaderTenebral</addsHediff>
-        </RecipeDef>
+              </fixedIngredientFilter>
+              <appliedOnFixedBodyParts>
+                <li>Torso</li>
+              </appliedOnFixedBodyParts>
+              <addsHediff>CoagulatorTenebral</addsHediff>
+              <incompatibleWithHediffTags>
+                <li>coagulator</li>
+              </incompatibleWithHediffTags>
+            </RecipeDef>
 
-        <RecipeDef ParentName="SurgeryRemoveImplantBase">
-          <defName>RemovePsychicReaderTenebral</defName>
-          <label>remove tenebral psychic reader</label>
-          <description>Remove psychic reader.</description>
-          <descriptionHyperlinks>
-            <ThingDef>BOR_TenebralOrgan</ThingDef>
-            <HediffDef>PsychicReaderTenebral</HediffDef>
-          </descriptionHyperlinks>
-          <jobString>Removing tenebral psychic reader.</jobString>
-          <removesHediff>PsychicReaderTenebral</removesHediff>
-        </RecipeDef>
+            <RecipeDef ParentName="SurgeryRemoveImplantBase">
+              <defName>RemoveCoagulatorTenebral</defName>
+              <label>remove tenebral coagulator</label>
+              <description>Remove coagulator.</description>
+              <descriptionHyperlinks>
+                <ThingDef>BOR_TenebralOrgan</ThingDef>
+                <HediffDef>CoagulatorTenebral</HediffDef>
+              </descriptionHyperlinks>
+              <jobString>Removing tenebral coagulator.</jobString>
+              <removesHediff>CoagulatorTenebral</removesHediff>
+            </RecipeDef>
 
-      </value>
-	  </li>
-	  
-	  <!-- check to see if CombatExtended is loaded as well, then modify the patched in defs to CE standards -->
-	  <li Class="PatchOperationFindMod">
-		<mods>
-		  <li>Combat Extended</li>
-		</mods>
-			<match Class="PatchOperationSequence">
-				<operations>
-					<li Class="PatchOperationReplace">
-						<xpath>Defs/HediffDef[defName="DrillArmTenebral"]/comps/li[@Class="HediffCompProperties_VerbGiver"]/tools</xpath>
-						<value>
-							<tools>
-								<li Class="CombatExtended.ToolCE">
-									<label>drill</label>
-									<capacities>
-										<li>Stab</li>
-									</capacities>
-									<power>48</power>
-									<cooldownTime>0.5</cooldownTime>
-									<armorPenetrationSharp>0.24</armorPenetrationSharp>
-									<armorPenetrationBlunt>1.8</armorPenetrationBlunt>
-									<alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
-									<soundMeleeHit>MeleeHit_DrillArm</soundMeleeHit>
-									<soundMeleeMiss>MeleeMiss_DrillArm</soundMeleeMiss>
-								</li>
-							</tools>
-						</value>
-					</li>
+            <!-- Healing enhancer -->
 
-					<li Class="PatchOperationReplace">
-						<xpath>Defs/HediffDef[defName="FieldHandTenebral"]/comps/li[@Class="HediffCompProperties_VerbGiver"]/tools</xpath>
-						<value>
-							<tools>
-								<li Class="CombatExtended.ToolCE">
-									<label>knuckle</label>
-									<capacities>
-										<li>Blunt</li>
-									</capacities>
-									<power>18</power>
-									<cooldownTime>0.5</cooldownTime>
-									<armorPenetrationSharp>0.04</armorPenetrationSharp>
-									<armorPenetrationBlunt>5.0</armorPenetrationBlunt>
-									<alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
-									<soundMeleeHit>MeleeHit_FieldHand</soundMeleeHit>
-									<soundMeleeMiss>MeleeMiss_FieldHand</soundMeleeMiss>
-								</li>
-							</tools>
-						</value>
-					</li>
+            <HediffDef ParentName="BOR_ImplantTenebralHediffBase">
+              <defName>HealingEnhancerTenebral</defName>
+              <label>tenebral healing enhancer</label>
+              <labelNoun>an tenebral healing enhancer</labelNoun>
+              <description>An installed tenebral healing enhancer implant.</description>
+              <descriptionHyperlinks>
+                <ThingDef>BOR_TenebralOrgan</ThingDef>
+              </descriptionHyperlinks>
+              <stages>
+                <li>
+                  <naturalHealingFactor>5.0</naturalHealingFactor>
+                </li>
+              </stages>
+              <tags>
+                <li>healingEnhancer</li>
+              </tags>
+            </HediffDef>
 
-					<li Class="PatchOperationReplace">
-						<xpath>Defs/HediffDef[defName="HandTalonTenebral"]/comps/li[@Class="HediffCompProperties_VerbGiver"]/tools</xpath>
-						<value>
-							<tools>
-								<li Class="CombatExtended.ToolCE">
-									<label>talon</label>
-									<capacities>
-										<li>Scratch</li>
-									</capacities>
-									<power>42</power>
-									<cooldownTime>0.25</cooldownTime>
-									<armorPenetrationBlunt>1.2</armorPenetrationBlunt>
-									<armorPenetrationSharp>1.2</armorPenetrationSharp>
-									<alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
-									<soundMeleeHit>MeleeHit_BionicSlash</soundMeleeHit>
-									<soundMeleeMiss>MeleeMiss_BionicSlash</soundMeleeMiss>
-								</li>
-							</tools>
-						</value>
-					</li>
+            <RecipeDef ParentName="SurgeryInstallImplantBORTenebralBase">
+              <defName>InstallHealingEnhancerTenebral</defName>
+              <label>install tenebral healing enhancer</label>
+              <description>Install a healing enhancer.</description>
+              <descriptionHyperlinks>
+                <ThingDef>BOR_TenebralOrgan</ThingDef>
+                <HediffDef>HealingEnhancerTenebral</HediffDef>
+              </descriptionHyperlinks>
+              <jobString>Installing tenebral healing enhancer.</jobString>
+              <ingredients>
+                <li>
+                  <filter>
+                    <thingDefs>
+                      <li>BOR_TenebralOrgan</li>
+                    </thingDefs>
+                  </filter>
+                  <count>1</count>
+                </li>
+              </ingredients>
+              <fixedIngredientFilter>
+                <thingDefs>
+                  <li>BOR_TenebralOrgan</li>
+                </thingDefs>
+              </fixedIngredientFilter>
+              <appliedOnFixedBodyParts>
+                <li>Torso</li>
+              </appliedOnFixedBodyParts>
+              <addsHediff>HealingEnhancerTenebral</addsHediff>
+              <incompatibleWithHediffTags>
+                <li>healingEnhancer</li>
+              </incompatibleWithHediffTags>
+            </RecipeDef>
 
-					<li Class="PatchOperationReplace">
-						<xpath>Defs/HediffDef[defName="ElbowBladeTenebral"]/comps/li[@Class="HediffCompProperties_VerbGiver"]/tools</xpath>
-						<value>
-							<tools>
-								<li Class="CombatExtended.ToolCE">
-									<label>blade</label>
-									<capacities>
-										<li>Cut</li>
-									</capacities>
-									<power>48</power>
-									<cooldownTime>0.35</cooldownTime>
-									<armorPenetrationBlunt>1.2</armorPenetrationBlunt>
-									<armorPenetrationSharp>1.08</armorPenetrationSharp>
-									<linkedBodyPartsGroup>Blade</linkedBodyPartsGroup>
-									<alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
-									<soundMeleeHit>MeleeHit_BionicSlash</soundMeleeHit>
-									<soundMeleeMiss>MeleeMiss_BionicSlash</soundMeleeMiss>
-								</li>
-							</tools>
-						</value>
-					</li>
+            <RecipeDef ParentName="SurgeryRemoveImplantBase">
+              <defName>RemoveHealingEnhancerTenebral</defName>
+              <label>remove tenebral healing enhancer</label>
+              <description>Remove healing enhancer.</description>
+              <descriptionHyperlinks>
+                <ThingDef>BOR_TenebralOrgan</ThingDef>
+                <HediffDef>HealingEnhancerTenebral</HediffDef>
+              </descriptionHyperlinks>
+              <jobString>Removing tenebral healing enhancer.</jobString>
+              <removesHediff>HealingEnhancerTenebral</removesHediff>
+            </RecipeDef>
 
-					<li Class="PatchOperationReplace">
-						<xpath>Defs/HediffDef[defName="KneeSpikeTenebral"]/comps/li[@Class="HediffCompProperties_VerbGiver"]/tools</xpath>
-						<value>
-							<tools>
-								<li Class="CombatExtended.ToolCE">
-									<label>spike</label>
-									<capacities>
-										<li>Stab</li>
-									</capacities>
-									<power>78</power>
-									<cooldownTime>0.25</cooldownTime>
-									<armorPenetrationBlunt>3.0</armorPenetrationBlunt>
-									<armorPenetrationSharp>3.6</armorPenetrationSharp>
-									<linkedBodyPartsGroup>Point</linkedBodyPartsGroup>
-									<alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
-									<soundMeleeHit>MeleeHit_BionicSlash</soundMeleeHit>
-									<soundMeleeMiss>MeleeMiss_BionicSlash</soundMeleeMiss>
-								</li>
-							</tools>
-						</value>
-					</li>
+            <!-- Toughskin gland -->
 
-					<li Class="PatchOperationReplace">
-						<xpath>Defs/HediffDef[defName="VenomFangsTenebral"]/comps/li[@Class="HediffCompProperties_VerbGiver"]/tools</xpath>
-						<value>
-							<tools>
-								<li Class="CombatExtended.ToolCE">
-									<label>venom fangs</label>
-									<capacities>
-										<li>ToxicBite</li>
-									</capacities>
-									<power>30</power>
-									<cooldownTime>0.3</cooldownTime>
-									<armorPenetrationBlunt>0.9</armorPenetrationBlunt>
-									<armorPenetrationSharp>9.0</armorPenetrationSharp>
-									<linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
-									<alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
-								</li>
-							</tools>
-						</value>
-					</li>
+            <HediffDef ParentName="BOR_ImplantTenebralHediffBase">
+              <defName>ToughskinGlandTenebral</defName>
+              <label>tenebral toughskin gland</label>
+              <labelNoun>an tenebral toughskin gland</labelNoun>
+              <description>An installed tenebral toughskin gland.</description>
+              <descriptionHyperlinks>
+                <ThingDef>BOR_TenebralOrgan</ThingDef>
+              </descriptionHyperlinks>
+              <stages>
+                <li>
+                  <capMods>
+                    <li>
+                      <capacity>Moving</capacity>
+                      <postFactor>0.75</postFactor>
+                    </li>
+                  </capMods>
+                  <statOffsets>
+                    <ArmorRating_Sharp>0.9</ArmorRating_Sharp>
+                    <ArmorRating_Blunt>0.75</ArmorRating_Blunt>
+                    <ArmorRating_Heat>0.9</ArmorRating_Heat>
+                  </statOffsets>
+                </li>
+              </stages>
+              <tags>
+                <li>ArmorGland</li>
+              </tags>
+            </HediffDef>
 
-					<li Class="PatchOperationReplace">
-						<xpath>Defs/HediffDef[defName="VenomTalonTenebral"]/comps/li[@Class="HediffCompProperties_VerbGiver"]/tools</xpath>
-						<value>
-							<tools>
-								<li Class="CombatExtended.ToolCE">
-									<label>venom talon</label>
-									<capacities>
-										<li>ScratchToxic</li>
-									</capacities>
-									<power>42</power>
-									<cooldownTime>0.35</cooldownTime>
-									<armorPenetrationBlunt>1.2</armorPenetrationBlunt>
-									<armorPenetrationSharp>1.2</armorPenetrationSharp>
-									<alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
-									<soundMeleeHit>MeleeHit_BionicSlash</soundMeleeHit>
-									<soundMeleeMiss>MeleeMiss_BionicSlash</soundMeleeMiss>
-								</li>
-							</tools>
-						</value>
-					</li>
+            <RecipeDef ParentName="SurgeryInstallImplantBORTenebralBase">
+              <defName>InstallToughskinGlandTenebral</defName>
+              <label>install tenebral toughskin gland</label>
+              <description>Install a toughskin gland.</description>
+              <descriptionHyperlinks>
+                <ThingDef>BOR_TenebralOrgan</ThingDef>
+                <HediffDef>ToughskinGlandTenebral</HediffDef>
+              </descriptionHyperlinks>
+              <jobString>Installing tenebral toughskin gland.</jobString>
+              <ingredients>
+                <li>
+                  <filter>
+                    <thingDefs>
+                      <li>BOR_TenebralOrgan</li>
+                    </thingDefs>
+                  </filter>
+                  <count>1</count>
+                </li>
+              </ingredients>
+              <fixedIngredientFilter>
+                <thingDefs>
+                  <li>BOR_TenebralOrgan</li>
+                </thingDefs>
+              </fixedIngredientFilter>
+              <appliedOnFixedBodyParts>
+                <li>Torso</li>
+              </appliedOnFixedBodyParts>
+              <addsHediff>ToughskinGlandTenebral</addsHediff>
+              <incompatibleWithHediffTags>
+                <li>ArmorGland</li>
+              </incompatibleWithHediffTags>
+            </RecipeDef>
 
-					<!-- Bionics -->
+            <RecipeDef ParentName="SurgeryRemoveImplantBase">
+              <defName>RemoveToughskinGlandTenebral</defName>
+              <label>remove tenebral toughskin gland</label>
+              <description>Remove toughskin gland.</description>
+              <descriptionHyperlinks>
+                <ThingDef>BOR_TenebralOrgan</ThingDef>
+                <HediffDef>ToughskinGlandTenebral</HediffDef>
+              </descriptionHyperlinks>
+              <jobString>Removing tenebral toughskin gland.</jobString>
+              <removesHediff>ToughskinGlandTenebral</removesHediff>
+            </RecipeDef>
 
-					<li Class="PatchOperationReplace">
-						<xpath>Defs/HediffDef[defName="ToughskinGlandTenebral"]/stages/li/statOffsets/ArmorRating_Sharp</xpath>
-						<value>
-							<ArmorRating_Sharp>4.5</ArmorRating_Sharp>
-						</value>
-					</li>
+            <!-- Armorskin gland -->
 
-					<li Class="PatchOperationReplace">
-						<xpath>Defs/HediffDef[defName="ToughskinGlandTenebral"]/stages/li/statOffsets/ArmorRating_Blunt</xpath>
-						<value>
-							<ArmorRating_Blunt>5.0</ArmorRating_Blunt>
-						</value>
-					</li>
+            <HediffDef ParentName="BOR_ImplantTenebralHediffBase">
+              <defName>ArmorskinGlandTenebral</defName>
+              <label>tenebral armorskin gland</label>
+              <labelNoun>an tenebral armorskin gland</labelNoun>
+              <description>An installed tenebral armorskin gland.</description>
+              <descriptionHyperlinks>
+                <ThingDef>BOR_TenebralOrgan</ThingDef>
+              </descriptionHyperlinks>
+              <stages>
+                <li>
+                  <capMods>
+                    <li>
+                      <capacity>Moving</capacity>
+                      <postFactor>0.65</postFactor>
+                    </li>
+                  </capMods>
+                  <statOffsets>
+                    <ArmorRating_Sharp>0.9</ArmorRating_Sharp>
+                    <ArmorRating_Blunt>0.9</ArmorRating_Blunt>
+                    <ArmorRating_Heat>0.9</ArmorRating_Heat>
+                    <PawnBeauty>-1</PawnBeauty>
+                  </statOffsets>
+                </li>
+              </stages>
+              <tags>
+                <li>ArmorGland</li>
+              </tags>
+            </HediffDef>
 
-					<li Class="PatchOperationAdd">
-						<xpath>Defs/HediffDef[defName="ToughskinGlandTenebral"]/stages/li/statOffsets</xpath>
-						<value>
-							<MoveSpeed>-0.15</MoveSpeed>
-							<MeleeDodgeChance>-0.015</MeleeDodgeChance>
-						</value>
-					</li>
+            <RecipeDef ParentName="SurgeryInstallImplantBORTenebralBase">
+              <defName>InstallArmorskinGlandTenebral</defName>
+              <label>install tenebral armorskin gland</label>
+              <description>Install an armorskin gland.</description>
+              <descriptionHyperlinks>
+                <ThingDef>BOR_TenebralOrgan</ThingDef>
+                <HediffDef>ArmorskinGlandTenebral</HediffDef>
+              </descriptionHyperlinks>
+              <jobString>Installing tenebral armorskin gland.</jobString>
+              <ingredients>
+                <li>
+                  <filter>
+                    <thingDefs>
+                      <li>BOR_TenebralOrgan</li>
+                    </thingDefs>
+                  </filter>
+                  <count>1</count>
+                </li>
+              </ingredients>
+              <fixedIngredientFilter>
+                <thingDefs>
+                  <li>BOR_TenebralOrgan</li>
+                </thingDefs>
+              </fixedIngredientFilter>
+              <appliedOnFixedBodyParts>
+                <li>Torso</li>
+              </appliedOnFixedBodyParts>
+              <addsHediff>ArmorskinGlandTenebral</addsHediff>
+              <incompatibleWithHediffTags>
+                <li>ArmorGland</li>
+              </incompatibleWithHediffTags>
+            </RecipeDef>
 
-					<li Class="PatchOperationRemove">
-						<xpath>Defs/HediffDef[defName="ToughskinGlandTenebral"]/stages/li/capMods</xpath>
-					</li>
+            <RecipeDef ParentName="SurgeryRemoveImplantBase">
+              <defName>RemoveArmorskinGlandTenebral</defName>
+              <label>remove tenebral armorskin gland</label>
+              <description>Remove armorskin gland.</description>
+              <descriptionHyperlinks>
+                <ThingDef>BOR_TenebralOrgan</ThingDef>
+              </descriptionHyperlinks>
+              <jobString>Removing tenebral armorskin gland.</jobString>
+              <removesHediff>ArmorskinGlandTenebral</removesHediff>
+            </RecipeDef>
 
-					<li Class="PatchOperationReplace">
-						<xpath>Defs/HediffDef[defName="ArmorskinGlandTenebral"]/stages/li/statOffsets/ArmorRating_Sharp</xpath>
-						<value>
-							<ArmorRating_Sharp>6.0</ArmorRating_Sharp>
-						</value>
-					</li>
+            <!-- Stoneskin gland -->
 
-					<li Class="PatchOperationReplace">
-						<xpath>Defs/HediffDef[defName="ArmorskinGlandTenebral"]/stages/li/statOffsets/ArmorRating_Blunt</xpath>
-						<value>
-							<ArmorRating_Blunt>12</ArmorRating_Blunt>
-						</value>
-					</li>
+            <HediffDef ParentName="BOR_ImplantTenebralHediffBase">
+              <defName>StoneskinGlandTenebral</defName>
+              <label>tenebral stoneskin gland</label>
+              <labelNoun>an tenebral stoneskin gland</labelNoun>
+              <description>An installed tenebral stoneskin gland.</description>
+              <descriptionHyperlinks>
+                <ThingDef>BOR_TenebralOrgan</ThingDef>
+              </descriptionHyperlinks>
+              <stages>
+                <li>
+                  <capMods>
+                    <li>
+                      <capacity>Moving</capacity>
+                      <postFactor>0.65</postFactor>
+                    </li>
+                  </capMods>
+                  <statOffsets>
+                    <ArmorRating_Sharp>0.95</ArmorRating_Sharp>
+                    <ArmorRating_Blunt>0.95</ArmorRating_Blunt>
+                    <ArmorRating_Heat>0.95</ArmorRating_Heat>
+                    <PawnBeauty>-4</PawnBeauty>
+                  </statOffsets>
+                </li>
+              </stages>
+              <tags>
+                <li>ArmorGland</li>
+              </tags>
+            </HediffDef>
 
-					<li Class="PatchOperationAdd">
-						<xpath>Defs/HediffDef[defName="ArmorskinGlandTenebral"]/stages/li/statOffsets</xpath>
-						<value>
-							<MoveSpeed>-0.35</MoveSpeed>
-							<MeleeDodgeChance>-0.02</MeleeDodgeChance>
-						</value>
-					</li>
+            <RecipeDef ParentName="SurgeryInstallImplantBORTenebralBase">
+              <defName>InstallStoneskinGlandTenebral</defName>
+              <label>install tenebral stoneskin gland</label>
+              <description>Install a stoneskin gland.</description>
+              <descriptionHyperlinks>
+                <ThingDef>BOR_TenebralOrgan</ThingDef>
+                <HediffDef>StoneskinGlandTenebral</HediffDef>
+              </descriptionHyperlinks>
+              <jobString>Installing tenebral stoneskin gland.</jobString>
+              <ingredients>
+                <li>
+                  <filter>
+                    <thingDefs>
+                      <li>BOR_TenebralOrgan</li>
+                    </thingDefs>
+                  </filter>
+                  <count>1</count>
+                </li>
+              </ingredients>
+              <fixedIngredientFilter>
+                <thingDefs>
+                  <li>BOR_TenebralOrgan</li>
+                </thingDefs>
+              </fixedIngredientFilter>
+              <appliedOnFixedBodyParts>
+                <li>Torso</li>
+              </appliedOnFixedBodyParts>
+              <addsHediff>StoneskinGlandTenebral</addsHediff>
+              <incompatibleWithHediffTags>
+                <li>ArmorGland</li>
+              </incompatibleWithHediffTags>
+            </RecipeDef>
 
-					<li Class="PatchOperationRemove">
-						<xpath>Defs/HediffDef[defName="ArmorskinGlandTenebral"]/stages/li/capMods</xpath>
-					</li>
+            <RecipeDef ParentName="SurgeryRemoveImplantBase">
+              <defName>RemoveStoneskinGlandTenebral</defName>
+              <label>remove tenebral stoneskin gland</label>
+              <description>Remove stoneskin gland.</description>
+              <descriptionHyperlinks>
+                <ThingDef>BOR_TenebralOrgan</ThingDef>
+              </descriptionHyperlinks>
+              <jobString>Removing tenebral stoneskin gland.</jobString>
+              <removesHediff>StoneskinGlandTenebral</removesHediff>
+            </RecipeDef>
 
-					<li Class="PatchOperationReplace">
-						<xpath>Defs/HediffDef[defName="StoneskinGlandTenebral"]/stages/li/statOffsets/ArmorRating_Sharp</xpath>
-						<value>
-							<ArmorRating_Sharp>18</ArmorRating_Sharp>
-						</value>
-					</li>
+            <!-- Aesthetic shaper -->
 
-					<li Class="PatchOperationReplace">
-						<xpath>Defs/HediffDef[defName="StoneskinGlandTenebral"]/stages/li/statOffsets/ArmorRating_Blunt</xpath>
-						<value>
-							<ArmorRating_Blunt>24</ArmorRating_Blunt>
-						</value>
-					</li>
+            <HediffDef ParentName="BOR_ImplantTenebralHediffBase">
+              <defName>AestheticShaperTenebral</defName>
+              <label>tenebral aesthetic shaper</label>
+              <labelNoun>an tenebral aesthetic shaper</labelNoun>
+              <description>An installed tenebral aesthetic shaper.</description>
+              <descriptionHyperlinks>
+                <ThingDef>BOR_TenebralOrgan</ThingDef>
+              </descriptionHyperlinks>
+              <stages>
+                <li>
+                  <statOffsets>
+                    <PawnBeauty>4</PawnBeauty>
+                  </statOffsets>
+                </li>
+              </stages>
+              <tags>
+                <li>aestheticShaper</li>
+              </tags>
+            </HediffDef>
 
-					<li Class="PatchOperationAdd">
-						<xpath>Defs/HediffDef[defName="StoneskinGlandTenebral"]/stages/li/statOffsets</xpath>
-						<value>
-							<MoveSpeed>-0.55</MoveSpeed>
-							<MeleeDodgeChance>-0.055</MeleeDodgeChance>
-						</value>
-					</li>
+            <RecipeDef ParentName="SurgeryInstallImplantBORTenebralBase">
+              <defName>InstallAestheticShaperTenebral</defName>
+              <label>install tenebral aesthetic shaper</label>
+              <description>Install an aesthetic shaper.</description>
+              <descriptionHyperlinks>
+                <ThingDef>BOR_TenebralOrgan</ThingDef>
+                <HediffDef>AestheticShaperTenebral</HediffDef>
+              </descriptionHyperlinks>
+              <jobString>Installing tenebral aesthetic shaper.</jobString>
+              <ingredients>
+                <li>
+                  <filter>
+                    <thingDefs>
+                      <li>BOR_TenebralOrgan</li>
+                    </thingDefs>
+                  </filter>
+                  <count>1</count>
+                </li>
+              </ingredients>
+              <fixedIngredientFilter>
+                <thingDefs>
+                  <li>BOR_TenebralOrgan</li>
+                </thingDefs>
+              </fixedIngredientFilter>
+              <appliedOnFixedBodyParts>
+                <li>Torso</li>
+              </appliedOnFixedBodyParts>
+              <addsHediff>AestheticShaperTenebral</addsHediff>
+              <incompatibleWithHediffTags>
+                <li>aestheticShaper</li>
+              </incompatibleWithHediffTags>
+            </RecipeDef>
 
-					<li Class="PatchOperationRemove">
-						<xpath>Defs/HediffDef[defName="StoneskinGlandTenebral"]/stages/li/capMods</xpath>
-					</li>
-				</operations>
+            <RecipeDef ParentName="SurgeryRemoveImplantBase">
+              <defName>RemoveAestheticShaperTenebral</defName>
+              <label>remove tenebral aesthetic shaper</label>
+              <description>Remove aesthetic shaper.</description>
+              <descriptionHyperlinks>
+                <ThingDef>BOR_TenebralOrgan</ThingDef>
+                <HediffDef>AestheticShaperTenebral</HediffDef>
+              </descriptionHyperlinks>
+              <jobString>Removing tenebral aesthetic shaper.</jobString>
+              <removesHediff>AestheticShaperTenebral</removesHediff>
+            </RecipeDef>
 
-			</match>
-	  </li>
-	 </operations>
+            <!-- Aesthetic nose -->
+
+            <HediffDef ParentName="AddedBodyPartBase">
+              <defName>AestheticNoseTenebral</defName>
+              <label>tenebral aesthetic nose</label>
+              <labelNoun>an tenebral aesthetic nose</labelNoun>
+              <description>An installed tenebral aesthetic nose.</description>
+              <descriptionHyperlinks>
+                <ThingDef>BOR_TenebralOrgan</ThingDef>
+              </descriptionHyperlinks>
+              <addedPartProps>
+                <partEfficiency>2</partEfficiency>
+              </addedPartProps>
+              <stages>
+                <li>
+                  <statOffsets>
+                    <PawnBeauty>2</PawnBeauty>
+                  </statOffsets>
+                </li>
+              </stages>
+              <tags>
+                <li>aestheticNose</li>
+              </tags>
+            </HediffDef>
+
+            <RecipeDef ParentName="SurgeryInstallImplantBORTenebralBase">
+              <defName>InstallAestheticNoseTenebral</defName>
+              <label>install tenebral aesthetic nose</label>
+              <description>Install an aesthetic nose.</description>
+              <descriptionHyperlinks>
+                <ThingDef>BOR_TenebralOrgan</ThingDef>
+                <HediffDef>AestheticNoseTenebral</HediffDef>
+              </descriptionHyperlinks>
+              <jobString>Installing tenebral aesthetic nose.</jobString>
+              <ingredients>
+                <li>
+                  <filter>
+                    <thingDefs>
+                      <li>BOR_TenebralOrgan</li>
+                    </thingDefs>
+                  </filter>
+                  <count>1</count>
+                </li>
+              </ingredients>
+              <fixedIngredientFilter>
+                <thingDefs>
+                  <li>BOR_TenebralOrgan</li>
+                </thingDefs>
+              </fixedIngredientFilter>
+              <appliedOnFixedBodyParts>
+                <li>Nose</li>
+              </appliedOnFixedBodyParts>
+              <addsHediff>AestheticNoseTenebral</addsHediff>
+              <incompatibleWithHediffTags>
+                <li>aestheticNose</li>
+              </incompatibleWithHediffTags>
+            </RecipeDef>
+
+            <RecipeDef ParentName="SurgeryRemoveImplantBase">
+              <defName>RemoveAestheticNoseTenebral</defName>
+              <label>remove tenebral aesthetic nose</label>
+              <description>Remove aesthetic nose.</description>
+              <descriptionHyperlinks>
+                <ThingDef>BOR_TenebralOrgan</ThingDef>
+                <HediffDef>AestheticNoseTenebral</HediffDef>
+              </descriptionHyperlinks>
+              <jobString>Removing tenebral aesthetic nose.</jobString>
+              <removesHediff>AestheticNoseTenebral</removesHediff>
+            </RecipeDef>
+
+            <!-- Reprocessor stomach -->
+
+            <HediffDef ParentName="AddedBodyPartBase">
+              <defName>ReprocessorStomachTenebral</defName>
+              <label>tenebral reprocessor stomach</label>
+              <labelNoun>an tenebral reprocessor stomach</labelNoun>
+              <description>An installed tenebral reprocessor stomach.</description>
+              <descriptionHyperlinks>
+                <ThingDef>BOR_TenebralOrgan</ThingDef>
+              </descriptionHyperlinks>
+              <addedPartProps>
+                <solid>true</solid>
+                <partEfficiency>2</partEfficiency>
+                <betterThanNatural>true</betterThanNatural>
+              </addedPartProps>
+              <stages>
+                <li>
+                  <hungerRateFactor>0.1</hungerRateFactor>
+                </li>
+              </stages>
+              <comps>
+                <li Class="HediffCompProperties_ReactOnDamage">
+                  <damageDefIncoming>EMP</damageDefIncoming>
+                  <vomit>true</vomit>
+                </li>
+              </comps>
+              <tags>
+                <li>reprocessorStomach</li>
+              </tags>
+            </HediffDef>
+
+            <RecipeDef ParentName="SurgeryInstallImplantBORTenebralBase">
+              <defName>InstallReprocessorStomachTenebral</defName>
+              <label>install tenebral reprocessor stomach</label>
+              <description>Install a reprocessor stomach.</description>
+              <descriptionHyperlinks>
+                <ThingDef>BOR_TenebralOrgan</ThingDef>
+                <HediffDef>ReprocessorStomachTenebral</HediffDef>
+              </descriptionHyperlinks>
+              <jobString>Installing tenebral reprocessor stomach.</jobString>
+              <ingredients>
+                <li>
+                  <filter>
+                    <thingDefs>
+                      <li>BOR_TenebralOrgan</li>
+                    </thingDefs>
+                  </filter>
+                  <count>1</count>
+                </li>
+              </ingredients>
+              <fixedIngredientFilter>
+                <thingDefs>
+                  <li>BOR_TenebralOrgan</li>
+                </thingDefs>
+              </fixedIngredientFilter>
+              <appliedOnFixedBodyParts>
+                <li>Stomach</li>
+              </appliedOnFixedBodyParts>
+              <addsHediff>ReprocessorStomachTenebral</addsHediff>
+              <incompatibleWithHediffTags>
+                <li>reprocessorStomach</li>
+              </incompatibleWithHediffTags>
+            </RecipeDef>
+
+            <RecipeDef ParentName="SurgeryRemoveImplantBase">
+              <defName>RemoveReprocessorStomachTenebral</defName>
+              <label>remove tenebral reprocessor stomach</label>
+              <description>Remove reprocessor stomach.</description>
+              <descriptionHyperlinks>
+                <HediffDef>ReprocessorStomachTenebral</HediffDef>
+              </descriptionHyperlinks>
+              <jobString>Removing tenebral reprocessor stomach.</jobString>
+              <removesHediff>ReprocessorStomachTenebral</removesHediff>
+            </RecipeDef>
+            <!-- Circadian assistant -->
+
+            <HediffDef ParentName="BOR_ImplantTenebralHediffBase">
+              <defName>CircadianAssistantTenebral</defName>
+              <label>tenebral circadian assistant</label>
+              <labelNoun>an tenebral circadian assistant</labelNoun>
+              <description>An installed tenebral circadian assistant.</description>
+              <descriptionHyperlinks>
+                <ThingDef>BOR_TenebralOrgan</ThingDef>
+              </descriptionHyperlinks>
+              <stages>
+                <li>
+                  <statOffsets>
+                    <RestFallRateFactor>-0.8</RestFallRateFactor>
+                  </statOffsets>
+                </li>
+              </stages>
+              <comps>
+                <li Class="HediffCompProperties_ReactOnDamage">
+                  <damageDefIncoming>EMP</damageDefIncoming>
+                  <createHediff>BrainShock</createHediff>
+                </li>
+              </comps>
+              <tags>
+                <li>circadianAssistant</li>
+              </tags>
+            </HediffDef>
+
+            <RecipeDef ParentName="SurgeryInstallImplantBORTenebralBase">
+              <defName>InstallCircadianAssistantTenebral</defName>
+              <label>install tenebral circadian assistant</label>
+              <description>Install a circadian assistant.</description>
+              <descriptionHyperlinks>
+                <ThingDef>BOR_TenebralOrgan</ThingDef>
+                <HediffDef>CircadianAssistantTenebral</HediffDef>
+              </descriptionHyperlinks>
+              <jobString>Installing tenebral circadian assistant.</jobString>
+              <ingredients>
+                <li>
+                  <filter>
+                    <thingDefs>
+                      <li>BOR_TenebralOrgan</li>
+                    </thingDefs>
+                  </filter>
+                  <count>1</count>
+                </li>
+              </ingredients>
+              <fixedIngredientFilter>
+                <thingDefs>
+                  <li>BOR_TenebralOrgan</li>
+                </thingDefs>
+              </fixedIngredientFilter>
+              <appliedOnFixedBodyParts>
+                <li>Brain</li>
+              </appliedOnFixedBodyParts>
+              <addsHediff>CircadianAssistantTenebral</addsHediff>
+              <incompatibleWithHediffTags>
+                <li>circadianAssistant</li>
+              </incompatibleWithHediffTags>
+            </RecipeDef>
+
+            <RecipeDef ParentName="SurgeryRemoveImplantBase">
+              <defName>RemoveCircadianAssistantTenebral</defName>
+              <label>remove tenebral circadian assistant</label>
+              <description>Remove circadian assistant.</description>
+              <descriptionHyperlinks>
+                <ThingDef>BOR_TenebralOrgan</ThingDef>
+                <HediffDef>CircadianAssistantTenebral</HediffDef>
+              </descriptionHyperlinks>
+              <jobString>Removing tenebral circadian assistant.</jobString>
+              <removesHediff>CircadianAssistantTenebral</removesHediff>
+            </RecipeDef>
+
+            <!-- Circadian half-cycler -->
+
+            <HediffDef ParentName="BOR_ImplantTenebralHediffBase">
+              <defName>CircadianHalfCyclerTenebral</defName>
+              <label>tenebral circadian half-cycler</label>
+              <labelNoun>an tenebral circadian half-cycler</labelNoun>
+              <description>An installed tenebral circadian half-cycler.</description>
+              <descriptionHyperlinks>
+                <ThingDef>BOR_TenebralOrgan</ThingDef>
+              </descriptionHyperlinks>
+              <disablesNeeds>
+                <li>Rest</li>
+              </disablesNeeds>
+              <stages>
+                <li>
+                  <capMods>
+                    <li>
+                      <capacity>Consciousness</capacity>
+                      <offset>-0.2</offset>
+                    </li>
+                  </capMods>
+                </li>
+              </stages>
+              <comps>
+                <li Class="HediffCompProperties_ReactOnDamage">
+                  <damageDefIncoming>EMP</damageDefIncoming>
+                  <createHediff>BrainShock</createHediff>
+                </li>
+              </comps>
+              <tags>
+                <li>circadianAssistant</li>
+              </tags>
+            </HediffDef>
+
+            <RecipeDef ParentName="SurgeryInstallImplantBORTenebralBase">
+              <defName>InstallCircadianHalfCyclerTenebral</defName>
+              <label>install tenebral circadian half-cycler</label>
+              <description>Install a circadian half-cycler.</description>
+              <descriptionHyperlinks>
+                <ThingDef>BOR_TenebralOrgan</ThingDef>
+                <HediffDef>CircadianHalfCyclerTenebral</HediffDef>
+              </descriptionHyperlinks>
+              <jobString>Installing tenebral circadian half-cycler.</jobString>
+              <ingredients>
+                <li>
+                  <filter>
+                    <thingDefs>
+                      <li>BOR_TenebralOrgan</li>
+                    </thingDefs>
+                  </filter>
+                  <count>1</count>
+                </li>
+              </ingredients>
+              <fixedIngredientFilter>
+                <thingDefs>
+                  <li>BOR_TenebralOrgan</li>
+                </thingDefs>
+              </fixedIngredientFilter>
+              <appliedOnFixedBodyParts>
+                <li>Brain</li>
+              </appliedOnFixedBodyParts>
+              <addsHediff>CircadianHalfCyclerTenebral</addsHediff>
+              <incompatibleWithHediffTags>
+                <li>circadianAssistant</li>
+              </incompatibleWithHediffTags>
+            </RecipeDef>
+
+            <RecipeDef ParentName="SurgeryRemoveImplantBase">
+              <defName>RemoveCircadianHalfCyclerTenebral</defName>
+              <label>remove tenebral circadian half-cycler</label>
+              <description>Remove circadian half-cycler.</description>
+              <descriptionHyperlinks>
+                <ThingDef>BOR_TenebralOrgan</ThingDef>
+                <HediffDef>CircadianHalfCyclerTenebral</HediffDef>
+              </descriptionHyperlinks>
+              <jobString>Removing tenebral circadian half-cycler.</jobString>
+              <removesHediff>CircadianHalfCyclerTenebral</removesHediff>
+            </RecipeDef>
+
+            <!-- Psychic sensitizer -->
+
+            <HediffDef ParentName="BOR_ImplantTenebralHediffBase">
+              <defName>PsychicSensitizerTenebral</defName>
+              <label>tenebral psychic sensitizer</label>
+              <labelNoun>an tenebral psychic sensitizer</labelNoun>
+              <description>An installed tenebral psychic sensitizer implant.</description>
+              <descriptionHyperlinks>
+                <ThingDef>BOR_TenebralOrgan</ThingDef>
+              </descriptionHyperlinks>
+              <stages>
+                <li>
+                  <statOffsets>
+                    <PsychicSensitivity>1.5</PsychicSensitivity>
+                  </statOffsets>
+                </li>
+              </stages>
+            </HediffDef>
+
+            <RecipeDef ParentName="SurgeryInstallImplantBORTenebralBase">
+              <defName>InstallPsychicSensitizerTenebral</defName>
+              <label>install tenebral psychic sensitizer</label>
+              <description>Install a psychic sensitizer.</description>
+              <descriptionHyperlinks>
+                <ThingDef>BOR_TenebralOrgan</ThingDef>
+                <HediffDef>PsychicSensitizerTenebral</HediffDef>
+              </descriptionHyperlinks>
+              <jobString>Installing tenebral psychic sensitizer.</jobString>
+              <ingredients>
+                <li>
+                  <filter>
+                    <thingDefs>
+                      <li>BOR_TenebralOrgan</li>
+                    </thingDefs>
+                  </filter>
+                  <count>1</count>
+                </li>
+              </ingredients>
+              <fixedIngredientFilter>
+                <thingDefs>
+                  <li>BOR_TenebralOrgan</li>
+                </thingDefs>
+              </fixedIngredientFilter>
+              <appliedOnFixedBodyParts>
+                <li>Brain</li>
+              </appliedOnFixedBodyParts>
+              <addsHediff>PsychicSensitizerTenebral</addsHediff>
+            </RecipeDef>
+
+            <RecipeDef ParentName="SurgeryRemoveImplantBase">
+              <defName>RemovePsychicSensitizerTenebral</defName>
+              <label>remove tenebral psychic sensitizer</label>
+              <description>Remove psychic sensitizer.</description>
+              <descriptionHyperlinks>
+                <ThingDef>BOR_TenebralOrgan</ThingDef>
+                <HediffDef>PsychicSensitizerTenebral</HediffDef>
+              </descriptionHyperlinks>
+              <jobString>Removing tenebral psychic sensitizer.</jobString>
+              <removesHediff>PsychicSensitizerTenebral</removesHediff>
+            </RecipeDef>
+
+            <!-- Psychic harmonizer -->
+
+            <ThoughtDef>
+              <defName>PsychicHarmonizationTenebral</defName>
+              <thoughtClass>Thought_PsychicHarmonizer</thoughtClass>
+              <effectMultiplyingStat>PsychicSensitivity</effectMultiplyingStat>
+              <stackLimit>100</stackLimit>
+              <developmentalStageFilter>Baby, Child, Adult</developmentalStageFilter>
+              <stages>
+                <li>
+                  <label>tenebral psychic harmony: {HARMONIZER_labelShort}</label>
+                  <description>The psychic harmonizer implant makes me feel some of the emotions of the person using it as long as we're close together.</description>
+                  <baseMoodEffect>25</baseMoodEffect>
+                </li>
+              </stages>
+            </ThoughtDef>
+
+            <HediffDef ParentName="BOR_ImplantTenebralHediffBase">
+              <defName>PsychicHarmonizerTenebral</defName>
+              <label>tenebral psychic harmonizer</label>
+              <labelNoun>an tenebral psychic harmonizer</labelNoun>
+              <description>An installed tenebral psychic harmonizer implant.</description>
+              <descriptionHyperlinks>
+                <ThingDef>BOR_TenebralOrgan</ThingDef>
+              </descriptionHyperlinks>
+              <comps>
+                <li Class="HediffCompProperties_PsychicHarmonizer">
+                  <range>75</range>
+                  <thought>PsychicHarmonization</thought>
+                </li>
+              </comps>
+            </HediffDef>
+            <RecipeDef ParentName="SurgeryInstallImplantBORTenebralBase">
+              <defName>InstallPsychicHarmonizerTenebral</defName>
+              <label>install tenebral psychic harmonizer</label>
+              <description>Install a psychic harmonizer.</description>
+              <descriptionHyperlinks>
+                <ThingDef>BOR_TenebralOrgan</ThingDef>
+                <HediffDef>PsychicHarmonizerTenebral</HediffDef>
+              </descriptionHyperlinks>
+              <jobString>Installing tenebral psychic harmonizer.</jobString>
+              <ingredients>
+                <li>
+                  <filter>
+                    <thingDefs>
+                      <li>BOR_TenebralOrgan</li>
+                    </thingDefs>
+                  </filter>
+                  <count>1</count>
+                </li>
+              </ingredients>
+              <fixedIngredientFilter>
+                <thingDefs>
+                  <li>BOR_TenebralOrgan</li>
+                </thingDefs>
+              </fixedIngredientFilter>
+              <appliedOnFixedBodyParts>
+                <li>Brain</li>
+              </appliedOnFixedBodyParts>
+              <addsHediff>PsychicHarmonizerTenebral</addsHediff>
+            </RecipeDef>
+
+            <RecipeDef ParentName="SurgeryRemoveImplantBase">
+              <defName>RemovePsychicHarmonizerTenebral</defName>
+              <label>remove tenebral psychic harmonizer</label>
+              <description>Remove psychic harmonizer.</description>
+              <descriptionHyperlinks>
+                <ThingDef>BOR_TenebralOrgan</ThingDef>
+                <HediffDef>PsychicHarmonizerTenebral</HediffDef>
+              </descriptionHyperlinks>
+              <jobString>Removing tenebral psychic harmonizer.</jobString>
+              <removesHediff>PsychicHarmonizerTenebral</removesHediff>
+            </RecipeDef>
+
+            <!-- Psychic reader -->
+
+            <HediffDef ParentName="BOR_ImplantTenebralHediffBase">
+              <defName>PsychicReaderTenebral</defName>
+              <label>tenebral psychic reader</label>
+              <labelNoun>an tenebral psychic reader</labelNoun>
+              <description>An installed tenebral psychic reader implant.</description>
+              <descriptionHyperlinks>
+                <ThingDef>BOR_TenebralOrgan</ThingDef>
+              </descriptionHyperlinks>
+              <stages>
+                <li>
+                  <statOffsets>
+                    <NegotiationAbility>0.9</NegotiationAbility>
+                    <TradePriceImprovement>0.75</TradePriceImprovement>
+                  </statOffsets>
+                  <statOffsetEffectMultiplier>PsychicSensitivity</statOffsetEffectMultiplier>
+                </li>
+              </stages>
+            </HediffDef>
+
+            <RecipeDef ParentName="SurgeryInstallImplantBORTenebralBase">
+              <defName>InstallPsychicReaderTenebral</defName>
+              <label>install tenebral psychic reader</label>
+              <description>Install a psychic reader.</description>
+              <descriptionHyperlinks>
+                <ThingDef>BOR_TenebralOrgan</ThingDef>
+                <HediffDef>PsychicReaderTenebral</HediffDef>
+              </descriptionHyperlinks>
+              <jobString>Installing tenebral psychic reader.</jobString>
+              <ingredients>
+                <li>
+                  <filter>
+                    <thingDefs>
+                      <li>BOR_TenebralOrgan</li>
+                    </thingDefs>
+                  </filter>
+                  <count>1</count>
+                </li>
+              </ingredients>
+              <fixedIngredientFilter>
+                <thingDefs>
+                  <li>BOR_TenebralOrgan</li>
+                </thingDefs>
+              </fixedIngredientFilter>
+              <appliedOnFixedBodyParts>
+                <li>Brain</li>
+              </appliedOnFixedBodyParts>
+              <addsHediff>PsychicReaderTenebral</addsHediff>
+            </RecipeDef>
+
+            <RecipeDef ParentName="SurgeryRemoveImplantBase">
+              <defName>RemovePsychicReaderTenebral</defName>
+              <label>remove tenebral psychic reader</label>
+              <description>Remove psychic reader.</description>
+              <descriptionHyperlinks>
+                <ThingDef>BOR_TenebralOrgan</ThingDef>
+                <HediffDef>PsychicReaderTenebral</HediffDef>
+              </descriptionHyperlinks>
+              <jobString>Removing tenebral psychic reader.</jobString>
+              <removesHediff>PsychicReaderTenebral</removesHediff>
+            </RecipeDef>
+
+          </value>
+        </li>
+
+        <!-- check to see if CombatExtended is loaded as well, then modify the patched in defs to CE standards -->
+        <li Class="PatchOperationFindMod">
+          <mods>
+            <li>Combat Extended</li>
+          </mods>
+          <match Class="PatchOperationSequence">
+            <operations>
+              <li Class="PatchOperationReplace">
+                <xpath>Defs/HediffDef[defName="DrillArmTenebral"]/comps/li[@Class="HediffCompProperties_VerbGiver"]/tools</xpath>
+                <value>
+                  <tools>
+                    <li Class="CombatExtended.ToolCE">
+                      <label>drill</label>
+                      <capacities>
+                        <li>Stab</li>
+                      </capacities>
+                      <power>48</power>
+                      <cooldownTime>0.5</cooldownTime>
+                      <armorPenetrationSharp>0.24</armorPenetrationSharp>
+                      <armorPenetrationBlunt>1.8</armorPenetrationBlunt>
+                      <alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+                      <soundMeleeHit>MeleeHit_DrillArm</soundMeleeHit>
+                      <soundMeleeMiss>MeleeMiss_DrillArm</soundMeleeMiss>
+                    </li>
+                  </tools>
+                </value>
+              </li>
+
+              <li Class="PatchOperationReplace">
+                <xpath>Defs/HediffDef[defName="FieldHandTenebral"]/comps/li[@Class="HediffCompProperties_VerbGiver"]/tools</xpath>
+                <value>
+                  <tools>
+                    <li Class="CombatExtended.ToolCE">
+                      <label>knuckle</label>
+                      <capacities>
+                        <li>Blunt</li>
+                      </capacities>
+                      <power>18</power>
+                      <cooldownTime>0.5</cooldownTime>
+                      <armorPenetrationSharp>0.04</armorPenetrationSharp>
+                      <armorPenetrationBlunt>5.0</armorPenetrationBlunt>
+                      <alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+                      <soundMeleeHit>MeleeHit_FieldHand</soundMeleeHit>
+                      <soundMeleeMiss>MeleeMiss_FieldHand</soundMeleeMiss>
+                    </li>
+                  </tools>
+                </value>
+              </li>
+
+              <li Class="PatchOperationReplace">
+                <xpath>Defs/HediffDef[defName="HandTalonTenebral"]/comps/li[@Class="HediffCompProperties_VerbGiver"]/tools</xpath>
+                <value>
+                  <tools>
+                    <li Class="CombatExtended.ToolCE">
+                      <label>talon</label>
+                      <capacities>
+                        <li>Scratch</li>
+                      </capacities>
+                      <power>42</power>
+                      <cooldownTime>0.25</cooldownTime>
+                      <armorPenetrationBlunt>1.2</armorPenetrationBlunt>
+                      <armorPenetrationSharp>1.2</armorPenetrationSharp>
+                      <alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+                      <soundMeleeHit>MeleeHit_BionicSlash</soundMeleeHit>
+                      <soundMeleeMiss>MeleeMiss_BionicSlash</soundMeleeMiss>
+                    </li>
+                  </tools>
+                </value>
+              </li>
+
+              <li Class="PatchOperationReplace">
+                <xpath>Defs/HediffDef[defName="ElbowBladeTenebral"]/comps/li[@Class="HediffCompProperties_VerbGiver"]/tools</xpath>
+                <value>
+                  <tools>
+                    <li Class="CombatExtended.ToolCE">
+                      <label>blade</label>
+                      <capacities>
+                        <li>Cut</li>
+                      </capacities>
+                      <power>48</power>
+                      <cooldownTime>0.35</cooldownTime>
+                      <armorPenetrationBlunt>1.2</armorPenetrationBlunt>
+                      <armorPenetrationSharp>1.08</armorPenetrationSharp>
+                      <linkedBodyPartsGroup>Blade</linkedBodyPartsGroup>
+                      <alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+                      <soundMeleeHit>MeleeHit_BionicSlash</soundMeleeHit>
+                      <soundMeleeMiss>MeleeMiss_BionicSlash</soundMeleeMiss>
+                    </li>
+                  </tools>
+                </value>
+              </li>
+
+              <li Class="PatchOperationReplace">
+                <xpath>Defs/HediffDef[defName="KneeSpikeTenebral"]/comps/li[@Class="HediffCompProperties_VerbGiver"]/tools</xpath>
+                <value>
+                  <tools>
+                    <li Class="CombatExtended.ToolCE">
+                      <label>spike</label>
+                      <capacities>
+                        <li>Stab</li>
+                      </capacities>
+                      <power>78</power>
+                      <cooldownTime>0.25</cooldownTime>
+                      <armorPenetrationBlunt>3.0</armorPenetrationBlunt>
+                      <armorPenetrationSharp>3.6</armorPenetrationSharp>
+                      <linkedBodyPartsGroup>Point</linkedBodyPartsGroup>
+                      <alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+                      <soundMeleeHit>MeleeHit_BionicSlash</soundMeleeHit>
+                      <soundMeleeMiss>MeleeMiss_BionicSlash</soundMeleeMiss>
+                    </li>
+                  </tools>
+                </value>
+              </li>
+
+              <li Class="PatchOperationReplace">
+                <xpath>Defs/HediffDef[defName="VenomFangsTenebral"]/comps/li[@Class="HediffCompProperties_VerbGiver"]/tools</xpath>
+                <value>
+                  <tools>
+                    <li Class="CombatExtended.ToolCE">
+                      <label>venom fangs</label>
+                      <capacities>
+                        <li>ToxicBite</li>
+                      </capacities>
+                      <power>30</power>
+                      <cooldownTime>0.3</cooldownTime>
+                      <armorPenetrationBlunt>0.9</armorPenetrationBlunt>
+                      <armorPenetrationSharp>9.0</armorPenetrationSharp>
+                      <linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
+                      <alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+                    </li>
+                  </tools>
+                </value>
+              </li>
+
+              <li Class="PatchOperationReplace">
+                <xpath>Defs/HediffDef[defName="VenomTalonTenebral"]/comps/li[@Class="HediffCompProperties_VerbGiver"]/tools</xpath>
+                <value>
+                  <tools>
+                    <li Class="CombatExtended.ToolCE">
+                      <label>venom talon</label>
+                      <capacities>
+                        <li>ScratchToxic</li>
+                      </capacities>
+                      <power>42</power>
+                      <cooldownTime>0.35</cooldownTime>
+                      <armorPenetrationBlunt>1.2</armorPenetrationBlunt>
+                      <armorPenetrationSharp>1.2</armorPenetrationSharp>
+                      <alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+                      <soundMeleeHit>MeleeHit_BionicSlash</soundMeleeHit>
+                      <soundMeleeMiss>MeleeMiss_BionicSlash</soundMeleeMiss>
+                    </li>
+                  </tools>
+                </value>
+              </li>
+
+              <!-- Bionics -->
+
+              <li Class="PatchOperationReplace">
+                <xpath>Defs/HediffDef[defName="ToughskinGlandTenebral"]/stages/li/statOffsets/ArmorRating_Sharp</xpath>
+                <value>
+                  <ArmorRating_Sharp>4.5</ArmorRating_Sharp>
+                </value>
+              </li>
+
+              <li Class="PatchOperationReplace">
+                <xpath>Defs/HediffDef[defName="ToughskinGlandTenebral"]/stages/li/statOffsets/ArmorRating_Blunt</xpath>
+                <value>
+                  <ArmorRating_Blunt>5.0</ArmorRating_Blunt>
+                </value>
+              </li>
+
+              <li Class="PatchOperationAdd">
+                <xpath>Defs/HediffDef[defName="ToughskinGlandTenebral"]/stages/li/statOffsets</xpath>
+                <value>
+                  <MoveSpeed>-0.15</MoveSpeed>
+                  <MeleeDodgeChance>-0.015</MeleeDodgeChance>
+                </value>
+              </li>
+
+              <li Class="PatchOperationRemove">
+                <xpath>Defs/HediffDef[defName="ToughskinGlandTenebral"]/stages/li/capMods</xpath>
+              </li>
+
+              <li Class="PatchOperationReplace">
+                <xpath>Defs/HediffDef[defName="ArmorskinGlandTenebral"]/stages/li/statOffsets/ArmorRating_Sharp</xpath>
+                <value>
+                  <ArmorRating_Sharp>6.0</ArmorRating_Sharp>
+                </value>
+              </li>
+
+              <li Class="PatchOperationReplace">
+                <xpath>Defs/HediffDef[defName="ArmorskinGlandTenebral"]/stages/li/statOffsets/ArmorRating_Blunt</xpath>
+                <value>
+                  <ArmorRating_Blunt>12</ArmorRating_Blunt>
+                </value>
+              </li>
+
+              <li Class="PatchOperationAdd">
+                <xpath>Defs/HediffDef[defName="ArmorskinGlandTenebral"]/stages/li/statOffsets</xpath>
+                <value>
+                  <MoveSpeed>-0.35</MoveSpeed>
+                  <MeleeDodgeChance>-0.02</MeleeDodgeChance>
+                </value>
+              </li>
+
+              <li Class="PatchOperationRemove">
+                <xpath>Defs/HediffDef[defName="ArmorskinGlandTenebral"]/stages/li/capMods</xpath>
+              </li>
+
+              <li Class="PatchOperationReplace">
+                <xpath>Defs/HediffDef[defName="StoneskinGlandTenebral"]/stages/li/statOffsets/ArmorRating_Sharp</xpath>
+                <value>
+                  <ArmorRating_Sharp>18</ArmorRating_Sharp>
+                </value>
+              </li>
+
+              <li Class="PatchOperationReplace">
+                <xpath>Defs/HediffDef[defName="StoneskinGlandTenebral"]/stages/li/statOffsets/ArmorRating_Blunt</xpath>
+                <value>
+                  <ArmorRating_Blunt>24</ArmorRating_Blunt>
+                </value>
+              </li>
+
+              <li Class="PatchOperationAdd">
+                <xpath>Defs/HediffDef[defName="StoneskinGlandTenebral"]/stages/li/statOffsets</xpath>
+                <value>
+                  <MoveSpeed>-0.55</MoveSpeed>
+                  <MeleeDodgeChance>-0.055</MeleeDodgeChance>
+                </value>
+              </li>
+
+              <li Class="PatchOperationRemove">
+                <xpath>Defs/HediffDef[defName="StoneskinGlandTenebral"]/stages/li/capMods</xpath>
+              </li>
+            </operations>
+
+          </match>
+        </li>
+      </operations>
     </enabled>
   </Operation>
 

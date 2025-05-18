@@ -3,9 +3,11 @@
 
 	<Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
 		<modSettingDef>BOR_Setting_Biotech</modSettingDef>
-		<enabled Class="PatchOperationAdd">
-			<xpath>Defs</xpath>
-			<value>
+		<enabled Class="PatchOperationSequence">
+			<operations>
+				<li Class="PatchOperationAdd">
+					<xpath>Defs</xpath>
+					<value>
 
 				<XenotypeDef>
 					<defName>BOR_Kwazaari</defName>
@@ -32,7 +34,19 @@
 				</XenotypeDef>
 
 			</value>
-		</enabled>
-	</Operation>
+		</li>
+		<li Class="PatchOperationAdd">
+			<xpath>/Defs/FactionDef[defName="BOR_KwazaarBazaar"]</xpath>
+			<value>
+				<xenotypeSet>
+					<xenotypeChances>
+						<BOR_Kwazaari>0.8</BOR_Kwazaari>
+					</xenotypeChances>
+				</xenotypeSet>
+			</value>
+		</li>
+	</operations>
+</enabled>
+</Operation>
 
 </Patch>
