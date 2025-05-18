@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+
+	<Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
+		<modSettingDef>BOR_Setting_DubsBadHygiene</modSettingDef>
+		<enabled Class="PatchOperationSequence">
+			<operations>
+
+				<!-- patch sequence to patch in defs while proceeding to check for pawnkinds to be updated -->
+				<li Class="PatchOperationAdd">
+					<xpath>Defs</xpath>
+
+					<value>
+
+						<HediffDef ParentName="BOR_ImplantTenebralHediffBase">
+							<defName>TenebralBladder</defName>
+							<label>tenebral bladder</label>
+							<labelNoun>a tenebral bladder</labelNoun>
+							<description>An installed tenebral bladder.</description>
+							<descriptionHyperlinks>
+								<ThingDef>TenebralBladder</ThingDef>
+							</descriptionHyperlinks>
+							<spawnThingOnRemoved>TenebralBladder</spawnThingOnRemoved>
+							<stages>
+								<li>
+									<statOffsets>
+										<BladderRateMultiplier>-0.85</BladderRateMultiplier>
+										<ThirstRateMultiplier>-0.85</ThirstRateMultiplier>
+									</statOffsets>
+								</li>
+							</stages>
+						</HediffDef>
+
+						<ThingDef ParentName="BodyPartBionicBase">
+							<defName>TenebralBladder</defName>
+							<label>tenebral bladder</label>
+							<description>An advanced tenebral-tech bladder. A chemical recycling system breaks down waste products from the body into molecules which are recycled with the remainder released as gas, the downside of this being that it gives the user gas.</description>
+							<descriptionHyperlinks>
+								<RecipeDef>InstallTenebralBladder</RecipeDef>
+							</descriptionHyperlinks>
+							<costList>
+								<BOR_Tenebrite>10</BOR_Tenebrite>
+								<BOR_ComponentIII>3</BOR_ComponentIII>
+							</costList>
+							<thingCategories Inherit="False">
+								<li>BOR_Bionics_III</li>
+							</thingCategories>
+							<statBases>
+								<Mass>2</Mass>
+								<WorkToMake>30000</WorkToMake>
+								<MarketValue>30000</MarketValue>
+
+								<RoyalFavorValue>2</RoyalFavorValue>
+							</statBases>
+							<recipeMaker>
+								<skillRequirements>
+									<Crafting>18</Crafting>
+								</skillRequirements>
+								<researchPrerequisite MayRequire="dbhlitemode">HygieneBionics</researchPrerequisite>
+								<recipeUsers Inherit="False">
+									<li>BOR_MedicineBench_III</li>
+									<li>BOR_Bench_IV</li>
+								</recipeUsers>
+							</recipeMaker>
+							<graphicData>
+								<texPath>Things/Item/Health/HealthItem</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+								<drawSize>0.80</drawSize>
+								<color>(69, 32, 41)</color>
+							</graphicData>
+							<tradeTags>
+								<li>BOR_Tech_III</li>
+							</tradeTags>
+						</ThingDef>
+
+						<RecipeDef ParentName="SurgeryInstallImplantBase">
+							<defName>InstallTenebralBladder</defName>
+							<label>install tenebral bladder</label>
+							<description>Install a tenebral bladder.</description>
+							<skillRequirements>
+								<Medicine>18</Medicine>
+							</skillRequirements>
+							<descriptionHyperlinks>
+								<ThingDef>TenebralBladder</ThingDef>
+								<HediffDef>TenebralBladder</HediffDef>
+							</descriptionHyperlinks>
+							<jobString>Installing tenebral bladder.</jobString>
+							<ingredients>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>TenebralBladder</li>
+										</thingDefs>
+									</filter>
+									<count>1</count>
+								</li>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_MedicineIII</li>
+										</thingDefs>
+									</filter>
+									<count>3</count>
+								</li>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_Femtoclusters</li>
+										</thingDefs>
+									</filter>
+									<count>1</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter>
+								<thingDefs>
+									<li>BOR_MedicineIII</li>
+									<li>BOR_Femtoclusters</li>
+									<li>TenebralBladder</li>
+								</thingDefs>
+							</fixedIngredientFilter>
+							<addsHediff>TenebralBladder</addsHediff>
+							<appliedOnFixedBodyParts>
+								<li>Torso</li>
+							</appliedOnFixedBodyParts>
+						</RecipeDef>
+
+
+						<HediffDef ParentName="BOR_ImplantTenebralHediffBase">
+							<defName>TenebralHygieneEnhancer</defName>
+							<label>tenebral hygiene enhancer</label>
+							<labelNoun>a tenebral hygiene enhancer</labelNoun>
+							<description>An installed tenebral hygiene enhancer.</description>
+							<descriptionHyperlinks>
+								<ThingDef>TenebralHygieneEnhancer</ThingDef>
+							</descriptionHyperlinks>
+							<spawnThingOnRemoved>TenebralHygieneEnhancer</spawnThingOnRemoved>
+							<stages>
+								<li>
+									<statOffsets>
+										<HygieneRateMultiplier>-0.85</HygieneRateMultiplier>
+									</statOffsets>
+								</li>
+							</stages>
+						</HediffDef>
+
+						<ThingDef ParentName="BodyPartBionicBase">
+							<defName>TenebralHygieneEnhancer</defName>
+							<label>tenebral hygiene enhancer</label>
+							<description>Releases tenebral mechanites that break down dead skin cells and other detritus on the skin and hair releasing it harmlessly into the air.</description>
+							<descriptionHyperlinks>
+								<RecipeDef>InstallTenebralHygieneEnhancer</RecipeDef>
+							</descriptionHyperlinks>
+							<costList>
+								<BOR_Tenebrite>10</BOR_Tenebrite>
+								<BOR_ComponentIII>3</BOR_ComponentIII>
+							</costList>
+							<statBases>
+								<WorkToMake>30000</WorkToMake>
+								<MarketValue>30000</MarketValue>
+								<Mass>2</Mass>
+
+								<RoyalFavorValue>2</RoyalFavorValue>
+							</statBases>
+							<thingCategories Inherit="False">
+								<li>BOR_Bionics_III</li>
+							</thingCategories>
+							<recipeMaker>
+								<skillRequirements>
+									<Crafting>18</Crafting>
+								</skillRequirements>
+								<recipeUsers Inherit="False">
+									<li>BOR_MedicineBench_III</li>
+									<li>BOR_Bench_IV</li>
+								</recipeUsers>
+								<researchPrerequisite>HygieneBionics</researchPrerequisite>
+							</recipeMaker>
+							<graphicData>
+								<texPath>Things/Item/Health/HealthItem</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+								<drawSize>0.80</drawSize>
+								<color>(69, 32, 41)</color>
+							</graphicData>
+							<tradeTags>
+								<li>BOR_Tech_III</li>
+							</tradeTags>
+						</ThingDef>
+
+						<RecipeDef ParentName="SurgeryInstallImplantBase">
+							<defName>InstallTenebralHygieneEnhancer</defName>
+							<label>install tenebral hygiene enhancer</label>
+							<description>Install a tenebral hygiene enhancer.</description>
+							<skillRequirements>
+								<Medicine>18</Medicine>
+							</skillRequirements>
+							<descriptionHyperlinks>
+								<ThingDef>TenebralHygieneEnhancer</ThingDef>
+								<HediffDef>TenebralHygieneEnhancer</HediffDef>
+							</descriptionHyperlinks>
+							<jobString>Installing tenebral hygiene enhancer.</jobString>
+							<ingredients>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>TenebralHygieneEnhancer</li>
+										</thingDefs>
+									</filter>
+									<count>1</count>
+								</li>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_MedicineIII</li>
+										</thingDefs>
+									</filter>
+									<count>3</count>
+								</li>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_Femtoclusters</li>
+										</thingDefs>
+									</filter>
+									<count>1</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter>
+								<thingDefs>
+									<li>BOR_MedicineIII</li>
+									<li>BOR_Femtoclusters</li>
+									<li>TenebralHygieneEnhancer</li>
+								</thingDefs>
+							</fixedIngredientFilter>
+							<addsHediff>TenebralHygieneEnhancer</addsHediff>
+							<appliedOnFixedBodyParts>
+								<li>Torso</li>
+							</appliedOnFixedBodyParts>
+						</RecipeDef>
+
+					</value>
+				</li>
+
+				<!-- update pawnkinds techhediffs after the defs are loaded in -->
+				<li Class="PatchOperationSequence">
+					<operations>
+
+						<!-- placeholder, in case you decide to ever add a tier 3 pawn with this implant
+					<li Class="PatchOperationAdd">
+					  <xpath>Defs/PawnKindDef[@Name="BOR_BasePawn_III" 
+												or @Name="BOR_ElitePawn_III"]/techHediffsRequired
+					  </xpath>
+					  <value>
+						<li MayRequire="dubwise.dubsbadhygiene">TenebralBladder</li>
+					  </value>
+					</li>
+					-->
+
+					</operations>
+				</li>
+			</operations>
+		</enabled>
+	</Operation>
+
+</Patch>

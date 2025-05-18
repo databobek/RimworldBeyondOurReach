@@ -3,37 +3,51 @@
 
 	<Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
 		<modSettingDef>BOR_Setting_Biotech</modSettingDef>
-		<enabled Class="PatchOperationAdd">
-			<xpath>Defs</xpath>
-			<value>
+		<enabled Class="PatchOperationSequence">
+			<operations>
+				<li Class="PatchOperationAdd">
+					<xpath>Defs</xpath>
+					<value>
 
-				<XenotypeDef>
-					<defName>BOR_Solarite</defName>
-					<label>solarite human</label>
-					<description>.</description>
-					<descriptionShort>Solarites</descriptionShort>
-					<iconPath>BOR/Things/Factions/SolariteIcon</iconPath>
-					<inheritable>true</inheritable>
-					<combatPowerFactor>0.8</combatPowerFactor>
-					<genes>
-						<li>WoundHealing_Slow</li>
-						<li>Immunity_Weak</li>
-						<li>MoveSpeed_Slow</li>
-						<li>Beauty_Pretty</li>
-						<li>Learning_Fast</li>
-						<li>Mood_Optimist</li>
-						<li>Libido_Low</li>
-						<li MayRequire="sariusskelrets.dbhgenes">BladderLow</li>
-						<li MayRequire="sariusskelrets.dbhgenes">HygieneLow</li>
-						<li MayRequire="turnovus.biotech.integratedgenes">Turn_Gene_FreeSpirit</li>
-						<li MayRequire="turnovus.biotech.integratedgenes">Turn_Gene_TraitGrandeur</li>
-						<li MayRequire="turnovus.biotech.integratedgenes">Turn_Gene_MotivationHigh</li>
-						<li MayRequire="vanillaracesexpanded.genie">VRE_Curiosity_Intellectual</li>
-						<li MayRequire="vanillaracesexpanded.genie">VRE_Curiosity_Shooting</li>
-					</genes>
-				</XenotypeDef>
+						<XenotypeDef>
+							<defName>BOR_Solarite</defName>
+							<label>solarite human</label>
+							<description>.</description>
+							<descriptionShort>Solarites</descriptionShort>
+							<iconPath>BOR/Things/Factions/SolariteIcon</iconPath>
+							<inheritable>true</inheritable>
+							<combatPowerFactor>0.8</combatPowerFactor>
+							<genes>
+								<li>WoundHealing_Slow</li>
+								<li>Immunity_Weak</li>
+								<li>MoveSpeed_Slow</li>
+								<li>Beauty_Pretty</li>
+								<li>Learning_Fast</li>
+								<li>Mood_Optimist</li>
+								<li>Libido_Low</li>
+								<li MayRequire="sariusskelrets.dbhgenes">BladderLow</li>
+								<li MayRequire="sariusskelrets.dbhgenes">HygieneLow</li>
+								<li MayRequire="turnovus.biotech.integratedgenes">Turn_Gene_FreeSpirit</li>
+								<li MayRequire="turnovus.biotech.integratedgenes">Turn_Gene_TraitGrandeur</li>
+								<li MayRequire="turnovus.biotech.integratedgenes">Turn_Gene_MotivationHigh</li>
+								<li MayRequire="vanillaracesexpanded.genie">VRE_Curiosity_Intellectual</li>
+								<li MayRequire="vanillaracesexpanded.genie">VRE_Curiosity_Shooting</li>
+							</genes>
+						</XenotypeDef>
 
-			</value>
+					</value>
+				</li>
+				<li Class="PatchOperationAdd">
+					<xpath>/Defs/FactionDef[defName="BOR_SolarRepublic"]</xpath>
+					<value>
+						<xenotypeSet>
+							<xenotypeChances>
+								<BOR_Solarite>0.8</BOR_Solarite>
+							</xenotypeChances>
+						</xenotypeSet>
+					</value>
+				</li>
+			</operations>
 		</enabled>
 	</Operation>
 
