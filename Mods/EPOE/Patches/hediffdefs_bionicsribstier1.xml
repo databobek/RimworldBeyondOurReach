@@ -1,0 +1,946 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+
+	<Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
+		<modSettingDef>BOR_Setting_EPOE</modSettingDef>
+		<enabled Class="PatchOperationSequence">
+			<operations>
+
+				<!-- patch sequence to patch in defs while proceeding to check for pawnkinds to be updated -->
+				<li Class="PatchOperationAdd">
+					<xpath>Defs</xpath>
+
+					<value>
+
+						<ThingDef Name="EPIA_BodyPartBionicRibBaseBBORSolar" ParentName="EPIASyntheticBase" Abstract="True">
+							<recipeMaker>
+								<soundWorking>Recipe_Smith</soundWorking>
+								<recipeUsers Inherit="False">
+									<li>BOR_MedicineBench_I</li>
+									<li>BOR_Bench_IV</li>
+								</recipeUsers>
+								<researchPrerequisite>BOR_Research_Bionics_I</researchPrerequisite>
+								<skillRequirements>
+									<Crafting>12</Crafting>
+								</skillRequirements>
+							</recipeMaker>
+							<statBases>
+								<WorkToMake>10000</WorkToMake>
+								<MarketValue>10000</MarketValue>
+							</statBases>
+							<graphicData>
+								<texPath>Things/Item/Health/HealthItem</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+								<drawSize>0.80</drawSize>
+								<color>(104, 160, 168)</color>
+							</graphicData>
+							<thingCategories Inherit="False">
+								<li>BOR_Bionics_I</li>
+							</thingCategories>
+							<tradeTags>
+								<li>BOR_Tech_I</li>
+							</tradeTags>
+						</ThingDef>
+
+						<RecipeDef ParentName="SurgeryInstallImplantBase" Name="SurgeryInstallImplantBaseBBORSolar" Abstract="True">
+							<recipeUsers>
+								<li>Human</li>
+							</recipeUsers>
+							<ingredients Inherit="False">
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_MedicineI</li>
+											<li>MedicineUltratech</li>
+										</thingDefs>
+									</filter>
+									<count>3</count>
+								</li>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_Nanoclusters</li>
+										</thingDefs>
+									</filter>
+									<count>1</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter Inherit="False">
+								<thingDefs>
+									<li>BOR_MedicineI</li>
+									<li>MedicineUltratech</li>
+									<li>BOR_Nanoclusters</li>
+								</thingDefs>
+							</fixedIngredientFilter>
+						</RecipeDef>
+
+						<!-- Medical rib -->
+
+						<HediffDef ParentName="addedPartBionicsRib" Abstract="True" Name="BOR_addedPartBionicsSolarRib">
+							<comps>
+								<li MayRequire="v1024.ebframework" Class="EBF.Hediffs.HediffCompProperties_MaxHPAdjust">
+									<scaleAdjustment>1.5</scaleAdjustment>
+								</li>
+							</comps>
+						</HediffDef>
+						<HediffDef ParentName="BOR_addedPartBionicsSolarRib">
+							<defName>MedicalRibSolar</defName>
+							<label>solar medical rib</label>
+							<labelNoun>a solar medical rib</labelNoun>
+							<description>An installed solar medical rib implant.</description>
+							<descriptionHyperlinks>
+								<ThingDef>MedicalRibSolar</ThingDef>
+							</descriptionHyperlinks>
+							<spawnThingOnRemoved>MedicalRibSolar</spawnThingOnRemoved>
+							<hediffClass>Hediff_Implant</hediffClass>
+							<stages>
+								<li>
+									<capMods>
+										<li>
+											<capacity>BloodFiltration</capacity>
+											<offset>0.1</offset>
+										</li>
+									</capMods>
+								</li>
+							</stages>
+							<tags>
+								<li>MedicalRib</li>
+							</tags>
+						</HediffDef>
+
+						<ThingDef ParentName="EPIA_BodyPartBionicRibBaseBBORSolar">
+							<defName>MedicalRibSolar</defName>
+							<label>medical solar rib implant</label>
+							<description>An artificial solar rib, equipped with little blood filters and antibiotics-dispensers to keep the user healthy.</description>
+							<descriptionHyperlinks>
+								<RecipeDef>InstallMedicalRibSolar</RecipeDef>
+							</descriptionHyperlinks>
+							<costList>
+								<BOR_Sunsteel>10</BOR_Sunsteel>
+								<ComponentSpacer>1</ComponentSpacer>
+								<Neutroamine>3</Neutroamine>
+								<BOR_Aegis>10</BOR_Aegis>
+							</costList>
+							<statBases>
+								<Mass>0.3</Mass>
+							</statBases>
+						</ThingDef>
+
+						<RecipeDef ParentName="SurgeryInstallImplantBaseBBORSolar">
+							<defName>InstallMedicalRibSolar</defName>
+							<label>install solar medical rib implant</label>
+							<description>Installs a solar medical rib implant.</description>
+							<descriptionHyperlinks>
+								<ThingDef>MedicalRibSolar</ThingDef>
+								<HediffDef>MedicalRibSolar</HediffDef>
+							</descriptionHyperlinks>
+							<jobString>Installing a solar medical rib.</jobString>
+							<ingredients>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>MedicalRibSolar</li>
+										</thingDefs>
+									</filter>
+									<count>1</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter>
+								<thingDefs>
+									<li>MedicalRibSolar</li>
+								</thingDefs>
+							</fixedIngredientFilter>
+							<appliedOnFixedBodyParts>
+								<li>Ribcage</li>
+							</appliedOnFixedBodyParts>
+							<addsHediff>MedicalRibSolar</addsHediff>
+							<uiIconThing>MedicalRibSolar</uiIconThing>
+							<incompatibleWithHediffTags>
+								<li>MedicalRib</li>
+								<li>LuciferiumRib</li>
+							</incompatibleWithHediffTags>
+						</RecipeDef>
+
+						<RecipeDef ParentName="SurgeryRemoveImplantBase">
+							<defName>RemoveMedicalRibSolar</defName>
+							<label>remove solar medical rib implant</label>
+							<description>Remove a solar medical rib implant.</description>
+							<descriptionHyperlinks>
+								<ThingDef>MedicalRibSolar</ThingDef>
+								<HediffDef>MedicalRibSolar</HediffDef>
+							</descriptionHyperlinks>
+							<jobString>Removing solar rib implant.</jobString>
+							<removesHediff>MedicalRibSolar</removesHediff>
+						</RecipeDef>
+
+						<!-- Drugged rib -->
+
+						<HediffDef ParentName="BOR_addedPartBionicsSolarRib">
+							<defName>DruggedRibSolar</defName>
+							<label>drugged solar rib</label>
+							<labelNoun>a drugged solar rib</labelNoun>
+							<description>An installed drugged solar rib implant.</description>
+							<descriptionHyperlinks>
+								<ThingDef>DruggedRibSolar</ThingDef>
+							</descriptionHyperlinks>
+							<spawnThingOnRemoved>DruggedRibSolar</spawnThingOnRemoved>
+							<hediffClass>Hediff_Implant</hediffClass>
+							<stages>
+								<li>
+									<capMods>
+										<li>
+											<capacity>Consciousness</capacity>
+											<offset>-0.15</offset>
+										</li>
+									</capMods>
+								</li>
+							</stages>
+							<tags>
+								<li>DruggedRib</li>
+							</tags>
+						</HediffDef>
+
+						<ThingDef ParentName="EPIA_BodyPartBionicRibBaseBBORSolar">
+							<defName>DruggedRibSolar</defName>
+							<label>drugged rib solar implant</label>
+							<description>An artificial solar rib, equipped with little flake-dispensers to keep the user happy. Side effects of feeling high and unfocused.</description>
+							<descriptionHyperlinks>
+								<RecipeDef>InstallDruggedRib</RecipeDef>
+							</descriptionHyperlinks>
+							<costList>
+								<BOR_Sunsteel>10</BOR_Sunsteel>
+								<ComponentSpacer>1</ComponentSpacer>
+								<Neutroamine>3</Neutroamine>
+								<BOR_Sunlite>10</BOR_Sunlite>
+							</costList>
+							<statBases>
+								<Mass>0.3</Mass>
+							</statBases>
+						</ThingDef>
+
+						<RecipeDef ParentName="SurgeryInstallImplantBaseBBORSolar">
+							<defName>InstallDruggedRibSolar</defName>
+							<label>install drugged solar rib implant</label>
+							<description>Installs a drugged solar rib implant.</description>
+							<descriptionHyperlinks>
+								<ThingDef>DruggedRibSolar</ThingDef>
+								<HediffDef>DruggedRibSolar</HediffDef>
+							</descriptionHyperlinks>
+							<jobString>Installing a solar drugged rib.</jobString>
+							<ingredients>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>DruggedRibSolar</li>
+										</thingDefs>
+									</filter>
+									<count>1</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter>
+								<thingDefs>
+									<li>DruggedRibSolar</li>
+								</thingDefs>
+							</fixedIngredientFilter>
+							<appliedOnFixedBodyParts>
+								<li>Ribcage</li>
+							</appliedOnFixedBodyParts>
+							<addsHediff>DruggedRibSolar</addsHediff>
+							<uiIconThing>DruggedRibSolar</uiIconThing>
+							<incompatibleWithHediffTags>
+								<li>DruggedRib</li>
+								<li>LuciferiumRib</li>
+							</incompatibleWithHediffTags>
+						</RecipeDef>
+
+						<RecipeDef ParentName="SurgeryRemoveImplantBase">
+							<defName>RemoveDruggedRibSolar</defName>
+							<label>remove drugged solar rib implant</label>
+							<description>Remove a drugged solar rib implant.</description>
+							<descriptionHyperlinks>
+								<ThingDef>DruggedRibSolar</ThingDef>
+								<HediffDef>DruggedRibSolar</HediffDef>
+							</descriptionHyperlinks>
+							<jobString>Removing solar rib implant.</jobString>
+							<removesHediff>DruggedRibSolar</removesHediff>
+						</RecipeDef>
+
+						<!-- Adrenaline rib -->
+
+						<HediffDef ParentName="BOR_addedPartBionicsSolarRib">
+							<defName>AdrenalineRibSolar</defName>
+							<label>solar adrenaline rib</label>
+							<labelNoun>a solar adrenaline rib</labelNoun>
+							<description>An installed solar adrenaline rib implant.</description>
+							<descriptionHyperlinks>
+								<ThingDef>AdrenalineRibSolar</ThingDef>
+							</descriptionHyperlinks>
+							<spawnThingOnRemoved>AdrenalineRibSolar</spawnThingOnRemoved>
+							<hediffClass>Hediff_Implant</hediffClass>
+							<stages>
+								<li>
+									<capMods>
+										<li>
+											<capacity>Moving</capacity>
+											<offset>0.15</offset>
+										</li>
+									</capMods>
+								</li>
+							</stages>
+							<tags>
+								<li>AdrenalineRib</li>
+							</tags>
+						</HediffDef>
+
+						<ThingDef ParentName="EPIA_BodyPartBionicRibBaseBBORSolar">
+							<defName>AdrenalineRibSolar</defName>
+							<label>adrenaline solar rib implant</label>
+							<description>An artificial solar rib, equipped with little adrenaline-dispensers to keep the user fit and awake.</description>
+							<descriptionHyperlinks>
+								<RecipeDef>InstallAdrenalineRibSolar</RecipeDef>
+							</descriptionHyperlinks>
+							<costList>
+								<BOR_Sunsteel>10</BOR_Sunsteel>
+								<ComponentSpacer>1</ComponentSpacer>
+								<Neutroamine>3</Neutroamine>
+								<BOR_Trot>5</BOR_Trot>
+							</costList>
+							<statBases>
+								<Mass>0.3</Mass>
+							</statBases>
+						</ThingDef>
+
+						<RecipeDef ParentName="SurgeryInstallImplantBaseBBORSolar">
+							<defName>InstallAdrenalineRibSolar</defName>
+							<label>install a solar adrenaline rib implant</label>
+							<description>Installs a a solar adrenaline rib implant.</description>
+							<descriptionHyperlinks>
+								<ThingDef>AdrenalineRibSolar</ThingDef>
+								<HediffDef>AdrenalineRibSolar</HediffDef>
+							</descriptionHyperlinks>
+							<jobString>Installing a solar adrenaline rib.</jobString>
+							<ingredients>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>AdrenalineRibSolar</li>
+										</thingDefs>
+									</filter>
+									<count>1</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter>
+								<thingDefs>
+									<li>AdrenalineRibSolar</li>
+								</thingDefs>
+							</fixedIngredientFilter>
+							<appliedOnFixedBodyParts>
+								<li>Ribcage</li>
+							</appliedOnFixedBodyParts>
+							<addsHediff>AdrenalineRibSolar</addsHediff>
+							<uiIconThing>AdrenalineRibSolar</uiIconThing>
+							<incompatibleWithHediffTags>
+								<li>AdrenalineRib</li>
+								<li>LuciferiumRib</li>
+							</incompatibleWithHediffTags>
+						</RecipeDef>
+
+						<RecipeDef ParentName="SurgeryRemoveImplantBase">
+							<defName>RemoveAdrenalineRibSolar</defName>
+							<label>remove solar adrenaline rib implant</label>
+							<description>Remove a solar adrenaline rib implant.</description>
+							<descriptionHyperlinks>
+								<ThingDef>AdrenalineRibSolar</ThingDef>
+								<HediffDef>AdrenalineRibSolar</HediffDef>
+							</descriptionHyperlinks>
+							<jobString>Removing a solar rib implant.</jobString>
+							<removesHediff>AdrenalineRibSolar</removesHediff>
+						</RecipeDef>
+
+						<!-- Painkiller rib -->
+
+						<HediffDef ParentName="BOR_addedPartBionicsSolarRib">
+							<defName>PainkillerRibSolar</defName>
+							<label>solar painkiller rib</label>
+							<labelNoun>a solar painkiller rib</labelNoun>
+							<description>An installed solar painkiller rib implant.</description>
+							<descriptionHyperlinks>
+								<ThingDef>PainkillerRibSolar</ThingDef>
+							</descriptionHyperlinks>
+							<spawnThingOnRemoved>PainkillerRibSolar</spawnThingOnRemoved>
+							<hediffClass>Hediff_Implant</hediffClass>
+							<stages>
+								<li>
+									<painOffset>-0.16</painOffset>
+									<painFactor>0.8</painFactor>
+								</li>
+							</stages>
+							<tags>
+								<li>PainkillerRib</li>
+							</tags>
+						</HediffDef>
+
+						<ThingDef ParentName="EPIA_BodyPartBionicRibBaseBBORSolar">
+							<defName>PainkillerRibSolar</defName>
+							<label>solar painkiller rib implant</label>
+							<description>An artificial solar rib, equipped with little morphine-dispensers to numb the user's pain.</description>
+							<descriptionHyperlinks>
+								<RecipeDef>InstallPainkillerRibSolar</RecipeDef>
+							</descriptionHyperlinks>
+							<costList>
+								<BOR_Sunsteel>10</BOR_Sunsteel>
+								<ComponentSpacer>1</ComponentSpacer>
+								<Neutroamine>3</Neutroamine>
+								<GoJuice>5</GoJuice>
+							</costList>
+							<statBases>
+								<Mass>0.3</Mass>
+							</statBases>
+						</ThingDef>
+
+						<RecipeDef ParentName="SurgeryInstallImplantBaseBBORSolar">
+							<defName>InstallPainkillerRibSolar</defName>
+							<label>install a solar painkiller rib implant</label>
+							<description>Installs a solar painkiller rib implant.</description>
+							<descriptionHyperlinks>
+								<ThingDef>PainkillerRibSolar</ThingDef>
+								<HediffDef>PainkillerRibSolar</HediffDef>
+							</descriptionHyperlinks>
+							<jobString>Installing a solar painkiller rib.</jobString>
+							<ingredients>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>PainkillerRibSolar</li>
+										</thingDefs>
+									</filter>
+									<count>1</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter>
+								<thingDefs>
+									<li>PainkillerRibSolar</li>
+								</thingDefs>
+							</fixedIngredientFilter>
+							<appliedOnFixedBodyParts>
+								<li>Ribcage</li>
+							</appliedOnFixedBodyParts>
+							<addsHediff>PainkillerRibSolar</addsHediff>
+							<uiIconThing>PainkillerRibSolar</uiIconThing>
+							<incompatibleWithHediffTags>
+								<li>PainkillerRib</li>
+								<li>LuciferiumRib</li>
+							</incompatibleWithHediffTags>
+						</RecipeDef>
+
+						<RecipeDef ParentName="SurgeryRemoveImplantBase">
+							<defName>RemovePainkillerRibSolar</defName>
+							<label>remove a solar painkiller rib implant</label>
+							<description>Remove a solar painkiller rib implant.</description>
+							<descriptionHyperlinks>
+								<ThingDef>PainkillerRibSolar</ThingDef>
+								<HediffDef>PainkillerRibSolar</HediffDef>
+							</descriptionHyperlinks>
+							<jobString>Removing a solar rib implant.</jobString>
+							<removesHediff>PainkillerRibSolar</removesHediff>
+						</RecipeDef>
+
+						<!-- Heater rib -->
+
+						<HediffDef ParentName="BOR_addedPartBionicsSolarRib">
+							<defName>HeaterRibSolar</defName>
+							<label>solar heating rib</label>
+							<description>An installed solar heater rib implant.</description>
+							<descriptionHyperlinks>
+								<ThingDef>HeaterRibSolar</ThingDef>
+							</descriptionHyperlinks>
+							<spawnThingOnRemoved>HeaterRibSolar</spawnThingOnRemoved>
+							<hediffClass>Hediff_Implant</hediffClass>
+							<stages>
+								<li>
+									<statOffsets>
+										<ComfyTemperatureMax>-2</ComfyTemperatureMax>
+										<ComfyTemperatureMin>-16</ComfyTemperatureMin>
+									</statOffsets>
+								</li>
+							</stages>
+							<tags>
+								<li>HeaterRib</li>
+							</tags>
+						</HediffDef>
+
+						<ThingDef ParentName="EPIA_BodyPartBionicRibBaseBBORSolar">
+							<defName>HeaterRibSolar</defName>
+							<label>solar heating rib implant</label>
+							<description>An artificial solar rib, containing a micro-reactor powered, heat inducing spiral to warm the body from the inside.</description>
+							<descriptionHyperlinks>
+								<RecipeDef>InstallHeaterRibSolar</RecipeDef>
+							</descriptionHyperlinks>
+							<costList>
+								<BOR_Sunsteel>10</BOR_Sunsteel>
+								<Steel>10</Steel>
+								<ComponentSpacer>1</ComponentSpacer>
+							</costList>
+							<statBases>
+								<Mass>0.3</Mass>
+							</statBases>
+						</ThingDef>
+
+						<RecipeDef ParentName="SurgeryInstallImplantBaseBBORSolar">
+							<defName>InstallHeaterRibSolar</defName>
+							<label>install as tellar heating rib implant</label>
+							<description>Installs a solar heating rib implant.</description>
+							<descriptionHyperlinks>
+								<ThingDef>HeaterRibSolar</ThingDef>
+								<HediffDef>HeaterRibSolar</HediffDef>
+							</descriptionHyperlinks>
+							<jobString>Installing a solar heating rib.</jobString>
+							<ingredients>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>HeaterRibSolar</li>
+										</thingDefs>
+									</filter>
+									<count>1</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter>
+								<thingDefs>
+									<li>HeaterRibSolar</li>
+								</thingDefs>
+							</fixedIngredientFilter>
+							<appliedOnFixedBodyParts>
+								<li>Ribcage</li>
+							</appliedOnFixedBodyParts>
+							<addsHediff>HeaterRibSolar</addsHediff>
+							<uiIconThing>HeaterRibSolar</uiIconThing>
+							<incompatibleWithHediffTags>
+								<li>HeaterRib</li>
+								<li>LuciferiumRib</li>
+							</incompatibleWithHediffTags>
+						</RecipeDef>
+
+						<RecipeDef ParentName="SurgeryRemoveImplantBase">
+							<defName>RemoveHeaterRibSolar</defName>
+							<label>remove a solar heating rib implant</label>
+							<description>Remove a solar heating rib implant.</description>
+							<descriptionHyperlinks>
+								<ThingDef>HeaterRibSolar</ThingDef>
+								<HediffDef>HeaterRibSolar</HediffDef>
+							</descriptionHyperlinks>
+							<jobString>Removing solar rib implant.</jobString>
+							<removesHediff>HeaterRibSolar</removesHediff>
+						</RecipeDef>
+
+						<!-- Cooler rib -->
+
+						<HediffDef ParentName="BOR_addedPartBionicsSolarRib">
+							<defName>CoolerRibSolar</defName>
+							<label>solar cooling rib</label>
+							<description>An installed solar cooler rib implant.</description>
+							<descriptionHyperlinks>
+								<ThingDef>CoolerRibSolar</ThingDef>
+							</descriptionHyperlinks>
+							<spawnThingOnRemoved>CoolerRibSolar</spawnThingOnRemoved>
+							<hediffClass>Hediff_Implant</hediffClass>
+							<stages>
+								<li>
+									<statOffsets>
+										<ComfyTemperatureMax>16</ComfyTemperatureMax>
+										<ComfyTemperatureMin>2</ComfyTemperatureMin>
+									</statOffsets>
+								</li>
+							</stages>
+							<tags>
+								<li>CoolerRibSolar</li>
+							</tags>
+						</HediffDef>
+
+						<ThingDef ParentName="EPIA_BodyPartBionicRibBaseBBORSolar">
+							<defName>CoolerRibSolar</defName>
+							<label>solar cooling rib implant</label>
+							<description>An artificial solar rib with a micro coolant system, increasing the effectiveness of heat exchange via dermal exhausts.</description>
+							<descriptionHyperlinks>
+								<RecipeDef>InstallCoolerRibSolar</RecipeDef>
+							</descriptionHyperlinks>
+							<costList>
+								<BOR_Sunsteel>10</BOR_Sunsteel>
+								<Steel>10</Steel>
+								<ComponentSpacer>1</ComponentSpacer>
+							</costList>
+							<statBases>
+								<Mass>0.3</Mass>
+							</statBases>
+						</ThingDef>
+
+
+						<RecipeDef ParentName="SurgeryInstallImplantBaseBBORSolar">
+							<defName>InstallCoolerRibSolar</defName>
+							<label>install a solar cooling rib implant</label>
+							<description>Installs a solar cooling rib implant.</description>
+							<descriptionHyperlinks>
+								<ThingDef>CoolerRibSolar</ThingDef>
+								<HediffDef>CoolerRibSolar</HediffDef>
+							</descriptionHyperlinks>
+							<jobString>Installing a solar cooling rib.</jobString>
+							<ingredients>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>CoolerRibSolar</li>
+										</thingDefs>
+									</filter>
+									<count>1</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter>
+								<thingDefs>
+									<li>CoolerRibSolar</li>
+								</thingDefs>
+							</fixedIngredientFilter>
+							<appliedOnFixedBodyParts>
+								<li>Ribcage</li>
+							</appliedOnFixedBodyParts>
+							<addsHediff>CoolerRibSolar</addsHediff>
+							<uiIconThing>CoolerRibSolar</uiIconThing>
+							<incompatibleWithHediffTags>
+								<li>CoolerRib</li>
+								<li>LuciferiumRib</li>
+							</incompatibleWithHediffTags>
+						</RecipeDef>
+
+						<RecipeDef ParentName="SurgeryRemoveImplantBase">
+							<defName>RemoveCoolerRibSolar</defName>
+							<label>remove a solar cooling rib implant</label>
+							<description>Remove a solar cooling rib implant.</description>
+							<descriptionHyperlinks>
+								<ThingDef>CoolerRibSolar</ThingDef>
+								<HediffDef>CoolerRibSolar</HediffDef>
+							</descriptionHyperlinks>
+							<jobString>Removing a solar rib implant.</jobString>
+							<removesHediff>CoolerRibSolar</removesHediff>
+						</RecipeDef>
+
+						<!-- Coagulator rib -->
+
+						<HediffDef ParentName="BOR_addedPartBionicsSolarRib">
+							<defName>CoagulatorRibSolar</defName>
+							<label>solar coagulator rib</label>
+							<description>An installed solar coagulator rib implant.</description>
+							<descriptionHyperlinks>
+								<ThingDef>CoagulatorRibSolar</ThingDef>
+							</descriptionHyperlinks>
+							<spawnThingOnRemoved>CoagulatorRibSolar</spawnThingOnRemoved>
+							<hediffClass>Hediff_Implant</hediffClass>
+							<stages>
+								<li>
+									<totalBleedFactor>0.75</totalBleedFactor>
+								</li>
+							</stages>
+							<tags>
+								<li>CoagulatorRib</li>
+							</tags>
+						</HediffDef>
+
+						<ThingDef ParentName="EPIA_BodyPartBionicRibBaseBBORSolar">
+							<defName>CoagulatorRibSolar</defName>
+							<label>solar coagulator rib implant</label>
+							<description>An artificial solar rib, equipped with little coagulator-dispensers that responds to blood loss, which will make the blood clot easier, in an effort to reduce bleeding.</description>
+							<descriptionHyperlinks>
+								<RecipeDef>InstallCoagulatorRibSolar</RecipeDef>
+							</descriptionHyperlinks>
+							<costList>
+								<BOR_Sunsteel>10</BOR_Sunsteel>
+								<ComponentSpacer>1</ComponentSpacer>
+								<Neutroamine>3</Neutroamine>
+								<BOR_MedicineI>5</BOR_MedicineI>
+							</costList>
+							<statBases>
+								<Mass>0.3</Mass>
+							</statBases>
+						</ThingDef>
+
+						<RecipeDef ParentName="SurgeryInstallImplantBaseBBORSolar">
+							<defName>InstallCoagulatorRibSolar</defName>
+							<label>install a solar coagulator rib implant</label>
+							<description>Installs a solar coagulator rib implant.</description>
+							<descriptionHyperlinks>
+								<ThingDef>CoagulatorRibSolar</ThingDef>
+								<HediffDef>CoagulatorRibSolar</HediffDef>
+							</descriptionHyperlinks>
+							<jobString>Installing a solar coagulator rib.</jobString>
+							<ingredients>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>CoagulatorRibSolar</li>
+										</thingDefs>
+									</filter>
+									<count>1</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter>
+								<thingDefs>
+									<li>CoagulatorRibSolar</li>
+								</thingDefs>
+							</fixedIngredientFilter>
+							<appliedOnFixedBodyParts>
+								<li>Ribcage</li>
+							</appliedOnFixedBodyParts>
+							<addsHediff>CoagulatorRibSolar</addsHediff>
+							<uiIconThing>CoagulatorRibSolar</uiIconThing>
+							<incompatibleWithHediffTags>
+								<li>CoagulatorRib</li>
+								<li>LuciferiumRib</li>
+							</incompatibleWithHediffTags>
+						</RecipeDef>
+
+						<RecipeDef ParentName="SurgeryRemoveImplantBase">
+							<defName>RemoveCoagulatorRibSolar</defName>
+							<label>remove a solar coagulator rib implant</label>
+							<description>Remove a solar coagulator rib implant.</description>
+							<descriptionHyperlinks>
+								<ThingDef>CoagulatorRibSolar</ThingDef>
+								<HediffDef>CoagulatorRibSolar</HediffDef>
+							</descriptionHyperlinks>
+							<jobString>Removing a solar rib implant.</jobString>
+							<removesHediff>CoagulatorRibSolar</removesHediff>
+						</RecipeDef>
+
+						<!-- Respiration rib -->
+
+						<HediffDef ParentName="BOR_addedPartBionicsSolarRib">
+							<defName>RespirationRibSolar</defName>
+							<label>solar respiration rib</label>
+							<description>An installed solar respiration rib implant.</description>
+							<descriptionHyperlinks>
+								<ThingDef>RespirationRibSolar</ThingDef>
+							</descriptionHyperlinks>
+							<spawnThingOnRemoved>RespirationRibSolar</spawnThingOnRemoved>
+							<hediffClass>Hediff_Implant</hediffClass>
+							<stages>
+								<li>
+									<statOffsets>
+										<MentalBreakThreshold>-0.12</MentalBreakThreshold>
+									</statOffsets>
+									<capMods>
+										<li>
+											<capacity>Breathing</capacity>
+											<offset>0.15</offset>
+										</li>
+									</capMods>
+								</li>
+							</stages>
+							<tags>
+								<li>RespirationRib</li>
+							</tags>
+						</HediffDef>
+
+						<ThingDef ParentName="EPIA_BodyPartBionicRibBaseBBORSolar">
+							<defName>RespirationRibSolar</defName>
+							<label>solar respiration rib implant</label>
+							<description>An artificial solar rib, that works with the diaphragm to assist with regulating breathing pattern for increased efficiency and coping with stress.</description>
+							<descriptionHyperlinks>
+								<RecipeDef>InstallRespirationRibSolar</RecipeDef>
+							</descriptionHyperlinks>
+							<costList>
+								<BOR_Sunsteel>20</BOR_Sunsteel>
+								<ComponentSpacer>3</ComponentSpacer>
+							</costList>
+							<statBases>
+								<Mass>0.6</Mass>
+							</statBases>
+						</ThingDef>
+
+
+						<RecipeDef ParentName="SurgeryInstallImplantBaseBBORSolar">
+							<defName>InstallRespirationRibSolar</defName>
+							<label>install a solar respiration rib implant</label>
+							<description>Installs a solar respiration rib implant.</description>
+							<descriptionHyperlinks>
+								<ThingDef>RespirationRibSolar</ThingDef>
+								<HediffDef>RespirationRibSolar</HediffDef>
+							</descriptionHyperlinks>
+							<jobString>Installing a solar respiration rib.</jobString>
+							<ingredients>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>RespirationRibSolar</li>
+										</thingDefs>
+									</filter>
+									<count>1</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter>
+								<thingDefs>
+									<li>RespirationRibSolar</li>
+								</thingDefs>
+							</fixedIngredientFilter>
+							<appliedOnFixedBodyParts>
+								<li>Ribcage</li>
+							</appliedOnFixedBodyParts>
+							<addsHediff>RespirationRibSolar</addsHediff>
+							<uiIconThing>RespirationRibSolar</uiIconThing>
+							<incompatibleWithHediffTags>
+								<li>RespirationRib</li>
+								<li>LuciferiumRib</li>
+							</incompatibleWithHediffTags>
+						</RecipeDef>
+
+						<RecipeDef ParentName="SurgeryRemoveImplantBase">
+							<defName>RemoveRespirationRibSolar</defName>
+							<label>remove a solar respiration rib implant</label>
+							<description>Remove a solar respiration rib implant.</description>
+							<descriptionHyperlinks>
+								<ThingDef>RespirationRibSolar</ThingDef>
+								<HediffDef>RespirationRibSolar</HediffDef>
+							</descriptionHyperlinks>
+							<jobString>Removing a solar rib implant.</jobString>
+							<removesHediff>RespirationRibSolar</removesHediff>
+						</RecipeDef>
+
+						<!-- Wake-up rib -->
+
+						<HediffDef ParentName="BOR_addedPartBionicsSolarRib">
+							<defName>WakeUpRibSolar</defName>
+							<label>solar STIM-IV rib</label>
+							<description>An installed solar STIM-IV rib implant.</description>
+							<descriptionHyperlinks>
+								<ThingDef>WakeUpRibSolar</ThingDef>
+							</descriptionHyperlinks>
+							<spawnThingOnRemoved>WakeUpRibSolar</spawnThingOnRemoved>
+							<hediffClass>Hediff_Implant</hediffClass>
+							<stages>
+								<li>
+									<restFallFactor>0.8</restFallFactor>
+									<statOffsets>
+										<MentalBreakThreshold>0.03</MentalBreakThreshold>
+									</statOffsets>
+									<capMods>
+										<li>
+											<capacity>Consciousness</capacity>
+											<offset>0.1</offset>
+										</li>
+									</capMods>
+								</li>
+							</stages>
+							<tags>
+								<li>WakeUpRib</li>
+							</tags>
+						</HediffDef>
+
+						<ThingDef ParentName="EPIA_BodyPartBionicRibBaseBBORSolar">
+							<defName>WakeUpRibSolar</defName>
+							<label>solar STIM-IV rib implant</label>
+							<description>An artificial solar rib, equipped with little STIM-IV-dispensers to keep the user awake and focused.</description>
+							<descriptionHyperlinks>
+								<RecipeDef>InstallWakeUpRibSolar</RecipeDef>
+							</descriptionHyperlinks>
+							<costList>
+								<BOR_Sunsteel>10</BOR_Sunsteel>
+								<ComponentSpacer>1</ComponentSpacer>
+								<Neutroamine>3</Neutroamine>
+								<BOR_WideAWake>5</BOR_WideAWake>
+							</costList>
+							<statBases>
+								<Mass>0.6</Mass>
+							</statBases>
+						</ThingDef>
+
+						<RecipeDef ParentName="SurgeryInstallImplantBaseBBORSolar">
+							<defName>InstallWakeUpRibSolar</defName>
+							<label>install a solar STIM-IV rib implant</label>
+							<description>Installs a solar STIM-IV rib implant.</description>
+							<descriptionHyperlinks>
+								<ThingDef>WakeUpRibSolar</ThingDef>
+								<HediffDef>WakeUpRibSolar</HediffDef>
+							</descriptionHyperlinks>
+							<jobString>Installing a solar STIM-IV rib.</jobString>
+							<ingredients>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>WakeUpRibSolar</li>
+										</thingDefs>
+									</filter>
+									<count>1</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter>
+								<thingDefs>
+									<li>WakeUpRibSolar</li>
+								</thingDefs>
+							</fixedIngredientFilter>
+							<appliedOnFixedBodyParts>
+								<li>Ribcage</li>
+							</appliedOnFixedBodyParts>
+							<addsHediff>WakeUpRibSolar</addsHediff>
+							<uiIconThing>WakeUpRibSolar</uiIconThing>
+							<incompatibleWithHediffTags>
+								<li>WakeUpRib</li>
+								<li>LuciferiumRib</li>
+							</incompatibleWithHediffTags>
+						</RecipeDef>
+
+						<RecipeDef ParentName="SurgeryRemoveImplantBase">
+							<defName>RemoveWakeUpRibSolar</defName>
+							<label>remove a solar STIM-IV rib implant</label>
+							<description>Remove a solar STIM-IV rib implant.</description>
+							<descriptionHyperlinks>
+								<ThingDef>WakeUpRibSolar</ThingDef>
+								<HediffDef>WakeUpRibSolar</HediffDef>
+							</descriptionHyperlinks>
+							<jobString>Removing a solar rib implant.</jobString>
+							<removesHediff>WakeUpRibSolar</removesHediff>
+						</RecipeDef>
+
+					</value>
+				</li>
+
+				<!-- update pawnkinds techhediffs after the defs are loaded in -->
+				<li Class="PatchOperationSequence">
+					<operations>
+
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/PawnKindDef[@Name="BOR_BasePawn"]/techHediffsRequired
+							</xpath>
+							<value>
+								<li MayRequire="dubwise.dubsbadhygiene">MedicalRibSolar</li>
+							</value>
+						</li>
+
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/PawnKindDef[@Name="BOR_ElitePawn"]/techHediffsRequired
+							</xpath>
+							<value>
+								<li MayRequire="vat.epoeforked">AdrenalineRibSolar</li>
+								<li MayRequire="vat.epoeforked">PainkillerRibSolar</li>
+							</value>
+						</li>
+
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/PawnKindDef[@Name="BOR_BasePawn_II"]/techHediffsRequired
+							</xpath>
+							<value>
+								<li MayRequire="dubwise.dubsbadhygiene">MedicalRibQuasar</li>
+							</value>
+						</li>
+
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/PawnKindDef[@Name="BOR_ElitePawn_II"]/techHediffsRequired
+							</xpath>
+							<value>
+								<li MayRequire="vat.epoeforked">AdrenalineRibQuasar</li>
+								<li MayRequire="vat.epoeforked">PainkillerRibQuasar</li>
+							</value>
+						</li>
+
+					</operations>
+				</li>
+			</operations>
+		</enabled>
+	</Operation>
+
+</Patch>
