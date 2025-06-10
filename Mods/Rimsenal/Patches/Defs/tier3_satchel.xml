@@ -1,347 +1,347 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Patch>
 
-  <Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
-    <modSettingDef>BOR_Setting_RimsenalSatchelVariants</modSettingDef>
-    <enabled Class="PatchOperationSequence">
-	  <operations>
-	  
-	  <!-- patch sequence to patch in defs while proceeding to check for CE -->
-	  <li Class="PatchOperationAdd">
-      <xpath>Defs</xpath>
-      
-	  <value>
-	  
-                <ThingDef ParentName="BaseGrenadeProjectile">
-                    <defName>BOR_Proj_Dunder_III</defName>
-                    <label>tenebral Satchel charge</label>
-                    <thingClass>Projectile_Explosive</thingClass>
-                    <graphicData>
-                        <color>(0.2, 0.2, 0.2)</color>
-                        <texPath>Things/Projectile/Dunder</texPath>
-                        <graphicClass>Graphic_Single</graphicClass>
-                    </graphicData>
-                    <projectile>
-                        <explosionRadius>19</explosionRadius>
-                        <damageDef>Bomb</damageDef>
-                        <damageAmountBase>1000</damageAmountBase>
-                        <explosionDelay>242</explosionDelay>
-                    </projectile>
-                </ThingDef>
+    <Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
+        <modSettingDef>BOR_Setting_RimsenalSatchelVariants</modSettingDef>
+        <enabled Class="PatchOperationSequence">
+            <operations>
 
-                <ThingDef ParentName="BaseRSGrenade">
-                    <defName>BOR_JI_Dunder_III</defName>
-                    <equipmentType>Primary</equipmentType>
-                    <label>tenebral satchel charge</label>
-                    <description>A "Dunder IV" tenebral Satchel charge. Combat engineer's best friend.</description>
-                    <graphicData>
-                        <color>(0.2, 0.2, 0.2)</color>
-                        <texPath>Things/A16/Dunder</texPath>
-                        <graphicClass>Graphic_Single</graphicClass>
-                    </graphicData>
-                    <tradeTags>
-                        <li>BOR_Tech_III</li>
-                    </tradeTags>
-                    <soundInteract>Interact_Grenade</soundInteract>
-                    <techLevel>Archotech</techLevel>
-                    <statBases>
-                        <Mass>2.08</Mass>
-                        <RangedWeapon_Cooldown>1.29</RangedWeapon_Cooldown>
+                <!-- patch sequence to patch in defs while proceeding to check for CE -->
+                <li Class="PatchOperationAdd">
+                    <xpath>Defs</xpath>
 
-                        <RoyalFavorValue>6</RoyalFavorValue>
-                    </statBases>
-                    <thingCategories>
-                        <li>Grenades</li>
-                    </thingCategories>
-                    <recipeMaker>
-                        <researchPrerequisite>BOR_Research_Weapons_III</researchPrerequisite>
-                        <skillRequirements>
-                            <Crafting>20</Crafting>
-                        </skillRequirements>
-                        <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
-                        <workSkill>Crafting</workSkill>
-                        <effectWorking>Smith</effectWorking>
-                        <soundWorking>Recipe_Smith</soundWorking>
-                        <recipeUsers>
-                            <li>BOR_Bench_III</li>
-                            <li>BOR_Bench_IV</li>
-                        </recipeUsers>
-                        <unfinishedThingDef>UnfinishedGun</unfinishedThingDef>
-                    </recipeMaker>
-                    <costList>
-                        <BOR_ComponentIII>5</BOR_ComponentIII>
-                        <BOR_Tenebrite>55</BOR_Tenebrite>
-                        <BOR_Neutronium>337</BOR_Neutronium>
-                    </costList>
-                    <verbs>
-                        <li>
-                            <label>throw kwazaari satchel charge</label>
-                            <verbClass>Verb_LaunchProjectile</verbClass>
-                            <hasStandardCommand>true</hasStandardCommand>
-                            <range>28</range>
-                            <forcedMissRadius>0.5</forcedMissRadius>
-                            <warmupTime>1.55</warmupTime>
-                            <noiseRadius>3.85</noiseRadius>
-                            <ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
-                            <soundCast>ThrowGrenade</soundCast>
-                            <targetParams>
-                                <canTargetLocations>true</canTargetLocations>
-                            </targetParams>
-                            <defaultProjectile>BOR_Proj_Dunder_III</defaultProjectile>
-                        </li>
-                    </verbs>
-                </ThingDef>
+                    <value>
 
-      </value>
-	  </li>
-	  
-	  <!-- check to see if CombatExtended is loaded as well, then modify the patched in defs to CE standards -->
-	  <li Class="PatchOperationFindMod">
-		<mods>
-		  <li>Combat Extended</li>
-		</mods>
-			<match Class="PatchOperationSequence">
-                <operations>
-
-
-                    <!-- ========== Remove Recipe Maker & Verbs ========== -->
-                    <li Class="PatchOperationRemove">
-                        <xpath>Defs/ThingDef[defName="BOR_JI_Dunder_III"]/recipeMaker </xpath>
-                    </li>
-
-                    <li Class="PatchOperationRemove">
-                        <xpath>Defs/ThingDef[defName="BOR_JI_Dunder_III"]/costList </xpath>
-                    </li>
-
-                    <!-- Without this mod, Grief and Bobcat don't work, and it logs at ForcedMissRadius error.-->
-                    <li Class="PatchOperationRemove">
-                        <xpath>Defs/ThingDef[defName="BOR_JI_Dunder_III"]/verbs </xpath>
-                    </li>
-
-                    <!-- Change TickerType.-->
-                    <li Class="PatchOperationAdd">
-                        <xpath>Defs/ThingDef[defName="BOR_JI_Dunder_III"] </xpath>
-                        <value>
-                            <tickerType>Normal</tickerType>
-                        </value>
-                    </li>
-
-                    <!-- ========== Projectile thingClass ========== -->
-
-                    <li Class="PatchOperationReplace">
-                        <xpath>Defs/ThingDef[defName="BOR_Proj_Dunder_III"]/thingClass </xpath>
-                        <value>
-                            <thingClass>CombatExtended.ProjectileCE_Explosive</thingClass>
-                        </value>
-                    </li>
-
-                    <!-- ========== Projectile ========== -->
-
-
-                    <li Class="PatchOperationReplace">
-                        <xpath>Defs/ThingDef[defName="BOR_Proj_Dunder_III"]/projectile</xpath>
-                        <value>
-                            <projectile Class="CombatExtended.ProjectilePropertiesCE">
-                                <explosionRadius>15.875</explosionRadius>
+                        <ThingDef ParentName="BaseGrenadeProjectile">
+                            <defName>BOR_Proj_Dunder_III</defName>
+                            <label>tenebral Satchel charge</label>
+                            <thingClass>Projectile_Explosive</thingClass>
+                            <graphicData>
+                                <color>(0.2, 0.2, 0.2)</color>
+                                <texPath>Things/Projectile/Dunder</texPath>
+                                <graphicClass>Graphic_Single</graphicClass>
+                            </graphicData>
+                            <projectile>
+                                <explosionRadius>19</explosionRadius>
                                 <damageDef>Bomb</damageDef>
-                                <damageAmountBase>675</damageAmountBase>
-                                <explosionDelay>250</explosionDelay>
-                                <dropsCasings>false</dropsCasings>
-                                <speed>33</speed>
-                                <casingMoteDefname>Fleck_GrenadePin</casingMoteDefname>
-                                <casingFilthDefname>Filth_GrenadeAmmoCasings</casingFilthDefname>
-                                <applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
+                                <damageAmountBase>1000</damageAmountBase>
+                                <explosionDelay>242</explosionDelay>
                             </projectile>
-                        </value>
-                    </li>
-                    <!-- ========== Check Comp ========== -->
+                        </ThingDef>
 
+                        <ThingDef ParentName="BaseRSGrenade">
+                            <defName>BOR_JI_Dunder_III</defName>
+                            <equipmentType>Primary</equipmentType>
+                            <label>tenebral satchel charge</label>
+                            <description>A "Dunder IV" tenebral Satchel charge. Combat engineer's best friend.</description>
+                            <graphicData>
+                                <color>(0.2, 0.2, 0.2)</color>
+                                <texPath>Things/A16/Dunder</texPath>
+                                <graphicClass>Graphic_Single</graphicClass>
+                            </graphicData>
+                            <tradeTags>
+                                <li>BOR_Tech_III</li>
+                            </tradeTags>
+                            <soundInteract>Interact_Grenade</soundInteract>
+                            <techLevel>Archotech</techLevel>
+                            <statBases>
+                                <Mass>2.08</Mass>
+                                <RangedWeapon_Cooldown>1.29</RangedWeapon_Cooldown>
 
-                    <li Class="PatchOperationConditional">
-                        <xpath>Defs/ThingDef[defName="BOR_Proj_Dunder_III"]/comps</xpath>
-                        <nomatch Class="PatchOperationAdd">
-                            <xpath>Defs/ThingDef[defName="BOR_Proj_Dunder_III"]</xpath>
-                            <value>
-                                <comps />
-                            </value>
-                        </nomatch>
-                    </li>
-
-                    <!-- ========== Add Fragmentation ========== -->
-
-                    <li Class="PatchOperationAdd">
-                        <xpath>Defs/ThingDef[defName="BOR_Proj_Dunder_III"]/comps</xpath>
-                        <value>
-                            <li Class="CombatExtended.CompProperties_Fragments">
-                                <fragments>
-                                    <Fragment_Tenebral>0</Fragment_Tenebral>
-                                </fragments>
-                            </li>
-                        </value>
-                    </li>
-
-                    <!-- Weapon Stack and Appearance -->
-
-                    <li Class="PatchOperationAdd">
-                        <xpath>Defs/ThingDef[defName="BOR_JI_Dunder_III"]/graphicData </xpath>
-                        <value>
-                            <onGroundRandomRotateAngle>0</onGroundRandomRotateAngle>
-                        </value>
-                    </li>
-
-                    <li Class="PatchOperationAdd">
-                        <xpath>Defs/ThingDef[defName="BOR_JI_Dunder_III"] </xpath>
-                        <value>
-                            <thingClass>CombatExtended.AmmoThing</thingClass>
-                            <stackLimit>75</stackLimit>
-                            <resourceReadoutPriority>First</resourceReadoutPriority>
-                        </value>
-                    </li>
-
-                    <li Class="PatchOperationAttributeSet">
-                        <xpath>Defs/ThingDef[defName="BOR_JI_Dunder_III"] </xpath>
-                        <attribute>Class</attribute>
-                        <value>CombatExtended.AmmoDef</value>
-                    </li>
-
-                    <!-- Weapon Check Comps -->
-
-                    <li Class="PatchOperationConditional">
-                        <xpath>Defs/ThingDef[defName="BOR_JI_Dunder_III"]/comps</xpath>
-                        <nomatch Class="PatchOperationAdd">
-                            <xpath>Defs/ThingDef[defName="BOR_JI_Dunder_III"]</xpath>
-                            <value>
-                                <comps />
-                            </value>
-                        </nomatch>
-                    </li>
-                    <!-- Weapon Values -->
-
-                    <li Class="PatchOperationAdd">
-                        <xpath>Defs/ThingDef[defName="BOR_JI_Dunder_III"]/comps</xpath>
-                        <value>
-                            <li Class="CombatExtended.CompProperties_ExplosiveCE">
-                                <damageAmountBase>135</damageAmountBase>
-                                <explosiveDamageType>Bomb</explosiveDamageType>
-                                <explosiveRadius>6.4</explosiveRadius>
-
-                            </li>
-                            <li Class="CombatExtended.CompProperties_Fragments">
-                                <fragments>
-                                    <Fragment_Tenebral>50</Fragment_Tenebral>
-                                </fragments>
-                            </li>
-                        </value>
-                    </li>
-
-                    <li Class="CombatExtended.PatchOperationMakeGunCECompatible">
-                        <defName>BOR_JI_Dunder_III</defName>
-                        <statBases>
-                            <Mass>1.4</Mass>
-                            <MarketValue>24.5</MarketValue>
-                            <RangedWeapon_Cooldown>0.58</RangedWeapon_Cooldown>
-                            <SightsEfficiency>3.125</SightsEfficiency>
-                        </statBases>
-                        <Properties>
-                            <label>throw tenebral satchel charge</label>
-                            <verbClass>CombatExtended.Verb_ShootCEOneUse</verbClass>
-                            <hasStandardCommand>true</hasStandardCommand>
-                            <range>33.75</range>
-                            <minRange>3</minRange>
-                            <warmupTime>0.35</warmupTime>
-                            <noiseRadius>2</noiseRadius>
-                            <ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
-                            <soundCast>ThrowGrenade</soundCast>
-                            <targetParams>
-                                <canTargetLocations>true</canTargetLocations>
-                            </targetParams>
-                            <defaultProjectile>BOR_Proj_Dunder_III</defaultProjectile>
-                            <onlyManualCast>true</onlyManualCast>
-                            <ignorePartialLoSBlocker>true</ignorePartialLoSBlocker>
-                        </Properties>
-                        <weaponTags>
-                            <li>CE_AI_Grenade</li>
-                            <li>CE_OneHandedWeapon</li>
-                        </weaponTags>
-                    </li>
-                    <li Class="PatchOperationAdd">
-                        <xpath>Defs</xpath>
-                        <value>
-                            <RecipeDef ParentName="RSExplosive_RecipeBase">
-                                <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
-                                <effectWorking>Cook</effectWorking>
-                                <soundWorking>Recipe_Smith</soundWorking>
-                                <workSkill>Crafting</workSkill>
-                                <unfinishedThingDef>UnfinishedGun</unfinishedThingDef>
-                                <defName>BOR_Craft_10_Dunder_III</defName>
-                                <label>Craft 10 tenebral satchel charges</label>
-                                <description>Craft 10 Dunder IV tenebral satchel charges.</description>
-                                <jobString>Crafting tenebral satchel charges</jobString>
-                                <ingredients>
-                                    <li>
-                                        <filter>
-                                            <thingDefs>
-                                                <li>BOR_ComponentIII</li>
-                                            </thingDefs>
-                                        </filter>
-                                        <count>2</count>
-                                    </li>
-                                    <li>
-                                        <filter>
-                                            <thingDefs>
-                                                <li>BOR_Sunsteel</li>
-                                            </thingDefs>
-                                        </filter>
-                                        <count>10</count>
-                                    </li>
-                                    <li>
-                                        <filter>
-                                            <thingDefs>
-                                                <li>BOR_Tenebrite</li>
-                                            </thingDefs>
-                                        </filter>
-                                        <count>20</count>
-                                    </li>
-                                    <li>
-                                        <filter>
-                                            <thingDefs>
-                                                <li>BOR_Neutronium</li>
-                                            </thingDefs>
-                                        </filter>
-                                        <count>47</count>
-                                    </li>
-                                </ingredients>
-                                <fixedIngredientFilter>
-                                    <thingDefs>
-                                        <li>BOR_Sunsteel</li>
-                                        <li>BOR_ComponentIII</li>
-                                        <li>BOR_Neutronium</li>
-                                    </thingDefs>
-                                </fixedIngredientFilter>
-                                <researchPrerequisites>
-                                    <li>BOR_Research_Weapons_III</li>
-                                    <li>MoltenTech</li>
-                                </researchPrerequisites>
+                                <RoyalFavorValue>6</RoyalFavorValue>
+                            </statBases>
+                            <thingCategories>
+                                <li>Grenades</li>
+                            </thingCategories>
+                            <recipeMaker>
+                                <researchPrerequisite>BOR_Research_Weapons_III</researchPrerequisite>
                                 <skillRequirements>
-                                    <Crafting>18</Crafting>
+                                    <Crafting>20</Crafting>
                                 </skillRequirements>
-                                <products>
-                                    <BOR_JI_Dunder_III>10</BOR_JI_Dunder_III>
-                                </products>
-                                <workAmount>65000</workAmount>
+                                <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+                                <workSkill>Crafting</workSkill>
+                                <effectWorking>Smith</effectWorking>
+                                <soundWorking>Recipe_Smith</soundWorking>
                                 <recipeUsers>
                                     <li>BOR_Bench_III</li>
                                     <li>BOR_Bench_IV</li>
                                 </recipeUsers>
-                            </RecipeDef>
-                        </value>
-                    </li>
-                </operations>
+                                <unfinishedThingDef>UnfinishedGun</unfinishedThingDef>
+                            </recipeMaker>
+                            <costList>
+                                <BOR_ComponentIII>5</BOR_ComponentIII>
+                                <BOR_Tenebrite>55</BOR_Tenebrite>
+                                <BOR_Neutronium>337</BOR_Neutronium>
+                            </costList>
+                            <verbs>
+                                <li>
+                                    <label>throw kwazaari satchel charge</label>
+                                    <verbClass>Verb_LaunchProjectile</verbClass>
+                                    <hasStandardCommand>true</hasStandardCommand>
+                                    <range>28</range>
+                                    <forcedMissRadius>0.5</forcedMissRadius>
+                                    <warmupTime>1.55</warmupTime>
+                                    <noiseRadius>3.85</noiseRadius>
+                                    <ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
+                                    <soundCast>ThrowGrenade</soundCast>
+                                    <targetParams>
+                                        <canTargetLocations>true</canTargetLocations>
+                                    </targetParams>
+                                    <defaultProjectile>BOR_Proj_Dunder_III</defaultProjectile>
+                                </li>
+                            </verbs>
+                        </ThingDef>
 
-			</match>
-	  </li>
-	 </operations>
-    </enabled>
-  </Operation>
+                    </value>
+                </li>
+
+                <!-- check to see if CombatExtended is loaded as well, then modify the patched in defs to CE standards -->
+                <li Class="PatchOperationFindMod">
+                    <mods>
+                        <li>Combat Extended</li>
+                    </mods>
+                    <match Class="PatchOperationSequence">
+                        <operations>
+
+
+                            <!-- ========== Remove Recipe Maker & Verbs ========== -->
+                            <li Class="PatchOperationRemove">
+                                <xpath>Defs/ThingDef[defName="BOR_JI_Dunder_III"]/recipeMaker</xpath>
+                            </li>
+
+                            <li Class="PatchOperationRemove">
+                                <xpath>Defs/ThingDef[defName="BOR_JI_Dunder_III"]/costList</xpath>
+                            </li>
+
+                            <!-- Without this mod, Grief and Bobcat don't work, and it logs at ForcedMissRadius error.-->
+                            <li Class="PatchOperationRemove">
+                                <xpath>Defs/ThingDef[defName="BOR_JI_Dunder_III"]/verbs</xpath>
+                            </li>
+
+                            <!-- Change TickerType.-->
+                            <li Class="PatchOperationAdd">
+                                <xpath>Defs/ThingDef[defName="BOR_JI_Dunder_III"] </xpath>
+                                <value>
+                                    <tickerType>Normal</tickerType>
+                                </value>
+                            </li>
+
+                            <!-- ========== Projectile thingClass ========== -->
+
+                            <li Class="PatchOperationReplace">
+                                <xpath>Defs/ThingDef[defName="BOR_Proj_Dunder_III"]/thingClass</xpath>
+                                <value>
+                                    <thingClass>CombatExtended.ProjectileCE_Explosive</thingClass>
+                                </value>
+                            </li>
+
+                            <!-- ========== Projectile ========== -->
+
+
+                            <li Class="PatchOperationReplace">
+                                <xpath>Defs/ThingDef[defName="BOR_Proj_Dunder_III"]/projectile</xpath>
+                                <value>
+                                    <projectile Class="CombatExtended.ProjectilePropertiesCE">
+                                        <explosionRadius>15.875</explosionRadius>
+                                        <damageDef>Bomb</damageDef>
+                                        <damageAmountBase>675</damageAmountBase>
+                                        <explosionDelay>250</explosionDelay>
+                                        <dropsCasings>false</dropsCasings>
+                                        <speed>33</speed>
+                                        <casingMoteDefname>Fleck_GrenadePin</casingMoteDefname>
+                                        <casingFilthDefname>Filth_GrenadeAmmoCasings</casingFilthDefname>
+                                        <applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
+                                    </projectile>
+                                </value>
+                            </li>
+                            <!-- ========== Check Comp ========== -->
+
+
+                            <li Class="PatchOperationConditional">
+                                <xpath>Defs/ThingDef[defName="BOR_Proj_Dunder_III"]/comps</xpath>
+                                <nomatch Class="PatchOperationAdd">
+                                    <xpath>Defs/ThingDef[defName="BOR_Proj_Dunder_III"]</xpath>
+                                    <value>
+                                        <comps />
+                                    </value>
+                                </nomatch>
+                            </li>
+
+                            <!-- ========== Add Fragmentation ========== -->
+
+                            <li Class="PatchOperationAdd">
+                                <xpath>Defs/ThingDef[defName="BOR_Proj_Dunder_III"]/comps</xpath>
+                                <value>
+                                    <li Class="CombatExtended.CompProperties_Fragments">
+                                        <fragments>
+                                            <Fragment_Tenebral>0</Fragment_Tenebral>
+                                        </fragments>
+                                    </li>
+                                </value>
+                            </li>
+
+                            <!-- Weapon Stack and Appearance -->
+
+                            <li Class="PatchOperationAdd">
+                                <xpath>Defs/ThingDef[defName="BOR_JI_Dunder_III"]/graphicData</xpath>
+                                <value>
+                                    <onGroundRandomRotateAngle>0</onGroundRandomRotateAngle>
+                                </value>
+                            </li>
+
+                            <li Class="PatchOperationAdd">
+                                <xpath>Defs/ThingDef[defName="BOR_JI_Dunder_III"] </xpath>
+                                <value>
+                                    <thingClass>CombatExtended.AmmoThing</thingClass>
+                                    <stackLimit>75</stackLimit>
+                                    <resourceReadoutPriority>First</resourceReadoutPriority>
+                                </value>
+                            </li>
+
+                            <li Class="PatchOperationAttributeSet">
+                                <xpath>Defs/ThingDef[defName="BOR_JI_Dunder_III"] </xpath>
+                                <attribute>Class</attribute>
+                                <value>CombatExtended.AmmoDef</value>
+                            </li>
+
+                            <!-- Weapon Check Comps -->
+
+                            <li Class="PatchOperationConditional">
+                                <xpath>Defs/ThingDef[defName="BOR_JI_Dunder_III"]/comps</xpath>
+                                <nomatch Class="PatchOperationAdd">
+                                    <xpath>Defs/ThingDef[defName="BOR_JI_Dunder_III"]</xpath>
+                                    <value>
+                                        <comps />
+                                    </value>
+                                </nomatch>
+                            </li>
+                            <!-- Weapon Values -->
+
+                            <li Class="PatchOperationAdd">
+                                <xpath>Defs/ThingDef[defName="BOR_JI_Dunder_III"]/comps</xpath>
+                                <value>
+                                    <li Class="CombatExtended.CompProperties_ExplosiveCE">
+                                        <damageAmountBase>135</damageAmountBase>
+                                        <explosiveDamageType>Bomb</explosiveDamageType>
+                                        <explosiveRadius>6.4</explosiveRadius>
+
+                                    </li>
+                                    <li Class="CombatExtended.CompProperties_Fragments">
+                                        <fragments>
+                                            <Fragment_Tenebral>50</Fragment_Tenebral>
+                                        </fragments>
+                                    </li>
+                                </value>
+                            </li>
+
+                            <li MayRequire="ceteam.combatextended" Class="CombatExtended.PatchOperationMakeGunCECompatible">
+                                <defName>BOR_JI_Dunder_III</defName>
+                                <statBases>
+                                    <Mass>1.4</Mass>
+                                    <MarketValue>24.5</MarketValue>
+                                    <RangedWeapon_Cooldown>0.58</RangedWeapon_Cooldown>
+                                    <SightsEfficiency>3.125</SightsEfficiency>
+                                </statBases>
+                                <Properties>
+                                    <label>throw tenebral satchel charge</label>
+                                    <verbClass>CombatExtended.Verb_ShootCEOneUse</verbClass>
+                                    <hasStandardCommand>true</hasStandardCommand>
+                                    <range>33.75</range>
+                                    <minRange>3</minRange>
+                                    <warmupTime>0.35</warmupTime>
+                                    <noiseRadius>2</noiseRadius>
+                                    <ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
+                                    <soundCast>ThrowGrenade</soundCast>
+                                    <targetParams>
+                                        <canTargetLocations>true</canTargetLocations>
+                                    </targetParams>
+                                    <defaultProjectile>BOR_Proj_Dunder_III</defaultProjectile>
+                                    <onlyManualCast>true</onlyManualCast>
+                                    <ignorePartialLoSBlocker>true</ignorePartialLoSBlocker>
+                                </Properties>
+                                <weaponTags>
+                                    <li>CE_AI_Grenade</li>
+                                    <li>CE_OneHandedWeapon</li>
+                                </weaponTags>
+                            </li>
+                            <li Class="PatchOperationAdd">
+                                <xpath>Defs</xpath>
+                                <value>
+                                    <RecipeDef ParentName="RSExplosive_RecipeBase">
+                                        <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+                                        <effectWorking>Cook</effectWorking>
+                                        <soundWorking>Recipe_Smith</soundWorking>
+                                        <workSkill>Crafting</workSkill>
+                                        <unfinishedThingDef>UnfinishedGun</unfinishedThingDef>
+                                        <defName>BOR_Craft_10_Dunder_III</defName>
+                                        <label>Craft 10 tenebral satchel charges</label>
+                                        <description>Craft 10 Dunder IV tenebral satchel charges.</description>
+                                        <jobString>Crafting tenebral satchel charges</jobString>
+                                        <ingredients>
+                                            <li>
+                                                <filter>
+                                                    <thingDefs>
+                                                        <li>BOR_ComponentIII</li>
+                                                    </thingDefs>
+                                                </filter>
+                                                <count>2</count>
+                                            </li>
+                                            <li>
+                                                <filter>
+                                                    <thingDefs>
+                                                        <li>BOR_Sunsteel</li>
+                                                    </thingDefs>
+                                                </filter>
+                                                <count>10</count>
+                                            </li>
+                                            <li>
+                                                <filter>
+                                                    <thingDefs>
+                                                        <li>BOR_Tenebrite</li>
+                                                    </thingDefs>
+                                                </filter>
+                                                <count>20</count>
+                                            </li>
+                                            <li>
+                                                <filter>
+                                                    <thingDefs>
+                                                        <li>BOR_Neutronium</li>
+                                                    </thingDefs>
+                                                </filter>
+                                                <count>47</count>
+                                            </li>
+                                        </ingredients>
+                                        <fixedIngredientFilter>
+                                            <thingDefs>
+                                                <li>BOR_Sunsteel</li>
+                                                <li>BOR_ComponentIII</li>
+                                                <li>BOR_Neutronium</li>
+                                            </thingDefs>
+                                        </fixedIngredientFilter>
+                                        <researchPrerequisites>
+                                            <li>BOR_Research_Weapons_III</li>
+                                            <li>MoltenTech</li>
+                                        </researchPrerequisites>
+                                        <skillRequirements>
+                                            <Crafting>18</Crafting>
+                                        </skillRequirements>
+                                        <products>
+                                            <BOR_JI_Dunder_III>10</BOR_JI_Dunder_III>
+                                        </products>
+                                        <workAmount>65000</workAmount>
+                                        <recipeUsers>
+                                            <li>BOR_Bench_III</li>
+                                            <li>BOR_Bench_IV</li>
+                                        </recipeUsers>
+                                    </RecipeDef>
+                                </value>
+                            </li>
+                        </operations>
+
+                    </match>
+                </li>
+            </operations>
+        </enabled>
+    </Operation>
 
 </Patch>
