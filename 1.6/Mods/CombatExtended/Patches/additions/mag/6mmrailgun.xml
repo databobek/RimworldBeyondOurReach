@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+	<Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
+		<modSettingDef>BOR_Setting_CE_TODO</modSettingDef>
+		<enabled Class="PatchOperationAdd">
+			<xpath>Defs</xpath>
+			<value>
+
+				<!-- ==================== Ammo ========================== -->
+
+				<ThingDef Class="CombatExtended.AmmoDef" ParentName="SpacerSmallAmmoBase">
+					<defName>BOR_Ammo_6mmRailgun_TC</defName>
+					<label>6mm Railgun cartridge (TC)</label>
+					<description>Fin-stabilized tungsten carbide penetrator with discarding tenebrite-coated sabot, designed for railgun rifles.</description>
+					<statBases>
+						<Mass>0.015</Mass>
+						<Bulk>0.012</Bulk>
+						<MarketValue>0.09</MarketValue>
+
+						<RoyalFavorValue>0.0001</RoyalFavorValue>
+					</statBases>
+					<tradeTags>
+						<li>CE_AutoEnableTrade</li>
+						<li>CE_AutoEnableCrafting_FabricationBench</li>
+						<li>CE_AutoEnableCrafting_TableMachining</li>
+						<!-- Railgun ammo isn't handloaded because it contains no propellant, and the sabots must be precision-machined anyway -->
+						<li>BOR_Tech_III</li>
+					</tradeTags>
+					<thingCategories>
+						<li>Ammo6mmRailgun</li>
+					</thingCategories>
+					<graphicData>
+						<texPath>Things/Ammo/Railgun/Rifle</texPath>
+						<graphicClass>CombatExtended.Graphic_StackCountRanged</graphicClass>
+					</graphicData>
+					<ammoClass>BOR_TC_AmmoClass</ammoClass>
+					<generateAllowChance>0.1</generateAllowChance>
+					<generateCommonality>0.01</generateCommonality>
+				</ThingDef>
+
+				<!-- ================== Projectiles ================== -->
+
+				<ThingDef ParentName="BaseBulletCE">
+					<defName>BOR_Bullet_6mmRailgun_TC</defName>
+					<label>6mm Railgun bullet (TC)</label>
+					<graphicData>
+						<texPath>Things/Projectile/Bullet_Small</texPath>
+						<graphicClass>Graphic_Single</graphicClass>
+					</graphicData>
+					<projectile Class="CombatExtended.ProjectilePropertiesCE">
+						<damageDef>Bullet</damageDef>
+						<damageAmountBase>30</damageAmountBase>
+						<armorPenetrationSharp>88</armorPenetrationSharp>
+						<armorPenetrationBlunt>435</armorPenetrationBlunt>
+						<speed>450</speed>
+					</projectile>
+				</ThingDef>
+
+				<!-- ==================== Recipes ========================== -->
+
+				<RecipeDef ParentName="AmmoRecipeBase">
+					<defName>MakeBOR_Ammo_6mmRailgun_TC</defName>
+					<label>make 6mm Railgun cartridge (TC) x500</label>
+					<description>Craft 500 6mm Railgun (TC) cartridges.</description>
+					<jobString>Making 6mm Railgun (TC) cartridges.</jobString>
+					<workAmount>15000</workAmount>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>BOR_Sunsteel</li>
+								</thingDefs>
+							</filter>
+							<count>2</count>
+						</li>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>BOR_Tenebrite</li>
+								</thingDefs>
+							</filter>
+							<count>4</count>
+						</li>
+					</ingredients>
+					<fixedIngredientFilter>
+						<thingDefs>
+							<li>BOR_Sunsteel</li>
+							<li>BOR_Tenebrite</li>
+						</thingDefs>
+					</fixedIngredientFilter>
+					<products>
+						<BOR_Ammo_6mmRailgun_TC>500</BOR_Ammo_6mmRailgun_TC>
+					</products>
+				</RecipeDef>
+
+			</value>
+		</enabled>
+	</Operation>
+
+</Patch>

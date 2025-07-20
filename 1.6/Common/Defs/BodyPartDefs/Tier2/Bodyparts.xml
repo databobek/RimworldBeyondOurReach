@@ -1,0 +1,922 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+
+	<!-- base for implants -->
+	<HediffDef Abstract="True" ParentName="ImplantHediffBase" Name="BOR_ImplantQuasarHediffBase">
+		<comps>
+			<li MayRequire="v1024.ebframework" Class="EBF.Hediffs.HediffCompProperties_MaxHPAdjust">
+				<scaleAdjustment>2.25</scaleAdjustment>
+			</li>
+		</comps>
+	</HediffDef>
+	<HediffDef ParentName="AddedBodyPartBase" Name="BOR_AddedQuasarBodyPartBase" Abstract="True">
+		<comps>
+			<li MayRequire="v1024.ebframework" Class="EBF.Hediffs.HediffCompProperties_MaxHPAdjust">
+				<scaleAdjustment>2.25</scaleAdjustment>
+			</li>
+		</comps>
+	</HediffDef>
+	<!-- Base: Bionic body part (spacer tech) -->
+	<RecipeDef Name="BOR_QuasarSurgeryInstallBodyPartArtificialBase" ParentName="SurgeryInstallBodyPartArtificialBase" Abstract="True">
+		<researchPrerequisite>BOR_Research_Bionics_II</researchPrerequisite>
+		<skillRequirements>
+			<Medicine>16</Medicine>
+		</skillRequirements>
+		<workAmount>15000</workAmount>
+		<ingredients Inherit="False">
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_MedicineII</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>BOR_MedicineII</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+	</RecipeDef>
+	<ThingDef Name="QuasarBodyPartBionicBase" ParentName="BodyPartBase" Abstract="True">
+		<techLevel>Ultra</techLevel>
+		<thingCategories>
+			<li>BOR_Bionics_II</li>
+		</thingCategories>
+		<graphicData>
+			<texPath>Things/Item/Health/HealthItem</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>0.80</drawSize>
+			<color>(155, 185, 186)</color>
+		</graphicData>
+		<tradeTags>
+			<li>BOR_Bionic_II</li>
+			<li>BOR_Tech_II</li>
+		</tradeTags>
+		<techHediffsTags>
+			<li>Ultra</li>
+			<li>BOR_Bionics_II</li>
+		</techHediffsTags>
+		<statBases>
+			<RoyalFavorValue>1</RoyalFavorValue>
+			<WorkToMake>58500</WorkToMake>
+		</statBases>
+		<recipeMaker>
+			<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+			<workSkill>Crafting</workSkill>
+			<effectWorking>Smith</effectWorking>
+			<soundWorking>Recipe_Smith</soundWorking>
+			<unfinishedThingDef>UnfinishedHealthItemBionic</unfinishedThingDef>
+			<skillRequirements>
+				<Crafting>18</Crafting>
+			</skillRequirements>
+			<researchPrerequisite>BOR_Research_Bionics_II</researchPrerequisite>
+			<recipeUsers>
+				<!-- todo -->
+				<li>BOR_MedicineBench_II</li>
+				<li>BOR_Bench_IV</li>
+			</recipeUsers>
+			<displayPriority>300</displayPriority>
+		</recipeMaker>
+	</ThingDef>
+	<!-- Bionic eye -->
+	<HediffDef ParentName="BOR_AddedQuasarBodyPartBase">
+		<defName>BOR_QuasarBionicEye</defName>
+		<label>quasar eye</label>
+		<labelNoun>a quasar bionic eye</labelNoun>
+		<description>An installed quasar eye. Capable of seeing a mouse's heat signature hidden in the grass at a Kilometer's distance, to compare it to an organic eye is almost insulting. Proprietary MicroMachines allow it to recover from any damage sustained.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_QuasarBionicEye</ThingDef>
+		</descriptionHyperlinks>
+		<spawnThingOnRemoved>BOR_QuasarBionicEye</spawnThingOnRemoved>
+		<addedPartProps>
+			<solid>true</solid>
+			<partEfficiency>2.8125</partEfficiency>
+			<betterThanNatural>true</betterThanNatural>
+		</addedPartProps>
+	</HediffDef>
+	<ThingDef ParentName="QuasarBodyPartBionicBase">
+		<defName>BOR_QuasarBionicEye</defName>
+		<label>quasar eye</label>
+		<description>An ultratech artificial eye. Capable of seeing a mouse's heat signature hidden in the grass at a Kilometer's distance, to compare it to an organic eye is almost insulting. Proprietary MicroMachines allow it to recover from any damage sustained.</description>
+		<descriptionHyperlinks>
+			<RecipeDef>BOR_InstallQuasarBionicEye</RecipeDef>
+		</descriptionHyperlinks>
+		<costList>
+			<BOR_QuasarAlloy>15</BOR_QuasarAlloy>
+			<BOR_ComponentII>4</BOR_ComponentII>
+		</costList>
+		<thingSetMakerTags>
+			<li>RewardStandardMidFreq</li>
+		</thingSetMakerTags>
+		<statBases>
+			<Mass>0.21</Mass>
+		</statBases>
+	</ThingDef>
+	<RecipeDef ParentName="BOR_QuasarSurgeryInstallBodyPartArtificialBase">
+		<defName>BOR_InstallQuasarBionicEye</defName>
+		<label>install quasar eye</label>
+		<description>Install a quasar eye.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_QuasarBionicEye</ThingDef>
+			<HediffDef>BOR_QuasarBionicEye</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing quasar bionic eye.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_QuasarBionicEye</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Picoclusters</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>BOR_QuasarBionicEye</li>
+				<li>BOR_Picoclusters</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Eye</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>BOR_QuasarBionicEye</addsHediff>
+	</RecipeDef>
+	<!-- Bionic arm -->
+	<HediffDef ParentName="BOR_AddedQuasarBodyPartBase">
+		<defName>BOR_QuasarBionicArm</defName>
+		<label>quasar arm</label>
+		<labelNoun>a quasar bionic arm</labelNoun>
+		<description>An installed quasar arm. Synthetic Quasar Alloy synthetic muscle fibers and endoskeletal hydraulics allow for unparalleled strength, while additionally being capable of regenerating should it somehow be damaged. Comparing this to an organic arm is almost insulting.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_QuasarBionicArm</ThingDef>
+		</descriptionHyperlinks>
+		<comps>
+			<li Class="HediffCompProperties_VerbGiver">
+				<tools>
+					<li>
+						<label>fist</label>
+						<capacities>
+							<li>Blunt</li>
+						</capacities>
+						<power>27</power>
+						<cooldownTime>1.39</cooldownTime>
+						<soundMeleeHit>MeleeHit_BionicPunch</soundMeleeHit>
+						<soundMeleeMiss>MeleeMiss_BionicPunch</soundMeleeMiss>
+					</li>
+				</tools>
+			</li>
+		</comps>
+		<spawnThingOnRemoved>BOR_QuasarBionicArm</spawnThingOnRemoved>
+		<addedPartProps>
+			<solid>true</solid>
+			<partEfficiency>2.8125</partEfficiency>
+			<betterThanNatural>true</betterThanNatural>
+		</addedPartProps>
+	</HediffDef>
+	<ThingDef ParentName="QuasarBodyPartBionicBase">
+		<defName>BOR_QuasarBionicArm</defName>
+		<label>quasar arm</label>
+		<description>An ultratech artificial arm. Synthetic Quasar Alloy muscle fibers and endoskeletal hydraulics allow for unparalleled strength, while additionally being capable of regenerating should it somehow be damaged. Comparing this to an organic arm is almost insulting.</description>
+		<descriptionHyperlinks>
+			<RecipeDef>BOR_InstallQuasarBionicArm</RecipeDef>
+		</descriptionHyperlinks>
+		<costList>
+			<BOR_QuasarAlloy>15</BOR_QuasarAlloy>
+			<BOR_ComponentII>4</BOR_ComponentII>
+		</costList>
+		<thingSetMakerTags>
+			<li>RewardStandardMidFreq</li>
+		</thingSetMakerTags>
+		<statBases>
+			<Mass>3.46</Mass>
+		</statBases>
+	</ThingDef>
+	<RecipeDef ParentName="BOR_QuasarSurgeryInstallBodyPartArtificialBase">
+		<defName>BOR_InstallQuasarBionicArm</defName>
+		<label>install quasar arm</label>
+		<description>Install a quasar arm.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_QuasarBionicArm</ThingDef>
+			<HediffDef>BOR_QuasarBionicArm</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing quasar bionic arm.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_QuasarBionicArm</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Picoclusters</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>BOR_QuasarBionicArm</li>
+				<li>BOR_Picoclusters</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Shoulder</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>BOR_QuasarBionicArm</addsHediff>
+	</RecipeDef>
+	<!-- Bionic leg -->
+	<HediffDef ParentName="BOR_AddedQuasarBodyPartBase">
+		<defName>BOR_QuasarBionicLeg</defName>
+		<label>quasar leg</label>
+		<labelNoun>a quasar bionic leg</labelNoun>
+		<description>An installed quasar leg. Quasar Alloy wiring connects seamlessly with the human nervous system and bleeding-edge shock absorption allows for breakneck movement speed, comparing it to an organic leg is almost insulting.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_QuasarBionicLeg</ThingDef>
+		</descriptionHyperlinks>
+		<spawnThingOnRemoved>BOR_QuasarBionicLeg</spawnThingOnRemoved>
+		<addedPartProps>
+			<solid>true</solid>
+			<partEfficiency>2.8125</partEfficiency>
+			<betterThanNatural>true</betterThanNatural>
+		</addedPartProps>
+	</HediffDef>
+	<ThingDef ParentName="QuasarBodyPartBionicBase">
+		<defName>BOR_QuasarBionicLeg</defName>
+		<label>quasar leg</label>
+		<description>An ultratech artificial leg. Quasar Alloy wiring connects seamlessly with the human nervous system and bleeding-edge shock absorption allows for breakneck movement speed, comparing it to an organic leg is almost insulting.</description>
+		<descriptionHyperlinks>
+			<RecipeDef>BOR_InstallQuasarBionicLeg</RecipeDef>
+		</descriptionHyperlinks>
+		<costList>
+			<BOR_QuasarAlloy>15</BOR_QuasarAlloy>
+			<BOR_ComponentII>4</BOR_ComponentII>
+		</costList>
+		<thingSetMakerTags>
+			<li>RewardStandardMidFreq</li>
+		</thingSetMakerTags>
+		<statBases>
+			<Mass>5.55</Mass>
+		</statBases>
+	</ThingDef>
+	<RecipeDef ParentName="BOR_QuasarSurgeryInstallBodyPartArtificialBase">
+		<defName>BOR_InstallQuasarBionicLeg</defName>
+		<label>install quasar leg</label>
+		<description>Install a quasar leg.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_QuasarBionicLeg</ThingDef>
+			<HediffDef>BOR_QuasarBionicLeg</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing quasar bionic leg.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_QuasarBionicLeg</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Picoclusters</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>BOR_QuasarBionicLeg</li>
+				<li>BOR_Picoclusters</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Leg</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>BOR_QuasarBionicLeg</addsHediff>
+	</RecipeDef>
+	<!-- Bionic spine -->
+	<HediffDef ParentName="BOR_AddedQuasarBodyPartBase">
+		<defName>BOR_QuasarBionicSpine</defName>
+		<label>quasar spine</label>
+		<labelNoun>a quasar bionic spine</labelNoun>
+		<description>An installed quasar spine. Innovative and minorly (read: incredibly) invasive installation procedures allow for peerless spinal comfort and flexibility. Comparing it to an organic spine is almost insulting.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_QuasarBionicSpine</ThingDef>
+		</descriptionHyperlinks>
+		<spawnThingOnRemoved>BOR_QuasarBionicSpine</spawnThingOnRemoved>
+		<addedPartProps>
+			<solid>true</solid>
+			<betterThanNatural>true</betterThanNatural>
+			<partEfficiency>2.8125</partEfficiency>
+		</addedPartProps>
+	</HediffDef>
+	<ThingDef ParentName="QuasarBodyPartBionicBase">
+		<defName>BOR_QuasarBionicSpine</defName>
+		<label>quasar spine</label>
+		<description>An ultratech artificial spine. Innovative and minorly (read: incredibly) invasive installation procedures allow for peerless spinal comfort and flexibility. Comparing it to an organic spine is almost insulting.</description>
+		<descriptionHyperlinks>
+			<RecipeDef>BOR_InstallQuasarBionicSpine</RecipeDef>
+		</descriptionHyperlinks>
+		<costList>
+			<BOR_QuasarAlloy>15</BOR_QuasarAlloy>
+			<BOR_ComponentII>4</BOR_ComponentII>
+		</costList>
+		<statBases>
+			<Mass>1.38</Mass>
+		</statBases>
+	</ThingDef>
+	<RecipeDef ParentName="BOR_QuasarSurgeryInstallBodyPartArtificialBase">
+		<defName>BOR_InstallQuasarBionicSpine</defName>
+		<label>install quasar spine</label>
+		<description>Install a quasar spine.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_QuasarBionicSpine</ThingDef>
+			<HediffDef>BOR_QuasarBionicSpine</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing quasar bionic spine.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_QuasarBionicSpine</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Picoclusters</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>BOR_QuasarBionicSpine</li>
+				<li>BOR_Picoclusters</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Spine</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>BOR_QuasarBionicSpine</addsHediff>
+	</RecipeDef>
+	<!-- Bionic heart -->
+	<HediffDef ParentName="BOR_AddedQuasarBodyPartBase">
+		<defName>BOR_QuasarBionicHeart</defName>
+		<label>quasar heart</label>
+		<labelNoun>a quasar bionic heart</labelNoun>
+		<description>An installed quasar heart. A solid core of Quasar Alloy with high-powered pumps to allow for near-superhuman bloodflow. To compare it to an organic heart is almost insulting.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_QuasarBionicHeart</ThingDef>
+		</descriptionHyperlinks>
+		<spawnThingOnRemoved>BOR_QuasarBionicHeart</spawnThingOnRemoved>
+		<addedPartProps>
+			<solid>true</solid>
+			<partEfficiency>2.8125</partEfficiency>
+			<betterThanNatural>true</betterThanNatural>
+		</addedPartProps>
+	</HediffDef>
+	<ThingDef ParentName="QuasarBodyPartBionicBase">
+		<defName>BOR_QuasarBionicHeart</defName>
+		<label>quasar heart</label>
+		<description>An ultratech artificial heart. A solid core of Quasar Alloy with high-powered pumps to allow for near-superhuman bloodflow. To compare it to an organic heart is almost insulting.</description>
+		<descriptionHyperlinks>
+			<RecipeDef>BOR_InstallQuasarBionicHeart</RecipeDef>
+		</descriptionHyperlinks>
+		<costList>
+			<BOR_QuasarAlloy>15</BOR_QuasarAlloy>
+			<BOR_ComponentII>4</BOR_ComponentII>
+		</costList>
+	</ThingDef>
+	<RecipeDef ParentName="BOR_QuasarSurgeryInstallBodyPartArtificialBase">
+		<defName>BOR_InstallQuasarBionicHeart</defName>
+		<label>install quasar heart</label>
+		<description>Install a quasar heart.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_QuasarBionicHeart</ThingDef>
+			<HediffDef>BOR_QuasarBionicHeart</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing quasar bionic heart.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_QuasarBionicHeart</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Picoclusters</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>BOR_QuasarBionicHeart</li>
+				<li>BOR_Picoclusters</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Heart</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>BOR_QuasarBionicHeart</addsHediff>
+	</RecipeDef>
+	<!-- Bionic stomach -->
+	<HediffDef ParentName="BOR_AddedQuasarBodyPartBase">
+		<defName>BOR_QuasarBionicStomach</defName>
+		<label>quasar stomach</label>
+		<labelNoun>a quasar bionic stomach</labelNoun>
+		<description>An installed quasar stomach. Bleeding-Edge filtration and detection technology renders the implantee not only immune to food poisoning and stomach parasites, but also immune to bloating and cramps for maximum comfort. Comparing it to an organic stomach is almost insulting.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_QuasarBionicStomach</ThingDef>
+		</descriptionHyperlinks>
+		<spawnThingOnRemoved>BOR_QuasarBionicStomach</spawnThingOnRemoved>
+		<stages>
+			<li>
+				<makeImmuneTo>
+					<li>GutWorms</li>
+				</makeImmuneTo>
+				<foodPoisoningChanceFactor>0.5</foodPoisoningChanceFactor>
+			</li>
+		</stages>
+		<addedPartProps>
+			<solid>true</solid>
+			<partEfficiency>2.8125</partEfficiency>
+			<betterThanNatural>true</betterThanNatural>
+		</addedPartProps>
+	</HediffDef>
+	<ThingDef ParentName="QuasarBodyPartBionicBase">
+		<defName>BOR_QuasarBionicStomach</defName>
+		<label>quasar stomach</label>
+		<description>An ultratech artificial stomach with Bleeding-Edge filtration and detection technology, rendering the implantee not only immune to food poisoning and stomach parasites but also bloating and cramps for maximum comfort. Comparing it to an organic stomach is almost insulting.</description>
+		<descriptionHyperlinks>
+			<RecipeDef>BOR_InstallQuasarBionicStomach</RecipeDef>
+		</descriptionHyperlinks>
+		<costList>
+			<BOR_QuasarAlloy>10</BOR_QuasarAlloy>
+			<BOR_ComponentII>3</BOR_ComponentII>
+		</costList>
+		<statBases>
+			<Mass>1.38</Mass>
+		</statBases>
+	</ThingDef>
+	<RecipeDef ParentName="BOR_QuasarSurgeryInstallBodyPartArtificialBase">
+		<defName>BOR_InstallQuasarBionicStomach</defName>
+		<label>install quasar stomach</label>
+		<description>Install a quasar stomach.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_QuasarBionicStomach</ThingDef>
+			<HediffDef>BOR_QuasarBionicStomach</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing quasar bionic stomach.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_QuasarBionicStomach</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Picoclusters</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>BOR_QuasarBionicStomach</li>
+				<li>BOR_Picoclusters</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Stomach</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>BOR_QuasarBionicStomach</addsHediff>
+	</RecipeDef>
+	<!-- Bionic ear -->
+	<HediffDef ParentName="BOR_AddedQuasarBodyPartBase">
+		<defName>BOR_QuasarBionicEar</defName>
+		<label>quasar ear</label>
+		<labelNoun>a quasar bionic ear</labelNoun>
+		<description>An installed quasar ear. Seamless listening arrays lining the external structure of the ear allow for matchless audio quality and volume attenuation, you can hear a pin drop in a live firefight while an ear of this level is installed.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_QuasarBionicEar</ThingDef>
+		</descriptionHyperlinks>
+		<spawnThingOnRemoved>BOR_QuasarBionicEar</spawnThingOnRemoved>
+		<addedPartProps>
+			<solid>true</solid>
+			<partEfficiency>2.8125</partEfficiency>
+			<betterThanNatural>true</betterThanNatural>
+		</addedPartProps>
+	</HediffDef>
+	<ThingDef ParentName="QuasarBodyPartBionicBase">
+		<defName>BOR_QuasarBionicEar</defName>
+		<label>quasar ear</label>
+		<description>An ultratech artificial ear implant. Seamless listening arrays lining the external structure of the ear allow for matchless audio quality and volume attenuation, you can hear a pin drop in a live firefight while an ear of this level is installed.</description>
+		<descriptionHyperlinks>
+			<RecipeDef>BOR_InstallQuasarBionicEar</RecipeDef>
+		</descriptionHyperlinks>
+		<costList>
+			<BOR_QuasarAlloy>10</BOR_QuasarAlloy>
+			<BOR_ComponentII>3</BOR_ComponentII>
+		</costList>
+	</ThingDef>
+	<RecipeDef ParentName="BOR_QuasarSurgeryInstallBodyPartArtificialBase">
+		<defName>BOR_InstallQuasarBionicEar</defName>
+		<label>install quasar ear</label>
+		<description>Install a quasar ear.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_QuasarBionicEar</ThingDef>
+			<HediffDef>BOR_QuasarBionicEar</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing quasar bionic ear.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_QuasarBionicEar</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Picoclusters</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>BOR_QuasarBionicEar</li>
+				<li>BOR_Picoclusters</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Ear</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>BOR_QuasarBionicEar</addsHediff>
+	</RecipeDef>
+	<!-- Bionic tongue -->
+	<HediffDef ParentName="BOR_AddedQuasarBodyPartBase">
+		<defName>BOR_QuasarBionicTongue</defName>
+		<label>quasar tongue</label>
+		<labelNoun>a quasar bionic tongue</labelNoun>
+		<description>An installed quasar tongue. Made from private patents sourced from the most prestigious of Kwazaari Research and Development Sectors, the Quasar Tongue opens up the culinary world to incorporate 3 additional flavors alongside the pre-established which are magnified to almost divine heights.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_QuasarBionicTongue</ThingDef>
+		</descriptionHyperlinks>
+		<spawnThingOnRemoved>BOR_QuasarBionicTongue</spawnThingOnRemoved>
+		<addedPartProps>
+			<solid>true</solid>
+			<partEfficiency>2.25</partEfficiency>
+		</addedPartProps>
+	</HediffDef>
+	<ThingDef ParentName="QuasarBodyPartBionicBase">
+		<defName>BOR_QuasarBionicTongue</defName>
+		<label>quasar tongue</label>
+		<description>An ultratech tongue replacement. Made from private patents sourced from the most prestigious of Kwazaari Research and Development Sectors, the Quasar Tongue opens up the culinary world to incorporate 3 additional flavors alongside the pre-established which are magnified to almost divine heights.</description>
+		<descriptionHyperlinks>
+			<RecipeDef>BOR_InstallQuasarBionicTongue</RecipeDef>
+		</descriptionHyperlinks>
+		<costList>
+			<BOR_QuasarAlloy>8</BOR_QuasarAlloy>
+			<BOR_ComponentII>2</BOR_ComponentII>
+		</costList>
+	</ThingDef>
+	<RecipeDef ParentName="BOR_QuasarSurgeryInstallBodyPartArtificialBase">
+		<defName>BOR_InstallQuasarBionicTongue</defName>
+		<label>install quasar tongue</label>
+		<description>Install a quasar tongue.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_QuasarBionicTongue</ThingDef>
+			<HediffDef>BOR_QuasarBionicTongue</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing quasar bionic tongue.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_QuasarBionicTongue</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Picoclusters</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>BOR_QuasarBionicTongue</li>
+				<li>BOR_Picoclusters</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Tongue</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>BOR_QuasarBionicTongue</addsHediff>
+	</RecipeDef>
+	<!-- Bionic Jaw -->
+	<HediffDef ParentName="BOR_AddedQuasarBodyPartBase">
+		<defName>BOR_QuasarBionicJaw</defName>
+		<label>quasar jaw</label>
+		<labelNoun>a quasar bionic jaw</labelNoun>
+		<description>An installed quasar jaw. Beautifully carved from Quasar Alloy, often the skin is not grafted back overtop these jaws in order to preserve their vexing beauty, to say nothing of their immeasurable performance and configurability.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_QuasarBionicJaw</ThingDef>
+		</descriptionHyperlinks>
+		<spawnThingOnRemoved>BOR_QuasarBionicJaw</spawnThingOnRemoved>
+		<addedPartProps>
+			<solid>true</solid>
+			<partEfficiency>2.8125</partEfficiency>
+			<betterThanNatural>true</betterThanNatural>
+		</addedPartProps>
+	</HediffDef>
+	<ThingDef ParentName="QuasarBodyPartBionicBase">
+		<defName>BOR_QuasarBionicJaw</defName>
+		<label>quasar jaw</label>
+		<description>An ultratech jaw replacement. Beautifully carved from Quasar Alloy, often the skin is not grafted back overtop these jaws in order to preserve their vexing beauty, to say nothing of their immeasurable performance and configurability.</description>
+		<descriptionHyperlinks>
+			<RecipeDef>BOR_InstallQuasarBionicJaw</RecipeDef>
+		</descriptionHyperlinks>
+		<costList>
+			<BOR_QuasarAlloy>10</BOR_QuasarAlloy>
+			<BOR_ComponentII>3</BOR_ComponentII>
+		</costList>
+		<statBases>
+			<Mass>1.875</Mass>
+		</statBases>
+	</ThingDef>
+	<RecipeDef ParentName="BOR_QuasarSurgeryInstallBodyPartArtificialBase">
+		<defName>BOR_InstallQuasarBionicJaw</defName>
+		<label>install quasar jaw</label>
+		<description>Install quasar jaw.</description>
+		<jobString>Installing quasar bionic jaw.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_QuasarBionicJaw</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Picoclusters</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>BOR_QuasarBionicJaw</li>
+				<li>BOR_Picoclusters</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Jaw</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>BOR_QuasarBionicJaw</addsHediff>
+	</RecipeDef>
+	<!-- Bionic liver -->
+	<HediffDef ParentName="BOR_AddedQuasarBodyPartBase">
+		<defName>BOR_QuasarBionicLiver</defName>
+		<label>quasar liver</label>
+		<labelNoun>a quasar bionic liver</labelNoun>
+		<description>An installed quasar liver. To call it a 'liver' is somewhat of a misnomer, as it is more of a compact industrial waste filter within the body. Even so, comparing it to an organic liver is almost insulting.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_QuasarBionicLiver</ThingDef>
+		</descriptionHyperlinks>
+		<spawnThingOnRemoved>BOR_QuasarBionicLiver</spawnThingOnRemoved>
+		<addedPartProps>
+			<solid>true</solid>
+			<partEfficiency>1.875</partEfficiency>
+			<betterThanNatural>true</betterThanNatural>
+		</addedPartProps>
+	</HediffDef>
+	<ThingDef ParentName="QuasarBodyPartBionicBase">
+		<defName>BOR_QuasarBionicLiver</defName>
+		<label>quasar liver</label>
+		<description>An ultratech artificial liver. To call it a 'liver' is somewhat of a misnomer, as it is more of a compact industrial waste filter within the body. Even so, comparing it to an organic liver is almost insulting.</description>
+		<descriptionHyperlinks>
+			<RecipeDef>BOR_InstallQuasarBionicLiver</RecipeDef>
+		</descriptionHyperlinks>
+		<costList>
+			<BOR_QuasarAlloy>15</BOR_QuasarAlloy>
+			<BOR_ComponentII>4</BOR_ComponentII>
+		</costList>
+	</ThingDef>
+	<RecipeDef ParentName="BOR_QuasarSurgeryInstallBodyPartArtificialBase">
+		<defName>BOR_InstallQuasarBionicLiver</defName>
+		<label>install quasar liver</label>
+		<description>Install a quasar liver.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_QuasarBionicLiver</ThingDef>
+			<HediffDef>BOR_QuasarBionicLiver</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing quasar bionic liver.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_QuasarBionicLiver</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Picoclusters</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>BOR_QuasarBionicLiver</li>
+				<li>BOR_Picoclusters</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Liver</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>BOR_QuasarBionicLiver</addsHediff>
+	</RecipeDef>
+	<!-- Bionic lung -->
+	<HediffDef ParentName="BOR_AddedQuasarBodyPartBase">
+		<defName>BOR_QuasarBionicLung</defName>
+		<label>quasar lung</label>
+		<labelNoun>a quasar bionic lung</labelNoun>
+		<description>An installed quasar lung. Specialized fibrous mesh is woven loosely around Quasar Alloy girding within the organ, allowing for near-lossless oxygen intake for the average human body. Comparing it to an organic lung is almost insulting.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_QuasarBionicLung</ThingDef>
+		</descriptionHyperlinks>
+		<spawnThingOnRemoved>BOR_QuasarBionicLung</spawnThingOnRemoved>
+		<addedPartProps>
+			<solid>true</solid>
+			<partEfficiency>1.875</partEfficiency>
+			<betterThanNatural>true</betterThanNatural>
+		</addedPartProps>
+	</HediffDef>
+	<ThingDef ParentName="QuasarBodyPartBionicBase">
+		<defName>BOR_QuasarBionicLung</defName>
+		<label>quasar lung</label>
+		<description>An ultratech artificial lung. Specialized fibrous mesh is woven loosely around Quasar Alloy girding within the organ, allowing for near-lossless oxygen intake for the average human body. Comparing it to an organic lung is almost insulting.</description>
+		<descriptionHyperlinks>
+			<RecipeDef>BOR_InstallQuasarBionicLung</RecipeDef>
+		</descriptionHyperlinks>
+		<costList>
+			<BOR_QuasarAlloy>15</BOR_QuasarAlloy>
+			<BOR_ComponentII>4</BOR_ComponentII>
+		</costList>
+	</ThingDef>
+	<RecipeDef ParentName="BOR_QuasarSurgeryInstallBodyPartArtificialBase">
+		<defName>BOR_InstallQuasarBionicLung</defName>
+		<label>install quasar lung</label>
+		<description>Install a quasar lung.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_QuasarBionicLung</ThingDef>
+			<HediffDef>BOR_QuasarBionicLung</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing quasar bionic lung.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_QuasarBionicLung</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Picoclusters</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>BOR_QuasarBionicLung</li>
+				<li>BOR_Picoclusters</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Lung</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>BOR_QuasarBionicLung</addsHediff>
+	</RecipeDef>
+	<!-- Bionic kidney -->
+	<HediffDef ParentName="BOR_AddedQuasarBodyPartBase">
+		<defName>BOR_QuasarBionicKidney</defName>
+		<label>quasar kidney</label>
+		<labelNoun>a quasar bionic kidney</labelNoun>
+		<description>An installed quasar kidney. Polymeric nanoadsorbents and zeolites are present within the organ in order to maximize the re-usable material while it is filtered through. Comparing it to an organic kidney is almost insulting.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_QuasarBionicKidney</ThingDef>
+		</descriptionHyperlinks>
+		<spawnThingOnRemoved>BOR_QuasarBionicKidney</spawnThingOnRemoved>
+		<addedPartProps>
+			<solid>true</solid>
+			<partEfficiency>1.875</partEfficiency>
+			<betterThanNatural>true</betterThanNatural>
+		</addedPartProps>
+	</HediffDef>
+	<ThingDef ParentName="QuasarBodyPartBionicBase">
+		<defName>BOR_QuasarBionicKidney</defName>
+		<label>quasar kidney</label>
+		<description>An ultratech artificial kidney. Polymeric nanoadsorbents and zeolites are present within the organ in order to maximize the re-usable material while it is filtered through. Comparing it to an organic kidney is almost insulting.</description>
+		<descriptionHyperlinks>
+			<RecipeDef>BOR_InstallQuasarBionicKidney</RecipeDef>
+		</descriptionHyperlinks>
+		<costList>
+			<BOR_QuasarAlloy>15</BOR_QuasarAlloy>
+			<BOR_ComponentII>4</BOR_ComponentII>
+		</costList>
+	</ThingDef>
+	<RecipeDef ParentName="BOR_QuasarSurgeryInstallBodyPartArtificialBase">
+		<defName>BOR_InstallQuasarBionicKidney</defName>
+		<label>install quasar kidney</label>
+		<description>Install a quasar kidney.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_QuasarBionicKidney</ThingDef>
+			<HediffDef>BOR_QuasarBionicKidney</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing quasar bionic kidney.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_QuasarBionicKidney</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Picoclusters</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>BOR_QuasarBionicKidney</li>
+				<li>BOR_Picoclusters</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Kidney</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>BOR_QuasarBionicKidney</addsHediff>
+	</RecipeDef>
+</Defs>

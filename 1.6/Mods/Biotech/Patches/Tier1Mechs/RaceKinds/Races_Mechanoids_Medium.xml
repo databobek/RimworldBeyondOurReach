@@ -1,0 +1,747 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+
+  <Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
+    <modSettingDef>BOR_Setting_Biotech</modSettingDef>
+    <enabled Class="PatchOperationSequence">
+	  <operations>
+	  
+	  <!-- patch sequence to patch in defs while proceeding to check for CE -->
+	  <li Class="PatchOperationAdd">
+      <xpath>Defs</xpath>
+      
+      <value>
+
+        <ThingDef ParentName="LancerMechanoidWalker">
+          <defName>BOR_Solar_Mech_Legionary</defName>
+          <label>solar legionary</label>
+          <description>A solar combat support mechanoid with a wide-range bullet shield and mid-range needle gun. Designed to support other mechanoids, the legionary is vulnerable to anyone who can get inside its shield.</description>
+          <statBases>
+            <MarketValue>1800</MarketValue>
+            <MoveSpeed>6.45</MoveSpeed>
+            <EnergyShieldRechargeRate>0.375</EnergyShieldRechargeRate>
+            <EnergyShieldEnergyMax>2.25</EnergyShieldEnergyMax>
+            <BandwidthCost>2</BandwidthCost>
+            <ControlTakingTime>18</ControlTakingTime>
+          </statBases>
+          <race>
+            <mechFixedSkillLevel>15</mechFixedSkillLevel>
+            <lifeStageAges Inherit="False">
+              <li>
+                <def>MechanoidFullyFormed</def>
+                <minAge>0</minAge>
+                <soundWounded>Pawn_Mech_Legionary_Wounded</soundWounded>
+                <soundDeath>Pawn_Mech_Legionary_Death</soundDeath>
+                <soundCall>Pawn_Mech_Legionary_Call</soundCall>
+              </li>
+              <li>
+                <def>MechanoidFullyFormed</def>
+                <minAge>100</minAge>
+                <soundWounded>Pawn_Mech_Legionary_Wounded</soundWounded>
+                <soundDeath>Pawn_Mech_Legionary_Death</soundDeath>
+                <soundCall>Pawn_Mech_Legionary_Call</soundCall>
+              </li>
+            </lifeStageAges>
+          </race>
+          <comps>
+            <li Class="CompProperties_ProjectileInterceptor">
+              <radius>3</radius>
+              <interceptGroundProjectiles>true</interceptGroundProjectiles>
+              <color>(0.4, 0.4, 0.4)</color>
+              <reactivateEffect>BulletShieldGenerator_Reactivate</reactivateEffect>
+              <activeSound>BulletShield_Ambience</activeSound>
+              <hitPoints>200</hitPoints>
+              <hitPointsRestoreInstantlyAfterCharge>true</hitPointsRestoreInstantlyAfterCharge>
+              <chargeDurationTicks>5400</chargeDurationTicks>
+              <drawWithNoSelection>True</drawWithNoSelection>
+              <disarmedByEmpForTicks>1500</disarmedByEmpForTicks>
+              <gizmoTipKey>ProjectileInterceptorTip</gizmoTipKey>
+            </li>
+          </comps>
+        </ThingDef>
+
+        <PawnKindDef ParentName="BaseMechanoidKind">
+          <defName>BOR_Solar_Mech_Legionary</defName>
+          <label>solar legionary</label>
+          <race>BOR_Solar_Mech_Legionary</race>
+          <combatPower>150</combatPower>
+          <allowInMechClusters>false</allowInMechClusters>
+          <lifeStages>
+            <li>
+              <bodyGraphicData>
+                <texPath>Things/Pawn/Mechanoid/Legionary</texPath>
+                <maskPath>Things/Pawn/Mechanoid/AllegianceOverlays/Mech_Legionary</maskPath>
+                <shaderType>CutoutWithOverlay</shaderType>
+                <drawSize>1.5</drawSize>
+                <color>(104, 160, 168)</color>
+              </bodyGraphicData>
+            </li>
+            <li>
+              <bodyGraphicData>
+                <texPath>Things/Pawn/Mechanoid/LegionaryAncient</texPath>
+                <maskPath>Things/Pawn/Mechanoid/AllegianceOverlays/Mech_Legionary</maskPath>
+                <shaderType>CutoutWithOverlay</shaderType>
+                <drawSize>1.5</drawSize>
+                <color>(104, 160, 168)</color>
+              </bodyGraphicData>
+            </li>
+          </lifeStages>
+          <weaponMoney>9999~9999</weaponMoney>
+          <weaponTags>
+            <li>SolarMechanoidGunNeedleLauncher</li>
+          </weaponTags>
+          <techHediffsChance>1</techHediffsChance>
+          <techHediffsMoney>9999~9999</techHediffsMoney>
+          <controlGroupPortraitZoom>1.2</controlGroupPortraitZoom>
+        </PawnKindDef>
+
+
+        <ThingDef ParentName="LancerMechanoidWalker">
+          <defName>BOR_Solar_Mech_Tesseron</defName>
+          <label>solar tesseron</label>
+          <description>A solar medium-range combat mechanoid. While it is fairly vulnerable to attacks, the tesseron's sweeping beam graser can pierce thick armor and even ignite shielded targets.</description>
+          <race>
+            <lifeStageAges Inherit="False">
+              <li>
+                <def>MechanoidFullyFormed</def>
+                <minAge>0</minAge>
+                <soundWounded>Pawn_Mech_Tesseron_Wounded</soundWounded>
+                <soundDeath>Pawn_Mech_Tesseron_Death</soundDeath>
+                <soundCall>Pawn_Mech_Tesseron_Call</soundCall>
+              </li>
+              <li>
+                <def>MechanoidFullyFormed</def>
+                <minAge>100</minAge>
+                <soundWounded>Pawn_Mech_Tesseron_Wounded</soundWounded>
+                <soundDeath>Pawn_Mech_Tesseron_Death</soundDeath>
+                <soundCall>Pawn_Mech_Tesseron_Call</soundCall>
+              </li>
+            </lifeStageAges>
+          </race>
+          <statBases>
+            <BandwidthCost>3</BandwidthCost>
+            <ControlTakingTime>18</ControlTakingTime>
+          </statBases>
+        </ThingDef>
+
+        <PawnKindDef ParentName="BaseMechanoidKind">
+          <defName>BOR_Solar_Mech_Tesseron</defName>
+          <label>solar tesseron</label>
+          <race>BOR_Solar_Mech_Tesseron</race>
+          <combatPower>150</combatPower>
+          <lifeStages>
+            <li>
+              <bodyGraphicData>
+                <texPath>Things/Pawn/Mechanoid/Tesseron</texPath>
+                <maskPath>Things/Pawn/Mechanoid/AllegianceOverlays/Mech_Beamstrider</maskPath>
+                <shaderType>CutoutWithOverlay</shaderType>
+                <graphicClass>Graphic_Multi</graphicClass>
+                <drawSize>1.5</drawSize>
+                <color>(104, 160, 168)</color>
+              </bodyGraphicData>
+            </li>
+            <li>
+              <bodyGraphicData>
+                <texPath>Things/Pawn/Mechanoid/TesseronAncient</texPath>
+                <maskPath>Things/Pawn/Mechanoid/AllegianceOverlays/Mech_Beamstrider</maskPath>
+                <shaderType>CutoutWithOverlay</shaderType>
+                <graphicClass>Graphic_Multi</graphicClass>
+                <drawSize>1.5</drawSize>
+                <color>(104, 160, 168)</color>
+              </bodyGraphicData>
+            </li>
+          </lifeStages>
+          <weaponMoney>9999~9999</weaponMoney>
+          <weaponTags>
+            <li>BeamGraserGun</li>
+          </weaponTags>
+          <techHediffsChance>1</techHediffsChance>
+          <techHediffsMoney>9999~9999</techHediffsMoney>
+        </PawnKindDef>
+
+
+        <ThingDef ParentName="BaseMechanoidWalker">
+          <defName>BOR_Solar_Mech_Scorcher</defName>
+          <label>solar scorcher</label>
+          <description>A close-approach solar war mechanoid that specializes in incendiary attacks. Its flame burst attack has little reach, but once it closes on a group of defenders it can ignite and disrupt them with blasts of searing flame.</description>
+          <statBases>
+            <MoveSpeed>6.75</MoveSpeed>
+            <BandwidthCost>1</BandwidthCost>
+          </statBases>
+          <tools>
+            <li>
+              <label>solar front left leg</label>
+              <capacities>
+                <li>Blunt</li>
+              </capacities>
+              <power>12.0</power>
+              <cooldownTime>1</cooldownTime>
+              <linkedBodyPartsGroup>FrontLeftLeg</linkedBodyPartsGroup>
+              <alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+            </li>
+            <li>
+              <label>solar front right leg</label>
+              <capacities>
+                <li>Blunt</li>
+              </capacities>
+              <power>12.0</power>
+              <cooldownTime>1</cooldownTime>
+              <linkedBodyPartsGroup>FrontRightLeg</linkedBodyPartsGroup>
+              <alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+            </li>
+            <li>
+              <label>solar head</label>
+              <capacities>
+                <li>Blunt</li>
+              </capacities>
+              <power>8.5</power>
+              <cooldownTime>1</cooldownTime>
+              <linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
+              <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+              <chanceFactor>0.2</chanceFactor>
+            </li>
+          </tools>
+          <race>
+            <body>Scorcher</body>
+            <baseHealthScale>0.7</baseHealthScale>
+            <soundMeleeHitPawn>Pawn_Melee_Punch_HitPawn</soundMeleeHitPawn>
+            <soundMeleeHitBuilding>Pawn_Melee_Punch_HitBuilding_Metal</soundMeleeHitBuilding>
+            <soundMeleeMiss>Pawn_Melee_Punch_Miss</soundMeleeMiss>
+            <lifeStageAges Inherit="False">
+              <li>
+                <def>MechanoidFullyFormed</def>
+                <minAge>0</minAge>
+                <soundWounded>Pawn_Mech_Scorcher_Wounded</soundWounded>
+                <soundDeath>Pawn_Mech_Scorcher_Death</soundDeath>
+                <soundCall>Pawn_Mech_Scorcher_Call</soundCall>
+              </li>
+              <li>
+                <def>MechanoidFullyFormed</def>
+                <minAge>100</minAge>
+                <soundWounded>Pawn_Mech_Scorcher_Wounded</soundWounded>
+                <soundDeath>Pawn_Mech_Scorcher_Death</soundDeath>
+                <soundCall>Pawn_Mech_Scorcher_Call</soundCall>
+              </li>
+            </lifeStageAges>
+            <mechWeightClass>Medium</mechWeightClass>
+          </race>
+        </ThingDef>
+
+        <PawnKindDef ParentName="BaseMechanoidKind">
+          <defName>BOR_Solar_Mech_Scorcher</defName>
+          <label>solar scorcher</label>
+          <labelPlural>solar scorchers</labelPlural>
+          <race>BOR_Solar_Mech_Scorcher</race>
+          <combatPower>75</combatPower>
+          <lifeStages>
+            <li>
+              <bodyGraphicData>
+                <texPath>Things/Pawn/Mechanoid/Scorcher</texPath>
+                <maskPath>Things/Pawn/Mechanoid/AllegianceOverlays/Mech_Scorcher</maskPath>
+                <shaderType>CutoutWithOverlay</shaderType>
+                <graphicClass>Graphic_Multi</graphicClass>
+                <drawSize>1.8</drawSize>
+                <color>(104, 160, 168)</color>
+              </bodyGraphicData>
+            </li>
+            <li>
+              <bodyGraphicData>
+                <texPath>Things/Pawn/Mechanoid/ScorcherAncient</texPath>
+                <maskPath>Things/Pawn/Mechanoid/AllegianceOverlays/Mech_Scorcher</maskPath>
+                <shaderType>CutoutWithOverlay</shaderType>
+                <graphicClass>Graphic_Multi</graphicClass>
+                <drawSize>1.8</drawSize>
+                <color>(104, 160, 168)</color>
+              </bodyGraphicData>
+            </li>
+          </lifeStages>
+          <weaponMoney>9999~9999</weaponMoney>
+          <weaponTags>
+            <li>SolarMechanoidGunMiniFlameblaster</li>
+          </weaponTags>
+          <techHediffsChance>1</techHediffsChance>
+          <techHediffsMoney>9999~9999</techHediffsMoney>
+        </PawnKindDef>
+
+
+        <ThingDef ParentName="BaseMechanoidWalker">
+          <defName>BOR_Solar_Mech_Apocriton</defName>
+          <label>solar apocriton</label>
+          <description>A solar mechanoid commander designed to coordinate and motivate other mechs during long extermination campaigns. Its most obvious power is its ability to resurrect recently-killed mechs by supercharging their self-repair processes. Less obviously, it is intelligent and psychically present, radiating hatred into the minds of anyone in a wide radius. It can also move quickly with its built-in jump launcher.\n\nWhile all mechanoids have a dim psychically-present intelligence, only the apocriton and a few others truly feel hatred for their victims and understand the suffering they inflict.</description>
+          <statBases>
+            <MarketValue>2400</MarketValue>
+            <MoveSpeed>4.8</MoveSpeed>
+            <EnergyShieldRechargeRate>0.375</EnergyShieldRechargeRate>
+            <EnergyShieldEnergyMax>2.25</EnergyShieldEnergyMax>
+            <BandwidthCost>2</BandwidthCost>
+            <ControlTakingTime>18</ControlTakingTime>
+            <EMPResistance>0.8</EMPResistance>
+            <ArmorRating_Blunt>0.6</ArmorRating_Blunt>
+            <ArmorRating_Sharp>1.125</ArmorRating_Sharp>
+          </statBases>
+          <race>
+            <body>Apocriton</body>
+            <lifeStageAges Inherit="False">
+              <li>
+                <def>MechanoidFullyFormed</def>
+                <minAge>0</minAge>
+                <soundWounded>Pawn_Mech_Apocriton_Wounded</soundWounded>
+                <soundAngry>Pawn_Mech_Apocriton_Call</soundAngry>
+                <soundDeath>Pawn_Mech_Apocriton_Death</soundDeath>
+                <soundCall>Pawn_Mech_Apocriton_Call</soundCall>
+              </li>
+              <li>
+                <def>MechanoidFullyFormed</def>
+                <minAge>100</minAge>
+                <soundWounded>Pawn_Mech_Apocriton_Wounded</soundWounded>
+                <soundAngry>Pawn_Mech_Apocriton_Call</soundAngry>
+                <soundDeath>Pawn_Mech_Apocriton_Death</soundDeath>
+                <soundCall>Pawn_Mech_Apocriton_Call</soundCall>
+              </li>
+            </lifeStageAges>
+            <baseHealthScale>5.2</baseHealthScale>
+            <soundMeleeHitPawn>Pawn_Melee_Punch_HitPawn</soundMeleeHitPawn>
+            <soundMeleeHitBuilding>Pawn_Melee_Punch_HitBuilding_Metal</soundMeleeHitBuilding>
+            <soundMeleeMiss>Pawn_Melee_Punch_Miss</soundMeleeMiss>
+            <soundAmbience>Pawn_Mech_Apocriton_Ambience</soundAmbience>
+          </race>
+          <tools>
+            <li>
+              <label>solar head</label>
+              <capacities>
+                <li>Blunt</li>
+              </capacities>
+              <power>9</power>
+              <cooldownTime>2.167</cooldownTime>
+              <linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
+              <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+            </li>
+          </tools>
+          <killedLeavingsPlayerHostile>
+            <NanostructuringChip>1</NanostructuringChip>
+          </killedLeavingsPlayerHostile>
+          <comps>
+            <li Class="CompProperties_Explosive">
+              <wickTicks>0</wickTicks>
+              <explosiveRadius>30.9</explosiveRadius>
+              <explodeOnKilled>true</explodeOnKilled>
+              <explosiveDamageType>MechBandShockwave</explosiveDamageType>
+              <propagationSpeed>0.5</propagationSpeed>
+              <chanceNeverExplodeFromDamage>1</chanceNeverExplodeFromDamage>
+              <extraInspectStringKey>MechStunPulseWarning</extraInspectStringKey>
+            </li>
+            <li Class="CompProperties_Effecter">
+              <effecterDef>ApocrionAttached</effecterDef>
+            </li>
+          </comps>
+        </ThingDef>
+
+        <PawnKindDef ParentName="BaseMechanoidKind">
+          <defName>BOR_Solar_Mech_Apocriton</defName>
+          <label>solar apocriton</label>
+          <race>BOR_Solar_Mech_Apocriton</race>
+          <combatPower>600</combatPower>
+          <maxPerGroup>3</maxPerGroup>
+          <allowInMechClusters>false</allowInMechClusters>
+          <lifeStages>
+            <li>
+              <bodyGraphicData>
+                <texPath>Things/Pawn/Mechanoid/Apocriton</texPath>
+                <maskPath>Things/Pawn/Mechanoid/AllegianceOverlays/Mech_Apocriton</maskPath>
+                <shaderType>CutoutWithOverlay</shaderType>
+                <graphicClass>Graphic_Multi</graphicClass>
+                <drawSize>2</drawSize>
+                <color>(104, 160, 168)</color>
+              </bodyGraphicData>
+            </li>
+            <li>
+              <bodyGraphicData>
+                <texPath>Things/Pawn/Mechanoid/ApocritonAncient</texPath>
+                <maskPath>Things/Pawn/Mechanoid/AllegianceOverlays/Mech_Apocriton</maskPath>
+                <shaderType>CutoutWithOverlay</shaderType>
+                <graphicClass>Graphic_Multi</graphicClass>
+                <drawSize>2</drawSize>
+                <color>(104, 160, 168)</color>
+              </bodyGraphicData>
+            </li>
+          </lifeStages>
+          <weaponMoney>9999~9999</weaponMoney>
+          <weaponTags>
+            <li>SolarMechanoidGunToxicNeedle</li>
+          </weaponTags>
+          <techHediffsChance>1</techHediffsChance>
+          <techHediffsMoney>9999~9999</techHediffsMoney>
+          <abilities>
+            <li>LongjumpMech</li>
+            <li>ResurrectionMech</li>
+          </abilities>
+          <skipResistant>true</skipResistant>
+        </PawnKindDef>
+
+      </value>
+
+	  </li>
+	  
+	  <!-- check to see if CombatExtended is loaded as well, then modify the patched in defs to CE standards -->
+	  <li Class="PatchOperationFindMod">
+		<mods>
+		  <li>Combat Extended</li>
+		</mods>
+			<match Class="PatchOperationSequence">
+				<operations>
+
+
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/PawnKindDef[defName="BOR_Solar_Mech_Tesseron" or defName="BOR_Solar_Mech_Apocriton"]</xpath>
+						<value>
+							<aiAvoidCover>false</aiAvoidCover>
+						</value>
+					</li>
+
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/PawnKindDef[defName="BOR_Solar_Mech_Legionary" or defName="BOR_Solar_Mech_Tesseron"]/combatPower</xpath>
+						<value>
+							<combatPower>200</combatPower>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/PawnKindDef[defName="BOR_Solar_Mech_Apocriton"]/combatPower</xpath>
+						<value>
+							<combatPower>900</combatPower>
+						</value>
+					</li>
+
+
+					<li Class="PatchOperationAddModExtension">
+						<xpath>Defs/PawnKindDef[defName="BOR_Solar_Mech_Legionary"]</xpath>
+						<value>
+							<li Class="CombatExtended.LoadoutPropertiesExtension">
+								<primaryMagazineCount>
+									<min>2</min>
+									<max>3</max>
+								</primaryMagazineCount>
+							</li>
+						</value>
+					</li>
+
+					<li Class="PatchOperationAddModExtension">
+						<xpath>Defs/PawnKindDef[defName="BOR_Solar_Mech_Scorcher"]</xpath>
+						<value>
+							<li Class="CombatExtended.LoadoutPropertiesExtension">
+								<primaryMagazineCount>
+									<min>3</min>
+									<max>4</max>
+								</primaryMagazineCount>
+							</li>
+						</value>
+					</li>
+
+					<li Class="PatchOperationAddModExtension">
+						<xpath>Defs/PawnKindDef[defName="BOR_Solar_Mech_Apocriton"]</xpath>
+						<value>
+							<li Class="CombatExtended.LoadoutPropertiesExtension">
+								<primaryMagazineCount>
+									<min>9</min>
+									<max>10</max>
+								</primaryMagazineCount>
+							</li>
+						</value>
+					</li>
+
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/PawnKindDef[defName="BOR_Solar_Mech_Legionary"]/weaponTags</xpath>
+						<value>
+							<weaponTags>
+								<li>MechanoidGunIndirect</li>
+							</weaponTags>
+						</value>
+					</li>
+
+					<li Class="PatchOperationAddModExtension">
+						<xpath>Defs/ThingDef[defName="BOR_Solar_Mech_Legionary" or defName="BOR_Solar_Mech_Tesseron"]</xpath>
+						<value>
+							<li Class="CombatExtended.RacePropertiesExtensionCE">
+								<bodyShape>Humanoid</bodyShape>
+							</li>
+						</value>
+					</li>
+
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[defName="BOR_Solar_Mech_Legionary"]/statBases</xpath>
+						<value>
+							<CarryWeight>113</CarryWeight>
+							<CarryBulk>33</CarryBulk>
+							<MeleeDodgeChance>0.12</MeleeDodgeChance>
+							<MeleeCritChance>0.11</MeleeCritChance>
+							<MeleeParryChance>0.09</MeleeParryChance>
+						</value>
+					</li>
+
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[defName="BOR_Solar_Mech_Tesseron"]/statBases</xpath>
+						<value>
+							<ArmorRating_Heat>0.375</ArmorRating_Heat>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Solar_Mech_Legionary"]/statBases/EnergyShieldRechargeRate</xpath>
+						<value>
+							<EnergyShieldRechargeRate>0.562</EnergyShieldRechargeRate>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Solar_Mech_Legionary"]/statBases/EnergyShieldEnergyMax</xpath>
+						<value>
+							<EnergyShieldEnergyMax>3.375</EnergyShieldEnergyMax>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Solar_Mech_Legionary"]/comps/li[@Class="CompProperties_ProjectileInterceptor"]/hitPoints</xpath>
+						<value>
+							<hitPoints>300</hitPoints>
+						</value>
+					</li>
+
+					<li Class="PatchOperationConditional">
+						<xpath>Defs/ThingDef[defName="BOR_Solar_Mech_Legionary" or defName="BOR_Solar_Mech_Tesseron"]/comps</xpath>
+						<nomatch Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="BOR_Solar_Mech_Legionary" or defName="BOR_Solar_Mech_Tesseron"]</xpath>
+							<value>
+								<comps />
+							</value>
+						</nomatch>
+					</li>
+
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[defName="BOR_Solar_Mech_Legionary" or defName="BOR_Solar_Mech_Tesseron"]/comps</xpath>
+						<value>
+							<li Class="CombatExtended.CompProperties_ArmorDurability">
+								<Durability>1000</Durability>
+								<Regenerates>true</Regenerates>
+								<RegenInterval>1250</RegenInterval>
+								<RegenValue>5</RegenValue>
+								<Repairable>true</Repairable>
+								<RepairIngredients>
+									<Plasteel>5</Plasteel>
+									<BOR_Sunsteel>5</BOR_Sunsteel>
+								</RepairIngredients>
+								<RepairTime>300</RepairTime>
+								<RepairValue>200</RepairValue>
+								<CanOverHeal>true</CanOverHeal>
+								<MaxOverHeal>100</MaxOverHeal>
+								<MinArmorPct>0.75</MinArmorPct>
+							</li>
+						</value>
+					</li>
+
+
+					<li Class="PatchOperationAddModExtension">
+						<xpath>Defs/ThingDef[defName="BOR_Solar_Mech_Scorcher"]</xpath>
+						<value>
+							<li Class="CombatExtended.RacePropertiesExtensionCE">
+								<bodyShape>Humanoid</bodyShape>
+							</li>
+						</value>
+					</li>
+
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[defName="BOR_Solar_Mech_Scorcher"]/statBases</xpath>
+						<value>
+							<ArmorRating_Heat>0.75</ArmorRating_Heat>
+							<CarryBulk>25</CarryBulk>
+							<MeleeDodgeChance>0.13</MeleeDodgeChance>
+							<MeleeCritChance>0.12</MeleeCritChance>
+							<MeleeParryChance>0.09</MeleeParryChance>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Solar_Mech_Scorcher"]/tools</xpath>
+						<value>
+							<tools>
+								<li Class="CombatExtended.ToolCE">
+									<label>front left leg</label>
+									<capacities>
+										<li>Blunt</li>
+									</capacities>
+									<power>7</power>
+									<cooldownTime>0.925</cooldownTime>
+									<linkedBodyPartsGroup>FrontLeftLeg</linkedBodyPartsGroup>
+									<armorPenetrationBlunt>2.625</armorPenetrationBlunt>
+									<alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+								</li>
+								<li Class="CombatExtended.ToolCE">
+									<label>front right leg</label>
+									<capacities>
+										<li>Blunt</li>
+									</capacities>
+									<power>7</power>
+									<cooldownTime>0.925</cooldownTime>
+									<linkedBodyPartsGroup>FrontRightLeg</linkedBodyPartsGroup>
+									<armorPenetrationBlunt>2.625</armorPenetrationBlunt>
+									<alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+								</li>
+								<li Class="CombatExtended.ToolCE">
+									<label>head</label>
+									<capacities>
+										<li>Blunt</li>
+									</capacities>
+									<power>6</power>
+									<cooldownTime>1.542</cooldownTime>
+									<linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
+									<chanceFactor>0.2</chanceFactor>
+									<armorPenetrationBlunt>1.05</armorPenetrationBlunt>
+								</li>
+							</tools>
+						</value>
+					</li>
+
+					<li Class="PatchOperationConditional">
+						<xpath>Defs/ThingDef[defName="BOR_Solar_Mech_Scorcher"]/comps</xpath>
+						<nomatch Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="BOR_Solar_Mech_Scorcher"]</xpath>
+							<value>
+								<comps />
+							</value>
+						</nomatch>
+					</li>
+
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[defName="BOR_Solar_Mech_Scorcher"]/comps</xpath>
+						<value>
+							<li Class="CombatExtended.CompProperties_ArmorDurability">
+								<Durability>850</Durability>
+								<Regenerates>true</Regenerates>
+								<RegenInterval>1250</RegenInterval>
+								<RegenValue>5</RegenValue>
+								<Repairable>true</Repairable>
+								<RepairIngredients>
+									<Plasteel>5</Plasteel>
+									<BOR_Sunsteel>5</BOR_Sunsteel>
+								</RepairIngredients>
+								<RepairTime>300</RepairTime>
+								<RepairValue>200</RepairValue>
+								<CanOverHeal>true</CanOverHeal>
+								<MaxOverHeal>85</MaxOverHeal>
+								<MinArmorPct>0.75</MinArmorPct>
+							</li>
+						</value>
+					</li>
+
+
+					<li Class="PatchOperationAddModExtension">
+						<xpath>Defs/ThingDef[defName="BOR_Solar_Mech_Apocriton"]</xpath>
+						<value>
+							<li Class="CombatExtended.RacePropertiesExtensionCE">
+								<bodyShape>Humanoid</bodyShape>
+							</li>
+						</value>
+					</li>
+
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[defName="BOR_Solar_Mech_Apocriton"]/statBases</xpath>
+						<value>
+							<ArmorRating_Heat>0.75</ArmorRating_Heat>
+							<CarryWeight>113</CarryWeight>
+							<CarryBulk>25</CarryBulk>
+							<MeleeDodgeChance>0.07</MeleeDodgeChance>
+							<MeleeCritChance>0.13</MeleeCritChance>
+							<MeleeParryChance>0.13</MeleeParryChance>
+							<MaxHitPoints>900</MaxHitPoints>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Solar_Mech_Apocriton"]/statBases/ArmorRating_Blunt</xpath>
+						<value>
+							<ArmorRating_Blunt>90</ArmorRating_Blunt>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Solar_Mech_Apocriton"]/statBases/ArmorRating_Sharp</xpath>
+						<value>
+							<ArmorRating_Sharp>36</ArmorRating_Sharp>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Solar_Mech_Apocriton"]/statBases/EnergyShieldRechargeRate</xpath>
+						<value>
+							<EnergyShieldRechargeRate>0.562</EnergyShieldRechargeRate>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Solar_Mech_Apocriton"]/statBases/EnergyShieldEnergyMax</xpath>
+						<value>
+							<EnergyShieldEnergyMax>3.375</EnergyShieldEnergyMax>
+						</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="BOR_Solar_Mech_Apocriton"]/tools</xpath>
+						<value>
+							<tools>
+								<li Class="CombatExtended.ToolCE">
+									<label>head</label>
+									<capacities>
+										<li>Blunt</li>
+									</capacities>
+									<power>10</power>
+									<cooldownTime>1</cooldownTime>
+									<linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
+									<ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+									<armorPenetrationBlunt>3.75</armorPenetrationBlunt>
+								</li>
+							</tools>
+						</value>
+					</li>
+
+					<li Class="PatchOperationConditional">
+						<xpath>Defs/ThingDef[defName="BOR_Solar_Mech_Apocriton"]/comps</xpath>
+						<nomatch Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="BOR_Solar_Mech_Apocriton"]</xpath>
+							<value>
+								<comps />
+							</value>
+						</nomatch>
+					</li>
+
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[defName="BOR_Solar_Mech_Apocriton"]/comps</xpath>
+						<value>
+							<li Class="CombatExtended.CompProperties_ArmorDurability">
+								<Durability>3100</Durability>
+								<Regenerates>true</Regenerates>
+								<RegenInterval>1250</RegenInterval>
+								<RegenValue>5</RegenValue>
+								<Repairable>true</Repairable>
+								<RepairIngredients>
+									<Plasteel>5</Plasteel>
+									<BOR_Sunsteel>5</BOR_Sunsteel>
+								</RepairIngredients>
+								<RepairTime>300</RepairTime>
+								<RepairValue>200</RepairValue>
+								<CanOverHeal>true</CanOverHeal>
+								<MaxOverHeal>310</MaxOverHeal>
+								<MinArmorPct>0.5</MinArmorPct>
+								<MinArmorValueSharp>14</MinArmorValueSharp>
+								<MinArmorValueBlunt>35</MinArmorValueBlunt>
+							</li>
+						</value>
+					</li>
+				</operations>
+			</match>
+	  </li>
+	 </operations>
+    </enabled>
+  </Operation>
+
+</Patch>

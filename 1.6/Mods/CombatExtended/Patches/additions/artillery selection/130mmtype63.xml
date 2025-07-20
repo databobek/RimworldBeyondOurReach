@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+	<Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
+		<modSettingDef>BOR_Setting_CE_TODO</modSettingDef>
+		<enabled Class="PatchOperationAdd">
+			<xpath>Defs</xpath>
+			<value>
+
+				<!-- ==================== Ammo ========================== -->
+
+				<ThingDef Class="CombatExtended.AmmoDef" ParentName="130mmType63Base">
+					<defName>BOR_Ammo_130mmType63_Ni</defName>
+					<label>130mm Type 63 Rocket (Ni)</label>
+					<graphicData>
+						<texPath>Things/Ammo/Rocket/130mmType63</texPath>
+						<graphicClass>Graphic_StackCount</graphicClass>
+					</graphicData>
+					<statBases>
+						<MarketValue>300</MarketValue>
+						<Mass>45</Mass>
+						<Bulk>60</Bulk>
+					</statBases>
+					<tradeTags>
+						<li>BOR_Tech_I</li>
+					</tradeTags>
+					<ammoClass>BOR_Ni_AmmoClass</ammoClass>
+					<detonateProjectile>BOR_Bullet_130mmType63_Ni</detonateProjectile>
+					<generateCommonality>0.01</generateCommonality>
+				</ThingDef>
+
+				<ThingDef Class="CombatExtended.AmmoDef" ParentName="130mmType63Base">
+					<defName>BOR_Ammo_130mmType63_Ion_N</defName>
+					<label>130mm Type 63 Rocket (Ionized Neutronium)</label>
+					<graphicData>
+						<texPath>Things/Ammo/Rocket/130mmType63</texPath>
+						<graphicClass>Graphic_StackCount</graphicClass>
+					</graphicData>
+					<statBases>
+						<MarketValue>300</MarketValue>
+						<Mass>45</Mass>
+						<Bulk>60</Bulk>
+					</statBases>
+					<tradeTags>
+						<li>BOR_Tech_I</li>
+					</tradeTags>
+					<ammoClass>BOR_Ion_N_AmmoClass</ammoClass>
+					<detonateProjectile>BOR_Bullet_130mmType63_Ion_N</detonateProjectile>
+					<generateCommonality>0.01</generateCommonality>
+				</ThingDef>
+
+				<!-- ================== Projectiles ================== -->
+
+				<ThingDef ParentName="Base130mmType63">
+					<defName>BOR_Bullet_130mmType63_Ni</defName>
+					<thingClass>CombatExtended.ProjectileCE_Explosive</thingClass>
+					<label>130mm Type 63 Rocket (Ni)</label>
+					<graphicData>
+						<texPath>Things/Projectile/Rocket/130mmType63</texPath>
+						<graphicClass>Graphic_Single</graphicClass>
+					</graphicData>
+					<projectile Class="CombatExtended.ProjectilePropertiesCE">
+						<damageDef>Bomb</damageDef>
+						<damageAmountBase>377</damageAmountBase>
+						<explosionRadius>5.25</explosionRadius>
+						<applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
+					</projectile>
+					<comps>
+						<li Class="CombatExtended.CompProperties_Fragments">
+							<fragments>
+								<Fragment_Quasar>30</Fragment_Quasar>
+								<Fragment_Solar>45</Fragment_Solar>
+							</fragments>
+						</li>
+					</comps>
+				</ThingDef>
+
+				<ThingDef ParentName="Base130mmType63">
+					<defName>BOR_Bullet_130mmType63_Ion_N</defName>
+					<thingClass>CombatExtended.ProjectileCE_Explosive</thingClass>
+					<label>130mm Type 63 Rocket (iN)</label>
+					<graphicData>
+						<texPath>Things/Projectile/Rocket/130mmType63</texPath>
+						<graphicClass>Graphic_Single</graphicClass>
+					</graphicData>
+					<projectile Class="CombatExtended.ProjectilePropertiesCE">
+						<damageDef>EMP</damageDef>
+						<damageAmountBase>225</damageAmountBase>
+						<flyOverhead>true</flyOverhead>
+						<explosionRadius>7.75</explosionRadius>
+					</projectile>
+				</ThingDef>
+
+				<!-- ==================== Recipes ========================== -->
+
+				<RecipeDef ParentName="LauncherAmmoRecipeBase">
+					<defName>MakeBOR_Ammo_130mmType63_Ni</defName>
+					<label>make 130mm Type63 Ni rockets x5</label>
+					<description>Craft 5 130mm Type63 Ni rockets.</description>
+					<jobString>Making 130mm Type63 Ni rockets.</jobString>
+					<workAmount>66900</workAmount>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>BOR_Sunsteel</li>
+								</thingDefs>
+							</filter>
+							<count>165</count>
+						</li>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>BOR_QuasarAlloy</li>
+								</thingDefs>
+							</filter>
+							<count>165</count>
+						</li>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>ComponentSpacer</li>
+								</thingDefs>
+							</filter>
+							<count>4</count>
+						</li>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>BOR_Neutronium</li>
+								</thingDefs>
+							</filter>
+							<count>230</count>
+						</li>
+					</ingredients>
+					<fixedIngredientFilter>
+						<thingDefs>
+							<li>BOR_Sunsteel</li>
+							<li>BOR_QuasarAlloy</li>
+							<li>ComponentSpacer</li>
+							<li>BOR_Neutronium</li>
+						</thingDefs>
+					</fixedIngredientFilter>
+					<products>
+						<BOR_Ammo_130mmType63_Ni>5</BOR_Ammo_130mmType63_Ni>
+					</products>
+				</RecipeDef>
+
+				<RecipeDef ParentName="LauncherAmmoRecipeBase">
+					<defName>MakeBOR_Ammo_130mmType63_Ion_N</defName>
+					<label>make 130mm Type63 iN rockets x5</label>
+					<description>Craft 5 130mm Type63 iN rockets.</description>
+					<jobString>Making 130mm Type63 iN rockets.</jobString>
+					<workAmount>66900</workAmount>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>BOR_QuasarAlloy</li>
+								</thingDefs>
+							</filter>
+							<count>165</count>
+						</li>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>BOR_ComponentII</li>
+								</thingDefs>
+							</filter>
+							<count>2</count>
+						</li>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>BOR_Neutronium</li>
+								</thingDefs>
+							</filter>
+							<count>500</count>
+						</li>
+					</ingredients>
+					<fixedIngredientFilter>
+						<thingDefs>
+							<li>BOR_QuasarAlloy</li>
+							<li>BOR_ComponentII</li>
+							<li>BOR_Neutronium</li>
+						</thingDefs>
+					</fixedIngredientFilter>
+					<products>
+						<BOR_Ammo_130mmType63_Ion_N>5</BOR_Ammo_130mmType63_Ion_N>
+					</products>
+				</RecipeDef>
+
+			</value>
+		</enabled>
+	</Operation>
+
+</Patch>

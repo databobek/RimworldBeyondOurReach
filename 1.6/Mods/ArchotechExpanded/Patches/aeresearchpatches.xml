@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName = "ArchotechEye" or defName="ArchotechArm" or defName="ArchotechLeg"]/recipeMaker/researchPrerequisite</xpath>
+        <value>
+            <researchPrerequisite>BOR_ArchotechBionics</researchPrerequisite>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[@Name="ArchoPartNormal" or @Name="ArchoPartAdvanced"]/recipeMaker/researchPrerequisite</xpath>
+        <value>
+            <researchPrerequisite>BOR_ArchotechBionics</researchPrerequisite>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ResearchProjectDef[defName="ArchotechMimicry"]/prerequisites</xpath>
+        <value>
+            <prerequisites>
+                <li>BOR_Research_Production_III</li>
+            </prerequisites>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ResearchProjectDef[defName="ArchotechMimicry"]/baseCost</xpath>
+        <value>
+            <baseCost>1000000</baseCost>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/ResearchProjectDef[defName="ArchotechMimicry"]/requiredResearchFacilities</xpath>
+        <value>
+            <li>BOR_Research_Unlocker_III</li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/ResearchProjectDef[defName="ArchotechMimicry"]</xpath>
+        <value>
+            <tab>BOR_Research_Tab</tab>
+        </value>
+    </Operation>
+
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ResearchProjectDef[defName="ArchotechMimicry"]/researchViewX</xpath>
+        <value>
+            <researchViewX>12.00</researchViewX>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ResearchProjectDef[defName="ArchotechMimicry"]/researchViewY</xpath>
+        <value>
+            <researchViewY>1.25</researchViewY>
+        </value>
+    </Operation>
+</Patch>

@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <ThingDef ParentName="MakeableDrugBase">
+    <defName>BOR_Sunlight</defName>
+    <label>sunlight</label>
+    <description>A form of Sunlite, the Sunweave-based drug, improved by the introduction of Quasar Alloy Chunks (sold separately) which are ground into a powder and mixed heartily with the orginial drug.\n\nThe Quasar dust added to Sunlight does not harbor an addiction risk, but the addictive chemicals in base Sunlite still linger within the drug albeit to a lesser extent.</description>
+    <descriptionHyperlinks>
+      <HediffDef>BOR_SunlightHigh</HediffDef>
+      <HediffDef>BOR_Chemical_SunweaveTolerance</HediffDef>
+      <HediffDef>BOR_Sunweave_Chemical_Addiction</HediffDef>
+      <HediffDef>ChemicalDamageSevere</HediffDef>
+    </descriptionHyperlinks>
+    <tradeTags Inherit="False">
+      <li>BOR_Drugs_II</li>
+			<li>BOR_Tech_II</li>
+    </tradeTags>
+    <thingCategories>
+      <li>BOR_Drugs_II</li>
+    </thingCategories>
+    <graphicData>
+      <texPath>BOR/Things/Item/Drugs/Tier2/Happy</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+      <drawSize>0.75</drawSize>
+    </graphicData>
+    <rotatable>false</rotatable>
+    <statBases>
+      <WorkToMake>637</WorkToMake>
+      <MarketValue>48</MarketValue>
+      <Mass>0.0333</Mass>
+    
+			<RoyalFavorValue>0.1</RoyalFavorValue></statBases>
+    <techLevel>Ultra</techLevel>
+    <minRewardCount>3</minRewardCount>
+    <ingestible>
+      <foodType>Processed</foodType>
+      <joyKind>Chemical</joyKind>
+      <joy>1.8</joy>
+      <drugCategory>Social</drugCategory>
+      <baseIngestTicks>104</baseIngestTicks>
+      <ingestSound>Ingest_Drink</ingestSound>
+      <ingestHoldOffsetStanding>
+        <northDefault>
+          <offset>(0.21,0,0.05)</offset>
+        </northDefault>
+      </ingestHoldOffsetStanding>
+      <ingestHoldUsesTable>false</ingestHoldUsesTable>
+      <ingestCommandString>drinking {0}</ingestCommandString>
+      <ingestReportString>Drinking {0}.</ingestReportString>
+      <useEatingSpeedStat>false</useEatingSpeedStat>
+      <outcomeDoers>
+        <li Class="IngestionOutcomeDoer_GiveHediff">
+          <hediffDef>BOR_SunlightHigh</hediffDef>
+          <severity>1</severity>
+          <toleranceChemical>BOR_Chemical_Sunweave</toleranceChemical>
+        </li>
+        <li Class="IngestionOutcomeDoer_OffsetNeed">
+          <need>Rest</need>
+          <offset>0.9</offset>
+          <toleranceChemical>BOR_Chemical_Sunweave</toleranceChemical>
+        </li>
+        <li Class="IngestionOutcomeDoer_GiveHediff">
+          <hediffDef>BOR_Chemical_SunweaveTolerance</hediffDef>
+          <toleranceChemical>BOR_Chemical_Sunweave</toleranceChemical>
+          <severity>0.0291</severity>
+          <divideByBodySize>true</divideByBodySize>
+          <multiplyByGeneToleranceFactors>true</multiplyByGeneToleranceFactors>
+        </li>
+      </outcomeDoers>
+    </ingestible>
+    <recipeMaker>
+      <!-- todo -->
+      <researchPrerequisite>BOR_Research_Drugs_II</researchPrerequisite>
+      <recipeUsers>
+        <!-- todo -->
+        <li>BOR_MedicineBench_II</li>
+        <li>BOR_Bench_IV</li>
+      </recipeUsers>
+      <soundWorking>Recipe_Drug</soundWorking>
+      <displayPriority>1700</displayPriority>
+    </recipeMaker>
+    <costList>
+      <BOR_Sunweave>18</BOR_Sunweave>
+      <BOR_QuasarAlloyWeave>4</BOR_QuasarAlloyWeave>
+    </costList>
+    <allowedArchonexusCount>50</allowedArchonexusCount>
+    <comps>
+      <li Class="CompProperties_Drug">
+        <chemical>BOR_Chemical_Sunweave</chemical>
+        <addictiveness>0.018</addictiveness>
+        <existingAddictionSeverityOffset>0.133</existingAddictionSeverityOffset>
+        <needLevelOffset>0.9</needLevelOffset>
+        <isCombatEnhancingDrug>true</isCombatEnhancingDrug>
+        <listOrder>202</listOrder>
+        <overdoseSeverityOffset>0.125~0.2425</overdoseSeverityOffset>
+        <largeOverdoseChance>0.003</largeOverdoseChance>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <HediffDef>
+    <defName>BOR_SunlightHigh</defName>
+    <label>sunlight blessed</label>
+    <labelNoun>a sunlight blessing</labelNoun>
+    <description>Active sunlight in the bloodstream. Generates an euphoric high.</description>
+    <hediffClass>Hediff_High</hediffClass>
+    <defaultLabelColor>(1,0,0.5)</defaultLabelColor>
+    <scenarioCanAdd>true</scenarioCanAdd>
+    <maxSeverity>1.0</maxSeverity>
+    <isBad>false</isBad>
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-1.041</severityPerDay>
+        <showHoursToRecover>true</showHoursToRecover>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <painFactor>0.33</painFactor>
+        <statFactors>
+          <RestFallRateFactor>0.1833</RestFallRateFactor>
+        </statFactors>
+        <capMods>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>0.3375</offset>
+          </li>
+        </capMods>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <ThoughtDef>
+    <defName>BOR_SunlightHigh</defName>
+    <workerClass>ThoughtWorker_Hediff</workerClass>
+    <hediff>BOR_SunlightHigh</hediff>
+    <validWhileDespawned>true</validWhileDespawned>
+    <developmentalStageFilter>Baby, Child, Adult</developmentalStageFilter>
+    <stages>
+      <li>
+        <label>blessed by sunlight</label>
+        <description>I'm on Cloud Nine! Praise the sun!</description>
+        <baseMoodEffect>78</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+</Defs>

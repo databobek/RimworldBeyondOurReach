@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+    <Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
+        <modSettingDef>BOR_Setting_RTSolarFlareShield_Rebalance</modSettingDef>
+        <enabled Class="PatchOperationSequence">
+            <operations>
+
+				<!-- bamba cunt, you fucked up the prerequisites and had a duplicate elsewhere calling to replace it -->
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ResearchProjectDef[defName="ResearchProject_RTMagneticShield"]/prerequisites</xpath>
+                    <value>
+                        <prerequisites>
+                            <li>BOR_Research_Power_II</li>
+                        </prerequisites>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ResearchProjectDef[defName="ResearchProject_RTMagneticShield"]/techLevel</xpath>
+                    <value>
+                        <techLevel>Archotech</techLevel>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ResearchProjectDef[defName="ResearchProject_RTMagneticShield"]/baseCost</xpath>
+                    <value>
+                        <baseCost>50000</baseCost>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ResearchProjectDef[defName="ResearchProject_RTMagneticShield"]/description</xpath>
+                    <value>
+                        <description>Thanks to our advancements with Quasar Alloy, we are able to build more efficient version of the solar radiation shielding.</description>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="Building_RTMagneticShield"]/costList</xpath>
+                    <value>
+                        <costList>
+                            <BOR_Sunsteel>500</BOR_Sunsteel>
+                            <BOR_ComponentII>10</BOR_ComponentII>
+                            <BOR_QuasarAlloy>200</BOR_QuasarAlloy>
+                            <!-- <BOR_QuasarCall_Component_IV>1</BOR_QuasarCall_Component_IV> -->
+                        </costList>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="Building_RTMagneticShield"]/designationCategory</xpath>
+                    <value>
+                        <designationCategory>BOR</designationCategory>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ResearchProjectDef[defName="ResearchProject_RTMagneticShield"]/researchViewX</xpath>
+                    <value>
+                        <researchViewX>9.00</researchViewX>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ResearchProjectDef[defName="ResearchProject_RTMagneticShield"]/researchViewY</xpath>
+                    <value>
+                        <researchViewY>1.25</researchViewY>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ResearchProjectDef[defName="ResearchProject_RTMagneticShield"]/tab</xpath>
+                    <value>
+                        <tab>BOR_Research_Tab</tab>
+                    </value>
+                </li>
+
+            </operations>
+        </enabled>
+    </Operation>
+
+</Patch>

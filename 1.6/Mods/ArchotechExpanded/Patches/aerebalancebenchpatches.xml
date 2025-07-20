@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+	<Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
+		<modSettingDef>BOR_Setting_RebalanceArcotechBench</modSettingDef>
+		<enabled Class="PatchOperationSequence">
+			<operations>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="BasicArchotechWorkbench"]/comps/li[@Class="CompProperties_Power"]/basePowerConsumption</xpath>
+                    <value>
+                        <basePowerConsumption>1000000</basePowerConsumption>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="BasicArchotechWorkbench"]/statBases/WorkToBuild</xpath>
+                    <value>
+                        <WorkToBuild>50000</WorkToBuild>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="BasicArchotechWorkbench"]/costList</xpath>
+                    <value>
+                        <costList>
+                            <BOR_Nanoclusters>2</BOR_Nanoclusters>
+                            <BOR_Picoclusters>2</BOR_Picoclusters>
+                            <BOR_Tenebrite>125</BOR_Tenebrite>
+                        </costList>
+                    </value>
+                </li>
+			</operations>
+		</enabled>
+	</Operation>
+</Patch>

@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<FactionDef>
+		<defName>BOR_KwazaarBazaar</defName>
+		<label>kwazaar bazaar</label>
+		<description>.</description>
+		<pawnSingular>kwazaari</pawnSingular>
+		<pawnsPlural>kwazaari</pawnsPlural>
+		<listOrderPriority>43</listOrderPriority>
+		<canMakeRandomly>true</canMakeRandomly>
+		<canSiege>true</canSiege>
+		<leaderTitle>kwazaari CEO</leaderTitle>
+		<factionIconPath>BOR/Things/Factions/KwazaariIcon</factionIconPath>
+		<factionNameMaker>NamerKwazaariFaction</factionNameMaker>
+		<settlementNameMaker>NamerKwazaariBase</settlementNameMaker>
+		<settlementTexturePath>World/WorldObjects/DefaultSettlement</settlementTexturePath>
+		<royalFavorLabel>scrip</royalFavorLabel>
+		<royalFavorIconPath>BOR/Things/Factions/Favor</royalFavorIconPath>
+		<techLevel>Ultra</techLevel>
+		<backstoryFilters>
+			<li>
+				<categories>
+					<li>Offworld</li>
+				</categories>
+				<commonality>0.75</commonality>
+			</li>
+		</backstoryFilters>
+		<allowedCultures>
+			<li>BOR_Kwazaari_Culture</li>
+		</allowedCultures>
+		<requiredMemes>
+			<li MayRequire="Ludeon.RimWorld.Ideology">Loyalist</li>
+			<li MayRequire="Ludeon.RimWorld.Ideology">Collectivist</li>
+			<li MayRequire="Ludeon.RimWorld.Ideology">HumanPrimacy</li>
+			<li MayRequire="Ludeon.RimWorld.Ideology">Structure_Ideological</li>
+		</requiredMemes>
+		<maxPawnCostPerTotalPointsCurve>
+			<points>
+				<li>(1500, 75)</li>
+				<li>(5000, 125)</li>
+				<li>(7000, 250)</li>
+				<li>(9000, 350)</li>
+				<li>(11000, 450)</li>
+				<li>(180000, 3000)</li>
+			</points>
+		</maxPawnCostPerTotalPointsCurve>
+		<apparelStuffFilter>
+			<thingDefs>
+				<li>BOR_QuasarAlloy</li>
+				<li>BOR_QuasarAlloyWeave</li>
+			</thingDefs>
+		</apparelStuffFilter>
+		<pawnGroupMakers Inherit="False">
+			<li>
+				<!-- Normal fights, standard mix -->
+				<commonality>100</commonality>
+				<kindDef>Combat</kindDef>
+				<options>
+					<BOR_Kwazaari_Guardsman>4</BOR_Kwazaari_Guardsman>
+					<BOR_Kwazaari_Marine>2</BOR_Kwazaari_Marine>
+					<BOR_Kwazaari_Marksman>2</BOR_Kwazaari_Marksman>
+					<BOR_Kwazaari_Officer>1</BOR_Kwazaari_Officer>
+					<BOR_Kwazaari_Assault_Marine>2</BOR_Kwazaari_Assault_Marine>
+				</options>
+			</li>
+			<li>
+				<kindDef>Peaceful</kindDef>
+				<options>
+					<BOR_Citizen_II>20</BOR_Citizen_II>
+					<BOR_Kwazaari_Guardsman>3</BOR_Kwazaari_Guardsman>
+					<BOR_Kwazaari_Officer>1</BOR_Kwazaari_Officer>
+					<BOR_Kwazaari_Assault_Marine>2</BOR_Kwazaari_Assault_Marine>
+				</options>
+			</li>
+			<li>
+				<kindDef>Trader</kindDef>
+				<traders>
+					<BOR_Town_Trader_II>1</BOR_Town_Trader_II>
+				</traders>
+				<carriers>
+					<Muffalo>6</Muffalo>
+					<Dromedary>5</Dromedary>
+					<Alpaca>2</Alpaca>
+					<Elephant>1</Elephant>
+				</carriers>
+				<guards>
+					<BOR_Citizen_II>3</BOR_Citizen_II>
+					<BOR_Kwazaari_Officer>1</BOR_Kwazaari_Officer>
+					<BOR_Kwazaari_Marine>2</BOR_Kwazaari_Marine>
+					<BOR_Kwazaari_Guardsman>3</BOR_Kwazaari_Guardsman>
+					<BOR_Kwazaari_Assault_Marine>2</BOR_Kwazaari_Assault_Marine>
+				</guards>
+			</li>
+			<li>
+				<kindDef>Settlement</kindDef>
+				<options>
+					<BOR_Kwazaari_Marksman>1</BOR_Kwazaari_Marksman>
+					<BOR_Kwazaari_Marine>3</BOR_Kwazaari_Marine>
+					<BOR_Kwazaari_Guardsman>5</BOR_Kwazaari_Guardsman>
+					<BOR_Kwazaari_Officer>1</BOR_Kwazaari_Officer>
+					<BOR_Kwazaari_Assault_Marine>2</BOR_Kwazaari_Assault_Marine>
+				</options>
+			</li>
+			<li MayRequire="Ludeon.RimWorld.Ideology">
+				<kindDef>Miners</kindDef>
+				<commonality>1</commonality>
+				<options>
+					<BOR_Miner_II>3</BOR_Miner_II>
+					<BOR_Kwazaari_Officer>1</BOR_Kwazaari_Officer>
+					<BOR_Kwazaari_Guardsman>3</BOR_Kwazaari_Guardsman>
+				</options>
+			</li>
+			<li MayRequire="Ludeon.RimWorld.Ideology">
+				<kindDef>Hunters</kindDef>
+				<commonality>1</commonality>
+				<options>
+					<BOR_Kwazaari_Officer>1</BOR_Kwazaari_Officer>
+					<BOR_Kwazaari_Guardsman>3</BOR_Kwazaari_Guardsman>
+				</options>
+			</li>
+			<li MayRequire="Ludeon.RimWorld.Ideology">
+				<kindDef>Loggers</kindDef>
+				<commonality>1</commonality>
+				<options>
+					<BOR_Logger_II>3</BOR_Logger_II>
+					<BOR_Kwazaari_Officer>1</BOR_Kwazaari_Officer>
+					<BOR_Kwazaari_Guardsman>3</BOR_Kwazaari_Guardsman>
+				</options>
+			</li>
+			<li MayRequire="Ludeon.RimWorld.Ideology">
+				<kindDef>Farmers</kindDef>
+				<commonality>1</commonality>
+				<options>
+					<BOR_Farmer_II>3</BOR_Farmer_II>
+					<BOR_Kwazaari_Officer>1</BOR_Kwazaari_Officer>
+					<BOR_Kwazaari_Guardsman>3</BOR_Kwazaari_Guardsman>
+				</options>
+			</li>
+		</pawnGroupMakers>
+		<baseTraderKinds>
+			<li>BOR_Base_II</li>
+		</baseTraderKinds>
+		<caravanTraderKinds>
+			<li>BOR_Caravan_II</li>
+			<li MayRequire="ludeon.rimworld.royalty">BOR_TributeCollector_II</li>
+		</caravanTraderKinds>
+		<autoFlee>false</autoFlee>
+		<permanentEnemy>false</permanentEnemy>
+		<canStageAttacks>true</canStageAttacks>
+		<settlementGenerationWeight>1</settlementGenerationWeight>
+		<requiredCountAtGameStart>1</requiredCountAtGameStart>
+		<disallowedMemes>
+			<li MayRequire="Ludeon.RimWorld.Ideology">Nudism</li>
+			<li MayRequire="Ludeon.RimWorld.Ideology">Blindsight</li>
+			<li MayRequire="Ludeon.RimWorld.Ideology">TreeConnection</li>
+		</disallowedMemes>
+		<disallowedPrecepts>
+			<li MayRequire="Ludeon.RimWorld.Ideology">Nudity_Male_CoveringAnythingButGroinDisapproved</li>
+			<li MayRequire="Ludeon.RimWorld.Ideology">Nudity_Female_CoveringAnythingButGroinDisapproved</li>
+			<li MayRequire="Ludeon.RimWorld.Ideology">AnimalVenerated</li>
+			<li MayRequire="Ludeon.RimWorld.Ideology">NobleDespisedWeapons</li>
+			<li MayRequire="Ludeon.RimWorld.Ideology">ApparelDesired_Strong_Subordinate</li>
+			<li MayRequire="Ludeon.RimWorld.Ideology">ApparelDesired_Soft_Subordinate</li>
+			<li MayRequire="Ludeon.RimWorld.Ideology">DrugUse_Prohibited</li>
+		</disallowedPrecepts>
+		<raidLootValueFromPointsCurve>
+			<points>
+				<li>(35, 1000)</li>
+				<li>(100, 2400)</li>
+				<li>(1000, 10000)</li>
+				<li>(2000, 16000)</li>
+				<li>(4000, 20000)</li>
+			</points>
+		</raidLootValueFromPointsCurve>
+		<allowedArrivalTemperatureRange>
+			<min>-150</min>
+			<max>150</max>
+		</allowedArrivalTemperatureRange>
+		<raidLootMaker>BOR_LootMaker_II</raidLootMaker>
+		<maxConfigurableAtWorldCreation>999</maxConfigurableAtWorldCreation>
+		<visitorTraderKinds>
+			<li>BOR_Visitor_II</li>
+		</visitorTraderKinds>
+	</FactionDef>
+
+	<ThingSetMakerDef>
+		<defName>BOR_LootMaker_II</defName>
+		<root Class="ThingSetMaker_MarketValue">
+			<fixedParams>
+				<filter>
+					<thingDefs>
+						<li>BOR_Picoclusters</li>
+						<li>BOR_MedicineII</li>
+						<li>BOR_ComponentII</li>
+						<li>BOR_QuasarAlloyWeave</li>
+						<li>BOR_QuasarAlloy</li>
+					</thingDefs>
+				</filter>
+			</fixedParams>
+		</root>
+	</ThingSetMakerDef>
+</Defs>

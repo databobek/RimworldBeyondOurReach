@@ -1,0 +1,113 @@
+<Defs>
+
+  <PipeSystem.ProcessDef Abstract="True" Name="BOR_ProcessGenITemp">
+    <destroyIngredientsDirectly>true</destroyIngredientsDirectly>
+    <temperatureRuinable>true</temperatureRuinable>
+    <minSafeTemperature>0.0</minSafeTemperature>
+    <maxSafeTemperature>15.0</maxSafeTemperature>
+    <researchPrerequisites>
+      <li>BOR_Research_NSynth_I</li>
+    </researchPrerequisites>
+  </PipeSystem.ProcessDef>
+
+
+  <PipeSystem.ProcessDef ParentName="BOR_ProcessGenITemp">
+    <defName>BOR_NeutroniumIntoComponentIndustrialGenITempRuin</defName>
+    <label>Fabricate Component from Neutronium in safe temperature (0-15*C)</label>
+    <ingredients>
+      <li>
+        <pipeNet>BOR_NeutroniumNet</pipeNet>
+        <thing>BOR_Neutronium</thing>
+        <countNeeded>6250</countNeeded>
+      </li>
+      <li>
+        <thing>ComponentIndustrial</thing>
+        <countNeeded>1</countNeeded>
+      </li>
+    </ingredients>
+    <ticks>1500000</ticks>
+    <results>
+      <li>
+        <thing>ComponentIndustrial</thing>
+        <count>125</count>
+      </li>
+    </results>
+  </PipeSystem.ProcessDef>
+
+
+
+  <PipeSystem.ProcessDef ParentName="BOR_ProcessGenITemp">
+    <defName>BOR_NeutroniumIntoComponentSpacerGenITempRuin</defName>
+    <label>Fabricate Advanced Component from Neutronium in safe temperature (0-15*C)</label>
+    <ingredients>
+      <li>
+        <pipeNet>BOR_NeutroniumNet</pipeNet>
+        <thing>BOR_Neutronium</thing>
+        <countNeeded>25000</countNeeded>
+      </li>
+      <li>
+        <thing>ComponentSpacer</thing>
+        <countNeeded>1</countNeeded>
+      </li>
+    </ingredients>
+    <ticks>3000000</ticks>
+    <results>
+      <li>
+        <thing>ComponentSpacer</thing>
+        <count>125</count>
+      </li>
+    </results>
+  </PipeSystem.ProcessDef>
+
+
+  <PipeSystem.ProcessDef ParentName="BOR_ProcessGenITemp">
+    <defName>BOR_NeutroniumIntoBOR_FuelRodGenITempRuin</defName>
+    <label>Fabricate Quasar Catalyst Fuel Cells from Neutronium in safe temperature (0-15*C)</label>
+    <ingredients>
+      <li>
+        <pipeNet>BOR_NeutroniumNet</pipeNet>
+        <thing>BOR_Neutronium</thing>
+        <countNeeded>337500</countNeeded>
+      </li>
+      <li>
+        <thing>BOR_FuelRod</thing>
+        <countNeeded>1</countNeeded>
+      </li>
+    </ingredients>
+    <ticks>3000000</ticks>
+    <results>
+      <li>
+        <thing>BOR_FuelRod</thing>
+        <count>125</count>
+      </li>
+    </results>
+  </PipeSystem.ProcessDef>
+
+
+  <PipeSystem.ProcessDef ParentName="BOR_ProcessGenITemp">
+    <defName>BOR_NeutroniumIntoBOR_NanoclustersGenITempRuin</defName>
+    <label>Fabricate Nanoclusters from Neutronium in safe temperature (0-15*C)</label>
+    <ingredients>
+      <li>
+        <pipeNet>BOR_NeutroniumNet</pipeNet>
+        <thing>BOR_Neutronium</thing>
+        <countNeeded>260000</countNeeded>
+      </li>
+      <li>
+        <thing>BOR_Nanoclusters</thing>
+        <countNeeded>1</countNeeded>
+      </li>
+    </ingredients>
+    <ticks>3000000</ticks>
+    <results>
+      <li>
+        <thing>BOR_Nanoclusters</thing>
+        <count>25</count>
+      </li>
+    </results>
+    <researchPrerequisites>
+      <li>BOR_Research_Medicine_I</li>
+      <li>BOR_Research_NSynth_I</li>
+    </researchPrerequisites>
+  </PipeSystem.ProcessDef>
+</Defs>

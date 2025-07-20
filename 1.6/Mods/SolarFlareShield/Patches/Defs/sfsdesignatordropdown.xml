@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+
+    <Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
+        <modSettingDef>BOR_Setting_RTSolarFlareShield_NewShields</modSettingDef>
+        <enabled Class="PatchOperationAdd">
+            <xpath>Defs</xpath>
+            <value>
+
+                <DesignatorDropdownGroupDef>
+                    <defName>BOR_SolarShield</defName>
+                </DesignatorDropdownGroupDef>
+
+            </value>
+        </enabled>
+    </Operation>
+
+    <Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
+        <modSettingDef>BOR_Setting_RTSolarFlareShield_NewShields</modSettingDef>
+        <enabled Class="PatchOperationAdd">
+            <xpath>Defs/ThingDef[defName="Building_RTMagneticShield"]</xpath>
+            <value>
+                <designatorDropdown>BOR_SolarShield</designatorDropdown>
+            </value>
+        </enabled>
+    </Operation>
+
+</Patch>

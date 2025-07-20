@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!---->
+	<HediffDef ParentName="DiseaseBase" Name="BOR_MechanoidHediffBase_I" Abstract="true">
+		<defaultLabelColor>(0.36, 0.62, 0.68)</defaultLabelColor>
+		<isBad>false</isBad>
+	</HediffDef>
+	<!---->
+	<HediffDef ParentName="BOR_MechanoidHediffBase_I">
+		<defName>BOR_MechanoidChip_I</defName>
+		<label>Solarite-tech Chip</label>
+		<description>Part of the microcircuit connected to the AI center. Mechanoid seems to have scrapped it off some Solarite tech.</description>
+		<stages>
+			<li>
+				<label>detection</label>
+				<statFactors>
+					<MeleeHitChance>2.25</MeleeHitChance>
+				</statFactors>
+			</li>
+			<li>
+				<label>agility</label>
+				<minSeverity>0.25</minSeverity>
+				<statFactors>
+					<MeleeDodgeChance>2.25</MeleeDodgeChance>
+				</statFactors>
+			</li>
+			<li>
+				<label>tracking</label>
+				<minSeverity>0.5</minSeverity>
+				<statFactors>
+					<ShootingAccuracyPawn>2.25</ShootingAccuracyPawn>
+				</statFactors>
+			</li>
+			<li>
+				<label>resilience</label>
+				<minSeverity>0.75</minSeverity>
+				<statFactors>
+					<PsychicSensitivity>0</PsychicSensitivity>
+				</statFactors>
+			</li>
+		</stages>
+	</HediffDef>
+	<!---->
+	<HediffDef ParentName="BOR_MechanoidHediffBase_I">
+		<defName>BOR_MechanoidMicrocircuit_I</defName>
+		<label>Solarite microcircuit</label>
+		<description>Microchip for a robotic brain. Expands the possibilities of control and consciousness. Seems to have been taken off some Solarite bionic.</description>
+		<stages>
+			<li>
+				<label>SM1</label>
+				<capMods>
+					<li>
+						<capacity>Consciousness</capacity>
+						<postFactor>2.25</postFactor>
+					</li>
+				</capMods>
+			</li>
+			<li>
+				<label>SM2</label>
+				<minSeverity>0.35</minSeverity>
+				<capMods>
+					<li>
+						<capacity>Consciousness</capacity>
+						<postFactor>1.95</postFactor>
+					</li>
+				</capMods>
+			</li>
+			<li>
+				<label>SM3</label>
+				<minSeverity>0.65</minSeverity>
+				<capMods>
+					<li>
+						<capacity>Consciousness</capacity>
+						<postFactor>2.25</postFactor>
+					</li>
+				</capMods>
+			</li>
+		</stages>
+	</HediffDef>
+	<!---->
+	<HediffDef ParentName="BOR_MechanoidHediffBase_I">
+		<defName>BOR_MechanoidEquipmentModule_I</defName>
+		<label>Solarite equipment module</label>
+		<description>Equipment not included in the standard assembly scheme. These seem to have been sourced from Solarite remains.</description>
+		<stages>
+			<li>
+				<label>sunsteel shockproof plates</label>
+				<statFactors>
+					<ArmorRating_Blunt>2.25</ArmorRating_Blunt>
+				</statFactors>
+			</li>
+			<li>
+				<label>sunsteel ablation plates</label>
+				<minSeverity>0.35</minSeverity>
+				<statFactors>
+					<ArmorRating_Sharp>2.25</ArmorRating_Sharp>
+				</statFactors>
+			</li>
+			<li>
+				<label>solarite boosters</label>
+				<minSeverity>0.7</minSeverity>
+				<statFactors>
+					<MoveSpeed>1.875</MoveSpeed>
+				</statFactors>
+			</li>
+		</stages>
+	</HediffDef>
+	<!---->
+	<HediffDef ParentName="BOR_MechanoidHediffBase_I">
+		<defName>BOR_MechanoidSensor_I</defName>
+		<label>Solarite sensor</label>
+		<description>Additional ultra-advanced sensor for faster environmental response. Might have been scavenged from a Solarite vehicle.</description>
+		<stages>
+			<li>
+				<label>solarite combat module</label>
+				<statFactors>
+					<MeleeHitChance>1.875</MeleeHitChance>
+					<MeleeDodgeChance>1.875</MeleeDodgeChance>
+				</statFactors>
+			</li>
+			<li>
+				<label>solarite sniper module</label>
+				<minSeverity>0.5</minSeverity>
+				<statFactors>
+					<ShootingAccuracyPawn>1.875</ShootingAccuracyPawn>
+				</statFactors>
+			</li>
+		</stages>
+	</HediffDef>
+	<!---->
+	<HediffDef ParentName="BOR_MechanoidHediffBase_I">
+		<defName>BOR_MechanoidLaserEye_I</defName>
+		<label>Neutronium laser eye</label>
+		<description>A powerful technological eyepiece that assists the mechanoid through laser guidance. These lasers seem to be Neutronium-based.</description>
+		<stages>
+			<li>
+				<capMods>
+					<li>
+						<capacity>Sight</capacity>
+						<postFactor>4.5</postFactor>
+					</li>
+				</capMods>
+			</li>
+		</stages>
+	</HediffDef>
+	<!---->
+	<HediffDef ParentName="BOR_MechanoidHediffBase_I">
+		<defName>BOR_MechanoidAntennaModule_I</defName>
+		<label>Sunsteel antenna module</label>
+		<description>Antenna module reinforced with sunsteel for capturing the slightest auditory vibrations.</description>
+		<stages>
+			<li>
+				<capMods>
+					<li>
+						<capacity>Hearing</capacity>
+						<postFactor>4.5</postFactor>
+					</li>
+				</capMods>
+			</li>
+		</stages>
+	</HediffDef>
+	<!---->
+	<HediffDef ParentName="RoleStatBuff">
+		<defName>BOR_MechanoidShieldModule_I</defName>
+		<label>Neutronium shield module</label>
+		<description>A large EMP shield module that enhances protection for surrounding mechanoids by using Neutronium.</description>
+		<hediffClass>HediffWithComps</hediffClass>
+		<comps>
+			<li Class="HediffCompProperties_DisappearsOnDeath" />
+			<li Class="MechanoidHediffs.HediffCompProperties_GiveHediffsInRangeExtended">
+				<range>13.9</range>
+				<mote>Mote_ShieldModule</mote>
+				<hideMoteWhenNotDrafted>false</hideMoteWhenNotDrafted>
+				<targetingParameters>
+					<canTargetBuildings>false</canTargetBuildings>
+					<canTargetAnimals>false</canTargetAnimals>
+					<canTargetPawns>true</canTargetPawns>
+					<canTargetMechs>true</canTargetMechs>
+					<canTargetHumans>false</canTargetHumans>
+					<onlyTargetColonists>false</onlyTargetColonists>
+				</targetingParameters>
+				<hediff>MechanoidShieldModuleBuff</hediff>
+				<onlyPawnsInSameFaction>true</onlyPawnsInSameFaction>
+			</li>
+		</comps>
+		<isBad>false</isBad>
+	</HediffDef>
+	<!---->
+	<HediffDef ParentName="RoleStatBuff">
+		<defName>BOR_MechanoidShieldModuleBuff_I</defName>
+		<label>Neutronium shield module</label>
+		<description>A mechanoid with a neutronium shield module nearby grants a bonus.</description>
+		<hediffClass>HediffWithComps</hediffClass>
+		<comps>
+			<li Class="HediffCompProperties_Disappears">
+				<showRemainingTime>false</showRemainingTime>
+			</li>
+			<li Class="HediffCompProperties_DisappearsOnDeath" />
+			<li Class="HediffCompProperties_Link">
+				<requireLinkOnOtherPawn>false</requireLinkOnOtherPawn>
+				<maxDistance>15</maxDistance>
+				<customMote>Mote_ShieldModuleLinkLine</customMote>
+			</li>
+		</comps>
+		<isBad>false</isBad>
+		<stages>
+			<li>
+				<statFactors>
+					<ArmorRating_Blunt>2.25</ArmorRating_Blunt>
+					<ArmorRating_Sharp>2.25</ArmorRating_Sharp>
+				</statFactors>
+			</li>
+		</stages>
+	</HediffDef>
+	<!---->
+</Defs>

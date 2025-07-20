@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+	<Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
+		<modSettingDef>BOR_Setting_CE_TODO</modSettingDef>
+		<enabled Class="PatchOperationAdd">
+			<xpath>Defs</xpath>
+			<value>
+
+				<!-- ==================== Ammo ========================== -->
+
+				<ThingDef Class="CombatExtended.AmmoDef" ParentName="SpacerAmmoBase">
+					<defName>BOR_Ammo_8mmRailgun_TC</defName>
+					<label>8mm Railgun cartridge (TC)</label>
+					<description>Fin-stabilized tungsten carbide penetrator with discarding tenebrite-coated sabot, designed for railgun pistols.</description>
+					<statBases>
+						<Mass>0.014</Mass>
+						<Bulk>0.015</Bulk>
+						<MarketValue>0.09</MarketValue>
+
+						<RoyalFavorValue>0.0001</RoyalFavorValue>
+					</statBases>
+					<tradeTags>
+						<li>CE_AutoEnableTrade</li>
+						<li>CE_AutoEnableCrafting_FabricationBench</li>
+						<li>CE_AutoEnableCrafting_TableMachining</li>
+						<!-- Railgun ammo isn't handloaded because it contains no propellant, and the sabots must be precision-machined anyway -->
+						<li>BOR_Tech_III</li>
+					</tradeTags>
+					<thingCategories>
+						<li>Ammo8mmRailgun</li>
+					</thingCategories>
+					<graphicData>
+						<texPath>Things/Ammo/Railgun/Pistol</texPath>
+						<graphicClass>CombatExtended.Graphic_StackCountRanged</graphicClass>
+					</graphicData>
+					<ammoClass>BOR_TC_AmmoClass</ammoClass>
+					<generateAllowChance>0.1</generateAllowChance>
+					<generateCommonality>0.01</generateCommonality>
+				</ThingDef>
+
+				<!-- ================== Projectiles ================== -->
+
+				<ThingDef ParentName="BaseBulletCE">
+					<defName>BOR_Bullet_8mmRailgun_TC</defName>
+					<label>8mm Railgun bullet (TC)</label>
+					<graphicData>
+						<texPath>Things/Projectile/Bullet_Small</texPath>
+						<graphicClass>Graphic_Single</graphicClass>
+					</graphicData>
+					<projectile Class="CombatExtended.ProjectilePropertiesCE">
+						<damageDef>Bullet</damageDef>
+						<damageAmountBase>30</damageAmountBase>
+						<armorPenetrationSharp>80</armorPenetrationSharp>
+						<armorPenetrationBlunt>375</armorPenetrationBlunt>
+						<speed>415</speed>
+					</projectile>
+				</ThingDef>
+
+				<!-- ==================== Recipes ========================== -->
+
+				<RecipeDef ParentName="AmmoRecipeBase">
+					<defName>MakeBOR_Ammo_8mmRailgun_TC</defName>
+					<label>make 8mm Railgun cartridge (TC) x500</label>
+					<description>Craft 500 8mm Railgun (TC) cartridges.</description>
+					<jobString>Making 8mm Railgun (TC) cartridges.</jobString>
+					<workAmount>10000</workAmount>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>BOR_Sunsteel</li>
+								</thingDefs>
+							</filter>
+							<count>2</count>
+						</li>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>BOR_Tenebrite</li>
+								</thingDefs>
+							</filter>
+							<count>4</count>
+						</li>
+					</ingredients>
+					<fixedIngredientFilter>
+						<thingDefs>
+							<li>BOR_Sunsteel</li>
+							<li>BOR_Tenebrite</li>
+						</thingDefs>
+					</fixedIngredientFilter>
+					<products>
+						<BOR_Ammo_8mmRailgun_TC>500</BOR_Ammo_8mmRailgun_TC>
+					</products>
+				</RecipeDef>
+
+			</value>
+		</enabled>
+	</Operation>
+
+</Patch>

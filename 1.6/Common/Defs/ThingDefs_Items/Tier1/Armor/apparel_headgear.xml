@@ -1,0 +1,194 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- ================================== Helmets ====================================-->
+
+  <ThingDef Name="ApparelArmorHelmetPowerSolarBase" ParentName="ArmorHelmetMakeableBase" Abstract="True">
+    <techLevel>Ultra</techLevel>
+    <recipeMaker>
+      <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+      <researchPrerequisites>
+        <li>BOR_Research_Armor_I</li>
+      </researchPrerequisites>
+      <skillRequirements>
+        <Crafting>12</Crafting>
+      </skillRequirements>
+      <recipeUsers Inherit="False">
+        <li>BOR_Bench_I</li>
+        <li>BOR_Bench_IV</li>
+      </recipeUsers>
+    </recipeMaker>
+    <graphicData>
+      <texPath>BOR/Things/Pawn/Humanlike/Apparel/Tier1Helmet/Tier1Helmet</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <uiIconScale>1.25</uiIconScale>
+    <tradeTags>
+      <li>BOR_HiTechArmor_I</li>
+      <li>BOR_Armor_I</li>
+      <li>BOR_Tech_I</li>
+    </tradeTags>
+    <generateCommonality>1.5</generateCommonality>
+    <statBases>
+      <WorkToMake>31500</WorkToMake>
+      <MaxHitPoints>225</MaxHitPoints>
+      <Mass>1.0</Mass>
+      <Flammability>0.3</Flammability>
+      <ArmorRating_Sharp>1.6</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.7</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.7</ArmorRating_Heat>
+      <Insulation_Cold>6</Insulation_Cold>
+      <Insulation_Heat>3</Insulation_Heat>
+      <EquipDelay>4</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <ToxicEnvironmentResistance>0.6</ToxicEnvironmentResistance>
+      <SlaveSuppressionOffset MayRequire="Ludeon.RimWorld.Ideology">-0.1</SlaveSuppressionOffset>
+    </equippedStatOffsets>
+    <costList>
+      <ComponentSpacer>1</ComponentSpacer>
+      <BOR_Sunsteel>40</BOR_Sunsteel>
+    </costList>
+    <apparel>
+      <immuneToToxGasExposure>true</immuneToToxGasExposure>
+      <bodyPartGroups>
+        <li>FullHead</li>
+      </bodyPartGroups>
+      <wornGraphicPath>BOR/Things/Pawn/Humanlike/Apparel/Tier1Helmet/Tier1Helmet</wornGraphicPath>
+      <layers>
+        <li>Overhead</li>
+      </layers>
+      <defaultOutfitTags>
+        <li>Soldier</li>
+      </defaultOutfitTags>
+      <useDeflectMetalEffect>true</useDeflectMetalEffect>
+      <forceEyesVisibleForRotations>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+      </forceEyesVisibleForRotations>
+    </apparel>
+    <comps>
+      <li Class="CompProperties_Biocodable" />
+    </comps>
+    <thingSetMakerTags>
+      <li>RewardStandardHighFreq</li>
+    </thingSetMakerTags>
+    <thingCategories>
+      <li>BOR_Armor_Headgear_I</li>
+    </thingCategories>
+  </ThingDef>
+
+  <ThingDef ParentName="ApparelArmorHelmetPowerSolarBase">
+    <defName>BOR_Solar_Apparel_PowerArmorHelmet</defName>
+    <label>solar marine helmet</label>
+    <description>A Powered Solar helmet, complete with Tactical H.U.D. and Mounted Headlamp.\n\nHeadgear of this caliber is often used by Shock Troopers of the Solar Republics, and on rare occasion influential Psycasters.</description>
+    <apparel>
+      <tags>
+        <li>HiTechArmor</li>
+        <li>BOR_Military_I</li>
+      </tags>
+    </apparel>
+    <tradeTags>
+      <li>Armor</li>
+      <li>BOR_Armor_I</li>
+      <li>BOR_Tech_I</li>
+    </tradeTags>
+    <recipeMaker>
+      <displayPriority>100</displayPriority>
+    </recipeMaker>
+  </ThingDef>
+
+  <ThingDef Name="ApparelArmorHelmetReconSolarBase" ParentName="ArmorHelmetMakeableBase" Abstract="True">
+    <techLevel>Ultra</techLevel>
+    <recipeMaker>
+      <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+      <researchPrerequisites>
+        <li>BOR_Research_Armor_I</li>
+      </researchPrerequisites>
+      <skillRequirements>
+        <Crafting>11</Crafting>
+      </skillRequirements>
+      <recipeUsers Inherit="False">
+        <li>BOR_Bench_I</li>
+        <li>BOR_Bench_IV</li>
+      </recipeUsers>
+    </recipeMaker>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/ReconArmorHelmet/ReconHelmet</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(0.9, 0.9)</drawSize>
+      <color>(0.36, 0.62, 0.68)</color>
+    </graphicData>
+    <tradeTags>
+      <li>HiTechArmor</li>
+      <li>BOR_HiTechArmor_I</li>
+      <li>BOR_Tech_I</li>
+    </tradeTags>
+    <generateCommonality>1.5</generateCommonality>
+    <statBases>
+      <WorkToMake>22000</WorkToMake>
+      <MaxHitPoints>180</MaxHitPoints>
+      <Mass>0.8</Mass>
+      <Flammability>0.3</Flammability>
+      <ArmorRating_Sharp>1.4</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.6</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.65</ArmorRating_Heat>
+      <Insulation_Cold>6</Insulation_Cold>
+      <Insulation_Heat>3</Insulation_Heat>
+      <EquipDelay>2</EquipDelay>
+    </statBases>
+    <costList>
+      <ComponentSpacer>1</ComponentSpacer>
+      <BOR_Sunsteel>30</BOR_Sunsteel>
+    </costList>
+    <apparel>
+      <immuneToToxGasExposure>true</immuneToToxGasExposure>
+      <bodyPartGroups>
+        <li>FullHead</li>
+      </bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/ReconArmorHelmet/ReconHelmet</wornGraphicPath>
+      <layers>
+        <li>Overhead</li>
+      </layers>
+      <defaultOutfitTags>
+        <li>Soldier</li>
+      </defaultOutfitTags>
+      <useDeflectMetalEffect>true</useDeflectMetalEffect>
+    </apparel>
+    <comps>
+      <li Class="CompProperties_Biocodable" />
+    </comps>
+    <thingSetMakerTags>
+      <li>RewardStandardHighFreq</li>
+    </thingSetMakerTags>
+    <thingCategories>
+      <li>BOR_Armor_Headgear_I</li>
+    </thingCategories>
+  </ThingDef>
+
+  <ThingDef ParentName="ApparelArmorHelmetReconSolarBase">
+    <defName>BOR_Solar_Apparel_ArmorHelmetRecon</defName>
+    <label>solar recon helmet</label>
+    <description>A semi-powered Solar helmet with built-in status computer and binocular array.\n\nHelmets of this pedigree are often used by Solar scout troops and sharpshooters.</description>
+    <apparel>
+      <tags>
+        <li>HiTechArmor</li>
+        <li>BOR_SpacerMilitary_I</li>
+        <li>BOR_Tech_I</li>
+      </tags>
+      <forceEyesVisibleForRotations>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+      </forceEyesVisibleForRotations>
+    </apparel>
+    <tradeTags>
+      <li>Armor</li>
+    </tradeTags>
+    <recipeMaker>
+      <displayPriority>110</displayPriority>
+    </recipeMaker>
+  </ThingDef>
+
+</Defs>

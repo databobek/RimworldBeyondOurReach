@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+
+  <Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
+    <modSettingDef>BOR_Setting_Holograms</modSettingDef>
+    <enabled Class="PatchOperationAdd">
+      <xpath>Defs</xpath>
+      <value>
+
+        <!-- SmallProjector -->
+        <!-- LargeProjector -->
+        <!-- GrandProjector -->
+        <!-- ProjectorThrone -->
+        <!-- GrandProjectorThrone -->
+
+        <ResearchProjectDef ParentName="BOR_Research_Base_I">
+          <defName>BOR_SmallProjectors</defName>
+          <label>solar holographics</label>
+          <description>Super advanced technology enabled by Sunsteel allows us to create beautiful and useful holographic projectors.</description>
+          <baseCost>15000</baseCost>
+          <techLevel>Ultra</techLevel>
+          <prerequisites>
+            <li>BOR_Research_Joy_I</li>
+          </prerequisites>
+          <researchViewX>3.00</researchViewX>
+          <researchViewY>4.25</researchViewY>
+        </ResearchProjectDef>
+
+        <ResearchProjectDef ParentName="BOR_Research_Base_II">
+          <defName>BOR_LargeProjectors</defName>
+          <label>kwazaari holographics</label>
+          <description>Ultra advanced technology enabled by kwazaari alloys allows us to create beautiful and useful holographic projectors and even mount them on Royal thrones.</description>
+          <baseCost>25000</baseCost>
+          <techLevel>Archotech</techLevel>
+          <prerequisites>
+            <li>BOR_Research_Joy_II</li>
+          </prerequisites>
+          <hiddenPrerequisites>
+            <li>BOR_SmallProjectors</li>
+          </hiddenPrerequisites>
+          <researchViewX>8.00</researchViewX>
+          <researchViewY>4.50</researchViewY>
+        </ResearchProjectDef>
+
+        <ResearchProjectDef ParentName="BOR_Research_Base_III">
+          <defName>BOR_GrandProjectors</defName>
+          <label>tenebral holographics</label>
+          <description>Hyper advanced technology enabled by tenebrite allows us to create beautiful and useful holographic projectors and even mount them on Royal thrones.</description>
+          <baseCost>35000</baseCost>
+          <techLevel>Archotech</techLevel>
+          <prerequisites>
+            <li>BOR_Research_Joy_III</li>
+          </prerequisites>
+          <hiddenPrerequisites>
+            <li>BOR_LargeProjectors</li>
+          </hiddenPrerequisites>
+          <researchViewX>13.00</researchViewX>
+          <researchViewY>4.50</researchViewY>
+        </ResearchProjectDef>
+        
+      </value>
+    </enabled>
+  </Operation>
+  
+</Patch>

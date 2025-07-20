@@ -1,0 +1,224 @@
+<Patch>
+
+  <Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
+    <modSettingDef>BOR_Setting_Biotech</modSettingDef>
+    <enabled Class="PatchOperationAdd">
+      <xpath>Defs</xpath>
+      <value>
+
+        <PipeSystem.ProcessDef Abstract="True" Name="BOR_ProcessGenIIIWasteful">
+          <destroyIngredientsDirectly>true</destroyIngredientsDirectly>
+          <wastePackToProduce>5000</wastePackToProduce>
+          <researchPrerequisites>
+            <li>BOR_Research_NSynth_III_Wasteful</li>
+          </researchPrerequisites>
+        </PipeSystem.ProcessDef>
+
+
+        <PipeSystem.ProcessDef ParentName="BOR_ProcessGenIIIWasteful">
+          <defName>BOR_NeutroniumIntoComponentIndustrialGenIIIWasteful</defName>
+          <label>Fabricate Component from Neutronium in a wasteful process.</label>
+          <ingredients>
+            <li>
+              <pipeNet>BOR_NeutroniumNet</pipeNet>
+              <thing>BOR_Neutronium</thing>
+              <countNeeded>9000</countNeeded>
+            </li>
+            <li>
+              <thing>ComponentIndustrial</thing>
+              <countNeeded>1</countNeeded>
+            </li>
+          </ingredients>
+          <ticks>150000</ticks>
+          <results>
+            <li>
+              <thing>ComponentIndustrial</thing>
+              <count>375</count>
+            </li>
+          </results>
+        </PipeSystem.ProcessDef>
+
+        <PipeSystem.ProcessDef ParentName="BOR_ProcessGenIIIWasteful">
+          <defName>BOR_NeutroniumIntoComponentSpacerGenIIIWasteful</defName>
+          <label>Fabricate Advanced Component from Neutronium in a wasteful process.</label>
+          <ingredients>
+            <li>
+              <pipeNet>BOR_NeutroniumNet</pipeNet>
+              <thing>BOR_Neutronium</thing>
+              <countNeeded>37500</countNeeded>
+            </li>
+            <li>
+              <thing>ComponentSpacer</thing>
+              <countNeeded>1</countNeeded>
+            </li>
+          </ingredients>
+          <ticks>300000</ticks>
+          <results>
+            <li>
+              <thing>ComponentSpacer</thing>
+              <count>375</count>
+            </li>
+          </results>
+        </PipeSystem.ProcessDef>
+
+
+        <PipeSystem.ProcessDef ParentName="BOR_ProcessGenIIIWasteful">
+          <defName>BOR_NeutroniumIntoBOR_ComponentIIGenIIIWasteful</defName>
+          <label>Fabricate Quasar Components from Neutronium in a wasteful process.</label>
+          <ingredients>
+            <li>
+              <pipeNet>BOR_NeutroniumNet</pipeNet>
+              <thing>BOR_Neutronium</thing>
+              <countNeeded>466500</countNeeded>
+            </li>
+            <li>
+              <thing>BOR_ComponentII</thing>
+              <countNeeded>1</countNeeded>
+            </li>
+          </ingredients>
+          <ticks>450000</ticks>
+          <results>
+            <li>
+              <thing>BOR_ComponentII</thing>
+              <count>375</count>
+            </li>
+          </results>
+        </PipeSystem.ProcessDef>
+
+
+        <PipeSystem.ProcessDef ParentName="BOR_ProcessGenIIIWasteful">
+          <defName>BOR_NeutroniumIntoBOR_ComponentIIIGenIIIWasteful</defName>
+          <label>Fabricate Tenebral Components from Neutronium in a wasteful process.</label>
+          <ingredients>
+            <li>
+              <pipeNet>BOR_NeutroniumNet</pipeNet>
+              <thing>BOR_Neutronium</thing>
+              <countNeeded>2730000</countNeeded>
+            </li>
+            <li>
+              <thing>BOR_ComponentIII</thing>
+              <countNeeded>1</countNeeded>
+            </li>
+          </ingredients>
+          <ticks>600000</ticks>
+          <results>
+            <li>
+              <thing>BOR_ComponentIII</thing>
+              <count>375</count>
+            </li>
+          </results>
+        </PipeSystem.ProcessDef>
+
+
+        <PipeSystem.ProcessDef ParentName="BOR_ProcessGenIIIWasteful">
+          <defName>BOR_NeutroniumIntoBOR_FuelRodGenIIIWasteful</defName>
+          <label>Fabricate Quasar Catalyst Fuel Cells from Neutronium in a wasteful process.</label>
+          <ingredients>
+            <li>
+              <pipeNet>BOR_NeutroniumNet</pipeNet>
+              <thing>BOR_Neutronium</thing>
+              <countNeeded>468750</countNeeded>
+            </li>
+            <li>
+              <thing>BOR_FuelRod</thing>
+              <countNeeded>1</countNeeded>
+            </li>
+          </ingredients>
+          <ticks>300000</ticks>
+          <results>
+            <li>
+              <thing>BOR_FuelRod</thing>
+              <count>375</count>
+            </li>
+          </results>
+        </PipeSystem.ProcessDef>
+
+
+        <PipeSystem.ProcessDef ParentName="BOR_ProcessGenIIIWasteful">
+          <defName>BOR_NeutroniumIntoBOR_NanoclustersGenIIIWasteful</defName>
+          <label>Fabricate Nanoclusters from Neutronium in a wasteful process.</label>
+          <ingredients>
+            <li>
+              <pipeNet>BOR_NeutroniumNet</pipeNet>
+              <thing>BOR_Neutronium</thing>
+              <countNeeded>390000</countNeeded>
+            </li>
+            <li>
+              <thing>BOR_Nanoclusters</thing>
+              <countNeeded>1</countNeeded>
+            </li>
+          </ingredients>
+          <ticks>300000</ticks>
+          <results>
+            <li>
+              <thing>BOR_Nanoclusters</thing>
+              <count>75</count>
+            </li>
+          </results>
+          <researchPrerequisites>
+            <li>BOR_Research_Production_I</li>
+            <li>BOR_Research_NSynth_III_Wasteful</li>
+          </researchPrerequisites>
+        </PipeSystem.ProcessDef>
+
+
+        <PipeSystem.ProcessDef ParentName="BOR_ProcessGenIIIWasteful">
+          <defName>BOR_NeutroniumIntoBOR_PicoclustersGenIIIWasteful</defName>
+          <label>Fabricate Picoclusters from Neutronium in a wasteful process.</label>
+          <ingredients>
+            <li>
+              <pipeNet>BOR_NeutroniumNet</pipeNet>
+              <thing>BOR_Neutronium</thing>
+              <countNeeded>1755000</countNeeded>
+            </li>
+            <li>
+              <thing>BOR_Picoclusters</thing>
+              <countNeeded>1</countNeeded>
+            </li>
+          </ingredients>
+          <ticks>450000</ticks>
+          <results>
+            <li>
+              <thing>BOR_Picoclusters</thing>
+              <count>75</count>
+            </li>
+          </results>
+          <researchPrerequisites>
+            <li>BOR_Research_Bionics_II</li>
+            <li>BOR_Research_NSynth_III_Wasteful</li>
+          </researchPrerequisites>
+        </PipeSystem.ProcessDef>
+
+
+        <PipeSystem.ProcessDef ParentName="BOR_ProcessGenIIIWasteful">
+          <defName>BOR_NeutroniumIntoBOR_FemtoclustersGenIIIWasteful</defName>
+          <label>Fabricate Femtoclusters from Neutronium in a wasteful process.</label>
+          <ingredients>
+            <li>
+              <pipeNet>BOR_NeutroniumNet</pipeNet>
+              <thing>BOR_Neutronium</thing>
+              <countNeeded>3900000</countNeeded>
+            </li>
+            <li>
+              <thing>BOR_Femtoclusters</thing>
+              <countNeeded>1</countNeeded>
+            </li>
+          </ingredients>
+          <ticks>600000</ticks>
+          <results>
+            <li>
+              <thing>BOR_Femtoclusters</thing>
+              <count>75</count>
+            </li>
+          </results>
+          <researchPrerequisites>
+            <li>BOR_Research_Bionics_III</li>
+            <li>BOR_Research_NSynth_III_Wasteful</li>
+          </researchPrerequisites>
+        </PipeSystem.ProcessDef>
+
+      </value>
+    </enabled>
+  </Operation>
+
+</Patch>

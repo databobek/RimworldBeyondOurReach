@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<RulePackDef>
+		<defName>NamerIdeoKwazaari</defName>
+		<rulePack>
+			<rulesStrings>
+				<li>r_ideoName-&gt;Kwazaarism</li>
+				<li>r_ideoAdjective-&gt;Kwazaar</li>
+				<li>r_memberName-&gt;Kwazaari</li>
+			</rulesStrings>
+		</rulePack>
+	</RulePackDef>
+	<RulePackDef>
+		<defName>NamerLeaderKwazaari</defName>
+		<rulePack>
+			<rulesStrings>
+				<li>r_leaderTitle(p=6)-&gt;kwazaari CEO</li>
+				<li>r_leaderTitle(p=3)-&gt;kwazaari CFO</li>
+				<li>r_leaderTitle(p=1)-&gt;kwazaari leader</li>
+			</rulesStrings>
+		</rulePack>
+	</RulePackDef>
+	<CultureDef>
+		<defName>BOR_Kwazaari_Culture</defName>
+		<label>solarism</label>
+		<description>.</description>
+		<ideoNameMaker>NamerIdeoKwazaari</ideoNameMaker>
+		<festivalNameMaker MayRequire="Ludeon.RimWorld.Ideology">NamerFestivalRustican</festivalNameMaker>
+		<leaderTitleMaker>NamerLeaderKwazaari</leaderTitleMaker>
+		<allowedPlaceTags>
+			<li MayRequire="Ludeon.RimWorld.Ideology">OriginSpacer</li>
+		</allowedPlaceTags>
+		<iconPath>BOR/Things/Factions/KwazaariIcon</iconPath>
+		<thingStyleCategories/>
+		<preferredWeaponClasses>
+			<noble>Ultratech</noble>
+			<despised>Neolithic</despised>
+		</preferredWeaponClasses>
+		<styleItemTags>
+			<li>
+				<tag>Urban</tag>
+				<baseWeight>1</baseWeight>
+				<weightFactor>1</weightFactor>
+			</li>
+			<li>
+				<tag>Soldier</tag>
+				<baseWeight>2</baseWeight>
+				<weightFactor>1</weightFactor>
+			</li>
+			<li>
+				<tag>NoBeard</tag>
+				<baseWeight>10</baseWeight>
+				<weightFactor>1</weightFactor>
+			</li>
+			<li>
+				<tag>NoTattoo</tag>
+				<baseWeight>1</baseWeight>
+				<weightFactor>1</weightFactor>
+			</li>
+		</styleItemTags>
+	</CultureDef>
+</Defs>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+	<Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
+		<modSettingDef>BOR_Setting_AddSOS2EVAToBORArmors</modSettingDef>
+		<enabled Class="PatchOperationSequence">
+			<operations>
+				<!-- apparels -->
+				<!-- EVA description -->
+				<li Class="PatchOperationConditional">
+					<xpath>Defs/ThingDef[@ParentName="ApparelArmorReconSolarBase" or @ParentName="ApparelArmorPowerSolarBase" or @ParentName="ApparelArmorHelmetPowerSolarBase"][not(comps)]</xpath>
+					<match Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[@ParentName="ApparelArmorReconSolarBase" or @ParentName="ApparelArmorPowerSolarBase" or @ParentName="ApparelArmorHelmetPowerSolarBase"][not(comps)]</xpath>
+						<value>
+							<comps />
+						</value>
+					</match>
+				</li>
+
+				<li Class="PatchOperationConditional">
+					<xpath>Defs/ThingDef[@ParentName="ApparelArmorReconSolarBase" or @ParentName="ApparelArmorPowerSolarBase" or @ParentName="ApparelArmorHelmetPowerSolarBase"]/comps[not(li/compClass="SaveOurShip2.CompEVA")]</xpath>
+					<match Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[@ParentName="ApparelArmorReconSolarBase" or @ParentName="ApparelArmorPowerSolarBase" or @ParentName="ApparelArmorHelmetPowerSolarBase"]/comps[not(li/compClass="SaveOurShip2.CompEVA")]</xpath>
+						<value>
+							<li>
+								<compClass>SaveOurShip2.CompEVA</compClass>
+							</li>
+						</value>
+					</match>
+				</li>
+
+				<!-- EVA stats -->
+				<li Class="PatchOperationConditional">
+					<xpath>Defs/ThingDef[@ParentName="ApparelArmorReconSolarBase" or @ParentName="ApparelArmorPowerSolarBase" or @ParentName="ApparelArmorHelmetPowerSolarBase"][not(equippedStatOffsets)]</xpath>
+					<match Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[@ParentName="ApparelArmorReconSolarBase" or @ParentName="ApparelArmorPowerSolarBase" or @ParentName="ApparelArmorHelmetPowerSolarBase"][not(equippedStatOffsets)]</xpath>
+						<value>
+							<equippedStatOffsets />
+						</value>
+					</match>
+				</li>
+
+				<!-- Armor DecompressionResistance -->
+				<li Class="PatchOperationConditional">
+					<xpath>Defs/ThingDef[@ParentName="ApparelArmorReconSolarBase" or @ParentName="ApparelArmorPowerSolarBase"]/equippedStatOffsets[not(DecompressionResistance)]</xpath>
+					<match Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[@ParentName="ApparelArmorReconSolarBase" or @ParentName="ApparelArmorPowerSolarBase"]/equippedStatOffsets[not(DecompressionResistance)]</xpath>
+						<value>
+							<DecompressionResistance>0.85</DecompressionResistance>
+						</value>
+					</match>
+				</li>
+
+				<!-- Helmets DecompressionResistance -->
+				<li Class="PatchOperationConditional">
+					<xpath>Defs/ThingDef[@ParentName="ApparelArmorHelmetPowerSolarBase"]/equippedStatOffsets[not(DecompressionResistance)]</xpath>
+					<match Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[@ParentName="ApparelArmorHelmetPowerSolarBase"]/equippedStatOffsets[not(DecompressionResistance)]</xpath>
+						<value>
+							<DecompressionResistance>0.35</DecompressionResistance>
+						</value>
+					</match>
+				</li>
+
+				<!-- Helmets HypoxiaResistance -->
+				<li Class="PatchOperationConditional">
+					<xpath>Defs/ThingDef[@ParentName="ApparelArmorHelmetPowerSolarBase"]/equippedStatOffsets[not(HypoxiaResistance)]</xpath>
+					<match Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[@ParentName="ApparelArmorHelmetPowerSolarBase"]/equippedStatOffsets[not(HypoxiaResistance)]</xpath>
+						<value>
+							<HypoxiaResistance>1</HypoxiaResistance>
+						</value>
+					</match>
+				</li>
+
+				<!-- Recon Armor Insulation_Cold -->
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[@Name="ApparelArmorReconSolarBase"]/statBases/Insulation_Cold</xpath>
+					<value>
+						<Insulation_Cold>100</Insulation_Cold>
+					</value>
+				</li>
+
+				<!-- Marine Armor Insulation_Cold -->
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[@Name="ApparelArmorPowerSolarBase"]/statBases/Insulation_Cold</xpath>
+					<value>
+						<Insulation_Cold>110</Insulation_Cold>
+					</value>
+				</li>
+			</operations>
+		</enabled>
+	</Operation>
+    
+
+	
+</Patch>

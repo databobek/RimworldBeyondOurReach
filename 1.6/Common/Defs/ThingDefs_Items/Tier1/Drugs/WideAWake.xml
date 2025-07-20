@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <ThingDef ParentName="MakeableDrugPillBase">
+    <defName>BOR_WideAWake</defName>
+    <label>wide-a-wake</label>
+    <description>A synthetic stimulant often used by Laborers within Solar Republics, The compound purges toxins within the brain and allows for prolonged periods without requiring rest - often this time is used to meet brutal quotas. The original recipe traces back to Kwazaari mercantile sectors and is tailored to the needs of individual Republics. \n\nThis formula uses an addictive chemical in order to stabilize the Ph levels, and as such is not without risk in its use.</description>
+    <tradeTags Inherit="False">
+      <li>BOR_Drugs_I</li>
+      <li>BOR_Tech_I</li>
+    </tradeTags>
+    <thingCategories>
+      <li>BOR_Drugs_I</li>
+    </thingCategories>
+    <descriptionHyperlinks>
+      <HediffDef>BOR_WideAWakeHigh</HediffDef>
+      <HediffDef>BOR_Sunsteel_Chemical_Addiction</HediffDef>
+      <HediffDef>HeartAttack</HediffDef>
+    </descriptionHyperlinks>
+    <graphicData>
+      <texPath>BOR/Things/Item/Drugs/Tier1/Sleep</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <rotatable>false</rotatable>
+    <statBases>
+      <WorkToMake>1350</WorkToMake>
+      <MarketValue>52</MarketValue>
+      <Mass>0.00416</Mass>
+    </statBases>
+    <techLevel>Ultra</techLevel>
+    <ingestible>
+      <joyKind>Chemical</joyKind>
+      <joy>0.60</joy>
+      <drugCategory>Hard</drugCategory>
+      <outcomeDoers>
+        <li Class="IngestionOutcomeDoer_GiveHediff">
+          <hediffDef>BOR_WideAWakeHigh</hediffDef>
+          <severity>0.75</severity>
+          <toleranceChemical>BOR_Sunsteel_Chemical</toleranceChemical>
+        </li>
+        <li Class="IngestionOutcomeDoer_OffsetNeed">
+          <need>Rest</need>
+          <offset>1.0</offset>
+          <toleranceChemical>BOR_Sunsteel_Chemical</toleranceChemical>
+        </li>
+      </outcomeDoers>
+    </ingestible>
+    <recipeMaker>
+      <!-- todo -->
+      <researchPrerequisite>BOR_Research_Drugs_I</researchPrerequisite>
+      <recipeUsers>
+        <!-- todo -->
+        <li>BOR_MedicineBench_I</li>
+        <li>BOR_Bench_IV</li>
+      </recipeUsers>
+      <displayPriority>1800</displayPriority>
+    </recipeMaker>
+    <costList>
+      <Neutroamine>3</Neutroamine>
+      <BOR_Sunsteel>1</BOR_Sunsteel>
+    </costList>
+    <comps>
+      <li Class="CompProperties_Drug">
+        <chemical>BOR_Sunsteel_Chemical</chemical>
+        <addictiveness>0.016</addictiveness>
+        <existingAddictionSeverityOffset>0.16</existingAddictionSeverityOffset>
+        <needLevelOffset>0.9</needLevelOffset>
+        <listOrder>211</listOrder>
+        <overdoseSeverityOffset>0.15~0.291</overdoseSeverityOffset>
+        <largeOverdoseChance>0.004</largeOverdoseChance>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <HediffDef>
+    <defName>BOR_WideAWakeHigh</defName>
+    <label>high on wide-a-wake</label>
+    <labelNoun>a wide-a-wake high</labelNoun>
+    <description>Wide-a-wake in the bloodstream. It fills the need for rest by stimulating the brain, and increases focus, allowing faster work. It also increases the psyfocus gains from meditation.</description>
+    <hediffClass>Hediff_High</hediffClass>
+    <defaultLabelColor>(1,0,0.5)</defaultLabelColor>
+    <scenarioCanAdd>true</scenarioCanAdd>
+    <maxSeverity>1.0</maxSeverity>
+    <isBad>false</isBad>
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-1.25</severityPerDay>
+        <showHoursToRecover>true</showHoursToRecover>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <offset>0.15</offset>
+          </li>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>0.15</offset>
+          </li>
+        </capMods>
+        <statOffsets>
+          <WorkSpeedGlobal>0.75</WorkSpeedGlobal>
+          <MeditationFocusGain MayRequire="ludeon.rimworld.royalty">0.3</MeditationFocusGain>
+        </statOffsets>
+        <statFactors>
+          <RestFallRateFactor>0.275</RestFallRateFactor>
+        </statFactors>
+        <hediffGivers>
+          <li Class="HediffGiver_Random">
+            <hediff>HeartAttack</hediff>
+            <mtbDays>180</mtbDays>
+            <partsToAffect>
+              <li>Heart</li>
+            </partsToAffect>
+          </li>
+        </hediffGivers>
+      </li>
+    </stages>
+  </HediffDef>
+
+</Defs>

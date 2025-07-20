@@ -1,0 +1,384 @@
+<Patch>
+
+	<Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
+		<modSettingDef>BOR_Setting_CE_TODO</modSettingDef>
+		<enabled Class="PatchOperationFindMod">
+			<mods>
+				<li>Rimsenal - Core</li>
+			</mods>
+			<match Class="PatchOperationSequence">
+				<operations>
+					<li Class="PatchOperationAdd">
+						<xpath>Defs</xpath>
+						<value>
+
+
+							<ThingDef Class="CombatExtended.AmmoDef" ParentName="88mmRPzBRocketBase">
+								<defName>BOR_Ammo_JIRocket</defName>
+								<label>Siege EMP rocket</label>
+								<graphicData>
+									<texPath>ThirdParty/Rimsenal/JI/JI_Shell</texPath>
+									<graphicClass>Graphic_StackCount</graphicClass>
+								</graphicData>
+								<statBases>
+									<MarketValue>60</MarketValue>
+									<Mass>3</Mass>
+									<Bulk>7</Bulk>
+								</statBases>
+								<ammoClass>BOR_Ion_N_AmmoClass</ammoClass>
+								<comps>
+									<li Class="CombatExtended.CompProperties_ExplosiveCE">
+										<damageAmountBase>75</damageAmountBase>
+										<explosiveDamageType>EMP</explosiveDamageType>
+										<explosiveRadius>4</explosiveRadius>
+										<explosionSound>Explosion_GiantBomb</explosionSound>
+									</li>
+									<li Class="CombatExtended.CompProperties_Fragments">
+										<fragments>
+											<Fragment_Quasar>3</Fragment_Quasar>
+										</fragments>
+									</li>
+								</comps>
+								<tradeTags>
+									<li>BOR_Tech_I</li>
+								</tradeTags>
+								<generateAllowChance>0.1</generateAllowChance>
+								<generateCommonality>0.01</generateCommonality>
+							</ThingDef>
+
+
+							<ThingDef ParentName="BaseRPG7Grenade">
+								<defName>BOR_Bullet_JISiegeRocket</defName>
+								<label>Siege EMP rocket</label>
+								<graphicData>
+									<texPath>Things/Projectile/Rocket</texPath>
+									<graphicClass>Graphic_Single</graphicClass>
+									<shaderType>TransparentPostLight</shaderType>
+								</graphicData>
+								<projectile Class="CombatExtended.ProjectilePropertiesCE">
+									<speed>135</speed>
+									<soundAmbient>RocketPropelledLoop_Small</soundAmbient>
+									<damageDef>Bullet</damageDef>
+									<damageAmountBase>315</damageAmountBase>
+									<armorPenetrationBlunt>38</armorPenetrationBlunt>
+									<armorPenetrationSharp>750</armorPenetrationSharp>
+								</projectile>
+								<comps>
+									<li Class="CombatExtended.CompProperties_ExplosiveCE">
+										<damageAmountBase>147</damageAmountBase>
+										<explosiveDamageType>EMP</explosiveDamageType>
+										<explosiveRadius>2.5</explosiveRadius>
+										<explosionSound>Explosion_GiantBomb</explosionSound>
+										<applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
+									</li>
+								</comps>
+								<generateAllowChance>0.1</generateAllowChance>
+								<generateCommonality>0.01</generateCommonality>
+							</ThingDef>
+
+
+							<RecipeDef ParentName="AmmoRecipeBase">
+								<defName>MakeBOR_Ammo_JIRocket</defName>
+								<label>make siege emp rockets x5</label>
+								<description>Craft 5 JI siege emp rockets rockets.</description>
+								<jobString>Making JI siege emp rockets.</jobString>
+								<workAmount>7500</workAmount>
+								<ingredients>
+									<li>
+										<filter>
+											<thingDefs>
+												<li>Plasteel</li>
+											</thingDefs>
+										</filter>
+										<count>20</count>
+									</li>
+									<li>
+										<filter>
+											<thingDefs>
+												<li>FSX</li>
+											</thingDefs>
+										</filter>
+										<count>3</count>
+									</li>
+									<li>
+										<filter>
+											<thingDefs>
+												<li>ComponentSpacer</li>
+											</thingDefs>
+										</filter>
+										<count>2</count>
+									</li>
+								</ingredients>
+								<fixedIngredientFilter>
+									<thingDefs>
+										<li>Plasteel</li>
+										<li>FSX</li>
+										<li>ComponentSpacer</li>
+									</thingDefs>
+								</fixedIngredientFilter>
+								<researchPrerequisite>SiegeTech</researchPrerequisite>
+								<recipeUsers Inherit="False">
+									<li>JITable</li>
+								</recipeUsers>
+								<products>
+									<BOR_Ammo_JIRocket>5</BOR_Ammo_JIRocket>
+								</products>
+							</RecipeDef>
+
+
+							<ThingDef ParentName="BaseRPG7Grenade">
+								<defName>BOR_Bullet_JISiegeRound</defName>
+								<label>grendel emp shell</label>
+								<graphicData>
+									<texPath>Things/Projectile/SCM</texPath>
+									<graphicClass>Graphic_Single</graphicClass>
+									<shaderType>TransparentPostLight</shaderType>
+								</graphicData>
+								<projectile Class="CombatExtended.ProjectilePropertiesCE">
+									<speed>135</speed>
+									<damageDef>Bullet</damageDef>
+									<damageAmountBase>120</damageAmountBase>
+									<armorPenetrationBlunt>76800</armorPenetrationBlunt>
+									<armorPenetrationSharp>150</armorPenetrationSharp>
+								</projectile>
+								<comps>
+									<li Class="CombatExtended.CompProperties_ExplosiveCE">
+										<damageAmountBase>30</damageAmountBase>
+										<explosiveDamageType>EMP</explosiveDamageType>
+										<explosiveRadius>0.5</explosiveRadius>
+										<explosionSound>Explosion_GiantBomb</explosionSound>
+										<applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
+									</li>
+									<li Class="CombatExtended.CompProperties_Fragments">
+										<fragSpeedFactor>0.5</fragSpeedFactor>
+										<fragments>
+											<Fragment_Quasar>325</Fragment_Quasar>
+										</fragments>
+									</li>
+								</comps>
+							</ThingDef>
+
+							<ThingDef ParentName="Base81mmMortarShell">
+								<defName>BOR_Bullet_JICrowFeeder</defName>
+								<label>quasar crow feeder</label>
+								<graphicData>
+									<texPath>Things/Projectile/SCM</texPath>
+									<graphicClass>Graphic_Single</graphicClass>
+									<shaderType>TransparentPostLight</shaderType>
+								</graphicData>
+								<projectile Class="CombatExtended.ProjectilePropertiesCE">
+									<damageDef>Bomb</damageDef>
+									<damageAmountBase>30</damageAmountBase>
+									<armorPenetrationSharp>0.1</armorPenetrationSharp>
+									<armorPenetrationBlunt>0.1</armorPenetrationBlunt>
+									<explosionRadius>0.75</explosionRadius>
+									<flyOverhead>true</flyOverhead>
+									<soundExplode>MortarBomb_Explode</soundExplode>
+									<applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
+									<ai_IsIncendiary>false</ai_IsIncendiary>
+									<speed>74</speed>
+									<gravityFactor>10</gravityFactor>
+								</projectile>
+								<comps>
+									<li Class="CombatExtended.CompProperties_Fragments">
+										<fragSpeedFactor>0.5</fragSpeedFactor>
+										<fragments>
+											<Fragment_Quasar>325</Fragment_Quasar>
+										</fragments>
+									</li>
+								</comps>
+								<generateAllowChance>0.1</generateAllowChance>
+								<generateCommonality>0.01</generateCommonality>
+							</ThingDef>
+
+							<ThingDef Class="CombatExtended.AmmoDef" ParentName="BaseJIAlloy">
+								<defName>BOR_Ammo_JI_Alloy</defName>
+								<label>Ultra-density tenebrite</label>
+								<graphicData>
+									<texPath>ThirdParty/Rimsenal/JI/JI_Molten</texPath>
+									<graphicClass>Graphic_StackCount</graphicClass>
+								</graphicData>
+								<statBases>
+									<MarketValue>5</MarketValue>
+								</statBases>
+								<ammoClass>BOR_QaP_AmmoClass</ammoClass>
+								<tradeTags>
+									<li>BOR_Tech_I</li>
+								</tradeTags>
+								<generateAllowChance>0.1</generateAllowChance>
+								<generateCommonality>0.01</generateCommonality>
+							</ThingDef>
+
+
+							<ThingDef ParentName="Base556x45mmNATOBullet">
+								<defName>BOR_Bullet_JI_Slag</defName>
+								<label>Semi-molten tenebrite</label>
+								<graphicData>
+									<texPath>Things/Projectile/Slug</texPath>
+									<graphicClass>Graphic_Single</graphicClass>
+								</graphicData>
+								<projectile Class="CombatExtended.ProjectilePropertiesCE">
+									<damageDef>Bullet</damageDef>
+									<speed>411</speed>
+									<dropsCasings>false</dropsCasings>
+									<damageAmountBase>34</damageAmountBase>
+									<armorPenetrationBlunt>202</armorPenetrationBlunt>
+									<armorPenetrationSharp>40</armorPenetrationSharp>
+									<pelletCount>15</pelletCount>
+									<spreadMult>20</spreadMult>
+								</projectile>
+							</ThingDef>
+
+
+							<RecipeDef ParentName="AmmoRecipeBase">
+								<defName>MakeBOR_Ammo_JI_Alloy</defName>
+								<label>make ultra dense tenebrite x250</label>
+								<description>Craft 250 ultra dense tenebrite.</description>
+								<jobString>Making ultra dense quasar alloy.</jobString>
+								<ingredients>
+									<li>
+										<filter>
+											<thingDefs>
+												<li>BOR_QuasarAlloy</li>
+											</thingDefs>
+										</filter>
+										<count>18</count>
+									</li>
+									<li>
+										<filter>
+											<thingDefs>
+												<li>Plasteel</li>
+											</thingDefs>
+										</filter>
+										<count>10</count>
+									</li>
+									<li>
+										<filter>
+											<thingDefs>
+												<li>ComponentSpacer</li>
+											</thingDefs>
+										</filter>
+										<count>18</count>
+									</li>
+								</ingredients>
+								<fixedIngredientFilter>
+									<thingDefs>
+										<li>BOR_QuasarAlloy</li>
+										<li>Plasteel</li>
+										<li>ComponentSpacer</li>
+									</thingDefs>
+								</fixedIngredientFilter>
+								<researchPrerequisite>MoltenTech</researchPrerequisite>
+								<recipeUsers Inherit="False">
+									<li>JITable</li>
+								</recipeUsers>
+								<products>
+									<BOR_Ammo_JI_Alloy>250</BOR_Ammo_JI_Alloy>
+								</products>
+								<workAmount>19000</workAmount>
+							</RecipeDef>
+
+
+							<ThingDef ParentName="Base556x45mmNATOBullet">
+								<defName>BOR_Bullet_JI_Molten</defName>
+								<label>Semi-molten tenebrite</label>
+								<graphicData>
+									<texPath>Things/Projectile/Slug</texPath>
+									<graphicClass>Graphic_Single</graphicClass>
+								</graphicData>
+								<projectile Class="CombatExtended.ProjectilePropertiesCE">
+									<damageDef>Bullet</damageDef>
+									<speed>463</speed>
+									<dropsCasings>false</dropsCasings>
+									<damageAmountBase>94</damageAmountBase>
+									<armorPenetrationBlunt>1653</armorPenetrationBlunt>
+									<armorPenetrationSharp>61</armorPenetrationSharp>
+								</projectile>
+							</ThingDef>
+
+
+							<ThingDef ParentName="Base556x45mmNATOBullet">
+								<defName>BOR_Bullet_JI_AMR</defName>
+								<label>Semi-molten tenebrite</label>
+								<graphicData>
+									<texPath>Things/Projectile/Shell</texPath>
+									<graphicClass>Graphic_Single</graphicClass>
+								</graphicData>
+								<projectile Class="CombatExtended.ProjectilePropertiesCE">
+									<damageDef>Bullet</damageDef>
+									<speed>600</speed>
+									<dropsCasings>false</dropsCasings>
+									<damageAmountBase>432</damageAmountBase>
+									<armorPenetrationBlunt>67500</armorPenetrationBlunt>
+									<armorPenetrationSharp>675</armorPenetrationSharp>
+								</projectile>
+								<comps>
+									<li Class="CombatExtended.CompProperties_Fragments">
+										<fragments>
+											<Fragment_Quasar>6</Fragment_Quasar>
+										</fragments>
+									</li>
+								</comps>
+							</ThingDef>
+
+
+							<ThingDef ParentName="Base556x45mmNATOBullet">
+								<defName>BOR_Bullet_JI_Suppressor</defName>
+								<label>Semi-molten tenebrite</label>
+								<graphicData>
+									<texPath>Things/Projectile/Slug</texPath>
+									<graphicClass>Graphic_Single</graphicClass>
+								</graphicData>
+								<projectile Class="CombatExtended.ProjectilePropertiesCE">
+									<damageDef>Bullet</damageDef>
+									<speed>463</speed>
+									<dropsCasings>false</dropsCasings>
+									<damageAmountBase>74</damageAmountBase>
+									<armorPenetrationBlunt>828</armorPenetrationBlunt>
+									<armorPenetrationSharp>52</armorPenetrationSharp>
+								</projectile>
+							</ThingDef>
+
+						</value>
+					</li>
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/CombatExtended.AmmoSetDef[defName="AmmoSet_JI_AMR"]/ammoTypes</xpath>
+						<value>
+							<BOR_Ammo_JI_Alloy>BOR_Bullet_JI_AMR</BOR_Ammo_JI_Alloy>
+						</value>
+					</li>
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/CombatExtended.AmmoSetDef[defName="AmmoSet_JISuppressor"]/ammoTypes</xpath>
+						<value>
+							<BOR_Ammo_JI_Alloy>BOR_Bullet_JI_Suppressor</BOR_Ammo_JI_Alloy>
+						</value>
+					</li>
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/CombatExtended.AmmoSetDef[defName="AmmoSet_JIStandard"]/ammoTypes</xpath>
+						<value>
+							<BOR_Ammo_JI_Alloy>BOR_Bullet_JI_Molten</BOR_Ammo_JI_Alloy>
+						</value>
+					</li>
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/CombatExtended.AmmoSetDef[defName="AmmoSet_JISlag"]/ammoTypes</xpath>
+						<value>
+							<BOR_Ammo_JI_Alloy>BOR_Bullet_JI_Slag</BOR_Ammo_JI_Alloy>
+						</value>
+					</li>
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/CombatExtended.AmmoSetDef[defName="AmmoSet_JISiege"]/ammoTypes</xpath>
+						<value>
+							<BOR_Ammo_JI_Alloy>BOR_Bullet_JISiegeRound</BOR_Ammo_JI_Alloy>
+						</value>
+					</li>
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/CombatExtended.AmmoSetDef[defName="AmmoSet_JIRocket"]/ammoTypes</xpath>
+						<value>
+							<BOR_Ammo_JI_Alloy>BOR_Bullet_JISiegeRocket</BOR_Ammo_JI_Alloy>
+						</value>
+					</li>
+				</operations>
+			</match>
+		</enabled>
+	</Operation>
+</Patch>

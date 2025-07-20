@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <ThingDef ParentName="MakeableDrugBase">
+    <defName>BOR_Crewmates</defName>
+    <label>crewmates</label>
+    <description>A vastly improved version of the more common recreational drinks which involve the use of Sunweave, Tenebrite is substituted instead of common water and draws out immensely pleasurable compounds from within the powdered Sunweave. Like all drugs based upon Sunsteel, there is a small risk of addiction - though the addition of Tenebrite seems to have lowered it even further.\n\nThis specific formula is often used aboard small-population transport ships to dull the monotony of their day-to-day maintenance.</description>
+    <descriptionHyperlinks>
+      <HediffDef>BOR_CrewmatesHigh</HediffDef>
+      <HediffDef>BOR_Chemical_SunweaveTolerance</HediffDef>
+      <HediffDef>BOR_Sunweave_Chemical_Addiction</HediffDef>
+      <HediffDef>ChemicalDamageSevere</HediffDef>
+    </descriptionHyperlinks>
+    <tradeTags Inherit="False">
+      <li>BOR_Drugs_III</li>
+			<li>BOR_Tech_III</li>
+    </tradeTags>
+    <thingCategories>
+      <li>BOR_Drugs_III</li>
+    </thingCategories>
+    <graphicData>
+      <texPath>BOR/Things/Item/Drugs/Tier3/Happy/Happy</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>0.75</drawSize>
+    </graphicData>
+    <rotatable>false</rotatable>
+    <statBases>
+      <WorkToMake>955</WorkToMake>
+      <MarketValue>72</MarketValue>
+      <Mass>0.02775</Mass>
+    
+			<RoyalFavorValue>0.2</RoyalFavorValue></statBases>
+    <techLevel>Archotech</techLevel>
+    <minRewardCount>1</minRewardCount>
+    <ingestible>
+      <foodType>Processed</foodType>
+      <joyKind>Chemical</joyKind>
+      <joy>2.4</joy>
+      <drugCategory>Social</drugCategory>
+      <baseIngestTicks>86</baseIngestTicks>
+      <ingestSound>Ingest_Drink</ingestSound>
+      <ingestHoldOffsetStanding>
+        <northDefault>
+          <offset>(0.21,0,0.05)</offset>
+        </northDefault>
+      </ingestHoldOffsetStanding>
+      <ingestHoldUsesTable>false</ingestHoldUsesTable>
+      <ingestCommandString>Drink {0}</ingestCommandString>
+      <ingestReportString>Drinking {0}.</ingestReportString>
+      <useEatingSpeedStat>false</useEatingSpeedStat>
+      <outcomeDoers>
+        <li Class="IngestionOutcomeDoer_GiveHediff">
+          <hediffDef>BOR_CrewmatesHigh</hediffDef>
+          <severity>1</severity>
+          <toleranceChemical>BOR_Chemical_Sunweave</toleranceChemical>
+        </li>
+        <li Class="IngestionOutcomeDoer_OffsetNeed">
+          <need>Rest</need>
+          <offset>0.9</offset>
+          <toleranceChemical>BOR_Chemical_Sunweave</toleranceChemical>
+        </li>
+        <li Class="IngestionOutcomeDoer_GiveHediff">
+          <hediffDef>BOR_Chemical_SunweaveTolerance</hediffDef>
+          <toleranceChemical>BOR_Chemical_Sunweave</toleranceChemical>
+          <severity>0.02425</severity>
+          <divideByBodySize>true</divideByBodySize>
+          <multiplyByGeneToleranceFactors>true</multiplyByGeneToleranceFactors>
+        </li>
+      </outcomeDoers>
+    </ingestible>
+    <recipeMaker>
+      <!-- todo -->
+      <researchPrerequisite>BOR_Research_Drugs_III</researchPrerequisite>
+      <recipeUsers>
+        <!-- todo -->
+        <li>BOR_MedicineBench_III</li>
+        <li>BOR_Bench_IV</li>
+      </recipeUsers>
+      <soundWorking>Recipe_Drug</soundWorking>
+      <displayPriority>1700</displayPriority>
+    </recipeMaker>
+    <costList>
+      <BOR_Sunweave>18</BOR_Sunweave>
+      <BOR_Tenebrite>4</BOR_Tenebrite>
+    </costList>
+    <allowedArchonexusCount>25</allowedArchonexusCount>
+    <comps>
+      <li Class="CompProperties_Drug">
+        <chemical>BOR_Chemical_Sunweave</chemical>
+        <addictiveness>0.018</addictiveness>
+        <existingAddictionSeverityOffset>0.133</existingAddictionSeverityOffset>
+        <needLevelOffset>0.9</needLevelOffset>
+        <isCombatEnhancingDrug>true</isCombatEnhancingDrug>
+        <listOrder>203</listOrder>
+        <overdoseSeverityOffset>0.125~0.2425</overdoseSeverityOffset>
+        <largeOverdoseChance>0.003</largeOverdoseChance>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <HediffDef>
+    <defName>BOR_CrewmatesHigh</defName>
+    <label>crewmates blessed</label>
+    <labelNoun>a crewmates blessing</labelNoun>
+    <description>Active crewmates doing their tasks within the bloodstream. Generates an exalted high.</description>
+    <hediffClass>Hediff_High</hediffClass>
+    <defaultLabelColor>(1,0,0.5)</defaultLabelColor>
+    <scenarioCanAdd>true</scenarioCanAdd>
+    <maxSeverity>1.0</maxSeverity>
+    <isBad>false</isBad>
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-0.8675</severityPerDay>
+        <showHoursToRecover>true</showHoursToRecover>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <painFactor>0.275</painFactor>
+        <statFactors>
+          <RestFallRateFactor>0.1527</RestFallRateFactor>
+        </statFactors>
+        <capMods>
+          <li>
+            <capacity>Moving</capacity>
+            <offset>0.5062</offset>
+          </li>
+        </capMods>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <ThoughtDef>
+    <defName>BOR_CrewmatesHigh</defName>
+    <workerClass>ThoughtWorker_Hediff</workerClass>
+    <hediff>BOR_CrewmatesHigh</hediff>
+    <validWhileDespawned>true</validWhileDespawned>
+    <developmentalStageFilter>Baby, Child, Adult</developmentalStageFilter>
+    <stages>
+      <li>
+        <label>suspiciously high</label>
+        <description>It almost feels TOO good!</description>
+        <baseMoodEffect>117</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+</Defs>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+    <Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
+        <modSettingDef>BOR_Setting_FireControlComputers</modSettingDef>
+        <enabled Class="PatchOperationSequence">
+            <operations>
+
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="FC_FireControl_Ultra"]/costList</xpath>
+                    <value>
+                        <costList>
+                            <BOR_Sunsteel>200</BOR_Sunsteel>
+                            <Silver>500</Silver>
+                            <Gold>50</Gold>
+                            <ComponentSpacer>8</ComponentSpacer>
+                        </costList>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="FC_FireControl_Archo"]/costList</xpath>
+                    <value>
+                        <costList>
+                            <BOR_Tenebrite>50</BOR_Tenebrite>
+                            <BOR_Sunsteel>1000</BOR_Sunsteel>
+                            <BOR_QuasarAlloy>500</BOR_QuasarAlloy>
+                            <BOR_Femtoclusters>3</BOR_Femtoclusters>
+                            <AIPersonaCore>1</AIPersonaCore>
+                        </costList>
+                    </value>
+                </li>
+                <li Class="PatchOperationAdd">
+                    <xpath>Defs/ThingDef[@ParentName="FC_ComputerBase"]</xpath>
+                    <value>
+                        <designatorDropdown>BOR_FCC</designatorDropdown>
+                    </value>
+                </li>
+
+            </operations>
+        </enabled>
+    </Operation>
+
+</Patch>

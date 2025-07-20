@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+
+	<Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
+		<modSettingDef>BOR_Setting_Biotech</modSettingDef>
+		<enabled Class="PatchOperationAdd">
+			<xpath>Defs</xpath>
+			<value>
+
+				<ResearchProjectDef ParentName="BOR_Research_Base_I">
+					<defName>BOR_Research_PollutionPump_I</defName>
+					<label>Solar Pollution Pump</label>
+					<description>Our perfect technologies cannot thrive in imperfect universe. We have to cleanse the mechanoid filth from the soil surrounding us.</description>
+					<baseCost>35000</baseCost>
+					<techLevel>Ultra</techLevel>
+					<prerequisites>
+						<li>BOR_Research_Hydroponics_I</li>
+					</prerequisites>
+					<researchViewX>3.00</researchViewX>
+					<researchViewY>4.75</researchViewY>
+				</ResearchProjectDef>
+
+				<ResearchProjectDef ParentName="BOR_Research_Base_II">
+					<defName>BOR_Research_PollutionPump_II</defName>
+					<label>Quasar Pollution Pump</label>
+					<description>Our growing proficiency with the more advanced materials make it easier for us to effectively clean the planet.</description>
+					<baseCost>75000</baseCost>
+					<techLevel>Archotech</techLevel>
+					<prerequisites>
+						<li>BOR_Research_Hydroponics_II</li>
+					</prerequisites>
+					<researchViewX>8.00</researchViewX>
+					<researchViewY>5.10</researchViewY>
+				</ResearchProjectDef>
+
+				<ResearchProjectDef ParentName="BOR_Research_Base_III">
+					<defName>BOR_Research_PollutionPump_III</defName>
+					<label>Tenebral Pollution Pump</label>
+					<description>With Tenebrite at our disposal cleansing the earth is fast and furiously efficient.</description>
+					<baseCost>150000</baseCost>
+					<techLevel>Archotech</techLevel>
+					<prerequisites>
+						<li>BOR_Research_Hydroponics_III</li>
+					</prerequisites>
+					<researchViewX>13.00</researchViewX>
+					<researchViewY>5.10</researchViewY>
+				</ResearchProjectDef>
+
+
+				<ResearchProjectDef Abstract="True" Name="MechtechSolarBase" ParentName="BOR_Research_Base_I">
+					<requiresMechanitor>true</requiresMechanitor>
+					<techLevel>Ultra</techLevel>
+				</ResearchProjectDef>
+
+				<ResearchProjectDef ParentName="MechtechSolarBase">
+					<defName>BOR_Research_Mechtech_I</defName>
+					<label>solar mechtech</label>
+					<description>The technology needed for your mechanitor to create and control basic-tier mechanoids with solar technology.</description>
+					<baseCost>20000</baseCost>
+					<researchViewX>4.00</researchViewX>
+					<researchViewY>2.25</researchViewY>
+					<prerequisites>
+						<li>BOR_Research_Production_I</li>
+						<li>UltraMechtech</li>
+					</prerequisites>
+					<requiredAnalyzed>
+						<li>NanostructuringChip</li>
+					</requiredAnalyzed>
+				</ResearchProjectDef>
+
+				<ResearchProjectDef Abstract="True" Name="MechtechQuasarBase" ParentName="BOR_Research_Base_II">
+					<requiresMechanitor>true</requiresMechanitor>
+					<techLevel>Archotech</techLevel>
+				</ResearchProjectDef>
+
+				<ResearchProjectDef ParentName="MechtechQuasarBase">
+					<defName>BOR_Research_Mechtech_II</defName>
+					<label>kwazaari mechtech</label>
+					<description>The technology needed for your mechanitor to create and control basic-tier mechanoids with kwazaari technology.</description>
+					<baseCost>40000</baseCost>
+					<researchViewX>9.00</researchViewX>
+					<researchViewY>2.25</researchViewY>
+					<prerequisites>
+						<li>BOR_Research_Production_II</li>
+					</prerequisites>
+					<hiddenPrerequisites>
+						<li>BOR_Research_Mechtech_I</li>
+					</hiddenPrerequisites>
+					<requiredAnalyzed>
+						<li>NanostructuringChip</li>
+					</requiredAnalyzed>
+				</ResearchProjectDef>
+
+				<ResearchProjectDef Abstract="True" Name="MechtechTenebralBase" ParentName="BOR_Research_Base_III">
+					<requiresMechanitor>true</requiresMechanitor>
+					<techLevel>Archotech</techLevel>
+				</ResearchProjectDef>
+
+				<ResearchProjectDef ParentName="MechtechTenebralBase">
+					<defName>BOR_Research_Mechtech_III</defName>
+					<label>tenebral mechtech</label>
+					<description>The technology needed for your mechanitor to create and control basic-tier mechanoids with tenebral technology.</description>
+					<baseCost>80000</baseCost>
+					<researchViewX>14.00</researchViewX>
+					<researchViewY>3.90</researchViewY>
+					<prerequisites>
+						<li>BOR_Research_Production_III</li>
+					</prerequisites>
+					<hiddenPrerequisites>
+						<li>BOR_Research_Mechtech_II</li>
+					</hiddenPrerequisites>
+					<requiredAnalyzed>
+						<li>NanostructuringChip</li>
+					</requiredAnalyzed>
+				</ResearchProjectDef>
+
+
+				<ResearchProjectDef ParentName="BOR_Research_Base_I">
+					<defName>BOR_Research_NSynth_I_Wasteful</defName>
+					<label>wasteful tier I refining</label>
+					<description>Devise alternative processing methods that are twice as fast, but will in turn produce a lot of waste.</description>
+					<baseCost>35000</baseCost>
+					<techLevel>Ultra</techLevel>
+					<prerequisites>
+						<li>BOR_Research_NSynth_I</li>
+					</prerequisites>
+					<researchViewX>5.00</researchViewX>
+					<researchViewY>0.25</researchViewY>
+				</ResearchProjectDef>
+
+				<ResearchProjectDef ParentName="BOR_Research_Base_II">
+					<defName>BOR_Research_NSynth_II_Wasteful</defName>
+					<label>wasteful tier II refining</label>
+					<description>Devise new processing methods, producing a lot of waste in exchange for speed.</description>
+					<baseCost>75000</baseCost>
+					<techLevel>Archotech</techLevel>
+					<prerequisites>
+						<li>BOR_Research_NSynth_II</li>
+					</prerequisites>
+					<researchViewX>9.00</researchViewX>
+					<researchViewY>0.25</researchViewY>
+				</ResearchProjectDef>
+
+				<ResearchProjectDef ParentName="BOR_Research_Base_III">
+					<defName>BOR_Research_NSynth_III_Wasteful</defName>
+					<label>wasteful tier III refining</label>
+					<description>Devise new refining methods that produce twice as fast but produce a lot of waste.</description>
+					<baseCost>150000</baseCost>
+					<techLevel>Archotech</techLevel>
+					<prerequisites>
+						<li>BOR_Research_NSynth_III</li>
+					</prerequisites>
+					<researchViewX>14.00</researchViewX>
+					<researchViewY>0.25</researchViewY>
+				</ResearchProjectDef>
+
+			</value>
+		</enabled>
+	</Operation>
+
+</Patch>

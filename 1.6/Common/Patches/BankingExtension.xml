@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>Vanilla Trading Expanded</li>
+		</mods>
+		<match Class="BeyondOurReachModSettings.PatchOperationModSettings">
+			<modSettingDef>BOR_Setting_AddKwazaariBank</modSettingDef>
+			<enabled Class="PatchOperationSequence">
+				<operations>
+					<li Class="PatchOperationAddModExtension">
+						<xpath>Defs/FactionDef[defName = "BOR_KwazaarBazaar"]</xpath>
+						<value>
+							<li Class="VanillaTradingExpanded.BankExtension">
+								<bankNameKey>VTE.BOR_Kwazaari_Bank</bankNameKey>
+								<feesByGoodwill>
+									<points>
+										<li>(-100, 0.99)</li>
+										<li>(-50, 0.75)</li>
+										<li>(0, 0.5)</li>
+										<li>(50, 0.25)</li>
+										<li>(100, 0.001)</li>
+									</points>
+								</feesByGoodwill>
+								<loanOptions>
+									<li>
+										<loanNameKey>VTE.BOR_Quick_Loan</loanNameKey>
+										<fixedLoanAmount>5000</fixedLoanAmount>
+										<fixedRepayAmount>10000</fixedRepayAmount>
+										<transactionFeesIncluded>true</transactionFeesIncluded>
+										<loanRepayPeriodDays>15</loanRepayPeriodDays>
+										<overdueInterestEveryDay>0.1</overdueInterestEveryDay>
+									</li>
+									<li>
+										<loanNameKey>VTE.BOR_Long_Loan</loanNameKey>
+										<fixedLoanAmount>100000</fixedLoanAmount>
+										<fixedRepayAmount>200000</fixedRepayAmount>
+										<transactionFeesIncluded>true</transactionFeesIncluded>
+										<loanRepayPeriodDays>120</loanRepayPeriodDays>
+										<overdueInterestEveryDay>0.1</overdueInterestEveryDay>
+									</li>
+								</loanOptions>
+							</li>
+						</value>
+					</li>
+				</operations>
+			</enabled>
+		</match>
+	</Operation>
+</Patch>

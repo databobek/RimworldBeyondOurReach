@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+
+    <Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
+        <modSettingDef>BOR_Setting_FireControlComputers</modSettingDef>
+        <enabled Class="PatchOperationAdd">
+            <xpath>Defs</xpath>
+            <value>
+
+                <ThingDef ParentName="FC_ComputerBase">
+                    <defName>FC_FireControl_Tenebral</defName>
+                    <label>tenebral fire control computer</label>
+                    <description>Spiting the archotechs, we can build our own autonomous fire control computers.</description>
+                    <size>(5,5)</size>
+                    <rotatable>false</rotatable>
+                    <graphicData>
+                        <graphicClass>Graphic_Single</graphicClass>
+                        <texPath>BOR/Retextures/firecontrol3</texPath>
+                        <drawSize>(6,6)</drawSize>
+                        <drawOffset>(0,3,0.25)</drawOffset>
+                    </graphicData>
+                    <statBases>
+                        <MaxHitPoints>1000</MaxHitPoints>
+                        <WorkToBuild>15000</WorkToBuild>
+                        <Mass>1000</Mass>
+                        <MarketValue>100000</MarketValue>
+                    </statBases>
+                    <costList>
+                        <BOR_QuasarAlloy>500</BOR_QuasarAlloy>
+                        <BOR_Tenebrite>100</BOR_Tenebrite>
+                        <BOR_Sunsteel>1000</BOR_Sunsteel>
+                        <BOR_Femtoclusters>5</BOR_Femtoclusters>
+                        <AIPersonaCore>1</AIPersonaCore>
+                    </costList>
+                    <researchPrerequisites>
+                        <li>BOR_Research_Tenebral_FCC</li>
+                    </researchPrerequisites>
+                    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+                    <constructionSkillPrerequisite>15</constructionSkillPrerequisite>
+                    <hasInteractionCell>false</hasInteractionCell>
+                    <comps>
+                        <li Class="CompProperties_Power">
+                            <compClass>CompPowerTrader</compClass>
+                            <basePowerConsumption>5000</basePowerConsumption>
+                            <idlePowerDraw>2500</idlePowerDraw>
+                        </li>
+                        <li Class="FireControl.CompProperties_FireControl">
+                            <auto>true</auto>
+                            <efficiency>0.8</efficiency>
+                            <maxTurrets>25</maxTurrets>
+                        </li>
+                    </comps>
+                </ThingDef>
+                <ThingDef ParentName="FC_ComputerBase">
+                    <defName>FC_FireControl_Quasar</defName>
+                    <label>kwazaari fire control computer</label>
+                    <description>The remote control tower designed with quasar alloy is an unparalleled feat of technological advancement. This revolutionary material imbues the tower with extreme durability, heat resistance, and advanced electromagnetic capabilities. The tower's sleek, metallic exterior is smooth to the touch and its unique alloy composition is a closely guarded secret. The tower's advanced capabilities allow it to remotely control weapon emplacements with unprecedented precision and speed. The tower is fully autonomous, capable of detecting threats and activating defense mechanisms without any human intervention. Its sophisticated sensors and computing systems can analyze and process vast amounts of data in real-time, allowing for quick and accurate responses.</description>
+
+                    <size>(5,5)</size>
+                    <statBases>
+                        <MaxHitPoints>2000</MaxHitPoints>
+                        <WorkToBuild>8000</WorkToBuild>
+                        <Flammability>0</Flammability>
+                        <Mass>500</Mass>
+                    </statBases>
+                    <rotatable>false</rotatable>
+                    <hasInteractionCell>false</hasInteractionCell>
+                    <graphicData>
+                        <graphicClass>Graphic_Single</graphicClass>
+                        <texPath>BOR/Retextures/firecontrol2</texPath>
+                        <drawSize>(5.5,5.5)</drawSize>
+                    </graphicData>
+                    <costList>
+                        <BOR_Sunsteel>500</BOR_Sunsteel>
+                        <BOR_QuasarAlloy>200</BOR_QuasarAlloy>
+                        <BOR_ComponentII>20</BOR_ComponentII>
+                        <AIPersonaCore>1</AIPersonaCore>
+                    </costList>
+                    <researchPrerequisites>
+                        <li>BOR_Research_Quasar_FCC</li>
+                    </researchPrerequisites>
+                    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+                    <constructionSkillPrerequisite>5</constructionSkillPrerequisite>
+                    <uiIconPath>BOR/Retextures/firecontrol2</uiIconPath>
+                    <interactionCellOffset>(0, 0, 1)</interactionCellOffset>
+                    <comps>
+                        <li Class="CompProperties_Power">
+                            <compClass>CompPowerTrader</compClass>
+                            <basePowerConsumption>5000</basePowerConsumption>
+                            <idlePowerDraw>2500</idlePowerDraw>
+                        </li>
+                        <li Class="FireControl.CompProperties_FireControl">
+                            <auto>true</auto>
+                            <efficiency>0.5</efficiency>
+                            <maxTurrets>12</maxTurrets>
+                        </li>
+                    </comps>
+                </ThingDef>
+
+            </value>
+        </enabled>
+    </Operation>
+    
+</Patch>

@@ -1,0 +1,586 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- base for implants -->
+	<HediffDef Abstract="True" ParentName="ImplantHediffBase" Name="BOR_ImplantUmbralHediffBase">
+		<comps>
+			<li MayRequire="v1024.ebframework" Class="EBF.Hediffs.HediffCompProperties_MaxHPAdjust">
+				<scaleAdjustment>5.065</scaleAdjustment>
+			</li>
+		</comps>
+	</HediffDef>
+	<HediffDef ParentName="AddedBodyPartBase" Name="BOR_AddedUmbralBodyPartBase" Abstract="True">
+		<comps>
+			<li MayRequire="v1024.ebframework" Class="EBF.Hediffs.HediffCompProperties_MaxHPAdjust">
+				<scaleAdjustment>5.065</scaleAdjustment>
+			</li>
+		</comps>
+	</HediffDef>
+	<RecipeDef Name="BOR_UmbralSurgeryInstallBodyPartArtificialBase" ParentName="SurgeryInstallBodyPartArtificialBase" Abstract="True">
+		<researchPrerequisite>BOR_Research_Bionics_IV</researchPrerequisite>
+		<skillRequirements>
+			<Medicine>20</Medicine>
+			<Intellectual>20</Intellectual>
+		</skillRequirements>
+		<workAmount>30000</workAmount>
+		<ingredients Inherit="False">
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_MedicineIII</li>
+					</thingDefs>
+				</filter>
+				<count>3</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>BOR_MedicineIII</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+	</RecipeDef>
+	<!-- Bionic eye -->
+	<HediffDef ParentName="BOR_AddedUmbralBodyPartBase">
+		<defName>BOR_UmbralBionicEye</defName>
+		<label>umbral eye</label>
+		<labelNoun>a Umbral bionic eye</labelNoun>
+		<description>An installed Umbral eye. A black marble capable of "seeing through" solid matter by piercing the material at the molecular level and then reconstructing what it finds on the other side using on-board AR (Augmented Reality) software, capable of seeing both UltraViolet (UV) and InfraRed (IR), coupled with night vision support. The quad-lense telescopic monocular encompassing the visuals portion of the eye is capable of seeing starships in the upper atmosphere with enough detail to make out scrapes in the paint job.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_Femtoclusters</ThingDef>
+		</descriptionHyperlinks>
+		<addedPartProps>
+			<solid>true</solid>
+			<partEfficiency>6.33</partEfficiency>
+			<betterThanNatural>true</betterThanNatural>
+		</addedPartProps>
+	</HediffDef>
+	<RecipeDef ParentName="BOR_UmbralSurgeryInstallBodyPartArtificialBase">
+		<defName>BOR_InstallUmbralBionicEye</defName>
+		<label>install umbral eye</label>
+		<description>Install a Umbral eye.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_Femtoclusters</ThingDef>
+			<HediffDef>BOR_UmbralBionicEye</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing Umbral bionic eye.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Femtoclusters</li>
+					</thingDefs>
+				</filter>
+				<count>5</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>BOR_Femtoclusters</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Eye</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>BOR_UmbralBionicEye</addsHediff>
+		<researchPrerequisite>BOR_Research_Bionics_IV</researchPrerequisite>
+	</RecipeDef>
+	<!-- Bionic arm -->
+	<HediffDef ParentName="BOR_AddedUmbralBodyPartBase">
+		<defName>BOR_UmbralBionicArm</defName>
+		<label>umbral arm</label>
+		<labelNoun>a Umbral bionic arm</labelNoun>
+		<description>An installed Umbral arm. With enough power to cause seismic events simply by striking the ground while also harboring the precision with which to assemble a mosaic on the molecular level.\n\n The ability to cook a live chicken by slapping it with every ounce of your strength was discovered by accident one day involving a swift argument between an Umbral soldier and a most ornery fowl.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_Femtoclusters</ThingDef>
+		</descriptionHyperlinks>
+		<comps>
+			<li Class="HediffCompProperties_VerbGiver">
+				<tools>
+					<li>
+						<label>fist</label>
+						<capacities>
+							<li>Blunt</li>
+						</capacities>
+						<power>61</power>
+						<cooldownTime>0.966</cooldownTime>
+						<soundMeleeHit>MeleeHit_BionicPunch</soundMeleeHit>
+						<soundMeleeMiss>MeleeMiss_BionicPunch</soundMeleeMiss>
+					</li>
+				</tools>
+			</li>
+		</comps>
+		<addedPartProps>
+			<solid>true</solid>
+			<partEfficiency>6.33</partEfficiency>
+			<betterThanNatural>true</betterThanNatural>
+		</addedPartProps>
+	</HediffDef>
+	<RecipeDef ParentName="BOR_UmbralSurgeryInstallBodyPartArtificialBase">
+		<defName>BOR_InstallUmbralBionicArm</defName>
+		<label>install umbral arm</label>
+		<description>Install a Umbral arm.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_Femtoclusters</ThingDef>
+			<HediffDef>BOR_UmbralBionicArm</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing Umbral bionic arm.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Femtoclusters</li>
+					</thingDefs>
+				</filter>
+				<count>5</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>BOR_Femtoclusters</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Shoulder</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>BOR_UmbralBionicArm</addsHediff>
+	</RecipeDef>
+	<!-- Bionic leg -->
+	<HediffDef ParentName="BOR_AddedUmbralBodyPartBase">
+		<defName>BOR_UmbralBionicLeg</defName>
+		<label>umbral leg</label>
+		<labelNoun>a Umbral bionic leg</labelNoun>
+		<description>An installed Umbral leg. Swift enough to outrun bullets, provided you know how to do so. For those without the proper training it is still so far above an upgrade to mortal flesh there is no reason to abstain from making use of its fearsome power.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_Femtoclusters</ThingDef>
+		</descriptionHyperlinks>
+		<addedPartProps>
+			<solid>true</solid>
+			<partEfficiency>6.33</partEfficiency>
+			<betterThanNatural>true</betterThanNatural>
+		</addedPartProps>
+	</HediffDef>
+	<RecipeDef ParentName="BOR_UmbralSurgeryInstallBodyPartArtificialBase">
+		<defName>BOR_InstallUmbralBionicLeg</defName>
+		<label>install umbral leg</label>
+		<description>Install a Umbral leg.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_Femtoclusters</ThingDef>
+			<HediffDef>BOR_UmbralBionicLeg</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing Umbral bionic leg.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Femtoclusters</li>
+					</thingDefs>
+				</filter>
+				<count>5</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>BOR_Femtoclusters</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Leg</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>BOR_UmbralBionicLeg</addsHediff>
+	</RecipeDef>
+	<!-- Bionic spine -->
+	<HediffDef ParentName="BOR_AddedUmbralBodyPartBase">
+		<defName>BOR_UmbralBionicSpine</defName>
+		<label>umbral spine</label>
+		<labelNoun>a Umbral bionic spine</labelNoun>
+		<description>An installed Umbral spine. This jet-black seam running through the torso imbues the human form with impossible flexibility, warriors are incapable of being surprised as they twist 180 degrees to lay waste upon the poor fools who thought they had an upper hand.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_Femtoclusters</ThingDef>
+		</descriptionHyperlinks>
+		<addedPartProps>
+			<solid>true</solid>
+			<betterThanNatural>true</betterThanNatural>
+			<partEfficiency>6.33</partEfficiency>
+		</addedPartProps>
+	</HediffDef>
+	<RecipeDef ParentName="BOR_UmbralSurgeryInstallBodyPartArtificialBase">
+		<defName>BOR_InstallUmbralBionicSpine</defName>
+		<label>install umbral spine</label>
+		<description>Install a Umbral spine.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_Femtoclusters</ThingDef>
+			<HediffDef>BOR_UmbralBionicSpine</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing Umbral bionic spine.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Femtoclusters</li>
+					</thingDefs>
+				</filter>
+				<count>5</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>BOR_Femtoclusters</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Spine</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>BOR_UmbralBionicSpine</addsHediff>
+	</RecipeDef>
+	<!-- Bionic heart -->
+	<HediffDef ParentName="BOR_AddedUmbralBodyPartBase">
+		<defName>BOR_UmbralBionicHeart</defName>
+		<label>umbral heart</label>
+		<labelNoun>a Umbral bionic heart</labelNoun>
+		<description>An installed Umbral heart. It beats uncomfortably well within the torso cavity without so much as beating at all, continous bloodflow throughout the body ensures the pinnacle of efficiency while being capable of lowering pressure should bloodloss begin.\n\n "The Black heart does not beat alone." -Attributed, Umbral Dominion Medical Board</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_Femtoclusters</ThingDef>
+		</descriptionHyperlinks>
+		<addedPartProps>
+			<solid>true</solid>
+			<partEfficiency>6.33</partEfficiency>
+			<betterThanNatural>true</betterThanNatural>
+		</addedPartProps>
+	</HediffDef>
+	<RecipeDef ParentName="BOR_UmbralSurgeryInstallBodyPartArtificialBase">
+		<defName>BOR_InstallUmbralBionicHeart</defName>
+		<label>install umbral heart</label>
+		<description>Install a Umbral heart.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_Femtoclusters</ThingDef>
+			<HediffDef>BOR_UmbralBionicHeart</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing Umbral bionic heart.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Femtoclusters</li>
+					</thingDefs>
+				</filter>
+				<count>5</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>BOR_Femtoclusters</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Heart</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>BOR_UmbralBionicHeart</addsHediff>
+	</RecipeDef>
+	<!-- Bionic stomach -->
+	<HediffDef ParentName="BOR_AddedUmbralBodyPartBase">
+		<defName>BOR_UmbralBionicStomach</defName>
+		<label>umbral stomach</label>
+		<labelNoun>a Umbral bionic stomach</labelNoun>
+		<description>An installed Umbral stomach. A maximum efficiency Bio-Reactor giving every ounce of nutrition from organic matter consumed, in extreme cases those who harbor Umbral stomachs have been known to eat rocks to ward off starvation beset by a year of food deprivation.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_Femtoclusters</ThingDef>
+		</descriptionHyperlinks>
+		<stages>
+			<li>
+				<makeImmuneTo>
+					<li>GutWorms</li>
+				</makeImmuneTo>
+				<foodPoisoningChanceFactor>0.33</foodPoisoningChanceFactor>
+			</li>
+		</stages>
+		<addedPartProps>
+			<solid>true</solid>
+			<partEfficiency>6.33</partEfficiency>
+			<betterThanNatural>true</betterThanNatural>
+		</addedPartProps>
+	</HediffDef>
+	<RecipeDef ParentName="BOR_UmbralSurgeryInstallBodyPartArtificialBase">
+		<defName>BOR_InstallUmbralBionicStomach</defName>
+		<label>install umbral stomach</label>
+		<description>Install a Umbral stomach.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_Femtoclusters</ThingDef>
+			<HediffDef>BOR_UmbralBionicStomach</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing Umbral bionic stomach.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Femtoclusters</li>
+					</thingDefs>
+				</filter>
+				<count>5</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>BOR_Femtoclusters</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Stomach</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>BOR_UmbralBionicStomach</addsHediff>
+	</RecipeDef>
+	<!-- Bionic ear -->
+	<HediffDef ParentName="BOR_AddedUmbralBodyPartBase">
+		<defName>BOR_UmbralBionicEar</defName>
+		<label>umbral ear</label>
+		<labelNoun>a Umbral bionic ear</labelNoun>
+		<description>An installed Umbral ear. Powerful enough to hear the ceaseless fusion of a star from planetside, the Umbral ear proves no sound in the galaxy is beyond its near-impossible perfection.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_Femtoclusters</ThingDef>
+		</descriptionHyperlinks>
+		<addedPartProps>
+			<solid>true</solid>
+			<partEfficiency>6.33</partEfficiency>
+			<betterThanNatural>true</betterThanNatural>
+		</addedPartProps>
+	</HediffDef>
+	<RecipeDef ParentName="BOR_UmbralSurgeryInstallBodyPartArtificialBase">
+		<defName>BOR_InstallUmbralBionicEar</defName>
+		<label>install umbral ear</label>
+		<description>Install a Umbral ear.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_Femtoclusters</ThingDef>
+			<HediffDef>BOR_UmbralBionicEar</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing Umbral bionic ear.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Femtoclusters</li>
+					</thingDefs>
+				</filter>
+				<count>5</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>BOR_Femtoclusters</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Ear</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>BOR_UmbralBionicEar</addsHediff>
+	</RecipeDef>
+	<!-- Bionic tongue -->
+	<HediffDef ParentName="BOR_AddedUmbralBodyPartBase">
+		<defName>BOR_UmbralBionicTongue</defName>
+		<label>umbral tongue</label>
+		<labelNoun>a Umbral bionic tongue</labelNoun>
+		<description>An installed Umbral tongue. Capable of 12 motions beyond reasonable scope, the implant is also capable of splitting and recombining as seen fit to better suit the whims of its user.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_Femtoclusters</ThingDef>
+		</descriptionHyperlinks>
+		<addedPartProps>
+			<solid>true</solid>
+			<partEfficiency>5.0625</partEfficiency>
+		</addedPartProps>
+	</HediffDef>
+	<RecipeDef ParentName="BOR_UmbralSurgeryInstallBodyPartArtificialBase">
+		<defName>BOR_InstallUmbralBionicTongue</defName>
+		<label>install umbral tongue</label>
+		<description>Install a Umbral tongue.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_Femtoclusters</ThingDef>
+			<HediffDef>BOR_UmbralBionicTongue</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing Umbral bionic tongue.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Femtoclusters</li>
+					</thingDefs>
+				</filter>
+				<count>5</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>BOR_Femtoclusters</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Tongue</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>BOR_UmbralBionicTongue</addsHediff>
+	</RecipeDef>
+	<!-- Bionic Jaw -->
+	<HediffDef ParentName="BOR_AddedUmbralBodyPartBase">
+		<defName>BOR_UmbralBionicJaw</defName>
+		<label>umbral jaw</label>
+		<labelNoun>a Umbral bionic jaw</labelNoun>
+		<description>An installed Umbral jaw. Strong enough to chew through Powered armor while also being so heinously sharp it is capable of splitting an atom should the safeties be disabled. Its vocal modulator is designed to perfectly emulate any and all voices or sounds the user has ever heard or can imagine.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_Femtoclusters</ThingDef>
+		</descriptionHyperlinks>
+		<addedPartProps>
+			<solid>true</solid>
+			<partEfficiency>6.33</partEfficiency>
+			<betterThanNatural>true</betterThanNatural>
+		</addedPartProps>
+	</HediffDef>
+	<RecipeDef ParentName="BOR_UmbralSurgeryInstallBodyPartArtificialBase">
+		<defName>BOR_InstallUmbralBionicJaw</defName>
+		<label>install umbral jaw</label>
+		<description>Install Umbral jaw.</description>
+		<jobString>Installing Umbral bionic jaw.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Femtoclusters</li>
+					</thingDefs>
+				</filter>
+				<count>5</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>BOR_Femtoclusters</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Jaw</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>BOR_UmbralBionicJaw</addsHediff>
+	</RecipeDef>
+	<HediffDef ParentName="BOR_AddedUmbralBodyPartBase">
+		<defName>BOR_UmbralBionicLung</defName>
+		<label>umbral lung</label>
+		<labelNoun>a Umbral bionic lung</labelNoun>
+		<description>An installed Umbral lung. Tuned intake and outtake valves ensure a lossless, constant flow of oxygen and carbon dioxide, supplying the body with a perfect amount of air while leaving them incapable of being breathless.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_Femtoclusters</ThingDef>
+		</descriptionHyperlinks>
+		<addedPartProps>
+			<solid>true</solid>
+			<partEfficiency>6.33</partEfficiency>
+			<betterThanNatural>true</betterThanNatural>
+		</addedPartProps>
+	</HediffDef>
+	<RecipeDef ParentName="BOR_UmbralSurgeryInstallBodyPartArtificialBase">
+		<defName>BOR_InstallUmbralBionicLung</defName>
+		<label>install umbral lung</label>
+		<description>Install a Umbral lung.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_Femtoclusters</ThingDef>
+			<HediffDef>BOR_UmbralBionicLung</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing Umbral bionic lung.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Femtoclusters</li>
+					</thingDefs>
+				</filter>
+				<count>5</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>BOR_Femtoclusters</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Lung</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>BOR_UmbralBionicLung</addsHediff>
+	</RecipeDef>
+	<HediffDef ParentName="BOR_AddedUmbralBodyPartBase">
+		<defName>BOR_UmbralBionicLiver</defName>
+		<label>umbral liver</label>
+		<labelNoun>a Umbral bionic liver</labelNoun>
+		<description>An installed Umbral liver. Capable of filtering venom which would normally slay 100 men within less than a minute. Immuno-boosting fibers present in the organ boost the body's ability to ward off disease to such a nightmarish degree that illness is no longer measured in days but seconds.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_Femtoclusters</ThingDef>
+		</descriptionHyperlinks>
+		<addedPartProps>
+			<solid>true</solid>
+			<partEfficiency>6.33</partEfficiency>
+			<betterThanNatural>true</betterThanNatural>
+		</addedPartProps>
+	</HediffDef>
+	<RecipeDef ParentName="BOR_UmbralSurgeryInstallBodyPartArtificialBase">
+		<defName>BOR_InstallUmbralBionicLiver</defName>
+		<label>install umbral liver</label>
+		<description>Install a Umbral liver.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_Femtoclusters</ThingDef>
+			<HediffDef>BOR_UmbralBionicLiver</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing Umbral bionic liver.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Femtoclusters</li>
+					</thingDefs>
+				</filter>
+				<count>5</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>BOR_Femtoclusters</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Liver</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>BOR_UmbralBionicLiver</addsHediff>
+	</RecipeDef>
+	<HediffDef ParentName="BOR_AddedUmbralBodyPartBase">
+		<defName>BOR_UmbralBionicKidney</defName>
+		<label>umbral kidney</label>
+		<labelNoun>a Umbral bionic kidney</labelNoun>
+		<description>An installed Umbral kidney. This deceptive organ is capable of filtering the equivalent of a plantary ocean within three hours, lowered further if two are installed in the body.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_Femtoclusters</ThingDef>
+		</descriptionHyperlinks>
+		<addedPartProps>
+			<solid>true</solid>
+			<partEfficiency>6.33</partEfficiency>
+			<betterThanNatural>true</betterThanNatural>
+		</addedPartProps>
+	</HediffDef>
+	<RecipeDef ParentName="BOR_UmbralSurgeryInstallBodyPartArtificialBase">
+		<defName>BOR_InstallUmbralBionicKidney</defName>
+		<label>install umbral kidney</label>
+		<description>Install a Umbral kidney.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_Femtoclusters</ThingDef>
+			<HediffDef>BOR_UmbralBionicKidney</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing Umbral bionic kidney.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Femtoclusters</li>
+					</thingDefs>
+				</filter>
+				<count>5</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>BOR_Femtoclusters</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Kidney</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>BOR_UmbralBionicKidney</addsHediff>
+	</RecipeDef>
+</Defs>

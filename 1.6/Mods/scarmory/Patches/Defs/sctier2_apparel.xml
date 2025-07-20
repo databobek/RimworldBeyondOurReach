@@ -1,0 +1,1262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+
+  <Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
+    <modSettingDef>BOR_Setting_Scarmory</modSettingDef>
+    <enabled Class="PatchOperationSequence">
+	  <operations>
+	  
+	  <!-- patch sequence to patch in defs while proceeding to check for CE -->
+	  <li Class="PatchOperationAdd">
+      <xpath>Defs</xpath>
+      
+      <value>
+        
+        <ThingDef ParentName="ArmorMachineableBase">
+          <defName>BOR_Quasar_PPSa</defName>
+          <label>Quasar Power Suit</label>
+          <description>A powerful power armor stylized to resemble the old Pressurized Power Suits, made with kwazaari alloys.</description>
+          <techLevel>Ultra</techLevel>
+          <recipeMaker>
+            <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+            <researchPrerequisites>
+              <li>BOR_Research_Armor_II</li>
+              <li>CataphractArmor</li>
+            </researchPrerequisites>
+            <skillRequirements>
+              <Crafting>18</Crafting>
+            </skillRequirements>
+            <recipeUsers Inherit="False">
+              <li>BOR_Bench_II</li>
+              <li>BOR_Bench_IV</li>
+            </recipeUsers>
+          </recipeMaker>
+          <graphicData>
+            <color>(0.36, 0.5, 0.7)</color>
+            <texPath>Things/Apparel/PPS/PPSArmor</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+          </graphicData>
+          <statBases>
+            <WorkToMake>45000</WorkToMake>
+            <MaxHitPoints>690</MaxHitPoints>
+            <Mass>14</Mass>
+            <Flammability>0.2</Flammability>
+            <ArmorRating_Sharp>2.7</ArmorRating_Sharp>
+            <ArmorRating_Blunt>1.8</ArmorRating_Blunt>
+            <ArmorRating_Heat>1.04</ArmorRating_Heat>
+            <Insulation_Cold>40</Insulation_Cold>
+            <Insulation_Heat>40</Insulation_Heat>
+            <EquipDelay>10</EquipDelay>
+
+            <RoyalFavorValue>3</RoyalFavorValue>
+          </statBases>
+
+          <equippedStatOffsets>
+            <MoveSpeed>-0.15</MoveSpeed>
+            <ToxicEnvironmentResistance>0.65</ToxicEnvironmentResistance>
+          </equippedStatOffsets>
+
+          <thingCategories>
+            <li>BOR_Armor_II</li>
+          </thingCategories>
+          <costList>
+            <BOR_ComponentII>3</BOR_ComponentII>
+            <BOR_Sunsteel>100</BOR_Sunsteel>
+            <BOR_QuasarAlloy>50</BOR_QuasarAlloy>
+            <Uranium>50</Uranium>
+          </costList>
+          <apparel>
+            <bodyPartGroups>
+              <li>Torso</li>
+              <li>Neck</li>
+              <li>Shoulders</li>
+              <li>Arms</li>
+              <li>Legs</li>
+              <li>Hands</li>
+              <li>Feet</li>
+            </bodyPartGroups>
+            <wornGraphicPath>Things/Apparel/PPS/PPSArmor</wornGraphicPath>
+            <layers>
+              <li>Middle</li>
+              <li>Shell</li>
+            </layers>
+            <defaultOutfitTags>
+              <li>Soldier</li>
+            </defaultOutfitTags>
+            <useDeflectMetalEffect>true</useDeflectMetalEffect>
+          </apparel>
+
+          <tradeTags>
+            <li>BOR_Tech_II</li>
+          </tradeTags>
+        </ThingDef>
+
+
+        <ThingDef ParentName="ArmorMachineableBase">
+          <defName>BOR_CMC700a</defName>
+          <label>CMC-700 Powered Combat Suit</label>
+          <description>New generation version of CMC-500 power armour, this made with more modern techniques and utilizing kwazaari materials.</description>
+          <techLevel>Ultra</techLevel>
+          <recipeMaker>
+            <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+            <researchPrerequisites>
+              <li>BOR_Research_Armor_II</li>
+              <li>CataphractArmor</li>
+            </researchPrerequisites>
+            <skillRequirements>
+              <Crafting>16</Crafting>
+            </skillRequirements>
+            <recipeUsers Inherit="False">
+              <li>BOR_Bench_II</li>
+              <li>BOR_Bench_IV</li>
+            </recipeUsers>
+          </recipeMaker>
+          <graphicData>
+            <color>(0.36, 0.5, 0.7)</color>
+            <texPath>Things/Apparel/CMC300/CMC300Armor</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <shaderType>CutoutComplex</shaderType>
+          </graphicData>
+          <generateCommonality>1</generateCommonality>
+          <statBases>
+            <WorkToMake>51000</WorkToMake>
+            <MaxHitPoints>855</MaxHitPoints>
+            <Mass>14</Mass>
+            <Flammability>0.2</Flammability>
+            <ArmorRating_Sharp>3.375</ArmorRating_Sharp>
+            <ArmorRating_Blunt>2.025</ArmorRating_Blunt>
+            <ArmorRating_Heat>1.35</ArmorRating_Heat>
+            <Insulation_Cold>67</Insulation_Cold>
+            <Insulation_Heat>45</Insulation_Heat>
+            <EquipDelay>10</EquipDelay>
+
+            <RoyalFavorValue>3</RoyalFavorValue>
+          </statBases>
+
+          <equippedStatOffsets>
+            <MoveSpeed>-0.05</MoveSpeed>
+            <ToxicEnvironmentResistance>0.8</ToxicEnvironmentResistance>
+          </equippedStatOffsets>
+
+          <thingCategories>
+            <li>BOR_Armor_II</li>
+          </thingCategories>
+          <costList>
+            <BOR_ComponentII>5</BOR_ComponentII>
+            <BOR_QuasarAlloy>120</BOR_QuasarAlloy>
+            <Uranium>60</Uranium>
+          </costList>
+          <apparel>
+            <bodyPartGroups>
+              <li>Torso</li>
+              <li>Neck</li>
+              <li>Shoulders</li>
+              <li>Arms</li>
+              <li>Legs</li>
+              <li>Hands</li>
+              <li>Feet</li>
+            </bodyPartGroups>
+            <wornGraphicPath>Things/Apparel/CMC300/CMC300Armor</wornGraphicPath>
+            <useWornGraphicMask>true</useWornGraphicMask>
+            <layers>
+              <li>Middle</li>
+              <li>Shell</li>
+            </layers>
+            <defaultOutfitTags>
+              <li>Soldier</li>
+            </defaultOutfitTags>
+            <useDeflectMetalEffect>true</useDeflectMetalEffect>
+          </apparel>
+
+          <tradeTags>
+            <li>BOR_Tech_II</li>
+          </tradeTags>
+        </ThingDef>
+
+
+        <ThingDef ParentName="ArmorMachineableBase">
+          <defName>BOR_CMC805a</defName>
+          <label>CMC-805 Light Powered Medical Suit</label>
+          <description>A lighter and more agile version of the CMC-700, the CMC-805, often called as "Quasar Valkyries" affectionately by troopers in the Koprulu sector, is a utility version of the armor designed to keep key medical staff safe even in the direct frontlines while they assist injured troops. As such, the armor itself is weaker than their combat counterpart but have several integrated toolkits and systems designed to help medical procedures. However, the armor itself only contributes towards mending of wounds and stabilization of serious injuries, the clumbersomeness of it actually detracts from precision surgeries.</description>
+          <techLevel>Ultra</techLevel>
+          <recipeMaker>
+            <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+            <researchPrerequisites>
+              <li>BOR_Research_Armor_II</li>
+              <li>CataphractArmor</li>
+            </researchPrerequisites>
+            <skillRequirements>
+              <Crafting>18</Crafting>
+            </skillRequirements>
+            <recipeUsers Inherit="False">
+              <li>BOR_Bench_II</li>
+              <li>BOR_Bench_IV</li>
+            </recipeUsers>
+          </recipeMaker>
+          <graphicData>
+            <color>(0.36, 0.5, 0.7)</color>
+            <texPath>Things/Apparel/CMC405/CMC405Armor</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <shaderType>CutoutComplex</shaderType>
+          </graphicData>
+          <generateCommonality>1.0</generateCommonality>
+          <statBases>
+            <WorkToMake>58500</WorkToMake>
+            <MaxHitPoints>630</MaxHitPoints>
+            <Mass>15</Mass>
+            <Flammability>0.0</Flammability>
+            <ArmorRating_Sharp>2.7</ArmorRating_Sharp>
+            <ArmorRating_Blunt>1.80</ArmorRating_Blunt>
+            <ArmorRating_Heat>1.1</ArmorRating_Heat>
+            <Insulation_Cold>60</Insulation_Cold>
+            <Insulation_Heat>60</Insulation_Heat>
+            <EquipDelay>10</EquipDelay>
+
+            <RoyalFavorValue>3</RoyalFavorValue>
+          </statBases>
+
+          <equippedStatOffsets>
+            <MedicalSurgerySuccessChance>-0.2</MedicalSurgerySuccessChance>
+            <MedicalOperationSpeed>-0.2</MedicalOperationSpeed>
+            <MedicalTendQuality>0.45</MedicalTendQuality>
+            <MedicalTendSpeed>0.45</MedicalTendSpeed>
+          </equippedStatOffsets>
+
+          <thingCategories>
+            <li>BOR_Armor_II</li>
+          </thingCategories>
+
+          <costList>
+            <BOR_ComponentII>6</BOR_ComponentII>
+            <BOR_Sunsteel>200</BOR_Sunsteel>
+            <BOR_QuasarAlloy>40</BOR_QuasarAlloy>
+            <BOR_MedicineI>5</BOR_MedicineI>
+          </costList>
+
+          <apparel>
+            <bodyPartGroups>
+              <li>Torso</li>
+              <li>Neck</li>
+              <li>Shoulders</li>
+              <li>Arms</li>
+              <li>Legs</li>
+              <li>Hands</li>
+              <li>Feet</li>
+            </bodyPartGroups>
+            <wornGraphicPath>Things/Apparel/CMC405/CMC405Armor</wornGraphicPath>
+            <useWornGraphicMask>true</useWornGraphicMask>
+            <layers>
+              <li>Middle</li>
+              <li>Shell</li>
+            </layers>
+
+            <defaultOutfitTags>
+              <li>Soldier</li>
+            </defaultOutfitTags>
+            <useDeflectMetalEffect>true</useDeflectMetalEffect>
+          </apparel>
+
+          <tradeTags>
+            <li>BOR_Tech_II</li>
+          </tradeTags>
+        </ThingDef>
+
+
+        <ThingDef ParentName="ArmorHelmetMakeableBase">
+          <defName>BOR_Quasar_PPSH</defName>
+          <label>Quasar Power Suit Helmet</label>
+          <description>An older prototype version of the CMC series of power armor, the PPS was designed to give solid bulky protection and a rudimentary life support sistem in dangerous or low O2 battle situation.</description>
+          <techLevel>Ultra</techLevel>
+          <recipeMaker>
+            <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+            <researchPrerequisites>
+              <li>BOR_Research_Armor_II</li>
+              <li>CataphractArmor</li>
+            </researchPrerequisites>
+            <skillRequirements>
+              <Crafting>15</Crafting>
+            </skillRequirements>
+            <recipeUsers Inherit="False">
+              <li>BOR_Bench_II</li>
+              <li>BOR_Bench_IV</li>
+            </recipeUsers>
+          </recipeMaker>
+          <graphicData>
+            <color>(0.36, 0.5, 0.7)</color>
+            <texPath>Things/Apparel/PPS/PPSHelm</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+          </graphicData>
+
+          <statBases>
+            <WorkToMake>27000</WorkToMake>
+            <MaxHitPoints>405</MaxHitPoints>
+            <Mass>2.5</Mass>
+            <Flammability>0.05</Flammability>
+            <ArmorRating_Sharp>2.1</ArmorRating_Sharp>
+            <ArmorRating_Blunt>1.6</ArmorRating_Blunt>
+            <ArmorRating_Heat>1.15</ArmorRating_Heat>
+            <Insulation_Cold>40</Insulation_Cold>
+            <Insulation_Heat>40</Insulation_Heat>
+            <EquipDelay>3</EquipDelay>
+
+            <RoyalFavorValue>3</RoyalFavorValue>
+          </statBases>
+          <costList>
+            <BOR_ComponentII>1</BOR_ComponentII>
+            <BOR_Sunsteel>30</BOR_Sunsteel>
+            <BOR_QuasarAlloy>10</BOR_QuasarAlloy>
+          </costList>
+          <thingCategories>
+            <li>BOR_Armor_Headgear_II</li>
+          </thingCategories>
+          <apparel>
+            <immuneToToxGasExposure>true</immuneToToxGasExposure>
+            <bodyPartGroups>
+              <li>FullHead</li>
+            </bodyPartGroups>
+            <wornGraphicPath>Things/Apparel/PPS/PPSHelm</wornGraphicPath>
+            <layers>
+              <li>Overhead</li>
+            </layers>
+            <defaultOutfitTags>
+              <li>Soldier</li>
+            </defaultOutfitTags>
+            <useDeflectMetalEffect>true</useDeflectMetalEffect>
+          </apparel>
+
+          <equippedStatOffsets>
+            <ToxicEnvironmentResistance>0.6</ToxicEnvironmentResistance>
+          </equippedStatOffsets>
+
+
+          <tradeTags>
+            <li>BOR_Tech_II</li>
+          </tradeTags>
+        </ThingDef>
+
+        <ThingDef ParentName="ArmorHelmetMakeableBase">
+          <defName>BOR_CMC700H</defName>
+          <label>CMC-700 Powered Combat Helmet</label>
+          <description>CMC-500 improved with kwazaari materials.</description>
+          <techLevel>Ultra</techLevel>
+          <recipeMaker>
+            <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+            <researchPrerequisites>
+              <li>BOR_Research_Armor_II</li>
+              <li>CataphractArmor</li>
+            </researchPrerequisites>
+            <skillRequirements>
+              <Crafting>16</Crafting>
+            </skillRequirements>
+            <recipeUsers Inherit="False">
+              <li>BOR_Bench_II</li>
+              <li>BOR_Bench_IV</li>
+            </recipeUsers>
+          </recipeMaker>
+          <graphicData>
+            <color>(0.36, 0.5, 0.7)</color>
+            <texPath>Things/Apparel/CMC300/CMC300Helm</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <shaderType>CutoutComplex</shaderType>
+          </graphicData>
+          <generateCommonality>1.25</generateCommonality>
+          <statBases>
+            <WorkToMake>31500</WorkToMake>
+            <MaxHitPoints>270</MaxHitPoints>
+            <Mass>1.75</Mass>
+            <Flammability>0.2</Flammability>
+            <ArmorRating_Sharp>2.7</ArmorRating_Sharp>
+            <ArmorRating_Blunt>1.6</ArmorRating_Blunt>
+            <ArmorRating_Heat>1.35</ArmorRating_Heat>
+            <Insulation_Cold>40</Insulation_Cold>
+            <Insulation_Heat>40</Insulation_Heat>
+            <EquipDelay>2.5</EquipDelay>
+
+            <RoyalFavorValue>3</RoyalFavorValue>
+          </statBases>
+          <costList>
+            <BOR_ComponentII>1</BOR_ComponentII>
+            <BOR_QuasarAlloy>40</BOR_QuasarAlloy>
+          </costList>
+          <thingCategories>
+            <li>BOR_Armor_Headgear_II</li>
+          </thingCategories>
+          <apparel>
+            <immuneToToxGasExposure>true</immuneToToxGasExposure>
+            <bodyPartGroups>
+              <li>FullHead</li>
+            </bodyPartGroups>
+            <wornGraphicPath>Things/Apparel/CMC300/CMC300Helm</wornGraphicPath>
+            <useWornGraphicMask>true</useWornGraphicMask>
+            <layers>
+              <li>Overhead</li>
+            </layers>
+            <defaultOutfitTags>
+              <li>Soldier</li>
+            </defaultOutfitTags>
+            <useDeflectMetalEffect>true</useDeflectMetalEffect>
+          </apparel>
+          <equippedStatOffsets>
+            <ToxicEnvironmentResistance>0.6</ToxicEnvironmentResistance>
+          </equippedStatOffsets>
+
+
+          <tradeTags>
+            <li>BOR_Tech_II</li>
+          </tradeTags>
+        </ThingDef>
+
+        <ThingDef ParentName="ArmorHelmetMakeableBase">
+          <defName>BOR_CMC700Ha</defName>
+          <label>CMC-700 Powered Combat Helmet</label>
+          <description>CMC-500 helmet improved with kwazaari technology. This Model has seen plenty of combat, or at least it is designed to give that look.</description>
+          <techLevel>Ultra</techLevel>
+          <recipeMaker>
+            <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+            <researchPrerequisites>
+              <li>BOR_Research_Armor_II</li>
+              <li>CataphractArmor</li>
+            </researchPrerequisites>
+            <skillRequirements>
+              <Crafting>17</Crafting>
+            </skillRequirements>
+            <recipeUsers Inherit="False">
+              <li>BOR_Bench_II</li>
+              <li>BOR_Bench_IV</li>
+            </recipeUsers>
+          </recipeMaker>
+
+          <graphicData>
+            <color>(0.36, 0.5, 0.7)</color>
+            <texPath>Things/Apparel/CMC300/CMC300aHelm</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <shaderType>CutoutComplex</shaderType>
+          </graphicData>
+          <generateCommonality>1.25</generateCommonality>
+          <statBases>
+            <WorkToMake>33750</WorkToMake>
+            <MaxHitPoints>270</MaxHitPoints>
+            <Mass>1.75</Mass>
+            <Flammability>0.2</Flammability>
+            <ArmorRating_Sharp>2.7</ArmorRating_Sharp>
+            <ArmorRating_Blunt>1.6</ArmorRating_Blunt>
+            <ArmorRating_Heat>1.35</ArmorRating_Heat>
+            <Insulation_Cold>40</Insulation_Cold>
+            <Insulation_Heat>40</Insulation_Heat>
+            <EquipDelay>2.5</EquipDelay>
+
+            <RoyalFavorValue>3</RoyalFavorValue>
+          </statBases>
+          <costList>
+            <BOR_ComponentII>1</BOR_ComponentII>
+            <BOR_QuasarAlloy>40</BOR_QuasarAlloy>
+          </costList>
+          <thingCategories>
+            <li>BOR_Armor_Headgear_II</li>
+          </thingCategories>
+          <apparel>
+            <immuneToToxGasExposure>true</immuneToToxGasExposure>
+            <bodyPartGroups>
+              <li>FullHead</li>
+            </bodyPartGroups>
+            <wornGraphicPath>Things/Apparel/CMC300/CMC300aHelm</wornGraphicPath>
+            <useWornGraphicMask>true</useWornGraphicMask>
+            <layers>
+              <li>Overhead</li>
+            </layers>
+            <defaultOutfitTags>
+              <li>Soldier</li>
+            </defaultOutfitTags>
+            <useDeflectMetalEffect>true</useDeflectMetalEffect>
+          </apparel>
+          <equippedStatOffsets>
+            <ToxicEnvironmentResistance>0.75</ToxicEnvironmentResistance>
+          </equippedStatOffsets>
+
+          <tradeTags>
+            <li>BOR_Tech_II</li>
+          </tradeTags>
+        </ThingDef>
+
+        <ThingDef ParentName="ArmorHelmetMakeableBase">
+          <defName>BOR_CMC700Hb</defName>
+          <label>CMC-700 Powered Combat Helmet</label>
+          <description>Improvement over CMC-500, using kwazaari technologies. This Model has it's visor covered with Carbon Fiber optics, no tactical advantage at all, but looks less orange.</description>
+          <techLevel>Ultra</techLevel>
+          <recipeMaker>
+            <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+            <researchPrerequisites>
+              <li>BOR_Research_Armor_II</li>
+              <li>CataphractArmor</li>
+            </researchPrerequisites>
+            <skillRequirements>
+              <Crafting>15</Crafting>
+            </skillRequirements>
+            <recipeUsers Inherit="False">
+              <li>BOR_Bench_II</li>
+              <li>BOR_Bench_IV</li>
+            </recipeUsers>
+          </recipeMaker>
+          <graphicData>
+            <color>(0.36, 0.5, 0.7)</color>
+            <texPath>Things/Apparel/CMC300/CMC300bHelm</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <shaderType>CutoutComplex</shaderType>
+          </graphicData>
+          <generateCommonality>1.25</generateCommonality>
+          <statBases>
+            <WorkToMake>37250</WorkToMake>
+            <MaxHitPoints>270</MaxHitPoints>
+            <Mass>1.75</Mass>
+            <Flammability>0.2</Flammability>
+            <ArmorRating_Sharp>2.7</ArmorRating_Sharp>
+            <ArmorRating_Blunt>1.6</ArmorRating_Blunt>
+            <ArmorRating_Heat>1.35</ArmorRating_Heat>
+            <Insulation_Cold>40</Insulation_Cold>
+            <Insulation_Heat>40</Insulation_Heat>
+            <EquipDelay>2.5</EquipDelay>
+
+            <RoyalFavorValue>3</RoyalFavorValue>
+          </statBases>
+          <costList>
+            <BOR_ComponentII>1</BOR_ComponentII>
+            <BOR_QuasarAlloy>40</BOR_QuasarAlloy>
+          </costList>
+          <thingCategories>
+            <li>BOR_Armor_Headgear_II</li>
+          </thingCategories>
+          <apparel>
+            <immuneToToxGasExposure>true</immuneToToxGasExposure>
+            <bodyPartGroups>
+              <li>FullHead</li>
+            </bodyPartGroups>
+            <wornGraphicPath>Things/Apparel/CMC300/CMC300bHelm</wornGraphicPath>
+            <useWornGraphicMask>true</useWornGraphicMask>
+            <layers>
+              <li>Overhead</li>
+            </layers>
+            <defaultOutfitTags>
+              <li>Soldier</li>
+            </defaultOutfitTags>
+            <useDeflectMetalEffect>true</useDeflectMetalEffect>
+          </apparel>
+          <equippedStatOffsets>
+            <ToxicEnvironmentResistance>0.75</ToxicEnvironmentResistance>
+          </equippedStatOffsets>
+
+
+          <tradeTags>
+            <li>BOR_Tech_II</li>
+          </tradeTags>
+        </ThingDef>
+
+        <ThingDef ParentName="ArmorHelmetMakeableBase">
+          <defName>BOR_CMC805H</defName>
+          <label>CMC-805 Light Powered Medical Helmet</label>
+          <description>A kwazaari Helmet with integrated X-ray vision, tool assist and medical analysis systems onboard.</description>
+          <techLevel>Ultra</techLevel>
+          <recipeMaker>
+            <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+            <researchPrerequisites>
+              <li>BOR_Research_Armor_II</li>
+              <li>CataphractArmor</li>
+            </researchPrerequisites>
+            <skillRequirements>
+              <Crafting>18</Crafting>
+            </skillRequirements>
+            <recipeUsers Inherit="False">
+              <li>BOR_Bench_II</li>
+              <li>BOR_Bench_IV</li>
+            </recipeUsers>
+          </recipeMaker>
+
+          <graphicData>
+            <color>(0.36, 0.5, 0.7)</color>
+            <texPath>Things/Apparel/CMC405/CMC405Helm</texPath>
+            <shaderType>CutoutComplex</shaderType>
+            <graphicClass>Graphic_Single</graphicClass>
+          </graphicData>
+          <generateCommonality>1.25</generateCommonality>
+          <statBases>
+            <WorkToMake>34000</WorkToMake>
+            <MaxHitPoints>270</MaxHitPoints>
+            <Mass>2.25</Mass>
+            <Flammability>0.2</Flammability>
+            <ArmorRating_Sharp>2.475</ArmorRating_Sharp>
+            <ArmorRating_Blunt>1.8</ArmorRating_Blunt>
+            <ArmorRating_Heat>1.15</ArmorRating_Heat>
+            <Insulation_Cold>40</Insulation_Cold>
+            <Insulation_Heat>40</Insulation_Heat>
+            <EquipDelay>2.25</EquipDelay>
+
+            <RoyalFavorValue>3</RoyalFavorValue>
+          </statBases>
+          <equippedStatOffsets>
+            <MedicalTendQuality>0.225</MedicalTendQuality>
+            <MedicalTendSpeed>0.225</MedicalTendSpeed>
+          </equippedStatOffsets>
+          <costList>
+            <BOR_ComponentII>2</BOR_ComponentII>
+            <BOR_QuasarAlloy>70</BOR_QuasarAlloy>
+            <BOR_MedicineI>2</BOR_MedicineI>
+          </costList>
+          <thingCategories>
+            <li>BOR_Armor_Headgear_II</li>
+          </thingCategories>
+          <apparel>
+            <immuneToToxGasExposure>true</immuneToToxGasExposure>
+            <bodyPartGroups>
+              <li>FullHead</li>
+            </bodyPartGroups>
+            <wornGraphicPath>Things/Apparel/CMC405/CMC405Helm</wornGraphicPath>
+            <useWornGraphicMask>true</useWornGraphicMask>
+            <layers>
+              <li>Overhead</li>
+            </layers>
+            <defaultOutfitTags>
+              <li>Soldier</li>
+            </defaultOutfitTags>
+            <useDeflectMetalEffect>true</useDeflectMetalEffect>
+          </apparel>
+
+          <tradeTags>
+            <li>BOR_Tech_II</li>
+          </tradeTags>
+        </ThingDef>
+
+      </value>
+
+	  </li>
+	  
+	  <!-- check to see if CombatExtended is loaded as well, then modify the patched in defs to CE standards -->
+	  <li Class="PatchOperationFindMod">
+		<mods>
+		  <li>Combat Extended</li>
+		</mods>
+			<match Class="PatchOperationSequence">
+                <operations>
+
+
+                    <li Class="PatchOperationAdd">
+                        <xpath>Defs/ThingDef[defName="BOR_CMC700a"]/statBases</xpath>
+                        <value>
+                            <Bulk>138</Bulk>
+                            <WornBulk>20</WornBulk>
+                        </value>
+                    </li>
+
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_CMC700a"]/statBases/WorkToMake</xpath>
+                        <value>
+                            <WorkToMake>146250</WorkToMake>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_CMC700a"]/statBases/MaxHitPoints</xpath>
+                        <value>
+                            <MaxHitPoints>2250</MaxHitPoints>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_CMC700a"]/statBases/Mass</xpath>
+                        <value>
+                            <Mass>120</Mass>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_CMC700a"]/statBases/Flammability</xpath>
+                        <value>
+                            <Flammability>0</Flammability>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_CMC700a"]/statBases/ArmorRating_Sharp</xpath>
+                        <value>
+                            <ArmorRating_Sharp>72</ArmorRating_Sharp>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_CMC700a"]/statBases/ArmorRating_Blunt</xpath>
+                        <value>
+                            <ArmorRating_Blunt>337</ArmorRating_Blunt>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_CMC700a"]/costList/BOR_QuasarAlloy</xpath>
+                        <value>
+                            <BOR_QuasarAlloy>200</BOR_QuasarAlloy>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationAdd">
+                        <xpath>Defs/ThingDef[defName="BOR_CMC700a"]/costList</xpath>
+                        <value>
+                            <DevilstrandCloth>80</DevilstrandCloth>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationAdd">
+                        <xpath>Defs/ThingDef[defName="BOR_CMC700a"]/equippedStatOffsets</xpath>
+                        <value>
+                            <CarryWeight>393</CarryWeight>
+                            <CarryBulk>20</CarryBulk>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationConditional">
+                        <xpath>Defs/ThingDef[defName="BOR_CMC700a"]/equippedStatOffsets/ToxicEnvironmentResistance</xpath>
+                        <match Class="PatchOperationReplace">
+                            <xpath>Defs/ThingDef[defName="BOR_CMC700a"]/equippedStatOffsets/ToxicEnvironmentResistance</xpath>
+                            <value>
+                                <ToxicEnvironmentResistance>1.125</ToxicEnvironmentResistance>
+                            </value>
+                        </match>
+                        <nomatch Class="PatchOperationAdd">
+                            <xpath>Defs/ThingDef[defName="BOR_CMC700a"]/equippedStatOffsets</xpath>
+                            <value>
+                                <ToxicEnvironmentResistance>1.125</ToxicEnvironmentResistance>
+                            </value>
+                        </nomatch>
+                    </li>
+
+
+                    <li Class="PatchOperationAdd">
+                        <xpath>Defs/ThingDef[defName="BOR_CMC700H" or defName="BOR_CMC700Ha" or defName="BOR_CMC700Hb"]/statBases</xpath>
+                        <value>
+                            <Bulk>6</Bulk>
+                            <WornBulk>1</WornBulk>
+                            <NightVisionEfficiency_Apparel>1.688</NightVisionEfficiency_Apparel>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_CMC700H" or defName="BOR_CMC700Ha" or defName="BOR_CMC700Hb"]/statBases/Mass</xpath>
+                        <value>
+                            <Mass>3</Mass>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_CMC700H" or defName="BOR_CMC700Ha" or defName="BOR_CMC700Hb"]/statBases/WorkToMake</xpath>
+                        <value>
+                            <WorkToMake>45000</WorkToMake>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_CMC700H" or defName="BOR_CMC700Ha" or defName="BOR_CMC700Hb"]/statBases/MaxHitPoints</xpath>
+                        <value>
+                            <MaxHitPoints>495</MaxHitPoints>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_CMC700H" or defName="BOR_CMC700Ha" or defName="BOR_CMC700Hb"]/statBases/ArmorRating_Sharp</xpath>
+                        <value>
+                            <ArmorRating_Sharp>54</ArmorRating_Sharp>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_CMC700H" or defName="BOR_CMC700Ha" or defName="BOR_CMC700Hb"]/statBases/ArmorRating_Blunt</xpath>
+                        <value>
+                            <ArmorRating_Blunt>135</ArmorRating_Blunt>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationAdd">
+                        <xpath>Defs/ThingDef[defName="BOR_CMC700H" or defName="BOR_CMC700Ha" or defName="BOR_CMC700Hb"]/equippedStatOffsets</xpath>
+                        <value>
+                            <AimingAccuracy>0.15</AimingAccuracy>
+                            <SmokeSensitivity>-1</SmokeSensitivity>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationConditional">
+                        <xpath>Defs/ThingDef[defName="BOR_CMC700H" or defName="BOR_CMC700Ha" or defName="BOR_CMC700Hb"]/equippedStatOffsets/ToxicEnvironmentResistance</xpath>
+                        <match Class="PatchOperationReplace">
+                            <xpath>Defs/ThingDef[defName="BOR_CMC700H" or defName="BOR_CMC700Ha" or defName="BOR_CMC700Hb"]/equippedStatOffsets/ToxicEnvironmentResistance</xpath>
+                            <value>
+                                <ToxicEnvironmentResistance>1.125</ToxicEnvironmentResistance>
+                            </value>
+                        </match>
+                        <nomatch Class="PatchOperationAdd">
+                            <xpath>Defs/ThingDef[defName="BOR_CMC700H" or defName="BOR_CMC700Ha" or defName="BOR_CMC700Hb"]/equippedStatOffsets</xpath>
+                            <value>
+                                <ToxicEnvironmentResistance>1.125</ToxicEnvironmentResistance>
+                            </value>
+                        </nomatch>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_CMC700H" or defName="BOR_CMC700Ha" or defName="BOR_CMC700Hb"]/costList/BOR_QuasarAlloy</xpath>
+                        <value>
+                            <BOR_QuasarAlloy>60</BOR_QuasarAlloy>
+                            <BOR_Sunsteel>60</BOR_Sunsteel>
+                            <DevilstrandCloth>25</DevilstrandCloth>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationAdd">
+                        <xpath>Defs/ThingDef[defName="BOR_CMC700H" or defName="BOR_CMC700Ha" or defName="BOR_CMC700Hb"]/apparel/layers</xpath>
+                        <value>
+                            <li>OnHead</li>
+                            <li>StrappedHead</li>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationAddModExtension">
+                        <xpath>Defs/ThingDef[defName="BOR_CMC700H" or defName="BOR_CMC700Ha" or defName="BOR_CMC700Hb"]</xpath>
+                        <value>
+                            <li Class="CombatExtended.PartialArmorExt">
+                                <stats>
+                                    <li>
+                                        <ArmorRating_Sharp>2.025</ArmorRating_Sharp>
+                                        <parts>
+                                            <li>Eye</li>
+                                        </parts>
+                                    </li>
+                                    <li>
+                                        <ArmorRating_Blunt>2.025</ArmorRating_Blunt>
+                                        <parts>
+                                            <li>Eye</li>
+                                        </parts>
+                                    </li>
+                                </stats>
+                            </li>
+                        </value>
+                    </li>
+                    <li Class="PatchOperationAdd">
+                        <xpath>Defs/ThingDef[defName="BOR_CMC805a"]/statBases</xpath>
+                        <value>
+                            <Bulk>93</Bulk>
+                            <WornBulk>6</WornBulk>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Quasar_PPSa"]/statBases/WorkToMake</xpath>
+                        <value>
+                            <WorkToMake>213750</WorkToMake>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_CMC805a"]/statBases/MaxHitPoints</xpath>
+                        <value>
+                            <MaxHitPoints>1687</MaxHitPoints>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_CMC805a"]/statBases/Mass</xpath>
+                        <value>
+                            <Mass>86</Mass>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_CMC805a"]/statBases/Flammability</xpath>
+                        <value>
+                            <Flammability>0</Flammability>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_CMC805a"]/statBases/ArmorRating_Sharp</xpath>
+                        <value>
+                            <ArmorRating_Sharp>54</ArmorRating_Sharp>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_CMC805a"]/statBases/ArmorRating_Blunt</xpath>
+                        <value>
+                            <ArmorRating_Blunt>202</ArmorRating_Blunt>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationAdd">
+                        <xpath>Defs/ThingDef[defName="BOR_CMC805a"]/costList</xpath>
+                        <value>
+                            <DevilstrandCloth>80</DevilstrandCloth>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_CMC805a"]/costList/BOR_QuasarAlloy</xpath>
+                        <value>
+                            <BOR_QuasarAlloy>200</BOR_QuasarAlloy>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_CMC805a"]/costList/BOR_ComponentII</xpath>
+                        <value>
+                            <BOR_ComponentII>6</BOR_ComponentII>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationAdd">
+                        <xpath>Defs/ThingDef[defName="BOR_CMC805a"]/equippedStatOffsets</xpath>
+                        <value>
+                            <CarryWeight>337</CarryWeight>
+                            <CarryBulk>20</CarryBulk>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationConditional">
+                        <xpath>Defs/ThingDef[defName="BOR_CMC805a"]/equippedStatOffsets/ToxicEnvironmentResistance</xpath>
+                        <match Class="PatchOperationReplace">
+                            <xpath>Defs/ThingDef[defName="BOR_CMC805a"]/equippedStatOffsets/ToxicEnvironmentResistance</xpath>
+                            <value>
+                                <ToxicEnvironmentResistance>1.125</ToxicEnvironmentResistance>
+                            </value>
+                        </match>
+                        <nomatch Class="PatchOperationAdd">
+                            <xpath>Defs/ThingDef[defName="BOR_CMC805a"]/equippedStatOffsets</xpath>
+                            <value>
+                                <ToxicEnvironmentResistance>1.125</ToxicEnvironmentResistance>
+                            </value>
+                        </nomatch>
+                    </li>
+
+
+                    <li Class="PatchOperationAdd">
+                        <xpath>Defs/ThingDef[defName="BOR_CMC805H"]/statBases</xpath>
+                        <value>
+                            <Bulk>6</Bulk>
+                            <WornBulk>1</WornBulk>
+                            <NightVisionEfficiency_Apparel>1</NightVisionEfficiency_Apparel>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_CMC805H"]/statBases/WorkToMake</xpath>
+                        <value>
+                            <WorkToMake>67500</WorkToMake>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_CMC805H"]/statBases/Flammability</xpath>
+                        <value>
+                            <Flammability>0</Flammability>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_CMC805H"]/statBases/Mass</xpath>
+                        <value>
+                            <Mass>5.903</Mass>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_CMC805H"]/statBases/MaxHitPoints</xpath>
+                        <value>
+                            <MaxHitPoints>720</MaxHitPoints>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_CMC805H"]/statBases/ArmorRating_Sharp</xpath>
+                        <value>
+                            <ArmorRating_Sharp>46</ArmorRating_Sharp>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_CMC805H"]/statBases/ArmorRating_Blunt</xpath>
+                        <value>
+                            <ArmorRating_Blunt>157</ArmorRating_Blunt>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationAdd">
+                        <xpath>Defs/ThingDef[defName="BOR_CMC805H"]/equippedStatOffsets</xpath>
+                        <value>
+                            <AimingAccuracy>0.15</AimingAccuracy>
+                            <SmokeSensitivity>-1</SmokeSensitivity>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationConditional">
+                        <xpath>Defs/ThingDef[defName="BOR_CMC805H"]/equippedStatOffsets/ToxicEnvironmentResistance</xpath>
+                        <match Class="PatchOperationReplace">
+                            <xpath>Defs/ThingDef[defName="BOR_CMC805H"]/equippedStatOffsets/ToxicEnvironmentResistance</xpath>
+                            <value>
+                                <ToxicEnvironmentResistance>1.125</ToxicEnvironmentResistance>
+                            </value>
+                        </match>
+                        <nomatch Class="PatchOperationAdd">
+                            <xpath>Defs/ThingDef[defName="BOR_CMC805H"]/equippedStatOffsets</xpath>
+                            <value>
+                                <ToxicEnvironmentResistance>1.125</ToxicEnvironmentResistance>
+                            </value>
+                        </nomatch>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_CMC805H"]/costList/BOR_QuasarAlloy</xpath>
+                        <value>
+                            <BOR_QuasarAlloy>90</BOR_QuasarAlloy>
+                            <DevilstrandCloth>25</DevilstrandCloth>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationAdd">
+                        <xpath>Defs/ThingDef[defName="BOR_CMC805H"]/apparel/layers</xpath>
+                        <value>
+                            <li>OnHead</li>
+                            <li>StrappedHead</li>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationAddModExtension">
+                        <xpath>Defs/ThingDef[defName="BOR_CMC805H"]</xpath>
+                        <value>
+                            <li Class="CombatExtended.PartialArmorExt">
+                                <stats>
+                                    <li>
+                                        <ArmorRating_Sharp>2.025</ArmorRating_Sharp>
+                                        <parts>
+                                            <li>Eye</li>
+                                        </parts>
+                                    </li>
+                                    <li>
+                                        <ArmorRating_Blunt>2.025</ArmorRating_Blunt>
+                                        <parts>
+                                            <li>Eye</li>
+                                        </parts>
+                                    </li>
+                                </stats>
+                            </li>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationAdd">
+                        <xpath>Defs/ThingDef[defName="BOR_Quasar_PPSa"]/statBases</xpath>
+                        <value>
+                            <Bulk>69</Bulk>
+                            <WornBulk>10</WornBulk>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Quasar_PPSa"]/statBases/MaxHitPoints</xpath>
+                        <value>
+                            <MaxHitPoints>2250</MaxHitPoints>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Quasar_PPSa"]/statBases/WorkToMake</xpath>
+                        <value>
+                            <WorkToMake>213750</WorkToMake>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Quasar_PPSa"]/statBases/Mass</xpath>
+                        <value>
+                            <Mass>104</Mass>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Quasar_PPSa"]/statBases/Flammability</xpath>
+                        <value>
+                            <Flammability>0</Flammability>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationConditional">
+                        <xpath>Defs/ThingDef[defName="BOR_Quasar_PPSa"]/equippedStatOffsets/ToxicEnvironmentResistance</xpath>
+                        <match Class="PatchOperationReplace">
+                            <xpath>Defs/ThingDef[defName="BOR_Quasar_PPSa"]/equippedStatOffsets/ToxicEnvironmentResistance</xpath>
+                            <value>
+                                <ToxicEnvironmentResistance>1.125</ToxicEnvironmentResistance>
+                            </value>
+                        </match>
+                        <nomatch Class="PatchOperationAdd">
+                            <xpath>Defs/ThingDef[defName="BOR_Quasar_PPSa"]/equippedStatOffsets</xpath>
+                            <value>
+                                <ToxicEnvironmentResistance>1.125</ToxicEnvironmentResistance>
+                            </value>
+                        </nomatch>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Quasar_PPSa"]/statBases/ArmorRating_Sharp</xpath>
+                        <value>
+                            <ArmorRating_Sharp>63</ArmorRating_Sharp>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Quasar_PPSa"]/statBases/ArmorRating_Blunt</xpath>
+                        <value>
+                            <ArmorRating_Blunt>270</ArmorRating_Blunt>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationRemove">
+                        <xpath>Defs/ThingDef[defName="BOR_Quasar_PPSa"]/costList/BOR_QuasarAlloy</xpath>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Quasar_PPSa"]/costList/BOR_Sunsteel</xpath>
+                        <value>
+                            <BOR_QuasarAlloy>325</BOR_QuasarAlloy>
+                            <DevilstrandCloth>80</DevilstrandCloth>
+                        </value>
+                    </li>
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Quasar_PPSa"]/costList/Uranium</xpath>
+                        <value>
+                            <Uranium>225</Uranium>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationAdd">
+                        <xpath>Defs/ThingDef[defName="BOR_Quasar_PPSa"]/equippedStatOffsets</xpath>
+                        <value>
+                            <CarryWeight>505</CarryWeight>
+                            <CarryBulk>34</CarryBulk>
+                        </value>
+                    </li>
+
+
+                    <li Class="PatchOperationAdd">
+                        <xpath>Defs/ThingDef[defName="BOR_Quasar_PPSH"]/statBases</xpath>
+                        <value>
+                            <Bulk>16</Bulk>
+                            <WornBulk>3</WornBulk>
+                            <NightVisionEfficiency_Apparel>1.688</NightVisionEfficiency_Apparel>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Quasar_PPSH"]/statBases/WorkToMake</xpath>
+                        <value>
+                            <WorkToMake>67500</WorkToMake>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Quasar_PPSH"]/statBases/Flammability</xpath>
+                        <value>
+                            <Flammability>0</Flammability>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Quasar_PPSH"]/statBases/Mass</xpath>
+                        <value>
+                            <Mass>10</Mass>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Quasar_PPSH"]/statBases/MaxHitPoints</xpath>
+                        <value>
+                            <MaxHitPoints>720</MaxHitPoints>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Quasar_PPSH"]/statBases/ArmorRating_Sharp</xpath>
+                        <value>
+                            <ArmorRating_Sharp>45</ArmorRating_Sharp>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Quasar_PPSH"]/statBases/ArmorRating_Blunt</xpath>
+                        <value>
+                            <ArmorRating_Blunt>157</ArmorRating_Blunt>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationAdd">
+                        <xpath>Defs/ThingDef[defName="BOR_Quasar_PPSH"]/equippedStatOffsets</xpath>
+                        <value>
+                            <AimingAccuracy>0.15</AimingAccuracy>
+                            <SmokeSensitivity>-1</SmokeSensitivity>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationConditional">
+                        <xpath>Defs/ThingDef[defName="BOR_Quasar_PPSH"]/equippedStatOffsets/ToxicEnvironmentResistance</xpath>
+                        <match Class="PatchOperationReplace">
+                            <xpath>Defs/ThingDef[defName="BOR_Quasar_PPSH"]/equippedStatOffsets/ToxicEnvironmentResistance</xpath>
+                            <value>
+                                <ToxicEnvironmentResistance>1.125</ToxicEnvironmentResistance>
+                            </value>
+                        </match>
+                        <nomatch Class="PatchOperationAdd">
+                            <xpath>Defs/ThingDef[defName="BOR_Quasar_PPSH"]/equippedStatOffsets</xpath>
+                            <value>
+                                <ToxicEnvironmentResistance>1.125</ToxicEnvironmentResistance>
+                            </value>
+                        </nomatch>
+                    </li>
+
+                    <li Class="PatchOperationRemove">
+                        <xpath>Defs/ThingDef[defName="BOR_Quasar_PPSH"]/costList/BOR_QuasarAlloy</xpath>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/ThingDef[defName="BOR_Quasar_PPSH"]/costList/BOR_Sunsteel</xpath>
+                        <value>
+                            <BOR_QuasarAlloy>150</BOR_QuasarAlloy>
+                            <DevilstrandCloth>35</DevilstrandCloth>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationAdd">
+                        <xpath>Defs/ThingDef[defName="BOR_Quasar_PPSH"]/apparel/layers</xpath>
+                        <value>
+                            <li>OnHead</li>
+                            <li>StrappedHead</li>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationAddModExtension">
+                        <xpath>Defs/ThingDef[defName="BOR_Quasar_PPSH"]</xpath>
+                        <value>
+                            <li Class="CombatExtended.PartialArmorExt">
+                                <stats>
+                                    <li>
+                                        <ArmorRating_Sharp>2.025</ArmorRating_Sharp>
+                                        <parts>
+                                            <li>Eye</li>
+                                        </parts>
+                                    </li>
+                                    <li>
+                                        <ArmorRating_Blunt>2.025</ArmorRating_Blunt>
+                                        <parts>
+                                            <li>Eye</li>
+                                        </parts>
+                                    </li>
+                                </stats>
+                            </li>
+                        </value>
+                    </li>
+                </operations>
+
+			</match>
+	  </li>
+	 </operations>
+    </enabled>
+  </Operation>
+
+</Patch>

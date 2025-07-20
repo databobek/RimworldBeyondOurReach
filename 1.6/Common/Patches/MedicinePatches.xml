@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+	<Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
+		<modSettingDef>BOR_Setting_ReplaceGlitterworldMedicine</modSettingDef>
+		<enabled Class="PatchOperationSequence">
+            <operations>
+                <li Class="PatchOperationConditional">
+                    <xpath>Defs/RecipeDef/ingredients/li/filter/thingDefs/li[contains(text(), "MedicineUltratech")]</xpath>
+                    <match Class="PatchOperationInsert">
+                        <xpath>Defs/RecipeDef/ingredients/li/filter/thingDefs/li[contains(text(), "MedicineUltratech")]</xpath>
+                        <value>
+                            <li>BOR_MedicineI</li>
+                            <li>BOR_MedicineII</li>
+                            <li>BOR_MedicineIII</li>
+                        </value>
+                    </match>
+                </li>
+                <li Class="PatchOperationConditional">
+                    <xpath>Defs/RecipeDef/fixedIngredientFilter/thingDefs/li[contains(text(), "MedicineUltratech")]</xpath>
+                    <match Class="PatchOperationInsert">
+                        <xpath>Defs/RecipeDef/fixedIngredientFilter/thingDefs/li[contains(text(), "MedicineUltratech")]</xpath>
+                        <value>
+                            <li>BOR_MedicineI</li>
+                            <li>BOR_MedicineII</li>
+                            <li>BOR_MedicineIII</li>
+                        </value>
+                    </match>
+                </li>
+            </operations>
+        </enabled>
+    </Operation>
+</Patch>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+  <Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
+    <modSettingDef>BOR_Setting_IntegrateRepairHubsIntoBORResearch</modSettingDef>
+    <enabled Class="PatchOperationSequence">
+      <operations>
+      
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/ResearchProjectDef[defName="RH_RepairHubsResearch"]/researchViewX</xpath>
+          <value>
+            <researchViewX>1.00</researchViewX>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/ResearchProjectDef[defName="RH_RepairHubsResearch"]/researchViewY</xpath>
+          <value>
+            <researchViewY>2.50</researchViewY>
+          </value>
+        </li>
+
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/ResearchProjectDef[defName="RH_RepairHubsResearch"]/baseCost</xpath>
+          <value>
+            <baseCost>25000</baseCost>
+          </value>
+        </li>
+
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/ResearchProjectDef[defName="RH_RepairHubsResearch"]/prerequisites</xpath>
+          <value>
+            <prerequisites>
+              <li>BOR_Research_Analyzer_I</li>
+            </prerequisites>
+          </value>
+        </li>
+
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/ResearchProjectDef[defName="RH_RepairHubsResearch"]/requiredResearchFacilities</xpath>
+          <value>
+            <requiredResearchFacilities>
+              <li>BOR_Research_Unlocker_I</li>
+            </requiredResearchFacilities>
+          </value>
+        </li>
+		<!-- bamba cunt, you need to remove the old tab first before you can add another one -->
+        <li Class="PatchOperationRemove">
+          <xpath>Defs/ResearchProjectDef[defName="RH_RepairHubsResearch"]/tab</xpath>
+        </li>
+        <li Class="PatchOperationAdd">
+          <xpath>Defs/ResearchProjectDef[defName="RH_RepairHubsResearch"]</xpath>
+          <value>
+            <tab>BOR_Research_Tab</tab>
+          </value>
+        </li>
+
+      </operations>
+    </enabled>
+  </Operation>
+
+</Patch>

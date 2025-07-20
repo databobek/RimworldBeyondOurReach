@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<ThingDef ParentName="BenchBase">
+		<defName>BOR_Bench_III</defName>
+		<label>dark fabricator</label>
+		<description>A work station for assembling Tenebrite-based technology.</description>
+		<thingClass>Building_WorkTable</thingClass>
+		<graphicData>
+			<texPath>BOR/Things/Building/tier3/production_bench</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(4.5, 4.5)</drawSize>
+			<drawOffset>(0, 0, 0.2)</drawOffset>
+			<drawRotated>false</drawRotated>
+		</graphicData>
+		<rotatable>false</rotatable>
+		<castEdgeShadows>true</castEdgeShadows>
+		<staticSunShadowHeight>0.20</staticSunShadowHeight>
+		<costList>
+			<BOR_Tenebrite>150</BOR_Tenebrite>
+			<BOR_ComponentIII>5</BOR_ComponentIII>
+		</costList>
+		<altitudeLayer>Building</altitudeLayer>
+		<fillPercent>0.5</fillPercent>
+		<useHitPoints>True</useHitPoints>
+		<statBases>
+			<WorkToBuild>10125</WorkToBuild>
+			<MaxHitPoints>910</MaxHitPoints>
+			<Flammability>0.525</Flammability>
+			<Cleanliness>-1.11</Cleanliness>
+		</statBases>
+		<size>(3,3)</size>
+		<designationCategory>BOR</designationCategory>
+		<uiOrder>2520</uiOrder>
+		<passability>PassThroughOnly</passability>
+		<pathCost>50</pathCost>
+		<hasInteractionCell>True</hasInteractionCell>
+		<interactionCellOffset>(0,0,-2)</interactionCellOffset>
+		<surfaceType>Item</surfaceType>
+		<constructionSkillPrerequisite>4</constructionSkillPrerequisite>
+		<recipes>
+			<li>ButcherCorpseMechanoid</li>
+		</recipes>
+		<inspectorTabs>
+			<li>ITab_Bills</li>
+		</inspectorTabs>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<shortCircuitInRain>true</shortCircuitInRain>
+				<basePowerConsumption>21000</basePowerConsumption>
+			</li>
+			<li Class="CompProperties_Flickable" />
+			<li Class="CompProperties_AffectedByFacilities">
+				<linkableFacilities>
+					<li>ToolCabinet</li>
+					<li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_CNCMachine</li>
+					<li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_3DPrinter</li>
+					<li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_RobotAssistant</li>
+					<li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_Spacer_Lathe</li>
+					<li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_Vice</li>
+					<li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_ConveyorBelt</li>
+					<li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_IndustrialOven</li>
+					<li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_Centrifuge</li>
+					<li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_LaserEngraver</li>
+					<li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_Incinerator</li>
+				</linkableFacilities>
+			</li>
+			<li Class="CompProperties_Breakdownable" />
+		</comps>
+		<building>
+			<spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+		</building>
+		<constructEffect>ConstructMetal</constructEffect>
+		<researchPrerequisites>
+			<li>BOR_Research_Production_III</li>
+		</researchPrerequisites>
+		<designationHotKey>Misc7</designationHotKey>
+		<placeWorkers>
+			<li>PlaceWorker_ShowFacilitiesConnections</li>
+			<li>PlaceWorker_PreventInteractionSpotOverlap</li>
+		</placeWorkers>
+		<designatorDropdown>BOR_Workbenches</designatorDropdown>
+	</ThingDef>
+	<ThingDef ParentName="BenchBase">
+		<defName>BOR_Forge_III</defName>
+		<label>dark forge</label>
+		<description>Used to compose Neutronium into usable items.</description>
+		<thingClass>PipeSystem.Building_ResourceWorkTable</thingClass>
+		<graphicData>
+			<texPath>BOR/Things/Building/tier3/forge</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawRotated>false</drawRotated>
+			<drawSize>(4.5, 4.5)</drawSize>
+			<drawOffset>(0,4,0.25)</drawOffset>
+		</graphicData>
+		<castEdgeShadows>true</castEdgeShadows>
+		<staticSunShadowHeight>0.20</staticSunShadowHeight>
+		<constructEffect>ConstructMetal</constructEffect>
+		<costList>
+			<BOR_Tenebrite>170</BOR_Tenebrite>
+			<BOR_ComponentIII>2</BOR_ComponentIII>
+		</costList>
+		<altitudeLayer>Building</altitudeLayer>
+		<fillPercent>0.4</fillPercent>
+		<useHitPoints>True</useHitPoints>
+		<statBases>
+			<WorkToBuild>7875</WorkToBuild>
+			<MaxHitPoints>40</MaxHitPoints>
+			<Flammability>0.716</Flammability>
+		</statBases>
+		<size>(3,3)</size>
+		<designationCategory>BOR</designationCategory>
+		<uiOrder>2310</uiOrder>
+		<passability>PassThroughOnly</passability>
+		<pathCost>50</pathCost>
+		<hasInteractionCell>True</hasInteractionCell>
+		<interactionCellOffset>(0,0,-2)</interactionCellOffset>
+		<surfaceType>Item</surfaceType>
+		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+		<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+		<inspectorTabs>
+			<li>ITab_Bills</li>
+		</inspectorTabs>
+		<comps>
+			<li Class="CompProperties_AffectedByFacilities">
+			  <linkableFacilities>
+				<li>ToolCabinet</li>
+				<li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_CNCMachine</li>
+				<li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_RobotAssistant</li>
+				<li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_Vice</li>
+				<li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_ConveyorBelt</li>
+				<li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_IndustrialOven</li>
+				<li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_Incinerator</li>
+			  </linkableFacilities>
+			</li>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>18750</basePowerConsumption>
+				<shortCircuitInRain>true</shortCircuitInRain>
+			</li>
+			<li Class="CompProperties_Flickable" />
+			<li Class="CompProperties_HeatPusher">
+				<compClass>CompHeatPusherPowered</compClass>
+				<heatPerSecond>14</heatPerSecond>
+			</li>
+			<li Class="CompProperties_Breakdownable" />
+			<li Class="PipeSystem.CompProperties_ResourceTrader">
+				<pipeNet>BOR_NeutroniumNet</pipeNet>
+				<consumptionPerTick>8000</consumptionPerTick>
+				<idleConsumptionPerTick>0</idleConsumptionPerTick>
+			</li>
+		</comps>
+		<building>
+			<spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+			<heatPerTickWhileWorking>0.5</heatPerTickWhileWorking>
+		</building>
+		<designationHotKey>Misc10</designationHotKey>
+		<placeWorkers>
+			<li>PlaceWorker_PreventInteractionSpotOverlap</li>
+		</placeWorkers>
+		<researchPrerequisites>
+			<li>BOR_Research_Production_III</li>
+		</researchPrerequisites>
+		<rotatable>false</rotatable>
+		<designatorDropdown>BOR_Workbenches</designatorDropdown>
+	</ThingDef>
+	<ThingDef ParentName="BenchBase">
+		<defName>BOR_MedicineBench_III</defName>
+		<label>tenebral medical fabricator</label>
+		<description>A workbench well-stocked with all manner of mind-bending equipment designed to produce various drugs, often stimulants or medicines.</description>
+		<thingClass>Building_WorkTable</thingClass>
+		<graphicData>
+			<texPath>BOR/Things/Building/tier3/medicine_bench</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(2.5,2.5)</drawSize>
+			<drawOffset>(0,4,0.3)</drawOffset>
+		</graphicData>
+		<rotatable>false</rotatable>
+		<castEdgeShadows>true</castEdgeShadows>
+		<staticSunShadowHeight>0.20</staticSunShadowHeight>
+		<costList>
+			<BOR_Tenebrite>125</BOR_Tenebrite>
+			<BOR_ComponentIII>6</BOR_ComponentIII>
+		</costList>
+		<altitudeLayer>Building</altitudeLayer>
+		<fillPercent>0.5</fillPercent>
+		<useHitPoints>True</useHitPoints>
+		<statBases>
+			<WorkToBuild>11812</WorkToBuild>
+			<MaxHitPoints>405</MaxHitPoints>
+			<Flammability>0.5784</Flammability>
+		</statBases>
+		<size>(1,1)</size>
+		<designationCategory>BOR</designationCategory>
+		<passability>PassThroughOnly</passability>
+		<pathCost>50</pathCost>
+		<hasInteractionCell>True</hasInteractionCell>
+		<interactionCellOffset>(0,0,-1)</interactionCellOffset>
+		<surfaceType>Item</surfaceType>
+		<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+		<inspectorTabs>
+			<li>ITab_Bills</li>
+		</inspectorTabs>
+		<building>
+			<spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+			<paintable>true</paintable>
+		</building>
+		<comps>
+			<li Class="CompProperties_AffectedByFacilities">
+				<linkableFacilities>
+					<li>ToolCabinet</li>
+					<li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_Autoclave</li>
+					<li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_Centrifuge</li>
+					<li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_Incinerator</li>
+					<li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_PersonalComputer</li>
+					<li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_TabletopCentrifuge</li>
+					<li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_TabletopStove</li>
+					<li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_TabletopLabMachine</li>
+					<li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_TabletopOscilloscope</li>
+					<li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_TabletopLabScanner</li>
+					<li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_TabletopLabTubeRack</li>
+					<li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_TabletopLabMicroscope</li>
+					<li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_BotanicalEnclosure</li>
+					<li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_ServerRack</li>
+					<li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_Still</li>
+					<li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_Rotovape</li>
+				</linkableFacilities>
+			</li>
+			<li Class="CompProperties_Facility">
+				<statOffsets>
+					<MedicalTendQualityOffset>0.09</MedicalTendQualityOffset>
+					<ImmunityGainSpeedFactor>0.0225</ImmunityGainSpeedFactor>
+					<SurgerySuccessChanceFactor>0.0675</SurgerySuccessChanceFactor>
+				</statOffsets>
+				<maxSimultaneous>1</maxSimultaneous>
+				<maxDistance>24</maxDistance>
+			</li>
+			<li Class="CompProperties_Power">
+			  <compClass>CompPowerTrader</compClass>
+			  <basePowerConsumption>30000</basePowerConsumption>
+			  <shortCircuitInRain>true</shortCircuitInRain>
+			</li>
+		</comps>
+		<placeWorkers>
+			<li>PlaceWorker_ShowFacilitiesConnections</li>
+			<li>PlaceWorker_PreventInteractionSpotOverlap</li>
+		</placeWorkers>
+		<!-- todo -->
+		<researchPrerequisites>
+			<li>BOR_Research_Medicine_III</li>
+		</researchPrerequisites>
+		<designatorDropdown>BOR_MedicineBenches</designatorDropdown>
+	</ThingDef>
+	<ThingDef ParentName="BuildingBase">
+		<defName>BOR_HydroponicsBasin_III</defName>
+		<label>tenebral hydrogrower</label>
+		<description>An ultratech nutrient bath commonly used to grow medicinal plants or natural stimulants, allowing for them to sprout and flourish at such a frightening rate the naked eye can observe its growth. Stripped down to lower the cost of manufacture there is no emergency power cell within the basin, which means that in the event of power loss the plants within will begin to die, and may die completely if power is not restored in a timely manner.</description>
+		<thingClass>Building_PlantGrower</thingClass>
+		<graphicData>
+			<texPath>BOR/Things/Building/tier3/hydroponics/hydroponics</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(1,4)</drawSize>
+			<drawOffsetEast>(0,0,0.15)</drawOffsetEast>
+			<drawOffsetWest>(0,0,0.15)</drawOffsetWest>
+			<drawOffsetSouth>(0,0,0.15)</drawOffsetSouth>
+			<drawOffsetNorth>(0,0,0.15)</drawOffsetNorth>
+			<damageData>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+			</damageData>
+		</graphicData>
+		<castEdgeShadows>true</castEdgeShadows>
+		<altitudeLayer>LowPlant</altitudeLayer>
+		<defaultPlacingRot>East</defaultPlacingRot>
+		<passability>PassThroughOnly</passability>
+		<pathCost>30</pathCost>
+		<constructEffect>ConstructMetal</constructEffect>
+		<fillPercent>0.30</fillPercent>
+		<canOverlapZones>false</canOverlapZones>
+		<constructionSkillPrerequisite>4</constructionSkillPrerequisite>
+		<statBases>
+			<WorkToBuild>9450</WorkToBuild>
+			<MaxHitPoints>609</MaxHitPoints>
+			<Flammability>0.3</Flammability>
+			<Cleanliness>-1.5</Cleanliness>
+		</statBases>
+		<size>(1,4)</size>
+		<costList>
+			<BOR_Tenebrite>100</BOR_Tenebrite>
+			<BOR_ComponentIII>1</BOR_ComponentIII>
+		</costList>
+		<fertility>9.45</fertility>
+		<building>
+			<defaultPlantToGrow>Plant_Rice</defaultPlantToGrow>
+			<sowTag>Hydroponic</sowTag>
+			<buildingTags>
+				<li>Production</li>
+			</buildingTags>
+		</building>
+		<tickerType>Rare</tickerType>
+		<comps>
+			<li Class="CompProperties_Forbiddable" />
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>4000</basePowerConsumption>
+			</li>
+			<li Class="CompProperties_Flickable" />
+		</comps>
+		<!-- todo -->
+		<researchPrerequisites>
+			<li>BOR_Research_Hydroponics_III</li>
+		</researchPrerequisites>
+		<terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+		<designationCategory>BOR</designationCategory>
+		<designatorDropdown>BOR_Hydroponics</designatorDropdown>
+	</ThingDef>
+</Defs>

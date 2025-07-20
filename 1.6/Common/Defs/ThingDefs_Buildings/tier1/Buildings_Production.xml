@@ -1,0 +1,320 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThingDef ParentName="BenchBase">
+    <defName>BOR_Bench_I</defName>
+    <label>sunsteel shaper</label>
+    <description>A work station for assembling Sunsteel-based technology.</description>
+    <thingClass>Building_WorkTable</thingClass>
+    <graphicData>
+      <texPath>BOR/Things/Building/tier1/production_bench</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(2.8, 2.8)</drawSize>
+      <drawRotated>false</drawRotated>
+      <damageData>
+        <cornerTL>Damage/Corner</cornerTL>
+        <cornerTR>Damage/Corner</cornerTR>
+        <cornerBL>Damage/Corner</cornerBL>
+        <cornerBR>Damage/Corner</cornerBR>
+      </damageData>
+    </graphicData>
+    <rotatable>true</rotatable>
+    <castEdgeShadows>true</castEdgeShadows>
+    <staticSunShadowHeight>0.20</staticSunShadowHeight>
+    <costList>
+      <BOR_Sunsteel>150</BOR_Sunsteel>
+      <ComponentSpacer>5</ComponentSpacer>
+    </costList>
+    <altitudeLayer>Building</altitudeLayer>
+    <fillPercent>0.5</fillPercent>
+    <useHitPoints>True</useHitPoints>
+    <statBases>
+      <WorkToBuild>4500</WorkToBuild>
+      <MaxHitPoints>270</MaxHitPoints>
+      <Flammability>0.83</Flammability>
+      <Cleanliness>-1.6</Cleanliness>
+    </statBases>
+    <size>(2,3)</size>
+    <designationCategory>BOR</designationCategory>
+    <uiOrder>2520</uiOrder>
+    <passability>PassThroughOnly</passability>
+    <pathCost>50</pathCost>
+    <hasInteractionCell>True</hasInteractionCell>
+    <interactionCellOffset>(0,0,-2)</interactionCellOffset>
+    <surfaceType>Item</surfaceType>
+    <constructionSkillPrerequisite>4</constructionSkillPrerequisite>
+    <recipes>
+      <li>ButcherCorpseMechanoid</li>
+    </recipes>
+    <inspectorTabs>
+      <li>ITab_Bills</li>
+    </inspectorTabs>
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <shortCircuitInRain>true</shortCircuitInRain>
+        <basePowerConsumption>7000</basePowerConsumption>
+      </li>
+      <li Class="CompProperties_Flickable" />
+      <li Class="CompProperties_Glower">
+        <glowRadius>5</glowRadius>
+        <glowColor>(73,123,138,0)</glowColor>
+      </li>
+      <li Class="CompProperties_AffectedByFacilities">
+        <linkableFacilities>
+          <li>ToolCabinet</li>
+          <li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_CNCMachine</li>
+          <li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_3DPrinter</li>
+          <li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_RobotAssistant</li>
+          <li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_Spacer_Lathe</li>
+          <li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_Vice</li>
+          <li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_ConveyorBelt</li>
+          <li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_IndustrialOven</li>
+          <li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_Centrifuge</li>
+          <li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_LaserEngraver</li>
+          <li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_Incinerator</li>
+        </linkableFacilities>
+      </li>
+      <li Class="CompProperties_Breakdownable" />
+    </comps>
+    <building>
+      <spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+    </building>
+    <constructEffect>ConstructMetal</constructEffect>
+    <researchPrerequisites>
+      <li>BOR_Research_Production_I</li>
+    </researchPrerequisites>
+    <designationHotKey>Misc7</designationHotKey>
+    <placeWorkers>
+      <li>PlaceWorker_ShowFacilitiesConnections</li>
+      <li>PlaceWorker_PreventInteractionSpotOverlap</li>
+    </placeWorkers>
+    <designatorDropdown>BOR_Workbenches</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="BenchBase">
+    <defName>BOR_Forge_I</defName>
+    <label>sunforge</label>
+    <description>A humble device utilizing an artificial microsun in order to shape Neutronium into usable items via Beta-Decay.</description>
+    <thingClass>PipeSystem.Building_ResourceWorkTable</thingClass>
+    <graphicData>
+      <texPath>BOR/Things/Building/tier1/smelter</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
+      <drawRotated>false</drawRotated>
+      <drawSize>(1,1)</drawSize>
+    </graphicData>
+    <castEdgeShadows>true</castEdgeShadows>
+    <staticSunShadowHeight>0.20</staticSunShadowHeight>
+    <constructEffect>ConstructMetal</constructEffect>
+    <costList>
+      <BOR_Sunsteel>170</BOR_Sunsteel>
+      <ComponentSpacer>2</ComponentSpacer>
+    </costList>
+    <altitudeLayer>Building</altitudeLayer>
+    <fillPercent>0.4</fillPercent>
+    <useHitPoints>True</useHitPoints>
+    <statBases>
+      <WorkToBuild>5250</WorkToBuild>
+      <MaxHitPoints>270</MaxHitPoints>
+      <Flammability>0.86</Flammability>
+    </statBases>
+    <size>(1,1)</size>
+    <designationCategory>BOR</designationCategory>
+    <uiOrder>2310</uiOrder>
+    <passability>PassThroughOnly</passability>
+    <pathCost>50</pathCost>
+    <hasInteractionCell>True</hasInteractionCell>
+    <interactionCellOffset>(0,0,-1)</interactionCellOffset>
+    <surfaceType>Item</surfaceType>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+    <constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+    <inspectorTabs>
+      <li>ITab_Bills</li>
+    </inspectorTabs>
+    <comps>
+      <li Class="CompProperties_AffectedByFacilities">
+        <linkableFacilities>
+          <li>ToolCabinet</li>
+          <li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_CNCMachine</li>
+          <li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_RobotAssistant</li>
+          <li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_Vice</li>
+          <li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_ConveyorBelt</li>
+          <li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_IndustrialOven</li>
+          <li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_Incinerator</li>
+        </linkableFacilities>
+      </li>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>7000</basePowerConsumption>
+        <shortCircuitInRain>true</shortCircuitInRain>
+      </li>
+      <li Class="CompProperties_Flickable" />
+      <li Class="CompProperties_Glower">
+        <glowRadius>2</glowRadius>
+        <glowColor>(143, 187, 189,0)</glowColor>
+      </li>
+      <li Class="CompProperties_Breakdownable" />
+      <li Class="PipeSystem.CompProperties_ResourceTrader">
+        <pipeNet>BOR_NeutroniumNet</pipeNet>
+        <consumptionPerTick>2000</consumptionPerTick>
+        <idleConsumptionPerTick>0</idleConsumptionPerTick>
+      </li>
+    </comps>
+    <building>
+      <spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+      <heatPerTickWhileWorking>0.64</heatPerTickWhileWorking>
+    </building>
+    <designationHotKey>Misc10</designationHotKey>
+    <placeWorkers>
+      <li>PlaceWorker_PreventInteractionSpotOverlap</li>
+    </placeWorkers>
+    <researchPrerequisites>
+      <li>BOR_Research_Production_I</li>
+    </researchPrerequisites>
+    <rotatable>false</rotatable>
+    <designatorDropdown>BOR_Workbenches</designatorDropdown>
+  </ThingDef>
+
+
+  <ThingDef ParentName="BenchBase">
+    <defName>BOR_MedicineBench_I</defName>
+    <label>solar medical fabricator</label>
+    <description>A work bench equipped with high tech apparatus and chemical synthesizers, suited for the express purpose of creating advanced drugs and medicine.</description>
+    <thingClass>Building_WorkTable</thingClass>
+    <graphicData>
+      <texPath>BOR/Things/Building/tier1/medicine_bench</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(3.5,3.5)</drawSize>
+      <drawOffset>(0,4,0.35)</drawOffset>
+      <drawRotated>false</drawRotated>
+    </graphicData>
+    <castEdgeShadows>true</castEdgeShadows>
+    <staticSunShadowHeight>0.20</staticSunShadowHeight>
+    <costList>
+      <BOR_Sunsteel>125</BOR_Sunsteel>
+      <ComponentSpacer>6</ComponentSpacer>
+    </costList>
+    <altitudeLayer>Building</altitudeLayer>
+    <fillPercent>0.5</fillPercent>
+    <useHitPoints>True</useHitPoints>
+    <statBases>
+      <WorkToBuild>5250</WorkToBuild>
+      <MaxHitPoints>180</MaxHitPoints>
+      <Flammability>0.833</Flammability>
+    </statBases>
+    <size>(2,2)</size>
+    <designationCategory>BOR</designationCategory>
+    <passability>PassThroughOnly</passability>
+    <pathCost>50</pathCost>
+    <hasInteractionCell>True</hasInteractionCell>
+    <interactionCellOffset>(0,0,-1)</interactionCellOffset>
+    <surfaceType>Item</surfaceType>
+    <constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+    <inspectorTabs>
+      <li>ITab_Bills</li>
+    </inspectorTabs>
+    <building>
+      <spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+      <paintable>true</paintable>
+    </building>
+    <comps>
+      <li Class="CompProperties_AffectedByFacilities">
+        <linkableFacilities>
+          <li>ToolCabinet</li>
+          <li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_Autoclave</li>
+          <li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_Centrifuge</li>
+          <li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_Incinerator</li>
+          <li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_PersonalComputer</li>
+          <li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_TabletopCentrifuge</li>
+          <li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_TabletopStove</li>
+          <li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_TabletopLabMachine</li>
+          <li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_TabletopOscilloscope</li>
+          <li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_TabletopLabScanner</li>
+          <li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_TabletopLabTubeRack</li>
+          <li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_TabletopLabMicroscope</li>
+          <li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_BotanicalEnclosure</li>
+          <li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_ServerRack</li>
+          <li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_Still</li>
+          <li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_Rotovape</li>
+        </linkableFacilities>
+      </li>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>7000</basePowerConsumption>
+        <shortCircuitInRain>true</shortCircuitInRain>
+      </li>
+    </comps>
+    <placeWorkers>
+      <li>PlaceWorker_ShowFacilitiesConnections</li>
+      <li>PlaceWorker_PreventInteractionSpotOverlap</li>
+    </placeWorkers>
+    <!-- todo -->
+    <researchPrerequisites>
+      <li>BOR_Research_Medicine_I</li>
+    </researchPrerequisites>
+    <designatorDropdown>BOR_MedicineBenches</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>BOR_HydroponicsBasin_I</defName>
+    <label>solar hydrobasin</label>
+    <description>An artificial nutrient bath enriched with Sunsteel, excellent for growing plants. However the basin must work continuously, as the plants will quickly die if power is lost.</description>
+    <thingClass>Building_PlantGrower</thingClass>
+    <graphicData>
+      <texPath>BOR/Things/Building/tier1/hydroponics/hydroponics</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawSize>(4.5,4.5)</drawSize>
+      <drawOffset>(0,0,0.01)</drawOffset>
+      <damageData>
+        <cornerTL>Damage/Corner</cornerTL>
+        <cornerTR>Damage/Corner</cornerTR>
+        <cornerBL>Damage/Corner</cornerBL>
+        <cornerBR>Damage/Corner</cornerBR>
+      </damageData>
+    </graphicData>
+    <castEdgeShadows>true</castEdgeShadows>
+    <altitudeLayer>LowPlant</altitudeLayer>
+    <defaultPlacingRot>East</defaultPlacingRot>
+    <passability>PassThroughOnly</passability>
+    <pathCost>30</pathCost>
+    <constructEffect>ConstructMetal</constructEffect>
+    <fillPercent>0.30</fillPercent>
+    <canOverlapZones>false</canOverlapZones>
+    <constructionSkillPrerequisite>4</constructionSkillPrerequisite>
+    <statBases>
+      <WorkToBuild>4200</WorkToBuild>
+      <MaxHitPoints>270</MaxHitPoints>
+      <Flammability>0.4</Flammability>
+      <Cleanliness>-2.5</Cleanliness>
+    </statBases>
+    <size>(1,4)</size>
+    <costList>
+      <BOR_Sunsteel>100</BOR_Sunsteel>
+      <ComponentSpacer>1</ComponentSpacer>
+    </costList>
+    <fertility>4.2</fertility>
+    <building>
+      <defaultPlantToGrow>Plant_Rice</defaultPlantToGrow>
+      <sowTag>Hydroponic</sowTag>
+      <buildingTags>
+        <li>Production</li>
+      </buildingTags>
+    </building>
+    <tickerType>Rare</tickerType>
+    <comps>
+      <li Class="CompProperties_Forbiddable" />
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>1000</basePowerConsumption>
+      </li>
+      <li Class="CompProperties_Flickable" />
+    </comps>
+    <!-- todo -->
+    <researchPrerequisites>
+      <li>BOR_Research_Hydroponics_I</li>
+    </researchPrerequisites>
+    <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+    <designationCategory>BOR</designationCategory>
+    <designatorDropdown>BOR_Hydroponics</designatorDropdown>
+  </ThingDef>
+</Defs>

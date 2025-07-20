@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+
+    <Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
+        <modSettingDef>BOR_Setting_CE_TODO</modSettingDef>
+        <enabled Class="PatchOperationSequence">
+            <operations>
+
+                <!-- BOR_Tenebrite -->
+
+                <li Class="PatchOperationAdd">
+                    <xpath>Defs/ThingDef[defName="BOR_Tenebrite"]/statBases</xpath>
+                    <value>
+                        <Bulk>0.005</Bulk>
+                    </value>
+                </li>
+
+                <li Class="PatchOperationAdd">
+                    <xpath>Defs/ThingDef[defName="BOR_Tenebrite"]/stuffProps/categories</xpath>
+                    <value>
+                        <li>Metallic_Weapon</li>
+                        <li>Steeled</li>
+                    </value>
+                </li>
+
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="BOR_Tenebrite"]/statBases/StuffPower_Armor_Sharp</xpath>
+                    <value>
+                        <StuffPower_Armor_Sharp>16</StuffPower_Armor_Sharp>
+                    </value>
+                </li>
+
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="BOR_Tenebrite"]/statBases/StuffPower_Armor_Blunt</xpath>
+                    <value>
+                        <StuffPower_Armor_Blunt>24</StuffPower_Armor_Blunt>
+                    </value>
+                </li>
+
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="BOR_Tenebrite"]/statBases/StuffPower_Armor_Heat</xpath>
+                    <value>
+                        <StuffPower_Armor_Heat>0.4</StuffPower_Armor_Heat>
+                    </value>
+                </li>
+
+                <li Class="PatchOperationAdd">
+                    <xpath>Defs/ThingDef[defName="BOR_Tenebrite"]/stuffProps/statFactors</xpath>
+                    <value>
+                        <Mass>0.1</Mass>
+                        <MeleePenetrationFactor>10.4</MeleePenetrationFactor>
+                    </value>
+                </li>
+
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="BOR_Sunsteel"]/statBases/SharpDamageMultiplier</xpath>
+                    <value>
+                        <SharpDamageMultiplier>6.0</SharpDamageMultiplier>
+                    </value>
+                </li>
+
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="BOR_Sunsteel"]/statBases/BluntDamageMultiplier</xpath>
+                    <value>
+                        <BluntDamageMultiplier>6.0</BluntDamageMultiplier>
+                    </value>
+                </li>
+
+            </operations>
+        </enabled>
+    </Operation>
+
+
+</Patch>

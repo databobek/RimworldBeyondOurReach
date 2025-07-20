@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+
+    <Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
+        <modSettingDef>BOR_Setting_QuantumCoolingRedux</modSettingDef>
+        <enabled Class="PatchOperationFindMod">
+            <mods>
+                <li>ProxyHeat</li>
+                <li>Vanilla Temperature Expanded</li>
+            </mods>
+            <match Class="PatchOperationSequence">
+                <operations>
+                    <li Class="PatchOperationAdd">
+                        <xpath>Defs/ThingDef[defName = "QC_QuantumHeater"]/comps</xpath>
+                        <value>
+                            <li Class="ProxyHeat.CompProperties_TemperatureSource">
+                                <radius>3</radius>
+                                <tempOutcome>21</tempOutcome>
+                                <minTemperature>10</minTemperature>
+                                <maxTemperature>30</maxTemperature>
+                                <dependsOnPower>true</dependsOnPower>
+                                <smeltSnowRadius>10</smeltSnowRadius>
+                                <smeltSnowAtTemperature>3</smeltSnowAtTemperature>
+                                <smeltSnowPower>0.001</smeltSnowPower>
+                            </li>
+                        </value>
+                    </li>
+                    <li Class="PatchOperationAdd">
+                        <xpath>Defs/ThingDef[defName = "QC_QuantumCooler"]/comps</xpath>
+                        <value>
+                            <li Class="ProxyHeat.CompProperties_TemperatureSource">
+                                <radius>3</radius>
+                                <tempOutcome>-21</tempOutcome>
+                                <maxTemperature>0</maxTemperature>
+                                <minTemperature>-21</minTemperature>
+                                <dependsOnPower>true</dependsOnPower>
+                            </li>
+                        </value>
+                    </li>
+                    <li Class="PatchOperationAdd">
+                        <xpath>Defs/ThingDef[defName = "QC_QuantumHeater_Large"]/comps</xpath>
+                        <value>
+                            <li Class="ProxyHeat.CompProperties_TemperatureSource">
+                                <radius>6</radius>
+                                <tempOutcome>100</tempOutcome>
+                                <minTemperature>10</minTemperature>
+                                <maxTemperature>50</maxTemperature>
+                                <dependsOnPower>true</dependsOnPower>
+                                <smeltSnowRadius>10</smeltSnowRadius>
+                                <smeltSnowAtTemperature>1</smeltSnowAtTemperature>
+                                <smeltSnowPower>0.01</smeltSnowPower>
+                            </li>
+                        </value>
+                    </li>
+                    <li Class="PatchOperationAdd">
+                        <xpath>Defs/ThingDef[defName = "QC_QuantumCooler_Large"]/comps</xpath>
+                        <value>
+                            <li Class="ProxyHeat.CompProperties_TemperatureSource">
+                                <radius>6</radius>
+                                <tempOutcome>-100</tempOutcome>
+                                <maxTemperature>-20</maxTemperature>
+                                <minTemperature>-100</minTemperature>
+                                <dependsOnPower>true</dependsOnPower>
+                            </li>
+                        </value>
+                    </li>
+                    <li Class="PatchOperationAdd">
+                        <xpath>Defs/ThingDef[defName = "QC_QuantumHeater_erator"]/comps</xpath>
+                        <value>
+                            <li Class="ProxyHeat.CompProperties_TemperatureSource">
+                                <radius>20</radius>
+                                <tempOutcome>210</tempOutcome>
+                                <minTemperature>20</minTemperature>
+                                <maxTemperature>250</maxTemperature>
+                                <dependsOnPower>true</dependsOnPower>
+                                <smeltSnowRadius>40</smeltSnowRadius>
+                                <smeltSnowAtTemperature>3</smeltSnowAtTemperature>
+                                <smeltSnowPower>0.1</smeltSnowPower>
+                            </li>
+                        </value>
+                    </li>
+                    <li Class="PatchOperationAdd">
+                        <xpath>Defs/ThingDef[defName = "QC_QuantumCooler_erator"]/comps</xpath>
+                        <value>
+                            <li Class="ProxyHeat.CompProperties_TemperatureSource">
+                                <radius>20</radius>
+                                <tempOutcome>-210</tempOutcome>
+                                <maxTemperature>-21</maxTemperature>
+                                <minTemperature>-250</minTemperature>
+                                <dependsOnPower>true</dependsOnPower>
+                            </li>
+                        </value>
+                    </li>
+                </operations>
+            </match>
+
+        </enabled>
+    </Operation>
+
+</Patch>

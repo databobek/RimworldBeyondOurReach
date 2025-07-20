@@ -1,0 +1,797 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- base for implants -->
+	<HediffDef Abstract="True" ParentName="ImplantHediffBase" Name="BOR_ImplantTenebralHediffBase">
+		<comps>
+			<li MayRequire="v1024.ebframework" Class="EBF.Hediffs.HediffCompProperties_MaxHPAdjust">
+				<scaleAdjustment>3.375</scaleAdjustment>
+			</li>
+		</comps>
+	</HediffDef>
+	<HediffDef ParentName="AddedBodyPartBase" Name="BOR_AddedTenebralBodyPartBase" Abstract="True">
+		<comps>
+			<li MayRequire="v1024.ebframework" Class="EBF.Hediffs.HediffCompProperties_MaxHPAdjust">
+				<scaleAdjustment>3.375</scaleAdjustment>
+			</li>
+		</comps>
+	</HediffDef>
+	<RecipeDef Name="BOR_TenebralSurgeryInstallBodyPartArtificialBase" ParentName="SurgeryInstallBodyPartArtificialBase" Abstract="True">
+		<researchPrerequisite>BOR_Research_Bionics_III</researchPrerequisite>
+		<skillRequirements>
+			<Medicine>19</Medicine>
+		</skillRequirements>
+		<workAmount>25000</workAmount>
+		<ingredients Inherit="False">
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_MedicineIII</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>BOR_MedicineIII</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+	</RecipeDef>
+	<!-- Base: Bionic body part (spacer tech) -->
+	<ThingDef Name="TenebralBodyPartBionicBase" ParentName="BodyPartBase" Abstract="True">
+		<techLevel>Archotech</techLevel>
+		<thingCategories>
+			<li>BOR_Bionics_III</li>
+		</thingCategories>
+		<graphicData>
+			<texPath>Things/Item/Health/HealthItem</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>0.80</drawSize>
+			<color>(46, 31, 30)</color>
+		</graphicData>
+		<tradeTags>
+			<li>BOR_Bionic_III</li>
+			<li>BOR_Tech_III</li>
+		</tradeTags>
+		<techHediffsTags>
+			<li>Archotech</li>
+			<li>BOR_Bionics_III</li>
+		</techHediffsTags>
+		<statBases>
+			<RoyalFavorValue>2</RoyalFavorValue>
+			<WorkToMake>87750</WorkToMake>
+		</statBases>
+		<recipeMaker>
+			<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+			<workSkill>Crafting</workSkill>
+			<effectWorking>Smith</effectWorking>
+			<soundWorking>Recipe_Smith</soundWorking>
+			<unfinishedThingDef>UnfinishedHealthItemBionic</unfinishedThingDef>
+			<skillRequirements>
+				<Crafting>20</Crafting>
+			</skillRequirements>
+			<researchPrerequisite>BOR_Research_Bionics_III</researchPrerequisite>
+			<recipeUsers>
+				<!-- todo -->
+				<li>BOR_MedicineBench_III</li>
+				<li>BOR_Bench_IV</li>
+			</recipeUsers>
+			<displayPriority>300</displayPriority>
+		</recipeMaker>
+	</ThingDef>
+	<ThingDef ParentName="TenebralBodyPartBionicBase">
+		<defName>BOR_TenebralAppendage</defName>
+		<label>tenebral appendage template</label>
+		<description>A template for appendages made from tenebrite. They take the shape of a needed organ.</description>
+		<descriptionHyperlinks>
+			<RecipeDef>BOR_InstallTenebralBionicArm</RecipeDef>
+			<RecipeDef>BOR_InstallTenebralBionicLeg</RecipeDef>
+			<RecipeDef>BOR_InstallTenebralBionicEar</RecipeDef>
+			<RecipeDef>BOR_InstallTenebralBionicTongue</RecipeDef>
+		</descriptionHyperlinks>
+		<costList>
+			<BOR_Tenebrite>25</BOR_Tenebrite>
+			<BOR_ComponentIII>4</BOR_ComponentIII>
+		</costList>
+		<thingSetMakerTags>
+			<li>RewardStandardMidFreq</li>
+		</thingSetMakerTags>
+		<statBases>
+			<Mass>0.175</Mass>
+		</statBases>
+	</ThingDef>
+	<ThingDef ParentName="TenebralBodyPartBionicBase">
+		<defName>BOR_TenebralOrgan</defName>
+		<label>tenebral organ template</label>
+		<description>A Tenebral-technology organ template, shapes itself into the needed organ.</description>
+		<descriptionHyperlinks>
+			<RecipeDef>BOR_InstallTenebralBionicEye</RecipeDef>
+			<RecipeDef>BOR_InstallTenebralBionicSpine</RecipeDef>
+			<RecipeDef>BOR_InstallTenebralBionicHeart</RecipeDef>
+			<RecipeDef>BOR_InstallTenebralBionicLiver</RecipeDef>
+			<RecipeDef>BOR_InstallTenebralBionicKidney</RecipeDef>
+			<RecipeDef>BOR_InstallTenebralBionicLung</RecipeDef>
+			<RecipeDef>BOR_InstallTenebralBionicStomach</RecipeDef>
+			<RecipeDef>BOR_InstallTenebralBionicJaw</RecipeDef>
+		</descriptionHyperlinks>
+		<costList>
+			<BOR_Tenebrite>15</BOR_Tenebrite>
+			<BOR_ComponentIII>6</BOR_ComponentIII>
+		</costList>
+		<thingSetMakerTags>
+			<li>RewardStandardMidFreq</li>
+		</thingSetMakerTags>
+		<statBases>
+			<Mass>0.175</Mass>
+		</statBases>
+	</ThingDef>
+	<!-- Bionic eye -->
+	<HediffDef ParentName="BOR_AddedTenebralBodyPartBase">
+		<defName>BOR_TenebralBionicEye</defName>
+		<label>tenebral eye</label>
+		<labelNoun>a Tenebral bionic eye</labelNoun>
+		<description>An installed Tenebral eye. Equipped with single-photon avalanche diode detector suites for use with the internal rangefinder alongside thermal, ultraviolet, and Infared night vision complete with IR strobe. There is nothing you cannot see with an Eye of this caliber.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_TenebralOrgan</ThingDef>
+		</descriptionHyperlinks>
+		<spawnThingOnRemoved>BOR_TenebralOrgan</spawnThingOnRemoved>
+		<addedPartProps>
+			<solid>true</solid>
+			<partEfficiency>4.21875</partEfficiency>
+			<betterThanNatural>true</betterThanNatural>
+		</addedPartProps>
+	</HediffDef>
+	<RecipeDef ParentName="BOR_TenebralSurgeryInstallBodyPartArtificialBase">
+		<defName>BOR_InstallTenebralBionicEye</defName>
+		<label>install tenebral eye</label>
+		<description>Install a Tenebral eye.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_TenebralOrgan</ThingDef>
+			<HediffDef>BOR_TenebralBionicEye</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing Tenebral bionic eye.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_TenebralOrgan</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Femtoclusters</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>BOR_TenebralOrgan</li>
+				<li>BOR_Femtoclusters</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Eye</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>BOR_TenebralBionicEye</addsHediff>
+	</RecipeDef>
+	<!-- Bionic arm -->
+	<HediffDef ParentName="BOR_AddedTenebralBodyPartBase">
+		<defName>BOR_TenebralBionicArm</defName>
+		<label>tenebral arm</label>
+		<labelNoun>a Tenebral bionic arm</labelNoun>
+		<description>An installed Tenebral arm. Mechanoneural interfaces designed with Tenebrite components make this limb feel entirely natural while still having enough power and precision to rip out a man's heart while preserving the rest of the torso cavity. Whatever you may wish to do with an arm, this one exceeds those meager whims by leaps and bounds.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_TenebralAppendage</ThingDef>
+		</descriptionHyperlinks>
+		<comps>
+			<li Class="HediffCompProperties_VerbGiver">
+				<tools>
+					<li>
+						<label>fist</label>
+						<capacities>
+							<li>Blunt</li>
+						</capacities>
+						<power>41</power>
+						<cooldownTime>1.16</cooldownTime>
+						<soundMeleeHit>MeleeHit_BionicPunch</soundMeleeHit>
+						<soundMeleeMiss>MeleeMiss_BionicPunch</soundMeleeMiss>
+					</li>
+				</tools>
+			</li>
+		</comps>
+		<spawnThingOnRemoved>BOR_TenebralAppendage</spawnThingOnRemoved>
+		<addedPartProps>
+			<solid>true</solid>
+			<partEfficiency>4.21875</partEfficiency>
+			<betterThanNatural>true</betterThanNatural>
+		</addedPartProps>
+	</HediffDef>
+	<RecipeDef ParentName="BOR_TenebralSurgeryInstallBodyPartArtificialBase">
+		<defName>BOR_InstallTenebralBionicArm</defName>
+		<label>install tenebral arm</label>
+		<description>Install a Tenebral arm.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_TenebralAppendage</ThingDef>
+			<HediffDef>BOR_TenebralBionicArm</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing Tenebral bionic arm.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_TenebralAppendage</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Femtoclusters</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>BOR_TenebralAppendage</li>
+				<li>BOR_Femtoclusters</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Shoulder</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>BOR_TenebralBionicArm</addsHediff>
+	</RecipeDef>
+	<!-- Bionic leg -->
+	<HediffDef ParentName="BOR_AddedTenebralBodyPartBase">
+		<defName>BOR_TenebralBionicLeg</defName>
+		<label>tenebral leg</label>
+		<labelNoun>a Tenebral bionic leg</labelNoun>
+		<description>An installed Tenebral leg. So far above an organic leg in terms of performance, durability, and comfort that most who are implanted with only a single leg for replacement prosthesis often return within a week missing their other leg.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_TenebralAppendage</ThingDef>
+		</descriptionHyperlinks>
+		<spawnThingOnRemoved>BOR_TenebralAppendage</spawnThingOnRemoved>
+		<addedPartProps>
+			<solid>true</solid>
+			<partEfficiency>4.21875</partEfficiency>
+			<betterThanNatural>true</betterThanNatural>
+		</addedPartProps>
+	</HediffDef>
+	<RecipeDef ParentName="BOR_TenebralSurgeryInstallBodyPartArtificialBase">
+		<defName>BOR_InstallTenebralBionicLeg</defName>
+		<label>install tenebral leg</label>
+		<description>Install a Tenebral leg.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_TenebralAppendage</ThingDef>
+			<HediffDef>BOR_TenebralBionicLeg</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing Tenebral bionic leg.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_TenebralAppendage</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Femtoclusters</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>BOR_TenebralAppendage</li>
+				<li>BOR_Femtoclusters</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Leg</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>BOR_TenebralBionicLeg</addsHediff>
+		<researchPrerequisite>BOR_Research_Bionics_III</researchPrerequisite>
+	</RecipeDef>
+	<!-- Bionic spine -->
+	<HediffDef ParentName="BOR_AddedTenebralBodyPartBase">
+		<defName>BOR_TenebralBionicSpine</defName>
+		<label>tenebral spine</label>
+		<labelNoun>a Tenebral bionic spine</labelNoun>
+		<description>An installed Tenebral spine. Making use of bioactive signallers alongside a Tenebrite-reinforced frame to grant the human form enough power to lift a car above their head with minimal issue, provided Tenebral arms and legs are additionally installed. Strength known only to human mythos now in the palm of your hand, or more accurately the square of your back.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_TenebralOrgan</ThingDef>
+		</descriptionHyperlinks>
+		<spawnThingOnRemoved>BOR_TenebralOrgan</spawnThingOnRemoved>
+		<addedPartProps>
+			<solid>true</solid>
+			<betterThanNatural>true</betterThanNatural>
+			<partEfficiency>4.21875</partEfficiency>
+		</addedPartProps>
+	</HediffDef>
+	<RecipeDef ParentName="BOR_TenebralSurgeryInstallBodyPartArtificialBase">
+		<defName>BOR_InstallTenebralBionicSpine</defName>
+		<label>install tenebral spine</label>
+		<description>Install a Tenebral spine.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_TenebralOrgan</ThingDef>
+			<HediffDef>BOR_TenebralBionicSpine</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing Tenebral bionic spine.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_TenebralOrgan</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Femtoclusters</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>BOR_TenebralOrgan</li>
+				<li>BOR_Femtoclusters</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Spine</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>BOR_TenebralBionicSpine</addsHediff>
+	</RecipeDef>
+	<!-- Bionic heart -->
+	<HediffDef ParentName="BOR_AddedTenebralBodyPartBase">
+		<defName>BOR_TenebralBionicHeart</defName>
+		<label>tenebral heart</label>
+		<labelNoun>a Tenebral bionic heart</labelNoun>
+		<description>An installed Tenebral heart. Dark black bundles of synthetic cardiac fibers beat with an unsettling rhythm within the chest of those this organ has been installed, their bodies now capable of running for three days without breaking so much as a sweat. Herculean endurance runs in through the veins of those with a heart of this level installed.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_TenebralOrgan</ThingDef>
+		</descriptionHyperlinks>
+		<spawnThingOnRemoved>BOR_TenebralOrgan</spawnThingOnRemoved>
+		<addedPartProps>
+			<solid>true</solid>
+			<partEfficiency>4.21875</partEfficiency>
+			<betterThanNatural>true</betterThanNatural>
+		</addedPartProps>
+	</HediffDef>
+	<RecipeDef ParentName="BOR_TenebralSurgeryInstallBodyPartArtificialBase">
+		<defName>BOR_InstallTenebralBionicHeart</defName>
+		<label>install tenebral heart</label>
+		<description>Install a Tenebral heart.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_TenebralOrgan</ThingDef>
+			<HediffDef>BOR_TenebralBionicHeart</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing Tenebral bionic heart.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_TenebralOrgan</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Femtoclusters</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>BOR_TenebralOrgan</li>
+				<li>BOR_Femtoclusters</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Heart</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>BOR_TenebralBionicHeart</addsHediff>
+	</RecipeDef>
+	<!-- Bionic stomach -->
+	<HediffDef ParentName="BOR_AddedTenebralBodyPartBase">
+		<defName>BOR_TenebralBionicStomach</defName>
+		<label>tenebral stomach</label>
+		<labelNoun>a Tenebral bionic stomach</labelNoun>
+		<description>An installed Tenebral stomach. So robust in its digestive ability the nutritional value of ingested food is nearly lossless, those with this organ installed are known to subsist off grains of rice. Famine is a thing of the past, the future ever onwards provides immeasurable plenty.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_TenebralOrgan</ThingDef>
+		</descriptionHyperlinks>
+		<spawnThingOnRemoved>BOR_TenebralOrgan</spawnThingOnRemoved>
+		<stages>
+			<li>
+				<makeImmuneTo>
+					<li>GutWorms</li>
+				</makeImmuneTo>
+				<foodPoisoningChanceFactor>0.33</foodPoisoningChanceFactor>
+			</li>
+		</stages>
+		<addedPartProps>
+			<solid>true</solid>
+			<partEfficiency>4.21875</partEfficiency>
+			<betterThanNatural>true</betterThanNatural>
+		</addedPartProps>
+	</HediffDef>
+	<RecipeDef ParentName="BOR_TenebralSurgeryInstallBodyPartArtificialBase">
+		<defName>BOR_InstallTenebralBionicStomach</defName>
+		<label>install tenebral stomach</label>
+		<description>Install a Tenebral stomach.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_TenebralOrgan</ThingDef>
+			<HediffDef>BOR_TenebralBionicStomach</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing Tenebral bionic stomach.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_TenebralOrgan</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Femtoclusters</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>BOR_TenebralOrgan</li>
+				<li>BOR_Femtoclusters</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Stomach</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>BOR_TenebralBionicStomach</addsHediff>
+	</RecipeDef>
+	<!-- Bionic ear -->
+	<HediffDef ParentName="BOR_AddedTenebralBodyPartBase">
+		<defName>BOR_TenebralBionicEar</defName>
+		<label>tenebral ear</label>
+		<labelNoun>a Tenebral bionic ear</labelNoun>
+		<description>An installed Tenebral ear. Jet black synthskin grafted upon the side of the head crammed full of technology to such a degree you can almost hear people's thoughts based off the stimulation of their vocal chords. The beating of a man's heart, the shift of tectonic plates, a radio signal coming from deep space, all can be heard by you now.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_TenebralAppendage</ThingDef>
+		</descriptionHyperlinks>
+		<spawnThingOnRemoved>BOR_TenebralAppendage</spawnThingOnRemoved>
+		<addedPartProps>
+			<solid>true</solid>
+			<partEfficiency>4.21875</partEfficiency>
+			<betterThanNatural>true</betterThanNatural>
+		</addedPartProps>
+	</HediffDef>
+	<RecipeDef ParentName="BOR_TenebralSurgeryInstallBodyPartArtificialBase">
+		<defName>BOR_InstallTenebralBionicEar</defName>
+		<label>install tenebral ear</label>
+		<description>Install a Tenebral ear.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_TenebralAppendage</ThingDef>
+			<HediffDef>BOR_TenebralBionicEar</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing Tenebral bionic ear.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_TenebralAppendage</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Femtoclusters</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>BOR_TenebralAppendage</li>
+				<li>BOR_Femtoclusters</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Ear</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>BOR_TenebralBionicEar</addsHediff>
+	</RecipeDef>
+	<!-- Bionic tongue -->
+	<HediffDef ParentName="BOR_AddedTenebralBodyPartBase">
+		<defName>BOR_TenebralBionicTongue</defName>
+		<label>tenebral tongue</label>
+		<labelNoun>a Tenebral bionic tongue</labelNoun>
+		<description>An installed Tenebral tongue. Hyperflexible strands of Tenebrous fiber connected to such a rich array of sensors and scanners that even the most novice of gourmands can dissect their meals down to the chemical makeup of its preparation, even the air has a taste now.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_TenebralOrgan</ThingDef>
+		</descriptionHyperlinks>
+		<spawnThingOnRemoved>BOR_TenebralOrgan</spawnThingOnRemoved>
+		<addedPartProps>
+			<solid>true</solid>
+			<partEfficiency>3.375</partEfficiency>
+		</addedPartProps>
+	</HediffDef>
+	<RecipeDef ParentName="BOR_TenebralSurgeryInstallBodyPartArtificialBase">
+		<defName>BOR_InstallTenebralBionicTongue</defName>
+		<label>install tenebral tongue</label>
+		<description>Install a Tenebral tongue.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_TenebralOrgan</ThingDef>
+			<HediffDef>BOR_TenebralBionicTongue</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing Tenebral bionic tongue.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_TenebralOrgan</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Femtoclusters</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>BOR_TenebralOrgan</li>
+				<li>BOR_Femtoclusters</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Tongue</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>BOR_TenebralBionicTongue</addsHediff>
+	</RecipeDef>
+	<!-- Bionic Jaw -->
+	<HediffDef ParentName="BOR_AddedTenebralBodyPartBase">
+		<defName>BOR_TenebralBionicJaw</defName>
+		<label>tenebral jaw</label>
+		<labelNoun>a Tenebral bionic jaw</labelNoun>
+		<description>An installed Tenebral jaw. Obsidian crystalline teeth capable of biting through power armor with enough precision to write solely using the range of motion provided.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_TenebralOrgan</ThingDef>
+		</descriptionHyperlinks>
+		<spawnThingOnRemoved>BOR_TenebralOrgan</spawnThingOnRemoved>
+		<addedPartProps>
+			<solid>true</solid>
+			<partEfficiency>4.21875</partEfficiency>
+			<betterThanNatural>true</betterThanNatural>
+		</addedPartProps>
+	</HediffDef>
+	<RecipeDef ParentName="BOR_TenebralSurgeryInstallBodyPartArtificialBase">
+		<defName>BOR_InstallTenebralBionicJaw</defName>
+		<label>install tenebral jaw</label>
+		<description>Install Tenebral jaw.</description>
+		<jobString>Installing Tenebral bionic jaw.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_TenebralOrgan</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Femtoclusters</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>BOR_TenebralOrgan</li>
+				<li>BOR_Femtoclusters</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Jaw</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>BOR_TenebralBionicJaw</addsHediff>
+	</RecipeDef>
+	
+	<!-- Bionic kidney -->
+	<HediffDef ParentName="BOR_AddedTenebralBodyPartBase">
+		<defName>BOR_TenebralBionicKidney</defName>
+		<label>tenebral kidney</label>
+		<labelNoun>a Tenebral bionic kidney</labelNoun>
+		<description>An installed Tenebral kidney. Providing lossless hydroequilibrium within the body, Tenebral kidneys only require a few drops of water to sustain the human body for prolonged periods.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_TenebralOrgan</ThingDef>
+		</descriptionHyperlinks>
+		<spawnThingOnRemoved>BOR_TenebralOrgan</spawnThingOnRemoved>
+		<addedPartProps>
+			<solid>true</solid>
+			<partEfficiency>4.21875</partEfficiency>
+			<betterThanNatural>true</betterThanNatural>
+		</addedPartProps>
+	</HediffDef>
+	<RecipeDef ParentName="BOR_TenebralSurgeryInstallBodyPartArtificialBase">
+		<defName>BOR_InstallTenebralBionicKidney</defName>
+		<label>install tenebral kidney</label>
+		<description>Install a Tenebral kidney.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_TenebralOrgan</ThingDef>
+			<HediffDef>BOR_TenebralBionicKidney</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing Tenebral bionic kidney.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_TenebralOrgan</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Femtoclusters</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>BOR_TenebralOrgan</li>
+				<li>BOR_Femtoclusters</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Kidney</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>BOR_TenebralBionicKidney</addsHediff>
+	</RecipeDef>
+	<!-- Bionic liver -->
+	<HediffDef ParentName="BOR_AddedTenebralBodyPartBase">
+		<defName>BOR_TenebralBionicLiver</defName>
+		<label>tenebral liver</label>
+		<labelNoun>a Tenebral bionic liver</labelNoun>
+		<description>An installed Tenebral liver. A coal-colored mesh of Tenebral strands capable of attacking and destroying any and all toxins within the body while not impeding bloodflow in the slightest. Pestilence is a thing of the past now that we have these.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_TenebralOrgan</ThingDef>
+		</descriptionHyperlinks>
+		<spawnThingOnRemoved>BOR_TenebralOrgan</spawnThingOnRemoved>
+		<addedPartProps>
+			<solid>true</solid>
+			<partEfficiency>4.21875</partEfficiency>
+			<betterThanNatural>true</betterThanNatural>
+		</addedPartProps>
+	</HediffDef>
+	<RecipeDef ParentName="BOR_TenebralSurgeryInstallBodyPartArtificialBase">
+		<defName>BOR_InstallTenebralBionicLiver</defName>
+		<label>install tenebral liver</label>
+		<description>Install a Tenebral liver.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_TenebralOrgan</ThingDef>
+			<HediffDef>BOR_TenebralBionicLiver</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing Tenebral bionic liver.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_TenebralOrgan</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Femtoclusters</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>BOR_TenebralOrgan</li>
+				<li>BOR_Femtoclusters</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Liver</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>BOR_TenebralBionicLiver</addsHediff>
+	</RecipeDef>
+	<!-- Bionic lung -->
+	<HediffDef ParentName="BOR_AddedTenebralBodyPartBase">
+		<defName>BOR_TenebralBionicLung</defName>
+		<label>tenebral lung</label>
+		<labelNoun>a Tenebral bionic lung</labelNoun>
+		<description>An installed Tenebral lung. Providing lossless oxygen saturation to the bloodstream, the human body barely even needs draw breath with Tenebral lungs installed, such is the power of Tenebral technology.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_TenebralOrgan</ThingDef>
+		</descriptionHyperlinks>
+		<spawnThingOnRemoved>BOR_TenebralOrgan</spawnThingOnRemoved>
+		<addedPartProps>
+			<solid>true</solid>
+			<partEfficiency>4.21875</partEfficiency>
+			<betterThanNatural>true</betterThanNatural>
+		</addedPartProps>
+	</HediffDef>
+	<RecipeDef ParentName="BOR_TenebralSurgeryInstallBodyPartArtificialBase">
+		<defName>BOR_InstallTenebralBionicLung</defName>
+		<label>install tenebral lung</label>
+		<description>Install a Tenebral lung.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BOR_TenebralOrgan</ThingDef>
+			<HediffDef>BOR_TenebralBionicLung</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing Tenebral bionic lung.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_TenebralOrgan</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Femtoclusters</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>BOR_TenebralOrgan</li>
+				<li>BOR_Femtoclusters</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Lung</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>BOR_TenebralBionicLung</addsHediff>
+	</RecipeDef>
+</Defs>

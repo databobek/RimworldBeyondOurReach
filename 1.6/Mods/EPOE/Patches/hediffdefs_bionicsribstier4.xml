@@ -1,0 +1,587 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+
+	<Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
+		<modSettingDef>BOR_Setting_EPOE</modSettingDef>
+		<enabled Class="PatchOperationSequence">
+			<operations>
+
+				<!-- patch sequence to patch in defs while proceeding to check for pawnkinds to be updated -->
+				<li Class="PatchOperationAdd">
+					<xpath>Defs</xpath>
+
+					<value>
+
+						<RecipeDef ParentName="SurgeryInstallImplantBase" Name="SurgeryInstallImplantBaseBBORUmbral" Abstract="True">
+							<recipeUsers>
+								<li>Human</li>
+							</recipeUsers>
+							<skillRequirements>
+								<Medicine>20</Medicine>
+							</skillRequirements>
+							<researchPrerequisite>BOR_Research_Bionics_IV</researchPrerequisite>
+							<ingredients Inherit="False">
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_MedicineIII</li>
+										</thingDefs>
+									</filter>
+									<count>3</count>
+								</li>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_Femtoclusters</li>
+										</thingDefs>
+									</filter>
+									<count>10</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter Inherit="False">
+								<thingDefs>
+									<li>BOR_MedicineIII</li>
+									<li>BOR_Femtoclusters</li>
+								</thingDefs>
+							</fixedIngredientFilter>
+						</RecipeDef>
+
+						<HediffDef ParentName="addedPartBionicsRib" Abstract="True" Name="BOR_addedPartBionicsUmbralRib">
+							<comps>
+								<li MayRequire="v1024.ebframework" Class="EBF.Hediffs.HediffCompProperties_MaxHPAdjust">
+									<scaleAdjustment>5.065</scaleAdjustment>
+								</li>
+							</comps>
+						</HediffDef>
+
+						<!-- Medical rib -->
+
+						<HediffDef ParentName="BOR_addedPartBionicsUmbralRib">
+							<defName>MedicalRibUmbral</defName>
+							<label>umbral medical rib</label>
+							<labelNoun>an umbral medical rib</labelNoun>
+							<description>An installed umbral medical rib implant.</description>
+							<descriptionHyperlinks>
+								<ThingDef>BOR_Femtoclusters</ThingDef>
+							</descriptionHyperlinks>
+							<hediffClass>Hediff_Implant</hediffClass>
+							<stages>
+								<li>
+									<capMods>
+										<li>
+											<capacity>BloodFiltration</capacity>
+											<offset>0.675</offset>
+										</li>
+									</capMods>
+								</li>
+							</stages>
+							<tags>
+								<li>MedicalRib</li>
+							</tags>
+						</HediffDef>
+
+
+						<RecipeDef ParentName="SurgeryInstallImplantBaseBBORUmbral">
+							<defName>InstallMedicalRibUmbral</defName>
+							<label>install umbral medical rib implant</label>
+							<description>Installs an umbral medical rib implant.</description>
+							<descriptionHyperlinks>
+								<ThingDef>BOR_Femtoclusters</ThingDef>
+								<HediffDef>MedicalRibUmbral</HediffDef>
+							</descriptionHyperlinks>
+							<jobString>Installing an umbral medical rib.</jobString>
+							<appliedOnFixedBodyParts>
+								<li>Ribcage</li>
+							</appliedOnFixedBodyParts>
+							<addsHediff>MedicalRibUmbral</addsHediff>
+							<uiIconThing>BOR_Femtoclusters</uiIconThing>
+							<incompatibleWithHediffTags>
+								<li>MedicalRib</li>
+								<li>LuciferiumRib</li>
+							</incompatibleWithHediffTags>
+						</RecipeDef>
+
+						<RecipeDef ParentName="SurgeryRemoveImplantBase">
+							<defName>RemoveMedicalRibUmbral</defName>
+							<label>remove umbral medical rib implant</label>
+							<description>Remove an umbral medical rib implant.</description>
+							<descriptionHyperlinks>
+								<ThingDef>BOR_Femtoclusters</ThingDef>
+								<HediffDef>MedicalRibUmbral</HediffDef>
+							</descriptionHyperlinks>
+							<jobString>Removing umbral rib implant.</jobString>
+							<removesHediff>MedicalRibUmbral</removesHediff>
+						</RecipeDef>
+
+						<!-- Drugged rib -->
+
+						<HediffDef ParentName="BOR_addedPartBionicsUmbralRib">
+							<defName>DruggedRibUmbral</defName>
+							<label>drugged umbral rib</label>
+							<labelNoun>a drugged umbral rib</labelNoun>
+							<description>An installed drugged umbral rib implant.</description>
+							<descriptionHyperlinks>
+								<ThingDef>BOR_Femtoclusters</ThingDef>
+							</descriptionHyperlinks>
+							<hediffClass>Hediff_Implant</hediffClass>
+							<stages>
+								<li>
+									<capMods>
+										<li>
+											<capacity>Consciousness</capacity>
+											<offset>-0.2916</offset>
+										</li>
+									</capMods>
+								</li>
+							</stages>
+							<tags>
+								<li>DruggedRib</li>
+							</tags>
+						</HediffDef>
+
+
+						<RecipeDef ParentName="SurgeryInstallImplantBaseBBORUmbral">
+							<defName>InstallDruggedRibUmbral</defName>
+							<label>install drugged umbral rib implant</label>
+							<description>Installs a drugged umbral rib implant.</description>
+							<descriptionHyperlinks>
+								<ThingDef>BOR_Femtoclusters</ThingDef>
+								<HediffDef>DruggedRibUmbral</HediffDef>
+							</descriptionHyperlinks>
+							<jobString>Installing an umbral drugged rib.</jobString>
+							<appliedOnFixedBodyParts>
+								<li>Ribcage</li>
+							</appliedOnFixedBodyParts>
+							<addsHediff>DruggedRibUmbral</addsHediff>
+							<uiIconThing>BOR_Femtoclusters</uiIconThing>
+							<incompatibleWithHediffTags>
+								<li>DruggedRib</li>
+								<li>LuciferiumRib</li>
+							</incompatibleWithHediffTags>
+						</RecipeDef>
+
+						<RecipeDef ParentName="SurgeryRemoveImplantBase">
+							<defName>RemoveDruggedRibUmbral</defName>
+							<label>remove drugged umbral rib implant</label>
+							<description>Remove a drugged umbral rib implant.</description>
+							<descriptionHyperlinks>
+								<ThingDef>BOR_Femtoclusters</ThingDef>
+								<HediffDef>DruggedRibUmbral</HediffDef>
+							</descriptionHyperlinks>
+							<jobString>Removing umbral rib implant.</jobString>
+							<removesHediff>DruggedRibUmbral</removesHediff>
+						</RecipeDef>
+
+						<!-- Adrenaline rib -->
+
+						<HediffDef ParentName="BOR_addedPartBionicsUmbralRib">
+							<defName>AdrenalineRibUmbral</defName>
+							<label>umbral adrenaline rib</label>
+							<labelNoun>an umbral adrenaline rib</labelNoun>
+							<description>An installed umbral adrenaline rib implant.</description>
+							<descriptionHyperlinks>
+								<ThingDef>BOR_Femtoclusters</ThingDef>
+							</descriptionHyperlinks>
+							<hediffClass>Hediff_Implant</hediffClass>
+							<stages>
+								<li>
+									<capMods>
+										<li>
+											<capacity>Moving</capacity>
+											<offset>0.675</offset>
+										</li>
+									</capMods>
+								</li>
+							</stages>
+							<tags>
+								<li>AdrenalineRib</li>
+							</tags>
+						</HediffDef>
+
+
+						<RecipeDef ParentName="SurgeryInstallImplantBaseBBORUmbral">
+							<defName>InstallAdrenalineRibUmbral</defName>
+							<label>install an umbral adrenaline rib implant</label>
+							<description>Installs a an umbral adrenaline rib implant.</description>
+							<descriptionHyperlinks>
+								<ThingDef>BOR_Femtoclusters</ThingDef>
+								<HediffDef>AdrenalineRibUmbral</HediffDef>
+							</descriptionHyperlinks>
+							<jobString>Installing an umbral adrenaline rib.</jobString>
+							<appliedOnFixedBodyParts>
+								<li>Ribcage</li>
+							</appliedOnFixedBodyParts>
+							<addsHediff>AdrenalineRibUmbral</addsHediff>
+							<uiIconThing>BOR_Femtoclusters</uiIconThing>
+							<incompatibleWithHediffTags>
+								<li>AdrenalineRib</li>
+								<li>LuciferiumRib</li>
+							</incompatibleWithHediffTags>
+						</RecipeDef>
+
+						<RecipeDef ParentName="SurgeryRemoveImplantBase">
+							<defName>RemoveAdrenalineRibUmbral</defName>
+							<label>remove umbral adrenaline rib implant</label>
+							<description>Remove an umbral adrenaline rib implant.</description>
+							<descriptionHyperlinks>
+								<ThingDef>BOR_Femtoclusters</ThingDef>
+								<HediffDef>AdrenalineRibUmbral</HediffDef>
+							</descriptionHyperlinks>
+							<jobString>Removing an umbral rib implant.</jobString>
+							<removesHediff>AdrenalineRibUmbral</removesHediff>
+						</RecipeDef>
+
+						<!-- Painkiller rib -->
+
+						<HediffDef ParentName="BOR_addedPartBionicsUmbralRib">
+							<defName>PainkillerRibUmbral</defName>
+							<label>umbral painkiller rib</label>
+							<labelNoun>an umbral painkiller rib</labelNoun>
+							<description>An installed umbral painkiller rib implant.</description>
+							<descriptionHyperlinks>
+								<ThingDef>BOR_Femtoclusters</ThingDef>
+							</descriptionHyperlinks>
+							<hediffClass>Hediff_Implant</hediffClass>
+							<stages>
+								<li>
+									<painOffset>-0.72</painOffset>
+									<painFactor>0.5416</painFactor>
+								</li>
+							</stages>
+							<tags>
+								<li>PainkillerRib</li>
+							</tags>
+						</HediffDef>
+
+						<RecipeDef ParentName="SurgeryInstallImplantBaseBBORUmbral">
+							<defName>InstallPainkillerRibUmbral</defName>
+							<label>install an umbral painkiller rib implant</label>
+							<description>Installs an umbral painkiller rib implant.</description>
+							<descriptionHyperlinks>
+								<ThingDef>BOR_Femtoclusters</ThingDef>
+								<HediffDef>PainkillerRibUmbral</HediffDef>
+							</descriptionHyperlinks>
+							<jobString>Installing an umbral painkiller rib.</jobString>
+							<appliedOnFixedBodyParts>
+								<li>Ribcage</li>
+							</appliedOnFixedBodyParts>
+							<addsHediff>PainkillerRibUmbral</addsHediff>
+							<uiIconThing>BOR_Femtoclusters</uiIconThing>
+							<incompatibleWithHediffTags>
+								<li>PainkillerRib</li>
+								<li>LuciferiumRib</li>
+							</incompatibleWithHediffTags>
+						</RecipeDef>
+
+						<RecipeDef ParentName="SurgeryRemoveImplantBase">
+							<defName>RemovePainkillerRibUmbral</defName>
+							<label>remove an umbral painkiller rib implant</label>
+							<description>Remove an umbral painkiller rib implant.</description>
+							<descriptionHyperlinks>
+								<ThingDef>BOR_Femtoclusters</ThingDef>
+								<HediffDef>PainkillerRibUmbral</HediffDef>
+							</descriptionHyperlinks>
+							<jobString>Removing an umbral rib implant.</jobString>
+							<removesHediff>PainkillerRibUmbral</removesHediff>
+						</RecipeDef>
+
+						<!-- Heater rib -->
+
+						<HediffDef ParentName="BOR_addedPartBionicsUmbralRib">
+							<defName>HeaterRibUmbral</defName>
+							<label>umbral heating rib</label>
+							<description>An installed umbral heater rib implant.</description>
+							<descriptionHyperlinks>
+								<ThingDef>BOR_Femtoclusters</ThingDef>
+							</descriptionHyperlinks>
+							<hediffClass>Hediff_Implant</hediffClass>
+							<stages>
+								<li>
+									<statOffsets>
+										<ComfyTemperatureMax>-15</ComfyTemperatureMax>
+										<ComfyTemperatureMin>-75</ComfyTemperatureMin>
+									</statOffsets>
+								</li>
+							</stages>
+							<tags>
+								<li>HeaterRib</li>
+							</tags>
+						</HediffDef>
+
+
+						<RecipeDef ParentName="SurgeryInstallImplantBaseBBORUmbral">
+							<defName>InstallHeaterRibUmbral</defName>
+							<label>install as tellar heating rib implant</label>
+							<description>Installs an umbral heating rib implant.</description>
+							<descriptionHyperlinks>
+								<ThingDef>BOR_Femtoclusters</ThingDef>
+								<HediffDef>HeaterRibUmbral</HediffDef>
+							</descriptionHyperlinks>
+							<jobString>Installing an umbral heating rib.</jobString>
+							<appliedOnFixedBodyParts>
+								<li>Ribcage</li>
+							</appliedOnFixedBodyParts>
+							<addsHediff>HeaterRibUmbral</addsHediff>
+							<uiIconThing>BOR_Femtoclusters</uiIconThing>
+							<incompatibleWithHediffTags>
+								<li>HeaterRib</li>
+								<li>LuciferiumRib</li>
+							</incompatibleWithHediffTags>
+						</RecipeDef>
+
+						<RecipeDef ParentName="SurgeryRemoveImplantBase">
+							<defName>RemoveHeaterRibUmbral</defName>
+							<label>remove an umbral heating rib implant</label>
+							<description>Remove an umbral heating rib implant.</description>
+							<descriptionHyperlinks>
+								<ThingDef>BOR_Femtoclusters</ThingDef>
+								<HediffDef>HeaterRibUmbral</HediffDef>
+							</descriptionHyperlinks>
+							<jobString>Removing umbral rib implant.</jobString>
+							<removesHediff>HeaterRibUmbral</removesHediff>
+						</RecipeDef>
+
+						<!-- Cooler rib -->
+
+						<HediffDef ParentName="BOR_addedPartBionicsUmbralRib">
+							<defName>CoolerRibUmbral</defName>
+							<label>umbral cooling rib</label>
+							<description>An installed umbral cooler rib implant.</description>
+							<descriptionHyperlinks>
+								<ThingDef>BOR_Femtoclusters</ThingDef>
+							</descriptionHyperlinks>
+							<hediffClass>Hediff_Implant</hediffClass>
+							<stages>
+								<li>
+									<statOffsets>
+										<ComfyTemperatureMax>75</ComfyTemperatureMax>
+										<ComfyTemperatureMin>15</ComfyTemperatureMin>
+									</statOffsets>
+								</li>
+							</stages>
+							<tags>
+								<li>CoolerRibUmbral</li>
+							</tags>
+						</HediffDef>
+
+						<RecipeDef ParentName="SurgeryInstallImplantBaseBBORUmbral">
+							<defName>InstallCoolerRibUmbral</defName>
+							<label>install an umbral cooling rib implant</label>
+							<description>Installs an umbral cooling rib implant.</description>
+							<descriptionHyperlinks>
+								<ThingDef>BOR_Femtoclusters</ThingDef>
+								<HediffDef>CoolerRibUmbral</HediffDef>
+							</descriptionHyperlinks>
+							<jobString>Installing an umbral cooling rib.</jobString>
+							<appliedOnFixedBodyParts>
+								<li>Ribcage</li>
+							</appliedOnFixedBodyParts>
+							<addsHediff>CoolerRibUmbral</addsHediff>
+							<uiIconThing>BOR_Femtoclusters</uiIconThing>
+							<incompatibleWithHediffTags>
+								<li>CoolerRib</li>
+								<li>LuciferiumRib</li>
+							</incompatibleWithHediffTags>
+						</RecipeDef>
+
+						<RecipeDef ParentName="SurgeryRemoveImplantBase">
+							<defName>RemoveCoolerRibUmbral</defName>
+							<label>remove an umbral cooling rib implant</label>
+							<description>Remove an umbral cooling rib implant.</description>
+							<descriptionHyperlinks>
+								<ThingDef>BOR_Femtoclusters</ThingDef>
+								<HediffDef>CoolerRibUmbral</HediffDef>
+							</descriptionHyperlinks>
+							<jobString>Removing an umbral rib implant.</jobString>
+							<removesHediff>CoolerRibUmbral</removesHediff>
+						</RecipeDef>
+
+						<!-- Coagulator rib -->
+
+						<HediffDef ParentName="BOR_addedPartBionicsUmbralRib">
+							<defName>CoagulatorRibUmbral</defName>
+							<label>umbral coagulator rib</label>
+							<description>An installed umbral coagulator rib implant.</description>
+							<descriptionHyperlinks>
+								<ThingDef>BOR_Femtoclusters</ThingDef>
+							</descriptionHyperlinks>
+							<hediffClass>Hediff_Implant</hediffClass>
+							<stages>
+								<li>
+									<totalBleedFactor>0.675</totalBleedFactor>
+								</li>
+							</stages>
+							<tags>
+								<li>CoagulatorRib</li>
+							</tags>
+						</HediffDef>
+
+						<RecipeDef ParentName="SurgeryInstallImplantBaseBBORUmbral">
+							<defName>InstallCoagulatorRibUmbral</defName>
+							<label>install an umbral coagulator rib implant</label>
+							<description>Installs an umbral coagulator rib implant.</description>
+							<descriptionHyperlinks>
+								<ThingDef>BOR_Femtoclusters</ThingDef>
+								<HediffDef>CoagulatorRibUmbral</HediffDef>
+							</descriptionHyperlinks>
+							<jobString>Installing an umbral coagulator rib.</jobString>
+							<appliedOnFixedBodyParts>
+								<li>Ribcage</li>
+							</appliedOnFixedBodyParts>
+							<addsHediff>CoagulatorRibUmbral</addsHediff>
+							<uiIconThing>BOR_Femtoclusters</uiIconThing>
+							<incompatibleWithHediffTags>
+								<li>CoagulatorRib</li>
+								<li>LuciferiumRib</li>
+							</incompatibleWithHediffTags>
+						</RecipeDef>
+
+						<RecipeDef ParentName="SurgeryRemoveImplantBase">
+							<defName>RemoveCoagulatorRibUmbral</defName>
+							<label>remove an umbral coagulator rib implant</label>
+							<description>Remove an umbral coagulator rib implant.</description>
+							<descriptionHyperlinks>
+								<ThingDef>BOR_Femtoclusters</ThingDef>
+								<HediffDef>CoagulatorRibUmbral</HediffDef>
+							</descriptionHyperlinks>
+							<jobString>Removing an umbral rib implant.</jobString>
+							<removesHediff>CoagulatorRibUmbral</removesHediff>
+						</RecipeDef>
+
+						<!-- Respiration rib -->
+
+						<HediffDef ParentName="BOR_addedPartBionicsUmbralRib">
+							<defName>RespirationRibUmbral</defName>
+							<label>umbral respiration rib</label>
+							<description>An installed umbral respiration rib implant.</description>
+							<descriptionHyperlinks>
+								<ThingDef>BOR_Femtoclusters</ThingDef>
+							</descriptionHyperlinks>
+							<hediffClass>Hediff_Implant</hediffClass>
+							<stages>
+								<li>
+									<statOffsets>
+										<MentalBreakThreshold>-0.45</MentalBreakThreshold>
+									</statOffsets>
+									<capMods>
+										<li>
+											<capacity>Breathing</capacity>
+											<offset>0.675</offset>
+										</li>
+									</capMods>
+								</li>
+							</stages>
+							<tags>
+								<li>RespirationRib</li>
+							</tags>
+						</HediffDef>
+
+						<RecipeDef ParentName="SurgeryInstallImplantBaseBBORUmbral">
+							<defName>InstallRespirationRibUmbral</defName>
+							<label>install an umbral respiration rib implant</label>
+							<description>Installs an umbral respiration rib implant.</description>
+							<descriptionHyperlinks>
+								<ThingDef>BOR_Femtoclusters</ThingDef>
+								<HediffDef>RespirationRibUmbral</HediffDef>
+							</descriptionHyperlinks>
+							<jobString>Installing an umbral respiration rib.</jobString>
+							<appliedOnFixedBodyParts>
+								<li>Ribcage</li>
+							</appliedOnFixedBodyParts>
+							<addsHediff>RespirationRibUmbral</addsHediff>
+							<uiIconThing>BOR_Femtoclusters</uiIconThing>
+							<incompatibleWithHediffTags>
+								<li>RespirationRib</li>
+								<li>LuciferiumRib</li>
+							</incompatibleWithHediffTags>
+						</RecipeDef>
+
+						<RecipeDef ParentName="SurgeryRemoveImplantBase">
+							<defName>RemoveRespirationRibUmbral</defName>
+							<label>remove an umbral respiration rib implant</label>
+							<description>Remove an umbral respiration rib implant.</description>
+							<descriptionHyperlinks>
+								<ThingDef>BOR_Femtoclusters</ThingDef>
+								<HediffDef>RespirationRibUmbral</HediffDef>
+							</descriptionHyperlinks>
+							<jobString>Removing an umbral rib implant.</jobString>
+							<removesHediff>RespirationRibUmbral</removesHediff>
+						</RecipeDef>
+
+						<!-- Wake-up rib -->
+
+						<HediffDef ParentName="BOR_addedPartBionicsUmbralRib">
+							<defName>WakeUpRibUmbral</defName>
+							<label>umbral Crewmate rib</label>
+							<description>An installed umbral Crewmate rib implant.</description>
+							<descriptionHyperlinks>
+								<ThingDef>BOR_Femtoclusters</ThingDef>
+							</descriptionHyperlinks>
+							<hediffClass>Hediff_Implant</hediffClass>
+							<stages>
+								<li>
+									<restFallFactor>0.458</restFallFactor>
+									<statOffsets>
+										<MentalBreakThreshold>0.225</MentalBreakThreshold>
+									</statOffsets>
+									<capMods>
+										<li>
+											<capacity>Consciousness</capacity>
+											<offset>0.6</offset>
+										</li>
+									</capMods>
+								</li>
+							</stages>
+							<tags>
+								<li>WakeUpRib</li>
+							</tags>
+						</HediffDef>
+
+						<RecipeDef ParentName="SurgeryInstallImplantBaseBBORUmbral">
+							<defName>InstallWakeUpRibUmbral</defName>
+							<label>install an umbral Crewmate rib implant</label>
+							<description>Installs an umbral Crewmate rib implant.</description>
+							<descriptionHyperlinks>
+								<ThingDef>BOR_Femtoclusters</ThingDef>
+								<HediffDef>WakeUpRibUmbral</HediffDef>
+							</descriptionHyperlinks>
+							<jobString>Installing an umbral Crewmate rib.</jobString>
+							<appliedOnFixedBodyParts>
+								<li>Ribcage</li>
+							</appliedOnFixedBodyParts>
+							<addsHediff>WakeUpRibUmbral</addsHediff>
+							<uiIconThing>BOR_Femtoclusters</uiIconThing>
+							<incompatibleWithHediffTags>
+								<li>WakeUpRib</li>
+								<li>LuciferiumRib</li>
+							</incompatibleWithHediffTags>
+						</RecipeDef>
+
+						<RecipeDef ParentName="SurgeryRemoveImplantBase">
+							<defName>RemoveWakeUpRibUmbral</defName>
+							<label>remove an umbral Crewmate rib implant</label>
+							<description>Remove an umbral Crewmate rib implant.</description>
+							<descriptionHyperlinks>
+								<ThingDef>BOR_Femtoclusters</ThingDef>
+								<HediffDef>WakeUpRibUmbral</HediffDef>
+							</descriptionHyperlinks>
+							<jobString>Removing an umbral rib implant.</jobString>
+							<removesHediff>WakeUpRibUmbral</removesHediff>
+						</RecipeDef>
+
+					</value>
+				</li>
+
+				<!-- update pawnkinds techhediffs after the defs are loaded in -->
+				<li Class="PatchOperationSequence">
+					<operations>
+
+						<!-- just a placeholder for future sequence related patches -->
+
+					</operations>
+				</li>
+			</operations>
+		</enabled>
+	</Operation>
+
+</Patch>

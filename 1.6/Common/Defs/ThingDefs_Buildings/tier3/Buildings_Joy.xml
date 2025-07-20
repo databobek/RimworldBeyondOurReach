@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>BOR_MegascreenTelevision_III</defName>
+    <label>darkscreen television</label>
+    <designationCategory>BOR</designationCategory>
+    <description>An incomparably massive entertainment device. Tenebrite Crystal Displays coupled with auditory suites of the highest caliber sometimes fool people into forgetting they're watching a movie, TV show, or video game.</description>
+    <graphicData>
+      <texPath>BOR/Things/Building/tier3/tv/tv</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <shadowData>
+        <volume>(2.5, 0.6, 0.1)</volume>
+        <offset>(0, 0, 0.2)</offset>
+      </shadowData>
+      <drawSize>(10,10)</drawSize>
+      <drawOffsetSouth>(0, 3, 0.9)</drawOffsetSouth>
+      <drawOffsetNorth>(0, 3, 0.9)</drawOffsetNorth>
+      <drawOffsetEast>(0, 3, 0.2)</drawOffsetEast>
+      <drawOffsetWest>(0, 3, 0.2)</drawOffsetWest>
+    </graphicData>
+    <altitudeLayer>Building</altitudeLayer>
+    <drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+    <rotatable>true</rotatable>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <socialPropernessMatters>true</socialPropernessMatters>
+    <fillPercent>0.35</fillPercent>
+    <defaultPlacingRot>South</defaultPlacingRot>
+    <thingCategories>
+      <li>BuildingsJoy</li>
+    </thingCategories>
+    <thingSetMakerTags>
+      <li>RewardStandardQualitySuper</li>
+    </thingSetMakerTags>
+    <costList>
+      <BOR_Tenebrite>260</BOR_Tenebrite>
+      <BOR_ComponentIII>22</BOR_ComponentIII>
+    </costList>
+    <statBases>
+			<RoyalFavorValue>4</RoyalFavorValue>
+      <WorkToBuild>27000</WorkToBuild>
+      <MaxHitPoints>190</MaxHitPoints>
+      <Flammability>0.7</Flammability>
+      <Mass>6.944</Mass>
+      <JoyGainFactor>3.6</JoyGainFactor>
+    </statBases>
+    <pathCost>50</pathCost>
+    <passability>PassThroughOnly</passability>
+    <size>(6,1)</size>
+    <building>
+      <joyKind>Television</joyKind>
+      <spawnedConceptLearnOpportunity>TVForSickPeople</spawnedConceptLearnOpportunity>
+      <boughtConceptLearnOpportunity>TVForSickPeople</boughtConceptLearnOpportunity>
+      <watchBuildingStandDistanceRange>2~15</watchBuildingStandDistanceRange>
+      <watchBuildingStandRectWidth>15</watchBuildingStandRectWidth>
+      <watchBuildingInSameRoom>true</watchBuildingInSameRoom>
+      <effectWatching>WatchingTelevision</effectWatching>
+    </building>
+    <placeWorkers>
+      <li>PlaceWorker_WatchArea</li>
+    </placeWorkers>
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <shortCircuitInRain>true</shortCircuitInRain>
+        <basePowerConsumption>10000</basePowerConsumption>
+      </li>
+      <li Class="CompProperties_Flickable" />
+    </comps>
+    <tradeTags>
+      <li>Television</li>
+			<li>BOR_Tech_III</li>
+    </tradeTags>
+    <designatorDropdown>BOR_TVs</designatorDropdown>
+		<researchPrerequisites>
+			<li>BOR_Research_Joy_III</li>
+		</researchPrerequisites>
+  </ThingDef>
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>BOR_Telescope_III</defName>
+    <label>dark telescope</label>
+    <designationCategory>BOR</designationCategory>
+    <description>A telescopic array designed to monitor and observe potential threats to Tenebral claims, though its extensive scanning capabilities alongside the dizzying levels of zoom lend itself to recreational stargazing perfectly. It was never intended to see any form of danger, and can only be used outdoors as a result.</description>
+    <possessionCount>1</possessionCount>
+    <graphicData>
+      <texPath>BOR/Things/Building/tier3/telescope</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawRotated>false</drawRotated>
+      <drawSize>(3,3)</drawSize>
+      <shadowData>
+        <volume>(0.3, 0.7, 0.3)</volume>
+        <offset>(-0.03,0,-0.35)</offset>
+      </shadowData>
+    </graphicData>
+    <size>(2,2)</size>
+    <canBeUsedUnderRoof>false</canBeUsedUnderRoof>
+    <fillPercent>0.15</fillPercent>
+    <altitudeLayer>Building</altitudeLayer>
+    <hasInteractionCell>true</hasInteractionCell>
+    <interactionCellOffset>(0,0,2)</interactionCellOffset>
+    <passability>PassThroughOnly</passability>
+    <pathCost>30</pathCost>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <socialPropernessMatters>true</socialPropernessMatters>
+    <thingCategories>
+      <li>BuildingsJoy</li>
+    </thingCategories>
+    <thingSetMakerTags>
+      <li>RewardStandardQualitySuper</li>
+    </thingSetMakerTags>
+    <building>
+      <joyKind>Telescope</joyKind>
+    </building>
+    <costList>
+      <BOR_Tenebrite>50</BOR_Tenebrite>
+      <BOR_ComponentIII>1</BOR_ComponentIII>
+    </costList>
+    <statBases>
+			<RoyalFavorValue>4</RoyalFavorValue>
+      <MaxHitPoints>252</MaxHitPoints>
+      <Flammability>0.58</Flammability>
+      <MarketValue>1180</MarketValue>
+      <Mass>4.34</Mass>
+      <JoyGainFactor>4.05</JoyGainFactor>
+    </statBases>
+    <placeWorkers>
+      <li>PlaceWorker_NotUnderRoof</li>
+      <li>PlaceWorker_PreventInteractionSpotOverlap</li>
+    </placeWorkers>
+		<researchPrerequisites>
+			<li>BOR_Research_Joy_III</li>
+		</researchPrerequisites>
+    <designatorDropdown>BOR_Telescopes</designatorDropdown>
+  </ThingDef>
+
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>BOR_PC_III</defName>
+    <label>tenebral personal computer</label>
+    <description>An incomparable computer utilizing Tenebral Crystal Displays (TCDs) for visual clarity without peer while also harboring enough processing power to render fourth dimensional objects, should you have enough experience to even do so. Comes with a free copy of DOOM and gives a massive boost to learning after use.</description>
+    <graphicData>
+      <texPath>BOR/Things/Building/tier3/computer/computer</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawOffsetNorth>(0.25, 0, 0.1)</drawOffsetNorth>
+      <drawOffsetSouth>(-0.25, 0, 0.1)</drawOffsetSouth>
+      <drawSize>(3,3)</drawSize>
+    </graphicData>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <altitudeLayer>Building</altitudeLayer>
+    <drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+    <rotatable>true</rotatable>
+    <socialPropernessMatters>true</socialPropernessMatters>
+    <thingCategories>
+      <li>BuildingsJoy</li>
+    </thingCategories>
+    <statBases>
+			<RoyalFavorValue>4</RoyalFavorValue>
+      <MaxHitPoints>337</MaxHitPoints>
+      <WorkToBuild>67500</WorkToBuild>
+      <Mass>10</Mass>
+      <Flammability>0.6625</Flammability>
+      <JoyGainFactor>3.7125</JoyGainFactor>
+    </statBases>
+    <size>(2,1)</size>
+    <defaultPlacingRot>South</defaultPlacingRot>
+    <!-- todo -->
+    <researchPrerequisites>
+      <li>BOR_Research_Joy_III</li>
+    </researchPrerequisites>
+    <constructionSkillPrerequisite>15</constructionSkillPrerequisite>
+    <building>
+      <joyKind>BOR_GamerFun</joyKind>
+      <watchBuildingStandDistanceRange>
+        <min>1</min>
+        <max>1</max>
+      </watchBuildingStandDistanceRange>
+      <watchBuildingStandRectWidth>2</watchBuildingStandRectWidth>
+      <paintable>true</paintable>
+    </building>
+    <costList>
+      <BOR_Tenebrite>100</BOR_Tenebrite>
+      <BOR_ComponentIII>10</BOR_ComponentIII>
+    </costList>
+    <pathCost>40</pathCost>
+    <designationCategory>BOR</designationCategory>
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <shortCircuitInRain>true</shortCircuitInRain>
+        <basePowerConsumption>6075</basePowerConsumption>
+      </li>
+      <li Class="CompProperties_Flickable" />
+    </comps>
+    <tradeTags>
+      <li>Television</li>
+			<li>BOR_Tech_III</li>
+    </tradeTags>
+    <uiIconScale>1</uiIconScale>
+    <hasInteractionCell>True</hasInteractionCell>
+    <interactionCellOffset>(1,0,1)</interactionCellOffset>
+    <placeWorkers>
+      <li>PlaceWorker_PreventInteractionSpotOverlap</li>
+    </placeWorkers>
+    <designatorDropdown>BOR_PCs</designatorDropdown>
+  </ThingDef>
+</Defs>

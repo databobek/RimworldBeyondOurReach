@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+
+    <Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
+        <modSettingDef>BOR_Setting_QuantumCoolingRedux</modSettingDef>
+        <enabled Class="PatchOperationSequence">
+            <operations>
+
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ResearchProjectDef[defName="QC_Research_QuantumCooler_I"]/baseCost</xpath>
+                    <value>
+                        <baseCost>20000</baseCost>
+                    </value>
+                </li>
+
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ResearchProjectDef[defName="QC_Research_QuantumCooler_II" or defName="QC_Research_QuantumCooler_II"]/baseCost</xpath>
+                    <value>
+                        <baseCost>60000</baseCost>
+                    </value>
+                </li>
+
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ResearchProjectDef[defName="QC_Research_QuantumHeater_III"]/baseCost</xpath>
+                    <value>
+                        <baseCost>100000</baseCost>
+                    </value>
+                </li>
+
+                <li Class="PatchOperationAdd">
+                    <xpath>Defs/ResearchProjectDef[defName="QC_Research_QuantumCooler_II" or defName="QC_Research_QuantumCooler_II"]/prerequisites</xpath>
+                    <value>
+                        <li>BOR_Research_Analyzer_II</li>
+                    </value>
+                </li>
+
+                <li Class="PatchOperationAdd">
+                    <xpath>Defs/ResearchProjectDef[defName="QC_Research_QuantumHeater_III"]/prerequisites</xpath>
+                    <value>
+                        <li>BOR_Research_Power_III</li>
+                    </value>
+                </li>
+
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ResearchProjectDef[defName="QC_Research_QuantumCooler_I"]/researchViewX</xpath>
+                    <value>
+                        <researchViewX>21.00</researchViewX>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ResearchProjectDef[defName="QC_Research_QuantumCooler_I"]/researchViewY</xpath>
+                    <value>
+                        <researchViewY>1.90</researchViewY>
+                    </value>
+                </li>
+
+
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ResearchProjectDef[defName="QC_Research_QuantumCooler_II"]/researchViewX</xpath>
+                    <value>
+                        <researchViewX>23.00</researchViewX>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ResearchProjectDef[defName="QC_Research_QuantumCooler_II"]/researchViewY</xpath>
+                    <value>
+                        <researchViewY>4.50</researchViewY>
+                    </value>
+                </li>
+
+
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ResearchProjectDef[defName="QC_Research_QuantumHeater_II"]/researchViewX</xpath>
+                    <value>
+                        <researchViewX>23.00</researchViewX>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ResearchProjectDef[defName="QC_Research_QuantumHeater_II"]/researchViewY</xpath>
+                    <value>
+                        <researchViewY>3.75</researchViewY>
+                    </value>
+                </li>
+
+
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ResearchProjectDef[defName="QC_Research_QuantumHeater_III"]/researchViewX</xpath>
+                    <value>
+                        <researchViewX>26.00</researchViewX>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ResearchProjectDef[defName="QC_Research_QuantumHeater_III"]/researchViewY</xpath>
+                    <value>
+                        <researchViewY>2.80</researchViewY>
+                    </value>
+                </li>
+
+            </operations>
+        </enabled>
+    </Operation>
+
+</Patch>

@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <ThingDef ParentName="MakeableDrugPillBase">
+    <defName>BOR_Pax</defName>
+    <label>pax</label>
+    <description>A "miracle drug" in all but name, Pax renders the user incapable of becoming ill or suffering from the most negative effects of age.\n\nThere have been wars fought over doses of Pax by 'lesser cultures', primarily for the amusement of the Tenebral Dominion.</description>
+    <possessionCount>3</possessionCount>
+    <descriptionHyperlinks>
+      <HediffDef>BOR_PaxHigh</HediffDef>
+    </descriptionHyperlinks>
+    <graphicData>
+      <texPath>BOR/Things/Item/Drugs/Tier3/Immune</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <tradeTags Inherit="False">
+      <li>BOR_Drugs_III</li>
+			<li>BOR_Tech_III</li>
+    </tradeTags>
+    <thingCategories>
+      <li>BOR_Drugs_III</li>
+    </thingCategories>
+    <socialPropernessMatters>false</socialPropernessMatters>
+    <rotatable>false</rotatable>
+    <statBases>
+      <WorkToMake>2025</WorkToMake>
+      <MarketValue>60</MarketValue>
+      <Mass>0.00028</Mass>
+      <Flammability>0.404</Flammability>
+    
+			<RoyalFavorValue>0.2</RoyalFavorValue></statBases>
+    <techLevel>Ultra</techLevel>
+    <ingestible>
+      <drugCategory>Medical</drugCategory>
+      <outcomeDoers>
+        <li Class="IngestionOutcomeDoer_GiveHediff">
+          <hediffDef>BOR_PaxHigh</hediffDef>
+          <severity>1.0</severity>
+        </li>
+      </outcomeDoers>
+    </ingestible>
+    <recipeMaker>
+      <!-- TODO -->
+      <researchPrerequisite>BOR_Research_Drugs_III</researchPrerequisite>
+      <recipeUsers>
+        <li>BOR_MedicineBench_III</li>
+        <li>BOR_Bench_IV</li>
+      </recipeUsers>
+      <displayPriority>2100</displayPriority>
+    </recipeMaker>
+    <costList>
+      <Neutroamine>5</Neutroamine>
+    </costList>
+    <comps>
+      <li Class="CompProperties_Drug">
+        <listOrder>1003</listOrder>
+        <overdoseSeverityOffset>0.046~0.075</overdoseSeverityOffset>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <HediffDef>
+    <defName>BOR_PaxHigh</defName>
+    <hediffClass>Hediff_High</hediffClass>
+    <label>pax</label>
+    <description>Immunity to several effects of Age and all forms of disease or environmental illness due to the presence of Pax in the bloodstream.</description>
+    <defaultLabelColor>(1,0,0.5)</defaultLabelColor>
+    <scenarioCanAdd>true</scenarioCanAdd>
+    <maxSeverity>1.0</maxSeverity>
+    <isBad>false</isBad>
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-0.104</severityPerDay>
+        <showHoursToRecover>true</showHoursToRecover>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <makeImmuneTo>
+          <li>Malaria</li>
+          <li>SleepingSickness</li>
+          <li>Plague</li>
+          <li>GutWorms</li>
+          <li>MuscleParasites</li>
+          <li>WoundInfection</li>
+          <li>Flu</li>
+          <li>FibrousMechanites</li>
+          <li>SensoryMechanites</li>
+          <li>FoodPoisoning</li>
+          <li>ToxicBuildup</li>
+          <li>WoundInfection</li>
+          <li>Carcinoma</li>
+          <li>Dementia</li>
+          <li>Alzheimers</li>
+        </makeImmuneTo>
+      </li>
+    </stages>
+  </HediffDef>
+
+</Defs>

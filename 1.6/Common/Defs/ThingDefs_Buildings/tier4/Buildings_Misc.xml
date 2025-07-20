@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>BOR_Research_Unlocker_IV</defName>
+    <label>umbral spire</label>
+    <description>Increases research speed when placed near hi-tech research bench and unlocks Umbral research projects. Each research bench can only entreat one Umbral spire.</description>
+    <graphicData>
+      <texPath>BOR/Retextures/spire</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(5.15,10)</drawSize>
+      <drawOffset>(0, 4, 3.35)</drawOffset>
+    </graphicData>
+    <uiIconScale>0.85</uiIconScale>
+    <researchPrerequisites>
+      <li>BOR_Research_Gate_IV</li>
+    </researchPrerequisites>
+    <size>(5,3)</size>
+    <rotatable>false</rotatable>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <castEdgeShadows>true</castEdgeShadows>
+    <fillPercent>0.5</fillPercent>
+    <designationHotKey>Misc4</designationHotKey>
+    <designationCategory>BOR</designationCategory>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <canOverlapZones>false</canOverlapZones>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+    <thingCategories>
+      <li>BuildingsMisc</li>
+    </thingCategories>
+    <statBases>
+      <MaxHitPoints>1180</MaxHitPoints>
+      <WorkToBuild>50625</WorkToBuild>
+      <Mass>51</Mass>
+      <Flammability>0.481</Flammability>
+    </statBases>
+    <costList>
+      <BOR_Tenebrite>200</BOR_Tenebrite>
+      <BOR_ComponentIII>8</BOR_ComponentIII>
+    </costList>
+    <building>
+      <destroySound>BuildingDestroyed_Metal_Medium</destroySound>
+    </building>
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <shortCircuitInRain>true</shortCircuitInRain>
+        <basePowerConsumption>1000000</basePowerConsumption>
+      </li>
+      <li Class="CompProperties_Flickable" />
+      <li Class="CompProperties_Facility">
+        <statOffsets>
+          <ResearchSpeedFactor>5</ResearchSpeedFactor>
+        </statOffsets>
+        <maxSimultaneous>1</maxSimultaneous>
+      </li>
+    </comps>
+    <placeWorkers>
+      <li>PlaceWorker_ShowFacilitiesConnections</li>
+    </placeWorkers>
+    <constructionSkillPrerequisite>20</constructionSkillPrerequisite>
+    <designatorDropdown>BOR_Unlockers</designatorDropdown>
+  </ThingDef>
+
+</Defs>

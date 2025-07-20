@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+    <ThingDef ParentName="ResourceBase">
+        <thingClass>ThingWithComps</thingClass>
+        <defName>BOR_FuelRod</defName>
+        <label>solarite fuel rod</label>
+        <description>A sunsteel container housing a remarkable - and frightening - amount of energy which can only be exploited safely in the confines of a Solarite Reactor. \n\nNormally you would be capable of asking what happens when one of these Fuel Rods goes critical, but unfortunately craters the size of a lake cannot answer your queries.</description>
+        <graphicData>
+            <texPath>BOR/Things/Item/Resource/fuelcell</texPath>
+            <graphicClass>Graphic_StackCount</graphicClass>
+        </graphicData>
+        <soundInteract>Metal_Drop</soundInteract>
+        <soundDrop>Standard_Drop</soundDrop>
+        <useHitPoints>true</useHitPoints>
+        <thingCategories>
+            <li>BOR_Complex</li>
+        </thingCategories>
+        <stackLimit>100</stackLimit>
+        <smallVolume>false</smallVolume>
+        <drawGUIOverlay>true</drawGUIOverlay>
+        <deepCommonality>0</deepCommonality>
+        <tickerType>Normal</tickerType>
+        <comps>
+            <li Class="CompProperties_Glower">
+                <glowRadius>2</glowRadius>
+                <glowColor>(50,223,181,0)</glowColor>
+            </li>
+            <li Class="CompProperties_Explosive">
+                <explosiveRadius>10</explosiveRadius>
+                <explosiveDamageType>BombSuper</explosiveDamageType>
+            </li>
+            <li Class="CompProperties_Forbiddable" />
+        </comps>
+        <statBases>
+            <MarketValue>50</MarketValue>
+            <MaxHitPoints>125</MaxHitPoints>
+            <Mass>0.5</Mass>
+            <Flammability>0</Flammability>
+            <DeteriorationRate>0</DeteriorationRate>
+            <Beauty>1</Beauty>
+        </statBases>
+        <tradeTags>
+            <li>ExoticMisc</li>
+            <li>BOR_Complex_I</li>
+			<li>BOR_Tech_I</li>
+        </tradeTags>
+        <thingSetMakerTags>
+            <li>RewardStandardMidFreq</li>
+        </thingSetMakerTags>
+    </ThingDef>
+</Defs>

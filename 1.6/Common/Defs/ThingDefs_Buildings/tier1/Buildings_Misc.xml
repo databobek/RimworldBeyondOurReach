@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>BOR_Research_Unlocker_I</defName>
+    <label>solar fluid simulation array</label>
+		<description>Increases research speed when placed near hi-tech research bench and unlocks Solarite research projects. Each research bench can only use one solar fluid simulation array</description>
+		 <graphicData>
+      <texPath>BOR/Things/Building/tier1/research_unlocker</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(2.3, 2.3)</drawSize>
+      <drawOffset>(0,4,0.2)</drawOffset>
+    </graphicData>
+    <uiIconScale>0.85</uiIconScale>
+    <researchPrerequisites>
+      <li>BOR_Research_Analyzer_I</li>
+    </researchPrerequisites>
+    <size>(2,2)</size>
+    <rotatable>false</rotatable>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <castEdgeShadows>true</castEdgeShadows>
+    <fillPercent>0.5</fillPercent>
+    <designationHotKey>Misc4</designationHotKey>
+    <designationCategory>BOR</designationCategory>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <canOverlapZones>false</canOverlapZones>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+    <thingCategories>
+      <li>BuildingsMisc</li>
+    </thingCategories>
+    <statBases>
+      <MaxHitPoints>350</MaxHitPoints>
+      <WorkToBuild>15000</WorkToBuild>
+      <Mass>90</Mass>
+      <Flammability>0.833</Flammability>
+    </statBases>
+    <costList>
+      <Plasteel>40</Plasteel>
+      <BOR_Sunsteel>50</BOR_Sunsteel>
+      <ComponentSpacer>8</ComponentSpacer>
+    </costList>
+    <building>
+      <destroySound>BuildingDestroyed_Metal_Medium</destroySound>
+    </building>
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <shortCircuitInRain>true</shortCircuitInRain>
+        <basePowerConsumption>5000</basePowerConsumption>
+      </li>
+      <li Class="CompProperties_Flickable" />
+      <li Class="CompProperties_Facility">
+        <statOffsets>
+          <ResearchSpeedFactor>0.33</ResearchSpeedFactor>
+        </statOffsets>
+        <maxSimultaneous>1</maxSimultaneous>
+      </li>
+    </comps>
+    <placeWorkers>
+      <li>PlaceWorker_ShowFacilitiesConnections</li>
+    </placeWorkers>
+    <constructionSkillPrerequisite>12</constructionSkillPrerequisite>
+    <designatorDropdown>BOR_Unlockers</designatorDropdown>
+  </ThingDef>
+
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>BOR_ToolCabinet_I</defName>
+    <label>holotool cabinet</label>
+    <designatorDropdown>BOR_ToolCabinets</designatorDropdown>
+    <description>Increases work speed when placed near a workbench via hardlight projection technology. One workbench can use up to three holo-cabinets.</description>
+    <graphicData>
+      <texPath>BOR/Things/Building/tier1/production_linkable</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1,1)</drawSize>
+    </graphicData>
+    <rotatable>false</rotatable>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <castEdgeShadows>true</castEdgeShadows>
+    <staticSunShadowHeight>0.35</staticSunShadowHeight>
+    <fillPercent>0.5</fillPercent>
+    <canOverlapZones>false</canOverlapZones>
+    <pathCost>32</pathCost>
+    <statBases>
+      <MaxHitPoints>150</MaxHitPoints>
+      <WorkToBuild>2700</WorkToBuild>
+      <Mass>16</Mass>
+      <Flammability>0.4</Flammability>
+    </statBases>
+    <size>(1,1)</size>
+    <costList>
+      <BOR_Sunsteel>200</BOR_Sunsteel>
+      <ComponentSpacer>2</ComponentSpacer>
+    </costList>
+    <building>
+      <destroySound>BuildingDestroyed_Metal_Small</destroySound>
+    </building>
+    <researchPrerequisites>
+      <li>ComplexFurniture</li>
+      <li>BOR_Research_Production_I</li>
+    </researchPrerequisites>
+    <designationCategory>BOR</designationCategory>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+    <thingCategories>
+      <li>BuildingsMisc</li>
+    </thingCategories>
+    <comps>
+      <li Class="CompProperties_Facility">
+        <statOffsets>
+          <WorkTableWorkSpeedFactor>0.135</WorkTableWorkSpeedFactor>
+        </statOffsets>
+        <maxSimultaneous>3</maxSimultaneous>
+      </li>
+    </comps>
+    <designationHotKey>Misc6</designationHotKey>
+    <placeWorkers>
+      <li>PlaceWorker_ShowFacilitiesConnections</li>
+    </placeWorkers>
+  </ThingDef>
+</Defs>
