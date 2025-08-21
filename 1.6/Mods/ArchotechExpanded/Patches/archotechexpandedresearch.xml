@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
 <Patch>
 	<Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
 		<modSettingDef>BOR_Setting_AddArcotechBionicResearch</modSettingDef>
@@ -22,6 +22,65 @@
 							<researchViewX>18.00</researchViewX>
 							<researchViewY>1.00</researchViewY>
 						</ResearchProjectDef>
+					</value>
+				</li>
+
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName = "ArchotechEye" or defName="ArchotechArm" or defName="ArchotechLeg"]/recipeMaker/researchPrerequisite</xpath>
+					<value>
+						<researchPrerequisite>BOR_ArchotechBionics</researchPrerequisite>
+					</value>
+				</li>
+
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[@Name="ArchoPartNormal" or @Name="ArchoPartAdvanced"]/recipeMaker/researchPrerequisite</xpath>
+					<value>
+						<researchPrerequisite>BOR_ArchotechBionics</researchPrerequisite>
+					</value>
+				</li>
+
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ResearchProjectDef[defName="ArchotechMimicry"]/prerequisites</xpath>
+					<value>
+						<prerequisites>
+							<li>BOR_Research_Production_III</li>
+						</prerequisites>
+					</value>
+				</li>
+
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ResearchProjectDef[defName="ArchotechMimicry"]/baseCost</xpath>
+					<value>
+						<baseCost>1000000</baseCost>
+					</value>
+				</li>
+
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ResearchProjectDef[defName="ArchotechMimicry"]/requiredResearchFacilities</xpath>
+					<value>
+						<li>BOR_Research_Unlocker_III</li>
+					</value>
+				</li>
+
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ResearchProjectDef[defName="ArchotechMimicry"]</xpath>
+					<value>
+						<tab>BOR_Research_Tab</tab>
+					</value>
+				</li>
+
+
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ResearchProjectDef[defName="ArchotechMimicry"]/researchViewX</xpath>
+					<value>
+						<researchViewX>12.00</researchViewX>
+					</value>
+				</li>
+
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ResearchProjectDef[defName="ArchotechMimicry"]/researchViewY</xpath>
+					<value>
+						<researchViewY>1.25</researchViewY>
 					</value>
 				</li>
 			</operations>
