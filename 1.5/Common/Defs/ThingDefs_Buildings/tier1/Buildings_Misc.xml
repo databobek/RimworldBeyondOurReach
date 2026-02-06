@@ -4,8 +4,8 @@
   <ThingDef ParentName="BuildingBase">
     <defName>BOR_Research_Unlocker_I</defName>
     <label>solar fluid simulation array</label>
-		<description>Increases research speed when placed near hi-tech research bench and unlocks Solarite research projects. Each research bench can only use one solar fluid simulation array</description>
-		 <graphicData>
+    <description>Increases research speed when placed near hi-tech research bench and unlocks Solarite research projects. Each research bench can only use one solar fluid simulation array</description>
+    <graphicData>
       <texPath>BOR/Things/Building/tier1/research_unlocker</texPath>
       <graphicClass>Graphic_Single</graphicClass>
       <drawSize>(2.3, 2.3)</drawSize>
@@ -120,4 +120,59 @@
       <li>PlaceWorker_ShowFacilitiesConnections</li>
     </placeWorkers>
   </ThingDef>
+  <ThingDef ParentName="BuildingBase">
+    <defName>BOR_MoisturePump_I</defName>
+    <label>solar moisture pump</label>
+    <description>Very slowly equalizes moisture in nearby terrain, converting marshes or shallow water into dry ground, and soft sand into normal sand. Does not affect deep water.</description>
+    <graphicData>
+      <texPath>Things/Building/Misc/MoisturePump</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shadowData>
+        <volume>(0.58, 0.35, 0.25)</volume>
+        <offset>(0,0,-0.1)</offset>
+      </shadowData>
+      <damageData>
+        <rect>(0.2,0.2,0.6,0.6)</rect>
+      </damageData>
+    </graphicData>
+    <comps>
+      <li Class="CompProperties_Forbiddable" />
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>225</basePowerConsumption>
+      </li>
+      <li Class="CompProperties_TerrainPumpDry">
+        <soundWorking>MoisturePump_Ambience</soundWorking>
+        <radius>10.9</radius>
+        <daysToRadius>50</daysToRadius>
+      </li>
+    </comps>
+    <tickerType>Rare</tickerType>
+    <altitudeLayer>Building</altitudeLayer>
+    <statBases>
+      <MaxHitPoints>75</MaxHitPoints>
+      <WorkToBuild>2250</WorkToBuild>
+      <Flammability>1.0</Flammability>
+      <Beauty>-6</Beauty>
+    </statBases>
+    <fillPercent>0.15</fillPercent>
+    <building>
+      <ai_chillDestination>false</ai_chillDestination>
+      <destroySound>BuildingDestroyed_Metal_Small</destroySound>
+    </building>
+    <costList>
+      <BOR_Sunsteel>75</BOR_Sunsteel>
+      <ComponentSpacer>4</ComponentSpacer>
+    </costList>
+    <specialDisplayRadius>10.9</specialDisplayRadius>
+    <pathCost>30</pathCost>
+    <passability>PassThroughOnly</passability>
+    <designationCategory>Misc</designationCategory>
+    <rotatable>false</rotatable>
+    <researchPrerequisites>
+      <li>BOR_Research_Analyzer_I</li>
+    </researchPrerequisites>
+    <constructionSkillPrerequisite>9</constructionSkillPrerequisite>
+  </ThingDef>
+
 </Defs>
