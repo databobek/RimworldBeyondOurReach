@@ -122,4 +122,58 @@
       <li>PlaceWorker_ShowFacilitiesConnections</li>
     </placeWorkers>
   </ThingDef>
+  <ThingDef ParentName="BuildingBase">
+    <defName>BOR_MoisturePump_II</defName>
+    <label>kwazaari moisture pump</label>
+    <description>Very slowly equalizes moisture in nearby terrain, converting marshes or shallow water into dry ground, and soft sand into normal sand. Does not affect deep water.</description>
+    <graphicData>
+      <texPath>Things/Building/Misc/MoisturePump</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shadowData>
+        <volume>(0.58, 0.35, 0.25)</volume>
+        <offset>(0,0,-0.1)</offset>
+      </shadowData>
+      <damageData>
+        <rect>(0.2,0.2,0.6,0.6)</rect>
+      </damageData>
+    </graphicData>
+    <comps>
+      <li Class="CompProperties_Forbiddable" />
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>350</basePowerConsumption>
+      </li>
+      <li Class="CompProperties_TerrainPumpDry">
+        <soundWorking>MoisturePump_Ambience</soundWorking>
+        <radius>15.9</radius>
+        <daysToRadius>40</daysToRadius>
+      </li>
+    </comps>
+    <tickerType>Rare</tickerType>
+    <altitudeLayer>Building</altitudeLayer>
+    <statBases>
+      <MaxHitPoints>112</MaxHitPoints>
+      <WorkToBuild>3500</WorkToBuild>
+      <Flammability>1.0</Flammability>
+      <Beauty>-4</Beauty>
+    </statBases>
+    <fillPercent>0.15</fillPercent>
+    <building>
+      <ai_chillDestination>false</ai_chillDestination>
+      <destroySound>BuildingDestroyed_Metal_Small</destroySound>
+    </building>
+    <costList>
+      <BOR_QuasarAlloy>75</BOR_QuasarAlloy>
+      <BOR_ComponentII>4</BOR_ComponentII>
+    </costList>
+    <specialDisplayRadius>15.9</specialDisplayRadius>
+    <pathCost>30</pathCost>
+    <passability>PassThroughOnly</passability>
+    <designationCategory>Misc</designationCategory>
+    <rotatable>false</rotatable>
+    <researchPrerequisites>
+      <li>BOR_Research_Analyzer_II</li>
+    </researchPrerequisites>
+    <constructionSkillPrerequisite>14</constructionSkillPrerequisite>
+  </ThingDef>
 </Defs>
