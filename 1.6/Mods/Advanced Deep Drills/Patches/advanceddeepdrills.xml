@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+	<Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
+		<modSettingDef>BOR_Setting_IntegrateAdvancedDeepDrills</modSettingDef>
+		<enabled Class="PatchOperationAdd">
+			<xpath>Defs</xpath>
+			<value>
+
+				<ThingDef ParentName="DeepDrillBase">
+					<defName>BOR_StellarDeepDrill</defName>
+					<label>stellar deep drill</label>
+					<description>A solar-tier deep drill that pushes the great deep drill pattern another 1.5 times harder, drawing far more power for a substantial increase in drilling speed and yield.</description>
+					<graphicData>
+						<graphicClass>Graphic_Single</graphicClass>
+						<texPath>BOR/Things/Building/Production/BOR_StellarDeepDrill</texPath>
+						<drawSize>(1.3, 1.3)</drawSize>
+						<drawOffset>(0, 0, 0.05)</drawOffset>
+						<drawRotated>false</drawRotated>
+						<shadowData>
+							<volume>(0.52, 0.53, 0.09)</volume>
+							<offset>(0, 0, -0.43)</offset>
+						</shadowData>
+					</graphicData>
+					<uiIconScale>0.9</uiIconScale>
+					<constructionSkillPrerequisite>12</constructionSkillPrerequisite>
+					<designationCategory>BOR</designationCategory>
+					<building>
+						<uninstallWork>1500</uninstallWork>
+						<buildingTags>
+							<li>Production</li>
+						</buildingTags>
+						<destroySound>BuildingDestroyed_Metal_Small</destroySound>
+					</building>
+					<thingCategories>
+						<li>BuildingsProduction</li>
+					</thingCategories>
+					<costList>
+						<BOR_Sunsteel>350</BOR_Sunsteel>
+						<ComponentSpacer>5</ComponentSpacer>
+						<BOR_Neutronium>80</BOR_Neutronium>
+					</costList>
+					<researchPrerequisites>
+						<li>BOR_Research_Stellar_DeepDrilling</li>
+					</researchPrerequisites>
+					<statBases>
+						<MaxHitPoints>1200</MaxHitPoints>
+						<WorkToBuild>30000</WorkToBuild>
+						<Flammability>0.08</Flammability>
+						<Beauty>-16</Beauty>
+						<Mass>48</Mass>
+					</statBases>
+					<comps>
+						<li Class="CompProperties_Power">
+							<compClass>CompPowerTrader</compClass>
+							<basePowerConsumption>1500</basePowerConsumption>
+						</li>
+						<li Class="AdvancedDeepDrills.CompProperties_AdvancedDeepDrill">
+							<drillSpeedModifier>4.5</drillSpeedModifier>
+							<drillYieldModifier>2.625</drillYieldModifier>
+						</li>
+					</comps>
+				</ThingDef>
+
+				<ThingDef ParentName="DeepDrillBase">
+					<defName>BOR_QuasarDeepDrill</defName>
+					<label>quasar deep drill</label>
+					<description>A quasar-tier deep drill that scales the stellar design by another 1.5 times, combining extreme extraction output with correspondingly extreme power draw.</description>
+					<graphicData>
+						<graphicClass>Graphic_Single</graphicClass>
+						<texPath>BOR/Things/Building/Production/BOR_QuasarDeepDrill</texPath>
+						<drawSize>(1.3, 1.3)</drawSize>
+						<drawOffset>(0, 0, 0.05)</drawOffset>
+						<drawRotated>false</drawRotated>
+						<shadowData>
+							<volume>(0.52, 0.53, 0.09)</volume>
+							<offset>(0, 0, -0.43)</offset>
+						</shadowData>
+					</graphicData>
+					<uiIconScale>0.9</uiIconScale>
+					<constructionSkillPrerequisite>14</constructionSkillPrerequisite>
+					<designationCategory>BOR</designationCategory>
+					<building>
+						<uninstallWork>1500</uninstallWork>
+						<buildingTags>
+							<li>Production</li>
+						</buildingTags>
+						<destroySound>BuildingDestroyed_Metal_Small</destroySound>
+					</building>
+					<thingCategories>
+						<li>BuildingsProduction</li>
+					</thingCategories>
+					<costList>
+						<BOR_QuasarAlloy>525</BOR_QuasarAlloy>
+						<BOR_ComponentII>5</BOR_ComponentII>
+						<BOR_Neutronium>120</BOR_Neutronium>
+					</costList>
+					<researchPrerequisites>
+						<li>BOR_Research_Quasar_DeepDrilling</li>
+					</researchPrerequisites>
+					<statBases>
+						<MaxHitPoints>1800</MaxHitPoints>
+						<WorkToBuild>45000</WorkToBuild>
+						<Flammability>0.05</Flammability>
+						<Beauty>-14</Beauty>
+						<Mass>54</Mass>
+					</statBases>
+					<comps>
+						<li Class="CompProperties_Power">
+							<compClass>CompPowerTrader</compClass>
+							<basePowerConsumption>2250</basePowerConsumption>
+						</li>
+						<li Class="AdvancedDeepDrills.CompProperties_AdvancedDeepDrill">
+							<drillSpeedModifier>6.75</drillSpeedModifier>
+							<drillYieldModifier>3.9375</drillYieldModifier>
+						</li>
+					</comps>
+				</ThingDef>
+
+				<ThingDef ParentName="DeepDrillBase">
+					<defName>BOR_TenebralDeepDrill</defName>
+					<label>tenebral deep drill</label>
+					<description>A tenebral deep drill that scales the quasar pattern by another 1.5 times, delivering obscene mining throughput at equally obscene energy demand.</description>
+					<graphicData>
+						<graphicClass>Graphic_Single</graphicClass>
+						<texPath>BOR/Things/Building/Production/BOR_TenebralDeepDrill</texPath>
+						<drawSize>(1.3, 1.3)</drawSize>
+						<drawOffset>(0, 0, 0.05)</drawOffset>
+						<drawRotated>false</drawRotated>
+						<shadowData>
+							<volume>(0.52, 0.53, 0.09)</volume>
+							<offset>(0, 0, -0.43)</offset>
+						</shadowData>
+					</graphicData>
+					<uiIconScale>0.9</uiIconScale>
+					<constructionSkillPrerequisite>16</constructionSkillPrerequisite>
+					<designationCategory>BOR</designationCategory>
+					<building>
+						<uninstallWork>1500</uninstallWork>
+						<buildingTags>
+							<li>Production</li>
+						</buildingTags>
+						<destroySound>BuildingDestroyed_Metal_Small</destroySound>
+					</building>
+					<thingCategories>
+						<li>BuildingsProduction</li>
+					</thingCategories>
+					<costList>
+						<BOR_Tenebrite>800</BOR_Tenebrite>
+						<BOR_ComponentIII>5</BOR_ComponentIII>
+						<BOR_Neutronium>180</BOR_Neutronium>
+					</costList>
+					<researchPrerequisites>
+						<li>BOR_Research_Tenebral_DeepDrilling</li>
+					</researchPrerequisites>
+					<statBases>
+						<MaxHitPoints>2700</MaxHitPoints>
+						<WorkToBuild>67500</WorkToBuild>
+						<Flammability>0.02</Flammability>
+						<Beauty>-12</Beauty>
+						<Mass>60</Mass>
+					</statBases>
+					<comps>
+						<li Class="CompProperties_Power">
+							<compClass>CompPowerTrader</compClass>
+							<basePowerConsumption>3375</basePowerConsumption>
+						</li>
+						<li Class="AdvancedDeepDrills.CompProperties_AdvancedDeepDrill">
+							<drillSpeedModifier>10.125</drillSpeedModifier>
+							<drillYieldModifier>5.90625</drillYieldModifier>
+						</li>
+					</comps>
+				</ThingDef>
+
+			</value>
+		</enabled>
+	</Operation>
+</Patch>
