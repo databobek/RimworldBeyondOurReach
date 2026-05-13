@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <ThingDef Name="BOR_QualityHeadgearBase_III" ParentName="ArmorHelmetMakeableBase" Abstract="True">
+    <techLevel>Archotech</techLevel>
+    <recipeMaker>
+      <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+      <researchPrerequisites>
+        <li>BOR_Research_Armor_III</li>
+      </researchPrerequisites>
+      <skillRequirements>
+        <Crafting>12</Crafting>
+      </skillRequirements>
+      <recipeUsers Inherit="False">
+        <li>BOR_Bench_III</li>
+        <li>BOR_Bench_IV</li>
+      </recipeUsers>
+    </recipeMaker>
+  </ThingDef>
+
+  <ThingDef Name="BOR_QualityArmorBase_III" ParentName="ArmorMachineableBase" Abstract="True">
+    <techLevel>Archotech</techLevel>
+    <recipeMaker>
+      <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+      <researchPrerequisites>
+        <li>BOR_Research_Armor_III</li>
+      </researchPrerequisites>
+      <skillRequirements>
+        <Crafting>10</Crafting>
+      </skillRequirements>
+      <recipeUsers Inherit="False">
+        <li>BOR_Bench_III</li>
+        <li>BOR_Bench_IV</li>
+      </recipeUsers>
+    </recipeMaker>
+  </ThingDef>
+
+  <ThingDef Name="BOR_NoQualityWearableBase_III" ParentName="ApparelNoQualityBase" Abstract="True">
+    <techLevel>Archotech</techLevel>
+    <recipeMaker>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Smith</effectWorking>
+      <soundWorking>Recipe_Smith</soundWorking>
+      <unfinishedThingDef>UnfinishedApparel</unfinishedThingDef>
+      <researchPrerequisites>
+        <li>BOR_Research_Armor_III</li>
+      </researchPrerequisites>
+      <skillRequirements>
+        <Crafting>10</Crafting>
+      </skillRequirements>
+      <recipeUsers Inherit="False">
+        <li>BOR_Bench_III</li>
+        <li>BOR_Bench_IV</li>
+      </recipeUsers>
+      <defaultIngredientFilter>
+        <categories>
+          <li>Root</li>
+        </categories>
+        <disallowedThingDefs>
+          <li>Gold</li>
+          <li>Silver</li>
+          <li>Plasteel</li>
+          <li>Jade</li>
+          <li>Uranium</li>
+          <li MayRequire="Ludeon.RimWorld.Anomaly">Bioferrite</li>
+          <li MayRequire="Ludeon.RimWorld.Odyssey">Obsidian</li>
+        </disallowedThingDefs>
+      </defaultIngredientFilter>
+    </recipeMaker>
+  </ThingDef>
+
+  <ThingDef ParentName="BOR_QualityHeadgearBase_III">
+    <defName>BOR_TenebralQuantumRebreatherMask</defName>
+    <label>tenebral quantum rebreather mask</label>
+    <description>An apex filtered quantum rebreather built for the harshest substrate environments.</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/EltexHelmet/EltexHelmet</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>0.90</drawSize>
+      <color>(0.14, 0.42, 0.66)</color>
+    </graphicData>
+    <statBases>
+      <WorkToMake>21875</WorkToMake>
+      <MaxHitPoints>506.25</MaxHitPoints>
+      <Mass>0.6944</Mass>
+      <Flammability>0.2083</Flammability>
+      <ArmorRating_Sharp>3.15</ArmorRating_Sharp>
+      <ArmorRating_Blunt>1.35</ArmorRating_Blunt>
+      <ArmorRating_Heat>1.4625</ArmorRating_Heat>
+      <Insulation_Cold>9</Insulation_Cold>
+      <Insulation_Heat>4.5</Insulation_Heat>
+      <EquipDelay>1.3889</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <BOR_Synthesize_Neutronium>0.27</BOR_Synthesize_Neutronium>
+    </equippedStatOffsets>
+    <thingCategories>
+      <li>BOR_Armor_Headgear_III</li>
+    </thingCategories>
+    <costList>
+      <BOR_Tenebrite>35</BOR_Tenebrite>
+      <BOR_ComponentIII>1</BOR_ComponentIII>
+    </costList>
+    <apparel>
+      <immuneToToxGasExposure>true</immuneToToxGasExposure>
+      <bodyPartGroups>
+        <li>FullHead</li>
+      </bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/EltexHelmet/EltexHelmet</wornGraphicPath>
+      <layers>
+        <li>Overhead</li>
+      </layers>
+      <defaultOutfitTags>
+        <li>Soldier</li>
+      </defaultOutfitTags>
+    </apparel>
+    <tradeTags>
+      <li>Armor</li>
+      <li>BOR_Armor_III</li>
+      <li>BOR_Tech_III</li>
+    </tradeTags>
+  </ThingDef>
+
+  <ThingDef ParentName="BOR_QualityHeadgearBase_III">
+    <defName>BOR_TenebralSunforgeCalibrationVisor</defName>
+    <label>tenebral sunforge calibration visor</label>
+    <description>An apex visor that filters glare and timing drift for precision forging.</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/AirwireHeadset/AirwireHeadset</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>0.60</drawSize>
+      <color>(0.76, 0.68, 0.28)</color>
+    </graphicData>
+    <statBases>
+      <WorkToMake>15277.778</WorkToMake>
+      <MaxHitPoints>405</MaxHitPoints>
+      <Mass>0.5556</Mass>
+      <Flammability>0.2083</Flammability>
+      <ArmorRating_Sharp>2.7</ArmorRating_Sharp>
+      <ArmorRating_Blunt>1.125</ArmorRating_Blunt>
+      <ArmorRating_Heat>1.2375</ArmorRating_Heat>
+      <Insulation_Cold>6.75</Insulation_Cold>
+      <Insulation_Heat>3.375</Insulation_Heat>
+      <EquipDelay>1.3889</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <BOR_QuantumForging>0.27</BOR_QuantumForging>
+    </equippedStatOffsets>
+    <thingCategories>
+      <li>BOR_Armor_Headgear_III</li>
+    </thingCategories>
+    <costList>
+      <BOR_Tenebrite>28</BOR_Tenebrite>
+      <BOR_ComponentIII>1</BOR_ComponentIII>
+    </costList>
+    <apparel>
+      <bodyPartGroups>
+        <li>UpperHead</li>
+      </bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/AirwireHeadset/AirwireHeadset</wornGraphicPath>
+      <layers>
+        <li>Overhead</li>
+      </layers>
+      <defaultOutfitTags>
+        <li>Soldier</li>
+      </defaultOutfitTags>
+    </apparel>
+    <tradeTags>
+      <li>Armor</li>
+      <li>BOR_Armor_III</li>
+      <li>BOR_Tech_III</li>
+    </tradeTags>
+  </ThingDef>
+
+  <ThingDef ParentName="BOR_NoQualityWearableBase_III">
+    <defName>BOR_TenebralQuantumHapticGloves</defName>
+    <label>tenebral quantum haptic gloves</label>
+    <description>Apex haptic gloves tuned for microscopic substrate handling.</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/EltexShirt/EltexShirt</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>0.85</drawSize>
+      <color>(0.12, 0.82, 0.84)</color>
+    </graphicData>
+    <statBases>
+      <WorkToMake>4166.667</WorkToMake>
+      <MaxHitPoints>270</MaxHitPoints>
+      <Mass>0.1042</Mass>
+      <Flammability>0.2083</Flammability>
+      <ArmorRating_Sharp>0.0675</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.0225</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.045</ArmorRating_Heat>
+      <EquipDelay>1.0417</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <BOR_Synthesize_Neutronium>0.3375</BOR_Synthesize_Neutronium>
+    </equippedStatOffsets>
+    <thingCategories>
+      <li>BOR_Apparel</li>
+    </thingCategories>
+    <costList>
+      <BOR_Tenebrite>12</BOR_Tenebrite>
+      <BOR_ComponentIII>1</BOR_ComponentIII>
+    </costList>
+    <apparel>
+      <bodyPartGroups>
+        <li>Hands</li>
+      </bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/EltexShirt/EltexShirt</wornGraphicPath>
+      <layers>
+        <li>OnSkin</li>
+      </layers>
+      <tags>
+        <li>Clothing</li>
+      </tags>
+      <defaultOutfitTags>
+        <li>Worker</li>
+        <li>Soldier</li>
+      </defaultOutfitTags>
+    </apparel>
+    <tradeTags>
+      <li>Clothing</li>
+      <li>BOR_Tech_III</li>
+    </tradeTags>
+  </ThingDef>
+
+  <ThingDef ParentName="BOR_QualityArmorBase_III">
+    <defName>BOR_TenebralSunforgeWeldersCoat</defName>
+    <label>tenebral sunforge welder's coat</label>
+    <description>An apex heat-resistant coat with field-dampening panels for the most hostile forge lines.</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/FlakJacket/FlakJacket</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>1.00</drawSize>
+      <color>(0.72, 0.46, 0.30)</color>
+    </graphicData>
+    <statBases>
+      <WorkToMake>14583.333</WorkToMake>
+      <MaxHitPoints>675</MaxHitPoints>
+      <Mass>3.4722</Mass>
+      <Flammability>0.3472</Flammability>
+      <ArmorRating_Sharp>1.35</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.27</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.3375</ArmorRating_Heat>
+      <Insulation_Cold>47.25</Insulation_Cold>
+      <Insulation_Heat>10.125</Insulation_Heat>
+      <EquipDelay>2.0833</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <BOR_QuantumForging>0.3375</BOR_QuantumForging>
+    </equippedStatOffsets>
+    <thingCategories>
+      <li>BOR_Armor_III</li>
+    </thingCategories>
+    <costList>
+      <BOR_QuasarAlloyWeave>50</BOR_QuasarAlloyWeave>
+      <BOR_Tenebrite>70</BOR_Tenebrite>
+      <BOR_ComponentIII>1</BOR_ComponentIII>
+    </costList>
+    <apparel>
+      <bodyPartGroups>
+        <li>Torso</li>
+        <li>Neck</li>
+        <li>Shoulders</li>
+        <li>Arms</li>
+      </bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/FlakJacket/FlakJacket</wornGraphicPath>
+      <layers>
+        <li>Shell</li>
+      </layers>
+      <tags>
+        <li>HiTechArmor</li>
+        <li>BOR_Military_III</li>
+      </tags>
+      <defaultOutfitTags>
+        <li>Soldier</li>
+      </defaultOutfitTags>
+    </apparel>
+    <tradeTags>
+      <li>Clothing</li>
+      <li>Armor</li>
+      <li>BOR_Clothing_III</li>
+      <li>BOR_Armor_III</li>
+      <li>BOR_Tech_III</li>
+    </tradeTags>
+  </ThingDef>
+
+  <ThingDef ParentName="BOR_QualityArmorBase_III">
+    <defName>BOR_TenebralBionicAssemblyHarness</defName>
+    <label>tenebral bionic assembly harness</label>
+    <description>An apex torso harness that braces the shoulders and upper back for exact assembly at extreme throughput.</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/ReconArmor/ReconArmor</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <color>(0.42, 0.56, 0.78)</color>
+    </graphicData>
+    <statBases>
+      <WorkToMake>46875</WorkToMake>
+      <MaxHitPoints>945</MaxHitPoints>
+      <Mass>4.8611</Mass>
+      <Flammability>0.2083</Flammability>
+      <ArmorRating_Sharp>3.2625</ArmorRating_Sharp>
+      <ArmorRating_Blunt>1.35</ArmorRating_Blunt>
+      <ArmorRating_Heat>1.53</ArmorRating_Heat>
+      <Insulation_Cold>108</Insulation_Cold>
+      <Insulation_Heat>29.25</Insulation_Heat>
+      <EquipDelay>7.6389</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <BOR_BionicCraftingSpeed>0.3375</BOR_BionicCraftingSpeed>
+    </equippedStatOffsets>
+    <thingCategories>
+      <li>BOR_Armor_III</li>
+    </thingCategories>
+    <costList>
+      <BOR_Tenebrite>80</BOR_Tenebrite>
+      <BOR_Neutronium>10</BOR_Neutronium>
+      <BOR_ComponentIII>3</BOR_ComponentIII>
+    </costList>
+    <apparel>
+      <bodyPartGroups>
+        <li>Torso</li>
+        <li>Shoulders</li>
+      </bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/ReconArmor/ReconArmor</wornGraphicPath>
+      <layers>
+        <li>Middle</li>
+        <li>Shell</li>
+      </layers>
+      <tags>
+        <li>HiTechArmor</li>
+        <li>BOR_Military_III</li>
+      </tags>
+      <defaultOutfitTags>
+        <li>Soldier</li>
+      </defaultOutfitTags>
+    </apparel>
+    <tradeTags>
+      <li>Armor</li>
+      <li>BOR_Armor_III</li>
+      <li>BOR_Tech_III</li>
+    </tradeTags>
+  </ThingDef>
+
+  <ThingDef ParentName="BOR_QualityArmorBase_III">
+    <defName>BOR_TenebralPrecisionAssemblyGloves</defName>
+    <label>tenebral precision assembly gloves</label>
+    <description>Apex structured sensor gloves with haptic sub-dermal guides.</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/EltexShirt/EltexShirt</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>0.85</drawSize>
+      <color>(0.42, 0.78, 0.48)</color>
+    </graphicData>
+    <statBases>
+      <WorkToMake>5555.556</WorkToMake>
+      <MaxHitPoints>270</MaxHitPoints>
+      <Mass>0.125</Mass>
+      <Flammability>0.2083</Flammability>
+      <ArmorRating_Sharp>0.09</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.045</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.045</ArmorRating_Heat>
+      <EquipDelay>1.0417</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <BOR_BionicCraftingSpeed>0.225</BOR_BionicCraftingSpeed>
+    </equippedStatOffsets>
+    <thingCategories>
+      <li>BOR_Apparel</li>
+    </thingCategories>
+    <costList>
+      <BOR_Tenebrite>16</BOR_Tenebrite>
+      <BOR_ComponentIII>1</BOR_ComponentIII>
+    </costList>
+    <apparel>
+      <bodyPartGroups>
+        <li>Hands</li>
+      </bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/EltexShirt/EltexShirt</wornGraphicPath>
+      <layers>
+        <li>OnSkin</li>
+      </layers>
+      <tags>
+        <li>Clothing</li>
+      </tags>
+      <defaultOutfitTags>
+        <li>Worker</li>
+        <li>Soldier</li>
+      </defaultOutfitTags>
+    </apparel>
+    <tradeTags>
+      <li>Clothing</li>
+      <li>BOR_Tech_III</li>
+    </tradeTags>
+  </ThingDef>
+
+</Defs>

@@ -1,0 +1,1137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <RecipeDef Name="BOR_UmbralSurgeryInstallImplantBase" ParentName="SurgeryInstallImplantBase" Abstract="True">
+    <researchPrerequisite>BOR_Research_Bionics_IV</researchPrerequisite>
+    <workAmount>30000</workAmount>
+    <skillRequirements>
+      <Medicine>20</Medicine>
+      <Intellectual>20</Intellectual>
+    </skillRequirements>
+    <recipeUsers>
+      <li>BOR_MedicineBench_III</li>
+      <li>BOR_Bench_IV</li>
+    </recipeUsers>
+    <ingredients Inherit="False">
+      <li>
+        <filter>
+          <thingDefs>
+            <li>BOR_MedicineIII</li>
+          </thingDefs>
+        </filter>
+        <count>2</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>BOR_MedicineIII</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+  </RecipeDef>
+
+  <HediffDef ParentName="BOR_ImplantUmbralHediffBase">
+    <defName>BOR_UmbralDuelflowLattice</defName>
+    <label>umbral duelflow lattice</label>
+    <labelNoun>a duelflow lattice</labelNoun>
+    <description>A combat telemetry implant that predicts strike cadence milliseconds ahead, pushing close-quarters lethality into the red.</description>
+    <descriptionHyperlinks>
+      <ThingDef>BOR_UmbralDuelflowLattice</ThingDef>
+    </descriptionHyperlinks>
+    <spawnThingOnRemoved>BOR_UmbralDuelflowLattice</spawnThingOnRemoved>
+    <stages>
+      <li>
+        <statOffsets>
+          <MeleeDPS>7.2</MeleeDPS>
+        </statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <ThingDef ParentName="TenebralBodyPartBionicBase">
+    <defName>BOR_UmbralDuelflowLattice</defName>
+    <label>umbral duelflow lattice</label>
+    <description>A black-box combat predictor that threads melee exchanges into a lethal tempo. Forged from umbral femtocluster architecture meant for post-human warforms.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>BOR_InstallUmbralDuelflowLattice</RecipeDef>
+    </descriptionHyperlinks>
+    <costList>
+      <BOR_Femtoclusters>8</BOR_Femtoclusters>
+      <BOR_ComponentIII>2</BOR_ComponentIII>
+    </costList>
+    <statBases>
+      <Mass>0.12</Mass>
+      <MarketValue>3200</MarketValue>
+    </statBases>
+  </ThingDef>
+
+  <RecipeDef ParentName="BOR_UmbralSurgeryInstallImplantBase">
+    <defName>BOR_InstallUmbralDuelflowLattice</defName>
+    <label>install umbral duelflow lattice</label>
+    <description>Install a duelflow lattice.</description>
+    <descriptionHyperlinks>
+      <ThingDef>BOR_UmbralDuelflowLattice</ThingDef>
+      <HediffDef>BOR_UmbralDuelflowLattice</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing umbral duelflow lattice.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>BOR_TenebralOrgan</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>BOR_TenebralOrgan</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Torso</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>BOR_UmbralDuelflowLattice</addsHediff>
+  </RecipeDef>
+
+  <HediffDef ParentName="BOR_ImplantUmbralHediffBase">
+    <defName>BOR_UmbralGraviticStrikeGovernor</defName>
+    <label>umbral gravitic strike governor</label>
+    <labelNoun>a gravitic strike governor</labelNoun>
+    <description>A forearm governor that phase-loads impact vectors so every blow lands heavier than flesh should allow.</description>
+    <descriptionHyperlinks>
+      <ThingDef>BOR_UmbralGraviticStrikeGovernor</ThingDef>
+    </descriptionHyperlinks>
+    <spawnThingOnRemoved>BOR_UmbralGraviticStrikeGovernor</spawnThingOnRemoved>
+    <stages>
+      <li>
+        <statOffsets>
+          <MeleeDamageFactor>0.75</MeleeDamageFactor>
+        </statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <ThingDef ParentName="TenebralBodyPartBionicBase">
+    <defName>BOR_UmbralGraviticStrikeGovernor</defName>
+    <label>umbral gravitic strike governor</label>
+    <description>A gravitic actuator sleeve tuned to amplify raw melee force. Forged from umbral femtocluster architecture meant for post-human warforms.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>BOR_InstallUmbralGraviticStrikeGovernor</RecipeDef>
+    </descriptionHyperlinks>
+    <costList>
+      <BOR_Femtoclusters>8</BOR_Femtoclusters>
+      <BOR_ComponentIII>2</BOR_ComponentIII>
+    </costList>
+    <statBases>
+      <Mass>0.12</Mass>
+      <MarketValue>3200</MarketValue>
+    </statBases>
+  </ThingDef>
+
+  <RecipeDef ParentName="BOR_UmbralSurgeryInstallImplantBase">
+    <defName>BOR_InstallUmbralGraviticStrikeGovernor</defName>
+    <label>install umbral gravitic strike governor</label>
+    <description>Install a gravitic strike governor.</description>
+    <descriptionHyperlinks>
+      <ThingDef>BOR_UmbralGraviticStrikeGovernor</ThingDef>
+      <HediffDef>BOR_UmbralGraviticStrikeGovernor</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing umbral gravitic strike governor.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>BOR_TenebralAppendage</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>BOR_TenebralAppendage</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Arm</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>BOR_UmbralGraviticStrikeGovernor</addsHediff>
+  </RecipeDef>
+
+  <HediffDef ParentName="BOR_ImplantUmbralHediffBase">
+    <defName>BOR_UmbralReflexOverclockSpindle</defName>
+    <label>umbral reflex overclock spindle</label>
+    <labelNoun>a reflex overclock spindle</labelNoun>
+    <description>A spinal overclock spindle that clears neuromotor lag between consecutive swings.</description>
+    <descriptionHyperlinks>
+      <ThingDef>BOR_UmbralReflexOverclockSpindle</ThingDef>
+    </descriptionHyperlinks>
+    <spawnThingOnRemoved>BOR_UmbralReflexOverclockSpindle</spawnThingOnRemoved>
+    <stages>
+      <li>
+        <statOffsets>
+          <MeleeCooldownFactor>-0.55</MeleeCooldownFactor>
+        </statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <ThingDef ParentName="TenebralBodyPartBionicBase">
+    <defName>BOR_UmbralReflexOverclockSpindle</defName>
+    <label>umbral reflex overclock spindle</label>
+    <description>A spinal micro-spindle that resets melee recovery windows at machine speed. Forged from umbral femtocluster architecture meant for post-human warforms.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>BOR_InstallUmbralReflexOverclockSpindle</RecipeDef>
+    </descriptionHyperlinks>
+    <costList>
+      <BOR_Femtoclusters>8</BOR_Femtoclusters>
+      <BOR_ComponentIII>2</BOR_ComponentIII>
+    </costList>
+    <statBases>
+      <Mass>0.12</Mass>
+      <MarketValue>3200</MarketValue>
+    </statBases>
+  </ThingDef>
+
+  <RecipeDef ParentName="BOR_UmbralSurgeryInstallImplantBase">
+    <defName>BOR_InstallUmbralReflexOverclockSpindle</defName>
+    <label>install umbral reflex overclock spindle</label>
+    <description>Install a reflex overclock spindle.</description>
+    <descriptionHyperlinks>
+      <ThingDef>BOR_UmbralReflexOverclockSpindle</ThingDef>
+      <HediffDef>BOR_UmbralReflexOverclockSpindle</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing umbral reflex overclock spindle.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>BOR_TenebralOrgan</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>BOR_TenebralOrgan</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Spine</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>BOR_UmbralReflexOverclockSpindle</addsHediff>
+  </RecipeDef>
+
+  <HediffDef ParentName="BOR_ImplantUmbralHediffBase">
+    <defName>BOR_UmbralMonomassEdgeHarmonizer</defName>
+    <label>umbral monomass edge harmonizer</label>
+    <labelNoun>a monomass edge harmonizer</labelNoun>
+    <description>A targeting harmonizer that aligns edge geometry against armor grain for cleaner penetrations.</description>
+    <descriptionHyperlinks>
+      <ThingDef>BOR_UmbralMonomassEdgeHarmonizer</ThingDef>
+    </descriptionHyperlinks>
+    <spawnThingOnRemoved>BOR_UmbralMonomassEdgeHarmonizer</spawnThingOnRemoved>
+    <stages>
+      <li>
+        <statOffsets>
+          <MeleeArmorPenetration>0.55</MeleeArmorPenetration>
+        </statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <ThingDef ParentName="TenebralBodyPartBionicBase">
+    <defName>BOR_UmbralMonomassEdgeHarmonizer</defName>
+    <label>umbral monomass edge harmonizer</label>
+    <description>A combat harmonizer calibrated to slice through plated targets. Forged from umbral femtocluster architecture meant for post-human warforms.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>BOR_InstallUmbralMonomassEdgeHarmonizer</RecipeDef>
+    </descriptionHyperlinks>
+    <costList>
+      <BOR_Femtoclusters>8</BOR_Femtoclusters>
+      <BOR_ComponentIII>2</BOR_ComponentIII>
+    </costList>
+    <statBases>
+      <Mass>0.12</Mass>
+      <MarketValue>3200</MarketValue>
+    </statBases>
+  </ThingDef>
+
+  <RecipeDef ParentName="BOR_UmbralSurgeryInstallImplantBase">
+    <defName>BOR_InstallUmbralMonomassEdgeHarmonizer</defName>
+    <label>install umbral monomass edge harmonizer</label>
+    <description>Install a monomass edge harmonizer.</description>
+    <descriptionHyperlinks>
+      <ThingDef>BOR_UmbralMonomassEdgeHarmonizer</ThingDef>
+      <HediffDef>BOR_UmbralMonomassEdgeHarmonizer</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing umbral monomass edge harmonizer.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>BOR_TenebralAppendage</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>BOR_TenebralAppendage</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Hand</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>BOR_UmbralMonomassEdgeHarmonizer</addsHediff>
+  </RecipeDef>
+
+  <HediffDef ParentName="BOR_ImplantUmbralHediffBase">
+    <defName>BOR_UmbralPredictiveDuelReticle</defName>
+    <label>umbral predictive duel reticle</label>
+    <labelNoun>a predictive duel reticle</labelNoun>
+    <description>An ocular reticle that paints likely enemy movement arcs before contact is made.</description>
+    <descriptionHyperlinks>
+      <ThingDef>BOR_UmbralPredictiveDuelReticle</ThingDef>
+    </descriptionHyperlinks>
+    <spawnThingOnRemoved>BOR_UmbralPredictiveDuelReticle</spawnThingOnRemoved>
+    <stages>
+      <li>
+        <statOffsets>
+          <MeleeHitChance>23</MeleeHitChance>
+        </statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <ThingDef ParentName="TenebralBodyPartBionicBase">
+    <defName>BOR_UmbralPredictiveDuelReticle</defName>
+    <label>umbral predictive duel reticle</label>
+    <description>An adaptive eye-reticle that improves melee tracking in tight engagements. Forged from umbral femtocluster architecture meant for post-human warforms.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>BOR_InstallUmbralPredictiveDuelReticle</RecipeDef>
+    </descriptionHyperlinks>
+    <costList>
+      <BOR_Femtoclusters>8</BOR_Femtoclusters>
+      <BOR_ComponentIII>2</BOR_ComponentIII>
+    </costList>
+    <statBases>
+      <Mass>0.12</Mass>
+      <MarketValue>3200</MarketValue>
+    </statBases>
+  </ThingDef>
+
+  <RecipeDef ParentName="BOR_UmbralSurgeryInstallImplantBase">
+    <defName>BOR_InstallUmbralPredictiveDuelReticle</defName>
+    <label>install umbral predictive duel reticle</label>
+    <description>Install a predictive duel reticle.</description>
+    <descriptionHyperlinks>
+      <ThingDef>BOR_UmbralPredictiveDuelReticle</ThingDef>
+      <HediffDef>BOR_UmbralPredictiveDuelReticle</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing umbral predictive duel reticle.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>BOR_TenebralOrgan</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>BOR_TenebralOrgan</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Eye</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>BOR_UmbralPredictiveDuelReticle</addsHediff>
+  </RecipeDef>
+
+  <HediffDef ParentName="BOR_ImplantUmbralHediffBase">
+    <defName>BOR_UmbralInertialSidestepGyros</defName>
+    <label>umbral inertial sidestep gyros</label>
+    <labelNoun>a set of inertial sidestep gyros</labelNoun>
+    <description>Subdermal gyros that fire counter-impulses to slip incoming blows by centimeters.</description>
+    <descriptionHyperlinks>
+      <ThingDef>BOR_UmbralInertialSidestepGyros</ThingDef>
+    </descriptionHyperlinks>
+    <spawnThingOnRemoved>BOR_UmbralInertialSidestepGyros</spawnThingOnRemoved>
+    <stages>
+      <li>
+        <statOffsets>
+          <MeleeDodgeChance>1.25</MeleeDodgeChance>
+        </statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <ThingDef ParentName="TenebralBodyPartBionicBase">
+    <defName>BOR_UmbralInertialSidestepGyros</defName>
+    <label>umbral inertial sidestep gyros</label>
+    <description>A leg-mounted gyro package built for violent close-range evasions. Forged from umbral femtocluster architecture meant for post-human warforms.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>BOR_InstallUmbralInertialSidestepGyros</RecipeDef>
+    </descriptionHyperlinks>
+    <costList>
+      <BOR_Femtoclusters>8</BOR_Femtoclusters>
+      <BOR_ComponentIII>2</BOR_ComponentIII>
+    </costList>
+    <statBases>
+      <Mass>0.12</Mass>
+      <MarketValue>3200</MarketValue>
+    </statBases>
+  </ThingDef>
+
+  <RecipeDef ParentName="BOR_UmbralSurgeryInstallImplantBase">
+    <defName>BOR_InstallUmbralInertialSidestepGyros</defName>
+    <label>install umbral inertial sidestep gyros</label>
+    <description>Install a set of inertial sidestep gyros.</description>
+    <descriptionHyperlinks>
+      <ThingDef>BOR_UmbralInertialSidestepGyros</ThingDef>
+      <HediffDef>BOR_UmbralInertialSidestepGyros</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing umbral inertial sidestep gyros.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>BOR_TenebralAppendage</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>BOR_TenebralAppendage</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Leg</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>BOR_UmbralInertialSidestepGyros</addsHediff>
+  </RecipeDef>
+
+  <HediffDef ParentName="BOR_ImplantUmbralHediffBase">
+    <defName>BOR_UmbralRecoilPhaseRecycler</defName>
+    <label>umbral recoil phase recycler</label>
+    <labelNoun>a recoil phase recycler</labelNoun>
+    <description>A shoulder recoil recycler that harvests kickback and cycles it into the next firing action.</description>
+    <descriptionHyperlinks>
+      <ThingDef>BOR_UmbralRecoilPhaseRecycler</ThingDef>
+    </descriptionHyperlinks>
+    <spawnThingOnRemoved>BOR_UmbralRecoilPhaseRecycler</spawnThingOnRemoved>
+    <stages>
+      <li>
+        <statOffsets>
+          <RangedCooldownFactor>-0.55</RangedCooldownFactor>
+        </statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <ThingDef ParentName="TenebralBodyPartBionicBase">
+    <defName>BOR_UmbralRecoilPhaseRecycler</defName>
+    <label>umbral recoil phase recycler</label>
+    <description>A recoil-routing implant that shortens burst recovery and keeps weapons online. Forged from umbral femtocluster architecture meant for post-human warforms.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>BOR_InstallUmbralRecoilPhaseRecycler</RecipeDef>
+    </descriptionHyperlinks>
+    <costList>
+      <BOR_Femtoclusters>8</BOR_Femtoclusters>
+      <BOR_ComponentIII>2</BOR_ComponentIII>
+    </costList>
+    <statBases>
+      <Mass>0.12</Mass>
+      <MarketValue>3200</MarketValue>
+    </statBases>
+  </ThingDef>
+
+  <RecipeDef ParentName="BOR_UmbralSurgeryInstallImplantBase">
+    <defName>BOR_InstallUmbralRecoilPhaseRecycler</defName>
+    <label>install umbral recoil phase recycler</label>
+    <description>Install a recoil phase recycler.</description>
+    <descriptionHyperlinks>
+      <ThingDef>BOR_UmbralRecoilPhaseRecycler</ThingDef>
+      <HediffDef>BOR_UmbralRecoilPhaseRecycler</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing umbral recoil phase recycler.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>BOR_TenebralAppendage</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>BOR_TenebralAppendage</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Shoulder</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>BOR_UmbralRecoilPhaseRecycler</addsHediff>
+  </RecipeDef>
+
+  <HediffDef ParentName="BOR_ImplantUmbralHediffBase">
+    <defName>BOR_UmbralBallisticCognitionStack</defName>
+    <label>umbral ballistic cognition stack</label>
+    <labelNoun>a ballistic cognition stack</labelNoun>
+    <description>A cranial stack that solves projectile paths in parallel and suppresses aim drift.</description>
+    <descriptionHyperlinks>
+      <ThingDef>BOR_UmbralBallisticCognitionStack</ThingDef>
+    </descriptionHyperlinks>
+    <spawnThingOnRemoved>BOR_UmbralBallisticCognitionStack</spawnThingOnRemoved>
+    <stages>
+      <li>
+        <statOffsets>
+          <ShootingAccuracyPawn>0.45</ShootingAccuracyPawn>
+        </statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <ThingDef ParentName="TenebralBodyPartBionicBase">
+    <defName>BOR_UmbralBallisticCognitionStack</defName>
+    <label>umbral ballistic cognition stack</label>
+    <description>A combat coprocessor for cleaner shot solutions under pressure. Forged from umbral femtocluster architecture meant for post-human warforms.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>BOR_InstallUmbralBallisticCognitionStack</RecipeDef>
+    </descriptionHyperlinks>
+    <costList>
+      <BOR_Femtoclusters>8</BOR_Femtoclusters>
+      <BOR_ComponentIII>2</BOR_ComponentIII>
+    </costList>
+    <statBases>
+      <Mass>0.12</Mass>
+      <MarketValue>3200</MarketValue>
+    </statBases>
+  </ThingDef>
+
+  <RecipeDef ParentName="BOR_UmbralSurgeryInstallImplantBase">
+    <defName>BOR_InstallUmbralBallisticCognitionStack</defName>
+    <label>install umbral ballistic cognition stack</label>
+    <description>Install a ballistic cognition stack.</description>
+    <descriptionHyperlinks>
+      <ThingDef>BOR_UmbralBallisticCognitionStack</ThingDef>
+      <HediffDef>BOR_UmbralBallisticCognitionStack</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing umbral ballistic cognition stack.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>BOR_TenebralOrgan</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>BOR_TenebralOrgan</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Brain</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>BOR_UmbralBallisticCognitionStack</addsHediff>
+  </RecipeDef>
+
+  <HediffDef ParentName="BOR_ImplantUmbralHediffBase">
+    <defName>BOR_UmbralCloseRangeVectorLens</defName>
+    <label>umbral close-range vector lens</label>
+    <labelNoun>a close-range vector lens</labelNoun>
+    <description>A near-field lens suite optimized for point-blank trajectories and snap alignment.</description>
+    <descriptionHyperlinks>
+      <ThingDef>BOR_UmbralCloseRangeVectorLens</ThingDef>
+    </descriptionHyperlinks>
+    <spawnThingOnRemoved>BOR_UmbralCloseRangeVectorLens</spawnThingOnRemoved>
+    <stages>
+      <li>
+        <statOffsets>
+          <ShootingAccuracyFactor_Touch>0.75</ShootingAccuracyFactor_Touch>
+        </statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <ThingDef ParentName="TenebralBodyPartBionicBase">
+    <defName>BOR_UmbralCloseRangeVectorLens</defName>
+    <label>umbral close-range vector lens</label>
+    <description>An eye implant tuned for close-distance ballistic correction. Forged from umbral femtocluster architecture meant for post-human warforms.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>BOR_InstallUmbralCloseRangeVectorLens</RecipeDef>
+    </descriptionHyperlinks>
+    <costList>
+      <BOR_Femtoclusters>8</BOR_Femtoclusters>
+      <BOR_ComponentIII>2</BOR_ComponentIII>
+    </costList>
+    <statBases>
+      <Mass>0.12</Mass>
+      <MarketValue>3200</MarketValue>
+    </statBases>
+  </ThingDef>
+
+  <RecipeDef ParentName="BOR_UmbralSurgeryInstallImplantBase">
+    <defName>BOR_InstallUmbralCloseRangeVectorLens</defName>
+    <label>install umbral close-range vector lens</label>
+    <description>Install a close-range vector lens.</description>
+    <descriptionHyperlinks>
+      <ThingDef>BOR_UmbralCloseRangeVectorLens</ThingDef>
+      <HediffDef>BOR_UmbralCloseRangeVectorLens</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing umbral close-range vector lens.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>BOR_TenebralOrgan</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>BOR_TenebralOrgan</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Eye</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>BOR_UmbralCloseRangeVectorLens</addsHediff>
+  </RecipeDef>
+
+  <HediffDef ParentName="BOR_ImplantUmbralHediffBase">
+    <defName>BOR_UmbralShortRangeVectorLens</defName>
+    <label>umbral short-range vector lens</label>
+    <labelNoun>a short-range vector lens</labelNoun>
+    <description>A short-band optic array that stabilizes firing solutions across skirmish distance.</description>
+    <descriptionHyperlinks>
+      <ThingDef>BOR_UmbralShortRangeVectorLens</ThingDef>
+    </descriptionHyperlinks>
+    <spawnThingOnRemoved>BOR_UmbralShortRangeVectorLens</spawnThingOnRemoved>
+    <stages>
+      <li>
+        <statOffsets>
+          <ShootingAccuracyFactor_Short>0.65</ShootingAccuracyFactor_Short>
+        </statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <ThingDef ParentName="TenebralBodyPartBionicBase">
+    <defName>BOR_UmbralShortRangeVectorLens</defName>
+    <label>umbral short-range vector lens</label>
+    <description>An optic array tuned for short-range target lock stability. Forged from umbral femtocluster architecture meant for post-human warforms.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>BOR_InstallUmbralShortRangeVectorLens</RecipeDef>
+    </descriptionHyperlinks>
+    <costList>
+      <BOR_Femtoclusters>8</BOR_Femtoclusters>
+      <BOR_ComponentIII>2</BOR_ComponentIII>
+    </costList>
+    <statBases>
+      <Mass>0.12</Mass>
+      <MarketValue>3200</MarketValue>
+    </statBases>
+  </ThingDef>
+
+  <RecipeDef ParentName="BOR_UmbralSurgeryInstallImplantBase">
+    <defName>BOR_InstallUmbralShortRangeVectorLens</defName>
+    <label>install umbral short-range vector lens</label>
+    <description>Install a short-range vector lens.</description>
+    <descriptionHyperlinks>
+      <ThingDef>BOR_UmbralShortRangeVectorLens</ThingDef>
+      <HediffDef>BOR_UmbralShortRangeVectorLens</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing umbral short-range vector lens.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>BOR_TenebralOrgan</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>BOR_TenebralOrgan</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Eye</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>BOR_UmbralShortRangeVectorLens</addsHediff>
+  </RecipeDef>
+
+  <HediffDef ParentName="BOR_ImplantUmbralHediffBase">
+    <defName>BOR_UmbralMidRangeVectorLens</defName>
+    <label>umbral mid-range vector lens</label>
+    <labelNoun>a mid-range vector lens</labelNoun>
+    <description>A medium-band predictor that tracks target drift and wind-up over battlefield lanes.</description>
+    <descriptionHyperlinks>
+      <ThingDef>BOR_UmbralMidRangeVectorLens</ThingDef>
+    </descriptionHyperlinks>
+    <spawnThingOnRemoved>BOR_UmbralMidRangeVectorLens</spawnThingOnRemoved>
+    <stages>
+      <li>
+        <statOffsets>
+          <ShootingAccuracyFactor_Medium>0.55</ShootingAccuracyFactor_Medium>
+        </statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <ThingDef ParentName="TenebralBodyPartBionicBase">
+    <defName>BOR_UmbralMidRangeVectorLens</defName>
+    <label>umbral mid-range vector lens</label>
+    <description>A mid-band targeting lens for reliable medium-range engagement. Forged from umbral femtocluster architecture meant for post-human warforms.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>BOR_InstallUmbralMidRangeVectorLens</RecipeDef>
+    </descriptionHyperlinks>
+    <costList>
+      <BOR_Femtoclusters>8</BOR_Femtoclusters>
+      <BOR_ComponentIII>2</BOR_ComponentIII>
+    </costList>
+    <statBases>
+      <Mass>0.12</Mass>
+      <MarketValue>3200</MarketValue>
+    </statBases>
+  </ThingDef>
+
+  <RecipeDef ParentName="BOR_UmbralSurgeryInstallImplantBase">
+    <defName>BOR_InstallUmbralMidRangeVectorLens</defName>
+    <label>install umbral mid-range vector lens</label>
+    <description>Install a mid-range vector lens.</description>
+    <descriptionHyperlinks>
+      <ThingDef>BOR_UmbralMidRangeVectorLens</ThingDef>
+      <HediffDef>BOR_UmbralMidRangeVectorLens</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing umbral mid-range vector lens.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>BOR_TenebralOrgan</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>BOR_TenebralOrgan</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Eye</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>BOR_UmbralMidRangeVectorLens</addsHediff>
+  </RecipeDef>
+
+  <HediffDef ParentName="BOR_ImplantUmbralHediffBase">
+    <defName>BOR_UmbralLongRangeVectorLens</defName>
+    <label>umbral long-range vector lens</label>
+    <labelNoun>a long-range vector lens</labelNoun>
+    <description>A long-baseline lens core that refines distant silhouettes into precision-grade shot vectors.</description>
+    <descriptionHyperlinks>
+      <ThingDef>BOR_UmbralLongRangeVectorLens</ThingDef>
+    </descriptionHyperlinks>
+    <spawnThingOnRemoved>BOR_UmbralLongRangeVectorLens</spawnThingOnRemoved>
+    <stages>
+      <li>
+        <statOffsets>
+          <ShootingAccuracyFactor_Long>0.45</ShootingAccuracyFactor_Long>
+        </statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <ThingDef ParentName="TenebralBodyPartBionicBase">
+    <defName>BOR_UmbralLongRangeVectorLens</defName>
+    <label>umbral long-range vector lens</label>
+    <description>A long-range optic core for confident fire beyond normal visual certainty. Forged from umbral femtocluster architecture meant for post-human warforms.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>BOR_InstallUmbralLongRangeVectorLens</RecipeDef>
+    </descriptionHyperlinks>
+    <costList>
+      <BOR_Femtoclusters>8</BOR_Femtoclusters>
+      <BOR_ComponentIII>2</BOR_ComponentIII>
+    </costList>
+    <statBases>
+      <Mass>0.12</Mass>
+      <MarketValue>3200</MarketValue>
+    </statBases>
+  </ThingDef>
+
+  <RecipeDef ParentName="BOR_UmbralSurgeryInstallImplantBase">
+    <defName>BOR_InstallUmbralLongRangeVectorLens</defName>
+    <label>install umbral long-range vector lens</label>
+    <description>Install a long-range vector lens.</description>
+    <descriptionHyperlinks>
+      <ThingDef>BOR_UmbralLongRangeVectorLens</ThingDef>
+      <HediffDef>BOR_UmbralLongRangeVectorLens</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing umbral long-range vector lens.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>BOR_TenebralOrgan</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>BOR_TenebralOrgan</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Eye</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>BOR_UmbralLongRangeVectorLens</addsHediff>
+  </RecipeDef>
+
+  <HediffDef ParentName="BOR_ImplantUmbralHediffBase">
+    <defName>BOR_UmbralTargetLockAnticipator</defName>
+    <label>umbral target lock anticipator</label>
+    <labelNoun>a target lock anticipator</labelNoun>
+    <description>A pre-aim cortex module that front-loads acquisition routines before the weapon is raised.</description>
+    <descriptionHyperlinks>
+      <ThingDef>BOR_UmbralTargetLockAnticipator</ThingDef>
+    </descriptionHyperlinks>
+    <spawnThingOnRemoved>BOR_UmbralTargetLockAnticipator</spawnThingOnRemoved>
+    <stages>
+      <li>
+        <statOffsets>
+          <AimingDelayFactor>-0.55</AimingDelayFactor>
+        </statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <ThingDef ParentName="TenebralBodyPartBionicBase">
+    <defName>BOR_UmbralTargetLockAnticipator</defName>
+    <label>umbral target lock anticipator</label>
+    <description>A neural pre-aim implant that shaves delay off target acquisition. Forged from umbral femtocluster architecture meant for post-human warforms.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>BOR_InstallUmbralTargetLockAnticipator</RecipeDef>
+    </descriptionHyperlinks>
+    <costList>
+      <BOR_Femtoclusters>8</BOR_Femtoclusters>
+      <BOR_ComponentIII>2</BOR_ComponentIII>
+    </costList>
+    <statBases>
+      <Mass>0.12</Mass>
+      <MarketValue>3200</MarketValue>
+    </statBases>
+  </ThingDef>
+
+  <RecipeDef ParentName="BOR_UmbralSurgeryInstallImplantBase">
+    <defName>BOR_InstallUmbralTargetLockAnticipator</defName>
+    <label>install umbral target lock anticipator</label>
+    <description>Install a target lock anticipator.</description>
+    <descriptionHyperlinks>
+      <ThingDef>BOR_UmbralTargetLockAnticipator</ThingDef>
+      <HediffDef>BOR_UmbralTargetLockAnticipator</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing umbral target lock anticipator.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>BOR_TenebralOrgan</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>BOR_TenebralOrgan</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Brain</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>BOR_UmbralTargetLockAnticipator</addsHediff>
+  </RecipeDef>
+
+  <HediffDef ParentName="BOR_ImplantUmbralHediffBase">
+    <defName>BOR_UmbralArtilleryDriftCorrector</defName>
+    <label>umbral artillery drift corrector</label>
+    <labelNoun>an artillery drift corrector</labelNoun>
+    <description>A fire-control implant that continuously solves parabolic error and shell deviation.</description>
+    <descriptionHyperlinks>
+      <ThingDef>BOR_UmbralArtilleryDriftCorrector</ThingDef>
+    </descriptionHyperlinks>
+    <spawnThingOnRemoved>BOR_UmbralArtilleryDriftCorrector</spawnThingOnRemoved>
+    <stages>
+      <li>
+        <statOffsets>
+          <MortarMissRadiusFactor>-0.75</MortarMissRadiusFactor>
+        </statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <ThingDef ParentName="TenebralBodyPartBionicBase">
+    <defName>BOR_UmbralArtilleryDriftCorrector</defName>
+    <label>umbral artillery drift corrector</label>
+    <description>A ballistic solver implant built to tighten mortar spread. Forged from umbral femtocluster architecture meant for post-human warforms.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>BOR_InstallUmbralArtilleryDriftCorrector</RecipeDef>
+    </descriptionHyperlinks>
+    <costList>
+      <BOR_Femtoclusters>8</BOR_Femtoclusters>
+      <BOR_ComponentIII>2</BOR_ComponentIII>
+    </costList>
+    <statBases>
+      <Mass>0.12</Mass>
+      <MarketValue>3200</MarketValue>
+    </statBases>
+  </ThingDef>
+
+  <RecipeDef ParentName="BOR_UmbralSurgeryInstallImplantBase">
+    <defName>BOR_InstallUmbralArtilleryDriftCorrector</defName>
+    <label>install umbral artillery drift corrector</label>
+    <description>Install an artillery drift corrector.</description>
+    <descriptionHyperlinks>
+      <ThingDef>BOR_UmbralArtilleryDriftCorrector</ThingDef>
+      <HediffDef>BOR_UmbralArtilleryDriftCorrector</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing umbral artillery drift corrector.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>BOR_TenebralOrgan</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>BOR_TenebralOrgan</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Brain</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>BOR_UmbralArtilleryDriftCorrector</addsHediff>
+  </RecipeDef>
+
+  <HediffDef ParentName="BOR_ImplantUmbralHediffBase">
+    <defName>BOR_UmbralHazardThreadMapper</defName>
+    <label>umbral hazard-thread mapper</label>
+    <labelNoun>a hazard-thread mapper</labelNoun>
+    <description>An environmental mapper that highlights hidden pressure lines, trigger seams, and trap geometry.</description>
+    <descriptionHyperlinks>
+      <ThingDef>BOR_UmbralHazardThreadMapper</ThingDef>
+    </descriptionHyperlinks>
+    <spawnThingOnRemoved>BOR_UmbralHazardThreadMapper</spawnThingOnRemoved>
+    <stages>
+      <li>
+        <statOffsets>
+          <PawnTrapSpringChance>-0.65</PawnTrapSpringChance>
+        </statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <ThingDef ParentName="TenebralBodyPartBionicBase">
+    <defName>BOR_UmbralHazardThreadMapper</defName>
+    <label>umbral hazard-thread mapper</label>
+    <description>A threat-mapping visual implant that reduces accidental trap triggers. Forged from umbral femtocluster architecture meant for post-human warforms.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>BOR_InstallUmbralHazardThreadMapper</RecipeDef>
+    </descriptionHyperlinks>
+    <costList>
+      <BOR_Femtoclusters>8</BOR_Femtoclusters>
+      <BOR_ComponentIII>2</BOR_ComponentIII>
+    </costList>
+    <statBases>
+      <Mass>0.12</Mass>
+      <MarketValue>3200</MarketValue>
+    </statBases>
+  </ThingDef>
+
+  <RecipeDef ParentName="BOR_UmbralSurgeryInstallImplantBase">
+    <defName>BOR_InstallUmbralHazardThreadMapper</defName>
+    <label>install umbral hazard-thread mapper</label>
+    <description>Install a hazard-thread mapper.</description>
+    <descriptionHyperlinks>
+      <ThingDef>BOR_UmbralHazardThreadMapper</ThingDef>
+      <HediffDef>BOR_UmbralHazardThreadMapper</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing umbral hazard-thread mapper.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>BOR_TenebralOrgan</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>BOR_TenebralOrgan</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Eye</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>BOR_UmbralHazardThreadMapper</addsHediff>
+  </RecipeDef>
+
+  <HediffDef ParentName="BOR_ImplantUmbralHediffBase">
+    <defName>BOR_UmbralKineticDissipationMesh</defName>
+    <label>umbral kinetic dissipation mesh</label>
+    <labelNoun>a kinetic dissipation mesh</labelNoun>
+    <description>A torso mesh that reroutes blunt impulse and thermal spike into sacrificial microchannels.</description>
+    <descriptionHyperlinks>
+      <ThingDef>BOR_UmbralKineticDissipationMesh</ThingDef>
+    </descriptionHyperlinks>
+    <spawnThingOnRemoved>BOR_UmbralKineticDissipationMesh</spawnThingOnRemoved>
+    <stages>
+      <li>
+        <statOffsets>
+          <IncomingDamageFactor>-0.45</IncomingDamageFactor>
+        </statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <ThingDef ParentName="TenebralBodyPartBionicBase">
+    <defName>BOR_UmbralKineticDissipationMesh</defName>
+    <label>umbral kinetic dissipation mesh</label>
+    <description>A dissipation mesh that lowers effective incoming trauma. Forged from umbral femtocluster architecture meant for post-human warforms.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>BOR_InstallUmbralKineticDissipationMesh</RecipeDef>
+    </descriptionHyperlinks>
+    <costList>
+      <BOR_Femtoclusters>8</BOR_Femtoclusters>
+      <BOR_ComponentIII>2</BOR_ComponentIII>
+    </costList>
+    <statBases>
+      <Mass>0.12</Mass>
+      <MarketValue>3200</MarketValue>
+    </statBases>
+  </ThingDef>
+
+  <RecipeDef ParentName="BOR_UmbralSurgeryInstallImplantBase">
+    <defName>BOR_InstallUmbralKineticDissipationMesh</defName>
+    <label>install umbral kinetic dissipation mesh</label>
+    <description>Install a kinetic dissipation mesh.</description>
+    <descriptionHyperlinks>
+      <ThingDef>BOR_UmbralKineticDissipationMesh</ThingDef>
+      <HediffDef>BOR_UmbralKineticDissipationMesh</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing umbral kinetic dissipation mesh.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>BOR_TenebralOrgan</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>BOR_TenebralOrgan</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Torso</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>BOR_UmbralKineticDissipationMesh</addsHediff>
+  </RecipeDef>
+
+  <HediffDef ParentName="BOR_ImplantUmbralHediffBase">
+    <defName>BOR_UmbralGyroStabilityCore</defName>
+    <label>umbral gyro-stability core</label>
+    <labelNoun>a gyro-stability core</labelNoun>
+    <description>A spinal stability core that arrests knockback oscillation before full stagger can bloom.</description>
+    <descriptionHyperlinks>
+      <ThingDef>BOR_UmbralGyroStabilityCore</ThingDef>
+    </descriptionHyperlinks>
+    <spawnThingOnRemoved>BOR_UmbralGyroStabilityCore</spawnThingOnRemoved>
+    <stages>
+      <li>
+        <statOffsets>
+          <StaggerDurationFactor>-0.9</StaggerDurationFactor>
+        </statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <ThingDef ParentName="TenebralBodyPartBionicBase">
+    <defName>BOR_UmbralGyroStabilityCore</defName>
+    <label>umbral gyro-stability core</label>
+    <description>A balance-control core that cuts stagger duration after impact. Forged from umbral femtocluster architecture meant for post-human warforms.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>BOR_InstallUmbralGyroStabilityCore</RecipeDef>
+    </descriptionHyperlinks>
+    <costList>
+      <BOR_Femtoclusters>8</BOR_Femtoclusters>
+      <BOR_ComponentIII>2</BOR_ComponentIII>
+    </costList>
+    <statBases>
+      <Mass>0.12</Mass>
+      <MarketValue>3200</MarketValue>
+    </statBases>
+  </ThingDef>
+
+  <RecipeDef ParentName="BOR_UmbralSurgeryInstallImplantBase">
+    <defName>BOR_InstallUmbralGyroStabilityCore</defName>
+    <label>install umbral gyro-stability core</label>
+    <description>Install a gyro-stability core.</description>
+    <descriptionHyperlinks>
+      <ThingDef>BOR_UmbralGyroStabilityCore</ThingDef>
+      <HediffDef>BOR_UmbralGyroStabilityCore</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing umbral gyro-stability core.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>BOR_TenebralOrgan</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>BOR_TenebralOrgan</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Spine</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>BOR_UmbralGyroStabilityCore</addsHediff>
+  </RecipeDef>
+
+</Defs>

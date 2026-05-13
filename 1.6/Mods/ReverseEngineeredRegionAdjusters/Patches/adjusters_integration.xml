@@ -1,0 +1,861 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+    <Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
+        <modSettingDef>BOR_Setting_Adjuster_ClimateAdjuster</modSettingDef>
+        <enabled Class="PatchOperationSequence">
+            <operations>
+                <li Class="PatchOperationAdd">
+                    <xpath>Defs/ThingDef[defName="Reverse_Engineered_ClimateAdjuster"]</xpath>
+                    <value>
+                        <designationCategory>BOR</designationCategory>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="Reverse_Engineered_ClimateAdjuster"]/costList</xpath>
+                    <value>
+                        <costList>
+                            <BOR_QuasarAlloy>450</BOR_QuasarAlloy>
+                            <BOR_Neutronium>200</BOR_Neutronium>
+                            <BOR_ComponentII>8</BOR_ComponentII>
+                            <AccessRelay_ClimateAdjuster>1</AccessRelay_ClimateAdjuster>
+                        </costList>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ResearchProjectDef[defName="AdjusterClimate"]/tab</xpath>
+                    <value>
+                        <tab>BOR_Research_Tab</tab>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ResearchProjectDef[defName="AdjusterClimate"]/prerequisites</xpath>
+                    <value>
+                        <prerequisites>
+                            <li>AdjusterWeatherController</li>
+                            <li>BOR_Research_Production_II</li>
+                        </prerequisites>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ResearchProjectDef[defName="AdjusterClimate"]/requiredResearchBuilding</xpath>
+                    <value>
+                        <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ResearchProjectDef[defName="AdjusterClimate"]/requiredResearchFacilities</xpath>
+                    <value>
+                        <requiredResearchFacilities>
+                            <li>MultiAnalyzer</li>
+                        </requiredResearchFacilities>
+                    </value>
+                </li>
+                <li Class="PatchOperationAdd">
+                    <xpath>Defs</xpath>
+                    <value>
+                        <RecipeDef>
+                            <defName>BOR_Make_AccessRelay_ClimateAdjuster</defName>
+                            <label>reconstruct climate adjuster orbital access relay</label>
+                            <description>Reconstruct a climate-control satellite uplink for local climate adjuster construction.</description>
+                            <jobString>Reconstructing climate adjuster relay.</jobString>
+                            <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+                            <workSkill>Crafting</workSkill>
+                            <soundWorking>Recipe_Machining</soundWorking>
+                            <workAmount>12000</workAmount>
+                            <unfinishedThingDef>UnfinishedComponent</unfinishedThingDef>
+                            <ingredients>
+                                <li>
+                                    <filter>
+                                        <thingDefs>
+                                            <li>BOR_QuasarAlloy</li>
+                                        </thingDefs>
+                                    </filter>
+                                    <count>100</count>
+                                </li>
+                                <li>
+                                    <filter>
+                                        <thingDefs>
+                                            <li>BOR_Neutronium</li>
+                                        </thingDefs>
+                                    </filter>
+                                    <count>30</count>
+                                </li>
+                                <li>
+                                    <filter>
+                                        <thingDefs>
+                                            <li>BOR_ComponentII</li>
+                                        </thingDefs>
+                                    </filter>
+                                    <count>3</count>
+                                </li>
+                            </ingredients>
+                            <fixedIngredientFilter>
+                                <thingDefs>
+                                    <li>BOR_QuasarAlloy</li>
+                                    <li>BOR_Neutronium</li>
+                                    <li>BOR_ComponentII</li>
+                                </thingDefs>
+                            </fixedIngredientFilter>
+                            <recipeUsers>
+                                <li>BOR_Forge_II</li>
+                            </recipeUsers>
+                            <products>
+                                <AccessRelay_ClimateAdjuster>1</AccessRelay_ClimateAdjuster>
+                            </products>
+                            <researchPrerequisite>AdjusterClimate</researchPrerequisite>
+                        </RecipeDef>
+                    </value>
+                </li>
+            </operations>
+        </enabled>
+    </Operation>
+
+    <Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
+        <modSettingDef>BOR_Setting_Adjuster_WeatherController</modSettingDef>
+        <enabled Class="PatchOperationSequence">
+            <operations>
+                <li Class="PatchOperationAdd">
+                    <xpath>Defs/ThingDef[defName="Reverse_Engineered_WeatherController"]</xpath>
+                    <value>
+                        <designationCategory>BOR</designationCategory>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="Reverse_Engineered_WeatherController"]/costList</xpath>
+                    <value>
+                        <costList>
+                            <BOR_QuasarAlloy>450</BOR_QuasarAlloy>
+                            <BOR_Neutronium>125</BOR_Neutronium>
+                            <BOR_ComponentII>8</BOR_ComponentII>
+                            <AccessRelay_WeatherController>1</AccessRelay_WeatherController>
+                        </costList>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ResearchProjectDef[defName="AdjusterWeatherController"]/tab</xpath>
+                    <value>
+                        <tab>BOR_Research_Tab</tab>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ResearchProjectDef[defName="AdjusterWeatherController"]/prerequisites</xpath>
+                    <value>
+                        <prerequisites>
+                            <li>AdjusterEMI</li>
+                            <li>BOR_Research_Production_II</li>
+                        </prerequisites>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ResearchProjectDef[defName="AdjusterWeatherController"]/requiredResearchBuilding</xpath>
+                    <value>
+                        <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ResearchProjectDef[defName="AdjusterWeatherController"]/requiredResearchFacilities</xpath>
+                    <value>
+                        <requiredResearchFacilities>
+                            <li>MultiAnalyzer</li>
+                        </requiredResearchFacilities>
+                    </value>
+                </li>
+                <li Class="PatchOperationAdd">
+                    <xpath>Defs</xpath>
+                    <value>
+                        <RecipeDef>
+                            <defName>BOR_Make_AccessRelay_WeatherController</defName>
+                            <label>reconstruct weather controller orbital access relay</label>
+                            <description>Reconstruct a weather-control satellite uplink for local weather controller construction.</description>
+                            <jobString>Reconstructing weather controller relay.</jobString>
+                            <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+                            <workSkill>Crafting</workSkill>
+                            <soundWorking>Recipe_Machining</soundWorking>
+                            <workAmount>10000</workAmount>
+                            <unfinishedThingDef>UnfinishedComponent</unfinishedThingDef>
+                            <ingredients>
+                                <li>
+                                    <filter>
+                                        <thingDefs>
+                                            <li>BOR_QuasarAlloy</li>
+                                        </thingDefs>
+                                    </filter>
+                                    <count>90</count>
+                                </li>
+                                <li>
+                                    <filter>
+                                        <thingDefs>
+                                            <li>BOR_Neutronium</li>
+                                        </thingDefs>
+                                    </filter>
+                                    <count>25</count>
+                                </li>
+                                <li>
+                                    <filter>
+                                        <thingDefs>
+                                            <li>BOR_ComponentII</li>
+                                        </thingDefs>
+                                    </filter>
+                                    <count>2</count>
+                                </li>
+                            </ingredients>
+                            <fixedIngredientFilter>
+                                <thingDefs>
+                                    <li>BOR_QuasarAlloy</li>
+                                    <li>BOR_Neutronium</li>
+                                    <li>BOR_ComponentII</li>
+                                </thingDefs>
+                            </fixedIngredientFilter>
+                            <recipeUsers>
+                                <li>BOR_Forge_II</li>
+                            </recipeUsers>
+                            <products>
+                                <AccessRelay_WeatherController>1</AccessRelay_WeatherController>
+                            </products>
+                            <researchPrerequisite>AdjusterWeatherController</researchPrerequisite>
+                        </RecipeDef>
+                    </value>
+                </li>
+            </operations>
+        </enabled>
+    </Operation>
+
+    <Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
+        <modSettingDef>BOR_Setting_Adjuster_ToxicSpewer</modSettingDef>
+        <enabled Class="PatchOperationSequence">
+            <operations>
+                <li Class="PatchOperationAdd">
+                    <xpath>Defs/ThingDef[defName="Reverse_Engineered_ToxicSpewer"]</xpath>
+                    <value>
+                        <designationCategory>BOR</designationCategory>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="Reverse_Engineered_ToxicSpewer"]/costList</xpath>
+                    <value>
+                        <costList>
+                            <BOR_Sunsteel>350</BOR_Sunsteel>
+                            <BOR_Neutronium>100</BOR_Neutronium>
+                            <ComponentSpacer>5</ComponentSpacer>
+                            <AccessRelay_toxic>1</AccessRelay_toxic>
+                        </costList>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ResearchProjectDef[defName="AdjusterToxic"]/tab</xpath>
+                    <value>
+                        <tab>BOR_Research_Tab</tab>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ResearchProjectDef[defName="AdjusterToxic"]/prerequisites</xpath>
+                    <value>
+                        <prerequisites>
+                            <li>AdjusterSmoke</li>
+                            <li MayRequire="Ludeon.RimWorld.Biotech">ToxGas</li>
+                            <li>BOR_Research_Production_I</li>
+                        </prerequisites>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ResearchProjectDef[defName="AdjusterToxic"]/requiredResearchBuilding</xpath>
+                    <value>
+                        <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ResearchProjectDef[defName="AdjusterToxic"]/requiredResearchFacilities</xpath>
+                    <value>
+                        <requiredResearchFacilities>
+                            <li>MultiAnalyzer</li>
+                        </requiredResearchFacilities>
+                    </value>
+                </li>
+                <li Class="PatchOperationAdd">
+                    <xpath>Defs</xpath>
+                    <value>
+                        <RecipeDef>
+                            <defName>BOR_Make_AccessRelay_toxic</defName>
+                            <label>reconstruct toxifier apparatus</label>
+                            <description>Reconstruct a toxifier apparatus for local toxic spewer construction.</description>
+                            <jobString>Reconstructing toxifier apparatus.</jobString>
+                            <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+                            <workSkill>Crafting</workSkill>
+                            <soundWorking>Recipe_Machining</soundWorking>
+                            <workAmount>8000</workAmount>
+                            <unfinishedThingDef>UnfinishedComponent</unfinishedThingDef>
+                            <ingredients>
+                                <li>
+                                    <filter>
+                                        <thingDefs>
+                                            <li>BOR_Sunsteel</li>
+                                        </thingDefs>
+                                    </filter>
+                                    <count>80</count>
+                                </li>
+                                <li>
+                                    <filter>
+                                        <thingDefs>
+                                            <li>BOR_Neutronium</li>
+                                        </thingDefs>
+                                    </filter>
+                                    <count>20</count>
+                                </li>
+                                <li>
+                                    <filter>
+                                        <thingDefs>
+                                            <li>ComponentSpacer</li>
+                                        </thingDefs>
+                                    </filter>
+                                    <count>2</count>
+                                </li>
+                            </ingredients>
+                            <fixedIngredientFilter>
+                                <thingDefs>
+                                    <li>BOR_Sunsteel</li>
+                                    <li>BOR_Neutronium</li>
+                                    <li>ComponentSpacer</li>
+                                </thingDefs>
+                            </fixedIngredientFilter>
+                            <recipeUsers>
+                                <li>BOR_Forge_I</li>
+                            </recipeUsers>
+                            <products>
+                                <AccessRelay_toxic>1</AccessRelay_toxic>
+                            </products>
+                            <researchPrerequisite>AdjusterToxic</researchPrerequisite>
+                        </RecipeDef>
+                    </value>
+                </li>
+            </operations>
+        </enabled>
+    </Operation>
+
+    <Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
+        <modSettingDef>BOR_Setting_Adjuster_EMIDynamo</modSettingDef>
+        <enabled Class="PatchOperationSequence">
+            <operations>
+                <li Class="PatchOperationAdd">
+                    <xpath>Defs/ThingDef[defName="Reverse_Engineered_EMI"]</xpath>
+                    <value>
+                        <designationCategory>BOR</designationCategory>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="Reverse_Engineered_EMI"]/costList</xpath>
+                    <value>
+                        <costList>
+                            <BOR_Sunsteel>350</BOR_Sunsteel>
+                            <BOR_Neutronium>175</BOR_Neutronium>
+                            <ComponentSpacer>6</ComponentSpacer>
+                            <AccessRelay_EMI>1</AccessRelay_EMI>
+                        </costList>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ResearchProjectDef[defName="AdjusterEMI"]/tab</xpath>
+                    <value>
+                        <tab>BOR_Research_Tab</tab>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ResearchProjectDef[defName="AdjusterEMI"]/prerequisites</xpath>
+                    <value>
+                        <prerequisites>
+                            <li>AdjusterToxic</li>
+                            <li>BOR_Research_Production_I</li>
+                        </prerequisites>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ResearchProjectDef[defName="AdjusterEMI"]/requiredResearchBuilding</xpath>
+                    <value>
+                        <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ResearchProjectDef[defName="AdjusterEMI"]/requiredResearchFacilities</xpath>
+                    <value>
+                        <requiredResearchFacilities>
+                            <li>MultiAnalyzer</li>
+                        </requiredResearchFacilities>
+                    </value>
+                </li>
+                <li Class="PatchOperationAdd">
+                    <xpath>Defs</xpath>
+                    <value>
+                        <RecipeDef>
+                            <defName>BOR_Make_AccessRelay_EMI</defName>
+                            <label>reconstruct EMI dynamo core</label>
+                            <description>Reconstruct an EMI dynamo core for local EMI dynamo construction.</description>
+                            <jobString>Reconstructing EMI dynamo core.</jobString>
+                            <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+                            <workSkill>Crafting</workSkill>
+                            <soundWorking>Recipe_Machining</soundWorking>
+                            <workAmount>10000</workAmount>
+                            <unfinishedThingDef>UnfinishedComponent</unfinishedThingDef>
+                            <ingredients>
+                                <li>
+                                    <filter>
+                                        <thingDefs>
+                                            <li>BOR_Sunsteel</li>
+                                        </thingDefs>
+                                    </filter>
+                                    <count>100</count>
+                                </li>
+                                <li>
+                                    <filter>
+                                        <thingDefs>
+                                            <li>BOR_Neutronium</li>
+                                        </thingDefs>
+                                    </filter>
+                                    <count>30</count>
+                                </li>
+                                <li>
+                                    <filter>
+                                        <thingDefs>
+                                            <li>ComponentSpacer</li>
+                                        </thingDefs>
+                                    </filter>
+                                    <count>3</count>
+                                </li>
+                            </ingredients>
+                            <fixedIngredientFilter>
+                                <thingDefs>
+                                    <li>BOR_Sunsteel</li>
+                                    <li>BOR_Neutronium</li>
+                                    <li>ComponentSpacer</li>
+                                </thingDefs>
+                            </fixedIngredientFilter>
+                            <recipeUsers>
+                                <li>BOR_Forge_I</li>
+                            </recipeUsers>
+                            <products>
+                                <AccessRelay_EMI>1</AccessRelay_EMI>
+                            </products>
+                            <researchPrerequisite>AdjusterEMI</researchPrerequisite>
+                        </RecipeDef>
+                    </value>
+                </li>
+            </operations>
+        </enabled>
+    </Operation>
+
+    <Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
+        <modSettingDef>BOR_Setting_Adjuster_SunBlocker</modSettingDef>
+        <enabled Class="PatchOperationSequence">
+            <operations>
+                <li Class="PatchOperationAdd">
+                    <xpath>Defs/ThingDef[defName="Reverse_Engineered_SunBlocker"]</xpath>
+                    <value>
+                        <designationCategory>BOR</designationCategory>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="Reverse_Engineered_SunBlocker"]/costList</xpath>
+                    <value>
+                        <costList>
+                            <BOR_Sunsteel>350</BOR_Sunsteel>
+                            <BOR_Neutronium>175</BOR_Neutronium>
+                            <ComponentSpacer>5</ComponentSpacer>
+                            <AccessRelay_SunBlocker>1</AccessRelay_SunBlocker>
+                        </costList>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ResearchProjectDef[defName="AdjusterSunblocker"]/tab</xpath>
+                    <value>
+                        <tab>BOR_Research_Tab</tab>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ResearchProjectDef[defName="AdjusterSunblocker"]/prerequisites</xpath>
+                    <value>
+                        <prerequisites>
+                            <li>AdjusterEMI</li>
+                            <li>BOR_Research_Production_I</li>
+                        </prerequisites>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ResearchProjectDef[defName="AdjusterSunblocker"]/requiredResearchBuilding</xpath>
+                    <value>
+                        <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ResearchProjectDef[defName="AdjusterSunblocker"]/requiredResearchFacilities</xpath>
+                    <value>
+                        <requiredResearchFacilities>
+                            <li>MultiAnalyzer</li>
+                        </requiredResearchFacilities>
+                    </value>
+                </li>
+                <li Class="PatchOperationAdd">
+                    <xpath>Defs</xpath>
+                    <value>
+                        <RecipeDef>
+                            <defName>BOR_Make_AccessRelay_SunBlocker</defName>
+                            <label>reconstruct sun blocker field generator</label>
+                            <description>Reconstruct a sun blocker field generator for local sun blocker construction.</description>
+                            <jobString>Reconstructing sun blocker field generator.</jobString>
+                            <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+                            <workSkill>Crafting</workSkill>
+                            <soundWorking>Recipe_Machining</soundWorking>
+                            <workAmount>10000</workAmount>
+                            <unfinishedThingDef>UnfinishedComponent</unfinishedThingDef>
+                            <ingredients>
+                                <li>
+                                    <filter>
+                                        <thingDefs>
+                                            <li>BOR_Sunsteel</li>
+                                        </thingDefs>
+                                    </filter>
+                                    <count>100</count>
+                                </li>
+                                <li>
+                                    <filter>
+                                        <thingDefs>
+                                            <li>BOR_Neutronium</li>
+                                        </thingDefs>
+                                    </filter>
+                                    <count>30</count>
+                                </li>
+                                <li>
+                                    <filter>
+                                        <thingDefs>
+                                            <li>ComponentSpacer</li>
+                                        </thingDefs>
+                                    </filter>
+                                    <count>3</count>
+                                </li>
+                            </ingredients>
+                            <fixedIngredientFilter>
+                                <thingDefs>
+                                    <li>BOR_Sunsteel</li>
+                                    <li>BOR_Neutronium</li>
+                                    <li>ComponentSpacer</li>
+                                </thingDefs>
+                            </fixedIngredientFilter>
+                            <recipeUsers>
+                                <li>BOR_Forge_I</li>
+                            </recipeUsers>
+                            <products>
+                                <AccessRelay_SunBlocker>1</AccessRelay_SunBlocker>
+                            </products>
+                            <researchPrerequisite>AdjusterSunblocker</researchPrerequisite>
+                        </RecipeDef>
+                    </value>
+                </li>
+            </operations>
+        </enabled>
+    </Operation>
+
+    <Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
+        <modSettingDef>BOR_Setting_Adjuster_SmokeSpewer</modSettingDef>
+        <enabled Class="PatchOperationSequence">
+            <operations>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ResearchProjectDef[defName="AdjusterBasics"]/tab</xpath>
+                    <value>
+                        <tab>BOR_Research_Tab</tab>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ResearchProjectDef[defName="AdjusterBasics"]/prerequisites</xpath>
+                    <value>
+                        <prerequisites>
+                            <li>AdvancedFabrication</li>
+                            <li>BOR_Research_Production_I</li>
+                        </prerequisites>
+                    </value>
+                </li>
+                <li Class="PatchOperationAdd">
+                    <xpath>Defs/ThingDef[defName="Reverse_Engineered_SmokeSpewer"]</xpath>
+                    <value>
+                        <designationCategory>BOR</designationCategory>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="Reverse_Engineered_SmokeSpewer"]/costList</xpath>
+                    <value>
+                        <costList>
+                            <BOR_Sunsteel>350</BOR_Sunsteel>
+                            <BOR_Neutronium>75</BOR_Neutronium>
+                            <ComponentSpacer>4</ComponentSpacer>
+                            <AccessRelay_SmokeSpewer>1</AccessRelay_SmokeSpewer>
+                        </costList>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ResearchProjectDef[defName="AdjusterSmoke"]/tab</xpath>
+                    <value>
+                        <tab>BOR_Research_Tab</tab>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ResearchProjectDef[defName="AdjusterSmoke"]/prerequisites</xpath>
+                    <value>
+                        <prerequisites>
+                            <li>AdjusterBasics</li>
+                            <li>BOR_Research_Production_I</li>
+                        </prerequisites>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ResearchProjectDef[defName="AdjusterSmoke"]/requiredResearchBuilding</xpath>
+                    <value>
+                        <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ResearchProjectDef[defName="AdjusterSmoke"]/requiredResearchFacilities</xpath>
+                    <value>
+                        <requiredResearchFacilities>
+                            <li>MultiAnalyzer</li>
+                        </requiredResearchFacilities>
+                    </value>
+                </li>
+                <li Class="PatchOperationAdd">
+                    <xpath>Defs</xpath>
+                    <value>
+                        <RecipeDef>
+                            <defName>BOR_Make_AccessRelay_SmokeSpewer</defName>
+                            <label>reconstruct smoke spewer apparatus</label>
+                            <description>Reconstruct a smoke spewer apparatus for local smoke spewer construction.</description>
+                            <jobString>Reconstructing smoke spewer apparatus.</jobString>
+                            <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+                            <workSkill>Crafting</workSkill>
+                            <soundWorking>Recipe_Machining</soundWorking>
+                            <workAmount>7000</workAmount>
+                            <unfinishedThingDef>UnfinishedComponent</unfinishedThingDef>
+                            <ingredients>
+                                <li>
+                                    <filter>
+                                        <thingDefs>
+                                            <li>BOR_Sunsteel</li>
+                                        </thingDefs>
+                                    </filter>
+                                    <count>70</count>
+                                </li>
+                                <li>
+                                    <filter>
+                                        <thingDefs>
+                                            <li>BOR_Neutronium</li>
+                                        </thingDefs>
+                                    </filter>
+                                    <count>15</count>
+                                </li>
+                                <li>
+                                    <filter>
+                                        <thingDefs>
+                                            <li>ComponentSpacer</li>
+                                        </thingDefs>
+                                    </filter>
+                                    <count>2</count>
+                                </li>
+                            </ingredients>
+                            <fixedIngredientFilter>
+                                <thingDefs>
+                                    <li>BOR_Sunsteel</li>
+                                    <li>BOR_Neutronium</li>
+                                    <li>ComponentSpacer</li>
+                                </thingDefs>
+                            </fixedIngredientFilter>
+                            <recipeUsers>
+                                <li>BOR_Forge_I</li>
+                            </recipeUsers>
+                            <products>
+                                <AccessRelay_SmokeSpewer>1</AccessRelay_SmokeSpewer>
+                            </products>
+                            <researchPrerequisite>AdjusterSmoke</researchPrerequisite>
+                        </RecipeDef>
+                    </value>
+                </li>
+            </operations>
+        </enabled>
+    </Operation>
+
+    <Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
+        <modSettingDef>BOR_Setting_Adjuster_Defoliator</modSettingDef>
+        <enabled Class="PatchOperationSequence">
+            <operations>
+                <li Class="PatchOperationAdd">
+                    <xpath>Defs/ThingDef[defName="Reverse_Engineered_Defoliator"]</xpath>
+                    <value>
+                        <designationCategory>BOR</designationCategory>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="Reverse_Engineered_Defoliator"]/costList</xpath>
+                    <value>
+                        <costList>
+                            <BOR_Sunsteel>150</BOR_Sunsteel>
+                            <BOR_Neutronium>60</BOR_Neutronium>
+                            <ComponentSpacer>4</ComponentSpacer>
+                            <AccessRelay_Defoliator>1</AccessRelay_Defoliator>
+                        </costList>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ResearchProjectDef[defName="AdjusterDefoliator"]/tab</xpath>
+                    <value>
+                        <tab>BOR_Research_Tab</tab>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ResearchProjectDef[defName="AdjusterDefoliator"]/prerequisites</xpath>
+                    <value>
+                        <prerequisites>
+                            <li>AdjusterToxic</li>
+                            <li>BOR_Research_Production_I</li>
+                        </prerequisites>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ResearchProjectDef[defName="AdjusterDefoliator"]/requiredResearchBuilding</xpath>
+                    <value>
+                        <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ResearchProjectDef[defName="AdjusterDefoliator"]/requiredResearchFacilities</xpath>
+                    <value>
+                        <requiredResearchFacilities>
+                            <li>MultiAnalyzer</li>
+                        </requiredResearchFacilities>
+                    </value>
+                </li>
+                <li Class="PatchOperationAdd">
+                    <xpath>Defs</xpath>
+                    <value>
+                        <RecipeDef>
+                            <defName>BOR_Make_AccessRelay_Defoliator</defName>
+                            <label>reconstruct defoliant disperser apparatus</label>
+                            <description>Reconstruct a defoliant disperser apparatus for local defoliator construction.</description>
+                            <jobString>Reconstructing defoliator apparatus.</jobString>
+                            <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+                            <workSkill>Crafting</workSkill>
+                            <soundWorking>Recipe_Machining</soundWorking>
+                            <workAmount>7000</workAmount>
+                            <unfinishedThingDef>UnfinishedComponent</unfinishedThingDef>
+                            <ingredients>
+                                <li>
+                                    <filter>
+                                        <thingDefs>
+                                            <li>BOR_Sunsteel</li>
+                                        </thingDefs>
+                                    </filter>
+                                    <count>60</count>
+                                </li>
+                                <li>
+                                    <filter>
+                                        <thingDefs>
+                                            <li>BOR_Neutronium</li>
+                                        </thingDefs>
+                                    </filter>
+                                    <count>12</count>
+                                </li>
+                                <li>
+                                    <filter>
+                                        <thingDefs>
+                                            <li>ComponentSpacer</li>
+                                        </thingDefs>
+                                    </filter>
+                                    <count>2</count>
+                                </li>
+                            </ingredients>
+                            <fixedIngredientFilter>
+                                <thingDefs>
+                                    <li>BOR_Sunsteel</li>
+                                    <li>BOR_Neutronium</li>
+                                    <li>ComponentSpacer</li>
+                                </thingDefs>
+                            </fixedIngredientFilter>
+                            <recipeUsers>
+                                <li>BOR_Forge_I</li>
+                            </recipeUsers>
+                            <products>
+                                <AccessRelay_Defoliator>1</AccessRelay_Defoliator>
+                            </products>
+                            <researchPrerequisite>AdjusterDefoliator</researchPrerequisite>
+                        </RecipeDef>
+                    </value>
+                </li>
+            </operations>
+        </enabled>
+    </Operation>
+
+    <Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
+        <modSettingDef>BOR_Setting_Adjuster_AddPowerRequirements</modSettingDef>
+        <enabled Class="PatchOperationSequence">
+            <operations>
+                <li Class="PatchOperationAdd">
+                    <xpath>Defs/ThingDef[defName="Reverse_Engineered_SmokeSpewer"]/comps</xpath>
+                    <value>
+                        <li Class="CompProperties_Power">
+                            <compClass>CompPowerTrader</compClass>
+                            <basePowerConsumption>5000</basePowerConsumption>
+                        </li>
+                    </value>
+                </li>
+                <li Class="PatchOperationAdd">
+                    <xpath>Defs/ThingDef[defName="Reverse_Engineered_Defoliator"]/comps</xpath>
+                    <value>
+                        <li Class="CompProperties_Power">
+                            <compClass>CompPowerTrader</compClass>
+                            <basePowerConsumption>8000</basePowerConsumption>
+                        </li>
+                    </value>
+                </li>
+                <li Class="PatchOperationAdd">
+                    <xpath>Defs/ThingDef[defName="Reverse_Engineered_ToxicSpewer"]/comps</xpath>
+                    <value>
+                        <li Class="CompProperties_Power">
+                            <compClass>CompPowerTrader</compClass>
+                            <basePowerConsumption>12000</basePowerConsumption>
+                        </li>
+                    </value>
+                </li>
+                <li Class="PatchOperationAdd">
+                    <xpath>Defs/ThingDef[defName="Reverse_Engineered_EMI"]/comps</xpath>
+                    <value>
+                        <li Class="CompProperties_Power">
+                            <compClass>CompPowerTrader</compClass>
+                            <basePowerConsumption>20000</basePowerConsumption>
+                        </li>
+                    </value>
+                </li>
+                <li Class="PatchOperationAdd">
+                    <xpath>Defs/ThingDef[defName="Reverse_Engineered_SunBlocker"]/comps</xpath>
+                    <value>
+                        <li Class="CompProperties_Power">
+                            <compClass>CompPowerTrader</compClass>
+                            <basePowerConsumption>30000</basePowerConsumption>
+                        </li>
+                    </value>
+                </li>
+                <li Class="PatchOperationAdd">
+                    <xpath>Defs/ThingDef[defName="Reverse_Engineered_WeatherController"]/comps</xpath>
+                    <value>
+                        <li Class="CompProperties_Power">
+                            <compClass>CompPowerTrader</compClass>
+                            <basePowerConsumption>40000</basePowerConsumption>
+                        </li>
+                    </value>
+                </li>
+                <li Class="PatchOperationAdd">
+                    <xpath>Defs/ThingDef[defName="Reverse_Engineered_ClimateAdjuster"]/comps</xpath>
+                    <value>
+                        <li Class="CompProperties_Power">
+                            <compClass>CompPowerTrader</compClass>
+                            <basePowerConsumption>50000</basePowerConsumption>
+                        </li>
+                    </value>
+                </li>
+            </operations>
+        </enabled>
+    </Operation>
+
+</Patch>
