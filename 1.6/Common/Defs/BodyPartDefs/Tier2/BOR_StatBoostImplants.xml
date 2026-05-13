@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <RecipeDef Name="BOR_QuasarSurgeryInstallImplantBase" ParentName="BOR_SolarSurgeryInstallImplantBase" Abstract="True">
+    <workAmount>11000</workAmount>
+    <skillRequirements>
+      <Medicine>15</Medicine>
+    </skillRequirements>
+    <recipeUsers>
+      <li>BOR_MedicineBench_II</li>
+      <li>BOR_Bench_IV</li>
+    </recipeUsers>
+    <ingredients Inherit="False">
+      <li>
+        <filter>
+          <thingDefs>
+            <li>BOR_MedicineII</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>BOR_MedicineII</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+  </RecipeDef>
+
+  <HediffDef ParentName="BOR_ImplantSolarHediffBase">
+    <defName>BOR_QuasarBreathPacerImplant</defName>
+    <label>quasar breath-pacer implant</label>
+    <labelNoun>a quasar breath-pacer implant</labelNoun>
+    <description>An advanced implanted breathing pacer that keeps the chest rhythm steady under heavier substrate pressure and more complex breathing workloads.</description>
+    <descriptionHyperlinks>
+      <ThingDef>BOR_QuasarBreathPacerImplant</ThingDef>
+    </descriptionHyperlinks>
+    <spawnThingOnRemoved>BOR_QuasarBreathPacerImplant</spawnThingOnRemoved>
+    <stages>
+      <li>
+        <statOffsets>
+          <BOR_Synthesize_Neutronium>0.55</BOR_Synthesize_Neutronium>
+        </statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <ThingDef ParentName="QuasarBodyPartBionicBase">
+    <defName>BOR_QuasarBreathPacerImplant</defName>
+    <label>quasar breath-pacer implant</label>
+    <description>An advanced implanted diaphragm regulator tuned for heavier substrate work and harsher environments.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>BOR_InstallQuasarBreathPacerImplant</RecipeDef>
+    </descriptionHyperlinks>
+    <graphicData>
+      <texPath>Things/Item/Health/HealthItem</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>0.80</drawSize>
+      <color>(0.16, 0.56, 0.78)</color>
+    </graphicData>
+    <costList>
+      <BOR_QuasarAlloy>10</BOR_QuasarAlloy>
+      <BOR_ComponentII>3</BOR_ComponentII>
+    </costList>
+    <statBases>
+      <Mass>0.1667</Mass>
+      <MarketValue>900</MarketValue>
+    </statBases>
+  </ThingDef>
+
+  <RecipeDef ParentName="BOR_QuasarSurgeryInstallImplantBase">
+    <defName>BOR_InstallQuasarBreathPacerImplant</defName>
+    <label>install quasar breath-pacer implant</label>
+    <description>Install a quasar breath-pacer implant.</description>
+    <descriptionHyperlinks>
+      <ThingDef>BOR_QuasarBreathPacerImplant</ThingDef>
+      <HediffDef>BOR_QuasarBreathPacerImplant</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing quasar breath-pacer implant.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>BOR_QuasarBreathPacerImplant</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>BOR_QuasarBreathPacerImplant</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Torso</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>BOR_QuasarBreathPacerImplant</addsHediff>
+  </RecipeDef>
+
+  <HediffDef ParentName="BOR_ImplantSolarHediffBase">
+    <defName>BOR_QuasarQuantumCoherenceNeurocalculator</defName>
+    <label>quasar quantum coherence neurocalculator</label>
+    <labelNoun>a quasar quantum coherence neurocalculator</labelNoun>
+    <description>An upgraded neurocalculator that keeps higher-order coherence-state calculations aligned with less cognitive overhead.</description>
+    <descriptionHyperlinks>
+      <ThingDef>BOR_QuasarQuantumCoherenceNeurocalculator</ThingDef>
+    </descriptionHyperlinks>
+    <spawnThingOnRemoved>BOR_QuasarQuantumCoherenceNeurocalculator</spawnThingOnRemoved>
+    <stages>
+      <li>
+        <statOffsets>
+          <BOR_QuantumForging>0.6</BOR_QuantumForging>
+        </statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <ThingDef ParentName="QuasarBodyPartBionicBase">
+    <defName>BOR_QuasarQuantumCoherenceNeurocalculator</defName>
+    <label>quasar quantum coherence neurocalculator</label>
+    <description>An upgraded cranial microcomputer that tracks coherence states with much greater precision.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>BOR_InstallQuasarQuantumCoherenceNeurocalculator</RecipeDef>
+    </descriptionHyperlinks>
+    <graphicData>
+      <texPath>Things/Item/Health/HealthItem</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>0.80</drawSize>
+      <color>(0.28, 0.46, 0.88)</color>
+    </graphicData>
+    <costList>
+      <BOR_QuasarAlloy>15</BOR_QuasarAlloy>
+      <BOR_ComponentII>4</BOR_ComponentII>
+    </costList>
+    <statBases>
+      <Mass>0.2083</Mass>
+      <MarketValue>1650</MarketValue>
+    </statBases>
+  </ThingDef>
+
+  <RecipeDef ParentName="BOR_QuasarSurgeryInstallImplantBase">
+    <defName>BOR_InstallQuasarQuantumCoherenceNeurocalculator</defName>
+    <label>install quasar quantum coherence neurocalculator</label>
+    <description>Install a quasar quantum coherence neurocalculator.</description>
+    <descriptionHyperlinks>
+      <ThingDef>BOR_QuasarQuantumCoherenceNeurocalculator</ThingDef>
+      <HediffDef>BOR_QuasarQuantumCoherenceNeurocalculator</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing quasar quantum coherence neurocalculator.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>BOR_QuasarQuantumCoherenceNeurocalculator</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>BOR_QuasarQuantumCoherenceNeurocalculator</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Brain</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>BOR_QuasarQuantumCoherenceNeurocalculator</addsHediff>
+  </RecipeDef>
+
+  <HediffDef ParentName="BOR_ImplantSolarHediffBase">
+    <defName>BOR_QuasarMicroTremorStabilizer</defName>
+    <label>quasar micro-tremor stabilizer</label>
+    <labelNoun>a quasar micro-tremor stabilizer</labelNoun>
+    <description>An advanced servo network that cancels involuntary tremors before they can affect serious assembly work.</description>
+    <descriptionHyperlinks>
+      <ThingDef>BOR_QuasarMicroTremorStabilizer</ThingDef>
+    </descriptionHyperlinks>
+    <spawnThingOnRemoved>BOR_QuasarMicroTremorStabilizer</spawnThingOnRemoved>
+    <stages>
+      <li>
+        <statOffsets>
+          <BOR_BionicCraftingSpeed>0.6</BOR_BionicCraftingSpeed>
+        </statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <ThingDef ParentName="QuasarBodyPartBionicBase">
+    <defName>BOR_QuasarMicroTremorStabilizer</defName>
+    <label>quasar micro-tremor stabilizer</label>
+    <description>An advanced subcutaneous stabilizer that dampens involuntary tremor in the arm and shoulder chain.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>BOR_InstallQuasarMicroTremorStabilizer</RecipeDef>
+    </descriptionHyperlinks>
+    <graphicData>
+      <texPath>Things/Item/Health/HealthItem</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>0.80</drawSize>
+      <color>(0.22, 0.60, 0.86)</color>
+    </graphicData>
+    <costList>
+      <BOR_QuasarAlloy>10</BOR_QuasarAlloy>
+      <BOR_ComponentII>3</BOR_ComponentII>
+    </costList>
+    <statBases>
+      <Mass>0.1667</Mass>
+      <MarketValue>1050</MarketValue>
+    </statBases>
+  </ThingDef>
+
+  <RecipeDef ParentName="BOR_QuasarSurgeryInstallImplantBase">
+    <defName>BOR_InstallQuasarMicroTremorStabilizer</defName>
+    <label>install quasar micro-tremor stabilizer</label>
+    <description>Install a quasar micro-tremor stabilizer.</description>
+    <descriptionHyperlinks>
+      <ThingDef>BOR_QuasarMicroTremorStabilizer</ThingDef>
+      <HediffDef>BOR_QuasarMicroTremorStabilizer</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing quasar micro-tremor stabilizer.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>BOR_QuasarMicroTremorStabilizer</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>BOR_QuasarMicroTremorStabilizer</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Arm</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>BOR_QuasarMicroTremorStabilizer</addsHediff>
+  </RecipeDef>
+
+</Defs>

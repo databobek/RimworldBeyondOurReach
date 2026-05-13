@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+	<Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
+		<modSettingDef>BOR_Setting_IntegrateChemfuelPoweredDeepdrill</modSettingDef>
+		<enabled Class="PatchOperationAdd">
+			<xpath>Defs</xpath>
+			<value>
+
+				<ThingDef ParentName="BuildingBase">
+					<defName>BOR_CPD_FuelRodDeepdrill</defName>
+					<label>stellar fuel rod deepdrill</label>
+					<description>A deep-crust drilling rig fused with a beyond-our-reach fuel rod generator. Drawing on the immense energy density of BOR fuel rods, this machine generates far more power than a chemfuel equivalent, and a single rod lasts an extraordinary length of time before needing replacement.</description>
+					<graphicData>
+						<graphicClass>Graphic_Single</graphicClass>
+						<texPath>BOR/Things/Building/Production/BOR_CPD_FuelRodDeepdrill</texPath>
+						<drawSize>(2, 2)</drawSize>
+						<drawRotated>false</drawRotated>
+						<shadowData>
+							<volume>(0.52, 0.53, 0.09)</volume>
+							<offset>(0, 0, -0.43)</offset>
+						</shadowData>
+					</graphicData>
+					<size>(1, 1)</size>
+					<tickerType>Normal</tickerType>
+					<altitudeLayer>Building</altitudeLayer>
+					<passability>PassThroughOnly</passability>
+					<pathCost>50</pathCost>
+					<fillPercent>0.5</fillPercent>
+					<hasInteractionCell>true</hasInteractionCell>
+					<interactionCellOffset>(0, 0, -1)</interactionCellOffset>
+					<designationCategory>BOR</designationCategory>
+					<specialDisplayRadius>2.6</specialDisplayRadius>
+					<rotatable>true</rotatable>
+					<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+					<constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+					<uiIconOffset>(0, 0.03)</uiIconOffset>
+					<uiIconScale>0.85</uiIconScale>
+					<minifiedDef>MinifiedThing</minifiedDef>
+					<building>
+						<uninstallWork>1800</uninstallWork>
+						<buildingTags>
+							<li>Production</li>
+						</buildingTags>
+						<destroySound>BuildingDestroyed_Metal_Small</destroySound>
+					</building>
+					<thingCategories>
+						<li>BuildingsProduction</li>
+					</thingCategories>
+					<costList>
+						<BOR_Sunsteel>50</BOR_Sunsteel>
+						<ComponentSpacer>2</ComponentSpacer>
+					</costList>
+					<placeWorkers>
+						<li>PlaceWorker_DeepDrill</li>
+						<li>PlaceWorker_PreventInteractionSpotOverlap</li>
+						<li>PlaceWorker_InvalidOverSubstructure</li>
+					</placeWorkers>
+					<drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+					<researchPrerequisites>
+						<li>BOR_CPD_Research_FuelRodDeepdrill</li>
+					</researchPrerequisites>
+					<statBases>
+						<MaxHitPoints>450</MaxHitPoints>
+						<WorkToBuild>15000</WorkToBuild>
+						<Flammability>0.1</Flammability>
+						<Beauty>-20</Beauty>
+						<Mass>50</Mass>
+					</statBases>
+					<comps>
+						<li Class="CompProperties_Flickable" />
+						<li Class="CompProperties_Power">
+							<compClass>CompPowerPlant</compClass>
+							<basePowerConsumption>-2100</basePowerConsumption>
+							<transmitsPower>true</transmitsPower>
+							<soundAmbientProducingPower>ChemfuelFiredGenerator_Ambience</soundAmbientProducingPower>
+						</li>
+						<li Class="CompProperties_Refuelable">
+							<fuelConsumptionRate>0.005</fuelConsumptionRate>
+							<fuelCapacity>1</fuelCapacity>
+							<fuelFilter>
+								<thingDefs>
+									<li>BOR_FuelRod</li>
+								</thingDefs>
+							</fuelFilter>
+							<showAllowAutoRefuelToggle>true</showAllowAutoRefuelToggle>
+							<canEjectFuel>true</canEjectFuel>
+						</li>
+						<li Class="CompProperties_Glower">
+							<glowRadius>6</glowRadius>
+							<glowColor>(80, 112, 180, 0)</glowColor>
+						</li>
+						<li Class="CompProperties_DeepDrill" />
+						<li Class="CompProperties_CreatesInfestations" />
+						<li Class="CompProperties_Forbiddable" />
+					</comps>
+				</ThingDef>
+
+				<ThingDef ParentName="BuildingBase">
+					<defName>BOR_CPD_QuasarNeutroniumDeepdrill</defName>
+					<label>quasar neutronium deepdrill</label>
+					<description>A quasar-tier neutronium-fed deepdrill with reinforced containment and internalized power routing. It sustains chemfuel-like burn rates on neutronium while generating 50% more power than the base chemfuel model, and its sealed borefield design prevents infestation events.</description>
+					<graphicData>
+						<graphicClass>Graphic_Single</graphicClass>
+						<texPath>BOR/Things/Building/Production/BOR_CPD_FuelRodDeepdrill</texPath>
+						<drawSize>(2, 2)</drawSize>
+						<drawRotated>false</drawRotated>
+						<shadowData>
+							<volume>(0.52, 0.53, 0.09)</volume>
+							<offset>(0, 0, -0.43)</offset>
+						</shadowData>
+					</graphicData>
+					<size>(1, 1)</size>
+					<tickerType>Normal</tickerType>
+					<altitudeLayer>Building</altitudeLayer>
+					<passability>PassThroughOnly</passability>
+					<pathCost>50</pathCost>
+					<fillPercent>0.5</fillPercent>
+					<hasInteractionCell>true</hasInteractionCell>
+					<interactionCellOffset>(0, 0, -1)</interactionCellOffset>
+					<designationCategory>BOR</designationCategory>
+					<specialDisplayRadius>2.6</specialDisplayRadius>
+					<rotatable>true</rotatable>
+					<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+					<constructionSkillPrerequisite>12</constructionSkillPrerequisite>
+					<uiIconOffset>(0, 0.03)</uiIconOffset>
+					<uiIconScale>0.85</uiIconScale>
+					<minifiedDef>MinifiedThing</minifiedDef>
+					<building>
+						<uninstallWork>1800</uninstallWork>
+						<buildingTags>
+							<li>Production</li>
+						</buildingTags>
+						<destroySound>BuildingDestroyed_Metal_Small</destroySound>
+					</building>
+					<thingCategories>
+						<li>BuildingsProduction</li>
+					</thingCategories>
+					<costList>
+						<BOR_QuasarAlloy>100</BOR_QuasarAlloy>
+						<BOR_Neutronium>120</BOR_Neutronium>
+						<BOR_ComponentII>2</BOR_ComponentII>
+					</costList>
+					<placeWorkers>
+						<li>PlaceWorker_DeepDrill</li>
+						<li>PlaceWorker_PreventInteractionSpotOverlap</li>
+						<li>PlaceWorker_InvalidOverSubstructure</li>
+					</placeWorkers>
+					<drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+					<researchPrerequisites>
+						<li>BOR_CPD_Research_QuasarNeutroniumDeepdrill</li>
+					</researchPrerequisites>
+					<statBases>
+						<MaxHitPoints>600</MaxHitPoints>
+						<WorkToBuild>18000</WorkToBuild>
+						<Flammability>0.05</Flammability>
+						<Beauty>-20</Beauty>
+						<Mass>65</Mass>
+					</statBases>
+					<comps>
+						<li Class="CompProperties_Flickable" />
+						<li Class="CompProperties_Power">
+							<compClass>CompPowerPlant</compClass>
+							<basePowerConsumption>-2100</basePowerConsumption>
+							<transmitsPower>false</transmitsPower>
+							<soundAmbientProducingPower>ChemfuelFiredGenerator_Ambience</soundAmbientProducingPower>
+						</li>
+						<li Class="CompProperties_Refuelable">
+							<fuelConsumptionRate>4.5</fuelConsumptionRate>
+							<fuelCapacity>30.0</fuelCapacity>
+							<fuelFilter>
+								<thingDefs>
+									<li>BOR_Neutronium</li>
+								</thingDefs>
+							</fuelFilter>
+							<showAllowAutoRefuelToggle>true</showAllowAutoRefuelToggle>
+							<canEjectFuel>true</canEjectFuel>
+						</li>
+						<li Class="CompProperties_Glower">
+							<glowRadius>6</glowRadius>
+							<glowColor>(80, 112, 180, 0)</glowColor>
+						</li>
+						<li Class="CompProperties_DeepDrill" />
+						<li Class="CompProperties_Forbiddable" />
+					</comps>
+				</ThingDef>
+
+			</value>
+		</enabled>
+	</Operation>
+</Patch>

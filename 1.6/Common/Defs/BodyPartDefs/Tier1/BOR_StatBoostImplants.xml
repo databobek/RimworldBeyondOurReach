@@ -1,0 +1,621 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <RecipeDef Name="BOR_SolarSurgeryInstallImplantBase" ParentName="SurgeryInstallImplantBase" Abstract="True">
+    <workAmount>7500</workAmount>
+    <skillRequirements>
+      <Medicine>12</Medicine>
+    </skillRequirements>
+    <recipeUsers>
+      <li>BOR_MedicineBench_I</li>
+      <li>BOR_Bench_IV</li>
+    </recipeUsers>
+    <ingredients Inherit="False">
+      <li>
+        <filter>
+          <thingDefs>
+            <li>BOR_MedicineI</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>BOR_MedicineI</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+  </RecipeDef>
+
+
+  <!-- Body part replacements -->
+
+  <HediffDef ParentName="BOR_AddedSolarBodyPartBase">
+    <defName>BOR_SolarSubstrateFilterLung</defName>
+    <label>solar substrate filter lung</label>
+    <labelNoun>a solar substrate filter lung</labelNoun>
+    <description>An advanced artificial lung fitted with microfilters and stabilizers. It keeps airflow steady while supporting the fine breathing control needed for neutronium substrate work.</description>
+    <descriptionHyperlinks>
+      <ThingDef>BOR_SolarSubstrateFilterLung</ThingDef>
+    </descriptionHyperlinks>
+    <spawnThingOnRemoved>BOR_SolarSubstrateFilterLung</spawnThingOnRemoved>
+    <addedPartProps>
+      <solid>true</solid>
+      <partEfficiency>1.1</partEfficiency>
+      <betterThanNatural>true</betterThanNatural>
+    </addedPartProps>
+    <stages>
+      <li>
+        <statOffsets>
+          <BOR_Synthesize_Neutronium>0.35</BOR_Synthesize_Neutronium>
+        </statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <ThingDef ParentName="SolarBodyPartBionicBase">
+    <defName>BOR_SolarSubstrateFilterLung</defName>
+    <label>solar substrate filter lung</label>
+    <description>An advanced artificial lung with microfilters and airflow stabilizers. It is designed to keep a pawns breathing steady during demanding substrate handling.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>BOR_InstallSolarSubstrateFilterLung</RecipeDef>
+    </descriptionHyperlinks>
+    <graphicData>
+      <texPath>Things/Item/Health/HealthItem</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>0.80</drawSize>
+      <color>(0.20, 0.58, 0.62)</color>
+    </graphicData>
+    <costList>
+      <BOR_Sunsteel>15</BOR_Sunsteel>
+      <ComponentSpacer>4</ComponentSpacer>
+    </costList>
+    <statBases>
+      <Mass>0.30</Mass>
+      <MarketValue>925</MarketValue>
+    </statBases>
+  </ThingDef>
+
+  <RecipeDef ParentName="BOR_SolarSurgeryInstallBodyPartArtificialBase">
+    <defName>BOR_InstallSolarSubstrateFilterLung</defName>
+    <label>install substrate filter lung</label>
+    <description>Install a substrate filter lung.</description>
+    <descriptionHyperlinks>
+      <ThingDef>BOR_SolarSubstrateFilterLung</ThingDef>
+      <HediffDef>BOR_SolarSubstrateFilterLung</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing substrate filter lung.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>BOR_SolarSubstrateFilterLung</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>BOR_SolarSubstrateFilterLung</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Lung</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>BOR_SolarSubstrateFilterLung</addsHediff>
+  </RecipeDef>
+
+  <HediffDef ParentName="BOR_AddedSolarBodyPartBase">
+    <defName>BOR_SolarPhaseTunedOcularImplant</defName>
+    <label>solar phase-tuned ocular implant</label>
+    <labelNoun>a solar phase-tuned ocular implant</labelNoun>
+    <description>An installed ocular replacement with wide-spectrum sensors for reading transmutation bands and phase drift. It is tuned for precision rather than battlefield utility.</description>
+    <descriptionHyperlinks>
+      <ThingDef>BOR_SolarPhaseTunedOcularImplant</ThingDef>
+    </descriptionHyperlinks>
+    <spawnThingOnRemoved>BOR_SolarPhaseTunedOcularImplant</spawnThingOnRemoved>
+    <addedPartProps>
+      <solid>true</solid>
+      <partEfficiency>1.25</partEfficiency>
+      <betterThanNatural>true</betterThanNatural>
+    </addedPartProps>
+    <stages>
+      <li>
+        <statOffsets>
+          <BOR_QuantumForging>0.3</BOR_QuantumForging>
+        </statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <ThingDef ParentName="SolarBodyPartBionicBase">
+    <defName>BOR_SolarPhaseTunedOcularImplant</defName>
+    <label>solar phase-tuned ocular implant</label>
+    <description>A wide-spectrum artificial eye that tracks phase shifts and color bands used during quantum forging.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>BOR_InstallSolarPhaseTunedOcularImplant</RecipeDef>
+    </descriptionHyperlinks>
+    <graphicData>
+      <texPath>Things/Item/Health/HealthItem</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>0.80</drawSize>
+      <color>(0.66, 0.52, 0.20)</color>
+    </graphicData>
+    <costList>
+      <BOR_Sunsteel>15</BOR_Sunsteel>
+      <ComponentSpacer>4</ComponentSpacer>
+    </costList>
+    <statBases>
+      <Mass>0.25</Mass>
+      <MarketValue>1100</MarketValue>
+    </statBases>
+  </ThingDef>
+
+  <RecipeDef ParentName="BOR_SolarSurgeryInstallBodyPartArtificialBase">
+    <defName>BOR_InstallSolarPhaseTunedOcularImplant</defName>
+    <label>install phase-tuned ocular implant</label>
+    <description>Install a phase-tuned ocular implant.</description>
+    <descriptionHyperlinks>
+      <ThingDef>BOR_SolarPhaseTunedOcularImplant</ThingDef>
+      <HediffDef>BOR_SolarPhaseTunedOcularImplant</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing phase-tuned ocular implant.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>BOR_SolarPhaseTunedOcularImplant</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>BOR_SolarPhaseTunedOcularImplant</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Eye</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>BOR_SolarPhaseTunedOcularImplant</addsHediff>
+  </RecipeDef>
+
+  <HediffDef ParentName="BOR_AddedSolarBodyPartBase">
+    <defName>BOR_SolarBionicPrecisionHand</defName>
+    <label>solar bionic precision hand</label>
+    <labelNoun>a solar bionic precision hand</labelNoun>
+    <description>An artificial hand replacement built for careful assembly work. Its calibrated actuators make it especially useful for intricate fabrication.</description>
+    <descriptionHyperlinks>
+      <ThingDef>BOR_SolarBionicPrecisionHand</ThingDef>
+    </descriptionHyperlinks>
+    <spawnThingOnRemoved>BOR_SolarBionicPrecisionHand</spawnThingOnRemoved>
+    <addedPartProps>
+      <solid>true</solid>
+      <partEfficiency>1.25</partEfficiency>
+      <betterThanNatural>true</betterThanNatural>
+    </addedPartProps>
+    <stages>
+      <li>
+        <statOffsets>
+          <BOR_BionicCraftingSpeed>0.45</BOR_BionicCraftingSpeed>
+        </statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <ThingDef ParentName="SolarBodyPartBionicBase">
+    <defName>BOR_SolarBionicPrecisionHand</defName>
+    <label>solar bionic precision hand</label>
+    <description>An artificial hand replacement fitted with calibrators for fine assembly and repair work.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>BOR_InstallSolarBionicPrecisionHand</RecipeDef>
+    </descriptionHyperlinks>
+    <graphicData>
+      <texPath>Things/Item/Health/HealthItem</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>0.80</drawSize>
+      <color>(0.26, 0.62, 0.36)</color>
+    </graphicData>
+    <costList>
+      <BOR_Sunsteel>15</BOR_Sunsteel>
+      <ComponentSpacer>4</ComponentSpacer>
+    </costList>
+    <statBases>
+      <Mass>0.30</Mass>
+      <MarketValue>1200</MarketValue>
+    </statBases>
+  </ThingDef>
+
+  <RecipeDef ParentName="BOR_SolarSurgeryInstallBodyPartArtificialBase">
+    <defName>BOR_InstallSolarBionicPrecisionHand</defName>
+    <label>install bionic precision hand</label>
+    <description>Install a bionic precision hand.</description>
+    <descriptionHyperlinks>
+      <ThingDef>BOR_SolarBionicPrecisionHand</ThingDef>
+      <HediffDef>BOR_SolarBionicPrecisionHand</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing bionic precision hand.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>BOR_SolarBionicPrecisionHand</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>BOR_SolarBionicPrecisionHand</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Hand</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>BOR_SolarBionicPrecisionHand</addsHediff>
+  </RecipeDef>
+
+  <!-- Implant-only -->
+
+  <HediffDef ParentName="BOR_ImplantSolarHediffBase">
+    <defName>BOR_SolarBreathPacerImplant</defName>
+    <label>solar breath-pacer implant</label>
+    <labelNoun>a solar breath-pacer implant</labelNoun>
+    <description>An implanted breathing pacer that keeps the chest rhythm steady and responsive under substrate stress.</description>
+    <descriptionHyperlinks>
+      <ThingDef>BOR_SolarBreathPacerImplant</ThingDef>
+    </descriptionHyperlinks>
+    <spawnThingOnRemoved>BOR_SolarBreathPacerImplant</spawnThingOnRemoved>
+    <stages>
+      <li>
+        <statOffsets>
+          <BOR_Synthesize_Neutronium>0.35</BOR_Synthesize_Neutronium>
+        </statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <ThingDef ParentName="SolarBodyPartBionicBase">
+    <defName>BOR_SolarBreathPacerImplant</defName>
+    <label>solar breath-pacer implant</label>
+    <description>An implanted diaphragm regulator that smooths breathing under demanding substrate work.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>BOR_InstallSolarBreathPacerImplant</RecipeDef>
+    </descriptionHyperlinks>
+    <graphicData>
+      <texPath>Things/Item/Health/HealthItem</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>0.80</drawSize>
+      <color>(0.20, 0.46, 0.58)</color>
+    </graphicData>
+    <costList>
+      <BOR_Sunsteel>10</BOR_Sunsteel>
+      <ComponentSpacer>3</ComponentSpacer>
+    </costList>
+    <statBases>
+      <Mass>0.20</Mass>
+      <MarketValue>600</MarketValue>
+    </statBases>
+  </ThingDef>
+
+  <RecipeDef ParentName="BOR_SolarSurgeryInstallImplantBase">
+    <defName>BOR_InstallSolarBreathPacerImplant</defName>
+    <label>install breath-pacer implant</label>
+    <description>Install a breath-pacer implant.</description>
+    <descriptionHyperlinks>
+      <ThingDef>BOR_SolarBreathPacerImplant</ThingDef>
+      <HediffDef>BOR_SolarBreathPacerImplant</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing breath-pacer implant.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>BOR_SolarBreathPacerImplant</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>BOR_SolarBreathPacerImplant</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Torso</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>BOR_SolarBreathPacerImplant</addsHediff>
+  </RecipeDef>
+
+
+  <HediffDef ParentName="BOR_ImplantSolarHediffBase">
+    <defName>BOR_SolarQuantumCoherenceNeurocalculator</defName>
+    <label>solar quantum coherence neurocalculator</label>
+    <labelNoun>a solar quantum coherence neurocalculator</labelNoun>
+    <description>An installed neurocalculator that offloads coherence-state calculations from conscious thought.</description>
+    <descriptionHyperlinks>
+      <ThingDef>BOR_SolarQuantumCoherenceNeurocalculator</ThingDef>
+    </descriptionHyperlinks>
+    <spawnThingOnRemoved>BOR_SolarQuantumCoherenceNeurocalculator</spawnThingOnRemoved>
+    <stages>
+      <li>
+        <statOffsets>
+          <BOR_QuantumForging>0.35</BOR_QuantumForging>
+        </statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <ThingDef ParentName="SolarBodyPartBionicBase">
+    <defName>BOR_SolarQuantumCoherenceNeurocalculator</defName>
+    <label>solar quantum coherence neurocalculator</label>
+    <description>A cranial microcomputer that tracks coherence states and keeps the wearer mentally aligned during precision forging.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>BOR_InstallSolarQuantumCoherenceNeurocalculator</RecipeDef>
+    </descriptionHyperlinks>
+    <graphicData>
+      <texPath>Things/Item/Health/HealthItem</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>0.80</drawSize>
+      <color>(0.18, 0.42, 0.70)</color>
+    </graphicData>
+    <costList>
+      <BOR_Sunsteel>15</BOR_Sunsteel>
+      <ComponentSpacer>4</ComponentSpacer>
+    </costList>
+    <statBases>
+      <Mass>0.25</Mass>
+      <MarketValue>1100</MarketValue>
+    </statBases>
+  </ThingDef>
+
+  <RecipeDef ParentName="BOR_SolarSurgeryInstallImplantBase">
+    <defName>BOR_InstallSolarQuantumCoherenceNeurocalculator</defName>
+    <label>install quantum coherence neurocalculator</label>
+    <description>Install a quantum coherence neurocalculator.</description>
+    <descriptionHyperlinks>
+      <ThingDef>BOR_SolarQuantumCoherenceNeurocalculator</ThingDef>
+      <HediffDef>BOR_SolarQuantumCoherenceNeurocalculator</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing quantum coherence neurocalculator.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>BOR_SolarQuantumCoherenceNeurocalculator</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>BOR_SolarQuantumCoherenceNeurocalculator</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Brain</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>BOR_SolarQuantumCoherenceNeurocalculator</addsHediff>
+  </RecipeDef>
+
+
+  <HediffDef ParentName="BOR_ImplantSolarHediffBase">
+    <defName>BOR_SolarResonanceEarImplant</defName>
+    <label>solar resonance ear implant</label>
+    <labelNoun>a solar resonance ear implant</labelNoun>
+    <description>An auditory implant that converts field fluctuations into harmonic feedback for instant micro-corrections.</description>
+    <descriptionHyperlinks>
+      <ThingDef>BOR_SolarResonanceEarImplant</ThingDef>
+    </descriptionHyperlinks>
+    <spawnThingOnRemoved>BOR_SolarResonanceEarImplant</spawnThingOnRemoved>
+    <stages>
+      <li>
+        <statOffsets>
+          <BOR_QuantumForging>0.25</BOR_QuantumForging>
+        </statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <ThingDef ParentName="SolarBodyPartBionicBase">
+    <defName>BOR_SolarResonanceEarImplant</defName>
+    <label>solar resonance ear implant</label>
+    <description>A compact ear implant that translates quantum field shifts into sound the wearer can react to immediately.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>BOR_InstallSolarResonanceEarImplant</RecipeDef>
+    </descriptionHyperlinks>
+    <graphicData>
+      <texPath>Things/Item/Health/HealthItem</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>0.80</drawSize>
+      <color>(0.50, 0.52, 0.78)</color>
+    </graphicData>
+    <costList>
+      <BOR_Sunsteel>10</BOR_Sunsteel>
+      <ComponentSpacer>3</ComponentSpacer>
+    </costList>
+    <statBases>
+      <Mass>0.18</Mass>
+      <MarketValue>700</MarketValue>
+    </statBases>
+  </ThingDef>
+
+  <RecipeDef ParentName="BOR_SolarSurgeryInstallImplantBase">
+    <defName>BOR_InstallSolarResonanceEarImplant</defName>
+    <label>install resonance ear implant</label>
+    <description>Install a resonance ear implant.</description>
+    <descriptionHyperlinks>
+      <ThingDef>BOR_SolarResonanceEarImplant</ThingDef>
+      <HediffDef>BOR_SolarResonanceEarImplant</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing resonance ear implant.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>BOR_SolarResonanceEarImplant</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>BOR_SolarResonanceEarImplant</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Ear</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>BOR_SolarResonanceEarImplant</addsHediff>
+  </RecipeDef>
+
+  <HediffDef ParentName="BOR_ImplantSolarHediffBase">
+    <defName>BOR_SolarMicroTremorStabilizer</defName>
+    <label>solar micro-tremor stabilizer</label>
+    <labelNoun>a solar micro-tremor stabilizer</labelNoun>
+    <description>An implanted servo network that cancels involuntary muscle tremors before they can affect fine assembly work.</description>
+    <descriptionHyperlinks>
+      <ThingDef>BOR_SolarMicroTremorStabilizer</ThingDef>
+    </descriptionHyperlinks>
+    <spawnThingOnRemoved>BOR_SolarMicroTremorStabilizer</spawnThingOnRemoved>
+    <stages>
+      <li>
+        <statOffsets>
+          <BOR_BionicCraftingSpeed>0.35</BOR_BionicCraftingSpeed>
+        </statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <ThingDef ParentName="SolarBodyPartBionicBase">
+    <defName>BOR_SolarMicroTremorStabilizer</defName>
+    <label>solar micro-tremor stabilizer</label>
+    <description>A subcutaneous stabilizer that dampens involuntary tremor in the arm and shoulder chain.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>BOR_InstallSolarMicroTremorStabilizer</RecipeDef>
+    </descriptionHyperlinks>
+    <graphicData>
+      <texPath>Things/Item/Health/HealthItem</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>0.80</drawSize>
+      <color>(0.32, 0.56, 0.76)</color>
+    </graphicData>
+    <costList>
+      <BOR_Sunsteel>10</BOR_Sunsteel>
+      <ComponentSpacer>3</ComponentSpacer>
+    </costList>
+    <statBases>
+      <Mass>0.20</Mass>
+      <MarketValue>700</MarketValue>
+    </statBases>
+  </ThingDef>
+
+  <RecipeDef ParentName="BOR_SolarSurgeryInstallImplantBase">
+    <defName>BOR_InstallSolarMicroTremorStabilizer</defName>
+    <label>install micro-tremor stabilizer</label>
+    <description>Install a micro-tremor stabilizer.</description>
+    <descriptionHyperlinks>
+      <ThingDef>BOR_SolarMicroTremorStabilizer</ThingDef>
+      <HediffDef>BOR_SolarMicroTremorStabilizer</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing micro-tremor stabilizer.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>BOR_SolarMicroTremorStabilizer</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>BOR_SolarMicroTremorStabilizer</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Arm</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>BOR_SolarMicroTremorStabilizer</addsHediff>
+  </RecipeDef>
+
+
+  <HediffDef ParentName="BOR_ImplantSolarHediffBase">
+    <defName>BOR_SolarSurgicalCognitionAssistant</defName>
+    <label>solar surgical cognition assistant</label>
+    <labelNoun>a solar surgical cognition assistant</labelNoun>
+    <description>An implanted cognitive overlay that keeps procedural assembly schematics in active working memory.</description>
+    <descriptionHyperlinks>
+      <ThingDef>BOR_SolarSurgicalCognitionAssistant</ThingDef>
+    </descriptionHyperlinks>
+    <spawnThingOnRemoved>BOR_SolarSurgicalCognitionAssistant</spawnThingOnRemoved>
+    <stages>
+      <li>
+        <statOffsets>
+          <BOR_BionicCraftingSpeed>0.3</BOR_BionicCraftingSpeed>
+        </statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <ThingDef ParentName="SolarBodyPartBionicBase">
+    <defName>BOR_SolarSurgicalCognitionAssistant</defName>
+    <label>solar surgical cognition assistant</label>
+    <description>A neural assistant that overlays procedural schematics onto working memory while the user crafts.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>BOR_InstallSolarSurgicalCognitionAssistant</RecipeDef>
+    </descriptionHyperlinks>
+    <graphicData>
+      <texPath>Things/Item/Health/HealthItem</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>0.80</drawSize>
+      <color>(0.22, 0.42, 0.68)</color>
+    </graphicData>
+    <costList>
+      <BOR_Sunsteel>10</BOR_Sunsteel>
+      <ComponentSpacer>3</ComponentSpacer>
+    </costList>
+    <statBases>
+      <Mass>0.25</Mass>
+      <MarketValue>700</MarketValue>
+    </statBases>
+  </ThingDef>
+
+  <RecipeDef ParentName="BOR_SolarSurgeryInstallImplantBase">
+    <defName>BOR_InstallSolarSurgicalCognitionAssistant</defName>
+    <label>install surgical cognition assistant</label>
+    <description>Install a surgical cognition assistant.</description>
+    <descriptionHyperlinks>
+      <ThingDef>BOR_SolarSurgicalCognitionAssistant</ThingDef>
+      <HediffDef>BOR_SolarSurgicalCognitionAssistant</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing surgical cognition assistant.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>BOR_SolarSurgicalCognitionAssistant</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>BOR_SolarSurgicalCognitionAssistant</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Brain</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>BOR_SolarSurgicalCognitionAssistant</addsHediff>
+  </RecipeDef>
+
+</Defs>

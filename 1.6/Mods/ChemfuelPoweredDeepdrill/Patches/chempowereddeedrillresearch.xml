@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+	<Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
+		<modSettingDef>BOR_Setting_IntegrateChemfuelPoweredDeepdrill</modSettingDef>
+		<enabled Class="PatchOperationAdd">
+			<xpath>Defs</xpath>
+			<value>
+
+				<ResearchProjectDef ParentName="BOR_Research_Base_I">
+					<defName>BOR_CPD_Research_FuelRodDeepdrill</defName>
+					<label>BOR fuel rod deepdrill</label>
+					<description>Combine the drilling apparatus of the chemfuel-powered deepdrill with a BOR fuel rod generator, yielding a self-powered drill that runs for extraordinary durations on a single fuel rod and outputs 50% more power than its chemfuel predecessor.</description>
+					<techLevel>Ultra</techLevel>
+					<prerequisites>
+						<li>BOR_Research_Production_I</li>
+						<li>DeepDrilling</li>
+					</prerequisites>
+				</ResearchProjectDef>
+
+				<ResearchProjectDef ParentName="BOR_Research_Base_II">
+					<defName>BOR_CPD_Research_QuasarNeutroniumDeepdrill</defName>
+					<label>quasar neutronium deepdrill</label>
+					<description>Quasar-tier containment and internal power-routing let a deepdrill run directly on neutronium while isolating the output from the colony grid. The upgraded borefield architecture also suppresses infestation formation around drill operations.</description>
+					<techLevel>Ultra</techLevel>
+					<prerequisites>
+						<li>BOR_Research_Production_II</li>
+						<li>BOR_CPD_Research_FuelRodDeepdrill</li>
+					</prerequisites>
+				</ResearchProjectDef>
+
+			</value>
+		</enabled>
+	</Operation>
+</Patch>

@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <ThingDef Name="BOR_QualityHeadgearBase_II" ParentName="ArmorHelmetMakeableBase" Abstract="True">
+    <techLevel>Ultra</techLevel>
+    <recipeMaker>
+      <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+      <researchPrerequisites>
+        <li>BOR_Research_Armor_II</li>
+      </researchPrerequisites>
+      <skillRequirements>
+        <Crafting>10</Crafting>
+      </skillRequirements>
+      <recipeUsers Inherit="False">
+        <li>BOR_Bench_II</li>
+        <li>BOR_Bench_IV</li>
+      </recipeUsers>
+    </recipeMaker>
+  </ThingDef>
+
+  <ThingDef Name="BOR_QualityArmorBase_II" ParentName="ArmorMachineableBase" Abstract="True">
+    <techLevel>Ultra</techLevel>
+    <recipeMaker>
+      <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+      <researchPrerequisites>
+        <li>BOR_Research_Armor_II</li>
+      </researchPrerequisites>
+      <skillRequirements>
+        <Crafting>8</Crafting>
+      </skillRequirements>
+      <recipeUsers Inherit="False">
+        <li>BOR_Bench_II</li>
+        <li>BOR_Bench_IV</li>
+      </recipeUsers>
+    </recipeMaker>
+  </ThingDef>
+
+  <ThingDef Name="BOR_NoQualityWearableBase_II" ParentName="ApparelNoQualityBase" Abstract="True">
+    <techLevel>Ultra</techLevel>
+    <recipeMaker>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Smith</effectWorking>
+      <soundWorking>Recipe_Smith</soundWorking>
+      <unfinishedThingDef>UnfinishedApparel</unfinishedThingDef>
+      <researchPrerequisites>
+        <li>BOR_Research_Armor_II</li>
+      </researchPrerequisites>
+      <skillRequirements>
+        <Crafting>8</Crafting>
+      </skillRequirements>
+      <recipeUsers Inherit="False">
+        <li>BOR_Bench_II</li>
+        <li>BOR_Bench_IV</li>
+      </recipeUsers>
+      <defaultIngredientFilter>
+        <categories>
+          <li>Root</li>
+        </categories>
+        <disallowedThingDefs>
+          <li>Gold</li>
+          <li>Silver</li>
+          <li>Plasteel</li>
+          <li>Jade</li>
+          <li>Uranium</li>
+          <li MayRequire="Ludeon.RimWorld.Anomaly">Bioferrite</li>
+          <li MayRequire="Ludeon.RimWorld.Odyssey">Obsidian</li>
+        </disallowedThingDefs>
+      </defaultIngredientFilter>
+    </recipeMaker>
+  </ThingDef>
+
+  <ThingDef ParentName="BOR_QualityHeadgearBase_II">
+    <defName>BOR_QuasarQuantumRebreatherMask</defName>
+    <label>quasar quantum rebreather mask</label>
+    <description>A refined filtered quantum rebreather built for hazardous substrate work.</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/EltexHelmet/EltexHelmet</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>0.90</drawSize>
+      <color>(0.20, 0.50, 0.72)</color>
+    </graphicData>
+    <statBases>
+      <WorkToMake>26250</WorkToMake>
+      <MaxHitPoints>337.5</MaxHitPoints>
+      <Mass>0.8333</Mass>
+      <Flammability>0.25</Flammability>
+      <ArmorRating_Sharp>2.1</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.9</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.975</ArmorRating_Heat>
+      <Insulation_Cold>6</Insulation_Cold>
+      <Insulation_Heat>3</Insulation_Heat>
+      <EquipDelay>1.6667</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <BOR_Synthesize_Neutronium>0.18</BOR_Synthesize_Neutronium>
+    </equippedStatOffsets>
+    <thingCategories>
+      <li>BOR_Armor_Headgear_II</li>
+    </thingCategories>
+    <costList>
+      <BOR_QuasarAlloy>35</BOR_QuasarAlloy>
+      <BOR_ComponentII>1</BOR_ComponentII>
+    </costList>
+    <apparel>
+      <immuneToToxGasExposure>true</immuneToToxGasExposure>
+      <bodyPartGroups>
+        <li>FullHead</li>
+      </bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/EltexHelmet/EltexHelmet</wornGraphicPath>
+      <layers>
+        <li>Overhead</li>
+      </layers>
+      <defaultOutfitTags>
+        <li>Soldier</li>
+      </defaultOutfitTags>
+    </apparel>
+    <tradeTags>
+      <li>Armor</li>
+      <li>BOR_Armor_II</li>
+      <li>BOR_Tech_II</li>
+    </tradeTags>
+  </ThingDef>
+
+  <ThingDef ParentName="BOR_QualityHeadgearBase_II">
+    <defName>BOR_QuasarSunforgeCalibrationVisor</defName>
+    <label>quasar sunforge calibration visor</label>
+    <description>A refined visor that filters glare and timing drift for precision forging.</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/AirwireHeadset/AirwireHeadset</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>0.60</drawSize>
+      <color>(0.72, 0.64, 0.24)</color>
+    </graphicData>
+    <statBases>
+      <WorkToMake>18333.333</WorkToMake>
+      <MaxHitPoints>270</MaxHitPoints>
+      <Mass>0.6667</Mass>
+      <Flammability>0.25</Flammability>
+      <ArmorRating_Sharp>1.8</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.75</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.825</ArmorRating_Heat>
+      <Insulation_Cold>4.5</Insulation_Cold>
+      <Insulation_Heat>2.25</Insulation_Heat>
+      <EquipDelay>1.6667</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <BOR_QuantumForging>0.18</BOR_QuantumForging>
+    </equippedStatOffsets>
+    <thingCategories>
+      <li>BOR_Armor_Headgear_II</li>
+    </thingCategories>
+    <costList>
+      <BOR_QuasarAlloy>28</BOR_QuasarAlloy>
+      <BOR_ComponentII>1</BOR_ComponentII>
+    </costList>
+    <apparel>
+      <bodyPartGroups>
+        <li>UpperHead</li>
+      </bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/AirwireHeadset/AirwireHeadset</wornGraphicPath>
+      <layers>
+        <li>Overhead</li>
+      </layers>
+      <defaultOutfitTags>
+        <li>Soldier</li>
+      </defaultOutfitTags>
+    </apparel>
+    <tradeTags>
+      <li>Armor</li>
+      <li>BOR_Armor_II</li>
+      <li>BOR_Tech_II</li>
+    </tradeTags>
+  </ThingDef>
+
+  <ThingDef ParentName="BOR_NoQualityWearableBase_II">
+    <defName>BOR_QuasarQuantumHapticGloves</defName>
+    <label>quasar quantum haptic gloves</label>
+    <description>Fine haptic gloves tuned for microscopic substrate handling.</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/EltexShirt/EltexShirt</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>0.85</drawSize>
+      <color>(0.18, 0.76, 0.78)</color>
+    </graphicData>
+    <statBases>
+      <WorkToMake>5000</WorkToMake>
+      <MaxHitPoints>180</MaxHitPoints>
+      <Mass>0.125</Mass>
+      <Flammability>0.25</Flammability>
+      <ArmorRating_Sharp>0.045</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.015</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.03</ArmorRating_Heat>
+      <EquipDelay>1.25</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <BOR_Synthesize_Neutronium>0.225</BOR_Synthesize_Neutronium>
+    </equippedStatOffsets>
+    <thingCategories>
+      <li>BOR_Apparel</li>
+    </thingCategories>
+    <costList>
+      <BOR_QuasarAlloy>12</BOR_QuasarAlloy>
+      <BOR_ComponentII>1</BOR_ComponentII>
+    </costList>
+    <apparel>
+      <bodyPartGroups>
+        <li>Hands</li>
+      </bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/EltexShirt/EltexShirt</wornGraphicPath>
+      <layers>
+        <li>OnSkin</li>
+      </layers>
+      <tags>
+        <li>Clothing</li>
+      </tags>
+      <defaultOutfitTags>
+        <li>Worker</li>
+        <li>Soldier</li>
+      </defaultOutfitTags>
+    </apparel>
+    <tradeTags>
+      <li>Clothing</li>
+      <li>BOR_Tech_II</li>
+    </tradeTags>
+  </ThingDef>
+
+  <ThingDef ParentName="BOR_QualityArmorBase_II">
+    <defName>BOR_QuasarSunforgeWeldersCoat</defName>
+    <label>quasar sunforge welder's coat</label>
+    <description>A heat-resistant coat with improved field-dampening panels.</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/FlakJacket/FlakJacket</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>1.00</drawSize>
+      <color>(0.66, 0.40, 0.24)</color>
+    </graphicData>
+    <statBases>
+      <WorkToMake>17500</WorkToMake>
+      <MaxHitPoints>450</MaxHitPoints>
+      <Mass>4.1667</Mass>
+      <Flammability>0.4167</Flammability>
+      <ArmorRating_Sharp>0.9</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.18</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.225</ArmorRating_Heat>
+      <Insulation_Cold>31.5</Insulation_Cold>
+      <Insulation_Heat>6.75</Insulation_Heat>
+      <EquipDelay>2.5</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <BOR_QuantumForging>0.225</BOR_QuantumForging>
+    </equippedStatOffsets>
+    <thingCategories>
+      <li>BOR_Armor_II</li>
+    </thingCategories>
+    <costList>
+      <BOR_QuasarAlloyWeave>50</BOR_QuasarAlloyWeave>
+      <BOR_QuasarAlloy>70</BOR_QuasarAlloy>
+      <BOR_ComponentII>1</BOR_ComponentII>
+    </costList>
+    <apparel>
+      <bodyPartGroups>
+        <li>Torso</li>
+        <li>Neck</li>
+        <li>Shoulders</li>
+        <li>Arms</li>
+      </bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/FlakJacket/FlakJacket</wornGraphicPath>
+      <layers>
+        <li>Shell</li>
+      </layers>
+      <tags>
+        <li>HiTechArmor</li>
+        <li>BOR_Military_II</li>
+      </tags>
+      <defaultOutfitTags>
+        <li>Soldier</li>
+      </defaultOutfitTags>
+    </apparel>
+    <tradeTags>
+      <li>Clothing</li>
+      <li>Armor</li>
+      <li>BOR_Clothing_II</li>
+      <li>BOR_Armor_II</li>
+      <li>BOR_Tech_II</li>
+    </tradeTags>
+  </ThingDef>
+
+  <ThingDef ParentName="BOR_QualityArmorBase_II">
+    <defName>BOR_QuasarBionicAssemblyHarness</defName>
+    <label>quasar bionic assembly harness</label>
+    <description>A reinforced torso harness that braces the shoulders and upper back for precision assembly.</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/ReconArmor/ReconArmor</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <color>(0.36, 0.48, 0.70)</color>
+    </graphicData>
+    <statBases>
+      <WorkToMake>56250</WorkToMake>
+      <MaxHitPoints>630</MaxHitPoints>
+      <Mass>5.8333</Mass>
+      <Flammability>0.25</Flammability>
+      <ArmorRating_Sharp>2.175</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.9</ArmorRating_Blunt>
+      <ArmorRating_Heat>1.02</ArmorRating_Heat>
+      <Insulation_Cold>72</Insulation_Cold>
+      <Insulation_Heat>19.5</Insulation_Heat>
+      <EquipDelay>9.1667</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <BOR_BionicCraftingSpeed>0.225</BOR_BionicCraftingSpeed>
+    </equippedStatOffsets>
+    <thingCategories>
+      <li>BOR_Armor_II</li>
+    </thingCategories>
+    <costList>
+      <BOR_QuasarAlloy>80</BOR_QuasarAlloy>
+      <BOR_Neutronium>10</BOR_Neutronium>
+      <BOR_ComponentII>3</BOR_ComponentII>
+    </costList>
+    <apparel>
+      <bodyPartGroups>
+        <li>Torso</li>
+        <li>Shoulders</li>
+      </bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/ReconArmor/ReconArmor</wornGraphicPath>
+      <layers>
+        <li>Middle</li>
+        <li>Shell</li>
+      </layers>
+      <tags>
+        <li>HiTechArmor</li>
+        <li>BOR_Military_II</li>
+      </tags>
+      <defaultOutfitTags>
+        <li>Soldier</li>
+      </defaultOutfitTags>
+    </apparel>
+    <tradeTags>
+      <li>Armor</li>
+      <li>BOR_Armor_II</li>
+      <li>BOR_Tech_II</li>
+    </tradeTags>
+  </ThingDef>
+
+  <ThingDef ParentName="BOR_QualityArmorBase_II">
+    <defName>BOR_QuasarPrecisionAssemblyGloves</defName>
+    <label>quasar precision assembly gloves</label>
+    <description>Structured sensor gloves with haptic sub-dermal guides.</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/EltexShirt/EltexShirt</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>0.85</drawSize>
+      <color>(0.36, 0.70, 0.40)</color>
+    </graphicData>
+    <statBases>
+      <WorkToMake>6666.667</WorkToMake>
+      <MaxHitPoints>180</MaxHitPoints>
+      <Mass>0.15</Mass>
+      <Flammability>0.25</Flammability>
+      <ArmorRating_Sharp>0.06</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.03</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.03</ArmorRating_Heat>
+      <EquipDelay>1.25</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <BOR_BionicCraftingSpeed>0.15</BOR_BionicCraftingSpeed>
+    </equippedStatOffsets>
+    <thingCategories>
+      <li>BOR_Apparel</li>
+    </thingCategories>
+    <costList>
+      <BOR_QuasarAlloy>16</BOR_QuasarAlloy>
+      <BOR_ComponentII>1</BOR_ComponentII>
+    </costList>
+    <apparel>
+      <bodyPartGroups>
+        <li>Hands</li>
+      </bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/EltexShirt/EltexShirt</wornGraphicPath>
+      <layers>
+        <li>OnSkin</li>
+      </layers>
+      <tags>
+        <li>Clothing</li>
+      </tags>
+      <defaultOutfitTags>
+        <li>Worker</li>
+        <li>Soldier</li>
+      </defaultOutfitTags>
+    </apparel>
+    <tradeTags>
+      <li>Clothing</li>
+      <li>BOR_Tech_II</li>
+    </tradeTags>
+  </ThingDef>
+
+</Defs>

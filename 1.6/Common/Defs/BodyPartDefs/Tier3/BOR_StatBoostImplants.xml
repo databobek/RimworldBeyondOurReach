@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <RecipeDef Name="BOR_TenebralSurgeryInstallImplantBase" ParentName="BOR_QuasarSurgeryInstallImplantBase" Abstract="True">
+    <workAmount>15000</workAmount>
+    <skillRequirements>
+      <Medicine>18</Medicine>
+    </skillRequirements>
+    <recipeUsers>
+      <li>BOR_MedicineBench_III</li>
+      <li>BOR_Bench_IV</li>
+    </recipeUsers>
+    <ingredients Inherit="False">
+      <li>
+        <filter>
+          <thingDefs>
+            <li>BOR_MedicineIII</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>BOR_MedicineIII</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+  </RecipeDef>
+
+  <HediffDef ParentName="BOR_ImplantSolarHediffBase">
+    <defName>BOR_TenebralBreathPacerImplant</defName>
+    <label>tenebral breath-pacer implant</label>
+    <labelNoun>a tenebral breath-pacer implant</labelNoun>
+    <description>An apex implanted breathing pacer that keeps the chest rhythm steady under extreme substrate stress and the harshest procedural loads.</description>
+    <descriptionHyperlinks>
+      <ThingDef>BOR_TenebralBreathPacerImplant</ThingDef>
+    </descriptionHyperlinks>
+    <spawnThingOnRemoved>BOR_TenebralBreathPacerImplant</spawnThingOnRemoved>
+    <stages>
+      <li>
+        <statOffsets>
+          <BOR_Synthesize_Neutronium>1.1</BOR_Synthesize_Neutronium>
+        </statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <ThingDef ParentName="TenebralBodyPartBionicBase">
+    <defName>BOR_TenebralBreathPacerImplant</defName>
+    <label>tenebral breath-pacer implant</label>
+    <description>An apex implanted diaphragm regulator tuned for the most demanding substrate work and industrial strain.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>BOR_InstallTenebralBreathPacerImplant</RecipeDef>
+    </descriptionHyperlinks>
+    <graphicData>
+      <texPath>Things/Item/Health/HealthItem</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>0.80</drawSize>
+      <color>(0.10, 0.34, 0.58)</color>
+    </graphicData>
+    <costList>
+      <BOR_Tenebrite>10</BOR_Tenebrite>
+      <BOR_ComponentIII>3</BOR_ComponentIII>
+    </costList>
+    <statBases>
+      <Mass>0.1389</Mass>
+      <MarketValue>1350</MarketValue>
+    </statBases>
+  </ThingDef>
+
+  <RecipeDef ParentName="BOR_TenebralSurgeryInstallImplantBase">
+    <defName>BOR_InstallTenebralBreathPacerImplant</defName>
+    <label>install tenebral breath-pacer implant</label>
+    <description>Install a tenebral breath-pacer implant.</description>
+    <descriptionHyperlinks>
+      <ThingDef>BOR_TenebralBreathPacerImplant</ThingDef>
+      <HediffDef>BOR_TenebralBreathPacerImplant</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing tenebral breath-pacer implant.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>BOR_TenebralBreathPacerImplant</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>BOR_TenebralBreathPacerImplant</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Torso</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>BOR_TenebralBreathPacerImplant</addsHediff>
+  </RecipeDef>
+
+  <HediffDef ParentName="BOR_ImplantSolarHediffBase">
+    <defName>BOR_TenebralQuantumCoherenceNeurocalculator</defName>
+    <label>tenebral quantum coherence neurocalculator</label>
+    <labelNoun>a tenebral quantum coherence neurocalculator</labelNoun>
+    <description>An apex neurocalculator that keeps the most demanding coherence-state calculations aligned with minimal overhead.</description>
+    <descriptionHyperlinks>
+      <ThingDef>BOR_TenebralQuantumCoherenceNeurocalculator</ThingDef>
+    </descriptionHyperlinks>
+    <spawnThingOnRemoved>BOR_TenebralQuantumCoherenceNeurocalculator</spawnThingOnRemoved>
+    <stages>
+      <li>
+        <statOffsets>
+          <BOR_QuantumForging>1.2</BOR_QuantumForging>
+        </statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <ThingDef ParentName="TenebralBodyPartBionicBase">
+    <defName>BOR_TenebralQuantumCoherenceNeurocalculator</defName>
+    <label>tenebral quantum coherence neurocalculator</label>
+    <description>An apex cranial microcomputer built for the harshest precision-fabrication loads.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>BOR_InstallTenebralQuantumCoherenceNeurocalculator</RecipeDef>
+    </descriptionHyperlinks>
+    <graphicData>
+      <texPath>Things/Item/Health/HealthItem</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>0.80</drawSize>
+      <color>(0.12, 0.24, 0.58)</color>
+    </graphicData>
+    <costList>
+      <BOR_Tenebrite>15</BOR_Tenebrite>
+      <BOR_ComponentIII>4</BOR_ComponentIII>
+    </costList>
+    <statBases>
+      <Mass>0.1736</Mass>
+      <MarketValue>2475</MarketValue>
+    </statBases>
+  </ThingDef>
+
+  <RecipeDef ParentName="BOR_TenebralSurgeryInstallImplantBase">
+    <defName>BOR_InstallTenebralQuantumCoherenceNeurocalculator</defName>
+    <label>install tenebral quantum coherence neurocalculator</label>
+    <description>Install a tenebral quantum coherence neurocalculator.</description>
+    <descriptionHyperlinks>
+      <ThingDef>BOR_TenebralQuantumCoherenceNeurocalculator</ThingDef>
+      <HediffDef>BOR_TenebralQuantumCoherenceNeurocalculator</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing tenebral quantum coherence neurocalculator.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>BOR_TenebralQuantumCoherenceNeurocalculator</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>BOR_TenebralQuantumCoherenceNeurocalculator</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Brain</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>BOR_TenebralQuantumCoherenceNeurocalculator</addsHediff>
+  </RecipeDef>
+
+  <HediffDef ParentName="BOR_ImplantSolarHediffBase">
+    <defName>BOR_TenebralMicroTremorStabilizer</defName>
+    <label>tenebral micro-tremor stabilizer</label>
+    <labelNoun>a tenebral micro-tremor stabilizer</labelNoun>
+    <description>An apex servo network that eliminates tremors under the harshest assembly conditions.</description>
+    <descriptionHyperlinks>
+      <ThingDef>BOR_TenebralMicroTremorStabilizer</ThingDef>
+    </descriptionHyperlinks>
+    <spawnThingOnRemoved>BOR_TenebralMicroTremorStabilizer</spawnThingOnRemoved>
+    <stages>
+      <li>
+        <statOffsets>
+          <BOR_BionicCraftingSpeed>1.2</BOR_BionicCraftingSpeed>
+        </statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <ThingDef ParentName="TenebralBodyPartBionicBase">
+    <defName>BOR_TenebralMicroTremorStabilizer</defName>
+    <label>tenebral micro-tremor stabilizer</label>
+    <description>An apex subcutaneous stabilizer that dampens involuntary tremor in the arm and shoulder chain.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>BOR_InstallTenebralMicroTremorStabilizer</RecipeDef>
+    </descriptionHyperlinks>
+    <graphicData>
+      <texPath>Things/Item/Health/HealthItem</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>0.80</drawSize>
+      <color>(0.12, 0.38, 0.72)</color>
+    </graphicData>
+    <costList>
+      <BOR_Tenebrite>10</BOR_Tenebrite>
+      <BOR_ComponentIII>3</BOR_ComponentIII>
+    </costList>
+    <statBases>
+      <Mass>0.1389</Mass>
+      <MarketValue>1575</MarketValue>
+    </statBases>
+  </ThingDef>
+
+  <RecipeDef ParentName="BOR_TenebralSurgeryInstallImplantBase">
+    <defName>BOR_InstallTenebralMicroTremorStabilizer</defName>
+    <label>install tenebral micro-tremor stabilizer</label>
+    <description>Install a tenebral micro-tremor stabilizer.</description>
+    <descriptionHyperlinks>
+      <ThingDef>BOR_TenebralMicroTremorStabilizer</ThingDef>
+      <HediffDef>BOR_TenebralMicroTremorStabilizer</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing tenebral micro-tremor stabilizer.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>BOR_TenebralMicroTremorStabilizer</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>BOR_TenebralMicroTremorStabilizer</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Arm</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>BOR_TenebralMicroTremorStabilizer</addsHediff>
+  </RecipeDef>
+
+</Defs>
