@@ -1,18 +1,12 @@
-<<<<<<< HEAD
-﻿using RimWorld;
-using System.Collections.Generic;
 using Verse;
-=======
-﻿using Verse;
->>>>>>> b058a259e3ce136fafaedc332d9e0c7dc9f61558
+using RimWorld;
+using System.Collections.Generic;
 
 namespace BORChemfuelPoweredDeepdrill
 {
 	public class Workgiver_FuelRodDeepdrill : ChemfuelGeneratorDeepdrill.WorkGiver_ChemfuelGeneratorDeepDrill
 	{
 		public override ThingRequest PotentialWorkThingRequest => ThingRequest.ForDef(Defofs.BOR_CPD_FuelRodDeepdrill);
-<<<<<<< HEAD
-
 
 		public override bool ShouldSkip(Pawn pawn, bool forced = false)
 		{
@@ -31,7 +25,5 @@ namespace BORChemfuelPoweredDeepdrill
 			}
 			return true;
 		}
-=======
->>>>>>> b058a259e3ce136fafaedc332d9e0c7dc9f61558
 	}
 }
