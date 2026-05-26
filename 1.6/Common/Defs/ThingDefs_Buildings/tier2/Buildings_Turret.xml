@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <ThingDef ParentName="BuildingBase">
+        <defName>BOR_Turret_Ranger_TII</defName>
+        <label>ranger railgun turret</label>
+        <description>A precision long-range railgun turret. It fires rarely, but when it does, the projectile leaves the barrel at extreme velocity with near-perfect accuracy.</description>
+        <thingClass>Building_TurretGun</thingClass>
+        <drawerType>MapMeshAndRealTime</drawerType>
+        <graphicData>
+            <texPath>BOR/Things/Building/tier2/turret/base</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>(3.5,3.5)</drawSize>
+        </graphicData>
+        <uiIconPath>BOR/Things/Building/tier2/turret/turret</uiIconPath>
+        <size>(5,5)</size>
+        <rotatable>false</rotatable>
+        <altitudeLayer>Building</altitudeLayer>
+        <passability>PassThroughOnly</passability>
+        <tickerType>Normal</tickerType>
+        <fillPercent>0.95</fillPercent>
+        <blockWind>true</blockWind>
+        <canOverlapZones>false</canOverlapZones>
+        <statBases>
+            <MaxHitPoints>900</MaxHitPoints>
+            <WorkToBuild>35000</WorkToBuild>
+            <Flammability>0.25</Flammability>
+            <Beauty>-10</Beauty>
+            <ShootingAccuracyTurret>1.0</ShootingAccuracyTurret>
+        </statBases>
+        <costList>
+            <BOR_Sunsteel>560</BOR_Sunsteel>
+            <BOR_QuasarAlloy>160</BOR_QuasarAlloy>
+            <BOR_ComponentII>24</BOR_ComponentII>
+        </costList>
+        <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+        <building>
+            <ai_combatDangerous>true</ai_combatDangerous>
+            <turretGunDef>BOR_Turret_Ranger_TII_Gun</turretGunDef>
+            <turretTopDrawSize>5</turretTopDrawSize>
+            <turretBurstWarmupTime>1.8</turretBurstWarmupTime>
+            <turretBurstCooldownTime>4.2</turretBurstCooldownTime>
+        </building>
+        <comps>
+            <li Class="CompProperties_Explosive">
+                <explosiveRadius>19.9</explosiveRadius>
+                <explosiveDamageType>BombSuper</explosiveDamageType>
+            </li>
+            <li Class="CompProperties_Power">
+                <compClass>CompPowerTrader</compClass>
+                <basePowerConsumption>15000</basePowerConsumption>
+            </li>
+            <li Class="CompProperties_Flickable" />
+            <li Class="CompProperties_Breakdownable" />
+        </comps>
+        <researchPrerequisites>
+            <li>BOR_Research_RangerTurret_II</li>
+        </researchPrerequisites>
+        <designationCategory>BOR</designationCategory>
+        <constructionSkillPrerequisite>12</constructionSkillPrerequisite>
+    </ThingDef>
+
+    <ThingDef ParentName="BaseWeaponTurret">
+        <defName>BOR_Turret_Ranger_TII_Gun</defName>
+        <techLevel>Ultra</techLevel>
+        <label>ranger railgun assembly</label>
+        <description>A precision railgun assembly built for the Ranger turret. Its hypervelocity slug is designed for long-range interdiction and hard-target punching.</description>
+        <graphicData>
+            <texPath>BOR/Things/Building/tier2/turret/turret</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>(5,5)</drawSize>
+        </graphicData>
+        <weaponTags>
+            <li>TurretGun</li>
+        </weaponTags>
+        <statBases>
+            <Mass>320</Mass>
+            <Flammability>0</Flammability>
+            <DeteriorationRate>0</DeteriorationRate>
+        </statBases>
+        <verbs>
+            <li>
+                <verbClass>Verb_Shoot</verbClass>
+                <hasStandardCommand>true</hasStandardCommand>
+                <defaultProjectile>BOR_Bullet_Ranger_TII</defaultProjectile>
+                <minRange>6</minRange>
+                <range>255</range>
+                <burstShotCount>5</burstShotCount>
+                <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
+                <consumeFuelPerShot>1</consumeFuelPerShot>
+                <soundCast>railshot</soundCast>
+                <soundCastTail>GunTail_Heavy</soundCastTail>
+                <muzzleFlashScale>10</muzzleFlashScale>
+                <targetParams>
+                    <canTargetLocations>true</canTargetLocations>
+                </targetParams>
+            </li>
+        </verbs>
+    </ThingDef>
+
+    <ThingDef ParentName="BaseBullet">
+        <defName>BOR_Bullet_Ranger_TII</defName>
+        <label>ranger railgun slug</label>
+        <graphicData>
+            <texPath>Things/Projectile/ShellHighExplosive</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <projectile>
+            <damageDef>Bullet</damageDef>
+            <damageAmountBase>208</damageAmountBase>
+            <stoppingPower>4.5</stoppingPower>
+            <speed>533</speed>
+            <armorPenetrationBase>1.9</armorPenetrationBase>
+        </projectile>
+    </ThingDef>
+
+</Defs>

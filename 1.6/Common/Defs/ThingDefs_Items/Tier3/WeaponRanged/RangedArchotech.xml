@@ -60,6 +60,21 @@
 			<armorPenetrationBase>2.25</armorPenetrationBase>
 		</projectile>
 	</ThingDef>
+	<ThingDef ParentName="BaseBullet">
+		<defName>BOR_Bullet_LMG_TIII</defName>
+		<label>lmg tenebral bullet</label>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>56</damageAmountBase>
+			<stoppingPower>4.99</stoppingPower>
+			<speed>228</speed>
+			<armorPenetrationBase>1.8</armorPenetrationBase>
+		</projectile>
+	</ThingDef>
 	<ThingDef Name="TenebralGunBase" Abstract="True" ParentName="BaseHumanMakeableGun">
 		<generateCommonality>0.02</generateCommonality>
 	</ThingDef>
@@ -406,4 +421,90 @@
 			<li>BOR_SniperRifle_III</li>
 		</weaponTags>
 	</ThingDef>
+	<ThingDef ParentName="TenebralGunBase">
+		<defName>BOR_Gun_LMG_TIII</defName>
+		<techLevel>Archotech</techLevel>
+		<label>tenebral lmg</label>
+		<description>A belt-fed Tenebral LMG made from high-grade Tenebrite components. This upgraded design improves output and handling while reducing the drawbacks of the kwazaari predecessor.</description>
+		<graphicData>
+			<texPath>BOR/Things/Item/Equipment/weaponranged/gen3/lmg</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1.1</drawSize>
+		</graphicData>
+		<soundInteract>Interact_Rifle</soundInteract>
+		<thingCategories>
+			<li>BOR_Weapons_III</li>
+		</thingCategories>
+		<equippedAngleOffset>45</equippedAngleOffset>
+		<weaponClasses>
+			<li>RangedHeavy</li>
+		</weaponClasses>
+		<recipeMaker>
+			<researchPrerequisite>BOR_Research_Weapons_III</researchPrerequisite>
+			<skillRequirements>
+				<Crafting>19</Crafting>
+			</skillRequirements>
+			<displayPriority>445</displayPriority>
+			<recipeUsers Inherit="False">
+				<li>BOR_Bench_III</li>
+				<li>BOR_Bench_IV</li>
+			</recipeUsers>
+		</recipeMaker>
+		<thingSetMakerTags>
+			<li>RewardStandardQualitySuper</li>
+		</thingSetMakerTags>
+		<statBases>
+			<WorkToMake>63750</WorkToMake>
+			<Mass>4.917</Mass>
+			<AccuracyTouch>0.90</AccuracyTouch>
+			<AccuracyShort>1.02</AccuracyShort>
+			<AccuracyMedium>0.825</AccuracyMedium>
+			<AccuracyLong>0.54</AccuracyLong>
+			<RangedWeapon_Cooldown>1.042</RangedWeapon_Cooldown>
+
+			<RoyalFavorValue>6</RoyalFavorValue>
+		</statBases>
+		<costList>
+			<BOR_Tenebrite>75</BOR_Tenebrite>
+			<BOR_ComponentIII>5</BOR_ComponentIII>
+		</costList>
+		<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>BOR_Bullet_LMG_TIII</defaultProjectile>
+				<warmupTime>1.042</warmupTime>
+				<range>85.35</range>
+				<ticksBetweenBurstShots>4</ticksBetweenBurstShots>
+				<burstShotCount>9</burstShotCount>
+				<soundCast>Shot_Minigun</soundCast>
+				<soundCastTail>GunTail_Medium</soundCastTail>
+				<muzzleFlashScale>9</muzzleFlashScale>
+			</li>
+		</verbs>
+		<weaponTags>
+			<li>BOR_LMG_III</li>
+		</weaponTags>
+		<tools>
+			<li>
+				<label>stock</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>30</power>
+				<cooldownTime>1.15</cooldownTime>
+			</li>
+			<li>
+				<label>barrel</label>
+				<capacities>
+					<li>Blunt</li>
+					<li>Poke</li>
+				</capacities>
+				<power>30</power>
+				<cooldownTime>1.15</cooldownTime>
+			</li>
+		</tools>
+	</ThingDef>
+
+
 </Defs>

@@ -1,0 +1,501 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+    <Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
+        <modSettingDef>BOR_Setting_EnableBadzaariFaction</modSettingDef>
+        <enabled Class="PatchOperationSequence">
+            <operations>
+                <li Class="PatchOperationAdd">
+                    <xpath>Defs</xpath>
+                    <value>
+                        <RulePackDef>
+                            <defName>NamerBadzaariFaction</defName>
+                            <rulePack>
+                                <rulesStrings>
+                                    <li>name->[Badsarfactionprefix] [Badsarfactionsuffix]</li>
+                                </rulesStrings>
+                                <rulesRaw>
+                                    <li Class="Rule_File">
+                                        <keyword>Badsarfactionprefix</keyword>
+                                        <path>NameBanks/Badzaari/Badsarfactionprefix</path>
+                                    </li>
+                                    <li Class="Rule_File">
+                                        <keyword>Badsarfactionsuffix</keyword>
+                                        <path>NameBanks/Badzaari/Badsarfactionsuffix</path>
+                                    </li>
+                                </rulesRaw>
+                            </rulePack>
+                        </RulePackDef>
+                        <RulePackDef>
+                            <defName>NamerBadzaariBase</defName>
+                            <rulePack>
+                                <rulesStrings>
+                                    <li>name->[Badzaaribaseprefix] [Badzaaribasemidfix] [Badzaaribasesuffix]</li>
+                                    <li>name->[Badzaaribaseprefix] [Badzaaribasesuffix]</li>
+                                </rulesStrings>
+                                <rulesRaw>
+                                    <li Class="Rule_File">
+                                        <keyword>Badzaaribaseprefix</keyword>
+                                        <path>NameBanks/Badzaari/Badsarbaseprefix</path>
+                                    </li>
+                                    <li Class="Rule_File">
+                                        <keyword>Badzaaribasemidfix</keyword>
+                                        <path>NameBanks/Badzaari/Badsarbasemidfix</path>
+                                    </li>
+                                    <li Class="Rule_File">
+                                        <keyword>Badzaaribasesuffix</keyword>
+                                        <path>NameBanks/Badzaari/Badsarbasesuffix</path>
+                                    </li>
+                                </rulesRaw>
+                            </rulePack>
+                        </RulePackDef>
+                    </value>
+                </li>
+                <li Class="PatchOperationAdd">
+                    <xpath>Defs</xpath>
+                    <value>
+                        <PawnKindDef Abstract="True" ParentName="BOR_ElitePawn_II" Name="BOR_Bad_ElitePawn_II">
+                            <defaultFactionType>BOR_BadzaarHazaard</defaultFactionType>
+                        </PawnKindDef>
+
+                        <PawnKindDef Abstract="True" ParentName="BOR_BasePawn_II" Name="BOR_Bad_BasePawn_II">
+                            <defaultFactionType>BOR_BadzaarHazaard</defaultFactionType>
+                        </PawnKindDef>
+
+                        <PawnKindDef ParentName="BOR_Bad_BasePawn_II">
+                            <defName>BOR_Badzaari_Bandit</defName>
+                            <label>bandit</label>
+                            <labelPlural>bandits</labelPlural>
+                            <apparelTags>
+                                <li>IndustrialBasic</li>
+                                <li>IndustrialAdvanced</li>
+                                <li>IndustrialMilitaryBasic</li>
+                                <li>IndustrialMilitaryAdvanced</li>
+                            </apparelTags>
+                            <apparelDisallowTags>
+                                <li>Western</li>
+                            </apparelDisallowTags>
+                            <weaponTags>
+                                <li>BOR_Badzaar_Pistol</li>
+                            </weaponTags>
+                            <weaponMoney>
+                                <min>25000</min>
+                                <max>25000</max>
+                            </weaponMoney>
+                            <combatPower>450</combatPower>
+                            <isFighter>true</isFighter>
+                            <canBeSapper>false</canBeSapper>
+                            <apparelMoney>
+                                <min>15000</min>
+                                <max>25000</max>
+                            </apparelMoney>
+                            <apparelRequired>
+                                <li>BOR_Quasar_Apparel_FlakVest</li>
+                                <li>Apparel_Duster</li>
+                                <li>Apparel_CollarShirt</li>
+                                <li>Apparel_Pants</li>
+                            </apparelRequired>
+                            <skills>
+                                <li>
+                                    <skill>Shooting</skill>
+                                    <range>6~10</range>
+                                </li>
+                            </skills>
+                        </PawnKindDef>
+
+                        <PawnKindDef ParentName="BOR_Bad_BasePawn_II">
+                            <defName>BOR_Badzaari_Brigand</defName>
+                            <label>brigand</label>
+                            <labelPlural>brigands</labelPlural>
+                            <apparelTags>
+                                <li>IndustrialBasic</li>
+                                <li>IndustrialAdvanced</li>
+                                <li>IndustrialMilitaryBasic</li>
+                                <li>IndustrialMilitaryAdvanced</li>
+                            </apparelTags>
+                            <apparelDisallowTags>
+                                <li>Western</li>
+                            </apparelDisallowTags>
+                            <weaponTags>
+                                <li>BOR_Badzaar_Rifle</li>
+                            </weaponTags>
+                            <weaponMoney>
+                                <min>30000</min>
+                                <max>30000</max>
+                            </weaponMoney>
+                            <combatPower>450</combatPower>
+                            <isFighter>true</isFighter>
+                            <canBeSapper>false</canBeSapper>
+                            <apparelMoney>
+                                <min>15000</min>
+                                <max>25000</max>
+                            </apparelMoney>
+                            <apparelRequired>
+                                <li>BOR_Quasar_Apparel_FlakPants</li>
+                                <li>BOR_Quasar_Apparel_FlakJacket</li>
+                                <li>Apparel_AdvancedHelmet</li>
+                            </apparelRequired>
+                            <skills>
+                                <li>
+                                    <skill>Shooting</skill>
+                                    <range>8~14</range>
+                                </li>
+                            </skills>
+                        </PawnKindDef>
+
+                        <PawnKindDef ParentName="BOR_Bad_ElitePawn_II">
+                            <defName>BOR_Badzaari_Raider</defName>
+                            <label>raider</label>
+                            <labelPlural>raiders</labelPlural>
+                            <apparelTags>
+                                <li>IndustrialBasic</li>
+                                <li>IndustrialAdvanced</li>
+                                <li>IndustrialMilitaryBasic</li>
+                                <li>IndustrialMilitaryAdvanced</li>
+                            </apparelTags>
+                            <apparelDisallowTags>
+                                <li>Western</li>
+                            </apparelDisallowTags>
+                            <weaponTags>
+                                <li>BOR_Badzaar_Shotgun</li>
+                            </weaponTags>
+                            <weaponMoney>
+                                <min>28000</min>
+                                <max>28000</max>
+                            </weaponMoney>
+                            <combatPower>900</combatPower>
+                            <isFighter>true</isFighter>
+                            <canBeSapper>false</canBeSapper>
+                            <apparelMoney>
+                                <min>15000</min>
+                                <max>25000</max>
+                            </apparelMoney>
+                            <apparelRequired>
+                                <li>BOR_Quasar_Apparel_PowerArmorHelmet</li>
+                                <li>BOR_Quasar_Apparel_PowerArmor</li>
+                            </apparelRequired>
+                            <skills>
+                                <li>
+                                    <skill>Shooting</skill>
+                                    <range>16~18</range>
+                                </li>
+                            </skills>
+                        </PawnKindDef>
+
+                        <!-- Badzaari Assault Marine -->
+
+                        <PawnKindDef ParentName="BOR_Bad_ElitePawn_II">
+                            <defName>BOR_Badzaari_Assault_Raider</defName>
+                            <label>assault raider</label>
+                            <labelPlural>assault raiders</labelPlural>
+                            <apparelTags>
+                                <li>IndustrialBasic</li>
+                                <li>IndustrialAdvanced</li>
+                                <li>IndustrialMilitaryBasic</li>
+                                <li>IndustrialMilitaryAdvanced</li>
+                            </apparelTags>
+                            <apparelDisallowTags>
+                                <li>Western</li>
+                            </apparelDisallowTags>
+                            <weaponTags>
+                                <li>BOR_LongSword_II</li>
+                            </weaponTags>
+                            <weaponMoney>
+                                <min>17000</min>
+                                <max>17000</max>
+                            </weaponMoney>
+                            <combatPower>900</combatPower>
+                            <isFighter>true</isFighter>
+                            <canBeSapper>false</canBeSapper>
+                            <apparelMoney>
+                                <min>15000</min>
+                                <max>25000</max>
+                            </apparelMoney>
+                            <apparelRequired>
+                                <li>BOR_Quasar_Apparel_PowerArmorHelmet</li>
+                                <li>BOR_Quasar_Apparel_PowerArmor</li>
+                            </apparelRequired>
+                            <skills>
+                                <li>
+                                    <skill>Melee</skill>
+                                    <range>16~18</range>
+                                </li>
+                            </skills>
+                        </PawnKindDef>
+
+                        <PawnKindDef MayRequire="ludeon.rimworld.royalty" ParentName="BOR_Bad_ElitePawn_II">
+                            <defName>BOR_Badzaari_Heavy_Marine</defName>
+                            <label>heavy marine</label>
+                            <labelPlural>heavy marines</labelPlural>
+                            <apparelTags>
+                                <li>IndustrialBasic</li>
+                                <li>IndustrialAdvanced</li>
+                                <li>IndustrialMilitaryBasic</li>
+                                <li>IndustrialMilitaryAdvanced</li>
+                            </apparelTags>
+                            <apparelDisallowTags>
+                                <li>Western</li>
+                            </apparelDisallowTags>
+                            <weaponTags>
+                                <li>BOR_Badzaar_LMG</li>
+                            </weaponTags>
+                            <weaponMoney>
+                                <min>32000</min>
+                                <max>32000</max>
+                            </weaponMoney>
+                            <combatPower>550</combatPower>
+                            <isFighter>true</isFighter>
+                            <canBeSapper>false</canBeSapper>
+                            <apparelMoney>
+                                <min>15000</min>
+                                <max>25000</max>
+                            </apparelMoney>
+                            <apparelRequired>
+                                <li>BOR_Quasar_Apparel_ArmorCataphract</li>
+                                <li>BOR_Quasar_Apparel_ArmorHelmetCataphract</li>
+                            </apparelRequired>
+                            <skills>
+                                <li>
+                                    <skill>Shooting</skill>
+                                    <range>16~18</range>
+                                </li>
+                            </skills>
+                        </PawnKindDef>
+
+                        <PawnKindDef ParentName="BOR_Bad_ElitePawn_II">
+                            <defName>BOR_Badzaari_Heavy_Raider</defName>
+                            <label>heavy raider</label>
+                            <labelPlural>heavy raiders</labelPlural>
+                            <apparelTags>
+                                <li>IndustrialBasic</li>
+                                <li>IndustrialAdvanced</li>
+                                <li>IndustrialMilitaryBasic</li>
+                                <li>IndustrialMilitaryAdvanced</li>
+                            </apparelTags>
+                            <apparelDisallowTags>
+                                <li>Western</li>
+                            </apparelDisallowTags>
+                            <weaponTags>
+                                <li>BOR_Badzaar_Rifle</li>
+                            </weaponTags>
+                            <weaponMoney>
+                                <min>30000</min>
+                                <max>30000</max>
+                            </weaponMoney>
+                            <combatPower>275</combatPower>
+                            <isFighter>true</isFighter>
+                            <canBeSapper>false</canBeSapper>
+                            <apparelMoney>
+                                <min>15000</min>
+                                <max>25000</max>
+                            </apparelMoney>
+                            <apparelRequired>
+                                <li>BOR_Quasar_Apparel_PowerArmorHelmet</li>
+                                <li>BOR_Quasar_Apparel_PowerArmor</li>
+                            </apparelRequired>
+                            <skills>
+                                <li>
+                                    <skill>Shooting</skill>
+                                    <range>16~18</range>
+                                </li>
+                            </skills>
+                            <factionLeader>true</factionLeader>
+                        </PawnKindDef>
+
+                        <PawnKindDef MayRequire="akri.starcraftersarmory" ParentName="BOR_Bad_ElitePawn_II">
+                            <defName>BOR_Badzaari_Stomper</defName>
+                            <label>stomper</label>
+                            <labelPlural>stompers</labelPlural>
+                            <apparelTags>
+                                <li>IndustrialBasic</li>
+                                <li>IndustrialAdvanced</li>
+                                <li>IndustrialMilitaryBasic</li>
+                                <li>IndustrialMilitaryAdvanced</li>
+                            </apparelTags>
+                            <apparelDisallowTags>
+                                <li>Western</li>
+                            </apparelDisallowTags>
+                            <weaponTags>
+                                <li>BOR_Badzaar_Shotgun</li>
+                            </weaponTags>
+                            <weaponMoney>
+                                <min>28000</min>
+                                <max>28000</max>
+                            </weaponMoney>
+                            <combatPower>700</combatPower>
+                            <isFighter>true</isFighter>
+                            <canBeSapper>false</canBeSapper>
+                            <apparelMoney>
+                                <min>15000</min>
+                                <max>25000</max>
+                            </apparelMoney>
+                            <apparelRequired>
+                                <li>BOR_CMC700a</li>
+                                <li>BOR_CMC700H</li>
+                            </apparelRequired>
+                            <skills>
+                                <li>
+                                    <skill>Shooting</skill>
+                                    <range>16~18</range>
+                                </li>
+                            </skills>
+                        </PawnKindDef>
+                    </value>
+                </li>
+                <li Class="PatchOperationAdd">
+                    <xpath>Defs</xpath>
+                    <value>
+                        <FactionDef>
+                            <defName>BOR_BadzaarHazaard</defName>
+                            <label>badzaari raiders</label>
+                            <description>.</description>
+                            <pawnSingular>badzaari</pawnSingular>
+                            <pawnsPlural>badzaari</pawnsPlural>
+                            <listOrderPriority>43</listOrderPriority>
+                            <canMakeRandomly>true</canMakeRandomly>
+                            <canSiege>true</canSiege>
+                            <leaderTitle>badzaari warlord</leaderTitle>
+                            <factionIconPath>Factions/BadzaariIcon</factionIconPath>
+                            <factionNameMaker>NamerBadzaariFaction</factionNameMaker>
+                            <settlementNameMaker>NamerBadzaariBase</settlementNameMaker>
+                            <settlementTexturePath>World/WorldObjects/DefaultSettlement</settlementTexturePath>
+                            <techLevel>Ultra</techLevel>
+                            <backstoryFilters>
+                                <li>
+                                    <categories>
+                                        <li>Offworld</li>
+                                    </categories>
+                                    <commonality>0.75</commonality>
+                                </li>
+                            </backstoryFilters>
+                            <allowedCultures>
+                                <li>BOR_Kwazaari_Culture</li>
+                            </allowedCultures>
+                            <requiredMemes>
+                                <li MayRequire="Ludeon.RimWorld.Ideology">Loyalist</li>
+                                <li MayRequire="Ludeon.RimWorld.Ideology">Collectivist</li>
+                                <li MayRequire="Ludeon.RimWorld.Ideology">HumanPrimacy</li>
+                                <li MayRequire="Ludeon.RimWorld.Ideology">Structure_Ideological</li>
+                                <li MayRequire="Ludeon.RimWorld.Ideology">Raider</li>
+                            </requiredMemes>
+                            <xenotypeSet>
+                                <xenotypeChances>
+                                    <BOR_Kwazaari MayRequire="Ludeon.RimWorld.Biotech">0.8</BOR_Kwazaari>
+                                </xenotypeChances>
+                            </xenotypeSet>
+                            <maxPawnCostPerTotalPointsCurve>
+                                <points>
+                                    <li>(0,35)</li>
+                                    <li>(70, 50)</li>
+                                    <li>(700, 100)</li>
+                                    <li>(1300, 150)</li>
+                                    <li>(100000, 10000)</li>
+                                    <li>(150000, 20000)</li>
+                                </points>
+                            </maxPawnCostPerTotalPointsCurve>
+                            <apparelStuffFilter>
+                                <thingDefs>
+                                    <li>BOR_QuasarAlloy</li>
+                                    <li>BOR_QuasarAlloyWeave</li>
+                                </thingDefs>
+                            </apparelStuffFilter>
+                            <pawnGroupMakers Inherit="False">
+                                <li>
+                                    <!-- Normal fights, standard mix -->
+                                    <commonality>100</commonality>
+                                    <kindDef>Combat</kindDef>
+                                    <options>
+                                        <BOR_Badzaari_Bandit>16</BOR_Badzaari_Bandit>
+                                        <BOR_Badzaari_Brigand>8</BOR_Badzaari_Brigand>
+                                        <BOR_Badzaari_Raider>4</BOR_Badzaari_Raider>
+                                        <BOR_Badzaari_Assault_Raider>2</BOR_Badzaari_Assault_Raider>
+                                        <BOR_Badzaari_Heavy_Marine MayRequire="ludeon.rimworld.royalty">2</BOR_Badzaari_Heavy_Marine>
+                                        <BOR_Badzaari_Heavy_Raider>1</BOR_Badzaari_Heavy_Raider>
+                                        <BOR_Badzaari_Stomper MayRequire="AKRI.StarcraftersArmory">1</BOR_Badzaari_Stomper>
+                                    </options>
+                                </li>
+                                <li>
+                                    <kindDef>Settlement</kindDef>
+                                    <options>
+                                        <BOR_Badzaari_Bandit>16</BOR_Badzaari_Bandit>
+                                        <BOR_Badzaari_Brigand>8</BOR_Badzaari_Brigand>
+                                        <BOR_Badzaari_Raider>4</BOR_Badzaari_Raider>
+                                        <BOR_Badzaari_Assault_Raider>2</BOR_Badzaari_Assault_Raider>
+                                        <BOR_Badzaari_Heavy_Marine MayRequire="ludeon.rimworld.royalty">2</BOR_Badzaari_Heavy_Marine>
+                                        <BOR_Badzaari_Heavy_Raider>1</BOR_Badzaari_Heavy_Raider>
+                                        <BOR_Badzaari_Stomper MayRequire="AKRI.StarcraftersArmory">1</BOR_Badzaari_Stomper>
+                                    </options>
+                                </li>
+                                <li MayRequire="Ludeon.RimWorld.Ideology">
+                                    <kindDef>Miners</kindDef>
+                                    <commonality>1</commonality>
+                                    <options>
+                                        <BOR_Miner_II>3</BOR_Miner_II>
+                                        <BOR_Badzaari_Raider>4</BOR_Badzaari_Raider>
+                                    </options>
+                                </li>
+                                <li MayRequire="Ludeon.RimWorld.Ideology">
+                                    <kindDef>Hunters</kindDef>
+                                    <commonality>1</commonality>
+                                    <options>
+                                        <BOR_Badzaari_Heavy_Raider>1</BOR_Badzaari_Heavy_Raider>
+                                        <BOR_Badzaari_Raider>4</BOR_Badzaari_Raider>
+                                    </options>
+                                </li>
+                                <li MayRequire="Ludeon.RimWorld.Ideology">
+                                    <kindDef>Loggers</kindDef>
+                                    <commonality>1</commonality>
+                                    <options>
+                                        <BOR_Logger_II>3</BOR_Logger_II>
+                                        <BOR_Badzaari_Raider>4</BOR_Badzaari_Raider>
+                                    </options>
+                                </li>
+                                <li MayRequire="Ludeon.RimWorld.Ideology">
+                                    <kindDef>Farmers</kindDef>
+                                    <commonality>1</commonality>
+                                    <options>
+                                        <BOR_Farmer_II>3</BOR_Farmer_II>
+                                        <BOR_Badzaari_Raider>4</BOR_Badzaari_Raider>
+                                    </options>
+                                </li>
+                            </pawnGroupMakers>
+                            <autoFlee>false</autoFlee>
+                            <permanentEnemy>true</permanentEnemy>
+                            <canStageAttacks>true</canStageAttacks>
+                            <settlementGenerationWeight>1</settlementGenerationWeight>
+                            <requiredCountAtGameStart>1</requiredCountAtGameStart>
+                            <disallowedMemes>
+                                <li MayRequire="Ludeon.RimWorld.Ideology">Nudism</li>
+                                <li MayRequire="Ludeon.RimWorld.Ideology">Blindsight</li>
+                                <li MayRequire="Ludeon.RimWorld.Ideology">TreeConnection</li>
+                            </disallowedMemes>
+                            <disallowedPrecepts>
+                                <li MayRequire="Ludeon.RimWorld.Ideology">Nudity_Male_CoveringAnythingButGroinDisapproved</li>
+                                <li MayRequire="Ludeon.RimWorld.Ideology">Nudity_Female_CoveringAnythingButGroinDisapproved</li>
+                                <li MayRequire="Ludeon.RimWorld.Ideology">AnimalVenerated</li>
+                                <li MayRequire="Ludeon.RimWorld.Ideology">NobleDespisedWeapons</li>
+                                <li MayRequire="Ludeon.RimWorld.Ideology">ApparelDesired_Strong_Subordinate</li>
+                                <li MayRequire="Ludeon.RimWorld.Ideology">ApparelDesired_Soft_Subordinate</li>
+                                <li MayRequire="Ludeon.RimWorld.Ideology">DrugUse_Prohibited</li>
+                            </disallowedPrecepts>
+                            <raidLootValueFromPointsCurve>
+                                <points>
+                                    <li>(35, 1000)</li>
+                                    <li>(100, 2400)</li>
+                                    <li>(1000, 10000)</li>
+                                    <li>(2000, 16000)</li>
+                                    <li>(4000, 20000)</li>
+                                </points>
+                            </raidLootValueFromPointsCurve>
+                            <allowedArrivalTemperatureRange>
+                                <min>-150</min>
+                                <max>150</max>
+                            </allowedArrivalTemperatureRange>
+                            <raidLootMaker>BOR_LootMaker_II</raidLootMaker>
+                            <maxConfigurableAtWorldCreation>1</maxConfigurableAtWorldCreation>
+                        </FactionDef>
+                    </value>
+                </li>
+            </operations>
+        </enabled>
+    </Operation>
+</Patch>

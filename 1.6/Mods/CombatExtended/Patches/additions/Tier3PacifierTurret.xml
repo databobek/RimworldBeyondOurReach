@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+    <Operation Class="PatchOperationSequence">
+        <operations>
+
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="BOR_Turret_Pacifier_TIII"]/thingClass</xpath>
+                    <value>
+                        <thingClass>CombatExtended.Building_TurretGunCE</thingClass>
+                    </value>
+                </li>
+
+                <li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+                    <defName>BOR_Turret_Pacifier_TIII_Gun</defName>
+                    <statBases>
+                        <RangedWeapon_Cooldown>0.12</RangedWeapon_Cooldown>
+                        <SightsEfficiency>1.5</SightsEfficiency>
+                        <ShotSpread>0.01</ShotSpread>
+                        <SwayFactor>0.05</SwayFactor>
+                    </statBases>
+                    <Properties>
+                        <recoilAmount>0.05</recoilAmount>
+                        <verbClass>CombatExtended.Verb_ShootCE</verbClass>
+                        <hasStandardCommand>true</hasStandardCommand>
+                        <defaultProjectile>BOR_Bullet_Pacifier_CE</defaultProjectile>
+                        <warmupTime>0.05</warmupTime>
+                        <range>16</range>
+                        <minRange>0</minRange>
+                        <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
+                        <burstShotCount>1</burstShotCount>
+                        <muzzleFlashScale>0</muzzleFlashScale>
+                        <targetParams>
+                            <canTargetLocations>false</canTargetLocations>
+                        </targetParams>
+                    </Properties>
+                    <weaponTags>
+                        <li>TurretGun</li>
+                    </weaponTags>
+                </li>
+
+                <li Class="PatchOperationAdd">
+                    <xpath>Defs</xpath>
+                    <value>
+
+                        <ThingDef ParentName="BaseBulletCE">
+                            <defName>BOR_Bullet_Pacifier_CE</defName>
+                            <label>pacifier pulse</label>
+                            <graphicData>
+                                <texPath>BOR/Things/Building/tier3/turret/Invisible</texPath>
+                                <graphicClass>Graphic_Single</graphicClass>
+                                <shaderType>TransparentPostLight</shaderType>
+                            </graphicData>
+                            <projectile Class="CombatExtended.ProjectilePropertiesCE">
+                                <damageDef>BOR_NeuralAgony</damageDef>
+                                <damageAmountBase>10</damageAmountBase>
+                                <armorPenetrationSharp>0</armorPenetrationSharp>
+                                <armorPenetrationBlunt>0</armorPenetrationBlunt>
+                                <speed>120</speed>
+                            </projectile>
+                        </ThingDef>
+
+                    </value>
+                </li>
+
+        </operations>
+    </Operation>
+
+</Patch>

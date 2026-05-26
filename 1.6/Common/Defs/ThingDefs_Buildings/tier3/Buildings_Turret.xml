@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <DamageDef ParentName="Stun">
+        <defName>BOR_NeuralAgony</defName>
+        <label>neural agony</label>
+        <harmsHealth>false</harmsHealth>
+        <hasForcefulImpact>false</hasForcefulImpact>
+        <buildingDamageFactor>0</buildingDamageFactor>
+        <plantDamageFactor>0</plantDamageFactor>
+        <additionalHediffs>
+            <li>
+                <hediff>BOR_NeuralOverload</hediff>
+                <severityPerDamageDealt>0.08</severityPerDamageDealt>
+                <victimSeverityScalingByInvBodySize>true</victimSeverityScalingByInvBodySize>
+            </li>
+        </additionalHediffs>
+    </DamageDef>
+
+    <HediffDef>
+        <defName>BOR_NeuralOverload</defName>
+        <label>neural overload</label>
+        <description>An induced agony cascade floods the nervous system with incapacitating pain while leaving the target physically intact.</description>
+        <hediffClass>HediffWithComps</hediffClass>
+        <defaultLabelColor>(0.95,0.55,0.55)</defaultLabelColor>
+        <initialSeverity>0.01</initialSeverity>
+        <minSeverity>0.01</minSeverity>
+        <maxSeverity>1</maxSeverity>
+        <isBad>true</isBad>
+        <comps>
+            <li Class="HediffCompProperties_Disappears">
+                <showRemainingTime>True</showRemainingTime>
+                <disappearsAfterTicks>
+                    <min>180</min>
+                    <max>300</max>
+                </disappearsAfterTicks>
+            </li>
+        </comps>
+        <stages>
+            <li>
+                <minSeverity>0.01</minSeverity>
+                <painOffset>0.2</painOffset>
+                <capMods>
+                    <li>
+                        <capacity>Moving</capacity>
+                        <postFactor>0.9</postFactor>
+                    </li>
+                </capMods>
+            </li>
+            <li>
+                <minSeverity>0.25</minSeverity>
+                <painOffset>0.45</painOffset>
+                <capMods>
+                    <li>
+                        <capacity>Consciousness</capacity>
+                        <postFactor>0.8</postFactor>
+                    </li>
+                    <li>
+                        <capacity>Moving</capacity>
+                        <postFactor>0.55</postFactor>
+                    </li>
+                </capMods>
+            </li>
+            <li>
+                <minSeverity>0.5</minSeverity>
+                <painOffset>0.75</painOffset>
+                <capMods>
+                    <li>
+                        <capacity>Consciousness</capacity>
+                        <postFactor>0.45</postFactor>
+                    </li>
+                    <li>
+                        <capacity>Moving</capacity>
+                        <postFactor>0.2</postFactor>
+                    </li>
+                </capMods>
+            </li>
+            <li>
+                <minSeverity>0.8</minSeverity>
+                <painOffset>1.1</painOffset>
+                <capMods>
+                    <li>
+                        <capacity>Consciousness</capacity>
+                        <setMax>0.1</setMax>
+                    </li>
+                </capMods>
+            </li>
+        </stages>
+    </HediffDef>
+
+    <ThingDef ParentName="BuildingBase">
+        <defName>BOR_Turret_Pacifier_TIII</defName>
+        <label>pacifier suppression turret</label>
+        <description>A compact tenebral suppression turret for close perimeter denial. It lashes nearby targets with concentrated neural agony, dropping them through pain and shock instead of tearing them apart.</description>
+        <thingClass>Building_TurretGun</thingClass>
+        <drawerType>MapMeshAndRealTime</drawerType>
+        <graphicData>
+            <texPath>BOR/Things/Building/tier3/turret/base2</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>(4,4)</drawSize>
+        </graphicData>
+        <uiIconPath>BOR/Things/Building/tier3/turret/turret</uiIconPath>
+        <size>(2,2)</size>
+        <rotatable>false</rotatable>
+        <altitudeLayer>Building</altitudeLayer>
+        <passability>PassThroughOnly</passability>
+        <tickerType>Normal</tickerType>
+        <fillPercent>0.95</fillPercent>
+        <blockWind>true</blockWind>
+        <canOverlapZones>false</canOverlapZones>
+        <statBases>
+            <MaxHitPoints>700</MaxHitPoints>
+            <WorkToBuild>26000</WorkToBuild>
+            <Flammability>0.15</Flammability>
+            <Beauty>-8</Beauty>
+            <ShootingAccuracyTurret>1.0</ShootingAccuracyTurret>
+        </statBases>
+        <costList>
+            <BOR_Tenebrite>160</BOR_Tenebrite>
+            <BOR_QuasarAlloy>70</BOR_QuasarAlloy>
+            <BOR_ComponentIII>8</BOR_ComponentIII>
+        </costList>
+        <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+        <building>
+            <ai_combatDangerous>true</ai_combatDangerous>
+            <turretGunDef>BOR_Turret_Pacifier_TIII_Gun</turretGunDef>
+            <turretTopDrawSize>4</turretTopDrawSize>
+            <turretBurstWarmupTime>0.05</turretBurstWarmupTime>
+            <turretBurstCooldownTime>0.12</turretBurstCooldownTime>
+        </building>
+        <comps>
+            <li Class="CompProperties_Explosive">
+                <explosiveRadius>10.9</explosiveRadius>
+                <explosiveDamageType>BombSuper</explosiveDamageType>
+            </li>
+            <li Class="CompProperties_Power">
+                <compClass>CompPowerTrader</compClass>
+                <basePowerConsumption>50000</basePowerConsumption>
+            </li>
+            <li Class="CompProperties_Flickable" />
+            <li Class="CompProperties_Breakdownable" />
+        </comps>
+        <researchPrerequisites>
+            <li>BOR_Research_PacifierTurret_III</li>
+        </researchPrerequisites>
+        <designationCategory>BOR</designationCategory>
+        <constructionSkillPrerequisite>14</constructionSkillPrerequisite>
+    </ThingDef>
+
+    <ThingDef ParentName="BaseWeaponTurret">
+        <defName>BOR_Turret_Pacifier_TIII_Gun</defName>
+        <techLevel>Archotech</techLevel>
+        <label>pacifier emitter assembly</label>
+        <description>A short-range neural disruption emitter built into the pacifier turret. It dumps crippling pain into soft targets with almost no audible signature.</description>
+        <graphicData>
+            <texPath>BOR/Things/Building/tier3/turret/Invisible</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>(4,4)</drawSize>
+        </graphicData>
+        <weaponTags>
+            <li>TurretGun</li>
+        </weaponTags>
+        <statBases>
+            <Mass>180</Mass>
+            <Flammability>0</Flammability>
+            <DeteriorationRate>0</DeteriorationRate>
+        </statBases>
+        <verbs>
+            <li>
+                <verbClass>Verb_Shoot</verbClass>
+                <hasStandardCommand>true</hasStandardCommand>
+                <defaultProjectile>BOR_Bullet_Pacifier_TIII</defaultProjectile>
+                <minRange>0</minRange>
+                <range>16</range>
+                <burstShotCount>1</burstShotCount>
+                <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
+                <consumeFuelPerShot>0</consumeFuelPerShot>
+                <muzzleFlashScale>0</muzzleFlashScale>
+                <targetParams>
+                    <canTargetLocations>false</canTargetLocations>
+                </targetParams>
+            </li>
+        </verbs>
+    </ThingDef>
+
+    <ThingDef ParentName="BaseBullet">
+        <defName>BOR_Bullet_Pacifier_TIII</defName>
+        <label>pacifier pulse</label>
+        <graphicData>
+            <texPath>BOR/Things/Building/tier3/turret/Invisible</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <projectile>
+            <damageDef>BOR_NeuralAgony</damageDef>
+            <damageAmountBase>10</damageAmountBase>
+            <stoppingPower>0.2</stoppingPower>
+            <speed>90</speed>
+            <armorPenetrationBase>0</armorPenetrationBase>
+        </projectile>
+    </ThingDef>
+
+</Defs>

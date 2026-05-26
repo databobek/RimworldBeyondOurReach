@@ -1,0 +1,488 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+    <Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
+        <modSettingDef>BOR_Setting_EnableBadzaariFaction</modSettingDef>
+        <enabled Class="PatchOperationSequence">
+            <operations>
+                <li Class="PatchOperationAdd">
+                    <xpath>Defs</xpath>
+                    <value>
+                        <!-- Badzaar Pistol -->
+                        <ThingDef ParentName="QuasarGunBase">
+                            <defName>BOR_Gun_Badzaar_Pistol</defName>
+                            <techLevel>Ultra</techLevel>
+                            <label>badzaar pistol</label>
+                            <description>A cheap, rough copy of the kwazaari pistol, made from a mix of solar and kwazaar materials. Less accurate and less powerful, but easy to produce for Badzaari raiders.</description>
+                            <graphicData>
+                                <texPath>BOR/Things/Item/Equipment/weaponranged/gen2/bad/pistol</texPath>
+                                <graphicClass>Graphic_Single</graphicClass>
+                            </graphicData>
+                            <uiIconScale>1.5</uiIconScale>
+                            <thingCategories>
+                                <li>BOR_Weapons_II</li>
+                            </thingCategories>
+                            <tradeTags>
+                                <li>BOR_Weapons_II</li>
+                                <li>BOR_Tech_II</li>
+                            </tradeTags>
+                            <recipeMaker>
+                                <researchPrerequisite>BOR_Research_Weapons_II</researchPrerequisite>
+                                <skillRequirements>
+                                    <Crafting>8</Crafting>
+                                </skillRequirements>
+                                <displayPriority>405</displayPriority>
+                                <recipeUsers Inherit="False">
+                                    <li>BOR_Bench_II</li>
+                                    <li>BOR_Bench_IV</li>
+                                </recipeUsers>
+                            </recipeMaker>
+                            <weaponTags>
+                                <li>BOR_Badzaar_Pistol</li>
+                            </weaponTags>
+                            <weaponClasses>
+                                <li>RangedLight</li>
+                            </weaponClasses>
+                            <statBases>
+                                <WorkToMake>8000</WorkToMake>
+                                <Mass>0.8</Mass>
+                                <AccuracyTouch>0.7</AccuracyTouch>
+                                <AccuracyShort>0.5</AccuracyShort>
+                                <AccuracyMedium>0.35</AccuracyMedium>
+                                <AccuracyLong>0.18</AccuracyLong>
+                                <RangedWeapon_Cooldown>0.6</RangedWeapon_Cooldown>
+                                <MarketValue>180</MarketValue>
+                                <DeteriorationRate>1.5</DeteriorationRate>
+                            </statBases>
+                            <costList>
+                                <BOR_Sunsteel>12</BOR_Sunsteel>
+                                <BOR_QuasarAlloy>8</BOR_QuasarAlloy>
+                                <ComponentSpacer>1</ComponentSpacer>
+                            </costList>
+                            <verbs>
+                                <li>
+                                    <verbClass>Verb_Shoot</verbClass>
+                                    <defaultProjectile>BOR_Bullet_Badzaar_Pistol</defaultProjectile>
+                                    <warmupTime>0.5</warmupTime>
+                                    <range>22.4</range>
+                                    <burstShotCount>3</burstShotCount>
+                                    <ticksBetweenBurstShots>8</ticksBetweenBurstShots>
+                                    <soundCast>Shot_BadzaarPistol</soundCast>
+                                </li>
+                            </verbs>
+                        </ThingDef>
+                        <!-- Badzaar Rifle -->
+                        <ThingDef ParentName="QuasarGunBase">
+                            <defName>BOR_Gun_Badzaar_Rifle</defName>
+                            <techLevel>Ultra</techLevel>
+                            <label>badzaar rifle</label>
+                            <description>A mass-produced Badzaari rifle, made from a mix of solar and kwazaar materials. Less accurate and less powerful than the kwazaari version, but easy to produce for Badzaari raiders.</description>
+                            <graphicData>
+                                <texPath>BOR/Things/Item/Equipment/weaponranged/gen2/bad/rifle</texPath>
+                                <graphicClass>Graphic_Single</graphicClass>
+                            </graphicData>
+                            <uiIconScale>1.5</uiIconScale>
+                            <thingCategories>
+                                <li>BOR_Weapons_II</li>
+                            </thingCategories>
+                            <tradeTags>
+                                <li>BOR_Weapons_II</li>
+                                <li>BOR_Tech_II</li>
+                            </tradeTags>
+                            <recipeMaker>
+                                <researchPrerequisite>BOR_Research_Weapons_II</researchPrerequisite>
+                                <skillRequirements>
+                                    <Crafting>10</Crafting>
+                                </skillRequirements>
+                                <displayPriority>410</displayPriority>
+                                <recipeUsers Inherit="False">
+                                    <li>BOR_Bench_II</li>
+                                    <li>BOR_Bench_IV</li>
+                                </recipeUsers>
+                            </recipeMaker>
+                            <weaponTags>
+                                <li>BOR_Badzaar_Rifle</li>
+                            </weaponTags>
+                            <weaponClasses>
+                                <li>RangedHeavy</li>
+                            </weaponClasses>
+                            <statBases>
+                                <WorkToMake>9500</WorkToMake>
+                                <Mass>2.1</Mass>
+                                <AccuracyTouch>0.6</AccuracyTouch>
+                                <AccuracyShort>0.45</AccuracyShort>
+                                <AccuracyMedium>0.32</AccuracyMedium>
+                                <AccuracyLong>0.15</AccuracyLong>
+                                <RangedWeapon_Cooldown>0.9</RangedWeapon_Cooldown>
+                                <MarketValue>260</MarketValue>
+                                <DeteriorationRate>1.5</DeteriorationRate>
+                            </statBases>
+                            <costList>
+                                <BOR_Sunsteel>18</BOR_Sunsteel>
+                                <BOR_QuasarAlloy>12</BOR_QuasarAlloy>
+                                <ComponentSpacer>2</ComponentSpacer>
+                            </costList>
+                            <verbs>
+                                <li>
+                                    <verbClass>Verb_Shoot</verbClass>
+                                    <defaultProjectile>BOR_Bullet_Badzaar_Rifle</defaultProjectile>
+                                    <warmupTime>0.7</warmupTime>
+                                    <range>32.2</range>
+                                    <burstShotCount>4</burstShotCount>
+                                    <ticksBetweenBurstShots>8</ticksBetweenBurstShots>
+                                    <soundCast>Shot_BadzaarRifle</soundCast>
+                                </li>
+                            </verbs>
+                        </ThingDef>
+
+                        <!-- Badzaar Sniper -->
+                        <ThingDef ParentName="QuasarGunBase">
+                            <defName>BOR_Gun_Badzaar_Sniper</defName>
+                            <techLevel>Ultra</techLevel>
+                            <label>badzaar sniper rifle</label>
+                            <description>A long-range Badzaari sniper rifle, made from a mix of solar and kwazaar materials. Less accurate and less powerful than the kwazaari version, but easy to produce for Badzaari raiders.</description>
+                            <graphicData>
+                                <texPath>BOR/Things/Item/Equipment/weaponranged/gen2/bad/sniper</texPath>
+                                <graphicClass>Graphic_Single</graphicClass>
+                            </graphicData>
+                            <uiIconScale>1.5</uiIconScale>
+                            <thingCategories>
+                                <li>BOR_Weapons_II</li>
+                            </thingCategories>
+                            <tradeTags>
+                                <li>BOR_Weapons_II</li>
+                                <li>BOR_Tech_II</li>
+                            </tradeTags>
+                            <recipeMaker>
+                                <researchPrerequisite>BOR_Research_Weapons_II</researchPrerequisite>
+                                <skillRequirements>
+                                    <Crafting>12</Crafting>
+                                </skillRequirements>
+                                <displayPriority>415</displayPriority>
+                                <recipeUsers Inherit="False">
+                                    <li>BOR_Bench_II</li>
+                                    <li>BOR_Bench_IV</li>
+                                </recipeUsers>
+                            </recipeMaker>
+                            <weaponTags>
+                                <li>BOR_Badzaar_Sniper</li>
+                            </weaponTags>
+                            <weaponClasses>
+                                <li>RangedHeavy</li>
+                            </weaponClasses>
+                            <statBases>
+                                <WorkToMake>12000</WorkToMake>
+                                <Mass>3.2</Mass>
+                                <AccuracyTouch>0.5</AccuracyTouch>
+                                <AccuracyShort>0.38</AccuracyShort>
+                                <AccuracyMedium>0.28</AccuracyMedium>
+                                <AccuracyLong>0.13</AccuracyLong>
+                                <RangedWeapon_Cooldown>2.1</RangedWeapon_Cooldown>
+                                <MarketValue>320</MarketValue>
+                                <DeteriorationRate>1.5</DeteriorationRate>
+                            </statBases>
+                            <costList>
+                                <BOR_Sunsteel>24</BOR_Sunsteel>
+                                <BOR_QuasarAlloy>16</BOR_QuasarAlloy>
+                                <ComponentSpacer>2</ComponentSpacer>
+                            </costList>
+                            <verbs>
+                                <li>
+                                    <verbClass>Verb_Shoot</verbClass>
+                                    <defaultProjectile>BOR_Bullet_Badzaar_Sniper</defaultProjectile>
+                                    <warmupTime>1.2</warmupTime>
+                                    <range>45.5</range>
+                                    <burstShotCount>1</burstShotCount>
+                                    <ticksBetweenBurstShots>0</ticksBetweenBurstShots>
+                                    <soundCast>Shot_BadzaarSniper</soundCast>
+                                </li>
+                            </verbs>
+                        </ThingDef>
+
+                        <!-- Badzaar LMG -->
+                        <ThingDef ParentName="QuasarGunBase">
+                            <defName>BOR_Gun_Badzaar_LMG</defName>
+                            <techLevel>Ultra</techLevel>
+                            <label>badzaar LMG</label>
+                            <description>A Badzaari light machine gun, made from a mix of solar and kwazaar materials. Less accurate and less powerful than the kwazaari version, but easy to produce for Badzaari raiders.</description>
+                            <graphicData>
+                                <texPath>BOR/Things/Item/Equipment/weaponranged/gen2/bad/lmg</texPath>
+                                <graphicClass>Graphic_Single</graphicClass>
+                            </graphicData>
+                            <uiIconScale>1.5</uiIconScale>
+                            <thingCategories>
+                                <li>BOR_Weapons_II</li>
+                            </thingCategories>
+                            <tradeTags>
+                                <li>BOR_Weapons_II</li>
+                                <li>BOR_Tech_II</li>
+                            </tradeTags>
+                            <recipeMaker>
+                                <researchPrerequisite>BOR_Research_Weapons_II</researchPrerequisite>
+                                <skillRequirements>
+                                    <Crafting>11</Crafting>
+                                </skillRequirements>
+                                <displayPriority>420</displayPriority>
+                                <recipeUsers Inherit="False">
+                                    <li>BOR_Bench_II</li>
+                                    <li>BOR_Bench_IV</li>
+                                </recipeUsers>
+                            </recipeMaker>
+                            <weaponTags>
+                                <li>BOR_Badzaar_LMG</li>
+                            </weaponTags>
+                            <weaponClasses>
+                                <li>RangedHeavy</li>
+                            </weaponClasses>
+                            <statBases>
+                                <WorkToMake>10500</WorkToMake>
+                                <Mass>4.1</Mass>
+                                <AccuracyTouch>0.45</AccuracyTouch>
+                                <AccuracyShort>0.32</AccuracyShort>
+                                <AccuracyMedium>0.22</AccuracyMedium>
+                                <AccuracyLong>0.09</AccuracyLong>
+                                <RangedWeapon_Cooldown>1.5</RangedWeapon_Cooldown>
+                                <MarketValue>280</MarketValue>
+                                <DeteriorationRate>1.5</DeteriorationRate>
+                            </statBases>
+                            <costList>
+                                <BOR_Sunsteel>20</BOR_Sunsteel>
+                                <BOR_QuasarAlloy>14</BOR_QuasarAlloy>
+                                <ComponentSpacer>2</ComponentSpacer>
+                            </costList>
+                            <verbs>
+                                <li>
+                                    <verbClass>Verb_Shoot</verbClass>
+                                    <defaultProjectile>BOR_Bullet_Badzaar_LMG</defaultProjectile>
+                                    <warmupTime>0.9</warmupTime>
+                                    <range>32.0</range>
+                                    <burstShotCount>7</burstShotCount>
+                                    <ticksBetweenBurstShots>6</ticksBetweenBurstShots>
+                                    <soundCast>Shot_BadzaarLMG</soundCast>
+                                </li>
+                            </verbs>
+                        </ThingDef>
+
+                        <!-- Badzaar Shotgun -->
+                        <ThingDef ParentName="QuasarGunBase">
+                            <defName>BOR_Gun_Badzaar_Shotgun</defName>
+                            <techLevel>Ultra</techLevel>
+                            <label>badzaar shotgun</label>
+                            <description>A Badzaari shotgun, made from a mix of solar and kwazaar materials. Less accurate and less powerful than the kwazaari version, but easy to produce for Badzaari raiders.</description>
+                            <graphicData>
+                                <texPath>BOR/Things/Item/Equipment/weaponranged/gen2/bad/shotgun</texPath>
+                                <graphicClass>Graphic_Single</graphicClass>
+                            </graphicData>
+                            <uiIconScale>1.5</uiIconScale>
+                            <thingCategories>
+                                <li>BOR_Weapons_II</li>
+                            </thingCategories>
+                            <tradeTags>
+                                <li>BOR_Weapons_II</li>
+                                <li>BOR_Tech_II</li>
+                            </tradeTags>
+                            <recipeMaker>
+                                <researchPrerequisite>BOR_Research_Weapons_II</researchPrerequisite>
+                                <skillRequirements>
+                                    <Crafting>9</Crafting>
+                                </skillRequirements>
+                                <displayPriority>425</displayPriority>
+                                <recipeUsers Inherit="False">
+                                    <li>BOR_Bench_II</li>
+                                    <li>BOR_Bench_IV</li>
+                                </recipeUsers>
+                            </recipeMaker>
+                            <weaponTags>
+                                <li>BOR_Badzaar_Shotgun</li>
+                            </weaponTags>
+                            <weaponClasses>
+                                <li>RangedHeavy</li>
+                            </weaponClasses>
+                            <statBases>
+                                <WorkToMake>9000</WorkToMake>
+                                <Mass>2.7</Mass>
+                                <AccuracyTouch>0.55</AccuracyTouch>
+                                <AccuracyShort>0.38</AccuracyShort>
+                                <AccuracyMedium>0.22</AccuracyMedium>
+                                <AccuracyLong>0.08</AccuracyLong>
+                                <RangedWeapon_Cooldown>1.1</RangedWeapon_Cooldown>
+                                <MarketValue>210</MarketValue>
+                                <DeteriorationRate>1.5</DeteriorationRate>
+                            </statBases>
+                            <costList>
+                                <BOR_Sunsteel>14</BOR_Sunsteel>
+                                <BOR_QuasarAlloy>10</BOR_QuasarAlloy>
+                                <ComponentSpacer>1</ComponentSpacer>
+                            </costList>
+                            <verbs>
+                                <li>
+                                    <verbClass>Verb_Shoot</verbClass>
+                                    <defaultProjectile>BOR_Bullet_Badzaar_Shotgun</defaultProjectile>
+                                    <warmupTime>0.7</warmupTime>
+                                    <range>18.0</range>
+                                    <burstShotCount>1</burstShotCount>
+                                    <ticksBetweenBurstShots>0</ticksBetweenBurstShots>
+                                    <soundCast>Shot_BadzaarShotgun</soundCast>
+                                </li>
+                            </verbs>
+                        </ThingDef>
+                        <!-- Add more weapons here: rifle, sniper, lmg, shotgun, each with similar structure and 30% reduced stats -->
+                    </value>
+                </li>
+                <li Class="PatchOperationFindMod">
+                    <mods>
+                        <li>Combat Extended</li>
+                    </mods>
+                    <match Class="PatchOperationAdd">
+                        <xpath>Defs</xpath>
+                        <value>
+                            <!-- Badzaar Ammo Categories -->
+                            <CombatExtended.AmmoCategoryDef>
+                                <defName>BOR_Badzaar_Pistol_AmmoClass</defName>
+                                <label>badzaar scrap (pistol)</label>
+                                <labelShort>Bdz-P</labelShort>
+                                <description>Crudely assembled scrap rounds for badzaari pistols, made from a mix of solar and kwazaar materials.</description>
+                            </CombatExtended.AmmoCategoryDef>
+                            <CombatExtended.AmmoCategoryDef>
+                                <defName>BOR_Badzaar_Rifle_AmmoClass</defName>
+                                <label>badzaar scrap (rifle)</label>
+                                <labelShort>Bdz-R</labelShort>
+                                <description>Crudely assembled scrap rounds for badzaari rifles, made from a mix of solar and kwazaar materials.</description>
+                            </CombatExtended.AmmoCategoryDef>
+                            <CombatExtended.AmmoCategoryDef>
+                                <defName>BOR_Badzaar_SniperLMG_AmmoClass</defName>
+                                <label>badzaar scrap (sniper/lmg)</label>
+                                <labelShort>Bdz-SL</labelShort>
+                                <description>Crudely assembled scrap rounds shared between badzaari snipers and LMGs, made from a mix of solar and kwazaar materials.</description>
+                            </CombatExtended.AmmoCategoryDef>
+                            <CombatExtended.AmmoCategoryDef>
+                                <defName>BOR_Badzaar_Shotgun_AmmoClass</defName>
+                                <label>badzaar scrap (shotgun)</label>
+                                <labelShort>Bdz-Sg</labelShort>
+                                <description>Crudely assembled scrap shells for badzaari shotguns, made from a mix of solar and kwazaar materials.</description>
+                            </CombatExtended.AmmoCategoryDef>
+                            <!-- Pistol Ammo -->
+                            <ThingDef ParentName="BaseBullet">
+                                <defName>BOR_Bullet_Badzaar_Pistol</defName>
+                                <label>badzaar pistol scrap bullet</label>
+                                <projectile Class="CombatExtended.ProjectilePropertiesCE">
+                                    <damageAmountBase>18</damageAmountBase>
+                                    <armorPenetrationSharp>7</armorPenetrationSharp>
+                                    <armorPenetrationBlunt>90</armorPenetrationBlunt>
+                                    <speed>55</speed>
+                                </projectile>
+                            </ThingDef>
+                            <ThingDef Class="CombatExtended.AmmoDef" ParentName="AmmoPistolBase">
+                                <defName>BOR_Ammo_Badzaar_Pistol</defName>
+                                <label>badzaar scrap ammo (pistol)</label>
+                                <statBases>
+                                    <MarketValue>0.7</MarketValue>
+                                </statBases>
+                                <ammoClass>BOR_Badzaar_Pistol_AmmoClass</ammoClass>
+                                <cookOffProjectile>BOR_Bullet_Badzaar_Pistol</cookOffProjectile>
+                            </ThingDef>
+                            <!-- Rifle Ammo -->
+                            <ThingDef ParentName="BaseBullet">
+                                <defName>BOR_Bullet_Badzaar_Rifle</defName>
+                                <label>badzaar rifle scrap bullet</label>
+                                <projectile Class="CombatExtended.ProjectilePropertiesCE">
+                                    <damageAmountBase>22</damageAmountBase>
+                                    <armorPenetrationSharp>14</armorPenetrationSharp>
+                                    <armorPenetrationBlunt>120</armorPenetrationBlunt>
+                                    <speed>65</speed>
+                                </projectile>
+                            </ThingDef>
+                            <ThingDef Class="CombatExtended.AmmoDef" ParentName="AmmoRifleBase">
+                                <defName>BOR_Ammo_Badzaar_Rifle</defName>
+                                <label>badzaar scrap ammo (rifle)</label>
+                                <statBases>
+                                    <MarketValue>1.1</MarketValue>
+                                </statBases>
+                                <ammoClass>BOR_Badzaar_Rifle_AmmoClass</ammoClass>
+                                <cookOffProjectile>BOR_Bullet_Badzaar_Rifle</cookOffProjectile>
+                            </ThingDef>
+                            <!-- Sniper/LMG Shared Caliber Ammo -->
+                            <ThingDef ParentName="BaseBullet">
+                                <defName>BOR_Bullet_Badzaar_Sniper</defName>
+                                <label>badzaar sniper scrap bullet</label>
+                                <projectile Class="CombatExtended.ProjectilePropertiesCE">
+                                    <damageAmountBase>53</damageAmountBase>
+                                    <armorPenetrationSharp>32</armorPenetrationSharp>
+                                    <armorPenetrationBlunt>350</armorPenetrationBlunt>
+                                    <speed>90</speed>
+                                </projectile>
+                            </ThingDef>
+                            <ThingDef ParentName="BaseBullet">
+                                <defName>BOR_Bullet_Badzaar_LMG</defName>
+                                <label>badzaar LMG scrap bullet</label>
+                                <projectile Class="CombatExtended.ProjectilePropertiesCE">
+                                    <damageAmountBase>18</damageAmountBase>
+                                    <armorPenetrationSharp>20</armorPenetrationSharp>
+                                    <armorPenetrationBlunt>200</armorPenetrationBlunt>
+                                    <speed>85</speed>
+                                </projectile>
+                            </ThingDef>
+                            <ThingDef Class="CombatExtended.AmmoDef" ParentName="AmmoSniperBase">
+                                <defName>BOR_Ammo_Badzaar_SniperLMG</defName>
+                                <label>badzaar scrap ammo (sniper/lmg)</label>
+                                <statBases>
+                                    <MarketValue>1.5</MarketValue>
+                                </statBases>
+                                <ammoClass>BOR_Badzaar_SniperLMG_AmmoClass</ammoClass>
+                                <cookOffProjectile>BOR_Bullet_Badzaar_Sniper</cookOffProjectile>
+                            </ThingDef>
+                            <!-- Shotgun Ammo -->
+                            <ThingDef ParentName="BaseBullet">
+                                <defName>BOR_Bullet_Badzaar_Shotgun</defName>
+                                <label>badzaar shotgun scrap blast</label>
+                                <projectile Class="CombatExtended.ProjectilePropertiesCE">
+                                    <damageAmountBase>35</damageAmountBase>
+                                    <armorPenetrationSharp>5</armorPenetrationSharp>
+                                    <armorPenetrationBlunt>600</armorPenetrationBlunt>
+                                    <speed>50</speed>
+                                </projectile>
+                            </ThingDef>
+                            <ThingDef Class="CombatExtended.AmmoDef" ParentName="AmmoShotgunBase">
+                                <defName>BOR_Ammo_Badzaar_Shotgun</defName>
+                                <label>badzaar scrap ammo (shotgun)</label>
+                                <statBases>
+                                    <MarketValue>1.0</MarketValue>
+                                </statBases>
+                                <ammoClass>BOR_Badzaar_Shotgun_AmmoClass</ammoClass>
+                                <cookOffProjectile>BOR_Bullet_Badzaar_Shotgun</cookOffProjectile>
+                            </ThingDef>
+                            <!-- AmmoSets mapping ammo to projectiles -->
+                            <CombatExtended.AmmoSetDef>
+                                <defName>BOR_AmmoSet_Badzaar_Pistol</defName>
+                                <label>badzaar scrap ammo (pistol)</label>
+                                <ammoTypes>
+                                    <BOR_Ammo_Badzaar_Pistol>BOR_Bullet_Badzaar_Pistol</BOR_Ammo_Badzaar_Pistol>
+                                </ammoTypes>
+                            </CombatExtended.AmmoSetDef>
+                            <CombatExtended.AmmoSetDef>
+                                <defName>BOR_AmmoSet_Badzaar_Rifle</defName>
+                                <label>badzaar scrap ammo (rifle)</label>
+                                <ammoTypes>
+                                    <BOR_Ammo_Badzaar_Rifle>BOR_Bullet_Badzaar_Rifle</BOR_Ammo_Badzaar_Rifle>
+                                </ammoTypes>
+                            </CombatExtended.AmmoSetDef>
+                            <CombatExtended.AmmoSetDef>
+                                <defName>BOR_AmmoSet_Badzaar_SniperLMG</defName>
+                                <label>badzaar scrap ammo (sniper/lmg)</label>
+                                <ammoTypes>
+                                    <BOR_Ammo_Badzaar_SniperLMG>BOR_Bullet_Badzaar_Sniper</BOR_Ammo_Badzaar_SniperLMG>
+                                </ammoTypes>
+                            </CombatExtended.AmmoSetDef>
+                            <CombatExtended.AmmoSetDef>
+                                <defName>BOR_AmmoSet_Badzaar_Shotgun</defName>
+                                <label>badzaar scrap ammo (shotgun)</label>
+                                <ammoTypes>
+                                    <BOR_Ammo_Badzaar_Shotgun>BOR_Bullet_Badzaar_Shotgun</BOR_Ammo_Badzaar_Shotgun>
+                                </ammoTypes>
+                            </CombatExtended.AmmoSetDef>
+                        </value>
+                    </match>
+                </li>
+            </operations>
+        </enabled>
+    </Operation>
+</Patch>

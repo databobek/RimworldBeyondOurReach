@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <ThingDef ParentName="BuildingBase">
+        <defName>BOR_Turret_Defender_TI</defName>
+        <label>solar defender turret</label>
+        <description>An autonomous defender-pattern double-barreled turret. It fires dense solar sniper rounds at a sustained high cadence.</description>
+        <thingClass>Building_TurretGun</thingClass>
+        <drawerType>MapMeshAndRealTime</drawerType>
+        <graphicData>
+            <texPath>BOR/Things/Building/tier1/turret/base</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>(2.5,2.5)</drawSize>
+        </graphicData>
+        <uiIconPath>BOR/Things/Building/tier1/turret/turret</uiIconPath>
+        <size>(2,2)</size>
+        <rotatable>false</rotatable>
+        <altitudeLayer>Building</altitudeLayer>
+        <passability>PassThroughOnly</passability>
+        <tickerType>Normal</tickerType>
+        <fillPercent>0.95</fillPercent>
+        <blockWind>true</blockWind>
+        <canOverlapZones>false</canOverlapZones>
+        <statBases>
+            <MaxHitPoints>6500</MaxHitPoints>
+            <WorkToBuild>20000</WorkToBuild>
+            <Flammability>0.5</Flammability>
+            <Beauty>-5</Beauty>
+            <ShootingAccuracyTurret>0.98</ShootingAccuracyTurret>
+        </statBases>
+        <costList>
+            <BOR_Sunsteel>320</BOR_Sunsteel>
+            <ComponentSpacer>20</ComponentSpacer>
+        </costList>
+        <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+        <building>
+            <ai_combatDangerous>true</ai_combatDangerous>
+            <turretGunDef>BOR_Turret_Defender_TI_Gun</turretGunDef>
+            <turretTopDrawSize>3.5</turretTopDrawSize>
+            <turretBurstWarmupTime>0.5</turretBurstWarmupTime>
+            <turretBurstCooldownTime>1</turretBurstCooldownTime>
+        </building>
+        <comps>
+            <li Class="CompProperties_Explosive">
+                <explosiveRadius>16.9</explosiveRadius>
+                <explosiveDamageType>BombSuper</explosiveDamageType>
+            </li>
+            <li Class="CompProperties_Power">
+                <compClass>CompPowerTrader</compClass>
+                <basePowerConsumption>10000</basePowerConsumption>
+            </li>
+            <li Class="CompProperties_Flickable" />
+            <li Class="CompProperties_Breakdownable" />
+        </comps>
+        <researchPrerequisites>
+            <li>BOR_Research_DefenderTurret_I</li>
+        </researchPrerequisites>
+        <designationCategory>BOR</designationCategory>
+        <constructionSkillPrerequisite>10</constructionSkillPrerequisite>
+    </ThingDef>
+
+    <ThingDef ParentName="BaseWeaponTurret">
+        <defName>BOR_Turret_Defender_TI_Gun</defName>
+        <techLevel>Ultra</techLevel>
+        <label>solar defender autocannon</label>
+        <description>A defender-pattern autonomous double-barreled cannon assembly chambered for solar sniper ammunition.</description>
+        <graphicData>
+            <texPath>BOR/Things/Building/tier1/turret/turret</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>(2.5,2.5)</drawSize>
+        </graphicData>
+        <weaponTags>
+            <li>TurretGun</li>
+        </weaponTags>
+        <statBases>
+            <Mass>220</Mass>
+            <Flammability>0</Flammability>
+            <DeteriorationRate>0</DeteriorationRate>
+        </statBases>
+        <verbs>
+            <li>
+                <verbClass>Verb_Shoot</verbClass>
+                <hasStandardCommand>true</hasStandardCommand>
+                <defaultProjectile>BOR_Bullet_SniperRifle_TI</defaultProjectile>
+                <minRange>8</minRange>
+                <range>159.9</range>
+                <burstShotCount>30</burstShotCount>
+                <ticksBetweenBurstShots>2</ticksBetweenBurstShots>
+                <consumeFuelPerShot>1</consumeFuelPerShot>
+                <soundCast>Shot_SniperRifle</soundCast>
+                <soundCastTail>GunTail_Heavy</soundCastTail>
+                <muzzleFlashScale>9</muzzleFlashScale>
+                <targetParams>
+                    <canTargetLocations>true</canTargetLocations>
+                </targetParams>
+            </li>
+        </verbs>
+    </ThingDef>
+
+</Defs>

@@ -1,0 +1,532 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+    <Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
+        <modSettingDef>BOR_Setting_EnableTenebralFaction</modSettingDef>
+        <enabled Class="PatchOperationSequence">
+            <operations>
+                <li Class="PatchOperationAdd">
+                    <xpath>Defs</xpath>
+                    <value>
+                        <RulePackDef>
+                            <defName>NamerTenebralFaction</defName>
+                            <rulePack>
+                                <rulesStrings>
+                                    <li>name->[Tenebralfactionprefix] [Tenebralfactionsuffix]</li>
+                                </rulesStrings>
+                                <rulesRaw>
+                                    <li Class="Rule_File">
+                                        <keyword>Tenebralfactionprefix</keyword>
+                                        <path>NameBanks/Tenebral/Tenebralfactionprefix</path>
+                                    </li>
+                                    <li Class="Rule_File">
+                                        <keyword>Tenebralfactionsuffix</keyword>
+                                        <path>NameBanks/Tenebral/Tenebralfactionsuffix</path>
+                                    </li>
+                                </rulesRaw>
+                            </rulePack>
+                        </RulePackDef>
+                        <RulePackDef>
+                            <defName>NamerTenebralBase</defName>
+                            <rulePack>
+                                <rulesStrings>
+                                    <li>name->[Tenebralbaseprefix] [Tenebralbasemidfix] [Tenebralbasesuffix]</li>
+                                    <li>name->[Tenebralbaseprefix] [Tenebralbasesuffix]</li>
+                                </rulesStrings>
+                                <rulesRaw>
+                                    <li Class="Rule_File">
+                                        <keyword>Tenebralbaseprefix</keyword>
+                                        <path>NameBanks/Tenebral/Tenebralbaseprefix</path>
+                                    </li>
+                                    <li Class="Rule_File">
+                                        <keyword>Tenebralbasemidfix</keyword>
+                                        <path>NameBanks/Tenebral/Tenebralbasemidfix</path>
+                                    </li>
+                                    <li Class="Rule_File">
+                                        <keyword>Tenebralbasesuffix</keyword>
+                                        <path>NameBanks/Tenebral/Tenebralbasesuffix</path>
+                                    </li>
+                                </rulesRaw>
+                            </rulePack>
+                        </RulePackDef>
+                    </value>
+                </li>
+                <li Class="PatchOperationAdd">
+                    <xpath>Defs</xpath>
+                    <value>
+                        <RulePackDef>
+                            <defName>NamerIdeoTenebral</defName>
+                            <rulePack>
+                                <rulesStrings>
+                                    <li>r_ideoName-&gt;Tenebralsm</li>
+                                    <li>r_ideoAdjective-&gt;Kwazaar</li>
+                                    <li>r_memberName-&gt;Tenebral</li>
+                                </rulesStrings>
+                            </rulePack>
+                        </RulePackDef>
+                        <RulePackDef>
+                            <defName>NamerLeaderTenebral</defName>
+                            <rulePack>
+                                <rulesStrings>
+                                    <li>r_leaderTitle(p=6)-&gt;Tenebral God</li>
+                                </rulesStrings>
+                            </rulePack>
+                        </RulePackDef>
+                        <CultureDef>
+                            <defName>BOR_Tenebral_Culture</defName>
+                            <label>tenebral culture</label>
+                            <description>.</description>
+                            <ideoNameMaker>NamerIdeoTenebral</ideoNameMaker>
+                            <festivalNameMaker MayRequire="Ludeon.RimWorld.Ideology">NamerFestivalRustican</festivalNameMaker>
+                            <leaderTitleMaker>NamerLeaderTenebral</leaderTitleMaker>
+                            <allowedPlaceTags>
+                                <li MayRequire="Ludeon.RimWorld.Ideology">OriginSpacer</li>
+                            </allowedPlaceTags>
+                            <iconPath>BOR/Things/Factions/TenebralIcon</iconPath>
+                            <thingStyleCategories />
+                            <preferredWeaponClasses>
+                                <noble>Ultratech</noble>
+                                <despised>Neolithic</despised>
+                            </preferredWeaponClasses>
+                            <styleItemTags>
+                                <li>
+                                    <tag>Urban</tag>
+                                    <baseWeight>1</baseWeight>
+                                    <weightFactor>1</weightFactor>
+                                </li>
+                                <li>
+                                    <tag>Soldier</tag>
+                                    <baseWeight>2</baseWeight>
+                                    <weightFactor>1</weightFactor>
+                                </li>
+                                <li>
+                                    <tag>NoBeard</tag>
+                                    <baseWeight>10</baseWeight>
+                                    <weightFactor>1</weightFactor>
+                                </li>
+                                <li>
+                                    <tag>NoTattoo</tag>
+                                    <baseWeight>1</baseWeight>
+                                    <weightFactor>1</weightFactor>
+                                </li>
+                            </styleItemTags>
+                        </CultureDef>
+                    </value>
+                </li>
+                <li Class="PatchOperationAdd">
+                    <xpath>Defs</xpath>
+                    <value>
+                        <PawnKindDef Name="BOR_BasePawn_III" Abstract="True">
+                            <race>Human</race>
+                            <chemicalAddictionChance>0.3</chemicalAddictionChance>
+                            <invNutrition>1.2</invNutrition>
+                            <itemQuality>Masterwork</itemQuality>
+                            <backstoryCryptosleepCommonality>0</backstoryCryptosleepCommonality>
+                            <minGenerationAge>50</minGenerationAge>
+                            <maxGenerationAge>120</maxGenerationAge>
+                            <combatEnhancingDrugsChance>0.05</combatEnhancingDrugsChance>
+                            <apparelIgnoreSeasons>false</apparelIgnoreSeasons>
+                            <combatEnhancingDrugsCount>
+                                <min>2</min>
+                                <max>4</max>
+                            </combatEnhancingDrugsCount>
+                            <initialWillRange>12~18</initialWillRange>
+                            <initialResistanceRange>20~35</initialResistanceRange>
+                            <techHediffsChance>0.9</techHediffsChance>
+                            <techHediffsMoney>15000~60000</techHediffsMoney>
+                            <apparelTags>
+                                <li>IndustrialBasic</li>
+                            </apparelTags>
+                            <techHediffsRequired>
+                                <li>BOR_TenebralAppendage</li>
+                                <li>BOR_TenebralOrgan</li>
+                                <li>BOR_TenebralAppendage</li>
+                                <li>BOR_TenebralOrgan</li>
+                                <li>BOR_TenebralAppendage</li>
+                                <li>BOR_TenebralOrgan</li>
+                                <li>BOR_TenebralAppendage</li>
+                                <li>BOR_TenebralOrgan</li>
+                            </techHediffsRequired>
+                            <biocodeWeaponChance>0.99</biocodeWeaponChance>
+                            <defaultFactionType>BOR_Tenebrites</defaultFactionType>
+                        </PawnKindDef>
+
+                        <PawnKindDef Name="BOR_ElitePawn_III" Abstract="True">
+                            <race>Human</race>
+                            <chemicalAddictionChance>0</chemicalAddictionChance>
+                            <invNutrition>2.2</invNutrition>
+                            <itemQuality>Legendary</itemQuality>
+                            <backstoryCryptosleepCommonality>0</backstoryCryptosleepCommonality>
+                            <minGenerationAge>18</minGenerationAge>
+                            <maxGenerationAge>32</maxGenerationAge>
+                            <combatEnhancingDrugsChance>0.45</combatEnhancingDrugsChance>
+                            <apparelIgnoreSeasons>false</apparelIgnoreSeasons>
+                            <combatEnhancingDrugsCount>
+                                <min>1</min>
+                                <max>1</max>
+                            </combatEnhancingDrugsCount>
+                            <initialWillRange>50~70</initialWillRange>
+                            <initialResistanceRange>50~70</initialResistanceRange>
+                            <techHediffsChance>0.95</techHediffsChance>
+                            <techHediffsMoney>50000~70000</techHediffsMoney>
+                            <techHediffsRequired>
+                                <li>BOR_TenebralAppendage</li>
+                                <li>BOR_TenebralOrgan</li>
+                                <li>BOR_TenebralAppendage</li>
+                                <li>BOR_TenebralOrgan</li>
+                                <li>BOR_TenebralAppendage</li>
+                                <li>BOR_TenebralOrgan</li>
+                                <li>BOR_TenebralAppendage</li>
+                                <li>BOR_TenebralOrgan</li>
+                                <li>BOR_TenebralAppendage</li>
+                                <li>BOR_TenebralOrgan</li>
+                                <li>BOR_TenebralAppendage</li>
+                                <li>BOR_TenebralOrgan</li>
+                                <li>BOR_TenebralAppendage</li>
+                                <li>BOR_TenebralOrgan</li>
+                                <li>BOR_TenebralAppendage</li>
+                                <li>BOR_TenebralOrgan</li>
+                            </techHediffsRequired>
+                            <biocodeWeaponChance>0.99</biocodeWeaponChance>
+                            <defaultFactionType>BOR_Tenebrites</defaultFactionType>
+                        </PawnKindDef>
+
+
+                        <!-- tenebral Marksman -->
+
+                        <PawnKindDef ParentName="BOR_ElitePawn_III">
+                            <defName>BOR_Tenebral_Marksman</defName>
+                            <label>hunter</label>
+                            <labelPlural>hunters</labelPlural>
+                            <apparelTags>
+                                <li>IndustrialBasic</li>
+                                <li>IndustrialAdvanced</li>
+                                <li>IndustrialMilitaryBasic</li>
+                                <li>IndustrialMilitaryAdvanced</li>
+                            </apparelTags>
+                            <apparelDisallowTags>
+                                <li>Western</li>
+                            </apparelDisallowTags>
+                            <weaponTags>
+                                <li>BOR_SniperRifle_III</li>
+                            </weaponTags>
+                            <weaponMoney>
+                                <min>170000</min>
+                                <max>170000</max>
+                            </weaponMoney>
+                            <combatPower>800</combatPower>
+                            <isFighter>true</isFighter>
+                            <canBeSapper>false</canBeSapper>
+                            <apparelMoney>
+                                <min>15000</min>
+                                <max>25000</max>
+                            </apparelMoney>
+                            <apparelRequired>
+                                <li>BOR_Tenebral_Apparel_ArmorHelmetRecon</li>
+                                <li>BOR_Tenebral_Apparel_ArmorRecon</li>
+                                <li MayRequire="rimsenal.core">BOR_Tenebral_Carbonsuit</li>
+                            </apparelRequired>
+                            <skills>
+                                <li>
+                                    <skill>Shooting</skill>
+                                    <range>12~16</range>
+                                </li>
+                                <li>
+                                    <skill>Melee</skill>
+                                    <range>12~16</range>
+                                </li>
+                            </skills>
+                        </PawnKindDef>
+
+                        <!-- tenebral Marine -->
+
+                        <PawnKindDef ParentName="BOR_ElitePawn_III">
+                            <defName>BOR_Tenebral_Marine</defName>
+                            <label>exterminator</label>
+                            <labelPlural>exterminators</labelPlural>
+                            <apparelTags>
+                                <li>IndustrialBasic</li>
+                                <li>IndustrialAdvanced</li>
+                                <li>IndustrialMilitaryBasic</li>
+                                <li>IndustrialMilitaryAdvanced</li>
+                            </apparelTags>
+                            <apparelDisallowTags>
+                                <li>Western</li>
+                            </apparelDisallowTags>
+                            <weaponTags>
+                                <li>BOR_ShortShots_III</li>
+                            </weaponTags>
+                            <weaponMoney>
+                                <min>17000</min>
+                                <max>17000</max>
+                            </weaponMoney>
+                            <combatPower>900</combatPower>
+                            <isFighter>true</isFighter>
+                            <canBeSapper>false</canBeSapper>
+                            <apparelMoney>
+                                <min>15000</min>
+                                <max>25000</max>
+                            </apparelMoney>
+                            <apparelRequired>
+                                <li>BOR_Tenebral_Apparel_PowerArmorHelmet</li>
+                                <li>BOR_Tenebral_Apparel_PowerArmor</li>
+                                <li MayRequire="rimsenal.core">BOR_Tenebral_Carbonsuit</li>
+                            </apparelRequired>
+                            <skills>
+                                <li>
+                                    <skill>Shooting</skill>
+                                    <range>16~18</range>
+                                </li>
+                                <li>
+                                    <skill>Melee</skill>
+                                    <range>12~16</range>
+                                </li>
+                            </skills>
+                        </PawnKindDef>
+
+                        <!-- tenebral Guardsman -->
+
+                        <PawnKindDef ParentName="BOR_ElitePawn_III">
+                            <defName>BOR_Tenebral_Guardsman</defName>
+                            <label>vigil</label>
+                            <labelPlural>vigils</labelPlural>
+                            <apparelTags>
+                                <li>IndustrialBasic</li>
+                                <li>IndustrialAdvanced</li>
+                                <li>IndustrialMilitaryBasic</li>
+                                <li>IndustrialMilitaryAdvanced</li>
+                            </apparelTags>
+                            <apparelDisallowTags>
+                                <li>Western</li>
+                            </apparelDisallowTags>
+                            <weaponTags>
+                                <li>BOR_AssaultRifle_III</li>
+                            </weaponTags>
+                            <weaponMoney>
+                                <min>170000</min>
+                                <max>170000</max>
+                            </weaponMoney>
+                            <combatPower>750</combatPower>
+                            <isFighter>true</isFighter>
+                            <canBeSapper>false</canBeSapper>
+                            <apparelMoney>
+                                <min>150000</min>
+                                <max>250000</max>
+                            </apparelMoney>
+                            <apparelRequired>
+                                <li>BOR_Tenebral_Apparel_FlakPants</li>
+                                <li>BOR_Tenebral_Apparel_FlakJacket</li>
+                                <li>Apparel_AdvancedHelmet</li>
+                            </apparelRequired>
+                            <skills>
+                                <li>
+                                    <skill>Shooting</skill>
+                                    <range>8~14</range>
+                                </li>
+                                <li>
+                                    <skill>Melee</skill>
+                                    <range>12~16</range>
+                                </li>
+                            </skills>
+                        </PawnKindDef>
+
+                        <PawnKindDef ParentName="BOR_ElitePawn_III">
+                            <defName>BOR_Tenebral_Officer</defName>
+                            <label>officer</label>
+                            <labelPlural>officer</labelPlural>
+                            <weaponTags>
+                                <li>BOR_Military_III</li>
+                            </weaponTags>
+                            <weaponMoney>
+                                <min>190000</min>
+                                <max>190000</max>
+                            </weaponMoney>
+                            <combatPower>800</combatPower>
+                            <isFighter>true</isFighter>
+                            <canBeSapper>false</canBeSapper>
+                            <apparelMoney>
+                                <min>120000</min>
+                                <max>120000</max>
+                            </apparelMoney>
+                            <apparelTags Inherit="False">
+                                <li>BOR_Military_III</li>
+                                <li>BOR_HiTechArmor_III</li>
+                                <li>BOR_Apparel</li>
+                            </apparelTags>
+                            <apparelAllowHeadgearChance>1</apparelAllowHeadgearChance>
+                            <skills>
+                                <li>
+                                    <skill>Shooting</skill>
+                                    <range>14~18</range>
+                                </li>
+                                <li>
+                                    <skill>Melee</skill>
+                                    <range>12~16</range>
+                                </li>
+                                <li>
+                                    <skill>Social</skill>
+                                    <range>8~14</range>
+                                </li>
+                            </skills>
+                            <factionLeader>true</factionLeader>
+                        </PawnKindDef>
+
+                        <PawnKindDef MayRequire="akri.starcraftersarmory" ParentName="BOR_ElitePawn_III">
+                            <defName>BOR_Tenebral_Stomper</defName>
+                            <label>destroyer</label>
+                            <labelPlural>destroyers</labelPlural>
+                            <apparelTags>
+                                <li>IndustrialBasic</li>
+                                <li>IndustrialAdvanced</li>
+                                <li>IndustrialMilitaryBasic</li>
+                                <li>IndustrialMilitaryAdvanced</li>
+                            </apparelTags>
+                            <apparelDisallowTags>
+                                <li>Western</li>
+                            </apparelDisallowTags>
+                            <weaponTags>
+                                <li>BOR_ShortShots_III</li>
+                            </weaponTags>
+                            <weaponMoney>
+                                <min>17000</min>
+                                <max>17000</max>
+                            </weaponMoney>
+                            <combatPower>700</combatPower>
+                            <isFighter>true</isFighter>
+                            <canBeSapper>false</canBeSapper>
+                            <apparelMoney>
+                                <min>15000</min>
+                                <max>25000</max>
+                            </apparelMoney>
+                            <apparelRequired>
+                                <li>BOR_CMC700a</li>
+                                <li>BOR_CMC700H</li>
+                                <li MayRequire="rimsenal.core">BOR_Tenebral_Carbonsuit</li>
+                            </apparelRequired>
+                            <skills>
+                                <li>
+                                    <skill>Shooting</skill>
+                                    <range>16~18</range>
+                                </li>
+                            </skills>
+                        </PawnKindDef>
+                    </value>
+                </li>
+                <li Class="PatchOperationAdd">
+                    <xpath>Defs</xpath>
+                    <value>
+                        <FactionDef>
+                            <defName>BOR_Tenebrites</defName>
+                            <label>tenebral vanquishers</label>
+                            <description>.</description>
+                            <pawnSingular>tenebral</pawnSingular>
+                            <pawnsPlural>tenebrals</pawnsPlural>
+                            <listOrderPriority>43</listOrderPriority>
+                            <canMakeRandomly>true</canMakeRandomly>
+                            <canSiege>true</canSiege>
+                            <leaderTitle>tenebral god</leaderTitle>
+                            <factionIconPath>BOR/Things/Factions/TenebralIcon</factionIconPath>
+                            <factionNameMaker>NamerTenebralFaction</factionNameMaker>
+                            <settlementNameMaker>NamerTenebralBase</settlementNameMaker>
+                            <settlementTexturePath>World/WorldObjects/DefaultSettlement</settlementTexturePath>
+                            <techLevel>Archotech</techLevel>
+                            <backstoryFilters>
+                                <li>
+                                    <categories>
+                                        <li>Offworld</li>
+                                    </categories>
+                                    <commonality>0.9</commonality>
+                                </li>
+                            </backstoryFilters>
+                            <allowedCultures>
+                                <li>BOR_Tenebral_Culture</li>
+                            </allowedCultures>
+                            <requiredMemes>
+                                <li MayRequire="Ludeon.RimWorld.Ideology">Loyalist</li>
+                                <li MayRequire="Ludeon.RimWorld.Ideology">Collectivist</li>
+                                <li MayRequire="Ludeon.RimWorld.Ideology">HumanPrimacy</li>
+                                <li MayRequire="Ludeon.RimWorld.Ideology">Structure_Ideological</li>
+                                <li MayRequire="Ludeon.RimWorld.Ideology">Raider</li>
+                            </requiredMemes>
+                            <!-- <xenotypeSet>
+			<xenotypeChances>
+				<BOR_Tenebral MayRequire="Ludeon.RimWorld.Biotech">0.8</BOR_Tenebral>
+			</xenotypeChances>
+		</xenotypeSet> -->
+                            <maxPawnCostPerTotalPointsCurve>
+                                <points>
+                                    <li>(0,35)</li>
+                                    <li>(70, 50)</li>
+                                    <li>(700, 100)</li>
+                                    <li>(1300, 150)</li>
+                                    <li>(100000, 10000)</li>
+                                    <li>(150000, 20000)</li>
+                                </points>
+                            </maxPawnCostPerTotalPointsCurve>
+                            <apparelStuffFilter>
+                                <thingDefs>
+                                    <li>BOR_Tenebrite</li>
+                                </thingDefs>
+                            </apparelStuffFilter>
+                            <pawnGroupMakers Inherit="False">
+                                <li>
+                                    <!-- Normal fights, standard mix -->
+                                    <commonality>100</commonality>
+                                    <kindDef>Combat</kindDef>
+                                    <options>
+                                        <BOR_Tenebral_Guardsman>8</BOR_Tenebral_Guardsman>
+                                        <BOR_Tenebral_Marine>2</BOR_Tenebral_Marine>
+                                        <BOR_Tenebral_Marksman>2</BOR_Tenebral_Marksman>
+                                        <BOR_Tenebral_Officer>1</BOR_Tenebral_Officer>
+                                    </options>
+                                </li>
+                                <li>
+                                    <kindDef>Settlement</kindDef>
+                                    <options>
+                                        <BOR_Tenebral_Marksman>1</BOR_Tenebral_Marksman>
+                                        <BOR_Tenebral_Marine>3</BOR_Tenebral_Marine>
+                                        <BOR_Tenebral_Guardsman>5</BOR_Tenebral_Guardsman>
+                                        <BOR_Tenebral_Officer>1</BOR_Tenebral_Officer>
+                                    </options>
+                                </li>
+                            </pawnGroupMakers>
+                            <autoFlee>false</autoFlee>
+                            <permanentEnemy>true</permanentEnemy>
+                            <canStageAttacks>true</canStageAttacks>
+                            <settlementGenerationWeight>1</settlementGenerationWeight>
+                            <requiredCountAtGameStart>1</requiredCountAtGameStart>
+                            <disallowedMemes>
+                                <li MayRequire="Ludeon.RimWorld.Ideology">Nudism</li>
+                                <li MayRequire="Ludeon.RimWorld.Ideology">Blindsight</li>
+                                <li MayRequire="Ludeon.RimWorld.Ideology">TreeConnection</li>
+                            </disallowedMemes>
+                            <disallowedPrecepts>
+                                <li MayRequire="Ludeon.RimWorld.Ideology">Nudity_Male_CoveringAnythingButGroinDisapproved</li>
+                                <li MayRequire="Ludeon.RimWorld.Ideology">Nudity_Female_CoveringAnythingButGroinDisapproved</li>
+                                <li MayRequire="Ludeon.RimWorld.Ideology">AnimalVenerated</li>
+                                <li MayRequire="Ludeon.RimWorld.Ideology">NobleDespisedWeapons</li>
+                                <li MayRequire="Ludeon.RimWorld.Ideology">ApparelDesired_Strong_Subordinate</li>
+                                <li MayRequire="Ludeon.RimWorld.Ideology">ApparelDesired_Soft_Subordinate</li>
+                                <li MayRequire="Ludeon.RimWorld.Ideology">DrugUse_Prohibited</li>
+                            </disallowedPrecepts>
+                            <raidLootValueFromPointsCurve>
+                                <points>
+                                    <li>(35, 1000)</li>
+                                    <li>(100, 2400)</li>
+                                    <li>(1000, 10000)</li>
+                                    <li>(2000, 16000)</li>
+                                    <li>(4000, 20000)</li>
+                                </points>
+                            </raidLootValueFromPointsCurve>
+                            <allowedArrivalTemperatureRange>
+                                <min>-150</min>
+                                <max>150</max>
+                            </allowedArrivalTemperatureRange>
+                            <raidLootMaker>BOR_LootMaker_II</raidLootMaker>
+                            <maxConfigurableAtWorldCreation>1</maxConfigurableAtWorldCreation>
+                        </FactionDef>
+                    </value>
+                </li>
+            </operations>
+        </enabled>
+    </Operation>
+</Patch>

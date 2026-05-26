@@ -2,1106 +2,1643 @@
 
 	<Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
 		<modSettingDef>BOR_Setting_CE_TODO</modSettingDef>
-		<enabled Class="PatchOperationFindMod">
-			<mods>
-				<li>Vanilla XCOM Magnetic Weapons</li>
-			</mods>
-			<match Class="PatchOperationSequence">
-				<operations>
-					<!-- So we don't have rail pistol in base CE. slap the stats of 3HST 4MMRAIL then-->
-					<!-- I mean, for fuck's sane we have rail pistol ammo texture but nothing use it-->
-					<li Class="PatchOperationAdd">
-						<xpath>Defs</xpath>
-						<value>
-							<!-- ==================== Ammo ========================== -->
+		<enabled Class="PatchOperationSequence">
+			<operations>
+				<!-- ====== Always: Add ammo defs, projectiles, recipes ====== -->
+				<li Class="PatchOperationAdd">
+					<xpath>Defs</xpath>
+					<value>
+						<!-- ==================== Ammo ========================== -->
 
-							<ThingDef Class="CombatExtended.AmmoDef" ParentName="SpacerSmallAmmoBase">
-								<defName>BOR_Ammo_4mmRailgun_TC</defName>
-								<label>4mm Railgun cartridge (TC)</label>
-								<description>Fin-stabilized tungsten carbide penetrator with discarding tenebrite-coated sabot, designed for railgun rifles.</description>
-								<statBases>
-									<Mass>0.015</Mass>
-									<Bulk>0.012</Bulk>
-									<MarketValue>0.09</MarketValue>
-								</statBases>
-								<tradeTags>
-									<li>CE_AutoEnableTrade</li>
-									<li>CE_AutoEnableCrafting_FabricationBench</li>
-								</tradeTags>
-								<thingCategories>
-									<li>Ammo4mmRailgun</li>
-								</thingCategories>
-								<graphicData>
-									<texPath>Things/Ammo/Railgun/Pistol</texPath>
-									<graphicClass>CombatExtended.Graphic_StackCountRanged</graphicClass>
-								</graphicData>
-								<ammoClass>BOR_TC_AmmoClass</ammoClass>
-								<generateAllowChance>0.1</generateAllowChance>
-								<generateCommonality>0.01</generateCommonality>
-							</ThingDef>
+						<ThingDef Class="CombatExtended.AmmoDef" ParentName="SpacerSmallAmmoBase">
+							<defName>BOR_Ammo_4mmRailgun_TC</defName>
+							<label>4mm Railgun cartridge (TC)</label>
+							<description>Fin-stabilized tungsten carbide penetrator with discarding tenebrite-coated sabot, designed for railgun rifles.</description>
+							<statBases>
+								<Mass>0.015</Mass>
+								<Bulk>0.012</Bulk>
+								<MarketValue>0.09</MarketValue>
+							</statBases>
+							<tradeTags>
+								<li>CE_AutoEnableTrade</li>
+								<li>CE_AutoEnableCrafting_FabricationBench</li>
+							</tradeTags>
+							<thingCategories>
+								<li>Ammo4mmRailgun</li>
+							</thingCategories>
+							<graphicData>
+								<texPath>Things/Ammo/Railgun/Pistol</texPath>
+								<graphicClass>CombatExtended.Graphic_StackCountRanged</graphicClass>
+							</graphicData>
+							<ammoClass>BOR_TC_AmmoClass</ammoClass>
+							<generateAllowChance>0.1</generateAllowChance>
+							<generateCommonality>0.01</generateCommonality>
+						</ThingDef>
 
-							<ThingDef Class="CombatExtended.AmmoDef" ParentName="SpacerSmallAmmoBase">
-								<defName>BOR_Ammo_4mmRailgun_Nc</defName>
-								<label>4mm Railgun cartridge (Nc)</label>
-								<description>Fin-stabilized tungsten carbide penetrator with discarding sabot, coated with Neutronium, designed for railgun rifles.</description>
-								<statBases>
-									<Mass>0.015</Mass>
-									<Bulk>0.012</Bulk>
-									<MarketValue>0.09</MarketValue>
-								</statBases>
-								<tradeTags>
-									<li>CE_AutoEnableTrade</li>
-									<li>CE_AutoEnableCrafting_FabricationBench</li>
-								</tradeTags>
-								<thingCategories>
-									<li>Ammo4mmRailgun</li>
-								</thingCategories>
-								<graphicData>
-									<texPath>ThirdParty/VanillaXCOM/Railgun/API/Pistol</texPath>
-									<graphicClass>CombatExtended.Graphic_StackCountRanged</graphicClass>
-								</graphicData>
-								<ammoClass>BOR_Nc_AmmoClass</ammoClass>
-								<generateAllowChance>0.1</generateAllowChance>
-								<generateCommonality>0.01</generateCommonality>
-							</ThingDef>
+						<ThingDef Class="CombatExtended.AmmoDef" ParentName="SpacerSmallAmmoBase">
+							<defName>BOR_Ammo_4mmRailgun_Nc</defName>
+							<label>4mm Railgun cartridge (Nc)</label>
+							<description>Fin-stabilized tungsten carbide penetrator with discarding sabot, coated with Neutronium, designed for railgun rifles.</description>
+							<statBases>
+								<Mass>0.015</Mass>
+								<Bulk>0.012</Bulk>
+								<MarketValue>0.09</MarketValue>
+							</statBases>
+							<tradeTags>
+								<li>CE_AutoEnableTrade</li>
+								<li>CE_AutoEnableCrafting_FabricationBench</li>
+							</tradeTags>
+							<thingCategories>
+								<li>Ammo4mmRailgun</li>
+							</thingCategories>
+							<graphicData>
+								<texPath>ThirdParty/VanillaXCOM/Railgun/API/Pistol</texPath>
+								<graphicClass>CombatExtended.Graphic_StackCountRanged</graphicClass>
+							</graphicData>
+							<ammoClass>BOR_Nc_AmmoClass</ammoClass>
+							<generateAllowChance>0.1</generateAllowChance>
+							<generateCommonality>0.01</generateCommonality>
+						</ThingDef>
 
-							<ThingDef Class="CombatExtended.AmmoDef" ParentName="SpacerSmallAmmoBase">
-								<defName>BOR_Ammo_4mmRailgun_Ni</defName>
-								<label>4mm Railgun cartridge (N-i)</label>
-								<description>Fin-stabilized tungsten carbide penetrator with discarding sabot, infused with Neutronium, designed for railgun rifles.</description>
-								<statBases>
-									<Mass>0.015</Mass>
-									<Bulk>0.012</Bulk>
-									<MarketValue>0.075</MarketValue>
-								</statBases>
-								<tradeTags>
-									<li>CE_AutoEnableTrade</li>
-									<li>CE_AutoEnableCrafting_FabricationBench</li>
-								</tradeTags>
-								<thingCategories>
-									<li>Ammo4mmRailgun</li>
-								</thingCategories>
-								<graphicData>
-									<texPath>ThirdParty/VanillaXCOM/Railgun/APHE/Pistol</texPath>
-									<graphicClass>CombatExtended.Graphic_StackCountRanged</graphicClass>
-								</graphicData>
-								<ammoClass>BOR_Ni_AmmoClass</ammoClass>
-								<generateAllowChance>0.1</generateAllowChance>
-								<generateCommonality>0.01</generateCommonality>
-							</ThingDef>
+						<ThingDef Class="CombatExtended.AmmoDef" ParentName="SpacerSmallAmmoBase">
+							<defName>BOR_Ammo_4mmRailgun_Ni</defName>
+							<label>4mm Railgun cartridge (N-i)</label>
+							<description>Fin-stabilized tungsten carbide penetrator with discarding sabot, infused with Neutronium, designed for railgun rifles.</description>
+							<statBases>
+								<Mass>0.015</Mass>
+								<Bulk>0.012</Bulk>
+								<MarketValue>0.075</MarketValue>
+							</statBases>
+							<tradeTags>
+								<li>CE_AutoEnableTrade</li>
+								<li>CE_AutoEnableCrafting_FabricationBench</li>
+							</tradeTags>
+							<thingCategories>
+								<li>Ammo4mmRailgun</li>
+							</thingCategories>
+							<graphicData>
+								<texPath>ThirdParty/VanillaXCOM/Railgun/APHE/Pistol</texPath>
+								<graphicClass>CombatExtended.Graphic_StackCountRanged</graphicClass>
+							</graphicData>
+							<ammoClass>BOR_Ni_AmmoClass</ammoClass>
+							<generateAllowChance>0.1</generateAllowChance>
+							<generateCommonality>0.01</generateCommonality>
+						</ThingDef>
 
-							<ThingDef Class="CombatExtended.AmmoDef" ParentName="SpacerSmallAmmoBase">
-								<defName>BOR_Ammo_4mmRailgun_EMP_N</defName>
-								<label>4mm Railgun cartridge (Ionized Neutronium)</label>
-								<description>Fin-stabilized tungsten carbide penetrator with discarding sabot, ionized with Neutronium, designed for railgun rifles.</description>
-								<statBases>
-									<Mass>0.015</Mass>
-									<Bulk>0.012</Bulk>
-									<MarketValue>0.09</MarketValue>
-								</statBases>
-								<tradeTags>
-									<li>CE_AutoEnableTrade</li>
-									<li>CE_AutoEnableCrafting_FabricationBench</li>
-								</tradeTags>
-								<thingCategories>
-									<li>Ammo4mmRailgun</li>
-								</thingCategories>
-								<graphicData>
-									<texPath>ThirdParty/VanillaXCOM/Railgun/EMP/Pistol</texPath>
-									<graphicClass>CombatExtended.Graphic_StackCountRanged</graphicClass>
-								</graphicData>
-								<ammoClass>BOR_Charged_Ion_N_AmmoClass</ammoClass>
-								<generateAllowChance>0.1</generateAllowChance>
-								<generateCommonality>0.01</generateCommonality>
-							</ThingDef>
+						<ThingDef Class="CombatExtended.AmmoDef" ParentName="SpacerSmallAmmoBase">
+							<defName>BOR_Ammo_4mmRailgun_EMP_N</defName>
+							<label>4mm Railgun cartridge (Ionized Neutronium)</label>
+							<description>Fin-stabilized tungsten carbide penetrator with discarding sabot, ionized with Neutronium, designed for railgun rifles.</description>
+							<statBases>
+								<Mass>0.015</Mass>
+								<Bulk>0.012</Bulk>
+								<MarketValue>0.09</MarketValue>
+							</statBases>
+							<tradeTags>
+								<li>CE_AutoEnableTrade</li>
+								<li>CE_AutoEnableCrafting_FabricationBench</li>
+							</tradeTags>
+							<thingCategories>
+								<li>Ammo4mmRailgun</li>
+							</thingCategories>
+							<graphicData>
+								<texPath>ThirdParty/VanillaXCOM/Railgun/EMP/Pistol</texPath>
+								<graphicClass>CombatExtended.Graphic_StackCountRanged</graphicClass>
+							</graphicData>
+							<ammoClass>BOR_Charged_Ion_N_AmmoClass</ammoClass>
+							<generateAllowChance>0.1</generateAllowChance>
+							<generateCommonality>0.01</generateCommonality>
+						</ThingDef>
 
-							<!-- ================== Projectiles ================== -->
+						<!-- ================== Projectiles ================== -->
 
-							<ThingDef ParentName="BaseBulletCE">
-								<defName>BOR_Bullet_XCOM4mmRailgun_TC</defName>
-								<label>4mm Railgun bullet (TC)</label>
-								<graphicData>
-									<texPath>Bullet_Mag_Small</texPath>
-									<graphicClass>Graphic_Single</graphicClass>
-									<shaderType>TransparentPostLight</shaderType>
-									<drawSize>0.6</drawSize>
-								</graphicData>
-								<projectile Class="CombatExtended.ProjectilePropertiesCE">
-									<damageDef>Bullet</damageDef>
-									<damageAmountBase>50</damageAmountBase>
-									<armorPenetrationSharp>47</armorPenetrationSharp>
-									<armorPenetrationBlunt>562</armorPenetrationBlunt>
-									<speed>844</speed>
-									<dropsCasings>false</dropsCasings>
-								</projectile>
-							</ThingDef>
+						<ThingDef ParentName="BaseBulletCE">
+							<defName>BOR_Bullet_XCOM4mmRailgun_TC</defName>
+							<label>4mm Railgun bullet (TC)</label>
+							<graphicData>
+								<texPath>BOR/Things/Bullet/Bullet_Mag_Small</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+								<shaderType>TransparentPostLight</shaderType>
+								<drawSize>0.6</drawSize>
+							</graphicData>
+							<projectile Class="CombatExtended.ProjectilePropertiesCE">
+								<damageDef>Bullet</damageDef>
+								<damageAmountBase>50</damageAmountBase>
+								<armorPenetrationSharp>47</armorPenetrationSharp>
+								<armorPenetrationBlunt>562</armorPenetrationBlunt>
+								<speed>844</speed>
+								<dropsCasings>false</dropsCasings>
+							</projectile>
+						</ThingDef>
 
-							<ThingDef ParentName="BaseBulletCE">
-								<defName>BOR_Bullet_XCOM4mmRailgun_Nc</defName>
-								<label>4mm Railgun bullet (Nc)</label>
-								<graphicData>
-									<texPath>Bullet_Mag_Small</texPath>
-									<graphicClass>Graphic_Single</graphicClass>
-									<shaderType>TransparentPostLight</shaderType>
-									<drawSize>0.6</drawSize>
-								</graphicData>
-								<projectile Class="CombatExtended.ProjectilePropertiesCE">
-									<damageDef>Bullet</damageDef>
-									<damageAmountBase>18</damageAmountBase>
-									<armorPenetrationSharp>45</armorPenetrationSharp>
-									<armorPenetrationBlunt>240</armorPenetrationBlunt>
-									<speed>375</speed>
-									<dropsCasings>false</dropsCasings>
-									<secondaryDamage>
-										<li>
-											<def>Flame_Secondary</def>
-											<amount>8</amount>
-										</li>
-									</secondaryDamage>
-								</projectile>
-							</ThingDef>
-
-							<ThingDef ParentName="BaseBulletCE">
-								<defName>BOR_Bullet_XCOM4mmRailgun_Ni</defName>
-								<label>4mm Railgun bullet (N-i)</label>
-								<graphicData>
-									<texPath>Bullet_Mag_Small</texPath>
-									<graphicClass>Graphic_Single</graphicClass>
-									<shaderType>TransparentPostLight</shaderType>
-									<drawSize>0.6</drawSize>
-								</graphicData>
-								<projectile Class="CombatExtended.ProjectilePropertiesCE">
-									<damageDef>Bullet</damageDef>
-									<damageAmountBase>22</damageAmountBase>
-									<armorPenetrationSharp>21</armorPenetrationSharp>
-									<armorPenetrationBlunt>250</armorPenetrationBlunt>
-									<speed>375</speed>
-									<dropsCasings>false</dropsCasings>
-									<secondaryDamage>
-										<li>
-											<def>Bomb_Secondary</def>
-											<amount>12</amount>
-										</li>
-									</secondaryDamage>
-								</projectile>
-							</ThingDef>
-
-							<ThingDef ParentName="BaseBulletCE">
-								<defName>BOR_Bullet_XCOM4mmRailgun_EMP_N</defName>
-								<label>4mm Railgun bullet (Ionized Neutronium)</label>
-								<graphicData>
-									<texPath>Bullet_Mag_Small</texPath>
-									<graphicClass>Graphic_Single</graphicClass>
-									<shaderType>TransparentPostLight</shaderType>
-									<drawSize>0.6</drawSize>
-								</graphicData>
-								<projectile Class="CombatExtended.ProjectilePropertiesCE">
-									<damageDef>Bullet</damageDef>
-									<damageAmountBase>15</damageAmountBase>
-									<armorPenetrationSharp>21</armorPenetrationSharp>
-									<armorPenetrationBlunt>250</armorPenetrationBlunt>
-									<speed>375</speed>
-									<dropsCasings>false</dropsCasings>
-									<secondaryDamage>
-										<li>
-											<def>EMP</def>
-											<amount>8</amount>
-										</li>
-									</secondaryDamage>
-								</projectile>
-							</ThingDef>
-
-							<!-- ==================== Recipes ========================== -->
-
-							<RecipeDef ParentName="AmmoRecipeBase">
-								<defName>MakeBOR_Ammo_4mmRailgun_TC</defName>
-								<label>make 4mm Railgun cartridge (TC) x500</label>
-								<description>Craft 500 4mm Railgun (TC) cartridges.</description>
-								<jobString>Making 4mm Railgun (TC) cartridges.</jobString>
-								<workAmount>10000</workAmount>
-								<ingredients>
+						<ThingDef ParentName="BaseBulletCE">
+							<defName>BOR_Bullet_XCOM4mmRailgun_Nc</defName>
+							<label>4mm Railgun bullet (Nc)</label>
+							<graphicData>
+								<texPath>BOR/Things/Bullet/Bullet_Mag_Small</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+								<shaderType>TransparentPostLight</shaderType>
+								<drawSize>0.6</drawSize>
+							</graphicData>
+							<projectile Class="CombatExtended.ProjectilePropertiesCE">
+								<damageDef>Bullet</damageDef>
+								<damageAmountBase>18</damageAmountBase>
+								<armorPenetrationSharp>45</armorPenetrationSharp>
+								<armorPenetrationBlunt>240</armorPenetrationBlunt>
+								<speed>375</speed>
+								<dropsCasings>false</dropsCasings>
+								<secondaryDamage>
 									<li>
-										<filter>
-											<thingDefs>
-												<li>BOR_QuasarAlloy</li>
-											</thingDefs>
-										</filter>
-										<count>1</count>
+										<def>Flame_Secondary</def>
+										<amount>8</amount>
 									</li>
+								</secondaryDamage>
+							</projectile>
+						</ThingDef>
+
+						<ThingDef ParentName="BaseBulletCE">
+							<defName>BOR_Bullet_XCOM4mmRailgun_Ni</defName>
+							<label>4mm Railgun bullet (N-i)</label>
+							<graphicData>
+								<texPath>BOR/Things/Bullet/Bullet_Mag_Small</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+								<shaderType>TransparentPostLight</shaderType>
+								<drawSize>0.6</drawSize>
+							</graphicData>
+							<projectile Class="CombatExtended.ProjectilePropertiesCE">
+								<damageDef>Bullet</damageDef>
+								<damageAmountBase>22</damageAmountBase>
+								<armorPenetrationSharp>21</armorPenetrationSharp>
+								<armorPenetrationBlunt>250</armorPenetrationBlunt>
+								<speed>375</speed>
+								<dropsCasings>false</dropsCasings>
+								<secondaryDamage>
 									<li>
-										<filter>
-											<thingDefs>
-												<li>BOR_Tenebrite</li>
-											</thingDefs>
-										</filter>
-										<count>2</count>
+										<def>Bomb_Secondary</def>
+										<amount>12</amount>
 									</li>
-								</ingredients>
-								<fixedIngredientFilter>
-									<thingDefs>
-										<li>BOR_QuasarAlloy</li>
-										<li>BOR_Tenebrite</li>
-									</thingDefs>
-								</fixedIngredientFilter>
-								<products>
-									<BOR_Ammo_4mmRailgun_TC>500</BOR_Ammo_4mmRailgun_TC>
-								</products>
-							</RecipeDef>
+								</secondaryDamage>
+							</projectile>
+						</ThingDef>
 
-							<RecipeDef ParentName="AmmoRecipeBase">
-								<defName>MakeBOR_Ammo_4mmRailgun_Nc</defName>
-								<label>make 4mm Railgun cartridge (Nc) x500</label>
-								<description>Craft 500 4mm Railgun (Nc) cartridges.</description>
-								<jobString>Making 4mm Railgun (Nc) cartridges.</jobString>
-								<workAmount>20000</workAmount>
-								<ingredients>
+						<ThingDef ParentName="BaseBulletCE">
+							<defName>BOR_Bullet_XCOM4mmRailgun_EMP_N</defName>
+							<label>4mm Railgun bullet (Ionized Neutronium)</label>
+							<graphicData>
+								<texPath>BOR/Things/Bullet/Bullet_Mag_Small</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+								<shaderType>TransparentPostLight</shaderType>
+								<drawSize>0.6</drawSize>
+							</graphicData>
+							<projectile Class="CombatExtended.ProjectilePropertiesCE">
+								<damageDef>Bullet</damageDef>
+								<damageAmountBase>15</damageAmountBase>
+								<armorPenetrationSharp>21</armorPenetrationSharp>
+								<armorPenetrationBlunt>250</armorPenetrationBlunt>
+								<speed>375</speed>
+								<dropsCasings>false</dropsCasings>
+								<secondaryDamage>
 									<li>
-										<filter>
-											<thingDefs>
-												<li>BOR_QuasarAlloy</li>
-											</thingDefs>
-										</filter>
-										<count>1</count>
+										<def>EMP</def>
+										<amount>8</amount>
 									</li>
+								</secondaryDamage>
+							</projectile>
+						</ThingDef>
+
+						<!-- ==================== Recipes ========================== -->
+
+						<RecipeDef ParentName="AmmoRecipeBase">
+							<defName>MakeBOR_Ammo_4mmRailgun_TC</defName>
+							<label>make 4mm Railgun cartridge (TC) x500</label>
+							<description>Craft 500 4mm Railgun (TC) cartridges.</description>
+							<jobString>Making 4mm Railgun (TC) cartridges.</jobString>
+							<workAmount>10000</workAmount>
+							<ingredients>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_QuasarAlloy</li>
+										</thingDefs>
+									</filter>
+									<count>1</count>
+								</li>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_Tenebrite</li>
+										</thingDefs>
+									</filter>
+									<count>2</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter>
+								<thingDefs>
+									<li>BOR_QuasarAlloy</li>
+									<li>BOR_Tenebrite</li>
+								</thingDefs>
+							</fixedIngredientFilter>
+							<products>
+								<BOR_Ammo_4mmRailgun_TC>500</BOR_Ammo_4mmRailgun_TC>
+							</products>
+						</RecipeDef>
+
+						<RecipeDef ParentName="AmmoRecipeBase">
+							<defName>MakeBOR_Ammo_4mmRailgun_Nc</defName>
+							<label>make 4mm Railgun cartridge (Nc) x500</label>
+							<description>Craft 500 4mm Railgun (Nc) cartridges.</description>
+							<jobString>Making 4mm Railgun (Nc) cartridges.</jobString>
+							<workAmount>20000</workAmount>
+							<ingredients>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_QuasarAlloy</li>
+										</thingDefs>
+									</filter>
+									<count>1</count>
+								</li>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_Neutronium</li>
+										</thingDefs>
+									</filter>
+									<count>100</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter>
+								<thingDefs>
+									<li>BOR_QuasarAlloy</li>
+									<li>BOR_Neutronium</li>
+								</thingDefs>
+							</fixedIngredientFilter>
+							<products>
+								<BOR_Ammo_4mmRailgun_Nc>500</BOR_Ammo_4mmRailgun_Nc>
+							</products>
+						</RecipeDef>
+
+						<RecipeDef ParentName="AmmoRecipeBase">
+							<defName>MakeBOR_Ammo_4mmRailgun_Ni</defName>
+							<label>make 4mm Railgun cartridge (N-i) x500</label>
+							<description>Craft 500 4mm Railgun (N-i) cartridges.</description>
+							<jobString>Making 4mm Railgun (N-i) cartridges.</jobString>
+							<workAmount>20000</workAmount>
+							<ingredients>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_QuasarAlloy</li>
+										</thingDefs>
+									</filter>
+									<count>1</count>
+								</li>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_Neutronium</li>
+										</thingDefs>
+									</filter>
+									<count>200</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter>
+								<thingDefs>
+									<li>BOR_QuasarAlloy</li>
+									<li>BOR_Neutronium</li>
+								</thingDefs>
+							</fixedIngredientFilter>
+							<products>
+								<BOR_Ammo_4mmRailgun_Ni>500</BOR_Ammo_4mmRailgun_Ni>
+							</products>
+						</RecipeDef>
+
+						<RecipeDef ParentName="AmmoRecipeBase">
+							<defName>MakeBOR_Ammo_4mmRailgun_EMP_N</defName>
+							<label>make 4mm Railgun cartridge (Ionized Neutronium) x500</label>
+							<description>Craft 500 4mm Railgun (Ionized Neutronium) cartridges.</description>
+							<jobString>Making 4mm Railgun (Ionized Neutronium) cartridges.</jobString>
+							<workAmount>3000</workAmount>
+							<ingredients>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_QuasarAlloy</li>
+										</thingDefs>
+									</filter>
+									<count>1</count>
+								</li>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_Neutronium</li>
+										</thingDefs>
+									</filter>
+									<count>20</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter>
+								<thingDefs>
+									<li>BOR_QuasarAlloy</li>
+									<li>BOR_Neutronium</li>
+								</thingDefs>
+							</fixedIngredientFilter>
+							<products>
+								<BOR_Ammo_4mmRailgun_EMP_N>500</BOR_Ammo_4mmRailgun_EMP_N>
+							</products>
+						</RecipeDef>
+
+						<ThingDef Class="CombatExtended.AmmoDef" ParentName="SpacerSmallAmmoBase">
+							<defName>BOR_Ammo_6mmRailgun_Nc</defName>
+							<label>6mm Railgun cartridge (Neutronium coated)</label>
+							<description>Fin-stabilized tungsten carbide penetrator with discarding sabot, designed for railgun rifles.</description>
+							<statBases>
+								<Mass>0.015</Mass>
+								<Bulk>0.012</Bulk>
+								<MarketValue>0.09</MarketValue>
+							</statBases>
+							<tradeTags>
+								<li>CE_AutoEnableTrade</li>
+								<li>CE_AutoEnableCrafting_FabricationBench</li>
+							</tradeTags>
+							<thingCategories>
+								<li>Ammo6mmRailgun</li>
+							</thingCategories>
+							<graphicData>
+								<texPath>ThirdParty/VanillaXCOM/Railgun/API/Rifle</texPath>
+								<graphicClass>CombatExtended.Graphic_StackCountRanged</graphicClass>
+							</graphicData>
+							<ammoClass>BOR_Nc_AmmoClass</ammoClass>
+						</ThingDef>
+
+						<ThingDef Class="CombatExtended.AmmoDef" ParentName="SpacerSmallAmmoBase">
+							<defName>BOR_Ammo_6mmRailgun_Ni</defName>
+							<label>6mm Railgun cartridge (Neutronium infused)</label>
+							<description>Fin-stabilized tungsten carbide penetrator with discarding sabot, designed for railgun rifles.</description>
+							<statBases>
+								<Mass>0.015</Mass>
+								<Bulk>0.012</Bulk>
+								<MarketValue>0.075</MarketValue>
+							</statBases>
+							<tradeTags>
+								<li>CE_AutoEnableTrade</li>
+								<li>CE_AutoEnableCrafting_FabricationBench</li>
+							</tradeTags>
+							<thingCategories>
+								<li>Ammo6mmRailgun</li>
+							</thingCategories>
+							<graphicData>
+								<texPath>ThirdParty/VanillaXCOM/Railgun/APHE/Rifle</texPath>
+								<graphicClass>CombatExtended.Graphic_StackCountRanged</graphicClass>
+							</graphicData>
+							<ammoClass>BOR_Ni_AmmoClass</ammoClass>
+						</ThingDef>
+
+						<ThingDef Class="CombatExtended.AmmoDef" ParentName="SpacerSmallAmmoBase">
+							<defName>BOR_Ammo_6mmRailgun_EMP_N</defName>
+							<label>6mm Railgun cartridge (Ionized Neutronium)</label>
+							<description>Fin-stabilized tungsten carbide penetrator with discarding sabot, designed for railgun rifles.</description>
+							<statBases>
+								<Mass>0.015</Mass>
+								<Bulk>0.012</Bulk>
+								<MarketValue>0.09</MarketValue>
+							</statBases>
+							<tradeTags>
+								<li>CE_AutoEnableTrade</li>
+								<li>CE_AutoEnableCrafting_FabricationBench</li>
+							</tradeTags>
+							<thingCategories>
+								<li>Ammo6mmRailgun</li>
+							</thingCategories>
+							<graphicData>
+								<texPath>ThirdParty/VanillaXCOM/Railgun/EMP/Rifle</texPath>
+								<graphicClass>CombatExtended.Graphic_StackCountRanged</graphicClass>
+							</graphicData>
+							<ammoClass>BOR_Charged_Ion_N_AmmoClass</ammoClass>
+						</ThingDef>
+
+						<ThingDef ParentName="BaseBulletCE">
+							<defName>BOR_Bullet_XCOM6mmRailgun_TC</defName>
+							<label>6mm Railgun bullet (Tenebrite Coated)</label>
+							<graphicData>
+								<texPath>BOR/Things/Bullet/Bullet_Mag_Small</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+								<shaderType>TransparentPostLight</shaderType>
+								<drawSize>1.1</drawSize>
+							</graphicData>
+							<projectile Class="CombatExtended.ProjectilePropertiesCE">
+								<damageDef>Bullet</damageDef>
+								<damageAmountBase>61</damageAmountBase>
+								<armorPenetrationSharp>149</armorPenetrationSharp>
+								<armorPenetrationBlunt>990</armorPenetrationBlunt>
+								<speed>1013</speed>
+								<dropsCasings>false</dropsCasings>
+							</projectile>
+						</ThingDef>
+
+						<ThingDef ParentName="BaseBulletCE">
+							<defName>BOR_Bullet_XCOM6mmRailgun_Nc</defName>
+							<label>6mm Railgun bullet (Neutronium coated)</label>
+							<graphicData>
+								<texPath>BOR/Things/Bullet/Bullet_Mag_Small</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+								<shaderType>TransparentPostLight</shaderType>
+								<drawSize>1.1</drawSize>
+							</graphicData>
+							<projectile Class="CombatExtended.ProjectilePropertiesCE">
+								<damageDef>Bullet</damageDef>
+								<damageAmountBase>20</damageAmountBase>
+								<armorPenetrationSharp>132</armorPenetrationSharp>
+								<armorPenetrationBlunt>440</armorPenetrationBlunt>
+								<speed>450</speed>
+								<dropsCasings>false</dropsCasings>
+								<secondaryDamage>
 									<li>
-										<filter>
-											<thingDefs>
-												<li>BOR_Neutronium</li>
-											</thingDefs>
-										</filter>
-										<count>100</count>
+										<def>Flame_Secondary</def>
+										<amount>9</amount>
 									</li>
-								</ingredients>
-								<fixedIngredientFilter>
-									<thingDefs>
-										<li>BOR_QuasarAlloy</li>
-										<li>BOR_Neutronium</li>
-									</thingDefs>
-								</fixedIngredientFilter>
-								<products>
-									<BOR_Ammo_4mmRailgun_Nc>500</BOR_Ammo_4mmRailgun_Nc>
-								</products>
-							</RecipeDef>
+								</secondaryDamage>
+							</projectile>
+						</ThingDef>
 
-							<RecipeDef ParentName="AmmoRecipeBase">
-								<defName>MakeBOR_Ammo_4mmRailgun_Ni</defName>
-								<label>make 4mm Railgun cartridge (N-i) x500</label>
-								<description>Craft 500 4mm Railgun (N-i) cartridges.</description>
-								<jobString>Making 4mm Railgun (N-i) cartridges.</jobString>
-								<workAmount>20000</workAmount>
-								<ingredients>
+						<ThingDef ParentName="BaseBulletCE">
+							<defName>BOR_Bullet_XCOM6mmRailgun_Ni</defName>
+							<label>6mm Railgun bullet (Neutronium infused)</label>
+							<graphicData>
+								<texPath>BOR/Things/Bullet/Bullet_Mag_Small</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+								<shaderType>TransparentPostLight</shaderType>
+								<drawSize>1.1</drawSize>
+							</graphicData>
+							<projectile Class="CombatExtended.ProjectilePropertiesCE">
+								<damageDef>Bullet</damageDef>
+								<damageAmountBase>27</damageAmountBase>
+								<armorPenetrationSharp>66</armorPenetrationSharp>
+								<armorPenetrationBlunt>440</armorPenetrationBlunt>
+								<speed>450</speed>
+								<dropsCasings>false</dropsCasings>
+								<secondaryDamage>
 									<li>
-										<filter>
-											<thingDefs>
-												<li>BOR_QuasarAlloy</li>
-											</thingDefs>
-										</filter>
-										<count>1</count>
+										<def>Bomb_Secondary</def>
+										<amount>15</amount>
 									</li>
+								</secondaryDamage>
+							</projectile>
+						</ThingDef>
+
+						<ThingDef ParentName="BaseBulletCE">
+							<defName>BOR_Bullet_XCOM6mmRailgun_EMP_N</defName>
+							<label>6mm Railgun bullet (Ionized Neutronium)</label>
+							<graphicData>
+								<texPath>BOR/Things/Bullet/Bullet_Mag_Small</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+								<shaderType>TransparentPostLight</shaderType>
+								<drawSize>1.1</drawSize>
+							</graphicData>
+							<projectile Class="CombatExtended.ProjectilePropertiesCE">
+								<damageDef>Bullet</damageDef>
+								<damageAmountBase>16</damageAmountBase>
+								<armorPenetrationSharp>66</armorPenetrationSharp>
+								<armorPenetrationBlunt>440</armorPenetrationBlunt>
+								<speed>450</speed>
+								<dropsCasings>false</dropsCasings>
+								<secondaryDamage>
 									<li>
-										<filter>
-											<thingDefs>
-												<li>BOR_Neutronium</li>
-											</thingDefs>
-										</filter>
-										<count>200</count>
+										<def>EMP</def>
+										<amount>11</amount>
 									</li>
-								</ingredients>
-								<fixedIngredientFilter>
-									<thingDefs>
-										<li>BOR_QuasarAlloy</li>
-										<li>BOR_Neutronium</li>
-									</thingDefs>
-								</fixedIngredientFilter>
-								<products>
-									<BOR_Ammo_4mmRailgun_Ni>500</BOR_Ammo_4mmRailgun_Ni>
-								</products>
-							</RecipeDef>
+								</secondaryDamage>
+							</projectile>
+						</ThingDef>
 
-							<RecipeDef ParentName="AmmoRecipeBase">
-								<defName>MakeBOR_Ammo_4mmRailgun_EMP_N</defName>
-								<label>make 4mm Railgun cartridge (Ionized Neutronium) x500</label>
-								<description>Craft 500 4mm Railgun (Ionized Neutronium) cartridges.</description>
-								<jobString>Making 4mm Railgun (Ionized Neutronium) cartridges.</jobString>
-								<workAmount>3000</workAmount>
-								<ingredients>
+						<RecipeDef ParentName="AmmoRecipeBase">
+							<defName>MakeBOR_Ammo_6mmRailgun_Nc</defName>
+							<label>make 6mm Railgun cartridge (Neutronium coated) x500</label>
+							<description>Craft 500 6mm Railgun (Neutronium coated) cartridges.</description>
+							<jobString>Making 6mm Railgun (Neutronium coated) cartridges.</jobString>
+							<workAmount>20000</workAmount>
+							<ingredients>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_QuasarAlloy</li>
+										</thingDefs>
+									</filter>
+									<count>4</count>
+								</li>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_Neutronium</li>
+										</thingDefs>
+									</filter>
+									<count>20</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter>
+								<thingDefs>
+									<li>BOR_Neutronium</li>
+									<li>BOR_QuasarAlloy</li>
+								</thingDefs>
+							</fixedIngredientFilter>
+							<products>
+								<BOR_Ammo_6mmRailgun_Nc>500</BOR_Ammo_6mmRailgun_Nc>
+							</products>
+						</RecipeDef>
+
+						<RecipeDef ParentName="AmmoRecipeBase">
+							<defName>MakeBOR_Ammo_6mmRailgun_Ni</defName>
+							<label>make 6mm Railgun cartridge (Neutronium infused) x500</label>
+							<description>Craft 500 6mm Railgun (Neutronium infused) cartridges.</description>
+							<jobString>Making 6mm Railgun (Neutronium infused) cartridges.</jobString>
+							<workAmount>20000</workAmount>
+							<ingredients>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_QuasarAlloy</li>
+										</thingDefs>
+									</filter>
+									<count>4</count>
+								</li>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_Neutronium</li>
+										</thingDefs>
+									</filter>
+									<count>40</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter>
+								<thingDefs>
+									<li>BOR_Neutronium</li>
+									<li>BOR_QuasarAlloy</li>
+								</thingDefs>
+							</fixedIngredientFilter>
+							<products>
+								<BOR_Ammo_6mmRailgun_Ni>500</BOR_Ammo_6mmRailgun_Ni>
+							</products>
+						</RecipeDef>
+
+						<RecipeDef ParentName="AmmoRecipeBase">
+							<defName>MakeBOR_Ammo_6mmRailgun_EMP_N</defName>
+							<label>make 6mm Railgun cartridge (Ionized Neutronium) x500</label>
+							<description>Craft 500 6mm Railgun (Ionized Neutronium) cartridges.</description>
+							<jobString>Making 6mm Railgun (Ionized Neutronium) cartridges.</jobString>
+							<workAmount>30000</workAmount>
+							<ingredients>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_QuasarAlloy</li>
+										</thingDefs>
+									</filter>
+									<count>4</count>
+								</li>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_Neutronium</li>
+										</thingDefs>
+									</filter>
+									<count>40</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter>
+								<thingDefs>
+									<li>BOR_Neutronium</li>
+									<li>BOR_QuasarAlloy</li>
+								</thingDefs>
+							</fixedIngredientFilter>
+							<products>
+								<BOR_Ammo_6mmRailgun_EMP_N>500</BOR_Ammo_6mmRailgun_EMP_N>
+							</products>
+						</RecipeDef>
+
+						<ThingDef Class="CombatExtended.AmmoDef" ParentName="SpacerSmallAmmoBase">
+							<defName>BOR_Ammo_8mmRailgun_Nc</defName>
+							<label>8mm Railgun cartridge (Neutronium coated)</label>
+							<description>Fin-stabilized tungsten carbide penetrator with discarding sabot, designed for railgun pistols.</description>
+							<statBases>
+								<Mass>0.013</Mass>
+								<Bulk>0.015</Bulk>
+								<MarketValue>0.09</MarketValue>
+							</statBases>
+							<tradeTags>
+								<li>CE_AutoEnableTrade</li>
+								<li>CE_AutoEnableCrafting_FabricationBench</li>
+							</tradeTags>
+							<thingCategories>
+								<li>Ammo8mmRailgun</li>
+							</thingCategories>
+							<graphicData>
+								<texPath>ThirdParty/VanillaXCOM/Railgun/API/Rifle</texPath>
+								<graphicClass>CombatExtended.Graphic_StackCountRanged</graphicClass>
+							</graphicData>
+							<ammoClass>BOR_Nc_AmmoClass</ammoClass>
+						</ThingDef>
+
+						<ThingDef Class="CombatExtended.AmmoDef" ParentName="SpacerSmallAmmoBase">
+							<defName>BOR_Ammo_8mmRailgun_Ni</defName>
+							<label>8mm Railgun cartridge (Neutronium infused)</label>
+							<description>Fin-stabilized tungsten carbide penetrator with discarding sabot, designed for railgun pistols.</description>
+							<statBases>
+								<Mass>0.014</Mass>
+								<Bulk>0.015</Bulk>
+								<MarketValue>0.075</MarketValue>
+							</statBases>
+							<tradeTags>
+								<li>CE_AutoEnableTrade</li>
+								<li>CE_AutoEnableCrafting_FabricationBench</li>
+							</tradeTags>
+							<thingCategories>
+								<li>Ammo8mmRailgun</li>
+							</thingCategories>
+							<graphicData>
+								<texPath>ThirdParty/VanillaXCOM/Railgun/APHE/Rifle</texPath>
+								<graphicClass>CombatExtended.Graphic_StackCountRanged</graphicClass>
+							</graphicData>
+							<ammoClass>BOR_Ni_AmmoClass</ammoClass>
+						</ThingDef>
+
+						<ThingDef Class="CombatExtended.AmmoDef" ParentName="SpacerSmallAmmoBase">
+							<defName>BOR_Ammo_8mmRailgun_EMP_N</defName>
+							<label>8mm Railgun cartridge (Ionized Neutronium)</label>
+							<description>Fin-stabilized tungsten carbide penetrator with discarding sabot, designed for railgun pistols.</description>
+							<statBases>
+								<Mass>0.015</Mass>
+								<Bulk>0.02</Bulk>
+								<MarketValue>0.09</MarketValue>
+							</statBases>
+							<tradeTags>
+								<li>CE_AutoEnableTrade</li>
+								<li>CE_AutoEnableCrafting_FabricationBench</li>
+							</tradeTags>
+							<thingCategories>
+								<li>Ammo8mmRailgun</li>
+							</thingCategories>
+							<graphicData>
+								<texPath>ThirdParty/VanillaXCOM/Railgun/EMP/Rifle</texPath>
+								<graphicClass>CombatExtended.Graphic_StackCountRanged</graphicClass>
+							</graphicData>
+							<ammoClass>BOR_Charged_Ion_N_AmmoClass</ammoClass>
+						</ThingDef>
+
+						<ThingDef ParentName="BaseBulletCE">
+							<defName>BOR_Bullet_XCOM8mmRailgun_TC</defName>
+							<label>8mm Railgun bullet (Tenebrite Coated)</label>
+							<graphicData>
+								<texPath>BOR/Things/Bullet/Bullet_Mag_Big</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+								<shaderType>TransparentPostLight</shaderType>
+							</graphicData>
+							<projectile Class="CombatExtended.ProjectilePropertiesCE">
+								<damageDef>Bullet</damageDef>
+								<damageAmountBase>68</damageAmountBase>
+								<armorPenetrationSharp>259</armorPenetrationSharp>
+								<armorPenetrationBlunt>844</armorPenetrationBlunt>
+								<speed>1215</speed>
+								<dropsCasings>false</dropsCasings>
+							</projectile>
+						</ThingDef>
+
+						<ThingDef ParentName="BaseBulletCE">
+							<defName>BOR_Bullet_XCOM8mmRailgun_Nc</defName>
+							<label>8mm Railgun bullet (Neutronium coated)</label>
+							<graphicData>
+								<texPath>BOR/Things/Bullet/Bullet_Mag_Big</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+								<shaderType>TransparentPostLight</shaderType>
+							</graphicData>
+							<projectile Class="CombatExtended.ProjectilePropertiesCE">
+								<damageDef>Bullet</damageDef>
+								<damageAmountBase>22</damageAmountBase>
+								<armorPenetrationSharp>225</armorPenetrationSharp>
+								<armorPenetrationBlunt>375</armorPenetrationBlunt>
+								<speed>540</speed>
+								<dropsCasings>false</dropsCasings>
+								<secondaryDamage>
 									<li>
-										<filter>
-											<thingDefs>
-												<li>BOR_QuasarAlloy</li>
-											</thingDefs>
-										</filter>
-										<count>1</count>
+										<def>Bomb_Secondary</def>
+										<amount>12</amount>
 									</li>
+								</secondaryDamage>
+							</projectile>
+						</ThingDef>
+
+						<ThingDef ParentName="BaseBulletCE">
+							<defName>BOR_Bullet_XCOM8mmRailgun_Ni</defName>
+							<label>8mm Railgun bullet (Neutronium infused)</label>
+							<graphicData>
+								<texPath>BOR/Things/Bullet/Bullet_Mag_Big</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+								<shaderType>TransparentPostLight</shaderType>
+							</graphicData>
+							<projectile Class="CombatExtended.ProjectilePropertiesCE">
+								<damageDef>Bullet</damageDef>
+								<damageAmountBase>30</damageAmountBase>
+								<armorPenetrationSharp>110</armorPenetrationSharp>
+								<armorPenetrationBlunt>375</armorPenetrationBlunt>
+								<speed>540</speed>
+								<dropsCasings>false</dropsCasings>
+								<secondaryDamage>
 									<li>
-										<filter>
-											<thingDefs>
-												<li>BOR_Neutronium</li>
-											</thingDefs>
-										</filter>
-										<count>20</count>
+										<def>Bomb_Secondary</def>
+										<amount>15</amount>
 									</li>
-								</ingredients>
-								<fixedIngredientFilter>
-									<thingDefs>
-										<li>BOR_QuasarAlloy</li>
-										<li>BOR_Neutronium</li>
-									</thingDefs>
-								</fixedIngredientFilter>
-								<products>
-									<BOR_Ammo_4mmRailgun_EMP_N>500</BOR_Ammo_4mmRailgun_EMP_N>
-								</products>
-							</RecipeDef>
+								</secondaryDamage>
+							</projectile>
+						</ThingDef>
 
-							<ThingDef Class="CombatExtended.AmmoDef" ParentName="SpacerSmallAmmoBase">
-								<defName>BOR_Ammo_6mmRailgun_Nc</defName>
-								<label>6mm Railgun cartridge (Neutronium coated)</label>
-								<description>Fin-stabilized tungsten carbide penetrator with discarding sabot, designed for railgun rifles.</description>
-								<statBases>
-									<Mass>0.015</Mass>
-									<Bulk>0.012</Bulk>
-									<MarketValue>0.09</MarketValue>
-								</statBases>
-								<tradeTags>
-									<li>CE_AutoEnableTrade</li>
-									<li>CE_AutoEnableCrafting_FabricationBench</li>
-								</tradeTags>
-								<thingCategories>
-									<li>Ammo6mmRailgun</li>
-								</thingCategories>
-								<graphicData>
-									<texPath>ThirdParty/VanillaXCOM/Railgun/API/Rifle</texPath>
-									<graphicClass>CombatExtended.Graphic_StackCountRanged</graphicClass>
-								</graphicData>
-								<ammoClass>BOR_Nc_AmmoClass</ammoClass>
-							</ThingDef>
-
-							<ThingDef Class="CombatExtended.AmmoDef" ParentName="SpacerSmallAmmoBase">
-								<defName>BOR_Ammo_6mmRailgun_Ni</defName>
-								<label>6mm Railgun cartridge (Neutronium infused)</label>
-								<description>Fin-stabilized tungsten carbide penetrator with discarding sabot, designed for railgun rifles.</description>
-								<statBases>
-									<Mass>0.015</Mass>
-									<Bulk>0.012</Bulk>
-									<MarketValue>0.075</MarketValue>
-								</statBases>
-								<tradeTags>
-									<li>CE_AutoEnableTrade</li>
-									<li>CE_AutoEnableCrafting_FabricationBench</li>
-								</tradeTags>
-								<thingCategories>
-									<li>Ammo6mmRailgun</li>
-								</thingCategories>
-								<graphicData>
-									<texPath>ThirdParty/VanillaXCOM/Railgun/APHE/Rifle</texPath>
-									<graphicClass>CombatExtended.Graphic_StackCountRanged</graphicClass>
-								</graphicData>
-								<ammoClass>BOR_Ni_AmmoClass</ammoClass>
-							</ThingDef>
-
-							<ThingDef Class="CombatExtended.AmmoDef" ParentName="SpacerSmallAmmoBase">
-								<defName>BOR_Ammo_6mmRailgun_EMP_N</defName>
-								<label>6mm Railgun cartridge (Ionized Neutronium)</label>
-								<description>Fin-stabilized tungsten carbide penetrator with discarding sabot, designed for railgun rifles.</description>
-								<statBases>
-									<Mass>0.015</Mass>
-									<Bulk>0.012</Bulk>
-									<MarketValue>0.09</MarketValue>
-								</statBases>
-								<tradeTags>
-									<li>CE_AutoEnableTrade</li>
-									<li>CE_AutoEnableCrafting_FabricationBench</li>
-								</tradeTags>
-								<thingCategories>
-									<li>Ammo6mmRailgun</li>
-								</thingCategories>
-								<graphicData>
-									<texPath>ThirdParty/VanillaXCOM/Railgun/EMP/Rifle</texPath>
-									<graphicClass>CombatExtended.Graphic_StackCountRanged</graphicClass>
-								</graphicData>
-								<ammoClass>BOR_Charged_Ion_N_AmmoClass</ammoClass>
-							</ThingDef>
-
-							<!-- you know what? I always worried about my 3HST railguns are too imba until I saw the stats CE gave for railguns. So I'll take my liberty here as I'm gonna rewrite the projectile anyway. I don't really buy the "fromtloaded cost" explanation-->
-
-							<ThingDef ParentName="BaseBulletCE">
-								<defName>BOR_Bullet_XCOM6mmRailgun_TC</defName>
-								<label>6mm Railgun bullet (Tenebrite Coated)</label>
-								<graphicData>
-									<texPath>Bullet_Mag_Small</texPath>
-									<graphicClass>Graphic_Single</graphicClass>
-									<shaderType>TransparentPostLight</shaderType>
-									<drawSize>1.1</drawSize>
-								</graphicData>
-								<projectile Class="CombatExtended.ProjectilePropertiesCE">
-									<damageDef>Bullet</damageDef>
-									<damageAmountBase>61</damageAmountBase>
-									<armorPenetrationSharp>149</armorPenetrationSharp>
-									<armorPenetrationBlunt>990</armorPenetrationBlunt>
-									<speed>1013</speed>
-									<dropsCasings>false</dropsCasings>
-								</projectile>
-							</ThingDef>
-
-							<ThingDef ParentName="BaseBulletCE">
-								<defName>BOR_Bullet_XCOM6mmRailgun_Nc</defName>
-								<label>6mm Railgun bullet (Neutronium coated)</label>
-								<graphicData>
-									<texPath>Bullet_Mag_Small</texPath>
-									<graphicClass>Graphic_Single</graphicClass>
-									<shaderType>TransparentPostLight</shaderType>
-									<drawSize>1.1</drawSize>
-								</graphicData>
-								<projectile Class="CombatExtended.ProjectilePropertiesCE">
-									<damageDef>Bullet</damageDef>
-									<damageAmountBase>20</damageAmountBase>
-									<armorPenetrationSharp>132</armorPenetrationSharp>
-									<armorPenetrationBlunt>440</armorPenetrationBlunt>
-									<speed>450</speed>
-									<dropsCasings>false</dropsCasings>
-									<secondaryDamage>
-										<li>
-											<def>Flame_Secondary</def>
-											<amount>9</amount>
-										</li>
-									</secondaryDamage>
-								</projectile>
-							</ThingDef>
-
-							<ThingDef ParentName="BaseBulletCE">
-								<defName>BOR_Bullet_XCOM6mmRailgun_Ni</defName>
-								<label>6mm Railgun bullet (Neutronium infused)</label>
-								<graphicData>
-									<texPath>Bullet_Mag_Small</texPath>
-									<graphicClass>Graphic_Single</graphicClass>
-									<shaderType>TransparentPostLight</shaderType>
-									<drawSize>1.1</drawSize>
-								</graphicData>
-								<projectile Class="CombatExtended.ProjectilePropertiesCE">
-									<damageDef>Bullet</damageDef>
-									<damageAmountBase>27</damageAmountBase>
-									<armorPenetrationSharp>66</armorPenetrationSharp>
-									<armorPenetrationBlunt>440</armorPenetrationBlunt>
-									<speed>450</speed>
-									<dropsCasings>false</dropsCasings>
-									<secondaryDamage>
-										<li>
-											<def>Bomb_Secondary</def>
-											<amount>15</amount>
-										</li>
-									</secondaryDamage>
-								</projectile>
-							</ThingDef>
-
-							<ThingDef ParentName="BaseBulletCE">
-								<defName>BOR_Bullet_XCOM6mmRailgun_EMP_N</defName>
-								<label>6mm Railgun bullet (Ionized Neutronium)</label>
-								<graphicData>
-									<texPath>Bullet_Mag_Small</texPath>
-									<graphicClass>Graphic_Single</graphicClass>
-									<shaderType>TransparentPostLight</shaderType>
-									<drawSize>1.1</drawSize>
-								</graphicData>
-								<projectile Class="CombatExtended.ProjectilePropertiesCE">
-									<damageDef>Bullet</damageDef>
-									<damageAmountBase>16</damageAmountBase>
-									<armorPenetrationSharp>66</armorPenetrationSharp>
-									<armorPenetrationBlunt>440</armorPenetrationBlunt>
-									<speed>450</speed>
-									<dropsCasings>false</dropsCasings>
-									<secondaryDamage>
-										<li>
-											<def>EMP</def>
-											<amount>11</amount>
-										</li>
-									</secondaryDamage>
-								</projectile>
-							</ThingDef>
-
-							<RecipeDef ParentName="AmmoRecipeBase">
-								<defName>MakeBOR_Ammo_6mmRailgun_Nc</defName>
-								<label>make 6mm Railgun cartridge (Neutronium coated) x500</label>
-								<description>Craft 500 6mm Railgun (Neutronium coated) cartridges.</description>
-								<jobString>Making 6mm Railgun (Neutronium coated) cartridges.</jobString>
-								<workAmount>20000</workAmount>
-								<ingredients>
+						<ThingDef ParentName="BaseBulletCE">
+							<defName>BOR_Bullet_XCOM8mmRailgun_EMP_N</defName>
+							<label>8mm Railgun bullet (Ionized Neutronium)</label>
+							<graphicData>
+								<texPath>BOR/Things/Bullet/Bullet_Mag_Big</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+								<shaderType>TransparentPostLight</shaderType>
+							</graphicData>
+							<projectile Class="CombatExtended.ProjectilePropertiesCE">
+								<damageDef>Bullet</damageDef>
+								<damageAmountBase>18</damageAmountBase>
+								<armorPenetrationSharp>110</armorPenetrationSharp>
+								<armorPenetrationBlunt>375</armorPenetrationBlunt>
+								<speed>540</speed>
+								<dropsCasings>false</dropsCasings>
+								<secondaryDamage>
 									<li>
-										<filter>
-											<thingDefs>
-												<li>BOR_QuasarAlloy</li>
-											</thingDefs>
-										</filter>
-										<count>4</count>
+										<def>EMP</def>
+										<amount>15</amount>
 									</li>
-									<li>
-										<filter>
-											<thingDefs>
-												<li>BOR_Neutronium</li>
-											</thingDefs>
-										</filter>
-										<count>20</count>
-									</li>
-								</ingredients>
-								<fixedIngredientFilter>
-									<thingDefs>
-										<li>BOR_Neutronium</li>
-										<li>BOR_QuasarAlloy</li>
-									</thingDefs>
-								</fixedIngredientFilter>
-								<products>
-									<BOR_Ammo_6mmRailgun_Nc>500</BOR_Ammo_6mmRailgun_Nc>
-								</products>
-							</RecipeDef>
+								</secondaryDamage>
+							</projectile>
+						</ThingDef>
 
-							<RecipeDef ParentName="AmmoRecipeBase">
-								<defName>MakeBOR_Ammo_6mmRailgun_Ni</defName>
-								<label>make 6mm Railgun cartridge (Neutronium infused) x500</label>
-								<description>Craft 500 6mm Railgun (Neutronium infused) cartridges.</description>
-								<jobString>Making 6mm Railgun (Neutronium infused) cartridges.</jobString>
-								<workAmount>20000</workAmount>
-								<ingredients>
-									<li>
-										<filter>
-											<thingDefs>
-												<li>BOR_QuasarAlloy</li>
-											</thingDefs>
-										</filter>
-										<count>4</count>
-									</li>
-									<li>
-										<filter>
-											<thingDefs>
-												<li>BOR_Neutronium</li>
-											</thingDefs>
-										</filter>
-										<count>40</count>
-									</li>
-								</ingredients>
-								<fixedIngredientFilter>
-									<thingDefs>
-										<li>BOR_Neutronium</li>
-										<li>BOR_QuasarAlloy</li>
-									</thingDefs>
-								</fixedIngredientFilter>
-								<products>
-									<BOR_Ammo_6mmRailgun_Ni>500</BOR_Ammo_6mmRailgun_Ni>
-								</products>
-							</RecipeDef>
+						<RecipeDef ParentName="AmmoRecipeBase">
+							<defName>MakeBOR_Ammo_8mmRailgun_Nc</defName>
+							<label>make 8mm Railgun cartridge (Neutronium coated) x500</label>
+							<description>Craft 500 8mm Railgun (Neutronium coated) cartridges.</description>
+							<jobString>Making 8mm Railgun (Neutronium coated) cartridges.</jobString>
+							<workAmount>20000</workAmount>
+							<ingredients>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_QuasarAlloy</li>
+										</thingDefs>
+									</filter>
+									<count>4</count>
+								</li>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_Neutronium</li>
+										</thingDefs>
+									</filter>
+									<count>20</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter>
+								<thingDefs>
+									<li>BOR_Neutronium</li>
+									<li>BOR_QuasarAlloy</li>
+								</thingDefs>
+							</fixedIngredientFilter>
+							<products>
+								<BOR_Ammo_8mmRailgun_Nc>500</BOR_Ammo_8mmRailgun_Nc>
+							</products>
+						</RecipeDef>
 
-							<RecipeDef ParentName="AmmoRecipeBase">
-								<defName>MakeBOR_Ammo_6mmRailgun_EMP_N</defName>
-								<label>make 6mm Railgun cartridge (Ionized Neutronium) x500</label>
-								<description>Craft 500 6mm Railgun (Ionized Neutronium) cartridges.</description>
-								<jobString>Making 6mm Railgun (Ionized Neutronium) cartridges.</jobString>
-								<workAmount>30000</workAmount>
-								<ingredients>
-									<li>
-										<filter>
-											<thingDefs>
-												<li>BOR_QuasarAlloy</li>
-											</thingDefs>
-										</filter>
-										<count>4</count>
-									</li>
-									<li>
-										<filter>
-											<thingDefs>
-												<li>BOR_Neutronium</li>
-											</thingDefs>
-										</filter>
-										<count>40</count>
-									</li>
-								</ingredients>
-								<fixedIngredientFilter>
-									<thingDefs>
-										<li>BOR_Neutronium</li>
-										<li>BOR_QuasarAlloy</li>
-									</thingDefs>
-								</fixedIngredientFilter>
-								<products>
-									<BOR_Ammo_6mmRailgun_EMP_N>500</BOR_Ammo_6mmRailgun_EMP_N>
-								</products>
-							</RecipeDef>
+						<RecipeDef ParentName="AmmoRecipeBase">
+							<defName>MakeBOR_Ammo_8mmRailgun_Ni</defName>
+							<label>make 8mm Railgun cartridge (Neutronium infused) x500</label>
+							<description>Craft 500 8mm Railgun (Neutronium infused) cartridges.</description>
+							<jobString>Making 8mm Railgun (Neutronium infused) cartridges.</jobString>
+							<workAmount>20000</workAmount>
+							<ingredients>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_QuasarAlloy</li>
+										</thingDefs>
+									</filter>
+									<count>4</count>
+								</li>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_Neutronium</li>
+										</thingDefs>
+									</filter>
+									<count>40</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter>
+								<thingDefs>
+									<li>BOR_Neutronium</li>
+									<li>BOR_QuasarAlloy</li>
+								</thingDefs>
+							</fixedIngredientFilter>
+							<products>
+								<BOR_Ammo_8mmRailgun_Ni>500</BOR_Ammo_8mmRailgun_Ni>
+							</products>
+						</RecipeDef>
 
-							<ThingDef Class="CombatExtended.AmmoDef" ParentName="SpacerSmallAmmoBase">
-								<defName>BOR_Ammo_8mmRailgun_Nc</defName>
-								<label>8mm Railgun cartridge (Neutronium coated)</label>
-								<description>Fin-stabilized tungsten carbide penetrator with discarding sabot, designed for railgun pistols.</description>
-								<statBases>
-									<Mass>0.013</Mass>
-									<Bulk>0.015</Bulk>
-									<MarketValue>0.09</MarketValue>
-								</statBases>
-								<tradeTags>
-									<li>CE_AutoEnableTrade</li>
-									<li>CE_AutoEnableCrafting_FabricationBench</li>
-								</tradeTags>
-								<thingCategories>
-									<li>Ammo8mmRailgun</li>
-								</thingCategories>
-								<graphicData>
-									<texPath>ThirdParty/VanillaXCOM/Railgun/API/Rifle</texPath>
-									<graphicClass>CombatExtended.Graphic_StackCountRanged</graphicClass>
-								</graphicData>
-								<ammoClass>BOR_Nc_AmmoClass</ammoClass>
-							</ThingDef>
+						<RecipeDef ParentName="AmmoRecipeBase">
+							<defName>MakeBOR_Ammo_8mmRailgun_EMP_N</defName>
+							<label>make 8mm Railgun cartridge (Ionized Neutronium) x500</label>
+							<description>Craft 500 8mm Railgun (Ionized Neutronium) cartridges.</description>
+							<jobString>Making 8mm Railgun (Ionized Neutronium) cartridges.</jobString>
+							<workAmount>30000</workAmount>
+							<ingredients>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_QuasarAlloy</li>
+										</thingDefs>
+									</filter>
+									<count>4</count>
+								</li>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_Neutronium</li>
+										</thingDefs>
+									</filter>
+									<count>40</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter>
+								<thingDefs>
+									<li>BOR_Neutronium</li>
+									<li>BOR_QuasarAlloy</li>
+								</thingDefs>
+							</fixedIngredientFilter>
+							<products>
+								<BOR_Ammo_8mmRailgun_EMP_N>500</BOR_Ammo_8mmRailgun_EMP_N>
+							</products>
+						</RecipeDef>
 
-							<ThingDef Class="CombatExtended.AmmoDef" ParentName="SpacerSmallAmmoBase">
-								<defName>BOR_Ammo_8mmRailgun_Ni</defName>
-								<label>8mm Railgun cartridge (Neutronium infused)</label>
-								<description>Fin-stabilized tungsten carbide penetrator with discarding sabot, designed for railgun pistols.</description>
-								<statBases>
-									<Mass>0.014</Mass>
-									<Bulk>0.015</Bulk>
-									<MarketValue>0.075</MarketValue>
-								</statBases>
-								<tradeTags>
-									<li>CE_AutoEnableTrade</li>
-									<li>CE_AutoEnableCrafting_FabricationBench</li>
-								</tradeTags>
-								<thingCategories>
-									<li>Ammo8mmRailgun</li>
-								</thingCategories>
-								<graphicData>
-									<texPath>ThirdParty/VanillaXCOM/Railgun/APHE/Rifle</texPath>
-									<graphicClass>CombatExtended.Graphic_StackCountRanged</graphicClass>
-								</graphicData>
-								<ammoClass>BOR_Ni_AmmoClass</ammoClass>
-							</ThingDef>
+						<ThingDef ParentName="BaseBulletCE">
+							<defName>BOR_Bullet_XCOM12mmRailgun_TC</defName>
+							<label>12mm Railgun bullet (Tenebrite Coated)</label>
+							<graphicData>
+								<texPath>BOR/Things/Bullet/Bullet_Mag_Big</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+								<shaderType>TransparentPostLight</shaderType>
+								<drawSize>1.5</drawSize>
+							</graphicData>
+							<projectile Class="CombatExtended.ProjectilePropertiesCE">
+								<damageDef>Bullet</damageDef>
+								<damageAmountBase>248</damageAmountBase>
+								<armorPenetrationSharp>461</armorPenetrationSharp>
+								<armorPenetrationBlunt>22500</armorPenetrationBlunt>
+								<speed>1687</speed>
+								<dropsCasings>false</dropsCasings>
+							</projectile>
+						</ThingDef>
 
-							<ThingDef Class="CombatExtended.AmmoDef" ParentName="SpacerSmallAmmoBase">
-								<defName>BOR_Ammo_8mmRailgun_EMP_N</defName>
-								<label>8mm Railgun cartridge (Ionized Neutronium)</label>
-								<description>Fin-stabilized tungsten carbide penetrator with discarding sabot, designed for railgun pistols.</description>
-								<statBases>
-									<Mass>0.015</Mass>
-									<Bulk>0.02</Bulk>
-									<MarketValue>0.09</MarketValue>
-								</statBases>
-								<tradeTags>
-									<li>CE_AutoEnableTrade</li>
-									<li>CE_AutoEnableCrafting_FabricationBench</li>
-								</tradeTags>
-								<thingCategories>
-									<li>Ammo8mmRailgun</li>
-								</thingCategories>
-								<graphicData>
-									<texPath>ThirdParty/VanillaXCOM/Railgun/EMP/Rifle</texPath>
-									<graphicClass>CombatExtended.Graphic_StackCountRanged</graphicClass>
-								</graphicData>
-								<ammoClass>BOR_Charged_Ion_N_AmmoClass</ammoClass>
-							</ThingDef>
+						<!-- ==================== Ammo ========================== -->
 
-							<!-- well...3HST 9mm is another story, and 3HST 20mm is just worse.-->
+						<ThingDef Class="CombatExtended.AmmoDef" ParentName="SpacerSmallAmmoBase">
+							<defName>BOR_Ammo_12GaugeRailgun_TC</defName>
+							<label>12 Gauge railgun bullet (Tenebrite Coated)</label>
+							<description>Fin-stabilized tungsten carbide penetrator with discarding sabot, designed for railgun rifles.</description>
+							<statBases>
+								<Mass>0.1</Mass>
+								<Bulk>0.14</Bulk>
+								<MarketValue>0.09</MarketValue>
+							</statBases>
+							<tradeTags>
+								<li>CE_AutoEnableTrade</li>
+								<li>CE_AutoEnableCrafting_FabricationBench</li>
+								<li>CE_AutoEnableCrafting_TableMachining</li>
+								<!-- Railgun ammo isn't handloaded because it contains no propellant, and the sabots must be precision-machined anyway -->
+							</tradeTags>
+							<thingCategories>
+								<li>Ammo12GaugeRailgun</li>
+							</thingCategories>
+							<graphicData>
+								<texPath>Things/Ammo/Railgun/HighCaliber</texPath>
+								<graphicClass>CombatExtended.Graphic_StackCountRanged</graphicClass>
+							</graphicData>
+							<ammoClass>BOR_TC_AmmoClass</ammoClass>
+						</ThingDef>
 
-							<ThingDef ParentName="BaseBulletCE">
-								<defName>BOR_Bullet_XCOM8mmRailgun_TC</defName>
-								<label>8mm Railgun bullet (Tenebrite Coated)</label>
-								<graphicData>
-									<texPath>Bullet_Mag_Big</texPath>
-									<graphicClass>Graphic_Single</graphicClass>
-									<shaderType>TransparentPostLight</shaderType>
-								</graphicData>
-								<projectile Class="CombatExtended.ProjectilePropertiesCE">
-									<damageDef>Bullet</damageDef>
-									<damageAmountBase>68</damageAmountBase>
-									<armorPenetrationSharp>259</armorPenetrationSharp>
-									<armorPenetrationBlunt>844</armorPenetrationBlunt>
-									<speed>1215</speed>
-									<dropsCasings>false</dropsCasings>
-								</projectile>
-							</ThingDef>
+						<ThingDef Class="CombatExtended.AmmoDef" ParentName="SpacerMediumAmmoBase">
+							<defName>BOR_Ammo_12mmRailgun_TC</defName>
+							<label>12mm Railgun cartridge (TC)</label>
+							<description>Fin-stabilized tungsten carbide penetrator with discarding tenebrite-coated sabot, designed for large-caliber railgun weapons.</description>
+							<statBases>
+								<Mass>0.051</Mass>
+								<Bulk>0.04</Bulk>
+								<MarketValue>0.33</MarketValue>
+							</statBases>
+							<tradeTags>
+								<li>CE_AutoEnableTrade</li>
+								<li>CE_AutoEnableCrafting_FabricationBench</li>
+								<li>CE_AutoEnableCrafting_TableMachining</li>
+								<!-- Railgun ammo isn't handloaded because it contains no propellant, and the sabots must be precision-machined anyway -->
+							</tradeTags>
+							<thingCategories>
+								<li>Ammo12mmRailgun</li>
+							</thingCategories>
+							<stackLimit>200</stackLimit>
+							<graphicData>
+								<texPath>Things/Ammo/Railgun/HighCaliber</texPath>
+								<graphicClass>CombatExtended.Graphic_StackCountRanged</graphicClass>
+							</graphicData>
+							<ammoClass>BOR_TC_AmmoClass</ammoClass>
+						</ThingDef>
 
-							<ThingDef ParentName="BaseBulletCE">
-								<defName>BOR_Bullet_XCOM8mmRailgun_Nc</defName>
-								<label>8mm Railgun bullet (Neutronium coated)</label>
-								<graphicData>
-									<texPath>Bullet_Mag_Big</texPath>
-									<graphicClass>Graphic_Single</graphicClass>
-									<shaderType>TransparentPostLight</shaderType>
-								</graphicData>
-								<projectile Class="CombatExtended.ProjectilePropertiesCE">
-									<damageDef>Bullet</damageDef>
-									<damageAmountBase>22</damageAmountBase>
-									<armorPenetrationSharp>225</armorPenetrationSharp>
-									<armorPenetrationBlunt>375</armorPenetrationBlunt>
-									<speed>540</speed>
-									<dropsCasings>false</dropsCasings>
-									<secondaryDamage>
-										<li>
-											<def>Bomb_Secondary</def>
-											<amount>12</amount>
-										</li>
-									</secondaryDamage>
-								</projectile>
-							</ThingDef>
+						<!-- ================== Projectiles ================== -->
 
-							<ThingDef ParentName="BaseBulletCE">
-								<defName>BOR_Bullet_XCOM8mmRailgun_Ni</defName>
-								<label>8mm Railgun bullet (Neutronium infused)</label>
-								<graphicData>
-									<texPath>Bullet_Mag_Big</texPath>
-									<graphicClass>Graphic_Single</graphicClass>
-									<shaderType>TransparentPostLight</shaderType>
-								</graphicData>
-								<projectile Class="CombatExtended.ProjectilePropertiesCE">
-									<damageDef>Bullet</damageDef>
-									<damageAmountBase>30</damageAmountBase>
-									<armorPenetrationSharp>110</armorPenetrationSharp>
-									<armorPenetrationBlunt>375</armorPenetrationBlunt>
-									<speed>540</speed>
-									<dropsCasings>false</dropsCasings>
-									<secondaryDamage>
-										<li>
-											<def>Bomb_Secondary</def>
-											<amount>15</amount>
-										</li>
-									</secondaryDamage>
-								</projectile>
-							</ThingDef>
+						<ThingDef ParentName="BaseBulletCE">
+							<defName>BOR_Bullet_XCOMScatterRailgun_TC</defName>
+							<label>12 Gauge railgun bullet (Tenebrite Coated)</label>
+							<graphicData>
+								<texPath>BOR/Things/Bullet/Bullet_Mag_Shotgun</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+								<shaderType>TransparentPostLight</shaderType>
+								<drawSize>0.3</drawSize>
+							</graphicData>
+							<projectile Class="CombatExtended.ProjectilePropertiesCE">
+								<speed>843</speed>
+								<damageDef>Bullet</damageDef>
+								<damageAmountBase>34</damageAmountBase>
+								<armorPenetrationSharp>34</armorPenetrationSharp>
+								<armorPenetrationBlunt>84</armorPenetrationBlunt>
+								<spreadMult>20</spreadMult>
+								<pelletCount>16</pelletCount>
+								<dropsCasings>false</dropsCasings>
+							</projectile>
+						</ThingDef>
 
-							<ThingDef ParentName="BaseBulletCE">
-								<defName>BOR_Bullet_XCOM8mmRailgun_EMP_N</defName>
-								<label>8mm Railgun bullet (Ionized Neutronium)</label>
-								<graphicData>
-									<texPath>Bullet_Mag_Big</texPath>
-									<graphicClass>Graphic_Single</graphicClass>
-									<shaderType>TransparentPostLight</shaderType>
-								</graphicData>
-								<projectile Class="CombatExtended.ProjectilePropertiesCE">
-									<damageDef>Bullet</damageDef>
-									<damageAmountBase>18</damageAmountBase>
-									<armorPenetrationSharp>110</armorPenetrationSharp>
-									<armorPenetrationBlunt>375</armorPenetrationBlunt>
-									<speed>540</speed>
-									<dropsCasings>false</dropsCasings>
-									<secondaryDamage>
-										<li>
-											<def>EMP</def>
-											<amount>15</amount>
-										</li>
-									</secondaryDamage>
-								</projectile>
-							</ThingDef>
+						<ThingDef Class="CombatExtended.AmmoDef" ParentName="SpacerMediumAmmoBase">
+							<defName>BOR_Ammo_12mmRailgun_TC</defName>
+							<label>12mm Railgun cartridge (Sabot)</label>
+							<description>Fin-stabilized tungsten carbide penetrator with discarding sabot, designed for large-caliber railgun weapons.</description>
+							<statBases>
+								<Mass>0.051</Mass>
+								<Bulk>0.04</Bulk>
+								<MarketValue>0.33</MarketValue>
+							</statBases>
+							<tradeTags>
+								<li>CE_AutoEnableTrade</li>
+								<li>CE_AutoEnableCrafting_FabricationBench</li>
+								<li>CE_AutoEnableCrafting_TableMachining</li>
+								<!-- Railgun ammo isn't handloaded because it contains no propellant, and the sabots must be precision-machined anyway -->
+							</tradeTags>
+							<thingCategories>
+								<li>Ammo12mmRailgun</li>
+							</thingCategories>
+							<stackLimit>200</stackLimit>
+							<graphicData>
+								<texPath>Things/Ammo/Railgun/HighCaliber</texPath>
+								<graphicClass>CombatExtended.Graphic_StackCountRanged</graphicClass>
+							</graphicData>
+							<ammoClass>BOR_TC_AmmoClass</ammoClass>
+						</ThingDef>
+						<!-- ==================== Recipes ========================== -->
 
-							<RecipeDef ParentName="AmmoRecipeBase">
-								<defName>MakeBOR_Ammo_8mmRailgun_Nc</defName>
-								<label>make 8mm Railgun cartridge (Neutronium coated) x500</label>
-								<description>Craft 500 8mm Railgun (Neutronium coated) cartridges.</description>
-								<jobString>Making 8mm Railgun (Neutronium coated) cartridges.</jobString>
-								<workAmount>20000</workAmount>
-								<ingredients>
-									<li>
-										<filter>
-											<thingDefs>
-												<li>BOR_QuasarAlloy</li>
-											</thingDefs>
-										</filter>
-										<count>4</count>
-									</li>
-									<li>
-										<filter>
-											<thingDefs>
-												<li>BOR_Neutronium</li>
-											</thingDefs>
-										</filter>
-										<count>20</count>
-									</li>
-								</ingredients>
-								<fixedIngredientFilter>
-									<thingDefs>
-										<li>BOR_Neutronium</li>
-										<li>BOR_QuasarAlloy</li>
-									</thingDefs>
-								</fixedIngredientFilter>
-								<products>
-									<BOR_Ammo_8mmRailgun_Nc>500</BOR_Ammo_8mmRailgun_Nc>
-								</products>
-							</RecipeDef>
+						<RecipeDef ParentName="AmmoRecipeBase">
+							<defName>MakeBOR_Ammo_12GaugeRailgun_TC</defName>
+							<label>make 12 Gauge railgun cartridge (Tenebrite Coated) x200</label>
+							<description>Craft 500 12 Gauge railgun (Tenebrite Coated) cartridges.</description>
+							<jobString>Making 12 Gauge railgun (Tenebrite Coated) cartridges.</jobString>
+							<workAmount>25000</workAmount>
+							<ingredients>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_Tenebrite</li>
+										</thingDefs>
+									</filter>
+									<count>5</count>
+								</li>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_QuasarAlloy</li>
+										</thingDefs>
+									</filter>
+									<count>10</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter>
+								<thingDefs>
+									<li>BOR_QuasarAlloy</li>
+									<li>BOR_Tenebrite</li>
+								</thingDefs>
+							</fixedIngredientFilter>
+							<products>
+								<BOR_Ammo_12GaugeRailgun_TC>200</BOR_Ammo_12GaugeRailgun_TC>
+							</products>
+						</RecipeDef>
+					</value>
+				</li>
 
-							<RecipeDef ParentName="AmmoRecipeBase">
-								<defName>MakeBOR_Ammo_8mmRailgun_Ni</defName>
-								<label>make 8mm Railgun cartridge (Neutronium infused) x500</label>
-								<description>Craft 500 8mm Railgun (Neutronium infused) cartridges.</description>
-								<jobString>Making 8mm Railgun (Neutronium infused) cartridges.</jobString>
-								<workAmount>20000</workAmount>
-								<ingredients>
-									<li>
-										<filter>
-											<thingDefs>
-												<li>BOR_QuasarAlloy</li>
-											</thingDefs>
-										</filter>
-										<count>4</count>
-									</li>
-									<li>
-										<filter>
-											<thingDefs>
-												<li>BOR_Neutronium</li>
-											</thingDefs>
-										</filter>
-										<count>40</count>
-									</li>
-								</ingredients>
-								<fixedIngredientFilter>
-									<thingDefs>
-										<li>BOR_Neutronium</li>
-										<li>BOR_QuasarAlloy</li>
-									</thingDefs>
-								</fixedIngredientFilter>
-								<products>
-									<BOR_Ammo_8mmRailgun_Ni>500</BOR_Ammo_8mmRailgun_Ni>
-								</products>
-							</RecipeDef>
+				<!-- Weapon Tool Replacements -->
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="BOR_Gun_GaussRifle_TI" or defName="BOR_Gun_GaussShotgun_TI" or defName="BOR_Gun_GaussSniperRifle_TI" or defName="BOR_Gun_GaussBullpup_TI" or defName="BOR_Gun_GaussDMR_TI" or defName="BOR_Gun_GaussCannon_TI"]/tools</xpath>
+					<value>
+						<tools>
+							<li Class="CombatExtended.ToolCE">
+								<label>stock</label>
+								<capacities>
+									<li>Blunt</li>
+								</capacities>
+								<power>10.4</power>
+								<cooldownTime>1.41</cooldownTime>
+								<chanceFactor>1.5</chanceFactor>
+								<armorPenetrationBlunt>3.306</armorPenetrationBlunt>
+								<linkedBodyPartsGroup>Stock</linkedBodyPartsGroup>
+							</li>
+							<li Class="CombatExtended.ToolCE">
+								<label>barrel</label>
+								<capacities>
+									<li>Blunt</li>
+								</capacities>
+								<power>6</power>
+								<cooldownTime>1.836</cooldownTime>
+								<armorPenetrationBlunt>1.955</armorPenetrationBlunt>
+								<linkedBodyPartsGroup>Barrel</linkedBodyPartsGroup>
+							</li>
+							<li Class="CombatExtended.ToolCE">
+								<label>muzzle</label>
+								<capacities>
+									<li>Poke</li>
+								</capacities>
+								<power>10.4</power>
+								<cooldownTime>1.41</cooldownTime>
+								<armorPenetrationBlunt>3.306</armorPenetrationBlunt>
+								<linkedBodyPartsGroup>Muzzle</linkedBodyPartsGroup>
+							</li>
+						</tools>
+					</value>
+				</li>
 
-							<RecipeDef ParentName="AmmoRecipeBase">
-								<defName>MakeBOR_Ammo_8mmRailgun_EMP_N</defName>
-								<label>make 8mm Railgun cartridge (Ionized Neutronium) x500</label>
-								<description>Craft 500 8mm Railgun (Ionized Neutronium) cartridges.</description>
-								<jobString>Making 8mm Railgun (Ionized Neutronium) cartridges.</jobString>
-								<workAmount>30000</workAmount>
-								<ingredients>
-									<li>
-										<filter>
-											<thingDefs>
-												<li>BOR_QuasarAlloy</li>
-											</thingDefs>
-										</filter>
-										<count>4</count>
-									</li>
-									<li>
-										<filter>
-											<thingDefs>
-												<li>BOR_Neutronium</li>
-											</thingDefs>
-										</filter>
-										<count>40</count>
-									</li>
-								</ingredients>
-								<fixedIngredientFilter>
-									<thingDefs>
-										<li>BOR_Neutronium</li>
-										<li>BOR_QuasarAlloy</li>
-									</thingDefs>
-								</fixedIngredientFilter>
-								<products>
-									<BOR_Ammo_8mmRailgun_EMP_N>500</BOR_Ammo_8mmRailgun_EMP_N>
-								</products>
-							</RecipeDef>
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="BOR_Gun_GaussPistol_TI"]/tools</xpath>
+					<value>
+						<tools>
+							<li Class="CombatExtended.ToolCE">
+								<label>grip</label>
+								<capacities>
+									<li>Blunt</li>
+								</capacities>
+								<power>2.4</power>
+								<cooldownTime>1.4</cooldownTime>
+								<chanceFactor>1.5</chanceFactor>
+								<armorPenetrationBlunt>0.664</armorPenetrationBlunt>
+								<linkedBodyPartsGroup>Grip</linkedBodyPartsGroup>
+							</li>
+							<li Class="CombatExtended.ToolCE">
+								<label>muzzle</label>
+								<capacities>
+									<li>Poke</li>
+								</capacities>
+								<power>2.4</power>
+								<cooldownTime>1.4</cooldownTime>
+								<armorPenetrationBlunt>0.664</armorPenetrationBlunt>
+								<linkedBodyPartsGroup>Muzzle</linkedBodyPartsGroup>
+							</li>
+						</tools>
+					</value>
+				</li>
 
-							<ThingDef ParentName="BaseBulletCE">
-								<defName>BOR_Bullet_XCOM12mmRailgun_TC</defName>
-								<label>12mm Railgun bullet (Tenebrite Coated)</label>
-								<graphicData>
-									<texPath>Bullet_Mag_Big</texPath>
-									<graphicClass>Graphic_Single</graphicClass>
-									<shaderType>TransparentPostLight</shaderType>
-									<drawSize>1.5</drawSize>
-								</graphicData>
-								<projectile Class="CombatExtended.ProjectilePropertiesCE">
-									<damageDef>Bullet</damageDef>
-									<damageAmountBase>248</damageAmountBase>
-									<armorPenetrationSharp>461</armorPenetrationSharp>
-									<armorPenetrationBlunt>22500</armorPenetrationBlunt>
-									<speed>1687</speed>
-									<dropsCasings>false</dropsCasings>
-								</projectile>
-							</ThingDef>
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="BOR_Gun_GaussCannon_TI"]/tools</xpath>
+					<value>
+						<tools>
+							<li Class="CombatExtended.ToolCE">
+								<label>stock</label>
+								<capacities>
+									<li>Blunt</li>
+								</capacities>
+								<power>18</power>
+								<cooldownTime>1.85</cooldownTime>
+								<chanceFactor>1.2</chanceFactor>
+								<armorPenetrationBlunt>6.36</armorPenetrationBlunt>
+								<linkedBodyPartsGroup>Stock</linkedBodyPartsGroup>
+							</li>
+							<li Class="CombatExtended.ToolCE">
+								<label>barrel</label>
+								<capacities>
+									<li>Blunt</li>
+								</capacities>
+								<power>12</power>
+								<cooldownTime>2.27</cooldownTime>
+								<armorPenetrationBlunt>4.24</armorPenetrationBlunt>
+								<linkedBodyPartsGroup>Barrel</linkedBodyPartsGroup>
+							</li>
+							<li Class="CombatExtended.ToolCE">
+								<label>muzzle</label>
+								<capacities>
+									<li>Poke</li>
+								</capacities>
+								<power>14</power>
+								<cooldownTime>1.82</cooldownTime>
+								<armorPenetrationBlunt>4.95</armorPenetrationBlunt>
+								<linkedBodyPartsGroup>Muzzle</linkedBodyPartsGroup>
+							</li>
+						</tools>
+					</value>
+				</li>
 
-							<!-- and...rail shotgun, slapping 3HST 20mm NCQ canister stats here-->
+				<!-- Weapon Stat Patches with Scaling Applied -->
+				<li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+					<defName>BOR_Gun_GaussRifle_TI</defName>
+					<statBases>
+						<WorkToMake>72600</WorkToMake>
+						<Mass>6.6</Mass>
+						<Bulk>15</Bulk>
+						<SwayFactor>1.145</SwayFactor>
+						<ShotSpread>0.0545</ShotSpread>
+						<SightsEfficiency>1.32</SightsEfficiency>
+						<RangedWeapon_Cooldown>0.382</RangedWeapon_Cooldown>
+						<NightVisionEfficiency_Weapon>0.48</NightVisionEfficiency_Weapon>
+					</statBases>
+					<costList>
+						<Steel>84</Steel>
+						<Plasteel>78</Plasteel>
+						<ComponentSpacer>4</ComponentSpacer>
+					</costList>
+					<Properties>
+						<verbClass>CombatExtended.Verb_ShootCE</verbClass>
+						<hasStandardCommand>true</hasStandardCommand>
+						<defaultProjectile>Bullet_XCOM6mmRailgun_Sabot</defaultProjectile>
+						<warmupTime>0.909</warmupTime>
+						<burstShotCount>6</burstShotCount>
+						<ticksBetweenBurstShots>5</ticksBetweenBurstShots>
+						<range>66</range>
+						<soundCast>Mag_Rifle</soundCast>
+						<soundCastTail>GunTail_Light</soundCastTail>
+						<recoilAmount>3.318</recoilAmount>
+						<muzzleFlashScale>7</muzzleFlashScale>
+					</Properties>
+					<AmmoUser>
+						<magazineSize>30</magazineSize>
+						<reloadTime>4.5</reloadTime>
+						<ammoSet>AmmoSet_6mmRailgunXCOM</ammoSet>
+					</AmmoUser>
+					<FireModes>
+						<aimedBurstShotCount>3</aimedBurstShotCount>
+						<aiUseBurstMode>TRUE</aiUseBurstMode>
+						<aiAimMode>AimedShot</aiAimMode>
+					</FireModes>
+					<weaponTags>
+						<li>CE_AI_AR</li>
+					</weaponTags>
+					<researchPrerequisite>ChargedShot</researchPrerequisite>
+				</li>
 
-							<!-- ==================== Ammo ========================== -->
+				<li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+					<defName>BOR_Gun_GaussPistol_TI</defName>
+					<statBases>
+						<WorkToMake>26400</WorkToMake>
+						<Mass>2.64</Mass>
+						<Bulk>3.3</Bulk>
+						<SwayFactor>0.654</SwayFactor>
+						<ShotSpread>0.1727</ShotSpread>
+						<SightsEfficiency>0.84</SightsEfficiency>
+						<RangedWeapon_Cooldown>0.627</RangedWeapon_Cooldown>
+					</statBases>
+					<costList>
+						<Steel>24</Steel>
+						<Plasteel>48</Plasteel>
+						<ComponentSpacer>1</ComponentSpacer>
+					</costList>
+					<Properties>
+						<verbClass>CombatExtended.Verb_ShootCE</verbClass>
+						<hasStandardCommand>true</hasStandardCommand>
+						<defaultProjectile>Bullet_XCOM4mmRailgun_Sabot</defaultProjectile>
+						<warmupTime>0.545</warmupTime>
+						<range>14.4</range>
+						<soundCast>Mag_Pistol</soundCast>
+						<soundCastTail>GunTail_Light</soundCastTail>
+						<recoilAmount>1.818</recoilAmount>
+						<muzzleFlashScale>8</muzzleFlashScale>
+					</Properties>
+					<AmmoUser>
+						<magazineSize>5</magazineSize>
+						<reloadTime>3.5</reloadTime>
+						<ammoSet>AmmoSet_4mmRailgunXCOM</ammoSet>
+					</AmmoUser>
+					<FireModes>
+						<aiAimMode>AimedShot</aiAimMode>
+					</FireModes>
+					<weaponTags>
+						<li>CE_Sidearm</li>
+						<li>CE_OneHandedWeapon</li>
+						<li>CE_AI_BROOM</li>
+					</weaponTags>
+					<researchPrerequisite>ChargedShot</researchPrerequisite>
+				</li>
 
-							<ThingDef Class="CombatExtended.AmmoDef" ParentName="SpacerSmallAmmoBase">
-								<defName>BOR_Ammo_12GaugeRailgun_TC</defName>
-								<label>12 Gauge railgun bullet (Tenebrite Coated)</label>
-								<description>Fin-stabilized tungsten carbide penetrator with discarding sabot, designed for railgun rifles.</description>
-								<statBases>
-									<Mass>0.1</Mass>
-									<Bulk>0.14</Bulk>
-									<MarketValue>0.09</MarketValue>
-								</statBases>
-								<tradeTags>
-									<li>CE_AutoEnableTrade</li>
-									<li>CE_AutoEnableCrafting_FabricationBench</li>
-									<li>CE_AutoEnableCrafting_TableMachining</li>
-									<!-- Railgun ammo isn't handloaded because it contains no propellant, and the sabots must be precision-machined anyway -->
-								</tradeTags>
-								<thingCategories>
-									<li>Ammo12GaugeRailgun</li>
-								</thingCategories>
-								<graphicData>
-									<texPath>Things/Ammo/Railgun/HighCaliber</texPath>
-									<graphicClass>CombatExtended.Graphic_StackCountRanged</graphicClass>
-								</graphicData>
-								<ammoClass>BOR_TC_AmmoClass</ammoClass>
-							</ThingDef>
+				<li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+					<defName>BOR_Gun_GaussShotgun_TI</defName>
+					<statBases>
+						<WorkToMake>36000</WorkToMake>
+						<Mass>6.24</Mass>
+						<Bulk>14.64</Bulk>
+						<SwayFactor>1.2</SwayFactor>
+						<ShotSpread>0.1364</ShotSpread>
+						<SightsEfficiency>0.84</SightsEfficiency>
+						<RangedWeapon_Cooldown>0.873</RangedWeapon_Cooldown>
+					</statBases>
+					<costList>
+						<Steel>66</Steel>
+						<Plasteel>60</Plasteel>
+						<ComponentSpacer>2</ComponentSpacer>
+					</costList>
+					<Properties>
+						<recoilAmount>2.818</recoilAmount>
+						<verbClass>CombatExtended.Verb_ShootCE</verbClass>
+						<hasStandardCommand>true</hasStandardCommand>
+						<defaultProjectile>Bullet_XCOMScatterRailgun_Sabot</defaultProjectile>
+						<warmupTime>0.454</warmupTime>
+						<range>52.8</range>
+						<soundCast>Mag_Shotgun</soundCast>
+						<soundCastTail>GunTail_Heavy</soundCastTail>
+						<muzzleFlashScale>10</muzzleFlashScale>
+					</Properties>
+					<AmmoUser>
+						<magazineSize>6</magazineSize>
+						<reloadTime>0.65</reloadTime>
+						<reloadOneAtATime>true</reloadOneAtATime>
+						<ammoSet>AmmoSet_ScatterRailgunXCOM</ammoSet>
+					</AmmoUser>
+					<FireModes>
+						<aiAimMode>Snapshot</aiAimMode>
+					</FireModes>
+					<weaponTags>
+						<li>CE_AI_BROOM</li>
+					</weaponTags>
+					<researchPrerequisite>ChargedShot</researchPrerequisite>
+				</li>
 
-							<ThingDef Class="CombatExtended.AmmoDef" ParentName="SpacerMediumAmmoBase">
-								<defName>BOR_Ammo_12mmRailgun_TC</defName>
-								<label>12mm Railgun cartridge (TC)</label>
-								<description>Fin-stabilized tungsten carbide penetrator with discarding tenebrite-coated sabot, designed for large-caliber railgun weapons.</description>
-								<statBases>
-									<Mass>0.051</Mass>
-									<Bulk>0.04</Bulk>
-									<MarketValue>0.33</MarketValue>
-								</statBases>
-								<tradeTags>
-									<li>CE_AutoEnableTrade</li>
-									<li>CE_AutoEnableCrafting_FabricationBench</li>
-									<li>CE_AutoEnableCrafting_TableMachining</li>
-									<!-- Railgun ammo isn't handloaded because it contains no propellant, and the sabots must be precision-machined anyway -->
-								</tradeTags>
-								<thingCategories>
-									<li>Ammo12mmRailgun</li>
-								</thingCategories>
-								<stackLimit>200</stackLimit>
-								<graphicData>
-									<texPath>Things/Ammo/Railgun/HighCaliber</texPath>
-									<graphicClass>CombatExtended.Graphic_StackCountRanged</graphicClass>
-								</graphicData>
-								<ammoClass>BOR_TC_AmmoClass</ammoClass>
-							</ThingDef>
+				<li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+					<defName>BOR_Gun_GaussSniperRifle_TI</defName>
+					<statBases>
+						<WorkToMake>90600</WorkToMake>
+						<Mass>15.24</Mass>
+						<Bulk>15.6</Bulk>
+						<SwayFactor>1.218</SwayFactor>
+						<ShotSpread>0.0273</ShotSpread>
+						<SightsEfficiency>2.688</SightsEfficiency>
+						<RangedWeapon_Cooldown>1.109</RangedWeapon_Cooldown>
+						<NightVisionEfficiency_Weapon>0.72</NightVisionEfficiency_Weapon>
+					</statBases>
+					<costList>
+						<Steel>84</Steel>
+						<Plasteel>108</Plasteel>
+						<ComponentSpacer>5</ComponentSpacer>
+					</costList>
+					<Properties>
+						<recoilAmount>4.545</recoilAmount>
+						<verbClass>CombatExtended.Verb_ShootCE</verbClass>
+						<hasStandardCommand>true</hasStandardCommand>
+						<defaultProjectile>Bullet_XCOM8mmRailgun_Sabot</defaultProjectile>
+						<warmupTime>2.273</warmupTime>
+						<range>103.2</range>
+						<soundCast>Mag_SniperRifle</soundCast>
+						<soundCastTail>GunTail_Heavy</soundCastTail>
+						<muzzleFlashScale>10</muzzleFlashScale>
+					</Properties>
+					<AmmoUser>
+						<magazineSize>5</magazineSize>
+						<reloadTime>4.5</reloadTime>
+						<ammoSet>AmmoSet_8mmRailgunXCOM</ammoSet>
+					</AmmoUser>
+					<FireModes>
+						<aiAimMode>AimedShot</aiAimMode>
+					</FireModes>
+					<weaponTags>
+						<li>SniperRifle</li>
+						<li>CE_AI_SR</li>
+						<li>Bipod_DMR</li>
+					</weaponTags>
+					<researchPrerequisite>ChargedShot</researchPrerequisite>
+					<AllowWithRunAndGun>false</AllowWithRunAndGun>
+				</li>
 
-							<!-- ================== Projectiles ================== -->
+				<li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+					<defName>BOR_Gun_GaussCannon_TI</defName>
+					<statBases>
+						<WorkToMake>132000</WorkToMake>
+						<Mass>46.8</Mass>
+						<Bulk>30</Bulk>
+						<SwayFactor>2</SwayFactor>
+						<ShotSpread>0.0091</ShotSpread>
+						<SightsEfficiency>1.2</SightsEfficiency>
+						<RangedWeapon_Cooldown>1.245</RangedWeapon_Cooldown>
+					</statBases>
+					<costList>
+						<Steel>168</Steel>
+						<Plasteel>132</Plasteel>
+						<ComponentSpacer>8</ComponentSpacer>
+					</costList>
+					<Properties>
+						<verbClass>CombatExtended.Verb_ShootCE</verbClass>
+						<hasStandardCommand>true</hasStandardCommand>
+						<defaultProjectile>Bullet_XCOM8mmRailgun_Sabot</defaultProjectile>
+						<warmupTime>2.818</warmupTime>
+						<range>78</range>
+						<soundCast>Mag_Cannon</soundCast>
+						<soundCastTail>GunTail_Heavy</soundCastTail>
+						<recoilAmount>2.855</recoilAmount>
+						<muzzleFlashScale>18</muzzleFlashScale>
+						<burstShotCount>20</burstShotCount>
+						<ticksBetweenBurstShots>5</ticksBetweenBurstShots>
+					</Properties>
+					<AmmoUser>
+						<magazineSize>80</magazineSize>
+						<reloadTime>7.8</reloadTime>
+						<ammoSet>AmmoSet_8mmRailgunXCOM</ammoSet>
+					</AmmoUser>
+					<FireModes>
+						<aiAimMode>AimedShot</aiAimMode>
+					</FireModes>
+					<weaponTags>
+						<li>GunHeavy</li>
+						<li>CE_AI_SR</li>
+						<li>Bipod_LMG</li>
+					</weaponTags>
+					<researchPrerequisite>ChargedShot</researchPrerequisite>
+					<AllowWithRunAndGun>false</AllowWithRunAndGun>
+				</li>
 
-							<ThingDef ParentName="BaseBulletCE">
-								<defName>BOR_Bullet_XCOMScatterRailgun_TC</defName>
-								<label>12 Gauge railgun bullet (Tenebrite Coated)</label>
-								<graphicData>
-									<texPath>Bullet_Mag_Small</texPath>
-									<graphicClass>Graphic_Single</graphicClass>
-									<shaderType>TransparentPostLight</shaderType>
-									<drawSize>0.3</drawSize>
-								</graphicData>
-								<projectile Class="CombatExtended.ProjectilePropertiesCE">
-									<speed>843</speed>
-									<damageDef>Bullet</damageDef>
-									<damageAmountBase>34</damageAmountBase>
-									<armorPenetrationSharp>34</armorPenetrationSharp>
-									<armorPenetrationBlunt>84</armorPenetrationBlunt>
-									<spreadMult>20</spreadMult>
-									<pelletCount>16</pelletCount>
-									<dropsCasings>false</dropsCasings>
-								</projectile>
-							</ThingDef>
+				<li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+					<defName>BOR_Gun_GaussBullpup_TI</defName>
+					<statBases>
+						<WorkToMake>72600</WorkToMake>
+						<Mass>5.4</Mass>
+						<Bulk>10.2</Bulk>
+						<SwayFactor>1.327</SwayFactor>
+						<ShotSpread>0.0909</ShotSpread>
+						<SightsEfficiency>1.32</SightsEfficiency>
+						<RangedWeapon_Cooldown>0.3</RangedWeapon_Cooldown>
+						<NightVisionEfficiency_Weapon>0.48</NightVisionEfficiency_Weapon>
+					</statBases>
+					<costList>
+						<Steel>84</Steel>
+						<Plasteel>78</Plasteel>
+						<ComponentSpacer>4</ComponentSpacer>
+					</costList>
+					<Properties>
+						<verbClass>CombatExtended.Verb_ShootCE</verbClass>
+						<hasStandardCommand>true</hasStandardCommand>
+						<defaultProjectile>Bullet_XCOM6mmRailgun_Sabot</defaultProjectile>
+						<warmupTime>0.727</warmupTime>
+						<burstShotCount>6</burstShotCount>
+						<ticksBetweenBurstShots>5</ticksBetweenBurstShots>
+						<range>66</range>
+						<soundCast>Mag_Bullpup</soundCast>
+						<soundCastTail>GunTail_Light</soundCastTail>
+						<recoilAmount>3.318</recoilAmount>
+						<muzzleFlashScale>7</muzzleFlashScale>
+					</Properties>
+					<AmmoUser>
+						<magazineSize>30</magazineSize>
+						<reloadTime>4.5</reloadTime>
+						<ammoSet>AmmoSet_6mmRailgunXCOM</ammoSet>
+					</AmmoUser>
+					<FireModes>
+						<aimedBurstShotCount>3</aimedBurstShotCount>
+						<aiUseBurstMode>false</aiUseBurstMode>
+						<aiAimMode>Snapshot</aiAimMode>
+					</FireModes>
+					<weaponTags>
+						<li>CE_AI_AR</li>
+					</weaponTags>
+					<researchPrerequisite>ChargedShot</researchPrerequisite>
+				</li>
 
-							<ThingDef Class="CombatExtended.AmmoDef" ParentName="SpacerMediumAmmoBase">
-								<defName>BOR_Ammo_12mmRailgun_TC</defName>
-								<label>12mm Railgun cartridge (Sabot)</label>
-								<description>Fin-stabilized tungsten carbide penetrator with discarding sabot, designed for large-caliber railgun weapons.</description>
-								<statBases>
-									<Mass>0.051</Mass>
-									<Bulk>0.04</Bulk>
-									<MarketValue>0.33</MarketValue>
-								</statBases>
-								<tradeTags>
-									<li>CE_AutoEnableTrade</li>
-									<li>CE_AutoEnableCrafting_FabricationBench</li>
-									<li>CE_AutoEnableCrafting_TableMachining</li>
-									<!-- Railgun ammo isn't handloaded because it contains no propellant, and the sabots must be precision-machined anyway -->
-								</tradeTags>
-								<thingCategories>
-									<li>Ammo12mmRailgun</li>
-								</thingCategories>
-								<stackLimit>200</stackLimit>
-								<graphicData>
-									<texPath>Things/Ammo/Railgun/HighCaliber</texPath>
-									<graphicClass>CombatExtended.Graphic_StackCountRanged</graphicClass>
-								</graphicData>
-								<ammoClass>BOR_TC_AmmoClass</ammoClass>
-							</ThingDef>
-							<!-- ==================== Recipes ========================== -->
+				<li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+					<defName>BOR_Gun_GaussDMR_TI</defName>
+					<statBases>
+						<WorkToMake>90600</WorkToMake>
+						<Mass>6.84</Mass>
+						<Bulk>13.2</Bulk>
+						<SwayFactor>1.409</SwayFactor>
+						<ShotSpread>0.0273</ShotSpread>
+						<SightsEfficiency>2.688</SightsEfficiency>
+						<RangedWeapon_Cooldown>0.909</RangedWeapon_Cooldown>
+						<NightVisionEfficiency_Weapon>0.72</NightVisionEfficiency_Weapon>
+					</statBases>
+					<costList>
+						<Steel>84</Steel>
+						<Plasteel>108</Plasteel>
+						<ComponentSpacer>5</ComponentSpacer>
+					</costList>
+					<Properties>
+						<recoilAmount>4.545</recoilAmount>
+						<verbClass>CombatExtended.Verb_ShootCE</verbClass>
+						<hasStandardCommand>true</hasStandardCommand>
+						<defaultProjectile>Bullet_XCOM8mmRailgun_Sabot</defaultProjectile>
+						<warmupTime>1.818</warmupTime>
+						<range>103.2</range>
+						<soundCast>Mag_Vektor</soundCast>
+						<soundCastTail>GunTail_Heavy</soundCastTail>
+						<muzzleFlashScale>10</muzzleFlashScale>
+					</Properties>
+					<AmmoUser>
+						<magazineSize>5</magazineSize>
+						<reloadTime>4.5</reloadTime>
+						<ammoSet>AmmoSet_8mmRailgunXCOM</ammoSet>
+					</AmmoUser>
+					<FireModes>
+						<aiAimMode>AimedShot</aiAimMode>
+					</FireModes>
+					<weaponTags>
+						<li>SniperRifle</li>
+						<li>CE_AI_SR</li>
+						<li>Bipod_DMR</li>
+					</weaponTags>
+					<researchPrerequisite>ChargedShot</researchPrerequisite>
+					<AllowWithRunAndGun>false</AllowWithRunAndGun>
+				</li>
 
-							<RecipeDef ParentName="AmmoRecipeBase">
-								<defName>MakeBOR_Ammo_12GaugeRailgun_TC</defName>
-								<label>make 12 Gauge railgun cartridge (Tenebrite Coated) x200</label>
-								<description>Craft 500 12 Gauge railgun (Tenebrite Coated) cartridges.</description>
-								<jobString>Making 12 Gauge railgun (Tenebrite Coated) cartridges.</jobString>
-								<workAmount>25000</workAmount>
-								<ingredients>
-									<li>
-										<filter>
-											<thingDefs>
-												<li>BOR_Tenebrite</li>
-											</thingDefs>
-										</filter>
-										<count>5</count>
-									</li>
-									<li>
-										<filter>
-											<thingDefs>
-												<li>BOR_QuasarAlloy</li>
-											</thingDefs>
-										</filter>
-										<count>10</count>
-									</li>
-								</ingredients>
-								<fixedIngredientFilter>
-									<thingDefs>
-										<li>BOR_QuasarAlloy</li>
-										<li>BOR_Tenebrite</li>
-									</thingDefs>
-								</fixedIngredientFilter>
-								<products>
-									<BOR_Ammo_12GaugeRailgun_TC>200</BOR_Ammo_12GaugeRailgun_TC>
-								</products>
-							</RecipeDef>
-						</value>
-					</li>
 
-					<li Class="PatchOperationAdd">
-						<xpath>Defs/CombatExtended.AmmoSetDef[defName="AmmoSet_4mmRailgunXCOM"]/ammoTypes</xpath>
-						<value>
-							<BOR_Ammo_4mmRailgun_TC>BOR_Bullet_XCOM4mmRailgun_TC</BOR_Ammo_4mmRailgun_TC>
-							<BOR_Ammo_4mmRailgun_Nc>BOR_Bullet_XCOM4mmRailgun_Nc</BOR_Ammo_4mmRailgun_Nc>
-							<BOR_Ammo_4mmRailgun_Ni>BOR_Bullet_XCOM4mmRailgun_Ni</BOR_Ammo_4mmRailgun_Ni>
-							<BOR_Ammo_4mmRailgun_EMP_N>BOR_Bullet_XCOM4mmRailgun_EMP_N</BOR_Ammo_4mmRailgun_EMP_N>
-						</value>
-					</li>
+				<!-- ====== Conditional: XCOM mod detection ====== -->
+				<li Class="PatchOperationFindMod">
+					<mods>
+						<li>Vanilla XCOM Magnetic Weapons</li>
+					</mods>
+					<match Class="PatchOperationSequence">
+						<operations>
+							<!-- Add BOR ammos to existing XCOM ammosets -->
+							<li Class="PatchOperationAdd">
+								<xpath>Defs/CombatExtended.AmmoSetDef[defName="AmmoSet_4mmRailgunXCOM"]/ammoTypes</xpath>
+								<value>
+									<BOR_Ammo_4mmRailgun_TC>BOR_Bullet_XCOM4mmRailgun_TC</BOR_Ammo_4mmRailgun_TC>
+									<BOR_Ammo_4mmRailgun_Nc>BOR_Bullet_XCOM4mmRailgun_Nc</BOR_Ammo_4mmRailgun_Nc>
+									<BOR_Ammo_4mmRailgun_Ni>BOR_Bullet_XCOM4mmRailgun_Ni</BOR_Ammo_4mmRailgun_Ni>
+									<BOR_Ammo_4mmRailgun_EMP_N>BOR_Bullet_XCOM4mmRailgun_EMP_N</BOR_Ammo_4mmRailgun_EMP_N>
+								</value>
+							</li>
 
-					<li Class="PatchOperationAdd">
-						<xpath>Defs/CombatExtended.AmmoSetDef[defName="AmmoSet_6mmRailgunXCOM"]/ammoTypes</xpath>
-						<value>
-							<BOR_Ammo_6mmRailgun_TC>BOR_Bullet_XCOM6mmRailgun_TC</BOR_Ammo_6mmRailgun_TC>
-							<BOR_Ammo_6mmRailgun_Nc>BOR_Bullet_XCOM6mmRailgun_Nc</BOR_Ammo_6mmRailgun_Nc>
-							<BOR_Ammo_6mmRailgun_Ni>BOR_Bullet_XCOM6mmRailgun_Ni</BOR_Ammo_6mmRailgun_Ni>
-							<BOR_Ammo_6mmRailgun_EMP_N>BOR_Bullet_XCOM6mmRailgun_EMP_N</BOR_Ammo_6mmRailgun_EMP_N>
-						</value>
-					</li>
+							<li Class="PatchOperationAdd">
+								<xpath>Defs/CombatExtended.AmmoSetDef[defName="AmmoSet_6mmRailgunXCOM"]/ammoTypes</xpath>
+								<value>
+									<BOR_Ammo_6mmRailgun_TC>BOR_Bullet_XCOM6mmRailgun_TC</BOR_Ammo_6mmRailgun_TC>
+									<BOR_Ammo_6mmRailgun_Nc>BOR_Bullet_XCOM6mmRailgun_Nc</BOR_Ammo_6mmRailgun_Nc>
+									<BOR_Ammo_6mmRailgun_Ni>BOR_Bullet_XCOM6mmRailgun_Ni</BOR_Ammo_6mmRailgun_Ni>
+									<BOR_Ammo_6mmRailgun_EMP_N>BOR_Bullet_XCOM6mmRailgun_EMP_N</BOR_Ammo_6mmRailgun_EMP_N>
+								</value>
+							</li>
 
-					<li Class="PatchOperationAdd">
-						<xpath>Defs/CombatExtended.AmmoSetDef[defName="AmmoSet_8mmRailgunXCOM"]/ammoTypes</xpath>
-						<value>
-							<BOR_Ammo_8mmRailgun_TC>BOR_Bullet_XCOM8mmRailgun_TC</BOR_Ammo_8mmRailgun_TC>
-							<BOR_Ammo_8mmRailgun_Nc>BOR_Bullet_XCOM8mmRailgun_Nc</BOR_Ammo_8mmRailgun_Nc>
-							<BOR_Ammo_8mmRailgun_Ni>BOR_Bullet_XCOM8mmRailgun_Ni</BOR_Ammo_8mmRailgun_Ni>
-							<BOR_Ammo_8mmRailgun_EMP_N>BOR_Bullet_XCOM8mmRailgun_EMP_N</BOR_Ammo_8mmRailgun_EMP_N>
-						</value>
-					</li>
+							<li Class="PatchOperationAdd">
+								<xpath>Defs/CombatExtended.AmmoSetDef[defName="AmmoSet_8mmRailgunXCOM"]/ammoTypes</xpath>
+								<value>
+									<BOR_Ammo_8mmRailgun_TC>BOR_Bullet_XCOM8mmRailgun_TC</BOR_Ammo_8mmRailgun_TC>
+									<BOR_Ammo_8mmRailgun_Nc>BOR_Bullet_XCOM8mmRailgun_Nc</BOR_Ammo_8mmRailgun_Nc>
+									<BOR_Ammo_8mmRailgun_Ni>BOR_Bullet_XCOM8mmRailgun_Ni</BOR_Ammo_8mmRailgun_Ni>
+									<BOR_Ammo_8mmRailgun_EMP_N>BOR_Bullet_XCOM8mmRailgun_EMP_N</BOR_Ammo_8mmRailgun_EMP_N>
+								</value>
+							</li>
 
-					<li Class="PatchOperationAdd">
-						<xpath>Defs/CombatExtended.AmmoSetDef[defName="AmmoSet_12mmRailgun"]/ammoTypes</xpath>
-						<value>
-							<BOR_Ammo_12mmRailgun_TC>BOR_Bullet_XCOM12mmRailgun_TC</BOR_Ammo_12mmRailgun_TC>
-						</value>
-					</li>
+							<li Class="PatchOperationAdd">
+								<xpath>Defs/CombatExtended.AmmoSetDef[defName="AmmoSet_12mmRailgun"]/ammoTypes</xpath>
+								<value>
+									<BOR_Ammo_12mmRailgun_TC>BOR_Bullet_XCOM12mmRailgun_TC</BOR_Ammo_12mmRailgun_TC>
+								</value>
+							</li>
 
-					<li Class="PatchOperationAdd">
-						<xpath>Defs/CombatExtended.AmmoSetDef[defName="AmmoSet_12mmRailgunXCOM"]/ammoTypes</xpath>
-						<value>
-							<BOR_Ammo_12mmRailgun_TC>BOR_Bullet_XCOM12mmRailgun_TC</BOR_Ammo_12mmRailgun_TC>
-						</value>
-					</li>
+							<li Class="PatchOperationAdd">
+								<xpath>Defs/CombatExtended.AmmoSetDef[defName="AmmoSet_12mmRailgunXCOM"]/ammoTypes</xpath>
+								<value>
+									<BOR_Ammo_12mmRailgun_TC>BOR_Bullet_XCOM12mmRailgun_TC</BOR_Ammo_12mmRailgun_TC>
+								</value>
+							</li>
 
-					<li Class="PatchOperationAdd">
-						<xpath>Defs/CombatExtended.AmmoSetDef[defName="AmmoSet_ScatterRailgunXCOM"]/ammoTypes</xpath>
-						<value>
-							<BOR_Ammo_12GaugeRailgun_TC>BOR_Bullet_XCOMScatterRailgun_TC</BOR_Ammo_12GaugeRailgun_TC>
-						</value>
-					</li>
-				</operations>
-			</match>
+							<li Class="PatchOperationAdd">
+								<xpath>Defs/CombatExtended.AmmoSetDef[defName="AmmoSet_ScatterRailgunXCOM"]/ammoTypes</xpath>
+								<value>
+									<BOR_Ammo_12GaugeRailgun_TC>BOR_Bullet_XCOMScatterRailgun_TC</BOR_Ammo_12GaugeRailgun_TC>
+								</value>
+							</li>
+						</operations>
+					</match>
+					<nomatch Class="PatchOperationSequence">
+						<operations>
+							<!-- Create BOR_SolarGauss* ammosets for standalone use without XCOM -->
+							<li Class="PatchOperationAdd">
+								<xpath>Defs</xpath>
+								<value>
+									<ThingCategoryDef>
+										<defName>Ammo4mmRailgun</defName>
+										<label>4mm Railgun</label>
+										<parent>AmmoAdvanced</parent>
+										<iconPath>UI/Icons/ThingCategories/CaliberRailgunPistol</iconPath>
+									</ThingCategoryDef>
+									<ThingCategoryDef>
+										<defName>Ammo12GaugeRailgun</defName>
+										<label>12 Gauge scatter railgun</label>
+										<parent>AmmoAdvanced</parent>
+										<iconPath>UI/Icons/ThingCategories/CaliberRailgunRifle</iconPath>
+									</ThingCategoryDef>
+									<ThingCategoryDef>
+										<defName>Ammo12mmRailgun</defName>
+										<label>12mm Railgun</label>
+										<parent>AmmoAdvanced</parent>
+										<iconPath>UI/Icons/ThingCategories/CaliberRailgunRifle</iconPath>
+									</ThingCategoryDef>
+									<CombatExtended.AmmoSetDef>
+										<defName>BOR_SolarGauss4mm</defName>
+										<label>4mm Solar Gauss ammo set</label>
+										<ammoTypes>
+											<BOR_Ammo_4mmRailgun_TC>BOR_Bullet_XCOM4mmRailgun_TC</BOR_Ammo_4mmRailgun_TC>
+											<BOR_Ammo_4mmRailgun_Nc>BOR_Bullet_XCOM4mmRailgun_Nc</BOR_Ammo_4mmRailgun_Nc>
+											<BOR_Ammo_4mmRailgun_Ni>BOR_Bullet_XCOM4mmRailgun_Ni</BOR_Ammo_4mmRailgun_Ni>
+											<BOR_Ammo_4mmRailgun_EMP_N>BOR_Bullet_XCOM4mmRailgun_EMP_N</BOR_Ammo_4mmRailgun_EMP_N>
+										</ammoTypes>
+									</CombatExtended.AmmoSetDef>
+									<CombatExtended.AmmoSetDef>
+										<defName>BOR_SolarGauss6mm</defName>
+										<label>6mm Solar Gauss ammo set</label>
+										<ammoTypes>
+											<BOR_Ammo_6mmRailgun_TC>BOR_Bullet_XCOM6mmRailgun_TC</BOR_Ammo_6mmRailgun_TC>
+											<BOR_Ammo_6mmRailgun_Nc>BOR_Bullet_XCOM6mmRailgun_Nc</BOR_Ammo_6mmRailgun_Nc>
+											<BOR_Ammo_6mmRailgun_Ni>BOR_Bullet_XCOM6mmRailgun_Ni</BOR_Ammo_6mmRailgun_Ni>
+											<BOR_Ammo_6mmRailgun_EMP_N>BOR_Bullet_XCOM6mmRailgun_EMP_N</BOR_Ammo_6mmRailgun_EMP_N>
+										</ammoTypes>
+									</CombatExtended.AmmoSetDef>
+									<CombatExtended.AmmoSetDef>
+										<defName>BOR_SolarGauss8mm</defName>
+										<label>8mm Solar Gauss ammo set</label>
+										<ammoTypes>
+											<BOR_Ammo_8mmRailgun_TC>BOR_Bullet_XCOM8mmRailgun_TC</BOR_Ammo_8mmRailgun_TC>
+											<BOR_Ammo_8mmRailgun_Nc>BOR_Bullet_XCOM8mmRailgun_Nc</BOR_Ammo_8mmRailgun_Nc>
+											<BOR_Ammo_8mmRailgun_Ni>BOR_Bullet_XCOM8mmRailgun_Ni</BOR_Ammo_8mmRailgun_Ni>
+											<BOR_Ammo_8mmRailgun_EMP_N>BOR_Bullet_XCOM8mmRailgun_EMP_N</BOR_Ammo_8mmRailgun_EMP_N>
+										</ammoTypes>
+									</CombatExtended.AmmoSetDef>
+									<CombatExtended.AmmoSetDef>
+										<defName>BOR_SolarGaussScatter</defName>
+										<label>12 Gauge Solar Gauss ammo set</label>
+										<ammoTypes>
+											<BOR_Ammo_12GaugeRailgun_TC>BOR_Bullet_XCOMScatterRailgun_TC</BOR_Ammo_12GaugeRailgun_TC>
+										</ammoTypes>
+									</CombatExtended.AmmoSetDef>
+								</value>
+							</li>
+							<!-- Replace weapon ammoSet references to use BOR_SolarGauss* ammosets -->
+							<li Class="PatchOperationReplace">
+								<xpath>Defs/ThingDef[defName="BOR_Gun_GaussRifle_TI" or defName="BOR_Gun_GaussBullpup_TI"]/comps/li[@Class="CombatExtended.CompProperties_AmmoUser"]/ammoSet</xpath>
+								<value>
+									<ammoSet>BOR_SolarGauss6mm</ammoSet>
+								</value>
+							</li>
+							<li Class="PatchOperationReplace">
+								<xpath>Defs/ThingDef[defName="BOR_Gun_GaussPistol_TI"]/comps/li[@Class="CombatExtended.CompProperties_AmmoUser"]/ammoSet</xpath>
+								<value>
+									<ammoSet>BOR_SolarGauss4mm</ammoSet>
+								</value>
+							</li>
+							<li Class="PatchOperationReplace">
+								<xpath>Defs/ThingDef[defName="BOR_Gun_GaussShotgun_TI"]/comps/li[@Class="CombatExtended.CompProperties_AmmoUser"]/ammoSet</xpath>
+								<value>
+									<ammoSet>BOR_SolarGaussScatter</ammoSet>
+								</value>
+							</li>
+							<li Class="PatchOperationReplace">
+								<xpath>Defs/ThingDef[defName="BOR_Gun_GaussSniperRifle_TI" or defName="BOR_Gun_GaussCannon_TI" or defName="BOR_Gun_GaussDMR_TI"]/comps/li[@Class="CombatExtended.CompProperties_AmmoUser"]/ammoSet</xpath>
+								<value>
+									<ammoSet>BOR_SolarGauss8mm</ammoSet>
+								</value>
+							</li>
+							<!-- Replace defaultProjectile refs (XCOM bullets don't exist without the mod) -->
+							<li Class="PatchOperationReplace">
+								<xpath>Defs/ThingDef[defName="BOR_Gun_GaussPistol_TI"]/verbs/li/defaultProjectile</xpath>
+								<value>
+									<defaultProjectile>BOR_Bullet_XCOM4mmRailgun_TC</defaultProjectile>
+								</value>
+							</li>
+							<li Class="PatchOperationReplace">
+								<xpath>Defs/ThingDef[defName="BOR_Gun_GaussRifle_TI" or defName="BOR_Gun_GaussBullpup_TI"]/verbs/li/defaultProjectile</xpath>
+								<value>
+									<defaultProjectile>BOR_Bullet_XCOM6mmRailgun_TC</defaultProjectile>
+								</value>
+							</li>
+							<li Class="PatchOperationReplace">
+								<xpath>Defs/ThingDef[defName="BOR_Gun_GaussSniperRifle_TI" or defName="BOR_Gun_GaussCannon_TI" or defName="BOR_Gun_GaussDMR_TI"]/verbs/li/defaultProjectile</xpath>
+								<value>
+									<defaultProjectile>BOR_Bullet_XCOM8mmRailgun_TC</defaultProjectile>
+								</value>
+							</li>
+							<li Class="PatchOperationReplace">
+								<xpath>Defs/ThingDef[defName="BOR_Gun_GaussShotgun_TI"]/verbs/li/defaultProjectile</xpath>
+								<value>
+									<defaultProjectile>BOR_Bullet_XCOMScatterRailgun_TC</defaultProjectile>
+								</value>
+							</li>
+						</operations>
+					</nomatch>
+				</li>
+			</operations>
 		</enabled>
 	</Operation>
 </Patch>
