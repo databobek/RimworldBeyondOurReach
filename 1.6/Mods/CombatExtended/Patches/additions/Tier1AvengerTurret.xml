@@ -3,23 +3,58 @@
 
     <Operation Class="PatchOperationSequence">
         <operations>
-                <li Class="PatchOperationReplace">
-                    <xpath>Defs/ThingDef[defName="BOR_Turret_Defender_TI"]/thingClass</xpath>
-                    <value>
-                        <thingClass>CombatExtended.Building_CIWS_CE</thingClass>
-                    </value>
-                </li>
-                <li Class="CombatExtended.PatchOperationMakeGunCECompatible">
-                    <defName>BOR_Turret_Defender_TI_Gun</defName>
-                    <statBases>
-                        <RangedWeapon_Cooldown>0.775</RangedWeapon_Cooldown>
-                        <SightsEfficiency>3.8</SightsEfficiency>
-                        <ShotSpread>0.12</ShotSpread>
-                        <SwayFactor>1.0</SwayFactor>
-                    </statBases>
-                    <Properties>
+            <li Class="PatchOperationReplace">
+                <xpath>Defs/ThingDef[defName="BOR_Turret_Defender_TI"]/thingClass</xpath>
+                <value>
+                    <thingClass>CombatExtended.Building_CIWS_CE</thingClass>
+                </value>
+            </li>
+            <li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+                <defName>BOR_Turret_Defender_TI_Gun</defName>
+                <statBases>
+                    <RangedWeapon_Cooldown>0.775</RangedWeapon_Cooldown>
+                    <SightsEfficiency>3.8</SightsEfficiency>
+                    <ShotSpread>0.12</ShotSpread>
+                    <SwayFactor>1.0</SwayFactor>
+                </statBases>
+                <Properties>
+                    <recoilAmount>1.8</recoilAmount>
+                    <verbClass>CombatExtended.Verb_ShootCE</verbClass>
+                    <hasStandardCommand>true</hasStandardCommand>
+                    <defaultProjectile>BOR_Rifle_Bullet_Antimateriel_FSJ</defaultProjectile>
+                    <warmupTime>0.5</warmupTime>
+                    <range>89.9</range>
+                    <minRange>8</minRange>
+                    <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
+                    <burstShotCount>50</burstShotCount>
+                    <soundCast>Shot_SniperRifle</soundCast>
+                    <soundCastTail>GunTail_Heavy</soundCastTail>
+                    <muzzleFlashScale>9</muzzleFlashScale>
+                    <recoilPattern>Mounted</recoilPattern>
+                    <targetParams>
+                        <canTargetLocations>true</canTargetLocations>
+                    </targetParams>
+                </Properties>
+                <AmmoUser>
+                    <magazineSize>4400</magazineSize>
+                    <reloadTime>8</reloadTime>
+                    <ammoSet>BOR_AmmoSet_Antimateriel_rifle</ammoSet>
+                </AmmoUser>
+                <FireModes>
+                    <aiUseBurstMode>TRUE</aiUseBurstMode>
+                    <aiAimMode>AimedShot</aiAimMode>
+                    <aimedBurstShotCount>10</aimedBurstShotCount>
+                </FireModes>
+                <weaponTags>
+                    <li>TurretGun</li>
+                </weaponTags>
+            </li>
+            <li Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="BOR_Turret_Defender_TI_Gun"]/verbs</xpath>
+                <value>
+                    <li Class="CombatExtended.VerbProperties_CIWSProjectile">
+                        <verbClass>CombatExtended.VerbCIWSProjectile</verbClass>
                         <recoilAmount>1.8</recoilAmount>
-                        <verbClass>CombatExtended.Verb_ShootCE</verbClass>
                         <hasStandardCommand>true</hasStandardCommand>
                         <defaultProjectile>BOR_Rifle_Bullet_Antimateriel_FSJ</defaultProjectile>
                         <warmupTime>0.5</warmupTime>
@@ -31,68 +66,52 @@
                         <soundCastTail>GunTail_Heavy</soundCastTail>
                         <muzzleFlashScale>9</muzzleFlashScale>
                         <recoilPattern>Mounted</recoilPattern>
-                        <targetParams>
-                            <canTargetLocations>true</canTargetLocations>
-                        </targetParams>
-                    </Properties>
-                    <AmmoUser>
-                        <magazineSize>4400</magazineSize>
-                        <reloadTime>8</reloadTime>
-                        <ammoSet>BOR_AmmoSet_Antimateriel_rifle</ammoSet>
-                    </AmmoUser>
-                    <FireModes>
-                        <aiUseBurstMode>TRUE</aiUseBurstMode>
-                        <aiAimMode>AimedShot</aiAimMode>
-                        <aimedBurstShotCount>10</aimedBurstShotCount>
-                    </FireModes>
-                    <weaponTags>
-                        <li>TurretGun</li>
-                    </weaponTags>
-                </li>
-                <li Class="PatchOperationAdd">
-                    <xpath>Defs/ThingDef[defName="BOR_Turret_Defender_TI_Gun"]/verbs</xpath>
-                    <value>
-                        <li Class="CombatExtended.VerbProperties_CIWSProjectile">
-                            <verbClass>CombatExtended.VerbCIWSProjectile</verbClass>
-                            <recoilAmount>1.8</recoilAmount>
-                            <hasStandardCommand>true</hasStandardCommand>
-                            <defaultProjectile>BOR_Rifle_Bullet_Antimateriel_FSJ</defaultProjectile>
-                            <warmupTime>0.5</warmupTime>
-                            <range>89.9</range>
-                            <minRange>8</minRange>
-                            <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
-                            <burstShotCount>50</burstShotCount>
-                            <soundCast>Shot_SniperRifle</soundCast>
-                            <soundCastTail>GunTail_Heavy</soundCastTail>
-                            <muzzleFlashScale>9</muzzleFlashScale>
-                            <recoilPattern>Mounted</recoilPattern>
-                            <holdFireLabel>HoldCloseInProjectilesFire</holdFireLabel>
-                            <holdFireDesc>HoldCloseInProjectilesFireDesc</holdFireDesc>
-                        </li>
-                        <li Class="CombatExtended.VerbProperties_CIWSSkyfaller">
-                            <verbClass>CombatExtended.VerbCIWSSkyfaller</verbClass>
-                            <recoilAmount>1.8</recoilAmount>
-                            <hasStandardCommand>true</hasStandardCommand>
-                            <defaultProjectile>BOR_Rifle_Bullet_Antimateriel_FSJ</defaultProjectile>
-                            <warmupTime>0.5</warmupTime>
-                            <range>89.9</range>
-                            <minRange>8</minRange>
-                            <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
-                            <burstShotCount>50</burstShotCount>
-                            <soundCast>Shot_SniperRifle</soundCast>
-                            <soundCastTail>GunTail_Heavy</soundCastTail>
-                            <muzzleFlashScale>9</muzzleFlashScale>
-                            <recoilPattern>Mounted</recoilPattern>
-                            <holdFireLabel>HoldCloseInSkyfallersFire</holdFireLabel>
-                        </li>
-                    </value>
-                </li>
-                <li Class="PatchOperationReplace">
-                    <xpath>Defs/ThingDef[defName="BOR_Turret_Defender_TI"]/description</xpath>
-                    <value>
-                        <description>An autonomous defender-pattern double-barreled turret. It fires dense solar sniper rounds at a sustained high cadence, and its fire-control package is anti-air capable under Combat Extended.</description>
-                    </value>
-                </li>
+                        <holdFireLabel>HoldCloseInProjectilesFire</holdFireLabel>
+                        <holdFireDesc>HoldCloseInProjectilesFireDesc</holdFireDesc>
+                    </li>
+                    <li Class="CombatExtended.VerbProperties_CIWSSkyfaller">
+                        <verbClass>CombatExtended.VerbCIWSSkyfaller</verbClass>
+                        <recoilAmount>1.8</recoilAmount>
+                        <hasStandardCommand>true</hasStandardCommand>
+                        <defaultProjectile>BOR_Rifle_Bullet_Antimateriel_FSJ</defaultProjectile>
+                        <warmupTime>0.5</warmupTime>
+                        <range>89.9</range>
+                        <minRange>8</minRange>
+                        <ticksBetweenBurstShots>1</ticksBetweenBurstShots>
+                        <burstShotCount>50</burstShotCount>
+                        <soundCast>Shot_SniperRifle</soundCast>
+                        <soundCastTail>GunTail_Heavy</soundCastTail>
+                        <muzzleFlashScale>9</muzzleFlashScale>
+                        <recoilPattern>Mounted</recoilPattern>
+                        <holdFireLabel>HoldCloseInSkyfallersFire</holdFireLabel>
+                    </li>
+                </value>
+            </li>
+            <li Class="PatchOperationReplace">
+                <xpath>Defs/ThingDef[defName="BOR_Turret_Defender_TI"]/description</xpath>
+                <value>
+                    <description>An autonomous defender-pattern double-barreled turret. It fires dense solar sniper rounds at a sustained high cadence, and its fire-control package is anti-air capable under Combat Extended.</description>
+                </value>
+            </li>
+            <li Class="PatchOperationAddModExtension">
+                <xpath>Defs/ThingDef[defName="BOR_Turret_Defender_TI"]</xpath>
+                <value>
+                    <li Class="CombatExtended.MultiBarrelExtension">
+                        <offsets>
+                            <li>(-5,1)</li>
+                            <li>(5,1)</li>
+                        </offsets>
+                    </li>
+                </value>
+            </li>
+            <li Class="PatchOperationAddModExtension">
+                <xpath>Defs/ThingDef[defName="BOR_Turret_Defender_TI"]</xpath>
+                <value>
+                    <li Class="CombatExtended.NonSnapTurretExtension">
+                        <speed>0.5</speed>
+                    </li>
+                </value>
+            </li>
         </operations>
     </Operation>
 

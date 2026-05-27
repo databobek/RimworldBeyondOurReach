@@ -1,0 +1,678 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+    <!-- ========== Judgment-class Ship Cannon - CE Integration (Mortar-style rebuild) ========== -->
+
+    <!-- 1. Use CE turret class -->
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="BOR_JudgmentShipCannon"]/thingClass</xpath>
+        <value>
+            <thingClass>CombatExtended.Building_TurretGunCE</thingClass>
+        </value>
+    </Operation>
+
+    <!-- 2. Remove vanilla refueling and explosive comps -->
+    <Operation Class="PatchOperationRemove">
+        <xpath>Defs/ThingDef[defName="BOR_JudgmentShipCannon"]/comps/li[@Class="CompProperties_Refuelable"]</xpath>
+    </Operation>
+
+    <Operation Class="PatchOperationRemove">
+        <xpath>Defs/ThingDef[defName="BOR_JudgmentShipCannon"]/comps/li[@Class="CompProperties_Explosive"]</xpath>
+    </Operation>
+
+    <!-- 3. Remove vanilla shells and projectiles replaced below with CE defs -->
+    <Operation Class="PatchOperationRemove">
+        <xpath>Defs/ThingDef[
+            defName="BOR_Shell_JudgmentShipCannon_Ni" or
+            defName="BOR_Shell_JudgmentShipCannon_Ef" or
+            defName="BOR_Bullet_JudgmentShipCannon_Ni" or
+            defName="BOR_Bullet_JudgmentShipCannon_Ef"
+            ]</xpath>
+    </Operation>
+
+    <!-- 4. Convert gun to CE mortar-style weapon -->
+    <Operation Class="CombatExtended.PatchOperationMakeGunCECompatible">
+        <defName>BOR_JudgmentShipCannon_Gun</defName>
+        <statBases>
+            <RangedWeapon_Cooldown>0.5</RangedWeapon_Cooldown>
+            <SightsEfficiency>1.2</SightsEfficiency>
+            <ShotSpread>0.01</ShotSpread>
+            <SwayFactor>0.05</SwayFactor>
+        </statBases>
+        <Properties>
+            <recoilAmount>0.8</recoilAmount>
+            <verbClass>CombatExtended.Verb_ShootMortarCE</verbClass>
+            <forceNormalTimeSpeed>false</forceNormalTimeSpeed>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>BOR_Bullet_JudgmentShipCannon_Ni_CE</defaultProjectile>
+            <warmupTime>6.5</warmupTime>
+            <range>700</range>
+            <minRange>32</minRange>
+            <ticksBetweenBurstShots>20</ticksBetweenBurstShots>
+            <requireLineOfSight>false</requireLineOfSight>
+            <burstShotCount>3</burstShotCount>
+            <soundCast>Mortar_LaunchA</soundCast>
+            <muzzleFlashScale>16</muzzleFlashScale>
+            <circularError>0.45</circularError>
+            <indirectFirePenalty>0.12</indirectFirePenalty>
+            <recoilPattern>Mounted</recoilPattern>
+            <targetParams>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+            <onlyManualCast>true</onlyManualCast>
+        </Properties>
+        <AmmoUser>
+            <magazineSize>3</magazineSize>
+            <reloadTime>90</reloadTime>
+            <ammoSet>AmmoSet_BOR_JudgmentShell</ammoSet>
+        </AmmoUser>
+        <weaponTags>
+            <li>TurretGun</li>
+        </weaponTags>
+    </Operation>
+
+    <!-- 5. Preserve triple-barrel behavior -->
+    <Operation Class="PatchOperationAddModExtension">
+        <xpath>Defs/ThingDef[defName="BOR_JudgmentShipCannon_Gun"]</xpath>
+        <value>
+            <li Class="CombatExtended.MultiBarrelExtension">
+                <offsets>
+                    <li>(-0.5,1)</li>
+                    <li>(0,1)</li>
+                    <li>(0.5,1)</li>
+                </offsets>
+            </li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName="BOR_JudgmentShipCannon_Gun"]/comps</xpath>
+        <nomatch Class="PatchOperationAdd">
+            <xpath>Defs/ThingDef[defName="BOR_JudgmentShipCannon_Gun"]</xpath>
+            <value>
+                <comps />
+            </value>
+        </nomatch>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName="BOR_JudgmentShipCannon_Gun"]/comps</xpath>
+        <value>
+            <li Class="CombatExtended.CompProperties_Charges">
+                <chargeSpeeds>
+                    <li>90</li>
+                    <li>130</li>
+                    <li>170</li>
+                </chargeSpeeds>
+            </li>
+        </value>
+    </Operation>
+
+    <!-- 6. Slow heavy-turret rotation -->
+    <Operation Class="PatchOperationAddModExtension">
+        <xpath>Defs/ThingDef[defName="BOR_JudgmentShipCannon"]</xpath>
+        <value>
+            <li Class="CombatExtended.NonSnapTurretExtension">
+                <speed>0.3</speed>
+            </li>
+        </value>
+    </Operation>
+
+    <!-- 7. CE aiming stat -->
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName="BOR_JudgmentShipCannon"]/statBases</xpath>
+        <value>
+            <AimingAccuracy>1.0</AimingAccuracy>
+        </value>
+    </Operation>
+
+    <!-- 8. CE ammo set, ammo defs, and projectiles -->
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs</xpath>
+        <value>
+
+            <CombatExtended.AmmoSetDef>
+                <defName>AmmoSet_BOR_JudgmentShell</defName>
+                <label>Judgment shell (33cm)</label>
+                <ammoTypes>
+                    <BOR_Ammo_JudgmentShell_Ni>BOR_Bullet_JudgmentShipCannon_Ni_CE</BOR_Ammo_JudgmentShell_Ni>
+                    <BOR_Ammo_JudgmentShell_Ef>BOR_Bullet_JudgmentShipCannon_Ef_CE</BOR_Ammo_JudgmentShell_Ef>
+                </ammoTypes>
+                <isMortarAmmoSet>true</isMortarAmmoSet>
+            </CombatExtended.AmmoSetDef>
+
+            <ThingDef Class="CombatExtended.AmmoDef" ParentName="28cmSpgrShellBase">
+                <defName>BOR_Ammo_JudgmentShell_Ni</defName>
+                <label>Judgment shell (Ni)</label>
+                <description>A 33cm Solarite-charged naval shell for the Judgment-class ship cannon.</description>
+                <graphicData>
+                    <texPath>Things/Ammo/Cannon/HE</texPath>
+                    <graphicClass>Graphic_Single</graphicClass>
+                </graphicData>
+                <statBases>
+                    <MarketValue>2250</MarketValue>
+                </statBases>
+                <tradeTags>
+                    <li>BOR_Tech_I</li>
+                </tradeTags>
+                <ammoClass>BOR_Ni_AmmoClass</ammoClass>
+                <detonateProjectile>BOR_Bullet_JudgmentShipCannon_Ni_CE</detonateProjectile>
+                <generateCommonality>0</generateCommonality>
+                <destroyOnDrop>false</destroyOnDrop>
+                <tradeability>Sellable</tradeability>
+                <recipeMaker>
+                    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+                    <effectWorking>Cook</effectWorking>
+                    <soundWorking>Recipe_Machining</soundWorking>
+                    <workAmount>111600</workAmount>
+                    <targetCountAdjustment>5</targetCountAdjustment>
+                    <workSkill>Crafting</workSkill>
+                    <recipeUsers>
+                        <li>BOR_Bench_I</li>
+                        <li>BOR_Bench_IV</li>
+                    </recipeUsers>
+                    <skillRequirements>
+                        <Crafting>12</Crafting>
+                    </skillRequirements>
+                    <researchPrerequisite>BOR_Research_JudgmentCannon_I</researchPrerequisite>
+                </recipeMaker>
+                <costList>
+                    <BOR_Sunsteel>200</BOR_Sunsteel>
+                    <BOR_QuasarAlloy>200</BOR_QuasarAlloy>
+                    <BOR_ComponentII>2</BOR_ComponentII>
+                    <FSX>33</FSX>
+                    <BOR_Neutronium>100</BOR_Neutronium>
+                </costList>
+            </ThingDef>
+
+            <ThingDef ParentName="Base28cmSpgrShell">
+                <defName>BOR_Bullet_JudgmentShipCannon_Ni_CE</defName>
+                <label>Judgment shell (Ni) projectile</label>
+                <graphicData>
+                    <texPath>Things/Projectile/ShellHighExplosive</texPath>
+                    <graphicClass>Graphic_Single</graphicClass>
+                    <shaderType>TransparentPostLight</shaderType>
+                    <drawSize>1.7</drawSize>
+                </graphicData>
+                <thingClass>CombatExtended.ProjectileCE_Explosive</thingClass>
+                <projectile Class="CombatExtended.ProjectilePropertiesCE">
+                    <damageDef>Bomb</damageDef>
+                    <damageAmountBase>1255</damageAmountBase>
+                    <explosionRadius>10.5</explosionRadius>
+                    <soundExplode>MortarBomb_Explode</soundExplode>
+                    <applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
+                    <shellingProps>
+                        <damage>0.8</damage>
+                        <range>700</range>
+                    </shellingProps>
+                </projectile>
+                <comps>
+                    <li Class="CombatExtended.CompProperties_Fragments">
+                        <fragments>
+                            <Fragment_Solar>20</Fragment_Solar>
+                            <Fragment_Quasar>10</Fragment_Quasar>
+                            <Fragment_Tenebral>5</Fragment_Tenebral>
+                        </fragments>
+                    </li>
+                </comps>
+            </ThingDef>
+
+            <ThingDef Class="CombatExtended.AmmoDef" ParentName="28cmSpgrShellBase">
+                <defName>BOR_Ammo_JudgmentShell_Ef</defName>
+                <label>Judgment shell (Ef)</label>
+                <description>A 33cm Tenebral naval shell for the Judgment-class ship cannon. Carries a catastrophic Efferite charge.</description>
+                <graphicData>
+                    <texPath>Things/Ammo/Cannon/HE</texPath>
+                    <graphicClass>Graphic_Single</graphicClass>
+                </graphicData>
+                <statBases>
+                    <MarketValue>3500</MarketValue>
+                </statBases>
+                <tradeTags>
+                    <li>BOR_Tech_I</li>
+                </tradeTags>
+                <ammoClass>BOR_Tf_AmmoClass</ammoClass>
+                <detonateProjectile>BOR_Bullet_JudgmentShipCannon_Ef_CE</detonateProjectile>
+                <generateCommonality>0</generateCommonality>
+                <destroyOnDrop>false</destroyOnDrop>
+                <tradeability>Sellable</tradeability>
+                <recipeMaker>
+                    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+                    <effectWorking>Cook</effectWorking>
+                    <soundWorking>Recipe_Machining</soundWorking>
+                    <workAmount>150000</workAmount>
+                    <targetCountAdjustment>5</targetCountAdjustment>
+                    <workSkill>Crafting</workSkill>
+                    <recipeUsers>
+                        <li>BOR_Bench_I</li>
+                        <li>BOR_Bench_IV</li>
+                    </recipeUsers>
+                    <skillRequirements>
+                        <Crafting>14</Crafting>
+                    </skillRequirements>
+                    <researchPrerequisite>BOR_Research_JudgmentCannon_I</researchPrerequisite>
+                </recipeMaker>
+                <costList>
+                    <BOR_QuasarAlloy>200</BOR_QuasarAlloy>
+                    <BOR_Tenebrite>100</BOR_Tenebrite>
+                    <BOR_ComponentIII>2</BOR_ComponentIII>
+                    <BOR_Neutronium>5000</BOR_Neutronium>
+                </costList>
+            </ThingDef>
+
+            <ThingDef ParentName="Base28cmSpgrShell">
+                <defName>BOR_Bullet_JudgmentShipCannon_Ef_CE</defName>
+                <label>Judgment shell (Ef) projectile</label>
+                <graphicData>
+                    <texPath>Things/Projectile/ShellHighExplosive</texPath>
+                    <graphicClass>Graphic_Single</graphicClass>
+                    <shaderType>TransparentPostLight</shaderType>
+                    <drawSize>1.7</drawSize>
+                </graphicData>
+                <thingClass>CombatExtended.ProjectileCE_Explosive</thingClass>
+                <projectile Class="CombatExtended.ProjectilePropertiesCE">
+                    <damageDef>Bomb</damageDef>
+                    <damageAmountBase>1882</damageAmountBase>
+                    <explosionRadius>15</explosionRadius>
+                    <soundExplode>MortarBomb_Explode</soundExplode>
+                    <applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
+                    <shellingProps>
+                        <damage>0.8</damage>
+                        <range>700</range>
+                    </shellingProps>
+                </projectile>
+                <comps>
+                    <li Class="CombatExtended.CompProperties_Fragments">
+                        <fragments>
+                            <Fragment_Tenebral>30</Fragment_Tenebral>
+                        </fragments>
+                    </li>
+                </comps>
+            </ThingDef>
+
+            <RecipeDef ParentName="AmmoRecipeBase">
+                <defName>MakeBOR_Ammo_JudgmentShell_Ni</defName>
+                <label>make Judgment shell (Ni) x5</label>
+                <description>Craft 5 Judgment shells (Ni).</description>
+                <jobString>Making Judgment shells (Ni).</jobString>
+                <workAmount>111600</workAmount>
+                <ingredients>
+                    <li>
+                        <filter>
+                            <thingDefs>
+                                <li>BOR_Sunsteel</li>
+                            </thingDefs>
+                        </filter>
+                        <count>200</count>
+                    </li>
+                    <li>
+                        <filter>
+                            <thingDefs>
+                                <li>BOR_QuasarAlloy</li>
+                            </thingDefs>
+                        </filter>
+                        <count>200</count>
+                    </li>
+                    <li>
+                        <filter>
+                            <thingDefs>
+                                <li>BOR_ComponentII</li>
+                            </thingDefs>
+                        </filter>
+                        <count>2</count>
+                    </li>
+                    <li>
+                        <filter>
+                            <thingDefs>
+                                <li>FSX</li>
+                            </thingDefs>
+                        </filter>
+                        <count>33</count>
+                    </li>
+                    <li>
+                        <filter>
+                            <thingDefs>
+                                <li>BOR_Neutronium</li>
+                            </thingDefs>
+                        </filter>
+                        <count>100</count>
+                    </li>
+                </ingredients>
+                <fixedIngredientFilter>
+                    <thingDefs>
+                        <li>BOR_Sunsteel</li>
+                        <li>BOR_QuasarAlloy</li>
+                        <li>BOR_ComponentII</li>
+                        <li>FSX</li>
+                        <li>BOR_Neutronium</li>
+                    </thingDefs>
+                </fixedIngredientFilter>
+                <products>
+                    <BOR_Ammo_JudgmentShell_Ni>5</BOR_Ammo_JudgmentShell_Ni>
+                </products>
+                <recipeUsers>
+                    <li>BOR_Bench_I</li>
+                    <li>BOR_Bench_IV</li>
+                </recipeUsers>
+                <skillRequirements>
+                    <Crafting>12</Crafting>
+                </skillRequirements>
+                <researchPrerequisite>BOR_Research_JudgmentCannon_I</researchPrerequisite>
+            </RecipeDef>
+
+            <RecipeDef ParentName="AmmoRecipeBase">
+                <defName>MakeBOR_Ammo_JudgmentShell_Ef</defName>
+                <label>make Judgment shell (Ef) x5</label>
+                <description>Craft 5 Judgment shells (Ef).</description>
+                <jobString>Making Judgment shells (Ef).</jobString>
+                <workAmount>150000</workAmount>
+                <ingredients>
+                    <li>
+                        <filter>
+                            <thingDefs>
+                                <li>BOR_QuasarAlloy</li>
+                            </thingDefs>
+                        </filter>
+                        <count>200</count>
+                    </li>
+                    <li>
+                        <filter>
+                            <thingDefs>
+                                <li>BOR_Tenebrite</li>
+                            </thingDefs>
+                        </filter>
+                        <count>100</count>
+                    </li>
+                    <li>
+                        <filter>
+                            <thingDefs>
+                                <li>BOR_ComponentIII</li>
+                            </thingDefs>
+                        </filter>
+                        <count>2</count>
+                    </li>
+                    <li>
+                        <filter>
+                            <thingDefs>
+                                <li>BOR_Neutronium</li>
+                            </thingDefs>
+                        </filter>
+                        <count>5000</count>
+                    </li>
+                </ingredients>
+                <fixedIngredientFilter>
+                    <thingDefs>
+                        <li>BOR_QuasarAlloy</li>
+                        <li>BOR_Tenebrite</li>
+                        <li>BOR_ComponentIII</li>
+                        <li>BOR_Neutronium</li>
+                    </thingDefs>
+                </fixedIngredientFilter>
+                <products>
+                    <BOR_Ammo_JudgmentShell_Ef>5</BOR_Ammo_JudgmentShell_Ef>
+                </products>
+                <recipeUsers>
+                    <li>BOR_Bench_I</li>
+                </recipeUsers>
+                <skillRequirements>
+                    <Crafting>14</Crafting>
+                </skillRequirements>
+                <researchPrerequisite>BOR_Research_JudgmentCannon_I</researchPrerequisite>
+            </RecipeDef>
+
+        </value>
+    </Operation>
+
+    <!-- ========== Negotiator-class Station Defense System - CE Integration ========== -->
+
+    <!-- 9. Use CE turret class -->
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="BOR_NegotiatorStationDefenseSystem_TII"]/thingClass</xpath>
+        <value>
+            <thingClass>CombatExtended.Building_TurretGunCE</thingClass>
+        </value>
+    </Operation>
+
+    <!-- 10. Remove vanilla refueling and explosive comps -->
+    <Operation Class="PatchOperationRemove">
+        <xpath>Defs/ThingDef[defName="BOR_NegotiatorStationDefenseSystem_TII"]/comps/li[@Class="CompProperties_Refuelable"]</xpath>
+    </Operation>
+
+    <Operation Class="PatchOperationRemove">
+        <xpath>Defs/ThingDef[defName="BOR_NegotiatorStationDefenseSystem_TII"]/comps/li[@Class="CompProperties_Explosive"]</xpath>
+    </Operation>
+
+    <!-- 11. Remove vanilla shell/projectile replaced below with CE defs -->
+    <Operation Class="PatchOperationRemove">
+        <xpath>Defs/ThingDef[
+            defName="BOR_Shell_NegotiatorCracker_TII" or
+            defName="BOR_Bullet_NegotiatorCracker_TII"
+            ]</xpath>
+    </Operation>
+
+    <!-- 12. Convert gun to CE mortar-style weapon -->
+    <Operation Class="CombatExtended.PatchOperationMakeGunCECompatible">
+        <defName>BOR_NegotiatorStationDefenseSystem_TII_Gun</defName>
+        <statBases>
+            <RangedWeapon_Cooldown>0.9</RangedWeapon_Cooldown>
+            <SightsEfficiency>1.3</SightsEfficiency>
+            <ShotSpread>0.005</ShotSpread>
+            <SwayFactor>0.03</SwayFactor>
+        </statBases>
+        <Properties>
+            <recoilAmount>1.2</recoilAmount>
+            <verbClass>CombatExtended.Verb_ShootMortarCE</verbClass>
+            <forceNormalTimeSpeed>false</forceNormalTimeSpeed>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>BOR_Bullet_NegotiatorCracker_TII_CE</defaultProjectile>
+            <warmupTime>10</warmupTime>
+            <range>700</range>
+            <minRange>32</minRange>
+            <ticksBetweenBurstShots>10</ticksBetweenBurstShots>
+            <requireLineOfSight>false</requireLineOfSight>
+            <burstShotCount>1</burstShotCount>
+            <soundCast>Mortar_LaunchA</soundCast>
+            <muzzleFlashScale>35</muzzleFlashScale>
+            <circularError>0.25</circularError>
+            <indirectFirePenalty>0.06</indirectFirePenalty>
+            <recoilPattern>Mounted</recoilPattern>
+            <targetParams>
+                <canTargetLocations>true</canTargetLocations>
+            </targetParams>
+            <onlyManualCast>true</onlyManualCast>
+        </Properties>
+        <AmmoUser>
+            <magazineSize>1</magazineSize>
+            <reloadTime>300</reloadTime>
+            <ammoSet>AmmoSet_BOR_NegotiatorCrackerShell</ammoSet>
+        </AmmoUser>
+        <weaponTags>
+            <li>TurretGun</li>
+        </weaponTags>
+    </Operation>
+
+    <!-- 12b. Add CompProperties_Charges to Negotiator gun (required by Verb_ShootMortarCE) -->
+    <Operation Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName="BOR_NegotiatorStationDefenseSystem_TII_Gun"]/comps</xpath>
+        <nomatch Class="PatchOperationAdd">
+            <xpath>Defs/ThingDef[defName="BOR_NegotiatorStationDefenseSystem_TII_Gun"]</xpath>
+            <value>
+                <comps />
+            </value>
+        </nomatch>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName="BOR_NegotiatorStationDefenseSystem_TII_Gun"]/comps</xpath>
+        <value>
+            <li Class="CombatExtended.CompProperties_Charges">
+                <chargeSpeeds>
+                    <li>200</li>
+                </chargeSpeeds>
+            </li>
+        </value>
+    </Operation>
+
+    <!-- 13. Extremely slow heavy-turret rotation -->
+    <Operation Class="PatchOperationAddModExtension">
+        <xpath>Defs/ThingDef[defName="BOR_NegotiatorStationDefenseSystem_TII"]</xpath>
+        <value>
+            <li Class="CombatExtended.NonSnapTurretExtension">
+                <speed>0.05</speed>
+            </li>
+        </value>
+    </Operation>
+
+    <!-- 14. CE aiming stat -->
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName="BOR_NegotiatorStationDefenseSystem_TII"]/statBases</xpath>
+        <value>
+            <AimingAccuracy>1.0</AimingAccuracy>
+        </value>
+    </Operation>
+
+    <!-- 15. CE ammo set, ammo def, projectile, and recipe -->
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs</xpath>
+        <value>
+
+            <CombatExtended.AmmoSetDef>
+                <defName>AmmoSet_BOR_NegotiatorCrackerShell</defName>
+                <label>Cracker shell</label>
+                <ammoTypes>
+                    <BOR_Ammo_NegotiatorCracker_TII>BOR_Bullet_NegotiatorCracker_TII_CE</BOR_Ammo_NegotiatorCracker_TII>
+                </ammoTypes>
+                <isMortarAmmoSet>true</isMortarAmmoSet>
+            </CombatExtended.AmmoSetDef>
+
+            <ThingDef Class="CombatExtended.AmmoDef" ParentName="28cmSpgrShellBase">
+                <defName>BOR_Ammo_NegotiatorCracker_TII</defName>
+                <label>Cracker shell</label>
+                <description>A catastrophic shell intended for station guns, converted into a local super-heavy bombardment round.</description>
+                <graphicData>
+                    <texPath>Things/Ammo/Cannon/HE</texPath>
+                    <graphicClass>Graphic_Single</graphicClass>
+                </graphicData>
+                <statBases>
+                    <MarketValue>120000</MarketValue>
+                </statBases>
+                <tradeTags>
+                    <li>BOR_Tech_II</li>
+                </tradeTags>
+                <ammoClass>BOR_Tf_AmmoClass</ammoClass>
+                <detonateProjectile>BOR_Bullet_NegotiatorCracker_TII_CE</detonateProjectile>
+                <generateCommonality>0</generateCommonality>
+                <destroyOnDrop>false</destroyOnDrop>
+                <tradeability>Sellable</tradeability>
+                <recipeMaker>
+                    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+                    <effectWorking>Cook</effectWorking>
+                    <soundWorking>Recipe_Machining</soundWorking>
+                    <workAmount>850000</workAmount>
+                    <targetCountAdjustment>1</targetCountAdjustment>
+                    <workSkill>Crafting</workSkill>
+                    <recipeUsers>
+                        <li>BOR_Bench_II</li>
+                        <li>BOR_Bench_IV</li>
+                    </recipeUsers>
+                    <skillRequirements>
+                        <Crafting>18</Crafting>
+                    </skillRequirements>
+                    <researchPrerequisite>BOR_Research_NegotiatorArtillery_II</researchPrerequisite>
+                </recipeMaker>
+                <costList>
+                    <BOR_Neutronium>1000</BOR_Neutronium>
+                    <BOR_Tenebrite>350</BOR_Tenebrite>
+                    <BOR_QuasarAlloy>600</BOR_QuasarAlloy>
+                    <BOR_ComponentIII>10</BOR_ComponentIII>
+                </costList>
+            </ThingDef>
+
+            <ThingDef ParentName="Base28cmSpgrShell">
+                <defName>BOR_Bullet_NegotiatorCracker_TII_CE</defName>
+                <label>Cracker shell projectile</label>
+                <graphicData>
+                    <texPath>Things/Projectile/ShellHighExplosive</texPath>
+                    <graphicClass>Graphic_Single</graphicClass>
+                    <shaderType>TransparentPostLight</shaderType>
+                    <drawSize>4</drawSize>
+                </graphicData>
+                <thingClass>CombatExtended.ProjectileCE_Explosive</thingClass>
+                <projectile Class="CombatExtended.ProjectilePropertiesCE">
+                    <damageDef>BombSuper</damageDef>
+                    <damageAmountBase>18000</damageAmountBase>
+                    <explosionRadius>1200</explosionRadius>
+                    <soundExplode>Explosion_GiantBomb</soundExplode>
+                    <applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
+                    <shellingProps>
+                        <damage>5</damage>
+                        <range>700</range>
+                    </shellingProps>
+                </projectile>
+            </ThingDef>
+
+            <RecipeDef ParentName="AmmoRecipeBase">
+                <defName>MakeBOR_Ammo_NegotiatorCracker_TII</defName>
+                <label>make Cracker shell x1</label>
+                <description>Craft 1 Cracker shell.</description>
+                <jobString>Making Cracker shell.</jobString>
+                <workAmount>850000</workAmount>
+                <ingredients>
+                    <li>
+                        <filter>
+                            <thingDefs>
+                                <li>BOR_Neutronium</li>
+                            </thingDefs>
+                        </filter>
+                        <count>1000</count>
+                    </li>
+                    <li>
+                        <filter>
+                            <thingDefs>
+                                <li>BOR_Tenebrite</li>
+                            </thingDefs>
+                        </filter>
+                        <count>35</count>
+                    </li>
+                    <li>
+                        <filter>
+                            <thingDefs>
+                                <li>BOR_QuasarAlloy</li>
+                            </thingDefs>
+                        </filter>
+                        <count>600</count>
+                    </li>
+                    <li>
+                        <filter>
+                            <thingDefs>
+                                <li>BOR_ComponentIII</li>
+                            </thingDefs>
+                        </filter>
+                        <count>10</count>
+                    </li>
+                </ingredients>
+                <fixedIngredientFilter>
+                    <thingDefs>
+                        <li>BOR_Neutronium</li>
+                        <li>BOR_Tenebrite</li>
+                        <li>BOR_QuasarAlloy</li>
+                        <li>BOR_ComponentIII</li>
+                    </thingDefs>
+                </fixedIngredientFilter>
+                <products>
+                    <BOR_Ammo_NegotiatorCracker_TII>1</BOR_Ammo_NegotiatorCracker_TII>
+                </products>
+                <recipeUsers>
+                    <li>BOR_Bench_II</li>
+                    <li>BOR_Bench_IV</li>
+                </recipeUsers>
+                <skillRequirements>
+                    <Crafting>18</Crafting>
+                </skillRequirements>
+                <researchPrerequisite>BOR_Research_NegotiatorArtillery_II</researchPrerequisite>
+            </RecipeDef>
+
+        </value>
+    </Operation>
+
+</Patch>

@@ -1,6 +1,489 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
 
+    <!-- ==================== Judgment-class Ship Cannon ==================== -->
+
+    <ThingDef ParentName="BuildingBase">
+        <defName>BOR_JudgmentShipCannon</defName>
+        <hasInteractionCell>False</hasInteractionCell>
+        <interactionCellOffset />
+        <label>Judgment-class ship cannon</label>
+        <description>A triple-barreled 33cm naval artillery installation ripped from the hulls of Solarite warships. This is the same gun that once reduced enemy fleets to scattered wreckage before they could close to return fire. On the ground it carries that same apocalyptic weight — three devastating shells per salvo, and a long, ominous recharge between volleys.</description>
+        <thingClass>Building_TurretGun</thingClass>
+        <drawerType>MapMeshAndRealTime</drawerType>
+        <graphicData>
+            <texPath>BOR/Things/Item/Equipment/weaponranged/gen1/artillery/base</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>(6,6)</drawSize>
+        </graphicData>
+        <uiIconPath>BOR/Things/Item/Equipment/weaponranged/gen1/artillery/gun</uiIconPath>
+        <size>(6,6)</size>
+        <rotatable>false</rotatable>
+        <altitudeLayer>Building</altitudeLayer>
+        <passability>PassThroughOnly</passability>
+        <tickerType>Normal</tickerType>
+        <fillPercent>0.99</fillPercent>
+        <blockWind>true</blockWind>
+        <canOverlapZones>false</canOverlapZones>
+        <statBases>
+            <MaxHitPoints>8000</MaxHitPoints>
+            <WorkToBuild>750000</WorkToBuild>
+            <Flammability>0</Flammability>
+            <Beauty>-40</Beauty>
+            <ShootingAccuracyTurret>1.0</ShootingAccuracyTurret>
+        </statBases>
+        <costList>
+            <BOR_Neutronium>500</BOR_Neutronium>
+            <BOR_Tenebrite>300</BOR_Tenebrite>
+            <BOR_ComponentIII>20</BOR_ComponentIII>
+        </costList>
+        <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+        <building>
+            <ai_combatDangerous>true</ai_combatDangerous>
+            <turretGunDef>BOR_JudgmentShipCannon_Gun</turretGunDef>
+            <turretTopDrawSize>9</turretTopDrawSize>
+            <turretTopOffset>(0,1.5)</turretTopOffset>
+            <turretBurstWarmupTime>4.0</turretBurstWarmupTime>
+            <turretBurstCooldownTime>30</turretBurstCooldownTime>
+        </building>
+        <comps>
+            <li Class="CompProperties_Explosive">
+                <explosiveRadius>12.9</explosiveRadius>
+                <explosiveDamageType>Bomb</explosiveDamageType>
+            </li>
+            <li Class="CompProperties_Power">
+                <compClass>CompPowerTrader</compClass>
+                <basePowerConsumption>50000</basePowerConsumption>
+            </li>
+            <li Class="CompProperties_Flickable" />
+            <li Class="CompProperties_Refuelable">
+                <fuelLabel>Judgment shells (Ni)</fuelLabel>
+                <fuelGizmoLabel>Judgment shells (Ni)</fuelGizmoLabel>
+                <fuelFilter>
+                    <thingDefs>
+                        <li>BOR_Shell_JudgmentShipCannon_Ni</li>
+                    </thingDefs>
+                </fuelFilter>
+                <fuelCapacity>9</fuelCapacity>
+                <initialFuelPercent>0</initialFuelPercent>
+                <autoRefuelPercent>0.5</autoRefuelPercent>
+                <showFuelGizmo>true</showFuelGizmo>
+                <minimumFueledThreshold>0</minimumFueledThreshold>
+                <atomicFueling>false</atomicFueling>
+                <fuelMultiplier>1</fuelMultiplier>
+                <factorByDifficulty>false</factorByDifficulty>
+                <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+                <outOfFuelMessage>Cannot shoot: Out of shells</outOfFuelMessage>
+                <fuelIconPath>Things/Projectile/ShellHighExplosive</fuelIconPath>
+            </li>
+        </comps>
+        <researchPrerequisites>
+            <li>BOR_Research_JudgmentCannon_I</li>
+        </researchPrerequisites>
+        <designationCategory>BOR</designationCategory>
+        <constructionSkillPrerequisite>12</constructionSkillPrerequisite>
+    </ThingDef>
+
+    <!-- ==================== Gun Assembly ==================== -->
+
+    <ThingDef ParentName="BaseWeaponTurret">
+        <defName>BOR_JudgmentShipCannon_Gun</defName>
+        <label>Judgment-class 33cm gun assembly</label>
+        <description>The triple-barrel main gun assembly of the Judgment-class ship cannon.</description>
+        <graphicData>
+            <texPath>BOR/Things/Item/Equipment/weaponranged/gen1/artillery/gun</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>(6,6)</drawSize>
+        </graphicData>
+        <weaponTags>
+            <li>Artillery_BaseDestroyer</li>
+        </weaponTags>
+        <statBases>
+            <DeteriorationRate>0</DeteriorationRate>
+            <Mass>15000</Mass>
+            <Flammability>0</Flammability>
+        </statBases>
+        <verbs>
+            <li>
+                <verbClass>Verb_Shoot</verbClass>
+                <forceNormalTimeSpeed>false</forceNormalTimeSpeed>
+                <hasStandardCommand>true</hasStandardCommand>
+                <defaultProjectile>BOR_Bullet_JudgmentShipCannon_Ni</defaultProjectile>
+                <forcedMissRadius>4</forcedMissRadius>
+                <forcedMissRadiusClassicMortars>8</forcedMissRadiusClassicMortars>
+                <requireLineOfSight>false</requireLineOfSight>
+                <minRange>34.9</minRange>
+                <range>900</range>
+                <burstShotCount>3</burstShotCount>
+                <ticksBetweenBurstShots>20</ticksBetweenBurstShots>
+                <soundCast>Artillery_LaunchA</soundCast>
+                <muzzleFlashScale>20</muzzleFlashScale>
+                <targetParams>
+                    <canTargetLocations>true</canTargetLocations>
+                </targetParams>
+                <consumeFuelPerShot>1</consumeFuelPerShot>
+            </li>
+        </verbs>
+    </ThingDef>
+
+    <!-- ==================== Shell: Ni (Solarite) ==================== -->
+
+    <ThingDef ParentName="ResourceBase">
+        <defName>BOR_Shell_JudgmentShipCannon_Ni</defName>
+        <label>Judgment shell (Ni)</label>
+        <description>A 33cm Solarite-charged naval shell for the Judgment-class ship cannon. Detonates with devastating force on impact, sending Solar fragments in all directions.</description>
+        <tickerType>Normal</tickerType>
+        <graphicData>
+            <texPath>Things/Projectile/ShellHighExplosive</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>1.0</drawSize>
+        </graphicData>
+        <stackLimit>25</stackLimit>
+        <statBases>
+            <MaxHitPoints>80</MaxHitPoints>
+            <Mass>30</Mass>
+            <MarketValue>2250</MarketValue>
+            <Flammability>1.0</Flammability>
+            <DeteriorationRate>2.0</DeteriorationRate>
+        </statBases>
+        <tradeTags>
+            <li>BOR_Tech_I</li>
+        </tradeTags>
+        <comps>
+            <li Class="CompProperties_Explosive">
+                <explosiveRadius>10.5</explosiveRadius>
+                <explosiveDamageType>Bomb</explosiveDamageType>
+                <startWickHitPointsPercent>0.7</startWickHitPointsPercent>
+                <wickTicks>
+                    <min>30</min>
+                    <max>60</max>
+                </wickTicks>
+            </li>
+        </comps>
+        <recipeMaker>
+            <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+            <effectWorking>Cook</effectWorking>
+            <soundWorking>Recipe_Machining</soundWorking>
+            <workAmount>111600</workAmount>
+            <targetCountAdjustment>5</targetCountAdjustment>
+            <workSkill>Crafting</workSkill>
+            <recipeUsers>
+                <li>BOR_Bench_I</li>
+            </recipeUsers>
+            <skillRequirements>
+                <Crafting>12</Crafting>
+            </skillRequirements>
+            <researchPrerequisite>BOR_Research_JudgmentCannon_I</researchPrerequisite>
+        </recipeMaker>
+        <costList>
+            <BOR_Sunsteel>200</BOR_Sunsteel>
+            <BOR_QuasarAlloy>200</BOR_QuasarAlloy>
+            <BOR_ComponentII>2</BOR_ComponentII>
+            <BOR_Neutronium>100</BOR_Neutronium>
+        </costList>
+    </ThingDef>
+
+    <ThingDef ParentName="BaseBullet">
+        <defName>BOR_Bullet_JudgmentShipCannon_Ni</defName>
+        <label>Judgment shell (Ni) projectile</label>
+        <graphicData>
+            <texPath>Things/Projectile/ShellHighExplosive</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <shaderType>TransparentPostLight</shaderType>
+            <drawSize>1.7</drawSize>
+        </graphicData>
+        <thingClass>Projectile_Explosive</thingClass>
+        <projectile>
+            <damageDef>Bomb</damageDef>
+            <damageAmountBase>1255</damageAmountBase>
+            <speed>65</speed>
+            <explosionRadius>10.5</explosionRadius>
+            <flyOverhead>true</flyOverhead>
+            <soundHitThickRoof>Artillery_HitThickRoof</soundHitThickRoof>
+            <soundExplode>MortarBomb_Explode</soundExplode>
+            <soundImpactAnticipate>MortarBomb_PreImpact</soundImpactAnticipate>
+        </projectile>
+    </ThingDef>
+
+    <!-- ==================== Shell: Ef (Tenebral/Efferite) ==================== -->
+
+    <ThingDef ParentName="ResourceBase">
+        <defName>BOR_Shell_JudgmentShipCannon_Ef</defName>
+        <label>Judgment shell (Ef)</label>
+        <description>A 33cm Tenebral naval shell for the Judgment-class ship cannon. Carries an Efferite charge for catastrophic blast damage and area denial.</description>
+        <graphicData>
+            <texPath>Things/Projectile/ShellHighExplosive</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>1.0</drawSize>
+        </graphicData>
+        <stackLimit>25</stackLimit>
+        <statBases>
+            <MaxHitPoints>80</MaxHitPoints>
+            <Mass>35</Mass>
+            <MarketValue>3500</MarketValue>
+            <Flammability>1.0</Flammability>
+            <DeteriorationRate>2.0</DeteriorationRate>
+        </statBases>
+        <tradeTags>
+            <li>BOR_Tech_I</li>
+        </tradeTags>
+        <tickerType>Normal</tickerType>
+        <comps>
+            <li Class="CompProperties_Explosive">
+                <explosiveRadius>15</explosiveRadius>
+                <explosiveDamageType>Bomb</explosiveDamageType>
+                <startWickHitPointsPercent>0.7</startWickHitPointsPercent>
+                <wickTicks>
+                    <min>30</min>
+                    <max>60</max>
+                </wickTicks>
+            </li>
+        </comps>
+        <recipeMaker>
+            <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+            <effectWorking>Cook</effectWorking>
+            <soundWorking>Recipe_Machining</soundWorking>
+            <workAmount>150000</workAmount>
+            <targetCountAdjustment>5</targetCountAdjustment>
+            <workSkill>Crafting</workSkill>
+            <recipeUsers>
+                <li>BOR_Bench_I</li>
+            </recipeUsers>
+            <skillRequirements>
+                <Crafting>14</Crafting>
+            </skillRequirements>
+            <researchPrerequisite>BOR_Research_JudgmentCannon_I</researchPrerequisite>
+        </recipeMaker>
+        <costList>
+            <BOR_QuasarAlloy>200</BOR_QuasarAlloy>
+            <BOR_Tenebrite>100</BOR_Tenebrite>
+            <BOR_ComponentIII>2</BOR_ComponentIII>
+            <BOR_Neutronium>5000</BOR_Neutronium>
+        </costList>
+    </ThingDef>
+
+    <ThingDef ParentName="BaseBullet">
+        <defName>BOR_Bullet_JudgmentShipCannon_Ef</defName>
+        <label>Judgment shell (Ef) projectile</label>
+        <graphicData>
+            <texPath>Things/Projectile/ShellHighExplosive</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <shaderType>TransparentPostLight</shaderType>
+            <drawSize>1.7</drawSize>
+        </graphicData>
+        <thingClass>Projectile_Explosive</thingClass>
+        <projectile>
+            <damageDef>Bomb</damageDef>
+            <damageAmountBase>1882</damageAmountBase>
+            <speed>65</speed>
+            <explosionRadius>15</explosionRadius>
+            <flyOverhead>true</flyOverhead>
+            <soundHitThickRoof>Artillery_HitThickRoof</soundHitThickRoof>
+            <soundExplode>MortarBomb_Explode</soundExplode>
+            <soundImpactAnticipate>MortarBomb_PreImpact</soundImpactAnticipate>
+        </projectile>
+    </ThingDef>
+
+    <!-- ==================== Negotiator-class Station Defense System (Tier II) ==================== -->
+
+    <ThingDef ParentName="BuildingBase">
+        <defName>BOR_NegotiatorStationDefenseSystem_TII</defName>
+        <hasInteractionCell>False</hasInteractionCell>
+        <interactionCellOffset />
+        <label>Negotiator-class station defense system</label>
+        <description>A station-grade spinal artillery system that has absolutely no business being planet-side. The colony mounting rig barely tolerates it, the power grid hates it, and every shot feels like an industrial accident weaponized on purpose.</description>
+        <thingClass>Building_TurretGun</thingClass>
+        <drawerType>MapMeshAndRealTime</drawerType>
+        <graphicData>
+            <texPath>BOR/Things/Item/Equipment/weaponranged/gen2/artillery/chungusbase</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>(7,7)</drawSize>
+        </graphicData>
+        <uiIconPath>BOR/Things/Item/Equipment/weaponranged/gen2/artillery/chungus</uiIconPath>
+        <size>(7,7)</size>
+        <rotatable>false</rotatable>
+        <altitudeLayer>Building</altitudeLayer>
+        <passability>PassThroughOnly</passability>
+        <tickerType>Normal</tickerType>
+        <fillPercent>0.995</fillPercent>
+        <blockWind>true</blockWind>
+        <canOverlapZones>false</canOverlapZones>
+        <statBases>
+            <MaxHitPoints>14000</MaxHitPoints>
+            <WorkToBuild>1800000</WorkToBuild>
+            <Flammability>0</Flammability>
+            <Beauty>-80</Beauty>
+            <ShootingAccuracyTurret>1.0</ShootingAccuracyTurret>
+        </statBases>
+        <costList>
+            <BOR_Neutronium>2400</BOR_Neutronium>
+            <BOR_Tenebrite>1200</BOR_Tenebrite>
+            <BOR_ComponentIII>120</BOR_ComponentIII>
+        </costList>
+        <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+        <building>
+            <ai_combatDangerous>true</ai_combatDangerous>
+            <turretGunDef>BOR_NegotiatorStationDefenseSystem_TII_Gun</turretGunDef>
+            <turretTopDrawSize>11</turretTopDrawSize>
+            <turretTopOffset>(0,1.8)</turretTopOffset>
+            <turretBurstWarmupTime>7.5</turretBurstWarmupTime>
+            <turretBurstCooldownTime>180</turretBurstCooldownTime>
+        </building>
+        <comps>
+            <li Class="CompProperties_Explosive">
+                <explosiveRadius>22</explosiveRadius>
+                <explosiveDamageType>Bomb</explosiveDamageType>
+            </li>
+            <li Class="CompProperties_Power">
+                <compClass>CompPowerTrader</compClass>
+                <basePowerConsumption>180000</basePowerConsumption>
+            </li>
+            <li Class="CompProperties_Flickable" />
+            <li Class="CompProperties_Refuelable">
+                <fuelLabel>Cracker shells</fuelLabel>
+                <fuelGizmoLabel>Cracker shells</fuelGizmoLabel>
+                <fuelFilter>
+                    <thingDefs>
+                        <li>BOR_Shell_NegotiatorCracker_TII</li>
+                    </thingDefs>
+                </fuelFilter>
+                <fuelCapacity>3</fuelCapacity>
+                <initialFuelPercent>0</initialFuelPercent>
+                <autoRefuelPercent>0.5</autoRefuelPercent>
+                <showFuelGizmo>true</showFuelGizmo>
+                <minimumFueledThreshold>0</minimumFueledThreshold>
+                <atomicFueling>false</atomicFueling>
+                <fuelMultiplier>1</fuelMultiplier>
+                <factorByDifficulty>false</factorByDifficulty>
+                <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+                <outOfFuelMessage>Cannot shoot: Out of Cracker shells</outOfFuelMessage>
+                <fuelIconPath>Things/Projectile/ShellHighExplosive</fuelIconPath>
+            </li>
+        </comps>
+        <researchPrerequisites>
+            <li>BOR_Research_NegotiatorArtillery_II</li>
+        </researchPrerequisites>
+        <designationCategory>BOR</designationCategory>
+        <constructionSkillPrerequisite>18</constructionSkillPrerequisite>
+    </ThingDef>
+
+    <ThingDef ParentName="BaseWeaponTurret">
+        <defName>BOR_NegotiatorStationDefenseSystem_TII_Gun</defName>
+        <label>Negotiator-class spinal cannon</label>
+        <description>A scaled-down station spinal weapon adapted for local emplacement. Every discharge is excessive by any sane military standard.</description>
+        <graphicData>
+            <texPath>BOR/Things/Item/Equipment/weaponranged/gen2/artillery/chungus</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>(7,7)</drawSize>
+        </graphicData>
+        <weaponTags>
+            <li>Artillery_BaseDestroyer</li>
+        </weaponTags>
+        <statBases>
+            <DeteriorationRate>0</DeteriorationRate>
+            <Mass>32000</Mass>
+            <Flammability>0</Flammability>
+        </statBases>
+        <verbs>
+            <li>
+                <verbClass>Verb_Shoot</verbClass>
+                <forceNormalTimeSpeed>false</forceNormalTimeSpeed>
+                <hasStandardCommand>true</hasStandardCommand>
+                <defaultProjectile>BOR_Bullet_NegotiatorCracker_TII</defaultProjectile>
+                <forcedMissRadius>2</forcedMissRadius>
+                <forcedMissRadiusClassicMortars>4</forcedMissRadiusClassicMortars>
+                <requireLineOfSight>false</requireLineOfSight>
+                <minRange>40</minRange>
+                <range>1200</range>
+                <burstShotCount>1</burstShotCount>
+                <ticksBetweenBurstShots>10</ticksBetweenBurstShots>
+                <soundCast>bfg</soundCast>
+                <muzzleFlashScale>30</muzzleFlashScale>
+                <targetParams>
+                    <canTargetLocations>true</canTargetLocations>
+                </targetParams>
+                <consumeFuelPerShot>1</consumeFuelPerShot>
+            </li>
+        </verbs>
+    </ThingDef>
+
+    <ThingDef ParentName="ResourceBase">
+        <defName>BOR_Shell_NegotiatorCracker_TII</defName>
+        <label>Cracker shell</label>
+        <description>A catastrophic siege shell intended for station guns, repurposed into a ground launcher that should probably never have been approved. Impact radius is less "munition" and more "regional event".</description>
+        <tickerType>Normal</tickerType>
+        <graphicData>
+            <texPath>Things/Projectile/ShellHighExplosive</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>1.2</drawSize>
+        </graphicData>
+        <stackLimit>10</stackLimit>
+        <statBases>
+            <MaxHitPoints>120</MaxHitPoints>
+            <Mass>120</Mass>
+            <MarketValue>12000</MarketValue>
+            <Flammability>0.6</Flammability>
+            <DeteriorationRate>1.0</DeteriorationRate>
+        </statBases>
+        <tradeTags>
+            <li>BOR_Tech_II</li>
+        </tradeTags>
+        <comps>
+            <li Class="CompProperties_Explosive">
+                <explosiveRadius>60</explosiveRadius>
+                <explosiveDamageType>Bomb</explosiveDamageType>
+                <startWickHitPointsPercent>0.7</startWickHitPointsPercent>
+                <wickTicks>
+                    <min>30</min>
+                    <max>60</max>
+                </wickTicks>
+            </li>
+        </comps>
+        <recipeMaker>
+            <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+            <effectWorking>Cook</effectWorking>
+            <soundWorking>Recipe_Machining</soundWorking>
+            <workAmount>850000</workAmount>
+            <targetCountAdjustment>1</targetCountAdjustment>
+            <workSkill>Crafting</workSkill>
+            <recipeUsers>
+                <li>BOR_Bench_II</li>
+            </recipeUsers>
+            <skillRequirements>
+                <Crafting>18</Crafting>
+            </skillRequirements>
+            <researchPrerequisite>BOR_Research_NegotiatorArtillery_II</researchPrerequisite>
+        </recipeMaker>
+        <costList>
+            <BOR_Neutronium>1000</BOR_Neutronium>
+            <BOR_Tenebrite>350</BOR_Tenebrite>
+            <BOR_QuasarAlloy>600</BOR_QuasarAlloy>
+            <BOR_ComponentIII>10</BOR_ComponentIII>
+        </costList>
+    </ThingDef>
+
+    <ThingDef ParentName="BaseBullet">
+        <defName>BOR_Bullet_NegotiatorCracker_TII</defName>
+        <label>Cracker shell projectile</label>
+        <graphicData>
+            <texPath>Things/Projectile/ShellHighExplosive</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <shaderType>TransparentPostLight</shaderType>
+            <drawSize>2.2</drawSize>
+        </graphicData>
+        <thingClass>Projectile_Explosive</thingClass>
+        <projectile>
+            <damageDef>BombSuper</damageDef>
+            <damageAmountBase>18000</damageAmountBase>
+            <speed>58</speed>
+            <explosionRadius>1200</explosionRadius>
+            <flyOverhead>true</flyOverhead>
+            <soundHitThickRoof>Artillery_HitThickRoof</soundHitThickRoof>
+            <soundExplode>MortarBomb_Explode</soundExplode>
+            <soundImpactAnticipate>MortarBomb_PreImpact</soundImpactAnticipate>
+        </projectile>
+    </ThingDef>
+
     <ThingDef ParentName="BuildingBase">
         <defName>BOR_Turret_Defender_TI</defName>
         <label>solar defender turret</label>
