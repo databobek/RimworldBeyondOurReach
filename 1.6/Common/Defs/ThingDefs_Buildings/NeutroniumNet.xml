@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
 	<DesignatorDropdownGroupDef>
-		<defName>NeutroniumRefinery</defName>
+		<defName>NeutroniumCondenser</defName>
 	</DesignatorDropdownGroupDef>
 	<PipeSystem.PipeNetDef>
 		<defName>BOR_NeutroniumNet</defName>
@@ -31,10 +31,10 @@
 		</linkToRefuelables>
 	</PipeSystem.PipeNetDef>
 	<ThingDef ParentName="BuildingBase">
-		<defName>BOR_NeutroniumRefinery</defName>
-		<label>neutronium refinery tier 1</label>
-		<designatorDropdown>NeutroniumRefinery</designatorDropdown>
-		<description>A complex machine capable of refining neutronium into virtually anything.</description>
+		<defName>BOR_NeutroniumCondenser_TI</defName>
+		<label>solar neutronium condenser</label>
+		<designatorDropdown>NeutroniumCondenser</designatorDropdown>
+		<description>A Solarite-engineered machine that draws neutronium from deep subsurface deposits, channeling vast solar energies to stabilize and accumulate the volatile matter. The foundation of any neutronium operation.</description>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>BOR/Things/Building/neutroniumnet/tier1refinery</texPath>
@@ -49,8 +49,8 @@
 		</graphicData>
 		<building>
 			<relatedBuildCommands>
-				<li>BOR_NeutroniumRefinery_II</li>
-				<li>BOR_NeutroniumRefinery_III</li>
+				<li>BOR_NeutroniumCondenser_TII</li>
+				<li>BOR_NeutroniumCondenser_TIII</li>
 				<li>BOR_NeutroniumTank</li>
 				<li>BOR_NeutroniumTap</li>
 				<li>BOR_NeutroniumValve</li>
@@ -79,9 +79,9 @@
 			<BOR_Sunsteel>200</BOR_Sunsteel>
 			<ComponentSpacer>4</ComponentSpacer>
 		</costList>
-		<inspectorTabs>
+		<!-- <inspectorTabs>
 			<li>PipeSystem.ITab_Processor</li>
-		</inspectorTabs>
+		</inspectorTabs> -->
 		<comps>
 			<li MayRequire="ludeon.rimworld.biotech" Class="CompProperties_ThingContainer">
 				<compClass>CompThingContainer</compClass>
@@ -89,11 +89,12 @@
 				<drawContainedThing>false</drawContainedThing>
 				<dropEffecterDef>MechChargerWasteRemoved</dropEffecterDef>
 			</li>
-			<li MayRequire="ludeon.rimworld.biotech" Class="CompProperties_WasteProducer">
-				<showContentsInInspectPane>true</showContentsInInspectPane>
-			</li>
 			<li Class="PipeSystem.CompProperties_Resource">
 				<pipeNet>BOR_NeutroniumNet</pipeNet>
+			</li>
+			<!--
+			<li MayRequire="ludeon.rimworld.biotech" Class="CompProperties_WasteProducer">
+				<showContentsInInspectPane>true</showContentsInInspectPane>
 			</li>
 			<li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
 				<showBufferInfo>false</showBufferInfo>
@@ -135,7 +136,13 @@
 					<li MayRequire="ceteam.combatextended">BOR_NeutroniumIntoFSXGenITempRuin</li>
 					<li MayRequire="ceteam.combatextended">BOR_NeutroniumIntoPrometheumGenITempRuin</li>
 				</processes>
-				<!--<soundAmbient>BOR_1_Refinery</soundAmbient> -->
+			</li>
+			-->
+			<li Class="PipeSystem.CompProperties_DeepExtractor">
+				<pipeNet>BOR_NeutroniumNet</pipeNet>
+				<deepThing>BOR_Neutronium</deepThing>
+				<ticksPerPortion>500</ticksPerPortion>
+				<useDeepCountPerPortion>false</useDeepCountPerPortion>
 			</li>
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>
@@ -143,6 +150,11 @@
 				<shortCircuitInRain>false</shortCircuitInRain>
 			</li>
 		</comps>
+		<modExtensions>
+			<li Class="VEF.Things.ThingDefExtension">
+				<deepResourcesOnGUI>true</deepResourcesOnGUI>
+			</li>
+		</modExtensions>
 		<terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
 		<designationCategory>BOR</designationCategory>
 		<staticSunShadowHeight>0.2</staticSunShadowHeight>
@@ -151,12 +163,15 @@
 		<researchPrerequisites>
 			<li>BOR_Research_Quarks_I</li>
 		</researchPrerequisites>
+		<placeWorkers>
+			<li>PipeSystem.PlaceWorker_DeepExtractor</li>
+		</placeWorkers>
 	</ThingDef>
 	<ThingDef ParentName="BuildingBase">
-		<defName>BOR_NeutroniumRefinery_II</defName>
-		<label>neutronium refinery tier 2</label>
-		<designatorDropdown>NeutroniumRefinery</designatorDropdown>
-		<description>A complex machine capable of refining neutronium into virtually everything.</description>
+		<defName>BOR_NeutroniumCondenser_TII</defName>
+		<label>quasar neutronium condenser</label>
+		<designatorDropdown>NeutroniumCondenser</designatorDropdown>
+		<description>A Kwazaari condenser employing quasar-lattice resonance to draw neutronium from the deep at twice the efficiency of solar designs. The exotic alloys within sustain extraction rates that no Solarite machine could match.</description>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>BOR/Things/Building/neutroniumnet/tier2refinery</texPath>
@@ -189,9 +204,9 @@
 		</costList>
 		<hasInteractionCell>True</hasInteractionCell>
 		<interactionCellOffset>(0,0,-3)</interactionCellOffset>
-		<inspectorTabs>
+		<!-- <inspectorTabs>
 			<li>PipeSystem.ITab_Processor</li>
-		</inspectorTabs>
+		</inspectorTabs> -->
 		<comps>
 			<li MayRequire="ludeon.rimworld.biotech" Class="CompProperties_ThingContainer">
 				<compClass>CompThingContainer</compClass>
@@ -199,11 +214,12 @@
 				<drawContainedThing>false</drawContainedThing>
 				<dropEffecterDef>MechChargerWasteRemoved</dropEffecterDef>
 			</li>
-			<li MayRequire="ludeon.rimworld.biotech" Class="CompProperties_WasteProducer">
-				<showContentsInInspectPane>true</showContentsInInspectPane>
-			</li>
 			<li Class="PipeSystem.CompProperties_Resource">
 				<pipeNet>BOR_NeutroniumNet</pipeNet>
+			</li>
+			<!--
+			<li MayRequire="ludeon.rimworld.biotech" Class="CompProperties_WasteProducer">
+				<showContentsInInspectPane>true</showContentsInInspectPane>
 			</li>
 			<li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
 				<showBufferInfo>false</showBufferInfo>
@@ -249,7 +265,13 @@
 					<li MayRequire="ceteam.combatextended">BOR_NeutroniumIntoFSXGenIITempRuin</li>
 					<li MayRequire="ceteam.combatextended">BOR_NeutroniumIntoPrometheumGenIITempRuin</li>
 				</processes>
-				<!--<soundAmbient>BOR_2_Refinery</soundAmbient> -->
+			</li>
+			-->
+			<li Class="PipeSystem.CompProperties_DeepExtractor">
+				<pipeNet>BOR_NeutroniumNet</pipeNet>
+				<deepThing>BOR_Neutronium</deepThing>
+				<ticksPerPortion>250</ticksPerPortion>
+				<useDeepCountPerPortion>false</useDeepCountPerPortion>
 			</li>
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>
@@ -257,10 +279,15 @@
 				<shortCircuitInRain>false</shortCircuitInRain>
 			</li>
 		</comps>
+		<modExtensions>
+			<li Class="VEF.Things.ThingDefExtension">
+				<deepResourcesOnGUI>true</deepResourcesOnGUI>
+			</li>
+		</modExtensions>
 		<building>
 			<relatedBuildCommands>
-				<li>BOR_NeutroniumRefinery</li>
-				<li>BOR_NeutroniumRefinery_III</li>
+				<li>BOR_NeutroniumCondenser_TI</li>
+				<li>BOR_NeutroniumCondenser_TIII</li>
 				<li>BOR_NeutroniumTank</li>
 				<li>BOR_NeutroniumTap</li>
 				<li>BOR_NeutroniumValve</li>
@@ -277,12 +304,15 @@
 		<researchPrerequisites>
 			<li>BOR_Research_NSynth_II</li>
 		</researchPrerequisites>
+		<placeWorkers>
+			<li>PipeSystem.PlaceWorker_DeepExtractor</li>
+		</placeWorkers>
 	</ThingDef>
 	<ThingDef ParentName="BuildingBase">
-		<defName>BOR_NeutroniumRefinery_III</defName>
-		<label>neutronium refinery tier 3</label>
-		<designatorDropdown>NeutroniumRefinery</designatorDropdown>
-		<description>A complex machine capable of refining neutronium into quite literally everything.</description>
+		<defName>BOR_NeutroniumCondenser_TIII</defName>
+		<label>tenebral neutronium condenser</label>
+		<designatorDropdown>NeutroniumCondenser</designatorDropdown>
+		<description>The pinnacle of Tenebral engineering. This condenser siphons neutronium from the deep with terrifying efficiency, its tenebrite core operating at the edge of known physical limits. Those who built it did not need to understand it - only to use it.</description>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>BOR/Things/Building/neutroniumnet/tier3refinery</texPath>
@@ -313,9 +343,9 @@
 			<BOR_Tenebrite>200</BOR_Tenebrite>
 			<BOR_ComponentIII>4</BOR_ComponentIII>
 		</costList>
-		<inspectorTabs>
+		<!-- <inspectorTabs>
 			<li>PipeSystem.ITab_Processor</li>
-		</inspectorTabs>
+		</inspectorTabs> -->
 		<hasInteractionCell>True</hasInteractionCell>
 		<interactionCellOffset>(0,0,-2)</interactionCellOffset>
 		<comps>
@@ -325,11 +355,12 @@
 				<drawContainedThing>false</drawContainedThing>
 				<dropEffecterDef>MechChargerWasteRemoved</dropEffecterDef>
 			</li>
-			<li MayRequire="ludeon.rimworld.biotech" Class="CompProperties_WasteProducer">
-				<showContentsInInspectPane>true</showContentsInInspectPane>
-			</li>
 			<li Class="PipeSystem.CompProperties_Resource">
 				<pipeNet>BOR_NeutroniumNet</pipeNet>
+			</li>
+			<!--
+			<li MayRequire="ludeon.rimworld.biotech" Class="CompProperties_WasteProducer">
+				<showContentsInInspectPane>true</showContentsInInspectPane>
 			</li>
 			<li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
 				<showBufferInfo>false</showBufferInfo>
@@ -383,7 +414,13 @@
 					<li MayRequire="ceteam.combatextended">BOR_NeutroniumIntoFSXGenIIITempRuin</li>
 					<li MayRequire="ceteam.combatextended">BOR_NeutroniumIntoPrometheumGenIIITempRuin</li>
 				</processes>
-				<!--<soundAmbient>BOR_3_Refinery</soundAmbient> -->
+			</li>
+			-->
+			<li Class="PipeSystem.CompProperties_DeepExtractor">
+				<pipeNet>BOR_NeutroniumNet</pipeNet>
+				<deepThing>BOR_Neutronium</deepThing>
+				<ticksPerPortion>75</ticksPerPortion>
+				<useDeepCountPerPortion>false</useDeepCountPerPortion>
 			</li>
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>
@@ -401,8 +438,8 @@
 		</researchPrerequisites>
 		<building>
 			<relatedBuildCommands>
-				<li>BOR_NeutroniumRefinery_II</li>
-				<li>BOR_NeutroniumRefinery</li>
+				<li>BOR_NeutroniumCondenser_TII</li>
+				<li>BOR_NeutroniumCondenser_TI</li>
 				<li>BOR_NeutroniumTank</li>
 				<li>BOR_NeutroniumTap</li>
 				<li>BOR_NeutroniumValve</li>
@@ -411,6 +448,14 @@
 				<li>BOR_UndergroundNeutroniumPipe</li>
 			</relatedBuildCommands>
 		</building>
+		<placeWorkers>
+			<li>PipeSystem.PlaceWorker_DeepExtractor</li>
+		</placeWorkers>
+		<modExtensions>
+			<li Class="VEF.Things.ThingDefExtension">
+				<deepResourcesOnGUI>true</deepResourcesOnGUI>
+			</li>
+		</modExtensions>
 	</ThingDef>
 	<ThingDef ParentName="BuildingBase">
 		<defName>BOR_NeutroniumPipe</defName>
@@ -441,9 +486,9 @@
 				<texPath>BOR/Things/Building/neutroniumnet/neutroniumpipe_atlas_blueprint</texPath>
 			</blueprintGraphicData>
 			<relatedBuildCommands>
-				<li>BOR_NeutroniumRefinery</li>
-				<li>BOR_NeutroniumRefinery_II</li>
-				<li>BOR_NeutroniumRefinery_III</li>
+				<li>BOR_NeutroniumCondenser_TI</li>
+				<li>BOR_NeutroniumCondenser_TII</li>
+				<li>BOR_NeutroniumCondenser_TIII</li>
 				<li>BOR_NeutroniumTank</li>
 				<li>BOR_NeutroniumTap</li>
 				<li>BOR_NeutroniumValve</li>
@@ -512,9 +557,9 @@
 				<texPath>BOR/Things/Building/neutroniumnet/neutroniumpipe_atlas_blueprint</texPath>
 			</blueprintGraphicData>
 			<relatedBuildCommands>
-				<li>BOR_NeutroniumRefinery</li>
-				<li>BOR_NeutroniumRefinery_II</li>
-				<li>BOR_NeutroniumRefinery_III</li>
+				<li>BOR_NeutroniumCondenser_TI</li>
+				<li>BOR_NeutroniumCondenser_TII</li>
+				<li>BOR_NeutroniumCondenser_TIII</li>
 				<li>BOR_NeutroniumTank</li>
 				<li>BOR_NeutroniumTap</li>
 				<li>BOR_NeutroniumValve</li>
@@ -581,9 +626,9 @@
 			<ai_chillDestination>false</ai_chillDestination>
 			<allowWireConnection>false</allowWireConnection>
 			<relatedBuildCommands>
-				<li>BOR_NeutroniumRefinery</li>
-				<li>BOR_NeutroniumRefinery_II</li>
-				<li>BOR_NeutroniumRefinery_III</li>
+				<li>BOR_NeutroniumCondenser_TI</li>
+				<li>BOR_NeutroniumCondenser_TII</li>
+				<li>BOR_NeutroniumCondenser_TIII</li>
 				<li>BOR_NeutroniumTank</li>
 				<li>BOR_NeutroniumTap</li>
 				<li>BOR_NeutroniumDrain</li>
@@ -708,9 +753,9 @@
 		</researchPrerequisites>
 		<building>
 			<relatedBuildCommands>
-				<li>BOR_NeutroniumRefinery</li>
-				<li>BOR_NeutroniumRefinery_II</li>
-				<li>BOR_NeutroniumRefinery_III</li>
+				<li>BOR_NeutroniumCondenser_TI</li>
+				<li>BOR_NeutroniumCondenser_TII</li>
+				<li>BOR_NeutroniumCondenser_TIII</li>
 				<li>BOR_NeutroniumValve</li>
 				<li>BOR_NeutroniumTap</li>
 				<li>BOR_NeutroniumDrain</li>
@@ -774,9 +819,9 @@
 				</filter>
 			</defaultStorageSettings>
 			<relatedBuildCommands>
-				<li>BOR_NeutroniumRefinery</li>
-				<li>BOR_NeutroniumRefinery_II</li>
-				<li>BOR_NeutroniumRefinery_III</li>
+				<li>BOR_NeutroniumCondenser_TI</li>
+				<li>BOR_NeutroniumCondenser_TII</li>
+				<li>BOR_NeutroniumCondenser_TIII</li>
 				<li>BOR_NeutroniumValve</li>
 				<li>BOR_NeutroniumDrain</li>
 				<li>BOR_NeutroniumPipe</li>
@@ -838,9 +883,9 @@
 		</costList>
 		<building>
 			<relatedBuildCommands>
-				<li>BOR_NeutroniumRefinery</li>
-				<li>BOR_NeutroniumRefinery_II</li>
-				<li>BOR_NeutroniumRefinery_III</li>
+				<li>BOR_NeutroniumCondenser_TI</li>
+				<li>BOR_NeutroniumCondenser_TII</li>
+				<li>BOR_NeutroniumCondenser_TIII</li>
 				<li>BOR_NeutroniumValve</li>
 				<li>BOR_NeutroniumTap</li>
 				<li>BOR_NeutroniumPipe</li>
@@ -887,7 +932,7 @@
 		<defName>BOR_InfiniteNeutroniumGenerator</defName>
 		<label>tenebral neutronium selfsustained generator</label>
 		<description>Slowly generates neutronium from particulate matter in the air.</description>
-		<designatorDropdown>NeutroniumRefinery</designatorDropdown>
+		<designatorDropdown>NeutroniumCondenser</designatorDropdown>
 		<graphicData>
 			<texPath>BOR/Things/Building/neutroniumnet/infinitetenebritereactor</texPath>
 			<graphicClass>Graphic_Single</graphicClass>

@@ -4,7 +4,7 @@
         <thingClass>ThingWithComps</thingClass>
         <defName>BOR_Neutronium</defName>
         <label>neutronium</label>
-        <description>An exotic form of matter composed of neutrons in tight gridlock. While naturally-occuring neutronium maintains this density through its own gravity, one must commit massive quantities of energy in order to form and maintain neutron matter planetside. On its own it is useless to you and dangerous to store, but alongside solar, quasar, and tenebral tech it can be used to transmute elements, synthesize goods, and equip armies. You can form neutronium into virtually anything!</description>
+        <description>An exotic form of matter composed of neutrons in tight gridlock. While naturally-occuring neutronium maintains this density through its own gravity, one must commit massive quantities of energy in order to form and maintain neutron matter planetside. It occurs naturally in deep subsurface deposits across the rim, though its unique composition makes it completely undetectable without the right technology - most colonies sit atop vast reserves without ever knowing. Once you have the means to find and extract it, however, it is remarkably abundant. On its own it is useless to you and dangerous to store, but alongside solar, quasar, and tenebral tech it can be used to transmute elements, synthesize goods, and equip armies. You can form neutronium into virtually anything!</description>
         <graphicData>
             <texPath>BOR/Things/Item/Resource/neutronium</texPath>
             <graphicClass>Graphic_StackCount</graphicClass>
@@ -20,8 +20,11 @@
         <stackLimit>5000</stackLimit>
         <smallVolume>true</smallVolume>
         <drawGUIOverlay>true</drawGUIOverlay>
-        <deepCommonality>0</deepCommonality>
-        <tickerType>Never</tickerType>
+        <deepCommonality>1</deepCommonality>
+        <deepCountPerPortion>50</deepCountPerPortion>
+        <deepLumpSizeRange>500~1000</deepLumpSizeRange>
+        <deepCountPerCell>5000</deepCountPerCell>
+        <tickerType>Normal</tickerType>
         <comps>
             <li Class="CompProperties_Forbiddable" />
             <li Class="CompProperties_Glower">
@@ -29,12 +32,17 @@
                 <glowColor>(145,131,83,0)</glowColor>
             </li>
         </comps>
+        <modExtensions>
+            <li Class="VEF.Things.ThingDefExtension">
+                <deepColor>(1, 0.95, 0.55)</deepColor>
+            </li>
+        </modExtensions>
         <statBases>
-            <MarketValue>5</MarketValue>
-            <Mass>0.001</Mass>
+            <MarketValue>4</MarketValue>
+            <Mass>0.00</Mass>
             <Flammability>0.0</Flammability>
             <DeteriorationRate>0.0</DeteriorationRate>
-            <Beauty>15</Beauty>
+            <Beauty>13</Beauty>
         </statBases>
         <tradeability>None</tradeability>
         <thingSetMakerTags>
