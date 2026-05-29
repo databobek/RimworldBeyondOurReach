@@ -5,8 +5,9 @@
         <enabled Class="PatchOperationSequence">
             <operations>
 
+                <!-- AR, Sniper, Shotgun: standard melee -->
                 <li Class="PatchOperationReplace">
-                    <xpath>Defs/ThingDef[defName="BOR_Gun_LMG_TIII" or defName="BOR_Gun_AssaultRifle_TIII" or defName="BOR_Gun_SniperRifle_TIII" or defName="BOR_Gun_ChainShotgun_TIII"]/tools</xpath>
+                    <xpath>Defs/ThingDef[defName="BOR_Gun_AssaultRifle_TIII" or defName="BOR_Gun_SniperRifle_TIII" or defName="BOR_Gun_ChainShotgun_TIII"]/tools</xpath>
                     <value>
                         <tools>
                             <li Class="CombatExtended.ToolCE">
@@ -44,6 +45,47 @@
                     </value>
                 </li>
 
+                <!-- LMG: hard to land but devastating -->
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="BOR_Gun_LMG_TIII"]/tools</xpath>
+                    <value>
+                        <tools>
+                            <li Class="CombatExtended.ToolCE">
+                                <label>stock</label>
+                                <capacities>
+                                    <li>Blunt</li>
+                                </capacities>
+                                <power>1134</power>
+                                <cooldownTime>0.62</cooldownTime>
+                                <chanceFactor>0.60</chanceFactor>
+                                <armorPenetrationBlunt>390.52</armorPenetrationBlunt>
+                                <linkedBodyPartsGroup>Stock</linkedBodyPartsGroup>
+                            </li>
+                            <li Class="CombatExtended.ToolCE">
+                                <label>barrel</label>
+                                <capacities>
+                                    <li>Blunt</li>
+                                </capacities>
+                                <power>710</power>
+                                <cooldownTime>0.81</cooldownTime>
+                                <armorPenetrationBlunt>231.06</armorPenetrationBlunt>
+                                <linkedBodyPartsGroup>Barrel</linkedBodyPartsGroup>
+                            </li>
+                            <li Class="CombatExtended.ToolCE">
+                                <label>muzzle</label>
+                                <capacities>
+                                    <li>Poke</li>
+                                </capacities>
+                                <power>1134</power>
+                                <cooldownTime>0.62</cooldownTime>
+                                <armorPenetrationBlunt>390.52</armorPenetrationBlunt>
+                                <linkedBodyPartsGroup>Muzzle</linkedBodyPartsGroup>
+                            </li>
+                        </tools>
+                    </value>
+                </li>
+
+                <!-- Pistol: quick but light hits -->
                 <li Class="PatchOperationReplace">
                     <xpath>Defs/ThingDef[defName="BOR_Gun_Autopistol_TIII"]/tools</xpath>
                     <value>
@@ -54,7 +96,7 @@
                                     <li>Blunt</li>
                                 </capacities>
                                 <power>135</power>
-                                <cooldownTime>0.34</cooldownTime>
+                                <cooldownTime>0.22</cooldownTime>
                                 <chanceFactor>1.50</chanceFactor>
                                 <armorPenetrationBlunt>37.46</armorPenetrationBlunt>
                                 <linkedBodyPartsGroup>Grip</linkedBodyPartsGroup>
@@ -65,7 +107,7 @@
                                     <li>Poke</li>
                                 </capacities>
                                 <power>135</power>
-                                <cooldownTime>0.34</cooldownTime>
+                                <cooldownTime>0.22</cooldownTime>
                                 <armorPenetrationBlunt>37.46</armorPenetrationBlunt>
                                 <linkedBodyPartsGroup>Muzzle</linkedBodyPartsGroup>
                             </li>
@@ -77,26 +119,26 @@
                 <li Class="CombatExtended.PatchOperationMakeGunCECompatible">
                     <defName>BOR_Gun_AssaultRifle_TIII</defName>
                     <statBases>
-                        <Mass>0.71</Mass>
-                        <RangedWeapon_Cooldown>0.40</RangedWeapon_Cooldown>
-                        <SightsEfficiency>68</SightsEfficiency>
-                        <ShotSpread>0.08</ShotSpread>
-                        <SwayFactor>1.46</SwayFactor>
-                        <Bulk>2.18</Bulk>
-                        <WorkToMake>2430000</WorkToMake>
+                        <Mass>1.536</Mass>
+                        <RangedWeapon_Cooldown>0.184</RangedWeapon_Cooldown>
+                        <SightsEfficiency>1.9</SightsEfficiency>
+                        <ShotSpread>0.056</ShotSpread>
+                        <SwayFactor>1.064</SwayFactor>
+                        <Bulk>1.5848</Bulk>
+                        <WorkToMake>84672</WorkToMake>
                     </statBases>
                     <costList>
-                        <BOR_Tenebrite>77</BOR_Tenebrite>
-                        <BOR_ComponentIII>9</BOR_ComponentIII>
-                        <BOR_Neutronium>110</BOR_Neutronium>
+                        <BOR_Tenebrite>70</BOR_Tenebrite>
+                        <BOR_ComponentIII>8</BOR_ComponentIII>
+                        <BOR_Neutronium>100</BOR_Neutronium>
                     </costList>
                     <Properties>
-                        <recoilAmount>0.37</recoilAmount>
+                        <recoilAmount>0.71472</recoilAmount>
                         <verbClass>CombatExtended.Verb_ShootCE</verbClass>
                         <hasStandardCommand>true</hasStandardCommand>
-                        <defaultProjectile>BOR_Bullet_Charged_III_Rifle_N</defaultProjectile>
-                        <warmupTime>0.24</warmupTime>
-                        <range>3713</range>
+                        <defaultProjectile>BOR_Bullet_Gen3Rifle_N</defaultProjectile>
+                        <warmupTime>0.512</warmupTime>
+                        <range>95.04</range>
                         <burstShotCount>8</burstShotCount>
                         <ticksBetweenBurstShots>3</ticksBetweenBurstShots>
                         <soundCast>Shot_ChargeRifle</soundCast>
@@ -105,7 +147,7 @@
                     </Properties>
                     <AmmoUser>
                         <magazineSize>32</magazineSize>
-                        <reloadTime>4</reloadTime>
+                        <reloadTime>3.2</reloadTime>
                         <ammoSet>BOR_AmmoSet_Gen3_rifle</ammoSet>
                     </AmmoUser>
                     <FireModes>
@@ -123,34 +165,34 @@
                 <li Class="CombatExtended.PatchOperationMakeGunCECompatible">
                     <defName>BOR_Gun_SniperRifle_TIII</defName>
                     <statBases>
-                        <Mass>2.11</Mass>
-                        <RangedWeapon_Cooldown>1.71</RangedWeapon_Cooldown>
-                        <SightsEfficiency>175.50</SightsEfficiency>
-                        <ShotSpread>0.03</ShotSpread>
-                        <SwayFactor>1.49</SwayFactor>
-                        <Bulk>2.77</Bulk>
-                        <WorkToMake>3240000</WorkToMake>
+                        <Mass>4.096</Mass>
+                        <RangedWeapon_Cooldown>0.215</RangedWeapon_Cooldown>
+                        <SightsEfficiency>4.4928</SightsEfficiency>
+                        <ShotSpread>0.0256</ShotSpread>
+                        <SwayFactor>1.152</SwayFactor>
+                        <Bulk>7.424</Bulk>
+                        <WorkToMake>84672</WorkToMake>
                     </statBases>
                     <costList>
-                        <BOR_Tenebrite>132</BOR_Tenebrite>
-                        <BOR_ComponentIII>9</BOR_ComponentIII>
-                        <BOR_Neutronium>165</BOR_Neutronium>
+                        <BOR_Tenebrite>120</BOR_Tenebrite>
+                        <BOR_ComponentIII>8</BOR_ComponentIII>
+                        <BOR_Neutronium>150</BOR_Neutronium>
                     </costList>
                     <Properties>
-                        <recoilAmount>0.70</recoilAmount>
+                        <recoilAmount>0.768</recoilAmount>
                         <verbClass>CombatExtended.Verb_ShootCE</verbClass>
                         <hasStandardCommand>true</hasStandardCommand>
-                        <defaultProjectile>BOR_Bullet_Charged_III_Heavy_N</defaultProjectile>
-                        <warmupTime>0</warmupTime>
-                        <range>4388</range>
+                        <defaultProjectile>BOR_Bullet_Gen3Rifle_N</defaultProjectile>
+                        <warmupTime>0.8192</warmupTime>
+                        <range>129.6</range>
                         <soundCast>ChargeLance_Fire</soundCast>
                         <soundCastTail>GunTail_Heavy</soundCastTail>
                         <muzzleFlashScale>9</muzzleFlashScale>
                     </Properties>
                     <AmmoUser>
                         <magazineSize>5</magazineSize>
-                        <reloadTime>6</reloadTime>
-                        <ammoSet>BOR_AmmoSet_Gen3_lmg</ammoSet>
+                        <reloadTime>5</reloadTime>
+                        <ammoSet>BOR_AmmoSet_Gen3_rifle</ammoSet>
                     </AmmoUser>
                     <FireModes>
                         <aiAimMode>AimedShot</aiAimMode>
@@ -167,35 +209,36 @@
                 <li Class="CombatExtended.PatchOperationMakeGunCECompatible">
                     <defName>BOR_Gun_ChainShotgun_TIII</defName>
                     <statBases>
-                        <Mass>0.67</Mass>
-                        <RangedWeapon_Cooldown>1.10</RangedWeapon_Cooldown>
-                        <SightsEfficiency>68</SightsEfficiency>
-                        <ShotSpread>0.15</ShotSpread>
-                        <SwayFactor>1.07</SwayFactor>
-                        <Bulk>1.43</Bulk>
-                        <WorkToMake>1458000</WorkToMake>
+                        <Mass>2.2272</Mass>
+                        <RangedWeapon_Cooldown>0.18432</RangedWeapon_Cooldown>
+                        <SightsEfficiency>1.728</SightsEfficiency>
+                        <ShotSpread>0.107</ShotSpread>
+                        <SwayFactor>0.64</SwayFactor>
+                        <Bulk>3.072</Bulk>
+                        <WorkToMake>79488</WorkToMake>
                     </statBases>
                     <costList>
-                        <BOR_Neutronium>275</BOR_Neutronium>
-                        <BOR_Tenebrite>61</BOR_Tenebrite>
-                        <BOR_ComponentIII>6</BOR_ComponentIII>
+                        <BOR_Neutronium>250</BOR_Neutronium>
+                        <BOR_Tenebrite>55</BOR_Tenebrite>
+                        <BOR_ComponentIII>5</BOR_ComponentIII>
                     </costList>
                     <Properties>
-                        <recoilAmount>0.67</recoilAmount>
+                        <recoilAmount>1.536</recoilAmount>
                         <verbClass>CombatExtended.Verb_ShootCE</verbClass>
                         <hasStandardCommand>true</hasStandardCommand>
-                        <defaultProjectile>BOR_Bullet_Charged_III_Shotgun_N</defaultProjectile>
-                        <warmupTime>0.13</warmupTime>
-                        <range>1080</range>
+                        <defaultProjectile>BOR_Bullet_Gen3Shotgun_N</defaultProjectile>
+                        <warmupTime>0.256</warmupTime>
+                        <range>34.56</range>
+                        <burstShotCount>3</burstShotCount>
                         <soundCast>ChargeLance_Fire</soundCast>
                         <soundCastTail>GunTail_Medium</soundCastTail>
                         <muzzleFlashScale>9</muzzleFlashScale>
                         <recoilPattern>Regular</recoilPattern>
                     </Properties>
                     <AmmoUser>
-                        <magazineSize>7</magazineSize>
-                        <reloadOneAtATime>true</reloadOneAtATime>
-                        <reloadTime>0.94</reloadTime>
+                        <magazineSize>45</magazineSize>
+                        <reloadOneAtATime>false</reloadOneAtATime>
+                        <reloadTime>0.85</reloadTime>
                         <ammoSet>BOR_AmmoSet_Gen3_shotgun</ammoSet>
                     </AmmoUser>
                     <FireModes>
@@ -210,34 +253,37 @@
                 <li Class="CombatExtended.PatchOperationMakeGunCECompatible">
                     <defName>BOR_Gun_LMG_TIII</defName>
                     <statBases>
-                        <Mass>3.80</Mass>
-                        <RangedWeapon_Cooldown>0.39</RangedWeapon_Cooldown>
-                        <SightsEfficiency>68</SightsEfficiency>
-                        <ShotSpread>0.07</ShotSpread>
-                        <SwayFactor>3.54</SwayFactor>
-                        <Bulk>3.15</Bulk>
-                        <WorkToMake>4860000</WorkToMake>
+                        <Mass>8.192</Mass>
+                        <RangedWeapon_Cooldown>0.184</RangedWeapon_Cooldown>
+                        <SightsEfficiency>1.9</SightsEfficiency>
+                        <ShotSpread>0.045</ShotSpread>
+                        <SwayFactor>1.352</SwayFactor>
+                        <Bulk>5.325</Bulk>
+                        <WorkToMake>1296000</WorkToMake>
                     </statBases>
                     <costList>
-                        <BOR_Tenebrite>187</BOR_Tenebrite>
-                        <BOR_ComponentIII>22</BOR_ComponentIII>
+                        <BOR_Tenebrite>136</BOR_Tenebrite>
+                        <BOR_ComponentIII>16</BOR_ComponentIII>
                     </costList>
                     <Properties>
-                        <recoilAmount>0.39</recoilAmount>
+                        <recoilAmount>0.000512</recoilAmount>
                         <verbClass>CombatExtended.Verb_ShootCE</verbClass>
                         <hasStandardCommand>true</hasStandardCommand>
-                        <defaultProjectile>BOR_Bullet_Charged_III_Heavy_N</defaultProjectile>
-                        <warmupTime>0.35</warmupTime>
-                        <burstShotCount>20</burstShotCount>
-                        <ticksBetweenBurstShots>6</ticksBetweenBurstShots>
-                        <range>4185</range>
+                        <defaultProjectile>BOR_Bullet_Gen3Heavy_N</defaultProjectile>
+                        <warmupTime>1.024</warmupTime>
+                        <burstShotCount>250</burstShotCount>
+                        <ticksBetweenBurstShots>4</ticksBetweenBurstShots>
+                        <range>129.6</range>
                         <soundCast>ChargeLance_Fire</soundCast>
                         <soundCastTail>GunTail_Heavy</soundCastTail>
                         <muzzleFlashScale>9</muzzleFlashScale>
+                        <targetParams>
+                            <canTargetLocations>true</canTargetLocations>
+                        </targetParams>
                     </Properties>
                     <AmmoUser>
-                        <magazineSize>60</magazineSize>
-                        <reloadTime>6</reloadTime>
+                        <magazineSize>1000</magazineSize>
+                        <reloadTime>3.072</reloadTime>
                         <ammoSet>BOR_AmmoSet_Gen3_lmg</ammoSet>
                     </AmmoUser>
                     <FireModes>
@@ -256,32 +302,32 @@
                 <li Class="CombatExtended.PatchOperationMakeGunCECompatible">
                     <defName>BOR_Gun_Autopistol_TIII</defName>
                     <statBases>
-                        <Mass>0.41</Mass>
-                        <RangedWeapon_Cooldown>0.66</RangedWeapon_Cooldown>
-                        <SightsEfficiency>47.25</SightsEfficiency>
-                        <ShotSpread>0.22</ShotSpread>
-                        <SwayFactor>1.54</SwayFactor>
-                        <Bulk>0.63</Bulk>
-                        <WorkToMake>648000</WorkToMake>
+                        <Mass>0.8</Mass>
+                        <RangedWeapon_Cooldown>0.384</RangedWeapon_Cooldown>
+                        <SightsEfficiency>1.3824</SightsEfficiency>
+                        <ShotSpread>0.115</ShotSpread>
+                        <SwayFactor>0.184</SwayFactor>
+                        <Bulk>1.237</Bulk>
+                        <WorkToMake>27648</WorkToMake>
                     </statBases>
                     <costList>
-                        <BOR_Tenebrite>44</BOR_Tenebrite>
+                        <BOR_Tenebrite>40</BOR_Tenebrite>
                         <BOR_ComponentIII>3</BOR_ComponentIII>
                     </costList>
                     <Properties>
-                        <recoilAmount>0.77</recoilAmount>
+                        <recoilAmount>1.536</recoilAmount>
                         <verbClass>CombatExtended.Verb_ShootCE</verbClass>
                         <hasStandardCommand>true</hasStandardCommand>
-                        <defaultProjectile>BOR_Bullet_Charged_III_Pistol_N</defaultProjectile>
-                        <warmupTime>0.20</warmupTime>
-                        <range>1013</range>
+                        <defaultProjectile>BOR_Bullet_Gen3Pistol_N</defaultProjectile>
+                        <warmupTime>0.256</warmupTime>
+                        <range>20.736</range>
                         <soundCast>Shot_ChargeRifle</soundCast>
                         <soundCastTail>GunTail_Light</soundCastTail>
                         <muzzleFlashScale>9</muzzleFlashScale>
                     </Properties>
                     <AmmoUser>
-                        <magazineSize>5</magazineSize>
-                        <reloadTime>5.06</reloadTime>
+                        <magazineSize>15</magazineSize>
+                        <reloadTime>2</reloadTime>
                         <ammoSet>BOR_AmmoSet_Gen3_pistol</ammoSet>
                     </AmmoUser>
                     <FireModes>

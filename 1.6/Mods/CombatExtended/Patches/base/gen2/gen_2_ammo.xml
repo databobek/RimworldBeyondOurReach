@@ -7,37 +7,938 @@
 			<xpath>Defs</xpath>
 			<value>
 
+				<!-- ==================== AmmoSets ==================== -->
+
 				<CombatExtended.AmmoSetDef>
-					<defName>BOR_AmmoSet_Autocannon_pistol</defName>
-					<label>Gen2 autocannon shells pistol</label>
+					<defName>BOR_AmmoSet_Gen2_Rifle</defName>
+					<label>20.5×95mm QA</label>
 					<ammoTypes>
-						<BOR_Ammo_Autocannon_Nc>BOR_Pistol_Bullet_Autocannon_Nc</BOR_Ammo_Autocannon_Nc>
-						<BOR_Ammo_Autocannon_Ni>BOR_Pistol_Bullet_Autocannon_Ni</BOR_Ammo_Autocannon_Ni>
-						<BOR_Ammo_Autocannon_QaP>BOR_Pistol_Bullet_Autocannon_QaP</BOR_Ammo_Autocannon_QaP>
-						<BOR_Ammo_Autocannon_TC>BOR_Pistol_Bullet_Autocannon_TC</BOR_Ammo_Autocannon_TC>
+						<BOR_Ammo_Gen2Rifle_QaP>BOR_Bullet_Gen2Rifle_QaP</BOR_Ammo_Gen2Rifle_QaP>
+						<BOR_Ammo_Gen2Rifle_Nc>BOR_Bullet_Gen2Rifle_Nc</BOR_Ammo_Gen2Rifle_Nc>
+						<BOR_Ammo_Gen2Rifle_Ni>BOR_Bullet_Gen2Rifle_Ni</BOR_Ammo_Gen2Rifle_Ni>
+						<BOR_Ammo_Gen2Rifle_TC>BOR_Bullet_Gen2Rifle_TC</BOR_Ammo_Gen2Rifle_TC>
 					</ammoTypes>
 				</CombatExtended.AmmoSetDef>
 
 				<CombatExtended.AmmoSetDef>
-					<defName>BOR_AmmoSet_Autocannon_shotgun</defName>
-					<label>Gen2 autocannon shells shotgun</label>
+					<defName>BOR_AmmoSet_Gen2_Heavy</defName>
+					<label>26.3×138mm QA</label>
 					<ammoTypes>
-						<BOR_Ammo_Autocannon_Nc>BOR_Shotgun_Bullet_Autocannon_N</BOR_Ammo_Autocannon_Nc>
-						<BOR_Ammo_Autocannon_Ni>BOR_Shotgun_Bullet_Autocannon_Ion_N</BOR_Ammo_Autocannon_Ni>
-						<BOR_Ammo_Autocannon_TC>BOR_Shotgun_Bullet_Autocannon_Slug_N</BOR_Ammo_Autocannon_TC>
+						<BOR_Ammo_Gen2Heavy_QaP>BOR_Bullet_Gen2Rifle_QaP</BOR_Ammo_Gen2Heavy_QaP>
+						<BOR_Ammo_Gen2Heavy_Nc>BOR_Bullet_Gen2Rifle_Nc</BOR_Ammo_Gen2Heavy_Nc>
+						<BOR_Ammo_Gen2Heavy_Ni>BOR_Bullet_Gen2Rifle_Ni</BOR_Ammo_Gen2Heavy_Ni>
+						<BOR_Ammo_Gen2Heavy_TC>BOR_Bullet_Gen2Rifle_TC</BOR_Ammo_Gen2Heavy_TC>
 					</ammoTypes>
 				</CombatExtended.AmmoSetDef>
 
 				<CombatExtended.AmmoSetDef>
-					<defName>BOR_AmmoSet_Autocannon_rifle</defName>
-					<label>Gen2 autocannon shells rifle</label>
+					<defName>BOR_AmmoSet_Gen2_Pistol</defName>
+					<label>11.6×45mm QA</label>
 					<ammoTypes>
-						<BOR_Ammo_Autocannon_Nc>BOR_Rifle_Bullet_Autocannon_Nc</BOR_Ammo_Autocannon_Nc>
-						<BOR_Ammo_Autocannon_Ni>BOR_Rifle_Bullet_Autocannon_Ni</BOR_Ammo_Autocannon_Ni>
-						<BOR_Ammo_Autocannon_QaP>BOR_Rifle_Bullet_Autocannon_QaP</BOR_Ammo_Autocannon_QaP>
-						<BOR_Ammo_Autocannon_TC>BOR_Rifle_Bullet_Autocannon_TC</BOR_Ammo_Autocannon_TC>
+						<BOR_Ammo_Gen2Pistol_QaP>BOR_Bullet_Gen2Pistol_QaP</BOR_Ammo_Gen2Pistol_QaP>
+						<BOR_Ammo_Gen2Pistol_Nc>BOR_Bullet_Gen2Pistol_Nc</BOR_Ammo_Gen2Pistol_Nc>
+						<BOR_Ammo_Gen2Pistol_Ni>BOR_Bullet_Gen2Pistol_Ni</BOR_Ammo_Gen2Pistol_Ni>
+						<BOR_Ammo_Gen2Pistol_TC>BOR_Bullet_Gen2Pistol_TC</BOR_Ammo_Gen2Pistol_TC>
 					</ammoTypes>
 				</CombatExtended.AmmoSetDef>
+
+				<CombatExtended.AmmoSetDef>
+					<defName>BOR_AmmoSet_Gen2_Shotgun</defName>
+					<label>21mm QA shell</label>
+					<ammoTypes>
+						<BOR_Ammo_Gen2Shotgun_Nc>BOR_Bullet_Gen2Shotgun_N</BOR_Ammo_Gen2Shotgun_Nc>
+						<BOR_Ammo_Gen2Shotgun_Ni>BOR_Bullet_Gen2Shotgun_Ion</BOR_Ammo_Gen2Shotgun_Ni>
+						<BOR_Ammo_Gen2Shotgun_TC>BOR_Bullet_Gen2Shotgun_Slug</BOR_Ammo_Gen2Shotgun_TC>
+					</ammoTypes>
+				</CombatExtended.AmmoSetDef>
+
+				<!-- ==================== Ammo Items: 20.5×95mm QA (Rifle) ==================== -->
+
+				<ThingDef Class="CombatExtended.AmmoDef" ParentName="AmmoAutocannonShellBase">
+					<defName>BOR_Ammo_Gen2Rifle_QaP</defName>
+					<label>20.5×95mm QA cartridge (QaP)</label>
+					<graphicData>
+						<texPath>Things/Ammo/STACK_RANGED/HighCaliber/AP</texPath>
+						<graphicClass>CombatExtended.Graphic_StackCountRanged</graphicClass>
+					</graphicData>
+					<statBases>
+						<MarketValue>1.50</MarketValue>
+						<RoyalFavorValue>0.00</RoyalFavorValue>
+					</statBases>
+					<ammoClass>BOR_QaP_AmmoClass</ammoClass>
+					<cookOffProjectile>BOR_Bullet_Gen2Rifle_QaP</cookOffProjectile>
+					<generateAllowChance>0.10</generateAllowChance>
+					<generateCommonality>0.1</generateCommonality>
+					<tradeTags>
+						<li>BOR_Tech_II</li>
+					</tradeTags>
+				</ThingDef>
+
+				<ThingDef Class="CombatExtended.AmmoDef" ParentName="AmmoAutocannonShellBase">
+					<defName>BOR_Ammo_Gen2Rifle_Nc</defName>
+					<label>20.5×95mm QA cartridge (Nc)</label>
+					<graphicData>
+						<texPath>Things/Ammo/STACK_RANGED/HighCaliber/FMJ</texPath>
+						<graphicClass>CombatExtended.Graphic_StackCountRanged</graphicClass>
+					</graphicData>
+					<statBases>
+						<MarketValue>1.50</MarketValue>
+						<RoyalFavorValue>0.00</RoyalFavorValue>
+					</statBases>
+					<ammoClass>BOR_Nc_AmmoClass</ammoClass>
+					<cookOffProjectile>BOR_Bullet_Gen2Rifle_Nc</cookOffProjectile>
+					<generateAllowChance>0.10</generateAllowChance>
+					<generateCommonality>0.1</generateCommonality>
+					<tradeTags>
+						<li>BOR_Tech_II</li>
+					</tradeTags>
+				</ThingDef>
+
+				<ThingDef Class="CombatExtended.AmmoDef" ParentName="AmmoAutocannonShellBase">
+					<defName>BOR_Ammo_Gen2Rifle_Ni</defName>
+					<label>20.5×95mm QA cartridge (Ni)</label>
+					<graphicData>
+						<texPath>Things/Ammo/STACK_RANGED/HighCaliber/HE</texPath>
+						<graphicClass>CombatExtended.Graphic_StackCountRanged</graphicClass>
+					</graphicData>
+					<statBases>
+						<MarketValue>2.20</MarketValue>
+						<RoyalFavorValue>0.00</RoyalFavorValue>
+					</statBases>
+					<ammoClass>BOR_Ni_AmmoClass</ammoClass>
+					<cookOffProjectile>BOR_Bullet_Gen2Rifle_Ni</cookOffProjectile>
+					<generateAllowChance>0.10</generateAllowChance>
+					<generateCommonality>0.1</generateCommonality>
+					<tradeTags>
+						<li>BOR_Tech_II</li>
+					</tradeTags>
+				</ThingDef>
+
+				<ThingDef Class="CombatExtended.AmmoDef" ParentName="AmmoAutocannonShellBase">
+					<defName>BOR_Ammo_Gen2Rifle_TC</defName>
+					<label>20.5×95mm QA cartridge (TC)</label>
+					<graphicData>
+						<texPath>Things/Ammo/STACK_RANGED/HighCaliber/Sabot</texPath>
+						<graphicClass>CombatExtended.Graphic_StackCountRanged</graphicClass>
+					</graphicData>
+					<statBases>
+						<Mass>0.20</Mass>
+						<MarketValue>1.80</MarketValue>
+						<RoyalFavorValue>0.00</RoyalFavorValue>
+					</statBases>
+					<ammoClass>BOR_TC_AmmoClass</ammoClass>
+					<cookOffProjectile>BOR_Bullet_Gen2Rifle_TC</cookOffProjectile>
+					<generateAllowChance>0.10</generateAllowChance>
+					<generateCommonality>0.1</generateCommonality>
+					<tradeTags>
+						<li>BOR_Tech_III</li>
+					</tradeTags>
+				</ThingDef>
+
+				<!-- ==================== Ammo Items: 26.3×138mm QA (Heavy — LMG + Sniper) ==================== -->
+
+				<ThingDef Class="CombatExtended.AmmoDef" ParentName="AmmoAutocannonShellBase">
+					<defName>BOR_Ammo_Gen2Heavy_QaP</defName>
+					<label>26.3×138mm QA cartridge (QaP)</label>
+					<graphicData>
+						<texPath>Things/Ammo/STACK_RANGED/HighCaliber/AP</texPath>
+						<graphicClass>CombatExtended.Graphic_StackCountRanged</graphicClass>
+					</graphicData>
+					<statBases>
+						<Mass>0.26</Mass>
+						<Bulk>0.32</Bulk>
+						<MarketValue>1.90</MarketValue>
+						<RoyalFavorValue>0.00</RoyalFavorValue>
+					</statBases>
+					<ammoClass>BOR_QaP_AmmoClass</ammoClass>
+					<cookOffProjectile>BOR_Bullet_Gen2Rifle_QaP</cookOffProjectile>
+					<generateAllowChance>0.10</generateAllowChance>
+					<generateCommonality>0.1</generateCommonality>
+					<tradeTags>
+						<li>BOR_Tech_II</li>
+					</tradeTags>
+				</ThingDef>
+
+				<ThingDef Class="CombatExtended.AmmoDef" ParentName="AmmoAutocannonShellBase">
+					<defName>BOR_Ammo_Gen2Heavy_Nc</defName>
+					<label>26.3×138mm QA cartridge (Nc)</label>
+					<graphicData>
+						<texPath>Things/Ammo/STACK_RANGED/HighCaliber/FMJ</texPath>
+						<graphicClass>CombatExtended.Graphic_StackCountRanged</graphicClass>
+					</graphicData>
+					<statBases>
+						<Mass>0.26</Mass>
+						<Bulk>0.32</Bulk>
+						<MarketValue>1.90</MarketValue>
+						<RoyalFavorValue>0.00</RoyalFavorValue>
+					</statBases>
+					<ammoClass>BOR_Nc_AmmoClass</ammoClass>
+					<cookOffProjectile>BOR_Bullet_Gen2Rifle_Nc</cookOffProjectile>
+					<generateAllowChance>0.10</generateAllowChance>
+					<generateCommonality>0.1</generateCommonality>
+					<tradeTags>
+						<li>BOR_Tech_II</li>
+					</tradeTags>
+				</ThingDef>
+
+				<ThingDef Class="CombatExtended.AmmoDef" ParentName="AmmoAutocannonShellBase">
+					<defName>BOR_Ammo_Gen2Heavy_Ni</defName>
+					<label>26.3×138mm QA cartridge (Ni)</label>
+					<graphicData>
+						<texPath>Things/Ammo/STACK_RANGED/HighCaliber/HE</texPath>
+						<graphicClass>CombatExtended.Graphic_StackCountRanged</graphicClass>
+					</graphicData>
+					<statBases>
+						<Mass>0.26</Mass>
+						<Bulk>0.32</Bulk>
+						<MarketValue>2.80</MarketValue>
+						<RoyalFavorValue>0.00</RoyalFavorValue>
+					</statBases>
+					<ammoClass>BOR_Ni_AmmoClass</ammoClass>
+					<cookOffProjectile>BOR_Bullet_Gen2Rifle_Ni</cookOffProjectile>
+					<generateAllowChance>0.10</generateAllowChance>
+					<generateCommonality>0.1</generateCommonality>
+					<tradeTags>
+						<li>BOR_Tech_II</li>
+					</tradeTags>
+				</ThingDef>
+
+				<ThingDef Class="CombatExtended.AmmoDef" ParentName="AmmoAutocannonShellBase">
+					<defName>BOR_Ammo_Gen2Heavy_TC</defName>
+					<label>26.3×138mm QA cartridge (TC)</label>
+					<graphicData>
+						<texPath>Things/Ammo/STACK_RANGED/HighCaliber/Sabot</texPath>
+						<graphicClass>CombatExtended.Graphic_StackCountRanged</graphicClass>
+					</graphicData>
+					<statBases>
+						<Mass>0.28</Mass>
+						<Bulk>0.35</Bulk>
+						<MarketValue>2.30</MarketValue>
+						<RoyalFavorValue>0.00</RoyalFavorValue>
+					</statBases>
+					<ammoClass>BOR_TC_AmmoClass</ammoClass>
+					<cookOffProjectile>BOR_Bullet_Gen2Rifle_TC</cookOffProjectile>
+					<generateAllowChance>0.10</generateAllowChance>
+					<generateCommonality>0.1</generateCommonality>
+					<tradeTags>
+						<li>BOR_Tech_III</li>
+					</tradeTags>
+				</ThingDef>
+
+				<!-- ==================== Ammo Items: 11.6×45mm QA (Pistol) ==================== -->
+
+				<ThingDef Class="CombatExtended.AmmoDef" ParentName="AmmoAutocannonShellBase">
+					<defName>BOR_Ammo_Gen2Pistol_QaP</defName>
+					<label>11.6×45mm QA cartridge (QaP)</label>
+					<graphicData>
+						<texPath>Things/Ammo/STACK_RANGED/HighCaliber/AP</texPath>
+						<graphicClass>CombatExtended.Graphic_StackCountRanged</graphicClass>
+					</graphicData>
+					<statBases>
+						<Mass>0.08</Mass>
+						<Bulk>0.10</Bulk>
+						<MarketValue>0.80</MarketValue>
+						<RoyalFavorValue>0.00</RoyalFavorValue>
+					</statBases>
+					<ammoClass>BOR_QaP_AmmoClass</ammoClass>
+					<cookOffProjectile>BOR_Bullet_Gen2Pistol_QaP</cookOffProjectile>
+					<generateAllowChance>0.10</generateAllowChance>
+					<generateCommonality>0.1</generateCommonality>
+					<tradeTags>
+						<li>BOR_Tech_II</li>
+					</tradeTags>
+				</ThingDef>
+
+				<ThingDef Class="CombatExtended.AmmoDef" ParentName="AmmoAutocannonShellBase">
+					<defName>BOR_Ammo_Gen2Pistol_Nc</defName>
+					<label>11.6×45mm QA cartridge (Nc)</label>
+					<graphicData>
+						<texPath>Things/Ammo/STACK_RANGED/HighCaliber/FMJ</texPath>
+						<graphicClass>CombatExtended.Graphic_StackCountRanged</graphicClass>
+					</graphicData>
+					<statBases>
+						<Mass>0.08</Mass>
+						<Bulk>0.10</Bulk>
+						<MarketValue>0.80</MarketValue>
+						<RoyalFavorValue>0.00</RoyalFavorValue>
+					</statBases>
+					<ammoClass>BOR_Nc_AmmoClass</ammoClass>
+					<cookOffProjectile>BOR_Bullet_Gen2Pistol_Nc</cookOffProjectile>
+					<generateAllowChance>0.10</generateAllowChance>
+					<generateCommonality>0.1</generateCommonality>
+					<tradeTags>
+						<li>BOR_Tech_II</li>
+					</tradeTags>
+				</ThingDef>
+
+				<ThingDef Class="CombatExtended.AmmoDef" ParentName="AmmoAutocannonShellBase">
+					<defName>BOR_Ammo_Gen2Pistol_Ni</defName>
+					<label>11.6×45mm QA cartridge (Ni)</label>
+					<graphicData>
+						<texPath>Things/Ammo/STACK_RANGED/HighCaliber/HE</texPath>
+						<graphicClass>CombatExtended.Graphic_StackCountRanged</graphicClass>
+					</graphicData>
+					<statBases>
+						<Mass>0.08</Mass>
+						<Bulk>0.10</Bulk>
+						<MarketValue>1.20</MarketValue>
+						<RoyalFavorValue>0.00</RoyalFavorValue>
+					</statBases>
+					<ammoClass>BOR_Ni_AmmoClass</ammoClass>
+					<cookOffProjectile>BOR_Bullet_Gen2Pistol_Ni</cookOffProjectile>
+					<generateAllowChance>0.10</generateAllowChance>
+					<generateCommonality>0.1</generateCommonality>
+					<tradeTags>
+						<li>BOR_Tech_II</li>
+					</tradeTags>
+				</ThingDef>
+
+				<ThingDef Class="CombatExtended.AmmoDef" ParentName="AmmoAutocannonShellBase">
+					<defName>BOR_Ammo_Gen2Pistol_TC</defName>
+					<label>11.6×45mm QA cartridge (TC)</label>
+					<graphicData>
+						<texPath>Things/Ammo/STACK_RANGED/HighCaliber/Sabot</texPath>
+						<graphicClass>CombatExtended.Graphic_StackCountRanged</graphicClass>
+					</graphicData>
+					<statBases>
+						<Mass>0.09</Mass>
+						<Bulk>0.11</Bulk>
+						<MarketValue>1.00</MarketValue>
+						<RoyalFavorValue>0.00</RoyalFavorValue>
+					</statBases>
+					<ammoClass>BOR_TC_AmmoClass</ammoClass>
+					<cookOffProjectile>BOR_Bullet_Gen2Pistol_TC</cookOffProjectile>
+					<generateAllowChance>0.10</generateAllowChance>
+					<generateCommonality>0.1</generateCommonality>
+					<tradeTags>
+						<li>BOR_Tech_III</li>
+					</tradeTags>
+				</ThingDef>
+
+				<!-- ==================== Ammo Items: 21mm QA shell (Shotgun) ==================== -->
+
+				<ThingDef Class="CombatExtended.AmmoDef" ParentName="AmmoAutocannonShellBase">
+					<defName>BOR_Ammo_Gen2Shotgun_Nc</defName>
+					<label>21mm QA shell (Nc)</label>
+					<graphicData>
+						<texPath>Things/Ammo/STACK_RANGED/HighCaliber/FMJ</texPath>
+						<graphicClass>CombatExtended.Graphic_StackCountRanged</graphicClass>
+					</graphicData>
+					<statBases>
+						<Mass>0.12</Mass>
+						<Bulk>0.15</Bulk>
+						<MarketValue>1.10</MarketValue>
+						<RoyalFavorValue>0.00</RoyalFavorValue>
+					</statBases>
+					<ammoClass>BOR_Nc_AmmoClass</ammoClass>
+					<cookOffProjectile>BOR_Bullet_Gen2Shotgun_N</cookOffProjectile>
+					<generateAllowChance>0.10</generateAllowChance>
+					<generateCommonality>0.1</generateCommonality>
+					<tradeTags>
+						<li>BOR_Tech_II</li>
+					</tradeTags>
+				</ThingDef>
+
+				<ThingDef Class="CombatExtended.AmmoDef" ParentName="AmmoAutocannonShellBase">
+					<defName>BOR_Ammo_Gen2Shotgun_Ni</defName>
+					<label>21mm QA shell (Ni)</label>
+					<graphicData>
+						<texPath>Things/Ammo/STACK_RANGED/HighCaliber/HE</texPath>
+						<graphicClass>CombatExtended.Graphic_StackCountRanged</graphicClass>
+					</graphicData>
+					<statBases>
+						<Mass>0.12</Mass>
+						<Bulk>0.15</Bulk>
+						<MarketValue>1.60</MarketValue>
+						<RoyalFavorValue>0.00</RoyalFavorValue>
+					</statBases>
+					<ammoClass>BOR_Ni_AmmoClass</ammoClass>
+					<cookOffProjectile>BOR_Bullet_Gen2Shotgun_Ion</cookOffProjectile>
+					<generateAllowChance>0.10</generateAllowChance>
+					<generateCommonality>0.1</generateCommonality>
+					<tradeTags>
+						<li>BOR_Tech_II</li>
+					</tradeTags>
+				</ThingDef>
+
+				<ThingDef Class="CombatExtended.AmmoDef" ParentName="AmmoAutocannonShellBase">
+					<defName>BOR_Ammo_Gen2Shotgun_TC</defName>
+					<label>21mm QA shell (TC)</label>
+					<graphicData>
+						<texPath>Things/Ammo/STACK_RANGED/HighCaliber/Sabot</texPath>
+						<graphicClass>CombatExtended.Graphic_StackCountRanged</graphicClass>
+					</graphicData>
+					<statBases>
+						<Mass>0.13</Mass>
+						<Bulk>0.16</Bulk>
+						<MarketValue>1.40</MarketValue>
+						<RoyalFavorValue>0.00</RoyalFavorValue>
+					</statBases>
+					<ammoClass>BOR_TC_AmmoClass</ammoClass>
+					<cookOffProjectile>BOR_Bullet_Gen2Shotgun_Slug</cookOffProjectile>
+					<generateAllowChance>0.10</generateAllowChance>
+					<generateCommonality>0.1</generateCommonality>
+					<tradeTags>
+						<li>BOR_Tech_III</li>
+					</tradeTags>
+				</ThingDef>
+
+				<!-- ==================== Recipes: 20.5×95mm QA Rifle ==================== -->
+
+				<RecipeDef ParentName="AmmoRecipeBase">
+					<defName>MakeBOR_Ammo_Gen2Rifle_QaP</defName>
+					<label>make 20.5×95mm QA cartridge (QaP) ×200</label>
+					<description>Craft 200 20.5×95mm QA cartridges (QaP).</description>
+					<jobString>Making 20.5×95mm QA cartridges (QaP).</jobString>
+					<researchPrerequisite>BOR_Research_Weapons_II</researchPrerequisite>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>BOR_QuasarAlloy</li>
+								</thingDefs>
+							</filter>
+							<count>104</count>
+						</li>
+					</ingredients>
+					<fixedIngredientFilter>
+						<thingDefs>
+							<li>BOR_QuasarAlloy</li>
+						</thingDefs>
+					</fixedIngredientFilter>
+					<products>
+						<BOR_Ammo_Gen2Rifle_QaP>200</BOR_Ammo_Gen2Rifle_QaP>
+					</products>
+					<workAmount>18000</workAmount>
+				</RecipeDef>
+
+				<RecipeDef ParentName="AdvancedAmmoRecipeBase">
+					<defName>MakeBOR_Ammo_Gen2Rifle_Nc</defName>
+					<label>make 20.5×95mm QA cartridge (Nc) ×200</label>
+					<description>Craft 200 20.5×95mm QA cartridges (Nc).</description>
+					<jobString>Making 20.5×95mm QA cartridges (Nc).</jobString>
+					<researchPrerequisite>BOR_Research_Weapons_II</researchPrerequisite>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>BOR_Sunsteel</li>
+								</thingDefs>
+							</filter>
+							<count>104</count>
+						</li>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>BOR_Neutronium</li>
+								</thingDefs>
+							</filter>
+							<count>100</count>
+						</li>
+					</ingredients>
+					<fixedIngredientFilter>
+						<thingDefs>
+							<li>BOR_Sunsteel</li>
+							<li>BOR_Neutronium</li>
+						</thingDefs>
+					</fixedIngredientFilter>
+					<products>
+						<BOR_Ammo_Gen2Rifle_Nc>200</BOR_Ammo_Gen2Rifle_Nc>
+					</products>
+					<workAmount>21000</workAmount>
+				</RecipeDef>
+
+				<RecipeDef ParentName="AdvancedAmmoRecipeBase">
+					<defName>MakeBOR_Ammo_Gen2Rifle_Ni</defName>
+					<label>make 20.5×95mm QA cartridge (Ni) ×200</label>
+					<description>Craft 200 20.5×95mm QA cartridges (Ni).</description>
+					<jobString>Making 20.5×95mm QA cartridges (Ni).</jobString>
+					<researchPrerequisite>BOR_Research_Weapons_II</researchPrerequisite>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>BOR_QuasarAlloy</li>
+								</thingDefs>
+							</filter>
+							<count>104</count>
+						</li>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>BOR_Neutronium</li>
+								</thingDefs>
+							</filter>
+							<count>190</count>
+						</li>
+					</ingredients>
+					<fixedIngredientFilter>
+						<thingDefs>
+							<li>BOR_QuasarAlloy</li>
+							<li>BOR_Neutronium</li>
+						</thingDefs>
+					</fixedIngredientFilter>
+					<products>
+						<BOR_Ammo_Gen2Rifle_Ni>200</BOR_Ammo_Gen2Rifle_Ni>
+					</products>
+					<workAmount>24000</workAmount>
+				</RecipeDef>
+
+				<RecipeDef ParentName="AdvancedAmmoRecipeBase">
+					<defName>MakeBOR_Ammo_Gen2Rifle_TC</defName>
+					<label>make 20.5×95mm QA cartridge (TC) ×200</label>
+					<description>Craft 200 20.5×95mm QA cartridges (TC).</description>
+					<jobString>Making 20.5×95mm QA cartridges (TC).</jobString>
+					<researchPrerequisite>BOR_Research_Weapons_II</researchPrerequisite>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>BOR_QuasarAlloy</li>
+								</thingDefs>
+							</filter>
+							<count>64</count>
+						</li>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>BOR_Tenebrite</li>
+								</thingDefs>
+							</filter>
+							<count>12</count>
+						</li>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>BOR_Neutronium</li>
+								</thingDefs>
+							</filter>
+							<count>120</count>
+						</li>
+					</ingredients>
+					<fixedIngredientFilter>
+						<thingDefs>
+							<li>BOR_QuasarAlloy</li>
+							<li>BOR_Tenebrite</li>
+							<li>BOR_Neutronium</li>
+						</thingDefs>
+					</fixedIngredientFilter>
+					<products>
+						<BOR_Ammo_Gen2Rifle_TC>200</BOR_Ammo_Gen2Rifle_TC>
+					</products>
+					<workAmount>20100</workAmount>
+				</RecipeDef>
+
+				<!-- ==================== Recipes: 26.3×138mm QA Heavy ==================== -->
+
+				<RecipeDef ParentName="AmmoRecipeBase">
+					<defName>MakeBOR_Ammo_Gen2Heavy_QaP</defName>
+					<label>make 26.3×138mm QA cartridge (QaP) ×200</label>
+					<description>Craft 200 26.3×138mm QA cartridges (QaP).</description>
+					<jobString>Making 26.3×138mm QA cartridges (QaP).</jobString>
+					<researchPrerequisite>BOR_Research_Weapons_II</researchPrerequisite>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>BOR_QuasarAlloy</li>
+								</thingDefs>
+							</filter>
+							<count>135</count>
+						</li>
+					</ingredients>
+					<fixedIngredientFilter>
+						<thingDefs>
+							<li>BOR_QuasarAlloy</li>
+						</thingDefs>
+					</fixedIngredientFilter>
+					<products>
+						<BOR_Ammo_Gen2Heavy_QaP>200</BOR_Ammo_Gen2Heavy_QaP>
+					</products>
+					<workAmount>21600</workAmount>
+				</RecipeDef>
+
+				<RecipeDef ParentName="AdvancedAmmoRecipeBase">
+					<defName>MakeBOR_Ammo_Gen2Heavy_Nc</defName>
+					<label>make 26.3×138mm QA cartridge (Nc) ×200</label>
+					<description>Craft 200 26.3×138mm QA cartridges (Nc).</description>
+					<jobString>Making 26.3×138mm QA cartridges (Nc).</jobString>
+					<researchPrerequisite>BOR_Research_Weapons_II</researchPrerequisite>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>BOR_Sunsteel</li>
+								</thingDefs>
+							</filter>
+							<count>135</count>
+						</li>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>BOR_Neutronium</li>
+								</thingDefs>
+							</filter>
+							<count>130</count>
+						</li>
+					</ingredients>
+					<fixedIngredientFilter>
+						<thingDefs>
+							<li>BOR_Sunsteel</li>
+							<li>BOR_Neutronium</li>
+						</thingDefs>
+					</fixedIngredientFilter>
+					<products>
+						<BOR_Ammo_Gen2Heavy_Nc>200</BOR_Ammo_Gen2Heavy_Nc>
+					</products>
+					<workAmount>25200</workAmount>
+				</RecipeDef>
+
+				<RecipeDef ParentName="AdvancedAmmoRecipeBase">
+					<defName>MakeBOR_Ammo_Gen2Heavy_Ni</defName>
+					<label>make 26.3×138mm QA cartridge (Ni) ×200</label>
+					<description>Craft 200 26.3×138mm QA cartridges (Ni).</description>
+					<jobString>Making 26.3×138mm QA cartridges (Ni).</jobString>
+					<researchPrerequisite>BOR_Research_Weapons_II</researchPrerequisite>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>BOR_QuasarAlloy</li>
+								</thingDefs>
+							</filter>
+							<count>135</count>
+						</li>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>BOR_Neutronium</li>
+								</thingDefs>
+							</filter>
+							<count>250</count>
+						</li>
+					</ingredients>
+					<fixedIngredientFilter>
+						<thingDefs>
+							<li>BOR_QuasarAlloy</li>
+							<li>BOR_Neutronium</li>
+						</thingDefs>
+					</fixedIngredientFilter>
+					<products>
+						<BOR_Ammo_Gen2Heavy_Ni>200</BOR_Ammo_Gen2Heavy_Ni>
+					</products>
+					<workAmount>28800</workAmount>
+				</RecipeDef>
+
+				<RecipeDef ParentName="AdvancedAmmoRecipeBase">
+					<defName>MakeBOR_Ammo_Gen2Heavy_TC</defName>
+					<label>make 26.3×138mm QA cartridge (TC) ×200</label>
+					<description>Craft 200 26.3×138mm QA cartridges (TC).</description>
+					<jobString>Making 26.3×138mm QA cartridges (TC).</jobString>
+					<researchPrerequisite>BOR_Research_Weapons_II</researchPrerequisite>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>BOR_QuasarAlloy</li>
+								</thingDefs>
+							</filter>
+							<count>83</count>
+						</li>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>BOR_Tenebrite</li>
+								</thingDefs>
+							</filter>
+							<count>16</count>
+						</li>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>BOR_Neutronium</li>
+								</thingDefs>
+							</filter>
+							<count>156</count>
+						</li>
+					</ingredients>
+					<fixedIngredientFilter>
+						<thingDefs>
+							<li>BOR_QuasarAlloy</li>
+							<li>BOR_Tenebrite</li>
+							<li>BOR_Neutronium</li>
+						</thingDefs>
+					</fixedIngredientFilter>
+					<products>
+						<BOR_Ammo_Gen2Heavy_TC>200</BOR_Ammo_Gen2Heavy_TC>
+					</products>
+					<workAmount>24120</workAmount>
+				</RecipeDef>
+
+				<!-- ==================== Recipes: 11.6×45mm QA Pistol ==================== -->
+
+				<RecipeDef ParentName="AmmoRecipeBase">
+					<defName>MakeBOR_Ammo_Gen2Pistol_QaP</defName>
+					<label>make 11.6×45mm QA cartridge (QaP) ×200</label>
+					<description>Craft 200 11.6×45mm QA cartridges (QaP).</description>
+					<jobString>Making 11.6×45mm QA cartridges (QaP).</jobString>
+					<researchPrerequisite>BOR_Research_Weapons_II</researchPrerequisite>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>BOR_QuasarAlloy</li>
+								</thingDefs>
+							</filter>
+							<count>52</count>
+						</li>
+					</ingredients>
+					<fixedIngredientFilter>
+						<thingDefs>
+							<li>BOR_QuasarAlloy</li>
+						</thingDefs>
+					</fixedIngredientFilter>
+					<products>
+						<BOR_Ammo_Gen2Pistol_QaP>200</BOR_Ammo_Gen2Pistol_QaP>
+					</products>
+					<workAmount>9000</workAmount>
+				</RecipeDef>
+
+				<RecipeDef ParentName="AdvancedAmmoRecipeBase">
+					<defName>MakeBOR_Ammo_Gen2Pistol_Nc</defName>
+					<label>make 11.6×45mm QA cartridge (Nc) ×200</label>
+					<description>Craft 200 11.6×45mm QA cartridges (Nc).</description>
+					<jobString>Making 11.6×45mm QA cartridges (Nc).</jobString>
+					<researchPrerequisite>BOR_Research_Weapons_II</researchPrerequisite>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>BOR_Sunsteel</li>
+								</thingDefs>
+							</filter>
+							<count>52</count>
+						</li>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>BOR_Neutronium</li>
+								</thingDefs>
+							</filter>
+							<count>50</count>
+						</li>
+					</ingredients>
+					<fixedIngredientFilter>
+						<thingDefs>
+							<li>BOR_Sunsteel</li>
+							<li>BOR_Neutronium</li>
+						</thingDefs>
+					</fixedIngredientFilter>
+					<products>
+						<BOR_Ammo_Gen2Pistol_Nc>200</BOR_Ammo_Gen2Pistol_Nc>
+					</products>
+					<workAmount>10500</workAmount>
+				</RecipeDef>
+
+				<RecipeDef ParentName="AdvancedAmmoRecipeBase">
+					<defName>MakeBOR_Ammo_Gen2Pistol_Ni</defName>
+					<label>make 11.6×45mm QA cartridge (Ni) ×200</label>
+					<description>Craft 200 11.6×45mm QA cartridges (Ni).</description>
+					<jobString>Making 11.6×45mm QA cartridges (Ni).</jobString>
+					<researchPrerequisite>BOR_Research_Weapons_II</researchPrerequisite>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>BOR_QuasarAlloy</li>
+								</thingDefs>
+							</filter>
+							<count>52</count>
+						</li>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>BOR_Neutronium</li>
+								</thingDefs>
+							</filter>
+							<count>95</count>
+						</li>
+					</ingredients>
+					<fixedIngredientFilter>
+						<thingDefs>
+							<li>BOR_QuasarAlloy</li>
+							<li>BOR_Neutronium</li>
+						</thingDefs>
+					</fixedIngredientFilter>
+					<products>
+						<BOR_Ammo_Gen2Pistol_Ni>200</BOR_Ammo_Gen2Pistol_Ni>
+					</products>
+					<workAmount>12000</workAmount>
+				</RecipeDef>
+
+				<RecipeDef ParentName="AdvancedAmmoRecipeBase">
+					<defName>MakeBOR_Ammo_Gen2Pistol_TC</defName>
+					<label>make 11.6×45mm QA cartridge (TC) ×200</label>
+					<description>Craft 200 11.6×45mm QA cartridges (TC).</description>
+					<jobString>Making 11.6×45mm QA cartridges (TC).</jobString>
+					<researchPrerequisite>BOR_Research_Weapons_II</researchPrerequisite>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>BOR_QuasarAlloy</li>
+								</thingDefs>
+							</filter>
+							<count>32</count>
+						</li>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>BOR_Tenebrite</li>
+								</thingDefs>
+							</filter>
+							<count>6</count>
+						</li>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>BOR_Neutronium</li>
+								</thingDefs>
+							</filter>
+							<count>60</count>
+						</li>
+					</ingredients>
+					<fixedIngredientFilter>
+						<thingDefs>
+							<li>BOR_QuasarAlloy</li>
+							<li>BOR_Tenebrite</li>
+							<li>BOR_Neutronium</li>
+						</thingDefs>
+					</fixedIngredientFilter>
+					<products>
+						<BOR_Ammo_Gen2Pistol_TC>200</BOR_Ammo_Gen2Pistol_TC>
+					</products>
+					<workAmount>10050</workAmount>
+				</RecipeDef>
+
+				<!-- ==================== Recipes: 21mm QA Shotgun ==================== -->
+
+				<RecipeDef ParentName="AdvancedAmmoRecipeBase">
+					<defName>MakeBOR_Ammo_Gen2Shotgun_Nc</defName>
+					<label>make 21mm QA shell (Nc) ×200</label>
+					<description>Craft 200 21mm QA shells (Nc).</description>
+					<jobString>Making 21mm QA shells (Nc).</jobString>
+					<researchPrerequisite>BOR_Research_Weapons_II</researchPrerequisite>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>BOR_Sunsteel</li>
+								</thingDefs>
+							</filter>
+							<count>73</count>
+						</li>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>BOR_Neutronium</li>
+								</thingDefs>
+							</filter>
+							<count>70</count>
+						</li>
+					</ingredients>
+					<fixedIngredientFilter>
+						<thingDefs>
+							<li>BOR_Sunsteel</li>
+							<li>BOR_Neutronium</li>
+						</thingDefs>
+					</fixedIngredientFilter>
+					<products>
+						<BOR_Ammo_Gen2Shotgun_Nc>200</BOR_Ammo_Gen2Shotgun_Nc>
+					</products>
+					<workAmount>14700</workAmount>
+				</RecipeDef>
+
+				<RecipeDef ParentName="AdvancedAmmoRecipeBase">
+					<defName>MakeBOR_Ammo_Gen2Shotgun_Ni</defName>
+					<label>make 21mm QA shell (Ni) ×200</label>
+					<description>Craft 200 21mm QA shells (Ni).</description>
+					<jobString>Making 21mm QA shells (Ni).</jobString>
+					<researchPrerequisite>BOR_Research_Weapons_II</researchPrerequisite>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>BOR_QuasarAlloy</li>
+								</thingDefs>
+							</filter>
+							<count>73</count>
+						</li>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>BOR_Neutronium</li>
+								</thingDefs>
+							</filter>
+							<count>133</count>
+						</li>
+					</ingredients>
+					<fixedIngredientFilter>
+						<thingDefs>
+							<li>BOR_QuasarAlloy</li>
+							<li>BOR_Neutronium</li>
+						</thingDefs>
+					</fixedIngredientFilter>
+					<products>
+						<BOR_Ammo_Gen2Shotgun_Ni>200</BOR_Ammo_Gen2Shotgun_Ni>
+					</products>
+					<workAmount>16800</workAmount>
+				</RecipeDef>
+
+				<RecipeDef ParentName="AdvancedAmmoRecipeBase">
+					<defName>MakeBOR_Ammo_Gen2Shotgun_TC</defName>
+					<label>make 21mm QA shell (TC) ×200</label>
+					<description>Craft 200 21mm QA shells (TC).</description>
+					<jobString>Making 21mm QA shells (TC).</jobString>
+					<researchPrerequisite>BOR_Research_Weapons_II</researchPrerequisite>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>BOR_QuasarAlloy</li>
+								</thingDefs>
+							</filter>
+							<count>45</count>
+						</li>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>BOR_Tenebrite</li>
+								</thingDefs>
+							</filter>
+							<count>8</count>
+						</li>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>BOR_Neutronium</li>
+								</thingDefs>
+							</filter>
+							<count>84</count>
+						</li>
+					</ingredients>
+					<fixedIngredientFilter>
+						<thingDefs>
+							<li>BOR_QuasarAlloy</li>
+							<li>BOR_Tenebrite</li>
+							<li>BOR_Neutronium</li>
+						</thingDefs>
+					</fixedIngredientFilter>
+					<products>
+						<BOR_Ammo_Gen2Shotgun_TC>200</BOR_Ammo_Gen2Shotgun_TC>
+					</products>
+					<workAmount>14070</workAmount>
+				</RecipeDef>
 
 			</value>
 		</enabled>
