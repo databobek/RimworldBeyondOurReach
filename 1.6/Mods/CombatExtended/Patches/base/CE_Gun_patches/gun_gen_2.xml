@@ -278,7 +278,7 @@
                         <hasStandardCommand>true</hasStandardCommand>
                         <defaultProjectile>BOR_Bullet_Gen2Rifle_QaP</defaultProjectile>
                         <warmupTime>1.28</warmupTime>
-                        <burstShotCount>250</burstShotCount>
+                        <burstShotCount>30</burstShotCount>
                         <ticksBetweenBurstShots>5</ticksBetweenBurstShots>
                         <range>108</range>
                         <soundCast>ChargeLance_Fire</soundCast>
@@ -351,64 +351,72 @@
                 <!-- ========== Longsword ========== -->
 
                 <!-- Patch stats -->
-
-                <li Class="PatchOperationReplace">
-                    <xpath>Defs/ThingDef[defName="BOR_Longsword"]/tools</xpath>
-                    <value>
-                        <tools>
-                            <li Class="CombatExtended.ToolCE">
-                                <label>handle</label>
-                                <capacities>
-                                    <li>Poke</li>
-                                </capacities>
-                                <power>11.25</power>
-                                <cooldownTime>1.13</cooldownTime>
-                                <chanceFactor>0.10</chanceFactor>
-                                <armorPenetrationBlunt>2.81</armorPenetrationBlunt>
-                                <linkedBodyPartsGroup>Handle</linkedBodyPartsGroup>
+                <li Class="PatchOperationFindMod">
+                    <mods>
+                        <li>Melee Weapons For All Tech Levels</li>
+                    </mods>
+                    <nomatch Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationReplace">
+                                <xpath>Defs/ThingDef[defName="Bamba_Melee_Quasar_Longsword"]/tools</xpath>
+                                <value>
+                                    <tools>
+                                        <li Class="CombatExtended.ToolCE">
+                                            <label>handle</label>
+                                            <capacities>
+                                                <li>Poke</li>
+                                            </capacities>
+                                            <power>11.25</power>
+                                            <cooldownTime>1.13</cooldownTime>
+                                            <chanceFactor>0.10</chanceFactor>
+                                            <armorPenetrationBlunt>2.81</armorPenetrationBlunt>
+                                            <linkedBodyPartsGroup>Handle</linkedBodyPartsGroup>
+                                        </li>
+                                        <li Class="CombatExtended.ToolCE">
+                                            <label>point</label>
+                                            <capacities>
+                                                <li>Stab</li>
+                                            </capacities>
+                                            <power>50.63</power>
+                                            <cooldownTime>1.13</cooldownTime>
+                                            <armorPenetrationBlunt>2.81</armorPenetrationBlunt>
+                                            <linkedBodyPartsGroup>Point</linkedBodyPartsGroup>
+                                        </li>
+                                        <li Class="CombatExtended.ToolCE">
+                                            <label>edge</label>
+                                            <capacities>
+                                                <li>Cut</li>
+                                            </capacities>
+                                            <power>113</power>
+                                            <cooldownTime>1.04</cooldownTime>
+                                            <armorPenetrationBlunt>9.08</armorPenetrationBlunt>
+                                            <armorPenetrationSharp>2.43</armorPenetrationSharp>
+                                            <linkedBodyPartsGroup>Edge</linkedBodyPartsGroup>
+                                        </li>
+                                    </tools>
+                                </value>
                             </li>
-                            <li Class="CombatExtended.ToolCE">
-                                <label>point</label>
-                                <capacities>
-                                    <li>Stab</li>
-                                </capacities>
-                                <power>50.63</power>
-                                <cooldownTime>1.13</cooldownTime>
-                                <armorPenetrationBlunt>2.81</armorPenetrationBlunt>
-                                <linkedBodyPartsGroup>Point</linkedBodyPartsGroup>
-                            </li>
-                            <li Class="CombatExtended.ToolCE">
-                                <label>edge</label>
-                                <capacities>
-                                    <li>Cut</li>
-                                </capacities>
-                                <power>113</power>
-                                <cooldownTime>1.04</cooldownTime>
-                                <armorPenetrationBlunt>9.08</armorPenetrationBlunt>
-                                <armorPenetrationSharp>2.43</armorPenetrationSharp>
-                                <linkedBodyPartsGroup>Edge</linkedBodyPartsGroup>
-                            </li>
-                        </tools>
-                    </value>
-                </li>
 
-                <li Class="PatchOperationAdd">
-                    <xpath>Defs/ThingDef[defName="BOR_Longsword"]/statBases</xpath>
-                    <value>
-                        <Bulk>5.10</Bulk>
-                        <MeleeCounterParryBonus>2.7</MeleeCounterParryBonus>
-                    </value>
-                </li>
+                            <li Class="PatchOperationAdd">
+                                <xpath>Defs/ThingDef[defName="Bamba_Melee_Quasar_Longsword"]/statBases</xpath>
+                                <value>
+                                    <Bulk>5.10</Bulk>
+                                    <MeleeCounterParryBonus>2.7</MeleeCounterParryBonus>
+                                </value>
+                            </li>
 
-                <li Class="PatchOperationAdd">
-                    <xpath>Defs/ThingDef[defName="BOR_Longsword"]</xpath>
-                    <value>
-                        <equippedStatOffsets>
-                            <MeleeCritChance>1.6875</MeleeCritChance>
-                            <MeleeParryChance>2.025</MeleeParryChance>
-                            <MeleeDodgeChance>1.35</MeleeDodgeChance>
-                        </equippedStatOffsets>
-                    </value>
+                            <li Class="PatchOperationAdd">
+                                <xpath>Defs/ThingDef[defName="Bamba_Melee_Quasar_Longsword"]</xpath>
+                                <value>
+                                    <equippedStatOffsets>
+                                        <MeleeCritChance>1.6875</MeleeCritChance>
+                                        <MeleeParryChance>2.025</MeleeParryChance>
+                                        <MeleeDodgeChance>1.35</MeleeDodgeChance>
+                                    </equippedStatOffsets>
+                                </value>
+                            </li>
+                        </operations>
+                    </nomatch>
                 </li>
 
             </operations>

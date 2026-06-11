@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <ThingDef ParentName="ApparelMakeableBase">
+    <defName>BOR_Solar_Carbonsuit</defName>
+    <label>solar bodysuit</label>
+    <techLevel>Ultra</techLevel>
+    <description>A full solar bodysuit made of sunsteel crystalline fiber. It is light and thin, but surprisingly sturdy.</description>
+    <graphicData>
+      <color>(0, 0.75, 0.9)</color>
+      <texPath>Things/Apparel/Carbon</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <Mass>1.57</Mass>
+      <WorkToMake>29775</WorkToMake>
+      <MaxHitPoints>438</MaxHitPoints>
+      <ArmorRating_Blunt>0.31</ArmorRating_Blunt>
+      <ArmorRating_Sharp>0.31</ArmorRating_Sharp>
+      <ArmorRating_Heat>0.31</ArmorRating_Heat>
+      <Insulation_Cold>38</Insulation_Cold>
+      <Insulation_Heat>31</Insulation_Heat>
+      <EquipDelay>2</EquipDelay>
+    </statBases>
+    <thingCategories>
+      <li>BOR_Apparel</li>
+    </thingCategories>
+    <generateCommonality>0.05</generateCommonality>
+    <apparel>
+      <defaultOutfitTags>
+        <li>Worker</li>
+        <li>Soldier</li>
+      </defaultOutfitTags>
+      <tags>
+        <li>BOR_Military_I</li>
+      </tags>
+      <wornGraphicPath>Things/Apparel/Carbon</wornGraphicPath>
+      <layers>
+        <li>OnSkin</li>
+      </layers>
+      <bodyPartGroups>
+        <li>Neck</li>
+        <li>Shoulders</li>
+        <li>Torso</li>
+        <li>Arms</li>
+        <li>Legs</li>
+        <li>Hands</li>
+        <li>Feet</li>
+      </bodyPartGroups>
+    </apparel>
+    <recipeMaker>
+      <unfinishedThingDef>UnfinishedApparel</unfinishedThingDef>
+      <recipeUsers Inherit="False">
+        <li>BOR_Bench_I</li>
+        <li>BOR_Bench_IV</li>
+      </recipeUsers>
+      <skillRequirements>
+        <Crafting>10</Crafting>
+      </skillRequirements>
+    </recipeMaker>
+    <costList>
+      <BOR_Sunsteel>11</BOR_Sunsteel>
+      <BOR_Sunweave>82</BOR_Sunweave>
+      <Hyperweave>11</Hyperweave>
+    </costList>
+    <tradeTags>
+      <li>BOR_Tech_I</li>
+    </tradeTags>
+    <comps>
+      <li MayRequire="kentington.saveourship2">
+        <compClass>SaveOurShip2.CompEVA</compClass>
+      </li>
+    </comps>
+  </ThingDef>
+
+</Defs>

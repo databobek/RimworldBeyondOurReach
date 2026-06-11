@@ -124,7 +124,7 @@
                             <minGenerationAge>50</minGenerationAge>
                             <maxGenerationAge>120</maxGenerationAge>
                             <combatEnhancingDrugsChance>0.05</combatEnhancingDrugsChance>
-                            <apparelIgnoreSeasons>false</apparelIgnoreSeasons>
+                            <apparelIgnoreSeasons>true</apparelIgnoreSeasons>
                             <combatEnhancingDrugsCount>
                                 <min>2</min>
                                 <max>4</max>
@@ -133,9 +133,7 @@
                             <initialResistanceRange>20~35</initialResistanceRange>
                             <techHediffsChance>0.9</techHediffsChance>
                             <techHediffsMoney>15000~60000</techHediffsMoney>
-                            <apparelTags>
-                                <li>IndustrialBasic</li>
-                            </apparelTags>
+                            <apparelTags />
                             <techHediffsRequired>
                                 <li>BOR_TenebralAppendage</li>
                                 <li>BOR_TenebralOrgan</li>
@@ -159,7 +157,7 @@
                             <minGenerationAge>18</minGenerationAge>
                             <maxGenerationAge>32</maxGenerationAge>
                             <combatEnhancingDrugsChance>0.45</combatEnhancingDrugsChance>
-                            <apparelIgnoreSeasons>false</apparelIgnoreSeasons>
+                            <apparelIgnoreSeasons>true</apparelIgnoreSeasons>
                             <combatEnhancingDrugsCount>
                                 <min>1</min>
                                 <max>1</max>
@@ -191,221 +189,34 @@
                         </PawnKindDef>
 
 
-                        <!-- tenebral Marksman -->
-
                         <PawnKindDef ParentName="BOR_ElitePawn_III">
-                            <defName>BOR_Tenebral_Marksman</defName>
-                            <label>hunter</label>
-                            <labelPlural>hunters</labelPlural>
-                            <apparelTags>
-                                <li>IndustrialBasic</li>
-                                <li>IndustrialAdvanced</li>
-                                <li>IndustrialMilitaryBasic</li>
-                                <li>IndustrialMilitaryAdvanced</li>
-                            </apparelTags>
-                            <apparelDisallowTags>
-                                <li>Western</li>
-                            </apparelDisallowTags>
-                            <weaponTags>
-                                <li>BOR_SniperRifle_III</li>
-                            </weaponTags>
+                            <defName>BOR_Tenebral_Executioner</defName>
+                            <label>executioner</label>
+                            <labelPlural>executioners</labelPlural>
+                            <weaponTags Inherit="False" />
                             <weaponMoney>
-                                <min>170000</min>
-                                <max>170000</max>
+                                <min>0</min>
+                                <max>0</max>
                             </weaponMoney>
-                            <combatPower>800</combatPower>
+                            <combatPower>10000</combatPower>
                             <isFighter>true</isFighter>
                             <canBeSapper>false</canBeSapper>
-                            <apparelMoney>
-                                <min>15000</min>
-                                <max>25000</max>
-                            </apparelMoney>
-                            <apparelRequired>
-                                <li>BOR_Tenebral_Apparel_ArmorHelmetRecon</li>
-                                <li>BOR_Tenebral_Apparel_ArmorRecon</li>
-                                <li MayRequire="rimsenal.core">BOR_Tenebral_Carbonsuit</li>
-                            </apparelRequired>
-                            <skills>
-                                <li>
-                                    <skill>Shooting</skill>
-                                    <range>12~16</range>
-                                </li>
-                                <li>
-                                    <skill>Melee</skill>
-                                    <range>12~16</range>
-                                </li>
-                            </skills>
-                        </PawnKindDef>
-
-                        <!-- tenebral Marine -->
-
-                        <PawnKindDef ParentName="BOR_ElitePawn_III">
-                            <defName>BOR_Tenebral_Marine</defName>
-                            <label>exterminator</label>
-                            <labelPlural>exterminators</labelPlural>
-                            <apparelTags>
-                                <li>IndustrialBasic</li>
-                                <li>IndustrialAdvanced</li>
-                                <li>IndustrialMilitaryBasic</li>
-                                <li>IndustrialMilitaryAdvanced</li>
-                            </apparelTags>
-                            <apparelDisallowTags>
-                                <li>Western</li>
-                            </apparelDisallowTags>
-                            <weaponTags>
-                                <li>BOR_ShortShots_III</li>
-                            </weaponTags>
-                            <weaponMoney>
-                                <min>17000</min>
-                                <max>17000</max>
-                            </weaponMoney>
-                            <combatPower>900</combatPower>
-                            <isFighter>true</isFighter>
-                            <canBeSapper>false</canBeSapper>
-                            <apparelMoney>
-                                <min>15000</min>
-                                <max>25000</max>
-                            </apparelMoney>
+                            <apparelMoney/>
                             <apparelRequired>
                                 <li>BOR_Tenebral_Apparel_PowerArmorHelmet</li>
                                 <li>BOR_Tenebral_Apparel_PowerArmor</li>
                                 <li MayRequire="rimsenal.core">BOR_Tenebral_Carbonsuit</li>
                             </apparelRequired>
+                            <techHediffsChance>1</techHediffsChance>
+                            <techHediffsMoney>70000~90000</techHediffsMoney>
                             <skills>
-                                <li>
-                                    <skill>Shooting</skill>
-                                    <range>16~18</range>
-                                </li>
                                 <li>
                                     <skill>Melee</skill>
-                                    <range>12~16</range>
+                                    <range>20~20</range>
                                 </li>
-                            </skills>
-                        </PawnKindDef>
-
-                        <!-- tenebral Guardsman -->
-
-                        <PawnKindDef ParentName="BOR_ElitePawn_III">
-                            <defName>BOR_Tenebral_Guardsman</defName>
-                            <label>vigil</label>
-                            <labelPlural>vigils</labelPlural>
-                            <apparelTags>
-                                <li>IndustrialBasic</li>
-                                <li>IndustrialAdvanced</li>
-                                <li>IndustrialMilitaryBasic</li>
-                                <li>IndustrialMilitaryAdvanced</li>
-                            </apparelTags>
-                            <apparelDisallowTags>
-                                <li>Western</li>
-                            </apparelDisallowTags>
-                            <weaponTags>
-                                <li>BOR_AssaultRifle_III</li>
-                            </weaponTags>
-                            <weaponMoney>
-                                <min>170000</min>
-                                <max>170000</max>
-                            </weaponMoney>
-                            <combatPower>750</combatPower>
-                            <isFighter>true</isFighter>
-                            <canBeSapper>false</canBeSapper>
-                            <apparelMoney>
-                                <min>150000</min>
-                                <max>250000</max>
-                            </apparelMoney>
-                            <apparelRequired>
-                                <li>BOR_Tenebral_Apparel_FlakPants</li>
-                                <li>BOR_Tenebral_Apparel_FlakJacket</li>
-                                <li>Apparel_AdvancedHelmet</li>
-                            </apparelRequired>
-                            <skills>
                                 <li>
                                     <skill>Shooting</skill>
-                                    <range>8~14</range>
-                                </li>
-                                <li>
-                                    <skill>Melee</skill>
-                                    <range>12~16</range>
-                                </li>
-                            </skills>
-                        </PawnKindDef>
-
-                        <PawnKindDef ParentName="BOR_ElitePawn_III">
-                            <defName>BOR_Tenebral_Officer</defName>
-                            <label>officer</label>
-                            <labelPlural>officer</labelPlural>
-                            <weaponTags>
-                                <li>BOR_Military_III</li>
-                            </weaponTags>
-                            <weaponMoney>
-                                <min>190000</min>
-                                <max>190000</max>
-                            </weaponMoney>
-                            <combatPower>800</combatPower>
-                            <isFighter>true</isFighter>
-                            <canBeSapper>false</canBeSapper>
-                            <apparelMoney>
-                                <min>120000</min>
-                                <max>120000</max>
-                            </apparelMoney>
-                            <apparelTags Inherit="False">
-                                <li>BOR_Military_III</li>
-                                <li>BOR_HiTechArmor_III</li>
-                                <li>BOR_Apparel</li>
-                            </apparelTags>
-                            <apparelAllowHeadgearChance>1</apparelAllowHeadgearChance>
-                            <skills>
-                                <li>
-                                    <skill>Shooting</skill>
-                                    <range>14~18</range>
-                                </li>
-                                <li>
-                                    <skill>Melee</skill>
-                                    <range>12~16</range>
-                                </li>
-                                <li>
-                                    <skill>Social</skill>
-                                    <range>8~14</range>
-                                </li>
-                            </skills>
-                            <factionLeader>true</factionLeader>
-                        </PawnKindDef>
-
-                        <PawnKindDef MayRequire="akri.starcraftersarmory" ParentName="BOR_ElitePawn_III">
-                            <defName>BOR_Tenebral_Stomper</defName>
-                            <label>destroyer</label>
-                            <labelPlural>destroyers</labelPlural>
-                            <apparelTags>
-                                <li>IndustrialBasic</li>
-                                <li>IndustrialAdvanced</li>
-                                <li>IndustrialMilitaryBasic</li>
-                                <li>IndustrialMilitaryAdvanced</li>
-                            </apparelTags>
-                            <apparelDisallowTags>
-                                <li>Western</li>
-                            </apparelDisallowTags>
-                            <weaponTags>
-                                <li>BOR_ShortShots_III</li>
-                            </weaponTags>
-                            <weaponMoney>
-                                <min>17000</min>
-                                <max>17000</max>
-                            </weaponMoney>
-                            <combatPower>700</combatPower>
-                            <isFighter>true</isFighter>
-                            <canBeSapper>false</canBeSapper>
-                            <apparelMoney>
-                                <min>15000</min>
-                                <max>25000</max>
-                            </apparelMoney>
-                            <apparelRequired>
-                                <li>BOR_CMC700a</li>
-                                <li>BOR_CMC700H</li>
-                                <li MayRequire="rimsenal.core">BOR_Tenebral_Carbonsuit</li>
-                            </apparelRequired>
-                            <skills>
-                                <li>
-                                    <skill>Shooting</skill>
-                                    <range>16~18</range>
+                                    <range>0~2</range>
                                 </li>
                             </skills>
                         </PawnKindDef>
@@ -469,23 +280,10 @@
                             </apparelStuffFilter>
                             <pawnGroupMakers Inherit="False">
                                 <li>
-                                    <!-- Normal fights, standard mix -->
                                     <commonality>100</commonality>
                                     <kindDef>Combat</kindDef>
                                     <options>
-                                        <BOR_Tenebral_Guardsman>8</BOR_Tenebral_Guardsman>
-                                        <BOR_Tenebral_Marine>2</BOR_Tenebral_Marine>
-                                        <BOR_Tenebral_Marksman>2</BOR_Tenebral_Marksman>
-                                        <BOR_Tenebral_Officer>1</BOR_Tenebral_Officer>
-                                    </options>
-                                </li>
-                                <li>
-                                    <kindDef>Settlement</kindDef>
-                                    <options>
-                                        <BOR_Tenebral_Marksman>1</BOR_Tenebral_Marksman>
-                                        <BOR_Tenebral_Marine>3</BOR_Tenebral_Marine>
-                                        <BOR_Tenebral_Guardsman>5</BOR_Tenebral_Guardsman>
-                                        <BOR_Tenebral_Officer>1</BOR_Tenebral_Officer>
+                                        <BOR_Tenebral_Executioner>1</BOR_Tenebral_Executioner>
                                     </options>
                                 </li>
                             </pawnGroupMakers>
