@@ -5,6 +5,57 @@
         <modSettingDef>BOR_Setting_IntegrateVaccinesToBORLore</modSettingDef>
         <enabled Class="PatchOperationSequence">
             <operations>
+                <!-- ── Research projects (added first to avoid reference errors) ── -->
+                <li Class="PatchOperationAdd">
+                    <xpath>Defs</xpath>
+                    <value>
+                        <ResearchProjectDef ParentName="BOR_Research_Base_I">
+                            <defName>BOR_Research_Vaccines_I</defName>
+                            <label>solar vaccine synthesis</label>
+                            <description>Apply foundational Beyond Our Reach solar compounds to synthesize permanent vaccines against common diseases at the Solar medical fabricator.</description>
+                            <baseCost>20000</baseCost>
+                            <techLevel>Ultra</techLevel>
+                            <prerequisites>
+                                <li>BOR_Research_Medicine_I</li>
+                            </prerequisites>
+                            <researchViewX>3.00</researchViewX>
+                            <researchViewY>4.10</researchViewY>
+                        </ResearchProjectDef>
+
+                        <ResearchProjectDef ParentName="BOR_Research_Base_II">
+                            <defName>BOR_Research_Vaccines_II</defName>
+                            <label>quasar vaccine synthesis</label>
+                            <description>Leverage Kwazaari quasar compounds to synthesize long-duration nano-vaccines requiring no cold storage at the Quasar medical fabricator.</description>
+                            <baseCost>50000</baseCost>
+                            <techLevel>Ultra</techLevel>
+                            <prerequisites>
+                                <li>BOR_Research_Medicine_II</li>
+                            </prerequisites>
+                            <hiddenPrerequisites>
+                                <li>BOR_Research_Vaccines_I</li>
+                            </hiddenPrerequisites>
+                            <researchViewX>8.00</researchViewX>
+                            <researchViewY>4.20</researchViewY>
+                        </ResearchProjectDef>
+
+                        <ResearchProjectDef ParentName="BOR_Research_Base_III">
+                            <defName>BOR_Research_Vaccines_III</defName>
+                            <label>tenebrite vaccine synthesis</label>
+                            <description>Harness tenebral archotech processes to engineer permanent archo-vaccines that fundamentally reprogram the immune system at the Tenebral medical fabricator.</description>
+                            <baseCost>150000</baseCost>
+                            <techLevel>Archotech</techLevel>
+                            <prerequisites>
+                                <li>BOR_Research_Medicine_III</li>
+                            </prerequisites>
+                            <hiddenPrerequisites>
+                                <li>BOR_Research_Vaccines_II</li>
+                            </hiddenPrerequisites>
+                            <researchViewX>13.00</researchViewX>
+                            <researchViewY>4.20</researchViewY>
+                        </ResearchProjectDef>
+                    </value>
+                </li>
+
                 <li Class="PatchOperationAdd">
                     <xpath>Defs</xpath>
                     <value>
@@ -20,7 +71,7 @@
                                 <li>BOR_MedicineBench_III</li>
                                 <li>BOR_Bench_IV</li>
                             </recipeUsers>
-                            <researchPrerequisite>BOR_Research_Medicine_I</researchPrerequisite>
+                            <researchPrerequisite>BOR_Research_Vaccines_I</researchPrerequisite>
                             <skillRequirements>
                                 <Intellectual>6</Intellectual>
                             </skillRequirements>
@@ -37,7 +88,7 @@
                                 <li>BOR_MedicineBench_III</li>
                                 <li>BOR_Bench_IV</li>
                             </recipeUsers>
-                            <researchPrerequisite>BOR_Research_Medicine_II</researchPrerequisite>
+                            <researchPrerequisite>BOR_Research_Vaccines_II</researchPrerequisite>
                             <skillRequirements>
                                 <Intellectual>8</Intellectual>
                             </skillRequirements>
@@ -53,7 +104,7 @@
                                 <li>BOR_MedicineBench_III</li>
                                 <li>BOR_Bench_IV</li>
                             </recipeUsers>
-                            <researchPrerequisite>BOR_Research_Medicine_III</researchPrerequisite>
+                            <researchPrerequisite>BOR_Research_Vaccines_III</researchPrerequisite>
                             <skillRequirements>
                                 <Intellectual>10</Intellectual>
                             </skillRequirements>
@@ -4019,8 +4070,761 @@
                             </products>
                         </RecipeDef>
 
+                        <RecipeDef ParentName="BOR_NanoVaccineCraftingBase">
+                            <defName>BOR_Make_NanoVaccine_FibrousMechanites</defName>
+                            <label>make nano vaccine (fibrous mechanites)</label>
+                            <jobString>Synthesizing nano vaccine (fibrous mechanites).</jobString>
+                            <description>Synthesize a permanent nano vaccine (fibrous mechanites) using advanced Beyond Our Reach medical compounds.</description>
+                            <ingredients>
+                                <li>
+                                    <filter>
+                                        <categories>
+                                            <li>MeatRaw</li>
+                                        </categories>
+                                    </filter>
+                                    <count>1</count>
+                                </li>
+                                <li>
+                                    <filter>
+                                        <thingDefs>
+                                            <li>BOR_Castra</li>
+                                        </thingDefs>
+                                    </filter>
+                                    <count>1</count>
+                                </li>
+                                <li>
+                                    <filter>
+                                        <thingDefs>
+                                            <li>BOR_Picoclusters</li>
+                                        </thingDefs>
+                                    </filter>
+                                    <count>1</count>
+                                </li>
+                            </ingredients>
+                            <fixedIngredientFilter>
+                                <categories>
+                                    <li>MeatRaw</li>
+                                </categories>
+                                <thingDefs>
+                                    <li>BOR_Castra</li>
+                                    <li>BOR_Picoclusters</li>
+                                </thingDefs>
+                            </fixedIngredientFilter>
+                            <products>
+                                <NanoVaccine_FibrousMechanites>5</NanoVaccine_FibrousMechanites>
+                            </products>
+                        </RecipeDef>
+
+                        <RecipeDef ParentName="BOR_NanoVaccineCraftingBase">
+                            <defName>BOR_Make_NanoVaccine_SensoryMechanites</defName>
+                            <label>make nano vaccine (sensory mechanites)</label>
+                            <jobString>Synthesizing nano vaccine (sensory mechanites).</jobString>
+                            <description>Synthesize a permanent nano vaccine (sensory mechanites) using advanced Beyond Our Reach medical compounds.</description>
+                            <ingredients>
+                                <li>
+                                    <filter>
+                                        <categories>
+                                            <li>MeatRaw</li>
+                                        </categories>
+                                    </filter>
+                                    <count>1</count>
+                                </li>
+                                <li>
+                                    <filter>
+                                        <thingDefs>
+                                            <li>BOR_Castra</li>
+                                        </thingDefs>
+                                    </filter>
+                                    <count>1</count>
+                                </li>
+                                <li>
+                                    <filter>
+                                        <thingDefs>
+                                            <li>BOR_Picoclusters</li>
+                                        </thingDefs>
+                                    </filter>
+                                    <count>1</count>
+                                </li>
+                            </ingredients>
+                            <fixedIngredientFilter>
+                                <categories>
+                                    <li>MeatRaw</li>
+                                </categories>
+                                <thingDefs>
+                                    <li>BOR_Castra</li>
+                                    <li>BOR_Picoclusters</li>
+                                </thingDefs>
+                            </fixedIngredientFilter>
+                            <products>
+                                <NanoVaccine_SensoryMechanites>5</NanoVaccine_SensoryMechanites>
+                            </products>
+                        </RecipeDef>
+
+                        <RecipeDef ParentName="BOR_NanoVaccineCraftingBase" MayRequire="Ludeon.RimWorld.Anomaly">
+                            <defName>BOR_Make_NanoVaccine_MetalhorrorImplant</defName>
+                            <label>make nano vaccine (metalhorror implant)</label>
+                            <jobString>Synthesizing nano vaccine (metalhorror implant).</jobString>
+                            <description>Synthesize a permanent nano vaccine (metalhorror implant) using advanced Beyond Our Reach medical compounds.</description>
+                            <ingredients>
+                                <li>
+                                    <filter>
+                                        <categories>
+                                            <li>MeatRaw</li>
+                                        </categories>
+                                    </filter>
+                                    <count>1</count>
+                                </li>
+                                <li>
+                                    <filter>
+                                        <thingDefs>
+                                            <li>BOR_Castra</li>
+                                        </thingDefs>
+                                    </filter>
+                                    <count>1</count>
+                                </li>
+                                <li>
+                                    <filter>
+                                        <thingDefs>
+                                            <li>BOR_Picoclusters</li>
+                                        </thingDefs>
+                                    </filter>
+                                    <count>1</count>
+                                </li>
+                            </ingredients>
+                            <fixedIngredientFilter>
+                                <categories>
+                                    <li>MeatRaw</li>
+                                </categories>
+                                <thingDefs>
+                                    <li>BOR_Castra</li>
+                                    <li>BOR_Picoclusters</li>
+                                </thingDefs>
+                            </fixedIngredientFilter>
+                            <products>
+                                <NanoVaccine_MetalhorrorImplant>5</NanoVaccine_MetalhorrorImplant>
+                            </products>
+                        </RecipeDef>
+
+                        <RecipeDef ParentName="BOR_BasicVaccineCraftingBase" MayRequire="bobhope.Rabies">
+                            <defName>BOR_Make_Vaccine_Rabies</defName>
+                            <label>make vaccine (rabies)</label>
+                            <jobString>Synthesizing vaccine (rabies).</jobString>
+                            <description>Synthesize a permanent vaccine (rabies) using foundational Beyond Our Reach medical compounds.</description>
+                            <ingredients>
+                                <li>
+                                    <filter>
+                                        <categories>
+                                            <li>MeatRaw</li>
+                                        </categories>
+                                    </filter>
+                                    <count>1</count>
+                                </li>
+                                <li>
+                                    <filter>
+                                        <thingDefs>
+                                            <li>BOR_Aegis</li>
+                                        </thingDefs>
+                                    </filter>
+                                    <count>1</count>
+                                </li>
+                                <li>
+                                    <filter>
+                                        <thingDefs>
+                                            <li>BOR_Nanoclusters</li>
+                                        </thingDefs>
+                                    </filter>
+                                    <count>1</count>
+                                </li>
+                            </ingredients>
+                            <fixedIngredientFilter>
+                                <categories>
+                                    <li>MeatRaw</li>
+                                </categories>
+                                <thingDefs>
+                                    <li>BOR_Aegis</li>
+                                    <li>BOR_Nanoclusters</li>
+                                </thingDefs>
+                            </fixedIngredientFilter>
+                            <products>
+                                <Vaccine_Rabies>5</Vaccine_Rabies>
+                            </products>
+                        </RecipeDef>
+
+                        <RecipeDef ParentName="BOR_NanoVaccineCraftingBase" MayRequire="bobhope.Rabies">
+                            <defName>BOR_Make_NanoVaccine_Rabies</defName>
+                            <label>make nano vaccine (rabies)</label>
+                            <jobString>Synthesizing nano vaccine (rabies).</jobString>
+                            <description>Synthesize a permanent nano vaccine (rabies) using advanced Beyond Our Reach medical compounds.</description>
+                            <ingredients>
+                                <li>
+                                    <filter>
+                                        <categories>
+                                            <li>MeatRaw</li>
+                                        </categories>
+                                    </filter>
+                                    <count>1</count>
+                                </li>
+                                <li>
+                                    <filter>
+                                        <thingDefs>
+                                            <li>BOR_Castra</li>
+                                        </thingDefs>
+                                    </filter>
+                                    <count>1</count>
+                                </li>
+                                <li>
+                                    <filter>
+                                        <thingDefs>
+                                            <li>BOR_Picoclusters</li>
+                                        </thingDefs>
+                                    </filter>
+                                    <count>1</count>
+                                </li>
+                            </ingredients>
+                            <fixedIngredientFilter>
+                                <categories>
+                                    <li>MeatRaw</li>
+                                </categories>
+                                <thingDefs>
+                                    <li>BOR_Castra</li>
+                                    <li>BOR_Picoclusters</li>
+                                </thingDefs>
+                            </fixedIngredientFilter>
+                            <products>
+                                <NanoVaccine_Rabies>5</NanoVaccine_Rabies>
+                            </products>
+                        </RecipeDef>
+
+                        <RecipeDef ParentName="BOR_ArchoVaccineCraftingBase" MayRequire="bobhope.Rabies">
+                            <defName>BOR_Make_ArchoVaccine_Rabies</defName>
+                            <label>make archo vaccine (rabies)</label>
+                            <jobString>Synthesizing archo vaccine (rabies).</jobString>
+                            <description>Synthesize a permanent archo vaccine (rabies) using top-tier Beyond Our Reach medical compounds.</description>
+                            <ingredients>
+                                <li>
+                                    <filter>
+                                        <categories>
+                                            <li>MeatRaw</li>
+                                        </categories>
+                                    </filter>
+                                    <count>1</count>
+                                </li>
+                                <li>
+                                    <filter>
+                                        <thingDefs>
+                                            <li>BOR_Pax</li>
+                                        </thingDefs>
+                                    </filter>
+                                    <count>1</count>
+                                </li>
+                                <li>
+                                    <filter>
+                                        <thingDefs>
+                                            <li>BOR_Femtoclusters</li>
+                                        </thingDefs>
+                                    </filter>
+                                    <count>1</count>
+                                </li>
+                            </ingredients>
+                            <fixedIngredientFilter>
+                                <categories>
+                                    <li>MeatRaw</li>
+                                </categories>
+                                <thingDefs>
+                                    <li>BOR_Pax</li>
+                                    <li>BOR_Femtoclusters</li>
+                                </thingDefs>
+                            </fixedIngredientFilter>
+                            <products>
+                                <ArchoVaccine_Rabies>5</ArchoVaccine_Rabies>
+                            </products>
+                        </RecipeDef>
+
+                        <RecipeDef ParentName="BOR_NanoVaccineCraftingBase" MayRequire="lts.MSMD">
+                            <defName>BOR_Make_NanoVaccine_MedicalMechanites</defName>
+                            <label>make nano vaccine (medical mechanites)</label>
+                            <jobString>Synthesizing nano vaccine (medical mechanites).</jobString>
+                            <description>Synthesize a permanent nano vaccine (medical mechanites) using advanced Beyond Our Reach medical compounds.</description>
+                            <ingredients>
+                                <li>
+                                    <filter>
+                                        <categories>
+                                            <li>MeatRaw</li>
+                                        </categories>
+                                    </filter>
+                                    <count>1</count>
+                                </li>
+                                <li>
+                                    <filter>
+                                        <thingDefs>
+                                            <li>BOR_Castra</li>
+                                        </thingDefs>
+                                    </filter>
+                                    <count>1</count>
+                                </li>
+                                <li>
+                                    <filter>
+                                        <thingDefs>
+                                            <li>BOR_Picoclusters</li>
+                                        </thingDefs>
+                                    </filter>
+                                    <count>1</count>
+                                </li>
+                            </ingredients>
+                            <fixedIngredientFilter>
+                                <categories>
+                                    <li>MeatRaw</li>
+                                </categories>
+                                <thingDefs>
+                                    <li>BOR_Castra</li>
+                                    <li>BOR_Picoclusters</li>
+                                </thingDefs>
+                            </fixedIngredientFilter>
+                            <products>
+                                <NanoVaccine_MedicalMechanites>5</NanoVaccine_MedicalMechanites>
+                            </products>
+                        </RecipeDef>
+
+                        <RecipeDef ParentName="BOR_NanoVaccineCraftingBase" MayRequire="lts.MSMD">
+                            <defName>BOR_Make_NanoVaccine_BerserkerMechanites</defName>
+                            <label>make nano vaccine (berserker mechanites)</label>
+                            <jobString>Synthesizing nano vaccine (berserker mechanites).</jobString>
+                            <description>Synthesize a permanent nano vaccine (berserker mechanites) using advanced Beyond Our Reach medical compounds.</description>
+                            <ingredients>
+                                <li>
+                                    <filter>
+                                        <categories>
+                                            <li>MeatRaw</li>
+                                        </categories>
+                                    </filter>
+                                    <count>1</count>
+                                </li>
+                                <li>
+                                    <filter>
+                                        <thingDefs>
+                                            <li>BOR_Castra</li>
+                                        </thingDefs>
+                                    </filter>
+                                    <count>1</count>
+                                </li>
+                                <li>
+                                    <filter>
+                                        <thingDefs>
+                                            <li>BOR_Picoclusters</li>
+                                        </thingDefs>
+                                    </filter>
+                                    <count>1</count>
+                                </li>
+                            </ingredients>
+                            <fixedIngredientFilter>
+                                <categories>
+                                    <li>MeatRaw</li>
+                                </categories>
+                                <thingDefs>
+                                    <li>BOR_Castra</li>
+                                    <li>BOR_Picoclusters</li>
+                                </thingDefs>
+                            </fixedIngredientFilter>
+                            <products>
+                                <NanoVaccine_BerserkerMechanites>5</NanoVaccine_BerserkerMechanites>
+                            </products>
+                        </RecipeDef>
+
+                        <RecipeDef ParentName="BOR_NanoVaccineCraftingBase" MayRequire="lts.MSMD">
+                            <defName>BOR_Make_NanoVaccine_TrainerMechanites</defName>
+                            <label>make nano vaccine (trainer mechanites)</label>
+                            <jobString>Synthesizing nano vaccine (trainer mechanites).</jobString>
+                            <description>Synthesize a permanent nano vaccine (trainer mechanites) using advanced Beyond Our Reach medical compounds.</description>
+                            <ingredients>
+                                <li>
+                                    <filter>
+                                        <categories>
+                                            <li>MeatRaw</li>
+                                        </categories>
+                                    </filter>
+                                    <count>1</count>
+                                </li>
+                                <li>
+                                    <filter>
+                                        <thingDefs>
+                                            <li>BOR_Castra</li>
+                                        </thingDefs>
+                                    </filter>
+                                    <count>1</count>
+                                </li>
+                                <li>
+                                    <filter>
+                                        <thingDefs>
+                                            <li>BOR_Picoclusters</li>
+                                        </thingDefs>
+                                    </filter>
+                                    <count>1</count>
+                                </li>
+                            </ingredients>
+                            <fixedIngredientFilter>
+                                <categories>
+                                    <li>MeatRaw</li>
+                                </categories>
+                                <thingDefs>
+                                    <li>BOR_Castra</li>
+                                    <li>BOR_Picoclusters</li>
+                                </thingDefs>
+                            </fixedIngredientFilter>
+                            <products>
+                                <NanoVaccine_TrainerMechanites>5</NanoVaccine_TrainerMechanites>
+                            </products>
+                        </RecipeDef>
+
                     </value>
                 </li>
+            </operations>
+        </enabled>
+    </Operation>
+
+    <Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
+        <modSettingDef>BOR_Setting_IntegrateVaccinesToBORLore</modSettingDef>
+        <enabled Class="PatchOperationSequence">
+            <operations>
+
+                <!-- ── BOR_MedicineBench_I ── -->
+                <li Class="PatchOperationConditional">
+                    <xpath>/Defs/ThingDef[defName="BOR_MedicineBench_I"]/recipes</xpath>
+                    <nomatch Class="PatchOperationAdd">
+                        <xpath>/Defs/ThingDef[defName="BOR_MedicineBench_I"]</xpath>
+                        <value>
+                            <recipes />
+                        </value>
+                    </nomatch>
+                </li>
+                <li Class="PatchOperationAdd">
+                    <xpath>/Defs/ThingDef[defName="BOR_MedicineBench_I"]/recipes</xpath>
+                    <value>
+                        <li>BOR_Make_Vaccine_Flu</li>
+                        <li>BOR_Make_NanoVaccine_Flu</li>
+                        <li>BOR_Make_ArchoVaccine_Flu</li>
+                        <li>BOR_Make_Vaccine_Plague</li>
+                        <li>BOR_Make_NanoVaccine_Plague</li>
+                        <li>BOR_Make_ArchoVaccine_Plague</li>
+                        <li>BOR_Make_Vaccine_Malaria</li>
+                        <li>BOR_Make_NanoVaccine_Malaria</li>
+                        <li>BOR_Make_ArchoVaccine_Malaria</li>
+                        <li>BOR_Make_Vaccine_SleepingSickness</li>
+                        <li>BOR_Make_NanoVaccine_SleepingSickness</li>
+                        <li>BOR_Make_ArchoVaccine_SleepingSickness</li>
+                        <li>BOR_Make_Vaccine_Scaria</li>
+                        <li>BOR_Make_NanoVaccine_Scaria</li>
+                        <li>BOR_Make_ArchoVaccine_Scaria</li>
+                        <li>BOR_Make_Vaccine_Infection</li>
+                        <li>BOR_Make_NanoVaccine_Infection</li>
+                        <li>BOR_Make_ArchoVaccine_Infection</li>
+                        <li>BOR_Make_Vaccine_GutWorms</li>
+                        <li>BOR_Make_NanoVaccine_GutWorms</li>
+                        <li>BOR_Make_ArchoVaccine_GutWorms</li>
+                        <li>BOR_Make_Vaccine_LungRot</li>
+                        <li>BOR_Make_NanoVaccine_LungRot</li>
+                        <li>BOR_Make_ArchoVaccine_LungRot</li>
+                        <li>BOR_Make_ArchoVaccine_Mechanites</li>
+                        <li>BOR_Make_NanoVaccine_FibrousMechanites</li>
+                        <li>BOR_Make_NanoVaccine_SensoryMechanites</li>
+                        <li MayRequire="Ludeon.RimWorld.Biotech">BOR_Make_Vaccine_InfantIllness</li>
+                        <li MayRequire="Ludeon.RimWorld.Biotech">BOR_Make_NanoVaccine_InfantIllness</li>
+                        <li MayRequire="Ludeon.RimWorld.Biotech">BOR_Make_ArchoVaccine_InfantIllness</li>
+                        <li MayRequire="Ludeon.RimWorld.Royalty">BOR_Make_Vaccine_BloodRot</li>
+                        <li MayRequire="Ludeon.RimWorld.Royalty">BOR_Make_NanoVaccine_BloodRot</li>
+                        <li MayRequire="Ludeon.RimWorld.Royalty">BOR_Make_ArchoVaccine_BloodRot</li>
+                        <li MayRequire="Ludeon.RimWorld.Anomaly">BOR_Make_NanoVaccine_MetalhorrorImplant</li>
+                        <li MayRequire="ushanka.necroaarchovirus">BOR_Make_Vaccine_Necroa</li>
+                        <li MayRequire="ushanka.necroaarchovirus">BOR_Make_NanoVaccine_Necroa</li>
+                        <li MayRequire="ushanka.necroaarchovirus">BOR_Make_ArchoVaccine_Necroa</li>
+                        <li MayRequire="bobhope.Rabies">BOR_Make_Vaccine_Rabies</li>
+                        <li MayRequire="bobhope.Rabies">BOR_Make_NanoVaccine_Rabies</li>
+                        <li MayRequire="bobhope.Rabies">BOR_Make_ArchoVaccine_Rabies</li>
+                        <li MayRequire="lts.MSMD">BOR_Make_NanoVaccine_MedicalMechanites</li>
+                        <li MayRequire="lts.MSMD">BOR_Make_NanoVaccine_BerserkerMechanites</li>
+                        <li MayRequire="lts.MSMD">BOR_Make_NanoVaccine_TrainerMechanites</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_Vaccine_DO_Tuberculosis</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_NanoVaccine_DO_Tuberculosis</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_ArchoVaccine_DO_Tuberculosis</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_Vaccine_DO_KindredDick</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_NanoVaccine_DO_KindredDick</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_ArchoVaccine_DO_KindredDick</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_Vaccine_DO_EpsteinBarr</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_NanoVaccine_DO_EpsteinBarr</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_ArchoVaccine_DO_EpsteinBarr</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_Vaccine_DO_VoightBernstein</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_NanoVaccine_DO_VoightBernstein</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_ArchoVaccine_DO_VoightBernstein</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_Vaccine_DO_HansenKampff</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_NanoVaccine_DO_HansenKampff</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_ArchoVaccine_DO_HansenKampff</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_Vaccine_DO_NewReschianFever</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_NanoVaccine_DO_NewReschianFever</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_ArchoVaccine_DO_NewReschianFever</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_Vaccine_DO_HepatitisK</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_NanoVaccine_DO_HepatitisK</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_ArchoVaccine_DO_HepatitisK</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_Vaccine_DO_Sepsis</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_NanoVaccine_DO_Sepsis</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_ArchoVaccine_DO_Sepsis</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_Vaccine_DO_CommonCold</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_NanoVaccine_DO_CommonCold</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_ArchoVaccine_DO_CommonCold</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_Vaccine_DO_Inflammation</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_NanoVaccine_DO_Inflammation</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_ArchoVaccine_DO_Inflammation</li>
+                        <li MayRequire="DimonSever000.DiseasesPlus.Specific">BOR_Make_Vaccine_DP_CommonCold</li>
+                        <li MayRequire="DimonSever000.DiseasesPlus.Specific">BOR_Make_NanoVaccine_DP_CommonCold</li>
+                        <li MayRequire="DimonSever000.DiseasesPlus.Specific">BOR_Make_ArchoVaccine_DP_CommonCold</li>
+                        <li MayRequire="DimonSever000.DiseasesPlus.Specific">BOR_Make_Vaccine_DP_Conjunctivitis</li>
+                        <li MayRequire="DimonSever000.DiseasesPlus.Specific">BOR_Make_NanoVaccine_DP_Conjunctivitis</li>
+                        <li MayRequire="DimonSever000.DiseasesPlus.Specific">BOR_Make_ArchoVaccine_DP_Conjunctivitis</li>
+                        <li MayRequire="DimonSever000.DiseasesPlus.Specific">BOR_Make_Vaccine_DP_Otitis</li>
+                        <li MayRequire="DimonSever000.DiseasesPlus.Specific">BOR_Make_NanoVaccine_DP_Otitis</li>
+                        <li MayRequire="DimonSever000.DiseasesPlus.Specific">BOR_Make_ArchoVaccine_DP_Otitis</li>
+                        <li MayRequire="DimonSever000.DiseasesPlus.Specific">BOR_Make_Vaccine_DP_Tuberculosis</li>
+                        <li MayRequire="DimonSever000.DiseasesPlus.Specific">BOR_Make_NanoVaccine_DP_Tuberculosis</li>
+                        <li MayRequire="DimonSever000.DiseasesPlus.Specific">BOR_Make_ArchoVaccine_DP_Tuberculosis</li>
+                        <li MayRequire="DimonSever000.DiseasesPlus.Specific">BOR_Make_Vaccine_DP_Pneumonia</li>
+                        <li MayRequire="DimonSever000.DiseasesPlus.Specific">BOR_Make_NanoVaccine_DP_Pneumonia</li>
+                        <li MayRequire="DimonSever000.DiseasesPlus.Specific">BOR_Make_ArchoVaccine_DP_Pneumonia</li>
+                        <li MayRequire="DimonSever000.DiseasesPlus.Specific">BOR_Make_Vaccine_DP_Sepsis</li>
+                        <li MayRequire="DimonSever000.DiseasesPlus.Specific">BOR_Make_NanoVaccine_DP_Sepsis</li>
+                        <li MayRequire="DimonSever000.DiseasesPlus.Specific">BOR_Make_ArchoVaccine_DP_Sepsis</li>
+                        <li MayRequire="DimonSever000.DiseasesPlus.Specific">BOR_Make_Vaccine_DP_AcuteHepatitis</li>
+                        <li MayRequire="DimonSever000.DiseasesPlus.Specific">BOR_Make_NanoVaccine_DP_AcuteHepatitis</li>
+                        <li MayRequire="DimonSever000.DiseasesPlus.Specific">BOR_Make_ArchoVaccine_DP_AcuteHepatitis</li>
+                        <li MayRequire="DimonSever000.DiseasesPlus.Specific">BOR_Make_Vaccine_DP_Angina</li>
+                        <li MayRequire="DimonSever000.DiseasesPlus.Specific">BOR_Make_NanoVaccine_DP_Angina</li>
+                        <li MayRequire="DimonSever000.DiseasesPlus.Specific">BOR_Make_ArchoVaccine_DP_Angina</li>
+                    </value>
+                </li>
+
+                <!-- ── BOR_MedicineBench_II ── -->
+                <li Class="PatchOperationConditional">
+                    <xpath>/Defs/ThingDef[defName="BOR_MedicineBench_II"]/recipes</xpath>
+                    <nomatch Class="PatchOperationAdd">
+                        <xpath>/Defs/ThingDef[defName="BOR_MedicineBench_II"]</xpath>
+                        <value>
+                            <recipes />
+                        </value>
+                    </nomatch>
+                </li>
+                <li Class="PatchOperationAdd">
+                    <xpath>/Defs/ThingDef[defName="BOR_MedicineBench_II"]/recipes</xpath>
+                    <value>
+                        <li>BOR_Make_Vaccine_Flu</li>
+                        <li>BOR_Make_NanoVaccine_Flu</li>
+                        <li>BOR_Make_ArchoVaccine_Flu</li>
+                        <li>BOR_Make_Vaccine_Plague</li>
+                        <li>BOR_Make_NanoVaccine_Plague</li>
+                        <li>BOR_Make_ArchoVaccine_Plague</li>
+                        <li>BOR_Make_Vaccine_Malaria</li>
+                        <li>BOR_Make_NanoVaccine_Malaria</li>
+                        <li>BOR_Make_ArchoVaccine_Malaria</li>
+                        <li>BOR_Make_Vaccine_SleepingSickness</li>
+                        <li>BOR_Make_NanoVaccine_SleepingSickness</li>
+                        <li>BOR_Make_ArchoVaccine_SleepingSickness</li>
+                        <li>BOR_Make_Vaccine_Scaria</li>
+                        <li>BOR_Make_NanoVaccine_Scaria</li>
+                        <li>BOR_Make_ArchoVaccine_Scaria</li>
+                        <li>BOR_Make_Vaccine_Infection</li>
+                        <li>BOR_Make_NanoVaccine_Infection</li>
+                        <li>BOR_Make_ArchoVaccine_Infection</li>
+                        <li>BOR_Make_Vaccine_GutWorms</li>
+                        <li>BOR_Make_NanoVaccine_GutWorms</li>
+                        <li>BOR_Make_ArchoVaccine_GutWorms</li>
+                        <li>BOR_Make_Vaccine_LungRot</li>
+                        <li>BOR_Make_NanoVaccine_LungRot</li>
+                        <li>BOR_Make_ArchoVaccine_LungRot</li>
+                        <li>BOR_Make_ArchoVaccine_Mechanites</li>
+                        <li>BOR_Make_NanoVaccine_FibrousMechanites</li>
+                        <li>BOR_Make_NanoVaccine_SensoryMechanites</li>
+                        <li MayRequire="Ludeon.RimWorld.Biotech">BOR_Make_Vaccine_InfantIllness</li>
+                        <li MayRequire="Ludeon.RimWorld.Biotech">BOR_Make_NanoVaccine_InfantIllness</li>
+                        <li MayRequire="Ludeon.RimWorld.Biotech">BOR_Make_ArchoVaccine_InfantIllness</li>
+                        <li MayRequire="Ludeon.RimWorld.Royalty">BOR_Make_Vaccine_BloodRot</li>
+                        <li MayRequire="Ludeon.RimWorld.Royalty">BOR_Make_NanoVaccine_BloodRot</li>
+                        <li MayRequire="Ludeon.RimWorld.Royalty">BOR_Make_ArchoVaccine_BloodRot</li>
+                        <li MayRequire="Ludeon.RimWorld.Anomaly">BOR_Make_NanoVaccine_MetalhorrorImplant</li>
+                        <li MayRequire="ushanka.necroaarchovirus">BOR_Make_Vaccine_Necroa</li>
+                        <li MayRequire="ushanka.necroaarchovirus">BOR_Make_NanoVaccine_Necroa</li>
+                        <li MayRequire="ushanka.necroaarchovirus">BOR_Make_ArchoVaccine_Necroa</li>
+                        <li MayRequire="bobhope.Rabies">BOR_Make_Vaccine_Rabies</li>
+                        <li MayRequire="bobhope.Rabies">BOR_Make_NanoVaccine_Rabies</li>
+                        <li MayRequire="bobhope.Rabies">BOR_Make_ArchoVaccine_Rabies</li>
+                        <li MayRequire="lts.MSMD">BOR_Make_NanoVaccine_MedicalMechanites</li>
+                        <li MayRequire="lts.MSMD">BOR_Make_NanoVaccine_BerserkerMechanites</li>
+                        <li MayRequire="lts.MSMD">BOR_Make_NanoVaccine_TrainerMechanites</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_Vaccine_DO_Tuberculosis</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_NanoVaccine_DO_Tuberculosis</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_ArchoVaccine_DO_Tuberculosis</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_Vaccine_DO_KindredDick</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_NanoVaccine_DO_KindredDick</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_ArchoVaccine_DO_KindredDick</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_Vaccine_DO_EpsteinBarr</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_NanoVaccine_DO_EpsteinBarr</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_ArchoVaccine_DO_EpsteinBarr</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_Vaccine_DO_VoightBernstein</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_NanoVaccine_DO_VoightBernstein</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_ArchoVaccine_DO_VoightBernstein</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_Vaccine_DO_HansenKampff</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_NanoVaccine_DO_HansenKampff</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_ArchoVaccine_DO_HansenKampff</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_Vaccine_DO_NewReschianFever</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_NanoVaccine_DO_NewReschianFever</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_ArchoVaccine_DO_NewReschianFever</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_Vaccine_DO_HepatitisK</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_NanoVaccine_DO_HepatitisK</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_ArchoVaccine_DO_HepatitisK</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_Vaccine_DO_Sepsis</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_NanoVaccine_DO_Sepsis</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_ArchoVaccine_DO_Sepsis</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_Vaccine_DO_CommonCold</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_NanoVaccine_DO_CommonCold</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_ArchoVaccine_DO_CommonCold</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_Vaccine_DO_Inflammation</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_NanoVaccine_DO_Inflammation</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_ArchoVaccine_DO_Inflammation</li>
+                        <li MayRequire="DimonSever000.DiseasesPlus.Specific">BOR_Make_Vaccine_DP_CommonCold</li>
+                        <li MayRequire="DimonSever000.DiseasesPlus.Specific">BOR_Make_NanoVaccine_DP_CommonCold</li>
+                        <li MayRequire="DimonSever000.DiseasesPlus.Specific">BOR_Make_ArchoVaccine_DP_CommonCold</li>
+                        <li MayRequire="DimonSever000.DiseasesPlus.Specific">BOR_Make_Vaccine_DP_Conjunctivitis</li>
+                        <li MayRequire="DimonSever000.DiseasesPlus.Specific">BOR_Make_NanoVaccine_DP_Conjunctivitis</li>
+                        <li MayRequire="DimonSever000.DiseasesPlus.Specific">BOR_Make_ArchoVaccine_DP_Conjunctivitis</li>
+                        <li MayRequire="DimonSever000.DiseasesPlus.Specific">BOR_Make_Vaccine_DP_Otitis</li>
+                        <li MayRequire="DimonSever000.DiseasesPlus.Specific">BOR_Make_NanoVaccine_DP_Otitis</li>
+                        <li MayRequire="DimonSever000.DiseasesPlus.Specific">BOR_Make_ArchoVaccine_DP_Otitis</li>
+                        <li MayRequire="DimonSever000.DiseasesPlus.Specific">BOR_Make_Vaccine_DP_Tuberculosis</li>
+                        <li MayRequire="DimonSever000.DiseasesPlus.Specific">BOR_Make_NanoVaccine_DP_Tuberculosis</li>
+                        <li MayRequire="DimonSever000.DiseasesPlus.Specific">BOR_Make_ArchoVaccine_DP_Tuberculosis</li>
+                        <li MayRequire="DimonSever000.DiseasesPlus.Specific">BOR_Make_Vaccine_DP_Pneumonia</li>
+                        <li MayRequire="DimonSever000.DiseasesPlus.Specific">BOR_Make_NanoVaccine_DP_Pneumonia</li>
+                        <li MayRequire="DimonSever000.DiseasesPlus.Specific">BOR_Make_ArchoVaccine_DP_Pneumonia</li>
+                        <li MayRequire="DimonSever000.DiseasesPlus.Specific">BOR_Make_Vaccine_DP_Sepsis</li>
+                        <li MayRequire="DimonSever000.DiseasesPlus.Specific">BOR_Make_NanoVaccine_DP_Sepsis</li>
+                        <li MayRequire="DimonSever000.DiseasesPlus.Specific">BOR_Make_ArchoVaccine_DP_Sepsis</li>
+                        <li MayRequire="DimonSever000.DiseasesPlus.Specific">BOR_Make_Vaccine_DP_AcuteHepatitis</li>
+                        <li MayRequire="DimonSever000.DiseasesPlus.Specific">BOR_Make_NanoVaccine_DP_AcuteHepatitis</li>
+                        <li MayRequire="DimonSever000.DiseasesPlus.Specific">BOR_Make_ArchoVaccine_DP_AcuteHepatitis</li>
+                        <li MayRequire="DimonSever000.DiseasesPlus.Specific">BOR_Make_Vaccine_DP_Angina</li>
+                        <li MayRequire="DimonSever000.DiseasesPlus.Specific">BOR_Make_NanoVaccine_DP_Angina</li>
+                        <li MayRequire="DimonSever000.DiseasesPlus.Specific">BOR_Make_ArchoVaccine_DP_Angina</li>
+                    </value>
+                </li>
+
+                <!-- ── BOR_MedicineBench_III ── -->
+                <li Class="PatchOperationConditional">
+                    <xpath>/Defs/ThingDef[defName="BOR_MedicineBench_III"]/recipes</xpath>
+                    <nomatch Class="PatchOperationAdd">
+                        <xpath>/Defs/ThingDef[defName="BOR_MedicineBench_III"]</xpath>
+                        <value>
+                            <recipes />
+                        </value>
+                    </nomatch>
+                </li>
+                <li Class="PatchOperationAdd">
+                    <xpath>/Defs/ThingDef[defName="BOR_MedicineBench_III"]/recipes</xpath>
+                    <value>
+                        <li>BOR_Make_Vaccine_Flu</li>
+                        <li>BOR_Make_NanoVaccine_Flu</li>
+                        <li>BOR_Make_ArchoVaccine_Flu</li>
+                        <li>BOR_Make_Vaccine_Plague</li>
+                        <li>BOR_Make_NanoVaccine_Plague</li>
+                        <li>BOR_Make_ArchoVaccine_Plague</li>
+                        <li>BOR_Make_Vaccine_Malaria</li>
+                        <li>BOR_Make_NanoVaccine_Malaria</li>
+                        <li>BOR_Make_ArchoVaccine_Malaria</li>
+                        <li>BOR_Make_Vaccine_SleepingSickness</li>
+                        <li>BOR_Make_NanoVaccine_SleepingSickness</li>
+                        <li>BOR_Make_ArchoVaccine_SleepingSickness</li>
+                        <li>BOR_Make_Vaccine_Scaria</li>
+                        <li>BOR_Make_NanoVaccine_Scaria</li>
+                        <li>BOR_Make_ArchoVaccine_Scaria</li>
+                        <li>BOR_Make_Vaccine_Infection</li>
+                        <li>BOR_Make_NanoVaccine_Infection</li>
+                        <li>BOR_Make_ArchoVaccine_Infection</li>
+                        <li>BOR_Make_Vaccine_GutWorms</li>
+                        <li>BOR_Make_NanoVaccine_GutWorms</li>
+                        <li>BOR_Make_ArchoVaccine_GutWorms</li>
+                        <li>BOR_Make_Vaccine_LungRot</li>
+                        <li>BOR_Make_NanoVaccine_LungRot</li>
+                        <li>BOR_Make_ArchoVaccine_LungRot</li>
+                        <li>BOR_Make_ArchoVaccine_Mechanites</li>
+                        <li>BOR_Make_NanoVaccine_FibrousMechanites</li>
+                        <li>BOR_Make_NanoVaccine_SensoryMechanites</li>
+                        <li MayRequire="Ludeon.RimWorld.Biotech">BOR_Make_Vaccine_InfantIllness</li>
+                        <li MayRequire="Ludeon.RimWorld.Biotech">BOR_Make_NanoVaccine_InfantIllness</li>
+                        <li MayRequire="Ludeon.RimWorld.Biotech">BOR_Make_ArchoVaccine_InfantIllness</li>
+                        <li MayRequire="Ludeon.RimWorld.Royalty">BOR_Make_Vaccine_BloodRot</li>
+                        <li MayRequire="Ludeon.RimWorld.Royalty">BOR_Make_NanoVaccine_BloodRot</li>
+                        <li MayRequire="Ludeon.RimWorld.Royalty">BOR_Make_ArchoVaccine_BloodRot</li>
+                        <li MayRequire="Ludeon.RimWorld.Anomaly">BOR_Make_NanoVaccine_MetalhorrorImplant</li>
+                        <li MayRequire="ushanka.necroaarchovirus">BOR_Make_Vaccine_Necroa</li>
+                        <li MayRequire="ushanka.necroaarchovirus">BOR_Make_NanoVaccine_Necroa</li>
+                        <li MayRequire="ushanka.necroaarchovirus">BOR_Make_ArchoVaccine_Necroa</li>
+                        <li MayRequire="bobhope.Rabies">BOR_Make_Vaccine_Rabies</li>
+                        <li MayRequire="bobhope.Rabies">BOR_Make_NanoVaccine_Rabies</li>
+                        <li MayRequire="bobhope.Rabies">BOR_Make_ArchoVaccine_Rabies</li>
+                        <li MayRequire="lts.MSMD">BOR_Make_NanoVaccine_MedicalMechanites</li>
+                        <li MayRequire="lts.MSMD">BOR_Make_NanoVaccine_BerserkerMechanites</li>
+                        <li MayRequire="lts.MSMD">BOR_Make_NanoVaccine_TrainerMechanites</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_Vaccine_DO_Tuberculosis</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_NanoVaccine_DO_Tuberculosis</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_ArchoVaccine_DO_Tuberculosis</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_Vaccine_DO_KindredDick</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_NanoVaccine_DO_KindredDick</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_ArchoVaccine_DO_KindredDick</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_Vaccine_DO_EpsteinBarr</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_NanoVaccine_DO_EpsteinBarr</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_ArchoVaccine_DO_EpsteinBarr</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_Vaccine_DO_VoightBernstein</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_NanoVaccine_DO_VoightBernstein</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_ArchoVaccine_DO_VoightBernstein</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_Vaccine_DO_HansenKampff</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_NanoVaccine_DO_HansenKampff</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_ArchoVaccine_DO_HansenKampff</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_Vaccine_DO_NewReschianFever</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_NanoVaccine_DO_NewReschianFever</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_ArchoVaccine_DO_NewReschianFever</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_Vaccine_DO_HepatitisK</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_NanoVaccine_DO_HepatitisK</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_ArchoVaccine_DO_HepatitisK</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_Vaccine_DO_Sepsis</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_NanoVaccine_DO_Sepsis</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_ArchoVaccine_DO_Sepsis</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_Vaccine_DO_CommonCold</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_NanoVaccine_DO_CommonCold</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_ArchoVaccine_DO_CommonCold</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_Vaccine_DO_Inflammation</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_NanoVaccine_DO_Inflammation</li>
+                        <li MayRequire="Ogliss.Mythos.DiseasesOverhauled">BOR_Make_ArchoVaccine_DO_Inflammation</li>
+                        <li MayRequire="DimonSever000.DiseasesPlus.Specific">BOR_Make_Vaccine_DP_CommonCold</li>
+                        <li MayRequire="DimonSever000.DiseasesPlus.Specific">BOR_Make_NanoVaccine_DP_CommonCold</li>
+                        <li MayRequire="DimonSever000.DiseasesPlus.Specific">BOR_Make_ArchoVaccine_DP_CommonCold</li>
+                        <li MayRequire="DimonSever000.DiseasesPlus.Specific">BOR_Make_Vaccine_DP_Conjunctivitis</li>
+                        <li MayRequire="DimonSever000.DiseasesPlus.Specific">BOR_Make_NanoVaccine_DP_Conjunctivitis</li>
+                        <li MayRequire="DimonSever000.DiseasesPlus.Specific">BOR_Make_ArchoVaccine_DP_Conjunctivitis</li>
+                        <li MayRequire="DimonSever000.DiseasesPlus.Specific">BOR_Make_Vaccine_DP_Otitis</li>
+                        <li MayRequire="DimonSever000.DiseasesPlus.Specific">BOR_Make_NanoVaccine_DP_Otitis</li>
+                        <li MayRequire="DimonSever000.DiseasesPlus.Specific">BOR_Make_ArchoVaccine_DP_Otitis</li>
+                        <li MayRequire="DimonSever000.DiseasesPlus.Specific">BOR_Make_Vaccine_DP_Tuberculosis</li>
+                        <li MayRequire="DimonSever000.DiseasesPlus.Specific">BOR_Make_NanoVaccine_DP_Tuberculosis</li>
+                        <li MayRequire="DimonSever000.DiseasesPlus.Specific">BOR_Make_ArchoVaccine_DP_Tuberculosis</li>
+                        <li MayRequire="DimonSever000.DiseasesPlus.Specific">BOR_Make_Vaccine_DP_Pneumonia</li>
+                        <li MayRequire="DimonSever000.DiseasesPlus.Specific">BOR_Make_NanoVaccine_DP_Pneumonia</li>
+                        <li MayRequire="DimonSever000.DiseasesPlus.Specific">BOR_Make_ArchoVaccine_DP_Pneumonia</li>
+                        <li MayRequire="DimonSever000.DiseasesPlus.Specific">BOR_Make_Vaccine_DP_Sepsis</li>
+                        <li MayRequire="DimonSever000.DiseasesPlus.Specific">BOR_Make_NanoVaccine_DP_Sepsis</li>
+                        <li MayRequire="DimonSever000.DiseasesPlus.Specific">BOR_Make_ArchoVaccine_DP_Sepsis</li>
+                        <li MayRequire="DimonSever000.DiseasesPlus.Specific">BOR_Make_Vaccine_DP_AcuteHepatitis</li>
+                        <li MayRequire="DimonSever000.DiseasesPlus.Specific">BOR_Make_NanoVaccine_DP_AcuteHepatitis</li>
+                        <li MayRequire="DimonSever000.DiseasesPlus.Specific">BOR_Make_ArchoVaccine_DP_AcuteHepatitis</li>
+                        <li MayRequire="DimonSever000.DiseasesPlus.Specific">BOR_Make_Vaccine_DP_Angina</li>
+                        <li MayRequire="DimonSever000.DiseasesPlus.Specific">BOR_Make_NanoVaccine_DP_Angina</li>
+                        <li MayRequire="DimonSever000.DiseasesPlus.Specific">BOR_Make_ArchoVaccine_DP_Angina</li>
+                    </value>
+                </li>
+
             </operations>
         </enabled>
     </Operation>

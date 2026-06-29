@@ -3,9 +3,9 @@
   <!-- ======================================= Industrial =======================================-->
 
   <ThingDef ParentName="ArmorMachineableBase">
-    <defName>BOR_Quasar_Apparel_FlakVest</defName>
-    <label>quasar flak vest</label>
-    <description>A pair of solid Quasar Alloy plates sewn together into a protective chestpiece. Renders the wearer nigh-invulnerable to weapons fire, so long as that fire is directed toward their chest or spine, and is not actual 'flame' fire.</description>
+    <defName>BOR_Quasar_Assembly_Carapace</defName>
+    <label>quasar assembly carapace</label>
+    <description>A rigid carapace built around the principle of sustained surgical control. Its alloy structural web locks the torso and shoulders into a configuration optimized for continuous bionic implant work at the highest precision tier. Unlike the harness of the solar craftsman, this piece does not compromise — it is built for one purpose, and it excels at it.</description>
     <techLevel>Ultra</techLevel>
     <recipeMaker>
       <researchPrerequisites>
@@ -23,21 +23,20 @@
       </recipeUsers>
     </recipeMaker>
     <graphicData>
-      <color>(0.36, 0.5, 0.7)</color>
-      <texPath>Things/Pawn/Humanlike/Apparel/FlakVest/FlakVest</texPath>
+      <texPath>BOR/Things/Pawn/Humanlike/Apparel/AssemblyCarapace/assembly_carapace</texPath>
       <graphicClass>Graphic_Single</graphicClass>
-      <drawSize>0.90</drawSize>
     </graphicData>
     <statBases>
-      <WorkToMake>20250</WorkToMake>
-      <MaxHitPoints>375</MaxHitPoints>
-      <Mass>2.75</Mass>
-      <Flammability>0.40</Flammability>
-      <ArmorRating_Sharp>1.88</ArmorRating_Sharp>
+      <WorkToMake>75000</WorkToMake>
+      <MaxHitPoints>600</MaxHitPoints>
+      <Mass>7.80</Mass>
+      <Flammability>0.22</Flammability>
+      <ArmorRating_Sharp>2.00</ArmorRating_Sharp>
       <ArmorRating_Blunt>0.75</ArmorRating_Blunt>
-      <ArmorRating_Heat>0.53</ArmorRating_Heat>
-      <Insulation_Cold>3</Insulation_Cold>
-      <EquipDelay>4</EquipDelay>
+      <ArmorRating_Heat>0.95</ArmorRating_Heat>
+      <Insulation_Cold>68</Insulation_Cold>
+      <Insulation_Heat>18</Insulation_Heat>
+      <EquipDelay>11.50</EquipDelay>
 
       <RoyalFavorValue>3</RoyalFavorValue>
     </statBases>
@@ -45,27 +44,28 @@
       <ToxicEnvironmentResistance>0.80</ToxicEnvironmentResistance>
       <MoveSpeed>-0.05</MoveSpeed>
       <VacuumResistance MayRequire="Ludeon.RimWorld.Odyssey">0.35</VacuumResistance>
+      <BOR_BionicCraftingSpeed>0.25</BOR_BionicCraftingSpeed>
     </equippedStatOffsets>
     <thingCategories>
       <li>BOR_Armor_II</li>
     </thingCategories>
     <costList>
-      <BOR_QuasarAlloyWeave>33</BOR_QuasarAlloyWeave>
-      <BOR_QuasarAlloy>66</BOR_QuasarAlloy>
-      <BOR_ComponentII>1</BOR_ComponentII>
+      <BOR_QuasarAlloy>100</BOR_QuasarAlloy>
+      <BOR_Neutronium>10</BOR_Neutronium>
+      <BOR_ComponentII>4</BOR_ComponentII>
     </costList>
     <apparel>
       <bodyPartGroups>
         <li>Torso</li>
-        <li>Neck</li>
         <li>Shoulders</li>
       </bodyPartGroups>
-      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/FlakVest/FlakVest</wornGraphicPath>
+      <wornGraphicPath>BOR/Things/Pawn/Humanlike/Apparel/AssemblyCarapace/assembly_carapace</wornGraphicPath>
       <layers>
         <li>Middle</li>
+        <li>Shell</li>
       </layers>
       <tags>
-        <li>SpacerMilitary</li>
+        <li>HiTechArmor</li>
         <li>BOR_Military_II</li>
       </tags>
       <defaultOutfitTags>
@@ -73,6 +73,7 @@
       </defaultOutfitTags>
     </apparel>
     <tradeTags>
+      <li>Armor</li>
       <li>BOR_Armor_II</li>
       <li>BOR_Tech_II</li>
     </tradeTags>
@@ -154,10 +155,10 @@
   </ThingDef>
 
   <ThingDef ParentName="ArmorMachineableBase">
-    <defName>BOR_Quasar_Apparel_FlakJacket</defName>
-    <label>quasar flak jacket</label>
+    <defName>BOR_Quasar_Masterforge_Mantle</defName>
+    <label>quasar masterforge mantle</label>
     <techLevel>Ultra</techLevel>
-    <description>A conventional jacket with Quasar Alloy plates sewn in to protect vital areas on the torso. It is not advised to try and cut the off sleeves for 'fashion', as functional scissors in the Rim are rare enough without destroying another pair.</description>
+    <description>A heavy-grade kwazaari alloy coat that integrates forge-dampening weave with bionic assembly stabilizers along the shoulder seams. Worn by specialists who move between high-heat substrate work and delicate implant installation without changing out of their kit.</description>
     <recipeMaker>
       <researchPrerequisites>
         <li>BOR_Research_Armor_II</li>
@@ -174,36 +175,37 @@
       </recipeUsers>
     </recipeMaker>
     <graphicData>
-      <color>(0.36, 0.5, 0.7)</color>
-      <texPath>Things/Pawn/Humanlike/Apparel/FlakJacket/FlakJacket</texPath>
+      <texPath>BOR/Things/Pawn/Humanlike/Apparel/MasterforgeMantle/masterforge_mantle</texPath>
       <graphicClass>Graphic_Single</graphicClass>
       <drawSize>1.00</drawSize>
     </graphicData>
     <costList>
-      <BOR_QuasarAlloyWeave>55</BOR_QuasarAlloyWeave>
-      <BOR_Sunsteel>77</BOR_Sunsteel>
-      <BOR_ComponentII>1</BOR_ComponentII>
+      <BOR_QuasarAlloyWeave>65</BOR_QuasarAlloyWeave>
+      <BOR_QuasarAlloy>88</BOR_QuasarAlloy>
+      <BOR_ComponentII>2</BOR_ComponentII>
     </costList>
     <thingCategories>
       <li>BOR_Armor_II</li>
     </thingCategories>
     <statBases>
-      <MaxHitPoints>375</MaxHitPoints>
-      <WorkToMake>30500</WorkToMake>
-      <Mass>4</Mass>
-      <Flammability>0.40</Flammability>
-      <ArmorRating_Sharp>0.75</ArmorRating_Sharp>
-      <ArmorRating_Blunt>0.15</ArmorRating_Blunt>
-      <ArmorRating_Heat>0.19</ArmorRating_Heat>
-      <Insulation_Cold>25.42</Insulation_Cold>
-      <Insulation_Heat>5.63</Insulation_Heat>
-      <EquipDelay>2.75</EquipDelay>
+      <MaxHitPoints>420</MaxHitPoints>
+      <WorkToMake>32000</WorkToMake>
+      <Mass>5.20</Mass>
+      <Flammability>0.38</Flammability>
+      <ArmorRating_Sharp>0.80</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.17</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.28</ArmorRating_Heat>
+      <Insulation_Cold>28</Insulation_Cold>
+      <Insulation_Heat>7.50</Insulation_Heat>
+      <EquipDelay>3.00</EquipDelay>
 
       <RoyalFavorValue>3</RoyalFavorValue>
     </statBases>
     <equippedStatOffsets>
       <ToxicEnvironmentResistance>0.80</ToxicEnvironmentResistance>
       <MoveSpeed>-0.05</MoveSpeed>
+      <BOR_QuantumForging>0.17</BOR_QuantumForging>
+      <BOR_BionicCraftingSpeed>0.10</BOR_BionicCraftingSpeed>
     </equippedStatOffsets>
     <apparel>
       <bodyPartGroups>
@@ -212,18 +214,21 @@
         <li>Shoulders</li>
         <li>Arms</li>
       </bodyPartGroups>
-      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/FlakJacket/FlakJacket</wornGraphicPath>
+      <wornGraphicPath>BOR/Things/Pawn/Humanlike/Apparel/MasterforgeMantle/masterforge_mantle</wornGraphicPath>
       <layers>
         <li>Shell</li>
       </layers>
       <tags>
-        <li>BOR_Armor_II</li>
+        <li>HiTechArmor</li>
+        <li>BOR_Military_II</li>
       </tags>
       <defaultOutfitTags>
         <li>Soldier</li>
       </defaultOutfitTags>
     </apparel>
     <tradeTags>
+      <li>Clothing</li>
+      <li>Armor</li>
       <li>BOR_Clothing_II</li>
       <li>BOR_Armor_II</li>
       <li>BOR_Tech_II</li>

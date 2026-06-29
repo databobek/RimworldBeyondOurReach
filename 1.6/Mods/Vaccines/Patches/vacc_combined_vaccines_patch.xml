@@ -1,0 +1,1521 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- =====================================================================
+     BOR Combined &amp; Tenebral Vaccines
+     Gate: BOR_Setting_BORCombinedAndTenebralVaccines
+     Requires: Medical Expansion - Vaccines (onofre150.me.vaccines)
+
+     TIER 2 (Kwazaar / Quasar bench) – Combined vaccines:
+       Groups with 2+ diseases, all three quality tiers (standard/nano/archo).
+       1 product, same ingredient cost, 10× work amount.
+       Groups: BaseBio, BaseMech, MSMD Mech*, DO Bio*, DP Bio*
+
+     TIER 3 (Tenebral bench) – Super-vaccines:
+       New Hediffs (BOR_TenebralVaccinated_*) with constant pain 0.15.
+       3 vaccines: Bio (all bio diseases), Mech_I (vanilla mech), Mech_II (MSMD*).
+       Archo-level only. DLC/mod diseases patched in conditionally.
+
+     * Loaded only when the respective mod is active.
+     ===================================================================== -->
+<Patch>
+
+    <Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
+        <modSettingDef>BOR_Setting_BORCombinedAndTenebralVaccines</modSettingDef>
+        <enabled Class="PatchOperationSequence">
+            <operations>
+
+                <!-- ── Combined vaccine research project (added first to avoid reference errors) ── -->
+                <li Class="PatchOperationAdd">
+                    <xpath>Defs</xpath>
+                    <value>
+                        <ResearchProjectDef MayRequire="onofre150.me.vaccines" ParentName="BOR_Research_Base_III">
+                            <defName>BOR_Research_Vaccines_Combined</defName>
+                            <label>combined vaccine synthesis</label>
+                            <description>Integrate discoveries across all tiers of Beyond Our Reach vaccine synthesis to engineer broad-spectrum combined vaccines and tenebral super-vaccines. Combined doses immunise against multiple pathogens simultaneously; tenebral formulations permanently rewrite the immune system at the archotech level.</description>
+                            <baseCost>200000</baseCost>
+                            <techLevel>Archotech</techLevel>
+                            <prerequisites>
+                                <li>BOR_Research_Vaccines_III</li>
+                            </prerequisites>
+                            <researchViewX>14.00</researchViewX>
+                            <researchViewY>4.20</researchViewY>
+                        </ResearchProjectDef>
+                    </value>
+                </li>
+
+                <!-- ==============================================================
+                     SECTION 1 – Abstract craft bases, Tenebral HediffDefs,
+                                 Base-game combined ThingDefs + RecipeDefs,
+                                 Tenebral Bio + Mech_I ThingDefs + RecipeDefs
+                     (unconditional – only base game diseases used here)
+                     ============================================================== -->
+                <li Class="PatchOperationAdd">
+                    <xpath>Defs</xpath>
+                    <value>
+
+                        <!-- ═══════════ ABSTRACT RECIPE CRAFT BASES ════════════ -->
+
+                        <!-- Combined Standard – Quasar bench, work 60 000, same cost as basic -->
+                        <RecipeDef Name="BOR_CombinedBasicVaccineCraftingBase" Abstract="True">
+                            <workSpeedStat>DrugSynthesisSpeed</workSpeedStat>
+                            <workSkill>Intellectual</workSkill>
+                            <effectWorking>Cook</effectWorking>
+                            <soundWorking>Recipe_Drug</soundWorking>
+                            <workAmount>60000</workAmount>
+                            <recipeUsers>
+                                <li>BOR_MedicineBench_II</li>
+                                <li>BOR_MedicineBench_III</li>
+                                <li>BOR_Bench_IV</li>
+                            </recipeUsers>
+                            <researchPrerequisite>BOR_Research_Vaccines_Combined</researchPrerequisite>
+                            <skillRequirements>
+                                <Intellectual>8</Intellectual>
+                            </skillRequirements>
+                            <ingredients>
+                                <li>
+                                    <filter><categories><li>MeatRaw</li></categories></filter>
+                                    <count>1</count>
+                                </li>
+                                <li>
+                                    <filter><thingDefs><li>BOR_Aegis</li></thingDefs></filter>
+                                    <count>1</count>
+                                </li>
+                                <li>
+                                    <filter><thingDefs><li>BOR_Nanoclusters</li></thingDefs></filter>
+                                    <count>1</count>
+                                </li>
+                            </ingredients>
+                            <fixedIngredientFilter>
+                                <categories><li>MeatRaw</li></categories>
+                                <thingDefs>
+                                    <li>BOR_Aegis</li>
+                                    <li>BOR_Nanoclusters</li>
+                                </thingDefs>
+                            </fixedIngredientFilter>
+                        </RecipeDef>
+
+                        <!-- Combined Nano – Quasar bench, work 90 000 -->
+                        <RecipeDef Name="BOR_CombinedNanoVaccineCraftingBase" Abstract="True">
+                            <workSpeedStat>DrugSynthesisSpeed</workSpeedStat>
+                            <workSkill>Intellectual</workSkill>
+                            <effectWorking>Cook</effectWorking>
+                            <soundWorking>Recipe_Drug</soundWorking>
+                            <workAmount>90000</workAmount>
+                            <recipeUsers>
+                                <li>BOR_MedicineBench_II</li>
+                                <li>BOR_MedicineBench_III</li>
+                                <li>BOR_Bench_IV</li>
+                            </recipeUsers>
+                            <researchPrerequisite>BOR_Research_Vaccines_Combined</researchPrerequisite>
+                            <skillRequirements>
+                                <Intellectual>9</Intellectual>
+                            </skillRequirements>
+                            <ingredients>
+                                <li>
+                                    <filter><categories><li>MeatRaw</li></categories></filter>
+                                    <count>1</count>
+                                </li>
+                                <li>
+                                    <filter><thingDefs><li>BOR_Castra</li></thingDefs></filter>
+                                    <count>1</count>
+                                </li>
+                                <li>
+                                    <filter><thingDefs><li>BOR_Picoclusters</li></thingDefs></filter>
+                                    <count>1</count>
+                                </li>
+                            </ingredients>
+                            <fixedIngredientFilter>
+                                <categories><li>MeatRaw</li></categories>
+                                <thingDefs>
+                                    <li>BOR_Castra</li>
+                                    <li>BOR_Picoclusters</li>
+                                </thingDefs>
+                            </fixedIngredientFilter>
+                        </RecipeDef>
+
+                        <!-- Combined Archo – Quasar bench, work 120 000 -->
+                        <RecipeDef Name="BOR_CombinedArchoVaccineCraftingBase" Abstract="True">
+                            <workSpeedStat>DrugSynthesisSpeed</workSpeedStat>
+                            <workSkill>Intellectual</workSkill>
+                            <effectWorking>Cook</effectWorking>
+                            <soundWorking>Recipe_Drug</soundWorking>
+                            <workAmount>120000</workAmount>
+                            <recipeUsers>
+                                <li>BOR_MedicineBench_II</li>
+                                <li>BOR_MedicineBench_III</li>
+                                <li>BOR_Bench_IV</li>
+                            </recipeUsers>
+                            <researchPrerequisite>BOR_Research_Vaccines_Combined</researchPrerequisite>
+                            <skillRequirements>
+                                <Intellectual>11</Intellectual>
+                            </skillRequirements>
+                            <ingredients>
+                                <li>
+                                    <filter><categories><li>MeatRaw</li></categories></filter>
+                                    <count>1</count>
+                                </li>
+                                <li>
+                                    <filter><thingDefs><li>BOR_Pax</li></thingDefs></filter>
+                                    <count>1</count>
+                                </li>
+                                <li>
+                                    <filter><thingDefs><li>BOR_Femtoclusters</li></thingDefs></filter>
+                                    <count>1</count>
+                                </li>
+                            </ingredients>
+                            <fixedIngredientFilter>
+                                <categories><li>MeatRaw</li></categories>
+                                <thingDefs>
+                                    <li>BOR_Pax</li>
+                                    <li>BOR_Femtoclusters</li>
+                                </thingDefs>
+                            </fixedIngredientFilter>
+                        </RecipeDef>
+
+                        <!-- Tenebral – Tenebral bench only, work 200 000, costs 3× archo compounds -->
+                        <RecipeDef Name="BOR_TenebralVaccineCraftingBase" Abstract="True">
+                            <workSpeedStat>DrugSynthesisSpeed</workSpeedStat>
+                            <workSkill>Intellectual</workSkill>
+                            <effectWorking>Cook</effectWorking>
+                            <soundWorking>Recipe_Drug</soundWorking>
+                            <workAmount>200000</workAmount>
+                            <recipeUsers>
+                                <li>BOR_MedicineBench_III</li>
+                                <li>BOR_Bench_IV</li>
+                            </recipeUsers>
+                            <researchPrerequisite>BOR_Research_Vaccines_Combined</researchPrerequisite>
+                            <skillRequirements>
+                                <Intellectual>12</Intellectual>
+                            </skillRequirements>
+                            <ingredients>
+                                <li>
+                                    <filter><categories><li>MeatRaw</li></categories></filter>
+                                    <count>3</count>
+                                </li>
+                                <li>
+                                    <filter><thingDefs><li>BOR_Pax</li></thingDefs></filter>
+                                    <count>3</count>
+                                </li>
+                                <li>
+                                    <filter><thingDefs><li>BOR_Femtoclusters</li></thingDefs></filter>
+                                    <count>3</count>
+                                </li>
+                            </ingredients>
+                            <fixedIngredientFilter>
+                                <categories><li>MeatRaw</li></categories>
+                                <thingDefs>
+                                    <li>BOR_Pax</li>
+                                    <li>BOR_Femtoclusters</li>
+                                </thingDefs>
+                            </fixedIngredientFilter>
+                        </RecipeDef>
+
+                        <!-- ═══════════ TENEBRAL HEDIFFDEFS ════════════ -->
+
+                        <!-- Applied by BOR_TenebralVaccine_Bio alongside ArchoVaccinated_* hediffs -->
+                        <HediffDef>
+                            <defName>BOR_TenebralVaccinated_Bio</defName>
+                            <label>tenebral bio-vaccination</label>
+                            <labelNoun>a tenebral bio-vaccination</labelNoun>
+                            <description>This pawn's immune system has been fundamentally rewritten by tenebral archotech processes. All known biological pathogens are neutralised on contact. The continuous self-maintenance of this modification induces a constant low-level pain signal that cannot be suppressed.</description>
+                            <hediffClass>HediffWithComps</hediffClass>
+                            <isBad>false</isBad>
+                            <initialSeverity>1.0</initialSeverity>
+                            <stages>
+                                <li>
+                                    <label>active</label>
+                                    <painOffset>0.075</painOffset>
+                                </li>
+                            </stages>
+                        </HediffDef>
+
+                        <!-- Applied by BOR_TenebralVaccine_Mech_I alongside MechaniteJailbreak outcomes -->
+                        <HediffDef>
+                            <defName>BOR_TenebralVaccinated_Mech_I</defName>
+                            <label>tenebral mech-vaccination (I)</label>
+                            <labelNoun>a tenebral mech-vaccination</labelNoun>
+                            <description>Tenebral tech has permanently integrated mechanite override protocols into this pawn's bloodstream, granting immunity against fibrous and sensory mechanites. The embedded protocols generate a constant low-level pain signal as they patrol.</description>
+                            <hediffClass>HediffWithComps</hediffClass>
+                            <isBad>false</isBad>
+                            <initialSeverity>1.0</initialSeverity>
+                            <stages>
+                                <li>
+                                    <label>active</label>
+                                    <painOffset>0.075</painOffset>
+                                </li>
+                            </stages>
+                        </HediffDef>
+
+                        <!-- Applied by BOR_TenebralVaccine_Mech_II (MSMD diseases) -->
+                        <HediffDef>
+                            <defName>BOR_TenebralVaccinated_Mech_II</defName>
+                            <label>tenebral mech-vaccination (II)</label>
+                            <labelNoun>a tenebral mech-vaccination</labelNoun>
+                            <description>Tenebral archotech has permanently seeded this pawn's body with adaptive counter-mechanite nanobots tuned to MSMD-class mechanite strains. The counter-nanobots cause constant low-level pain as part of their vigilance cycles.</description>
+                            <hediffClass>HediffWithComps</hediffClass>
+                            <isBad>false</isBad>
+                            <initialSeverity>1.0</initialSeverity>
+                            <stages>
+                                <li>
+                                    <label>active</label>
+                                    <painOffset>0.075</painOffset>
+                                </li>
+                            </stages>
+                        </HediffDef>
+
+                        <!-- ═══════════════════════════════════════════════════════════
+                             GROUP 1 – BASE BIO (no MayRequire)
+                             Diseases: Flu, Plague, Malaria, SleepingSickness, Scaria,
+                                       Infection, GutWorms, LungRot
+                             ═══════════════════════════════════════════════════════════ -->
+
+                        <ThingDef ParentName="VaccineVialBase">
+                            <defName>BOR_CombinedVaccine_BaseBio</defName>
+                            <label>combined vaccine (base bio)</label>
+                            <description>A broad-spectrum biological vaccine synthesised with Quasar-grade Beyond Our Reach solar compounds. A single dose confers immunity against all eight common biological pathogens. Due to the complexity of simultaneous multi-pathogen adaptation, only one vial can be produced per batch.\n\nRequires research: BOR Medicine II.</description>
+                            <graphicData>
+                                <texPath>Things/Item/Health/Vaccine_Base</texPath>
+                                <graphicClass>Graphic_StackCount</graphicClass>
+                                <color>(0.95, 0.82, 0.35, 1)</color>
+                            </graphicData>
+                            <ingestible>
+                                <ingestReportString>administering the combined bio vaccine.</ingestReportString>
+                                <ingestReportStringEat>administers the combined bio vaccine.</ingestReportStringEat>
+                                <outcomeDoers>
+                                    <li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_GiveHediffByQuality">
+                                        <hediffDef>Vaccinated_Flu</hediffDef>
+                                        <baseSeverity>1.0</baseSeverity>
+                                    </li>
+                                    <li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_GiveHediffByQuality">
+                                        <hediffDef>Vaccinated_Plague</hediffDef>
+                                        <baseSeverity>1.0</baseSeverity>
+                                    </li>
+                                    <li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_GiveHediffByQuality">
+                                        <hediffDef>Vaccinated_Malaria</hediffDef>
+                                        <baseSeverity>1.0</baseSeverity>
+                                    </li>
+                                    <li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_GiveHediffByQuality">
+                                        <hediffDef>Vaccinated_SleepingSickness</hediffDef>
+                                        <baseSeverity>1.0</baseSeverity>
+                                    </li>
+                                    <li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_GiveHediffByQuality">
+                                        <hediffDef>Vaccinated_Scaria</hediffDef>
+                                        <baseSeverity>1.0</baseSeverity>
+                                    </li>
+                                    <li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_GiveHediffByQuality">
+                                        <hediffDef>Vaccinated_Infection</hediffDef>
+                                        <baseSeverity>1.0</baseSeverity>
+                                    </li>
+                                    <li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_GiveHediffByQuality">
+                                        <hediffDef>Vaccinated_GutWorms</hediffDef>
+                                        <baseSeverity>1.0</baseSeverity>
+                                    </li>
+                                    <li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_GiveHediffByQuality">
+                                        <hediffDef>Vaccinated_LungRot</hediffDef>
+                                        <baseSeverity>1.0</baseSeverity>
+                                    </li>
+                                    <li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_GiveHediffChanceByQuality">
+                                        <hediffDef>VaccineReaction_Mild</hediffDef>
+                                        <baseProbability>0.15</baseProbability>
+                                        <baseSeverity>0.4</baseSeverity>
+                                    </li>
+                                </outcomeDoers>
+                            </ingestible>
+                        </ThingDef>
+
+                        <RecipeDef ParentName="BOR_CombinedBasicVaccineCraftingBase">
+                            <defName>BOR_Make_CombinedVaccine_BaseBio</defName>
+                            <label>make combined vaccine (base bio)</label>
+                            <jobString>Synthesizing combined bio vaccine.</jobString>
+                            <description>Synthesize a combined standard bio vaccine using Quasar-grade Beyond Our Reach compounds. Yields 1 dose.</description>
+                            <products>
+                                <BOR_CombinedVaccine_BaseBio>1</BOR_CombinedVaccine_BaseBio>
+                            </products>
+                        </RecipeDef>
+
+                        <ThingDef ParentName="NanoVaccineVialBase">
+                            <defName>BOR_CombinedNanoVaccine_BaseBio</defName>
+                            <label>combined nano-vaccine (base bio)</label>
+                            <description>A broad-spectrum nano-vaccine synthesised with Quasar-grade Beyond Our Reach nano compounds. A single dose confers long-duration immunity against all eight common biological pathogens. No cold storage required.\n\nRequires research: BOR Medicine II.</description>
+                            <graphicData>
+                                <texPath>Things/Item/Health/NanoVaccine</texPath>
+                                <graphicClass>Graphic_StackCount</graphicClass>
+                                <color>(0.40, 0.85, 0.65, 1)</color>
+                            </graphicData>
+                            <ingestible>
+                                <ingestReportString>administering the combined bio nano-vaccine.</ingestReportString>
+                                <ingestReportStringEat>administers the combined bio nano-vaccine.</ingestReportStringEat>
+                                <outcomeDoers>
+                                    <li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_GiveHediffByQuality">
+                                        <hediffDef>NanoVaccinated_Flu</hediffDef>
+                                        <baseSeverity>1.0</baseSeverity>
+                                    </li>
+                                    <li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_GiveHediffByQuality">
+                                        <hediffDef>NanoVaccinated_Plague</hediffDef>
+                                        <baseSeverity>1.0</baseSeverity>
+                                    </li>
+                                    <li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_GiveHediffByQuality">
+                                        <hediffDef>NanoVaccinated_Malaria</hediffDef>
+                                        <baseSeverity>1.0</baseSeverity>
+                                    </li>
+                                    <li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_GiveHediffByQuality">
+                                        <hediffDef>NanoVaccinated_SleepingSickness</hediffDef>
+                                        <baseSeverity>1.0</baseSeverity>
+                                    </li>
+                                    <li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_GiveHediffByQuality">
+                                        <hediffDef>NanoVaccinated_Scaria</hediffDef>
+                                        <baseSeverity>1.0</baseSeverity>
+                                    </li>
+                                    <li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_GiveHediffByQuality">
+                                        <hediffDef>NanoVaccinated_Infection</hediffDef>
+                                        <baseSeverity>1.0</baseSeverity>
+                                    </li>
+                                    <li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_GiveHediffByQuality">
+                                        <hediffDef>NanoVaccinated_GutWorms</hediffDef>
+                                        <baseSeverity>1.0</baseSeverity>
+                                    </li>
+                                    <li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_GiveHediffByQuality">
+                                        <hediffDef>NanoVaccinated_LungRot</hediffDef>
+                                        <baseSeverity>1.0</baseSeverity>
+                                    </li>
+                                    <li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_GiveHediffChanceByQuality">
+                                        <hediffDef>VaccineReaction_Mild</hediffDef>
+                                        <baseProbability>0.10</baseProbability>
+                                        <baseSeverity>0.4</baseSeverity>
+                                    </li>
+                                </outcomeDoers>
+                            </ingestible>
+                        </ThingDef>
+
+                        <RecipeDef ParentName="BOR_CombinedNanoVaccineCraftingBase">
+                            <defName>BOR_Make_CombinedNanoVaccine_BaseBio</defName>
+                            <label>make combined nano-vaccine (base bio)</label>
+                            <jobString>Synthesizing combined bio nano-vaccine.</jobString>
+                            <description>Synthesize a combined nano bio vaccine using Quasar-grade Beyond Our Reach nano compounds. Yields 1 dose.</description>
+                            <products>
+                                <BOR_CombinedNanoVaccine_BaseBio>1</BOR_CombinedNanoVaccine_BaseBio>
+                            </products>
+                        </RecipeDef>
+
+                        <ThingDef ParentName="ArchoVaccineVialBase">
+                            <defName>BOR_CombinedArchoVaccine_BaseBio</defName>
+                            <label>combined tenebral vaccine (base bio)</label>
+                            <description>A tenebral combined biological vaccine synthesised with Tenebral-grade Beyond Our Reach compounds. A single dose permanently reprograms the immune system to eliminate all eight common biological pathogens.\n\nRequires research: BOR Medicine III.</description>
+                            <graphicData>
+                                <texPath>Things/Item/Health/MechaniteStabilizer</texPath>
+                                <graphicClass>Graphic_StackCount</graphicClass>
+                                <color>(0.72, 0.50, 0.92, 1)</color>
+                            </graphicData>
+                            <ingestible>
+                                <ingestReportString>administering the combined tenebral bio vaccine.</ingestReportString>
+                                <ingestReportStringEat>administers the combined tenebral bio vaccine.</ingestReportStringEat>
+                                <outcomeDoers>
+                                    <li Class="IngestionOutcomeDoer_GiveHediff">
+                                        <hediffDef>ArchoVaccinated_Flu</hediffDef>
+                                        <severity>1.0</severity>
+                                    </li>
+                                    <li Class="IngestionOutcomeDoer_GiveHediff">
+                                        <hediffDef>ArchoVaccinated_Plague</hediffDef>
+                                        <severity>1.0</severity>
+                                    </li>
+                                    <li Class="IngestionOutcomeDoer_GiveHediff">
+                                        <hediffDef>ArchoVaccinated_Malaria</hediffDef>
+                                        <severity>1.0</severity>
+                                    </li>
+                                    <li Class="IngestionOutcomeDoer_GiveHediff">
+                                        <hediffDef>ArchoVaccinated_SleepingSickness</hediffDef>
+                                        <severity>1.0</severity>
+                                    </li>
+                                    <li Class="IngestionOutcomeDoer_GiveHediff">
+                                        <hediffDef>ArchoVaccinated_Scaria</hediffDef>
+                                        <severity>1.0</severity>
+                                    </li>
+                                    <li Class="IngestionOutcomeDoer_GiveHediff">
+                                        <hediffDef>ArchoVaccinated_Infection</hediffDef>
+                                        <severity>1.0</severity>
+                                    </li>
+                                    <li Class="IngestionOutcomeDoer_GiveHediff">
+                                        <hediffDef>ArchoVaccinated_GutWorms</hediffDef>
+                                        <severity>1.0</severity>
+                                    </li>
+                                    <li Class="IngestionOutcomeDoer_GiveHediff">
+                                        <hediffDef>ArchoVaccinated_LungRot</hediffDef>
+                                        <severity>1.0</severity>
+                                    </li>
+                                </outcomeDoers>
+                            </ingestible>
+                        </ThingDef>
+
+                        <RecipeDef ParentName="BOR_CombinedArchoVaccineCraftingBase">
+                            <defName>BOR_Make_CombinedArchoVaccine_BaseBio</defName>
+                            <label>make combined tenebral vaccine (base bio)</label>
+                            <jobString>Synthesizing combined tenebral bio vaccine.</jobString>
+                            <description>Synthesize a combined tenebral bio vaccine using Tenebral-grade Beyond Our Reach compounds. Yields 1 dose.</description>
+                            <products>
+                                <BOR_CombinedArchoVaccine_BaseBio>1</BOR_CombinedArchoVaccine_BaseBio>
+                            </products>
+                        </RecipeDef>
+
+                        <!-- ═══════════════════════════════════════════════════════════
+                             GROUP 2 – BASE MECH (no MayRequire)
+                             Diseases: FibrousMechanites + SensoryMechanites
+                             Archo tier uses IngestionOutcomeDoer_MechaniteJailbreak
+                             (same behaviour as ArchoVaccine_Mechanites)
+                             ═══════════════════════════════════════════════════════════ -->
+
+                        <ThingDef ParentName="VaccineVialBase">
+                            <defName>BOR_CombinedVaccine_BaseMech</defName>
+                            <label>combined mechanite shield (base)</label>
+                            <description>A dual-spectrum counter-mechanite agent synthesised with Quasar-grade Beyond Our Reach solar compounds. When administered, deploys counter-nanobots that intercept both fibrous and sensory mechanites simultaneously. Lasts ~1 year per dose.\n\nRequires research: BOR Medicine II.</description>
+                            <graphicData>
+                                <texPath>Things/Item/Health/MechaniteStabilizer</texPath>
+                                <graphicClass>Graphic_StackCount</graphicClass>
+                                <color>(0.35, 0.65, 0.95, 1)</color>
+                            </graphicData>
+                            <ingestible>
+                                <ingestReportString>administering the combined mechanite shield.</ingestReportString>
+                                <ingestReportStringEat>administers the combined mechanite shield.</ingestReportStringEat>
+                                <outcomeDoers>
+                                    <li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_GiveHediffByQuality">
+                                        <hediffDef>NanoVaccinated_FibrousMechanites</hediffDef>
+                                        <baseSeverity>1.0</baseSeverity>
+                                    </li>
+                                    <li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_GiveHediffByQuality">
+                                        <hediffDef>NanoVaccinated_SensoryMechanites</hediffDef>
+                                        <baseSeverity>1.0</baseSeverity>
+                                    </li>
+                                    <li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_GiveHediffChanceByQuality">
+                                        <hediffDef>VaccineReaction_Mild</hediffDef>
+                                        <baseProbability>0.10</baseProbability>
+                                        <baseSeverity>0.4</baseSeverity>
+                                    </li>
+                                </outcomeDoers>
+                            </ingestible>
+                        </ThingDef>
+
+                        <RecipeDef ParentName="BOR_CombinedBasicVaccineCraftingBase">
+                            <defName>BOR_Make_CombinedVaccine_BaseMech</defName>
+                            <label>make combined mechanite shield (base)</label>
+                            <jobString>Synthesizing combined mechanite shield.</jobString>
+                            <description>Synthesize a combined mechanite shield using Quasar-grade Beyond Our Reach compounds. Yields 1 dose.</description>
+                            <products>
+                                <BOR_CombinedVaccine_BaseMech>1</BOR_CombinedVaccine_BaseMech>
+                            </products>
+                        </RecipeDef>
+
+                        <ThingDef ParentName="NanoVaccineVialBase">
+                            <defName>BOR_CombinedNanoVaccine_BaseMech</defName>
+                            <label>combined nano mechanite shield (base)</label>
+                            <description>An advanced dual-spectrum nano mechanite shield synthesised with Quasar-grade Beyond Our Reach nano compounds. Provides long-duration protection against both fibrous and sensory mechanites. No cold storage required.\n\nRequires research: BOR Medicine II.</description>
+                            <graphicData>
+                                <texPath>Things/Item/Health/MechaniteStabilizer</texPath>
+                                <graphicClass>Graphic_StackCount</graphicClass>
+                                <color>(0.50, 0.75, 0.95, 1)</color>
+                            </graphicData>
+                            <ingestible>
+                                <ingestReportString>administering the combined nano mechanite shield.</ingestReportString>
+                                <ingestReportStringEat>administers the combined nano mechanite shield.</ingestReportStringEat>
+                                <outcomeDoers>
+                                    <li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_GiveHediffByQuality">
+                                        <hediffDef>NanoVaccinated_FibrousMechanites</hediffDef>
+                                        <baseSeverity>1.0</baseSeverity>
+                                    </li>
+                                    <li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_GiveHediffByQuality">
+                                        <hediffDef>NanoVaccinated_SensoryMechanites</hediffDef>
+                                        <baseSeverity>1.0</baseSeverity>
+                                    </li>
+                                    <li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_GiveHediffChanceByQuality">
+                                        <hediffDef>VaccineReaction_Mild</hediffDef>
+                                        <baseProbability>0.05</baseProbability>
+                                        <baseSeverity>0.4</baseSeverity>
+                                    </li>
+                                </outcomeDoers>
+                            </ingestible>
+                        </ThingDef>
+
+                        <RecipeDef ParentName="BOR_CombinedNanoVaccineCraftingBase">
+                            <defName>BOR_Make_CombinedNanoVaccine_BaseMech</defName>
+                            <label>make combined nano mechanite shield (base)</label>
+                            <jobString>Synthesizing combined nano mechanite shield.</jobString>
+                            <description>Synthesize a combined nano mechanite shield using Quasar-grade Beyond Our Reach nano compounds. Yields 1 dose.</description>
+                            <products>
+                                <BOR_CombinedNanoVaccine_BaseMech>1</BOR_CombinedNanoVaccine_BaseMech>
+                            </products>
+                        </RecipeDef>
+
+                        <!-- Tenebral combined mech – permanent jailbreak for both strains -->
+                        <ThingDef ParentName="ArchoVaccineVialBase">
+                            <defName>BOR_CombinedArchoVaccine_BaseMech</defName>
+                            <label>combined tenebral shield (base mech)</label>
+                            <description>A tenebral combined mechanite override payload synthesised with Tenebral-grade Beyond Our Reach compounds. Permanently installs mechanite interceptors calibrated for both fibrous and sensory strains. If either strain is already present, it is immediately neutralised and converted to beneficial enhancements.\n\nRequires research: BOR Medicine III.</description>
+                            <graphicData>
+                                <texPath>Things/Item/Health/MechaniteStabilizer</texPath>
+                                <graphicClass>Graphic_StackCount</graphicClass>
+                                <color>(0.30, 0.90, 0.95, 1)</color>
+                            </graphicData>
+                            <ingestible>
+                                <ingestReportString>administering the combined tenebral mechanite override.</ingestReportString>
+                                <ingestReportStringEat>administers the combined tenebral mechanite override.</ingestReportStringEat>
+                                <outcomeDoers>
+                                    <li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_MechaniteJailbreak">
+                                        <hostileHediffDefName>FibrousMechanites</hostileHediffDefName>
+                                        <beneficialHediffDef>MechaniteIntegration_Fibrous</beneficialHediffDef>
+                                        <watcherHediffDef>ArchoTrojan_Fibrous</watcherHediffDef>
+                                    </li>
+                                    <li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_MechaniteJailbreak">
+                                        <hostileHediffDefName>SensoryMechanites</hostileHediffDefName>
+                                        <beneficialHediffDef>MechaniteIntegration_Sensory</beneficialHediffDef>
+                                        <watcherHediffDef>ArchoTrojan_Sensory</watcherHediffDef>
+                                    </li>
+                                </outcomeDoers>
+                            </ingestible>
+                        </ThingDef>
+
+                        <RecipeDef ParentName="BOR_CombinedArchoVaccineCraftingBase">
+                            <defName>BOR_Make_CombinedArchoVaccine_BaseMech</defName>
+                            <label>make combined tenebral shield (base mech)</label>
+                            <jobString>Synthesizing combined tenebral mechanite override.</jobString>
+                            <description>Synthesize a combined tenebral mechanite override using Tenebral-grade Beyond Our Reach compounds. Yields 1 dose.</description>
+                            <products>
+                                <BOR_CombinedArchoVaccine_BaseMech>1</BOR_CombinedArchoVaccine_BaseMech>
+                            </products>
+                        </RecipeDef>
+
+                        <!-- ═══════════════════════════════════════════════════════════
+                             TENEBRAL BIO VACCINE (base game diseases only)
+                             DLC / mod diseases patched in conditionally below.
+                             ═══════════════════════════════════════════════════════════ -->
+
+                        <ThingDef ParentName="ArchoVaccineVialBase">
+                            <defName>BOR_TenebralVaccine_Bio</defName>
+                            <label>tenebral bio-vaccine</label>
+                            <description>A super-vaccine synthesised at the apex of tenebral archotech medicine. A single dose permanently rewrites the recipient's immune system to eliminate all known biological pathogens and leaves a permanent tenebral signature in the body. The modification causes constant low-level pain (0.15) as the archotech processes maintain themselves.\n\nRequires research: BOR Medicine III.</description>
+                            <graphicData>
+                                <texPath>Things/Item/Health/Vaccine_Base</texPath>
+                                <graphicClass>Graphic_StackCount</graphicClass>
+                                <color>(1.00, 0.68, 0.68, 1)</color>
+                            </graphicData>
+                            <ingestible>
+                                <ingestReportString>administering the tenebral bio-vaccine.</ingestReportString>
+                                <ingestReportStringEat>administers the tenebral bio-vaccine.</ingestReportStringEat>
+                                <outcomeDoers>
+                                    <!-- Base game permanent immunity -->
+                                    <li Class="IngestionOutcomeDoer_GiveHediff">
+                                        <hediffDef>ArchoVaccinated_Flu</hediffDef>
+                                        <severity>1.0</severity>
+                                    </li>
+                                    <li Class="IngestionOutcomeDoer_GiveHediff">
+                                        <hediffDef>ArchoVaccinated_Plague</hediffDef>
+                                        <severity>1.0</severity>
+                                    </li>
+                                    <li Class="IngestionOutcomeDoer_GiveHediff">
+                                        <hediffDef>ArchoVaccinated_Malaria</hediffDef>
+                                        <severity>1.0</severity>
+                                    </li>
+                                    <li Class="IngestionOutcomeDoer_GiveHediff">
+                                        <hediffDef>ArchoVaccinated_SleepingSickness</hediffDef>
+                                        <severity>1.0</severity>
+                                    </li>
+                                    <li Class="IngestionOutcomeDoer_GiveHediff">
+                                        <hediffDef>ArchoVaccinated_Scaria</hediffDef>
+                                        <severity>1.0</severity>
+                                    </li>
+                                    <li Class="IngestionOutcomeDoer_GiveHediff">
+                                        <hediffDef>ArchoVaccinated_Infection</hediffDef>
+                                        <severity>1.0</severity>
+                                    </li>
+                                    <li Class="IngestionOutcomeDoer_GiveHediff">
+                                        <hediffDef>ArchoVaccinated_GutWorms</hediffDef>
+                                        <severity>1.0</severity>
+                                    </li>
+                                    <li Class="IngestionOutcomeDoer_GiveHediff">
+                                        <hediffDef>ArchoVaccinated_LungRot</hediffDef>
+                                        <severity>1.0</severity>
+                                    </li>
+                                    <!-- Tenebral marker (permanent, with pain 0.15) -->
+                                    <li Class="IngestionOutcomeDoer_GiveHediff">
+                                        <hediffDef>BOR_TenebralVaccinated_Bio</hediffDef>
+                                        <severity>1.0</severity>
+                                    </li>
+                                </outcomeDoers>
+                            </ingestible>
+                        </ThingDef>
+
+                        <RecipeDef ParentName="BOR_TenebralVaccineCraftingBase">
+                            <defName>BOR_Make_TenebralVaccine_Bio</defName>
+                            <label>make tenebral bio-vaccine</label>
+                            <jobString>Synthesizing tenebral bio-vaccine.</jobString>
+                            <description>Synthesize a tenebral bio-vaccine using apex Tenebral-grade Beyond Our Reach compounds. Yields 1 dose.</description>
+                            <products>
+                                <BOR_TenebralVaccine_Bio>1</BOR_TenebralVaccine_Bio>
+                            </products>
+                        </RecipeDef>
+
+                        <!-- ═══════════════════════════════════════════════════════════
+                             TENEBRAL MECH VACCINE I (vanilla + optionally Anomaly)
+                             Anomaly MetalhorrorImplant patched in conditionally below.
+                             ═══════════════════════════════════════════════════════════ -->
+
+                        <ThingDef ParentName="ArchoVaccineVialBase">
+                            <defName>BOR_TenebralVaccine_Mech_I</defName>
+                            <label>tenebral mech-vaccine (I)</label>
+                            <description>A super-vaccine synthesised at the apex of tenebral archotech medicine. Permanently installs mechanite override protocols for both fibrous and sensory mechanites, immediately neutralising any active infections and converting them to beneficial enhancements. Leaves a permanent tenebral signature that causes constant low-level pain (0.15).\n\nRequires research: BOR Medicine III.</description>
+                            <graphicData>
+                                <texPath>Things/Item/Health/MechaniteStabilizer</texPath>
+                                <graphicClass>Graphic_StackCount</graphicClass>
+                                <color>(0.95, 0.60, 0.62, 1)</color>
+                            </graphicData>
+                            <ingestible>
+                                <ingestReportString>administering the tenebral mech-vaccine (I).</ingestReportString>
+                                <ingestReportStringEat>administers the tenebral mech-vaccine (I).</ingestReportStringEat>
+                                <outcomeDoers>
+                                    <li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_MechaniteJailbreak">
+                                        <hostileHediffDefName>FibrousMechanites</hostileHediffDefName>
+                                        <beneficialHediffDef>MechaniteIntegration_Fibrous</beneficialHediffDef>
+                                        <watcherHediffDef>ArchoTrojan_Fibrous</watcherHediffDef>
+                                    </li>
+                                    <li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_MechaniteJailbreak">
+                                        <hostileHediffDefName>SensoryMechanites</hostileHediffDefName>
+                                        <beneficialHediffDef>MechaniteIntegration_Sensory</beneficialHediffDef>
+                                        <watcherHediffDef>ArchoTrojan_Sensory</watcherHediffDef>
+                                    </li>
+                                    <!-- Tenebral marker (permanent, with pain 0.15) -->
+                                    <li Class="IngestionOutcomeDoer_GiveHediff">
+                                        <hediffDef>BOR_TenebralVaccinated_Mech_I</hediffDef>
+                                        <severity>1.0</severity>
+                                    </li>
+                                </outcomeDoers>
+                            </ingestible>
+                        </ThingDef>
+
+                        <RecipeDef ParentName="BOR_TenebralVaccineCraftingBase">
+                            <defName>BOR_Make_TenebralVaccine_Mech_I</defName>
+                            <label>make tenebral mech-vaccine (I)</label>
+                            <jobString>Synthesizing tenebral mech-vaccine (I).</jobString>
+                            <description>Synthesize a tenebral mech-vaccine (I) using apex Tenebral-grade Beyond Our Reach compounds. Yields 1 dose.</description>
+                            <products>
+                                <BOR_TenebralVaccine_Mech_I>1</BOR_TenebralVaccine_Mech_I>
+                            </products>
+                        </RecipeDef>
+
+                    </value>
+                </li>
+
+                <!-- ==============================================================
+                     SECTION 2 – MSMD (lts.MSMD)
+                     Combined: MedicalMechanites + BerserkerMechanites + TrainerMechanites
+                     Also adds Tenebral Mech_II
+                     ============================================================== -->
+                <li Class="PatchOperationConditional">
+                    <xpath>/Defs/ThingDef[defName="NanoVaccine_MedicalMechanites"]</xpath>
+                    <match Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>Defs</xpath>
+                                <value>
+
+                                    <!-- GROUP 3 – MSMD MECH combined (standard / nano / tenebral) -->
+
+                                    <ThingDef MayRequire="lts.MSMD" ParentName="VaccineVialBase">
+                                        <defName>BOR_CombinedVaccine_MSMDMech</defName>
+                                        <label>combined MSMD mechanite shield</label>
+                                        <description>A triple-spectrum counter-mechanite agent synthesised with Quasar-grade Beyond Our Reach solar compounds. Shields against all three MSMD mechanite strains (medical, berserker, trainer) simultaneously. Lasts ~1 year per dose.\n\nRequires: Mechanite Diseases (MSMD) + BOR Medicine II.</description>
+                                        <graphicData>
+                                            <texPath>Things/Item/Health/MechaniteStabilizer</texPath>
+                                            <graphicClass>Graphic_StackCount</graphicClass>
+                                            <color>(0.25, 0.55, 0.85, 1)</color>
+                                        </graphicData>
+                                        <ingestible>
+                                            <ingestReportString>administering the combined MSMD mechanite shield.</ingestReportString>
+                                            <ingestReportStringEat>administers the combined MSMD mechanite shield.</ingestReportStringEat>
+                                            <outcomeDoers>
+                                                <li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_GiveHediffByQuality">
+                                                    <hediffDef>NanoVaccinated_MedicalMechanites</hediffDef>
+                                                    <baseSeverity>1.0</baseSeverity>
+                                                </li>
+                                                <li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_GiveHediffByQuality">
+                                                    <hediffDef>NanoVaccinated_BerserkerMechanites</hediffDef>
+                                                    <baseSeverity>1.0</baseSeverity>
+                                                </li>
+                                                <li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_GiveHediffByQuality">
+                                                    <hediffDef>NanoVaccinated_TrainerMechanites</hediffDef>
+                                                    <baseSeverity>1.0</baseSeverity>
+                                                </li>
+                                                <li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_GiveHediffChanceByQuality">
+                                                    <hediffDef>VaccineReaction_Mild</hediffDef>
+                                                    <baseProbability>0.10</baseProbability>
+                                                    <baseSeverity>0.4</baseSeverity>
+                                                </li>
+                                            </outcomeDoers>
+                                        </ingestible>
+                                    </ThingDef>
+
+                                    <RecipeDef MayRequire="lts.MSMD" ParentName="BOR_CombinedBasicVaccineCraftingBase">
+                                        <defName>BOR_Make_CombinedVaccine_MSMDMech</defName>
+                                        <label>make combined MSMD mechanite shield</label>
+                                        <jobString>Synthesizing combined MSMD mechanite shield.</jobString>
+                                        <description>Synthesize a combined MSMD mechanite shield using Quasar-grade Beyond Our Reach compounds. Yields 1 dose.</description>
+                                        <products>
+                                            <BOR_CombinedVaccine_MSMDMech>1</BOR_CombinedVaccine_MSMDMech>
+                                        </products>
+                                    </RecipeDef>
+
+                                    <ThingDef MayRequire="lts.MSMD" ParentName="NanoVaccineVialBase">
+                                        <defName>BOR_CombinedNanoVaccine_MSMDMech</defName>
+                                        <label>combined nano MSMD mechanite shield</label>
+                                        <description>A nano-grade triple-spectrum counter-mechanite agent synthesised with Quasar-grade Beyond Our Reach nano compounds. Provides long-duration protection against all three MSMD mechanite strains. No cold storage required.\n\nRequires: Mechanite Diseases (MSMD) + BOR Medicine II.</description>
+                                        <graphicData>
+                                            <texPath>Things/Item/Health/MechaniteStabilizer</texPath>
+                                            <graphicClass>Graphic_StackCount</graphicClass>
+                                            <color>(0.35, 0.65, 0.90, 1)</color>
+                                        </graphicData>
+                                        <ingestible>
+                                            <ingestReportString>administering the combined nano MSMD mechanite shield.</ingestReportString>
+                                            <ingestReportStringEat>administers the combined nano MSMD mechanite shield.</ingestReportStringEat>
+                                            <outcomeDoers>
+                                                <li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_GiveHediffByQuality">
+                                                    <hediffDef>NanoVaccinated_MedicalMechanites</hediffDef>
+                                                    <baseSeverity>1.0</baseSeverity>
+                                                </li>
+                                                <li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_GiveHediffByQuality">
+                                                    <hediffDef>NanoVaccinated_BerserkerMechanites</hediffDef>
+                                                    <baseSeverity>1.0</baseSeverity>
+                                                </li>
+                                                <li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_GiveHediffByQuality">
+                                                    <hediffDef>NanoVaccinated_TrainerMechanites</hediffDef>
+                                                    <baseSeverity>1.0</baseSeverity>
+                                                </li>
+                                                <li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_GiveHediffChanceByQuality">
+                                                    <hediffDef>VaccineReaction_Mild</hediffDef>
+                                                    <baseProbability>0.05</baseProbability>
+                                                    <baseSeverity>0.4</baseSeverity>
+                                                </li>
+                                            </outcomeDoers>
+                                        </ingestible>
+                                    </ThingDef>
+
+                                    <RecipeDef MayRequire="lts.MSMD" ParentName="BOR_CombinedNanoVaccineCraftingBase">
+                                        <defName>BOR_Make_CombinedNanoVaccine_MSMDMech</defName>
+                                        <label>make combined nano MSMD mechanite shield</label>
+                                        <jobString>Synthesizing combined nano MSMD mechanite shield.</jobString>
+                                        <description>Synthesize a combined nano MSMD mechanite shield using Quasar-grade Beyond Our Reach nano compounds. Yields 1 dose.</description>
+                                        <products>
+                                            <BOR_CombinedNanoVaccine_MSMDMech>1</BOR_CombinedNanoVaccine_MSMDMech>
+                                        </products>
+                                    </RecipeDef>
+
+                                    <ThingDef MayRequire="lts.MSMD" ParentName="ArchoVaccineVialBase">
+                                        <defName>BOR_CombinedArchoVaccine_MSMDMech</defName>
+                                        <label>combined tenebral MSMD mechanite shield</label>
+                                        <description>A tenebral triple-spectrum MSMD mechanite shield synthesised with Tenebral-grade Beyond Our Reach compounds. Provides the maximum available protection against all three MSMD mechanite strains from a single dose. No cold storage required.\n\nRequires: Mechanite Diseases (MSMD) + BOR Medicine III.</description>
+                                        <graphicData>
+                                            <texPath>Things/Item/Health/MechaniteStabilizer</texPath>
+                                            <graphicClass>Graphic_StackCount</graphicClass>
+                                            <color>(0.45, 0.75, 0.95, 1)</color>
+                                        </graphicData>
+                                        <ingestible>
+                                            <ingestReportString>administering the combined tenebral MSMD mechanite shield.</ingestReportString>
+                                            <ingestReportStringEat>administers the combined tenebral MSMD mechanite shield.</ingestReportStringEat>
+                                            <outcomeDoers>
+                                                <li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_GiveHediffByQuality">
+                                                    <hediffDef>NanoVaccinated_MedicalMechanites</hediffDef>
+                                                    <baseSeverity>1.0</baseSeverity>
+                                                </li>
+                                                <li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_GiveHediffByQuality">
+                                                    <hediffDef>NanoVaccinated_BerserkerMechanites</hediffDef>
+                                                    <baseSeverity>1.0</baseSeverity>
+                                                </li>
+                                                <li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_GiveHediffByQuality">
+                                                    <hediffDef>NanoVaccinated_TrainerMechanites</hediffDef>
+                                                    <baseSeverity>1.0</baseSeverity>
+                                                </li>
+                                            </outcomeDoers>
+                                        </ingestible>
+                                    </ThingDef>
+
+                                    <RecipeDef MayRequire="lts.MSMD" ParentName="BOR_CombinedArchoVaccineCraftingBase">
+                                        <defName>BOR_Make_CombinedArchoVaccine_MSMDMech</defName>
+                                        <label>make combined tenebral MSMD mechanite shield</label>
+                                        <jobString>Synthesizing combined tenebral MSMD mechanite shield.</jobString>
+                                        <description>Synthesize a combined tenebral MSMD mechanite shield using Tenebral-grade Beyond Our Reach compounds. Yields 1 dose.</description>
+                                        <products>
+                                            <BOR_CombinedArchoVaccine_MSMDMech>1</BOR_CombinedArchoVaccine_MSMDMech>
+                                        </products>
+                                    </RecipeDef>
+
+                                    <!-- TENEBRAL MECH II (MSMD diseases) -->
+
+                                    <ThingDef MayRequire="lts.MSMD" ParentName="ArchoVaccineVialBase">
+                                        <defName>BOR_TenebralVaccine_Mech_II</defName>
+                                        <label>tenebral mech-vaccine (II)</label>
+                                        <description>A super-vaccine synthesised at the apex of tenebral archotech medicine. Seeds the recipient's body with adaptive counter-mechanite nanobots permanently attuned to all MSMD mechanite strains. Leaves a permanent tenebral signature that causes constant low-level pain (0.15).\n\nRequires: Mechanite Diseases (MSMD) + BOR Medicine III.</description>
+                                        <graphicData>
+                                            <texPath>Things/Item/Health/MechaniteStabilizer</texPath>
+                                            <graphicClass>Graphic_StackCount</graphicClass>
+                                            <color>(0.90, 0.55, 0.58, 1)</color>
+                                        </graphicData>
+                                        <ingestible>
+                                            <ingestReportString>administering the tenebral mech-vaccine (II).</ingestReportString>
+                                            <ingestReportStringEat>administers the tenebral mech-vaccine (II).</ingestReportStringEat>
+                                            <outcomeDoers>
+                                                <li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_GiveHediffByQuality">
+                                                    <hediffDef>NanoVaccinated_MedicalMechanites</hediffDef>
+                                                    <baseSeverity>1.0</baseSeverity>
+                                                </li>
+                                                <li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_GiveHediffByQuality">
+                                                    <hediffDef>NanoVaccinated_BerserkerMechanites</hediffDef>
+                                                    <baseSeverity>1.0</baseSeverity>
+                                                </li>
+                                                <li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_GiveHediffByQuality">
+                                                    <hediffDef>NanoVaccinated_TrainerMechanites</hediffDef>
+                                                    <baseSeverity>1.0</baseSeverity>
+                                                </li>
+                                                <!-- Tenebral marker (permanent, with pain 0.15) -->
+                                                <li Class="IngestionOutcomeDoer_GiveHediff">
+                                                    <hediffDef>BOR_TenebralVaccinated_Mech_II</hediffDef>
+                                                    <severity>1.0</severity>
+                                                </li>
+                                            </outcomeDoers>
+                                        </ingestible>
+                                    </ThingDef>
+
+                                    <RecipeDef MayRequire="lts.MSMD" ParentName="BOR_TenebralVaccineCraftingBase">
+                                        <defName>BOR_Make_TenebralVaccine_Mech_II</defName>
+                                        <label>make tenebral mech-vaccine (II)</label>
+                                        <jobString>Synthesizing tenebral mech-vaccine (II).</jobString>
+                                        <description>Synthesize a tenebral mech-vaccine (II) using apex Tenebral-grade Beyond Our Reach compounds. Yields 1 dose.</description>
+                                        <products>
+                                            <BOR_TenebralVaccine_Mech_II>1</BOR_TenebralVaccine_Mech_II>
+                                        </products>
+                                    </RecipeDef>
+
+                                </value>
+                            </li>
+                        </operations>
+                    </match>
+                </li>
+
+                <!-- ==============================================================
+                     SECTION 3 – Diseases Overhauled (Ogliss.Mythos.DiseasesOverhauled)
+                     Combined: 10 DO bio diseases (all tiers)
+                     Also patches Tenebral Bio with DO ArchoVaccinated_ hediffs
+                     ============================================================== -->
+                <li Class="PatchOperationConditional">
+                    <xpath>/Defs/ThingDef[defName="Vaccine_DO_Tuberculosis"]</xpath>
+                    <match Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>Defs</xpath>
+                                <value>
+
+                                    <!-- GROUP 4 – DO BIO combined (standard / nano / tenebral) -->
+
+                                    <ThingDef MayRequire="Ogliss.Mythos.DiseasesOverhauled" ParentName="VaccineVialBase">
+                                        <defName>BOR_CombinedVaccine_DOBio</defName>
+                                        <label>combined vaccine (DO bio)</label>
+                                        <description>A broad-spectrum Diseases Overhauled bio vaccine synthesised with Quasar-grade Beyond Our Reach solar compounds. Covers all ten DO biological pathogens in a single dose.\n\nRequires: Diseases Overhauled + BOR Medicine II.</description>
+                                        <graphicData>
+                                            <texPath>Things/Item/Health/MechaniteStabilizer</texPath>
+                                            <graphicClass>Graphic_StackCount</graphicClass>
+                                            <color>(0.70, 0.55, 0.30, 1)</color>
+                                        </graphicData>
+                                        <ingestible>
+                                            <ingestReportString>administering the combined DO bio vaccine.</ingestReportString>
+                                            <ingestReportStringEat>administers the combined DO bio vaccine.</ingestReportStringEat>
+                                            <outcomeDoers>
+                                                <li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_GiveHediffByQuality">
+                                                    <hediffDef>Vaccinated_DO_Tuberculosis</hediffDef>
+                                                    <baseSeverity>1.0</baseSeverity>
+                                                </li>
+                                                <li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_GiveHediffByQuality">
+                                                    <hediffDef>Vaccinated_DO_KindredDick</hediffDef>
+                                                    <baseSeverity>1.0</baseSeverity>
+                                                </li>
+                                                <li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_GiveHediffByQuality">
+                                                    <hediffDef>Vaccinated_DO_EpsteinBarr</hediffDef>
+                                                    <baseSeverity>1.0</baseSeverity>
+                                                </li>
+                                                <li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_GiveHediffByQuality">
+                                                    <hediffDef>Vaccinated_DO_VoightBernstein</hediffDef>
+                                                    <baseSeverity>1.0</baseSeverity>
+                                                </li>
+                                                <li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_GiveHediffByQuality">
+                                                    <hediffDef>Vaccinated_DO_HansenKampff</hediffDef>
+                                                    <baseSeverity>1.0</baseSeverity>
+                                                </li>
+                                                <li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_GiveHediffByQuality">
+                                                    <hediffDef>Vaccinated_DO_NewReschianFever</hediffDef>
+                                                    <baseSeverity>1.0</baseSeverity>
+                                                </li>
+                                                <li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_GiveHediffByQuality">
+                                                    <hediffDef>Vaccinated_DO_HepatitisK</hediffDef>
+                                                    <baseSeverity>1.0</baseSeverity>
+                                                </li>
+                                                <li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_GiveHediffByQuality">
+                                                    <hediffDef>Vaccinated_DO_Sepsis</hediffDef>
+                                                    <baseSeverity>1.0</baseSeverity>
+                                                </li>
+                                                <li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_GiveHediffByQuality">
+                                                    <hediffDef>Vaccinated_DO_CommonCold</hediffDef>
+                                                    <baseSeverity>1.0</baseSeverity>
+                                                </li>
+                                                <li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_GiveHediffByQuality">
+                                                    <hediffDef>Vaccinated_DO_Inflammation</hediffDef>
+                                                    <baseSeverity>1.0</baseSeverity>
+                                                </li>
+                                                <li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_GiveHediffChanceByQuality">
+                                                    <hediffDef>VaccineReaction_Mild</hediffDef>
+                                                    <baseProbability>0.15</baseProbability>
+                                                    <baseSeverity>0.4</baseSeverity>
+                                                </li>
+                                            </outcomeDoers>
+                                        </ingestible>
+                                    </ThingDef>
+
+                                    <RecipeDef MayRequire="Ogliss.Mythos.DiseasesOverhauled" ParentName="BOR_CombinedBasicVaccineCraftingBase">
+                                        <defName>BOR_Make_CombinedVaccine_DOBio</defName>
+                                        <label>make combined vaccine (DO bio)</label>
+                                        <jobString>Synthesizing combined DO bio vaccine.</jobString>
+                                        <description>Synthesize a combined Diseases Overhauled bio vaccine using Quasar-grade Beyond Our Reach compounds. Yields 1 dose.</description>
+                                        <products>
+                                            <BOR_CombinedVaccine_DOBio>1</BOR_CombinedVaccine_DOBio>
+                                        </products>
+                                    </RecipeDef>
+
+                                    <!-- DO BIO combined (nano) -->
+
+                                    <ThingDef MayRequire="Ogliss.Mythos.DiseasesOverhauled" ParentName="NanoVaccineVialBase">
+                                        <defName>BOR_CombinedNanoVaccine_DOBio</defName>
+                                        <label>combined nano-vaccine (DO bio)</label>
+                                        <description>A nano-grade broad-spectrum Diseases Overhauled bio vaccine synthesised with Quasar-grade Beyond Our Reach nano compounds. Covers all ten DO biological pathogens in a single long-duration dose. No cold storage required.\n\nRequires: Diseases Overhauled + BOR Medicine II.</description>
+                                        <graphicData>
+                                            <texPath>Things/Item/Health/NanoVaccine</texPath>
+                                            <graphicClass>Graphic_StackCount</graphicClass>
+                                            <color>(0.80, 0.65, 0.35, 1)</color>
+                                        </graphicData>
+                                        <ingestible>
+                                            <ingestReportString>administering the combined DO bio nano-vaccine.</ingestReportString>
+                                            <ingestReportStringEat>administers the combined DO bio nano-vaccine.</ingestReportStringEat>
+                                            <outcomeDoers>
+                                                <li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_GiveHediffByQuality">
+                                                    <hediffDef>NanoVaccinated_DO_Tuberculosis</hediffDef>
+                                                    <baseSeverity>1.0</baseSeverity>
+                                                </li>
+                                                <li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_GiveHediffByQuality">
+                                                    <hediffDef>NanoVaccinated_DO_KindredDick</hediffDef>
+                                                    <baseSeverity>1.0</baseSeverity>
+                                                </li>
+                                                <li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_GiveHediffByQuality">
+                                                    <hediffDef>NanoVaccinated_DO_EpsteinBarr</hediffDef>
+                                                    <baseSeverity>1.0</baseSeverity>
+                                                </li>
+                                                <li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_GiveHediffByQuality">
+                                                    <hediffDef>NanoVaccinated_DO_VoightBernstein</hediffDef>
+                                                    <baseSeverity>1.0</baseSeverity>
+                                                </li>
+                                                <li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_GiveHediffByQuality">
+                                                    <hediffDef>NanoVaccinated_DO_HansenKampff</hediffDef>
+                                                    <baseSeverity>1.0</baseSeverity>
+                                                </li>
+                                                <li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_GiveHediffByQuality">
+                                                    <hediffDef>NanoVaccinated_DO_NewReschianFever</hediffDef>
+                                                    <baseSeverity>1.0</baseSeverity>
+                                                </li>
+                                                <li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_GiveHediffByQuality">
+                                                    <hediffDef>NanoVaccinated_DO_HepatitisK</hediffDef>
+                                                    <baseSeverity>1.0</baseSeverity>
+                                                </li>
+                                                <li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_GiveHediffByQuality">
+                                                    <hediffDef>NanoVaccinated_DO_Sepsis</hediffDef>
+                                                    <baseSeverity>1.0</baseSeverity>
+                                                </li>
+                                                <li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_GiveHediffByQuality">
+                                                    <hediffDef>NanoVaccinated_DO_CommonCold</hediffDef>
+                                                    <baseSeverity>1.0</baseSeverity>
+                                                </li>
+                                                <li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_GiveHediffByQuality">
+                                                    <hediffDef>NanoVaccinated_DO_Inflammation</hediffDef>
+                                                    <baseSeverity>1.0</baseSeverity>
+                                                </li>
+                                                <li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_GiveHediffChanceByQuality">
+                                                    <hediffDef>VaccineReaction_Mild</hediffDef>
+                                                    <baseProbability>0.10</baseProbability>
+                                                    <baseSeverity>0.4</baseSeverity>
+                                                </li>
+                                            </outcomeDoers>
+                                        </ingestible>
+                                    </ThingDef>
+
+                                    <RecipeDef MayRequire="Ogliss.Mythos.DiseasesOverhauled" ParentName="BOR_CombinedNanoVaccineCraftingBase">
+                                        <defName>BOR_Make_CombinedNanoVaccine_DOBio</defName>
+                                        <label>make combined nano-vaccine (DO bio)</label>
+                                        <jobString>Synthesizing combined DO bio nano-vaccine.</jobString>
+                                        <description>Synthesize a combined Diseases Overhauled bio nano-vaccine using Quasar-grade Beyond Our Reach nano compounds. Yields 1 dose.</description>
+                                        <products>
+                                            <BOR_CombinedNanoVaccine_DOBio>1</BOR_CombinedNanoVaccine_DOBio>
+                                        </products>
+                                    </RecipeDef>
+
+                                    <!-- DO BIO combined (tenebral) -->
+
+                                    <ThingDef MayRequire="Ogliss.Mythos.DiseasesOverhauled" ParentName="ArchoVaccineVialBase">
+                                        <defName>BOR_CombinedArchoVaccine_DOBio</defName>
+                                        <label>combined tenebral vaccine (DO bio)</label>
+                                        <description>A tenebral broad-spectrum Diseases Overhauled bio vaccine synthesised with Tenebral-grade Beyond Our Reach compounds. Permanently reprograms the immune system against all ten DO biological pathogens in a single dose.\n\nRequires: Diseases Overhauled + BOR Medicine III.</description>
+                                        <graphicData>
+                                            <texPath>Things/Item/Health/MechaniteStabilizer</texPath>
+                                            <graphicClass>Graphic_StackCount</graphicClass>
+                                            <color>(0.65, 0.45, 0.20, 1)</color>
+                                        </graphicData>
+                                        <ingestible>
+                                            <ingestReportString>administering the combined tenebral DO bio vaccine.</ingestReportString>
+                                            <ingestReportStringEat>administers the combined tenebral DO bio vaccine.</ingestReportStringEat>
+                                            <outcomeDoers>
+                                                <li Class="IngestionOutcomeDoer_GiveHediff">
+                                                    <hediffDef>ArchoVaccinated_DO_Tuberculosis</hediffDef>
+                                                    <severity>1.0</severity>
+                                                </li>
+                                                <li Class="IngestionOutcomeDoer_GiveHediff">
+                                                    <hediffDef>ArchoVaccinated_DO_KindredDick</hediffDef>
+                                                    <severity>1.0</severity>
+                                                </li>
+                                                <li Class="IngestionOutcomeDoer_GiveHediff">
+                                                    <hediffDef>ArchoVaccinated_DO_EpsteinBarr</hediffDef>
+                                                    <severity>1.0</severity>
+                                                </li>
+                                                <li Class="IngestionOutcomeDoer_GiveHediff">
+                                                    <hediffDef>ArchoVaccinated_DO_VoightBernstein</hediffDef>
+                                                    <severity>1.0</severity>
+                                                </li>
+                                                <li Class="IngestionOutcomeDoer_GiveHediff">
+                                                    <hediffDef>ArchoVaccinated_DO_HansenKampff</hediffDef>
+                                                    <severity>1.0</severity>
+                                                </li>
+                                                <li Class="IngestionOutcomeDoer_GiveHediff">
+                                                    <hediffDef>ArchoVaccinated_DO_NewReschianFever</hediffDef>
+                                                    <severity>1.0</severity>
+                                                </li>
+                                                <li Class="IngestionOutcomeDoer_GiveHediff">
+                                                    <hediffDef>ArchoVaccinated_DO_HepatitisK</hediffDef>
+                                                    <severity>1.0</severity>
+                                                </li>
+                                                <li Class="IngestionOutcomeDoer_GiveHediff">
+                                                    <hediffDef>ArchoVaccinated_DO_Sepsis</hediffDef>
+                                                    <severity>1.0</severity>
+                                                </li>
+                                                <li Class="IngestionOutcomeDoer_GiveHediff">
+                                                    <hediffDef>ArchoVaccinated_DO_CommonCold</hediffDef>
+                                                    <severity>1.0</severity>
+                                                </li>
+                                                <li Class="IngestionOutcomeDoer_GiveHediff">
+                                                    <hediffDef>ArchoVaccinated_DO_Inflammation</hediffDef>
+                                                    <severity>1.0</severity>
+                                                </li>
+                                            </outcomeDoers>
+                                        </ingestible>
+                                    </ThingDef>
+
+                                    <RecipeDef MayRequire="Ogliss.Mythos.DiseasesOverhauled" ParentName="BOR_CombinedArchoVaccineCraftingBase">
+                                        <defName>BOR_Make_CombinedArchoVaccine_DOBio</defName>
+                                        <label>make combined tenebral vaccine (DO bio)</label>
+                                        <jobString>Synthesizing combined tenebral DO bio vaccine.</jobString>
+                                        <description>Synthesize a combined tenebral Diseases Overhauled bio vaccine using Tenebral-grade Beyond Our Reach compounds. Yields 1 dose.</description>
+                                        <products>
+                                            <BOR_CombinedArchoVaccine_DOBio>1</BOR_CombinedArchoVaccine_DOBio>
+                                        </products>
+                                    </RecipeDef>
+
+                                </value>
+                            </li>
+
+                            <!-- Patch Tenebral Bio with DO permanent immunities -->
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ThingDef[defName="BOR_TenebralVaccine_Bio"]/ingestible/outcomeDoers</xpath>
+                                <value>
+                                    <li Class="IngestionOutcomeDoer_GiveHediff">
+                                        <hediffDef>ArchoVaccinated_DO_Tuberculosis</hediffDef>
+                                        <severity>1.0</severity>
+                                    </li>
+                                    <li Class="IngestionOutcomeDoer_GiveHediff">
+                                        <hediffDef>ArchoVaccinated_DO_KindredDick</hediffDef>
+                                        <severity>1.0</severity>
+                                    </li>
+                                    <li Class="IngestionOutcomeDoer_GiveHediff">
+                                        <hediffDef>ArchoVaccinated_DO_EpsteinBarr</hediffDef>
+                                        <severity>1.0</severity>
+                                    </li>
+                                    <li Class="IngestionOutcomeDoer_GiveHediff">
+                                        <hediffDef>ArchoVaccinated_DO_VoightBernstein</hediffDef>
+                                        <severity>1.0</severity>
+                                    </li>
+                                    <li Class="IngestionOutcomeDoer_GiveHediff">
+                                        <hediffDef>ArchoVaccinated_DO_HansenKampff</hediffDef>
+                                        <severity>1.0</severity>
+                                    </li>
+                                    <li Class="IngestionOutcomeDoer_GiveHediff">
+                                        <hediffDef>ArchoVaccinated_DO_NewReschianFever</hediffDef>
+                                        <severity>1.0</severity>
+                                    </li>
+                                    <li Class="IngestionOutcomeDoer_GiveHediff">
+                                        <hediffDef>ArchoVaccinated_DO_HepatitisK</hediffDef>
+                                        <severity>1.0</severity>
+                                    </li>
+                                    <li Class="IngestionOutcomeDoer_GiveHediff">
+                                        <hediffDef>ArchoVaccinated_DO_Sepsis</hediffDef>
+                                        <severity>1.0</severity>
+                                    </li>
+                                    <li Class="IngestionOutcomeDoer_GiveHediff">
+                                        <hediffDef>ArchoVaccinated_DO_CommonCold</hediffDef>
+                                        <severity>1.0</severity>
+                                    </li>
+                                    <li Class="IngestionOutcomeDoer_GiveHediff">
+                                        <hediffDef>ArchoVaccinated_DO_Inflammation</hediffDef>
+                                        <severity>1.0</severity>
+                                    </li>
+                                </value>
+                            </li>
+
+                        </operations>
+                    </match>
+                </li>
+
+                <!-- ==============================================================
+                     SECTION 4 – Diseases Plus (DimonSever000.DiseasesPlus.Specific)
+                     Combined: 8 DP bio diseases (all tiers)
+                     Also patches Tenebral Bio with DP ArchoVaccinated_ hediffs
+                     ============================================================== -->
+                <li Class="PatchOperationConditional">
+                    <xpath>/Defs/ThingDef[defName="Vaccine_DP_CommonCold"]</xpath>
+                    <match Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>Defs</xpath>
+                                <value>
+
+                                    <!-- GROUP 5 – DP BIO combined (standard / nano / tenebral) -->
+
+                                    <ThingDef MayRequire="DimonSever000.DiseasesPlus.Specific" ParentName="VaccineVialBase">
+                                        <defName>BOR_CombinedVaccine_DPBio</defName>
+                                        <label>combined vaccine (DP bio)</label>
+                                        <description>A broad-spectrum Diseases Plus bio vaccine synthesised with Quasar-grade Beyond Our Reach solar compounds. Covers all eight DP biological pathogens in a single dose.\n\nRequires: Diseases Plus + BOR Medicine II.</description>
+                                        <graphicData>
+                                            <texPath>Things/Item/Health/Vaccine_Base</texPath>
+                                            <graphicClass>Graphic_StackCount</graphicClass>
+                                            <color>(0.92, 0.65, 0.25, 1)</color>
+                                        </graphicData>
+                                        <ingestible>
+                                            <ingestReportString>administering the combined DP bio vaccine.</ingestReportString>
+                                            <ingestReportStringEat>administers the combined DP bio vaccine.</ingestReportStringEat>
+                                            <outcomeDoers>
+                                                <li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_GiveHediffByQuality">
+                                                    <hediffDef>Vaccinated_DP_CommonCold</hediffDef>
+                                                    <baseSeverity>1.0</baseSeverity>
+                                                </li>
+                                                <li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_GiveHediffByQuality">
+                                                    <hediffDef>Vaccinated_DP_Conjunctivitis</hediffDef>
+                                                    <baseSeverity>1.0</baseSeverity>
+                                                </li>
+                                                <li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_GiveHediffByQuality">
+                                                    <hediffDef>Vaccinated_DP_Otitis</hediffDef>
+                                                    <baseSeverity>1.0</baseSeverity>
+                                                </li>
+                                                <li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_GiveHediffByQuality">
+                                                    <hediffDef>Vaccinated_DP_Tuberculosis</hediffDef>
+                                                    <baseSeverity>1.0</baseSeverity>
+                                                </li>
+                                                <li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_GiveHediffByQuality">
+                                                    <hediffDef>Vaccinated_DP_Pneumonia</hediffDef>
+                                                    <baseSeverity>1.0</baseSeverity>
+                                                </li>
+                                                <li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_GiveHediffByQuality">
+                                                    <hediffDef>Vaccinated_DP_Sepsis</hediffDef>
+                                                    <baseSeverity>1.0</baseSeverity>
+                                                </li>
+                                                <li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_GiveHediffByQuality">
+                                                    <hediffDef>Vaccinated_DP_AcuteHepatitis</hediffDef>
+                                                    <baseSeverity>1.0</baseSeverity>
+                                                </li>
+                                                <li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_GiveHediffByQuality">
+                                                    <hediffDef>Vaccinated_DP_Angina</hediffDef>
+                                                    <baseSeverity>1.0</baseSeverity>
+                                                </li>
+                                                <li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_GiveHediffChanceByQuality">
+                                                    <hediffDef>VaccineReaction_Mild</hediffDef>
+                                                    <baseProbability>0.15</baseProbability>
+                                                    <baseSeverity>0.4</baseSeverity>
+                                                </li>
+                                            </outcomeDoers>
+                                        </ingestible>
+                                    </ThingDef>
+
+                                    <RecipeDef MayRequire="DimonSever000.DiseasesPlus.Specific" ParentName="BOR_CombinedBasicVaccineCraftingBase">
+                                        <defName>BOR_Make_CombinedVaccine_DPBio</defName>
+                                        <label>make combined vaccine (DP bio)</label>
+                                        <jobString>Synthesizing combined DP bio vaccine.</jobString>
+                                        <description>Synthesize a combined Diseases Plus bio vaccine using Quasar-grade Beyond Our Reach compounds. Yields 1 dose.</description>
+                                        <products>
+                                            <BOR_CombinedVaccine_DPBio>1</BOR_CombinedVaccine_DPBio>
+                                        </products>
+                                    </RecipeDef>
+
+                                    <!-- DP BIO combined (nano) -->
+
+                                    <ThingDef MayRequire="DimonSever000.DiseasesPlus.Specific" ParentName="NanoVaccineVialBase">
+                                        <defName>BOR_CombinedNanoVaccine_DPBio</defName>
+                                        <label>combined nano-vaccine (DP bio)</label>
+                                        <description>A nano-grade broad-spectrum Diseases Plus bio vaccine synthesised with Quasar-grade Beyond Our Reach nano compounds. Covers all eight DP biological pathogens in a single long-duration dose. No cold storage required.\n\nRequires: Diseases Plus + BOR Medicine II.</description>
+                                        <graphicData>
+                                            <texPath>Things/Item/Health/NanoVaccine</texPath>
+                                            <graphicClass>Graphic_StackCount</graphicClass>
+                                            <color>(0.95, 0.75, 0.35, 1)</color>
+                                        </graphicData>
+                                        <ingestible>
+                                            <ingestReportString>administering the combined DP bio nano-vaccine.</ingestReportString>
+                                            <ingestReportStringEat>administers the combined DP bio nano-vaccine.</ingestReportStringEat>
+                                            <outcomeDoers>
+                                                <li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_GiveHediffByQuality">
+                                                    <hediffDef>NanoVaccinated_DP_CommonCold</hediffDef>
+                                                    <baseSeverity>1.0</baseSeverity>
+                                                </li>
+                                                <li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_GiveHediffByQuality">
+                                                    <hediffDef>NanoVaccinated_DP_Conjunctivitis</hediffDef>
+                                                    <baseSeverity>1.0</baseSeverity>
+                                                </li>
+                                                <li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_GiveHediffByQuality">
+                                                    <hediffDef>NanoVaccinated_DP_Otitis</hediffDef>
+                                                    <baseSeverity>1.0</baseSeverity>
+                                                </li>
+                                                <li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_GiveHediffByQuality">
+                                                    <hediffDef>NanoVaccinated_DP_Tuberculosis</hediffDef>
+                                                    <baseSeverity>1.0</baseSeverity>
+                                                </li>
+                                                <li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_GiveHediffByQuality">
+                                                    <hediffDef>NanoVaccinated_DP_Pneumonia</hediffDef>
+                                                    <baseSeverity>1.0</baseSeverity>
+                                                </li>
+                                                <li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_GiveHediffByQuality">
+                                                    <hediffDef>NanoVaccinated_DP_Sepsis</hediffDef>
+                                                    <baseSeverity>1.0</baseSeverity>
+                                                </li>
+                                                <li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_GiveHediffByQuality">
+                                                    <hediffDef>NanoVaccinated_DP_AcuteHepatitis</hediffDef>
+                                                    <baseSeverity>1.0</baseSeverity>
+                                                </li>
+                                                <li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_GiveHediffByQuality">
+                                                    <hediffDef>NanoVaccinated_DP_Angina</hediffDef>
+                                                    <baseSeverity>1.0</baseSeverity>
+                                                </li>
+                                                <li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_GiveHediffChanceByQuality">
+                                                    <hediffDef>VaccineReaction_Mild</hediffDef>
+                                                    <baseProbability>0.10</baseProbability>
+                                                    <baseSeverity>0.4</baseSeverity>
+                                                </li>
+                                            </outcomeDoers>
+                                        </ingestible>
+                                    </ThingDef>
+
+                                    <RecipeDef MayRequire="DimonSever000.DiseasesPlus.Specific" ParentName="BOR_CombinedNanoVaccineCraftingBase">
+                                        <defName>BOR_Make_CombinedNanoVaccine_DPBio</defName>
+                                        <label>make combined nano-vaccine (DP bio)</label>
+                                        <jobString>Synthesizing combined DP bio nano-vaccine.</jobString>
+                                        <description>Synthesize a combined Diseases Plus bio nano-vaccine using Quasar-grade Beyond Our Reach nano compounds. Yields 1 dose.</description>
+                                        <products>
+                                            <BOR_CombinedNanoVaccine_DPBio>1</BOR_CombinedNanoVaccine_DPBio>
+                                        </products>
+                                    </RecipeDef>
+
+                                    <!-- DP BIO combined (tenebral) -->
+
+                                    <ThingDef MayRequire="DimonSever000.DiseasesPlus.Specific" ParentName="ArchoVaccineVialBase">
+                                        <defName>BOR_CombinedArchoVaccine_DPBio</defName>
+                                        <label>combined tenebral vaccine (DP bio)</label>
+                                        <description>A tenebral broad-spectrum Diseases Plus bio vaccine synthesised with Tenebral-grade Beyond Our Reach compounds. Permanently reprograms the immune system against all eight DP biological pathogens in a single dose.\n\nRequires: Diseases Plus + BOR Medicine III.</description>
+                                        <graphicData>
+                                            <texPath>Things/Item/Health/MechaniteStabilizer</texPath>
+                                            <graphicClass>Graphic_StackCount</graphicClass>
+                                            <color>(0.80, 0.55, 0.15, 1)</color>
+                                        </graphicData>
+                                        <ingestible>
+                                            <ingestReportString>administering the combined tenebral DP bio vaccine.</ingestReportString>
+                                            <ingestReportStringEat>administers the combined tenebral DP bio vaccine.</ingestReportStringEat>
+                                            <outcomeDoers>
+                                                <li Class="IngestionOutcomeDoer_GiveHediff">
+                                                    <hediffDef>ArchoVaccinated_DP_CommonCold</hediffDef>
+                                                    <severity>1.0</severity>
+                                                </li>
+                                                <li Class="IngestionOutcomeDoer_GiveHediff">
+                                                    <hediffDef>ArchoVaccinated_DP_Conjunctivitis</hediffDef>
+                                                    <severity>1.0</severity>
+                                                </li>
+                                                <li Class="IngestionOutcomeDoer_GiveHediff">
+                                                    <hediffDef>ArchoVaccinated_DP_Otitis</hediffDef>
+                                                    <severity>1.0</severity>
+                                                </li>
+                                                <li Class="IngestionOutcomeDoer_GiveHediff">
+                                                    <hediffDef>ArchoVaccinated_DP_Tuberculosis</hediffDef>
+                                                    <severity>1.0</severity>
+                                                </li>
+                                                <li Class="IngestionOutcomeDoer_GiveHediff">
+                                                    <hediffDef>ArchoVaccinated_DP_Pneumonia</hediffDef>
+                                                    <severity>1.0</severity>
+                                                </li>
+                                                <li Class="IngestionOutcomeDoer_GiveHediff">
+                                                    <hediffDef>ArchoVaccinated_DP_Sepsis</hediffDef>
+                                                    <severity>1.0</severity>
+                                                </li>
+                                                <li Class="IngestionOutcomeDoer_GiveHediff">
+                                                    <hediffDef>ArchoVaccinated_DP_AcuteHepatitis</hediffDef>
+                                                    <severity>1.0</severity>
+                                                </li>
+                                                <li Class="IngestionOutcomeDoer_GiveHediff">
+                                                    <hediffDef>ArchoVaccinated_DP_Angina</hediffDef>
+                                                    <severity>1.0</severity>
+                                                </li>
+                                            </outcomeDoers>
+                                        </ingestible>
+                                    </ThingDef>
+
+                                    <RecipeDef MayRequire="DimonSever000.DiseasesPlus.Specific" ParentName="BOR_CombinedArchoVaccineCraftingBase">
+                                        <defName>BOR_Make_CombinedArchoVaccine_DPBio</defName>
+                                        <label>make combined tenebral vaccine (DP bio)</label>
+                                        <jobString>Synthesizing combined tenebral DP bio vaccine.</jobString>
+                                        <description>Synthesize a combined tenebral Diseases Plus bio vaccine using Tenebral-grade Beyond Our Reach compounds. Yields 1 dose.</description>
+                                        <products>
+                                            <BOR_CombinedArchoVaccine_DPBio>1</BOR_CombinedArchoVaccine_DPBio>
+                                        </products>
+                                    </RecipeDef>
+
+                                </value>
+                            </li>
+
+                            <!-- Patch Tenebral Bio with DP permanent immunities -->
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ThingDef[defName="BOR_TenebralVaccine_Bio"]/ingestible/outcomeDoers</xpath>
+                                <value>
+                                    <li Class="IngestionOutcomeDoer_GiveHediff">
+                                        <hediffDef>ArchoVaccinated_DP_CommonCold</hediffDef>
+                                        <severity>1.0</severity>
+                                    </li>
+                                    <li Class="IngestionOutcomeDoer_GiveHediff">
+                                        <hediffDef>ArchoVaccinated_DP_Conjunctivitis</hediffDef>
+                                        <severity>1.0</severity>
+                                    </li>
+                                    <li Class="IngestionOutcomeDoer_GiveHediff">
+                                        <hediffDef>ArchoVaccinated_DP_Otitis</hediffDef>
+                                        <severity>1.0</severity>
+                                    </li>
+                                    <li Class="IngestionOutcomeDoer_GiveHediff">
+                                        <hediffDef>ArchoVaccinated_DP_Tuberculosis</hediffDef>
+                                        <severity>1.0</severity>
+                                    </li>
+                                    <li Class="IngestionOutcomeDoer_GiveHediff">
+                                        <hediffDef>ArchoVaccinated_DP_Pneumonia</hediffDef>
+                                        <severity>1.0</severity>
+                                    </li>
+                                    <li Class="IngestionOutcomeDoer_GiveHediff">
+                                        <hediffDef>ArchoVaccinated_DP_Sepsis</hediffDef>
+                                        <severity>1.0</severity>
+                                    </li>
+                                    <li Class="IngestionOutcomeDoer_GiveHediff">
+                                        <hediffDef>ArchoVaccinated_DP_AcuteHepatitis</hediffDef>
+                                        <severity>1.0</severity>
+                                    </li>
+                                    <li Class="IngestionOutcomeDoer_GiveHediff">
+                                        <hediffDef>ArchoVaccinated_DP_Angina</hediffDef>
+                                        <severity>1.0</severity>
+                                    </li>
+                                </value>
+                            </li>
+
+                        </operations>
+                    </match>
+                </li>
+
+                <!-- ==============================================================
+                     SECTION 5 – Biotech DLC: patch Tenebral Bio
+                     ============================================================== -->
+                <li Class="PatchOperationConditional">
+                    <xpath>/Defs/ThingDef[defName="Vaccine_InfantIllness"]</xpath>
+                    <match Class="PatchOperationAdd">
+                        <xpath>/Defs/ThingDef[defName="BOR_TenebralVaccine_Bio"]/ingestible/outcomeDoers</xpath>
+                        <value>
+                            <li Class="IngestionOutcomeDoer_GiveHediff">
+                                <hediffDef>ArchoVaccinated_InfantIllness</hediffDef>
+                                <severity>1.0</severity>
+                            </li>
+                        </value>
+                    </match>
+                </li>
+
+                <!-- ==============================================================
+                     SECTION 6 – Royalty DLC: patch Tenebral Bio
+                     ============================================================== -->
+                <li Class="PatchOperationConditional">
+                    <xpath>/Defs/ThingDef[defName="Vaccine_BloodRot"]</xpath>
+                    <match Class="PatchOperationAdd">
+                        <xpath>/Defs/ThingDef[defName="BOR_TenebralVaccine_Bio"]/ingestible/outcomeDoers</xpath>
+                        <value>
+                            <li Class="IngestionOutcomeDoer_GiveHediff">
+                                <hediffDef>ArchoVaccinated_BloodRot</hediffDef>
+                                <severity>1.0</severity>
+                            </li>
+                        </value>
+                    </match>
+                </li>
+
+                <!-- ==============================================================
+                     SECTION 7 – Necroa Archovirus: patch Tenebral Bio
+                     ============================================================== -->
+                <li Class="PatchOperationConditional">
+                    <xpath>/Defs/ThingDef[defName="Vaccine_Necroa"]</xpath>
+                    <match Class="PatchOperationAdd">
+                        <xpath>/Defs/ThingDef[defName="BOR_TenebralVaccine_Bio"]/ingestible/outcomeDoers</xpath>
+                        <value>
+                            <li Class="IngestionOutcomeDoer_GiveHediff">
+                                <hediffDef>ArchoVaccinated_Necroa</hediffDef>
+                                <severity>1.0</severity>
+                            </li>
+                        </value>
+                    </match>
+                </li>
+
+                <!-- ==============================================================
+                     SECTION 8 – Rabies: patch Tenebral Bio
+                     ============================================================== -->
+                <li Class="PatchOperationConditional">
+                    <xpath>/Defs/ThingDef[defName="Vaccine_Rabies"]</xpath>
+                    <match Class="PatchOperationAdd">
+                        <xpath>/Defs/ThingDef[defName="BOR_TenebralVaccine_Bio"]/ingestible/outcomeDoers</xpath>
+                        <value>
+                            <li Class="IngestionOutcomeDoer_GiveHediff">
+                                <hediffDef>ArchoVaccinated_Rabies</hediffDef>
+                                <severity>1.0</severity>
+                            </li>
+                            <li Class="IngestionOutcomeDoer_GiveHediff">
+                                <hediffDef>ArchoVaccinated_RabiesActive</hediffDef>
+                                <severity>1.0</severity>
+                            </li>
+                        </value>
+                    </match>
+                </li>
+
+                <!-- ==============================================================
+                     SECTION 9 – Anomaly DLC: patch Tenebral Mech I with
+                                 MetalhorrorImplant jailbreak
+                     ============================================================== -->
+                <li Class="PatchOperationConditional">
+                    <xpath>/Defs/ThingDef[defName="NanoVaccine_MetalhorrorImplant"]</xpath>
+                    <match Class="PatchOperationAdd">
+                        <xpath>/Defs/ThingDef[defName="BOR_TenebralVaccine_Mech_I"]/ingestible/outcomeDoers</xpath>
+                        <value>
+                            <li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_MechaniteJailbreak">
+                                <watcherHediffDef>NanoShieldWatcher_MetalhorrorImplant</watcherHediffDef>
+                            </li>
+                        </value>
+                    </match>
+                </li>
+
+            </operations>
+        </enabled>
+    </Operation>
+
+</Patch>

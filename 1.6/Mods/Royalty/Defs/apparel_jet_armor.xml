@@ -1,0 +1,206 @@
+<Defs>
+
+  <ThingDef ParentName="ArmorMachineableBase">
+    <defName>BOR_Solar_Apparel_ArchangelArmor</defName>
+    <label>solar daedalus armor</label>
+    <description>Partially-powered armor, designed for mobility and ease-of-use. Meshes of Sunsteel Weave block attacks without adding excessive weight, and a complex endomuscular system in the lower body allows for uncompromised movement.\n\nArmor such as this is often employed by solar scout troops and higher-end police forces.</description>
+    <techLevel>Ultra</techLevel>
+    <recipeMaker>
+      <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+      <researchPrerequisites>
+        <li>BOR_Research_JetArmor_I</li>
+        <li>ReconArmor</li>
+      </researchPrerequisites>
+      <skillRequirements>
+        <Crafting>9</Crafting>
+      </skillRequirements>
+      <recipeUsers Inherit="False">
+        <li>BOR_Bench_I</li>
+        <li>BOR_Bench_IV</li>
+      </recipeUsers>
+      <displayPriority>115</displayPriority>
+    </recipeMaker>
+    <graphicData>
+      <texPath>BOR/Things/Pawn/Humanlike/Apparel/DaedalusArmor/solar_jetpack</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutComplex</shaderType> 
+    </graphicData>
+    <generateCommonality>0.5</generateCommonality>
+    <statBases>
+      <WorkToMake>74250</WorkToMake>
+      <MaxHitPoints>350</MaxHitPoints>
+      <Mass>8</Mass>
+      <Flammability>0.3</Flammability>
+      <ArmorRating_Sharp>1.15</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.48</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.54</ArmorRating_Heat>
+      <JumpRange>33.9</JumpRange>
+      <Insulation_Cold>40</Insulation_Cold>
+      <Insulation_Heat>11</Insulation_Heat>
+      <EquipDelay>12</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <SlaveSuppressionOffset MayRequire="Ludeon.RimWorld.Ideology">-0.1</SlaveSuppressionOffset>
+      <VacuumResistance MayRequire="Ludeon.RimWorld.Odyssey">0.35</VacuumResistance>
+    </equippedStatOffsets>
+    <thingCategories>
+      <li>BOR_Armor_I</li>
+    </thingCategories>
+    <costList>
+      <ComponentSpacer>3</ComponentSpacer>
+      <BOR_Sunsteel>88</BOR_Sunsteel>
+      <Uranium>11</Uranium>
+    </costList>
+    <apparel>
+      <bodyPartGroups>
+        <li>Torso</li>
+        <li>Neck</li>
+        <li>Shoulders</li>
+        <li>Arms</li>
+        <li>Legs</li>
+        <li>Hands</li>
+        <li>Feet</li>
+      </bodyPartGroups>
+      <wornGraphicPath>BOR/Things/Pawn/Humanlike/Apparel/DaedalusArmor/solar_jetpack</wornGraphicPath>
+      <layers>
+        <li>Middle</li>
+        <li>Shell</li>
+      </layers>
+      <tags>
+        <li>HiTechArmor</li>
+        <li>BOR_Military_I</li>
+      </tags>
+      <defaultOutfitTags>
+        <li>Soldier</li>
+      </defaultOutfitTags>
+      <useDeflectMetalEffect>true</useDeflectMetalEffect>
+    </apparel>
+    <tradeTags>
+      <li>HiTechArmor</li>
+      <li>BOR_HiTechArmor_I</li>
+      <li>BOR_Tech_I</li>
+    </tradeTags>
+    <comps>
+      <li Class="CompProperties_Biocodable" />
+      <li Class="CompProperties_ApparelReloadable">
+        <maxCharges>10</maxCharges>
+        <ammoDef>BOR_Neutronium</ammoDef>
+        <ammoCountPerCharge>20</ammoCountPerCharge>
+        <baseReloadTicks>60</baseReloadTicks>
+        <soundReload>Standard_Reload</soundReload>
+        <hotKey>Misc4</hotKey>
+        <chargeNoun>jump</chargeNoun>
+        <displayGizmoWhileUndrafted>false</displayGizmoWhileUndrafted>
+      </li>
+    </comps>
+    <verbs>
+      <li>
+        <verbClass>Verb_Jump</verbClass>
+        <label>jump</label>
+        <commandIcon>Things/Pawn/Humanlike/Apparel/JumpPack/JumpPack</commandIcon>
+        <violent>false</violent>
+        <hasStandardCommand>true</hasStandardCommand>
+        <onlyManualCast>True</onlyManualCast>
+        <forceNormalTimeSpeed>false</forceNormalTimeSpeed>
+        <warmupTime>0.5</warmupTime>
+        <warmupEffecter>JumpWarmupEffect</warmupEffecter>
+        <flightEffecterDef>JumpFlightEffect</flightEffecterDef>
+        <requireLineOfSight>true</requireLineOfSight>
+        <targetParams>
+          <canTargetLocations>true</canTargetLocations>
+          <canTargetPawns>false</canTargetPawns>
+          <canTargetBuildings>false</canTargetBuildings>
+        </targetParams>
+      </li>
+    </verbs>
+    <thingSetMakerTags>
+      <li>RewardStandardHighFreq</li>
+    </thingSetMakerTags>
+  </ThingDef>
+
+  <ThingDef ParentName="ArmorHelmetMakeableBase">
+    <defName>BOR_Solar_Apparel_ArchangelHelmet</defName>
+    <label>solar daedalus helmet</label>
+    <description>A high-tech sunsteel helmet with integrated optics and hardened weave plating. Built for scouting and rapid deployments where visibility and survivability both matter.</description>
+    <techLevel>Ultra</techLevel>
+    <recipeMaker>
+      <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+      <researchPrerequisites>
+        <li>BOR_Research_JetArmor_I</li>
+        <li>ReconArmor</li>
+      </researchPrerequisites>
+      <skillRequirements>
+        <Crafting>8</Crafting>
+      </skillRequirements>
+      <recipeUsers Inherit="False">
+        <li>BOR_Bench_I</li>
+        <li>BOR_Bench_IV</li>
+      </recipeUsers>
+      <displayPriority>110</displayPriority>
+    </recipeMaker>
+    <graphicData>
+      <texPath>BOR/Things/Pawn/Humanlike/Apparel/DaedalusHelmet/solar_jetpack_helm</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
+    </graphicData>
+    <generateCommonality>0.5</generateCommonality>
+    <statBases>
+      <WorkToMake>24200</WorkToMake>
+      <MaxHitPoints>170</MaxHitPoints>
+      <Mass>1.2</Mass>
+      <Flammability>0.3</Flammability>
+      <ArmorRating_Sharp>1.06</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.46</ArmorRating_Blunt>
+      <ArmorRating_Heat>0.52</ArmorRating_Heat>
+      <Insulation_Cold>5</Insulation_Cold>
+      <Insulation_Heat>2.5</Insulation_Heat>
+      <EquipDelay>2.5</EquipDelay>
+    </statBases>
+    <equippedStatOffsets>
+      <SlaveSuppressionOffset MayRequire="Ludeon.RimWorld.Ideology">-0.1</SlaveSuppressionOffset>
+      <VacuumResistance MayRequire="Ludeon.RimWorld.Odyssey">0.35</VacuumResistance>
+    </equippedStatOffsets>
+    <thingCategories>
+      <li>BOR_Armor_I</li>
+    </thingCategories>
+    <costList>
+      <ComponentSpacer>1</ComponentSpacer>
+      <BOR_Sunsteel>34</BOR_Sunsteel>
+      <Uranium>4</Uranium>
+    </costList>
+    <apparel>
+      <bodyPartGroups>
+        <li>FullHead</li>
+      </bodyPartGroups>
+      <wornGraphicPath>BOR/Things/Pawn/Humanlike/Apparel/DaedalusHelmet/solar_jetpack_helm</wornGraphicPath>
+      <layers>
+        <li>Overhead</li>
+      </layers>
+      <tags>
+        <li>HiTechArmor</li>
+        <li>BOR_Military_I</li>
+      </tags>
+      <defaultOutfitTags>
+        <li>Soldier</li>
+      </defaultOutfitTags>
+      <useDeflectMetalEffect>true</useDeflectMetalEffect>
+      <forceEyesVisibleForRotations>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+      </forceEyesVisibleForRotations>
+    </apparel>
+    <tradeTags>
+      <li>Armor</li>
+      <li>HiTechArmor</li>
+      <li>BOR_HiTechArmor_I</li>
+      <li>BOR_Tech_I</li>
+    </tradeTags>
+    <comps>
+      <li Class="CompProperties_Biocodable" />
+    </comps>
+    <thingSetMakerTags>
+      <li>RewardStandardHighFreq</li>
+    </thingSetMakerTags>
+  </ThingDef>
+</Defs>

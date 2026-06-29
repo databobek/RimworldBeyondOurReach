@@ -762,18 +762,19 @@
 
             <HediffDef ParentName="BOR_ImplantQuasarHediffBase">
               <defaultLabelColor>(106, 123, 206)</defaultLabelColor>
-              <defName>NeurocalculatorQuasar</defName>
-              <label>quasar neurocalculator</label>
-              <labelNoun>a quasar neurocalculator</labelNoun>
-              <description>An installed quasar neurocalculator.</description>
+              <defName>CognitiveSuiteQuasar</defName>
+              <label>quasar cognitive suite</label>
+              <labelNoun>a quasar cognitive suite</labelNoun>
+              <description>An installed quasar cognitive suite.</description>
               <descriptionHyperlinks>
-                <ThingDef>NeurocalculatorQuasar</ThingDef>
+                <ThingDef>CognitiveSuiteQuasar</ThingDef>
               </descriptionHyperlinks>
-              <spawnThingOnRemoved>NeurocalculatorQuasar</spawnThingOnRemoved>
+              <spawnThingOnRemoved>CognitiveSuiteQuasar</spawnThingOnRemoved>
               <stages>
                 <li>
                   <statOffsets>
-                    <ResearchSpeed>0.50</ResearchSpeed>
+                    <ResearchSpeed>0.45</ResearchSpeed>
+                    <GlobalLearningFactor>0.45</GlobalLearningFactor>
                   </statOffsets>
                 </li>
               </stages>
@@ -784,16 +785,16 @@
                 </li>
               </comps>
               <tags>
-                <li>neurocalculator</li>
+                <li>cognitiveSuite</li>
               </tags>
             </HediffDef>
 
             <ThingDef ParentName="BodyPartBORQuasarBase">
-              <defName>NeurocalculatorQuasar</defName>
-              <label>quasar neurocalculator</label>
-              <description>A non-intelligent microcomputer controlled by a visual/tactile neural interface. It assists with memory and calculation, like a calculator and notepad embedded in the brain.</description>
+              <defName>CognitiveSuiteQuasar</defName>
+              <label>quasar cognitive suite</label>
+              <description>A compact quasar neural package combining accelerated calculation with adaptive memory reinforcement for better research and faster learning.</description>
               <descriptionHyperlinks>
-                <RecipeDef>InstallNeurocalculatorQuasar</RecipeDef>
+                <RecipeDef>InstallCognitiveSuiteQuasar</RecipeDef>
               </descriptionHyperlinks>
               <graphicData>
                 <texPath>Things/Item/Health/HealthItem</texPath>
@@ -801,8 +802,6 @@
                 <drawSize>0.80</drawSize>
                 <color>(155, 185, 186)</color>
               </graphicData>
-
-
               <statBases>
                 <RoyalFavorValue>1</RoyalFavorValue>
               </statBases>
@@ -812,140 +811,48 @@
             </ThingDef>
 
             <RecipeDef ParentName="SurgeryInstallImplantBORQuasarBase">
-              <defName>InstallNeurocalculatorQuasar</defName>
-              <label>install quasar neurocalculator</label>
-              <description>Install a neurocalculator.</description>
+              <defName>InstallCognitiveSuiteQuasar</defName>
+              <label>install quasar cognitive suite</label>
+              <description>Install a cognitive suite.</description>
               <descriptionHyperlinks>
-                <ThingDef>NeurocalculatorQuasar</ThingDef>
-                <HediffDef>NeurocalculatorQuasar</HediffDef>
+                <ThingDef>CognitiveSuiteQuasar</ThingDef>
+                <HediffDef>CognitiveSuiteQuasar</HediffDef>
               </descriptionHyperlinks>
-              <jobString>Installing quasar neurocalculator.</jobString>
+              <jobString>Installing quasar cognitive suite.</jobString>
               <ingredients>
                 <li>
                   <filter>
                     <thingDefs>
-                      <li>NeurocalculatorQuasar</li>
+                      <li>CognitiveSuiteQuasar</li>
                     </thingDefs>
                   </filter>
-                  <count>1</count>
+                  <count>2</count>
                 </li>
               </ingredients>
               <fixedIngredientFilter>
                 <thingDefs>
-                  <li>NeurocalculatorQuasar</li>
+                  <li>CognitiveSuiteQuasar</li>
                 </thingDefs>
               </fixedIngredientFilter>
               <appliedOnFixedBodyParts>
                 <li>Brain</li>
               </appliedOnFixedBodyParts>
-              <addsHediff>NeurocalculatorQuasar</addsHediff>
+              <addsHediff>CognitiveSuiteQuasar</addsHediff>
               <incompatibleWithHediffTags>
-                <li>neurocalculator</li>
+                <li>cognitiveSuite</li>
               </incompatibleWithHediffTags>
             </RecipeDef>
 
             <RecipeDef ParentName="SurgeryRemoveImplantBase">
-              <defName>RemoveNeurocalculatorQuasar</defName>
-              <label>quasar remove neurocalculator</label>
-              <description>Remove neurocalculator.</description>
+              <defName>RemoveCognitiveSuiteQuasar</defName>
+              <label>quasar remove cognitive suite</label>
+              <description>Remove cognitive suite.</description>
               <descriptionHyperlinks>
-                <ThingDef>NeurocalculatorQuasar</ThingDef>
-                <HediffDef>NeurocalculatorQuasar</HediffDef>
+                <ThingDef>CognitiveSuiteQuasar</ThingDef>
+                <HediffDef>CognitiveSuiteQuasar</HediffDef>
               </descriptionHyperlinks>
-              <jobString>Removing quasar neurocalculator.</jobString>
-              <removesHediff>NeurocalculatorQuasar</removesHediff>
-            </RecipeDef>
-
-            <!-- Learning assistant -->
-
-            <HediffDef ParentName="BOR_ImplantQuasarHediffBase">
-              <defaultLabelColor>(106, 123, 206)</defaultLabelColor>
-              <defName>LearningAssistantQuasar</defName>
-              <label>quasar learning assistant</label>
-              <labelNoun>a quasar learning assistant</labelNoun>
-              <description>An installed quasar learning assistant.</description>
-              <descriptionHyperlinks>
-                <ThingDef>LearningAssistantQuasar</ThingDef>
-              </descriptionHyperlinks>
-              <spawnThingOnRemoved>LearningAssistantQuasar</spawnThingOnRemoved>
-              <stages>
-                <li>
-                  <statOffsets>
-                    <GlobalLearningFactor>0.50</GlobalLearningFactor>
-                  </statOffsets>
-                </li>
-              </stages>
-              <comps>
-                <li Class="HediffCompProperties_ReactOnDamage">
-                  <damageDefIncoming>EMP</damageDefIncoming>
-                  <createHediff>BrainShock</createHediff>
-                </li>
-              </comps>
-              <tags>
-                <li>learningAssistant</li>
-              </tags>
-            </HediffDef>
-
-            <ThingDef ParentName="BodyPartBORQuasarBase">
-              <defName>LearningAssistantQuasar</defName>
-              <label>quasar learning assistant</label>
-              <description>A sensory recording system that replays important experiences during sleep, strengthening the formation of new memories.</description>
-              <descriptionHyperlinks>
-                <RecipeDef>InstallLearningAssistantQuasar</RecipeDef>
-              </descriptionHyperlinks>
-
-
-              <statBases>
-                <RoyalFavorValue>1</RoyalFavorValue>
-              </statBases>
-              <tradeTags>
-                <li>BOR_Tech_II</li>
-              </tradeTags>
-            </ThingDef>
-
-            <RecipeDef ParentName="SurgeryInstallImplantBORQuasarBase">
-              <defName>InstallLearningAssistantQuasar</defName>
-              <label>install quasar learning assistant</label>
-              <description>Install a learning assistant.</description>
-              <descriptionHyperlinks>
-                <ThingDef>LearningAssistantQuasar</ThingDef>
-                <HediffDef>LearningAssistantQuasar</HediffDef>
-              </descriptionHyperlinks>
-              <jobString>Installing quasar learning assistant.</jobString>
-              <ingredients>
-                <li>
-                  <filter>
-                    <thingDefs>
-                      <li>LearningAssistantQuasar</li>
-                    </thingDefs>
-                  </filter>
-                  <count>1</count>
-                </li>
-              </ingredients>
-              <fixedIngredientFilter>
-                <thingDefs>
-                  <li>LearningAssistantQuasar</li>
-                </thingDefs>
-              </fixedIngredientFilter>
-              <appliedOnFixedBodyParts>
-                <li>Brain</li>
-              </appliedOnFixedBodyParts>
-              <addsHediff>LearningAssistantQuasar</addsHediff>
-              <incompatibleWithHediffTags>
-                <li>learningAssistant</li>
-              </incompatibleWithHediffTags>
-            </RecipeDef>
-
-            <RecipeDef ParentName="SurgeryRemoveImplantBase">
-              <defName>RemoveLearningAssistantQuasar</defName>
-              <label>quasar remove learning assistant</label>
-              <description>Remove learning assistant.</description>
-              <descriptionHyperlinks>
-                <ThingDef>LearningAssistantQuasar</ThingDef>
-                <HediffDef>LearningAssistantQuasar</HediffDef>
-              </descriptionHyperlinks>
-              <jobString>Removing quasar learning assistant.</jobString>
-              <removesHediff>LearningAssistantQuasar</removesHediff>
+              <jobString>Removing quasar cognitive suite.</jobString>
+              <removesHediff>CognitiveSuiteQuasar</removesHediff>
             </RecipeDef>
 
             <!-- Gastro-analyzer -->
@@ -1842,116 +1749,27 @@
                 <li>reprocessorStomach</li>
               </incompatibleWithHediffTags>
             </RecipeDef>
-            <!-- Circadian assistant -->
+            <!-- Circadian module -->
 
             <HediffDef ParentName="BOR_ImplantQuasarHediffBase">
               <defaultLabelColor>(106, 123, 206)</defaultLabelColor>
-              <defName>CircadianAssistantQuasar</defName>
-              <label>quasar circadian assistant</label>
-              <labelNoun>a quasar circadian assistant</labelNoun>
-              <description>An installed quasar circadian assistant.</description>
+              <defName>CircadianModuleQuasar</defName>
+              <label>quasar circadian module</label>
+              <labelNoun>a quasar circadian module</labelNoun>
+              <description>An installed quasar circadian module.</description>
               <descriptionHyperlinks>
-                <ThingDef>CircadianAssistantQuasar</ThingDef>
+                <ThingDef>CircadianModuleQuasar</ThingDef>
               </descriptionHyperlinks>
-              <spawnThingOnRemoved>CircadianAssistantQuasar</spawnThingOnRemoved>
+              <spawnThingOnRemoved>CircadianModuleQuasar</spawnThingOnRemoved>
               <stages>
                 <li>
                   <statOffsets>
-                    <RestFallRateFactor>-0.50</RestFallRateFactor>
+                    <RestFallRateFactor>-0.45</RestFallRateFactor>
                   </statOffsets>
-                </li>
-              </stages>
-              <comps>
-                <li Class="HediffCompProperties_ReactOnDamage">
-                  <damageDefIncoming>EMP</damageDefIncoming>
-                  <createHediff>BrainShock</createHediff>
-                </li>
-              </comps>
-              <tags>
-                <li>circadianAssistant</li>
-              </tags>
-            </HediffDef>
-
-            <ThingDef ParentName="BodyPartBORQuasarBase">
-              <defName>CircadianAssistantQuasar</defName>
-              <label>quasar circadian assistant</label>
-              <description>An artificial gland. Produces chemicals and nanomachines that clear toxin buildup from the brain.</description>
-              <descriptionHyperlinks>
-                <RecipeDef>InstallCircadianAssistantQuasar</RecipeDef>
-              </descriptionHyperlinks>
-
-
-              <statBases>
-                <RoyalFavorValue>1</RoyalFavorValue>
-              </statBases>
-              <tradeTags>
-                <li>BOR_Tech_II</li>
-              </tradeTags>
-            </ThingDef>
-
-            <RecipeDef ParentName="SurgeryInstallImplantBORQuasarBase">
-              <defName>InstallCircadianAssistantQuasar</defName>
-              <label>install quasar circadian assistant</label>
-              <description>Install a circadian assistant.</description>
-              <descriptionHyperlinks>
-                <ThingDef>CircadianAssistantQuasar</ThingDef>
-                <HediffDef>CircadianAssistantQuasar</HediffDef>
-              </descriptionHyperlinks>
-              <jobString>Installing quasar circadian assistant.</jobString>
-              <ingredients>
-                <li>
-                  <filter>
-                    <thingDefs>
-                      <li>CircadianAssistantQuasar</li>
-                    </thingDefs>
-                  </filter>
-                  <count>1</count>
-                </li>
-              </ingredients>
-              <fixedIngredientFilter>
-                <thingDefs>
-                  <li>CircadianAssistantQuasar</li>
-                </thingDefs>
-              </fixedIngredientFilter>
-              <appliedOnFixedBodyParts>
-                <li>Brain</li>
-              </appliedOnFixedBodyParts>
-              <addsHediff>CircadianAssistantQuasar</addsHediff>
-              <incompatibleWithHediffTags>
-                <li>circadianAssistant</li>
-              </incompatibleWithHediffTags>
-            </RecipeDef>
-
-            <RecipeDef ParentName="SurgeryRemoveImplantBase">
-              <defName>RemoveCircadianAssistantQuasar</defName>
-              <label>quasar remove circadian assistant</label>
-              <description>Remove circadian assistant.</description>
-              <descriptionHyperlinks>
-                <ThingDef>CircadianAssistantQuasar</ThingDef>
-                <HediffDef>CircadianAssistantQuasar</HediffDef>
-              </descriptionHyperlinks>
-              <jobString>Removing quasar circadian assistant.</jobString>
-              <removesHediff>CircadianAssistantQuasar</removesHediff>
-            </RecipeDef>
-
-            <!-- Circadian half-cycler -->
-
-            <HediffDef ParentName="BOR_ImplantQuasarHediffBase">
-              <defaultLabelColor>(106, 123, 206)</defaultLabelColor>
-              <defName>CircadianHalfCyclerQuasar</defName>
-              <label>quasar circadian half-cycler</label>
-              <labelNoun>a quasar circadian half-cycler</labelNoun>
-              <description>An installed quasar circadian half-cycler.</description>
-              <descriptionHyperlinks>
-                <ThingDef>CircadianHalfCyclerQuasar</ThingDef>
-              </descriptionHyperlinks>
-              <spawnThingOnRemoved>CircadianHalfCyclerQuasar</spawnThingOnRemoved>
-              <stages>
-                <li>
                   <capMods>
                     <li>
                       <capacity>Consciousness</capacity>
-                      <offset>-0.10</offset>
+                      <offset>-0.09</offset>
                     </li>
                   </capMods>
                   <disablesNeeds>
@@ -1966,19 +1784,17 @@
                 </li>
               </comps>
               <tags>
-                <li>circadianAssistant</li>
+                <li>circadianModule</li>
               </tags>
             </HediffDef>
 
             <ThingDef ParentName="BodyPartBORQuasarBase">
-              <defName>CircadianHalfCyclerQuasar</defName>
-              <label>quasar circadian half-cycler</label>
-              <description>A signal redirector which isolates half of the brain, allowing the other half to sleep while the user remains outwardly awake. By alternating brain halves, the user never needs to sleep. Unfortunately, two hemispheres are better than one - working with half a brain causes a reduction in consciousness.</description>
+              <defName>CircadianModuleQuasar</defName>
+              <label>quasar circadian module</label>
+              <description>A quasar sleep-control implant that combines toxin-clearing circadian support with half-cycler wakefulness logic.</description>
               <descriptionHyperlinks>
-                <RecipeDef>InstallCircadianHalfCyclerQuasar</RecipeDef>
+                <RecipeDef>InstallCircadianModuleQuasar</RecipeDef>
               </descriptionHyperlinks>
-
-
               <statBases>
                 <RoyalFavorValue>1</RoyalFavorValue>
               </statBases>
@@ -1988,128 +1804,51 @@
             </ThingDef>
 
             <RecipeDef ParentName="SurgeryInstallImplantBORQuasarBase">
-              <defName>InstallCircadianHalfCyclerQuasar</defName>
-              <label>install quasar circadian half-cycler</label>
-              <description>Install a circadian half-cycler.</description>
+              <defName>InstallCircadianModuleQuasar</defName>
+              <label>install quasar circadian module</label>
+              <description>Install a circadian module.</description>
               <descriptionHyperlinks>
-                <ThingDef>CircadianHalfCyclerQuasar</ThingDef>
-                <HediffDef>CircadianHalfCyclerQuasar</HediffDef>
+                <ThingDef>CircadianModuleQuasar</ThingDef>
+                <HediffDef>CircadianModuleQuasar</HediffDef>
               </descriptionHyperlinks>
-              <jobString>Installing quasar circadian half-cycler.</jobString>
+              <jobString>Installing quasar circadian module.</jobString>
               <ingredients>
                 <li>
                   <filter>
                     <thingDefs>
-                      <li>CircadianHalfCyclerQuasar</li>
+                      <li>CircadianModuleQuasar</li>
                     </thingDefs>
                   </filter>
-                  <count>1</count>
+                  <count>2</count>
                 </li>
               </ingredients>
               <fixedIngredientFilter>
                 <thingDefs>
-                  <li>CircadianHalfCyclerQuasar</li>
+                  <li>CircadianModuleQuasar</li>
                 </thingDefs>
               </fixedIngredientFilter>
               <appliedOnFixedBodyParts>
                 <li>Brain</li>
               </appliedOnFixedBodyParts>
-              <addsHediff>CircadianHalfCyclerQuasar</addsHediff>
+              <addsHediff>CircadianModuleQuasar</addsHediff>
               <incompatibleWithHediffTags>
-                <li>circadianAssistant</li>
+                <li>circadianModule</li>
               </incompatibleWithHediffTags>
             </RecipeDef>
 
             <RecipeDef ParentName="SurgeryRemoveImplantBase">
-              <defName>RemoveCircadianHalfCyclerQuasar</defName>
-              <label>quasar remove circadian half-cycler</label>
-              <description>Remove circadian half-cycler.</description>
+              <defName>RemoveCircadianModuleQuasar</defName>
+              <label>quasar remove circadian module</label>
+              <description>Remove circadian module.</description>
               <descriptionHyperlinks>
-                <ThingDef>CircadianHalfCyclerQuasar</ThingDef>
-                <HediffDef>CircadianHalfCyclerQuasar</HediffDef>
+                <ThingDef>CircadianModuleQuasar</ThingDef>
+                <HediffDef>CircadianModuleQuasar</HediffDef>
               </descriptionHyperlinks>
-              <jobString>Removing quasar circadian half-cycler.</jobString>
-              <removesHediff>CircadianHalfCyclerQuasar</removesHediff>
+              <jobString>Removing quasar circadian module.</jobString>
+              <removesHediff>CircadianModuleQuasar</removesHediff>
             </RecipeDef>
 
-            <HediffDef ParentName="BOR_ImplantQuasarHediffBase">
-              <defaultLabelColor>(106, 123, 206)</defaultLabelColor>
-              <defName>PsychicSensitizerQuasar</defName>
-              <label>quasar psychic sensitizer</label>
-              <labelNoun>a quasar psychic sensitizer</labelNoun>
-              <description>An installed quasar psychic sensitizer implant.</description>
-              <descriptionHyperlinks>
-                <ThingDef>PsychicSensitizerQuasar</ThingDef>
-              </descriptionHyperlinks>
-              <spawnThingOnRemoved>PsychicSensitizerQuasar</spawnThingOnRemoved>
-              <stages>
-                <li>
-                  <statOffsets>
-                    <PsychicSensitivity>0.63</PsychicSensitivity>
-                  </statOffsets>
-                </li>
-              </stages>
-            </HediffDef>
-
-            <ThingDef ParentName="BodyPartBORQuasarBase">
-              <defName>PsychicSensitizerQuasar</defName>
-              <label>quasar psychic sensitizer</label>
-              <description>This brain implant stimulates growth in the regions of the brain related to psychic interaction, thus increasing psychic sensitivity.</description>
-              <descriptionHyperlinks>
-                <RecipeDef>InstallPsychicSensitizerQuasar</RecipeDef>
-              </descriptionHyperlinks>
-
-              <statBases>
-                <RoyalFavorValue>1</RoyalFavorValue>
-              </statBases>
-              <tradeTags>
-                <li>BOR_Tech_II</li>
-              </tradeTags>
-            </ThingDef>
-
-            <RecipeDef ParentName="SurgeryInstallImplantBORQuasarBase">
-              <defName>InstallPsychicSensitizerQuasar</defName>
-              <label>install quasar psychic sensitizer</label>
-              <description>Install a psychic sensitizer.</description>
-              <descriptionHyperlinks>
-                <ThingDef>PsychicSensitizerQuasar</ThingDef>
-                <HediffDef>PsychicSensitizerQuasar</HediffDef>
-              </descriptionHyperlinks>
-              <jobString>Installing quasar psychic sensitizer.</jobString>
-              <ingredients>
-                <li>
-                  <filter>
-                    <thingDefs>
-                      <li>PsychicSensitizerQuasar</li>
-                    </thingDefs>
-                  </filter>
-                  <count>1</count>
-                </li>
-              </ingredients>
-              <fixedIngredientFilter>
-                <thingDefs>
-                  <li>PsychicSensitizerQuasar</li>
-                </thingDefs>
-              </fixedIngredientFilter>
-              <appliedOnFixedBodyParts>
-                <li>Brain</li>
-              </appliedOnFixedBodyParts>
-              <addsHediff>PsychicSensitizerQuasar</addsHediff>
-            </RecipeDef>
-
-            <RecipeDef ParentName="SurgeryRemoveImplantBase">
-              <defName>RemovePsychicSensitizerQuasar</defName>
-              <label>quasar remove psychic sensitizer</label>
-              <description>Remove psychic sensitizer.</description>
-              <descriptionHyperlinks>
-                <ThingDef>PsychicSensitizerQuasar</ThingDef>
-                <HediffDef>PsychicSensitizerQuasar</HediffDef>
-              </descriptionHyperlinks>
-              <jobString>Removing quasar psychic sensitizer.</jobString>
-              <removesHediff>PsychicSensitizerQuasar</removesHediff>
-            </RecipeDef>
-
-            <!-- Psychic harmonizer -->
+            <!-- Psychic module -->
 
             <ThoughtDef>
               <defName>PsychicHarmonizationQuasar</defName>
@@ -2121,118 +1860,49 @@
                 <li>
                   <label>quasar psychic harmony: {HARMONIZER_labelShort}</label>
                   <description>The psychic harmonizer implant makes me feel some of the emotions of the person using it as long as we're close together.</description>
-                  <baseMoodEffect>13</baseMoodEffect>
+                  <baseMoodEffect>12</baseMoodEffect>
                 </li>
               </stages>
             </ThoughtDef>
 
             <HediffDef ParentName="BOR_ImplantQuasarHediffBase">
               <defaultLabelColor>(106, 123, 206)</defaultLabelColor>
-              <defName>PsychicHarmonizerQuasar</defName>
-              <label>quasar psychic harmonizer</label>
-              <labelNoun>a quasar psychic harmonizer</labelNoun>
-              <description>An installed quasar psychic harmonizer implant.</description>
+              <defName>PsychicModuleQuasar</defName>
+              <label>quasar psychic module</label>
+              <labelNoun>a quasar psychic module</labelNoun>
+              <description>An installed quasar psychic module implant.</description>
               <descriptionHyperlinks>
-                <ThingDef>PsychicHarmonizerQuasar</ThingDef>
+                <ThingDef>PsychicModuleQuasar</ThingDef>
               </descriptionHyperlinks>
-              <spawnThingOnRemoved>PsychicHarmonizerQuasar</spawnThingOnRemoved>
-              <comps>
-                <li Class="HediffCompProperties_PsychicHarmonizer">
-                  <range>46</range>
-                  <thought>PsychicHarmonization</thought>
-                </li>
-              </comps>
-            </HediffDef>
-
-            <ThingDef ParentName="BodyPartBORQuasarBase">
-              <defName>PsychicHarmonizerQuasar</defName>
-              <label>quasar psychic harmonizer</label>
-              <description>This brain implant projects the user's mood in a spherical psychic field, forcing others nearby to feel a blurred, simplified version of their emotions. It can be a powerful tool to keep morale high, but if the user becomes unhappy, it can lead to collective disaster.</description>
-              <descriptionHyperlinks>
-                <RecipeDef>InstallPsychicHarmonizerQuasar</RecipeDef>
-              </descriptionHyperlinks>
-
-              <statBases>
-                <RoyalFavorValue>1</RoyalFavorValue>
-              </statBases>
-              <tradeTags>
-                <li>BOR_Tech_II</li>
-              </tradeTags>
-            </ThingDef>
-
-            <RecipeDef ParentName="SurgeryInstallImplantBORQuasarBase">
-              <defName>InstallPsychicHarmonizerQuasar</defName>
-              <label>install quasar psychic harmonizer</label>
-              <description>Install a psychic harmonizer.</description>
-              <descriptionHyperlinks>
-                <ThingDef>PsychicHarmonizerQuasar</ThingDef>
-                <HediffDef>PsychicHarmonizerQuasar</HediffDef>
-              </descriptionHyperlinks>
-              <jobString>Installing quasar psychic harmonizer.</jobString>
-              <ingredients>
-                <li>
-                  <filter>
-                    <thingDefs>
-                      <li>PsychicHarmonizerQuasar</li>
-                    </thingDefs>
-                  </filter>
-                  <count>1</count>
-                </li>
-              </ingredients>
-              <fixedIngredientFilter>
-                <thingDefs>
-                  <li>PsychicHarmonizerQuasar</li>
-                </thingDefs>
-              </fixedIngredientFilter>
-              <appliedOnFixedBodyParts>
-                <li>Brain</li>
-              </appliedOnFixedBodyParts>
-              <addsHediff>PsychicHarmonizerQuasar</addsHediff>
-            </RecipeDef>
-
-            <RecipeDef ParentName="SurgeryRemoveImplantBase">
-              <defName>RemovePsychicHarmonizerQuasar</defName>
-              <label>quasar remove psychic harmonizer</label>
-              <description>Remove psychic harmonizer.</description>
-              <descriptionHyperlinks>
-                <ThingDef>PsychicHarmonizerQuasar</ThingDef>
-                <HediffDef>PsychicHarmonizerQuasar</HediffDef>
-              </descriptionHyperlinks>
-              <jobString>Removing quasar psychic harmonizer.</jobString>
-              <removesHediff>PsychicHarmonizerQuasar</removesHediff>
-            </RecipeDef>
-
-            <!-- Psychic reader -->
-
-            <HediffDef ParentName="BOR_ImplantQuasarHediffBase">
-              <defaultLabelColor>(106, 123, 206)</defaultLabelColor>
-              <defName>PsychicReaderQuasar</defName>
-              <label>quasar psychic reader</label>
-              <labelNoun>a quasar psychic reader</labelNoun>
-              <description>An installed quasar psychic reader implant.</description>
-              <descriptionHyperlinks>
-                <ThingDef>PsychicReaderQuasar</ThingDef>
-              </descriptionHyperlinks>
-              <spawnThingOnRemoved>PsychicReaderQuasar</spawnThingOnRemoved>
+              <spawnThingOnRemoved>PsychicModuleQuasar</spawnThingOnRemoved>
               <stages>
                 <li>
                   <statOffsets>
-                    <NegotiationAbility>0.63</NegotiationAbility>
-                    <TradePriceImprovement>0.29</TradePriceImprovement>
+                    <PsychicSensitivity>0.567</PsychicSensitivity>
+                    <NegotiationAbility>0.567</NegotiationAbility>
+                    <TradePriceImprovement>0.261</TradePriceImprovement>
                   </statOffsets>
                   <statOffsetEffectMultiplier>PsychicSensitivity</statOffsetEffectMultiplier>
                 </li>
               </stages>
+              <comps>
+                <li Class="HediffCompProperties_PsychicHarmonizer">
+                  <range>41.4</range>
+                  <thought>PsychicHarmonization</thought>
+                </li>
+              </comps>
+              <tags>
+                <li>psychicModule</li>
+              </tags>
             </HediffDef>
 
             <ThingDef ParentName="BodyPartBORQuasarBase">
-              <defName>PsychicReaderQuasar</defName>
-              <label>quasar psychic reader</label>
-              <description>Gives limited mind-reading ability, improving the user's ability to get the upper hand in negotiations and social situations. The effect is proportional to the user's psychic sensitivity.</description>
+              <defName>PsychicModuleQuasar</defName>
+              <label>quasar psychic module</label>
+              <description>A merged quasar psychic implant that combines sensitivity amplification, empathic harmonization, and social cognition into one brain package.</description>
               <descriptionHyperlinks>
-                <RecipeDef>InstallPsychicReaderQuasar</RecipeDef>
+                <RecipeDef>InstallPsychicModuleQuasar</RecipeDef>
               </descriptionHyperlinks>
-
               <statBases>
                 <RoyalFavorValue>1</RoyalFavorValue>
               </statBases>
@@ -2242,45 +1912,48 @@
             </ThingDef>
 
             <RecipeDef ParentName="SurgeryInstallImplantBORQuasarBase">
-              <defName>InstallPsychicReaderQuasar</defName>
-              <label>install quasar psychic reader</label>
-              <description>Install a psychic reader.</description>
+              <defName>InstallPsychicModuleQuasar</defName>
+              <label>install quasar psychic module</label>
+              <description>Install a psychic module.</description>
               <descriptionHyperlinks>
-                <ThingDef>PsychicReaderQuasar</ThingDef>
-                <HediffDef>PsychicReaderQuasar</HediffDef>
+                <ThingDef>PsychicModuleQuasar</ThingDef>
+                <HediffDef>PsychicModuleQuasar</HediffDef>
               </descriptionHyperlinks>
-              <jobString>Installing quasar psychic reader.</jobString>
+              <jobString>Installing quasar psychic module.</jobString>
               <ingredients>
                 <li>
                   <filter>
                     <thingDefs>
-                      <li>PsychicReaderQuasar</li>
+                      <li>PsychicModuleQuasar</li>
                     </thingDefs>
                   </filter>
-                  <count>1</count>
+                  <count>3</count>
                 </li>
               </ingredients>
               <fixedIngredientFilter>
                 <thingDefs>
-                  <li>PsychicReaderQuasar</li>
+                  <li>PsychicModuleQuasar</li>
                 </thingDefs>
               </fixedIngredientFilter>
               <appliedOnFixedBodyParts>
                 <li>Brain</li>
               </appliedOnFixedBodyParts>
-              <addsHediff>PsychicReaderQuasar</addsHediff>
+              <addsHediff>PsychicModuleQuasar</addsHediff>
+              <incompatibleWithHediffTags>
+                <li>psychicModule</li>
+              </incompatibleWithHediffTags>
             </RecipeDef>
 
             <RecipeDef ParentName="SurgeryRemoveImplantBase">
-              <defName>RemovePsychicReaderQuasar</defName>
-              <label>quasar remove psychic reader</label>
-              <description>Remove psychic reader.</description>
+              <defName>RemovePsychicModuleQuasar</defName>
+              <label>quasar remove psychic module</label>
+              <description>Remove psychic module.</description>
               <descriptionHyperlinks>
-                <ThingDef>PsychicReaderQuasar</ThingDef>
-                <HediffDef>PsychicReaderQuasar</HediffDef>
+                <ThingDef>PsychicModuleQuasar</ThingDef>
+                <HediffDef>PsychicModuleQuasar</HediffDef>
               </descriptionHyperlinks>
-              <jobString>Removing quasar psychic reader.</jobString>
-              <removesHediff>PsychicReaderQuasar</removesHediff>
+              <jobString>Removing quasar psychic module.</jobString>
+              <removesHediff>PsychicModuleQuasar</removesHediff>
             </RecipeDef>
 
           </value>
@@ -2298,7 +1971,7 @@
         <li Class="PatchOperationAdd">
           <xpath>Defs/PawnKindDef[@Name="BOR_BasePawn_II"]/techHediffsRequired</xpath>
           <value>
-            <li>ToughskinGlandQuasar</li>
+            <li>ArmorGlandQuasar</li>
           </value>
         </li>
 
@@ -2313,7 +1986,7 @@
           <xpath>Defs/PawnKindDef[defName="BOR_Town_Trader_II"]</xpath>
           <value>
             <techHediffsRequired>
-              <li>PsychicReaderQuasar</li>
+              <li>PsychicModuleQuasar</li>
             </techHediffsRequired>
           </value>
         </li>
@@ -2333,6 +2006,352 @@
             <techHediffsRequired>
               <li>DrillArmQuasar</li>
             </techHediffsRequired>
+          </value>
+        </li>
+
+        <!-- consolidate tier2 armor glands -->
+        <li Class="PatchOperationRemove">
+          <xpath>Defs/HediffDef[defName="ToughskinGlandQuasar"]</xpath>
+        </li>
+        <li Class="PatchOperationRemove">
+          <xpath>Defs/ThingDef[defName="ToughskinGlandQuasar"]</xpath>
+        </li>
+        <li Class="PatchOperationRemove">
+          <xpath>Defs/RecipeDef[defName="InstallToughskinGlandQuasar"]</xpath>
+        </li>
+        <li Class="PatchOperationRemove">
+          <xpath>Defs/RecipeDef[defName="RemoveToughskinGlandQuasar"]</xpath>
+        </li>
+        <li Class="PatchOperationRemove">
+          <xpath>Defs/HediffDef[defName="ArmorskinGlandQuasar"]</xpath>
+        </li>
+        <li Class="PatchOperationRemove">
+          <xpath>Defs/ThingDef[defName="ArmorskinGlandQuasar"]</xpath>
+        </li>
+        <li Class="PatchOperationRemove">
+          <xpath>Defs/RecipeDef[defName="InstallArmorskinGlandQuasar"]</xpath>
+        </li>
+        <li Class="PatchOperationRemove">
+          <xpath>Defs/RecipeDef[defName="RemoveArmorskinGlandQuasar"]</xpath>
+        </li>
+
+        <li Class="PatchOperationAdd">
+          <xpath>Defs</xpath>
+          <value>
+            <HediffDef ParentName="BOR_ImplantQuasarHediffBase">
+              <defaultLabelColor>(106, 123, 206)</defaultLabelColor>
+              <defName>ArmorGlandQuasar</defName>
+              <label>quasar armor gland</label>
+              <labelNoun>a quasar armor gland</labelNoun>
+              <description>An installed quasar armor gland.</description>
+              <descriptionHyperlinks>
+                <ThingDef>ArmorGlandQuasar</ThingDef>
+              </descriptionHyperlinks>
+              <spawnThingOnRemoved>ArmorGlandQuasar</spawnThingOnRemoved>
+              <stages>
+                <li>
+                  <capMods>
+                    <li>
+                      <capacity>Moving</capacity>
+                      <postFactor>0.63</postFactor>
+                    </li>
+                  </capMods>
+                  <statOffsets>
+                    <ArmorRating_Sharp>1.07</ArmorRating_Sharp>
+                    <ArmorRating_Blunt>0.75</ArmorRating_Blunt>
+                    <ArmorRating_Heat>1.05</ArmorRating_Heat>
+                    <PawnBeauty>-0.38</PawnBeauty>
+                  </statOffsets>
+                </li>
+              </stages>
+              <tags>
+                <li>ArmorGland</li>
+              </tags>
+            </HediffDef>
+
+            <ThingDef ParentName="BodyPartBORQuasarBase">
+              <defName>ArmorGlandQuasar</defName>
+              <label>quasar armor gland</label>
+              <description>A combined quasar bionic gland that toughens skin and adds subdermal keratin plating for comprehensive protection.</description>
+              <descriptionHyperlinks>
+                <RecipeDef>InstallArmorGlandQuasar</RecipeDef>
+              </descriptionHyperlinks>
+              <statBases>
+                <RoyalFavorValue>1</RoyalFavorValue>
+              </statBases>
+              <tradeTags>
+                <li>BOR_Tech_II</li>
+              </tradeTags>
+            </ThingDef>
+
+            <RecipeDef ParentName="SurgeryInstallImplantBORQuasarBase">
+              <defName>InstallArmorGlandQuasar</defName>
+              <label>install quasar armor gland</label>
+              <description>Install an armor gland.</description>
+              <descriptionHyperlinks>
+                <ThingDef>ArmorGlandQuasar</ThingDef>
+                <HediffDef>ArmorGlandQuasar</HediffDef>
+              </descriptionHyperlinks>
+              <jobString>Installing quasar armor gland.</jobString>
+              <ingredients>
+                <li>
+                  <filter>
+                    <thingDefs>
+                      <li>ArmorGlandQuasar</li>
+                    </thingDefs>
+                  </filter>
+                  <count>2</count>
+                </li>
+              </ingredients>
+              <fixedIngredientFilter>
+                <thingDefs>
+                  <li>ArmorGlandQuasar</li>
+                </thingDefs>
+              </fixedIngredientFilter>
+              <appliedOnFixedBodyParts>
+                <li>Torso</li>
+              </appliedOnFixedBodyParts>
+              <addsHediff>ArmorGlandQuasar</addsHediff>
+              <incompatibleWithHediffTags>
+                <li>ArmorGland</li>
+              </incompatibleWithHediffTags>
+            </RecipeDef>
+
+            <RecipeDef ParentName="SurgeryRemoveImplantBase">
+              <defName>RemoveArmorGlandQuasar</defName>
+              <label>quasar remove armor gland</label>
+              <description>Remove armor gland.</description>
+              <descriptionHyperlinks>
+                <ThingDef>ArmorGlandQuasar</ThingDef>
+                <HediffDef>ArmorGlandQuasar</HediffDef>
+              </descriptionHyperlinks>
+              <jobString>Removing quasar armor gland.</jobString>
+              <removesHediff>ArmorGlandQuasar</removesHediff>
+            </RecipeDef>
+          </value>
+        </li>
+
+        <!-- consolidate tier2 nose/recovery implants -->
+        <li Class="PatchOperationRemove">
+          <xpath>Defs/HediffDef[defName="GastroAnalyzerQuasar"]</xpath>
+        </li>
+        <li Class="PatchOperationRemove">
+          <xpath>Defs/HediffDef[defName="AestheticNoseQuasar"]</xpath>
+        </li>
+        <li Class="PatchOperationRemove">
+          <xpath>Defs/ThingDef[defName="GastroAnalyzerQuasar"]</xpath>
+        </li>
+        <li Class="PatchOperationRemove">
+          <xpath>Defs/ThingDef[defName="AestheticNoseQuasar"]</xpath>
+        </li>
+        <li Class="PatchOperationRemove">
+          <xpath>Defs/RecipeDef[defName="InstallGastroAnalyzerQuasar"]</xpath>
+        </li>
+        <li Class="PatchOperationRemove">
+          <xpath>Defs/RecipeDef[defName="RemoveGastroAnalyzerQuasar"]</xpath>
+        </li>
+        <li Class="PatchOperationRemove">
+          <xpath>Defs/RecipeDef[defName="InstallAestheticNoseQuasar"]</xpath>
+        </li>
+        <li Class="PatchOperationRemove">
+          <xpath>Defs/RecipeDef[defName="RemoveAestheticNoseQuasar"]</xpath>
+        </li>
+
+        <li Class="PatchOperationRemove">
+          <xpath>Defs/HediffDef[defName="CoagulatorQuasar"]</xpath>
+        </li>
+        <li Class="PatchOperationRemove">
+          <xpath>Defs/HediffDef[defName="HealingEnhancerQuasar"]</xpath>
+        </li>
+        <li Class="PatchOperationRemove">
+          <xpath>Defs/ThingDef[defName="CoagulatorQuasar"]</xpath>
+        </li>
+        <li Class="PatchOperationRemove">
+          <xpath>Defs/ThingDef[defName="HealingEnhancerQuasar"]</xpath>
+        </li>
+        <li Class="PatchOperationRemove">
+          <xpath>Defs/RecipeDef[defName="InstallCoagulatorQuasar"]</xpath>
+        </li>
+        <li Class="PatchOperationRemove">
+          <xpath>Defs/RecipeDef[defName="RemoveCoagulatorQuasar"]</xpath>
+        </li>
+        <li Class="PatchOperationRemove">
+          <xpath>Defs/RecipeDef[defName="InstallHealingEnhancerQuasar"]</xpath>
+        </li>
+        <li Class="PatchOperationRemove">
+          <xpath>Defs/RecipeDef[defName="RemoveHealingEnhancerQuasar"]</xpath>
+        </li>
+
+        <li Class="PatchOperationAdd">
+          <xpath>Defs</xpath>
+          <value>
+            <HediffDef ParentName="BOR_ImplantQuasarHediffBase">
+              <defaultLabelColor>(106, 123, 206)</defaultLabelColor>
+              <defName>NoseSuiteQuasar</defName>
+              <label>quasar nose suite</label>
+              <labelNoun>a quasar nose suite</labelNoun>
+              <description>An installed quasar nose suite.</description>
+              <descriptionHyperlinks>
+                <ThingDef>NoseSuiteQuasar</ThingDef>
+              </descriptionHyperlinks>
+              <addedPartProps>
+                <solid>true</solid>
+                <partEfficiency>1.125</partEfficiency>
+              </addedPartProps>
+              <stages>
+                <li>
+                  <statOffsets>
+                    <CookSpeed>7.2</CookSpeed>
+                    <PawnBeauty>1.125</PawnBeauty>
+                  </statOffsets>
+                </li>
+              </stages>
+              <spawnThingOnRemoved>NoseSuiteQuasar</spawnThingOnRemoved>
+              <tags>
+                <li>noseSuite</li>
+              </tags>
+            </HediffDef>
+
+            <ThingDef ParentName="BodyPartBORQuasarBase">
+              <defName>NoseSuiteQuasar</defName>
+              <label>quasar nose suite</label>
+              <description>A combined quasar olfactory and aesthetic implant that improves cooking performance and physical appeal.</description>
+              <descriptionHyperlinks>
+                <RecipeDef>InstallNoseSuiteQuasar</RecipeDef>
+              </descriptionHyperlinks>
+              <statBases>
+                <RoyalFavorValue>1</RoyalFavorValue>
+              </statBases>
+              <tradeTags>
+                <li>BOR_Tech_II</li>
+              </tradeTags>
+            </ThingDef>
+
+            <RecipeDef ParentName="SurgeryInstallImplantBORQuasarBase">
+              <defName>InstallNoseSuiteQuasar</defName>
+              <label>install quasar nose suite</label>
+              <description>Install a nose suite.</description>
+              <descriptionHyperlinks>
+                <ThingDef>NoseSuiteQuasar</ThingDef>
+                <HediffDef>NoseSuiteQuasar</HediffDef>
+              </descriptionHyperlinks>
+              <jobString>Installing quasar nose suite.</jobString>
+              <ingredients>
+                <li>
+                  <filter>
+                    <thingDefs>
+                      <li>NoseSuiteQuasar</li>
+                    </thingDefs>
+                  </filter>
+                  <count>2</count>
+                </li>
+              </ingredients>
+              <fixedIngredientFilter>
+                <thingDefs>
+                  <li>NoseSuiteQuasar</li>
+                </thingDefs>
+              </fixedIngredientFilter>
+              <appliedOnFixedBodyParts>
+                <li>Nose</li>
+              </appliedOnFixedBodyParts>
+              <addsHediff>NoseSuiteQuasar</addsHediff>
+              <incompatibleWithHediffTags>
+                <li>noseSuite</li>
+              </incompatibleWithHediffTags>
+            </RecipeDef>
+
+            <RecipeDef ParentName="SurgeryRemoveImplantBase">
+              <defName>RemoveNoseSuiteQuasar</defName>
+              <label>quasar remove nose suite</label>
+              <description>Remove nose suite.</description>
+              <descriptionHyperlinks>
+                <ThingDef>NoseSuiteQuasar</ThingDef>
+                <HediffDef>NoseSuiteQuasar</HediffDef>
+              </descriptionHyperlinks>
+              <jobString>Removing quasar nose suite.</jobString>
+              <removesHediff>NoseSuiteQuasar</removesHediff>
+            </RecipeDef>
+
+            <HediffDef ParentName="BOR_ImplantQuasarHediffBase">
+              <defaultLabelColor>(106, 123, 206)</defaultLabelColor>
+              <defName>RecoverySuiteQuasar</defName>
+              <label>quasar recovery suite</label>
+              <labelNoun>a quasar recovery suite</labelNoun>
+              <description>An installed quasar recovery suite implant.</description>
+              <descriptionHyperlinks>
+                <ThingDef>RecoverySuiteQuasar</ThingDef>
+              </descriptionHyperlinks>
+              <spawnThingOnRemoved>RecoverySuiteQuasar</spawnThingOnRemoved>
+              <stages>
+                <li>
+                  <totalBleedFactor>0.225</totalBleedFactor>
+                  <naturalHealingFactor>2.628</naturalHealingFactor>
+                </li>
+              </stages>
+              <tags>
+                <li>recoverySuite</li>
+              </tags>
+            </HediffDef>
+
+            <ThingDef ParentName="BodyPartBORQuasarBase">
+              <defName>RecoverySuiteQuasar</defName>
+              <label>quasar recovery suite</label>
+              <description>A combined quasar implant that reduces bleeding and accelerates natural wound healing.</description>
+              <descriptionHyperlinks>
+                <RecipeDef>InstallRecoverySuiteQuasar</RecipeDef>
+              </descriptionHyperlinks>
+              <statBases>
+                <RoyalFavorValue>1</RoyalFavorValue>
+              </statBases>
+              <tradeTags>
+                <li>BOR_Tech_II</li>
+              </tradeTags>
+            </ThingDef>
+
+            <RecipeDef ParentName="SurgeryInstallImplantBORQuasarBase">
+              <defName>InstallRecoverySuiteQuasar</defName>
+              <label>install quasar recovery suite</label>
+              <description>Install a recovery suite.</description>
+              <descriptionHyperlinks>
+                <ThingDef>RecoverySuiteQuasar</ThingDef>
+                <HediffDef>RecoverySuiteQuasar</HediffDef>
+              </descriptionHyperlinks>
+              <jobString>Installing quasar recovery suite.</jobString>
+              <ingredients>
+                <li>
+                  <filter>
+                    <thingDefs>
+                      <li>RecoverySuiteQuasar</li>
+                    </thingDefs>
+                  </filter>
+                  <count>2</count>
+                </li>
+              </ingredients>
+              <fixedIngredientFilter>
+                <thingDefs>
+                  <li>RecoverySuiteQuasar</li>
+                </thingDefs>
+              </fixedIngredientFilter>
+              <appliedOnFixedBodyParts>
+                <li>Torso</li>
+              </appliedOnFixedBodyParts>
+              <addsHediff>RecoverySuiteQuasar</addsHediff>
+              <incompatibleWithHediffTags>
+                <li>recoverySuite</li>
+              </incompatibleWithHediffTags>
+            </RecipeDef>
+
+            <RecipeDef ParentName="SurgeryRemoveImplantBase">
+              <defName>RemoveRecoverySuiteQuasar</defName>
+              <label>quasar remove recovery suite</label>
+              <description>Remove recovery suite.</description>
+              <descriptionHyperlinks>
+                <ThingDef>RecoverySuiteQuasar</ThingDef>
+                <HediffDef>RecoverySuiteQuasar</HediffDef>
+              </descriptionHyperlinks>
+              <jobString>Removing quasar recovery suite.</jobString>
+              <removesHediff>RecoverySuiteQuasar</removesHediff>
+            </RecipeDef>
           </value>
         </li>
 
@@ -2494,55 +2513,29 @@
               <!-- Bionics -->
 
               <li Class="PatchOperationReplace">
-                <xpath>Defs/HediffDef[defName="ToughskinGlandQuasar"]/stages/li/statOffsets/ArmorRating_Sharp</xpath>
+                <xpath>Defs/HediffDef[defName="ArmorGlandQuasar"]/stages/li/statOffsets/ArmorRating_Sharp</xpath>
                 <value>
-                  <ArmorRating_Sharp>1.88</ArmorRating_Sharp>
+                  <ArmorRating_Sharp>4.13</ArmorRating_Sharp>
                 </value>
               </li>
 
               <li Class="PatchOperationReplace">
-                <xpath>Defs/HediffDef[defName="ToughskinGlandQuasar"]/stages/li/statOffsets/ArmorRating_Blunt</xpath>
+                <xpath>Defs/HediffDef[defName="ArmorGlandQuasar"]/stages/li/statOffsets/ArmorRating_Blunt</xpath>
                 <value>
-                  <ArmorRating_Blunt>2.08</ArmorRating_Blunt>
+                  <ArmorRating_Blunt>6.37</ArmorRating_Blunt>
                 </value>
               </li>
 
               <li Class="PatchOperationAdd">
-                <xpath>Defs/HediffDef[defName="ToughskinGlandQuasar"]/stages/li/statOffsets</xpath>
+                <xpath>Defs/HediffDef[defName="ArmorGlandQuasar"]/stages/li/statOffsets</xpath>
                 <value>
-                  <MoveSpeed>-0.25</MoveSpeed>
-                  <MeleeDodgeChance>-0.03</MeleeDodgeChance>
+                  <MoveSpeed>-0.71</MoveSpeed>
+                  <MeleeDodgeChance>-0.054</MeleeDodgeChance>
                 </value>
               </li>
 
               <li Class="PatchOperationRemove">
-                <xpath>Defs/HediffDef[defName="ToughskinGlandQuasar"]/stages/li/capMods</xpath>
-              </li>
-
-              <li Class="PatchOperationReplace">
-                <xpath>Defs/HediffDef[defName="ArmorskinGlandQuasar"]/stages/li/statOffsets/ArmorRating_Sharp</xpath>
-                <value>
-                  <ArmorRating_Sharp>2.71</ArmorRating_Sharp>
-                </value>
-              </li>
-
-              <li Class="PatchOperationReplace">
-                <xpath>Defs/HediffDef[defName="ArmorskinGlandQuasar"]/stages/li/statOffsets/ArmorRating_Blunt</xpath>
-                <value>
-                  <ArmorRating_Blunt>5</ArmorRating_Blunt>
-                </value>
-              </li>
-
-              <li Class="PatchOperationAdd">
-                <xpath>Defs/HediffDef[defName="ArmorskinGlandQuasar"]/stages/li/statOffsets</xpath>
-                <value>
-                  <MoveSpeed>-0.54</MoveSpeed>
-                  <MeleeDodgeChance>-0.03</MeleeDodgeChance>
-                </value>
-              </li>
-
-              <li Class="PatchOperationRemove">
-                <xpath>Defs/HediffDef[defName="ArmorskinGlandQuasar"]/stages/li/capMods</xpath>
+                <xpath>Defs/HediffDef[defName="ArmorGlandQuasar"]/stages/li/capMods</xpath>
               </li>
 
               <li Class="PatchOperationReplace">

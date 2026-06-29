@@ -1,11 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Defs>
-  <!-- ======================================= Industrial =======================================-->
 
   <ThingDef ParentName="ArmorMachineableBase">
-    <defName>BOR_Solar_Apparel_FlakVest</defName>
-    <label>solar flak vest</label>
-    <description>A molded sunsteel plate fashioned to protect the torso. Conventional weaponry may do little but scratch the material, but it does nothing to protect your limbs.</description>
+    <defName>BOR_Bionic_Assembly_Harness</defName>
+    <label>bionic assembly harness</label>
+    <description>A reinforced sunsteel vest with integrated assembly bracing. The molded plates protect the torso and shoulders while rigid haptic guides support precise bionic assembly work.</description>
     <techLevel>Ultra</techLevel>
     <recipeMaker>
       <researchPrerequisites>
@@ -23,33 +22,35 @@
       </recipeUsers>
     </recipeMaker>
     <graphicData>
-      <color>(0.36, 0.62, 0.68)</color>
-      <texPath>Things/Pawn/Humanlike/Apparel/FlakVest/FlakVest</texPath>
+      <texPath>BOR/Things/Pawn/Humanlike/Apparel/AssemblyHarness/assembly_harness</texPath>
       <graphicClass>Graphic_Single</graphicClass>
       <drawSize>0.90</drawSize>
     </graphicData>
     <statBases>
-      <WorkToMake>13500</WorkToMake>
-      <MaxHitPoints>250</MaxHitPoints>
-      <Mass>3</Mass>
-      <Flammability>0.5</Flammability>
+      <WorkToMake>40500</WorkToMake>
+      <MaxHitPoints>350</MaxHitPoints>
+      <Mass>5</Mass>
+      <Flammability>0.4</Flammability>
       <ArmorRating_Sharp>1.25</ArmorRating_Sharp>
       <ArmorRating_Blunt>0.50</ArmorRating_Blunt>
-      <ArmorRating_Heat>0.35</ArmorRating_Heat>
-      <Insulation_Cold>2</Insulation_Cold>
-      <EquipDelay>6</EquipDelay>
+      <ArmorRating_Heat>0.57</ArmorRating_Heat>
+      <Insulation_Cold>40</Insulation_Cold>
+      <Insulation_Heat>11</Insulation_Heat>
+      <EquipDelay>9</EquipDelay>
     </statBases>
     <equippedStatOffsets>
       <ToxicEnvironmentResistance>0.50</ToxicEnvironmentResistance>
       <MoveSpeed>-0.09</MoveSpeed>
+      <BOR_BionicCraftingSpeed>0.13</BOR_BionicCraftingSpeed>
     </equippedStatOffsets>
     <thingCategories>
       <li>BOR_Armor_I</li>
     </thingCategories>
     <costList>
       <BOR_Sunweave>33</BOR_Sunweave>
-      <BOR_Sunsteel>66</BOR_Sunsteel>
-      <ComponentSpacer>1</ComponentSpacer>
+      <BOR_Sunsteel>77</BOR_Sunsteel>
+      <Uranium>11</Uranium>
+      <ComponentSpacer>2</ComponentSpacer>
     </costList>
     <apparel>
       <bodyPartGroups>
@@ -57,9 +58,10 @@
         <li>Neck</li>
         <li>Shoulders</li>
       </bodyPartGroups>
-      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/FlakVest/FlakVest</wornGraphicPath>
+      <wornGraphicPath>BOR/Things/Pawn/Humanlike/Apparel/AssemblyHarness/assembly_harness</wornGraphicPath>
       <layers>
         <li>Middle</li>
+        <li>Shell</li>
       </layers>
       <tags>
         <li>HiTechArmor</li>
@@ -152,10 +154,10 @@
   </ThingDef>
 
   <ThingDef ParentName="ArmorMachineableBase">
-    <defName>BOR_Solar_Apparel_FlakJacket</defName>
-    <label>solar flak jacket</label>
+    <defName>BOR_Sunforge_Welders_Coat</defName>
+    <label>sunforge flak jacket</label>
     <techLevel>Ultra</techLevel>
-    <description>A protective garment with molded sunsteel plates inserted into the front and back of the garb. Not as effective as Solid armor but far more comfortable and insulating</description>
+    <description>A protective garment with embedded field-dampening sunsteel panels. Keeps the wearer comfortable at the forge while providing solid coverage across the torso and arms.</description>
     <recipeMaker>
       <researchPrerequisites>
         <li>BOR_Research_Armor_I</li>
@@ -172,14 +174,13 @@
       </recipeUsers>
     </recipeMaker>
     <graphicData>
-      <texPath>Things/Pawn/Humanlike/Apparel/FlakJacket/FlakJacket</texPath>
+      <texPath>BOR/Things/Pawn/Humanlike/Apparel/WeldersCoat/welders_coat</texPath>
       <graphicClass>Graphic_Single</graphicClass>
       <drawSize>1.00</drawSize>
-      <color>(0.36, 0.62, 0.68)</color>
     </graphicData>
     <costList>
       <BOR_Sunweave>55</BOR_Sunweave>
-      <Plasteel>70</Plasteel>
+      <BOR_Sunsteel>77</BOR_Sunsteel>
       <ComponentSpacer>1</ComponentSpacer>
     </costList>
     <thingCategories>
@@ -200,6 +201,7 @@
     <equippedStatOffsets>
       <ToxicEnvironmentResistance>0.50</ToxicEnvironmentResistance>
       <MoveSpeed>-0.09</MoveSpeed>
+      <BOR_QuantumForging>0.13</BOR_QuantumForging>
     </equippedStatOffsets>
     <apparel>
       <bodyPartGroups>
@@ -208,7 +210,7 @@
         <li>Shoulders</li>
         <li>Arms</li>
       </bodyPartGroups>
-      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/FlakJacket/FlakJacket</wornGraphicPath>
+      <wornGraphicPath>BOR/Things/Pawn/Humanlike/Apparel/WeldersCoat/welders_coat</wornGraphicPath>
       <layers>
         <li>Shell</li>
       </layers>
@@ -227,196 +229,6 @@
       <li>BOR_Armor_I</li>
       <li>BOR_Tech_I</li>
     </tradeTags>
-  </ThingDef>
-
-  <!-- ==================================== Spacer =====================================-->
-
-  <ThingDef Name="ApparelArmorPowerSolarBase" ParentName="ArmorMachineableBase" Abstract="True">
-    <techLevel>Ultra</techLevel>
-    <recipeMaker>
-      <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
-      <researchPrerequisites>
-        <li>BOR_Research_Armor_I</li>
-      </researchPrerequisites>
-      <skillRequirements>
-        <Crafting>10</Crafting>
-      </skillRequirements>
-      <recipeUsers Inherit="False">
-        <li>BOR_Bench_I</li>
-        <li>BOR_Bench_IV</li>
-      </recipeUsers>
-    </recipeMaker>
-    <graphicData>
-      <texPath>BOR/Things/Pawn/Humanlike/Apparel/SolarMarine/solar_marine</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
-      <shaderType>CutoutComplex</shaderType>
-    </graphicData>
-    <generateCommonality>1.5</generateCommonality>
-    <statBases>
-      <WorkToMake>90000</WorkToMake>
-      <MaxHitPoints>425</MaxHitPoints>
-      <Mass>20</Mass>
-      <Flammability>0.3</Flammability>
-      <ArmorRating_Sharp>1.25</ArmorRating_Sharp>
-      <ArmorRating_Blunt>0.56</ArmorRating_Blunt>
-      <ArmorRating_Heat>0.65</ArmorRating_Heat>
-      <Insulation_Cold>43</Insulation_Cold>
-      <Insulation_Heat>11</Insulation_Heat>
-      <EquipDelay>13</EquipDelay>
-    </statBases>
-    <equippedStatOffsets>
-      <ToxicEnvironmentResistance>0.50</ToxicEnvironmentResistance>
-      <MoveSpeed>-0.33</MoveSpeed>
-      <SlaveSuppressionOffset MayRequire="Ludeon.RimWorld.Ideology">-0.3</SlaveSuppressionOffset>
-      <VacuumResistance MayRequire="Ludeon.RimWorld.Odyssey">0.35</VacuumResistance>
-    </equippedStatOffsets>
-    <thingCategories>
-      <li>BOR_Armor_I</li>
-    </thingCategories>
-    <tradeTags>
-      <li>HiTechArmor</li>
-      <li>BOR_HiTechArmor_I</li>
-      <li>BOR_Tech_I</li>
-    </tradeTags>
-    <costList>
-      <ComponentSpacer>4</ComponentSpacer>
-      <BOR_Sunsteel>110</BOR_Sunsteel>
-      <Uranium>22</Uranium>
-    </costList>
-    <apparel>
-      <bodyPartGroups>
-        <li>Torso</li>
-        <li>Neck</li>
-        <li>Shoulders</li>
-        <li>Arms</li>
-        <li>Legs</li>
-        <li>Hands</li>
-        <li>Feet</li>
-      </bodyPartGroups>
-      <wornGraphicPath>BOR/Things/Pawn/Humanlike/Apparel/SolarMarine/solar_marine</wornGraphicPath>
-      <layers>
-        <li>Middle</li>
-        <li>Shell</li>
-      </layers>
-      <defaultOutfitTags>
-        <li>Soldier</li>
-      </defaultOutfitTags>
-      <useDeflectMetalEffect>true</useDeflectMetalEffect>
-    </apparel>
-    <comps>
-      <li Class="CompProperties_Biocodable" />
-    </comps>
-    <thingSetMakerTags>
-      <li>RewardStandardHighFreq</li>
-    </thingSetMakerTags>
-  </ThingDef>
-
-  <ThingDef ParentName="ApparelArmorPowerSolarBase">
-    <defName>BOR_Solar_Apparel_PowerArmor</defName>
-    <label>solar marine armor</label>
-    <description>A suit of powered armor made from Sunsteel. Layered sunsteel-weave plates are very effective at stopping attacks, with few vulnerable joint sections. Egotistical soldiers often boast they can take an Anti-Tank Missile without so much as a scratch, and unfortunately they are often correct.\n\nWhile not common, Solar Republics are known to employ this armor against rival claimants.</description>
-    <apparel>
-      <tags>
-        <li>HiTechArmor</li>
-        <li>BOR_Military_I</li>
-      </tags>
-    </apparel>
-    <recipeMaker>
-      <displayPriority>105</displayPriority>
-    </recipeMaker>
-  </ThingDef>
-
-  <ThingDef Name="ApparelArmorReconSolarBase" ParentName="ArmorMachineableBase" Abstract="True">
-    <techLevel>Ultra</techLevel>
-    <recipeMaker>
-      <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
-      <researchPrerequisites>
-        <li>BOR_Research_Armor_I</li>
-      </researchPrerequisites>
-      <skillRequirements>
-        <Crafting>9</Crafting>
-      </skillRequirements>
-      <recipeUsers Inherit="False">
-        <li>BOR_Bench_I</li>
-        <li>BOR_Bench_IV</li>
-      </recipeUsers>
-    </recipeMaker>
-    <graphicData>
-      <texPath>Things/Pawn/Humanlike/Apparel/ReconArmor/ReconArmor</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
-      <color>(0.36, 0.62, 0.68)</color>
-    </graphicData>
-    <generateCommonality>1.5</generateCommonality>
-    <tradeTags>
-      <li>HiTechArmor</li>
-      <li>BOR_HiTechArmor_I</li>
-      <li>BOR_Tech_I</li>
-    </tradeTags>
-    <statBases>
-      <WorkToMake>67500</WorkToMake>
-      <MaxHitPoints>350</MaxHitPoints>
-      <Mass>8</Mass>
-      <Flammability>0.3</Flammability>
-      <ArmorRating_Sharp>1.21</ArmorRating_Sharp>
-      <ArmorRating_Blunt>0.50</ArmorRating_Blunt>
-      <ArmorRating_Heat>0.57</ArmorRating_Heat>
-      <Insulation_Cold>40</Insulation_Cold>
-      <Insulation_Heat>11</Insulation_Heat>
-      <EquipDelay>12</EquipDelay>
-    </statBases>
-    <equippedStatOffsets>
-      <SlaveSuppressionOffset MayRequire="Ludeon.RimWorld.Ideology">-0.1</SlaveSuppressionOffset>
-      <VacuumResistance MayRequire="Ludeon.RimWorld.Odyssey">0.35</VacuumResistance>
-    </equippedStatOffsets>
-    <thingCategories>
-      <li>BOR_Armor_I</li>
-    </thingCategories>
-    <costList>
-      <ComponentSpacer>3</ComponentSpacer>
-      <BOR_Sunsteel>88</BOR_Sunsteel>
-      <Uranium>11</Uranium>
-    </costList>
-    <apparel>
-      <bodyPartGroups>
-        <li>Torso</li>
-        <li>Neck</li>
-        <li>Shoulders</li>
-        <li>Arms</li>
-        <li>Legs</li>
-        <li>Hands</li>
-        <li>Feet</li>
-      </bodyPartGroups>
-      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/ReconArmor/ReconArmor</wornGraphicPath>
-      <layers>
-        <li>Middle</li>
-        <li>Shell</li>
-      </layers>
-      <defaultOutfitTags>
-        <li>Soldier</li>
-      </defaultOutfitTags>
-      <useDeflectMetalEffect>true</useDeflectMetalEffect>
-    </apparel>
-    <comps>
-      <li Class="CompProperties_Biocodable" />
-    </comps>
-    <thingSetMakerTags>
-      <li>RewardStandardHighFreq</li>
-    </thingSetMakerTags>
-  </ThingDef>
-
-  <ThingDef ParentName="ApparelArmorReconSolarBase">
-    <defName>BOR_Solar_Apparel_ArmorRecon</defName>
-    <label>solar recon armor</label>
-    <description>Partially-powered armor, designed for mobility and ease-of-use. Meshes of Sunsteel Weave block attacks without adding excessive weight, and a complex endomuscular system in the lower body allows for uncompromised movement.\n\nArmor such as this is often employed by solar scout troops and higher-end police forces.</description>
-    <apparel>
-      <tags>
-        <li>HiTechArmor</li>
-        <li>BOR_Military_I</li>
-      </tags>
-    </apparel>
-    <recipeMaker>
-      <displayPriority>115</displayPriority>
-    </recipeMaker>
   </ThingDef>
 
 </Defs>

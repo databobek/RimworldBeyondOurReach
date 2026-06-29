@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- Abstract base for artifacts -->
+	<ThingDef Name="BOR_Artifact_Base" Abstract="True">
+		<thingSetMakerTags>
+			<li>RewardStandardCore</li>
+		</thingSetMakerTags>
+		<thingClass>ThingWithComps</thingClass>
+		<category>Item</category>
+		<useHitPoints>true</useHitPoints>
+		<selectable>true</selectable>
+		<altitudeLayer>Item</altitudeLayer>
+		<stackLimit>1</stackLimit>
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<Flammability>0.3</Flammability>
+		</statBases>
+		<thingCategories>
+			<li>Artifacts</li>
+		</thingCategories>
+		<tradeability>All</tradeability>
+		<rotatable>false</rotatable>
+		<comps>
+			<li Class="CompProperties_Forbiddable" />
+		</comps>
+	</ThingDef>
+
+	<!-- TIER 2 ARTIFACTS -->
+
+	<!-- DataDrive - Analyzable, unlocks BOR_Research_Analyzer_II -->
+	<ThingDef ParentName="BOR_Artifact_Base">
+		<defName>BOR_DataDrive</defName>
+		<label>data drive</label>
+		<description>An advanced data storage device from the Kwazaari Corporation, containing vast quantities of technical specifications and research data. Analyzing this drive will unlock advanced research capabilities for quasar-tier technologies.</description>
+		<graphicData>
+			<texPath>BOR/Things/Item/Artifacts/component2_datadrive</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(1.5, 1.5)</drawSize>
+		</graphicData>
+		<stackLimit>1</stackLimit>
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<MarketValue>15000</MarketValue>
+			<Mass>0.5</Mass>
+		</statBases>
+		<comps>
+			<li Class="CompProperties_Forbiddable" />
+			<li Class="CompProperties_CompAnalyzableUnlockResearch">
+				<analysisID>839427163</analysisID>
+				<requiresMechanitor>false</requiresMechanitor>
+				<analysisDurationHours>2</analysisDurationHours>
+				<destroyedOnAnalyzed>true</destroyedOnAnalyzed>
+				<completedLetterLabel>Data drive analyzed: {RESEARCH} unlocked</completedLetterLabel>
+				<completedLetter>By analyzing the data drive, {PAWN_labelShort} has extracted the Kwazaari research data needed for the research project(s) {RESEARCH}.
+
+
+					Your researchers can now begin work on the quasaric analyzer.</completedLetter>
+				<completedLetterDef>PositiveEvent</completedLetterDef>
+				<activateTexPath>UI/Icons/Study</activateTexPath>
+				<activateLabelString>Analyze...</activateLabelString>
+				<activateDescString>Analyze the data drive.</activateDescString>
+				<jobString>Analyze data drive</jobString>
+				<guiLabelString>Choose who should analyze this</guiLabelString>
+				<inspectString>Can be analyzed by a colonist.</inspectString>
+				<targetingParameters>
+					<canTargetBuildings>false</canTargetBuildings>
+					<canTargetAnimals>false</canTargetAnimals>
+					<canTargetMechs>false</canTargetMechs>
+					<onlyTargetControlledPawns>true</onlyTargetControlledPawns>
+				</targetingParameters>
+			</li>
+		</comps>
+	</ThingDef>
+
+	<!-- CircuitBoard - Component for building Analyzer II (3 required) -->
+	<ThingDef ParentName="BOR_Artifact_Base">
+		<defName>BOR_CircuitBoard</defName>
+		<label>circuit board</label>
+		<description>A complex circuit board from Kwazaari technology. Required as a component in constructing advanced quasar-tier research facilities.</description>
+		<graphicData>
+			<texPath>BOR/Things/Item/Artifacts/component4_circuitboard</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(1.3, 1.3)</drawSize>
+		</graphicData>
+		<stackLimit>1</stackLimit>
+		<statBases>
+			<MaxHitPoints>80</MaxHitPoints>
+			<MarketValue>5000</MarketValue>
+			<Mass>0.8</Mass>
+		</statBases>
+		<generateCommonality>0.01</generateCommonality>
+		<comps>
+			<li Class="CompProperties_Forbiddable" />
+		</comps>
+	</ThingDef>
+
+	<!-- TIER 3 ARTIFACTS -->
+
+	<!-- Diluted Tenebrite Shard - Analyzable, unlocks BOR_Research_Analyzer_III -->
+	<ThingDef ParentName="BOR_Artifact_Base">
+		<defName>BOR_DiluteTenebriteShard</defName>
+		<label>diluted tenebrite shard</label>
+		<description>A crystalline fragment of tenebrite diluted with exotic matter from the darkest reaches of space. This shard contains the secrets of tenebral technology. Analyzing it will unlock the most advanced research pathways known to mankind.</description>
+		<graphicData>
+			<texPath>BOR/Things/Item/Artifacts/component1_dilutetenebriteshard</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(1.6, 1.6)</drawSize>
+		</graphicData>
+		<stackLimit>1</stackLimit>
+		<statBases>
+			<MaxHitPoints>150</MaxHitPoints>
+			<MarketValue>30000</MarketValue>
+			<Mass>1.2</Mass>
+		</statBases>
+		<comps>
+			<li Class="CompProperties_Forbiddable" />
+			<li Class="CompProperties_CompAnalyzableUnlockResearch">
+				<analysisID>274810592</analysisID>
+				<requiresMechanitor>false</requiresMechanitor>
+				<analysisDurationHours>4</analysisDurationHours>
+				<destroyedOnAnalyzed>true</destroyedOnAnalyzed>
+				<completedLetterLabel>Tenebrite shard analyzed: {RESEARCH} unlocked</completedLetterLabel>
+				<completedLetter>By analyzing the diluted tenebrite shard, {PAWN_labelShort} has uncovered the dark matter composition needed for the research project(s) {RESEARCH}.
+
+
+					Your researchers can now begin work on the galactic analyzer.</completedLetter>
+				<completedLetterDef>PositiveEvent</completedLetterDef>
+				<activateTexPath>UI/Icons/Study</activateTexPath>
+				<activateLabelString>Analyze...</activateLabelString>
+				<activateDescString>Analyze the diluted tenebrite shard.</activateDescString>
+				<jobString>Analyze tenebrite shard</jobString>
+				<guiLabelString>Choose who should analyze this</guiLabelString>
+				<inspectString>Can be analyzed by a colonist.</inspectString>
+				<targetingParameters>
+					<canTargetBuildings>false</canTargetBuildings>
+					<canTargetAnimals>false</canTargetAnimals>
+					<canTargetMechs>false</canTargetMechs>
+					<onlyTargetControlledPawns>true</onlyTargetControlledPawns>
+				</targetingParameters>
+			</li>
+		</comps>
+	</ThingDef>
+
+	<!-- Tenebrite Motor - Analyzable, unlocks BOR_Research_Analyzer_III -->
+	<ThingDef ParentName="BOR_Artifact_Base">
+		<defName>BOR_TenebriteMotor</defName>
+		<label>tenebrite motor</label>
+		<description>A sophisticated electromagnetic motor constructed from tenebrite, capable of harnessing dark matter itself for propulsion. Analyzing this device will reveal the fundamental principles of tenebral technology.</description>
+		<graphicData>
+			<texPath>BOR/Things/Item/Artifacts/component3_tenebritemotor</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(1.7, 1.7)</drawSize>
+		</graphicData>
+		<stackLimit>1</stackLimit>
+		<statBases>
+			<MaxHitPoints>120</MaxHitPoints>
+			<MarketValue>25000</MarketValue>
+			<Mass>2.0</Mass>
+		</statBases>
+		<comps>
+			<li Class="CompProperties_Forbiddable" />
+			<li Class="CompProperties_CompAnalyzableUnlockResearch">
+				<analysisID>516903847</analysisID>
+				<requiresMechanitor>false</requiresMechanitor>
+				<analysisDurationHours>3</analysisDurationHours>
+				<destroyedOnAnalyzed>true</destroyedOnAnalyzed>
+				<completedLetterLabel>Tenebrite motor analyzed: {RESEARCH} unlocked</completedLetterLabel>
+				<completedLetter>By analyzing the tenebrite motor, {PAWN_labelShort} has reverse-engineered the dark matter propulsion principles needed for the research project(s) {RESEARCH}.
+
+
+					Your researchers can now begin work on the galactic analyzer.</completedLetter>
+				<completedLetterDef>PositiveEvent</completedLetterDef>
+				<activateTexPath>UI/Icons/Study</activateTexPath>
+				<activateLabelString>Analyze...</activateLabelString>
+				<activateDescString>Analyze the tenebrite motor.</activateDescString>
+				<jobString>Analyze tenebrite motor</jobString>
+				<guiLabelString>Choose who should analyze this</guiLabelString>
+				<inspectString>Can be analyzed by a colonist.</inspectString>
+
+				<targetingParameters>
+					<canTargetBuildings>false</canTargetBuildings>
+					<canTargetAnimals>false</canTargetAnimals>
+					<canTargetMechs>false</canTargetMechs>
+					<onlyTargetControlledPawns>true</onlyTargetControlledPawns>
+				</targetingParameters>
+			</li>
+		</comps>
+	</ThingDef>
+
+	<!-- Tenebrite Amplifier - Component for building Analyzer III (5 required) -->
+	<ThingDef ParentName="BOR_Artifact_Base">
+		<defName>BOR_TenebriteAmplifier</defName>
+		<label>tenebrite amplifier</label>
+		<description>A resonance amplifier crafted from pure tenebrite crystal. These amplifiers focus and channel dark matter fields with extraordinary precision. Required as a critical component in constructing the most advanced astronomical research equipment.</description>
+		<graphicData>
+			<texPath>BOR/Things/Item/Artifacts/component5_tenebriteamplifier</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(1.4, 1.4)</drawSize>
+		</graphicData>
+		<stackLimit>1</stackLimit>
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<MarketValue>12000</MarketValue>
+			<Mass>1.5</Mass>
+		</statBases>
+		<generateCommonality>0.01</generateCommonality>
+		<comps>
+			<li Class="CompProperties_Forbiddable" />
+		</comps>
+	</ThingDef>
+
+	<ThingDef ParentName="BOR_Artifact_Base">
+		<defName>BOR_Attoclusters</defName>
+		<label>attoclusters</label>
+		<description>An opaque apparatus filled with attoscopic machines, clustered and waiting for an order. Container is made from picomachines and has neither a reader or an applicator. Picocluster constantly spreads and shrinks around the container, unnoticeable to naked eye; approaching user has their intentions read before they even lay eyes on the apparatus. Attomachines are kept enclosed only because they have nowhere else to be and exit through the pores of the surrounding cluster when intent is understood.</description>
+		<graphicData>
+			<texPath>BOR/Things/Item/Resource/Clusters/atto</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<generateCommonality>0.05</generateCommonality>
+		<descriptionHyperlinks>
+			<RecipeDef>BOR_InstallUmbralBionicArm</RecipeDef>
+			<RecipeDef>BOR_InstallUmbralBionicLeg</RecipeDef>
+			<RecipeDef>BOR_InstallUmbralBionicEar</RecipeDef>
+			<RecipeDef>BOR_InstallUmbralBionicTongue</RecipeDef>
+			<RecipeDef>BOR_InstallUmbralBionicEye</RecipeDef>
+			<RecipeDef>BOR_InstallUmbralBionicSpine</RecipeDef>
+			<RecipeDef>BOR_InstallUmbralBionicHeart</RecipeDef>
+			<RecipeDef>BOR_InstallUmbralBionicStomach</RecipeDef>
+			<RecipeDef>BOR_InstallUmbralBionicJaw</RecipeDef>
+			<RecipeDef>BOR_InstallUmbralBionicLung</RecipeDef>
+			<RecipeDef>BOR_InstallUmbralBionicLiver</RecipeDef>
+			<RecipeDef>BOR_InstallUmbralBionicKidney</RecipeDef>
+		</descriptionHyperlinks>
+		<soundInteract>Silver_Drop</soundInteract>
+		<soundDrop>Silver_Drop</soundDrop>
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<MarketValue>10000</MarketValue>
+			<Mass>0.005</Mass>
+			<Flammability>0</Flammability>
+			<DeteriorationRate>0</DeteriorationRate>
+			<RoyalFavorValue>0.01</RoyalFavorValue>
+		</statBases>
+		<thingCategories>
+			<li>BOR_Complex</li>
+		</thingCategories>
+	</ThingDef>
+</Defs>

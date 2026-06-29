@@ -2,7 +2,7 @@
 <Defs>
 	<!-- base for implants -->
 	<HediffDef Abstract="True" ParentName="ImplantHediffBase" Name="BOR_ImplantTenebralHediffBase">
-	<defaultLabelColor>(128, 0, 0)</defaultLabelColor>		
+		<defaultLabelColor>(128, 0, 0)</defaultLabelColor>
 		<comps>
 			<li MayRequire="v1024.ebframework" Class="EBF.Hediffs.HediffCompProperties_MaxHPAdjust">
 				<scaleAdjustment>3.375</scaleAdjustment>
@@ -10,8 +10,13 @@
 		</comps>
 	</HediffDef>
 	<HediffDef ParentName="AddedBodyPartBase" Name="BOR_AddedTenebralBodyPartBase" Abstract="True">
-			<defaultLabelColor>(128, 0, 0)</defaultLabelColor>
-			<comps>
+		<defaultLabelColor>(128, 0, 0)</defaultLabelColor>
+		<stages>
+			<li>
+				<painOffset>0.01</painOffset>
+			</li>
+		</stages>
+		<comps>
 			<li MayRequire="v1024.ebframework" Class="EBF.Hediffs.HediffCompProperties_MaxHPAdjust">
 				<scaleAdjustment>3.375</scaleAdjustment>
 			</li>
@@ -129,7 +134,7 @@
 	</ThingDef>
 	<!-- Bionic eye -->
 	<HediffDef ParentName="BOR_AddedTenebralBodyPartBase">
-	<defaultLabelColor>(128, 0, 0)</defaultLabelColor>
+		<defaultLabelColor>(128, 0, 0)</defaultLabelColor>
 		<defName>BOR_TenebralBionicEye</defName>
 		<label>tenebral eye</label>
 		<labelNoun>a Tenebral bionic eye</labelNoun>
@@ -429,8 +434,9 @@
 			<ThingDef>BOR_TenebralOrgan</ThingDef>
 		</descriptionHyperlinks>
 		<spawnThingOnRemoved>BOR_TenebralOrgan</spawnThingOnRemoved>
-		<stages>
+		<stages Inherit="False">
 			<li>
+				<painOffset>0.02</painOffset>
 				<makeImmuneTo>
 					<li>GutWorms</li>
 				</makeImmuneTo>
@@ -641,7 +647,7 @@
 		</appliedOnFixedBodyParts>
 		<addsHediff>BOR_TenebralBionicJaw</addsHediff>
 	</RecipeDef>
-	
+
 	<!-- Bionic kidney -->
 	<HediffDef ParentName="BOR_AddedTenebralBodyPartBase">
 		<defaultLabelColor>(128, 0, 0)</defaultLabelColor>
