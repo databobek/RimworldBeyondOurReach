@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+
+	<Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
+		<modSettingDef>BOR_Setting_CE_TODO</modSettingDef>
+		<enabled Class="PatchOperationSequence">
+			<operations>
+
+				<!-- ==================== Base material ammo researches + Gauss combined ==================== -->
+
+				<li Class="PatchOperationAdd">
+					<xpath>Defs</xpath>
+					<value>
+
+						<!-- ========== Base Material Ammo Researches ========== -->
+
+						<!-- Tier 1: Solar jacket (FSJ) ammo — sunsteel-core ballistic rounds -->
+						<ResearchProjectDef ParentName="BOR_Research_Base_I">
+							<defName>BOR_CE_AmmoResearch_FSJ</defName>
+							<label>solar jacket ammunition</label>
+							<description>Study the manufacture of Full Solar Jacket cartridges: rounds with a sunsteel-encased core that combine reliable penetration with moderate stopping power. Unlocks crafting of FSJ-type ammo for all BOR weapon generations.</description>
+							<baseCost>12000</baseCost>
+							<techLevel>Ultra</techLevel>
+							<prerequisites>
+								<li>BOR_Research_Weapons_I</li>
+							</prerequisites>
+							<researchViewX>2.50</researchViewX>
+							<researchViewY>3.10</researchViewY>
+						</ResearchProjectDef>
+
+						<!-- Tier 1: Neutronium (Ni/Nc) ammo — neutronium-infused and neutronium-coated rounds -->
+						<ResearchProjectDef ParentName="BOR_Research_Base_I">
+							<defName>BOR_CE_AmmoResearch_Ni</defName>
+							<label>neutronium ammunition</label>
+							<description>Apply neutronosynthesis techniques to ballistic rounds, producing neutronium-infused and neutronium-coated cartridges. The neutronium core dramatically increases kinetic energy on impact. Unlocks crafting of Ni- and Nc-type ammo for all BOR weapon generations.</description>
+							<baseCost>20000</baseCost>
+							<techLevel>Ultra</techLevel>
+							<prerequisites>
+								<li>BOR_Research_Weapons_I</li>
+								<li>BOR_Research_NSynth_I</li>
+							</prerequisites>
+							<researchViewX>2.50</researchViewX>
+							<researchViewY>3.50</researchViewY>
+						</ResearchProjectDef>
+
+						<!-- Tier 1: Ionized neutronium (EMP_N) ammo — EMP-inducing rounds -->
+						<ResearchProjectDef ParentName="BOR_Research_Base_I">
+							<defName>BOR_CE_AmmoResearch_EMP_N</defName>
+							<label>ionized neutronium ammunition</label>
+							<description>Ionize the neutronium core of ballistic rounds to induce a localized electromagnetic pulse on impact, disabling electronics and breaking energy shields. Unlocks crafting of EMP_N-type ammo for all BOR weapon generations.</description>
+							<baseCost>24000</baseCost>
+							<techLevel>Ultra</techLevel>
+							<prerequisites>
+								<li>BOR_CE_AmmoResearch_Ni</li>
+							</prerequisites>
+							<researchViewX>2.50</researchViewX>
+							<researchViewY>3.90</researchViewY>
+						</ResearchProjectDef>
+
+						<!-- Tier 2: Quasar alloy-penetrating (QaP) ammo — kwazaari alloy-core rounds -->
+						<ResearchProjectDef ParentName="BOR_Research_Base_II">
+							<defName>BOR_CE_AmmoResearch_QaP</defName>
+							<label>kwazaari alloy ammunition</label>
+							<description>Engineer kwazaari alloy-penetrating cartridges capable of defeating kwazaari alloy-grade armor. The dense kwazaari alloy penetrator is machined to extremely tight tolerances. Unlocks crafting of QaP-type ammo for all BOR weapon generations.</description>
+							<baseCost>40000</baseCost>
+							<techLevel>Ultra</techLevel>
+							<prerequisites>
+								<li>BOR_Research_Weapons_II</li>
+							</prerequisites>
+							<researchViewX>9.50</researchViewX>
+							<researchViewY>3.10</researchViewY>
+						</ResearchProjectDef>
+
+						<!-- Tier 3: Tenebrite-coated (TC) ammo — tenebrite-enhanced rounds -->
+						<ResearchProjectDef ParentName="BOR_Research_Base_III">
+							<defName>BOR_CE_AmmoResearch_TC</defName>
+							<label>tenebrite ammunition</label>
+							<description>Bond tenebrite crystal lattices to ballistic rounds, creating ammunition that interacts with dark matter to dramatically increase penetration and terminal effect. Unlocks crafting of TC-type ammo and all generation-III ammunition.</description>
+							<baseCost>60000</baseCost>
+							<techLevel>Archotech</techLevel>
+							<prerequisites>
+								<li>BOR_Research_Weapons_III</li>
+							</prerequisites>
+								<researchViewX>15.50</researchViewX>
+							<researchViewY>3.10</researchViewY>
+						</ResearchProjectDef>
+
+						<!-- ========== Solar Gauss Ammo Combined Researches ========== -->
+
+						<!-- Solar gauss sabot (SS) baseline ammo -->
+						<ResearchProjectDef ParentName="BOR_Research_Base_I">
+							<defName>BOR_CE_GaussAmmo_I_SS</defName>
+							<label>solar gauss sabot ammunition</label>
+							<description>Adapt the sunsteel-coated solar sabot round for electromagnetic gauss launchers — the baseline round for BOR solar gauss weapons, requiring no exotic materials beyond the launcher itself.</description>
+							<baseCost>8000</baseCost>
+							<techLevel>Ultra</techLevel>
+							<prerequisites>
+								<li>BOR_SolarGaussWeaponry</li>
+							</prerequisites>
+								<researchViewX>4.00</researchViewX>
+								<researchViewY>4.10</researchViewY>
+						</ResearchProjectDef>
+
+						<!-- Solar gauss + neutronium ammo -->
+						<ResearchProjectDef ParentName="BOR_Research_Base_I">
+							<defName>BOR_CE_GaussAmmo_I_Ni</defName>
+							<label>solar gauss neutronium ammunition</label>
+							<description>Adapt neutronium-infused and neutronium-coated projectiles for use in electromagnetic gauss launchers. The high-velocity delivery mechanism multiplies the kinetic effect of the neutronium core. Unlocks Ni-type ammo for BOR solar gauss weapons.</description>
+							<baseCost>15000</baseCost>
+							<techLevel>Ultra</techLevel>
+							<prerequisites>
+								<li>BOR_CE_AmmoResearch_Ni</li>
+								<li>BOR_SolarGaussWeaponry</li>
+							</prerequisites>
+								<researchViewX>4.00</researchViewX>
+								<researchViewY>2.20</researchViewY>
+						</ResearchProjectDef>
+
+						<!-- Solar gauss + tenebrite ammo -->
+						<ResearchProjectDef ParentName="BOR_Research_Base_I">
+							<defName>BOR_CE_GaussAmmo_I_TC</defName>
+							<label>solar gauss tenebrite ammunition</label>
+							<description>Bond tenebrite to gauss projectiles, combining the gravity-warping properties of tenebrite with the electromagnetic acceleration of gauss launchers to achieve extreme penetration. Unlocks TC-type ammo for BOR solar gauss weapons.</description>
+							<baseCost>25000</baseCost>
+							<techLevel>Ultra</techLevel>
+							<prerequisites>
+								<li>BOR_CE_AmmoResearch_TC</li>
+								<li>BOR_SolarGaussWeaponry</li>
+							</prerequisites>
+<researchViewX>6.50</researchViewX>
+								<researchViewY>6.30</researchViewY>
+						</ResearchProjectDef>
+
+						<!-- Quasar gauss + neutronium ammo -->
+						<ResearchProjectDef ParentName="BOR_Research_Base_II">
+							<defName>BOR_CE_GaussAmmo_II_Ni</defName>
+							<label>kwazaari gauss neutronium ammunition</label>
+							<description>Retool neutronium projectiles for the higher-velocity and tighter-tolerance kwazaari gauss launcher family, achieving substantially greater penetration than earlier solar gauss neutronium rounds. Unlocks Ni-type ammo for BOR kwazaari gauss weapons.</description>
+							<baseCost>20000</baseCost>
+							<techLevel>Ultra</techLevel>
+							<prerequisites>
+								<li>BOR_CE_AmmoResearch_Ni</li>
+								<li>BOR_QuasarGaussWeaponry</li>
+							</prerequisites>
+							<researchViewX>10.75</researchViewX>
+							<researchViewY>3.00</researchViewY>
+						</ResearchProjectDef>
+
+					</value>
+				</li>
+
+				<!-- ==================== Beam (XCOM Laser) combined ammo researches ==================== -->
+
+				<li Class="PatchOperationFindMod">
+					<mods>
+						<li>Vanilla XCOM Laser Weapons</li>
+						<li>Combat Extended</li>
+					</mods>
+					<match Class="PatchOperationAdd">
+						<xpath>Defs</xpath>
+						<value>
+
+							<!-- Solar beam + solar (FSJ-tier) charge packs -->
+							<ResearchProjectDef ParentName="BOR_Research_Base_I">
+								<defName>BOR_CE_BeamAmmo_I_Solar</defName>
+								<label>solar beam solar charge packs</label>
+								<description>Synthesize sunsteel-energized charge packs optimized for solar-tier beam emitters. The sunsteel lattice stabilizes the laser medium, extending emitter service life. Unlocks solar laser charge packs for BOR solar beam weapons.</description>
+								<baseCost>15000</baseCost>
+								<techLevel>Ultra</techLevel>
+								<prerequisites>
+									<li>BOR_CE_AmmoResearch_FSJ</li>
+									<li>BOR_SolarBeamWeaponry</li>
+								</prerequisites>
+								<researchViewX>9.50</researchViewX>
+								<researchViewY>3.10</researchViewY>
+							</ResearchProjectDef>
+
+							<!-- Solar beam + neutronium (Ni-tier) charge packs -->
+							<ResearchProjectDef ParentName="BOR_Research_Base_I">
+								<defName>BOR_CE_BeamAmmo_I_Ni</defName>
+								<label>solar beam neutronium charge packs</label>
+								<description>Infuse neutronium into laser charge packs for solar-tier beam emitters. The neutronium modulates the beam wavelength to produce incendiary, high-penetration, or electromagnetic effects. Unlocks neutronium laser charge packs for BOR solar beam weapons.</description>
+								<baseCost>18000</baseCost>
+								<techLevel>Ultra</techLevel>
+								<prerequisites>
+									<li>BOR_CE_AmmoResearch_Ni</li>
+									<li>BOR_SolarBeamWeaponry</li>
+								</prerequisites>
+								<researchViewX>5.00</researchViewX>
+								<researchViewY>3.50</researchViewY>
+							</ResearchProjectDef>
+
+							<!-- Quasar beam + solar (FSJ-tier) charge packs -->
+							<ResearchProjectDef ParentName="BOR_Research_Base_II">
+								<defName>BOR_CE_BeamAmmo_II_Solar</defName>
+								<label>kwazaari beam solar charge packs</label>
+								<description>Reformulate solar charge packs for kwazaari-tier beam emitters, which operate at higher power levels than solar variants. The refined formulation sustains beam coherence at extended range. Unlocks solar laser charge packs for BOR kwazaari beam weapons.</description>
+								<baseCost>20000</baseCost>
+								<techLevel>Ultra</techLevel>
+								<prerequisites>
+									<li>BOR_CE_AmmoResearch_FSJ</li>
+									<li>BOR_QuasarBeamWeaponry</li>
+								</prerequisites>
+										<researchViewX>11.00</researchViewX>
+								<researchViewY>3.65</researchViewY>
+							</ResearchProjectDef>
+
+							<!-- Quasar beam + neutronium (Ni-tier) charge packs -->
+							<ResearchProjectDef ParentName="BOR_Research_Base_II">
+								<defName>BOR_CE_BeamAmmo_II_Ni</defName>
+								<label>kwazaari beam neutronium charge packs</label>
+								<description>Re-engineer neutronium charge packs for kwazaari-tier beam emitters, leveraging the higher power output to further amplify the neutronium beam effects. Unlocks neutronium laser charge packs for BOR kwazaari beam weapons.</description>
+								<baseCost>22000</baseCost>
+								<techLevel>Ultra</techLevel>
+								<prerequisites>
+									<li>BOR_CE_AmmoResearch_Ni</li>
+									<li>BOR_QuasarBeamWeaponry</li>
+								</prerequisites>
+										<researchViewX>11.00</researchViewX>
+								<researchViewY>4.00</researchViewY>
+							</ResearchProjectDef>
+
+						</value>
+					</match>
+				</li>
+
+			</operations>
+		</enabled>
+	</Operation>
+
+</Patch>

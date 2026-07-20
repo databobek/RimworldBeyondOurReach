@@ -68,87 +68,40 @@
 		<fillPercent>1</fillPercent>
 		<tickerType>Normal</tickerType>
 		<statBases>
+			<Mass>4000</Mass>
+			<MarketValue>50000</MarketValue>
 			<MaxHitPoints>250</MaxHitPoints>
 			<WorkToBuild>1700</WorkToBuild>
 			<Flammability>1.0</Flammability>
 		</statBases>
 		<size>(7,7)</size>
-		<hasInteractionCell>True</hasInteractionCell>
-		<interactionCellOffset>(0,0,-4)</interactionCellOffset>
 		<costList>
 			<BOR_Sunsteel>200</BOR_Sunsteel>
 			<ComponentSpacer>4</ComponentSpacer>
 		</costList>
-		<!-- <inspectorTabs>
-			<li>PipeSystem.ITab_Processor</li>
-		</inspectorTabs> -->
+		<minifiedDef>MinifiedThing</minifiedDef>
+		<thingCategories>
+			<li>BuildingsFurniture</li>
+		</thingCategories>
+
 		<comps>
-			<li MayRequire="ludeon.rimworld.biotech" Class="CompProperties_ThingContainer">
-				<compClass>CompThingContainer</compClass>
-				<stackLimit>1000</stackLimit>
-				<drawContainedThing>false</drawContainedThing>
-				<dropEffecterDef>MechChargerWasteRemoved</dropEffecterDef>
-			</li>
+
 			<li Class="PipeSystem.CompProperties_Resource">
 				<pipeNet>BOR_NeutroniumNet</pipeNet>
 			</li>
-			<!--
-			<li MayRequire="ludeon.rimworld.biotech" Class="CompProperties_WasteProducer">
-				<showContentsInInspectPane>true</showContentsInInspectPane>
-			</li>
-			<li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
-				<showBufferInfo>false</showBufferInfo>
-				<stopWhenWastepackFull>True</stopWhenWastepackFull>
-				<notWorkingKey>BOR_CantRefine</notWorkingKey>
-				<resultItemOffset>(1, 0, -2.7)</resultItemOffset>
-				<resultItemSize>(0.35, 1, 0.35)</resultItemSize>
-				<progressBarOffset>(-0.54, 0, -2.97)</progressBarOffset>
-				<showResultItem>true</showResultItem>
-				<processes>
-					<li>BOR_NeutroniumIntoSteelGenI</li>
-					<li>BOR_NeutroniumIntoPlasteelGenI</li>
-					<li>BOR_NeutroniumIntoSilverGenI</li>
-					<li>BOR_NeutroniumIntoGoldGenI</li>
-					<li>BOR_NeutroniumIntoUraniumGenI</li>
-					<li>BOR_NeutroniumIntoComponentIndustrialGenI</li>
-					<li>BOR_NeutroniumIntoDevilstrandClothGenI</li>
-					<li>BOR_NeutroniumIntoComponentSpacerGenI</li>
-					<li>BOR_NeutroniumIntoBOR_SunsteelGenI</li>
-					<li>BOR_NeutroniumIntoBOR_SunweaveGenI</li>
-					<li>BOR_NeutroniumIntoBOR_FuelRodGenI</li>
-					<li>BOR_NeutroniumIntoBOR_NanoclustersGenI</li>
-					<li MayRequire="mlie.infinityrimariadna">BOR_NeutroniumIntoTeseumGenI</li>
-					<li MayRequire="ceteam.combatextended">BOR_NeutroniumIntoFSXGenI</li>
-					<li MayRequire="ceteam.combatextended">BOR_NeutroniumIntoPrometheumGenI</li>
-					<li>BOR_NeutroniumIntoSteelGenITempRuin</li>
-					<li>BOR_NeutroniumIntoPlasteelGenITempRuin</li>
-					<li>BOR_NeutroniumIntoSilverGenITempRuin</li>
-					<li>BOR_NeutroniumIntoGoldGenITempRuin</li>
-					<li>BOR_NeutroniumIntoUraniumGenITempRuin</li>
-					<li>BOR_NeutroniumIntoComponentIndustrialGenITempRuin</li>
-					<li>BOR_NeutroniumIntoDevilstrandClothGenITempRuin</li>
-					<li>BOR_NeutroniumIntoComponentSpacerGenITempRuin</li>
-					<li>BOR_NeutroniumIntoBOR_SunsteelGenITempRuin</li>
-					<li>BOR_NeutroniumIntoBOR_SunweaveGenITempRuin</li>
-					<li>BOR_NeutroniumIntoBOR_FuelRodGenITempRuin</li>
-					<li>BOR_NeutroniumIntoBOR_NanoclustersGenITempRuin</li>
-					<li MayRequire="mlie.infinityrimariadna">BOR_NeutroniumIntoTeseumGenITempRuin</li>
-					<li MayRequire="ceteam.combatextended">BOR_NeutroniumIntoFSXGenITempRuin</li>
-					<li MayRequire="ceteam.combatextended">BOR_NeutroniumIntoPrometheumGenITempRuin</li>
-				</processes>
-			</li>
-			-->
+
 			<li Class="PipeSystem.CompProperties_DeepExtractor">
 				<pipeNet>BOR_NeutroniumNet</pipeNet>
 				<deepThing>BOR_Neutronium</deepThing>
-				<ticksPerPortion>500</ticksPerPortion>
-				<useDeepCountPerPortion>false</useDeepCountPerPortion>
+				<ticksPerPortion>250</ticksPerPortion>
+				<useDeepCountPerPortion>true</useDeepCountPerPortion>
 			</li>
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>
 				<basePowerConsumption>15000</basePowerConsumption>
 				<shortCircuitInRain>false</shortCircuitInRain>
 			</li>
+			<li Class="CompProperties_Flickable" />
 		</comps>
 		<modExtensions>
 			<li Class="VEF.Things.ThingDefExtension">
@@ -169,9 +122,9 @@
 	</ThingDef>
 	<ThingDef ParentName="BuildingBase">
 		<defName>BOR_NeutroniumCondenser_TII</defName>
-		<label>quasar neutronium condenser</label>
+		<label>kwazaari neutronium condenser</label>
 		<designatorDropdown>NeutroniumCondenser</designatorDropdown>
-		<description>A Kwazaari condenser employing quasar-lattice resonance to draw neutronium from the deep at twice the efficiency of solar designs. The exotic alloys within sustain extraction rates that no Solarite machine could match.</description>
+		<description>A Kwazaari condenser employing kwazaari-lattice resonance to draw neutronium from the deep at twice the efficiency of solar designs. The exotic alloys within sustain extraction rates that no Solarite machine could match.</description>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<graphicData>
 			<texPath>BOR/Things/Building/neutroniumnet/tier2refinery</texPath>
@@ -184,6 +137,10 @@
 				<cornerBR>Damage/Corner</cornerBR>
 			</damageData>
 		</graphicData>
+		<minifiedDef>MinifiedThing</minifiedDef>
+		<thingCategories>
+			<li>BuildingsFurniture</li>
+		</thingCategories>
 		<rotatable>false</rotatable>
 		<altitudeLayer>Building</altitudeLayer>
 		<passability>Impassable</passability>
@@ -193,6 +150,8 @@
 		<fillPercent>1</fillPercent>
 		<tickerType>Normal</tickerType>
 		<statBases>
+			<Mass>2000</Mass>
+			<MarketValue>50000</MarketValue>
 			<MaxHitPoints>250</MaxHitPoints>
 			<WorkToBuild>5000</WorkToBuild>
 			<Flammability>1.0</Flammability>
@@ -202,82 +161,25 @@
 			<BOR_QuasarAlloy>200</BOR_QuasarAlloy>
 			<BOR_ComponentII>4</BOR_ComponentII>
 		</costList>
-		<hasInteractionCell>True</hasInteractionCell>
-		<interactionCellOffset>(0,0,-3)</interactionCellOffset>
-		<!-- <inspectorTabs>
-			<li>PipeSystem.ITab_Processor</li>
-		</inspectorTabs> -->
+
 		<comps>
-			<li MayRequire="ludeon.rimworld.biotech" Class="CompProperties_ThingContainer">
-				<compClass>CompThingContainer</compClass>
-				<stackLimit>1000</stackLimit>
-				<drawContainedThing>false</drawContainedThing>
-				<dropEffecterDef>MechChargerWasteRemoved</dropEffecterDef>
-			</li>
+
 			<li Class="PipeSystem.CompProperties_Resource">
 				<pipeNet>BOR_NeutroniumNet</pipeNet>
 			</li>
-			<!--
-			<li MayRequire="ludeon.rimworld.biotech" Class="CompProperties_WasteProducer">
-				<showContentsInInspectPane>true</showContentsInInspectPane>
-			</li>
-			<li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
-				<showBufferInfo>false</showBufferInfo>
-				<notWorkingKey>BOR_CantRefine</notWorkingKey>
-				<progressBarOffset>(0, 0, -0.65)</progressBarOffset>
-				<showResultItem>true</showResultItem>
-				<stopWhenWastepackFull>True</stopWhenWastepackFull>
-				<processes>
-					<li>BOR_NeutroniumIntoSteelGenII</li>
-					<li>BOR_NeutroniumIntoPlasteelGenII</li>
-					<li>BOR_NeutroniumIntoSilverGenII</li>
-					<li>BOR_NeutroniumIntoGoldGenII</li>
-					<li>BOR_NeutroniumIntoUraniumGenII</li>
-					<li>BOR_NeutroniumIntoComponentIndustrialGenII</li>
-					<li>BOR_NeutroniumIntoDevilstrandClothGenII</li>
-					<li>BOR_NeutroniumIntoComponentSpacerGenII</li>
-					<li>BOR_NeutroniumIntoBOR_SunsteelGenII</li>
-					<li>BOR_NeutroniumIntoBOR_SunweaveGenII</li>
-					<li>BOR_NeutroniumIntoBOR_QuasarAlloyGenII</li>
-					<li>BOR_NeutroniumIntoBOR_QuasarAlloyWeaveGenII</li>
-					<li>BOR_NeutroniumIntoBOR_FuelRodGenII</li>
-					<li>BOR_NeutroniumIntoBOR_NanoclustersGenII</li>
-					<li>BOR_NeutroniumIntoBOR_PicoclustersGenII</li>
-					<li MayRequire="mlie.infinityrimariadna">BOR_NeutroniumIntoTeseumGenII</li>
-					<li MayRequire="ceteam.combatextended">BOR_NeutroniumIntoFSXGenII</li>
-					<li MayRequire="ceteam.combatextended">BOR_NeutroniumIntoPrometheumGenII</li>
-					<li>BOR_NeutroniumIntoSteelGenIITempRuin</li>
-					<li>BOR_NeutroniumIntoPlasteelGenIITempRuin</li>
-					<li>BOR_NeutroniumIntoSilverGenIITempRuin</li>
-					<li>BOR_NeutroniumIntoGoldGenIITempRuin</li>
-					<li>BOR_NeutroniumIntoUraniumGenIITempRuin</li>
-					<li>BOR_NeutroniumIntoComponentIndustrialGenIITempRuin</li>
-					<li>BOR_NeutroniumIntoDevilstrandClothGenIITempRuin</li>
-					<li>BOR_NeutroniumIntoComponentSpacerGenIITempRuin</li>
-					<li>BOR_NeutroniumIntoBOR_SunsteelGenIITempRuin</li>
-					<li>BOR_NeutroniumIntoBOR_SunweaveGenIITempRuin</li>
-					<li>BOR_NeutroniumIntoBOR_QuasarAlloyGenIITempRuin</li>
-					<li>BOR_NeutroniumIntoBOR_QuasarAlloyWeaveGenIITempRuin</li>
-					<li>BOR_NeutroniumIntoBOR_FuelRodGenIITempRuin</li>
-					<li>BOR_NeutroniumIntoBOR_NanoclustersGenIITempRuin</li>
-					<li>BOR_NeutroniumIntoBOR_PicoclustersGenIITempRuin</li>
-					<li MayRequire="mlie.infinityrimariadna">BOR_NeutroniumIntoTeseumGenIITempRuin</li>
-					<li MayRequire="ceteam.combatextended">BOR_NeutroniumIntoFSXGenIITempRuin</li>
-					<li MayRequire="ceteam.combatextended">BOR_NeutroniumIntoPrometheumGenIITempRuin</li>
-				</processes>
-			</li>
-			-->
+
 			<li Class="PipeSystem.CompProperties_DeepExtractor">
 				<pipeNet>BOR_NeutroniumNet</pipeNet>
 				<deepThing>BOR_Neutronium</deepThing>
-				<ticksPerPortion>250</ticksPerPortion>
-				<useDeepCountPerPortion>false</useDeepCountPerPortion>
+				<ticksPerPortion>125</ticksPerPortion>
+				<useDeepCountPerPortion>true</useDeepCountPerPortion>
 			</li>
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>
 				<basePowerConsumption>30000</basePowerConsumption>
 				<shortCircuitInRain>false</shortCircuitInRain>
 			</li>
+			<li Class="CompProperties_Flickable" />
 		</comps>
 		<modExtensions>
 			<li Class="VEF.Things.ThingDefExtension">
@@ -325,6 +227,10 @@
 				<cornerBR>Damage/Corner</cornerBR>
 			</damageData>
 		</graphicData>
+		<minifiedDef>MinifiedThing</minifiedDef>
+		<thingCategories>
+			<li>BuildingsFurniture</li>
+		</thingCategories>
 		<rotatable>false</rotatable>
 		<altitudeLayer>Building</altitudeLayer>
 		<passability>Impassable</passability>
@@ -334,6 +240,8 @@
 		<fillPercent>1</fillPercent>
 		<tickerType>Normal</tickerType>
 		<statBases>
+			<Mass>1000</Mass>
+			<MarketValue>50000</MarketValue>
 			<MaxHitPoints>250</MaxHitPoints>
 			<WorkToBuild>10000</WorkToBuild>
 			<Flammability>1.0</Flammability>
@@ -343,90 +251,25 @@
 			<BOR_Tenebrite>200</BOR_Tenebrite>
 			<BOR_ComponentIII>4</BOR_ComponentIII>
 		</costList>
-		<!-- <inspectorTabs>
-			<li>PipeSystem.ITab_Processor</li>
-		</inspectorTabs> -->
-		<hasInteractionCell>True</hasInteractionCell>
-		<interactionCellOffset>(0,0,-2)</interactionCellOffset>
+
 		<comps>
-			<li MayRequire="ludeon.rimworld.biotech" Class="CompProperties_ThingContainer">
-				<compClass>CompThingContainer</compClass>
-				<stackLimit>1000</stackLimit>
-				<drawContainedThing>false</drawContainedThing>
-				<dropEffecterDef>MechChargerWasteRemoved</dropEffecterDef>
-			</li>
+
 			<li Class="PipeSystem.CompProperties_Resource">
 				<pipeNet>BOR_NeutroniumNet</pipeNet>
 			</li>
-			<!--
-			<li MayRequire="ludeon.rimworld.biotech" Class="CompProperties_WasteProducer">
-				<showContentsInInspectPane>true</showContentsInInspectPane>
-			</li>
-			<li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
-				<showBufferInfo>false</showBufferInfo>
-				<notWorkingKey>BOR_CantRefine</notWorkingKey>
-				<progressBarOffset>(0, 0, -0.65)</progressBarOffset>
-				<showResultItem>true</showResultItem>
-				<stopWhenWastepackFull>True</stopWhenWastepackFull>
-				<processes>
-					<li>BOR_NeutroniumIntoSteelGenIII</li>
-					<li>BOR_NeutroniumIntoPlasteelGenIII</li>
-					<li>BOR_NeutroniumIntoSilverGenIII</li>
-					<li>BOR_NeutroniumIntoGoldGenIII</li>
-					<li>BOR_NeutroniumIntoUraniumGenIII</li>
-					<li>BOR_NeutroniumIntoComponentIndustrialGenIII</li>
-					<li>BOR_NeutroniumIntoDevilstrandClothGenIII</li>
-					<li>BOR_NeutroniumIntoComponentSpacerGenIII</li>
-					<li>BOR_NeutroniumIntoBOR_SunsteelGenIII</li>
-					<li>BOR_NeutroniumIntoBOR_SunweaveGenIII</li>
-					<li>BOR_NeutroniumIntoBOR_QuasarAlloyGenIII</li>
-					<li>BOR_NeutroniumIntoBOR_QuasarAlloyWeaveGenIII</li>
-					<li>BOR_NeutroniumIntoBOR_ComponentIIGenIII</li>
-					<li>BOR_NeutroniumIntoBOR_ComponentIIIGenIII</li>
-					<li>BOR_NeutroniumIntoBOR_FuelRodGenIII</li>
-					<li>BOR_NeutroniumIntoBOR_TenebriteGenIII</li>
-					<li>BOR_NeutroniumIntoBOR_NanoclustersGenIII</li>
-					<li>BOR_NeutroniumIntoBOR_PicoclustersGenIII</li>
-					<li>BOR_NeutroniumIntoBOR_FemtoclustersGenIII</li>
-					<li MayRequire="mlie.infinityrimariadna">BOR_NeutroniumIntoTeseumGenIII</li>
-					<li MayRequire="ceteam.combatextended">BOR_NeutroniumIntoFSXGenIII</li>
-					<li MayRequire="ceteam.combatextended">BOR_NeutroniumIntoPrometheumGenIII</li>
-					<li>BOR_NeutroniumIntoSteelGenIIITempRuin</li>
-					<li>BOR_NeutroniumIntoPlasteelGenIIITempRuin</li>
-					<li>BOR_NeutroniumIntoSilverGenIIITempRuin</li>
-					<li>BOR_NeutroniumIntoGoldGenIIITempRuin</li>
-					<li>BOR_NeutroniumIntoUraniumGenIIITempRuin</li>
-					<li>BOR_NeutroniumIntoComponentIndustrialGenIIITempRuin</li>
-					<li>BOR_NeutroniumIntoDevilstrandClothGenIIITempRuin</li>
-					<li>BOR_NeutroniumIntoComponentSpacerGenIIITempRuin</li>
-					<li>BOR_NeutroniumIntoBOR_SunsteelGenIIITempRuin</li>
-					<li>BOR_NeutroniumIntoBOR_SunweaveGenIIITempRuin</li>
-					<li>BOR_NeutroniumIntoBOR_QuasarAlloyGenIIITempRuin</li>
-					<li>BOR_NeutroniumIntoBOR_QuasarAlloyWeaveGenIIITempRuin</li>
-					<li>BOR_NeutroniumIntoBOR_ComponentIIGenIIITempRuin</li>
-					<li>BOR_NeutroniumIntoBOR_ComponentIIIGenIIITempRuin</li>
-					<li>BOR_NeutroniumIntoBOR_FuelRodGenIIITempRuin</li>
-					<li>BOR_NeutroniumIntoBOR_TenebriteGenIIITempRuin</li>
-					<li>BOR_NeutroniumIntoBOR_NanoclustersGenIIITempRuin</li>
-					<li>BOR_NeutroniumIntoBOR_PicoclustersGenIIITempRuin</li>
-					<li>BOR_NeutroniumIntoBOR_FemtoclustersGenIIITempRuin</li>
-					<li MayRequire="mlie.infinityrimariadna">BOR_NeutroniumIntoTeseumGenIIITempRuin</li>
-					<li MayRequire="ceteam.combatextended">BOR_NeutroniumIntoFSXGenIIITempRuin</li>
-					<li MayRequire="ceteam.combatextended">BOR_NeutroniumIntoPrometheumGenIIITempRuin</li>
-				</processes>
-			</li>
-			-->
+
 			<li Class="PipeSystem.CompProperties_DeepExtractor">
 				<pipeNet>BOR_NeutroniumNet</pipeNet>
 				<deepThing>BOR_Neutronium</deepThing>
-				<ticksPerPortion>75</ticksPerPortion>
-				<useDeepCountPerPortion>false</useDeepCountPerPortion>
+				<ticksPerPortion>64</ticksPerPortion>
+				<useDeepCountPerPortion>true</useDeepCountPerPortion>
 			</li>
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>
 				<basePowerConsumption>60000</basePowerConsumption>
 				<shortCircuitInRain>false</shortCircuitInRain>
 			</li>
+			<li Class="CompProperties_Flickable" />
 		</comps>
 		<terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
 		<designationCategory>BOR</designationCategory>
@@ -721,7 +564,7 @@
 			</li>
 			<li Class="PipeSystem.CompProperties_ExplosiveContent">
 				<explosiveMaxRadius>1000</explosiveMaxRadius>
-				<!-- Vanilla options below -->
+
 				<explosiveDamageType>Flame</explosiveDamageType>
 				<destroyThingOnExplosionSize>2</destroyThingOnExplosionSize>
 				<startWickHitPointsPercent>0.333</startWickHitPointsPercent>
@@ -729,7 +572,7 @@
 				<preExplosionSpawnChance>1</preExplosionSpawnChance>
 				<wickTicks>70~150</wickTicks>
 			</li>
-			<!-- tank will survive 1 day without power -->
+
 			<li Class="VCEPlusUltra.CompProperties_DamageWhenUnpowered">
 				<tickRateInterval>4000</tickRateInterval>
 				<damageAmount>100</damageAmount>
@@ -864,9 +707,9 @@
 		</graphicData>
 		<rotatable>false</rotatable>
 		<altitudeLayer>BuildingOnTop</altitudeLayer>
-		<!--<altitudeLayer>Building</altitudeLayer> -->
+
 		<passability>Standable</passability>
-		<!--<passability>PassThroughOnly</passability> -->
+
 		<fillPercent>0.5</fillPercent>
 		<castEdgeShadows>true</castEdgeShadows>
 		<pathCost>50</pathCost>
@@ -964,7 +807,7 @@
 			<li Class="CompProperties_Flickable" />
 			<li Class="PipeSystem.CompProperties_SpawnerOrNet">
 				<pipeNet>BOR_NeutroniumNet</pipeNet>
-				<!-- Vanilla part -->
+
 				<requiresPower>true</requiresPower>
 				<thingToSpawn>BOR_Neutronium</thingToSpawn>
 				<spawnCount>2500</spawnCount>

@@ -25,12 +25,12 @@
             <drawSize>0.80</drawSize>
             <color>(69, 32, 41)</color>
           </graphicData>
-          <recipeMaker>
-            <unfinishedThingDef>UnfinishedHealthItemProsthetic</unfinishedThingDef>
-            <recipeUsers>
+          <recipeMaker Inherit="False">
+            <recipeUsers Inherit="False">
               <li>BOR_MedicineBench_III</li>
               <li>BOR_Bench_IV</li>
             </recipeUsers>
+            <unfinishedThingDef>UnfinishedHealthItemProsthetic</unfinishedThingDef>
             <useIngredientsForColor>false</useIngredientsForColor>
             <workSpeedStat>BOR_BionicCraftingSpeed</workSpeedStat>
             <workSkill>Crafting</workSkill>
@@ -49,7 +49,7 @@
         </ThingDef>
 
         <!-- Control sublink -->
-        <ThingDef Abstract="True" Name="ControlSublinkBaseTenebral" ParentName="MechanitorImplantCraftableBase">
+        <ThingDef Abstract="True" Name="ControlSublinkBaseTenebral" ParentName="MechanitorImplantCraftableTenebralBase">
           <descriptionHyperlinks>
             <HediffDef>ControlSublinkImplantTenebral</HediffDef>
           </descriptionHyperlinks>
@@ -64,7 +64,7 @@
           <description>A neural tenebral implant which gives a mechanitor an additional control group. Additionally, the sublink slightly increases the work speed of any mechanoids controlled by the mechanitor.\n\nThis standard-tier sublink can only increase the control group count up to 3. To go higher, a higher-tier sublink implant must be used.\n\nIt can be self-installed without surgery.\n\nThis implant can be installed up to 3 times to increase its effect.</description>
           <costList>
             <SignalChip>1</SignalChip>
-            <BOR_ComponentIII>4</BOR_ComponentIII>
+            <BOR_ComponentIII>2</BOR_ComponentIII>
           </costList>
           <recipeMaker>
             <researchPrerequisite>StandardMechtech</researchPrerequisite>
@@ -91,7 +91,7 @@
           <description>A neural tenebral implant which gives a mechanitor an additional control group. Additionally, the sublink slightly increases the work speed of any mechanoids controlled by the mechanitor.\n\nThis high-tier implant can increase the control group count up to 6.\n\nIt can be self-installed without surgery.\n\nThis implant can be installed up to 3 times to increase its effect.</description>
           <costList>
             <PowerfocusChip>1</PowerfocusChip>
-            <BOR_ComponentIII>6</BOR_ComponentIII>
+            <BOR_ComponentIII>2</BOR_ComponentIII>
           </costList>
           <recipeMaker>
             <researchPrerequisite>HighMechtech</researchPrerequisite>
@@ -122,7 +122,7 @@
           </descriptionHyperlinks>
           <label>tenebral control sublink</label>
           <description>An tenebral implant which increases a mechanitor's control group count and the work speed of a mechanitor's mechs.\n\nThis implant can be installed up to 6 times to increase its effect.</description>
-          <defaultLabelColor>(0.6, 0.6, 1.0)</defaultLabelColor>
+
           <isBad>false</isBad>
           <priceImpact>true</priceImpact>
           <initialSeverity>1</initialSeverity> <!-- Severity is bound to level of implant -->
@@ -177,7 +177,7 @@
         </HediffDef>
 
         <!-- Remote repairer -->
-        <ThingDef ParentName="MechanitorImplantCraftableBase">
+        <ThingDef ParentName="MechanitorImplantCraftableTenebralBase">
           <defName>RemoteRepairerTenebral</defName>
           <label>tenebral remote repairer</label>
           <description>An tenebral mechlink upgrade which allows the mechanitor to repair mechs from a distance. The user links with the mechanoid and uses their own brain to psychically guide its self-repair mechanites.\n\nThis implant can be self-installed without surgery.\n\nThis implant can be installed up to 3 times to increase its range.</description>
@@ -186,7 +186,7 @@
           </descriptionHyperlinks>
           <costList>
             <PowerfocusChip>1</PowerfocusChip>
-            <BOR_ComponentIII>6</BOR_ComponentIII>
+            <BOR_ComponentIII>1</BOR_ComponentIII>
           </costList>
           <statBases>
             <MaxInstallCount>3</MaxInstallCount>
@@ -219,7 +219,7 @@
           <label>tenebral remote repairer</label>
           <description>An tenebral mechlink upgrade which allows the mechanitor to repair mechs from a distance. The user links with the mechanoid and uses their own brain to psychically guide its self-repair mechanites.\n\nThis implant can be installed up to 3 times to increase its range.</description>
           <descriptionShort>An implant which allows the user to repair mechs from a distance. This can be installed up to 3 times.</descriptionShort>
-          <defaultLabelColor>(0.6, 0.6, 1.0)</defaultLabelColor>
+
           <isBad>false</isBad>
           <priceImpact>true</priceImpact>
           <initialSeverity>1</initialSeverity> <!-- Severity is bound to level of implant -->
@@ -257,7 +257,7 @@
         </HediffDef>
 
         <!-- Mech gestation processorr -->
-        <ThingDef ParentName="MechanitorImplantCraftableBase">
+        <ThingDef ParentName="MechanitorImplantCraftableTenebralBase">
           <defName>MechFormfeederTenebral</defName>
           <label>mech tenebral gestation processor</label>
           <description>An tenebral implant which increases the speed at which a mechanitor can produce mechs in a mech gestator. The processor optimizes the behavior of the mechanites in the mech forming tank.\n\nThis implant can be self-installed in the same way as the mechlink.\n\nThis implant can be installed up to 6 times to increase its effect.</description>
@@ -266,7 +266,7 @@
           </descriptionHyperlinks>
           <costList>
             <SignalChip>1</SignalChip>
-            <BOR_ComponentIII>6</BOR_ComponentIII>
+            <BOR_ComponentIII>2</BOR_ComponentIII>
           </costList>
           <statBases>
             <MaxInstallCount>6</MaxInstallCount>
@@ -299,7 +299,7 @@
           <label>tenebral mech gestation processor</label>
           <description>An tenebral implant which increases the speed at which a mechanitor can produce mechs in a mech gestator. The processor optimizes the behavior of the mechanites in the mech forming tank.\n\nThis implant can be self-installed in the same way as the mechlink.\n\nThis implant can be installed up to 6 times to increase its effect.</description>
           <descriptionShort>As tellar implant which lets a mechanitor gestate new mechs faster. This can be installed up to 6 times to increase the effect.</descriptionShort>
-          <defaultLabelColor>(0.6, 0.6, 1.0)</defaultLabelColor>
+
           <isBad>false</isBad>
           <priceImpact>true</priceImpact>
           <initialSeverity>1</initialSeverity><!-- Severity is bound to level of implant -->
@@ -348,7 +348,7 @@
         </HediffDef>
 
         <!-- Remote shielder -->
-        <ThingDef ParentName="MechanitorImplantCraftableBase">
+        <ThingDef ParentName="MechanitorImplantCraftableTenebralBase">
           <defName>RemoteShielderTenebral</defName>
           <label>tenebral remote shielder</label>
           <description>An tenebral implant which allows the mechanitor to place a personal defense shield on a mech. The mechanitor must continuously focus on the mech in order to maintain the shield.\n\nPlacing a shield at a distance requires a substantial amount of focused energy. It can be used to save a mech at a critical moment.\n\nThis implant can be self-installed in the same way as the mechlink.\n\nThis implant can be installed up to 3 times to increase its range and shield energy.</description>
@@ -389,7 +389,7 @@
           </descriptionHyperlinks>
           <label>tenebral remote shielder</label>
           <description>An tenebral implant which allows the mechanitor to place a personal defense shield on a mech. The mechanitor must continuously focus on the mech in order to maintain the shield. It can be used to save a mech at a critical moment.\n\nThis implant can be installed up to 3 times to increase its range and shield energy.</description>
-          <defaultLabelColor>(0.6, 0.6, 1.0)</defaultLabelColor>
+
           <isBad>false</isBad>
           <priceImpact>true</priceImpact>
           <initialSeverity>1</initialSeverity>
@@ -431,7 +431,7 @@
 
         <!-- Repair probe -->
 
-        <ThingDef ParentName="MechanitorImplantCraftableBase">
+        <ThingDef ParentName="MechanitorImplantCraftableTenebralBase">
           <defName>RepairProbeTenebral</defName>
           <label>tenebral repair probe</label>
           <description>An tenebral implant which increases the speed at which a mechanitor can repair a mechanoid. This does not affect the overall energy needed to repair a mechanoid.\n\nThe implant allows the mechanitor to plug directly into a mechanoid while they are repairing it. This allows them to more quickly understand the mech's injuries, and better-direct the mech's self-repair mechanites to assist with the repair.\n\nThis implant can be self-installed in the same way as the mechlink.\n\nThis implant can be installed up to 6 times to increase its effect.</description>
@@ -440,7 +440,7 @@
           </descriptionHyperlinks>
           <costList>
             <NanostructuringChip>1</NanostructuringChip>
-            <BOR_ComponentIII>4</BOR_ComponentIII>
+            <BOR_ComponentIII>2</BOR_ComponentIII>
           </costList>
           <recipeMaker>
             <researchPrerequisite>UltraMechtech</researchPrerequisite>
@@ -473,7 +473,7 @@
           <label>tenebral repair probe</label>
           <description>An tenebral implant which increases a mechanitor's mech repair speed. This does not affect the overall energy needed to repair a mechanoid.\n\nThe implant allows the mechanitor to plug directly into a mechanoid while repairing it and better-direct the mech's self-repair mechanites.\n\nThis implant can be installed up to 6 times to increase its effect.</description>
           <descriptionShort>An tenebral implant which lets a mechanitor repair mechs faster. This can be installed up to 6 times.</descriptionShort>
-          <defaultLabelColor>(0.6, 0.6, 1.0)</defaultLabelColor>
+
           <isBad>false</isBad>
           <priceImpact>true</priceImpact>
           <initialSeverity>1</initialSeverity><!-- Severity is bound to level of implant -->
@@ -524,5 +524,5 @@
       </value>
     </enabled>
   </Operation>
-  
+
 </Patch>

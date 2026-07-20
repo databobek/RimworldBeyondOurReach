@@ -41,6 +41,7 @@
       <Insulation_Cold>8</Insulation_Cold>
       <Insulation_Heat>3.75</Insulation_Heat>
       <EquipDelay>4</EquipDelay>
+      <MarketValue>25000</MarketValue>
 
       <RoyalFavorValue>3</RoyalFavorValue>
     </statBases>
@@ -85,7 +86,7 @@
 
   <ThingDef ParentName="ApparelArmorHelmetPowerQuasarBase">
     <defName>BOR_Quasar_Apparel_PowerArmorHelmet</defName>
-    <label>quasar marine helmet</label>
+    <label>kwazaari marine helmet</label>
     <description>A helmet formed from Quasar Alloy, complete with proprietary IFF (Identify Friend or Foe) software, Short-Range radio, and BallisTek armored camera arrays for maximum Field of View and protection.\n\nNormally it would cost an arm and a leg to get a Helmet of this level, though there are times you may find it on sale for two arms and zero legs, what a steal!</description>
     <apparel>
       <tags>
@@ -100,94 +101,4 @@
       <displayPriority>100</displayPriority>
     </recipeMaker>
   </ThingDef>
-
-  <ThingDef Name="ApparelArmorHelmetReconQuasarBase" ParentName="ArmorHelmetMakeableBase" Abstract="True">
-    <techLevel>Ultra</techLevel>
-    <recipeMaker>
-      <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
-      <researchPrerequisites>
-        <li>BOR_Research_Armor_II</li>
-      </researchPrerequisites>
-      <skillRequirements>
-        <Crafting>15</Crafting>
-      </skillRequirements>
-      <recipeUsers Inherit="False">
-        <li>BOR_Bench_II</li>
-        <li>BOR_Bench_IV</li>
-      </recipeUsers>
-    </recipeMaker>
-    <graphicData>
-      <color>(0.36, 0.5, 0.7)</color>
-      <texPath>Things/Pawn/Humanlike/Apparel/ReconArmorHelmet/ReconHelmet</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
-      <drawSize>(0.9, 0.9)</drawSize>
-    </graphicData>
-    <tradeTags>
-      <li>HiTechArmor</li>
-      <li>BOR_Tech_II</li>
-    </tradeTags>
-    <generateCommonality>0.5</generateCommonality>
-    <statBases>
-      <WorkToMake>33000</WorkToMake>
-      <MaxHitPoints>225</MaxHitPoints>
-      <Mass>0.66</Mass>
-      <Flammability>0.20</Flammability>
-      <ArmorRating_Sharp>1.75</ArmorRating_Sharp>
-      <ArmorRating_Blunt>0.75</ArmorRating_Blunt>
-      <ArmorRating_Heat>0.81</ArmorRating_Heat>
-      <Insulation_Cold>5</Insulation_Cold>
-      <Insulation_Heat>3</Insulation_Heat>
-      <EquipDelay>2</EquipDelay>
-
-      <RoyalFavorValue>3</RoyalFavorValue>
-    </statBases>
-    <costList>
-      <BOR_ComponentII>1</BOR_ComponentII>
-      <BOR_QuasarAlloy>33</BOR_QuasarAlloy>
-    </costList>
-    <apparel>
-      <immuneToToxGasExposure>true</immuneToToxGasExposure>
-      <bodyPartGroups>
-        <li>FullHead</li>
-      </bodyPartGroups>
-      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/ReconArmorHelmet/ReconHelmet</wornGraphicPath>
-      <layers>
-        <li>Overhead</li>
-      </layers>
-      <defaultOutfitTags>
-        <li>Soldier</li>
-      </defaultOutfitTags>
-      <useDeflectMetalEffect>true</useDeflectMetalEffect>
-    </apparel>
-    <comps>
-      <li Class="CompProperties_Biocodable" />
-    </comps>
-    <thingSetMakerTags>
-      <li>RewardStandardHighFreq</li>
-    </thingSetMakerTags>
-  </ThingDef>
-
-  <ThingDef ParentName="ApparelArmorHelmetReconQuasarBase">
-    <defName>BOR_Quasar_Apparel_ArmorHelmetRecon</defName>
-    <label>quasar recon helmet</label>
-    <description>A Helmet forged from Quasar Alloys, complete with a telescopic monocular and long-range radio antenna.\n\nUsually found on 'Profit Hunters', which in reality are forward scouts for the Plutocratic Kwazaari and their endless lust for wealth.</description>
-    <apparel>
-      <tags>
-        <li>BOR_Military_II</li>
-      </tags>
-      <forceEyesVisibleForRotations>
-        <li>1</li>
-        <li>2</li>
-        <li>3</li>
-      </forceEyesVisibleForRotations>
-    </apparel>
-    <tradeTags>
-      <li>BOR_Armor_II</li>
-      <li>BOR_Tech_II</li>
-    </tradeTags>
-    <recipeMaker>
-      <displayPriority>110</displayPriority>
-    </recipeMaker>
-  </ThingDef>
-
 </Defs>

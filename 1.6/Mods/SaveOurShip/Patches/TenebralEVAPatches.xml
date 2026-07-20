@@ -7,9 +7,9 @@
 				<!-- apparels -->
 				<!-- EVA description -->
 				<li Class="PatchOperationConditional">
-					<xpath>Defs/ThingDef[@ParentName="ApparelArmorReconTenebralBase" or @ParentName="ApparelArmorPowerTenebralBase" or @ParentName="ApparelArmorHelmetPowerTenebralBase"][not(comps)]</xpath>
+					<xpath>Defs/ThingDef[defName="BOR_Tenebral_Apparel_PowerArmor" or @ParentName="ApparelArmorHelmetPowerTenebralBase"][not(comps)]</xpath>
 					<match Class="PatchOperationAdd">
-						<xpath>Defs/ThingDef[@ParentName="ApparelArmorReconTenebralBase" or @ParentName="ApparelArmorPowerTenebralBase" or @ParentName="ApparelArmorHelmetPowerTenebralBase"][not(comps)]</xpath>
+						<xpath>Defs/ThingDef[defName="BOR_Tenebral_Apparel_PowerArmor" or @ParentName="ApparelArmorHelmetPowerTenebralBase"][not(comps)]</xpath>
 						<value>
 							<comps />
 						</value>
@@ -17,9 +17,9 @@
 				</li>
 
 				<li Class="PatchOperationConditional">
-					<xpath>Defs/ThingDef[@ParentName="ApparelArmorReconTenebralBase" or @ParentName="ApparelArmorPowerTenebralBase" or @ParentName="ApparelArmorHelmetPowerTenebralBase"]/comps[not(li/compClass="SaveOurShip2.CompEVA")]</xpath>
+					<xpath>Defs/ThingDef[defName="BOR_Tenebral_Apparel_PowerArmor" or @ParentName="ApparelArmorHelmetPowerTenebralBase"]/comps[not(li/compClass="SaveOurShip2.CompEVA")]</xpath>
 					<match Class="PatchOperationAdd">
-						<xpath>Defs/ThingDef[@ParentName="ApparelArmorReconTenebralBase" or @ParentName="ApparelArmorPowerTenebralBase" or @ParentName="ApparelArmorHelmetPowerTenebralBase"]/comps[not(li/compClass="SaveOurShip2.CompEVA")]</xpath>
+						<xpath>Defs/ThingDef[defName="BOR_Tenebral_Apparel_PowerArmor" or @ParentName="ApparelArmorHelmetPowerTenebralBase"]/comps[not(li/compClass="SaveOurShip2.CompEVA")]</xpath>
 						<value>
 							<li>
 								<compClass>SaveOurShip2.CompEVA</compClass>
@@ -30,9 +30,9 @@
 
 				<!-- EVA stats -->
 				<li Class="PatchOperationConditional">
-					<xpath>Defs/ThingDef[@ParentName="ApparelArmorReconTenebralBase" or @ParentName="ApparelArmorPowerTenebralBase" or @ParentName="ApparelArmorHelmetPowerTenebralBase"][not(equippedStatOffsets)]</xpath>
+					<xpath>Defs/ThingDef[defName="BOR_Tenebral_Apparel_PowerArmor" or @ParentName="ApparelArmorHelmetPowerTenebralBase"][not(equippedStatOffsets)]</xpath>
 					<match Class="PatchOperationAdd">
-						<xpath>Defs/ThingDef[@ParentName="ApparelArmorReconTenebralBase" or @ParentName="ApparelArmorPowerTenebralBase" or @ParentName="ApparelArmorHelmetPowerTenebralBase"][not(equippedStatOffsets)]</xpath>
+						<xpath>Defs/ThingDef[defName="BOR_Tenebral_Apparel_PowerArmor" or @ParentName="ApparelArmorHelmetPowerTenebralBase"][not(equippedStatOffsets)]</xpath>
 						<value>
 							<equippedStatOffsets />
 						</value>
@@ -41,9 +41,9 @@
 
 				<!-- Armor DecompressionResistance -->
 				<li Class="PatchOperationConditional">
-					<xpath>Defs/ThingDef[@ParentName="ApparelArmorReconTenebralBase" or @ParentName="ApparelArmorPowerTenebralBase"]/equippedStatOffsets[not(DecompressionResistance)]</xpath>
+					<xpath>Defs/ThingDef[defName="BOR_Tenebral_Apparel_PowerArmor"]/equippedStatOffsets[not(DecompressionResistance)]</xpath>
 					<match Class="PatchOperationAdd">
-						<xpath>Defs/ThingDef[@ParentName="ApparelArmorReconTenebralBase" or @ParentName="ApparelArmorPowerTenebralBase"]/equippedStatOffsets[not(DecompressionResistance)]</xpath>
+						<xpath>Defs/ThingDef[defName="BOR_Tenebral_Apparel_PowerArmor"]/equippedStatOffsets[not(DecompressionResistance)]</xpath>
 						<value>
 							<DecompressionResistance>0.95</DecompressionResistance>
 						</value>
@@ -72,17 +72,10 @@
 					</match>
 				</li>
 
-				<!-- Recon Armor Insulation_Cold -->
-				<li Class="PatchOperationReplace">
-					<xpath>Defs/ThingDef[@Name="ApparelArmorReconTenebralBase"]/statBases/Insulation_Cold</xpath>
-					<value>
-						<Insulation_Cold>150</Insulation_Cold>
-					</value>
-				</li>
 
 				<!-- Marine Armor Insulation_Cold -->
 				<li Class="PatchOperationReplace">
-					<xpath>Defs/ThingDef[@Name="ApparelArmorPowerTenebralBase"]/statBases/Insulation_Cold</xpath>
+					<xpath>Defs/ThingDef[defName="BOR_Tenebral_Apparel_PowerArmor"]/statBases/Insulation_Cold</xpath>
 					<value>
 						<Insulation_Cold>160</Insulation_Cold>
 					</value>

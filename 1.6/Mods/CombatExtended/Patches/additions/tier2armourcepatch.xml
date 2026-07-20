@@ -5,9 +5,39 @@
 		<modSettingDef>BOR_Setting_CE_TODO</modSettingDef>
 		<enabled Class="PatchOperationSequence">
 			<operations>
-				<!-- dont remove, do a partial armor based on plate armor -->
-				<li Class="PatchOperationRemove">
+				<!-- Quasar Assembly Carapace: partial armor coverage for torso/shoulder area only -->
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[defName="BOR_Quasar_Assembly_Carapace"]/statBases</xpath>
+					<value>
+						<Bulk>10</Bulk>
+						<WornBulk>5</WornBulk>
+					</value>
+				</li>
+
+				<li Class="PatchOperationAddModExtension">
 					<xpath>Defs/ThingDef[defName="BOR_Quasar_Assembly_Carapace"]</xpath>
+					<value>
+						<li Class="CombatExtended.PartialArmorExt">
+							<stats>
+								<li>
+									<ArmorRating_Sharp>6.25</ArmorRating_Sharp>
+									<parts>
+										<li>Shoulder</li>
+										<li>Stomach</li>
+										<li>Spine</li>
+									</parts>
+								</li>
+								<li>
+									<ArmorRating_Blunt>6.25</ArmorRating_Blunt>
+									<parts>
+										<li>Shoulder</li>
+										<li>Stomach</li>
+										<li>Spine</li>
+									</parts>
+								</li>
+							</stats>
+						</li>
+					</value>
 				</li>
 
 				<li Class="PatchOperationReplace">
@@ -204,16 +234,9 @@
 					</value>
 				</li>
 
-				<li Class="PatchOperationReplace">
-					<xpath>Defs/ThingDef[@Name="ApparelArmorPowerQuasarBase"]/costList/Uranium</xpath>
-					<value>
-						<Uranium>99</Uranium>
-					</value>
-				</li>
-
 
 				<li Class="PatchOperationAdd">
-					<xpath>Defs/ThingDef[@Name="ApparelArmorReconQuasarBase"]/statBases</xpath>
+					<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_ArmorHelmetRecon"]/statBases</xpath>
 					<value>
 						<Bulk>61</Bulk>
 						<WornBulk>9</WornBulk>
@@ -221,49 +244,49 @@
 				</li>
 
 				<li Class="PatchOperationReplace">
-					<xpath>Defs/ThingDef[@Name="ApparelArmorReconQuasarBase"]/statBases/MaxHitPoints</xpath>
+					<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_ArmorHelmetRecon"]/statBases/MaxHitPoints</xpath>
 					<value>
 						<MaxHitPoints>750</MaxHitPoints>
 					</value>
 				</li>
 
 				<li Class="PatchOperationReplace">
-					<xpath>Defs/ThingDef[@Name="ApparelArmorReconQuasarBase"]/statBases/Mass</xpath>
+					<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_ArmorHelmetRecon"]/statBases/Mass</xpath>
 					<value>
 						<Mass>22</Mass>
 					</value>
 				</li>
 
 				<li Class="PatchOperationReplace">
-					<xpath>Defs/ThingDef[@Name="ApparelArmorReconQuasarBase"]/statBases/Flammability</xpath>
+					<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_ArmorHelmetRecon"]/statBases/Flammability</xpath>
 					<value>
 						<Flammability>0.14</Flammability>
 					</value>
 				</li>
 
 				<li Class="PatchOperationReplace">
-					<xpath>Defs/ThingDef[@Name="ApparelArmorReconQuasarBase"]/statBases/ArmorRating_Sharp</xpath>
+					<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_ArmorHelmetRecon"]/statBases/ArmorRating_Sharp</xpath>
 					<value>
 						<ArmorRating_Sharp>30</ArmorRating_Sharp>
 					</value>
 				</li>
 
 				<li Class="PatchOperationReplace">
-					<xpath>Defs/ThingDef[@Name="ApparelArmorReconQuasarBase"]/statBases/ArmorRating_Blunt</xpath>
+					<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_ArmorHelmetRecon"]/statBases/ArmorRating_Blunt</xpath>
 					<value>
 						<ArmorRating_Blunt>63</ArmorRating_Blunt>
 					</value>
 				</li>
 
 				<li Class="PatchOperationAdd">
-					<xpath>Defs/ThingDef[@Name="ApparelArmorReconQuasarBase"]/costList</xpath>
+					<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_ArmorHelmetRecon"]/costList</xpath>
 					<value>
 						<DevilstrandCloth>44</DevilstrandCloth>
 					</value>
 				</li>
 
 				<li Class="PatchOperationAdd">
-					<xpath>Defs/ThingDef[@Name="ApparelArmorReconQuasarBase"]</xpath>
+					<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_ArmorHelmetRecon"]</xpath>
 					<value>
 						<equippedStatOffsets>
 							<CarryWeight>42</CarryWeight>
@@ -274,7 +297,7 @@
 				</li>
 
 				<li Class="PatchOperationAdd">
-					<xpath>Defs/ThingDef[@Name="ApparelArmorReconQuasarBase"]/apparel/bodyPartGroups</xpath>
+					<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_ArmorHelmetRecon"]/apparel/bodyPartGroups</xpath>
 					<value>
 						<li>Hands</li>
 						<li>Feet</li>
@@ -282,7 +305,7 @@
 				</li>
 
 				<li Class="PatchOperationAddModExtension">
-					<xpath>Defs/ThingDef[@Name="ApparelArmorReconQuasarBase"]</xpath>
+					<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_ArmorHelmetRecon"]</xpath>
 					<value>
 						<li Class="CombatExtended.PartialArmorExt">
 							<stats>
@@ -331,16 +354,9 @@
 
 
 				<li Class="PatchOperationReplace">
-					<xpath>Defs/ThingDef[@Name="ApparelArmorReconQuasarBase"]/costList/BOR_QuasarAlloy</xpath>
+					<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_ArmorHelmetRecon"]/costList/BOR_QuasarAlloy</xpath>
 					<value>
 						<BOR_QuasarAlloy>154</BOR_QuasarAlloy>
-					</value>
-				</li>
-
-				<li Class="PatchOperationReplace">
-					<xpath>Defs/ThingDef[@Name="ApparelArmorReconQuasarBase"]/costList/Uranium</xpath>
-					<value>
-						<Uranium>50</Uranium>
 					</value>
 				</li>
 

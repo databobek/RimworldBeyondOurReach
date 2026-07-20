@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+
+  <Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
+    <modSettingDef>BOR_Setting_Biotech_Apparel</modSettingDef>
+    <enabled Class="PatchOperationSequence">
+      <operations>
+
+        <li Class="PatchOperationAdd">
+          <xpath>Defs</xpath>
+          <value>
+            <ThingDef ParentName="ApparelArmorHelmetMechanitorBase">
+              <defName>BOR_Apparel_QuasarArmorHelmetMechlordHelmet</defName>
+              <label>quasar machine lord helmet</label>
+              <description>A heavy quasar alloy-weave helmet packed with mechanitor-assistance gear. The mechlord helmet dramatically amplifies a mechanitor's bandwidth, but is somewhat less protective than dedicated heavy armor.</description>
+              <graphicData>
+                <texPath>BOR/Things/Pawn/Humanlike/Apparel/QuasarMechlordHelmet/quasar_mechcommander_helmet</texPath>
+                <graphicClass>Graphic_Single</graphicClass>
+              </graphicData>
+              <statBases>
+                <MaxHitPoints>250</MaxHitPoints>
+              </statBases>
+              <equippedStatOffsets>
+                <MechBandwidth>12</MechBandwidth>
+                <MechControlGroups>1</MechControlGroups>
+                <ShootingAccuracyPawn>-4</ShootingAccuracyPawn>
+                <MeleeHitChance>-0.4</MeleeHitChance>
+                <VacuumResistance MayRequire="Ludeon.RimWorld.Odyssey">0.7</VacuumResistance>
+              </equippedStatOffsets>
+              <recipeMaker Inherit="False">
+                <researchPrerequisite>BOR_Research_Mechtech_II</researchPrerequisite>
+                <recipeUsers>
+                  <li>BOR_Bench_II</li>
+                  <li>BOR_Bench_IV</li>
+                </recipeUsers>
+                <workSkill>Crafting</workSkill>
+                <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+                <skillRequirements>
+                  <Crafting>14</Crafting>
+                </skillRequirements>
+                <displayPriority>519</displayPriority>
+              </recipeMaker>
+              <costList Inherit="False">
+                <BOR_QuasarAlloy>120</BOR_QuasarAlloy>
+                <BOR_ComponentII>2</BOR_ComponentII>
+                <NanostructuringChip>3</NanostructuringChip>
+              </costList>
+              <apparel>
+                <tags>
+                  <li>RoyalTier7</li>
+                  <li>Mechlord</li>
+                  <li>BOR_Military_II</li>
+                </tags>
+                <scoreOffset>4</scoreOffset>
+                <mechanitorApparel>true</mechanitorApparel>
+                <wornGraphicPath>BOR/Things/Pawn/Humanlike/Apparel/MechlordHelmet/quasar_mechcommander_helmet</wornGraphicPath>
+              </apparel>
+            </ThingDef>
+
+            <ThingDef ParentName="ApparelArmorPowerBase">
+              <defName>BOR_Apparel_QuasarMechlordSuit</defName>
+              <label>quasar machine lord suit</label>
+              <description>A power-assisted armor suit packed with mechanitor-assistance gear. The mechlord suit dramatically amplifies a mechanitor's bandwidth, but is somewhat less protective than dedicated heavy armor.</description>
+              <recipeMaker>
+                <researchPrerequisite>BOR_Research_Mechtech_II</researchPrerequisite>
+                <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+                <displayPriority>530</displayPriority>
+              </recipeMaker>
+              <graphicData>
+                <texPath>BOR/Things/Pawn/Humanlike/Apparel/QuasarMechlord/quasar_mechcommander</texPath>
+                <graphicClass>Graphic_Single</graphicClass>
+              </graphicData>
+              <statBases>
+                <ArmorRating_Sharp>0.8</ArmorRating_Sharp>
+                <ArmorRating_Blunt>0.6</ArmorRating_Blunt>
+                <ArmorRating_Heat>0.55</ArmorRating_Heat>
+                <Insulation_Cold>64</Insulation_Cold>
+                <Insulation_Heat>15</Insulation_Heat>
+                <EquipDelay>7</EquipDelay>
+              </statBases>
+              <equippedStatOffsets>
+                <MechBandwidth>10</MechBandwidth>
+                <ShootingAccuracyPawn>-4</ShootingAccuracyPawn>
+                <MeleeHitChance>-0.4</MeleeHitChance>
+                <VacuumResistance MayRequire="Ludeon.RimWorld.Odyssey">0.3</VacuumResistance>
+              </equippedStatOffsets>
+              <costList>
+                <NanostructuringChip>2</NanostructuringChip>
+                <PowerfocusChip>1</PowerfocusChip>
+                <BOR_QuasarAlloy>120</BOR_QuasarAlloy>
+                <BOR_ComponentII>4</BOR_ComponentII>
+              </costList>
+              <apparel>
+                <tags>
+                  <li>RoyalTier7</li>
+                  <li>Mechlord</li>
+                  <li>BOR_Military_II</li>
+                </tags>
+                <wornGraphicPath>BOR/Things/Pawn/Humanlike/Apparel/QuasarMechlord/quasar_mechcommander</wornGraphicPath>
+                <useWornGraphicMask>true</useWornGraphicMask>
+              </apparel>
+              <tradeability>Sellable</tradeability>
+              <tradeTags Inherit="False">
+                <li>HiTechArmor</li>
+                <li>BOR_HiTechArmor_II</li>
+                <li>BOR_Tech_II</li>
+              </tradeTags>
+            </ThingDef>
+
+          </value>
+        </li>
+
+        <li Class="PatchOperationFindMod">
+          <mods>
+            <li>Combat Extended</li>
+          </mods>
+          <match Class="PatchOperationSequence">
+            <operations>
+              <!-- Mech Lord Helmet  -->
+              <li Class="PatchOperationReplace">
+                <xpath>Defs/ThingDef[defName="BOR_Apparel_QuasarArmorHelmetMechlordHelmet"]/statBases/MaxHitPoints</xpath>
+                <value>
+                  <MaxHitPoints>325</MaxHitPoints>
+                  <Mass>1.75</Mass>
+                  <ArmorRating_Sharp>19</ArmorRating_Sharp>
+                  <ArmorRating_Blunt>30</ArmorRating_Blunt>
+                  <Flammability>0.2</Flammability>
+                </value>
+              </li>
+
+              <li Class="PatchOperationReplace">
+                <xpath>Defs/ThingDef[defName="BOR_Apparel_QuasarArmorHelmetMechlordHelmet"]/equippedStatOffsets/ShootingAccuracyPawn</xpath>
+                <value>
+                  <ToxicEnvironmentResistance>0.66</ToxicEnvironmentResistance>
+                  <SmokeSensitivity>-1</SmokeSensitivity>
+                  <AimingAccuracy>-0.25</AimingAccuracy>
+                  <ShootingAccuracyPawn>-0.85</ShootingAccuracyPawn>
+                </value>
+              </li>
+
+              <li Class="PatchOperationReplace">
+                <xpath>Defs/ThingDef[defName="BOR_Apparel_QuasarArmorHelmetMechlordHelmet"]/costList/BOR_QuasarAlloy</xpath>
+                <value>
+                  <BOR_QuasarAlloy>165</BOR_QuasarAlloy>
+                </value>
+              </li>
+
+              <li Class="PatchOperationAddModExtension">
+                <xpath>Defs/ThingDef[defName="BOR_Apparel_QuasarArmorHelmetMechlordHelmet"]</xpath>
+                <value>
+                  <li Class="CombatExtended.ApparelDefExtension">
+                    <isRadioPack>true</isRadioPack>
+                  </li>
+                </value>
+              </li>
+              <li Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="BOR_Apparel_QuasarMechlordSuit"]/statBases</xpath>
+                <value>
+                  <Bulk>75</Bulk>
+                  <WornBulk>15</WornBulk>
+                  <Mass>35</Mass>
+                  <MaxHitPoints>475</MaxHitPoints>
+                </value>
+              </li>
+
+              <li Class="PatchOperationReplace">
+                <xpath>Defs/ThingDef[defName="BOR_Apparel_QuasarMechlordSuit"]/statBases/ArmorRating_Sharp</xpath>
+                <value>
+                  <ArmorRating_Sharp>18</ArmorRating_Sharp>
+                </value>
+              </li>
+
+              <li Class="PatchOperationReplace">
+                <xpath>Defs/ThingDef[defName="BOR_Apparel_QuasarMechlordSuit"]/statBases/ArmorRating_Blunt</xpath>
+                <value>
+                  <ArmorRating_Blunt>25</ArmorRating_Blunt>
+                </value>
+              </li>
+
+              <li Class="PatchOperationReplace">
+                <xpath>Defs/ThingDef[defName="BOR_Apparel_QuasarMechlordSuit"]/costList/BOR_QuasarAlloy</xpath>
+                <value>
+                  <BOR_QuasarAlloy>190</BOR_QuasarAlloy>
+                </value>
+              </li>
+
+              <li Class="PatchOperationReplace">
+                <xpath>Defs/ThingDef[defName="BOR_Apparel_QuasarMechlordSuit"]/equippedStatOffsets/ShootingAccuracyPawn</xpath>
+                <value>
+                  <CarryWeight>60</CarryWeight>
+                  <CarryBulk>12</CarryBulk>
+                  <AimingAccuracy>-0.25</AimingAccuracy>
+                  <ShootingAccuracyPawn>-0.85</ShootingAccuracyPawn>
+                </value>
+              </li>
+
+              <li Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="BOR_Apparel_QuasarMechlordSuit"]</xpath>
+                <value>
+                  <modExtensions Inherit="False">
+                    <li Class="CombatExtended.PartialArmorExt">
+                      <stats>
+                        <li>
+                          <ArmorRating_Sharp>0.60</ArmorRating_Sharp>
+                          <parts>
+                            <li>Neck</li>
+                            <li>Hand</li>
+                          </parts>
+                        </li>
+                        <li>
+                          <ArmorRating_Blunt>0.60</ArmorRating_Blunt>
+                          <parts>
+                            <li>Neck</li>
+                            <li>Hand</li>
+                          </parts>
+                        </li>
+                        <li>
+                          <ArmorRating_Sharp>1.0</ArmorRating_Sharp>
+                          <parts>
+                            <li>Leg</li>
+                          </parts>
+                        </li>
+                        <li>
+                          <ArmorRating_Blunt>1.0</ArmorRating_Blunt>
+                          <parts>
+                            <li>Leg</li>
+                          </parts>
+                        </li>
+                        <li>
+                          <ArmorRating_Sharp>1.0</ArmorRating_Sharp>
+                          <parts>
+                            <li>Arm</li>
+                          </parts>
+                        </li>
+                        <li>
+                          <ArmorRating_Blunt>1.0</ArmorRating_Blunt>
+                          <parts>
+                            <li>Arm</li>
+                          </parts>
+                        </li>
+                      </stats>
+                    </li>
+                  </modExtensions>
+                </value>
+              </li>
+
+            </operations>
+          </match>
+        </li>
+
+      </operations>
+    </enabled>
+  </Operation>
+
+</Patch>

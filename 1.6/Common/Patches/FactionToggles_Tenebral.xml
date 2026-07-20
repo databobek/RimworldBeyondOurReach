@@ -57,8 +57,8 @@
                             <defName>NamerIdeoTenebral</defName>
                             <rulePack>
                                 <rulesStrings>
-                                    <li>r_ideoName-&gt;Tenebralsm</li>
-                                    <li>r_ideoAdjective-&gt;Kwazaar</li>
+                                    <li>r_ideoName-&gt;Tenebralism</li>
+                                    <li>r_ideoAdjective-&gt;Tenebral</li>
                                     <li>r_memberName-&gt;Tenebral</li>
                                 </rulesStrings>
                             </rulePack>
@@ -115,6 +115,62 @@
                 <li Class="PatchOperationAdd">
                     <xpath>Defs</xpath>
                     <value>
+
+                        <ThingSetMakerDef>
+                            <defName>BOR_LootMaker_III</defName>
+                            <root Class="ThingSetMaker_RandomOption">
+                                <options>
+                                    <li>
+                                        <weight>6</weight>
+                                        <thingSetMaker Class="ThingSetMaker_MarketValue">
+                                            <fixedParams>
+                                                <filter>
+                                                    <thingDefs>
+                                                        <li>BOR_Tenebrite</li>
+                                                    </thingDefs>
+                                                </filter>
+                                            </fixedParams>
+                                        </thingSetMaker>
+                                    </li>
+                                    <li>
+                                        <weight>1</weight>
+                                        <thingSetMaker Class="ThingSetMaker_MarketValue">
+                                            <fixedParams>
+                                                <filter>
+                                                    <thingDefs>
+                                                        <li>BOR_Femtoclusters</li>
+                                                    </thingDefs>
+                                                </filter>
+                                            </fixedParams>
+                                        </thingSetMaker>
+                                    </li>
+                                    <li>
+                                        <weight>1</weight>
+                                        <thingSetMaker Class="ThingSetMaker_MarketValue">
+                                            <fixedParams>
+                                                <filter>
+                                                    <thingDefs>
+                                                        <li>BOR_MedicineIII</li>
+                                                    </thingDefs>
+                                                </filter>
+                                            </fixedParams>
+                                        </thingSetMaker>
+                                    </li>
+                                    <li>
+                                        <weight>1</weight>
+                                        <thingSetMaker Class="ThingSetMaker_MarketValue">
+                                            <fixedParams>
+                                                <filter>
+                                                    <thingDefs>
+                                                        <li>BOR_ComponentIII</li>
+                                                    </thingDefs>
+                                                </filter>
+                                            </fixedParams>
+                                        </thingSetMaker>
+                                    </li>
+                                </options>
+                            </root>
+                        </ThingSetMakerDef>
                         <PawnKindDef Name="BOR_BasePawn_III" Abstract="True">
                             <race>Human</race>
                             <chemicalAddictionChance>0.3</chemicalAddictionChance>
@@ -135,6 +191,7 @@
                             <techHediffsMoney>15000~60000</techHediffsMoney>
                             <apparelTags />
                             <techHediffsRequired>
+                                <li>DeathAcidifier</li>
                                 <li>BOR_TenebralAppendage</li>
                                 <li>BOR_TenebralOrgan</li>
                                 <li>BOR_TenebralAppendage</li>
@@ -167,6 +224,7 @@
                             <techHediffsChance>0.95</techHediffsChance>
                             <techHediffsMoney>50000~70000</techHediffsMoney>
                             <techHediffsRequired>
+                                <li>DeathAcidifier</li>
                                 <li>BOR_TenebralAppendage</li>
                                 <li>BOR_TenebralOrgan</li>
                                 <li>BOR_TenebralAppendage</li>
@@ -193,19 +251,22 @@
                             <defName>BOR_Tenebral_Executioner</defName>
                             <label>executioner</label>
                             <labelPlural>executioners</labelPlural>
-                            <weaponTags Inherit="False" />
+                            <weaponTags Inherit="False">
+                                <li>BOR_Melee_III</li>
+                            </weaponTags>
                             <weaponMoney>
-                                <min>0</min>
-                                <max>0</max>
+                                <min>10000</min>
+                                <max>10000</max>
                             </weaponMoney>
-                            <combatPower>10000</combatPower>
+                            <combatPower>5000</combatPower>
                             <isFighter>true</isFighter>
                             <canBeSapper>false</canBeSapper>
-                            <apparelMoney/>
+                            <apparelMoney />
                             <apparelRequired>
+                                <li>BOR_Tenebral_Apparel_ShieldBelt</li>
                                 <li>BOR_Tenebral_Apparel_PowerArmorHelmet</li>
                                 <li>BOR_Tenebral_Apparel_PowerArmor</li>
-                                <li MayRequire="rimsenal.core">BOR_Tenebral_Carbonsuit</li>
+                                <li>BOR_Tenebral_Carbonsuit</li>
                             </apparelRequired>
                             <techHediffsChance>1</techHediffsChance>
                             <techHediffsMoney>70000~90000</techHediffsMoney>
@@ -219,6 +280,7 @@
                                     <range>0~2</range>
                                 </li>
                             </skills>
+                            <factionLeader>true</factionLeader>
                         </PawnKindDef>
                     </value>
                 </li>
@@ -233,7 +295,7 @@
                             <pawnsPlural>tenebrals</pawnsPlural>
                             <listOrderPriority>43</listOrderPriority>
                             <canMakeRandomly>true</canMakeRandomly>
-                            <canSiege>true</canSiege>
+                            <canSiege>false</canSiege>
                             <leaderTitle>tenebral god</leaderTitle>
                             <factionIconPath>BOR/Things/Factions/TenebralIcon</factionIconPath>
                             <factionNameMaker>NamerTenebralFaction</factionNameMaker>
@@ -265,12 +327,9 @@
 		</xenotypeSet> -->
                             <maxPawnCostPerTotalPointsCurve>
                                 <points>
-                                    <li>(0,35)</li>
-                                    <li>(70, 50)</li>
-                                    <li>(700, 100)</li>
-                                    <li>(1300, 150)</li>
-                                    <li>(100000, 10000)</li>
-                                    <li>(150000, 20000)</li>
+                                    <li>(5000, 10000)</li>
+                                    <li>(10000, 25000)</li>
+                                    <li>(25000, 50000)</li>
                                 </points>
                             </maxPawnCostPerTotalPointsCurve>
                             <apparelStuffFilter>
@@ -289,7 +348,7 @@
                             </pawnGroupMakers>
                             <autoFlee>false</autoFlee>
                             <permanentEnemy>true</permanentEnemy>
-                            <canStageAttacks>true</canStageAttacks>
+                            <canStageAttacks>false</canStageAttacks>
                             <settlementGenerationWeight>1</settlementGenerationWeight>
                             <requiredCountAtGameStart>1</requiredCountAtGameStart>
                             <disallowedMemes>
@@ -308,18 +367,21 @@
                             </disallowedPrecepts>
                             <raidLootValueFromPointsCurve>
                                 <points>
-                                    <li>(35, 1000)</li>
-                                    <li>(100, 2400)</li>
-                                    <li>(1000, 10000)</li>
-                                    <li>(2000, 16000)</li>
-                                    <li>(4000, 20000)</li>
+                                    <li>(35, 125)</li>
+                                    <li>(100, 125)</li>
+                                    <li>(1000, 125)</li>
+                                    <li>(2000, 125)</li>
+                                    <li>(4000, 125)</li>
+                                    <li>(6000, 250)</li>
+                                    <li>(8000, 500)</li>
+                                    <li>(10000, 600)</li>
                                 </points>
                             </raidLootValueFromPointsCurve>
                             <allowedArrivalTemperatureRange>
                                 <min>-150</min>
                                 <max>150</max>
                             </allowedArrivalTemperatureRange>
-                            <raidLootMaker>BOR_LootMaker_II</raidLootMaker>
+                            <raidLootMaker>BOR_LootMaker_III</raidLootMaker>
                             <maxConfigurableAtWorldCreation>1</maxConfigurableAtWorldCreation>
                         </FactionDef>
                     </value>

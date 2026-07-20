@@ -1,6 +1,75 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Defs>
 
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>BOR_Kylar_Xar_Computer</defName>
+    <label>Kylar-Xar effect computer</label>
+    <description>The application of Kylar-Xar effect state in computer design enables us to bypass the limitations of our industrial era designs. To create the conditions for these quantum states our computers must double as cryogenic chambers. This will require enormous systems of coolant and temperature mitigation. Only a single Kylar-Xar effect computer is needed.</description>
+    <graphicData>
+      <texPath>BOR/Retextures/quantumcomputer</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(3.5,3.5)</drawSize>
+      <damageData>
+        <rect>(0.05,0.05,0.95,0.95)</rect>
+      </damageData>
+    </graphicData>
+    <altitudeLayer>Building</altitudeLayer>
+    <tickerType>Normal</tickerType>
+    <castEdgeShadows>true</castEdgeShadows>
+    <staticSunShadowHeight>0.35</staticSunShadowHeight>
+    <fillPercent>0.5</fillPercent>
+    <rotatable>true</rotatable>
+    <statBases>
+      <MaxHitPoints>300</MaxHitPoints>
+      <WorkToBuild>10000</WorkToBuild>
+      <Mass>200</Mass>
+      <Flammability>1.0</Flammability>
+    </statBases>
+    <size>(3,3)</size>
+    <costList>
+      <Silver>1000</Silver>
+      <ComponentSpacer>20</ComponentSpacer>
+      <ComponentIndustrial>30</ComponentIndustrial>
+      <Plasteel>300</Plasteel>
+      <BOR_Sunsteel>200</BOR_Sunsteel>
+      <Gold>150</Gold>
+    </costList>
+    <researchPrerequisites>
+      <li>BOR_Kylar_Xar_Computer</li>
+    </researchPrerequisites>
+    <designationCategory>BOR</designationCategory>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <thingCategories>
+      <li>BuildingsMisc</li>
+    </thingCategories>
+    <comps>
+      <li MayRequire="joeyjoejoeshabidoo.Rimputers1.4" Class="Rimputers.CompProperties_WaterConsumer">
+        <waterPerTick>0.1</waterPerTick>
+      </li>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <shortCircuitInRain>true</shortCircuitInRain>
+        <basePowerConsumption>5000</basePowerConsumption>
+      </li>
+      <li Class="CompProperties_Flickable" />
+      <li Class="CompProperties_HeatPusher">
+        <compClass>CompHeatPusherPowered</compClass>
+        <heatPerSecond>50</heatPerSecond>
+      </li>
+      <li Class="CompProperties_Facility">
+        <statOffsets>
+          <ResearchSpeedFactor>3.5</ResearchSpeedFactor>
+        </statOffsets>
+        <maxSimultaneous>1</maxSimultaneous>
+      </li>
+    </comps>
+    <placeWorkers>
+      <li>PlaceWorker_ShowFacilitiesConnections</li>
+    </placeWorkers>
+    <constructionSkillPrerequisite>15</constructionSkillPrerequisite>
+  </ThingDef>
+
   <ThingDef ParentName="BuildingBase">
     <defName>BOR_Research_Unlocker_I</defName>
     <label>solar fluid simulation array</label>
@@ -113,6 +182,7 @@
           <WorkTableWorkSpeedFactor>0.135</WorkTableWorkSpeedFactor>
         </statOffsets>
         <maxSimultaneous>3</maxSimultaneous>
+				<maxDistance>10</maxDistance>
       </li>
     </comps>
     <designationHotKey>Misc6</designationHotKey>

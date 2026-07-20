@@ -110,6 +110,31 @@
 							<generateCommonality>0.01</generateCommonality>
 						</ThingDef>
 
+						<ThingDef Class="CombatExtended.AmmoDef" ParentName="SpacerSmallAmmoBase">
+							<defName>BOR_Ammo_4mmRailgun_SS</defName>
+							<label>4mm Railgun cartridge (SS)</label>
+							<description>Sunsteel-coated discarding-sabot penetrator, the baseline round for railgun pistols.</description>
+							<statBases>
+								<Mass>0.02</Mass>
+								<Bulk>0.01</Bulk>
+								<MarketValue>0.05</MarketValue>
+							</statBases>
+							<tradeTags>
+								<li>CE_AutoEnableTrade</li>
+								<li>CE_AutoEnableCrafting_FabricationBench</li>
+							</tradeTags>
+							<thingCategories>
+								<li>Ammo4mmRailgun</li>
+							</thingCategories>
+							<graphicData>
+								<texPath>BOR/Things/Item/Equipment/weaponranged/gen1/mag/ammo/SS</texPath>
+								<graphicClass>Graphic_StackCount</graphicClass>
+							</graphicData>
+							<ammoClass>BOR_SS_AmmoClass</ammoClass>
+							<generateAllowChance>0.10</generateAllowChance>
+							<generateCommonality>0.01</generateCommonality>
+						</ThingDef>
+
 						<!-- ================== Projectiles ================== -->
 
 						<ThingDef ParentName="BaseBulletCE">
@@ -123,10 +148,10 @@
 							</graphicData>
 							<projectile Class="CombatExtended.ProjectilePropertiesCE">
 								<damageDef>Bullet</damageDef>
-								<damageAmountBase>23</damageAmountBase>
-								<armorPenetrationSharp>46</armorPenetrationSharp>
-								<armorPenetrationBlunt>562</armorPenetrationBlunt>
-								<speed>844</speed>
+								<damageAmountBase>8</damageAmountBase>
+								<armorPenetrationSharp>48</armorPenetrationSharp>
+								<armorPenetrationBlunt>31</armorPenetrationBlunt>
+								<speed>200</speed>
 								<dropsCasings>false</dropsCasings>
 							</projectile>
 						</ThingDef>
@@ -142,15 +167,15 @@
 							</graphicData>
 							<projectile Class="CombatExtended.ProjectilePropertiesCE">
 								<damageDef>Bullet</damageDef>
-								<damageAmountBase>13</damageAmountBase>
-								<armorPenetrationSharp>38</armorPenetrationSharp>
-								<armorPenetrationBlunt>200</armorPenetrationBlunt>
-								<speed>313</speed>
+								<damageAmountBase>7</damageAmountBase>
+								<armorPenetrationSharp>32</armorPenetrationSharp>
+								<armorPenetrationBlunt>22</armorPenetrationBlunt>
+								<speed>160</speed>
 								<dropsCasings>false</dropsCasings>
 								<secondaryDamage>
 									<li>
 										<def>Flame_Secondary</def>
-										<amount>10</amount>
+										<amount>6</amount>
 									</li>
 								</secondaryDamage>
 							</projectile>
@@ -167,15 +192,15 @@
 							</graphicData>
 							<projectile Class="CombatExtended.ProjectilePropertiesCE">
 								<damageDef>Bullet</damageDef>
-								<damageAmountBase>15</damageAmountBase>
-								<armorPenetrationSharp>18</armorPenetrationSharp>
-								<armorPenetrationBlunt>208</armorPenetrationBlunt>
-								<speed>313</speed>
+								<damageAmountBase>8</damageAmountBase>
+								<armorPenetrationSharp>22</armorPenetrationSharp>
+								<armorPenetrationBlunt>19</armorPenetrationBlunt>
+								<speed>160</speed>
 								<dropsCasings>false</dropsCasings>
 								<secondaryDamage>
 									<li>
 										<def>Bomb_Secondary</def>
-										<amount>13</amount>
+										<amount>6</amount>
 									</li>
 								</secondaryDamage>
 							</projectile>
@@ -192,17 +217,36 @@
 							</graphicData>
 							<projectile Class="CombatExtended.ProjectilePropertiesCE">
 								<damageDef>Bullet</damageDef>
-								<damageAmountBase>13</damageAmountBase>
-								<armorPenetrationSharp>18</armorPenetrationSharp>
-								<armorPenetrationBlunt>208</armorPenetrationBlunt>
-								<speed>313</speed>
+								<damageAmountBase>8</damageAmountBase>
+								<armorPenetrationSharp>14</armorPenetrationSharp>
+								<armorPenetrationBlunt>22</armorPenetrationBlunt>
+								<speed>160</speed>
 								<dropsCasings>false</dropsCasings>
 								<secondaryDamage>
 									<li>
 										<def>EMP</def>
-										<amount>10</amount>
+										<amount>6</amount>
 									</li>
 								</secondaryDamage>
+							</projectile>
+						</ThingDef>
+
+						<ThingDef ParentName="BaseBulletCE">
+							<defName>BOR_Bullet_XCOM4mmRailgun_SS</defName>
+							<label>4mm Railgun bullet (SS)</label>
+							<graphicData>
+								<texPath>BOR/Things/Bullet/Bullet_Mag_Small</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+								<shaderType>TransparentPostLight</shaderType>
+								<drawSize>0.6</drawSize>
+							</graphicData>
+							<projectile Class="CombatExtended.ProjectilePropertiesCE">
+								<damageDef>Bullet</damageDef>
+								<damageAmountBase>10</damageAmountBase>
+								<armorPenetrationSharp>16</armorPenetrationSharp>
+								<armorPenetrationBlunt>22</armorPenetrationBlunt>
+								<speed>140</speed>
+								<dropsCasings>false</dropsCasings>
 							</projectile>
 						</ThingDef>
 
@@ -213,6 +257,7 @@
 							<label>make 4mm Railgun cartridge (TC) x500</label>
 							<description>Craft 500 4mm Railgun (TC) cartridges.</description>
 							<jobString>Making 4mm Railgun (TC) cartridges.</jobString>
+								<researchPrerequisite>BOR_CE_GaussAmmo_I_TC</researchPrerequisite>
 							<workAmount>10000</workAmount>
 							<ingredients>
 								<li>
@@ -248,6 +293,7 @@
 							<label>make 4mm Railgun cartridge (Nc) x500</label>
 							<description>Craft 500 4mm Railgun (Nc) cartridges.</description>
 							<jobString>Making 4mm Railgun (Nc) cartridges.</jobString>
+								<researchPrerequisite>BOR_CE_GaussAmmo_I_Ni</researchPrerequisite>
 							<workAmount>20000</workAmount>
 							<ingredients>
 								<li>
@@ -283,6 +329,7 @@
 							<label>make 4mm Railgun cartridge (N-i) x500</label>
 							<description>Craft 500 4mm Railgun (N-i) cartridges.</description>
 							<jobString>Making 4mm Railgun (N-i) cartridges.</jobString>
+								<researchPrerequisite>BOR_CE_GaussAmmo_I_Ni</researchPrerequisite>
 							<workAmount>20000</workAmount>
 							<ingredients>
 								<li>
@@ -318,6 +365,7 @@
 							<label>make 4mm Railgun cartridge (Ionized Neutronium) x500</label>
 							<description>Craft 500 4mm Railgun (Ionized Neutronium) cartridges.</description>
 							<jobString>Making 4mm Railgun (Ionized Neutronium) cartridges.</jobString>
+								<researchPrerequisite>BOR_CE_GaussAmmo_I_Ni</researchPrerequisite>
 							<workAmount>3000</workAmount>
 							<ingredients>
 								<li>
@@ -348,6 +396,56 @@
 							</products>
 						</RecipeDef>
 
+						<RecipeDef ParentName="AmmoRecipeBase">
+							<defName>MakeBOR_Ammo_4mmRailgun_SS</defName>
+							<label>make 4mm Railgun cartridge (SS) x500</label>
+							<description>Craft 500 4mm Railgun (SS) cartridges.</description>
+							<jobString>Making 4mm Railgun (SS) cartridges.</jobString>
+								<researchPrerequisite>BOR_CE_GaussAmmo_I_SS</researchPrerequisite>
+							<workAmount>6000</workAmount>
+							<ingredients>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_Sunsteel</li>
+										</thingDefs>
+									</filter>
+									<count>2</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter>
+								<thingDefs>
+									<li>BOR_Sunsteel</li>
+								</thingDefs>
+							</fixedIngredientFilter>
+							<products>
+								<BOR_Ammo_4mmRailgun_SS>500</BOR_Ammo_4mmRailgun_SS>
+							</products>
+						</RecipeDef>
+
+						<ThingDef Class="CombatExtended.AmmoDef" ParentName="SpacerSmallAmmoBase">
+							<defName>BOR_Ammo_6mmRailgun_TC</defName>
+							<label>6mm Railgun cartridge (TC)</label>
+							<description>Fin-stabilized tungsten carbide penetrator with discarding tenebrite-coated sabot, designed for railgun rifles.</description>
+							<statBases>
+								<Mass>0.03</Mass>
+								<Bulk>0.02</Bulk>
+								<MarketValue>0.11</MarketValue>
+							</statBases>
+							<tradeTags>
+								<li>CE_AutoEnableTrade</li>
+								<li>CE_AutoEnableCrafting_FabricationBench</li>
+							</tradeTags>
+							<thingCategories>
+								<li>Ammo6mmRailgun</li>
+							</thingCategories>
+							<graphicData>
+								<texPath>BOR/Things/Item/Equipment/weaponranged/gen1/mag/ammo/TC</texPath>
+								<graphicClass>Graphic_StackCount</graphicClass>
+							</graphicData>
+							<ammoClass>BOR_TC_AmmoClass</ammoClass>
+						</ThingDef>
+
 						<ThingDef Class="CombatExtended.AmmoDef" ParentName="SpacerSmallAmmoBase">
 							<defName>BOR_Ammo_6mmRailgun_Nc</defName>
 							<label>6mm Railgun cartridge (Neutronium coated)</label>
@@ -369,6 +467,29 @@
 								<graphicClass>Graphic_StackCount</graphicClass>
 							</graphicData>
 							<ammoClass>BOR_Nc_AmmoClass</ammoClass>
+						</ThingDef>
+
+						<ThingDef Class="CombatExtended.AmmoDef" ParentName="SpacerSmallAmmoBase">
+							<defName>BOR_Ammo_6mmRailgun_SS</defName>
+							<label>6mm Railgun cartridge (SS)</label>
+							<description>Sunsteel-coated discarding-sabot penetrator, the baseline round for railgun rifles.</description>
+							<statBases>
+								<Mass>0.03</Mass>
+								<Bulk>0.02</Bulk>
+								<MarketValue>0.07</MarketValue>
+							</statBases>
+							<tradeTags>
+								<li>CE_AutoEnableTrade</li>
+								<li>CE_AutoEnableCrafting_FabricationBench</li>
+							</tradeTags>
+							<thingCategories>
+								<li>Ammo6mmRailgun</li>
+							</thingCategories>
+							<graphicData>
+								<texPath>BOR/Things/Item/Equipment/weaponranged/gen1/mag/ammo/SS</texPath>
+								<graphicClass>Graphic_StackCount</graphicClass>
+							</graphicData>
+							<ammoClass>BOR_SS_AmmoClass</ammoClass>
 						</ThingDef>
 
 						<ThingDef Class="CombatExtended.AmmoDef" ParentName="SpacerSmallAmmoBase">
@@ -428,10 +549,10 @@
 							</graphicData>
 							<projectile Class="CombatExtended.ProjectilePropertiesCE">
 								<damageDef>Bullet</damageDef>
-								<damageAmountBase>30</damageAmountBase>
-								<armorPenetrationSharp>115</armorPenetrationSharp>
-								<armorPenetrationBlunt>990</armorPenetrationBlunt>
-								<speed>844</speed>
+								<damageAmountBase>10</damageAmountBase>
+								<armorPenetrationSharp>72</armorPenetrationSharp>
+								<armorPenetrationBlunt>204</armorPenetrationBlunt>
+								<speed>400</speed>
 								<dropsCasings>false</dropsCasings>
 							</projectile>
 						</ThingDef>
@@ -447,10 +568,10 @@
 							</graphicData>
 							<projectile Class="CombatExtended.ProjectilePropertiesCE">
 								<damageDef>Bullet</damageDef>
-								<damageAmountBase>17</damageAmountBase>
-								<armorPenetrationSharp>92</armorPenetrationSharp>
-								<armorPenetrationBlunt>367</armorPenetrationBlunt>
-								<speed>375</speed>
+								<damageAmountBase>9</damageAmountBase>
+								<armorPenetrationSharp>48</armorPenetrationSharp>
+								<armorPenetrationBlunt>146</armorPenetrationBlunt>
+								<speed>300</speed>
 								<dropsCasings>false</dropsCasings>
 								<secondaryDamage>
 									<li>
@@ -472,10 +593,10 @@
 							</graphicData>
 							<projectile Class="CombatExtended.ProjectilePropertiesCE">
 								<damageDef>Bullet</damageDef>
-								<damageAmountBase>23</damageAmountBase>
-								<armorPenetrationSharp>55</armorPenetrationSharp>
-								<armorPenetrationBlunt>367</armorPenetrationBlunt>
-								<speed>375</speed>
+								<damageAmountBase>8</damageAmountBase>
+								<armorPenetrationSharp>36</armorPenetrationSharp>
+								<armorPenetrationBlunt>128</armorPenetrationBlunt>
+								<speed>300</speed>
 								<dropsCasings>false</dropsCasings>
 								<secondaryDamage>
 									<li>
@@ -497,25 +618,81 @@
 							</graphicData>
 							<projectile Class="CombatExtended.ProjectilePropertiesCE">
 								<damageDef>Bullet</damageDef>
-								<damageAmountBase>13</damageAmountBase>
-								<armorPenetrationSharp>55</armorPenetrationSharp>
-								<armorPenetrationBlunt>367</armorPenetrationBlunt>
-								<speed>375</speed>
+								<damageAmountBase>8</damageAmountBase>
+								<armorPenetrationSharp>32</armorPenetrationSharp>
+								<armorPenetrationBlunt>146</armorPenetrationBlunt>
+								<speed>300</speed>
 								<dropsCasings>false</dropsCasings>
 								<secondaryDamage>
 									<li>
 										<def>EMP</def>
-										<amount>13</amount>
+										<amount>10</amount>
 									</li>
 								</secondaryDamage>
 							</projectile>
 						</ThingDef>
+
+						<ThingDef ParentName="BaseBulletCE">
+							<defName>BOR_Bullet_XCOM6mmRailgun_SS</defName>
+							<label>6mm Railgun bullet (SS)</label>
+							<graphicData>
+								<texPath>BOR/Things/Bullet/Bullet_Mag_Small</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+								<shaderType>TransparentPostLight</shaderType>
+								<drawSize>1.1</drawSize>
+							</graphicData>
+							<projectile Class="CombatExtended.ProjectilePropertiesCE">
+								<damageDef>Bullet</damageDef>
+								<damageAmountBase>13</damageAmountBase>
+								<armorPenetrationSharp>32</armorPenetrationSharp>
+								<armorPenetrationBlunt>146</armorPenetrationBlunt>
+								<speed>260</speed>
+								<dropsCasings>false</dropsCasings>
+							</projectile>
+						</ThingDef>
+
+						<RecipeDef ParentName="AdvancedAmmoRecipeBase">
+							<defName>MakeBOR_Ammo_6mmRailgun_TC</defName>
+							<label>make 6mm Railgun cartridge (TC) x500</label>
+							<description>Craft 500 6mm Railgun (TC) cartridges.</description>
+							<jobString>Making 6mm Railgun (TC) cartridges.</jobString>
+								<researchPrerequisite>BOR_CE_GaussAmmo_I_TC</researchPrerequisite>
+							<workAmount>15000</workAmount>
+							<ingredients>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_QuasarAlloy</li>
+										</thingDefs>
+									</filter>
+									<count>2</count>
+								</li>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_Tenebrite</li>
+										</thingDefs>
+									</filter>
+									<count>3</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter>
+								<thingDefs>
+									<li>BOR_QuasarAlloy</li>
+									<li>BOR_Tenebrite</li>
+								</thingDefs>
+							</fixedIngredientFilter>
+							<products>
+								<BOR_Ammo_6mmRailgun_TC>500</BOR_Ammo_6mmRailgun_TC>
+							</products>
+						</RecipeDef>
 
 						<RecipeDef ParentName="AmmoRecipeBase">
 							<defName>MakeBOR_Ammo_6mmRailgun_Nc</defName>
 							<label>make 6mm Railgun cartridge (Neutronium coated) x500</label>
 							<description>Craft 500 6mm Railgun (Neutronium coated) cartridges.</description>
 							<jobString>Making 6mm Railgun (Neutronium coated) cartridges.</jobString>
+								<researchPrerequisite>BOR_CE_GaussAmmo_I_Ni</researchPrerequisite>
 							<workAmount>20000</workAmount>
 							<ingredients>
 								<li>
@@ -551,6 +728,7 @@
 							<label>make 6mm Railgun cartridge (Neutronium infused) x500</label>
 							<description>Craft 500 6mm Railgun (Neutronium infused) cartridges.</description>
 							<jobString>Making 6mm Railgun (Neutronium infused) cartridges.</jobString>
+								<researchPrerequisite>BOR_CE_GaussAmmo_I_Ni</researchPrerequisite>
 							<workAmount>20000</workAmount>
 							<ingredients>
 								<li>
@@ -586,6 +764,7 @@
 							<label>make 6mm Railgun cartridge (Ionized Neutronium) x500</label>
 							<description>Craft 500 6mm Railgun (Ionized Neutronium) cartridges.</description>
 							<jobString>Making 6mm Railgun (Ionized Neutronium) cartridges.</jobString>
+								<researchPrerequisite>BOR_CE_GaussAmmo_I_Ni</researchPrerequisite>
 							<workAmount>30000</workAmount>
 							<ingredients>
 								<li>
@@ -616,6 +795,56 @@
 							</products>
 						</RecipeDef>
 
+						<RecipeDef ParentName="AmmoRecipeBase">
+							<defName>MakeBOR_Ammo_6mmRailgun_SS</defName>
+							<label>make 6mm Railgun cartridge (SS) x500</label>
+							<description>Craft 500 6mm Railgun (SS) cartridges.</description>
+							<jobString>Making 6mm Railgun (SS) cartridges.</jobString>
+								<researchPrerequisite>BOR_CE_GaussAmmo_I_SS</researchPrerequisite>
+							<workAmount>9000</workAmount>
+							<ingredients>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_Sunsteel</li>
+										</thingDefs>
+									</filter>
+									<count>3</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter>
+								<thingDefs>
+									<li>BOR_Sunsteel</li>
+								</thingDefs>
+							</fixedIngredientFilter>
+							<products>
+								<BOR_Ammo_6mmRailgun_SS>500</BOR_Ammo_6mmRailgun_SS>
+							</products>
+						</RecipeDef>
+
+						<ThingDef Class="CombatExtended.AmmoDef" ParentName="SpacerSmallAmmoBase">
+							<defName>BOR_Ammo_8mmRailgun_TC</defName>
+							<label>8mm Railgun cartridge (TC)</label>
+							<description>Fin-stabilized tungsten carbide penetrator with discarding tenebrite-coated sabot, designed for large-caliber railgun weapons.</description>
+							<statBases>
+								<Mass>0.04</Mass>
+								<Bulk>0.03</Bulk>
+								<MarketValue>0.13</MarketValue>
+							</statBases>
+							<tradeTags>
+								<li>CE_AutoEnableTrade</li>
+								<li>CE_AutoEnableCrafting_FabricationBench</li>
+							</tradeTags>
+							<thingCategories>
+								<li>Ammo8mmRailgun</li>
+							</thingCategories>
+							<graphicData>
+								<texPath>BOR/Things/Item/Equipment/weaponranged/gen1/mag/ammo/TC</texPath>
+								<graphicClass>Graphic_StackCount</graphicClass>
+							</graphicData>
+							<ammoClass>BOR_TC_AmmoClass</ammoClass>
+						</ThingDef>
+
 						<ThingDef Class="CombatExtended.AmmoDef" ParentName="SpacerSmallAmmoBase">
 							<defName>BOR_Ammo_8mmRailgun_Nc</defName>
 							<label>8mm Railgun cartridge (Neutronium coated)</label>
@@ -637,6 +866,29 @@
 								<graphicClass>Graphic_StackCount</graphicClass>
 							</graphicData>
 							<ammoClass>BOR_Nc_AmmoClass</ammoClass>
+						</ThingDef>
+
+						<ThingDef Class="CombatExtended.AmmoDef" ParentName="SpacerSmallAmmoBase">
+							<defName>BOR_Ammo_8mmRailgun_SS</defName>
+							<label>8mm Railgun cartridge (SS)</label>
+							<description>Sunsteel-coated discarding-sabot penetrator, the baseline round for large-caliber railgun weapons.</description>
+							<statBases>
+								<Mass>0.02</Mass>
+								<Bulk>0.03</Bulk>
+								<MarketValue>0.07</MarketValue>
+							</statBases>
+							<tradeTags>
+								<li>CE_AutoEnableTrade</li>
+								<li>CE_AutoEnableCrafting_FabricationBench</li>
+							</tradeTags>
+							<thingCategories>
+								<li>Ammo8mmRailgun</li>
+							</thingCategories>
+							<graphicData>
+								<texPath>BOR/Things/Item/Equipment/weaponranged/gen1/mag/ammo/SS</texPath>
+								<graphicClass>Graphic_StackCount</graphicClass>
+							</graphicData>
+							<ammoClass>BOR_SS_AmmoClass</ammoClass>
 						</ThingDef>
 
 						<ThingDef Class="CombatExtended.AmmoDef" ParentName="SpacerSmallAmmoBase">
@@ -695,10 +947,10 @@
 							</graphicData>
 							<projectile Class="CombatExtended.ProjectilePropertiesCE">
 								<damageDef>Bullet</damageDef>
-								<damageAmountBase>35</damageAmountBase>
-								<armorPenetrationSharp>190</armorPenetrationSharp>
-								<armorPenetrationBlunt>844</armorPenetrationBlunt>
-								<speed>1215</speed>
+								<damageAmountBase>50</damageAmountBase>
+								<armorPenetrationSharp>360</armorPenetrationSharp>
+								<armorPenetrationBlunt>1020</armorPenetrationBlunt>
+								<speed>400</speed>
 								<dropsCasings>false</dropsCasings>
 							</projectile>
 						</ThingDef>
@@ -713,15 +965,15 @@
 							</graphicData>
 							<projectile Class="CombatExtended.ProjectilePropertiesCE">
 								<damageDef>Bullet</damageDef>
-								<damageAmountBase>15</damageAmountBase>
-								<armorPenetrationSharp>150</armorPenetrationSharp>
-								<armorPenetrationBlunt>313</armorPenetrationBlunt>
-								<speed>450</speed>
+								<damageAmountBase>45</damageAmountBase>
+								<armorPenetrationSharp>240</armorPenetrationSharp>
+								<armorPenetrationBlunt>730</armorPenetrationBlunt>
+								<speed>300</speed>
 								<dropsCasings>false</dropsCasings>
 								<secondaryDamage>
 									<li>
-										<def>Bomb_Secondary</def>
-										<amount>13</amount>
+										<def>Flame_Secondary</def>
+										<amount>10</amount>
 									</li>
 								</secondaryDamage>
 							</projectile>
@@ -737,10 +989,10 @@
 							</graphicData>
 							<projectile Class="CombatExtended.ProjectilePropertiesCE">
 								<damageDef>Bullet</damageDef>
-								<damageAmountBase>25</damageAmountBase>
-								<armorPenetrationSharp>92</armorPenetrationSharp>
-								<armorPenetrationBlunt>313</armorPenetrationBlunt>
-								<speed>450</speed>
+								<damageAmountBase>40</damageAmountBase>
+								<armorPenetrationSharp>180</armorPenetrationSharp>
+								<armorPenetrationBlunt>640</armorPenetrationBlunt>
+								<speed>300</speed>
 								<dropsCasings>false</dropsCasings>
 								<secondaryDamage>
 									<li>
@@ -761,25 +1013,80 @@
 							</graphicData>
 							<projectile Class="CombatExtended.ProjectilePropertiesCE">
 								<damageDef>Bullet</damageDef>
-								<damageAmountBase>13</damageAmountBase>
-								<armorPenetrationSharp>92</armorPenetrationSharp>
-								<armorPenetrationBlunt>313</armorPenetrationBlunt>
-								<speed>450</speed>
+								<damageAmountBase>40</damageAmountBase>
+								<armorPenetrationSharp>160</armorPenetrationSharp>
+								<armorPenetrationBlunt>730</armorPenetrationBlunt>
+								<speed>300</speed>
 								<dropsCasings>false</dropsCasings>
 								<secondaryDamage>
 									<li>
 										<def>EMP</def>
-										<amount>16</amount>
+										<amount>10</amount>
 									</li>
 								</secondaryDamage>
 							</projectile>
 						</ThingDef>
+
+						<ThingDef ParentName="BaseBulletCE">
+							<defName>BOR_Bullet_XCOM8mmRailgun_SS</defName>
+							<label>8mm Railgun bullet (SS)</label>
+							<graphicData>
+								<texPath>BOR/Things/Bullet/Bullet_Mag_Big</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+								<shaderType>TransparentPostLight</shaderType>
+							</graphicData>
+							<projectile Class="CombatExtended.ProjectilePropertiesCE">
+								<damageDef>Bullet</damageDef>
+								<damageAmountBase>65</damageAmountBase>
+								<armorPenetrationSharp>160</armorPenetrationSharp>
+								<armorPenetrationBlunt>730</armorPenetrationBlunt>
+								<speed>260</speed>
+								<dropsCasings>false</dropsCasings>
+							</projectile>
+						</ThingDef>
+
+						<RecipeDef ParentName="AdvancedAmmoRecipeBase">
+							<defName>MakeBOR_Ammo_8mmRailgun_TC</defName>
+							<label>make 8mm Railgun cartridge (TC) x500</label>
+							<description>Craft 500 8mm Railgun (TC) cartridges.</description>
+							<jobString>Making 8mm Railgun (TC) cartridges.</jobString>
+								<researchPrerequisite>BOR_CE_GaussAmmo_I_TC</researchPrerequisite>
+							<workAmount>20000</workAmount>
+							<ingredients>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_QuasarAlloy</li>
+										</thingDefs>
+									</filter>
+									<count>3</count>
+								</li>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_Tenebrite</li>
+										</thingDefs>
+									</filter>
+									<count>4</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter>
+								<thingDefs>
+									<li>BOR_QuasarAlloy</li>
+									<li>BOR_Tenebrite</li>
+								</thingDefs>
+							</fixedIngredientFilter>
+							<products>
+								<BOR_Ammo_8mmRailgun_TC>500</BOR_Ammo_8mmRailgun_TC>
+							</products>
+						</RecipeDef>
 
 						<RecipeDef ParentName="AmmoRecipeBase">
 							<defName>MakeBOR_Ammo_8mmRailgun_Nc</defName>
 							<label>make 8mm Railgun cartridge (Neutronium coated) x500</label>
 							<description>Craft 500 8mm Railgun (Neutronium coated) cartridges.</description>
 							<jobString>Making 8mm Railgun (Neutronium coated) cartridges.</jobString>
+								<researchPrerequisite>BOR_CE_GaussAmmo_I_Ni</researchPrerequisite>
 							<workAmount>20000</workAmount>
 							<ingredients>
 								<li>
@@ -815,6 +1122,7 @@
 							<label>make 8mm Railgun cartridge (Neutronium infused) x500</label>
 							<description>Craft 500 8mm Railgun (Neutronium infused) cartridges.</description>
 							<jobString>Making 8mm Railgun (Neutronium infused) cartridges.</jobString>
+								<researchPrerequisite>BOR_CE_GaussAmmo_I_Ni</researchPrerequisite>
 							<workAmount>20000</workAmount>
 							<ingredients>
 								<li>
@@ -850,6 +1158,7 @@
 							<label>make 8mm Railgun cartridge (Ionized Neutronium) x500</label>
 							<description>Craft 500 8mm Railgun (Ionized Neutronium) cartridges.</description>
 							<jobString>Making 8mm Railgun (Ionized Neutronium) cartridges.</jobString>
+								<researchPrerequisite>BOR_CE_GaussAmmo_I_Ni</researchPrerequisite>
 							<workAmount>30000</workAmount>
 							<ingredients>
 								<li>
@@ -877,6 +1186,1267 @@
 							</fixedIngredientFilter>
 							<products>
 								<BOR_Ammo_8mmRailgun_EMP_N>500</BOR_Ammo_8mmRailgun_EMP_N>
+							</products>
+						</RecipeDef>
+
+						<RecipeDef ParentName="AmmoRecipeBase">
+							<defName>MakeBOR_Ammo_8mmRailgun_SS</defName>
+							<label>make 8mm Railgun cartridge (SS) x500</label>
+							<description>Craft 500 8mm Railgun (SS) cartridges.</description>
+							<jobString>Making 8mm Railgun (SS) cartridges.</jobString>
+								<researchPrerequisite>BOR_CE_GaussAmmo_I_SS</researchPrerequisite>
+							<workAmount>12000</workAmount>
+							<ingredients>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_Sunsteel</li>
+										</thingDefs>
+									</filter>
+									<count>4</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter>
+								<thingDefs>
+									<li>BOR_Sunsteel</li>
+								</thingDefs>
+							</fixedIngredientFilter>
+							<products>
+								<BOR_Ammo_8mmRailgun_SS>500</BOR_Ammo_8mmRailgun_SS>
+							</products>
+						</RecipeDef>
+
+						<!-- ==================== 6mm Railgun (Bullpup) ==================== -->
+
+						<ThingDef Class="CombatExtended.AmmoDef" ParentName="SpacerSmallAmmoBase">
+							<defName>BOR_Ammo_6mmRailgunBullpup_TC</defName>
+							<label>6mm Railgun cartridge (TC)</label>
+							<description>Fin-stabilized tungsten carbide penetrator with discarding tenebrite-coated sabot, designed for railgun bullpups.</description>
+							<statBases>
+								<Mass>0.03</Mass>
+								<Bulk>0.02</Bulk>
+								<MarketValue>0.11</MarketValue>
+							</statBases>
+							<tradeTags>
+								<li>CE_AutoEnableTrade</li>
+								<li>CE_AutoEnableCrafting_FabricationBench</li>
+							</tradeTags>
+							<thingCategories>
+								<li>Ammo6mmRailgun</li>
+							</thingCategories>
+							<graphicData>
+								<texPath>BOR/Things/Item/Equipment/weaponranged/gen1/mag/ammo/TC</texPath>
+								<graphicClass>Graphic_StackCount</graphicClass>
+							</graphicData>
+							<ammoClass>BOR_TC_AmmoClass</ammoClass>
+						</ThingDef>
+
+						<ThingDef Class="CombatExtended.AmmoDef" ParentName="SpacerSmallAmmoBase">
+							<defName>BOR_Ammo_6mmRailgunBullpup_Nc</defName>
+							<label>6mm Railgun cartridge (Neutronium coated)</label>
+							<description>Fin-stabilized tungsten carbide penetrator with discarding sabot, designed for railgun bullpups.</description>
+							<statBases>
+								<Mass>0.02</Mass>
+								<Bulk>0.01</Bulk>
+								<MarketValue>0.09</MarketValue>
+							</statBases>
+							<tradeTags>
+								<li>CE_AutoEnableTrade</li>
+								<li>CE_AutoEnableCrafting_FabricationBench</li>
+							</tradeTags>
+							<thingCategories>
+								<li>Ammo6mmRailgun</li>
+							</thingCategories>
+							<graphicData>
+								<texPath>BOR/Things/Item/Equipment/weaponranged/gen1/mag/ammo/Nc</texPath>
+								<graphicClass>Graphic_StackCount</graphicClass>
+							</graphicData>
+							<ammoClass>BOR_Nc_AmmoClass</ammoClass>
+						</ThingDef>
+
+						<ThingDef Class="CombatExtended.AmmoDef" ParentName="SpacerSmallAmmoBase">
+							<defName>BOR_Ammo_6mmRailgunBullpup_SS</defName>
+							<label>6mm Railgun cartridge (SS)</label>
+							<description>Sunsteel-coated discarding-sabot penetrator, the baseline round for railgun bullpups.</description>
+							<statBases>
+								<Mass>0.03</Mass>
+								<Bulk>0.02</Bulk>
+								<MarketValue>0.07</MarketValue>
+							</statBases>
+							<tradeTags>
+								<li>CE_AutoEnableTrade</li>
+								<li>CE_AutoEnableCrafting_FabricationBench</li>
+							</tradeTags>
+							<thingCategories>
+								<li>Ammo6mmRailgun</li>
+							</thingCategories>
+							<graphicData>
+								<texPath>BOR/Things/Item/Equipment/weaponranged/gen1/mag/ammo/SS</texPath>
+								<graphicClass>Graphic_StackCount</graphicClass>
+							</graphicData>
+							<ammoClass>BOR_SS_AmmoClass</ammoClass>
+						</ThingDef>
+
+						<ThingDef Class="CombatExtended.AmmoDef" ParentName="SpacerSmallAmmoBase">
+							<defName>BOR_Ammo_6mmRailgunBullpup_Ni</defName>
+							<label>6mm Railgun cartridge (Neutronium infused)</label>
+							<description>Fin-stabilized tungsten carbide penetrator with discarding sabot, designed for railgun bullpups.</description>
+							<statBases>
+								<Mass>0.02</Mass>
+								<Bulk>0.01</Bulk>
+								<MarketValue>0.07</MarketValue>
+							</statBases>
+							<tradeTags>
+								<li>CE_AutoEnableTrade</li>
+								<li>CE_AutoEnableCrafting_FabricationBench</li>
+							</tradeTags>
+							<thingCategories>
+								<li>Ammo6mmRailgun</li>
+							</thingCategories>
+							<graphicData>
+								<texPath>BOR/Things/Item/Equipment/weaponranged/gen1/mag/ammo/Ni</texPath>
+								<graphicClass>Graphic_StackCount</graphicClass>
+							</graphicData>
+							<ammoClass>BOR_Ni_AmmoClass</ammoClass>
+						</ThingDef>
+
+						<ThingDef Class="CombatExtended.AmmoDef" ParentName="SpacerSmallAmmoBase">
+							<defName>BOR_Ammo_6mmRailgunBullpup_EMP_N</defName>
+							<label>6mm Railgun cartridge (Ionized Neutronium)</label>
+							<description>Fin-stabilized tungsten carbide penetrator with discarding sabot, designed for railgun bullpups.</description>
+							<statBases>
+								<Mass>0.02</Mass>
+								<Bulk>0.01</Bulk>
+								<MarketValue>0.09</MarketValue>
+							</statBases>
+							<tradeTags>
+								<li>CE_AutoEnableTrade</li>
+								<li>CE_AutoEnableCrafting_FabricationBench</li>
+							</tradeTags>
+							<thingCategories>
+								<li>Ammo6mmRailgun</li>
+							</thingCategories>
+							<graphicData>
+								<texPath>BOR/Things/Item/Equipment/weaponranged/gen1/mag/ammo/EMP_N</texPath>
+								<graphicClass>Graphic_StackCount</graphicClass>
+							</graphicData>
+							<ammoClass>BOR_Charged_Ion_N_AmmoClass</ammoClass>
+						</ThingDef>
+
+						<ThingDef ParentName="BaseBulletCE">
+							<defName>BOR_Bullet_XCOM6mmRailgunBullpup_TC</defName>
+							<label>6mm Railgun bullet (Tenebrite Coated)</label>
+							<graphicData>
+								<texPath>BOR/Things/Bullet/Bullet_Mag_Small</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+								<shaderType>TransparentPostLight</shaderType>
+								<drawSize>1.1</drawSize>
+							</graphicData>
+							<projectile Class="CombatExtended.ProjectilePropertiesCE">
+								<damageDef>Bullet</damageDef>
+								<damageAmountBase>8</damageAmountBase>
+								<armorPenetrationSharp>61</armorPenetrationSharp>
+								<armorPenetrationBlunt>173</armorPenetrationBlunt>
+								<speed>400</speed>
+								<dropsCasings>false</dropsCasings>
+							</projectile>
+						</ThingDef>
+
+						<ThingDef ParentName="BaseBulletCE">
+							<defName>BOR_Bullet_XCOM6mmRailgunBullpup_Nc</defName>
+							<label>6mm Railgun bullet (Neutronium coated)</label>
+							<graphicData>
+								<texPath>BOR/Things/Bullet/Bullet_Mag_Small</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+								<shaderType>TransparentPostLight</shaderType>
+								<drawSize>1.1</drawSize>
+							</graphicData>
+							<projectile Class="CombatExtended.ProjectilePropertiesCE">
+								<damageDef>Bullet</damageDef>
+								<damageAmountBase>7</damageAmountBase>
+								<armorPenetrationSharp>40</armorPenetrationSharp>
+								<armorPenetrationBlunt>124</armorPenetrationBlunt>
+								<speed>300</speed>
+								<dropsCasings>false</dropsCasings>
+								<secondaryDamage>
+									<li>
+										<def>Flame_Secondary</def>
+										<amount>10</amount>
+									</li>
+								</secondaryDamage>
+							</projectile>
+						</ThingDef>
+
+						<ThingDef ParentName="BaseBulletCE">
+							<defName>BOR_Bullet_XCOM6mmRailgunBullpup_Ni</defName>
+							<label>6mm Railgun bullet (Neutronium infused)</label>
+							<graphicData>
+								<texPath>BOR/Things/Bullet/Bullet_Mag_Small</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+								<shaderType>TransparentPostLight</shaderType>
+								<drawSize>1.1</drawSize>
+							</graphicData>
+							<projectile Class="CombatExtended.ProjectilePropertiesCE">
+								<damageDef>Bullet</damageDef>
+								<damageAmountBase>6</damageAmountBase>
+								<armorPenetrationSharp>30</armorPenetrationSharp>
+								<armorPenetrationBlunt>108</armorPenetrationBlunt>
+								<speed>300</speed>
+								<dropsCasings>false</dropsCasings>
+								<secondaryDamage>
+									<li>
+										<def>Bomb_Secondary</def>
+										<amount>16</amount>
+									</li>
+								</secondaryDamage>
+							</projectile>
+						</ThingDef>
+
+						<ThingDef ParentName="BaseBulletCE">
+							<defName>BOR_Bullet_XCOM6mmRailgunBullpup_EMP_N</defName>
+							<label>6mm Railgun bullet (Ionized Neutronium)</label>
+							<graphicData>
+								<texPath>BOR/Things/Bullet/Bullet_Mag_Small</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+								<shaderType>TransparentPostLight</shaderType>
+								<drawSize>1.1</drawSize>
+							</graphicData>
+							<projectile Class="CombatExtended.ProjectilePropertiesCE">
+								<damageDef>Bullet</damageDef>
+								<damageAmountBase>6</damageAmountBase>
+								<armorPenetrationSharp>27</armorPenetrationSharp>
+								<armorPenetrationBlunt>124</armorPenetrationBlunt>
+								<speed>300</speed>
+								<dropsCasings>false</dropsCasings>
+								<secondaryDamage>
+									<li>
+										<def>EMP</def>
+										<amount>10</amount>
+									</li>
+								</secondaryDamage>
+							</projectile>
+						</ThingDef>
+
+						<ThingDef ParentName="BaseBulletCE">
+							<defName>BOR_Bullet_XCOM6mmRailgunBullpup_SS</defName>
+							<label>6mm Railgun bullet (SS)</label>
+							<graphicData>
+								<texPath>BOR/Things/Bullet/Bullet_Mag_Small</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+								<shaderType>TransparentPostLight</shaderType>
+								<drawSize>1.1</drawSize>
+							</graphicData>
+							<projectile Class="CombatExtended.ProjectilePropertiesCE">
+								<damageDef>Bullet</damageDef>
+								<damageAmountBase>11</damageAmountBase>
+								<armorPenetrationSharp>27</armorPenetrationSharp>
+								<armorPenetrationBlunt>124</armorPenetrationBlunt>
+								<speed>260</speed>
+								<dropsCasings>false</dropsCasings>
+							</projectile>
+						</ThingDef>
+
+						<CombatExtended.AmmoSetDef>
+							<defName>BOR_AmmoSet_6mmRailgunXCOM_Bullpup</defName>
+							<label>6mm Railgun (Bullpup)</label>
+							<ammoTypes>
+								<BOR_Ammo_6mmRailgunBullpup_SS>BOR_Bullet_XCOM6mmRailgunBullpup_SS</BOR_Ammo_6mmRailgunBullpup_SS>
+								<BOR_Ammo_6mmRailgunBullpup_TC>BOR_Bullet_XCOM6mmRailgunBullpup_TC</BOR_Ammo_6mmRailgunBullpup_TC>
+								<BOR_Ammo_6mmRailgunBullpup_Nc>BOR_Bullet_XCOM6mmRailgunBullpup_Nc</BOR_Ammo_6mmRailgunBullpup_Nc>
+								<BOR_Ammo_6mmRailgunBullpup_Ni>BOR_Bullet_XCOM6mmRailgunBullpup_Ni</BOR_Ammo_6mmRailgunBullpup_Ni>
+								<BOR_Ammo_6mmRailgunBullpup_EMP_N>BOR_Bullet_XCOM6mmRailgunBullpup_EMP_N</BOR_Ammo_6mmRailgunBullpup_EMP_N>
+							</ammoTypes>
+						</CombatExtended.AmmoSetDef>
+
+						<RecipeDef ParentName="AdvancedAmmoRecipeBase">
+							<defName>MakeBOR_Ammo_6mmRailgunBullpup_TC</defName>
+							<label>make 6mm Railgun cartridge (TC) x500</label>
+							<description>Craft 500 6mm Railgun (TC) cartridges.</description>
+							<jobString>Making 6mm Railgun (TC) cartridges.</jobString>
+								<researchPrerequisite>BOR_CE_GaussAmmo_I_TC</researchPrerequisite>
+							<workAmount>15000</workAmount>
+							<ingredients>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_QuasarAlloy</li>
+										</thingDefs>
+									</filter>
+									<count>2</count>
+								</li>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_Tenebrite</li>
+										</thingDefs>
+									</filter>
+									<count>3</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter>
+								<thingDefs>
+									<li>BOR_QuasarAlloy</li>
+									<li>BOR_Tenebrite</li>
+								</thingDefs>
+							</fixedIngredientFilter>
+							<products>
+								<BOR_Ammo_6mmRailgunBullpup_TC>500</BOR_Ammo_6mmRailgunBullpup_TC>
+							</products>
+						</RecipeDef>
+
+						<RecipeDef ParentName="AmmoRecipeBase">
+							<defName>MakeBOR_Ammo_6mmRailgunBullpup_Nc</defName>
+							<label>make 6mm Railgun cartridge (Neutronium coated) x500</label>
+							<description>Craft 500 6mm Railgun (Neutronium coated) cartridges.</description>
+							<jobString>Making 6mm Railgun (Neutronium coated) cartridges.</jobString>
+								<researchPrerequisite>BOR_CE_GaussAmmo_I_Ni</researchPrerequisite>
+							<workAmount>20000</workAmount>
+							<ingredients>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_QuasarAlloy</li>
+										</thingDefs>
+									</filter>
+									<count>4</count>
+								</li>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_Neutronium</li>
+										</thingDefs>
+									</filter>
+									<count>20</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter>
+								<thingDefs>
+									<li>BOR_Neutronium</li>
+									<li>BOR_QuasarAlloy</li>
+								</thingDefs>
+							</fixedIngredientFilter>
+							<products>
+								<BOR_Ammo_6mmRailgunBullpup_Nc>500</BOR_Ammo_6mmRailgunBullpup_Nc>
+							</products>
+						</RecipeDef>
+
+						<RecipeDef ParentName="AmmoRecipeBase">
+							<defName>MakeBOR_Ammo_6mmRailgunBullpup_Ni</defName>
+							<label>make 6mm Railgun cartridge (Neutronium infused) x500</label>
+							<description>Craft 500 6mm Railgun (Neutronium infused) cartridges.</description>
+							<jobString>Making 6mm Railgun (Neutronium infused) cartridges.</jobString>
+								<researchPrerequisite>BOR_CE_GaussAmmo_I_Ni</researchPrerequisite>
+							<workAmount>20000</workAmount>
+							<ingredients>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_QuasarAlloy</li>
+										</thingDefs>
+									</filter>
+									<count>4</count>
+								</li>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_Neutronium</li>
+										</thingDefs>
+									</filter>
+									<count>40</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter>
+								<thingDefs>
+									<li>BOR_Neutronium</li>
+									<li>BOR_QuasarAlloy</li>
+								</thingDefs>
+							</fixedIngredientFilter>
+							<products>
+								<BOR_Ammo_6mmRailgunBullpup_Ni>500</BOR_Ammo_6mmRailgunBullpup_Ni>
+							</products>
+						</RecipeDef>
+
+						<RecipeDef ParentName="AmmoRecipeBase">
+							<defName>MakeBOR_Ammo_6mmRailgunBullpup_EMP_N</defName>
+							<label>make 6mm Railgun cartridge (Ionized Neutronium) x500</label>
+							<description>Craft 500 6mm Railgun (Ionized Neutronium) cartridges.</description>
+							<jobString>Making 6mm Railgun (Ionized Neutronium) cartridges.</jobString>
+								<researchPrerequisite>BOR_CE_GaussAmmo_I_Ni</researchPrerequisite>
+							<workAmount>30000</workAmount>
+							<ingredients>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_QuasarAlloy</li>
+										</thingDefs>
+									</filter>
+									<count>4</count>
+								</li>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_Neutronium</li>
+										</thingDefs>
+									</filter>
+									<count>40</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter>
+								<thingDefs>
+									<li>BOR_Neutronium</li>
+									<li>BOR_QuasarAlloy</li>
+								</thingDefs>
+							</fixedIngredientFilter>
+							<products>
+								<BOR_Ammo_6mmRailgunBullpup_EMP_N>500</BOR_Ammo_6mmRailgunBullpup_EMP_N>
+							</products>
+						</RecipeDef>
+
+						<RecipeDef ParentName="AmmoRecipeBase">
+							<defName>MakeBOR_Ammo_6mmRailgunBullpup_SS</defName>
+							<label>make 6mm Railgun cartridge (SS) x500</label>
+							<description>Craft 500 6mm Railgun (SS) cartridges.</description>
+							<jobString>Making 6mm Railgun (SS) cartridges.</jobString>
+								<researchPrerequisite>BOR_CE_GaussAmmo_I_SS</researchPrerequisite>
+							<workAmount>9000</workAmount>
+							<ingredients>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_Sunsteel</li>
+										</thingDefs>
+									</filter>
+									<count>3</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter>
+								<thingDefs>
+									<li>BOR_Sunsteel</li>
+								</thingDefs>
+							</fixedIngredientFilter>
+							<products>
+								<BOR_Ammo_6mmRailgunBullpup_SS>500</BOR_Ammo_6mmRailgunBullpup_SS>
+							</products>
+						</RecipeDef>
+
+						<!-- ==================== 6mm Railgun (DMR) ==================== -->
+
+						<ThingDef Class="CombatExtended.AmmoDef" ParentName="SpacerSmallAmmoBase">
+							<defName>BOR_Ammo_6mmRailgunDMR_TC</defName>
+							<label>6mm Railgun cartridge (TC)</label>
+							<description>Fin-stabilized tungsten carbide penetrator with discarding tenebrite-coated sabot, designed for railgun DMRs.</description>
+							<statBases>
+								<Mass>0.03</Mass>
+								<Bulk>0.02</Bulk>
+								<MarketValue>0.11</MarketValue>
+							</statBases>
+							<tradeTags>
+								<li>CE_AutoEnableTrade</li>
+								<li>CE_AutoEnableCrafting_FabricationBench</li>
+							</tradeTags>
+							<thingCategories>
+								<li>Ammo6mmRailgun</li>
+							</thingCategories>
+							<graphicData>
+								<texPath>BOR/Things/Item/Equipment/weaponranged/gen1/mag/ammo/TC</texPath>
+								<graphicClass>Graphic_StackCount</graphicClass>
+							</graphicData>
+							<ammoClass>BOR_TC_AmmoClass</ammoClass>
+						</ThingDef>
+
+						<ThingDef Class="CombatExtended.AmmoDef" ParentName="SpacerSmallAmmoBase">
+							<defName>BOR_Ammo_6mmRailgunDMR_Nc</defName>
+							<label>6mm Railgun cartridge (Neutronium coated)</label>
+							<description>Fin-stabilized tungsten carbide penetrator with discarding sabot, designed for railgun DMRs.</description>
+							<statBases>
+								<Mass>0.02</Mass>
+								<Bulk>0.01</Bulk>
+								<MarketValue>0.09</MarketValue>
+							</statBases>
+							<tradeTags>
+								<li>CE_AutoEnableTrade</li>
+								<li>CE_AutoEnableCrafting_FabricationBench</li>
+							</tradeTags>
+							<thingCategories>
+								<li>Ammo6mmRailgun</li>
+							</thingCategories>
+							<graphicData>
+								<texPath>BOR/Things/Item/Equipment/weaponranged/gen1/mag/ammo/Nc</texPath>
+								<graphicClass>Graphic_StackCount</graphicClass>
+							</graphicData>
+							<ammoClass>BOR_Nc_AmmoClass</ammoClass>
+						</ThingDef>
+
+						<ThingDef Class="CombatExtended.AmmoDef" ParentName="SpacerSmallAmmoBase">
+							<defName>BOR_Ammo_6mmRailgunDMR_SS</defName>
+							<label>6mm Railgun cartridge (SS)</label>
+							<description>Sunsteel-coated discarding-sabot penetrator, the baseline round for railgun DMRs.</description>
+							<statBases>
+								<Mass>0.03</Mass>
+								<Bulk>0.02</Bulk>
+								<MarketValue>0.07</MarketValue>
+							</statBases>
+							<tradeTags>
+								<li>CE_AutoEnableTrade</li>
+								<li>CE_AutoEnableCrafting_FabricationBench</li>
+							</tradeTags>
+							<thingCategories>
+								<li>Ammo6mmRailgun</li>
+							</thingCategories>
+							<graphicData>
+								<texPath>BOR/Things/Item/Equipment/weaponranged/gen1/mag/ammo/SS</texPath>
+								<graphicClass>Graphic_StackCount</graphicClass>
+							</graphicData>
+							<ammoClass>BOR_SS_AmmoClass</ammoClass>
+						</ThingDef>
+
+						<ThingDef Class="CombatExtended.AmmoDef" ParentName="SpacerSmallAmmoBase">
+							<defName>BOR_Ammo_6mmRailgunDMR_Ni</defName>
+							<label>6mm Railgun cartridge (Neutronium infused)</label>
+							<description>Fin-stabilized tungsten carbide penetrator with discarding sabot, designed for railgun DMRs.</description>
+							<statBases>
+								<Mass>0.02</Mass>
+								<Bulk>0.01</Bulk>
+								<MarketValue>0.07</MarketValue>
+							</statBases>
+							<tradeTags>
+								<li>CE_AutoEnableTrade</li>
+								<li>CE_AutoEnableCrafting_FabricationBench</li>
+							</tradeTags>
+							<thingCategories>
+								<li>Ammo6mmRailgun</li>
+							</thingCategories>
+							<graphicData>
+								<texPath>BOR/Things/Item/Equipment/weaponranged/gen1/mag/ammo/Ni</texPath>
+								<graphicClass>Graphic_StackCount</graphicClass>
+							</graphicData>
+							<ammoClass>BOR_Ni_AmmoClass</ammoClass>
+						</ThingDef>
+
+						<ThingDef Class="CombatExtended.AmmoDef" ParentName="SpacerSmallAmmoBase">
+							<defName>BOR_Ammo_6mmRailgunDMR_EMP_N</defName>
+							<label>6mm Railgun cartridge (Ionized Neutronium)</label>
+							<description>Fin-stabilized tungsten carbide penetrator with discarding sabot, designed for railgun DMRs.</description>
+							<statBases>
+								<Mass>0.02</Mass>
+								<Bulk>0.01</Bulk>
+								<MarketValue>0.09</MarketValue>
+							</statBases>
+							<tradeTags>
+								<li>CE_AutoEnableTrade</li>
+								<li>CE_AutoEnableCrafting_FabricationBench</li>
+							</tradeTags>
+							<thingCategories>
+								<li>Ammo6mmRailgun</li>
+							</thingCategories>
+							<graphicData>
+								<texPath>BOR/Things/Item/Equipment/weaponranged/gen1/mag/ammo/EMP_N</texPath>
+								<graphicClass>Graphic_StackCount</graphicClass>
+							</graphicData>
+							<ammoClass>BOR_Charged_Ion_N_AmmoClass</ammoClass>
+						</ThingDef>
+
+						<ThingDef ParentName="BaseBulletCE">
+							<defName>BOR_Bullet_XCOM6mmRailgunDMR_TC</defName>
+							<label>6mm Railgun bullet (Tenebrite Coated)</label>
+							<graphicData>
+								<texPath>BOR/Things/Bullet/Bullet_Mag_Small</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+								<shaderType>TransparentPostLight</shaderType>
+								<drawSize>1.1</drawSize>
+							</graphicData>
+							<projectile Class="CombatExtended.ProjectilePropertiesCE">
+								<damageDef>Bullet</damageDef>
+								<damageAmountBase>14</damageAmountBase>
+								<armorPenetrationSharp>100</armorPenetrationSharp>
+								<armorPenetrationBlunt>285</armorPenetrationBlunt>
+								<speed>400</speed>
+								<dropsCasings>false</dropsCasings>
+							</projectile>
+						</ThingDef>
+
+						<ThingDef ParentName="BaseBulletCE">
+							<defName>BOR_Bullet_XCOM6mmRailgunDMR_Nc</defName>
+							<label>6mm Railgun bullet (Neutronium coated)</label>
+							<graphicData>
+								<texPath>BOR/Things/Bullet/Bullet_Mag_Small</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+								<shaderType>TransparentPostLight</shaderType>
+								<drawSize>1.1</drawSize>
+							</graphicData>
+							<projectile Class="CombatExtended.ProjectilePropertiesCE">
+								<damageDef>Bullet</damageDef>
+								<damageAmountBase>12</damageAmountBase>
+								<armorPenetrationSharp>67</armorPenetrationSharp>
+								<armorPenetrationBlunt>204</armorPenetrationBlunt>
+								<speed>300</speed>
+								<dropsCasings>false</dropsCasings>
+								<secondaryDamage>
+									<li>
+										<def>Flame_Secondary</def>
+										<amount>10</amount>
+									</li>
+								</secondaryDamage>
+							</projectile>
+						</ThingDef>
+
+						<ThingDef ParentName="BaseBulletCE">
+							<defName>BOR_Bullet_XCOM6mmRailgunDMR_Ni</defName>
+							<label>6mm Railgun bullet (Neutronium infused)</label>
+							<graphicData>
+								<texPath>BOR/Things/Bullet/Bullet_Mag_Small</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+								<shaderType>TransparentPostLight</shaderType>
+								<drawSize>1.1</drawSize>
+							</graphicData>
+							<projectile Class="CombatExtended.ProjectilePropertiesCE">
+								<damageDef>Bullet</damageDef>
+								<damageAmountBase>11</damageAmountBase>
+								<armorPenetrationSharp>50</armorPenetrationSharp>
+								<armorPenetrationBlunt>179</armorPenetrationBlunt>
+								<speed>300</speed>
+								<dropsCasings>false</dropsCasings>
+								<secondaryDamage>
+									<li>
+										<def>Bomb_Secondary</def>
+										<amount>16</amount>
+									</li>
+								</secondaryDamage>
+							</projectile>
+						</ThingDef>
+
+						<ThingDef ParentName="BaseBulletCE">
+							<defName>BOR_Bullet_XCOM6mmRailgunDMR_EMP_N</defName>
+							<label>6mm Railgun bullet (Ionized Neutronium)</label>
+							<graphicData>
+								<texPath>BOR/Things/Bullet/Bullet_Mag_Small</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+								<shaderType>TransparentPostLight</shaderType>
+								<drawSize>1.1</drawSize>
+							</graphicData>
+							<projectile Class="CombatExtended.ProjectilePropertiesCE">
+								<damageDef>Bullet</damageDef>
+								<damageAmountBase>11</damageAmountBase>
+								<armorPenetrationSharp>44</armorPenetrationSharp>
+								<armorPenetrationBlunt>204</armorPenetrationBlunt>
+								<speed>300</speed>
+								<dropsCasings>false</dropsCasings>
+								<secondaryDamage>
+									<li>
+										<def>EMP</def>
+										<amount>10</amount>
+									</li>
+								</secondaryDamage>
+							</projectile>
+						</ThingDef>
+
+						<ThingDef ParentName="BaseBulletCE">
+							<defName>BOR_Bullet_XCOM6mmRailgunDMR_SS</defName>
+							<label>6mm Railgun bullet (SS)</label>
+							<graphicData>
+								<texPath>BOR/Things/Bullet/Bullet_Mag_Small</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+								<shaderType>TransparentPostLight</shaderType>
+								<drawSize>1.1</drawSize>
+							</graphicData>
+							<projectile Class="CombatExtended.ProjectilePropertiesCE">
+								<damageDef>Bullet</damageDef>
+								<damageAmountBase>18</damageAmountBase>
+								<armorPenetrationSharp>44</armorPenetrationSharp>
+								<armorPenetrationBlunt>204</armorPenetrationBlunt>
+								<speed>260</speed>
+								<dropsCasings>false</dropsCasings>
+							</projectile>
+						</ThingDef>
+
+						<CombatExtended.AmmoSetDef>
+							<defName>BOR_AmmoSet_6mmRailgunXCOM_DMR</defName>
+							<label>6mm Railgun (DMR)</label>
+							<ammoTypes>
+								<BOR_Ammo_6mmRailgunDMR_SS>BOR_Bullet_XCOM6mmRailgunDMR_SS</BOR_Ammo_6mmRailgunDMR_SS>
+								<BOR_Ammo_6mmRailgunDMR_TC>BOR_Bullet_XCOM6mmRailgunDMR_TC</BOR_Ammo_6mmRailgunDMR_TC>
+								<BOR_Ammo_6mmRailgunDMR_Nc>BOR_Bullet_XCOM6mmRailgunDMR_Nc</BOR_Ammo_6mmRailgunDMR_Nc>
+								<BOR_Ammo_6mmRailgunDMR_Ni>BOR_Bullet_XCOM6mmRailgunDMR_Ni</BOR_Ammo_6mmRailgunDMR_Ni>
+								<BOR_Ammo_6mmRailgunDMR_EMP_N>BOR_Bullet_XCOM6mmRailgunDMR_EMP_N</BOR_Ammo_6mmRailgunDMR_EMP_N>
+							</ammoTypes>
+						</CombatExtended.AmmoSetDef>
+
+						<RecipeDef ParentName="AdvancedAmmoRecipeBase">
+							<defName>MakeBOR_Ammo_6mmRailgunDMR_TC</defName>
+							<label>make 6mm Railgun cartridge (TC) x500</label>
+							<description>Craft 500 6mm Railgun (TC) cartridges.</description>
+							<jobString>Making 6mm Railgun (TC) cartridges.</jobString>
+								<researchPrerequisite>BOR_CE_GaussAmmo_I_TC</researchPrerequisite>
+							<workAmount>15000</workAmount>
+							<ingredients>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_QuasarAlloy</li>
+										</thingDefs>
+									</filter>
+									<count>2</count>
+								</li>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_Tenebrite</li>
+										</thingDefs>
+									</filter>
+									<count>3</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter>
+								<thingDefs>
+									<li>BOR_QuasarAlloy</li>
+									<li>BOR_Tenebrite</li>
+								</thingDefs>
+							</fixedIngredientFilter>
+							<products>
+								<BOR_Ammo_6mmRailgunDMR_TC>500</BOR_Ammo_6mmRailgunDMR_TC>
+							</products>
+						</RecipeDef>
+
+						<RecipeDef ParentName="AmmoRecipeBase">
+							<defName>MakeBOR_Ammo_6mmRailgunDMR_Nc</defName>
+							<label>make 6mm Railgun cartridge (Neutronium coated) x500</label>
+							<description>Craft 500 6mm Railgun (Neutronium coated) cartridges.</description>
+							<jobString>Making 6mm Railgun (Neutronium coated) cartridges.</jobString>
+								<researchPrerequisite>BOR_CE_GaussAmmo_I_Ni</researchPrerequisite>
+							<workAmount>20000</workAmount>
+							<ingredients>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_QuasarAlloy</li>
+										</thingDefs>
+									</filter>
+									<count>4</count>
+								</li>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_Neutronium</li>
+										</thingDefs>
+									</filter>
+									<count>20</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter>
+								<thingDefs>
+									<li>BOR_Neutronium</li>
+									<li>BOR_QuasarAlloy</li>
+								</thingDefs>
+							</fixedIngredientFilter>
+							<products>
+								<BOR_Ammo_6mmRailgunDMR_Nc>500</BOR_Ammo_6mmRailgunDMR_Nc>
+							</products>
+						</RecipeDef>
+
+						<RecipeDef ParentName="AmmoRecipeBase">
+							<defName>MakeBOR_Ammo_6mmRailgunDMR_Ni</defName>
+							<label>make 6mm Railgun cartridge (Neutronium infused) x500</label>
+							<description>Craft 500 6mm Railgun (Neutronium infused) cartridges.</description>
+							<jobString>Making 6mm Railgun (Neutronium infused) cartridges.</jobString>
+								<researchPrerequisite>BOR_CE_GaussAmmo_I_Ni</researchPrerequisite>
+							<workAmount>20000</workAmount>
+							<ingredients>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_QuasarAlloy</li>
+										</thingDefs>
+									</filter>
+									<count>4</count>
+								</li>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_Neutronium</li>
+										</thingDefs>
+									</filter>
+									<count>40</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter>
+								<thingDefs>
+									<li>BOR_Neutronium</li>
+									<li>BOR_QuasarAlloy</li>
+								</thingDefs>
+							</fixedIngredientFilter>
+							<products>
+								<BOR_Ammo_6mmRailgunDMR_Ni>500</BOR_Ammo_6mmRailgunDMR_Ni>
+							</products>
+						</RecipeDef>
+
+						<RecipeDef ParentName="AmmoRecipeBase">
+							<defName>MakeBOR_Ammo_6mmRailgunDMR_EMP_N</defName>
+							<label>make 6mm Railgun cartridge (Ionized Neutronium) x500</label>
+							<description>Craft 500 6mm Railgun (Ionized Neutronium) cartridges.</description>
+							<jobString>Making 6mm Railgun (Ionized Neutronium) cartridges.</jobString>
+								<researchPrerequisite>BOR_CE_GaussAmmo_I_Ni</researchPrerequisite>
+							<workAmount>30000</workAmount>
+							<ingredients>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_QuasarAlloy</li>
+										</thingDefs>
+									</filter>
+									<count>4</count>
+								</li>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_Neutronium</li>
+										</thingDefs>
+									</filter>
+									<count>40</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter>
+								<thingDefs>
+									<li>BOR_Neutronium</li>
+									<li>BOR_QuasarAlloy</li>
+								</thingDefs>
+							</fixedIngredientFilter>
+							<products>
+								<BOR_Ammo_6mmRailgunDMR_EMP_N>500</BOR_Ammo_6mmRailgunDMR_EMP_N>
+							</products>
+						</RecipeDef>
+
+						<RecipeDef ParentName="AmmoRecipeBase">
+							<defName>MakeBOR_Ammo_6mmRailgunDMR_SS</defName>
+							<label>make 6mm Railgun cartridge (SS) x500</label>
+							<description>Craft 500 6mm Railgun (SS) cartridges.</description>
+							<jobString>Making 6mm Railgun (SS) cartridges.</jobString>
+								<researchPrerequisite>BOR_CE_GaussAmmo_I_SS</researchPrerequisite>
+							<workAmount>9000</workAmount>
+							<ingredients>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_Sunsteel</li>
+										</thingDefs>
+									</filter>
+									<count>3</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter>
+								<thingDefs>
+									<li>BOR_Sunsteel</li>
+								</thingDefs>
+							</fixedIngredientFilter>
+							<products>
+								<BOR_Ammo_6mmRailgunDMR_SS>500</BOR_Ammo_6mmRailgunDMR_SS>
+							</products>
+						</RecipeDef>
+
+						<!-- ==================== 8mm Railgun (Cannon) ==================== -->
+
+						<ThingDef Class="CombatExtended.AmmoDef" ParentName="SpacerSmallAmmoBase">
+							<defName>BOR_Ammo_8mmRailgunCannon_TC</defName>
+							<label>8mm Railgun cartridge (TC)</label>
+							<description>Fin-stabilized tungsten carbide penetrator with discarding tenebrite-coated sabot, designed for railgun cannons.</description>
+							<statBases>
+								<Mass>0.04</Mass>
+								<Bulk>0.03</Bulk>
+								<MarketValue>0.13</MarketValue>
+							</statBases>
+							<tradeTags>
+								<li>CE_AutoEnableTrade</li>
+								<li>CE_AutoEnableCrafting_FabricationBench</li>
+							</tradeTags>
+							<thingCategories>
+								<li>Ammo8mmRailgun</li>
+							</thingCategories>
+							<graphicData>
+								<texPath>BOR/Things/Item/Equipment/weaponranged/gen1/mag/ammo/TC</texPath>
+								<graphicClass>Graphic_StackCount</graphicClass>
+							</graphicData>
+							<ammoClass>BOR_TC_AmmoClass</ammoClass>
+						</ThingDef>
+
+						<ThingDef Class="CombatExtended.AmmoDef" ParentName="SpacerSmallAmmoBase">
+							<defName>BOR_Ammo_8mmRailgunCannon_Nc</defName>
+							<label>8mm Railgun cartridge (Neutronium coated)</label>
+							<description>Fin-stabilized tungsten carbide penetrator with discarding sabot, designed for railgun cannons.</description>
+							<statBases>
+								<Mass>0.01</Mass>
+								<Bulk>0.02</Bulk>
+								<MarketValue>0.09</MarketValue>
+							</statBases>
+							<tradeTags>
+								<li>CE_AutoEnableTrade</li>
+								<li>CE_AutoEnableCrafting_FabricationBench</li>
+							</tradeTags>
+							<thingCategories>
+								<li>Ammo8mmRailgun</li>
+							</thingCategories>
+							<graphicData>
+								<texPath>BOR/Things/Item/Equipment/weaponranged/gen1/mag/ammo/Nc</texPath>
+								<graphicClass>Graphic_StackCount</graphicClass>
+							</graphicData>
+							<ammoClass>BOR_Nc_AmmoClass</ammoClass>
+						</ThingDef>
+
+						<ThingDef Class="CombatExtended.AmmoDef" ParentName="SpacerSmallAmmoBase">
+							<defName>BOR_Ammo_8mmRailgunCannon_SS</defName>
+							<label>8mm Railgun cartridge (SS)</label>
+							<description>Sunsteel-coated discarding-sabot penetrator, the baseline round for railgun cannons.</description>
+							<statBases>
+								<Mass>0.02</Mass>
+								<Bulk>0.03</Bulk>
+								<MarketValue>0.07</MarketValue>
+							</statBases>
+							<tradeTags>
+								<li>CE_AutoEnableTrade</li>
+								<li>CE_AutoEnableCrafting_FabricationBench</li>
+							</tradeTags>
+							<thingCategories>
+								<li>Ammo8mmRailgun</li>
+							</thingCategories>
+							<graphicData>
+								<texPath>BOR/Things/Item/Equipment/weaponranged/gen1/mag/ammo/SS</texPath>
+								<graphicClass>Graphic_StackCount</graphicClass>
+							</graphicData>
+							<ammoClass>BOR_SS_AmmoClass</ammoClass>
+						</ThingDef>
+
+						<ThingDef Class="CombatExtended.AmmoDef" ParentName="SpacerSmallAmmoBase">
+							<defName>BOR_Ammo_8mmRailgunCannon_Ni</defName>
+							<label>8mm Railgun cartridge (Neutronium infused)</label>
+							<description>Fin-stabilized tungsten carbide penetrator with discarding sabot, designed for railgun cannons.</description>
+							<statBases>
+								<Mass>0.02</Mass>
+								<Bulk>0.02</Bulk>
+								<MarketValue>0.07</MarketValue>
+							</statBases>
+							<tradeTags>
+								<li>CE_AutoEnableTrade</li>
+								<li>CE_AutoEnableCrafting_FabricationBench</li>
+							</tradeTags>
+							<thingCategories>
+								<li>Ammo8mmRailgun</li>
+							</thingCategories>
+							<graphicData>
+								<texPath>BOR/Things/Item/Equipment/weaponranged/gen1/mag/ammo/Ni</texPath>
+								<graphicClass>Graphic_StackCount</graphicClass>
+							</graphicData>
+							<ammoClass>BOR_Ni_AmmoClass</ammoClass>
+						</ThingDef>
+
+						<ThingDef Class="CombatExtended.AmmoDef" ParentName="SpacerSmallAmmoBase">
+							<defName>BOR_Ammo_8mmRailgunCannon_EMP_N</defName>
+							<label>8mm Railgun cartridge (Ionized Neutronium)</label>
+							<description>Fin-stabilized tungsten carbide penetrator with discarding sabot, designed for railgun cannons.</description>
+							<statBases>
+								<Mass>0.02</Mass>
+								<Bulk>0.02</Bulk>
+								<MarketValue>0.09</MarketValue>
+							</statBases>
+							<tradeTags>
+								<li>CE_AutoEnableTrade</li>
+								<li>CE_AutoEnableCrafting_FabricationBench</li>
+							</tradeTags>
+							<thingCategories>
+								<li>Ammo8mmRailgun</li>
+							</thingCategories>
+							<graphicData>
+								<texPath>BOR/Things/Item/Equipment/weaponranged/gen1/mag/ammo/EMP_N</texPath>
+								<graphicClass>Graphic_StackCount</graphicClass>
+							</graphicData>
+							<ammoClass>BOR_Charged_Ion_N_AmmoClass</ammoClass>
+						</ThingDef>
+
+						<ThingDef ParentName="BaseBulletCE">
+							<defName>BOR_Bullet_XCOM8mmRailgunCannon_TC</defName>
+							<label>8mm Railgun bullet (Tenebrite Coated)</label>
+							<graphicData>
+								<texPath>BOR/Things/Bullet/Bullet_Mag_Big</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+								<shaderType>TransparentPostLight</shaderType>
+							</graphicData>
+							<projectile Class="CombatExtended.ProjectilePropertiesCE">
+								<damageDef>Bullet</damageDef>
+								<damageAmountBase>8</damageAmountBase>
+								<armorPenetrationSharp>61</armorPenetrationSharp>
+								<armorPenetrationBlunt>173</armorPenetrationBlunt>
+								<speed>400</speed>
+								<dropsCasings>false</dropsCasings>
+							</projectile>
+						</ThingDef>
+
+						<ThingDef ParentName="BaseBulletCE">
+							<defName>BOR_Bullet_XCOM8mmRailgunCannon_Nc</defName>
+							<label>8mm Railgun bullet (Neutronium coated)</label>
+							<graphicData>
+								<texPath>BOR/Things/Bullet/Bullet_Mag_Big</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+								<shaderType>TransparentPostLight</shaderType>
+							</graphicData>
+							<projectile Class="CombatExtended.ProjectilePropertiesCE">
+								<damageDef>Bullet</damageDef>
+								<damageAmountBase>7</damageAmountBase>
+								<armorPenetrationSharp>40</armorPenetrationSharp>
+								<armorPenetrationBlunt>124</armorPenetrationBlunt>
+								<speed>300</speed>
+								<dropsCasings>false</dropsCasings>
+								<secondaryDamage>
+									<li>
+										<def>Flame_Secondary</def>
+										<amount>10</amount>
+									</li>
+								</secondaryDamage>
+							</projectile>
+						</ThingDef>
+
+						<ThingDef ParentName="BaseBulletCE">
+							<defName>BOR_Bullet_XCOM8mmRailgunCannon_Ni</defName>
+							<label>8mm Railgun bullet (Neutronium infused)</label>
+							<graphicData>
+								<texPath>BOR/Things/Bullet/Bullet_Mag_Big</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+								<shaderType>TransparentPostLight</shaderType>
+							</graphicData>
+							<projectile Class="CombatExtended.ProjectilePropertiesCE">
+								<damageDef>Bullet</damageDef>
+								<damageAmountBase>6</damageAmountBase>
+								<armorPenetrationSharp>30</armorPenetrationSharp>
+								<armorPenetrationBlunt>108</armorPenetrationBlunt>
+								<speed>300</speed>
+								<dropsCasings>false</dropsCasings>
+								<secondaryDamage>
+									<li>
+										<def>Bomb_Secondary</def>
+										<amount>16</amount>
+									</li>
+								</secondaryDamage>
+							</projectile>
+						</ThingDef>
+
+						<ThingDef ParentName="BaseBulletCE">
+							<defName>BOR_Bullet_XCOM8mmRailgunCannon_EMP_N</defName>
+							<label>8mm Railgun bullet (Ionized Neutronium)</label>
+							<graphicData>
+								<texPath>BOR/Things/Bullet/Bullet_Mag_Big</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+								<shaderType>TransparentPostLight</shaderType>
+							</graphicData>
+							<projectile Class="CombatExtended.ProjectilePropertiesCE">
+								<damageDef>Bullet</damageDef>
+								<damageAmountBase>6</damageAmountBase>
+								<armorPenetrationSharp>27</armorPenetrationSharp>
+								<armorPenetrationBlunt>124</armorPenetrationBlunt>
+								<speed>300</speed>
+								<dropsCasings>false</dropsCasings>
+								<secondaryDamage>
+									<li>
+										<def>EMP</def>
+										<amount>10</amount>
+									</li>
+								</secondaryDamage>
+							</projectile>
+						</ThingDef>
+
+						<ThingDef ParentName="BaseBulletCE">
+							<defName>BOR_Bullet_XCOM8mmRailgunCannon_SS</defName>
+							<label>8mm Railgun bullet (SS)</label>
+							<graphicData>
+								<texPath>BOR/Things/Bullet/Bullet_Mag_Big</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+								<shaderType>TransparentPostLight</shaderType>
+							</graphicData>
+							<projectile Class="CombatExtended.ProjectilePropertiesCE">
+								<damageDef>Bullet</damageDef>
+								<damageAmountBase>11</damageAmountBase>
+								<armorPenetrationSharp>27</armorPenetrationSharp>
+								<armorPenetrationBlunt>124</armorPenetrationBlunt>
+								<speed>260</speed>
+								<dropsCasings>false</dropsCasings>
+							</projectile>
+						</ThingDef>
+
+						<CombatExtended.AmmoSetDef>
+							<defName>BOR_AmmoSet_8mmRailgunXCOM_Cannon</defName>
+							<label>8mm Railgun (Cannon)</label>
+							<ammoTypes>
+								<BOR_Ammo_8mmRailgunCannon_SS>BOR_Bullet_XCOM8mmRailgunCannon_SS</BOR_Ammo_8mmRailgunCannon_SS>
+								<BOR_Ammo_8mmRailgunCannon_TC>BOR_Bullet_XCOM8mmRailgunCannon_TC</BOR_Ammo_8mmRailgunCannon_TC>
+								<BOR_Ammo_8mmRailgunCannon_Nc>BOR_Bullet_XCOM8mmRailgunCannon_Nc</BOR_Ammo_8mmRailgunCannon_Nc>
+								<BOR_Ammo_8mmRailgunCannon_Ni>BOR_Bullet_XCOM8mmRailgunCannon_Ni</BOR_Ammo_8mmRailgunCannon_Ni>
+								<BOR_Ammo_8mmRailgunCannon_EMP_N>BOR_Bullet_XCOM8mmRailgunCannon_EMP_N</BOR_Ammo_8mmRailgunCannon_EMP_N>
+							</ammoTypes>
+						</CombatExtended.AmmoSetDef>
+
+						<RecipeDef ParentName="AdvancedAmmoRecipeBase">
+							<defName>MakeBOR_Ammo_8mmRailgunCannon_TC</defName>
+							<label>make 8mm Railgun cartridge (TC) x500</label>
+							<description>Craft 500 8mm Railgun (TC) cartridges.</description>
+							<jobString>Making 8mm Railgun (TC) cartridges.</jobString>
+								<researchPrerequisite>BOR_CE_GaussAmmo_I_TC</researchPrerequisite>
+							<workAmount>20000</workAmount>
+							<ingredients>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_QuasarAlloy</li>
+										</thingDefs>
+									</filter>
+									<count>3</count>
+								</li>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_Tenebrite</li>
+										</thingDefs>
+									</filter>
+									<count>4</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter>
+								<thingDefs>
+									<li>BOR_QuasarAlloy</li>
+									<li>BOR_Tenebrite</li>
+								</thingDefs>
+							</fixedIngredientFilter>
+							<products>
+								<BOR_Ammo_8mmRailgunCannon_TC>500</BOR_Ammo_8mmRailgunCannon_TC>
+							</products>
+						</RecipeDef>
+
+						<RecipeDef ParentName="AmmoRecipeBase">
+							<defName>MakeBOR_Ammo_8mmRailgunCannon_Nc</defName>
+							<label>make 8mm Railgun cartridge (Neutronium coated) x500</label>
+							<description>Craft 500 8mm Railgun (Neutronium coated) cartridges.</description>
+							<jobString>Making 8mm Railgun (Neutronium coated) cartridges.</jobString>
+								<researchPrerequisite>BOR_CE_GaussAmmo_I_Ni</researchPrerequisite>
+							<workAmount>20000</workAmount>
+							<ingredients>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_QuasarAlloy</li>
+										</thingDefs>
+									</filter>
+									<count>4</count>
+								</li>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_Neutronium</li>
+										</thingDefs>
+									</filter>
+									<count>20</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter>
+								<thingDefs>
+									<li>BOR_Neutronium</li>
+									<li>BOR_QuasarAlloy</li>
+								</thingDefs>
+							</fixedIngredientFilter>
+							<products>
+								<BOR_Ammo_8mmRailgunCannon_Nc>500</BOR_Ammo_8mmRailgunCannon_Nc>
+							</products>
+						</RecipeDef>
+
+						<RecipeDef ParentName="AmmoRecipeBase">
+							<defName>MakeBOR_Ammo_8mmRailgunCannon_Ni</defName>
+							<label>make 8mm Railgun cartridge (Neutronium infused) x500</label>
+							<description>Craft 500 8mm Railgun (Neutronium infused) cartridges.</description>
+							<jobString>Making 8mm Railgun (Neutronium infused) cartridges.</jobString>
+								<researchPrerequisite>BOR_CE_GaussAmmo_I_Ni</researchPrerequisite>
+							<workAmount>20000</workAmount>
+							<ingredients>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_QuasarAlloy</li>
+										</thingDefs>
+									</filter>
+									<count>4</count>
+								</li>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_Neutronium</li>
+										</thingDefs>
+									</filter>
+									<count>40</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter>
+								<thingDefs>
+									<li>BOR_Neutronium</li>
+									<li>BOR_QuasarAlloy</li>
+								</thingDefs>
+							</fixedIngredientFilter>
+							<products>
+								<BOR_Ammo_8mmRailgunCannon_Ni>500</BOR_Ammo_8mmRailgunCannon_Ni>
+							</products>
+						</RecipeDef>
+
+						<RecipeDef ParentName="AmmoRecipeBase">
+							<defName>MakeBOR_Ammo_8mmRailgunCannon_EMP_N</defName>
+							<label>make 8mm Railgun cartridge (Ionized Neutronium) x500</label>
+							<description>Craft 500 8mm Railgun (Ionized Neutronium) cartridges.</description>
+							<jobString>Making 8mm Railgun (Ionized Neutronium) cartridges.</jobString>
+								<researchPrerequisite>BOR_CE_GaussAmmo_I_Ni</researchPrerequisite>
+							<workAmount>30000</workAmount>
+							<ingredients>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_QuasarAlloy</li>
+										</thingDefs>
+									</filter>
+									<count>4</count>
+								</li>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_Neutronium</li>
+										</thingDefs>
+									</filter>
+									<count>40</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter>
+								<thingDefs>
+									<li>BOR_Neutronium</li>
+									<li>BOR_QuasarAlloy</li>
+								</thingDefs>
+							</fixedIngredientFilter>
+							<products>
+								<BOR_Ammo_8mmRailgunCannon_EMP_N>500</BOR_Ammo_8mmRailgunCannon_EMP_N>
+							</products>
+						</RecipeDef>
+
+						<RecipeDef ParentName="AmmoRecipeBase">
+							<defName>MakeBOR_Ammo_8mmRailgunCannon_SS</defName>
+							<label>make 8mm Railgun cartridge (SS) x500</label>
+							<description>Craft 500 8mm Railgun (SS) cartridges.</description>
+							<jobString>Making 8mm Railgun (SS) cartridges.</jobString>
+								<researchPrerequisite>BOR_CE_GaussAmmo_I_SS</researchPrerequisite>
+							<workAmount>12000</workAmount>
+							<ingredients>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_Sunsteel</li>
+										</thingDefs>
+									</filter>
+									<count>4</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter>
+								<thingDefs>
+									<li>BOR_Sunsteel</li>
+								</thingDefs>
+							</fixedIngredientFilter>
+							<products>
+								<BOR_Ammo_8mmRailgunCannon_SS>500</BOR_Ammo_8mmRailgunCannon_SS>
 							</products>
 						</RecipeDef>
 
@@ -926,6 +2496,98 @@
 							<ammoClass>BOR_TC_AmmoClass</ammoClass>
 						</ThingDef>
 
+						<ThingDef Class="CombatExtended.AmmoDef" ParentName="SpacerSmallAmmoBase">
+							<defName>BOR_Ammo_12GaugeRailgun_SS</defName>
+							<label>12 Gauge railgun slug (SS)</label>
+							<description>Sunsteel-coated discarding-sabot slug, the baseline round for scatter railguns.</description>
+							<statBases>
+								<Mass>0.08</Mass>
+								<Bulk>0.12</Bulk>
+								<MarketValue>0.05</MarketValue>
+							</statBases>
+							<tradeTags>
+								<li>CE_AutoEnableTrade</li>
+								<li>CE_AutoEnableCrafting_FabricationBench</li>
+							</tradeTags>
+							<thingCategories>
+								<li>Ammo12GaugeRailgun</li>
+							</thingCategories>
+							<graphicData>
+								<texPath>BOR/Things/Item/Equipment/weaponranged/gen1/mag/ammo/SS</texPath>
+								<graphicClass>Graphic_StackCount</graphicClass>
+							</graphicData>
+							<ammoClass>BOR_SS_AmmoClass</ammoClass>
+						</ThingDef>
+
+						<ThingDef Class="CombatExtended.AmmoDef" ParentName="SpacerSmallAmmoBase">
+							<defName>BOR_Ammo_12GaugeRailgun_Nc</defName>
+							<label>12 Gauge railgun slug (Nc)</label>
+							<description>Neutronium-coated discarding-sabot slug, designed for scatter railguns.</description>
+							<statBases>
+								<Mass>0.1</Mass>
+								<Bulk>0.14</Bulk>
+								<MarketValue>0.10</MarketValue>
+							</statBases>
+							<tradeTags>
+								<li>CE_AutoEnableTrade</li>
+								<li>CE_AutoEnableCrafting_FabricationBench</li>
+							</tradeTags>
+							<thingCategories>
+								<li>Ammo12GaugeRailgun</li>
+							</thingCategories>
+							<graphicData>
+								<texPath>BOR/Things/Item/Equipment/weaponranged/gen1/mag/ammo/Nc</texPath>
+								<graphicClass>Graphic_StackCount</graphicClass>
+							</graphicData>
+							<ammoClass>BOR_Nc_AmmoClass</ammoClass>
+						</ThingDef>
+
+						<ThingDef Class="CombatExtended.AmmoDef" ParentName="SpacerSmallAmmoBase">
+							<defName>BOR_Ammo_12GaugeRailgun_Ni</defName>
+							<label>12 Gauge railgun slug (N-i)</label>
+							<description>Neutronium-infused discarding-sabot slug, designed for scatter railguns.</description>
+							<statBases>
+								<Mass>0.1</Mass>
+								<Bulk>0.14</Bulk>
+								<MarketValue>0.08</MarketValue>
+							</statBases>
+							<tradeTags>
+								<li>CE_AutoEnableTrade</li>
+								<li>CE_AutoEnableCrafting_FabricationBench</li>
+							</tradeTags>
+							<thingCategories>
+								<li>Ammo12GaugeRailgun</li>
+							</thingCategories>
+							<graphicData>
+								<texPath>BOR/Things/Item/Equipment/weaponranged/gen1/mag/ammo/Ni</texPath>
+								<graphicClass>Graphic_StackCount</graphicClass>
+							</graphicData>
+							<ammoClass>BOR_Ni_AmmoClass</ammoClass>
+						</ThingDef>
+
+						<ThingDef Class="CombatExtended.AmmoDef" ParentName="SpacerSmallAmmoBase">
+							<defName>BOR_Ammo_12GaugeRailgun_EMP_N</defName>
+							<label>12 Gauge railgun slug (Ionized Neutronium)</label>
+							<description>Ionized-neutronium discarding-sabot slug, designed for scatter railguns.</description>
+							<statBases>
+								<Mass>0.1</Mass>
+								<Bulk>0.14</Bulk>
+								<MarketValue>0.10</MarketValue>
+							</statBases>
+							<tradeTags>
+								<li>CE_AutoEnableTrade</li>
+								<li>CE_AutoEnableCrafting_FabricationBench</li>
+							</tradeTags>
+							<thingCategories>
+								<li>Ammo12GaugeRailgun</li>
+							</thingCategories>
+							<graphicData>
+								<texPath>BOR/Things/Item/Equipment/weaponranged/gen1/mag/ammo/EMP_N</texPath>
+								<graphicClass>Graphic_StackCount</graphicClass>
+							</graphicData>
+							<ammoClass>BOR_Charged_Ion_N_AmmoClass</ammoClass>
+						</ThingDef>
+
 						<ThingDef Class="CombatExtended.AmmoDef" ParentName="SpacerMediumAmmoBase">
 							<defName>BOR_Ammo_12mmRailgun_TC</defName>
 							<label>12mm Railgun cartridge (TC)</label>
@@ -956,7 +2618,7 @@
 
 						<ThingDef ParentName="BaseBulletCE">
 							<defName>BOR_Bullet_XCOMScatterRailgun_TC</defName>
-							<label>12 Gauge railgun bullet (Tenebrite Coated)</label>
+							<label>12 Gauge railgun slug (Tenebrite Coated)</label>
 							<graphicData>
 								<texPath>BOR/Things/Bullet/Bullet_Mag_Shotgun</texPath>
 								<graphicClass>Graphic_Single</graphicClass>
@@ -964,42 +2626,109 @@
 								<drawSize>0.3</drawSize>
 							</graphicData>
 							<projectile Class="CombatExtended.ProjectilePropertiesCE">
-								<speed>844</speed>
+								<speed>300</speed>
 								<damageDef>Bullet</damageDef>
-								<damageAmountBase>15</damageAmountBase>
-								<armorPenetrationSharp>37</armorPenetrationSharp>
-								<armorPenetrationBlunt>84</armorPenetrationBlunt>
-								<spreadMult>20</spreadMult>
-								<pelletCount>16</pelletCount>
+								<damageAmountBase>13</damageAmountBase>
+								<armorPenetrationSharp>48</armorPenetrationSharp>
+								<armorPenetrationBlunt>206</armorPenetrationBlunt>
 								<dropsCasings>false</dropsCasings>
 							</projectile>
 						</ThingDef>
 
-						<ThingDef Class="CombatExtended.AmmoDef" ParentName="SpacerMediumAmmoBase">
-							<defName>BOR_Ammo_12mmRailgun_TC</defName>
-							<label>12mm Railgun cartridge (Sabot)</label>
-							<description>Fin-stabilized tungsten carbide penetrator with discarding sabot, designed for large-caliber railgun weapons.</description>
-							<statBases>
-								<Mass>0.051</Mass>
-								<Bulk>0.04</Bulk>
-								<MarketValue>0.33</MarketValue>
-							</statBases>
-							<tradeTags>
-								<li>CE_AutoEnableTrade</li>
-								<li>CE_AutoEnableCrafting_FabricationBench</li>
-								<li>CE_AutoEnableCrafting_TableMachining</li>
-								<!-- Railgun ammo isn't handloaded because it contains no propellant, and the sabots must be precision-machined anyway -->
-							</tradeTags>
-							<thingCategories>
-								<li>Ammo12mmRailgun</li>
-							</thingCategories>
-							<stackLimit>200</stackLimit>
+						<ThingDef ParentName="BaseBulletCE">
+							<defName>BOR_Bullet_XCOMScatterRailgun_SS</defName>
+							<label>12 Gauge railgun slug (SS)</label>
 							<graphicData>
-								<texPath>BOR/Things/Item/Equipment/weaponranged/gen1/mag/ammo/TC</texPath>
-								<graphicClass>Graphic_StackCount</graphicClass>
+								<texPath>BOR/Things/Bullet/Bullet_Mag_Shotgun</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+								<shaderType>TransparentPostLight</shaderType>
+								<drawSize>0.3</drawSize>
 							</graphicData>
-							<ammoClass>BOR_TC_AmmoClass</ammoClass>
+							<projectile Class="CombatExtended.ProjectilePropertiesCE">
+								<speed>220</speed>
+								<damageDef>Bullet</damageDef>
+								<damageAmountBase>7</damageAmountBase>
+								<armorPenetrationSharp>28</armorPenetrationSharp>
+								<armorPenetrationBlunt>123</armorPenetrationBlunt>
+								<dropsCasings>false</dropsCasings>
+							</projectile>
 						</ThingDef>
+
+						<ThingDef ParentName="BaseBulletCE">
+							<defName>BOR_Bullet_XCOMScatterRailgun_Nc</defName>
+							<label>12 Gauge railgun slug (Nc)</label>
+							<graphicData>
+								<texPath>BOR/Things/Bullet/Bullet_Mag_Shotgun</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+								<shaderType>TransparentPostLight</shaderType>
+								<drawSize>0.3</drawSize>
+							</graphicData>
+							<projectile Class="CombatExtended.ProjectilePropertiesCE">
+								<speed>260</speed>
+								<damageDef>Bullet</damageDef>
+								<damageAmountBase>20</damageAmountBase>
+								<armorPenetrationSharp>32</armorPenetrationSharp>
+								<armorPenetrationBlunt>136</armorPenetrationBlunt>
+								<dropsCasings>false</dropsCasings>
+								<secondaryDamage>
+									<li>
+										<def>Flame_Secondary</def>
+										<amount>10</amount>
+									</li>
+								</secondaryDamage>
+							</projectile>
+						</ThingDef>
+
+						<ThingDef ParentName="BaseBulletCE">
+							<defName>BOR_Bullet_XCOMScatterRailgun_Ni</defName>
+							<label>12 Gauge railgun slug (N-i)</label>
+							<graphicData>
+								<texPath>BOR/Things/Bullet/Bullet_Mag_Shotgun</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+								<shaderType>TransparentPostLight</shaderType>
+								<drawSize>0.3</drawSize>
+							</graphicData>
+							<projectile Class="CombatExtended.ProjectilePropertiesCE">
+								<speed>260</speed>
+								<damageDef>Bullet</damageDef>
+								<damageAmountBase>20</damageAmountBase>
+								<armorPenetrationSharp>28</armorPenetrationSharp>
+								<armorPenetrationBlunt>120</armorPenetrationBlunt>
+								<dropsCasings>false</dropsCasings>
+								<secondaryDamage>
+									<li>
+										<def>Bomb_Secondary</def>
+										<amount>12</amount>
+									</li>
+								</secondaryDamage>
+							</projectile>
+						</ThingDef>
+
+						<ThingDef ParentName="BaseBulletCE">
+							<defName>BOR_Bullet_XCOMScatterRailgun_EMP_N</defName>
+							<label>12 Gauge railgun slug (Ionized Neutronium)</label>
+							<graphicData>
+								<texPath>BOR/Things/Bullet/Bullet_Mag_Shotgun</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+								<shaderType>TransparentPostLight</shaderType>
+								<drawSize>0.3</drawSize>
+							</graphicData>
+							<projectile Class="CombatExtended.ProjectilePropertiesCE">
+								<speed>260</speed>
+								<damageDef>Bullet</damageDef>
+								<damageAmountBase>20</damageAmountBase>
+								<armorPenetrationSharp>32</armorPenetrationSharp>
+								<armorPenetrationBlunt>136</armorPenetrationBlunt>
+								<dropsCasings>false</dropsCasings>
+								<secondaryDamage>
+									<li>
+										<def>EMP</def>
+										<amount>10</amount>
+									</li>
+								</secondaryDamage>
+							</projectile>
+						</ThingDef>
+
 						<!-- ==================== Recipes ========================== -->
 
 						<RecipeDef ParentName="AmmoRecipeBase">
@@ -1007,6 +2736,7 @@
 							<label>make 12 Gauge railgun cartridge (Tenebrite Coated) x200</label>
 							<description>Craft 500 12 Gauge railgun (Tenebrite Coated) cartridges.</description>
 							<jobString>Making 12 Gauge railgun (Tenebrite Coated) cartridges.</jobString>
+								<researchPrerequisite>BOR_CE_GaussAmmo_I_TC</researchPrerequisite>
 							<workAmount>25000</workAmount>
 							<ingredients>
 								<li>
@@ -1034,6 +2764,1685 @@
 							</fixedIngredientFilter>
 							<products>
 								<BOR_Ammo_12GaugeRailgun_TC>200</BOR_Ammo_12GaugeRailgun_TC>
+							</products>
+						</RecipeDef>
+
+						<RecipeDef ParentName="AmmoRecipeBase">
+							<defName>MakeBOR_Ammo_12GaugeRailgun_SS</defName>
+							<label>make 12 Gauge railgun slug (SS) x200</label>
+							<description>Craft 200 12 Gauge railgun (SS) slugs.</description>
+							<jobString>Making 12 Gauge railgun (SS) slugs.</jobString>
+								<researchPrerequisite>BOR_CE_GaussAmmo_I_SS</researchPrerequisite>
+							<workAmount>7000</workAmount>
+							<ingredients>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_Sunsteel</li>
+										</thingDefs>
+									</filter>
+									<count>4</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter>
+								<thingDefs>
+									<li>BOR_Sunsteel</li>
+								</thingDefs>
+							</fixedIngredientFilter>
+							<products>
+								<BOR_Ammo_12GaugeRailgun_SS>200</BOR_Ammo_12GaugeRailgun_SS>
+							</products>
+						</RecipeDef>
+
+						<RecipeDef ParentName="AdvancedAmmoRecipeBase">
+							<defName>MakeBOR_Ammo_12GaugeRailgun_Nc</defName>
+							<label>make 12 Gauge railgun slug (Nc) x200</label>
+							<description>Craft 200 12 Gauge railgun (Nc) slugs.</description>
+							<jobString>Making 12 Gauge railgun (Nc) slugs.</jobString>
+								<researchPrerequisite>BOR_CE_GaussAmmo_I_Ni</researchPrerequisite>
+							<workAmount>13000</workAmount>
+							<ingredients>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_QuasarAlloy</li>
+										</thingDefs>
+									</filter>
+									<count>2</count>
+								</li>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_Neutronium</li>
+										</thingDefs>
+									</filter>
+									<count>20</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter>
+								<thingDefs>
+									<li>BOR_QuasarAlloy</li>
+									<li>BOR_Neutronium</li>
+								</thingDefs>
+							</fixedIngredientFilter>
+							<products>
+								<BOR_Ammo_12GaugeRailgun_Nc>200</BOR_Ammo_12GaugeRailgun_Nc>
+							</products>
+						</RecipeDef>
+
+						<RecipeDef ParentName="AdvancedAmmoRecipeBase">
+							<defName>MakeBOR_Ammo_12GaugeRailgun_Ni</defName>
+							<label>make 12 Gauge railgun slug (N-i) x200</label>
+							<description>Craft 200 12 Gauge railgun (N-i) slugs.</description>
+							<jobString>Making 12 Gauge railgun (N-i) slugs.</jobString>
+								<researchPrerequisite>BOR_CE_GaussAmmo_I_Ni</researchPrerequisite>
+							<workAmount>13000</workAmount>
+							<ingredients>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_QuasarAlloy</li>
+										</thingDefs>
+									</filter>
+									<count>2</count>
+								</li>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_Neutronium</li>
+										</thingDefs>
+									</filter>
+									<count>25</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter>
+								<thingDefs>
+									<li>BOR_QuasarAlloy</li>
+									<li>BOR_Neutronium</li>
+								</thingDefs>
+							</fixedIngredientFilter>
+							<products>
+								<BOR_Ammo_12GaugeRailgun_Ni>200</BOR_Ammo_12GaugeRailgun_Ni>
+							</products>
+						</RecipeDef>
+
+						<RecipeDef ParentName="AdvancedAmmoRecipeBase">
+							<defName>MakeBOR_Ammo_12GaugeRailgun_EMP_N</defName>
+							<label>make 12 Gauge railgun slug (Ionized Neutronium) x200</label>
+							<description>Craft 200 12 Gauge railgun (Ionized Neutronium) slugs.</description>
+							<jobString>Making 12 Gauge railgun (Ionized Neutronium) slugs.</jobString>
+								<researchPrerequisite>BOR_CE_GaussAmmo_I_Ni</researchPrerequisite>
+							<workAmount>13000</workAmount>
+							<ingredients>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_QuasarAlloy</li>
+										</thingDefs>
+									</filter>
+									<count>2</count>
+								</li>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_Neutronium</li>
+										</thingDefs>
+									</filter>
+									<count>15</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter>
+								<thingDefs>
+									<li>BOR_QuasarAlloy</li>
+									<li>BOR_Neutronium</li>
+								</thingDefs>
+							</fixedIngredientFilter>
+							<products>
+								<BOR_Ammo_12GaugeRailgun_EMP_N>200</BOR_Ammo_12GaugeRailgun_EMP_N>
+							</products>
+						</RecipeDef>
+
+						<!-- ==================== Gen2 Kwazaari Gauss "Kwazeer" AP-HE Ammo ==================== -->
+
+						<CombatExtended.AmmoCategoryDef>
+							<defName>BOR_KwazeerStd_AmmoClass</defName>
+							<label>kwaazer AP-HE</label>
+							<labelShort>Bolt-Std</labelShort>
+							<description>Self-propelled kwazaari alloy bolt rounds with a low-yield explosive core, sacrificing raw penetration for a detonation on impact.</description>
+						</CombatExtended.AmmoCategoryDef>
+
+						<CombatExtended.AmmoCategoryDef>
+							<defName>BOR_KwazeerInc_AmmoClass</defName>
+							<label>kwaazer incendiary AP-HE</label>
+							<labelShort>Bolt-Inc</labelShort>
+							<description>Self-propelled kwazaari alloy bolt rounds packing an incendiary compound alongside the explosive core, igniting targets on detonation.</description>
+						</CombatExtended.AmmoCategoryDef>
+
+						<CombatExtended.AmmoCategoryDef>
+							<defName>BOR_KwazeerEMP_AmmoClass</defName>
+							<label>kwaazer EMP AP-HE</label>
+							<labelShort>Bolt-EMP</labelShort>
+							<description>Self-propelled kwazaari alloy bolt rounds wired with an ionizing charge alongside the explosive core, disrupting electronics on detonation.</description>
+						</CombatExtended.AmmoCategoryDef>
+
+						<!-- ==== kwaazer cartridges: 4mm (Pistol) ==== -->
+
+						<ThingDef Class="CombatExtended.AmmoDef" ParentName="SpacerSmallAmmoBase">
+							<defName>BOR_Ammo_4mmRailgun_KwazeerStd</defName>
+							<label>4mm kwaazer cartridge (Std)</label>
+							<description>A compact kwazaari alloy bolt round scaled for pistol-caliber railguns, trading penetration for a low-yield explosive detonation on impact.</description>
+							<statBases>
+								<Mass>0.02</Mass>
+								<Bulk>0.01</Bulk>
+								<MarketValue>0.10</MarketValue>
+							</statBases>
+							<tradeTags>
+								<li>CE_AutoEnableTrade</li>
+								<li>CE_AutoEnableCrafting_FabricationBench</li>
+							</tradeTags>
+							<thingCategories>
+								<li>Ammo4mmRailgun</li>
+							</thingCategories>
+							<graphicData>
+								<texPath>BOR/Things/Item/Equipment/weaponranged/gen1/mag/ammo/SS</texPath>
+								<graphicClass>Graphic_StackCount</graphicClass>
+							</graphicData>
+							<ammoClass>BOR_KwazeerStd_AmmoClass</ammoClass>
+							<generateAllowChance>0.10</generateAllowChance>
+							<generateCommonality>0.01</generateCommonality>
+						</ThingDef>
+
+						<ThingDef Class="CombatExtended.AmmoDef" ParentName="SpacerSmallAmmoBase">
+							<defName>BOR_Ammo_4mmRailgun_KwazeerInc</defName>
+							<label>4mm kwaazer cartridge (Inc)</label>
+							<description>A compact kwazaari alloy bolt round scaled for pistol-caliber railguns, packing an incendiary compound alongside its explosive core.</description>
+							<statBases>
+								<Mass>0.02</Mass>
+								<Bulk>0.01</Bulk>
+								<MarketValue>0.11</MarketValue>
+							</statBases>
+							<tradeTags>
+								<li>CE_AutoEnableTrade</li>
+								<li>CE_AutoEnableCrafting_FabricationBench</li>
+							</tradeTags>
+							<thingCategories>
+								<li>Ammo4mmRailgun</li>
+							</thingCategories>
+							<graphicData>
+								<texPath>BOR/Things/Item/Equipment/weaponranged/gen1/mag/ammo/Nc</texPath>
+								<graphicClass>Graphic_StackCount</graphicClass>
+							</graphicData>
+							<ammoClass>BOR_KwazeerInc_AmmoClass</ammoClass>
+							<generateAllowChance>0.10</generateAllowChance>
+							<generateCommonality>0.01</generateCommonality>
+						</ThingDef>
+
+						<ThingDef Class="CombatExtended.AmmoDef" ParentName="SpacerSmallAmmoBase">
+							<defName>BOR_Ammo_4mmRailgun_KwazeerEMP</defName>
+							<label>4mm kwaazer cartridge (EMP)</label>
+							<description>A compact kwazaari alloy bolt round scaled for pistol-caliber railguns, wired with an ionizing charge alongside its explosive core.</description>
+							<statBases>
+								<Mass>0.02</Mass>
+								<Bulk>0.01</Bulk>
+								<MarketValue>0.11</MarketValue>
+							</statBases>
+							<tradeTags>
+								<li>CE_AutoEnableTrade</li>
+								<li>CE_AutoEnableCrafting_FabricationBench</li>
+							</tradeTags>
+							<thingCategories>
+								<li>Ammo4mmRailgun</li>
+							</thingCategories>
+							<graphicData>
+								<texPath>BOR/Things/Item/Equipment/weaponranged/gen1/mag/ammo/EMP_N</texPath>
+								<graphicClass>Graphic_StackCount</graphicClass>
+							</graphicData>
+							<ammoClass>BOR_KwazeerEMP_AmmoClass</ammoClass>
+							<generateAllowChance>0.10</generateAllowChance>
+							<generateCommonality>0.01</generateCommonality>
+						</ThingDef>
+
+						<!-- ==== kwaazer cartridges: 6mm (Rifle/Bullpup/DMR) ==== -->
+
+						<ThingDef Class="CombatExtended.AmmoDef" ParentName="SpacerSmallAmmoBase">
+							<defName>BOR_Ammo_6mmRailgun_KwazeerStd</defName>
+							<label>6mm kwaazer cartridge (Std)</label>
+							<description>A kwazaari alloy bolt round scaled for rifle-caliber railguns, trading penetration for a low-yield explosive detonation on impact.</description>
+							<statBases>
+								<Mass>0.03</Mass>
+								<Bulk>0.02</Bulk>
+								<MarketValue>0.12</MarketValue>
+							</statBases>
+							<tradeTags>
+								<li>CE_AutoEnableTrade</li>
+								<li>CE_AutoEnableCrafting_FabricationBench</li>
+							</tradeTags>
+							<thingCategories>
+								<li>Ammo6mmRailgun</li>
+							</thingCategories>
+							<graphicData>
+								<texPath>BOR/Things/Item/Equipment/weaponranged/gen1/mag/ammo/SS</texPath>
+								<graphicClass>Graphic_StackCount</graphicClass>
+							</graphicData>
+							<ammoClass>BOR_KwazeerStd_AmmoClass</ammoClass>
+							<generateAllowChance>0.10</generateAllowChance>
+							<generateCommonality>0.01</generateCommonality>
+						</ThingDef>
+
+						<ThingDef Class="CombatExtended.AmmoDef" ParentName="SpacerSmallAmmoBase">
+							<defName>BOR_Ammo_6mmRailgun_KwazeerInc</defName>
+							<label>6mm kwaazer cartridge (Inc)</label>
+							<description>A kwazaari alloy bolt round scaled for rifle-caliber railguns, packing an incendiary compound alongside its explosive core.</description>
+							<statBases>
+								<Mass>0.03</Mass>
+								<Bulk>0.02</Bulk>
+								<MarketValue>0.13</MarketValue>
+							</statBases>
+							<tradeTags>
+								<li>CE_AutoEnableTrade</li>
+								<li>CE_AutoEnableCrafting_FabricationBench</li>
+							</tradeTags>
+							<thingCategories>
+								<li>Ammo6mmRailgun</li>
+							</thingCategories>
+							<graphicData>
+								<texPath>BOR/Things/Item/Equipment/weaponranged/gen1/mag/ammo/Nc</texPath>
+								<graphicClass>Graphic_StackCount</graphicClass>
+							</graphicData>
+							<ammoClass>BOR_KwazeerInc_AmmoClass</ammoClass>
+							<generateAllowChance>0.10</generateAllowChance>
+							<generateCommonality>0.01</generateCommonality>
+						</ThingDef>
+
+						<ThingDef Class="CombatExtended.AmmoDef" ParentName="SpacerSmallAmmoBase">
+							<defName>BOR_Ammo_6mmRailgun_KwazeerEMP</defName>
+							<label>6mm kwaazer cartridge (EMP)</label>
+							<description>A kwazaari alloy bolt round scaled for rifle-caliber railguns, wired with an ionizing charge alongside its explosive core.</description>
+							<statBases>
+								<Mass>0.03</Mass>
+								<Bulk>0.02</Bulk>
+								<MarketValue>0.13</MarketValue>
+							</statBases>
+							<tradeTags>
+								<li>CE_AutoEnableTrade</li>
+								<li>CE_AutoEnableCrafting_FabricationBench</li>
+							</tradeTags>
+							<thingCategories>
+								<li>Ammo6mmRailgun</li>
+							</thingCategories>
+							<graphicData>
+								<texPath>BOR/Things/Item/Equipment/weaponranged/gen1/mag/ammo/EMP_N</texPath>
+								<graphicClass>Graphic_StackCount</graphicClass>
+							</graphicData>
+							<ammoClass>BOR_KwazeerEMP_AmmoClass</ammoClass>
+							<generateAllowChance>0.10</generateAllowChance>
+							<generateCommonality>0.01</generateCommonality>
+						</ThingDef>
+
+						<!-- ==== kwaazer cartridges: 8mm (SniperRifle/Cannon) ==== -->
+
+						<ThingDef Class="CombatExtended.AmmoDef" ParentName="SpacerSmallAmmoBase">
+							<defName>BOR_Ammo_8mmRailgun_KwazeerStd</defName>
+							<label>8mm kwaazer cartridge (Std)</label>
+							<description>A heavy kwazaari alloy bolt round scaled for large-caliber railguns, trading penetration for a low-yield explosive detonation on impact.</description>
+							<statBases>
+								<Mass>0.05</Mass>
+								<Bulk>0.03</Bulk>
+								<MarketValue>0.16</MarketValue>
+							</statBases>
+							<tradeTags>
+								<li>CE_AutoEnableTrade</li>
+								<li>CE_AutoEnableCrafting_FabricationBench</li>
+							</tradeTags>
+							<thingCategories>
+								<li>Ammo8mmRailgun</li>
+							</thingCategories>
+							<graphicData>
+								<texPath>BOR/Things/Item/Equipment/weaponranged/gen1/mag/ammo/SS</texPath>
+								<graphicClass>Graphic_StackCount</graphicClass>
+							</graphicData>
+							<ammoClass>BOR_KwazeerStd_AmmoClass</ammoClass>
+							<generateAllowChance>0.10</generateAllowChance>
+							<generateCommonality>0.01</generateCommonality>
+						</ThingDef>
+
+						<ThingDef Class="CombatExtended.AmmoDef" ParentName="SpacerSmallAmmoBase">
+							<defName>BOR_Ammo_8mmRailgun_KwazeerInc</defName>
+							<label>8mm kwaazer cartridge (Inc)</label>
+							<description>A heavy kwazaari alloy bolt round scaled for large-caliber railguns, packing an incendiary compound alongside its explosive core.</description>
+							<statBases>
+								<Mass>0.05</Mass>
+								<Bulk>0.03</Bulk>
+								<MarketValue>0.17</MarketValue>
+							</statBases>
+							<tradeTags>
+								<li>CE_AutoEnableTrade</li>
+								<li>CE_AutoEnableCrafting_FabricationBench</li>
+							</tradeTags>
+							<thingCategories>
+								<li>Ammo8mmRailgun</li>
+							</thingCategories>
+							<graphicData>
+								<texPath>BOR/Things/Item/Equipment/weaponranged/gen1/mag/ammo/Nc</texPath>
+								<graphicClass>Graphic_StackCount</graphicClass>
+							</graphicData>
+							<ammoClass>BOR_KwazeerInc_AmmoClass</ammoClass>
+							<generateAllowChance>0.10</generateAllowChance>
+							<generateCommonality>0.01</generateCommonality>
+						</ThingDef>
+
+						<ThingDef Class="CombatExtended.AmmoDef" ParentName="SpacerSmallAmmoBase">
+							<defName>BOR_Ammo_8mmRailgun_KwazeerEMP</defName>
+							<label>8mm kwaazer cartridge (EMP)</label>
+							<description>A heavy kwazaari alloy bolt round scaled for large-caliber railguns, wired with an ionizing charge alongside its explosive core.</description>
+							<statBases>
+								<Mass>0.05</Mass>
+								<Bulk>0.03</Bulk>
+								<MarketValue>0.17</MarketValue>
+							</statBases>
+							<tradeTags>
+								<li>CE_AutoEnableTrade</li>
+								<li>CE_AutoEnableCrafting_FabricationBench</li>
+							</tradeTags>
+							<thingCategories>
+								<li>Ammo8mmRailgun</li>
+							</thingCategories>
+							<graphicData>
+								<texPath>BOR/Things/Item/Equipment/weaponranged/gen1/mag/ammo/EMP_N</texPath>
+								<graphicClass>Graphic_StackCount</graphicClass>
+							</graphicData>
+							<ammoClass>BOR_KwazeerEMP_AmmoClass</ammoClass>
+							<generateAllowChance>0.10</generateAllowChance>
+							<generateCommonality>0.01</generateCommonality>
+						</ThingDef>
+
+						<!-- ==== kwaazer cartridges: 12 Gauge (Shotgun) ==== -->
+
+						<ThingDef Class="CombatExtended.AmmoDef" ParentName="SpacerSmallAmmoBase">
+							<defName>BOR_Ammo_12GaugeRailgun_KwazeerStd</defName>
+							<label>12 Gauge kwaazer shell (Std)</label>
+							<description>A wide-bore kwazaari alloy bolt shell for scatter railguns, trading penetration for a low-yield explosive detonation on impact.</description>
+							<statBases>
+								<Mass>0.11</Mass>
+								<Bulk>0.15</Bulk>
+								<MarketValue>0.14</MarketValue>
+							</statBases>
+							<tradeTags>
+								<li>CE_AutoEnableTrade</li>
+								<li>CE_AutoEnableCrafting_FabricationBench</li>
+								<li>CE_AutoEnableCrafting_TableMachining</li>
+							</tradeTags>
+							<thingCategories>
+								<li>Ammo12GaugeRailgun</li>
+							</thingCategories>
+							<graphicData>
+								<texPath>BOR/Things/Item/Equipment/weaponranged/gen1/mag/ammo/SS</texPath>
+								<graphicClass>Graphic_StackCount</graphicClass>
+							</graphicData>
+							<ammoClass>BOR_KwazeerStd_AmmoClass</ammoClass>
+							<generateAllowChance>0.10</generateAllowChance>
+							<generateCommonality>0.01</generateCommonality>
+						</ThingDef>
+
+						<ThingDef Class="CombatExtended.AmmoDef" ParentName="SpacerSmallAmmoBase">
+							<defName>BOR_Ammo_12GaugeRailgun_KwazeerInc</defName>
+							<label>12 Gauge kwaazer shell (Inc)</label>
+							<description>A wide-bore kwazaari alloy bolt shell for scatter railguns, packing an incendiary compound alongside its explosive core.</description>
+							<statBases>
+								<Mass>0.11</Mass>
+								<Bulk>0.15</Bulk>
+								<MarketValue>0.15</MarketValue>
+							</statBases>
+							<tradeTags>
+								<li>CE_AutoEnableTrade</li>
+								<li>CE_AutoEnableCrafting_FabricationBench</li>
+								<li>CE_AutoEnableCrafting_TableMachining</li>
+							</tradeTags>
+							<thingCategories>
+								<li>Ammo12GaugeRailgun</li>
+							</thingCategories>
+							<graphicData>
+								<texPath>BOR/Things/Item/Equipment/weaponranged/gen1/mag/ammo/Nc</texPath>
+								<graphicClass>Graphic_StackCount</graphicClass>
+							</graphicData>
+							<ammoClass>BOR_KwazeerInc_AmmoClass</ammoClass>
+							<generateAllowChance>0.10</generateAllowChance>
+							<generateCommonality>0.01</generateCommonality>
+						</ThingDef>
+
+						<ThingDef Class="CombatExtended.AmmoDef" ParentName="SpacerSmallAmmoBase">
+							<defName>BOR_Ammo_12GaugeRailgun_KwazeerEMP</defName>
+							<label>12 Gauge kwaazer shell (EMP)</label>
+							<description>A wide-bore kwazaari alloy bolt shell for scatter railguns, wired with an ionizing charge alongside its explosive core.</description>
+							<statBases>
+								<Mass>0.11</Mass>
+								<Bulk>0.15</Bulk>
+								<MarketValue>0.15</MarketValue>
+							</statBases>
+							<tradeTags>
+								<li>CE_AutoEnableTrade</li>
+								<li>CE_AutoEnableCrafting_FabricationBench</li>
+								<li>CE_AutoEnableCrafting_TableMachining</li>
+							</tradeTags>
+							<thingCategories>
+								<li>Ammo12GaugeRailgun</li>
+							</thingCategories>
+							<graphicData>
+								<texPath>BOR/Things/Item/Equipment/weaponranged/gen1/mag/ammo/EMP_N</texPath>
+								<graphicClass>Graphic_StackCount</graphicClass>
+							</graphicData>
+							<ammoClass>BOR_KwazeerEMP_AmmoClass</ammoClass>
+							<generateAllowChance>0.10</generateAllowChance>
+							<generateCommonality>0.01</generateCommonality>
+						</ThingDef>
+
+						<!-- ==== kwaazer projectiles: Rifle (6mm) ==== -->
+
+						<ThingDef ParentName="BaseBulletCE">
+							<defName>BOR_Bullet_QuasarGauss_Rifle_KwazeerStd</defName>
+							<label>6mm kwaazer round (Std)</label>
+							<graphicData>
+								<texPath>BOR/Things/Bullet/Bullet_Mag_Small</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+								<shaderType>TransparentPostLight</shaderType>
+								<drawSize>1.1</drawSize>
+							</graphicData>
+							<projectile Class="CombatExtended.ProjectilePropertiesCE">
+								<damageDef>Bullet</damageDef>
+								<damageAmountBase>5</damageAmountBase>
+								<armorPenetrationSharp>16</armorPenetrationSharp>
+								<armorPenetrationBlunt>73</armorPenetrationBlunt>
+								<speed>260</speed>
+								<dropsCasings>false</dropsCasings>
+								<secondaryDamage>
+									<li>
+										<def>Bomb_Secondary</def>
+										<amount>8</amount>
+									</li>
+								</secondaryDamage>
+							</projectile>
+						</ThingDef>
+
+						<ThingDef ParentName="BaseBulletCE">
+							<defName>BOR_Bullet_QuasarGauss_Rifle_KwazeerInc</defName>
+							<label>6mm kwaazer round (Inc)</label>
+							<graphicData>
+								<texPath>BOR/Things/Bullet/Bullet_Mag_Small</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+								<shaderType>TransparentPostLight</shaderType>
+								<drawSize>1.1</drawSize>
+							</graphicData>
+							<projectile Class="CombatExtended.ProjectilePropertiesCE">
+								<damageDef>Bullet</damageDef>
+								<damageAmountBase>5</damageAmountBase>
+								<armorPenetrationSharp>16</armorPenetrationSharp>
+								<armorPenetrationBlunt>73</armorPenetrationBlunt>
+								<speed>260</speed>
+								<dropsCasings>false</dropsCasings>
+								<secondaryDamage>
+									<li>
+										<def>Bomb_Secondary</def>
+										<amount>5</amount>
+									</li>
+									<li>
+										<def>Flame_Secondary</def>
+										<amount>4</amount>
+									</li>
+								</secondaryDamage>
+							</projectile>
+						</ThingDef>
+
+						<ThingDef ParentName="BaseBulletCE">
+							<defName>BOR_Bullet_QuasarGauss_Rifle_KwazeerEMP</defName>
+							<label>6mm kwaazer round (EMP)</label>
+							<graphicData>
+								<texPath>BOR/Things/Bullet/Bullet_Mag_Small</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+								<shaderType>TransparentPostLight</shaderType>
+								<drawSize>1.1</drawSize>
+							</graphicData>
+							<projectile Class="CombatExtended.ProjectilePropertiesCE">
+								<damageDef>Bullet</damageDef>
+								<damageAmountBase>5</damageAmountBase>
+								<armorPenetrationSharp>16</armorPenetrationSharp>
+								<armorPenetrationBlunt>73</armorPenetrationBlunt>
+								<speed>260</speed>
+								<dropsCasings>false</dropsCasings>
+								<secondaryDamage>
+									<li>
+										<def>Bomb_Secondary</def>
+										<amount>5</amount>
+									</li>
+									<li>
+										<def>EMP</def>
+										<amount>4</amount>
+									</li>
+								</secondaryDamage>
+								<empShieldBreakChance>0.4</empShieldBreakChance>
+							</projectile>
+						</ThingDef>
+
+						<!-- ==== kwaazer projectiles: Bullpup (6mm) ==== -->
+
+						<ThingDef ParentName="BaseBulletCE">
+							<defName>BOR_Bullet_QuasarGauss_Bullpup_KwazeerStd</defName>
+							<label>6mm kwaazer round (Std)</label>
+							<graphicData>
+								<texPath>BOR/Things/Bullet/Bullet_Mag_Small</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+								<shaderType>TransparentPostLight</shaderType>
+								<drawSize>1.1</drawSize>
+							</graphicData>
+							<projectile Class="CombatExtended.ProjectilePropertiesCE">
+								<damageDef>Bullet</damageDef>
+								<damageAmountBase>4</damageAmountBase>
+								<armorPenetrationSharp>13.5</armorPenetrationSharp>
+								<armorPenetrationBlunt>62</armorPenetrationBlunt>
+								<speed>260</speed>
+								<dropsCasings>false</dropsCasings>
+								<secondaryDamage>
+									<li>
+										<def>Bomb_Secondary</def>
+										<amount>6</amount>
+									</li>
+								</secondaryDamage>
+							</projectile>
+						</ThingDef>
+
+						<ThingDef ParentName="BaseBulletCE">
+							<defName>BOR_Bullet_QuasarGauss_Bullpup_KwazeerInc</defName>
+							<label>6mm kwaazer round (Inc)</label>
+							<graphicData>
+								<texPath>BOR/Things/Bullet/Bullet_Mag_Small</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+								<shaderType>TransparentPostLight</shaderType>
+								<drawSize>1.1</drawSize>
+							</graphicData>
+							<projectile Class="CombatExtended.ProjectilePropertiesCE">
+								<damageDef>Bullet</damageDef>
+								<damageAmountBase>4</damageAmountBase>
+								<armorPenetrationSharp>13.5</armorPenetrationSharp>
+								<armorPenetrationBlunt>62</armorPenetrationBlunt>
+								<speed>260</speed>
+								<dropsCasings>false</dropsCasings>
+								<secondaryDamage>
+									<li>
+										<def>Bomb_Secondary</def>
+										<amount>4</amount>
+									</li>
+									<li>
+										<def>Flame_Secondary</def>
+										<amount>3</amount>
+									</li>
+								</secondaryDamage>
+							</projectile>
+						</ThingDef>
+
+						<ThingDef ParentName="BaseBulletCE">
+							<defName>BOR_Bullet_QuasarGauss_Bullpup_KwazeerEMP</defName>
+							<label>6mm kwaazer round (EMP)</label>
+							<graphicData>
+								<texPath>BOR/Things/Bullet/Bullet_Mag_Small</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+								<shaderType>TransparentPostLight</shaderType>
+								<drawSize>1.1</drawSize>
+							</graphicData>
+							<projectile Class="CombatExtended.ProjectilePropertiesCE">
+								<damageDef>Bullet</damageDef>
+								<damageAmountBase>4</damageAmountBase>
+								<armorPenetrationSharp>13.5</armorPenetrationSharp>
+								<armorPenetrationBlunt>62</armorPenetrationBlunt>
+								<speed>260</speed>
+								<dropsCasings>false</dropsCasings>
+								<secondaryDamage>
+									<li>
+										<def>Bomb_Secondary</def>
+										<amount>4</amount>
+									</li>
+									<li>
+										<def>EMP</def>
+										<amount>3</amount>
+									</li>
+								</secondaryDamage>
+								<empShieldBreakChance>0.4</empShieldBreakChance>
+							</projectile>
+						</ThingDef>
+
+						<!-- ==== kwaazer projectiles: DMR (6mm) ==== -->
+
+						<ThingDef ParentName="BaseBulletCE">
+							<defName>BOR_Bullet_QuasarGauss_DMR_KwazeerStd</defName>
+							<label>6mm kwaazer round (Std)</label>
+							<graphicData>
+								<texPath>BOR/Things/Bullet/Bullet_Mag_Small</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+								<shaderType>TransparentPostLight</shaderType>
+								<drawSize>1.1</drawSize>
+							</graphicData>
+							<projectile Class="CombatExtended.ProjectilePropertiesCE">
+								<damageDef>Bullet</damageDef>
+								<damageAmountBase>7</damageAmountBase>
+								<armorPenetrationSharp>22</armorPenetrationSharp>
+								<armorPenetrationBlunt>102</armorPenetrationBlunt>
+								<speed>260</speed>
+								<dropsCasings>false</dropsCasings>
+								<secondaryDamage>
+									<li>
+										<def>Bomb_Secondary</def>
+										<amount>11</amount>
+									</li>
+								</secondaryDamage>
+							</projectile>
+						</ThingDef>
+
+						<ThingDef ParentName="BaseBulletCE">
+							<defName>BOR_Bullet_QuasarGauss_DMR_KwazeerInc</defName>
+							<label>6mm kwaazer round (Inc)</label>
+							<graphicData>
+								<texPath>BOR/Things/Bullet/Bullet_Mag_Small</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+								<shaderType>TransparentPostLight</shaderType>
+								<drawSize>1.1</drawSize>
+							</graphicData>
+							<projectile Class="CombatExtended.ProjectilePropertiesCE">
+								<damageDef>Bullet</damageDef>
+								<damageAmountBase>7</damageAmountBase>
+								<armorPenetrationSharp>22</armorPenetrationSharp>
+								<armorPenetrationBlunt>102</armorPenetrationBlunt>
+								<speed>260</speed>
+								<dropsCasings>false</dropsCasings>
+								<secondaryDamage>
+									<li>
+										<def>Bomb_Secondary</def>
+										<amount>7</amount>
+									</li>
+									<li>
+										<def>Flame_Secondary</def>
+										<amount>6</amount>
+									</li>
+								</secondaryDamage>
+							</projectile>
+						</ThingDef>
+
+						<ThingDef ParentName="BaseBulletCE">
+							<defName>BOR_Bullet_QuasarGauss_DMR_KwazeerEMP</defName>
+							<label>6mm kwaazer round (EMP)</label>
+							<graphicData>
+								<texPath>BOR/Things/Bullet/Bullet_Mag_Small</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+								<shaderType>TransparentPostLight</shaderType>
+								<drawSize>1.1</drawSize>
+							</graphicData>
+							<projectile Class="CombatExtended.ProjectilePropertiesCE">
+								<damageDef>Bullet</damageDef>
+								<damageAmountBase>7</damageAmountBase>
+								<armorPenetrationSharp>22</armorPenetrationSharp>
+								<armorPenetrationBlunt>102</armorPenetrationBlunt>
+								<speed>260</speed>
+								<dropsCasings>false</dropsCasings>
+								<secondaryDamage>
+									<li>
+										<def>Bomb_Secondary</def>
+										<amount>7</amount>
+									</li>
+									<li>
+										<def>EMP</def>
+										<amount>6</amount>
+									</li>
+								</secondaryDamage>
+								<empShieldBreakChance>0.4</empShieldBreakChance>
+							</projectile>
+						</ThingDef>
+
+						<!-- ==== kwaazer projectiles: SniperRifle (8mm) ==== -->
+
+						<ThingDef ParentName="BaseBulletCE">
+							<defName>BOR_Bullet_QuasarGauss_Sniper_KwazeerStd</defName>
+							<label>8mm kwaazer round (Std)</label>
+							<graphicData>
+								<texPath>BOR/Things/Bullet/Bullet_Mag_Big</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+								<shaderType>TransparentPostLight</shaderType>
+							</graphicData>
+							<projectile Class="CombatExtended.ProjectilePropertiesCE">
+								<damageDef>Bullet</damageDef>
+								<damageAmountBase>26</damageAmountBase>
+								<armorPenetrationSharp>80</armorPenetrationSharp>
+								<armorPenetrationBlunt>365</armorPenetrationBlunt>
+								<speed>260</speed>
+								<dropsCasings>false</dropsCasings>
+								<secondaryDamage>
+									<li>
+										<def>Bomb_Secondary</def>
+										<amount>39</amount>
+									</li>
+								</secondaryDamage>
+							</projectile>
+						</ThingDef>
+
+						<ThingDef ParentName="BaseBulletCE">
+							<defName>BOR_Bullet_QuasarGauss_Sniper_KwazeerInc</defName>
+							<label>8mm kwaazer round (Inc)</label>
+							<graphicData>
+								<texPath>BOR/Things/Bullet/Bullet_Mag_Big</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+								<shaderType>TransparentPostLight</shaderType>
+							</graphicData>
+							<projectile Class="CombatExtended.ProjectilePropertiesCE">
+								<damageDef>Bullet</damageDef>
+								<damageAmountBase>26</damageAmountBase>
+								<armorPenetrationSharp>80</armorPenetrationSharp>
+								<armorPenetrationBlunt>365</armorPenetrationBlunt>
+								<speed>260</speed>
+								<dropsCasings>false</dropsCasings>
+								<secondaryDamage>
+									<li>
+										<def>Bomb_Secondary</def>
+										<amount>26</amount>
+									</li>
+									<li>
+										<def>Flame_Secondary</def>
+										<amount>21</amount>
+									</li>
+								</secondaryDamage>
+							</projectile>
+						</ThingDef>
+
+						<ThingDef ParentName="BaseBulletCE">
+							<defName>BOR_Bullet_QuasarGauss_Sniper_KwazeerEMP</defName>
+							<label>8mm kwaazer round (EMP)</label>
+							<graphicData>
+								<texPath>BOR/Things/Bullet/Bullet_Mag_Big</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+								<shaderType>TransparentPostLight</shaderType>
+							</graphicData>
+							<projectile Class="CombatExtended.ProjectilePropertiesCE">
+								<damageDef>Bullet</damageDef>
+								<damageAmountBase>26</damageAmountBase>
+								<armorPenetrationSharp>80</armorPenetrationSharp>
+								<armorPenetrationBlunt>365</armorPenetrationBlunt>
+								<speed>260</speed>
+								<dropsCasings>false</dropsCasings>
+								<secondaryDamage>
+									<li>
+										<def>Bomb_Secondary</def>
+										<amount>26</amount>
+									</li>
+									<li>
+										<def>EMP</def>
+										<amount>21</amount>
+									</li>
+								</secondaryDamage>
+								<empShieldBreakChance>0.4</empShieldBreakChance>
+							</projectile>
+						</ThingDef>
+
+						<!-- ==== kwaazer projectiles: Cannon (8mm) ==== -->
+
+						<ThingDef ParentName="BaseBulletCE">
+							<defName>BOR_Bullet_QuasarGauss_Cannon_KwazeerStd</defName>
+							<label>8mm kwaazer round (Std)</label>
+							<graphicData>
+								<texPath>BOR/Things/Bullet/Bullet_Mag_Big</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+								<shaderType>TransparentPostLight</shaderType>
+							</graphicData>
+							<projectile Class="CombatExtended.ProjectilePropertiesCE">
+								<damageDef>Bullet</damageDef>
+								<damageAmountBase>4</damageAmountBase>
+								<armorPenetrationSharp>13.5</armorPenetrationSharp>
+								<armorPenetrationBlunt>62</armorPenetrationBlunt>
+								<speed>260</speed>
+								<dropsCasings>false</dropsCasings>
+								<secondaryDamage>
+									<li>
+										<def>Bomb_Secondary</def>
+										<amount>6</amount>
+									</li>
+								</secondaryDamage>
+							</projectile>
+						</ThingDef>
+
+						<ThingDef ParentName="BaseBulletCE">
+							<defName>BOR_Bullet_QuasarGauss_Cannon_KwazeerInc</defName>
+							<label>8mm kwaazer round (Inc)</label>
+							<graphicData>
+								<texPath>BOR/Things/Bullet/Bullet_Mag_Big</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+								<shaderType>TransparentPostLight</shaderType>
+							</graphicData>
+							<projectile Class="CombatExtended.ProjectilePropertiesCE">
+								<damageDef>Bullet</damageDef>
+								<damageAmountBase>4</damageAmountBase>
+								<armorPenetrationSharp>13.5</armorPenetrationSharp>
+								<armorPenetrationBlunt>62</armorPenetrationBlunt>
+								<speed>260</speed>
+								<dropsCasings>false</dropsCasings>
+								<secondaryDamage>
+									<li>
+										<def>Bomb_Secondary</def>
+										<amount>4</amount>
+									</li>
+									<li>
+										<def>Flame_Secondary</def>
+										<amount>3</amount>
+									</li>
+								</secondaryDamage>
+							</projectile>
+						</ThingDef>
+
+						<ThingDef ParentName="BaseBulletCE">
+							<defName>BOR_Bullet_QuasarGauss_Cannon_KwazeerEMP</defName>
+							<label>8mm kwaazer round (EMP)</label>
+							<graphicData>
+								<texPath>BOR/Things/Bullet/Bullet_Mag_Big</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+								<shaderType>TransparentPostLight</shaderType>
+							</graphicData>
+							<projectile Class="CombatExtended.ProjectilePropertiesCE">
+								<damageDef>Bullet</damageDef>
+								<damageAmountBase>4</damageAmountBase>
+								<armorPenetrationSharp>13.5</armorPenetrationSharp>
+								<armorPenetrationBlunt>62</armorPenetrationBlunt>
+								<speed>260</speed>
+								<dropsCasings>false</dropsCasings>
+								<secondaryDamage>
+									<li>
+										<def>Bomb_Secondary</def>
+										<amount>4</amount>
+									</li>
+									<li>
+										<def>EMP</def>
+										<amount>3</amount>
+									</li>
+								</secondaryDamage>
+								<empShieldBreakChance>0.4</empShieldBreakChance>
+							</projectile>
+						</ThingDef>
+
+						<!-- ==== kwaazer projectiles: Pistol (4mm) ==== -->
+
+						<ThingDef ParentName="BaseBulletCE">
+							<defName>BOR_Bullet_QuasarGauss_Pistol_KwazeerStd</defName>
+							<label>4mm kwaazer round (Std)</label>
+							<graphicData>
+								<texPath>BOR/Things/Bullet/Bullet_Mag_Small</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+								<shaderType>TransparentPostLight</shaderType>
+								<drawSize>0.6</drawSize>
+							</graphicData>
+							<projectile Class="CombatExtended.ProjectilePropertiesCE">
+								<damageDef>Bullet</damageDef>
+								<damageAmountBase>4</damageAmountBase>
+								<armorPenetrationSharp>8</armorPenetrationSharp>
+								<armorPenetrationBlunt>11</armorPenetrationBlunt>
+								<speed>140</speed>
+								<dropsCasings>false</dropsCasings>
+								<secondaryDamage>
+									<li>
+										<def>Bomb_Secondary</def>
+										<amount>6</amount>
+									</li>
+								</secondaryDamage>
+							</projectile>
+						</ThingDef>
+
+						<ThingDef ParentName="BaseBulletCE">
+							<defName>BOR_Bullet_QuasarGauss_Pistol_KwazeerInc</defName>
+							<label>4mm kwaazer round (Inc)</label>
+							<graphicData>
+								<texPath>BOR/Things/Bullet/Bullet_Mag_Small</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+								<shaderType>TransparentPostLight</shaderType>
+								<drawSize>0.6</drawSize>
+							</graphicData>
+							<projectile Class="CombatExtended.ProjectilePropertiesCE">
+								<damageDef>Bullet</damageDef>
+								<damageAmountBase>4</damageAmountBase>
+								<armorPenetrationSharp>8</armorPenetrationSharp>
+								<armorPenetrationBlunt>11</armorPenetrationBlunt>
+								<speed>140</speed>
+								<dropsCasings>false</dropsCasings>
+								<secondaryDamage>
+									<li>
+										<def>Bomb_Secondary</def>
+										<amount>4</amount>
+									</li>
+									<li>
+										<def>Flame_Secondary</def>
+										<amount>3</amount>
+									</li>
+								</secondaryDamage>
+							</projectile>
+						</ThingDef>
+
+						<ThingDef ParentName="BaseBulletCE">
+							<defName>BOR_Bullet_QuasarGauss_Pistol_KwazeerEMP</defName>
+							<label>4mm kwaazer round (EMP)</label>
+							<graphicData>
+								<texPath>BOR/Things/Bullet/Bullet_Mag_Small</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+								<shaderType>TransparentPostLight</shaderType>
+								<drawSize>0.6</drawSize>
+							</graphicData>
+							<projectile Class="CombatExtended.ProjectilePropertiesCE">
+								<damageDef>Bullet</damageDef>
+								<damageAmountBase>4</damageAmountBase>
+								<armorPenetrationSharp>8</armorPenetrationSharp>
+								<armorPenetrationBlunt>11</armorPenetrationBlunt>
+								<speed>140</speed>
+								<dropsCasings>false</dropsCasings>
+								<secondaryDamage>
+									<li>
+										<def>Bomb_Secondary</def>
+										<amount>4</amount>
+									</li>
+									<li>
+										<def>EMP</def>
+										<amount>3</amount>
+									</li>
+								</secondaryDamage>
+								<empShieldBreakChance>0.4</empShieldBreakChance>
+							</projectile>
+						</ThingDef>
+
+						<!-- ==== kwaazer projectiles: Shotgun (12 Gauge) ==== -->
+
+						<ThingDef ParentName="BaseBulletCE">
+							<defName>BOR_Bullet_QuasarGauss_Shotgun_KwazeerStd</defName>
+							<label>12 Gauge kwaazer slug (Std)</label>
+							<graphicData>
+								<texPath>BOR/Things/Bullet/Bullet_Mag_Shotgun</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+								<shaderType>TransparentPostLight</shaderType>
+								<drawSize>0.3</drawSize>
+							</graphicData>
+							<projectile Class="CombatExtended.ProjectilePropertiesCE">
+								<damageDef>Bullet</damageDef>
+								<damageAmountBase>3</damageAmountBase>
+								<armorPenetrationSharp>14</armorPenetrationSharp>
+								<armorPenetrationBlunt>61.5</armorPenetrationBlunt>
+								<speed>220</speed>
+								<dropsCasings>false</dropsCasings>
+								<secondaryDamage>
+									<li>
+										<def>Bomb_Secondary</def>
+										<amount>5</amount>
+									</li>
+								</secondaryDamage>
+							</projectile>
+						</ThingDef>
+
+						<ThingDef ParentName="BaseBulletCE">
+							<defName>BOR_Bullet_QuasarGauss_Shotgun_KwazeerInc</defName>
+							<label>12 Gauge kwaazer slug (Inc)</label>
+							<graphicData>
+								<texPath>BOR/Things/Bullet/Bullet_Mag_Shotgun</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+								<shaderType>TransparentPostLight</shaderType>
+								<drawSize>0.3</drawSize>
+							</graphicData>
+							<projectile Class="CombatExtended.ProjectilePropertiesCE">
+								<damageDef>Bullet</damageDef>
+								<damageAmountBase>3</damageAmountBase>
+								<armorPenetrationSharp>14</armorPenetrationSharp>
+								<armorPenetrationBlunt>61.5</armorPenetrationBlunt>
+								<speed>220</speed>
+								<dropsCasings>false</dropsCasings>
+								<secondaryDamage>
+									<li>
+										<def>Bomb_Secondary</def>
+										<amount>3</amount>
+									</li>
+									<li>
+										<def>Flame_Secondary</def>
+										<amount>2</amount>
+									</li>
+								</secondaryDamage>
+							</projectile>
+						</ThingDef>
+
+						<ThingDef ParentName="BaseBulletCE">
+							<defName>BOR_Bullet_QuasarGauss_Shotgun_KwazeerEMP</defName>
+							<label>12 Gauge kwaazer slug (EMP)</label>
+							<graphicData>
+								<texPath>BOR/Things/Bullet/Bullet_Mag_Shotgun</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+								<shaderType>TransparentPostLight</shaderType>
+								<drawSize>0.3</drawSize>
+							</graphicData>
+							<projectile Class="CombatExtended.ProjectilePropertiesCE">
+								<damageDef>Bullet</damageDef>
+								<damageAmountBase>3</damageAmountBase>
+								<armorPenetrationSharp>14</armorPenetrationSharp>
+								<armorPenetrationBlunt>61.5</armorPenetrationBlunt>
+								<speed>220</speed>
+								<dropsCasings>false</dropsCasings>
+								<secondaryDamage>
+									<li>
+										<def>Bomb_Secondary</def>
+										<amount>3</amount>
+									</li>
+									<li>
+										<def>EMP</def>
+										<amount>2</amount>
+									</li>
+								</secondaryDamage>
+								<empShieldBreakChance>0.4</empShieldBreakChance>
+							</projectile>
+						</ThingDef>
+
+						<!-- ==== kwaazer AmmoSetDefs (Gen2 per-weapon-family) ==== -->
+
+						<CombatExtended.AmmoSetDef>
+							<defName>BOR_QuasarGauss_Rifle</defName>
+							<label>6mm kwaazer ammo set</label>
+							<ammoTypes>
+								<BOR_Ammo_6mmRailgun_KwazeerStd>BOR_Bullet_QuasarGauss_Rifle_KwazeerStd</BOR_Ammo_6mmRailgun_KwazeerStd>
+								<BOR_Ammo_6mmRailgun_KwazeerInc>BOR_Bullet_QuasarGauss_Rifle_KwazeerInc</BOR_Ammo_6mmRailgun_KwazeerInc>
+								<BOR_Ammo_6mmRailgun_KwazeerEMP>BOR_Bullet_QuasarGauss_Rifle_KwazeerEMP</BOR_Ammo_6mmRailgun_KwazeerEMP>
+							</ammoTypes>
+						</CombatExtended.AmmoSetDef>
+
+						<CombatExtended.AmmoSetDef>
+							<defName>BOR_QuasarGauss_Bullpup</defName>
+							<label>6mm kwaazer ammo set</label>
+							<ammoTypes>
+								<BOR_Ammo_6mmRailgun_KwazeerStd>BOR_Bullet_QuasarGauss_Bullpup_KwazeerStd</BOR_Ammo_6mmRailgun_KwazeerStd>
+								<BOR_Ammo_6mmRailgun_KwazeerInc>BOR_Bullet_QuasarGauss_Bullpup_KwazeerInc</BOR_Ammo_6mmRailgun_KwazeerInc>
+								<BOR_Ammo_6mmRailgun_KwazeerEMP>BOR_Bullet_QuasarGauss_Bullpup_KwazeerEMP</BOR_Ammo_6mmRailgun_KwazeerEMP>
+							</ammoTypes>
+						</CombatExtended.AmmoSetDef>
+
+						<CombatExtended.AmmoSetDef>
+							<defName>BOR_QuasarGauss_DMR</defName>
+							<label>6mm kwaazer ammo set</label>
+							<ammoTypes>
+								<BOR_Ammo_6mmRailgun_KwazeerStd>BOR_Bullet_QuasarGauss_DMR_KwazeerStd</BOR_Ammo_6mmRailgun_KwazeerStd>
+								<BOR_Ammo_6mmRailgun_KwazeerInc>BOR_Bullet_QuasarGauss_DMR_KwazeerInc</BOR_Ammo_6mmRailgun_KwazeerInc>
+								<BOR_Ammo_6mmRailgun_KwazeerEMP>BOR_Bullet_QuasarGauss_DMR_KwazeerEMP</BOR_Ammo_6mmRailgun_KwazeerEMP>
+							</ammoTypes>
+						</CombatExtended.AmmoSetDef>
+
+						<CombatExtended.AmmoSetDef>
+							<defName>BOR_QuasarGauss_Sniper</defName>
+							<label>8mm kwaazer ammo set</label>
+							<ammoTypes>
+								<BOR_Ammo_8mmRailgun_KwazeerStd>BOR_Bullet_QuasarGauss_Sniper_KwazeerStd</BOR_Ammo_8mmRailgun_KwazeerStd>
+								<BOR_Ammo_8mmRailgun_KwazeerInc>BOR_Bullet_QuasarGauss_Sniper_KwazeerInc</BOR_Ammo_8mmRailgun_KwazeerInc>
+								<BOR_Ammo_8mmRailgun_KwazeerEMP>BOR_Bullet_QuasarGauss_Sniper_KwazeerEMP</BOR_Ammo_8mmRailgun_KwazeerEMP>
+							</ammoTypes>
+						</CombatExtended.AmmoSetDef>
+
+						<CombatExtended.AmmoSetDef>
+							<defName>BOR_QuasarGauss_Cannon</defName>
+							<label>8mm kwaazer ammo set</label>
+							<ammoTypes>
+								<BOR_Ammo_8mmRailgun_KwazeerStd>BOR_Bullet_QuasarGauss_Cannon_KwazeerStd</BOR_Ammo_8mmRailgun_KwazeerStd>
+								<BOR_Ammo_8mmRailgun_KwazeerInc>BOR_Bullet_QuasarGauss_Cannon_KwazeerInc</BOR_Ammo_8mmRailgun_KwazeerInc>
+								<BOR_Ammo_8mmRailgun_KwazeerEMP>BOR_Bullet_QuasarGauss_Cannon_KwazeerEMP</BOR_Ammo_8mmRailgun_KwazeerEMP>
+							</ammoTypes>
+						</CombatExtended.AmmoSetDef>
+
+						<CombatExtended.AmmoSetDef>
+							<defName>BOR_QuasarGauss_Pistol</defName>
+							<label>4mm kwaazer ammo set</label>
+							<ammoTypes>
+								<BOR_Ammo_4mmRailgun_KwazeerStd>BOR_Bullet_QuasarGauss_Pistol_KwazeerStd</BOR_Ammo_4mmRailgun_KwazeerStd>
+								<BOR_Ammo_4mmRailgun_KwazeerInc>BOR_Bullet_QuasarGauss_Pistol_KwazeerInc</BOR_Ammo_4mmRailgun_KwazeerInc>
+								<BOR_Ammo_4mmRailgun_KwazeerEMP>BOR_Bullet_QuasarGauss_Pistol_KwazeerEMP</BOR_Ammo_4mmRailgun_KwazeerEMP>
+							</ammoTypes>
+						</CombatExtended.AmmoSetDef>
+
+						<CombatExtended.AmmoSetDef>
+							<defName>BOR_QuasarGauss_Shotgun</defName>
+							<label>12 Gauge kwaazer ammo set</label>
+							<ammoTypes>
+								<BOR_Ammo_12GaugeRailgun_KwazeerStd>BOR_Bullet_QuasarGauss_Shotgun_KwazeerStd</BOR_Ammo_12GaugeRailgun_KwazeerStd>
+								<BOR_Ammo_12GaugeRailgun_KwazeerInc>BOR_Bullet_QuasarGauss_Shotgun_KwazeerInc</BOR_Ammo_12GaugeRailgun_KwazeerInc>
+								<BOR_Ammo_12GaugeRailgun_KwazeerEMP>BOR_Bullet_QuasarGauss_Shotgun_KwazeerEMP</BOR_Ammo_12GaugeRailgun_KwazeerEMP>
+							</ammoTypes>
+						</CombatExtended.AmmoSetDef>
+
+						<!-- ==== kwaazer recipes ==== -->
+
+						<RecipeDef ParentName="AdvancedAmmoRecipeBase">
+							<defName>MakeBOR_Ammo_4mmRailgun_KwazeerStd</defName>
+							<label>make 4mm kwaazer cartridge (Std) x500</label>
+							<description>Craft 500 4mm kwaazer cartridges (Std).</description>
+							<jobString>Making 4mm kwaazer cartridges (Std).</jobString>
+							<researchPrerequisite>BOR_CE_GaussAmmo_II_Ni</researchPrerequisite>
+							<workAmount>15000</workAmount>
+							<ingredients>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_QuasarAlloy</li>
+										</thingDefs>
+									</filter>
+									<count>3</count>
+								</li>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_ComponentII</li>
+										</thingDefs>
+									</filter>
+									<count>1</count>
+								</li>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_Neutronium</li>
+										</thingDefs>
+									</filter>
+									<count>10</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter>
+								<thingDefs>
+									<li>BOR_QuasarAlloy</li>
+									<li>BOR_ComponentII</li>
+									<li>BOR_Neutronium</li>
+								</thingDefs>
+							</fixedIngredientFilter>
+							<products>
+								<BOR_Ammo_4mmRailgun_KwazeerStd>500</BOR_Ammo_4mmRailgun_KwazeerStd>
+							</products>
+						</RecipeDef>
+
+						<RecipeDef ParentName="AdvancedAmmoRecipeBase">
+							<defName>MakeBOR_Ammo_4mmRailgun_KwazeerInc</defName>
+							<label>make 4mm kwaazer cartridge (Inc) x500</label>
+							<description>Craft 500 4mm kwaazer cartridges (Inc).</description>
+							<jobString>Making 4mm kwaazer cartridges (Inc).</jobString>
+							<researchPrerequisite>BOR_CE_GaussAmmo_II_Ni</researchPrerequisite>
+							<workAmount>15000</workAmount>
+							<ingredients>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_QuasarAlloy</li>
+										</thingDefs>
+									</filter>
+									<count>3</count>
+								</li>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_ComponentII</li>
+										</thingDefs>
+									</filter>
+									<count>1</count>
+								</li>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_Neutronium</li>
+										</thingDefs>
+									</filter>
+									<count>10</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter>
+								<thingDefs>
+									<li>BOR_QuasarAlloy</li>
+									<li>BOR_ComponentII</li>
+									<li>BOR_Neutronium</li>
+								</thingDefs>
+							</fixedIngredientFilter>
+							<products>
+								<BOR_Ammo_4mmRailgun_KwazeerInc>500</BOR_Ammo_4mmRailgun_KwazeerInc>
+							</products>
+						</RecipeDef>
+
+						<RecipeDef ParentName="AdvancedAmmoRecipeBase">
+							<defName>MakeBOR_Ammo_4mmRailgun_KwazeerEMP</defName>
+							<label>make 4mm kwaazer cartridge (EMP) x500</label>
+							<description>Craft 500 4mm kwaazer cartridges (EMP).</description>
+							<jobString>Making 4mm kwaazer cartridges (EMP).</jobString>
+							<researchPrerequisite>BOR_CE_GaussAmmo_II_Ni</researchPrerequisite>
+							<workAmount>15000</workAmount>
+							<ingredients>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_QuasarAlloy</li>
+										</thingDefs>
+									</filter>
+									<count>3</count>
+								</li>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_ComponentII</li>
+										</thingDefs>
+									</filter>
+									<count>1</count>
+								</li>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_Neutronium</li>
+										</thingDefs>
+									</filter>
+									<count>10</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter>
+								<thingDefs>
+									<li>BOR_QuasarAlloy</li>
+									<li>BOR_ComponentII</li>
+									<li>BOR_Neutronium</li>
+								</thingDefs>
+							</fixedIngredientFilter>
+							<products>
+								<BOR_Ammo_4mmRailgun_KwazeerEMP>500</BOR_Ammo_4mmRailgun_KwazeerEMP>
+							</products>
+						</RecipeDef>
+
+						<RecipeDef ParentName="AdvancedAmmoRecipeBase">
+							<defName>MakeBOR_Ammo_6mmRailgun_KwazeerStd</defName>
+							<label>make 6mm kwaazer cartridge (Std) x500</label>
+							<description>Craft 500 6mm kwaazer cartridges (Std).</description>
+							<jobString>Making 6mm kwaazer cartridges (Std).</jobString>
+							<researchPrerequisite>BOR_CE_GaussAmmo_II_Ni</researchPrerequisite>
+							<workAmount>20000</workAmount>
+							<ingredients>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_QuasarAlloy</li>
+										</thingDefs>
+									</filter>
+									<count>4</count>
+								</li>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_ComponentII</li>
+										</thingDefs>
+									</filter>
+									<count>1</count>
+								</li>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_Neutronium</li>
+										</thingDefs>
+									</filter>
+									<count>20</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter>
+								<thingDefs>
+									<li>BOR_QuasarAlloy</li>
+									<li>BOR_ComponentII</li>
+									<li>BOR_Neutronium</li>
+								</thingDefs>
+							</fixedIngredientFilter>
+							<products>
+								<BOR_Ammo_6mmRailgun_KwazeerStd>500</BOR_Ammo_6mmRailgun_KwazeerStd>
+							</products>
+						</RecipeDef>
+
+						<RecipeDef ParentName="AdvancedAmmoRecipeBase">
+							<defName>MakeBOR_Ammo_6mmRailgun_KwazeerInc</defName>
+							<label>make 6mm kwaazer cartridge (Inc) x500</label>
+							<description>Craft 500 6mm kwaazer cartridges (Inc).</description>
+							<jobString>Making 6mm kwaazer cartridges (Inc).</jobString>
+							<researchPrerequisite>BOR_CE_GaussAmmo_II_Ni</researchPrerequisite>
+							<workAmount>20000</workAmount>
+							<ingredients>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_QuasarAlloy</li>
+										</thingDefs>
+									</filter>
+									<count>4</count>
+								</li>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_ComponentII</li>
+										</thingDefs>
+									</filter>
+									<count>1</count>
+								</li>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_Neutronium</li>
+										</thingDefs>
+									</filter>
+									<count>20</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter>
+								<thingDefs>
+									<li>BOR_QuasarAlloy</li>
+									<li>BOR_ComponentII</li>
+									<li>BOR_Neutronium</li>
+								</thingDefs>
+							</fixedIngredientFilter>
+							<products>
+								<BOR_Ammo_6mmRailgun_KwazeerInc>500</BOR_Ammo_6mmRailgun_KwazeerInc>
+							</products>
+						</RecipeDef>
+
+						<RecipeDef ParentName="AdvancedAmmoRecipeBase">
+							<defName>MakeBOR_Ammo_6mmRailgun_KwazeerEMP</defName>
+							<label>make 6mm kwaazer cartridge (EMP) x500</label>
+							<description>Craft 500 6mm kwaazer cartridges (EMP).</description>
+							<jobString>Making 6mm kwaazer cartridges (EMP).</jobString>
+							<researchPrerequisite>BOR_CE_GaussAmmo_II_Ni</researchPrerequisite>
+							<workAmount>20000</workAmount>
+							<ingredients>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_QuasarAlloy</li>
+										</thingDefs>
+									</filter>
+									<count>4</count>
+								</li>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_ComponentII</li>
+										</thingDefs>
+									</filter>
+									<count>1</count>
+								</li>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_Neutronium</li>
+										</thingDefs>
+									</filter>
+									<count>20</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter>
+								<thingDefs>
+									<li>BOR_QuasarAlloy</li>
+									<li>BOR_ComponentII</li>
+									<li>BOR_Neutronium</li>
+								</thingDefs>
+							</fixedIngredientFilter>
+							<products>
+								<BOR_Ammo_6mmRailgun_KwazeerEMP>500</BOR_Ammo_6mmRailgun_KwazeerEMP>
+							</products>
+						</RecipeDef>
+
+						<RecipeDef ParentName="AdvancedAmmoRecipeBase">
+							<defName>MakeBOR_Ammo_8mmRailgun_KwazeerStd</defName>
+							<label>make 8mm kwaazer cartridge (Std) x500</label>
+							<description>Craft 500 8mm kwaazer cartridges (Std).</description>
+							<jobString>Making 8mm kwaazer cartridges (Std).</jobString>
+							<researchPrerequisite>BOR_CE_GaussAmmo_II_Ni</researchPrerequisite>
+							<workAmount>25000</workAmount>
+							<ingredients>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_QuasarAlloy</li>
+										</thingDefs>
+									</filter>
+									<count>6</count>
+								</li>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_ComponentII</li>
+										</thingDefs>
+									</filter>
+									<count>2</count>
+								</li>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_Neutronium</li>
+										</thingDefs>
+									</filter>
+									<count>30</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter>
+								<thingDefs>
+									<li>BOR_QuasarAlloy</li>
+									<li>BOR_ComponentII</li>
+									<li>BOR_Neutronium</li>
+								</thingDefs>
+							</fixedIngredientFilter>
+							<products>
+								<BOR_Ammo_8mmRailgun_KwazeerStd>500</BOR_Ammo_8mmRailgun_KwazeerStd>
+							</products>
+						</RecipeDef>
+
+						<RecipeDef ParentName="AdvancedAmmoRecipeBase">
+							<defName>MakeBOR_Ammo_8mmRailgun_KwazeerInc</defName>
+							<label>make 8mm kwaazer cartridge (Inc) x500</label>
+							<description>Craft 500 8mm kwaazer cartridges (Inc).</description>
+							<jobString>Making 8mm kwaazer cartridges (Inc).</jobString>
+							<researchPrerequisite>BOR_CE_GaussAmmo_II_Ni</researchPrerequisite>
+							<workAmount>25000</workAmount>
+							<ingredients>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_QuasarAlloy</li>
+										</thingDefs>
+									</filter>
+									<count>6</count>
+								</li>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_ComponentII</li>
+										</thingDefs>
+									</filter>
+									<count>2</count>
+								</li>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_Neutronium</li>
+										</thingDefs>
+									</filter>
+									<count>30</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter>
+								<thingDefs>
+									<li>BOR_QuasarAlloy</li>
+									<li>BOR_ComponentII</li>
+									<li>BOR_Neutronium</li>
+								</thingDefs>
+							</fixedIngredientFilter>
+							<products>
+								<BOR_Ammo_8mmRailgun_KwazeerInc>500</BOR_Ammo_8mmRailgun_KwazeerInc>
+							</products>
+						</RecipeDef>
+
+						<RecipeDef ParentName="AdvancedAmmoRecipeBase">
+							<defName>MakeBOR_Ammo_8mmRailgun_KwazeerEMP</defName>
+							<label>make 8mm kwaazer cartridge (EMP) x500</label>
+							<description>Craft 500 8mm kwaazer cartridges (EMP).</description>
+							<jobString>Making 8mm kwaazer cartridges (EMP).</jobString>
+							<researchPrerequisite>BOR_CE_GaussAmmo_II_Ni</researchPrerequisite>
+							<workAmount>25000</workAmount>
+							<ingredients>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_QuasarAlloy</li>
+										</thingDefs>
+									</filter>
+									<count>6</count>
+								</li>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_ComponentII</li>
+										</thingDefs>
+									</filter>
+									<count>2</count>
+								</li>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_Neutronium</li>
+										</thingDefs>
+									</filter>
+									<count>30</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter>
+								<thingDefs>
+									<li>BOR_QuasarAlloy</li>
+									<li>BOR_ComponentII</li>
+									<li>BOR_Neutronium</li>
+								</thingDefs>
+							</fixedIngredientFilter>
+							<products>
+								<BOR_Ammo_8mmRailgun_KwazeerEMP>500</BOR_Ammo_8mmRailgun_KwazeerEMP>
+							</products>
+						</RecipeDef>
+
+						<RecipeDef ParentName="AdvancedAmmoRecipeBase">
+							<defName>MakeBOR_Ammo_12GaugeRailgun_KwazeerStd</defName>
+							<label>make 12 Gauge kwaazer shell (Std) x500</label>
+							<description>Craft 500 12 Gauge kwaazer shells (Std).</description>
+							<jobString>Making 12 Gauge kwaazer shells (Std).</jobString>
+							<researchPrerequisite>BOR_CE_GaussAmmo_II_Ni</researchPrerequisite>
+							<workAmount>22000</workAmount>
+							<ingredients>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_QuasarAlloy</li>
+										</thingDefs>
+									</filter>
+									<count>5</count>
+								</li>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_ComponentII</li>
+										</thingDefs>
+									</filter>
+									<count>1</count>
+								</li>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_Neutronium</li>
+										</thingDefs>
+									</filter>
+									<count>25</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter>
+								<thingDefs>
+									<li>BOR_QuasarAlloy</li>
+									<li>BOR_ComponentII</li>
+									<li>BOR_Neutronium</li>
+								</thingDefs>
+							</fixedIngredientFilter>
+							<products>
+								<BOR_Ammo_12GaugeRailgun_KwazeerStd>500</BOR_Ammo_12GaugeRailgun_KwazeerStd>
+							</products>
+						</RecipeDef>
+
+						<RecipeDef ParentName="AdvancedAmmoRecipeBase">
+							<defName>MakeBOR_Ammo_12GaugeRailgun_KwazeerInc</defName>
+							<label>make 12 Gauge kwaazer shell (Inc) x500</label>
+							<description>Craft 500 12 Gauge kwaazer shells (Inc).</description>
+							<jobString>Making 12 Gauge kwaazer shells (Inc).</jobString>
+							<researchPrerequisite>BOR_CE_GaussAmmo_II_Ni</researchPrerequisite>
+							<workAmount>22000</workAmount>
+							<ingredients>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_QuasarAlloy</li>
+										</thingDefs>
+									</filter>
+									<count>5</count>
+								</li>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_ComponentII</li>
+										</thingDefs>
+									</filter>
+									<count>1</count>
+								</li>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_Neutronium</li>
+										</thingDefs>
+									</filter>
+									<count>25</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter>
+								<thingDefs>
+									<li>BOR_QuasarAlloy</li>
+									<li>BOR_ComponentII</li>
+									<li>BOR_Neutronium</li>
+								</thingDefs>
+							</fixedIngredientFilter>
+							<products>
+								<BOR_Ammo_12GaugeRailgun_KwazeerInc>500</BOR_Ammo_12GaugeRailgun_KwazeerInc>
+							</products>
+						</RecipeDef>
+
+						<RecipeDef ParentName="AdvancedAmmoRecipeBase">
+							<defName>MakeBOR_Ammo_12GaugeRailgun_KwazeerEMP</defName>
+							<label>make 12 Gauge kwaazer shell (EMP) x500</label>
+							<description>Craft 500 12 Gauge kwaazer shells (EMP).</description>
+							<jobString>Making 12 Gauge kwaazer shells (EMP).</jobString>
+							<researchPrerequisite>BOR_CE_GaussAmmo_II_Ni</researchPrerequisite>
+							<workAmount>22000</workAmount>
+							<ingredients>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_QuasarAlloy</li>
+										</thingDefs>
+									</filter>
+									<count>5</count>
+								</li>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_ComponentII</li>
+										</thingDefs>
+									</filter>
+									<count>1</count>
+								</li>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>BOR_Neutronium</li>
+										</thingDefs>
+									</filter>
+									<count>25</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter>
+								<thingDefs>
+									<li>BOR_QuasarAlloy</li>
+									<li>BOR_ComponentII</li>
+									<li>BOR_Neutronium</li>
+								</thingDefs>
+							</fixedIngredientFilter>
+							<products>
+								<BOR_Ammo_12GaugeRailgun_KwazeerEMP>500</BOR_Ammo_12GaugeRailgun_KwazeerEMP>
 							</products>
 						</RecipeDef>
 					</value>
@@ -1172,8 +4581,8 @@
 						<warmupTime>1.00</warmupTime>
 						<burstShotCount>6</burstShotCount>
 						<ticksBetweenBurstShots>6</ticksBetweenBurstShots>
-						<range>55</range>
-						<soundCast>Mag_Rifle</soundCast>
+						<range>54.9</range>
+						<soundCast>Shot_AssaultRifle</soundCast>
 						<soundCastTail>GunTail_Light</soundCastTail>
 						<recoilAmount>3.65</recoilAmount>
 						<muzzleFlashScale>7</muzzleFlashScale>
@@ -1191,7 +4600,7 @@
 					<weaponTags>
 						<li>CE_AI_AR</li>
 					</weaponTags>
-					<researchPrerequisite>ChargedShot</researchPrerequisite>
+					<researchPrerequisite>BOR_SolarGaussWeaponry</researchPrerequisite>
 				</li>
 
 				<li Class="CombatExtended.PatchOperationMakeGunCECompatible">
@@ -1214,12 +4623,12 @@
 					<Properties>
 						<verbClass>CombatExtended.Verb_ShootCE</verbClass>
 						<hasStandardCommand>true</hasStandardCommand>
-						<defaultProjectile>Bullet_XCOM6mmRailgun_Sabot</defaultProjectile>
+						<defaultProjectile>BOR_Bullet_QuasarGauss_Rifle_KwazeerStd</defaultProjectile>
 						<warmupTime>1.00</warmupTime>
 						<burstShotCount>6</burstShotCount>
 						<ticksBetweenBurstShots>6</ticksBetweenBurstShots>
 						<range>55</range>
-						<soundCast>Mag_Rifle</soundCast>
+						<soundCast>Shot_AssaultRifle</soundCast>
 						<soundCastTail>GunTail_Light</soundCastTail>
 						<recoilAmount>3.65</recoilAmount>
 						<muzzleFlashScale>7</muzzleFlashScale>
@@ -1227,7 +4636,7 @@
 					<AmmoUser>
 						<magazineSize>30</magazineSize>
 						<reloadTime>4.95</reloadTime>
-						<ammoSet>AmmoSet_6mmRailgunXCOM</ammoSet>
+						<ammoSet>BOR_QuasarGauss_Rifle</ammoSet>
 					</AmmoUser>
 					<FireModes>
 						<aimedBurstShotCount>3</aimedBurstShotCount>
@@ -1237,7 +4646,7 @@
 					<weaponTags>
 						<li>CE_AI_AR</li>
 					</weaponTags>
-					<researchPrerequisite>ChargedShot</researchPrerequisite>
+					<researchPrerequisite>BOR_QuasarGaussWeaponry</researchPrerequisite>
 				</li>
 
 				<li Class="CombatExtended.PatchOperationMakeGunCECompatible">
@@ -1261,14 +4670,14 @@
 						<hasStandardCommand>true</hasStandardCommand>
 						<defaultProjectile>Bullet_XCOM4mmRailgun_Sabot</defaultProjectile>
 						<warmupTime>0.60</warmupTime>
-						<range>12.00</range>
-						<soundCast>Mag_Pistol</soundCast>
+						<range>21.9</range>
+						<soundCast>Shot_Autopistol</soundCast>
 						<soundCastTail>GunTail_Light</soundCastTail>
 						<recoilAmount>2.00</recoilAmount>
 						<muzzleFlashScale>8</muzzleFlashScale>
 					</Properties>
 					<AmmoUser>
-						<magazineSize>5</magazineSize>
+						<magazineSize>15</magazineSize>
 						<reloadTime>3.85</reloadTime>
 						<ammoSet>AmmoSet_4mmRailgunXCOM</ammoSet>
 					</AmmoUser>
@@ -1280,7 +4689,7 @@
 						<li>CE_OneHandedWeapon</li>
 						<li>CE_AI_BROOM</li>
 					</weaponTags>
-					<researchPrerequisite>ChargedShot</researchPrerequisite>
+					<researchPrerequisite>BOR_SolarGaussWeaponry</researchPrerequisite>
 				</li>
 
 				<li Class="CombatExtended.PatchOperationMakeGunCECompatible">
@@ -1302,10 +4711,10 @@
 					<Properties>
 						<verbClass>CombatExtended.Verb_ShootCE</verbClass>
 						<hasStandardCommand>true</hasStandardCommand>
-						<defaultProjectile>Bullet_XCOM4mmRailgun_Sabot</defaultProjectile>
+						<defaultProjectile>BOR_Bullet_QuasarGauss_Pistol_KwazeerStd</defaultProjectile>
 						<warmupTime>0.60</warmupTime>
 						<range>12.00</range>
-						<soundCast>Mag_Pistol</soundCast>
+						<soundCast>Shot_Autopistol</soundCast>
 						<soundCastTail>GunTail_Light</soundCastTail>
 						<recoilAmount>2.00</recoilAmount>
 						<muzzleFlashScale>8</muzzleFlashScale>
@@ -1313,7 +4722,7 @@
 					<AmmoUser>
 						<magazineSize>5</magazineSize>
 						<reloadTime>3.85</reloadTime>
-						<ammoSet>AmmoSet_4mmRailgunXCOM</ammoSet>
+						<ammoSet>BOR_QuasarGauss_Pistol</ammoSet>
 					</AmmoUser>
 					<FireModes>
 						<aiAimMode>AimedShot</aiAimMode>
@@ -1323,7 +4732,7 @@
 						<li>CE_OneHandedWeapon</li>
 						<li>CE_AI_BROOM</li>
 					</weaponTags>
-					<researchPrerequisite>ChargedShot</researchPrerequisite>
+					<researchPrerequisite>BOR_QuasarGaussWeaponry</researchPrerequisite>
 				</li>
 
 				<li Class="CombatExtended.PatchOperationMakeGunCECompatible">
@@ -1348,13 +4757,13 @@
 						<hasStandardCommand>true</hasStandardCommand>
 						<defaultProjectile>Bullet_XCOMScatterRailgun_Sabot</defaultProjectile>
 						<warmupTime>0.50</warmupTime>
-						<range>44.00</range>
-						<soundCast>Mag_Shotgun</soundCast>
+						<range>27.9</range>
+						<soundCast>Shot_Shotgun</soundCast>
 						<soundCastTail>GunTail_Heavy</soundCastTail>
 						<muzzleFlashScale>10</muzzleFlashScale>
 					</Properties>
 					<AmmoUser>
-						<magazineSize>6</magazineSize>
+						<magazineSize>15</magazineSize>
 						<reloadTime>0.72</reloadTime>
 						<reloadOneAtATime>true</reloadOneAtATime>
 						<ammoSet>AmmoSet_ScatterRailgunXCOM</ammoSet>
@@ -1365,7 +4774,7 @@
 					<weaponTags>
 						<li>CE_AI_BROOM</li>
 					</weaponTags>
-					<researchPrerequisite>ChargedShot</researchPrerequisite>
+					<researchPrerequisite>BOR_SolarGaussWeaponry</researchPrerequisite>
 				</li>
 
 				<li Class="CombatExtended.PatchOperationMakeGunCECompatible">
@@ -1388,10 +4797,10 @@
 						<recoilAmount>3.10</recoilAmount>
 						<verbClass>CombatExtended.Verb_ShootCE</verbClass>
 						<hasStandardCommand>true</hasStandardCommand>
-						<defaultProjectile>Bullet_XCOMScatterRailgun_Sabot</defaultProjectile>
+						<defaultProjectile>BOR_Bullet_QuasarGauss_Shotgun_KwazeerStd</defaultProjectile>
 						<warmupTime>0.50</warmupTime>
 						<range>44.00</range>
-						<soundCast>Mag_Shotgun</soundCast>
+						<soundCast>Shot_Shotgun</soundCast>
 						<soundCastTail>GunTail_Heavy</soundCastTail>
 						<muzzleFlashScale>10</muzzleFlashScale>
 					</Properties>
@@ -1399,7 +4808,7 @@
 						<magazineSize>6</magazineSize>
 						<reloadTime>0.72</reloadTime>
 						<reloadOneAtATime>true</reloadOneAtATime>
-						<ammoSet>AmmoSet_ScatterRailgunXCOM</ammoSet>
+						<ammoSet>BOR_QuasarGauss_Shotgun</ammoSet>
 					</AmmoUser>
 					<FireModes>
 						<aiAimMode>Snapshot</aiAimMode>
@@ -1407,7 +4816,7 @@
 					<weaponTags>
 						<li>CE_AI_BROOM</li>
 					</weaponTags>
-					<researchPrerequisite>ChargedShot</researchPrerequisite>
+					<researchPrerequisite>BOR_QuasarGaussWeaponry</researchPrerequisite>
 				</li>
 
 				<li Class="CombatExtended.PatchOperationMakeGunCECompatible">
@@ -1416,9 +4825,9 @@
 						<WorkToMake>90600</WorkToMake>
 						<Mass>16.76</Mass>
 						<Bulk>17.16</Bulk>
-						<SwayFactor>1.34</SwayFactor>
-						<ShotSpread>0.03</ShotSpread>
-						<SightsEfficiency>2.24</SightsEfficiency>
+						<SwayFactor>1.89</SwayFactor>
+						<ShotSpread>0.030</ShotSpread>
+						<SightsEfficiency>2.75</SightsEfficiency>
 						<RangedWeapon_Cooldown>1.22</RangedWeapon_Cooldown>
 						<NightVisionEfficiency_Weapon>0.60</NightVisionEfficiency_Weapon>
 					</statBases>
@@ -1433,13 +4842,13 @@
 						<hasStandardCommand>true</hasStandardCommand>
 						<defaultProjectile>Bullet_XCOM8mmRailgun_Sabot</defaultProjectile>
 						<warmupTime>2.50</warmupTime>
-						<range>86.00</range>
-						<soundCast>Mag_SniperRifle</soundCast>
+						<range>87.9</range>
+						<soundCast>Shot_SniperRifle</soundCast>
 						<soundCastTail>GunTail_Heavy</soundCastTail>
 						<muzzleFlashScale>10</muzzleFlashScale>
 					</Properties>
 					<AmmoUser>
-						<magazineSize>5</magazineSize>
+						<magazineSize>18</magazineSize>
 						<reloadTime>4.95</reloadTime>
 						<ammoSet>AmmoSet_8mmRailgunXCOM</ammoSet>
 					</AmmoUser>
@@ -1451,7 +4860,7 @@
 						<li>CE_AI_SR</li>
 						<li>Bipod_DMR</li>
 					</weaponTags>
-					<researchPrerequisite>ChargedShot</researchPrerequisite>
+					<researchPrerequisite>BOR_SolarGaussHighCaliberWeaponry</researchPrerequisite>
 					<AllowWithRunAndGun>false</AllowWithRunAndGun>
 				</li>
 
@@ -1476,17 +4885,17 @@
 						<recoilAmount>5.00</recoilAmount>
 						<verbClass>CombatExtended.Verb_ShootCE</verbClass>
 						<hasStandardCommand>true</hasStandardCommand>
-						<defaultProjectile>Bullet_XCOM8mmRailgun_Sabot</defaultProjectile>
+						<defaultProjectile>BOR_Bullet_QuasarGauss_Sniper_KwazeerStd</defaultProjectile>
 						<warmupTime>2.50</warmupTime>
 						<range>86.00</range>
-						<soundCast>Mag_SniperRifle</soundCast>
+						<soundCast>Shot_SniperRifle</soundCast>
 						<soundCastTail>GunTail_Heavy</soundCastTail>
 						<muzzleFlashScale>10</muzzleFlashScale>
 					</Properties>
 					<AmmoUser>
 						<magazineSize>5</magazineSize>
 						<reloadTime>4.95</reloadTime>
-						<ammoSet>AmmoSet_8mmRailgunXCOM</ammoSet>
+						<ammoSet>BOR_QuasarGauss_Sniper</ammoSet>
 					</AmmoUser>
 					<FireModes>
 						<aiAimMode>AimedShot</aiAimMode>
@@ -1496,7 +4905,7 @@
 						<li>CE_AI_SR</li>
 						<li>Bipod_DMR</li>
 					</weaponTags>
-					<researchPrerequisite>ChargedShot</researchPrerequisite>
+					<researchPrerequisite>BOR_QuasarGaussHighCaliberWeaponry</researchPrerequisite>
 					<AllowWithRunAndGun>false</AllowWithRunAndGun>
 				</li>
 
@@ -1506,9 +4915,9 @@
 						<WorkToMake>132000</WorkToMake>
 						<Mass>51.48</Mass>
 						<Bulk>33</Bulk>
-						<SwayFactor>2</SwayFactor>
-						<ShotSpread>0.01</ShotSpread>
-						<SightsEfficiency>1.00</SightsEfficiency>
+						<SwayFactor>3.78</SwayFactor>
+						<ShotSpread>0.096</ShotSpread>
+						<SightsEfficiency>0.77</SightsEfficiency>
 						<RangedWeapon_Cooldown>1.37</RangedWeapon_Cooldown>
 					</statBases>
 					<costList>
@@ -1519,20 +4928,20 @@
 					<Properties>
 						<verbClass>CombatExtended.Verb_ShootCE</verbClass>
 						<hasStandardCommand>true</hasStandardCommand>
-						<defaultProjectile>Bullet_XCOM8mmRailgun_Sabot</defaultProjectile>
+						<defaultProjectile>BOR_Bullet_XCOM8mmRailgunCannon_SS</defaultProjectile>
 						<warmupTime>3.10</warmupTime>
-						<range>65</range>
-						<soundCast>Mag_Cannon</soundCast>
+						<range>54.9</range>
+						<soundCast>Shot_ChargeRifle</soundCast>
 						<soundCastTail>GunTail_Heavy</soundCastTail>
 						<recoilAmount>3.14</recoilAmount>
 						<muzzleFlashScale>18</muzzleFlashScale>
-						<burstShotCount>20</burstShotCount>
+						<burstShotCount>15</burstShotCount>
 						<ticksBetweenBurstShots>6</ticksBetweenBurstShots>
 					</Properties>
 					<AmmoUser>
-						<magazineSize>80</magazineSize>
+						<magazineSize>60</magazineSize>
 						<reloadTime>8.58</reloadTime>
-						<ammoSet>AmmoSet_8mmRailgunXCOM</ammoSet>
+						<ammoSet>BOR_AmmoSet_8mmRailgunXCOM_Cannon</ammoSet>
 					</AmmoUser>
 					<FireModes>
 						<aiAimMode>AimedShot</aiAimMode>
@@ -1542,7 +4951,7 @@
 						<li>CE_AI_SR</li>
 						<li>Bipod_LMG</li>
 					</weaponTags>
-					<researchPrerequisite>ChargedShot</researchPrerequisite>
+					<researchPrerequisite>BOR_SolarGaussHighCaliberWeaponry</researchPrerequisite>
 					<AllowWithRunAndGun>false</AllowWithRunAndGun>
 				</li>
 
@@ -1565,10 +4974,10 @@
 					<Properties>
 						<verbClass>CombatExtended.Verb_ShootCE</verbClass>
 						<hasStandardCommand>true</hasStandardCommand>
-						<defaultProjectile>Bullet_XCOM8mmRailgun_Sabot</defaultProjectile>
+						<defaultProjectile>BOR_Bullet_QuasarGauss_Cannon_KwazeerStd</defaultProjectile>
 						<warmupTime>3.10</warmupTime>
 						<range>65</range>
-						<soundCast>Mag_Cannon</soundCast>
+						<soundCast>Shot_ChargeRifle</soundCast>
 						<soundCastTail>GunTail_Heavy</soundCastTail>
 						<recoilAmount>3.14</recoilAmount>
 						<muzzleFlashScale>18</muzzleFlashScale>
@@ -1578,7 +4987,7 @@
 					<AmmoUser>
 						<magazineSize>80</magazineSize>
 						<reloadTime>8.58</reloadTime>
-						<ammoSet>AmmoSet_8mmRailgunXCOM</ammoSet>
+						<ammoSet>BOR_QuasarGauss_Cannon</ammoSet>
 					</AmmoUser>
 					<FireModes>
 						<aiAimMode>AimedShot</aiAimMode>
@@ -1588,7 +4997,7 @@
 						<li>CE_AI_SR</li>
 						<li>Bipod_LMG</li>
 					</weaponTags>
-					<researchPrerequisite>ChargedShot</researchPrerequisite>
+					<researchPrerequisite>BOR_QuasarGaussHighCaliberWeaponry</researchPrerequisite>
 					<AllowWithRunAndGun>false</AllowWithRunAndGun>
 				</li>
 
@@ -1598,9 +5007,9 @@
 						<WorkToMake>72600</WorkToMake>
 						<Mass>5.94</Mass>
 						<Bulk>11.22</Bulk>
-						<SwayFactor>1.46</SwayFactor>
-						<ShotSpread>0.10</ShotSpread>
-						<SightsEfficiency>1.10</SightsEfficiency>
+						<SwayFactor>1.64</SwayFactor>
+						<ShotSpread>0.090</ShotSpread>
+						<SightsEfficiency>0.99</SightsEfficiency>
 						<RangedWeapon_Cooldown>0.33</RangedWeapon_Cooldown>
 						<NightVisionEfficiency_Weapon>0.40</NightVisionEfficiency_Weapon>
 					</statBases>
@@ -1612,20 +5021,20 @@
 					<Properties>
 						<verbClass>CombatExtended.Verb_ShootCE</verbClass>
 						<hasStandardCommand>true</hasStandardCommand>
-						<defaultProjectile>Bullet_XCOM6mmRailgun_Sabot</defaultProjectile>
+						<defaultProjectile>BOR_Bullet_XCOM6mmRailgunBullpup_SS</defaultProjectile>
 						<warmupTime>0.80</warmupTime>
-						<burstShotCount>6</burstShotCount>
+						<burstShotCount>9</burstShotCount>
 						<ticksBetweenBurstShots>6</ticksBetweenBurstShots>
-						<range>55</range>
-						<soundCast>Mag_Bullpup</soundCast>
+						<range>35.9</range>
+						<soundCast>Shot_AssaultRifle</soundCast>
 						<soundCastTail>GunTail_Light</soundCastTail>
 						<recoilAmount>3.65</recoilAmount>
 						<muzzleFlashScale>7</muzzleFlashScale>
 					</Properties>
 					<AmmoUser>
-						<magazineSize>30</magazineSize>
+						<magazineSize>45</magazineSize>
 						<reloadTime>4.95</reloadTime>
-						<ammoSet>AmmoSet_6mmRailgunXCOM</ammoSet>
+						<ammoSet>BOR_AmmoSet_6mmRailgunXCOM_Bullpup</ammoSet>
 					</AmmoUser>
 					<FireModes>
 						<aimedBurstShotCount>3</aimedBurstShotCount>
@@ -1635,7 +5044,7 @@
 					<weaponTags>
 						<li>CE_AI_AR</li>
 					</weaponTags>
-					<researchPrerequisite>ChargedShot</researchPrerequisite>
+					<researchPrerequisite>BOR_SolarGaussSpecialistWeaponry</researchPrerequisite>
 				</li>
 
 				<li Class="CombatExtended.PatchOperationMakeGunCECompatible">
@@ -1658,12 +5067,12 @@
 					<Properties>
 						<verbClass>CombatExtended.Verb_ShootCE</verbClass>
 						<hasStandardCommand>true</hasStandardCommand>
-						<defaultProjectile>Bullet_XCOM6mmRailgun_Sabot</defaultProjectile>
+						<defaultProjectile>BOR_Bullet_QuasarGauss_Bullpup_KwazeerStd</defaultProjectile>
 						<warmupTime>0.80</warmupTime>
 						<burstShotCount>6</burstShotCount>
 						<ticksBetweenBurstShots>6</ticksBetweenBurstShots>
 						<range>55</range>
-						<soundCast>Mag_Bullpup</soundCast>
+						<soundCast>Shot_AssaultRifle</soundCast>
 						<soundCastTail>GunTail_Light</soundCastTail>
 						<recoilAmount>3.65</recoilAmount>
 						<muzzleFlashScale>7</muzzleFlashScale>
@@ -1671,7 +5080,7 @@
 					<AmmoUser>
 						<magazineSize>30</magazineSize>
 						<reloadTime>4.95</reloadTime>
-						<ammoSet>AmmoSet_6mmRailgunXCOM</ammoSet>
+						<ammoSet>BOR_QuasarGauss_Bullpup</ammoSet>
 					</AmmoUser>
 					<FireModes>
 						<aimedBurstShotCount>3</aimedBurstShotCount>
@@ -1681,7 +5090,7 @@
 					<weaponTags>
 						<li>CE_AI_AR</li>
 					</weaponTags>
-					<researchPrerequisite>ChargedShot</researchPrerequisite>
+					<researchPrerequisite>BOR_QuasarGaussSpecialistWeaponry</researchPrerequisite>
 				</li>
 
 				<li Class="CombatExtended.PatchOperationMakeGunCECompatible">
@@ -1690,9 +5099,9 @@
 						<WorkToMake>90600</WorkToMake>
 						<Mass>7.52</Mass>
 						<Bulk>14.52</Bulk>
-						<SwayFactor>1.55</SwayFactor>
-						<ShotSpread>0.03</ShotSpread>
-						<SightsEfficiency>2.24</SightsEfficiency>
+						<SwayFactor>1.76</SwayFactor>
+						<ShotSpread>0.039</ShotSpread>
+						<SightsEfficiency>1.87</SightsEfficiency>
 						<RangedWeapon_Cooldown>1.00</RangedWeapon_Cooldown>
 						<NightVisionEfficiency_Weapon>0.60</NightVisionEfficiency_Weapon>
 					</statBases>
@@ -1705,17 +5114,19 @@
 						<recoilAmount>5.00</recoilAmount>
 						<verbClass>CombatExtended.Verb_ShootCE</verbClass>
 						<hasStandardCommand>true</hasStandardCommand>
-						<defaultProjectile>Bullet_XCOM8mmRailgun_Sabot</defaultProjectile>
+						<defaultProjectile>BOR_Bullet_XCOM6mmRailgunDMR_SS</defaultProjectile>
 						<warmupTime>2.00</warmupTime>
-						<range>86.00</range>
-						<soundCast>Mag_Vektor</soundCast>
+						<burstShotCount>2</burstShotCount>
+						<ticksBetweenBurstShots>4</ticksBetweenBurstShots>
+						<range>71.9</range>
+						<soundCast>Shot_SniperRifle</soundCast>
 						<soundCastTail>GunTail_Heavy</soundCastTail>
 						<muzzleFlashScale>10</muzzleFlashScale>
 					</Properties>
 					<AmmoUser>
-						<magazineSize>5</magazineSize>
+						<magazineSize>18</magazineSize>
 						<reloadTime>4.95</reloadTime>
-						<ammoSet>AmmoSet_8mmRailgunXCOM</ammoSet>
+						<ammoSet>BOR_AmmoSet_6mmRailgunXCOM_DMR</ammoSet>
 					</AmmoUser>
 					<FireModes>
 						<aiAimMode>AimedShot</aiAimMode>
@@ -1725,7 +5136,7 @@
 						<li>CE_AI_SR</li>
 						<li>Bipod_DMR</li>
 					</weaponTags>
-					<researchPrerequisite>ChargedShot</researchPrerequisite>
+					<researchPrerequisite>BOR_SolarGaussSpecialistWeaponry</researchPrerequisite>
 					<AllowWithRunAndGun>false</AllowWithRunAndGun>
 				</li>
 
@@ -1750,17 +5161,17 @@
 						<recoilAmount>5.00</recoilAmount>
 						<verbClass>CombatExtended.Verb_ShootCE</verbClass>
 						<hasStandardCommand>true</hasStandardCommand>
-						<defaultProjectile>Bullet_XCOM8mmRailgun_Sabot</defaultProjectile>
+						<defaultProjectile>BOR_Bullet_QuasarGauss_DMR_KwazeerStd</defaultProjectile>
 						<warmupTime>2.00</warmupTime>
 						<range>86.00</range>
-						<soundCast>Mag_Vektor</soundCast>
+						<soundCast>Shot_SniperRifle</soundCast>
 						<soundCastTail>GunTail_Heavy</soundCastTail>
 						<muzzleFlashScale>10</muzzleFlashScale>
 					</Properties>
 					<AmmoUser>
 						<magazineSize>5</magazineSize>
 						<reloadTime>4.95</reloadTime>
-						<ammoSet>AmmoSet_8mmRailgunXCOM</ammoSet>
+						<ammoSet>BOR_QuasarGauss_DMR</ammoSet>
 					</AmmoUser>
 					<FireModes>
 						<aiAimMode>AimedShot</aiAimMode>
@@ -1770,7 +5181,7 @@
 						<li>CE_AI_SR</li>
 						<li>Bipod_DMR</li>
 					</weaponTags>
-					<researchPrerequisite>ChargedShot</researchPrerequisite>
+					<researchPrerequisite>BOR_QuasarGaussSpecialistWeaponry</researchPrerequisite>
 					<AllowWithRunAndGun>false</AllowWithRunAndGun>
 				</li>
 
@@ -1786,6 +5197,7 @@
 							<li Class="PatchOperationAdd">
 								<xpath>Defs/CombatExtended.AmmoSetDef[defName="AmmoSet_4mmRailgunXCOM"]/ammoTypes</xpath>
 								<value>
+									<BOR_Ammo_4mmRailgun_SS>BOR_Bullet_XCOM4mmRailgun_SS</BOR_Ammo_4mmRailgun_SS>
 									<BOR_Ammo_4mmRailgun_TC>BOR_Bullet_XCOM4mmRailgun_TC</BOR_Ammo_4mmRailgun_TC>
 									<BOR_Ammo_4mmRailgun_Nc>BOR_Bullet_XCOM4mmRailgun_Nc</BOR_Ammo_4mmRailgun_Nc>
 									<BOR_Ammo_4mmRailgun_Ni>BOR_Bullet_XCOM4mmRailgun_Ni</BOR_Ammo_4mmRailgun_Ni>
@@ -1796,6 +5208,7 @@
 							<li Class="PatchOperationAdd">
 								<xpath>Defs/CombatExtended.AmmoSetDef[defName="AmmoSet_6mmRailgunXCOM"]/ammoTypes</xpath>
 								<value>
+									<BOR_Ammo_6mmRailgun_SS>BOR_Bullet_XCOM6mmRailgun_SS</BOR_Ammo_6mmRailgun_SS>
 									<BOR_Ammo_6mmRailgun_TC>BOR_Bullet_XCOM6mmRailgun_TC</BOR_Ammo_6mmRailgun_TC>
 									<BOR_Ammo_6mmRailgun_Nc>BOR_Bullet_XCOM6mmRailgun_Nc</BOR_Ammo_6mmRailgun_Nc>
 									<BOR_Ammo_6mmRailgun_Ni>BOR_Bullet_XCOM6mmRailgun_Ni</BOR_Ammo_6mmRailgun_Ni>
@@ -1806,6 +5219,7 @@
 							<li Class="PatchOperationAdd">
 								<xpath>Defs/CombatExtended.AmmoSetDef[defName="AmmoSet_8mmRailgunXCOM"]/ammoTypes</xpath>
 								<value>
+									<BOR_Ammo_8mmRailgun_SS>BOR_Bullet_XCOM8mmRailgun_SS</BOR_Ammo_8mmRailgun_SS>
 									<BOR_Ammo_8mmRailgun_TC>BOR_Bullet_XCOM8mmRailgun_TC</BOR_Ammo_8mmRailgun_TC>
 									<BOR_Ammo_8mmRailgun_Nc>BOR_Bullet_XCOM8mmRailgun_Nc</BOR_Ammo_8mmRailgun_Nc>
 									<BOR_Ammo_8mmRailgun_Ni>BOR_Bullet_XCOM8mmRailgun_Ni</BOR_Ammo_8mmRailgun_Ni>
@@ -1830,7 +5244,11 @@
 							<li Class="PatchOperationAdd">
 								<xpath>Defs/CombatExtended.AmmoSetDef[defName="AmmoSet_ScatterRailgunXCOM"]/ammoTypes</xpath>
 								<value>
+									<BOR_Ammo_12GaugeRailgun_SS>BOR_Bullet_XCOMScatterRailgun_SS</BOR_Ammo_12GaugeRailgun_SS>
 									<BOR_Ammo_12GaugeRailgun_TC>BOR_Bullet_XCOMScatterRailgun_TC</BOR_Ammo_12GaugeRailgun_TC>
+									<BOR_Ammo_12GaugeRailgun_Nc>BOR_Bullet_XCOMScatterRailgun_Nc</BOR_Ammo_12GaugeRailgun_Nc>
+									<BOR_Ammo_12GaugeRailgun_Ni>BOR_Bullet_XCOMScatterRailgun_Ni</BOR_Ammo_12GaugeRailgun_Ni>
+									<BOR_Ammo_12GaugeRailgun_EMP_N>BOR_Bullet_XCOMScatterRailgun_EMP_N</BOR_Ammo_12GaugeRailgun_EMP_N>
 								</value>
 							</li>
 						</operations>
@@ -1863,6 +5281,7 @@
 										<defName>BOR_SolarGauss4mm</defName>
 										<label>4mm Solar Gauss ammo set</label>
 										<ammoTypes>
+											<BOR_Ammo_4mmRailgun_SS>BOR_Bullet_XCOM4mmRailgun_SS</BOR_Ammo_4mmRailgun_SS>
 											<BOR_Ammo_4mmRailgun_TC>BOR_Bullet_XCOM4mmRailgun_TC</BOR_Ammo_4mmRailgun_TC>
 											<BOR_Ammo_4mmRailgun_Nc>BOR_Bullet_XCOM4mmRailgun_Nc</BOR_Ammo_4mmRailgun_Nc>
 											<BOR_Ammo_4mmRailgun_Ni>BOR_Bullet_XCOM4mmRailgun_Ni</BOR_Ammo_4mmRailgun_Ni>
@@ -1873,6 +5292,7 @@
 										<defName>BOR_SolarGauss6mm</defName>
 										<label>6mm Solar Gauss ammo set</label>
 										<ammoTypes>
+											<BOR_Ammo_6mmRailgun_SS>BOR_Bullet_XCOM6mmRailgun_SS</BOR_Ammo_6mmRailgun_SS>
 											<BOR_Ammo_6mmRailgun_TC>BOR_Bullet_XCOM6mmRailgun_TC</BOR_Ammo_6mmRailgun_TC>
 											<BOR_Ammo_6mmRailgun_Nc>BOR_Bullet_XCOM6mmRailgun_Nc</BOR_Ammo_6mmRailgun_Nc>
 											<BOR_Ammo_6mmRailgun_Ni>BOR_Bullet_XCOM6mmRailgun_Ni</BOR_Ammo_6mmRailgun_Ni>
@@ -1883,6 +5303,7 @@
 										<defName>BOR_SolarGauss8mm</defName>
 										<label>8mm Solar Gauss ammo set</label>
 										<ammoTypes>
+											<BOR_Ammo_8mmRailgun_SS>BOR_Bullet_XCOM8mmRailgun_SS</BOR_Ammo_8mmRailgun_SS>
 											<BOR_Ammo_8mmRailgun_TC>BOR_Bullet_XCOM8mmRailgun_TC</BOR_Ammo_8mmRailgun_TC>
 											<BOR_Ammo_8mmRailgun_Nc>BOR_Bullet_XCOM8mmRailgun_Nc</BOR_Ammo_8mmRailgun_Nc>
 											<BOR_Ammo_8mmRailgun_Ni>BOR_Bullet_XCOM8mmRailgun_Ni</BOR_Ammo_8mmRailgun_Ni>
@@ -1893,51 +5314,18 @@
 										<defName>BOR_SolarGaussScatter</defName>
 										<label>12 Gauge Solar Gauss ammo set</label>
 										<ammoTypes>
+											<BOR_Ammo_12GaugeRailgun_SS>BOR_Bullet_XCOMScatterRailgun_SS</BOR_Ammo_12GaugeRailgun_SS>
 											<BOR_Ammo_12GaugeRailgun_TC>BOR_Bullet_XCOMScatterRailgun_TC</BOR_Ammo_12GaugeRailgun_TC>
-										</ammoTypes>
-									</CombatExtended.AmmoSetDef>
-									<CombatExtended.AmmoSetDef>
-										<defName>BOR_QuasarGauss4mm</defName>
-										<label>4mm Quasar Gauss ammo set</label>
-										<ammoTypes>
-											<BOR_Ammo_4mmRailgun_TC>BOR_Bullet_XCOM4mmRailgun_TC</BOR_Ammo_4mmRailgun_TC>
-											<BOR_Ammo_4mmRailgun_Nc>BOR_Bullet_XCOM4mmRailgun_Nc</BOR_Ammo_4mmRailgun_Nc>
-											<BOR_Ammo_4mmRailgun_Ni>BOR_Bullet_XCOM4mmRailgun_Ni</BOR_Ammo_4mmRailgun_Ni>
-											<BOR_Ammo_4mmRailgun_EMP_N>BOR_Bullet_XCOM4mmRailgun_EMP_N</BOR_Ammo_4mmRailgun_EMP_N>
-										</ammoTypes>
-									</CombatExtended.AmmoSetDef>
-									<CombatExtended.AmmoSetDef>
-										<defName>BOR_QuasarGauss6mm</defName>
-										<label>6mm Quasar Gauss ammo set</label>
-										<ammoTypes>
-											<BOR_Ammo_6mmRailgun_TC>BOR_Bullet_XCOM6mmRailgun_TC</BOR_Ammo_6mmRailgun_TC>
-											<BOR_Ammo_6mmRailgun_Nc>BOR_Bullet_XCOM6mmRailgun_Nc</BOR_Ammo_6mmRailgun_Nc>
-											<BOR_Ammo_6mmRailgun_Ni>BOR_Bullet_XCOM6mmRailgun_Ni</BOR_Ammo_6mmRailgun_Ni>
-											<BOR_Ammo_6mmRailgun_EMP_N>BOR_Bullet_XCOM6mmRailgun_EMP_N</BOR_Ammo_6mmRailgun_EMP_N>
-										</ammoTypes>
-									</CombatExtended.AmmoSetDef>
-									<CombatExtended.AmmoSetDef>
-										<defName>BOR_QuasarGauss8mm</defName>
-										<label>8mm Quasar Gauss ammo set</label>
-										<ammoTypes>
-											<BOR_Ammo_8mmRailgun_TC>BOR_Bullet_XCOM8mmRailgun_TC</BOR_Ammo_8mmRailgun_TC>
-											<BOR_Ammo_8mmRailgun_Nc>BOR_Bullet_XCOM8mmRailgun_Nc</BOR_Ammo_8mmRailgun_Nc>
-											<BOR_Ammo_8mmRailgun_Ni>BOR_Bullet_XCOM8mmRailgun_Ni</BOR_Ammo_8mmRailgun_Ni>
-											<BOR_Ammo_8mmRailgun_EMP_N>BOR_Bullet_XCOM8mmRailgun_EMP_N</BOR_Ammo_8mmRailgun_EMP_N>
-										</ammoTypes>
-									</CombatExtended.AmmoSetDef>
-									<CombatExtended.AmmoSetDef>
-										<defName>BOR_QuasarGaussScatter</defName>
-										<label>12 Gauge Quasar Gauss ammo set</label>
-										<ammoTypes>
-											<BOR_Ammo_12GaugeRailgun_TC>BOR_Bullet_XCOMScatterRailgun_TC</BOR_Ammo_12GaugeRailgun_TC>
+											<BOR_Ammo_12GaugeRailgun_Nc>BOR_Bullet_XCOMScatterRailgun_Nc</BOR_Ammo_12GaugeRailgun_Nc>
+											<BOR_Ammo_12GaugeRailgun_Ni>BOR_Bullet_XCOMScatterRailgun_Ni</BOR_Ammo_12GaugeRailgun_Ni>
+											<BOR_Ammo_12GaugeRailgun_EMP_N>BOR_Bullet_XCOMScatterRailgun_EMP_N</BOR_Ammo_12GaugeRailgun_EMP_N>
 										</ammoTypes>
 									</CombatExtended.AmmoSetDef>
 								</value>
 							</li>
 							<!-- Replace weapon ammoSet references to use BOR_SolarGauss* ammosets -->
 							<li Class="PatchOperationReplace">
-								<xpath>Defs/ThingDef[defName="BOR_Gun_GaussRifle_TI" or defName="BOR_Gun_GaussBullpup_TI"]/comps/li[@Class="CombatExtended.CompProperties_AmmoUser"]/ammoSet</xpath>
+								<xpath>Defs/ThingDef[defName="BOR_Gun_GaussRifle_TI" or defName="BOR_Gun_GaussBullpup_TI" or defName="BOR_Gun_GaussDMR_TI"]/comps/li[@Class="CombatExtended.CompProperties_AmmoUser"]/ammoSet</xpath>
 								<value>
 									<ammoSet>BOR_SolarGauss6mm</ammoSet>
 								</value>
@@ -1955,58 +5343,34 @@
 								</value>
 							</li>
 							<li Class="PatchOperationReplace">
-								<xpath>Defs/ThingDef[defName="BOR_Gun_GaussSniperRifle_TI" or defName="BOR_Gun_GaussCannon_TI" or defName="BOR_Gun_GaussDMR_TI"]/comps/li[@Class="CombatExtended.CompProperties_AmmoUser"]/ammoSet</xpath>
+								<xpath>Defs/ThingDef[defName="BOR_Gun_GaussSniperRifle_TI" or defName="BOR_Gun_GaussCannon_TI"]/comps/li[@Class="CombatExtended.CompProperties_AmmoUser"]/ammoSet</xpath>
 								<value>
 									<ammoSet>BOR_SolarGauss8mm</ammoSet>
 								</value>
 							</li>
-							<li Class="PatchOperationReplace">
-								<xpath>Defs/ThingDef[defName="BOR_Gun_GaussRifle_TII" or defName="BOR_Gun_GaussBullpup_TII"]/comps/li[@Class="CombatExtended.CompProperties_AmmoUser"]/ammoSet</xpath>
-								<value>
-									<ammoSet>BOR_QuasarGauss6mm</ammoSet>
-								</value>
-							</li>
-							<li Class="PatchOperationReplace">
-								<xpath>Defs/ThingDef[defName="BOR_Gun_GaussPistol_TII"]/comps/li[@Class="CombatExtended.CompProperties_AmmoUser"]/ammoSet</xpath>
-								<value>
-									<ammoSet>BOR_QuasarGauss4mm</ammoSet>
-								</value>
-							</li>
-							<li Class="PatchOperationReplace">
-								<xpath>Defs/ThingDef[defName="BOR_Gun_GaussShotgun_TII"]/comps/li[@Class="CombatExtended.CompProperties_AmmoUser"]/ammoSet</xpath>
-								<value>
-									<ammoSet>BOR_QuasarGaussScatter</ammoSet>
-								</value>
-							</li>
-							<li Class="PatchOperationReplace">
-								<xpath>Defs/ThingDef[defName="BOR_Gun_GaussSniperRifle_TII" or defName="BOR_Gun_GaussCannon_TII" or defName="BOR_Gun_GaussDMR_TII"]/comps/li[@Class="CombatExtended.CompProperties_AmmoUser"]/ammoSet</xpath>
-								<value>
-									<ammoSet>BOR_QuasarGauss8mm</ammoSet>
-								</value>
-							</li>
 							<!-- Replace defaultProjectile refs (XCOM bullets don't exist without the mod) -->
 							<li Class="PatchOperationReplace">
-								<xpath>Defs/ThingDef[defName="BOR_Gun_GaussPistol_TI" or defName="BOR_Gun_GaussPistol_TII"]/verbs/li/defaultProjectile</xpath>
+								<xpath>Defs/ThingDef[defName="BOR_Gun_GaussPistol_TI"]/verbs/li/defaultProjectile</xpath>
 								<value>
-									<defaultProjectile>BOR_Bullet_XCOM4mmRailgun_TC</defaultProjectile>
+									<defaultProjectile>BOR_Bullet_XCOM4mmRailgun_SS</defaultProjectile>
 								</value>
 							</li>
 							<li Class="PatchOperationReplace">
-								<xpath>Defs/ThingDef[defName="BOR_Gun_GaussRifle_TI" or defName="BOR_Gun_GaussRifle_TII" or defName="BOR_Gun_GaussBullpup_TI" or defName="BOR_Gun_GaussBullpup_TII"]/verbs/li/defaultProjectile</xpath>
+								<xpath>Defs/ThingDef[defName="BOR_Gun_GaussRifle_TI" or defName="BOR_Gun_GaussBullpup_TI" or defName="BOR_Gun_GaussDMR_TI"]/verbs/li/defaultProjectile</xpath>
 								<value>
-									<defaultProjectile>BOR_Bullet_XCOM6mmRailgun_TC</defaultProjectile>
+									<defaultProjectile>BOR_Bullet_XCOM6mmRailgun_SS</defaultProjectile>
 								</value>
 							</li>
 							<li Class="PatchOperationReplace">
-								<xpath>Defs/ThingDef[defName="BOR_Gun_GaussSniperRifle_TI" or defName="BOR_Gun_GaussSniperRifle_TII" or defName="BOR_Gun_GaussCannon_TI" or defName="BOR_Gun_GaussCannon_TII" or defName="BOR_Gun_GaussDMR_TI" or defName="BOR_Gun_GaussDMR_TII"]/verbs/li/defaultProjectile</xpath>
+								<xpath>Defs/ThingDef[defName="BOR_Gun_GaussSniperRifle_TI" or defName="BOR_Gun_GaussCannon_TI"]/verbs/li/defaultProjectile</xpath>
 								<value>
-									<defaultProjectile>BOR_Bullet_XCOM8mmRailgun_TC</defaultProjectile>
+									<defaultProjectile>BOR_Bullet_XCOM8mmRailgun_SS</defaultProjectile>
 								</value>
 							</li>
 							<li Class="PatchOperationReplace">
-								<xpath>Defs/ThingDef[defName="BOR_Gun_GaussShotgun_TI" or defName="BOR_Gun_GaussShotgun_TII"]/verbs/li/defaultProjectile</xpath>
+								<xpath>Defs/ThingDef[defName="BOR_Gun_GaussShotgun_TI"]/verbs/li/defaultProjectile</xpath>
 								<value>
-									<defaultProjectile>BOR_Bullet_XCOMScatterRailgun_TC</defaultProjectile>
+									<defaultProjectile>BOR_Bullet_XCOMScatterRailgun_SS</defaultProjectile>
 								</value>
 							</li>
 						</operations>

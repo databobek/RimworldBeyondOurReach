@@ -1,0 +1,147 @@
+# Tier 1 CE Weapon Stats — v2 (Rebalanced)
+This table covers the plan for Tier 1 ranged weaponry defined in:
+- `1.6/Mods/CombatExtended/Patches/base/gen1`
+- `1.6/Mods/CombatExtended/Patches/base/CE_Gun_patches/gun_gen_1.xml`
+- `1.6/Mods/CombatExtended/Patches/additions/xcom_laser.xml`
+- `1.6/Mods/CombatExtended/Patches/additions/xcom_mag.xml`
+
+This is a recomputed version of [tier1_ce_weapon_stats.md](tier1_ce_weapon_stats.md). The
+ballistic table is the base (numbers floored to integers, range forced to `X.9` format).
+Laser and Gauss tables are derived from it. See `Scripts/backup/tier1_ce_weapons_20260702/`
+for backups of the real source files this will eventually be applied to.
+
+## Rules applied
+- Ballistic: armor pen floored to int; range floored then formatted as `X.9`.
+- Laser: damage +33%, sharp penetration -33%, blunt penetration unchanged, range -50% (all floored, `.9` kept).
+- Gauss: damage -66%, sharp penetration -66%, blunt penetration +33%, range +50% (all floored, `.9` kept).
+- New ammo added: Ballistic Assault Rifle/Sniper Rifle/LMG/Autopistol gain **Incendiary** (=QaP copy) and **EMP** (=Ni copy). Ballistic Chain Shotgun gains **Normal** (=QaP/Ni copy) and **EMP** (=Ni copy).
+- DMR = Assault Rifle damage base + Sniper Rifle range base (both families). Bullpup = Assault Rifle damage base + Chain Shotgun range base (both families). Cannon = LMG base directly.
+- Explosive/"none" armor-pen rows propagate "none" unchanged; damage still scales.
+
+Ignore melee weapons.
+
+## Ballistic (base)
+
+| Weapon | Ammo type | Damage | Armor penetration | Range |
+| --- | --- | --- | --- | --- |
+| `BOR_Gun_AssaultRifle_TI` | FSJ | 20 | 48 sharp / 110 blunt | 39.9 |
+| `BOR_Gun_AssaultRifle_TI` | QaP | 14 | 72 sharp / 110 blunt | 39.9 |
+| `BOR_Gun_AssaultRifle_TI` | Ni | 12 | 48 sharp / 110 blunt | 39.9 |
+| `BOR_Gun_AssaultRifle_TI` | TC | 22 (explosive) | none | 39.9 |
+| `BOR_Gun_AssaultRifle_TI` | Incendiary | 14 | 72 sharp / 110 blunt | 39.9 |
+| `BOR_Gun_AssaultRifle_TI` | EMP | 12 | 48 sharp / 110 blunt | 39.9 |
+| `BOR_Gun_SniperRifle_TI` | FSJ | 20 | 48 sharp / 110 blunt | 55.9 |
+| `BOR_Gun_SniperRifle_TI` | QaP | 14 | 72 sharp / 110 blunt | 55.9 |
+| `BOR_Gun_SniperRifle_TI` | Ni | 12 | 48 sharp / 110 blunt | 55.9 |
+| `BOR_Gun_SniperRifle_TI` | TC | 22 (explosive) | none | 55.9 |
+| `BOR_Gun_SniperRifle_TI` | Incendiary | 14 | 72 sharp / 110 blunt | 55.9 |
+| `BOR_Gun_SniperRifle_TI` | EMP | 12 | 48 sharp / 110 blunt | 55.9 |
+| `BOR_Gun_LMG_TI` | FSJ | 20 | 48 sharp / 110 blunt | 31.9 |
+| `BOR_Gun_LMG_TI` | QaP | 14 | 72 sharp / 110 blunt | 31.9 |
+| `BOR_Gun_LMG_TI` | Ni | 12 | 48 sharp / 110 blunt | 31.9 |
+| `BOR_Gun_LMG_TI` | TC | 22 (explosive) | none | 31.9 |
+| `BOR_Gun_LMG_TI` | Incendiary | 14 | 72 sharp / 110 blunt | 31.9 |
+| `BOR_Gun_LMG_TI` | EMP | 12 | 48 sharp / 110 blunt | 31.9 |
+| `BOR_Gun_ChainShotgun_TI` | Normal | 30 (9 pellets) | 48 sharp / 103 blunt | 16.9 |
+| `BOR_Gun_ChainShotgun_TI` | QaP | 30 (9 pellets) | 48 sharp / 103 blunt | 16.9 |
+| `BOR_Gun_ChainShotgun_TI` | Ni | 30 (9 pellets) | 48 sharp / 103 blunt | 16.9 |
+| `BOR_Gun_ChainShotgun_TI` | EMP | 30 (9 pellets) | 48 sharp / 103 blunt | 16.9 |
+| `BOR_Gun_ChainShotgun_TI` | TC | 20 | 72 sharp / 155 blunt | 16.9 |
+| `BOR_Gun_Autopistol_TI` | FSJ | 16 | 24 sharp / 17 blunt | 32.9 |
+| `BOR_Gun_Autopistol_TI` | QaP | 11 | 48 sharp / 17 blunt | 32.9 |
+| `BOR_Gun_Autopistol_TI` | Ni | 13 | 21 sharp / 17 blunt | 32.9 |
+| `BOR_Gun_Autopistol_TI` | TC | 11 (explosive) | none | 32.9 |
+| `BOR_Gun_Autopistol_TI` | Incendiary | 11 | 48 sharp / 17 blunt | 32.9 |
+| `BOR_Gun_Autopistol_TI` | EMP | 13 | 21 sharp / 17 blunt | 32.9 |
+
+## Laser (derived from ballistic: dmg +33%, sharp -33%, blunt unchanged, range -50%)
+
+| Weapon | Ammo type | Damage | Armor penetration | Range |
+| --- | --- | --- | --- | --- |
+| `BOR_Gun_LaserRifle_TI` | Solar | 26 | 32 sharp / 110 blunt | 19.9 |
+| `BOR_Gun_LaserRifle_TI` | IR (Incendiary) | 18 | 48 sharp / 110 blunt | 19.9 |
+| `BOR_Gun_LaserRifle_TI` | UV (HP) | 15 | 32 sharp / 110 blunt | 19.9 |
+| `BOR_Gun_LaserRifle_TI` | EM (EMP) | 29 (explosive) | none | 19.9 |
+| `BOR_Gun_LaserSniperRifle_TI` | Solar | 26 | 32 sharp / 110 blunt | 27.9 |
+| `BOR_Gun_LaserSniperRifle_TI` | IR (Incendiary) | 18 | 48 sharp / 110 blunt | 27.9 |
+| `BOR_Gun_LaserSniperRifle_TI` | UV (HP) | 15 | 32 sharp / 110 blunt | 27.9 |
+| `BOR_Gun_LaserSniperRifle_TI` | EM (EMP) | 29 (explosive) | none | 27.9 |
+| `BOR_Gun_LaserCannon_TI` | Solar | 26 | 32 sharp / 110 blunt | 15.9 |
+| `BOR_Gun_LaserCannon_TI` | IR (Incendiary) | 18 | 48 sharp / 110 blunt | 15.9 |
+| `BOR_Gun_LaserCannon_TI` | UV (HP) | 15 | 32 sharp / 110 blunt | 15.9 |
+| `BOR_Gun_LaserCannon_TI` | EM (EMP) | 29 (explosive) | none | 15.9 |
+| `BOR_Gun_LaserPistol_TI` | Solar | 21 | 16 sharp / 17 blunt | 16.9 |
+| `BOR_Gun_LaserPistol_TI` | IR (Incendiary) | 14 | 32 sharp / 17 blunt | 16.9 |
+| `BOR_Gun_LaserPistol_TI` | UV (HP) | 17 | 14 sharp / 17 blunt | 16.9 |
+| `BOR_Gun_LaserPistol_TI` | EM (EMP) | 14 (explosive) | none | 16.9 |
+| `BOR_Gun_LaserBullpup_TI` | Solar | 26 | 32 sharp / 110 blunt | 8.9 |
+| `BOR_Gun_LaserBullpup_TI` | IR (Incendiary) | 18 | 48 sharp / 110 blunt | 8.9 |
+| `BOR_Gun_LaserBullpup_TI` | UV (HP) | 15 | 32 sharp / 110 blunt | 8.9 |
+| `BOR_Gun_LaserBullpup_TI` | EM (EMP) | 29 (explosive) | none | 8.9 |
+| `BOR_Gun_LaserDMR_TI` | Solar | 26 | 32 sharp / 110 blunt | 27.9 |
+| `BOR_Gun_LaserDMR_TI` | IR (Incendiary) | 18 | 48 sharp / 110 blunt | 27.9 |
+| `BOR_Gun_LaserDMR_TI` | UV (HP) | 15 | 32 sharp / 110 blunt | 27.9 |
+| `BOR_Gun_LaserDMR_TI` | EM (EMP) | 29 (explosive) | none | 27.9 |
+| `BOR_Gun_LaserShotgun_TI` | Solar (←Normal) | 39 (9 pellets) | 32 sharp / 103 blunt | 8.9 |
+| `BOR_Gun_LaserShotgun_TI` | IR (←QaP) | 39 (9 pellets) | 32 sharp / 103 blunt | 8.9 |
+| `BOR_Gun_LaserShotgun_TI` | UV (←Ni) | 39 (9 pellets) | 32 sharp / 103 blunt | 8.9 |
+| `BOR_Gun_LaserShotgun_TI` | EM (←EMP) | 39 (9 pellets) | 32 sharp / 103 blunt | 8.9 |
+
+## Gauss (derived from ballistic: dmg -66%, sharp -66%, blunt +33%, range +50%)
+
+| Weapon | Ammo type | Damage | Armor penetration | Range |
+| --- | --- | --- | --- | --- |
+| `BOR_Gun_GaussRifle_TI` | Normal | 6 | 16 sharp / 146 blunt | 58.9 |
+| `BOR_Gun_GaussRifle_TI` | QaP | 4 | 24 sharp / 146 blunt | 58.9 |
+| `BOR_Gun_GaussRifle_TI` | Ni | 4 | 16 sharp / 146 blunt | 58.9 |
+| `BOR_Gun_GaussRifle_TI` | TC | 7 (explosive) | none | 58.9 |
+| `BOR_Gun_GaussRifle_TI` | Nc (Incendiary) | 4 | 24 sharp / 146 blunt | 58.9 |
+| `BOR_Gun_GaussRifle_TI` | EMP_N | 4 | 16 sharp / 146 blunt | 58.9 |
+| `BOR_Gun_GaussSniperRifle_TI` | Normal | 6 | 16 sharp / 146 blunt | 82.9 |
+| `BOR_Gun_GaussSniperRifle_TI` | QaP | 4 | 24 sharp / 146 blunt | 82.9 |
+| `BOR_Gun_GaussSniperRifle_TI` | Ni | 4 | 16 sharp / 146 blunt | 82.9 |
+| `BOR_Gun_GaussSniperRifle_TI` | TC | 7 (explosive) | none | 82.9 |
+| `BOR_Gun_GaussSniperRifle_TI` | Nc (Incendiary) | 4 | 24 sharp / 146 blunt | 82.9 |
+| `BOR_Gun_GaussSniperRifle_TI` | EMP_N | 4 | 16 sharp / 146 blunt | 82.9 |
+| `BOR_Gun_GaussCannon_TI` | Normal | 6 | 16 sharp / 146 blunt | 46.9 |
+| `BOR_Gun_GaussCannon_TI` | QaP | 4 | 24 sharp / 146 blunt | 46.9 |
+| `BOR_Gun_GaussCannon_TI` | Ni | 4 | 16 sharp / 146 blunt | 46.9 |
+| `BOR_Gun_GaussCannon_TI` | TC | 7 (explosive) | none | 46.9 |
+| `BOR_Gun_GaussCannon_TI` | Nc (Incendiary) | 4 | 24 sharp / 146 blunt | 46.9 |
+| `BOR_Gun_GaussCannon_TI` | EMP_N | 4 | 16 sharp / 146 blunt | 46.9 |
+| `BOR_Gun_GaussPistol_TI` | Normal | 5 | 8 sharp / 22 blunt | 48.9 |
+| `BOR_Gun_GaussPistol_TI` | QaP | 3 | 16 sharp / 22 blunt | 48.9 |
+| `BOR_Gun_GaussPistol_TI` | Ni | 4 | 7 sharp / 22 blunt | 48.9 |
+| `BOR_Gun_GaussPistol_TI` | TC | 3 (explosive) | none | 48.9 |
+| `BOR_Gun_GaussPistol_TI` | Nc (Incendiary) | 3 | 16 sharp / 22 blunt | 48.9 |
+| `BOR_Gun_GaussPistol_TI` | EMP_N | 4 | 7 sharp / 22 blunt | 48.9 |
+| `BOR_Gun_GaussBullpup_TI` | Normal | 6 | 16 sharp / 146 blunt | 24.9 |
+| `BOR_Gun_GaussBullpup_TI` | QaP | 4 | 24 sharp / 146 blunt | 24.9 |
+| `BOR_Gun_GaussBullpup_TI` | Ni | 4 | 16 sharp / 146 blunt | 24.9 |
+| `BOR_Gun_GaussBullpup_TI` | TC | 7 (explosive) | none | 24.9 |
+| `BOR_Gun_GaussBullpup_TI` | Nc (Incendiary) | 4 | 24 sharp / 146 blunt | 24.9 |
+| `BOR_Gun_GaussBullpup_TI` | EMP_N | 4 | 16 sharp / 146 blunt | 24.9 |
+| `BOR_Gun_GaussDMR_TI` | Normal | 6 | 16 sharp / 146 blunt | 82.9 |
+| `BOR_Gun_GaussDMR_TI` | QaP | 4 | 24 sharp / 146 blunt | 82.9 |
+| `BOR_Gun_GaussDMR_TI` | Ni | 4 | 16 sharp / 146 blunt | 82.9 |
+| `BOR_Gun_GaussDMR_TI` | TC | 7 (explosive) | none | 82.9 |
+| `BOR_Gun_GaussDMR_TI` | Nc (Incendiary) | 4 | 24 sharp / 146 blunt | 82.9 |
+| `BOR_Gun_GaussDMR_TI` | EMP_N | 4 | 16 sharp / 146 blunt | 82.9 |
+| `BOR_Gun_GaussShotgun_TI` | Normal | 10 (9 pellets) | 16 sharp / 136 blunt | 24.9 |
+| `BOR_Gun_GaussShotgun_TI` | QaP | 10 (9 pellets) | 16 sharp / 136 blunt | 24.9 |
+| `BOR_Gun_GaussShotgun_TI` | Ni | 10 (9 pellets) | 16 sharp / 136 blunt | 24.9 |
+| `BOR_Gun_GaussShotgun_TI` | EMP_N | 10 (9 pellets) | 16 sharp / 136 blunt | 24.9 |
+| `BOR_Gun_GaussShotgun_TI` | TC | 6 | 24 sharp / 206 blunt | 24.9 |
+
+## Summary
+
+| Type | Damage | Sharp penetration | Blunt penetration | Range |
+| --- | --- | --- | --- | --- |
+| ballistic | mid | mid | mid | mid |
+| laser | high(burn) | low | mid | low |
+| gauss | low | low | high | high |
+
+## Open flags (not yet resolved, review before applying to real XML)
+1. Ballistic Incendiary/EMP rows are exact copies of QaP/Ni — only laser/gauss math makes them numerically distinct.
+2. Chain Shotgun's new "Normal" row reuses QaP/Ni values (already identical to each other).
+3. `BOR_Gun_GaussShotgun_TI` TC row changes character: was 16-pellet (dmg 15) in the original file, is now single-hit (dmg 6) since it's derived from Chain Shotgun's single-target TC row.

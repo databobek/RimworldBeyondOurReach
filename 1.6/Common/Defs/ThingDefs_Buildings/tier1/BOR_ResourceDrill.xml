@@ -26,7 +26,7 @@
         </multipleInteractionCellOffsets>
         <designationCategory>BOR</designationCategory>
         <designationHotKey>Misc12</designationHotKey>
-        <rotatable>false</rotatable>
+        <rotatable>true</rotatable>
         <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
         <constructionSkillPrerequisite>4</constructionSkillPrerequisite>
         <uiIconOffset>(0, 0.03)</uiIconOffset>
@@ -78,7 +78,7 @@
                 <!-- update job status every 60 ticks -->
                 <tickInterval>60</tickInterval>
                 <!-- how much work is done per tick interval multiplied by number of pawns -->
-                <workPerInterval>5</workPerInterval>
+                <workPerInterval>15</workPerInterval>
                 <operateJobDef>CVN_OperateResourceDrill</operateJobDef>
                 <!-- default baseWorkAmount -->
                 <!-- bigger -> slower -->
@@ -90,6 +90,7 @@
                 <!-- if allowAnyDeepdrillResource is set to TRUE, if isInvertWhitelist is also TRUE, the drillableResources will act as a blacklist instead -->
                 <!-- otherwise, drillableResources will be added on top of all deep resource -->
                 <isInvertWhitelist>true</isInvertWhitelist>
+                <resourceYield>20</resourceYield>
                 <!-- drillable or undrillable depending on above -->
                 <drillableResources>
                     <li>
@@ -98,7 +99,7 @@
                     <li MayRequire="vanillaexpanded.helixiengas">
                         <thingDef>VHGE_Helixien</thingDef>
                     </li>
-                    <li MayRequire="bambaryla.bor">
+                    <li MayRequireAnyOf="bambaryla.bor,bambaryla.bor.redux">
                         <thingDef>BOR_Neutronium</thingDef>
                     </li>
                     <!-- values below overwrite anything else -->
@@ -115,8 +116,8 @@
 
     <ThingDef ParentName="BuildingBase">
         <defName>BOR_ResourceDrill_II</defName>
-        <label>quasar crust driller</label>
-        <description>An upgraded crust driller built from quasar-grade materials. It supports coordinated multi-operator drilling from all cardinal approach angles.</description>
+        <label>kwazaari crust driller</label>
+        <description>An upgraded crust driller built from kwazaari-grade materials. It supports coordinated multi-operator drilling from all cardinal approach angles.</description>
         <graphicData>
             <graphicClass>Graphic_Single</graphicClass>
             <texPath>BOR/Retextures/firecontrol2</texPath>
@@ -142,7 +143,7 @@
         </multipleInteractionCellOffsets>
         <designationCategory>BOR</designationCategory>
         <designationHotKey>Misc12</designationHotKey>
-        <rotatable>false</rotatable>
+        <rotatable>true</rotatable>
         <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
         <constructionSkillPrerequisite>8</constructionSkillPrerequisite>
         <uiIconOffset>(0, 0.03)</uiIconOffset>
@@ -188,11 +189,12 @@
                 <selectResourceUiIcon>UI/Designators/Mine</selectResourceUiIcon>
                 <isAutomatic>False</isAutomatic>
                 <tickInterval>60</tickInterval>
-                <workPerInterval>10</workPerInterval>
+                <workPerInterval>30</workPerInterval>
                 <operateJobDef>CVN_OperateResourceDrill</operateJobDef>
                 <baseWorkAmount>10</baseWorkAmount>
                 <isFixedWorkAmount>false</isFixedWorkAmount>
                 <allowAnyDeepdrillResource>true</allowAnyDeepdrillResource>
+                <resourceYield>40</resourceYield>
                 <isInvertWhitelist>true</isInvertWhitelist>
                 <drillableResources>
                     <li>
@@ -201,7 +203,7 @@
                     <li MayRequire="vanillaexpanded.helixiengas">
                         <thingDef>VHGE_Helixien</thingDef>
                     </li>
-                    <li MayRequire="bambaryla.bor">
+                    <li MayRequireAnyOf="bambaryla.bor,bambaryla.bor.redux">
                         <thingDef>BOR_Neutronium</thingDef>
                     </li>
                 </drillableResources>
@@ -215,7 +217,7 @@
         <description>A fully automated deep extraction platform. It no longer requires direct pawn operation and continuously processes selected deep resources.</description>
         <graphicData>
             <graphicClass>Graphic_Single</graphicClass>
-            <texPath>BOR/Retextures/firecontrol2</texPath>
+            <texPath>BOR/Retextures/firecontrol3</texPath>
             <drawSize>(5.5, 5.5)</drawSize>
             <drawRotated>false</drawRotated>
             <shadowData>
@@ -232,7 +234,7 @@
         <fillPercent>0.5</fillPercent>
         <designationCategory>BOR</designationCategory>
         <designationHotKey>Misc12</designationHotKey>
-        <rotatable>false</rotatable>
+        <rotatable>true</rotatable>
         <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
         <constructionSkillPrerequisite>12</constructionSkillPrerequisite>
         <uiIconOffset>(0, 0.03)</uiIconOffset>
@@ -249,7 +251,7 @@
         </building>
         <costList>
             <BOR_Tenebrite>400</BOR_Tenebrite>
-            <BOR_ComponentIII>10</BOR_ComponentIII>
+            <BOR_ComponentIII>8</BOR_ComponentIII>
         </costList>
         <inspectorTabs>
             <li>CVN_EnhancedResourceDrill.ITab_ResourceDrill</li>
@@ -275,12 +277,13 @@
                 <selectResourceUiIcon>UI/Designators/Mine</selectResourceUiIcon>
                 <isAutomatic>True</isAutomatic>
                 <tickInterval>60</tickInterval>
-                <workPerInterval>20</workPerInterval>
+                <workPerInterval>60</workPerInterval>
                 <operateJobDef>CVN_OperateResourceDrill</operateJobDef>
                 <baseWorkAmount>10</baseWorkAmount>
                 <isFixedWorkAmount>false</isFixedWorkAmount>
                 <allowAnyDeepdrillResource>true</allowAnyDeepdrillResource>
                 <isInvertWhitelist>true</isInvertWhitelist>
+                <resourceYield>80</resourceYield>
                 <drillableResources>
                     <li>
                         <thingDef>Plasteel</thingDef>
@@ -288,7 +291,7 @@
                     <li MayRequire="vanillaexpanded.helixiengas">
                         <thingDef>VHGE_Helixien</thingDef>
                     </li>
-                    <li MayRequire="bambaryla.bor">
+                    <li MayRequireAnyOf="bambaryla.bor,bambaryla.bor.redux">
                         <thingDef>BOR_Neutronium</thingDef>
                     </li>
                 </drillableResources>
@@ -318,7 +321,7 @@
 
     <WorkGiverDef>
         <defName>BOR_ResourceDrill_II</defName>
-        <label>drill at quasar resource drill</label>
+        <label>drill at kwazaari resource drill</label>
         <giverClass>CVN_EnhancedResourceDrill.WorkGiver_DrillAtResourceDrill</giverClass>
         <workType>Mining</workType>
         <priorityInType>51</priorityInType>

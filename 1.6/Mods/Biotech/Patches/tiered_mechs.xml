@@ -1,0 +1,487 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+
+  <!-- ThingDefs and PawnKindDefs live in Defs/Mechs_Tiered.xml so they are
+       available to CE patches at load time. Only the gestation recipes are
+       gated here so they respect the BOR_Setting_Biotech toggle. -->
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>Combat Extended</li>
+    </mods>
+    <nomatch Class="BeyondOurReachModSettings.PatchOperationModSettings">
+      <modSettingDef>BOR_Setting_Biotech</modSettingDef>
+      <enabled Class="PatchOperationSequence">
+        <operations>
+          <li Class="PatchOperationAdd">
+            <xpath>Defs</xpath>
+            <value>
+
+              <ThingDef ParentName="LightMechanoid">
+                <defName>BOR_Mech_SolarLifter</defName>
+                <label>solar lifter</label>
+                <description>An enhanced lifter mechanoid forged with solar-grade sunsteel. Its reinforced frame allows it to haul loads faster and resist damage far beyond what a standard lifter can endure.</description>
+                <statBases>
+                  <MoveSpeed>3.5</MoveSpeed>
+                  <ArmorRating_Blunt>0.13</ArmorRating_Blunt>
+                  <ArmorRating_Sharp>0.25</ArmorRating_Sharp>
+                </statBases>
+                <race>
+                  <baseHealthScale>1.25</baseHealthScale>
+                  <mechEnabledWorkTypes>
+                    <li>Hauling</li>
+                  </mechEnabledWorkTypes>
+                  <lifeStageAges>
+                    <li>
+                      <def>MechanoidFullyFormed</def>
+                      <minAge>0</minAge>
+                      <soundWounded>Pawn_Mech_Lifter_Wounded</soundWounded>
+                      <soundDeath>Pawn_Mech_Lifter_Death</soundDeath>
+                      <soundCall>Pawn_Mech_Lifter_Call</soundCall>
+                    </li>
+                    <li>
+                      <def>MechanoidFullyFormed</def>
+                      <minAge>100</minAge>
+                      <soundWounded>Pawn_Mech_Lifter_Wounded</soundWounded>
+                      <soundDeath>Pawn_Mech_Lifter_Death</soundDeath>
+                      <soundCall>Pawn_Mech_Lifter_Call</soundCall>
+                    </li>
+                  </lifeStageAges>
+                </race>
+              </ThingDef>
+
+              <PawnKindDef ParentName="NonCombatLightMechanoidKind">
+                <defName>BOR_Mech_SolarLifter</defName>
+                <label>solar lifter</label>
+                <race>BOR_Mech_SolarLifter</race>
+                <allowInMechClusters>false</allowInMechClusters>
+                <lifeStages>
+                  <li>
+                    <bodyGraphicData>
+                      <texPath>BOR/Mechs/solar_lifter/solar_lifter</texPath>
+                      <maskPath>Things/Pawn/Mechanoid/AllegianceOverlays/Mech_Liftman</maskPath>
+                      <shaderType>CutoutWithOverlay</shaderType>
+                      <graphicClass>Graphic_Multi</graphicClass>
+                      <drawSize>1.1</drawSize>
+                    </bodyGraphicData>
+                  </li>
+                  <li>
+                    <bodyGraphicData>
+                      <texPath>BOR/Mechs/solar_lifter/solar_lifter</texPath>
+                      <maskPath>Things/Pawn/Mechanoid/AllegianceOverlays/Mech_Liftman</maskPath>
+                      <shaderType>CutoutWithOverlay</shaderType>
+                      <graphicClass>Graphic_Multi</graphicClass>
+                      <drawSize>1.1</drawSize>
+                    </bodyGraphicData>
+                  </li>
+                </lifeStages>
+              </PawnKindDef>
+
+              <ThingDef ParentName="LightMechanoid">
+                <defName>BOR_Mech_SolarCleaner</defName>
+                <label>solar cleaner</label>
+                <description>An enhanced cleansweeper mechanoid built from solar-grade sunsteel. Its upgraded drives let it sweep through contaminated areas faster and absorb far more punishment than the standard model.</description>
+                <statBases>
+                  <MoveSpeed>4.25</MoveSpeed>
+                  <ArmorRating_Blunt>0.13</ArmorRating_Blunt>
+                  <ArmorRating_Sharp>0.25</ArmorRating_Sharp>
+                  <CleaningSpeed>0.63</CleaningSpeed>
+                </statBases>
+                <race>
+                  <baseHealthScale>1.25</baseHealthScale>
+                  <baseBodySize>0.3</baseBodySize>
+                  <mechEnabledWorkTypes>
+                    <li>Cleaning</li>
+                  </mechEnabledWorkTypes>
+                  <lifeStageAges>
+                    <li>
+                      <def>MechanoidFullyFormed</def>
+                      <minAge>0</minAge>
+                      <soundWounded>Pawn_Mech_Cleansweeper_Wounded</soundWounded>
+                      <soundDeath>Pawn_Mech_Cleansweeper_Death</soundDeath>
+                      <soundCall>Pawn_Mech_Cleansweeper_Call</soundCall>
+                    </li>
+                    <li>
+                      <def>MechanoidFullyFormed</def>
+                      <minAge>100</minAge>
+                      <soundWounded>Pawn_Mech_Cleansweeper_Wounded</soundWounded>
+                      <soundDeath>Pawn_Mech_Cleansweeper_Death</soundDeath>
+                      <soundCall>Pawn_Mech_Cleansweeper_Call</soundCall>
+                    </li>
+                  </lifeStageAges>
+                </race>
+              </ThingDef>
+
+              <PawnKindDef ParentName="NonCombatLightMechanoidKind">
+                <defName>BOR_Mech_SolarCleaner</defName>
+                <label>solar cleaner</label>
+                <race>BOR_Mech_SolarCleaner</race>
+                <allowInMechClusters>false</allowInMechClusters>
+                <lifeStages>
+                  <li>
+                    <bodyGraphicData>
+                      <texPath>BOR/Mechs/solar_cleaner/solar_cleaner</texPath>
+                      <maskPath>Things/Pawn/Mechanoid/AllegianceOverlays/Mech_Cleansweeper</maskPath>
+                      <shaderType>CutoutWithOverlay</shaderType>
+                      <graphicClass>Graphic_Multi</graphicClass>
+                      <drawSize>1.1</drawSize>
+                    </bodyGraphicData>
+                  </li>
+                  <li>
+                    <bodyGraphicData>
+                      <texPath>BOR/Mechs/solar_cleaner/solar_cleaner</texPath>
+                      <maskPath>Things/Pawn/Mechanoid/AllegianceOverlays/Mech_Cleansweeper</maskPath>
+                      <shaderType>CutoutWithOverlay</shaderType>
+                      <graphicClass>Graphic_Multi</graphicClass>
+                      <drawSize>1.1</drawSize>
+                    </bodyGraphicData>
+                  </li>
+                </lifeStages>
+              </PawnKindDef>
+
+              <!-- ================================================================
+       QUASAR TIER MECHS  (Tier II — BOR_QuasarAlloy + BOR_ComponentII)
+       40% faster / 40% more resistant / 30% higher skills vs vanilla
+       ================================================================ -->
+
+              <ThingDef ParentName="LightMechanoid">
+                <defName>BOR_Mech_QuasarFabricor</defName>
+                <label>kwazaari fabricor</label>
+                <description>An advanced fabricor mechanoid constructed with kwazaari alloy. Its enhanced processing systems grant it substantially higher crafting efficiency and precision across all manufacturing disciplines.</description>
+                <statBases>
+                  <MoveSpeed>4.76</MoveSpeed>
+                  <ArmorRating_Blunt>0.14</ArmorRating_Blunt>
+                  <ArmorRating_Sharp>0.28</ArmorRating_Sharp>
+                  <FoodPoisonChance>0.001</FoodPoisonChance>
+                  <WorkSpeedGlobal>1.3</WorkSpeedGlobal>
+                </statBases>
+                <race>
+                  <baseHealthScale>1.4</baseHealthScale>
+                  <mechEnabledWorkTypes>
+                    <li>Crafting</li>
+                    <li>Smithing</li>
+                    <li>Tailoring</li>
+                    <li>Cooking</li>
+                    <li>Research</li>
+                  </mechEnabledWorkTypes>
+                  <lifeStageAges>
+                    <li>
+                      <def>MechanoidFullyFormed</def>
+                      <minAge>0</minAge>
+                      <soundWounded>Pawn_Mech_Fabricor_Wounded</soundWounded>
+                      <soundDeath>Pawn_Mech_Fabricor_Death</soundDeath>
+                      <soundCall>Pawn_Mech_Fabricor_Call</soundCall>
+                    </li>
+                    <li>
+                      <def>MechanoidFullyFormed</def>
+                      <minAge>100</minAge>
+                      <soundWounded>Pawn_Mech_Fabricor_Wounded</soundWounded>
+                      <soundDeath>Pawn_Mech_Fabricor_Death</soundDeath>
+                      <soundCall>Pawn_Mech_Fabricor_Call</soundCall>
+                    </li>
+                  </lifeStageAges>
+                </race>
+              </ThingDef>
+
+              <PawnKindDef ParentName="NonCombatLightMechanoidKind">
+                <defName>BOR_Mech_QuasarFabricor</defName>
+                <label>kwazaari fabricor</label>
+                <race>BOR_Mech_QuasarFabricor</race>
+                <allowInMechClusters>false</allowInMechClusters>
+                <skills>
+                  <li>
+                    <skill>Crafting</skill>
+                    <range>10~14</range>
+                  </li>
+                  <li>
+                    <skill>Intellectual</skill>
+                    <range>9~13</range>
+                  </li>
+                </skills>
+                <lifeStages>
+                  <li>
+                    <bodyGraphicData>
+                      <texPath>BOR/Mechs/quasar_fabricor/quasar_fabricor</texPath>
+                      <maskPath>Things/Pawn/Mechanoid/AllegianceOverlays/Mech_Fabricor</maskPath>
+                      <shaderType>CutoutWithOverlay</shaderType>
+                      <graphicClass>Graphic_Multi</graphicClass>
+                      <drawSize>1.1</drawSize>
+                    </bodyGraphicData>
+                  </li>
+                  <li>
+                    <bodyGraphicData>
+                      <texPath>BOR/Mechs/quasar_fabricor/quasar_fabricor</texPath>
+                      <maskPath>Things/Pawn/Mechanoid/AllegianceOverlays/Mech_Fabricor</maskPath>
+                      <shaderType>CutoutWithOverlay</shaderType>
+                      <graphicClass>Graphic_Multi</graphicClass>
+                      <drawSize>1.1</drawSize>
+                    </bodyGraphicData>
+                  </li>
+                </lifeStages>
+              </PawnKindDef>
+
+              <ThingDef ParentName="HeavyMechanoid">
+                <defName>BOR_Mech_QuasarDriller</defName>
+                <label>kwazaari driller</label>
+                <description>A heavy drilling mechanoid built with kwazaari alloy. Based on the tunneler chassis, its supercharged drives and reinforced power claws make it a tireless mining machine with near-impenetrable armor.</description>
+                <statBases>
+                  <MoveSpeed>2.66</MoveSpeed>
+                  <ArmorRating_Blunt>0.56</ArmorRating_Blunt>
+                  <ArmorRating_Sharp>1.12</ArmorRating_Sharp>
+                  <BandwidthCost>3</BandwidthCost>
+                  <WorkSpeedGlobal>1.95</WorkSpeedGlobal>
+                  <EnergyShieldEnergyMax>3.5</EnergyShieldEnergyMax>
+                </statBases>
+                <race>
+                  <body>Mech_Tunneler</body>
+                  <baseBodySize>3.5</baseBodySize>
+                  <baseHealthScale>2.1</baseHealthScale>
+                  <bulletStaggerEffecterDef>TunnelerSlowedDown</bulletStaggerEffecterDef>
+                  <mechEnabledWorkTypes>
+                    <li>Mining</li>
+                  </mechEnabledWorkTypes>
+                  <detritusLeavings>
+                    <li>
+                      <def>ChunkMechanoidSlag</def>
+                      <texOverrideIndex>0</texOverrideIndex>
+                      <spawnChance>0.5</spawnChance>
+                    </li>
+                    <li>
+                      <def>ChunkMechanoidSlag</def>
+                      <texOverrideIndex>3</texOverrideIndex>
+                      <spawnChance>0.5</spawnChance>
+                    </li>
+                    <li>
+                      <def>ChunkMechanoidSlag</def>
+                      <texOverrideIndex>1</texOverrideIndex>
+                      <spawnChance>0.5</spawnChance>
+                    </li>
+                  </detritusLeavings>
+                  <lifeStageAges>
+                    <li>
+                      <def>MechanoidFullyFormed</def>
+                      <minAge>0</minAge>
+                      <soundWounded>Pawn_Mech_Tunneler_Wounded</soundWounded>
+                      <soundDeath>Pawn_Mech_Tunneler_Death</soundDeath>
+                      <soundCall>Pawn_Mech_Tunneler_Call</soundCall>
+                    </li>
+                    <li>
+                      <def>MechanoidFullyFormed</def>
+                      <minAge>100</minAge>
+                      <soundWounded>Pawn_Mech_Tunneler_Wounded</soundWounded>
+                      <soundDeath>Pawn_Mech_Tunneler_Death</soundDeath>
+                      <soundCall>Pawn_Mech_Tunneler_Call</soundCall>
+                    </li>
+                  </lifeStageAges>
+                </race>
+                <tools>
+                  <li>
+                    <label>drill</label>
+                    <capacities>
+                      <li>Scratch</li>
+                    </capacities>
+                    <power>40</power>
+                    <cooldownTime>2.0</cooldownTime>
+                    <linkedBodyPartsGroup>LeftPowerClaw</linkedBodyPartsGroup>
+                    <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+                  </li>
+                </tools>
+                <comps>
+                  <li Class="CompProperties_Shield" />
+                </comps>
+              </ThingDef>
+
+              <PawnKindDef ParentName="HeavyMechanoidKind">
+                <defName>BOR_Mech_QuasarDriller</defName>
+                <label>kwazaari driller</label>
+                <race>BOR_Mech_QuasarDriller</race>
+                <allowInMechClusters>false</allowInMechClusters>
+                <combatPower>250</combatPower>
+                <controlGroupPortraitZoom>1.0</controlGroupPortraitZoom>
+                <skills>
+                  <li>
+                    <skill>Mining</skill>
+                    <range>10~14</range>
+                  </li>
+                </skills>
+                <lifeStages>
+                  <li>
+                    <bodyGraphicData>
+                      <texPath>BOR/Mechs/quasar_driller/quasar_driller</texPath>
+                      <maskPath>Things/Pawn/Mechanoid/AllegianceOverlays/Mech_Paladin</maskPath>
+                      <shaderType>CutoutWithOverlay</shaderType>
+                      <graphicClass>Graphic_Multi</graphicClass>
+                      <drawSize>1.8</drawSize>
+                      <shadowData>
+                        <volume>(0.6, 0.8, 0.6)</volume>
+                      </shadowData>
+                    </bodyGraphicData>
+                  </li>
+                  <li>
+                    <bodyGraphicData>
+                      <texPath>BOR/Mechs/quasar_driller/quasar_driller</texPath>
+                      <maskPath>Things/Pawn/Mechanoid/AllegianceOverlays/Mech_Paladin</maskPath>
+                      <shaderType>CutoutWithOverlay</shaderType>
+                      <graphicClass>Graphic_Multi</graphicClass>
+                      <drawSize>1.8</drawSize>
+                      <shadowData>
+                        <volume>(0.6, 0.8, 0.6)</volume>
+                      </shadowData>
+                    </bodyGraphicData>
+                  </li>
+                </lifeStages>
+                <abilities>
+                  <li>SmokepopMech</li>
+                </abilities>
+              </PawnKindDef>
+
+              <RecipeDef ParentName="LightMechanoidRecipe">
+                <defName>BOR_Gestate_SolarLifter</defName>
+                <label>gestate solar lifter</label>
+                <description>Gestate a solar lifter mechanoid.</description>
+                <researchPrerequisite>BOR_Research_Mechtech_I</researchPrerequisite>
+                <ingredients Inherit="False">
+                  <li>
+                    <filter>
+                      <thingDefs>
+                        <li>BOR_Sunsteel</li>
+                      </thingDefs>
+                    </filter>
+                    <count>50</count>
+                  </li>
+                  <li>
+                    <filter>
+                      <thingDefs>
+                        <li>ComponentSpacer</li>
+                      </thingDefs>
+                    </filter>
+                    <count>1</count>
+                  </li>
+                </ingredients>
+                <products>
+                  <BOR_Mech_SolarLifter>1</BOR_Mech_SolarLifter>
+                </products>
+                <descriptionHyperlinks>
+                  <ThingDef>BOR_Mech_SolarLifter</ThingDef>
+                </descriptionHyperlinks>
+              </RecipeDef>
+
+              <RecipeDef ParentName="LightMechanoidRecipe">
+                <defName>BOR_Gestate_SolarCleaner</defName>
+                <label>gestate solar cleaner</label>
+                <description>Gestate a solar cleaner mechanoid.</description>
+                <researchPrerequisite>BOR_Research_Mechtech_I</researchPrerequisite>
+                <ingredients Inherit="False">
+                  <li>
+                    <filter>
+                      <thingDefs>
+                        <li>BOR_Sunsteel</li>
+                      </thingDefs>
+                    </filter>
+                    <count>50</count>
+                  </li>
+                  <li>
+                    <filter>
+                      <thingDefs>
+                        <li>ComponentSpacer</li>
+                      </thingDefs>
+                    </filter>
+                    <count>1</count>
+                  </li>
+                </ingredients>
+                <products>
+                  <BOR_Mech_SolarCleaner>1</BOR_Mech_SolarCleaner>
+                </products>
+                <descriptionHyperlinks>
+                  <ThingDef>BOR_Mech_SolarCleaner</ThingDef>
+                </descriptionHyperlinks>
+              </RecipeDef>
+
+              <RecipeDef ParentName="LightMechanoidRecipe">
+                <defName>BOR_Gestate_QuasarFabricor</defName>
+                <label>gestate kwazaari fabricor</label>
+                <description>Gestate a kwazaari fabricor mechanoid.</description>
+                <researchPrerequisite>BOR_Research_Mechtech_II</researchPrerequisite>
+                <ingredients Inherit="False">
+                  <li>
+                    <filter>
+                      <thingDefs>
+                        <li>BOR_QuasarAlloy</li>
+                      </thingDefs>
+                    </filter>
+                    <count>50</count>
+                  </li>
+                  <li>
+                    <filter>
+                      <thingDefs>
+                        <li>BOR_ComponentII</li>
+                      </thingDefs>
+                    </filter>
+                    <count>1</count>
+                  </li>
+                </ingredients>
+                <products>
+                  <BOR_Mech_QuasarFabricor>1</BOR_Mech_QuasarFabricor>
+                </products>
+                <descriptionHyperlinks>
+                  <ThingDef>BOR_Mech_QuasarFabricor</ThingDef>
+                </descriptionHyperlinks>
+              </RecipeDef>
+
+              <RecipeDef ParentName="HeavyMechanoidRecipe">
+                <defName>BOR_Gestate_QuasarDriller</defName>
+                <label>gestate kwazaari driller</label>
+                <description>Gestate a kwazaari driller mechanoid.</description>
+                <researchPrerequisite>BOR_Research_Mechtech_II</researchPrerequisite>
+                <ingredients Inherit="False">
+                  <li>
+                    <filter>
+                      <thingDefs>
+                        <li>BOR_QuasarAlloy</li>
+                      </thingDefs>
+                    </filter>
+                    <count>150</count>
+                  </li>
+                  <li>
+                    <filter>
+                      <thingDefs>
+                        <li>BOR_ComponentII</li>
+                      </thingDefs>
+                    </filter>
+                    <count>4</count>
+                  </li>
+                </ingredients>
+                <products>
+                  <BOR_Mech_QuasarDriller>1</BOR_Mech_QuasarDriller>
+                </products>
+                <descriptionHyperlinks>
+                  <ThingDef>BOR_Mech_QuasarDriller</ThingDef>
+                </descriptionHyperlinks>
+              </RecipeDef>
+
+            </value>
+          </li>
+
+          <li Class="PatchOperationAdd">
+            <xpath>Defs/ThingDef[defName="MechGestator"]/recipes</xpath>
+            <value>
+              <li>BOR_Gestate_QuasarDriller</li>
+              <li>BOR_Gestate_QuasarFabricor</li>
+              <li>BOR_Gestate_SolarLifter</li>
+              <li>BOR_Gestate_SolarCleaner</li>
+            </value>
+          </li>
+
+          <li Class="PatchOperationAdd">
+            <xpath>Defs/RecipeDef[defName="ResurrectLightMech"]/fixedIngredientFilter/thingDefs</xpath>
+            <value>
+              <li>Corpse_BOR_Mech_QuasarDriller</li>
+              <li>Corpse_BOR_Mech_QuasarFabricor</li>
+              <li>Corpse_BOR_Mech_SolarLifter</li>
+              <li>Corpse_BOR_Mech_SolarCleaner</li>
+            </value>
+          </li>
+        </operations>
+      </enabled>
+    </nomatch>
+  </Operation>
+</Patch>

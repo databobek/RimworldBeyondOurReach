@@ -612,156 +612,6 @@
               <removesHediff>VenomTalonTenebral</removesHediff>
             </RecipeDef>
 
-            <!-- Neurocalculator -->
-
-            <HediffDef ParentName="BOR_ImplantTenebralHediffBase">
-              <defaultLabelColor>(128, 0, 0)</defaultLabelColor>
-              <defName>NeurocalculatorTenebral</defName>
-              <label>tenebral neurocalculator</label>
-              <labelNoun>an tenebral neurocalculator</labelNoun>
-              <description>An installed tenebral neurocalculator.</description>
-              <descriptionHyperlinks>
-                <ThingDef>BOR_TenebralOrgan</ThingDef>
-              </descriptionHyperlinks>
-              <stages>
-                <li>
-                  <statOffsets>
-                    <ResearchSpeed>1.2</ResearchSpeed>
-                  </statOffsets>
-                  <painOffset>0.03</painOffset>
-                </li>
-              </stages>
-              <comps>
-                <li Class="HediffCompProperties_ReactOnDamage">
-                  <damageDefIncoming>EMP</damageDefIncoming>
-                  <createHediff>BrainShock</createHediff>
-                </li>
-              </comps>
-              <tags>
-                <li>neurocalculator</li>
-              </tags>
-            </HediffDef>
-
-            <RecipeDef ParentName="SurgeryInstallImplantBORTenebralBase">
-              <defName>InstallNeurocalculatorTenebral</defName>
-              <label>install tenebral neurocalculator</label>
-              <description>Install a neurocalculator.</description>
-              <descriptionHyperlinks>
-                <ThingDef>BOR_TenebralOrgan</ThingDef>
-                <HediffDef>NeurocalculatorTenebral</HediffDef>
-              </descriptionHyperlinks>
-              <jobString>Installing tenebral neurocalculator.</jobString>
-              <ingredients>
-                <li>
-                  <filter>
-                    <thingDefs>
-                      <li>BOR_TenebralOrgan</li>
-                    </thingDefs>
-                  </filter>
-                  <count>1</count>
-                </li>
-              </ingredients>
-              <fixedIngredientFilter>
-                <thingDefs>
-                  <li>BOR_TenebralOrgan</li>
-                </thingDefs>
-              </fixedIngredientFilter>
-              <appliedOnFixedBodyParts>
-                <li>Brain</li>
-              </appliedOnFixedBodyParts>
-              <addsHediff>NeurocalculatorTenebral</addsHediff>
-              <incompatibleWithHediffTags>
-                <li>neurocalculator</li>
-              </incompatibleWithHediffTags>
-            </RecipeDef>
-
-            <RecipeDef ParentName="SurgeryRemoveImplantBase">
-              <defName>RemoveNeurocalculatorTenebral</defName>
-              <label>remove tenebral neurocalculator</label>
-              <description>Remove neurocalculator.</description>
-              <descriptionHyperlinks>
-                <ThingDef>BOR_TenebralOrgan</ThingDef>
-                <HediffDef>NeurocalculatorTenebral</HediffDef>
-              </descriptionHyperlinks>
-              <jobString>Removing tenebral neurocalculator.</jobString>
-              <removesHediff>NeurocalculatorTenebral</removesHediff>
-            </RecipeDef>
-
-            <!-- Learning assistant -->
-
-            <HediffDef ParentName="BOR_ImplantTenebralHediffBase">
-              <defaultLabelColor>(128, 0, 0)</defaultLabelColor>
-              <defName>LearningAssistantTenebral</defName>
-              <label>tenebral learning assistant</label>
-              <labelNoun>an tenebral learning assistant</labelNoun>
-              <description>An installed tenebral learning assistant.</description>
-              <descriptionHyperlinks>
-                <ThingDef>BOR_TenebralOrgan</ThingDef>
-              </descriptionHyperlinks>
-              <stages>
-                <li>
-                  <statOffsets>
-                    <GlobalLearningFactor>1.2</GlobalLearningFactor>
-                  </statOffsets>
-                  <painOffset>0.03</painOffset>
-                </li>
-              </stages>
-              <comps>
-                <li Class="HediffCompProperties_ReactOnDamage">
-                  <damageDefIncoming>EMP</damageDefIncoming>
-                  <createHediff>BrainShock</createHediff>
-                </li>
-              </comps>
-              <tags>
-                <li>learningAssistant</li>
-              </tags>
-            </HediffDef>
-
-            <RecipeDef ParentName="SurgeryInstallImplantBORTenebralBase">
-              <defName>InstallLearningAssistantTenebral</defName>
-              <label>install tenebral learning assistant</label>
-              <description>Install a learning assistant.</description>
-              <descriptionHyperlinks>
-                <ThingDef>BOR_TenebralOrgan</ThingDef>
-                <HediffDef>LearningAssistantTenebral</HediffDef>
-              </descriptionHyperlinks>
-              <jobString>Installing tenebral learning assistant.</jobString>
-              <ingredients>
-                <li>
-                  <filter>
-                    <thingDefs>
-                      <li>BOR_TenebralOrgan</li>
-                    </thingDefs>
-                  </filter>
-                  <count>1</count>
-                </li>
-              </ingredients>
-              <fixedIngredientFilter>
-                <thingDefs>
-                  <li>BOR_TenebralOrgan</li>
-                </thingDefs>
-              </fixedIngredientFilter>
-              <appliedOnFixedBodyParts>
-                <li>Brain</li>
-              </appliedOnFixedBodyParts>
-              <addsHediff>LearningAssistantTenebral</addsHediff>
-              <incompatibleWithHediffTags>
-                <li>learningAssistant</li>
-              </incompatibleWithHediffTags>
-            </RecipeDef>
-
-            <RecipeDef ParentName="SurgeryRemoveImplantBase">
-              <defName>RemoveLearningAssistantTenebral</defName>
-              <label>remove tenebral learning assistant</label>
-              <description>Remove learning assistant.</description>
-              <descriptionHyperlinks>
-                <ThingDef>BOR_TenebralOrgan</ThingDef>
-                <HediffDef>LearningAssistantTenebral</HediffDef>
-              </descriptionHyperlinks>
-              <jobString>Removing tenebral learning assistant.</jobString>
-              <removesHediff>LearningAssistantTenebral</removesHediff>
-            </RecipeDef>
-
             <!-- Gastro-analyzer -->
 
             <HediffDef ParentName="BOR_ImplantTenebralHediffBase">
@@ -1431,12 +1281,6 @@
                   <painOffset>0.03</painOffset>
                 </li>
               </stages>
-              <comps>
-                <li Class="HediffCompProperties_ReactOnDamage">
-                  <damageDefIncoming>EMP</damageDefIncoming>
-                  <vomit>true</vomit>
-                </li>
-              </comps>
               <tags>
                 <li>reprocessorStomach</li>
               </tags>
@@ -1504,12 +1348,6 @@
                   <painOffset>0.03</painOffset>
                 </li>
               </stages>
-              <comps>
-                <li Class="HediffCompProperties_ReactOnDamage">
-                  <damageDefIncoming>EMP</damageDefIncoming>
-                  <createHediff>BrainShock</createHediff>
-                </li>
-              </comps>
               <tags>
                 <li>circadianAssistant</li>
               </tags>
@@ -1585,12 +1423,6 @@
                   <painOffset>0.03</painOffset>
                 </li>
               </stages>
-              <comps>
-                <li Class="HediffCompProperties_ReactOnDamage">
-                  <damageDefIncoming>EMP</damageDefIncoming>
-                  <createHediff>BrainShock</createHediff>
-                </li>
-              </comps>
               <tags>
                 <li>circadianAssistant</li>
               </tags>
@@ -1852,75 +1684,6 @@
           </value>
         </li>
 
-        <!-- consolidate tier3 brain implants into one organ omnibus -->
-        <li Class="PatchOperationRemove">
-          <xpath>Defs/HediffDef[defName="NeurocalculatorTenebral"]</xpath>
-        </li>
-        <li Class="PatchOperationRemove">
-          <xpath>Defs/HediffDef[defName="LearningAssistantTenebral"]</xpath>
-        </li>
-        <li Class="PatchOperationRemove">
-          <xpath>Defs/HediffDef[defName="CircadianAssistantTenebral"]</xpath>
-        </li>
-        <li Class="PatchOperationRemove">
-          <xpath>Defs/HediffDef[defName="CircadianHalfCyclerTenebral"]</xpath>
-        </li>
-        <li Class="PatchOperationRemove">
-          <xpath>Defs/HediffDef[defName="PsychicSensitizerTenebral"]</xpath>
-        </li>
-        <li Class="PatchOperationRemove">
-          <xpath>Defs/HediffDef[defName="PsychicHarmonizerTenebral"]</xpath>
-        </li>
-        <li Class="PatchOperationRemove">
-          <xpath>Defs/HediffDef[defName="PsychicReaderTenebral"]</xpath>
-        </li>
-
-        <li Class="PatchOperationRemove">
-          <xpath>Defs/RecipeDef[defName="InstallNeurocalculatorTenebral"]</xpath>
-        </li>
-        <li Class="PatchOperationRemove">
-          <xpath>Defs/RecipeDef[defName="RemoveNeurocalculatorTenebral"]</xpath>
-        </li>
-        <li Class="PatchOperationRemove">
-          <xpath>Defs/RecipeDef[defName="InstallLearningAssistantTenebral"]</xpath>
-        </li>
-        <li Class="PatchOperationRemove">
-          <xpath>Defs/RecipeDef[defName="RemoveLearningAssistantTenebral"]</xpath>
-        </li>
-        <li Class="PatchOperationRemove">
-          <xpath>Defs/RecipeDef[defName="InstallCircadianAssistantTenebral"]</xpath>
-        </li>
-        <li Class="PatchOperationRemove">
-          <xpath>Defs/RecipeDef[defName="RemoveCircadianAssistantTenebral"]</xpath>
-        </li>
-        <li Class="PatchOperationRemove">
-          <xpath>Defs/RecipeDef[defName="InstallCircadianHalfCyclerTenebral"]</xpath>
-        </li>
-        <li Class="PatchOperationRemove">
-          <xpath>Defs/RecipeDef[defName="RemoveCircadianHalfCyclerTenebral"]</xpath>
-        </li>
-        <li Class="PatchOperationRemove">
-          <xpath>Defs/RecipeDef[defName="InstallPsychicSensitizerTenebral"]</xpath>
-        </li>
-        <li Class="PatchOperationRemove">
-          <xpath>Defs/RecipeDef[defName="RemovePsychicSensitizerTenebral"]</xpath>
-        </li>
-        <li Class="PatchOperationRemove">
-          <xpath>Defs/RecipeDef[defName="InstallPsychicHarmonizerTenebral"]</xpath>
-        </li>
-        <li Class="PatchOperationRemove">
-          <xpath>Defs/RecipeDef[defName="RemovePsychicHarmonizerTenebral"]</xpath>
-        </li>
-        <li Class="PatchOperationRemove">
-          <xpath>Defs/RecipeDef[defName="InstallPsychicReaderTenebral"]</xpath>
-        </li>
-        <li Class="PatchOperationRemove">
-          <xpath>Defs/RecipeDef[defName="RemovePsychicReaderTenebral"]</xpath>
-        </li>
-        <li Class="PatchOperationRemove">
-          <xpath>Defs/ThoughtDef[defName="PsychicHarmonizationTenebral"]</xpath>
-        </li>
-
         <li Class="PatchOperationAdd">
           <xpath>Defs</xpath>
           <value>
@@ -1954,7 +1717,6 @@
                     <ResearchSpeed>1.02</ResearchSpeed>
                     <GlobalLearningFactor>1.02</GlobalLearningFactor>
                     <RestFallRateFactor>-0.68</RestFallRateFactor>
-                    <PsychicSensitivity>1.275</PsychicSensitivity>
                     <NegotiationAbility>0.765</NegotiationAbility>
                     <TradePriceImprovement>0.6375</TradePriceImprovement>
                   </statOffsets>
@@ -1972,10 +1734,6 @@
                 </li>
               </stages>
               <comps>
-                <li Class="HediffCompProperties_ReactOnDamage">
-                  <damageDefIncoming>EMP</damageDefIncoming>
-                  <createHediff>BrainShock</createHediff>
-                </li>
                 <li Class="HediffCompProperties_PsychicHarmonizer">
                   <range>63.75</range>
                   <thought>PsychicHarmonization</thought>
@@ -2002,7 +1760,7 @@
                       <li>BOR_TenebralOrgan</li>
                     </thingDefs>
                   </filter>
-                  <count>6</count>
+                  <count>1</count>
                 </li>
               </ingredients>
               <fixedIngredientFilter>
@@ -2118,7 +1876,7 @@
                       <li>BOR_TenebralOrgan</li>
                     </thingDefs>
                   </filter>
-                  <count>2</count>
+                  <count>1</count>
                 </li>
               </ingredients>
               <fixedIngredientFilter>
@@ -2184,7 +1942,7 @@
                       <li>BOR_TenebralOrgan</li>
                     </thingDefs>
                   </filter>
-                  <count>2</count>
+                  <count>1</count>
                 </li>
               </ingredients>
               <fixedIngredientFilter>
@@ -2294,7 +2052,7 @@
                       <li>BOR_TenebralOrgan</li>
                     </thingDefs>
                   </filter>
-                  <count>3</count>
+                  <count>1</count>
                 </li>
               </ingredients>
               <fixedIngredientFilter>

@@ -25,12 +25,12 @@
             <drawSize>0.80</drawSize>
             <color>(104, 160, 168)</color>
           </graphicData>
-          <recipeMaker>
-            <unfinishedThingDef>UnfinishedHealthItemProsthetic</unfinishedThingDef>
-            <recipeUsers>
+          <recipeMaker Inherit="False">
+            <recipeUsers Inherit="False">
               <li>BOR_MedicineBench_I</li>
               <li>BOR_Bench_IV</li>
             </recipeUsers>
+            <unfinishedThingDef>UnfinishedHealthItemProsthetic</unfinishedThingDef>
             <useIngredientsForColor>false</useIngredientsForColor>
             <workSpeedStat>BOR_BionicCraftingSpeed</workSpeedStat>
             <workSkill>Crafting</workSkill>
@@ -40,7 +40,7 @@
               <Crafting>12</Crafting>
             </skillRequirements>
             <displayPriority>650</displayPriority>
-            <researchPrerequisite>BOR_Research_Bionics_I</researchPrerequisite>
+            <researchPrerequisite>BOR_Research_Mechtech_I</researchPrerequisite>
           </recipeMaker>
           <comps>
             <li Class="CompProperties_Forbiddable" />
@@ -49,7 +49,7 @@
         </ThingDef>
 
         <!-- Control sublink -->
-        <ThingDef Abstract="True" Name="ControlSublinkBaseSolar" ParentName="MechanitorImplantCraftableBase">
+        <ThingDef Abstract="True" Name="ControlSublinkBaseSolar" ParentName="MechanitorImplantCraftableSolarBase">
           <descriptionHyperlinks>
             <HediffDef>ControlSublinkImplantSolar</HediffDef>
           </descriptionHyperlinks>
@@ -67,7 +67,7 @@
             <ComponentSpacer>4</ComponentSpacer>
           </costList>
           <recipeMaker>
-            <researchPrerequisite>StandardMechtech</researchPrerequisite>
+            <researchPrerequisite>BOR_Research_Mechtech_I</researchPrerequisite>
           </recipeMaker>
           <comps>
             <li Class="CompProperties_Usable">
@@ -94,7 +94,7 @@
             <ComponentSpacer>7</ComponentSpacer>
           </costList>
           <recipeMaker>
-            <researchPrerequisite>HighMechtech</researchPrerequisite>
+            <researchPrerequisite>BOR_Research_Mechtech_I</researchPrerequisite>
           </recipeMaker>
           <comps>
             <li Class="CompProperties_Usable">
@@ -122,7 +122,7 @@
           </descriptionHyperlinks>
           <label>solar control sublink</label>
           <description>A solar implant which increases a mechanitor's control group count and the work speed of a mechanitor's mechs.\n\nThis implant can be installed up to 6 times to increase its effect.</description>
-          <defaultLabelColor>(0.6, 0.6, 1.0)</defaultLabelColor>
+
           <isBad>false</isBad>
           <priceImpact>true</priceImpact>
           <initialSeverity>1</initialSeverity> <!-- Severity is bound to level of implant -->
@@ -177,7 +177,7 @@
         </HediffDef>
 
         <!-- Remote repairer -->
-        <ThingDef ParentName="MechanitorImplantCraftableBase">
+        <ThingDef ParentName="MechanitorImplantCraftableSolarBase">
           <defName>RemoteRepairerSolar</defName>
           <label>solar remote repairer</label>
           <description>A solar mechlink upgrade which allows the mechanitor to repair mechs from a distance. The user links with the mechanoid and uses their own brain to psychically guide its self-repair mechanites.\n\nThis implant can be self-installed without surgery.\n\nThis implant can be installed up to 3 times to increase its range.</description>
@@ -192,7 +192,7 @@
             <MaxInstallCount>3</MaxInstallCount>
           </statBases>
           <recipeMaker>
-            <researchPrerequisite>HighMechtech</researchPrerequisite>
+            <researchPrerequisite>BOR_Research_Mechtech_I</researchPrerequisite>
           </recipeMaker>
           <comps>
             <li Class="CompProperties_Usable">
@@ -219,7 +219,6 @@
           <label>solar remote repairer</label>
           <description>A solar mechlink upgrade which allows the mechanitor to repair mechs from a distance. The user links with the mechanoid and uses their own brain to psychically guide its self-repair mechanites.\n\nThis implant can be installed up to 3 times to increase its range.</description>
           <descriptionShort>An implant which allows the user to repair mechs from a distance. This can be installed up to 3 times.</descriptionShort>
-          <defaultLabelColor>(0.6, 0.6, 1.0)</defaultLabelColor>
           <isBad>false</isBad>
           <priceImpact>true</priceImpact>
           <initialSeverity>1</initialSeverity> <!-- Severity is bound to level of implant -->
@@ -257,7 +256,7 @@
         </HediffDef>
 
         <!-- Mech gestation processorr -->
-        <ThingDef ParentName="MechanitorImplantCraftableBase">
+        <ThingDef ParentName="MechanitorImplantCraftableSolarBase">
           <defName>MechFormfeederSolar</defName>
           <label>mech solar gestation processor</label>
           <description>A solar implant which increases the speed at which a mechanitor can produce mechs in a mech gestator. The processor optimizes the behavior of the mechanites in the mech forming tank.\n\nThis implant can be self-installed in the same way as the mechlink.\n\nThis implant can be installed up to 6 times to increase its effect.</description>
@@ -272,7 +271,7 @@
             <MaxInstallCount>6</MaxInstallCount>
           </statBases>
           <recipeMaker>
-            <researchPrerequisite>StandardMechtech</researchPrerequisite>
+            <researchPrerequisite>BOR_Research_Mechtech_I</researchPrerequisite>
           </recipeMaker>
           <comps>
             <li Class="CompProperties_Usable">
@@ -299,7 +298,7 @@
           <label>solar mech gestation processor</label>
           <description>A solar implant which increases the speed at which a mechanitor can produce mechs in a mech gestator. The processor optimizes the behavior of the mechanites in the mech forming tank.\n\nThis implant can be self-installed in the same way as the mechlink.\n\nThis implant can be installed up to 6 times to increase its effect.</description>
           <descriptionShort>As tellar implant which lets a mechanitor gestate new mechs faster. This can be installed up to 6 times to increase the effect.</descriptionShort>
-          <defaultLabelColor>(0.6, 0.6, 1.0)</defaultLabelColor>
+
           <isBad>false</isBad>
           <priceImpact>true</priceImpact>
           <initialSeverity>1</initialSeverity><!-- Severity is bound to level of implant -->
@@ -348,7 +347,7 @@
         </HediffDef>
 
         <!-- Remote shielder -->
-        <ThingDef ParentName="MechanitorImplantCraftableBase">
+        <ThingDef ParentName="MechanitorImplantCraftableSolarBase">
           <defName>RemoteShielderSolar</defName>
           <label>solar remote shielder</label>
           <description>A solar implant which allows the mechanitor to place a personal defense shield on a mech. The mechanitor must continuously focus on the mech in order to maintain the shield.\n\nPlacing a shield at a distance requires a substantial amount of focused energy. It can be used to save a mech at a critical moment.\n\nThis implant can be self-installed in the same way as the mechlink.\n\nThis implant can be installed up to 3 times to increase its range and shield energy.</description>
@@ -360,7 +359,7 @@
             <ComponentSpacer>7</ComponentSpacer>
           </costList>
           <recipeMaker>
-            <researchPrerequisite>HighMechtech</researchPrerequisite>
+            <researchPrerequisite>BOR_Research_Mechtech_I</researchPrerequisite>
           </recipeMaker>
           <statBases>
             <MaxInstallCount>3</MaxInstallCount>
@@ -389,7 +388,7 @@
           </descriptionHyperlinks>
           <label>solar remote shielder</label>
           <description>A solar implant which allows the mechanitor to place a personal defense shield on a mech. The mechanitor must continuously focus on the mech in order to maintain the shield. It can be used to save a mech at a critical moment.\n\nThis implant can be installed up to 3 times to increase its range and shield energy.</description>
-          <defaultLabelColor>(0.6, 0.6, 1.0)</defaultLabelColor>
+
           <isBad>false</isBad>
           <priceImpact>true</priceImpact>
           <initialSeverity>1</initialSeverity>
@@ -431,7 +430,7 @@
 
         <!-- Repair probe -->
 
-        <ThingDef ParentName="MechanitorImplantCraftableBase">
+        <ThingDef ParentName="MechanitorImplantCraftableSolarBase">
           <defName>RepairProbeSolar</defName>
           <label>solar repair probe</label>
           <description>A solar implant which increases the speed at which a mechanitor can repair a mechanoid. This does not affect the overall energy needed to repair a mechanoid.\n\nThe implant allows the mechanitor to plug directly into a mechanoid while they are repairing it. This allows them to more quickly understand the mech's injuries, and better-direct the mech's self-repair mechanites to assist with the repair.\n\nThis implant can be self-installed in the same way as the mechlink.\n\nThis implant can be installed up to 6 times to increase its effect.</description>
@@ -443,7 +442,7 @@
             <ComponentSpacer>2</ComponentSpacer>
           </costList>
           <recipeMaker>
-            <researchPrerequisite>UltraMechtech</researchPrerequisite>
+            <researchPrerequisite>BOR_Research_Mechtech_I</researchPrerequisite>
           </recipeMaker>
           <statBases>
             <MaxInstallCount>6</MaxInstallCount>
@@ -473,7 +472,7 @@
           <label>solar repair probe</label>
           <description>A solar implant which increases a mechanitor's mech repair speed. This does not affect the overall energy needed to repair a mechanoid.\n\nThe implant allows the mechanitor to plug directly into a mechanoid while repairing it and better-direct the mech's self-repair mechanites.\n\nThis implant can be installed up to 6 times to increase its effect.</description>
           <descriptionShort>A solar implant which lets a mechanitor repair mechs faster. This can be installed up to 6 times.</descriptionShort>
-          <defaultLabelColor>(0.6, 0.6, 1.0)</defaultLabelColor>
+
           <isBad>false</isBad>
           <priceImpact>true</priceImpact>
           <initialSeverity>1</initialSeverity><!-- Severity is bound to level of implant -->

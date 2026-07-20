@@ -7,11 +7,33 @@
 		<generalTitle>Beyond Our Reach research projects</generalTitle>
 		<generalDescription>Unlock solar, quasaric, tenebrite, and umbra technologies by researching at a hi-tech research bench. You can only have one active project at a time.</generalDescription>
 	</ResearchTabDef>
+
+	<ResearchProjectDef>
+		<defName>BOR_Kylar_Xar_Computer</defName>
+		<label>Kylar-Xar effect computer</label>
+		<tab>BOR_Research_Tab</tab>
+		<description>Miniaturization has its limits. By harnessing the Kylar-Xar effect, we can develop a revolutionary computing architecture to tackle computational challenges beyond the reach of standard processors. Only one project can be researched at a time.</description>
+		<baseCost>25000</baseCost>
+		<techLevel>Ultra</techLevel>
+		<prerequisites>
+			<li>AdvancedFabrication</li>
+			<li MayRequire="hol.rimputersforked,joeyjoejoeshabidoo.Rimputers1.4">Rimputer_quantumcomputer</li>
+		</prerequisites>
+		<requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+		<requiredResearchFacilities>
+			<li>MultiAnalyzer</li>
+			<li MayRequireAnyOf="hol.rimputersforked,joeyjoejoeshabidoo.Rimputers1.4">Rimputer_quantumcomputer</li>
+			<li MayRequire="4loris4.MoreLinkables">AdvancedMultiAnalyzer</li>
+		</requiredResearchFacilities>
+		<researchViewX>5</researchViewX>
+		<researchViewY>1</researchViewY>
+	</ResearchProjectDef>
+
 	<!--Base Defs-->
 	<ResearchProjectDef Name="BOR_Research_Base" Abstract="True">
 		<requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
 		<requiredResearchFacilities>
-			<li>MultiAnalyzer</li>
+			<li>BOR_Kylar_Xar_Computer</li>
 		</requiredResearchFacilities>
 		<tab>BOR_Research_Tab</tab>
 	</ResearchProjectDef>
@@ -45,13 +67,6 @@
 		<description>Build a solar analyzer, which models this world's sun to aid research and unlock solar-tier research projects. Reverse-engineer the secrets of Solar Republic society through the study of heliophysics.</description>
 		<baseCost>10000</baseCost>
 		<techLevel>Ultra</techLevel>
-		<prerequisites>
-			<li>ShipCryptosleep</li>
-			<li>ShipReactor</li>
-			<li>ShipEngine</li>
-			<li>ShipComputerCore</li>
-			<li>ShipSensorCluster</li>
-		</prerequisites>
 		<researchViewX>0.00</researchViewX>
 		<researchViewY>3.00</researchViewY>
 		<discoveredLetterTitle>About: Forging Sunsteel</discoveredLetterTitle>
@@ -104,7 +119,7 @@
 			<li>BOR_Research_Power_I</li>
 		</prerequisites>
 		<researchViewX>3.00</researchViewX>
-		<researchViewY>0.75</researchViewY>
+		<researchViewY>1.10</researchViewY>
 		<discoveredLetterTitle>About: N-Synthesis</discoveredLetterTitle>
 		<discoveredLetterText>Neutronosynthesis, ("n-synthesis"), is the process of turning stuff into neutronium, storing it, then turning it into better stuff. Most of the neutronium used in final products is lost to radiation, making n-synthesis a rather wasteful process. N-synthesis requires special infrastructure - refineries, synthesizers, storage, and pipes - made from materials at least as strong as sunsteel. Some high-tech items are only possible through n-synthesis. Improperly storing neutronium can be catastrophic; the decompression alone is enough to level entire cities.</discoveredLetterText>
 	</ResearchProjectDef>
@@ -119,7 +134,7 @@
 			<li>PoweredArmor</li>
 		</prerequisites>
 		<researchViewX>2.00</researchViewX>
-		<researchViewY>2.25</researchViewY>
+		<researchViewY>0.20</researchViewY>
 	</ResearchProjectDef>
 	<ResearchProjectDef ParentName="BOR_Research_Base_I" MayRequire="Ludeon.Rimworld.Royalty">
 		<defName>BOR_Research_JetArmor_I</defName>
@@ -132,7 +147,7 @@
 			<li>JumpPack</li>
 		</prerequisites>
 		<researchViewX>3.00</researchViewX>
-		<researchViewY>2.25</researchViewY>
+		<researchViewY>0.20</researchViewY>
 	</ResearchProjectDef>
 	<ResearchProjectDef ParentName="BOR_Research_Base_I">
 		<defName>BOR_Research_Weapons_I</defName>
@@ -144,8 +159,8 @@
 			<li>BOR_Research_Production_I</li>
 			<li>ChargedShot</li>
 		</prerequisites>
-		<researchViewX>2.00</researchViewX>
-		<researchViewY>2.75</researchViewY>
+		<researchViewX>3.00</researchViewX>
+		<researchViewY>6.50</researchViewY>
 	</ResearchProjectDef>
 	<ResearchProjectDef ParentName="BOR_Research_Base_I">
 		<defName>BOR_Research_Medicine_I</defName>
@@ -158,7 +173,7 @@
 			<li>MedicineProduction</li>
 		</prerequisites>
 		<researchViewX>2.00</researchViewX>
-		<researchViewY>3.50</researchViewY>
+		<researchViewY>4.50</researchViewY>
 	</ResearchProjectDef>
 	<ResearchProjectDef ParentName="BOR_Research_Base_I">
 		<defName>BOR_Research_Bionics_I</defName>
@@ -170,8 +185,8 @@
 			<li>BOR_Research_Medicine_I</li>
 			<li>Bionics</li>
 		</prerequisites>
-		<researchViewX>3.00</researchViewX>
-		<researchViewY>3.25</researchViewY>
+		<researchViewX>2.00</researchViewX>
+		<researchViewY>3.50</researchViewY>
 	</ResearchProjectDef>
 	<ResearchProjectDef ParentName="BOR_Research_Base_I">
 		<defName>BOR_Research_Drugs_I</defName>
@@ -194,7 +209,7 @@
 			<li>PenoxycylineProduction</li>
 		</prerequisites>
 		<researchViewX>3.00</researchViewX>
-		<researchViewY>3.75</researchViewY>
+		<researchViewY>4.30</researchViewY>
 	</ResearchProjectDef>
 	<ResearchProjectDef ParentName="BOR_Research_Base_I">
 		<defName>BOR_Research_Joy_I</defName>
@@ -206,8 +221,8 @@
 			<li>BOR_Research_Production_I</li>
 			<li>ComplexFurniture</li>
 		</prerequisites>
-		<researchViewX>2.00</researchViewX>
-		<researchViewY>4.25</researchViewY>
+		<researchViewX>3.00</researchViewX>
+		<researchViewY>5.30</researchViewY>
 	</ResearchProjectDef>
 	<ResearchProjectDef ParentName="BOR_Research_Base_I">
 		<defName>BOR_Research_Storage_I</defName>
@@ -219,7 +234,7 @@
 			<li>BOR_Research_Production_I</li>
 		</prerequisites>
 		<researchViewX>2.00</researchViewX>
-		<researchViewY>4.90</researchViewY>
+		<researchViewY>6.50</researchViewY>
 	</ResearchProjectDef>
 	<ResearchProjectDef ParentName="BOR_Research_Base_I">
 		<defName>BOR_Research_Hydroponics_I</defName>
@@ -232,7 +247,7 @@
 			<li>Hydroponics</li>
 		</prerequisites>
 		<researchViewX>2.00</researchViewX>
-		<researchViewY>4.75</researchViewY>
+		<researchViewY>5.90</researchViewY>
 	</ResearchProjectDef>
 	<ResearchProjectDef ParentName="BOR_Research_Base_I">
 		<defName>BOR_Research_NSynth_I</defName>
@@ -244,7 +259,7 @@
 			<li>BOR_Research_Quarks_I</li>
 		</prerequisites>
 		<researchViewX>4.00</researchViewX>
-		<researchViewY>0.75</researchViewY>
+		<researchViewY>0.30</researchViewY>
 	</ResearchProjectDef>
 	<ResearchProjectDef ParentName="BOR_Research_Base_I">
 		<defName>BOR_SolarGaussWeaponry</defName>
@@ -255,8 +270,8 @@
 		<prerequisites>
 			<li>BOR_Research_Weapons_I</li>
 		</prerequisites>
-		<researchViewX>2.75</researchViewX>
-		<researchViewY>2.75</researchViewY>
+		<researchViewX>4.00</researchViewX>
+		<researchViewY>4.90</researchViewY>
 	</ResearchProjectDef>
 	<ResearchProjectDef ParentName="BOR_Research_Base_I">
 		<defName>BOR_SolarGaussSpecialistWeaponry</defName>
@@ -267,8 +282,8 @@
 		<prerequisites>
 			<li>BOR_SolarGaussWeaponry</li>
 		</prerequisites>
-		<researchViewX>3.25</researchViewX>
-		<researchViewY>2.50</researchViewY>
+		<researchViewX>5.00</researchViewX>
+		<researchViewY>4.75</researchViewY>
 	</ResearchProjectDef>
 	<ResearchProjectDef ParentName="BOR_Research_Base_I">
 		<defName>BOR_SolarGaussHighCaliberWeaponry</defName>
@@ -279,10 +294,10 @@
 		<prerequisites>
 			<li>BOR_SolarGaussWeaponry</li>
 		</prerequisites>
-		<researchViewX>3.25</researchViewX>
-		<researchViewY>3.00</researchViewY>
+		<researchViewX>5.00</researchViewX>
+		<researchViewY>4.90</researchViewY>
 	</ResearchProjectDef>
-	<ResearchProjectDef MayRequire="flangopink.VanillaXCOMLaserWeapons" ParentName="BOR_Research_Base_I">
+	<ResearchProjectDef MayRequireAnyOf="ceteam.combatextended,flangopink.VanillaXCOMLaserWeapons" ParentName="BOR_Research_Base_I">
 		<defName>BOR_SolarBeamWeaponry</defName>
 		<label>solar beam weaponry</label>
 		<description>Develop sealed-emitter beam weapons engineered for space assault operations. Producing no chemical propellant byproducts, these weapons are safe to operate aboard vacuum-sealed spacecraft and ideal for anti-mechanoid engagements in the void.</description>
@@ -291,10 +306,10 @@
 		<prerequisites>
 			<li>BOR_Research_Weapons_I</li>
 		</prerequisites>
-		<researchViewX>3.75</researchViewX>
-		<researchViewY>2.75</researchViewY>
+		<researchViewX>4.00</researchViewX>
+		<researchViewY>0.90</researchViewY>
 	</ResearchProjectDef>
-	<ResearchProjectDef MayRequire="flangopink.VanillaXCOMLaserWeapons" ParentName="BOR_Research_Base_I">
+	<ResearchProjectDef MayRequireAnyOf="ceteam.combatextended,flangopink.VanillaXCOMLaserWeapons" ParentName="BOR_Research_Base_I">
 		<defName>BOR_SolarBeamSpecialistWeaponry</defName>
 		<label>solar beam specialist weapons</label>
 		<description>Engineer precision and close-quarters beam weapons optimized for specialist space assault roles, including designated marksman and corridor-clearing configurations for anti-mechanoid operations aboard spacecraft.</description>
@@ -303,10 +318,10 @@
 		<prerequisites>
 			<li>BOR_SolarBeamWeaponry</li>
 		</prerequisites>
-		<researchViewX>4.25</researchViewX>
-		<researchViewY>2.50</researchViewY>
+		<researchViewX>4.50</researchViewX>
+		<researchViewY>0.80</researchViewY>
 	</ResearchProjectDef>
-	<ResearchProjectDef MayRequire="flangopink.VanillaXCOMLaserWeapons" ParentName="BOR_Research_Base_I">
+	<ResearchProjectDef MayRequireAnyOf="ceteam.combatextended,flangopink.VanillaXCOMLaserWeapons" ParentName="BOR_Research_Base_I">
 		<defName>BOR_SolarBeamHeavyWeaponry</defName>
 		<label>solar beam heavy weaponry</label>
 		<description>Develop heavy-class beam weapons capable of sustained suppressive fire and extreme-range precision for large-scale anti-mechanoid operations in vacuum environments.</description>
@@ -315,14 +330,14 @@
 		<prerequisites>
 			<li>BOR_SolarBeamWeaponry</li>
 		</prerequisites>
-		<researchViewX>4.25</researchViewX>
-		<researchViewY>3.00</researchViewY>
+		<researchViewX>4.50</researchViewX>
+		<researchViewY>1.60</researchViewY>
 	</ResearchProjectDef>
 	<!--Tier 2-->
 	<ResearchProjectDef ParentName="BOR_Research_Base_I">
 		<defName>BOR_Research_Analyzer_II</defName>
 		<label>quasaric analyzer</label>
-		<description>Build a quasaric analyzer, which simulates the quasi-stellar object at the center of your galaxy to aid research and unlock quasar-tier research projects. The Kwazaari will enjoy their monopoly no longer.</description>
+		<description>Build a quasaric analyzer, which simulates the quasi-stellar object at the center of your galaxy to aid research and unlock kwazaari-tier research projects. The Kwazaari will enjoy their monopoly no longer.</description>
 		<baseCost>100000</baseCost>
 		<techLevel>Ultra</techLevel>
 		<prerequisites>
@@ -331,27 +346,27 @@
 		<requiredAnalyzed>
 			<li>BOR_DataDrive</li>
 		</requiredAnalyzed>
-		<researchViewX>5.00</researchViewX>
-		<researchViewY>3.00</researchViewY>
+		<researchViewX>7.00</researchViewX>
+		<researchViewY>0.75</researchViewY>
 		<discoveredLetterTitle>About: Forging Quasar Alloy</discoveredLetterTitle>
 		<discoveredLetterText>You are now able to inefficiently forge Quasar Alloy. Recipes for it can be found at the Sunsteel Shaper.</discoveredLetterText>
 	</ResearchProjectDef>
 	<ResearchProjectDef ParentName="BOR_Research_Base_II">
 		<defName>BOR_Research_Production_II</defName>
 		<label>accretic condenser</label>
-		<description>Produce quasar alloy from sunsteel, gold, and uranium at a sunsteel shaper. Build the neutronium refabricator and theta forge to craft quasar alloy products. Craft Kwazaari universal parts, uniquely-tooled components for most quasar buildings.</description>
+		<description>Produce kwazaari alloy from sunsteel, gold, and uranium at a sunsteel shaper. Build the neutronium refabricator and theta forge to craft kwazaari alloy products. Craft Kwazaari universal parts, uniquely-tooled components for most kwazaari buildings.</description>
 		<baseCost>130000</baseCost>
 		<techLevel>Ultra</techLevel>
 		<prerequisites>
 			<li>BOR_Research_Analyzer_II</li>
 		</prerequisites>
-		<researchViewX>6.00</researchViewX>
-		<researchViewY>3.00</researchViewY>
+		<researchViewX>8.00</researchViewX>
+		<researchViewY>1.25</researchViewY>
 	</ResearchProjectDef>
 	<ResearchProjectDef ParentName="BOR_Research_Base_II">
 		<defName>BOR_Research_Power_II</defName>
-		<label>quasar energy</label>
-		<description>Generate power in amounts fit to compete with the Kwazaari Corporation themselves. Build a neutronium reactor to exploit the unique interaction between dissoluted neutronium and the permittivity of quasar alloy.</description>
+		<label>kwazaari energy</label>
+		<description>Generate power in amounts fit to compete with the Kwazaari Corporation themselves. Build a neutronium reactor to exploit the unique interaction between dissoluted neutronium and the permittivity of kwazaari alloy.</description>
 		<baseCost>170000</baseCost>
 		<techLevel>Ultra</techLevel>
 		<prerequisites>
@@ -360,13 +375,13 @@
 		<hiddenPrerequisites>
 			<li>BOR_Research_Power_I</li>
 		</hiddenPrerequisites>
-		<researchViewX>7.00</researchViewX>
+		<researchViewX>9.00</researchViewX>
 		<researchViewY>1.75</researchViewY>
 	</ResearchProjectDef>
 	<ResearchProjectDef ParentName="BOR_Research_Base_II">
 		<defName>BOR_Research_Battery_II</defName>
-		<label>quasar battery</label>
-		<description>Build stronger batteries from quasar alloy to hold ever-greater amounts of power.</description>
+		<label>kwazaari battery</label>
+		<description>Build stronger batteries from kwazaari alloy to hold ever-greater amounts of power.</description>
 		<baseCost>40000</baseCost>
 		<techLevel>Ultra</techLevel>
 		<prerequisites>
@@ -375,12 +390,12 @@
 		<hiddenPrerequisites>
 			<li>BOR_Research_Battery_I</li>
 		</hiddenPrerequisites>
-		<researchViewX>8.00</researchViewX>
-		<researchViewY>1.75</researchViewY>
+		<researchViewX>10.00</researchViewX>
+		<researchViewY>2.00</researchViewY>
 	</ResearchProjectDef>
 	<ResearchProjectDef ParentName="BOR_Research_Base_II">
 		<defName>BOR_Research_Armor_II</defName>
-		<label>quasar armor</label>
+		<label>kwazaari armor</label>
 		<description>Manufacture power armor typical of Kwazaari private military contractors.</description>
 		<baseCost>170000</baseCost>
 		<techLevel>Ultra</techLevel>
@@ -390,13 +405,13 @@
 		<hiddenPrerequisites>
 			<li>BOR_Research_Armor_I</li>
 		</hiddenPrerequisites>
-		<researchViewX>7.00</researchViewX>
+		<researchViewX>9.00</researchViewX>
 		<researchViewY>2.25</researchViewY>
 	</ResearchProjectDef>
 	<ResearchProjectDef ParentName="BOR_Research_Base_II">
 		<defName>BOR_Research_Weapons_II</defName>
-		<label>quasar weaponry</label>
-		<description>Craft kwazaari weapons that utilize the superior properties of quasar alloy to secure greater profits at any cost</description>
+		<label>kwazaari weaponry</label>
+		<description>Craft kwazaari weapons that utilize the superior properties of kwazaari alloy to secure greater profits at any cost</description>
 		<baseCost>170000</baseCost>
 		<techLevel>Ultra</techLevel>
 		<prerequisites>
@@ -405,13 +420,13 @@
 		<hiddenPrerequisites>
 			<li>BOR_Research_Weapons_I</li>
 		</hiddenPrerequisites>
-		<researchViewX>7.00</researchViewX>
+		<researchViewX>9.00</researchViewX>
 		<researchViewY>2.75</researchViewY>
 	</ResearchProjectDef>
 	<ResearchProjectDef ParentName="BOR_Research_Base_II">
 		<defName>BOR_QuasarGaussWeaponry</defName>
-		<label>quasar gauss weaponry</label>
-		<description>Develop advanced gauss weapons that evolve earlier solarite prototypes into full-production quasar systems, accelerating quasar alloy projectiles at extreme velocity.</description>
+		<label>kwazaari gauss weaponry</label>
+		<description>Develop advanced gauss weapons that evolve earlier solarite prototypes into full-production kwazaari systems, accelerating kwazaari alloy projectiles at extreme velocity.</description>
 		<baseCost>54000</baseCost>
 		<techLevel>Ultra</techLevel>
 		<prerequisites>
@@ -420,13 +435,13 @@
 		<hiddenPrerequisites>
 			<li>BOR_SolarGaussWeaponry</li>
 		</hiddenPrerequisites>
-		<researchViewX>8.00</researchViewX>
+		<researchViewX>10.00</researchViewX>
 		<researchViewY>2.75</researchViewY>
 	</ResearchProjectDef>
 	<ResearchProjectDef ParentName="BOR_Research_Base_II">
 		<defName>BOR_QuasarGaussSpecialistWeaponry</defName>
-		<label>quasar gauss specialist weapons</label>
-		<description>Refine specialist quasar gauss variants for precision marksman and close-assault roles beyond the capabilities of first-generation solarite platforms.</description>
+		<label>kwazaari gauss specialist weapons</label>
+		<description>Refine specialist kwazaari gauss variants for precision marksman and close-assault roles beyond the capabilities of first-generation solarite platforms.</description>
 		<baseCost>42000</baseCost>
 		<techLevel>Ultra</techLevel>
 		<prerequisites>
@@ -435,13 +450,13 @@
 		<hiddenPrerequisites>
 			<li>BOR_SolarGaussSpecialistWeaponry</li>
 		</hiddenPrerequisites>
-		<researchViewX>8.50</researchViewX>
+		<researchViewX>10.50</researchViewX>
 		<researchViewY>2.50</researchViewY>
 	</ResearchProjectDef>
 	<ResearchProjectDef ParentName="BOR_Research_Base_II">
 		<defName>BOR_QuasarGaussHighCaliberWeaponry</defName>
-		<label>quasar gauss heavy weaponry</label>
-		<description>Engineer heavy quasar gauss systems that upscale proven prototype architectures into sustained high-caliber anti-armor and suppressive platforms.</description>
+		<label>kwazaari gauss heavy weaponry</label>
+		<description>Engineer heavy kwazaari gauss systems that upscale proven prototype architectures into sustained high-caliber anti-armor and suppressive platforms.</description>
 		<baseCost>42000</baseCost>
 		<techLevel>Ultra</techLevel>
 		<prerequisites>
@@ -450,13 +465,13 @@
 		<hiddenPrerequisites>
 			<li>BOR_SolarGaussHighCaliberWeaponry</li>
 		</hiddenPrerequisites>
-		<researchViewX>8.50</researchViewX>
+		<researchViewX>10.50</researchViewX>
 		<researchViewY>3.00</researchViewY>
 	</ResearchProjectDef>
-	<ResearchProjectDef MayRequire="flangopink.VanillaXCOMLaserWeapons" ParentName="BOR_Research_Base_II">
+	<ResearchProjectDef MayRequireAnyOf="ceteam.combatextended,flangopink.VanillaXCOMLaserWeapons" ParentName="BOR_Research_Base_II">
 		<defName>BOR_QuasarBeamWeaponry</defName>
-		<label>quasar beam weaponry</label>
-		<description>Advance beam weapon engineering from solarite prototype emitters into robust quasar-grade plasma-beam systems optimized for high-energy combat roles.</description>
+		<label>kwazaari beam weaponry</label>
+		<description>Advance beam weapon engineering from solarite prototype emitters into robust kwazaari-grade plasma-beam systems optimized for high-energy combat roles.</description>
 		<baseCost>66000</baseCost>
 		<techLevel>Ultra</techLevel>
 		<prerequisites>
@@ -465,13 +480,13 @@
 		<hiddenPrerequisites>
 			<li>BOR_SolarBeamWeaponry</li>
 		</hiddenPrerequisites>
-		<researchViewX>8.00</researchViewX>
+		<researchViewX>10.00</researchViewX>
 		<researchViewY>3.25</researchViewY>
 	</ResearchProjectDef>
-	<ResearchProjectDef MayRequire="flangopink.VanillaXCOMLaserWeapons" ParentName="BOR_Research_Base_II">
+	<ResearchProjectDef MayRequireAnyOf="ceteam.combatextended,flangopink.VanillaXCOMLaserWeapons" ParentName="BOR_Research_Base_II">
 		<defName>BOR_QuasarBeamSpecialistWeaponry</defName>
-		<label>quasar beam specialist weapons</label>
-		<description>Develop specialist quasar beam variants for precision and close-quarters combat, refining lessons learned from earlier solarite specialist prototypes.</description>
+		<label>kwazaari beam specialist weapons</label>
+		<description>Develop specialist kwazaari beam variants for precision and close-quarters combat, refining lessons learned from earlier solarite specialist prototypes.</description>
 		<baseCost>48000</baseCost>
 		<techLevel>Ultra</techLevel>
 		<prerequisites>
@@ -480,13 +495,13 @@
 		<hiddenPrerequisites>
 			<li>BOR_SolarBeamSpecialistWeaponry</li>
 		</hiddenPrerequisites>
-		<researchViewX>8.50</researchViewX>
+		<researchViewX>10.50</researchViewX>
 		<researchViewY>3.10</researchViewY>
 	</ResearchProjectDef>
-	<ResearchProjectDef MayRequire="flangopink.VanillaXCOMLaserWeapons" ParentName="BOR_Research_Base_II">
+	<ResearchProjectDef MayRequireAnyOf="ceteam.combatextended,flangopink.VanillaXCOMLaserWeapons" ParentName="BOR_Research_Base_II">
 		<defName>BOR_QuasarBeamHeavyWeaponry</defName>
-		<label>quasar beam heavy weaponry</label>
-		<description>Scale beam technology into heavy quasar platforms delivering sustained suppressive output and long-range precision from matured prototype concepts.</description>
+		<label>kwazaari beam heavy weaponry</label>
+		<description>Scale beam technology into heavy kwazaari platforms delivering sustained suppressive output and long-range precision from matured prototype concepts.</description>
 		<baseCost>48000</baseCost>
 		<techLevel>Ultra</techLevel>
 		<prerequisites>
@@ -495,12 +510,12 @@
 		<hiddenPrerequisites>
 			<li>BOR_SolarBeamHeavyWeaponry</li>
 		</hiddenPrerequisites>
-		<researchViewX>8.50</researchViewX>
+		<researchViewX>10.50</researchViewX>
 		<researchViewY>3.40</researchViewY>
 	</ResearchProjectDef>
 	<ResearchProjectDef ParentName="BOR_Research_Base_II">
 		<defName>BOR_Research_Medicine_II</defName>
-		<label>quasar medicine production</label>
+		<label>kwazaari medicine production</label>
 		<description>Produce medical items common to Kwazaari Quiklinic-brand private healthcare facilities.</description>
 		<baseCost>170000</baseCost>
 		<techLevel>Ultra</techLevel>
@@ -510,12 +525,12 @@
 		<hiddenPrerequisites>
 			<li>BOR_Research_Medicine_I</li>
 		</hiddenPrerequisites>
-		<researchViewX>7.00</researchViewX>
+		<researchViewX>9.00</researchViewX>
 		<researchViewY>3.60</researchViewY>
 	</ResearchProjectDef>
 	<ResearchProjectDef ParentName="BOR_Research_Base_II">
 		<defName>BOR_Research_Bionics_II</defName>
-		<label>quasar bionics</label>
+		<label>kwazaari bionics</label>
 		<description>Build Kwazaari body parts to replace missing appendages and organs or supplant natural flesh. Requires picoclusters and a skilled doctor to attach.</description>
 		<baseCost>40000</baseCost>
 		<techLevel>Ultra</techLevel>
@@ -525,12 +540,12 @@
 		<hiddenPrerequisites>
 			<li>BOR_Research_Bionics_I</li>
 		</hiddenPrerequisites>
-		<researchViewX>8.00</researchViewX>
-		<researchViewY>3.30</researchViewY>
+		<researchViewX>10.00</researchViewX>
+		<researchViewY>3.70</researchViewY>
 	</ResearchProjectDef>
 	<ResearchProjectDef ParentName="BOR_Research_Base_II">
 		<defName>BOR_Research_Drugs_II</defName>
-		<label>quasar drug production</label>
+		<label>kwazaari drug production</label>
 		<description>Produce drugs found among Kwazaari employees and corpo-slaves alike.
 
 			Castra is a powerful disease prevention drug that blocks many common ailments - including infection - before they are contracted, more so than Aegis.
@@ -548,12 +563,12 @@
 		<hiddenPrerequisites>
 			<li>BOR_Research_Drugs_I</li>
 		</hiddenPrerequisites>
-		<researchViewX>8.00</researchViewX>
-		<researchViewY>3.90</researchViewY>
+		<researchViewX>10.00</researchViewX>
+		<researchViewY>4.10</researchViewY>
 	</ResearchProjectDef>
 	<ResearchProjectDef ParentName="BOR_Research_Base_II">
 		<defName>BOR_Research_Joy_II</defName>
-		<label>quasar recreation</label>
+		<label>kwazaari recreation</label>
 		<description>Build recreational facilities comparable to those of Kwazaari C-suite executives. Lucky!</description>
 		<baseCost>170000</baseCost>
 		<techLevel>Ultra</techLevel>
@@ -563,13 +578,13 @@
 		<hiddenPrerequisites>
 			<li>BOR_Research_Joy_I</li>
 		</hiddenPrerequisites>
-		<researchViewX>7.00</researchViewX>
+		<researchViewX>9.00</researchViewX>
 		<researchViewY>4.50</researchViewY>
 	</ResearchProjectDef>
 	<ResearchProjectDef ParentName="BOR_Research_Base_II">
 		<defName>BOR_Research_Storage_II</defName>
-		<label>quasar adaptive storage</label>
-		<description>Advance adaptive storage with quasar-alloy field regulators to improve stability and increase packing density.</description>
+		<label>kwazaari adaptive storage</label>
+		<description>Advance adaptive storage with kwazaari-alloy field regulators to improve stability and increase packing density.</description>
 		<baseCost>170000</baseCost>
 		<techLevel>Ultra</techLevel>
 		<prerequisites>
@@ -578,13 +593,13 @@
 		<hiddenPrerequisites>
 			<li>BOR_Research_Storage_I</li>
 		</hiddenPrerequisites>
-		<researchViewX>7.00</researchViewX>
+		<researchViewX>9.00</researchViewX>
 		<researchViewY>4.90</researchViewY>
 	</ResearchProjectDef>
 	<ResearchProjectDef ParentName="BOR_Research_Base_II">
 		<defName>BOR_Research_Hydroponics_II</defName>
-		<label>quasar hydroponics</label>
-		<description>Build the superior hydroponics system from quasar alloy.</description>
+		<label>kwazaari hydroponics</label>
+		<description>Build the superior hydroponics system from kwazaari alloy.</description>
 		<baseCost>170000</baseCost>
 		<techLevel>Ultra</techLevel>
 		<prerequisites>
@@ -593,21 +608,21 @@
 		<hiddenPrerequisites>
 			<li>BOR_Research_Hydroponics_I</li>
 		</hiddenPrerequisites>
-		<researchViewX>7.00</researchViewX>
+		<researchViewX>9.00</researchViewX>
 		<researchViewY>5.10</researchViewY>
 	</ResearchProjectDef>
 	<ResearchProjectDef ParentName="BOR_Research_Base_II">
 		<defName>BOR_Research_NSynth_II</defName>
 		<label>standard n-synthesis</label>
-		<description>Unlocks improved neutronium extractor construction using quasar alloy and Kwazaari universal parts, reducing neutronium loss during synthesis and enabling much more efficient neutronosynthesis recipes.</description>
+		<description>Unlocks improved neutronium extractor construction using kwazaari alloy and Kwazaari universal parts, reducing neutronium loss during synthesis and enabling much more efficient neutronosynthesis recipes.</description>
 		<baseCost>210000</baseCost>
 		<techLevel>Ultra</techLevel>
 		<prerequisites>
 			<li>BOR_Research_NSynth_I</li>
 			<li>BOR_Research_Power_II</li>
 		</prerequisites>
-		<researchViewX>8.00</researchViewX>
-		<researchViewY>0.75</researchViewY>
+		<researchViewX>10.00</researchViewX>
+		<researchViewY>5.50</researchViewY>
 	</ResearchProjectDef>
 	<!--Tier 3-->
 	<ResearchProjectDef ParentName="BOR_Research_Base_II">
@@ -623,22 +638,22 @@
 			<li>BOR_DiluteTenebriteShard</li>
 			<li>BOR_TenebriteMotor</li>
 		</requiredAnalyzed>
-		<researchViewX>10.00</researchViewX>
-		<researchViewY>3.00</researchViewY>
+		<researchViewX>13.00</researchViewX>
+		<researchViewY>1.00</researchViewY>
 		<discoveredLetterTitle>About: Forming tenebrite</discoveredLetterTitle>
 		<discoveredLetterText>You are now able to inefficiently form tenebrite crystals. Recipes for it can be found at the neutronium refabricator.</discoveredLetterText>
 	</ResearchProjectDef>
 	<ResearchProjectDef ParentName="BOR_Research_Base_III">
 		<defName>BOR_Research_Production_III</defName>
 		<label>gravitic crystal shaping</label>
-		<description>Produce tenebrite, a crystalline material derived from quasar alloy and stray dark matter. Craft crystalline joints from tenebrite, crucial components in tenebrite products. Build tenebrite structures and craft tenebrite tools and weapons; they will be supreme to nearly all others.</description>
+		<description>Produce tenebrite, a crystalline material derived from kwazaari alloy and stray dark matter. Craft crystalline joints from tenebrite, crucial components in tenebrite products. Build tenebrite structures and craft tenebrite tools and weapons; they will be supreme to nearly all others.</description>
 		<baseCost>420000</baseCost>
 		<techLevel>Archotech</techLevel>
 		<prerequisites>
 			<li>BOR_Research_Analyzer_III</li>
 		</prerequisites>
-		<researchViewX>11.00</researchViewX>
-		<researchViewY>3.00</researchViewY>
+		<researchViewX>14.00</researchViewX>
+		<researchViewY>1.50</researchViewY>
 	</ResearchProjectDef>
 	<ResearchProjectDef ParentName="BOR_Research_Base_III">
 		<defName>BOR_Research_Power_III</defName>
@@ -652,7 +667,7 @@
 		<hiddenPrerequisites>
 			<li>BOR_Research_Power_II</li>
 		</hiddenPrerequisites>
-		<researchViewX>12.00</researchViewX>
+		<researchViewX>15.00</researchViewX>
 		<researchViewY>1.75</researchViewY>
 	</ResearchProjectDef>
 	<ResearchProjectDef ParentName="BOR_Research_Base_III">
@@ -667,8 +682,8 @@
 		<hiddenPrerequisites>
 			<li>BOR_Research_Battery_II</li>
 		</hiddenPrerequisites>
-		<researchViewX>13.00</researchViewX>
-		<researchViewY>1.75</researchViewY>
+		<researchViewX>16.00</researchViewX>
+		<researchViewY>2.00</researchViewY>
 	</ResearchProjectDef>
 	<ResearchProjectDef ParentName="BOR_Research_Base_III">
 		<defName>BOR_Research_Armor_III</defName>
@@ -682,7 +697,7 @@
 		<hiddenPrerequisites>
 			<li>BOR_Research_Armor_II</li>
 		</hiddenPrerequisites>
-		<researchViewX>12.00</researchViewX>
+		<researchViewX>15.00</researchViewX>
 		<researchViewY>2.25</researchViewY>
 	</ResearchProjectDef>
 	<ResearchProjectDef ParentName="BOR_Research_Base_III">
@@ -697,7 +712,7 @@
 		<hiddenPrerequisites>
 			<li>BOR_Research_Weapons_II</li>
 		</hiddenPrerequisites>
-		<researchViewX>12.00</researchViewX>
+		<researchViewX>15.00</researchViewX>
 		<researchViewY>2.75</researchViewY>
 	</ResearchProjectDef>
 	<ResearchProjectDef ParentName="BOR_Research_Base_III">
@@ -712,7 +727,7 @@
 		<hiddenPrerequisites>
 			<li>BOR_Research_Medicine_II</li>
 		</hiddenPrerequisites>
-		<researchViewX>12.00</researchViewX>
+		<researchViewX>15.00</researchViewX>
 		<researchViewY>3.60</researchViewY>
 	</ResearchProjectDef>
 	<ResearchProjectDef ParentName="BOR_Research_Base_III">
@@ -727,8 +742,8 @@
 		<hiddenPrerequisites>
 			<li>BOR_Research_Bionics_II</li>
 		</hiddenPrerequisites>
-		<researchViewX>13.00</researchViewX>
-		<researchViewY>3.30</researchViewY>
+		<researchViewX>16.00</researchViewX>
+		<researchViewY>3.70</researchViewY>
 	</ResearchProjectDef>
 	<ResearchProjectDef ParentName="BOR_Research_Base_III">
 		<defName>BOR_Research_Drugs_III</defName>
@@ -750,8 +765,8 @@
 		<hiddenPrerequisites>
 			<li>BOR_Research_Drugs_II</li>
 		</hiddenPrerequisites>
-		<researchViewX>13.00</researchViewX>
-		<researchViewY>3.90</researchViewY>
+		<researchViewX>16.00</researchViewX>
+		<researchViewY>4.10</researchViewY>
 	</ResearchProjectDef>
 	<ResearchProjectDef ParentName="BOR_Research_Base_III">
 		<defName>BOR_Research_Joy_III</defName>
@@ -765,7 +780,7 @@
 		<hiddenPrerequisites>
 			<li>BOR_Research_Joy_II</li>
 		</hiddenPrerequisites>
-		<researchViewX>12.00</researchViewX>
+		<researchViewX>15.00</researchViewX>
 		<researchViewY>4.50</researchViewY>
 	</ResearchProjectDef>
 	<ResearchProjectDef ParentName="BOR_Research_Base_III">
@@ -780,7 +795,7 @@
 		<hiddenPrerequisites>
 			<li>BOR_Research_Storage_II</li>
 		</hiddenPrerequisites>
-		<researchViewX>12.00</researchViewX>
+		<researchViewX>15.00</researchViewX>
 		<researchViewY>4.90</researchViewY>
 	</ResearchProjectDef>
 	<ResearchProjectDef ParentName="BOR_Research_Base_III">
@@ -795,7 +810,7 @@
 		<hiddenPrerequisites>
 			<li>BOR_Research_Hydroponics_II</li>
 		</hiddenPrerequisites>
-		<researchViewX>12.00</researchViewX>
+		<researchViewX>15.00</researchViewX>
 		<researchViewY>5.10</researchViewY>
 	</ResearchProjectDef>
 	<ResearchProjectDef ParentName="BOR_Research_Base_III">
@@ -808,8 +823,8 @@
 			<li>BOR_Research_NSynth_II</li>
 			<li>BOR_Research_Power_III</li>
 		</prerequisites>
-		<researchViewX>13.00</researchViewX>
-		<researchViewY>0.75</researchViewY>
+		<researchViewX>16.00</researchViewX>
+		<researchViewY>5.50</researchViewY>
 	</ResearchProjectDef>
 	<ResearchProjectDef ParentName="BOR_Research_Base_III">
 		<defName>BOR_Research_NSynth_IV</defName>
@@ -821,7 +836,7 @@
 			<li>BOR_Research_NSynth_III</li>
 			<li>BOR_Research_Power_III</li>
 		</prerequisites>
-		<researchViewX>14.00</researchViewX>
+		<researchViewX>17.00</researchViewX>
 		<researchViewY>1.00</researchViewY>
 	</ResearchProjectDef>
 	<!--Tier 4-->
@@ -843,7 +858,7 @@
 			<li>BOR_Research_Joy_III</li>
 			<li>BOR_Research_Hydroponics_III</li>
 		</hiddenPrerequisites>
-		<researchViewX>15.00</researchViewX>
+		<researchViewX>19.00</researchViewX>
 		<researchViewY>2.30</researchViewY>
 	</ResearchProjectDef>
 	<ResearchProjectDef ParentName="BOR_Research_Base_IV">
@@ -855,7 +870,7 @@
 		<prerequisites>
 			<li>BOR_Research_Gate_IV</li>
 		</prerequisites>
-		<researchViewX>18.00</researchViewX>
+		<researchViewX>22.00</researchViewX>
 		<researchViewY>2.00</researchViewY>
 	</ResearchProjectDef>
 	<ResearchProjectDef ParentName="BOR_Research_Base_IV">
@@ -867,7 +882,7 @@
 		<prerequisites>
 			<li>BOR_Research_Gate_IV</li>
 		</prerequisites>
-		<researchViewX>18.00</researchViewX>
+		<researchViewX>22.00</researchViewX>
 		<researchViewY>5.00</researchViewY>
 	</ResearchProjectDef>
 	<ResearchProjectDef ParentName="BOR_Research_Base_IV">
@@ -879,7 +894,7 @@
 		<prerequisites>
 			<li>BOR_Research_Gate_IV</li>
 		</prerequisites>
-		<researchViewX>18.00</researchViewX>
+		<researchViewX>22.00</researchViewX>
 		<researchViewY>6.00</researchViewY>
 	</ResearchProjectDef>
 	<ResearchProjectDef ParentName="BOR_Research_Base_IV">
@@ -891,7 +906,7 @@
 		<prerequisites>
 			<li>BOR_Research_Gate_IV</li>
 		</prerequisites>
-		<researchViewX>18.00</researchViewX>
+		<researchViewX>22.00</researchViewX>
 		<researchViewY>4.00</researchViewY>
 	</ResearchProjectDef>
 	<ResearchProjectDef ParentName="BOR_Research_Base_IV">
@@ -903,7 +918,7 @@
 		<prerequisites>
 			<li>BOR_Research_NeutProc_IV</li>
 		</prerequisites>
-		<researchViewX>19.40</researchViewX>
+		<researchViewX>23.40</researchViewX>
 		<researchViewY>3.00</researchViewY>
 	</ResearchProjectDef>
 	<ResearchProjectDef ParentName="BOR_Research_Base_IV">
@@ -915,7 +930,7 @@
 		<prerequisites>
 			<li>BOR_Research_NeutProc_IV</li>
 		</prerequisites>
-		<researchViewX>19.40</researchViewX>
+		<researchViewX>23.40</researchViewX>
 		<researchViewY>4.00</researchViewY>
 	</ResearchProjectDef>
 	<ResearchProjectDef ParentName="BOR_Research_Base_IV">
@@ -927,7 +942,7 @@
 		<prerequisites>
 			<li>BOR_Research_NeutProc_IV</li>
 		</prerequisites>
-		<researchViewX>19.40</researchViewX>
+		<researchViewX>23.40</researchViewX>
 		<researchViewY>5.00</researchViewY>
 	</ResearchProjectDef>
 	<ResearchProjectDef ParentName="BOR_Research_Base_IV">
@@ -939,7 +954,7 @@
 		<prerequisites>
 			<li>BOR_Research_NeutProc_IV</li>
 		</prerequisites>
-		<researchViewX>19.40</researchViewX>
+		<researchViewX>23.40</researchViewX>
 		<researchViewY>2.40</researchViewY>
 	</ResearchProjectDef>
 	<ResearchProjectDef ParentName="BOR_Research_Base_IV">
@@ -951,7 +966,7 @@
 		<prerequisites>
 			<li>BOR_Research_NeutProc_IV</li>
 		</prerequisites>
-		<researchViewX>20.60</researchViewX>
+		<researchViewX>24.60</researchViewX>
 		<researchViewY>4.80</researchViewY>
 	</ResearchProjectDef>
 	<ResearchProjectDef ParentName="BOR_Research_Base_IV">
@@ -963,7 +978,7 @@
 		<prerequisites>
 			<li>BOR_Research_NeutProc_IV</li>
 		</prerequisites>
-		<researchViewX>20.60</researchViewX>
+		<researchViewX>24.60</researchViewX>
 		<researchViewY>3.70</researchViewY>
 	</ResearchProjectDef>
 	<ResearchProjectDef ParentName="BOR_Research_Base_IV">
@@ -975,7 +990,7 @@
 		<prerequisites>
 			<li>BOR_Research_NeutProc_IV</li>
 		</prerequisites>
-		<researchViewX>20.60</researchViewX>
+		<researchViewX>24.60</researchViewX>
 		<researchViewY>5.90</researchViewY>
 	</ResearchProjectDef>
 	<ResearchProjectDef ParentName="BOR_Research_Base_IV">
@@ -987,7 +1002,7 @@
 		<prerequisites>
 			<li>BOR_Research_NeutProc_IV</li>
 		</prerequisites>
-		<researchViewX>20.60</researchViewX>
+		<researchViewX>24.60</researchViewX>
 		<researchViewY>2.60</researchViewY>
 	</ResearchProjectDef>
 
@@ -1013,7 +1028,7 @@
 		<prerequisites>
 			<li>BOR_Research_Production_I</li>
 		</prerequisites>
-		<researchViewX>4.20</researchViewX>
+		<researchViewX>2.00</researchViewX>
 		<researchViewY>4.00</researchViewY>
 	</ResearchProjectDef>
 	<ResearchProjectDef ParentName="BOR_Research_Base_I">
@@ -1025,8 +1040,8 @@
 		<prerequisites>
 			<li>BOR_Research_Production_I</li>
 		</prerequisites>
-		<researchViewX>4.20</researchViewX>
-		<researchViewY>4.80</researchViewY>
+		<researchViewX>2.00</researchViewX>
+		<researchViewY>5.20</researchViewY>
 	</ResearchProjectDef>
 	<ResearchProjectDef ParentName="BOR_Research_Base_I">
 		<defName>BOR_Research_NeutRecipes_I_Food</defName>
@@ -1037,7 +1052,7 @@
 		<prerequisites>
 			<li>BOR_Research_Production_I</li>
 		</prerequisites>
-		<researchViewX>4.20</researchViewX>
+		<researchViewX>2.00</researchViewX>
 		<researchViewY>2.40</researchViewY>
 	</ResearchProjectDef>
 	<ResearchProjectDef ParentName="BOR_Research_Base_I">
@@ -1049,8 +1064,8 @@
 		<prerequisites>
 			<li>BOR_Research_Production_I</li>
 		</prerequisites>
-		<researchViewX>5.20</researchViewX>
-		<researchViewY>4.40</researchViewY>
+		<researchViewX>3.00</researchViewX>
+		<researchViewY>4.80</researchViewY>
 	</ResearchProjectDef>
 	<ResearchProjectDef ParentName="BOR_Research_Base_I">
 		<defName>BOR_Research_NeutRecipes_I_Externals</defName>
@@ -1276,7 +1291,7 @@
 		<researchViewY>2.55</researchViewY>
 	</ResearchProjectDef>
 
-	<ResearchProjectDef ParentName="BOR_Research_Base_I">
+	<ResearchProjectDef ParentName="BOR_Research_Base_II">
 		<defName>BOR_Research_RangerTurret_II</defName>
 		<label>ranger railgun turret</label>
 		<description>Upgrades the turret concept into a long-range precision railgun platform that launches hypervelocity penetrator shells.</description>
@@ -1286,11 +1301,11 @@
 			<li>BOR_Research_Weapons_II</li>
 			<li>GunTurrets</li>
 		</prerequisites>
-		<researchViewX>4.40</researchViewX>
+		<researchViewX>6.40</researchViewX>
 		<researchViewY>2.55</researchViewY>
 	</ResearchProjectDef>
 
-	<ResearchProjectDef ParentName="BOR_Research_Base_I">
+	<ResearchProjectDef ParentName="BOR_Research_Base_III">
 		<defName>BOR_Research_PacifierTurret_III</defName>
 		<label>pacifier suppression turret</label>
 		<description>Develops a compact short-range suppression turret that overwhelms intruders with a nonlethal neural pain cascade rather than conventional ballistic damage.</description>
@@ -1300,7 +1315,7 @@
 			<li>BOR_Research_Weapons_III</li>
 			<li>GunTurrets</li>
 		</prerequisites>
-		<researchViewX>5.10</researchViewX>
+		<researchViewX>8.10</researchViewX>
 		<researchViewY>2.55</researchViewY>
 	</ResearchProjectDef>
 
@@ -1328,7 +1343,7 @@
 			<li>BOR_Research_JudgmentCannon_I</li>
 			<li>BOR_Research_Weapons_II</li>
 		</prerequisites>
-		<researchViewX>8.70</researchViewX>
+		<researchViewX>10.70</researchViewX>
 		<researchViewY>2.55</researchViewY>
 	</ResearchProjectDef>
 
@@ -1348,15 +1363,15 @@
 	</ResearchProjectDef>
 	<ResearchProjectDef ParentName="BOR_Research_Base_II">
 		<defName>BOR_Research_Core_Drill_II</defName>
-		<label>quasar crust exploitation</label>
-		<description>Refine the crust drilling concept with quasar-grade materials, enabling larger and more capable generators that can be worked from multiple directions at once.</description>
+		<label>kwazaari crust exploitation</label>
+		<description>Refine the crust drilling concept with kwazaari-grade materials, enabling larger and more capable generators that can be worked from multiple directions at once.</description>
 		<baseCost>140000</baseCost>
 		<techLevel>Ultra</techLevel>
 		<prerequisites>
 			<li>BOR_Research_Core_Drill</li>
 			<li>BOR_Research_Production_II</li>
 		</prerequisites>
-		<researchViewX>8.00</researchViewX>
+		<researchViewX>10.00</researchViewX>
 		<researchViewY>0.55</researchViewY>
 	</ResearchProjectDef>
 	<ResearchProjectDef ParentName="BOR_Research_Base_III">
@@ -1369,7 +1384,7 @@
 			<li>BOR_Research_Core_Drill_II</li>
 			<li>BOR_Research_Production_III</li>
 		</prerequisites>
-		<researchViewX>13.00</researchViewX>
+		<researchViewX>16.00</researchViewX>
 		<researchViewY>0.55</researchViewY>
 	</ResearchProjectDef>
 

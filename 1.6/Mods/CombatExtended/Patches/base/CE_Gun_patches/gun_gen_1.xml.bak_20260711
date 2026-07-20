@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+
+    <Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
+        <modSettingDef>BOR_Setting_CE_TODO</modSettingDef>
+        <enabled Class="PatchOperationSequence">
+            <operations>
+
+                <!-- AR, Sniper, Shotgun: standard melee -->
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="BOR_Gun_AssaultRifle_TI" or defName="BOR_Gun_SniperRifle_TI" or defName="BOR_Gun_ChainShotgun_TI"]/tools</xpath>
+                    <value>
+                        <tools>
+                            <li Class="CombatExtended.ToolCE">
+                                <label>stock</label>
+                                <capacities>
+                                    <li>Blunt</li>
+                                </capacities>
+                                <power>20</power>
+                                <cooldownTime>1.14</cooldownTime>
+                                <chanceFactor>1.50</chanceFactor>
+                                <armorPenetrationBlunt>6.89</armorPenetrationBlunt>
+                                <linkedBodyPartsGroup>Stock</linkedBodyPartsGroup>
+                            </li>
+                            <li Class="CombatExtended.ToolCE">
+                                <label>barrel</label>
+                                <capacities>
+                                    <li>Blunt</li>
+                                </capacities>
+                                <power>13</power>
+                                <cooldownTime>1.48</cooldownTime>
+                                <armorPenetrationBlunt>4.08</armorPenetrationBlunt>
+                                <linkedBodyPartsGroup>Barrel</linkedBodyPartsGroup>
+                            </li>
+                            <li Class="CombatExtended.ToolCE">
+                                <label>muzzle</label>
+                                <capacities>
+                                    <li>Poke</li>
+                                </capacities>
+                                <power>20</power>
+                                <cooldownTime>1.14</cooldownTime>
+                                <armorPenetrationBlunt>6.89</armorPenetrationBlunt>
+                                <linkedBodyPartsGroup>Muzzle</linkedBodyPartsGroup>
+                            </li>
+                        </tools>
+                    </value>
+                </li>
+
+                <!-- LMG: hard to land but devastating -->
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="BOR_Gun_LMG_TI"]/tools</xpath>
+                    <value>
+                        <tools>
+                            <li Class="CombatExtended.ToolCE">
+                                <label>stock</label>
+                                <capacities>
+                                    <li>Blunt</li>
+                                </capacities>
+                                <power>42</power>
+                                <cooldownTime>2.10</cooldownTime>
+                                <chanceFactor>0.60</chanceFactor>
+                                <armorPenetrationBlunt>14.47</armorPenetrationBlunt>
+                                <linkedBodyPartsGroup>Stock</linkedBodyPartsGroup>
+                            </li>
+                            <li Class="CombatExtended.ToolCE">
+                                <label>barrel</label>
+                                <capacities>
+                                    <li>Blunt</li>
+                                </capacities>
+                                <power>26</power>
+                                <cooldownTime>2.72</cooldownTime>
+                                <armorPenetrationBlunt>8.93</armorPenetrationBlunt>
+                                <linkedBodyPartsGroup>Barrel</linkedBodyPartsGroup>
+                            </li>
+                            <li Class="CombatExtended.ToolCE">
+                                <label>muzzle</label>
+                                <capacities>
+                                    <li>Poke</li>
+                                </capacities>
+                                <power>42</power>
+                                <cooldownTime>2.10</cooldownTime>
+                                <armorPenetrationBlunt>14.47</armorPenetrationBlunt>
+                                <linkedBodyPartsGroup>Muzzle</linkedBodyPartsGroup>
+                            </li>
+                        </tools>
+                    </value>
+                </li>
+
+                <!-- Pistol: quick but light hits -->
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="BOR_Gun_Autopistol_TI"]/tools</xpath>
+                    <value>
+                        <tools>
+                            <li Class="CombatExtended.ToolCE">
+                                <label>grip</label>
+                                <capacities>
+                                    <li>Blunt</li>
+                                </capacities>
+                                <power>5</power>
+                                <cooldownTime>0.70</cooldownTime>
+                                <chanceFactor>1.50</chanceFactor>
+                                <armorPenetrationBlunt>1.39</armorPenetrationBlunt>
+                                <linkedBodyPartsGroup>Grip</linkedBodyPartsGroup>
+                            </li>
+                            <li Class="CombatExtended.ToolCE">
+                                <label>muzzle</label>
+                                <capacities>
+                                    <li>Poke</li>
+                                </capacities>
+                                <power>5</power>
+                                <cooldownTime>0.70</cooldownTime>
+                                <armorPenetrationBlunt>1.39</armorPenetrationBlunt>
+                                <linkedBodyPartsGroup>Muzzle</linkedBodyPartsGroup>
+                            </li>
+                        </tools>
+                    </value>
+                </li>
+
+
+                <li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+                    <defName>BOR_Gun_AssaultRifle_TI</defName>
+                    <statBases>
+                        <Mass>2.4</Mass>
+                        <RangedWeapon_Cooldown>0.288</RangedWeapon_Cooldown>
+                        <SightsEfficiency>1.32</SightsEfficiency>
+                        <ShotSpread>0.064</ShotSpread>
+                        <SwayFactor>0.96</SwayFactor>
+                        <Bulk>5.6</Bulk>
+                        <WorkToMake>58800</WorkToMake>
+                    </statBases>
+                    <costList>
+                        <BOR_Sunsteel>70</BOR_Sunsteel>
+                        <ComponentSpacer>8</ComponentSpacer>
+                        <BOR_Neutronium>100</BOR_Neutronium>
+                    </costList>
+                    <Properties>
+                        <recoilAmount>1.1168</recoilAmount>
+                        <verbClass>CombatExtended.Verb_ShootCE</verbClass>
+                        <hasStandardCommand>true</hasStandardCommand>
+                        <defaultProjectile>BOR_Bullet_Gen1Rifle_FSJ</defaultProjectile>
+                        <warmupTime>0.8</warmupTime>
+                        <range>66</range>
+                        <burstShotCount>8</burstShotCount>
+                        <ticksBetweenBurstShots>3</ticksBetweenBurstShots>
+                        <soundCast>Shot_ChargeRifle</soundCast>
+                        <soundCastTail>GunTail_Medium</soundCastTail>
+                        <muzzleFlashScale>9</muzzleFlashScale>
+                    </Properties>
+                    <AmmoUser>
+                        <magazineSize>32</magazineSize>
+                        <reloadTime>4</reloadTime>
+                        <ammoSet>BOR_AmmoSet_Gen1_Rifle</ammoSet>
+                    </AmmoUser>
+                    <FireModes>
+                        <aimedBurstShotCount>3</aimedBurstShotCount>
+                        <aiUseBurstMode>TRUE</aiUseBurstMode>
+                        <aiAimMode>AimedShot</aiAimMode>
+                    </FireModes>
+                    <weaponTags>
+                        <li>CE_AI_AR</li>
+                    </weaponTags>
+                    <researchPrerequisite>BOR_Research_Weapons_I</researchPrerequisite>
+                </li>
+
+
+                <li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+                    <defName>BOR_Gun_SniperRifle_TI</defName>
+                    <statBases>
+                        <Mass>6.4</Mass>
+                        <RangedWeapon_Cooldown>0.336</RangedWeapon_Cooldown>
+                        <SightsEfficiency>3.12</SightsEfficiency>
+                        <ShotSpread>0.04</ShotSpread>
+                        <SwayFactor>1.8</SwayFactor>
+                        <Bulk>11.6</Bulk>
+                        <WorkToMake>58800</WorkToMake>
+                        <NightVisionEfficiency_Weapon>0.48</NightVisionEfficiency_Weapon>
+                    </statBases>
+                    <costList>
+                        <BOR_Sunsteel>120</BOR_Sunsteel>
+                        <ComponentSpacer>8</ComponentSpacer>
+                        <BOR_Neutronium>150</BOR_Neutronium>
+                    </costList>
+                    <Properties>
+                        <recoilAmount>1.2</recoilAmount>
+                        <verbClass>CombatExtended.Verb_ShootCE</verbClass>
+                        <hasStandardCommand>true</hasStandardCommand>
+                        <defaultProjectile>BOR_Bullet_Gen1Heavy_FSJ</defaultProjectile>
+                        <warmupTime>1.28</warmupTime>
+                        <range>90</range>
+                        <soundCast>ChargeLance_Fire</soundCast>
+                        <soundCastTail>GunTail_Heavy</soundCastTail>
+                        <muzzleFlashScale>9</muzzleFlashScale>
+                    </Properties>
+                    <AmmoUser>
+                        <magazineSize>18</magazineSize>
+                        <reloadTime>3.2</reloadTime>
+                        <ammoSet>BOR_AmmoSet_Gen1_Heavy</ammoSet>
+                    </AmmoUser>
+                    <FireModes>
+                        <aiAimMode>AimedShot</aiAimMode>
+                    </FireModes>
+                    <weaponTags>
+                        <li>CE_AI_SR</li>
+                        <li>Bipod_DMR</li>
+                    </weaponTags>
+                    <researchPrerequisite>BOR_Research_Weapons_I</researchPrerequisite>
+                    <AllowWithRunAndGun>false</AllowWithRunAndGun>
+                </li>
+
+
+                <li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+                    <defName>BOR_Gun_ChainShotgun_TI</defName>
+                    <statBases>
+                        <Mass>3.48</Mass>
+                        <RangedWeapon_Cooldown>0.288</RangedWeapon_Cooldown>
+                        <SightsEfficiency>1.2</SightsEfficiency>
+                        <ShotSpread>0.112</ShotSpread>
+                        <SwayFactor>1</SwayFactor>
+                        <Bulk>4.8</Bulk>
+                        <WorkToMake>55200</WorkToMake>
+                    </statBases>
+                    <costList>
+                        <BOR_Neutronium>250</BOR_Neutronium>
+                        <BOR_Sunsteel>55</BOR_Sunsteel>
+                        <ComponentSpacer>5</ComponentSpacer>
+                    </costList>
+                    <Properties>
+                        <recoilAmount>2.4</recoilAmount>
+                        <verbClass>CombatExtended.Verb_ShootCE</verbClass>
+                        <hasStandardCommand>true</hasStandardCommand>
+                        <defaultProjectile>BOR_Bullet_Gen1Shotgun_QaP</defaultProjectile>
+                        <burstShotCount>4</burstShotCount>
+                        <warmupTime>0.4</warmupTime>
+                        <range>24</range>
+                        <soundCast>ChargeLance_Fire</soundCast>
+                        <soundCastTail>GunTail_Medium</soundCastTail>
+                        <muzzleFlashScale>9</muzzleFlashScale>
+                        <recoilPattern>Regular</recoilPattern>
+                    </Properties>
+                    <AmmoUser>
+                        <magazineSize>16</magazineSize>
+                        <reloadTime>4.5</reloadTime>
+                        <ammoSet>BOR_AmmoSet_Gen1_Shotgun</ammoSet>
+                    </AmmoUser>
+                    <FireModes>
+                        <aiAimMode>Snapshot</aiAimMode>
+                    </FireModes>
+                    <weaponTags>
+                        <li>CE_AI_BROOM</li>
+                    </weaponTags>
+                    <researchPrerequisite>BOR_Research_Weapons_I</researchPrerequisite>
+                </li>
+
+                <li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+                    <defName>BOR_Gun_LMG_TI</defName>
+                    <statBases>
+                        <Mass>12.83</Mass>
+                        <RangedWeapon_Cooldown>0.39</RangedWeapon_Cooldown>
+                        <SightsEfficiency>3</SightsEfficiency>
+                        <ShotSpread>0.07</ShotSpread>
+                        <SwayFactor>3.54</SwayFactor>
+                        <Bulk>10.63</Bulk>
+                        <WorkToMake>180000</WorkToMake>
+                    </statBases>
+                    <costList>
+                        <BOR_Sunsteel>187</BOR_Sunsteel>
+                        <ComponentSpacer>22</ComponentSpacer>
+                    </costList>
+                    <Properties>
+                        <recoilAmount>1.32</recoilAmount>
+                        <verbClass>CombatExtended.Verb_ShootCE</verbClass>
+                        <hasStandardCommand>true</hasStandardCommand>
+                        <defaultProjectile>BOR_Bullet_Gen1Heavy_FSJ</defaultProjectile>
+                        <warmupTime>1.17</warmupTime>
+                        <burstShotCount>20</burstShotCount>
+                        <ticksBetweenBurstShots>6</ticksBetweenBurstShots>
+                        <range>155</range>
+                        <soundCast>ChargeLance_Fire</soundCast>
+                        <soundCastTail>GunTail_Heavy</soundCastTail>
+                        <muzzleFlashScale>9</muzzleFlashScale>
+                    </Properties>
+                    <AmmoUser>
+                        <magazineSize>60</magazineSize>
+                        <reloadTime>6</reloadTime>
+                        <ammoSet>BOR_AmmoSet_Gen1_Heavy</ammoSet>
+                    </AmmoUser>
+                    <FireModes>
+                        <aiAimMode>SuppressFire</aiAimMode>
+                        <noSingleShot>true</noSingleShot>
+                    </FireModes>
+                    <weaponTags>
+                        <li>CE_AI_Suppressive</li>
+                        <li>Bipod_LMG</li>
+                    </weaponTags>
+                    <researchPrerequisite>BOR_Research_Weapons_I</researchPrerequisite>
+                    <AllowWithRunAndGun>false</AllowWithRunAndGun>
+                </li>
+
+                <li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+                    <defName>BOR_Gun_Autopistol_TI</defName>
+                    <statBases>
+                        <Mass>1.38</Mass>
+                        <RangedWeapon_Cooldown>0.66</RangedWeapon_Cooldown>
+                        <SightsEfficiency>1.75</SightsEfficiency>
+                        <ShotSpread>0.22</ShotSpread>
+                        <SwayFactor>1.54</SwayFactor>
+                        <Bulk>2.13</Bulk>
+                        <WorkToMake>24000</WorkToMake>
+                    </statBases>
+                    <costList>
+                        <BOR_Sunsteel>44</BOR_Sunsteel>
+                        <ComponentSpacer>3</ComponentSpacer>
+                    </costList>
+                    <Properties>
+                        <recoilAmount>2.4</recoilAmount>
+                        <verbClass>CombatExtended.Verb_ShootCE</verbClass>
+                        <hasStandardCommand>true</hasStandardCommand>
+                        <defaultProjectile>BOR_Bullet_Gen1Pistol_FSJ</defaultProjectile>
+                        <warmupTime>0.4</warmupTime>
+                        <range>14.4</range>
+                        <burstShotCount>4</burstShotCount>
+                        <ticksBetweenBurstShots>5</ticksBetweenBurstShots>
+                        <soundCast>Shot_ChargeRifle</soundCast>
+                        <soundCastTail>GunTail_Light</soundCastTail>
+                        <muzzleFlashScale>9</muzzleFlashScale>
+                    </Properties>
+                    <AmmoUser>
+                        <magazineSize>16</magazineSize>
+                        <reloadTime>3.2</reloadTime>
+                        <ammoSet>BOR_AmmoSet_Gen1_Pistol</ammoSet>
+                    </AmmoUser>
+                    <FireModes>
+                        <aiUseBurstMode>FALSE</aiUseBurstMode>
+                        <aiAimMode>Snapshot</aiAimMode>
+                    </FireModes>
+                    <weaponTags>
+                        <li>CE_Sidearm</li>
+                        <li>CE_AI_BROOM</li>
+                        <li>CE_OneHandedWeapon</li>
+                    </weaponTags>
+                    <researchPrerequisite>BOR_Research_Weapons_I</researchPrerequisite>
+                </li>
+
+            </operations>
+        </enabled>
+    </Operation>
+
+</Patch>

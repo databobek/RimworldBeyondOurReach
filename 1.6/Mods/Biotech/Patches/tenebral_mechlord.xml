@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+
+  <Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
+    <modSettingDef>BOR_Setting_Biotech_Apparel</modSettingDef>
+    <enabled Class="PatchOperationSequence">
+      <operations>
+
+        <li Class="PatchOperationAdd">
+          <xpath>Defs</xpath>
+          <value>
+            <ThingDef ParentName="ApparelArmorHelmetMechanitorBase">
+              <defName>BOR_Apparel_TenebralArmorHelmetMechlordHelmet</defName>
+              <label>tenebral machine lord helmet</label>
+              <description>A heavy tenebrite-weave helmet packed with mechanitor-assistance gear. The mechlord helmet dramatically amplifies a mechanitor's bandwidth, but is somewhat less protective than dedicated heavy armor.</description>
+              <graphicData>
+                <texPath>BOR/Things/Pawn/Humanlike/Apparel/TenebralMechlordHelmet/tenebral_mechlord_helmet</texPath>
+                <graphicClass>Graphic_Single</graphicClass>
+              </graphicData>
+              <statBases>
+                <MaxHitPoints>450</MaxHitPoints>
+              </statBases>
+              <equippedStatOffsets>
+                <MechBandwidth>20</MechBandwidth>
+                <MechControlGroups>3</MechControlGroups>
+                <ShootingAccuracyPawn>-3</ShootingAccuracyPawn>
+                <MeleeHitChance>-0.3</MeleeHitChance>
+                <VacuumResistance MayRequire="Ludeon.RimWorld.Odyssey">0.7</VacuumResistance>
+              </equippedStatOffsets>
+              <recipeMaker Inherit="False">
+                <researchPrerequisite>BOR_Research_Mechtech_III</researchPrerequisite>
+                <recipeUsers>
+                  <li>BOR_Bench_III</li>
+                  <li>BOR_Bench_IV</li>
+                </recipeUsers>
+                <workSkill>Crafting</workSkill>
+                <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+                <skillRequirements>
+                  <Crafting>18</Crafting>
+                </skillRequirements>
+                <displayPriority>521</displayPriority>
+              </recipeMaker>
+              <costList Inherit="False">
+                <BOR_Tenebrite>120</BOR_Tenebrite>
+                <BOR_ComponentIII>2</BOR_ComponentIII>
+                <NanostructuringChip>5</NanostructuringChip>
+              </costList>
+              <apparel>
+                <tags>
+                  <li>RoyalTier7</li>
+                  <li>Mechlord</li>
+                  <li>BOR_Military_III</li>
+                </tags>
+                <scoreOffset>4</scoreOffset>
+                <mechanitorApparel>true</mechanitorApparel>
+                <wornGraphicPath>BOR/Things/Pawn/Humanlike/Apparel/MechlordHelmet/tenebral_mechlord_helmet</wornGraphicPath>
+              </apparel>
+            </ThingDef>
+
+            <ThingDef ParentName="ApparelArmorPowerBase">
+              <defName>BOR_Apparel_TenebralMechlordSuit</defName>
+              <label>tenebral machine lord suit</label>
+              <description>A power-assisted armor suit packed with mechanitor-assistance gear. The mechlord suit dramatically amplifies a mechanitor's bandwidth, but is somewhat less protective than dedicated heavy armor.</description>
+              <recipeMaker>
+                <researchPrerequisite>BOR_Research_Mechtech_III</researchPrerequisite>
+                <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+                <displayPriority>530</displayPriority>
+              </recipeMaker>
+              <graphicData>
+                <texPath>BOR/Things/Pawn/Humanlike/Apparel/TenebralMechlord/tenebral_mechlord</texPath>
+                <graphicClass>Graphic_Single</graphicClass>
+              </graphicData>
+              <statBases>
+                <ArmorRating_Sharp>1.2</ArmorRating_Sharp>
+                <ArmorRating_Blunt>1.0</ArmorRating_Blunt>
+                <ArmorRating_Heat>0.75</ArmorRating_Heat>
+                <Insulation_Cold>84</Insulation_Cold>
+                <Insulation_Heat>20</Insulation_Heat>
+                <EquipDelay>7</EquipDelay>
+              </statBases>
+              <equippedStatOffsets>
+                <MechBandwidth>20</MechBandwidth>
+                <ShootingAccuracyPawn>-3</ShootingAccuracyPawn>
+                <MeleeHitChance>-0.3</MeleeHitChance>
+                <VacuumResistance MayRequire="Ludeon.RimWorld.Odyssey">0.3</VacuumResistance>
+              </equippedStatOffsets>
+              <costList>
+                <NanostructuringChip>4</NanostructuringChip>
+                <PowerfocusChip>2</PowerfocusChip>
+                <BOR_Tenebrite>120</BOR_Tenebrite>
+                <BOR_ComponentIII>4</BOR_ComponentIII>
+              </costList>
+              <apparel>
+                <tags>
+                  <li>RoyalTier7</li>
+                  <li>Mechlord</li>
+                  <li>BOR_Military_III</li>
+                </tags>
+                <wornGraphicPath>BOR/Things/Pawn/Humanlike/Apparel/TenebralMechlord/tenebral_mechlord</wornGraphicPath>
+              </apparel>
+              <tradeability>Sellable</tradeability>
+              <tradeTags Inherit="False">
+                <li>HiTechArmor</li>
+                <li>BOR_HiTechArmor_III</li>
+                <li>BOR_Tech_III</li>
+              </tradeTags>
+            </ThingDef>
+
+          </value>
+        </li>
+
+        <li Class="PatchOperationFindMod">
+          <mods>
+            <li>Combat Extended</li>
+          </mods>
+          <match Class="PatchOperationSequence">
+            <operations>
+              <!-- Mech Lord Helmet  -->
+              <li Class="PatchOperationReplace">
+                <xpath>Defs/ThingDef[defName="BOR_Apparel_TenebralArmorHelmetMechlordHelmet"]/statBases/MaxHitPoints</xpath>
+                <value>
+                  <MaxHitPoints>490</MaxHitPoints>
+                  <Mass>1.25</Mass>
+                  <ArmorRating_Sharp>30</ArmorRating_Sharp>
+                  <ArmorRating_Blunt>45</ArmorRating_Blunt>
+                  <Flammability>0.1</Flammability>
+                </value>
+              </li>
+
+              <li Class="PatchOperationReplace">
+                <xpath>Defs/ThingDef[defName="BOR_Apparel_TenebralArmorHelmetMechlordHelmet"]/equippedStatOffsets/ShootingAccuracyPawn</xpath>
+                <value>
+                  <ToxicEnvironmentResistance>0.66</ToxicEnvironmentResistance>
+                  <SmokeSensitivity>-1</SmokeSensitivity>
+                  <AimingAccuracy>-0.125</AimingAccuracy>
+                  <ShootingAccuracyPawn>-0.75</ShootingAccuracyPawn>
+                </value>
+              </li>
+
+              <li Class="PatchOperationReplace">
+                <xpath>Defs/ThingDef[defName="BOR_Apparel_TenebralArmorHelmetMechlordHelmet"]/costList/BOR_Tenebrite</xpath>
+                <value>
+                  <BOR_Tenebrite>165</BOR_Tenebrite>
+                </value>
+              </li>
+
+              <li Class="PatchOperationAddModExtension">
+                <xpath>Defs/ThingDef[defName="BOR_Apparel_TenebralArmorHelmetMechlordHelmet"]</xpath>
+                <value>
+                  <li Class="CombatExtended.ApparelDefExtension">
+                    <isRadioPack>true</isRadioPack>
+                  </li>
+                </value>
+              </li>
+              <li Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="BOR_Apparel_TenebralMechlordSuit"]/statBases</xpath>
+                <value>
+                  <Bulk>60</Bulk>
+                  <WornBulk>10</WornBulk>
+                  <Mass>25</Mass>
+                  <MaxHitPoints>675</MaxHitPoints>
+                </value>
+              </li>
+
+              <li Class="PatchOperationReplace">
+                <xpath>Defs/ThingDef[defName="BOR_Apparel_TenebralMechlordSuit"]/statBases/ArmorRating_Sharp</xpath>
+                <value>
+                  <ArmorRating_Sharp>30</ArmorRating_Sharp>
+                </value>
+              </li>
+
+              <li Class="PatchOperationReplace">
+                <xpath>Defs/ThingDef[defName="BOR_Apparel_TenebralMechlordSuit"]/statBases/ArmorRating_Blunt</xpath>
+                <value>
+                  <ArmorRating_Blunt>50</ArmorRating_Blunt>
+                </value>
+              </li>
+
+              <li Class="PatchOperationReplace">
+                <xpath>Defs/ThingDef[defName="BOR_Apparel_TenebralMechlordSuit"]/costList/BOR_Tenebrite</xpath>
+                <value>
+                  <BOR_Tenebrite>190</BOR_Tenebrite>
+                </value>
+              </li>
+
+              <li Class="PatchOperationReplace">
+                <xpath>Defs/ThingDef[defName="BOR_Apparel_TenebralMechlordSuit"]/equippedStatOffsets/ShootingAccuracyPawn</xpath>
+                <value>
+                  <CarryWeight>50</CarryWeight>
+                  <CarryBulk>8</CarryBulk>
+                  <AimingAccuracy>-0.125</AimingAccuracy>
+                  <ShootingAccuracyPawn>-0.75</ShootingAccuracyPawn>
+                </value>
+              </li>
+
+              <li Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="BOR_Apparel_TenebralMechlordSuit"]</xpath>
+                <value>
+                  <modExtensions Inherit="False">
+                    <li Class="CombatExtended.PartialArmorExt">
+                      <stats>
+                        <li>
+                          <ArmorRating_Sharp>0.80</ArmorRating_Sharp>
+                          <parts>
+                            <li>Neck</li>
+                            <li>Hand</li>
+                          </parts>
+                        </li>
+                        <li>
+                          <ArmorRating_Blunt>0.80</ArmorRating_Blunt>
+                          <parts>
+                            <li>Neck</li>
+                            <li>Hand</li>
+                          </parts>
+                        </li>
+                        <li>
+                          <ArmorRating_Sharp>1.20</ArmorRating_Sharp>
+                          <parts>
+                            <li>Leg</li>
+                          </parts>
+                        </li>
+                        <li>
+                          <ArmorRating_Blunt>1.20</ArmorRating_Blunt>
+                          <parts>
+                            <li>Leg</li>
+                          </parts>
+                        </li>
+                        <li>
+                          <ArmorRating_Sharp>1.20</ArmorRating_Sharp>
+                          <parts>
+                            <li>Arm</li>
+                          </parts>
+                        </li>
+                        <li>
+                          <ArmorRating_Blunt>1.40</ArmorRating_Blunt>
+                          <parts>
+                            <li>Arm</li>
+                          </parts>
+                        </li>
+                      </stats>
+                    </li>
+                  </modExtensions>
+                </value>
+              </li>
+
+            </operations>
+          </match>
+        </li>
+
+      </operations>
+    </enabled>
+  </Operation>
+
+</Patch>

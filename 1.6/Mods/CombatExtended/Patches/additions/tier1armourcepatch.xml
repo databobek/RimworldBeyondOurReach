@@ -5,9 +5,39 @@
 		<modSettingDef>BOR_Setting_CE_TODO</modSettingDef>
 		<enabled Class="PatchOperationSequence">
 			<operations>
-				<!-- dont remove, do a partial armor based on plate armor -->
-				<li Class="PatchOperationRemove">
+				<!-- Bionic Assembly Harness: partial armor coverage for torso/shoulder area only -->
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[defName="BOR_Bionic_Assembly_Harness"]/statBases</xpath>
+					<value>
+						<Bulk>7</Bulk>
+						<WornBulk>4</WornBulk>
+					</value>
+				</li>
+
+				<li Class="PatchOperationAddModExtension">
 					<xpath>Defs/ThingDef[defName="BOR_Bionic_Assembly_Harness"]</xpath>
+					<value>
+						<li Class="CombatExtended.PartialArmorExt">
+							<stats>
+								<li>
+									<ArmorRating_Sharp>5.00</ArmorRating_Sharp>
+									<parts>
+										<li>Shoulder</li>
+										<li>Stomach</li>
+										<li>Spine</li>
+									</parts>
+								</li>
+								<li>
+									<ArmorRating_Blunt>5.00</ArmorRating_Blunt>
+									<parts>
+										<li>Shoulder</li>
+										<li>Stomach</li>
+										<li>Spine</li>
+									</parts>
+								</li>
+							</stats>
+						</li>
+					</value>
 				</li>
 
 
