@@ -2,6 +2,63 @@
 <Defs>
 
   <ThingDef ParentName="BuildingBase">
+    <defName>BOR_Vitals_III</defName>
+    <label>dark soul anchor</label>
+    <description>The tenebral version of a vitals monitor</description>
+    <graphicData>
+      <texPath>BOR/Things/Building/tier3/medicine_bench</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(3.5,3.5 )</drawSize>
+    </graphicData>
+    <researchPrerequisites>
+      <li>BOR_Research_Medicine_III</li>
+    </researchPrerequisites>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <fillPercent>0.6</fillPercent>
+    <statBases>
+      <MaxHitPoints>150</MaxHitPoints>
+      <WorkToBuild>10000</WorkToBuild>
+      <Mass>50</Mass>
+      <Flammability>0.7</Flammability>
+    </statBases>
+    <size>(2,2)</size>
+    <costList>
+      <BOR_QuasarAlloy>90</BOR_QuasarAlloy>
+      <BOR_Tenebrite>30</BOR_Tenebrite>
+      <BOR_ComponentIII>1</BOR_ComponentIII>
+    </costList>
+    <designationCategory>BOR</designationCategory>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <thingCategories>
+      <li>BuildingsMisc</li>
+    </thingCategories>
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <shortCircuitInRain>true</shortCircuitInRain>
+        <basePowerConsumption>50000</basePowerConsumption>
+      </li>
+      <li Class="CompProperties_Flickable" />
+      <li Class="CompProperties_Facility">
+        <statOffsets>
+          <MedicalTendQualityOffset>0.4</MedicalTendQualityOffset>
+          <ImmunityGainSpeedFactor>0.1</ImmunityGainSpeedFactor>
+          <SurgerySuccessChanceFactor>0.3</SurgerySuccessChanceFactor>
+        </statOffsets>
+        <maxSimultaneous>1</maxSimultaneous>
+        <mustBePlacedAdjacent>true</mustBePlacedAdjacent>
+      </li>
+    </comps>
+    <placeWorkers>
+      <li>PlaceWorker_ShowFacilitiesConnections</li>
+    </placeWorkers>
+    <constructionSkillPrerequisite>14</constructionSkillPrerequisite>
+    <uiIconScale>1</uiIconScale>
+    <rotatable>false</rotatable>
+  </ThingDef>
+
+  <ThingDef ParentName="BuildingBase">
     <defName>BOR_Research_Unlocker_III</defName>
     <label>dark mirror</label>
     <description>Increases research speed when placed near hi-tech research bench and unlocks tenebral research projects. Each research bench can only peer into one dark mirror.</description>
@@ -53,7 +110,7 @@
       <li Class="CompProperties_Flickable" />
       <li Class="CompProperties_Facility">
         <statOffsets>
-          <ResearchSpeedFactor>0.7425</ResearchSpeedFactor>
+          <ResearchSpeedFactor>1.7425</ResearchSpeedFactor>
         </statOffsets>
         <maxSimultaneous>1</maxSimultaneous>
       </li>
