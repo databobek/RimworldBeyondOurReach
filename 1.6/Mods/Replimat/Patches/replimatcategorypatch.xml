@@ -2,45 +2,33 @@
 <Patch>
 
   <!-- category -->
-  <Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
-    <modSettingDef>BOR_Setting_MoveReplimatBuildingsToBeyondTab</modSettingDef>
-    <enabled Class="PatchOperationReplace">
-      <xpath>Defs/ThingDef[@Name="ReplimatBase"]/designationCategory</xpath>
-      <value>
-        <designationCategory>BOR</designationCategory>
-      </value>
-    </enabled>
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/ThingDef[@Name="ReplimatBase"]/designationCategory</xpath>
+    <value>
+      <designationCategory>BOR</designationCategory>
+    </value>
   </Operation>
 
   <!-- dropdown -->
 
-  <Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
-    <modSettingDef>BOR_Setting_MoveReplimatBuildingsToBeyondTab</modSettingDef>
-    <enabled Class="PatchOperationAdd">
-      <xpath>Defs</xpath>
-      <value>
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs</xpath>
+    <value>
 
-        <DesignatorDropdownGroupDef>
-          <defName>BOR_Replimat</defName>
-        </DesignatorDropdownGroupDef>
+      <DesignatorDropdownGroupDef>
+        <defName>BOR_Replimat</defName>
+      </DesignatorDropdownGroupDef>
 
-      </value>
-    </enabled>
+    </value>
   </Operation>
-  <Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
-    <modSettingDef>BOR_Setting_MoveReplimatBuildingsToBeyondTab</modSettingDef>
-    <enabled Class="PatchOperationAdd">
-      <xpath>Defs/ThingDef[@Name="ReplimatBase"]</xpath>
-      <value>
-        <designatorDropdown>BOR_Replimat</designatorDropdown>
-      </value>
-    </enabled>
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/ThingDef[@Name="ReplimatBase"]</xpath>
+    <value>
+      <designatorDropdown>BOR_Replimat</designatorDropdown>
+    </value>
   </Operation>
-  <Operation Class="BeyondOurReachModSettings.PatchOperationModSettings">
-    <modSettingDef>BOR_Setting_MoveReplimatBuildingsToBeyondTab</modSettingDef>
-    <enabled Class="PatchOperationRemove">
-      <xpath>Defs/DesignationCategoryDef[defName="Replimat_Replimat"]</xpath>
-    </enabled>
+  <Operation Class="PatchOperationRemove">
+    <xpath>Defs/DesignationCategoryDef[defName="Replimat_Replimat"]</xpath>
   </Operation>
 
 </Patch>

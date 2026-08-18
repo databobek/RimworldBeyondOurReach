@@ -1,5 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
+
+	<HediffDef ParentName="InjuryBase">
+		<defName>TenebralGunshot</defName>
+		<label>tenebralGunshot</label>
+		<labelNoun>a tenebral gunshot wound</labelNoun>
+		<description>A tenebral gunshot wound.</description>
+		<comps>
+			<li Class="HediffCompProperties_TendDuration">
+				<labelTendedWell>bandaged</labelTendedWell>
+				<labelTendedWellInner>sutured</labelTendedWellInner>
+				<labelSolidTendedWell>set</labelSolidTendedWell>
+			</li>
+			<li Class="HediffCompProperties_Infecter">
+				<infectionChance>0.2</infectionChance>
+			</li>
+			<li Class="HediffCompProperties_GetsPermanent">
+				<permanentLabel>old gunshot</permanentLabel>
+				<instantlyPermanentLabel>permanent gunshot injury</instantlyPermanentLabel>
+			</li>
+		</comps>
+		<injuryProps>
+			<painPerSeverity>0.02</painPerSeverity>
+			<averagePainPerSeverityPermanent>0.015</averagePainPerSeverityPermanent>
+			<bleedRate>0.06</bleedRate>
+			<canMerge>false</canMerge>
+			<destroyedLabel>Shot off</destroyedLabel>
+			<destroyedOutLabel>Shot out</destroyedOutLabel>
+		</injuryProps>
+	</HediffDef>
+
+	<DamageDef Name="TenebralBullet">
+		<defName>TenebralBullet</defName>
+		<label>tenebralBullet</label>
+		<workerClass>DamageWorker_AddInjury</workerClass>
+		<externalViolence>true</externalViolence>
+		<deathMessage>{0} has been shot to death.</deathMessage>
+		<hediff>TenebralGunshot</hediff>
+		<harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+		<impactSoundType>Bullet</impactSoundType>
+		<armorCategory>Sharp</armorCategory>
+		<overkillPctToDestroyPart>0~0.7</overkillPctToDestroyPart>
+		<isRanged>true</isRanged>
+		<makesAnimalsFlee>true</makesAnimalsFlee>
+	</DamageDef>
+
 	<ThingDef ParentName="BaseBullet">
 		<defName>BOR_Bullet_Autopistol_TIII</defName>
 		<label>tenebral pistol bullet</label>
@@ -8,13 +53,14 @@
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
 		<projectile>
-			<damageDef>Bullet</damageDef>
-			<damageAmountBase>67</damageAmountBase>
+			<damageDef>TenebralBullet</damageDef>
+			<damageAmountBase>30</damageAmountBase>
 			<stoppingPower>3</stoppingPower>
-			<armorPenetrationBase>0.525</armorPenetrationBase>
+			<armorPenetrationBase>0.6</armorPenetrationBase>
 			<speed>82</speed>
 		</projectile>
 	</ThingDef>
+
 	<ThingDef ParentName="BaseBullet">
 		<defName>BOR_Bullet_Shotgun_TIII</defName>
 		<label>shotgun tenebral blast</label>
@@ -23,13 +69,14 @@
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
 		<projectile>
-			<damageDef>Bullet</damageDef>
-			<damageAmountBase>121</damageAmountBase>
+			<damageDef>TenebralBullet</damageDef>
+			<damageAmountBase>45</damageAmountBase>
 			<stoppingPower>12</stoppingPower>
-			<armorPenetrationBase>1.89</armorPenetrationBase>
+			<armorPenetrationBase>0.9</armorPenetrationBase>
 			<speed>82</speed>
 		</projectile>
 	</ThingDef>
+
 	<ThingDef ParentName="BaseBullet">
 		<defName>BOR_Bullet_AssaultRifle_TIII</defName>
 		<label>assault rifle tenebral bullet</label>
@@ -38,13 +85,14 @@
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
 		<projectile>
-			<damageDef>Bullet</damageDef>
-			<damageAmountBase>72</damageAmountBase>
+			<damageDef>TenebralBullet</damageDef>
+			<damageAmountBase>32</damageAmountBase>
 			<stoppingPower>5</stoppingPower>
 			<speed>105</speed>
-			<armorPenetrationBase>0.9</armorPenetrationBase>
+			<armorPenetrationBase>0.65</armorPenetrationBase>
 		</projectile>
 	</ThingDef>
+
 	<ThingDef ParentName="BaseBullet">
 		<defName>BOR_Bullet_SniperRifle_TIII</defName>
 		<label>sniper rifle tenebral bullet</label>
@@ -53,13 +101,14 @@
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
 		<projectile>
-			<damageDef>Bullet</damageDef>
-			<damageAmountBase>166</damageAmountBase>
+			<damageDef>TenebralBullet</damageDef>
+			<damageAmountBase>45</damageAmountBase>
 			<stoppingPower>6.75</stoppingPower>
-			<speed>150</speed>
-			<armorPenetrationBase>2.25</armorPenetrationBase>
+			<speed>125</speed>
+			<armorPenetrationBase>0.9</armorPenetrationBase>
 		</projectile>
 	</ThingDef>
+
 	<ThingDef ParentName="BaseBullet">
 		<defName>BOR_Bullet_LMG_TIII</defName>
 		<label>lmg tenebral bullet</label>
@@ -68,16 +117,18 @@
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
 		<projectile>
-			<damageDef>Bullet</damageDef>
-			<damageAmountBase>56</damageAmountBase>
+			<damageDef>TenebralBullet</damageDef>
+			<damageAmountBase>28</damageAmountBase>
 			<stoppingPower>4.99</stoppingPower>
-			<speed>228</speed>
-			<armorPenetrationBase>1.8</armorPenetrationBase>
+			<speed>125</speed>
+			<armorPenetrationBase>0.55</armorPenetrationBase>
 		</projectile>
 	</ThingDef>
+
 	<ThingDef Name="TenebralGunBase" Abstract="True" ParentName="BaseHumanMakeableGun">
 		<generateCommonality>0.02</generateCommonality>
 	</ThingDef>
+
 	<ThingDef ParentName="TenebralGunBase">
 		<defName>BOR_Gun_Autopistol_TIII</defName>
 		<label>tenebral pistol</label>
@@ -117,18 +168,16 @@
 		<statBases>
 			<WorkToMake>16875</WorkToMake>
 			<Mass>0.833</Mass>
-			<AccuracyTouch>0.95</AccuracyTouch>
-			<AccuracyShort>0.85</AccuracyShort>
-			<AccuracyMedium>0.55</AccuracyMedium>
-			<AccuracyLong>0.45</AccuracyLong>
+			<AccuracyTouch>0.85</AccuracyTouch>
+			<AccuracyShort>0.75</AccuracyShort>
+			<AccuracyMedium>0.5</AccuracyMedium>
+			<AccuracyLong>0.4</AccuracyLong>
 			<RangedWeapon_Cooldown>0.578</RangedWeapon_Cooldown>
-			<MarketValue>49530</MarketValue>
-
 			<RoyalFavorValue>6</RoyalFavorValue>
 		</statBases>
 		<costList>
 			<BOR_Tenebrite>30</BOR_Tenebrite>
-			<BOR_ComponentIII>1</BOR_ComponentIII>
+			<BOR_ComponentIII>2</BOR_ComponentIII>
 		</costList>
 		<verbs>
 			<li>
@@ -136,7 +185,7 @@
 				<hasStandardCommand>true</hasStandardCommand>
 				<defaultProjectile>BOR_Bullet_Autopistol_TIII</defaultProjectile>
 				<warmupTime>0.175</warmupTime>
-				<range>85.9</range>
+				<range>32.9</range>
 				<soundCast>Shot_Autopistol</soundCast>
 				<soundCastTail>GunTail_Light</soundCastTail>
 				<muzzleFlashScale>9</muzzleFlashScale>
@@ -148,7 +197,7 @@
 				<capacities>
 					<li>Blunt</li>
 				</capacities>
-				<power>28</power>
+				<power>12</power>
 				<cooldownTime>1.1575</cooldownTime>
 			</li>
 			<li>
@@ -157,11 +206,12 @@
 					<li>Blunt</li>
 					<li>Poke</li>
 				</capacities>
-				<power>28</power>
+				<power>12</power>
 				<cooldownTime>1.1575</cooldownTime>
 			</li>
 		</tools>
 	</ThingDef>
+
 	<ThingDef ParentName="TenebralGunBase">
 		<defName>BOR_Gun_ChainShotgun_TIII</defName>
 		<label>tenebral chain shotgun</label>
@@ -199,18 +249,16 @@
 		<statBases>
 			<WorkToMake>104625</WorkToMake>
 			<Mass>2.604</Mass>
-			<AccuracyTouch>0.75</AccuracyTouch>
-			<AccuracyShort>0.85</AccuracyShort>
-			<AccuracyMedium>0.75</AccuracyMedium>
-			<AccuracyLong>0.65</AccuracyLong>
+			<AccuracyTouch>0.92</AccuracyTouch>
+			<AccuracyShort>0.99</AccuracyShort>
+			<AccuracyMedium>0.9</AccuracyMedium>
+			<AccuracyLong>0.85</AccuracyLong>
 			<RangedWeapon_Cooldown>0.78125</RangedWeapon_Cooldown>
-			<MarketValue>52075</MarketValue>
-
 			<RoyalFavorValue>6</RoyalFavorValue>
 		</statBases>
 		<costList>
 			<BOR_Tenebrite>70</BOR_Tenebrite>
-			<BOR_ComponentIII>1</BOR_ComponentIII>
+			<BOR_ComponentIII>5</BOR_ComponentIII>
 		</costList>
 		<verbs>
 			<li>
@@ -218,7 +266,7 @@
 				<hasStandardCommand>true</hasStandardCommand>
 				<defaultProjectile>BOR_Bullet_Shotgun_TIII</defaultProjectile>
 				<warmupTime>1</warmupTime>
-				<range>42.9</range>
+				<range>22.9</range>
 				<burstShotCount>3</burstShotCount>
 				<ticksBetweenBurstShots>6</ticksBetweenBurstShots>
 				<soundCast>Shot_Shotgun</soundCast>
@@ -236,7 +284,7 @@
 				<capacities>
 					<li>Blunt</li>
 				</capacities>
-				<power>28</power>
+				<power>12</power>
 				<cooldownTime>1.383</cooldownTime>
 			</li>
 			<li>
@@ -245,11 +293,12 @@
 					<li>Blunt</li>
 					<li>Poke</li>
 				</capacities>
-				<power>28</power>
+				<power>12</power>
 				<cooldownTime>1.383</cooldownTime>
 			</li>
 		</tools>
 	</ThingDef>
+
 	<ThingDef ParentName="TenebralGunBase">
 		<defName>BOR_Gun_AssaultRifle_TIII</defName>
 		<label>tenebral assault rifle</label>
@@ -284,17 +333,15 @@
 			<WorkToMake>135000</WorkToMake>
 			<Mass>2.025</Mass>
 			<AccuracyTouch>0.8</AccuracyTouch>
-			<AccuracyShort>0.9</AccuracyShort>
+			<AccuracyShort>0.87</AccuracyShort>
 			<AccuracyMedium>0.85</AccuracyMedium>
-			<AccuracyLong>0.75</AccuracyLong>
+			<AccuracyLong>0.65</AccuracyLong>
 			<RangedWeapon_Cooldown>0.983</RangedWeapon_Cooldown>
-			<MarketValue>55620</MarketValue>
-
 			<RoyalFavorValue>6</RoyalFavorValue>
 		</statBases>
 		<costList>
 			<BOR_Tenebrite>60</BOR_Tenebrite>
-			<BOR_ComponentIII>1</BOR_ComponentIII>
+			<BOR_ComponentIII>7</BOR_ComponentIII>
 		</costList>
 		<verbs>
 			<li>
@@ -302,8 +349,8 @@
 				<hasStandardCommand>true</hasStandardCommand>
 				<defaultProjectile>BOR_Bullet_AssaultRifle_TIII</defaultProjectile>
 				<warmupTime>0.578</warmupTime>
-				<range>103.9</range>
-				<burstShotCount>3</burstShotCount>
+				<range>36.9</range>
+				<burstShotCount>4</burstShotCount>
 				<ticksBetweenBurstShots>6</ticksBetweenBurstShots>
 				<soundCast>Shot_AssaultRifle</soundCast>
 				<soundCastTail>GunTail_Medium</soundCastTail>
@@ -320,7 +367,7 @@
 				<capacities>
 					<li>Blunt</li>
 				</capacities>
-				<power>28</power>
+				<power>12</power>
 				<cooldownTime>1.1575</cooldownTime>
 			</li>
 			<li>
@@ -329,11 +376,12 @@
 					<li>Blunt</li>
 					<li>Poke</li>
 				</capacities>
-				<power>28</power>
+				<power>12</power>
 				<cooldownTime>1.1575</cooldownTime>
 			</li>
 		</tools>
 	</ThingDef>
+
 	<ThingDef ParentName="TenebralGunBase">
 		<defName>BOR_Gun_SniperRifle_TIII</defName>
 		<label>tenebral sniper rifle</label>
@@ -372,18 +420,16 @@
 		<statBases>
 			<WorkToMake>151875</WorkToMake>
 			<Mass>2.3145</Mass>
-			<AccuracyTouch>0.7</AccuracyTouch>
-			<AccuracyShort>0.9</AccuracyShort>
+			<AccuracyTouch>0.8</AccuracyTouch>
+			<AccuracyShort>0.95</AccuracyShort>
 			<AccuracyMedium>0.99</AccuracyMedium>
-			<AccuracyLong>0.99</AccuracyLong>
-			<RangedWeapon_Cooldown>2.33</RangedWeapon_Cooldown>
-			<MarketValue>58500</MarketValue>
-
+			<AccuracyLong>1.0</AccuracyLong>
+			<RangedWeapon_Cooldown>1.33</RangedWeapon_Cooldown>
 			<RoyalFavorValue>6</RoyalFavorValue>
 		</statBases>
 		<costList>
 			<BOR_Tenebrite>60</BOR_Tenebrite>
-			<BOR_ComponentIII>1</BOR_ComponentIII>
+			<BOR_ComponentIII>8</BOR_ComponentIII>
 		</costList>
 		<verbs>
 			<li>
@@ -391,7 +437,7 @@
 				<hasStandardCommand>true</hasStandardCommand>
 				<defaultProjectile>BOR_Bullet_SniperRifle_TIII</defaultProjectile>
 				<warmupTime>2.025</warmupTime>
-				<range>149.9</range>
+				<range>50.9</range>
 				<soundCast>Shot_SniperRifle</soundCast>
 				<soundCastTail>GunTail_Heavy</soundCastTail>
 				<muzzleFlashScale>9</muzzleFlashScale>
@@ -403,7 +449,7 @@
 				<capacities>
 					<li>Blunt</li>
 				</capacities>
-				<power>28</power>
+				<power>12</power>
 				<cooldownTime>1.388</cooldownTime>
 			</li>
 			<li>
@@ -412,7 +458,7 @@
 					<li>Blunt</li>
 					<li>Poke</li>
 				</capacities>
-				<power>28</power>
+				<power>12</power>
 				<cooldownTime>1.388</cooldownTime>
 			</li>
 		</tools>
@@ -421,6 +467,7 @@
 			<li>BOR_SniperRifle_III</li>
 		</weaponTags>
 	</ThingDef>
+
 	<ThingDef ParentName="TenebralGunBase">
 		<defName>BOR_Gun_LMG_TIII</defName>
 		<techLevel>Archotech</techLevel>
@@ -455,18 +502,16 @@
 		<statBases>
 			<WorkToMake>63750</WorkToMake>
 			<Mass>4.917</Mass>
-			<AccuracyTouch>0.90</AccuracyTouch>
-			<AccuracyShort>1.02</AccuracyShort>
-			<AccuracyMedium>0.825</AccuracyMedium>
-			<AccuracyLong>0.54</AccuracyLong>
+			<AccuracyTouch>0.65</AccuracyTouch>
+			<AccuracyShort>0.72</AccuracyShort>
+			<AccuracyMedium>0.68</AccuracyMedium>
+			<AccuracyLong>0.6</AccuracyLong>
 			<RangedWeapon_Cooldown>1.042</RangedWeapon_Cooldown>
-			<MarketValue>58450</MarketValue>
-
 			<RoyalFavorValue>6</RoyalFavorValue>
 		</statBases>
 		<costList>
 			<BOR_Tenebrite>75</BOR_Tenebrite>
-			<BOR_ComponentIII>1</BOR_ComponentIII>
+			<BOR_ComponentIII>5</BOR_ComponentIII>
 		</costList>
 		<verbs>
 			<li>
@@ -474,7 +519,7 @@
 				<hasStandardCommand>true</hasStandardCommand>
 				<defaultProjectile>BOR_Bullet_LMG_TIII</defaultProjectile>
 				<warmupTime>1.042</warmupTime>
-				<range>85.35</range>
+				<range>35.9</range>
 				<ticksBetweenBurstShots>4</ticksBetweenBurstShots>
 				<burstShotCount>9</burstShotCount>
 				<soundCast>Shot_Minigun</soundCast>
@@ -491,7 +536,7 @@
 				<capacities>
 					<li>Blunt</li>
 				</capacities>
-				<power>30</power>
+				<power>13</power>
 				<cooldownTime>1.15</cooldownTime>
 			</li>
 			<li>
@@ -500,11 +545,10 @@
 					<li>Blunt</li>
 					<li>Poke</li>
 				</capacities>
-				<power>30</power>
+				<power>13</power>
 				<cooldownTime>1.15</cooldownTime>
 			</li>
 		</tools>
 	</ThingDef>
-
 
 </Defs>

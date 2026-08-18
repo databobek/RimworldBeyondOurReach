@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<RulePackDef>
+		<defName>NamerIdeoTenebral</defName>
+		<rulePack>
+			<rulesStrings>
+				<li>r_ideoName->Tenebralism</li>
+				<li>r_ideoAdjective->Tenebral</li>
+				<li>r_memberName->Tenebral</li>
+			</rulesStrings>
+		</rulePack>
+	</RulePackDef>
+	<RulePackDef>
+		<defName>NamerLeaderTenebral</defName>
+		<rulePack>
+			<rulesStrings>
+				<li>r_leaderTitle(p=6)->Tenebral God</li>
+			</rulesStrings>
+		</rulePack>
+	</RulePackDef>
+	<CultureDef>
+		<defName>BOR_Tenebral_Culture</defName>
+		<label>tenebral culture</label>
+		<description>.</description>
+		<ideoNameMaker>NamerIdeoTenebral</ideoNameMaker>
+		<festivalNameMaker MayRequire="Ludeon.RimWorld.Ideology">NamerFestivalRustican</festivalNameMaker>
+		<leaderTitleMaker>NamerLeaderTenebral</leaderTitleMaker>
+		<allowedPlaceTags>
+			<li MayRequire="Ludeon.RimWorld.Ideology">OriginSpacer</li>
+		</allowedPlaceTags>
+		<iconPath>BOR/Things/Factions/TenebralIcon</iconPath>
+		<thingStyleCategories/>
+		<preferredWeaponClasses>
+			<noble>Ultratech</noble>
+			<despised>Neolithic</despised>
+		</preferredWeaponClasses>
+		<styleItemTags>
+			<li>
+				<tag>Urban</tag>
+				<baseWeight>1</baseWeight>
+				<weightFactor>1</weightFactor>
+			</li>
+			<li>
+				<tag>Soldier</tag>
+				<baseWeight>2</baseWeight>
+				<weightFactor>1</weightFactor>
+			</li>
+			<li>
+				<tag>NoBeard</tag>
+				<baseWeight>10</baseWeight>
+				<weightFactor>1</weightFactor>
+			</li>
+			<li>
+				<tag>NoTattoo</tag>
+				<baseWeight>1</baseWeight>
+				<weightFactor>1</weightFactor>
+			</li>
+		</styleItemTags>
+	</CultureDef>
+</Defs>
