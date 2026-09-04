@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+	<ThingDef Name="EPIA_BodyPartBionicRibBaseBBORQuasar" ParentName="EPIASyntheticBase" Abstract="True">
+		<recipeMaker>
+			<soundWorking>Recipe_Smith</soundWorking>
+			<recipeUsers Inherit="False">
+				<li>BOR_MedicineBench_II</li>
+			</recipeUsers>
+			<researchPrerequisite>BOR_Research_Bionics_II</researchPrerequisite>
+			<skillRequirements>
+				<Crafting>16</Crafting>
+			</skillRequirements>
+		</recipeMaker>
+		<statBases>
+			<WorkToMake>15000</WorkToMake>
+			<MarketValue>30000</MarketValue>
+			<RoyalFavorValue>1</RoyalFavorValue>
+		</statBases>
+		<graphicData>
+			<texPath>Things/Item/Health/HealthItem</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>0.80</drawSize>
+		</graphicData>
+		<thingCategories Inherit="False">
+			<li>BOR_Bionics_II</li>
+		</thingCategories>
+		<tradeTags Inherit="False">
+			<li>BOR_Bionics_II</li>
+			<li>BOR_Tech_II</li>
+		</tradeTags>
+	</ThingDef>
+	<RecipeDef ParentName="SurgeryInstallImplantBase" Name="SurgeryInstallImplantBaseBBORQuasar" Abstract="True">
+		<recipeUsers>
+			<li>Human</li>
+		</recipeUsers>
+		<skillRequirements>
+			<Medicine>16</Medicine>
+		</skillRequirements>
+		<ingredients Inherit="False">
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_MedicineII</li>
+					</thingDefs>
+				</filter>
+				<count>3</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Picoclusters</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter Inherit="False">
+			<thingDefs>
+				<li>BOR_MedicineII</li>
+				<li>BOR_Picoclusters</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+	</RecipeDef>
+	<HediffDef ParentName="addedPartBionicsRib" Abstract="True" Name="BOR_addedPartBionicsQuasarRib">
+		<defaultLabelColor>(106, 123, 206)</defaultLabelColor>
+		<comps>
+			<li MayRequire="v1024.ebframework" Class="EBF.Hediffs.HediffCompProperties_MaxHPAdjust">
+				<scaleAdjustment>2.25</scaleAdjustment>
+			</li>
+		</comps>
+	</HediffDef>
+	<!-- Temp regulator rib (Heater + Cooler) -->
+	<HediffDef ParentName="BOR_addedPartBionicsQuasarRib">
+		<defaultLabelColor>(106, 123, 206)</defaultLabelColor>
+		<defName>TempRegulatorRibQuasar</defName>
+		<label>kwazaari temp-regulator rib</label>
+		<labelNoun>a kwazaari temp-regulator rib</labelNoun>
+		<description>An installed kwazaari temp-regulator rib implant.</description>
+		<descriptionHyperlinks>
+			<ThingDef>TempRegulatorRibQuasar</ThingDef>
+		</descriptionHyperlinks>
+		<spawnThingOnRemoved>TempRegulatorRibQuasar</spawnThingOnRemoved>
+		<hediffClass>Hediff_Implant</hediffClass>
+		<stages>
+			<li>
+				<statOffsets>
+					<ComfyTemperatureMax>17</ComfyTemperatureMax>
+					<ComfyTemperatureMin>-17</ComfyTemperatureMin>
+				</statOffsets>
+			</li>
+		</stages>
+		<tags>
+			<li>TempRegulatorRib</li>
+		</tags>
+	</HediffDef>
+	<ThingDef ParentName="EPIA_BodyPartBionicRibBaseBBORQuasar">
+		<defName>TempRegulatorRibQuasar</defName>
+		<label>kwazaari temp-regulator rib implant</label>
+		<description>An artificial kwazaari rib with integrated thermal regulation systems for both heating and cooling.</description>
+		<descriptionHyperlinks>
+			<RecipeDef>InstallTempRegulatorRibQuasar</RecipeDef>
+		</descriptionHyperlinks>
+		<costList>
+			<BOR_QuasarAlloy>25</BOR_QuasarAlloy>
+			<Plasteel>25</Plasteel>
+			<BOR_ComponentII>3</BOR_ComponentII>
+		</costList>
+		<statBases>
+			<Mass>0.66</Mass>
+			<MarketValue>66000</MarketValue>
+			<RoyalFavorValue>1</RoyalFavorValue>
+		</statBases>
+	</ThingDef>
+	<RecipeDef ParentName="SurgeryInstallImplantBaseBBORQuasar">
+		<defName>InstallTempRegulatorRibQuasar</defName>
+		<label>install a kwazaari temp-regulator rib implant</label>
+		<description>Installs a kwazaari temp-regulator rib implant.</description>
+		<descriptionHyperlinks>
+			<ThingDef>TempRegulatorRibQuasar</ThingDef>
+			<HediffDef>TempRegulatorRibQuasar</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing a kwazaari temp-regulator rib.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>TempRegulatorRibQuasar</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>TempRegulatorRibQuasar</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Ribcage</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>TempRegulatorRibQuasar</addsHediff>
+		<uiIconThing>TempRegulatorRibQuasar</uiIconThing>
+		<incompatibleWithHediffTags>
+			<li>TempRegulatorRib</li>
+			<li>LuciferiumRib</li>
+		</incompatibleWithHediffTags>
+	</RecipeDef>
+	<RecipeDef ParentName="SurgeryRemoveImplantBase">
+		<defName>RemoveTempRegulatorRibQuasar</defName>
+		<label>remove a kwazaari temp-regulator rib implant</label>
+		<description>Remove a kwazaari temp-regulator rib implant.</description>
+		<descriptionHyperlinks>
+			<ThingDef>TempRegulatorRibQuasar</ThingDef>
+			<HediffDef>TempRegulatorRibQuasar</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Removing a kwazaari rib implant.</jobString>
+		<removesHediff>TempRegulatorRibQuasar</removesHediff>
+	</RecipeDef>
+	<!-- Mood regulator rib (Drugged + Painkiller) -->
+	<HediffDef ParentName="BOR_addedPartBionicsQuasarRib">
+		<defaultLabelColor>(106, 123, 206)</defaultLabelColor>
+		<defName>MoodRegulatorRibQuasar</defName>
+		<label>kwazaari mood-regulator rib</label>
+		<labelNoun>a kwazaari mood-regulator rib</labelNoun>
+		<description>An installed kwazaari mood-regulator rib implant.</description>
+		<descriptionHyperlinks>
+			<ThingDef>MoodRegulatorRibQuasar</ThingDef>
+		</descriptionHyperlinks>
+		<spawnThingOnRemoved>MoodRegulatorRibQuasar</spawnThingOnRemoved>
+		<hediffClass>Hediff_Implant</hediffClass>
+		<stages>
+			<li>
+				<painOffset>-0.216</painOffset>
+				<painFactor>0.667</painFactor>
+				<capMods>
+					<li>
+						<capacity>Consciousness</capacity>
+						<offset>-0.225</offset>
+					</li>
+				</capMods>
+			</li>
+		</stages>
+		<tags>
+			<li>MoodRegulatorRib</li>
+		</tags>
+	</HediffDef>
+	<ThingDef ParentName="EPIA_BodyPartBionicRibBaseBBORQuasar">
+		<defName>MoodRegulatorRibQuasar</defName>
+		<label>kwazaari mood-regulator rib implant</label>
+		<description>An artificial kwazaari rib with integrated pain-control and mood-balancing dispensers.</description>
+		<descriptionHyperlinks>
+			<RecipeDef>InstallMoodRegulatorRibQuasar</RecipeDef>
+		</descriptionHyperlinks>
+		<costList>
+			<BOR_QuasarAlloy>25</BOR_QuasarAlloy>
+			<BOR_ComponentII>3</BOR_ComponentII>
+			<Neutroamine>7</Neutroamine>
+			<BOR_Sunlite>24</BOR_Sunlite>
+			<GoJuice>6</GoJuice>
+		</costList>
+		<statBases>
+			<Mass>0.66</Mass>
+			<MarketValue>66000</MarketValue>
+			<RoyalFavorValue>1</RoyalFavorValue>
+		</statBases>
+	</ThingDef>
+	<RecipeDef ParentName="SurgeryInstallImplantBaseBBORQuasar">
+		<defName>InstallMoodRegulatorRibQuasar</defName>
+		<label>install a kwazaari mood-regulator rib implant</label>
+		<description>Installs a kwazaari mood-regulator rib implant.</description>
+		<descriptionHyperlinks>
+			<ThingDef>MoodRegulatorRibQuasar</ThingDef>
+			<HediffDef>MoodRegulatorRibQuasar</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing a kwazaari mood-regulator rib.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>MoodRegulatorRibQuasar</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>MoodRegulatorRibQuasar</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Ribcage</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>MoodRegulatorRibQuasar</addsHediff>
+		<uiIconThing>MoodRegulatorRibQuasar</uiIconThing>
+		<incompatibleWithHediffTags>
+			<li>MoodRegulatorRib</li>
+			<li>LuciferiumRib</li>
+		</incompatibleWithHediffTags>
+	</RecipeDef>
+	<RecipeDef ParentName="SurgeryRemoveImplantBase">
+		<defName>RemoveMoodRegulatorRibQuasar</defName>
+		<label>remove a kwazaari mood-regulator rib implant</label>
+		<description>Remove a kwazaari mood-regulator rib implant.</description>
+		<descriptionHyperlinks>
+			<ThingDef>MoodRegulatorRibQuasar</ThingDef>
+			<HediffDef>MoodRegulatorRibQuasar</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Removing a kwazaari rib implant.</jobString>
+		<removesHediff>MoodRegulatorRibQuasar</removesHediff>
+	</RecipeDef>
+	<!-- Booster rib (Adrenaline + WakeUp) -->
+	<HediffDef ParentName="BOR_addedPartBionicsQuasarRib">
+		<defaultLabelColor>(106, 123, 206)</defaultLabelColor>
+		<defName>BoosterRibQuasar</defName>
+		<label>kwazaari booster rib</label>
+		<labelNoun>a kwazaari booster rib</labelNoun>
+		<description>An installed kwazaari booster rib implant.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BoosterRibQuasar</ThingDef>
+		</descriptionHyperlinks>
+		<spawnThingOnRemoved>BoosterRibQuasar</spawnThingOnRemoved>
+		<hediffClass>Hediff_Implant</hediffClass>
+		<stages>
+			<li>
+				<restFallFactor>0.775</restFallFactor>
+				<statOffsets>
+					<MentalBreakThreshold>0.036</MentalBreakThreshold>
+				</statOffsets>
+				<capMods>
+					<li>
+						<capacity>Consciousness</capacity>
+						<offset>0.18</offset>
+					</li>
+					<li>
+						<capacity>Moving</capacity>
+						<offset>0.225</offset>
+					</li>
+				</capMods>
+			</li>
+		</stages>
+		<tags>
+			<li>BoosterRib</li>
+		</tags>
+	</HediffDef>
+	<ThingDef ParentName="EPIA_BodyPartBionicRibBaseBBORQuasar">
+		<defName>BoosterRibQuasar</defName>
+		<label>kwazaari booster rib implant</label>
+		<description>An artificial kwazaari rib that combines stimulant and adrenaline delivery systems for sustained performance.</description>
+		<descriptionHyperlinks>
+			<RecipeDef>InstallBoosterRibQuasar</RecipeDef>
+		</descriptionHyperlinks>
+		<costList>
+			<BOR_QuasarAlloy>25</BOR_QuasarAlloy>
+			<BOR_ComponentII>3</BOR_ComponentII>
+			<Neutroamine>7</Neutroamine>
+			<BOR_Canter>6</BOR_Canter>
+			<BOR_Sleepquitin>6</BOR_Sleepquitin>
+		</costList>
+		<statBases>
+			<Mass>0.99</Mass>
+			<MarketValue>66000</MarketValue>
+			<RoyalFavorValue>1</RoyalFavorValue>
+		</statBases>
+	</ThingDef>
+	<RecipeDef ParentName="SurgeryInstallImplantBaseBBORQuasar">
+		<defName>InstallBoosterRibQuasar</defName>
+		<label>install a kwazaari booster rib implant</label>
+		<description>Installs a kwazaari booster rib implant.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BoosterRibQuasar</ThingDef>
+			<HediffDef>BoosterRibQuasar</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing a kwazaari booster rib.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BoosterRibQuasar</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>BoosterRibQuasar</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Ribcage</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>BoosterRibQuasar</addsHediff>
+		<uiIconThing>BoosterRibQuasar</uiIconThing>
+		<incompatibleWithHediffTags>
+			<li>BoosterRib</li>
+			<li>LuciferiumRib</li>
+		</incompatibleWithHediffTags>
+	</RecipeDef>
+	<RecipeDef ParentName="SurgeryRemoveImplantBase">
+		<defName>RemoveBoosterRibQuasar</defName>
+		<label>remove a kwazaari booster rib implant</label>
+		<description>Remove a kwazaari booster rib implant.</description>
+		<descriptionHyperlinks>
+			<ThingDef>BoosterRibQuasar</ThingDef>
+			<HediffDef>BoosterRibQuasar</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Removing a kwazaari rib implant.</jobString>
+		<removesHediff>BoosterRibQuasar</removesHediff>
+	</RecipeDef>
+	<!-- Survival rib (Coagulator + Respiration + Medical) -->
+	<HediffDef ParentName="BOR_addedPartBionicsQuasarRib">
+		<defaultLabelColor>(106, 123, 206)</defaultLabelColor>
+		<defName>SurvivalRibQuasar</defName>
+		<label>kwazaari survival rib</label>
+		<labelNoun>a kwazaari survival rib</labelNoun>
+		<description>An installed kwazaari survival rib implant.</description>
+		<descriptionHyperlinks>
+			<ThingDef>SurvivalRibQuasar</ThingDef>
+		</descriptionHyperlinks>
+		<spawnThingOnRemoved>SurvivalRibQuasar</spawnThingOnRemoved>
+		<hediffClass>Hediff_Implant</hediffClass>
+		<stages>
+			<li>
+				<totalBleedFactor>0.685</totalBleedFactor>
+				<statOffsets>
+					<MentalBreakThreshold>-0.135</MentalBreakThreshold>
+				</statOffsets>
+				<capMods>
+					<li>
+						<capacity>Breathing</capacity>
+						<offset>0.225</offset>
+					</li>
+					<li>
+						<capacity>BloodFiltration</capacity>
+						<offset>0.225</offset>
+					</li>
+				</capMods>
+			</li>
+		</stages>
+		<tags>
+			<li>SurvivalRib</li>
+		</tags>
+	</HediffDef>
+	<ThingDef ParentName="EPIA_BodyPartBionicRibBaseBBORQuasar">
+		<defName>SurvivalRibQuasar</defName>
+		<label>kwazaari survival rib implant</label>
+		<description>An artificial kwazaari rib that combines emergency stabilization, respiration support, and medical filtration systems.</description>
+		<descriptionHyperlinks>
+			<RecipeDef>InstallSurvivalRibQuasar</RecipeDef>
+		</descriptionHyperlinks>
+		<costList>
+			<BOR_QuasarAlloy>49</BOR_QuasarAlloy>
+			<BOR_ComponentII>6</BOR_ComponentII>
+			<Neutroamine>7</Neutroamine>
+			<BOR_MedicineII>6</BOR_MedicineII>
+			<BOR_Castra>11</BOR_Castra>
+		</costList>
+		<statBases>
+			<Mass>1.32</Mass>
+			<MarketValue>99000</MarketValue>
+			<RoyalFavorValue>1</RoyalFavorValue>
+		</statBases>
+	</ThingDef>
+	<RecipeDef ParentName="SurgeryInstallImplantBaseBBORQuasar">
+		<defName>InstallSurvivalRibQuasar</defName>
+		<label>install a kwazaari survival rib implant</label>
+		<description>Installs a kwazaari survival rib implant.</description>
+		<descriptionHyperlinks>
+			<ThingDef>SurvivalRibQuasar</ThingDef>
+			<HediffDef>SurvivalRibQuasar</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing a kwazaari survival rib.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>SurvivalRibQuasar</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>SurvivalRibQuasar</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Ribcage</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>SurvivalRibQuasar</addsHediff>
+		<uiIconThing>SurvivalRibQuasar</uiIconThing>
+		<incompatibleWithHediffTags>
+			<li>SurvivalRib</li>
+			<li>LuciferiumRib</li>
+		</incompatibleWithHediffTags>
+	</RecipeDef>
+	<RecipeDef ParentName="SurgeryRemoveImplantBase">
+		<defName>RemoveSurvivalRibQuasar</defName>
+		<label>remove a kwazaari survival rib implant</label>
+		<description>Remove a kwazaari survival rib implant.</description>
+		<descriptionHyperlinks>
+			<ThingDef>SurvivalRibQuasar</ThingDef>
+			<HediffDef>SurvivalRibQuasar</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Removing a kwazaari rib implant.</jobString>
+		<removesHediff>SurvivalRibQuasar</removesHediff>
+	</RecipeDef>
+</Defs>

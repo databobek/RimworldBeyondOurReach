@@ -1,86 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Patch>
 	<Operation Class="PatchOperationSequence">
-			<operations>
-				<li Class="PatchOperationAdd">
-					<xpath>Defs</xpath>
-					<value>
-						<ResearchProjectDef ParentName="BOR_Research_Base_III">
-							<defName>BOR_ArchotechBionics</defName>
-							<label>archotech bionics</label>
-							<description>Using the most ground breaking techniques known to both glitterworlds and independent mad scientists, we can now create bionics mimicking the archotech synthetic bodies.</description>
-							<baseCost>1000000</baseCost>
-							<techLevel>Archotech</techLevel>
-							<prerequisites>
-								<li>BOR_Research_Gate_IV</li>
-							</prerequisites>
-							<hiddenPrerequisites>
-								<li>ArchotechMimicry</li>
-							</hiddenPrerequisites>
-							<researchViewX>18.00</researchViewX>
-							<researchViewY>1.00</researchViewY>
-						</ResearchProjectDef>
-					</value>
-				</li>
+		<operations>
+			<li Class="PatchOperationReplace">
+				<xpath>Defs/ThingDef[defName = "ArchotechEye" or defName="ArchotechArm" or defName="ArchotechLeg"]/recipeMaker/researchPrerequisite</xpath>
+				<value>
+					<researchPrerequisite>BOR_ArchotechBionics</researchPrerequisite>
+				</value>
+			</li>
 
-				<li Class="PatchOperationReplace">
-					<xpath>Defs/ThingDef[defName = "ArchotechEye" or defName="ArchotechArm" or defName="ArchotechLeg"]/recipeMaker/researchPrerequisite</xpath>
-					<value>
-						<researchPrerequisite>BOR_ArchotechBionics</researchPrerequisite>
-					</value>
-				</li>
+			<li Class="PatchOperationReplace">
+				<xpath>Defs/ThingDef[@Name="ArchoPartNormal" or @Name="ArchoPartAdvanced"]/recipeMaker/researchPrerequisite</xpath>
+				<value>
+					<researchPrerequisite>BOR_ArchotechBionics</researchPrerequisite>
+				</value>
+			</li>
 
-				<li Class="PatchOperationReplace">
-					<xpath>Defs/ThingDef[@Name="ArchoPartNormal" or @Name="ArchoPartAdvanced"]/recipeMaker/researchPrerequisite</xpath>
-					<value>
-						<researchPrerequisite>BOR_ArchotechBionics</researchPrerequisite>
-					</value>
-				</li>
+			<li Class="PatchOperationReplace">
+				<xpath>Defs/ResearchProjectDef[defName="ArchotechMimicry"]/prerequisites</xpath>
+				<value>
+					<prerequisites>
+						<li>BOR_Research_Production_III</li>
+					</prerequisites>
+				</value>
+			</li>
 
-				<li Class="PatchOperationReplace">
-					<xpath>Defs/ResearchProjectDef[defName="ArchotechMimicry"]/prerequisites</xpath>
-					<value>
-						<prerequisites>
-							<li>BOR_Research_Production_III</li>
-						</prerequisites>
-					</value>
-				</li>
+			<li Class="PatchOperationReplace">
+				<xpath>Defs/ResearchProjectDef[defName="ArchotechMimicry"]/baseCost</xpath>
+				<value>
+					<baseCost>1000000</baseCost>
+				</value>
+			</li>
 
-				<li Class="PatchOperationReplace">
-					<xpath>Defs/ResearchProjectDef[defName="ArchotechMimicry"]/baseCost</xpath>
-					<value>
-						<baseCost>1000000</baseCost>
-					</value>
-				</li>
+			<li Class="PatchOperationAdd">
+				<xpath>Defs/ResearchProjectDef[defName="ArchotechMimicry"]/requiredResearchFacilities</xpath>
+				<value>
+					<li>BOR_Research_Unlocker_III</li>
+				</value>
+			</li>
 
-				<li Class="PatchOperationAdd">
-					<xpath>Defs/ResearchProjectDef[defName="ArchotechMimicry"]/requiredResearchFacilities</xpath>
-					<value>
-						<li>BOR_Research_Unlocker_III</li>
-					</value>
-				</li>
-
-				<li Class="PatchOperationAdd">
-					<xpath>Defs/ResearchProjectDef[defName="ArchotechMimicry"]</xpath>
-					<value>
-						<tab>BOR_Research_Tab</tab>
-					</value>
-				</li>
+			<li Class="PatchOperationAdd">
+				<xpath>Defs/ResearchProjectDef[defName="ArchotechMimicry"]</xpath>
+				<value>
+					<tab>BOR_Research_Tab</tab>
+				</value>
+			</li>
 
 
-				<li Class="PatchOperationReplace">
-					<xpath>Defs/ResearchProjectDef[defName="ArchotechMimicry"]/researchViewX</xpath>
-					<value>
-						<researchViewX>12.00</researchViewX>
-					</value>
-				</li>
+			<li Class="PatchOperationReplace">
+				<xpath>Defs/ResearchProjectDef[defName="ArchotechMimicry"]/researchViewX</xpath>
+				<value>
+					<researchViewX>12.00</researchViewX>
+				</value>
+			</li>
 
-				<li Class="PatchOperationReplace">
-					<xpath>Defs/ResearchProjectDef[defName="ArchotechMimicry"]/researchViewY</xpath>
-					<value>
-						<researchViewY>1.25</researchViewY>
-					</value>
-				</li>
-			</operations>
+			<li Class="PatchOperationReplace">
+				<xpath>Defs/ResearchProjectDef[defName="ArchotechMimicry"]/researchViewY</xpath>
+				<value>
+					<researchViewY>1.25</researchViewY>
+				</value>
+			</li>
+		</operations>
 	</Operation>
 </Patch>

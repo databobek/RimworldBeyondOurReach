@@ -2,72 +2,72 @@
 <Patch>
 
     <Operation Class="PatchOperationSequence">
-            <operations>
+        <operations>
 
-                <!-- BOR_Sunweave -->
+            <!-- BOR_Sunweave -->
 
-                <li Class="PatchOperationAdd">
-                    <xpath>Defs/ThingDef[defName="BOR_Sunweave"]/statBases</xpath>
+            <li Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="BOR_Sunweave"]/statBases</xpath>
+                <value>
+                    <Bulk>0.06</Bulk>
+                    <WornBulk>0.55</WornBulk>
+                </value>
+            </li>
+
+            <li Class="PatchOperationReplace">
+                <xpath>Defs/ThingDef[defName="BOR_Sunweave"]/statBases/StuffPower_Armor_Sharp</xpath>
+                <value>
+                    <StuffPower_Armor_Sharp>2</StuffPower_Armor_Sharp>
+                </value>
+            </li>
+
+            <li Class="PatchOperationReplace">
+                <xpath>Defs/ThingDef[defName="BOR_Sunweave"]/statBases/StuffPower_Armor_Blunt</xpath>
+                <value>
+                    <StuffPower_Armor_Blunt>2.50</StuffPower_Armor_Blunt>
+                </value>
+            </li>
+
+            <li Class="PatchOperationReplace">
+                <xpath>Defs/ThingDef[defName="BOR_Sunweave"]/statBases/StuffPower_Armor_Heat</xpath>
+                <value>
+                    <StuffPower_Armor_Heat>0.17</StuffPower_Armor_Heat>
+                </value>
+            </li>
+
+            <li Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="BOR_Sunweave"]/stuffProps/statFactors</xpath>
+                <value>
+                    <Mass>0.99</Mass>
+                </value>
+            </li>
+
+            <li Class="PatchOperationReplace">
+                <xpath>Defs/ThingDef[defName="BOR_Sunweave"]/stuffProps/statFactors/Flammability</xpath>
+                <value>
+                    <Flammability>0.05</Flammability>
+                </value>
+            </li>
+
+            <li Class="PatchOperationConditional">
+                <xpath>Defs/ThingDef[defName="BOR_Sunweave"]/stuffProps/categories</xpath>
+                <nomatch Class="PatchOperationAdd">
+                    <xpath>Defs/ThingDef[defName="BOR_Sunweave"]/stuffProps</xpath>
                     <value>
-                        <Bulk>0.06</Bulk>
-                        <WornBulk>0.55</WornBulk>
-                    </value>
-                </li>
-
-                <li Class="PatchOperationReplace">
-                    <xpath>Defs/ThingDef[defName="BOR_Sunweave"]/statBases/StuffPower_Armor_Sharp</xpath>
-                    <value>
-                        <StuffPower_Armor_Sharp>2</StuffPower_Armor_Sharp>
-                    </value>
-                </li>
-
-                <li Class="PatchOperationReplace">
-                    <xpath>Defs/ThingDef[defName="BOR_Sunweave"]/statBases/StuffPower_Armor_Blunt</xpath>
-                    <value>
-                        <StuffPower_Armor_Blunt>2.50</StuffPower_Armor_Blunt>
-                    </value>
-                </li>
-
-                <li Class="PatchOperationReplace">
-                    <xpath>Defs/ThingDef[defName="BOR_Sunweave"]/statBases/StuffPower_Armor_Heat</xpath>
-                    <value>
-                        <StuffPower_Armor_Heat>0.17</StuffPower_Armor_Heat>
-                    </value>
-                </li>
-
-                <li Class="PatchOperationAdd">
-                    <xpath>Defs/ThingDef[defName="BOR_Sunweave"]/stuffProps/statFactors</xpath>
-                    <value>
-                        <Mass>0.99</Mass>
-                    </value>
-                </li>
-
-                <li Class="PatchOperationReplace">
-                    <xpath>Defs/ThingDef[defName="BOR_Sunweave"]/stuffProps/statFactors/Flammability</xpath>
-                    <value>
-                        <Flammability>0.05</Flammability>
-                    </value>
-                </li>
-
-                <li Class="PatchOperationConditional">
-                    <xpath>Defs/ThingDef[defName="BOR_Sunweave"]/stuffProps/categories</xpath>
-                    <nomatch Class="PatchOperationAdd">
-                        <xpath>Defs/ThingDef[defName="BOR_Sunweave"]/stuffProps</xpath>
-                        <value>
-                            <categories>
-                                <li>SoftArmor</li>
-                            </categories>
-                        </value>
-                    </nomatch>
-                    <match Class="PatchOperationAdd">
-                        <xpath>Defs/ThingDef[defName="BOR_Sunweave"]/stuffProps/categories</xpath>
-                        <value>
+                        <categories>
                             <li>SoftArmor</li>
-                        </value>
-                    </match>
-                </li>
+                        </categories>
+                    </value>
+                </nomatch>
+                <match Class="PatchOperationAdd">
+                    <xpath>Defs/ThingDef[defName="BOR_Sunweave"]/stuffProps/categories</xpath>
+                    <value>
+                        <li>SoftArmor</li>
+                    </value>
+                </match>
+            </li>
 
-            </operations>
+        </operations>
     </Operation>
 
 
