@@ -1,4 +1,4 @@
-<Defs>
+﻿<Defs>
 
     <ThingDef ParentName="BuildingBase">
         <defName>BOR_ResourceDrill</defName>
@@ -80,17 +80,27 @@
                 <!-- how much work is done per tick interval multiplied by number of pawns -->
                 <workPerInterval>15</workPerInterval>
                 <operateJobDef>CVN_OperateResourceDrill</operateJobDef>
-                <!-- default baseWorkAmount -->
-                <!-- bigger -> slower -->
-                <baseWorkAmount>10</baseWorkAmount>
-                <!-- fixed work amount means pawn skills dont matter -->
-                <isFixedWorkAmount>false</isFixedWorkAmount>
+                <!-- underground grid size -->
+                <gridWidth>2</gridWidth>
+                <gridHeight>2</gridHeight>
+                <!-- work needed for each action -->
+                <workDrill>600</workDrill>
+                <workMoveSideways>300</workMoveSideways>
+                <workMoveUp>300</workMoveUp>
+                <workMoveDown>600</workMoveDown>
+                <!-- going deeper: more yield, more power, costs steel (remove expandDownCostDef to make it free) -->
+                <maxDepth>5</maxDepth>
+                <depthPowerPerLevel>2000</depthPowerPerLevel>
+                <expandDownCostDef>Steel</expandDownCostDef>
+                <expandDownCostCount>50</expandDownCostCount>
+                <expandDownCostCountPerDepth>25</expandDownCostCountPerDepth>
+                <stoneChunkDef>ChunkGranite</stoneChunkDef>
                 <!-- uses a specific formula to dictate work amounts based on drillable availabilities -->
                 <allowAnyDeepdrillResource>true</allowAnyDeepdrillResource>
                 <!-- if allowAnyDeepdrillResource is set to TRUE, if isInvertWhitelist is also TRUE, the drillableResources will act as a blacklist instead -->
                 <!-- otherwise, drillableResources will be added on top of all deep resource -->
                 <isInvertWhitelist>true</isInvertWhitelist>
-                <resourceYield>20</resourceYield>
+                <resourceYield>1</resourceYield>
                 <!-- drillable or undrillable depending on above -->
                 <drillableResources>
                     <li>
@@ -191,10 +201,23 @@
                 <tickInterval>60</tickInterval>
                 <workPerInterval>30</workPerInterval>
                 <operateJobDef>CVN_OperateResourceDrill</operateJobDef>
-                <baseWorkAmount>10</baseWorkAmount>
-                <isFixedWorkAmount>false</isFixedWorkAmount>
+                <!-- underground grid size -->
+                <gridWidth>3</gridWidth>
+                <gridHeight>3</gridHeight>
+                <!-- work needed for each action -->
+                <workDrill>600</workDrill>
+                <workMoveSideways>300</workMoveSideways>
+                <workMoveUp>300</workMoveUp>
+                <workMoveDown>600</workMoveDown>
+                <!-- going deeper: more yield, more power, costs steel (remove expandDownCostDef to make it free) -->
+                <maxDepth>8</maxDepth>
+                <depthPowerPerLevel>4000</depthPowerPerLevel>
+                <expandDownCostDef>Steel</expandDownCostDef>
+                <expandDownCostCount>50</expandDownCostCount>
+                <expandDownCostCountPerDepth>25</expandDownCostCountPerDepth>
+                <stoneChunkDef>ChunkGranite</stoneChunkDef>
                 <allowAnyDeepdrillResource>true</allowAnyDeepdrillResource>
-                <resourceYield>40</resourceYield>
+                <resourceYield>1.5</resourceYield>
                 <isInvertWhitelist>true</isInvertWhitelist>
                 <drillableResources>
                     <li>
@@ -279,11 +302,24 @@
                 <tickInterval>60</tickInterval>
                 <workPerInterval>60</workPerInterval>
                 <operateJobDef>CVN_OperateResourceDrill</operateJobDef>
-                <baseWorkAmount>10</baseWorkAmount>
-                <isFixedWorkAmount>false</isFixedWorkAmount>
+                <!-- underground grid size -->
+                <gridWidth>4</gridWidth>
+                <gridHeight>4</gridHeight>
+                <!-- work needed for each action -->
+                <workDrill>600</workDrill>
+                <workMoveSideways>300</workMoveSideways>
+                <workMoveUp>300</workMoveUp>
+                <workMoveDown>600</workMoveDown>
+                <!-- going deeper: more yield, more power, costs steel (remove expandDownCostDef to make it free) -->
+                <minDepth>20</minDepth><startDepth>20</startDepth><maxDepth>50</maxDepth>
+                <depthPowerPerLevel>8000</depthPowerPerLevel>
+                <expandDownCostDef>Steel</expandDownCostDef>
+                <expandDownCostCount>50</expandDownCostCount>
+                <expandDownCostCountPerDepth>25</expandDownCostCountPerDepth>
+                <stoneChunkDef>ChunkGranite</stoneChunkDef>
                 <allowAnyDeepdrillResource>true</allowAnyDeepdrillResource>
                 <isInvertWhitelist>true</isInvertWhitelist>
-                <resourceYield>80</resourceYield>
+                <resourceYield>2</resourceYield>
                 <drillableResources>
                     <li>
                         <thingDef>Plasteel</thingDef>
@@ -360,3 +396,4 @@
     </RePower.RePowerDef>
 
 </Defs>
+
