@@ -4,7 +4,7 @@
 		<defName>BOR_Forge_IV</defName>
 		<label>umbral forge</label>
 		<description>A mind-bending device capable of shaping Neutronium into all things the mortal mind could possibly fathom, and then some.</description>
-		<thingClass>Building_WorkTable</thingClass>
+		<thingClass>Building</thingClass>
 		<graphicData>
 			<texPath>BOR/Things/Building/tier4/forge/forge</texPath>
 			<graphicClass>Graphic_Multi</graphicClass>
@@ -37,7 +37,7 @@
 		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
 		<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
 		<inspectorTabs>
-			<li>ITab_Bills</li>
+			<li>BeyondOurReach.ITab_Forge</li>
 		</inspectorTabs>
 		<comps>
 			<li Class="CompProperties_Power">
@@ -50,10 +50,19 @@
 				<compClass>CompHeatPusherPowered</compClass>
 				<heatPerSecond>14</heatPerSecond>
 			</li>
-			<li Class="CompProperties_Breakdownable" />
+			<li Class="BeyondOurReach.CompProperties_Forge">
+        <gridWidth>5</gridWidth>
+        <gridHeight>4</gridHeight>
+      </li>
+      <li Class="CompProperties_AssignableToPawn">
+        <compClass>CompAssignableToPawn</compClass>
+        <maxAssignedPawnsCount>1</maxAssignedPawnsCount>
+        <drawAssignmentOverlay>true</drawAssignmentOverlay>
+        <drawUnownedAssignmentOverlay>false</drawUnownedAssignmentOverlay>
+      </li>
+      <li Class="CompProperties_Breakdownable" />
 		</comps>
 		<building>
-			<spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
 			<heatPerTickWhileWorking>0.5</heatPerTickWhileWorking>
 		</building>
 		<designationHotKey>Misc10</designationHotKey>

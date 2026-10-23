@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Defs>
   <ThingDef ParentName="BenchBase">
     <defName>BOR_Bench_I</defName>
@@ -95,7 +95,7 @@
     <defName>BOR_Forge_I</defName>
     <label>sunforge</label>
     <description>A humble device utilizing an artificial microsun in order to shape Neutronium into usable items via Beta-Decay.</description>
-    <thingClass>PipeSystem.Building_ResourceWorkTable</thingClass>
+    <thingClass>Building</thingClass>
     <graphicData>
       <texPath>BOR/Things/Building/tier1/smelter</texPath>
       <graphicClass>Graphic_Single</graphicClass>
@@ -129,7 +129,7 @@
     <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
     <constructionSkillPrerequisite>6</constructionSkillPrerequisite>
     <inspectorTabs>
-      <li>ITab_Bills</li>
+      <li>BeyondOurReach.ITab_Forge</li>
     </inspectorTabs>
     <comps>
       <li Class="CompProperties_AffectedByFacilities">
@@ -154,14 +154,24 @@
         <glowColor>(143, 187, 189,0)</glowColor>
       </li>
       <li Class="CompProperties_Breakdownable" />
-      <li Class="PipeSystem.CompProperties_ResourceTrader">
+      <li Class="PipeSystem.CompProperties_Resource">
         <pipeNet>BOR_NeutroniumNet</pipeNet>
-        <consumptionPerTick>2000</consumptionPerTick>
-        <idleConsumptionPerTick>0</idleConsumptionPerTick>
+      </li>
+      <li Class="BeyondOurReach.CompProperties_Forge">
+        <gridWidth>2</gridWidth>
+        <gridHeight>4</gridHeight>
+        <pipeNet>BOR_NeutroniumNet</pipeNet>
+        <pipeAmount>200</pipeAmount>
+        <workTicksPerDraw>10</workTicksPerDraw>
+      </li>
+      <li Class="CompProperties_AssignableToPawn">
+        <compClass>CompAssignableToPawn</compClass>
+        <maxAssignedPawnsCount>1</maxAssignedPawnsCount>
+        <drawAssignmentOverlay>true</drawAssignmentOverlay>
+        <drawUnownedAssignmentOverlay>false</drawUnownedAssignmentOverlay>
       </li>
     </comps>
     <building>
-      <spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
       <heatPerTickWhileWorking>0.64</heatPerTickWhileWorking>
     </building>
     <designationHotKey>Misc10</designationHotKey>

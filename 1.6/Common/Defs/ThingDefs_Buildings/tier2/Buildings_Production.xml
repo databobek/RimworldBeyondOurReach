@@ -86,7 +86,7 @@
 		<defName>BOR_Forge_II</defName>
 		<label>theta forge</label>
 		<description>Used to compose Neutronium into usable items.</description>
-		<thingClass>PipeSystem.Building_ResourceWorkTable</thingClass>
+		<thingClass>Building</thingClass>
 		<graphicData>
 			<texPath>BOR/Things/Building/tier2/smelter</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -119,7 +119,7 @@
 		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
 		<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
 		<inspectorTabs>
-			<li>ITab_Bills</li>
+			<li>BeyondOurReach.ITab_Forge</li>
 		</inspectorTabs>
 		<comps>
 			<li Class="CompProperties_AffectedByFacilities">
@@ -138,16 +138,26 @@
 				<basePowerConsumption>10417</basePowerConsumption>
 				<shortCircuitInRain>true</shortCircuitInRain>
 			</li>
-			<li Class="PipeSystem.CompProperties_ResourceTrader">
+			<li Class="PipeSystem.CompProperties_Resource">
 				<pipeNet>BOR_NeutroniumNet</pipeNet>
-				<consumptionPerTick>4000</consumptionPerTick>
-				<idleConsumptionPerTick>0</idleConsumptionPerTick>
+			</li>
+			<li Class="BeyondOurReach.CompProperties_Forge">
+				<gridWidth>3</gridWidth>
+				<gridHeight>4</gridHeight>
+				<pipeNet>BOR_NeutroniumNet</pipeNet>
+				<pipeAmount>400</pipeAmount>
+				<workTicksPerDraw>10</workTicksPerDraw>
+			</li>
+			<li Class="CompProperties_AssignableToPawn">
+				<compClass>CompAssignableToPawn</compClass>
+				<maxAssignedPawnsCount>1</maxAssignedPawnsCount>
+				<drawAssignmentOverlay>true</drawAssignmentOverlay>
+				<drawUnownedAssignmentOverlay>false</drawUnownedAssignmentOverlay>
 			</li>
 			<li Class="CompProperties_Flickable" />
 			<li Class="CompProperties_Breakdownable" />
 		</comps>
 		<building>
-			<spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
 			<heatPerTickWhileWorking>0.64</heatPerTickWhileWorking>
 		</building>
 		<designationHotKey>Misc10</designationHotKey>

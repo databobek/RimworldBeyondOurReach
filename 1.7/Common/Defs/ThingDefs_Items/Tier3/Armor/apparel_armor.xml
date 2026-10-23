@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- ==================================== Spacer =====================================-->
+
+  <ThingDef ParentName="ArmorMachineableBase">
+    <defName>BOR_Tenebral_Apparel_PowerArmor</defName>
+    <label>tenebral power armor</label>
+    <description>A full suit of Tenebrite-reinforced powered armor, representing the pinnacle of personal protection technology. The armor can withstand direct impacts from plasma weapons and railgun rounds with minimal degradation.</description>
+    <techLevel>Archotech</techLevel>
+    <recipeMaker>
+      <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
+      <researchPrerequisites>
+        <li>BOR_Research_Armor_III</li>
+      </researchPrerequisites>
+      <skillRequirements>
+        <Crafting>20</Crafting>
+      </skillRequirements>
+      <recipeUsers Inherit="False">
+        <li>BOR_Bench_III</li>
+      </recipeUsers>
+      <displayPriority>105</displayPriority>
+    </recipeMaker>
+    <graphicData>
+      <texPath>BOR/Things/Pawn/Humanlike/Apparel/Tier3Armor/Tier3Armor</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <generateCommonality>0.075</generateCommonality>
+    <tradeTags>
+      <li>BOR_HiTechArmor_III</li>
+      <li>BOR_Tech_III</li>
+    </tradeTags>
+    <statBases>
+      <WorkToMake>202500</WorkToMake>
+      <MaxHitPoints>1132</MaxHitPoints>
+      <Mass>10</Mass>
+      <Flammability>0.15</Flammability>
+      <ArmorRating_Sharp>3.375</ArmorRating_Sharp>
+      <ArmorRating_Blunt>1.5</ArmorRating_Blunt>
+      <ArmorRating_Heat>1.8</ArmorRating_Heat>
+      <Insulation_Cold>115.5</Insulation_Cold>
+      <Insulation_Heat>33.75</Insulation_Heat>
+      <EquipDelay>8</EquipDelay>
+      <RoyalFavorValue>6</RoyalFavorValue>
+      <MarketValue>85000</MarketValue>
+    </statBases>
+    <equippedStatOffsets>
+      <ToxicEnvironmentResistance>1.0</ToxicEnvironmentResistance>
+      <MoveSpeed>-0.1</MoveSpeed>
+      <SlaveSuppressionOffset MayRequire="Ludeon.RimWorld.Ideology">-0.3</SlaveSuppressionOffset>
+      <VacuumResistance MayRequire="Ludeon.RimWorld.Odyssey">0.65</VacuumResistance>
+    </equippedStatOffsets>
+    <thingCategories>
+      <li>BOR_Armor_III</li>
+    </thingCategories>
+    <costList>
+      <BOR_ComponentIII>4</BOR_ComponentIII>
+      <BOR_Tenebrite>100</BOR_Tenebrite>
+      <Uranium>20</Uranium>
+    </costList>
+    <apparel>
+      <tags>
+        <li>BOR_HiTechArmor_III</li>
+      </tags>
+      <bodyPartGroups>
+        <li>Torso</li>
+        <li>Neck</li>
+        <li>Shoulders</li>
+        <li>Arms</li>
+        <li>Legs</li>
+        <li>Hands</li>
+        <li>Feet</li>
+      </bodyPartGroups>
+      <wornGraphicPath>BOR/Things/Pawn/Humanlike/Apparel/Tier3Armor/Tier3Armor</wornGraphicPath>
+      <layers>
+        <li>Middle</li>
+        <li>Shell</li>
+      </layers>
+      <defaultOutfitTags>
+        <li>Soldier</li>
+      </defaultOutfitTags>
+      <useDeflectMetalEffect>true</useDeflectMetalEffect>
+    </apparel>
+    <comps>
+      <li Class="CompProperties_Biocodable" />
+    </comps>
+    <thingSetMakerTags>
+      <li>RewardStandardHighFreq</li>
+    </thingSetMakerTags>
+  </ThingDef>
+</Defs>

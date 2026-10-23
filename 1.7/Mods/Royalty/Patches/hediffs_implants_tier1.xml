@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+	<Operation Class="PatchOperationSequence">
+		<operations>
+			<!-- patch sequence to patch in defs while proceeding to check for CE -->
+			<!-- add Royalty-dependent pawn tech hediffs after implant defs are injected -->
+			<li Class="PatchOperationAdd">
+				<xpath>Defs/PawnKindDef[@Name="BOR_BasePawn"]/techHediffsRequired</xpath>
+				<value>
+					<li>ImmunoenhancerSolar</li>
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>Defs/PawnKindDef[@Name="BOR_ElitePawn"]/techHediffsRequired</xpath>
+				<value>
+					<li>ImmunoenhancerSolar</li>
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>Defs/PawnKindDef[@Name="BOR_ElitePawn"]/techHediffsRequired</xpath>
+				<value>
+					<li>ToughskinGlandSolar</li>
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>Defs/PawnKindDef[defName="BOR_Town_Trader"]</xpath>
+				<value>
+					<techHediffsRequired>
+						<li>PsychicReaderSolar</li>
+					</techHediffsRequired>
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>Defs/PawnKindDef[defName="BOR_Farmer"]</xpath>
+				<value>
+					<techHediffsRequired>
+						<li>FieldHandSolar</li>
+					</techHediffsRequired>
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>Defs/PawnKindDef[defName="BOR_Miner"]</xpath>
+				<value>
+					<techHediffsRequired>
+						<li>DrillArmSolar</li>
+					</techHediffsRequired>
+				</value>
+			</li>
+			<!-- check to see if CombatExtended is loaded as well, then modify the patched in defs to CE standards -->
+			<li Class="PatchOperationFindMod">
+				<mods>
+					<li>Combat Extended</li>
+				</mods>
+				<match Class="PatchOperationSequence">
+					<operations>
+						<li Class="PatchOperationReplace">
+							<xpath>Defs/HediffDef[defName="DrillArmSolar"]/comps/li[@Class="HediffCompProperties_VerbGiver"]/tools</xpath>
+							<value>
+								<tools>
+									<li Class="CombatExtended.ToolCE">
+										<label>drill</label>
+										<capacities>
+											<li>Stab</li>
+										</capacities>
+										<power>13</power>
+										<cooldownTime>1.65</cooldownTime>
+										<armorPenetrationSharp>0.07</armorPenetrationSharp>
+										<armorPenetrationBlunt>0.53</armorPenetrationBlunt>
+										<alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+										<soundMeleeHit>MeleeHit_DrillArm</soundMeleeHit>
+										<soundMeleeMiss>MeleeMiss_DrillArm</soundMeleeMiss>
+									</li>
+								</tools>
+							</value>
+						</li>
+						<li Class="PatchOperationReplace">
+							<xpath>Defs/HediffDef[defName="FieldHandSolar"]/comps/li[@Class="HediffCompProperties_VerbGiver"]/tools</xpath>
+							<value>
+								<tools>
+									<li Class="CombatExtended.ToolCE">
+										<label>knuckle</label>
+										<capacities>
+											<li>Blunt</li>
+										</capacities>
+										<power>5</power>
+										<cooldownTime>1.65</cooldownTime>
+										<armorPenetrationSharp>0.01</armorPenetrationSharp>
+										<armorPenetrationBlunt>1.25</armorPenetrationBlunt>
+										<alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+										<soundMeleeHit>MeleeHit_FieldHand</soundMeleeHit>
+										<soundMeleeMiss>MeleeMiss_FieldHand</soundMeleeMiss>
+									</li>
+								</tools>
+							</value>
+						</li>
+						<li Class="PatchOperationReplace">
+							<xpath>Defs/HediffDef[defName="HandTalonSolar"]/comps/li[@Class="HediffCompProperties_VerbGiver"]/tools</xpath>
+							<value>
+								<tools>
+									<li Class="CombatExtended.ToolCE">
+										<label>talon</label>
+										<capacities>
+											<li>Scratch</li>
+										</capacities>
+										<power>12</power>
+										<cooldownTime>1.10</cooldownTime>
+										<armorPenetrationBlunt>0.33</armorPenetrationBlunt>
+										<armorPenetrationSharp>0.33</armorPenetrationSharp>
+										<alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+										<soundMeleeHit>MeleeHit_BionicSlash</soundMeleeHit>
+										<soundMeleeMiss>MeleeMiss_BionicSlash</soundMeleeMiss>
+									</li>
+								</tools>
+							</value>
+						</li>
+						<li Class="PatchOperationReplace">
+							<xpath>Defs/HediffDef[defName="ElbowBladeSolar"]/comps/li[@Class="HediffCompProperties_VerbGiver"]/tools</xpath>
+							<value>
+								<tools>
+									<li Class="CombatExtended.ToolCE">
+										<label>blade</label>
+										<capacities>
+											<li>Cut</li>
+										</capacities>
+										<power>13</power>
+										<cooldownTime>1.10</cooldownTime>
+										<armorPenetrationBlunt>0.33</armorPenetrationBlunt>
+										<armorPenetrationSharp>0.30</armorPenetrationSharp>
+										<linkedBodyPartsGroup>Blade</linkedBodyPartsGroup>
+										<alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+										<soundMeleeHit>MeleeHit_BionicSlash</soundMeleeHit>
+										<soundMeleeMiss>MeleeMiss_BionicSlash</soundMeleeMiss>
+									</li>
+								</tools>
+							</value>
+						</li>
+						<li Class="PatchOperationReplace">
+							<xpath>Defs/HediffDef[defName="KneeSpikeSolar"]/comps/li[@Class="HediffCompProperties_VerbGiver"]/tools</xpath>
+							<value>
+								<tools>
+									<li Class="CombatExtended.ToolCE">
+										<label>spike</label>
+										<capacities>
+											<li>Stab</li>
+										</capacities>
+										<power>18</power>
+										<cooldownTime>1.10</cooldownTime>
+										<armorPenetrationBlunt>0.92</armorPenetrationBlunt>
+										<armorPenetrationSharp>1.00</armorPenetrationSharp>
+										<linkedBodyPartsGroup>Point</linkedBodyPartsGroup>
+										<alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+										<soundMeleeHit>MeleeHit_BionicSlash</soundMeleeHit>
+										<soundMeleeMiss>MeleeMiss_BionicSlash</soundMeleeMiss>
+									</li>
+								</tools>
+							</value>
+						</li>
+						<li Class="PatchOperationReplace">
+							<xpath>Defs/HediffDef[defName="VenomFangsSolar"]/comps/li[@Class="HediffCompProperties_VerbGiver"]/tools</xpath>
+							<value>
+								<tools>
+									<li Class="CombatExtended.ToolCE">
+										<label>venom fangs</label>
+										<capacities>
+											<li>ToxicBite</li>
+										</capacities>
+										<power>8</power>
+										<cooldownTime>1.10</cooldownTime>
+										<armorPenetrationBlunt>0.25</armorPenetrationBlunt>
+										<armorPenetrationSharp>3</armorPenetrationSharp>
+										<linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
+										<alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+									</li>
+								</tools>
+							</value>
+						</li>
+						<li Class="PatchOperationReplace">
+							<xpath>Defs/HediffDef[defName="VenomTalonSolar"]/comps/li[@Class="HediffCompProperties_VerbGiver"]/tools</xpath>
+							<value>
+								<tools>
+									<li Class="CombatExtended.ToolCE">
+										<label>venom talon</label>
+										<capacities>
+											<li>ScratchToxic</li>
+										</capacities>
+										<power>12</power>
+										<cooldownTime>1.10</cooldownTime>
+										<armorPenetrationBlunt>0.33</armorPenetrationBlunt>
+										<armorPenetrationSharp>0.33</armorPenetrationSharp>
+										<alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+										<soundMeleeHit>MeleeHit_BionicSlash</soundMeleeHit>
+										<soundMeleeMiss>MeleeMiss_BionicSlash</soundMeleeMiss>
+									</li>
+								</tools>
+							</value>
+						</li>
+						<!-- Bionics -->
+						<li Class="PatchOperationReplace">
+							<xpath>Defs/HediffDef[defName="ToughskinGlandSolar"]/stages/li/statOffsets/ArmorRating_Sharp</xpath>
+							<value>
+								<ArmorRating_Sharp>1.25</ArmorRating_Sharp>
+							</value>
+						</li>
+						<li Class="PatchOperationReplace">
+							<xpath>Defs/HediffDef[defName="ToughskinGlandSolar"]/stages/li/statOffsets/ArmorRating_Blunt</xpath>
+							<value>
+								<ArmorRating_Blunt>1.46</ArmorRating_Blunt>
+							</value>
+						</li>
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/HediffDef[defName="ToughskinGlandSolar"]/stages/li/statOffsets</xpath>
+							<value>
+								<MoveSpeed>-0.17</MoveSpeed>
+								<MeleeDodgeChance>-0.02</MeleeDodgeChance>
+							</value>
+						</li>
+						<li Class="PatchOperationRemove">
+							<xpath>Defs/HediffDef[defName="ToughskinGlandSolar"]/stages/li/capMods</xpath>
+						</li>
+						<li Class="PatchOperationReplace">
+							<xpath>Defs/HediffDef[defName="ArmorskinGlandSolar"]/stages/li/statOffsets/ArmorRating_Sharp</xpath>
+							<value>
+								<ArmorRating_Sharp>2.08</ArmorRating_Sharp>
+							</value>
+						</li>
+						<li Class="PatchOperationReplace">
+							<xpath>Defs/HediffDef[defName="ArmorskinGlandSolar"]/stages/li/statOffsets/ArmorRating_Blunt</xpath>
+							<value>
+								<ArmorRating_Blunt>3</ArmorRating_Blunt>
+							</value>
+						</li>
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/HediffDef[defName="ArmorskinGlandSolar"]/stages/li/statOffsets</xpath>
+							<value>
+								<MoveSpeed>-0.50</MoveSpeed>
+								<MeleeDodgeChance>-0.03</MeleeDodgeChance>
+							</value>
+						</li>
+						<li Class="PatchOperationRemove">
+							<xpath>Defs/HediffDef[defName="ArmorskinGlandSolar"]/stages/li/capMods</xpath>
+						</li>
+						<li Class="PatchOperationReplace">
+							<xpath>Defs/HediffDef[defName="StoneskinGlandSolar"]/stages/li/statOffsets/ArmorRating_Sharp</xpath>
+							<value>
+								<ArmorRating_Sharp>5</ArmorRating_Sharp>
+							</value>
+						</li>
+						<li Class="PatchOperationReplace">
+							<xpath>Defs/HediffDef[defName="StoneskinGlandSolar"]/stages/li/statOffsets/ArmorRating_Blunt</xpath>
+							<value>
+								<ArmorRating_Blunt>6.67</ArmorRating_Blunt>
+							</value>
+						</li>
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/HediffDef[defName="StoneskinGlandSolar"]/stages/li/statOffsets</xpath>
+							<value>
+								<MoveSpeed>-0.67</MoveSpeed>
+								<MeleeDodgeChance>-0.04</MeleeDodgeChance>
+							</value>
+						</li>
+						<li Class="PatchOperationRemove">
+							<xpath>Defs/HediffDef[defName="StoneskinGlandSolar"]/stages/li/capMods</xpath>
+						</li>
+					</operations>
+				</match>
+			</li>
+		</operations>
+	</Operation>
+</Patch>

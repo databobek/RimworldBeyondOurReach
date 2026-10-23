@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+	<Operation Class="PatchOperationSequence">
+		<operations>
+			<!-- patch sequence to patch in defs while proceeding to check for CE -->
+			<!-- add Royalty-dependent pawn tech hediffs after implant defs are injected -->
+			<li Class="PatchOperationAdd">
+				<xpath>Defs/PawnKindDef[@Name="BOR_BasePawn_II"]/techHediffsRequired</xpath>
+				<value>
+					<li>ImmunoenhancerQuasar</li>
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>Defs/PawnKindDef[@Name="BOR_BasePawn_II"]/techHediffsRequired</xpath>
+				<value>
+					<li>ArmorGlandQuasar</li>
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>Defs/PawnKindDef[@Name="BOR_ElitePawn_II"]/techHediffsRequired</xpath>
+				<value>
+					<li>ImmunoenhancerQuasar</li>
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>Defs/PawnKindDef[defName="BOR_Town_Trader_II"]</xpath>
+				<value>
+					<techHediffsRequired>
+						<li>PsychicModuleQuasar</li>
+					</techHediffsRequired>
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>Defs/PawnKindDef[defName="BOR_Farmer_II"]</xpath>
+				<value>
+					<techHediffsRequired>
+						<li>FieldHandQuasar</li>
+					</techHediffsRequired>
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>Defs/PawnKindDef[defName="BOR_Miner_II"]</xpath>
+				<value>
+					<techHediffsRequired>
+						<li>DrillArmQuasar</li>
+					</techHediffsRequired>
+				</value>
+			</li>
+			<!-- consolidate tier2 nose/recovery implants -->
+			<li Class="PatchOperationRemove">
+				<xpath>Defs/HediffDef[defName="GastroAnalyzerQuasar"]</xpath>
+			</li>
+			<li Class="PatchOperationRemove">
+				<xpath>Defs/HediffDef[defName="AestheticNoseQuasar"]</xpath>
+			</li>
+			<li Class="PatchOperationRemove">
+				<xpath>Defs/ThingDef[defName="GastroAnalyzerQuasar"]</xpath>
+			</li>
+			<li Class="PatchOperationRemove">
+				<xpath>Defs/ThingDef[defName="AestheticNoseQuasar"]</xpath>
+			</li>
+			<li Class="PatchOperationRemove">
+				<xpath>Defs/RecipeDef[defName="InstallGastroAnalyzerQuasar"]</xpath>
+			</li>
+			<li Class="PatchOperationRemove">
+				<xpath>Defs/RecipeDef[defName="RemoveGastroAnalyzerQuasar"]</xpath>
+			</li>
+			<li Class="PatchOperationRemove">
+				<xpath>Defs/RecipeDef[defName="InstallAestheticNoseQuasar"]</xpath>
+			</li>
+			<li Class="PatchOperationRemove">
+				<xpath>Defs/RecipeDef[defName="RemoveAestheticNoseQuasar"]</xpath>
+			</li>
+			<li Class="PatchOperationRemove">
+				<xpath>Defs/HediffDef[defName="CoagulatorQuasar"]</xpath>
+			</li>
+			<li Class="PatchOperationRemove">
+				<xpath>Defs/HediffDef[defName="HealingEnhancerQuasar"]</xpath>
+			</li>
+			<li Class="PatchOperationRemove">
+				<xpath>Defs/ThingDef[defName="CoagulatorQuasar"]</xpath>
+			</li>
+			<li Class="PatchOperationRemove">
+				<xpath>Defs/ThingDef[defName="HealingEnhancerQuasar"]</xpath>
+			</li>
+			<li Class="PatchOperationRemove">
+				<xpath>Defs/RecipeDef[defName="InstallCoagulatorQuasar"]</xpath>
+			</li>
+			<li Class="PatchOperationRemove">
+				<xpath>Defs/RecipeDef[defName="RemoveCoagulatorQuasar"]</xpath>
+			</li>
+			<li Class="PatchOperationRemove">
+				<xpath>Defs/RecipeDef[defName="InstallHealingEnhancerQuasar"]</xpath>
+			</li>
+			<li Class="PatchOperationRemove">
+				<xpath>Defs/RecipeDef[defName="RemoveHealingEnhancerQuasar"]</xpath>
+			</li>
+			<!-- check to see if CombatExtended is loaded as well, then modify the patched in defs to CE standards -->
+			<li Class="PatchOperationFindMod">
+				<mods>
+					<li>Combat Extended</li>
+				</mods>
+				<match Class="PatchOperationSequence">
+					<operations>
+						<li Class="PatchOperationReplace">
+							<xpath>Defs/HediffDef[defName="DrillArmQuasar"]/comps/li[@Class="HediffCompProperties_VerbGiver"]/tools</xpath>
+							<value>
+								<tools>
+									<li Class="CombatExtended.ToolCE">
+										<label>drill</label>
+										<capacities>
+											<li>Stab</li>
+										</capacities>
+										<power>20</power>
+										<cooldownTime>1.38</cooldownTime>
+										<armorPenetrationSharp>0.10</armorPenetrationSharp>
+										<armorPenetrationBlunt>0.80</armorPenetrationBlunt>
+										<alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+										<soundMeleeHit>MeleeHit_DrillArm</soundMeleeHit>
+										<soundMeleeMiss>MeleeMiss_DrillArm</soundMeleeMiss>
+									</li>
+								</tools>
+							</value>
+						</li>
+						<li Class="PatchOperationReplace">
+							<xpath>Defs/HediffDef[defName="FieldHandQuasar"]/comps/li[@Class="HediffCompProperties_VerbGiver"]/tools</xpath>
+							<value>
+								<tools>
+									<li Class="CombatExtended.ToolCE">
+										<label>knuckle</label>
+										<capacities>
+											<li>Blunt</li>
+										</capacities>
+										<power>8</power>
+										<cooldownTime>1.10</cooldownTime>
+										<armorPenetrationSharp>0.02</armorPenetrationSharp>
+										<armorPenetrationBlunt>1.88</armorPenetrationBlunt>
+										<alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+										<soundMeleeHit>MeleeHit_FieldHand</soundMeleeHit>
+										<soundMeleeMiss>MeleeMiss_FieldHand</soundMeleeMiss>
+									</li>
+								</tools>
+							</value>
+						</li>
+						<li Class="PatchOperationReplace">
+							<xpath>Defs/HediffDef[defName="HandTalonQuasar"]/comps/li[@Class="HediffCompProperties_VerbGiver"]/tools</xpath>
+							<value>
+								<tools>
+									<li Class="CombatExtended.ToolCE">
+										<label>talon</label>
+										<capacities>
+											<li>Scratch</li>
+										</capacities>
+										<power>18</power>
+										<cooldownTime>0.83</cooldownTime>
+										<armorPenetrationBlunt>0.50</armorPenetrationBlunt>
+										<armorPenetrationSharp>0.50</armorPenetrationSharp>
+										<alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+										<soundMeleeHit>MeleeHit_BionicSlash</soundMeleeHit>
+										<soundMeleeMiss>MeleeMiss_BionicSlash</soundMeleeMiss>
+									</li>
+								</tools>
+							</value>
+						</li>
+						<li Class="PatchOperationReplace">
+							<xpath>Defs/HediffDef[defName="ElbowBladeQuasar"]/comps/li[@Class="HediffCompProperties_VerbGiver"]/tools</xpath>
+							<value>
+								<tools>
+									<li Class="CombatExtended.ToolCE">
+										<label>blade</label>
+										<capacities>
+											<li>Cut</li>
+										</capacities>
+										<power>20</power>
+										<cooldownTime>0.83</cooldownTime>
+										<armorPenetrationBlunt>0.50</armorPenetrationBlunt>
+										<armorPenetrationSharp>0.45</armorPenetrationSharp>
+										<linkedBodyPartsGroup>Blade</linkedBodyPartsGroup>
+										<alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+										<soundMeleeHit>MeleeHit_BionicSlash</soundMeleeHit>
+										<soundMeleeMiss>MeleeMiss_BionicSlash</soundMeleeMiss>
+									</li>
+								</tools>
+							</value>
+						</li>
+						<li Class="PatchOperationReplace">
+							<xpath>Defs/HediffDef[defName="KneeSpikeQuasar"]/comps/li[@Class="HediffCompProperties_VerbGiver"]/tools</xpath>
+							<value>
+								<tools>
+									<li Class="CombatExtended.ToolCE">
+										<label>spike</label>
+										<capacities>
+											<li>Stab</li>
+										</capacities>
+										<power>33</power>
+										<cooldownTime>0.83</cooldownTime>
+										<armorPenetrationBlunt>1.25</armorPenetrationBlunt>
+										<armorPenetrationSharp>1.50</armorPenetrationSharp>
+										<linkedBodyPartsGroup>Point</linkedBodyPartsGroup>
+										<alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+										<soundMeleeHit>MeleeHit_BionicSlash</soundMeleeHit>
+										<soundMeleeMiss>MeleeMiss_BionicSlash</soundMeleeMiss>
+									</li>
+								</tools>
+							</value>
+						</li>
+						<li Class="PatchOperationReplace">
+							<xpath>Defs/HediffDef[defName="VenomFangsQuasar"]/comps/li[@Class="HediffCompProperties_VerbGiver"]/tools</xpath>
+							<value>
+								<tools>
+									<li Class="CombatExtended.ToolCE">
+										<label>venom fangs</label>
+										<capacities>
+											<li>ToxicBite</li>
+										</capacities>
+										<power>13</power>
+										<cooldownTime>0.83</cooldownTime>
+										<armorPenetrationBlunt>0.38</armorPenetrationBlunt>
+										<armorPenetrationSharp>3.75</armorPenetrationSharp>
+										<linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
+										<alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+									</li>
+								</tools>
+							</value>
+						</li>
+						<li Class="PatchOperationReplace">
+							<xpath>Defs/HediffDef[defName="VenomTalonQuasar"]/comps/li[@Class="HediffCompProperties_VerbGiver"]/tools</xpath>
+							<value>
+								<tools>
+									<li Class="CombatExtended.ToolCE">
+										<label>venom talon</label>
+										<capacities>
+											<li>ScratchToxic</li>
+										</capacities>
+										<power>18</power>
+										<cooldownTime>.75</cooldownTime>
+										<armorPenetrationBlunt>0.50</armorPenetrationBlunt>
+										<armorPenetrationSharp>0.50</armorPenetrationSharp>
+										<alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+										<soundMeleeHit>MeleeHit_BionicSlash</soundMeleeHit>
+										<soundMeleeMiss>MeleeMiss_BionicSlash</soundMeleeMiss>
+									</li>
+								</tools>
+							</value>
+						</li>
+						<!-- Bionics -->
+						<li Class="PatchOperationReplace">
+							<xpath>Defs/HediffDef[defName="ArmorGlandQuasar"]/stages/li/statOffsets/ArmorRating_Sharp</xpath>
+							<value>
+								<ArmorRating_Sharp>4.13</ArmorRating_Sharp>
+							</value>
+						</li>
+						<li Class="PatchOperationReplace">
+							<xpath>Defs/HediffDef[defName="ArmorGlandQuasar"]/stages/li/statOffsets/ArmorRating_Blunt</xpath>
+							<value>
+								<ArmorRating_Blunt>6.37</ArmorRating_Blunt>
+							</value>
+						</li>
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/HediffDef[defName="ArmorGlandQuasar"]/stages/li/statOffsets</xpath>
+							<value>
+								<MoveSpeed>-0.71</MoveSpeed>
+								<MeleeDodgeChance>-0.054</MeleeDodgeChance>
+							</value>
+						</li>
+						<li Class="PatchOperationRemove">
+							<xpath>Defs/HediffDef[defName="ArmorGlandQuasar"]/stages/li/capMods</xpath>
+						</li>
+						<li Class="PatchOperationReplace">
+							<xpath>Defs/HediffDef[defName="StoneskinGlandQuasar"]/stages/li/statOffsets/ArmorRating_Sharp</xpath>
+							<value>
+								<ArmorRating_Sharp>8</ArmorRating_Sharp>
+							</value>
+						</li>
+						<li Class="PatchOperationReplace">
+							<xpath>Defs/HediffDef[defName="StoneskinGlandQuasar"]/stages/li/statOffsets/ArmorRating_Blunt</xpath>
+							<value>
+								<ArmorRating_Blunt>10</ArmorRating_Blunt>
+							</value>
+						</li>
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/HediffDef[defName="StoneskinGlandQuasar"]/stages/li/statOffsets</xpath>
+							<value>
+								<MoveSpeed>-0.71</MoveSpeed>
+								<MeleeDodgeChance>-0.06</MeleeDodgeChance>
+							</value>
+						</li>
+						<li Class="PatchOperationRemove">
+							<xpath>Defs/HediffDef[defName="StoneskinGlandQuasar"]/stages/li/capMods</xpath>
+						</li>
+					</operations>
+				</match>
+			</li>
+		</operations>
+	</Operation>
+</Patch>

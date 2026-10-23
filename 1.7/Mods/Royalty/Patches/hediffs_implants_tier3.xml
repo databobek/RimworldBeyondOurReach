@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+	<Operation Class="PatchOperationSequence">
+		<operations>
+			<!-- patch sequence to patch in defs while proceeding to check for CE -->
+			<!-- consolidate tier3 non-brain organ groups -->
+			<li Class="PatchOperationRemove">
+				<xpath>Defs/HediffDef[defName="GastroAnalyzerTenebral"]</xpath>
+			</li>
+			<li Class="PatchOperationRemove">
+				<xpath>Defs/HediffDef[defName="AestheticNoseTenebral"]</xpath>
+			</li>
+			<li Class="PatchOperationRemove">
+				<xpath>Defs/RecipeDef[defName="InstallGastroAnalyzerTenebral"]</xpath>
+			</li>
+			<li Class="PatchOperationRemove">
+				<xpath>Defs/RecipeDef[defName="RemoveGastroAnalyzerTenebral"]</xpath>
+			</li>
+			<li Class="PatchOperationRemove">
+				<xpath>Defs/RecipeDef[defName="InstallAestheticNoseTenebral"]</xpath>
+			</li>
+			<li Class="PatchOperationRemove">
+				<xpath>Defs/RecipeDef[defName="RemoveAestheticNoseTenebral"]</xpath>
+			</li>
+			<li Class="PatchOperationRemove">
+				<xpath>Defs/HediffDef[defName="CoagulatorTenebral"]</xpath>
+			</li>
+			<li Class="PatchOperationRemove">
+				<xpath>Defs/HediffDef[defName="HealingEnhancerTenebral"]</xpath>
+			</li>
+			<li Class="PatchOperationRemove">
+				<xpath>Defs/RecipeDef[defName="InstallCoagulatorTenebral"]</xpath>
+			</li>
+			<li Class="PatchOperationRemove">
+				<xpath>Defs/RecipeDef[defName="RemoveCoagulatorTenebral"]</xpath>
+			</li>
+			<li Class="PatchOperationRemove">
+				<xpath>Defs/RecipeDef[defName="InstallHealingEnhancerTenebral"]</xpath>
+			</li>
+			<li Class="PatchOperationRemove">
+				<xpath>Defs/RecipeDef[defName="RemoveHealingEnhancerTenebral"]</xpath>
+			</li>
+			<!-- consolidate tier3 armor glands -->
+			<li Class="PatchOperationRemove">
+				<xpath>Defs/HediffDef[defName="ToughskinGlandTenebral"]</xpath>
+			</li>
+			<li Class="PatchOperationRemove">
+				<xpath>Defs/RecipeDef[defName="InstallToughskinGlandTenebral"]</xpath>
+			</li>
+			<li Class="PatchOperationRemove">
+				<xpath>Defs/RecipeDef[defName="RemoveToughskinGlandTenebral"]</xpath>
+			</li>
+			<li Class="PatchOperationRemove">
+				<xpath>Defs/HediffDef[defName="ArmorskinGlandTenebral"]</xpath>
+			</li>
+			<li Class="PatchOperationRemove">
+				<xpath>Defs/RecipeDef[defName="InstallArmorskinGlandTenebral"]</xpath>
+			</li>
+			<li Class="PatchOperationRemove">
+				<xpath>Defs/RecipeDef[defName="RemoveArmorskinGlandTenebral"]</xpath>
+			</li>
+			<li Class="PatchOperationRemove">
+				<xpath>Defs/HediffDef[defName="StoneskinGlandTenebral"]</xpath>
+			</li>
+			<li Class="PatchOperationRemove">
+				<xpath>Defs/RecipeDef[defName="InstallStoneskinGlandTenebral"]</xpath>
+			</li>
+			<li Class="PatchOperationRemove">
+				<xpath>Defs/RecipeDef[defName="RemoveStoneskinGlandTenebral"]</xpath>
+			</li>
+			<!-- check to see if CombatExtended is loaded as well, then modify the patched in defs to CE standards -->
+			<li Class="PatchOperationFindMod">
+				<mods>
+					<li>Combat Extended</li>
+				</mods>
+				<match Class="PatchOperationSequence">
+					<operations>
+						<li Class="PatchOperationReplace">
+							<xpath>Defs/HediffDef[defName="DrillArmTenebral"]/comps/li[@Class="HediffCompProperties_VerbGiver"]/tools</xpath>
+							<value>
+								<tools>
+									<li Class="CombatExtended.ToolCE">
+										<label>drill</label>
+										<capacities>
+											<li>Stab</li>
+										</capacities>
+										<power>48</power>
+										<cooldownTime>0.5</cooldownTime>
+										<armorPenetrationSharp>0.24</armorPenetrationSharp>
+										<armorPenetrationBlunt>1.8</armorPenetrationBlunt>
+										<alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+										<soundMeleeHit>MeleeHit_DrillArm</soundMeleeHit>
+										<soundMeleeMiss>MeleeMiss_DrillArm</soundMeleeMiss>
+									</li>
+								</tools>
+							</value>
+						</li>
+						<li Class="PatchOperationReplace">
+							<xpath>Defs/HediffDef[defName="FieldHandTenebral"]/comps/li[@Class="HediffCompProperties_VerbGiver"]/tools</xpath>
+							<value>
+								<tools>
+									<li Class="CombatExtended.ToolCE">
+										<label>knuckle</label>
+										<capacities>
+											<li>Blunt</li>
+										</capacities>
+										<power>18</power>
+										<cooldownTime>0.5</cooldownTime>
+										<armorPenetrationSharp>0.04</armorPenetrationSharp>
+										<armorPenetrationBlunt>5.0</armorPenetrationBlunt>
+										<alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+										<soundMeleeHit>MeleeHit_FieldHand</soundMeleeHit>
+										<soundMeleeMiss>MeleeMiss_FieldHand</soundMeleeMiss>
+									</li>
+								</tools>
+							</value>
+						</li>
+						<li Class="PatchOperationReplace">
+							<xpath>Defs/HediffDef[defName="HandTalonTenebral"]/comps/li[@Class="HediffCompProperties_VerbGiver"]/tools</xpath>
+							<value>
+								<tools>
+									<li Class="CombatExtended.ToolCE">
+										<label>talon</label>
+										<capacities>
+											<li>Scratch</li>
+										</capacities>
+										<power>42</power>
+										<cooldownTime>0.25</cooldownTime>
+										<armorPenetrationBlunt>1.2</armorPenetrationBlunt>
+										<armorPenetrationSharp>1.2</armorPenetrationSharp>
+										<alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+										<soundMeleeHit>MeleeHit_BionicSlash</soundMeleeHit>
+										<soundMeleeMiss>MeleeMiss_BionicSlash</soundMeleeMiss>
+									</li>
+								</tools>
+							</value>
+						</li>
+						<li Class="PatchOperationReplace">
+							<xpath>Defs/HediffDef[defName="ElbowBladeTenebral"]/comps/li[@Class="HediffCompProperties_VerbGiver"]/tools</xpath>
+							<value>
+								<tools>
+									<li Class="CombatExtended.ToolCE">
+										<label>blade</label>
+										<capacities>
+											<li>Cut</li>
+										</capacities>
+										<power>48</power>
+										<cooldownTime>0.35</cooldownTime>
+										<armorPenetrationBlunt>1.2</armorPenetrationBlunt>
+										<armorPenetrationSharp>1.08</armorPenetrationSharp>
+										<linkedBodyPartsGroup>Blade</linkedBodyPartsGroup>
+										<alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+										<soundMeleeHit>MeleeHit_BionicSlash</soundMeleeHit>
+										<soundMeleeMiss>MeleeMiss_BionicSlash</soundMeleeMiss>
+									</li>
+								</tools>
+							</value>
+						</li>
+						<li Class="PatchOperationReplace">
+							<xpath>Defs/HediffDef[defName="KneeSpikeTenebral"]/comps/li[@Class="HediffCompProperties_VerbGiver"]/tools</xpath>
+							<value>
+								<tools>
+									<li Class="CombatExtended.ToolCE">
+										<label>spike</label>
+										<capacities>
+											<li>Stab</li>
+										</capacities>
+										<power>78</power>
+										<cooldownTime>0.25</cooldownTime>
+										<armorPenetrationBlunt>3.0</armorPenetrationBlunt>
+										<armorPenetrationSharp>3.6</armorPenetrationSharp>
+										<linkedBodyPartsGroup>Point</linkedBodyPartsGroup>
+										<alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+										<soundMeleeHit>MeleeHit_BionicSlash</soundMeleeHit>
+										<soundMeleeMiss>MeleeMiss_BionicSlash</soundMeleeMiss>
+									</li>
+								</tools>
+							</value>
+						</li>
+						<li Class="PatchOperationReplace">
+							<xpath>Defs/HediffDef[defName="VenomFangsTenebral"]/comps/li[@Class="HediffCompProperties_VerbGiver"]/tools</xpath>
+							<value>
+								<tools>
+									<li Class="CombatExtended.ToolCE">
+										<label>venom fangs</label>
+										<capacities>
+											<li>ToxicBite</li>
+										</capacities>
+										<power>30</power>
+										<cooldownTime>0.3</cooldownTime>
+										<armorPenetrationBlunt>0.9</armorPenetrationBlunt>
+										<armorPenetrationSharp>9.0</armorPenetrationSharp>
+										<linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
+										<alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+									</li>
+								</tools>
+							</value>
+						</li>
+						<li Class="PatchOperationReplace">
+							<xpath>Defs/HediffDef[defName="VenomTalonTenebral"]/comps/li[@Class="HediffCompProperties_VerbGiver"]/tools</xpath>
+							<value>
+								<tools>
+									<li Class="CombatExtended.ToolCE">
+										<label>venom talon</label>
+										<capacities>
+											<li>ScratchToxic</li>
+										</capacities>
+										<power>42</power>
+										<cooldownTime>0.35</cooldownTime>
+										<armorPenetrationBlunt>1.2</armorPenetrationBlunt>
+										<armorPenetrationSharp>1.2</armorPenetrationSharp>
+										<alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+										<soundMeleeHit>MeleeHit_BionicSlash</soundMeleeHit>
+										<soundMeleeMiss>MeleeMiss_BionicSlash</soundMeleeMiss>
+									</li>
+								</tools>
+							</value>
+						</li>
+						<!-- Bionics -->
+						<li Class="PatchOperationReplace">
+							<xpath>Defs/HediffDef[defName="OmniArmorGlandTenebral"]/stages/li/statOffsets/ArmorRating_Sharp</xpath>
+							<value>
+								<ArmorRating_Sharp>24.075</ArmorRating_Sharp>
+							</value>
+						</li>
+						<li Class="PatchOperationReplace">
+							<xpath>Defs/HediffDef[defName="OmniArmorGlandTenebral"]/stages/li/statOffsets/ArmorRating_Blunt</xpath>
+							<value>
+								<ArmorRating_Blunt>34.85</ArmorRating_Blunt>
+							</value>
+						</li>
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/HediffDef[defName="OmniArmorGlandTenebral"]/stages/li/statOffsets</xpath>
+							<value>
+								<MoveSpeed>-0.89</MoveSpeed>
+								<MeleeDodgeChance>-0.077</MeleeDodgeChance>
+							</value>
+						</li>
+						<li Class="PatchOperationRemove">
+							<xpath>Defs/HediffDef[defName="OmniArmorGlandTenebral"]/stages/li/capMods</xpath>
+						</li>
+					</operations>
+				</match>
+			</li>
+		</operations>
+	</Operation>
+</Patch>

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<FactionDef>
+		<defName>BOR_BadzaarHazaard</defName>
+		<label>badzaari raiders</label>
+		<description>.</description>
+		<pawnSingular>badzaari</pawnSingular>
+		<pawnsPlural>badzaari</pawnsPlural>
+		<listOrderPriority>43</listOrderPriority>
+		<canMakeRandomly>true</canMakeRandomly>
+		<canSiege>true</canSiege>
+		<leaderTitle>badzaari warlord</leaderTitle>
+		<factionIconPath>Factions/BadzaariIcon</factionIconPath>
+		<factionNameMaker>NamerBadzaariFaction</factionNameMaker>
+		<settlementNameMaker>NamerBadzaariBase</settlementNameMaker>
+		<settlementTexturePath>World/WorldObjects/DefaultSettlement</settlementTexturePath>
+		<techLevel>Ultra</techLevel>
+		<backstoryFilters>
+			<li>
+				<categories>
+					<li>Offworld</li>
+				</categories>
+				<commonality>0.75</commonality>
+			</li>
+		</backstoryFilters>
+		<allowedCultures>
+			<li>BOR_Kwazaari_Culture</li>
+		</allowedCultures>
+		<requiredMemes>
+			<li MayRequire="Ludeon.RimWorld.Ideology">Loyalist</li>
+			<li MayRequire="Ludeon.RimWorld.Ideology">Collectivist</li>
+			<li MayRequire="Ludeon.RimWorld.Ideology">HumanPrimacy</li>
+			<li MayRequire="Ludeon.RimWorld.Ideology">Structure_Ideological</li>
+			<li MayRequire="Ludeon.RimWorld.Ideology">Raider</li>
+		</requiredMemes>
+		<xenotypeSet>
+			<xenotypeChances>
+				<BOR_Kwazaari MayRequire="Ludeon.RimWorld.Biotech">0.8</BOR_Kwazaari>
+			</xenotypeChances>
+		</xenotypeSet>
+		<maxPawnCostPerTotalPointsCurve>
+			<points>
+				<li>(0,35)</li>
+				<li>(70, 50)</li>
+				<li>(700, 100)</li>
+				<li>(1300, 150)</li>
+				<li>(4000, 900)</li>
+				<li>(23000, 1000)</li>
+				<li>(150000, 20000)</li>
+			</points>
+		</maxPawnCostPerTotalPointsCurve>
+		<apparelStuffFilter>
+			<thingDefs>
+				<li>BOR_QuasarAlloy</li>
+				<li>BOR_QuasarAlloyWeave</li>
+			</thingDefs>
+		</apparelStuffFilter>
+		<pawnGroupMakers Inherit="False">
+			<li>
+				<commonality>100</commonality>
+				<kindDef>Combat</kindDef>
+				<options>
+					<BOR_Badzaari_Raider_Sword>4</BOR_Badzaari_Raider_Sword>
+					<BOR_Badzaari_Raider_Shotgun>5</BOR_Badzaari_Raider_Shotgun>
+					<BOR_Badzaari_Raider_Rifle>7</BOR_Badzaari_Raider_Rifle>
+					<BOR_Badzaari_Raider_Sniper>3</BOR_Badzaari_Raider_Sniper>
+					<BOR_Badzaari_Raider_LMG>4</BOR_Badzaari_Raider_LMG>
+					<BOR_Badzaari_Warlord>1</BOR_Badzaari_Warlord>
+				</options>
+			</li>
+			<li>
+				<kindDef>Settlement</kindDef>
+				<options>
+					<BOR_Badzaari_Raider_Sword>5</BOR_Badzaari_Raider_Sword>
+					<BOR_Badzaari_Raider_Shotgun>5</BOR_Badzaari_Raider_Shotgun>
+					<BOR_Badzaari_Raider_Rifle>8</BOR_Badzaari_Raider_Rifle>
+					<BOR_Badzaari_Raider_Sniper>3</BOR_Badzaari_Raider_Sniper>
+					<BOR_Badzaari_Raider_LMG>4</BOR_Badzaari_Raider_LMG>
+					<BOR_Badzaari_Warlord>1</BOR_Badzaari_Warlord>
+				</options>
+			</li>
+			<li MayRequire="Ludeon.RimWorld.Ideology">
+				<kindDef>Miners</kindDef>
+				<commonality>1</commonality>
+				<options>
+					<BOR_Miner_II>3</BOR_Miner_II>
+					<BOR_Badzaari_Raider_Rifle>3</BOR_Badzaari_Raider_Rifle>
+					<BOR_Badzaari_Raider_Shotgun>1</BOR_Badzaari_Raider_Shotgun>
+				</options>
+			</li>
+			<li MayRequire="Ludeon.RimWorld.Ideology">
+				<kindDef>Hunters</kindDef>
+				<commonality>1</commonality>
+				<options>
+					<BOR_Badzaari_Raider_Sniper>3</BOR_Badzaari_Raider_Sniper>
+					<BOR_Badzaari_Raider_Rifle>2</BOR_Badzaari_Raider_Rifle>
+				</options>
+			</li>
+			<li MayRequire="Ludeon.RimWorld.Ideology">
+				<kindDef>Loggers</kindDef>
+				<commonality>1</commonality>
+				<options>
+					<BOR_Logger_II>3</BOR_Logger_II>
+					<BOR_Badzaari_Raider_LMG>2</BOR_Badzaari_Raider_LMG>
+					<BOR_Badzaari_Raider_Sword>2</BOR_Badzaari_Raider_Sword>
+				</options>
+			</li>
+			<li MayRequire="Ludeon.RimWorld.Ideology">
+				<kindDef>Farmers</kindDef>
+				<commonality>1</commonality>
+				<options>
+					<BOR_Farmer_II>3</BOR_Farmer_II>
+					<BOR_Badzaari_Raider_Rifle>2</BOR_Badzaari_Raider_Rifle>
+					<BOR_Badzaari_Raider_Shotgun>2</BOR_Badzaari_Raider_Shotgun>
+				</options>
+			</li>
+		</pawnGroupMakers>
+		<autoFlee>false</autoFlee>
+		<permanentEnemy>true</permanentEnemy>
+		<canStageAttacks>true</canStageAttacks>
+		<settlementGenerationWeight>1</settlementGenerationWeight>
+		<requiredCountAtGameStart>1</requiredCountAtGameStart>
+		<disallowedMemes>
+			<li MayRequire="Ludeon.RimWorld.Ideology">Nudism</li>
+			<li MayRequire="Ludeon.RimWorld.Ideology">Blindsight</li>
+			<li MayRequire="Ludeon.RimWorld.Ideology">TreeConnection</li>
+		</disallowedMemes>
+		<disallowedPrecepts>
+			<li MayRequire="Ludeon.RimWorld.Ideology">Nudity_Male_CoveringAnythingButGroinDisapproved</li>
+			<li MayRequire="Ludeon.RimWorld.Ideology">Nudity_Female_CoveringAnythingButGroinDisapproved</li>
+			<li MayRequire="Ludeon.RimWorld.Ideology">AnimalVenerated</li>
+			<li MayRequire="Ludeon.RimWorld.Ideology">NobleDespisedWeapons</li>
+			<li MayRequire="Ludeon.RimWorld.Ideology">ApparelDesired_Strong_Subordinate</li>
+			<li MayRequire="Ludeon.RimWorld.Ideology">ApparelDesired_Soft_Subordinate</li>
+			<li MayRequire="Ludeon.RimWorld.Ideology">DrugUse_Prohibited</li>
+		</disallowedPrecepts>
+		<raidLootValueFromPointsCurve>
+			<points>
+				<li>(35, 1000)</li>
+				<li>(100, 2400)</li>
+				<li>(1000, 10000)</li>
+				<li>(2000, 16000)</li>
+				<li>(4000, 20000)</li>
+			</points>
+		</raidLootValueFromPointsCurve>
+		<allowedArrivalTemperatureRange>
+			<min>-150</min>
+			<max>150</max>
+		</allowedArrivalTemperatureRange>
+		<raidLootMaker>BOR_LootMaker_II</raidLootMaker>
+		<maxConfigurableAtWorldCreation>1</maxConfigurableAtWorldCreation>
+	</FactionDef>
+</Defs>

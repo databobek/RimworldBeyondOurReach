@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>BOR_ToolCabinet_II</defName>
+    <label>tool kwaazbinet</label>
+    <designatorDropdown>BOR_ToolCabinets</designatorDropdown>
+    <description>Greatly improves work speed when placed near workbenches. One workbench can use up to four kwaazbinets at a time, buy buy buy!.</description>
+    <graphicData>
+      <texPath>BOR/Things/Building/tier2/bench_linkable/bench_linkable</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawOffsetEast>(0,4,-0.15)</drawOffsetEast>
+      <drawOffsetNorth>(0,3,0)</drawOffsetNorth>
+      <drawSize>(4,4)</drawSize>
+    </graphicData>
+    <rotatable>true</rotatable>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <castEdgeShadows>true</castEdgeShadows>
+    <staticSunShadowHeight>0.35</staticSunShadowHeight>
+    <fillPercent>0.50</fillPercent>
+    <canOverlapZones>false</canOverlapZones>
+    <pathCost>32</pathCost>
+    <statBases>
+      <MaxHitPoints>188</MaxHitPoints>
+      <WorkToBuild>4050</WorkToBuild>
+      <Mass>15</Mass>
+      <Flammability>0.35</Flammability>
+    </statBases>
+    <size>(3,1)</size>
+    <costList>
+      <BOR_QuasarAlloy>220</BOR_QuasarAlloy>
+      <BOR_ComponentII>2</BOR_ComponentII>
+    </costList>
+    <building>
+      <destroySound>BuildingDestroyed_Metal_Small</destroySound>
+    </building>
+    <researchPrerequisites>
+      <li>ComplexFurniture</li>
+      <li>BOR_Research_Production_II</li>
+    </researchPrerequisites>
+    <designationCategory>BOR</designationCategory>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <constructionSkillPrerequisite>9</constructionSkillPrerequisite>
+    <thingCategories>
+      <li>BuildingsMisc</li>
+    </thingCategories>
+    <comps>
+      <li Class="CompProperties_Facility">
+        <statOffsets>
+          <WorkTableWorkSpeedFactor>0.2025</WorkTableWorkSpeedFactor>
+        </statOffsets>
+        <maxSimultaneous>4</maxSimultaneous>
+      </li>
+    </comps>
+    <designationHotKey>Misc6</designationHotKey>
+    <placeWorkers>
+      <li>PlaceWorker_ShowFacilitiesConnections</li>
+    </placeWorkers>
+  </ThingDef>
+  <ThingDef ParentName="BuildingBase">
+    <defName>BOR_MoisturePump_II</defName>
+    <label>kwazaari moisture pump</label>
+    <description>Very slowly equalizes moisture in nearby terrain, converting marshes or shallow water into dry ground, and soft sand into normal sand. Does not affect deep water.</description>
+    <graphicData>
+      <texPath>Things/Building/Misc/MoisturePump</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shadowData>
+        <volume>(0.58, 0.35, 0.25)</volume>
+        <offset>(0,0,-0.1)</offset>
+      </shadowData>
+      <damageData>
+        <rect>(0.2,0.2,0.6,0.6)</rect>
+      </damageData>
+    </graphicData>
+    <comps>
+      <li Class="CompProperties_Forbiddable" />
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>292</basePowerConsumption>
+      </li>
+      <li Class="CompProperties_TerrainPumpDry">
+        <soundWorking>MoisturePump_Ambience</soundWorking>
+        <radius>13.25</radius>
+        <daysToRadius>40</daysToRadius>
+      </li>
+    </comps>
+    <tickerType>Rare</tickerType>
+    <altitudeLayer>Building</altitudeLayer>
+    <statBases>
+      <MaxHitPoints>93</MaxHitPoints>
+      <WorkToBuild>3500</WorkToBuild>
+      <Flammability>1.00</Flammability>
+      <Beauty>-3</Beauty>
+    </statBases>
+    <fillPercent>0.15</fillPercent>
+    <building>
+      <ai_chillDestination>false</ai_chillDestination>
+      <destroySound>BuildingDestroyed_Metal_Small</destroySound>
+    </building>
+    <costList>
+      <BOR_QuasarAlloy>82</BOR_QuasarAlloy>
+      <BOR_ComponentII>4</BOR_ComponentII>
+    </costList>
+    <specialDisplayRadius>15.9</specialDisplayRadius>
+    <pathCost>30</pathCost>
+    <passability>PassThroughOnly</passability>
+    <designationCategory>Misc</designationCategory>
+    <rotatable>false</rotatable>
+    <researchPrerequisites>
+      <li>BOR_Research_Analyzer_II</li>
+    </researchPrerequisites>
+    <constructionSkillPrerequisite>14</constructionSkillPrerequisite>
+  </ThingDef>
+</Defs>

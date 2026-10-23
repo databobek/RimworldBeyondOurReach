@@ -1,0 +1,1477 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+	<CombatExtended.AmmoCategoryDef>
+		<defName>BOR_XCOM_Laser_Solar</defName>
+		<label>solar lens laser</label>
+		<labelShort>stellaser</labelShort>
+		<description>Batteries and reagents that can power a chemlaser emitter. The reagents generates laser at visible wavelengths through a starBOR_Neutronium laser.</description>
+	</CombatExtended.AmmoCategoryDef>
+	<CombatExtended.AmmoCategoryDef>
+		<defName>BOR_XCOM_LaserInc_Neutronium</defName>
+		<label>infrared laser neutronium</label>
+		<labelShort>N-IR laser</labelShort>
+		<description>Batteries and reagents that can power a neutronium laser emitter. The reagents generates laser at infrared wavelengths, causing burns and start fires.</description>
+	</CombatExtended.AmmoCategoryDef>
+	<CombatExtended.AmmoCategoryDef>
+		<defName>BOR_XCOM_LaserHP_Neutronium</defName>
+		<label>untraviolet laser neutronium</label>
+		<labelShort>N-UV laser</labelShort>
+		<description>Batteries and reagents that can power a neutronium laser emitter. The reagents generates laser at untraviolet wavelengths, delivering more energy and causing more damage.</description>
+	</CombatExtended.AmmoCategoryDef>
+	<CombatExtended.AmmoCategoryDef>
+		<defName>BOR_XCOM_LaserEMP_Neutronium</defName>
+		<label>Neutronium EM laser</label>
+		<labelShort>N-EM laser</labelShort>
+		<description>Batteries and reagents that can power a neutronium laser emitter. The reagents generates laser at radio wavelengths, disrupting electronic systems.</description>
+	</CombatExtended.AmmoCategoryDef>
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="LaserChargePackBase">
+		<defName>BOR_Ammo_XCOMLaserPack_solar</defName>
+		<label>solar laser cell</label>
+		<graphicData>
+			<texPath>BOR/Things/Item/Equipment/weaponranged/gen1/laz0r/ammo/Solar</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>1.05</MarketValue>
+		</statBases>
+		<ammoClass>BOR_XCOM_Laser_Solar</ammoClass>
+		<tradeTags>
+			<li>BOR_Tech_I</li>
+			<li>CE_AutoEnableCrafting_FabricationBench</li>
+		</tradeTags>
+		<generateAllowChance>0.10</generateAllowChance>
+		<generateCommonality>0.01</generateCommonality>
+	</ThingDef>
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="LaserChargePackBase">
+		<defName>BOR_Ammo_XCOMLaserPackInc_Neutronium</defName>
+		<label>neutronium infrared laser cell</label>
+		<graphicData>
+			<texPath>BOR/Things/Item/Equipment/weaponranged/gen1/laz0r/ammo/Infrared</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>1.05</MarketValue>
+		</statBases>
+		<ammoClass>BOR_XCOM_LaserInc_Neutronium</ammoClass>
+		<tradeTags>
+			<li>BOR_Tech_I</li>
+			<li>CE_AutoEnableCrafting_FabricationBench</li>
+		</tradeTags>
+		<generateAllowChance>0.10</generateAllowChance>
+		<generateCommonality>0.01</generateCommonality>
+	</ThingDef>
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="LaserChargePackBase">
+		<defName>BOR_Ammo_XCOMLaserPackHP_Neutronium</defName>
+		<label>neutronium untraviolet laser cell</label>
+		<graphicData>
+			<texPath>BOR/Things/Item/Equipment/weaponranged/gen1/laz0r/ammo/Ultraviolet</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>1.05</MarketValue>
+		</statBases>
+		<ammoClass>BOR_XCOM_LaserHP_Neutronium</ammoClass>
+		<tradeTags>
+			<li>BOR_Tech_I</li>
+			<li>CE_AutoEnableCrafting_FabricationBench</li>
+		</tradeTags>
+		<generateAllowChance>0.10</generateAllowChance>
+		<generateCommonality>0.01</generateCommonality>
+	</ThingDef>
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="LaserChargePackBase">
+		<defName>BOR_Ammo_XCOMLaserPackEMP_Neutronium</defName>
+		<label>neutronium EM frequency laser cell</label>
+		<graphicData>
+			<texPath>BOR/Things/Item/Equipment/weaponranged/gen1/laz0r/ammo/EM</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>1.05</MarketValue>
+		</statBases>
+		<ammoClass>BOR_XCOM_LaserEMP_Neutronium</ammoClass>
+		<tradeTags>
+			<li>BOR_Tech_I</li>
+			<li>CE_AutoEnableCrafting_FabricationBench</li>
+		</tradeTags>
+		<generateAllowChance>0.10</generateAllowChance>
+		<generateCommonality>0.01</generateCommonality>
+	</ThingDef>
+	<RecipeDef ParentName="ChargeAmmoRecipeBase">
+		<defName>MakeBOR_Ammo_XCOMLaserPack_solar</defName>
+		<label>make laser solar charge pack x500</label>
+		<description>Craft 500 solar laser charge pack.</description>
+		<jobString>Making solar laser charge pack.</jobString>
+		<researchPrerequisite>BOR_CE_BeamAmmo_I_Solar</researchPrerequisite>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Sunsteel</li>
+					</thingDefs>
+				</filter>
+				<count>8</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Neutronium</li>
+					</thingDefs>
+				</filter>
+				<count>40</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>ComponentSpacer</li>
+					</thingDefs>
+				</filter>
+				<count>8</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>BOR_Sunsteel</li>
+				<li>BOR_Neutronium</li>
+				<li>ComponentSpacer</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<BOR_Ammo_XCOMLaserPack_solar>500</BOR_Ammo_XCOMLaserPack_solar>
+		</products>
+		<workAmount>14400</workAmount>
+	</RecipeDef>
+	<RecipeDef ParentName="ChargeAmmoRecipeBase">
+		<defName>MakeBOR_Ammo_XCOMLaserPackInc_Neutronium</defName>
+		<label>make neutronium incendiary laser charge pack x500</label>
+		<description>Craft 500 neutronium incendiary laser charge pack.</description>
+		<jobString>Making neutronium incendiary laser charge pack.</jobString>
+		<researchPrerequisite>BOR_CE_BeamAmmo_I_Ni</researchPrerequisite>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Sunsteel</li>
+					</thingDefs>
+				</filter>
+				<count>8</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Neutronium</li>
+					</thingDefs>
+				</filter>
+				<count>40</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>ComponentSpacer</li>
+					</thingDefs>
+				</filter>
+				<count>8</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>BOR_Sunsteel</li>
+				<li>BOR_Neutronium</li>
+				<li>ComponentSpacer</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<BOR_Ammo_XCOMLaserPackInc_Neutronium>500</BOR_Ammo_XCOMLaserPackInc_Neutronium>
+		</products>
+		<workAmount>12400</workAmount>
+	</RecipeDef>
+	<RecipeDef ParentName="ChargeAmmoRecipeBase">
+		<defName>MakeBOR_Ammo_XCOMLaserPackHP_Neutronium</defName>
+		<label>make neutronium ultraviolet laser charge pack x500</label>
+		<description>Craft 500 neutronium ultraviolet laser charge pack.</description>
+		<jobString>Making neutronium ultraviolet laser charge pack.</jobString>
+		<researchPrerequisite>BOR_CE_BeamAmmo_I_Ni</researchPrerequisite>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Sunsteel</li>
+					</thingDefs>
+				</filter>
+				<count>8</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Neutronium</li>
+					</thingDefs>
+				</filter>
+				<count>40</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>ComponentSpacer</li>
+					</thingDefs>
+				</filter>
+				<count>8</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>BOR_Sunsteel</li>
+				<li>BOR_Neutronium</li>
+				<li>ComponentSpacer</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<BOR_Ammo_XCOMLaserPackHP_Neutronium>500</BOR_Ammo_XCOMLaserPackHP_Neutronium>
+		</products>
+		<workAmount>12400</workAmount>
+	</RecipeDef>
+	<RecipeDef ParentName="ChargeAmmoRecipeBase">
+		<defName>MakeBOR_Ammo_XCOMLaserPackEMP_Neutronium</defName>
+		<label>make neutronium EMP laser charge pack x500</label>
+		<description>Craft 500 neutronium EMP laser charge pack.</description>
+		<jobString>Making neutronium EMP laser charge pack.</jobString>
+		<researchPrerequisite>BOR_CE_BeamAmmo_I_Ni</researchPrerequisite>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Sunsteel</li>
+					</thingDefs>
+				</filter>
+				<count>8</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Neutronium</li>
+					</thingDefs>
+				</filter>
+				<count>40</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>ComponentSpacer</li>
+					</thingDefs>
+				</filter>
+				<count>8</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>BOR_Sunsteel</li>
+				<li>BOR_Neutronium</li>
+				<li>ComponentSpacer</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<BOR_Ammo_XCOMLaserPackEMP_Neutronium>500</BOR_Ammo_XCOMLaserPackEMP_Neutronium>
+		</products>
+		<workAmount>12400</workAmount>
+	</RecipeDef>
+	<!-- laser rifle-->
+	<ThingDef Class="CombatExtended.Lasers.LaserBeamDefCE" ParentName="LaserBulletGreen">
+		<defName>BOR_XCOM_Bullet_LaserRifle_solar</defName>
+		<label>laser beam</label>
+		<graphicData>
+			<color>(0,200,175)</color>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>44</damageAmountBase>
+			<armorPenetrationSharp>55</armorPenetrationSharp>
+			<armorPenetrationBlunt>0.00</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+	<ThingDef Class="CombatExtended.Lasers.LaserBeamDefCE" ParentName="LaserBulletRed">
+		<defName>BOR_XCOM_Bullet_LaserRifleCEInc_N</defName>
+		<label>laser beam</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>26</damageAmountBase>
+			<armorPenetrationSharp>36</armorPenetrationSharp>
+			<armorPenetrationBlunt>0.00</armorPenetrationBlunt>
+			<secondaryDamage>
+				<li>
+					<def>Flame</def>
+					<amount>20</amount>
+				</li>
+			</secondaryDamage>
+		</projectile>
+	</ThingDef>
+	<ThingDef Class="CombatExtended.Lasers.LaserBeamDefCE" ParentName="LaserBulletPurple">
+		<defName>BOR_XCOM_Bullet_LaserRifleCEHP_N</defName>
+		<label>laser beam</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>55</damageAmountBase>
+			<armorPenetrationSharp>29</armorPenetrationSharp>
+			<armorPenetrationBlunt>0.00</armorPenetrationBlunt>
+			<secondaryDamage>
+				<li>
+					<def>Bomb_Secondary</def>
+					<amount>13</amount>
+				</li>
+			</secondaryDamage>
+		</projectile>
+	</ThingDef>
+	<ThingDef Class="CombatExtended.Lasers.LaserBeamDefCE" ParentName="LaserBulletBlue">
+		<defName>BOR_XCOM_Bullet_LaserRifleCEEMP_N</defName>
+		<label>laser beam</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>13</damageAmountBase>
+			<armorPenetrationSharp>21</armorPenetrationSharp>
+			<armorPenetrationBlunt>0.00</armorPenetrationBlunt>
+			<secondaryDamage>
+				<li>
+					<def>EMP</def>
+					<amount>10</amount>
+				</li>
+			</secondaryDamage>
+		</projectile>
+	</ThingDef>
+	<!-- Laser sniper-->
+	<ThingDef Class="CombatExtended.Lasers.LaserBeamDefCE" ParentName="LaserBulletGreen">
+		<defName>BOR_XCOM_Bullet_LaserSniperRifle_solar</defName>
+		<label>laser beam</label>
+		<graphicData>
+			<color>(0,200,175)</color>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>220</damageAmountBase>
+			<armorPenetrationSharp>275</armorPenetrationSharp>
+			<armorPenetrationBlunt>0.00</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+	<ThingDef Class="CombatExtended.Lasers.LaserBeamDefCE" ParentName="LaserBulletRed">
+		<defName>BOR_XCOM_Bullet_LaserSniperRifleCEInc_N</defName>
+		<label>laser beam</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>130</damageAmountBase>
+			<armorPenetrationSharp>180</armorPenetrationSharp>
+			<armorPenetrationBlunt>0.00</armorPenetrationBlunt>
+			<secondaryDamage>
+				<li>
+					<def>Flame</def>
+					<amount>26</amount>
+				</li>
+			</secondaryDamage>
+		</projectile>
+	</ThingDef>
+	<ThingDef Class="CombatExtended.Lasers.LaserBeamDefCE" ParentName="LaserBulletPurple">
+		<defName>BOR_XCOM_Bullet_LaserSniperRifleCEHP_N</defName>
+		<label>laser beam</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>275</damageAmountBase>
+			<armorPenetrationSharp>145</armorPenetrationSharp>
+			<armorPenetrationBlunt>0.00</armorPenetrationBlunt>
+			<secondaryDamage>
+				<li>
+					<def>Bomb_Secondary</def>
+					<amount>20</amount>
+				</li>
+			</secondaryDamage>
+		</projectile>
+	</ThingDef>
+	<ThingDef Class="CombatExtended.Lasers.LaserBeamDefCE" ParentName="LaserBulletBlue">
+		<defName>BOR_XCOM_Bullet_LaserSniperRifleCEEMP_N</defName>
+		<label>laser beam</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>65</damageAmountBase>
+			<armorPenetrationSharp>105</armorPenetrationSharp>
+			<armorPenetrationBlunt>0.00</armorPenetrationBlunt>
+			<secondaryDamage>
+				<li>
+					<def>EMP</def>
+					<amount>13</amount>
+				</li>
+			</secondaryDamage>
+		</projectile>
+	</ThingDef>
+	<!-- scatter Laser-->
+	<ThingDef Class="CombatExtended.Lasers.LaserBeamDefCE" ParentName="LaserBulletGreen">
+		<defName>BOR_XCOM_Bullet_LaserShotgun_solar</defName>
+		<label>laser beam</label>
+		<graphicData>
+			<color>(0,200,175)</color>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>25</damageAmountBase>
+			<armorPenetrationSharp>18</armorPenetrationSharp>
+			<armorPenetrationBlunt>0.00</armorPenetrationBlunt>
+			<pelletCount>10</pelletCount>
+		</projectile>
+	</ThingDef>
+	<ThingDef Class="CombatExtended.Lasers.LaserBeamDefCE" ParentName="LaserBulletRed">
+		<defName>BOR_XCOM_Bullet_LaserShotgunCEInc_N</defName>
+		<label>laser beam</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>15</damageAmountBase>
+			<armorPenetrationSharp>12</armorPenetrationSharp>
+			<armorPenetrationBlunt>0.00</armorPenetrationBlunt>
+			<pelletCount>10</pelletCount>
+			<secondaryDamage>
+				<li>
+					<def>Flame</def>
+					<amount>10</amount>
+				</li>
+			</secondaryDamage>
+		</projectile>
+	</ThingDef>
+	<ThingDef Class="CombatExtended.Lasers.LaserBeamDefCE" ParentName="LaserBulletPurple">
+		<defName>BOR_XCOM_Bullet_LaserShotgunCEHP_N</defName>
+		<label>laser beam</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>31</damageAmountBase>
+			<armorPenetrationSharp>11</armorPenetrationSharp>
+			<armorPenetrationBlunt>0.00</armorPenetrationBlunt>
+			<pelletCount>7</pelletCount>
+			<secondaryDamage>
+				<li>
+					<def>Bomb_Secondary</def>
+					<amount>8</amount>
+				</li>
+			</secondaryDamage>
+		</projectile>
+	</ThingDef>
+	<ThingDef Class="CombatExtended.Lasers.LaserBeamDefCE" ParentName="LaserBulletBlue">
+		<defName>BOR_XCOM_Bullet_LaserShotgunCEEMP_N</defName>
+		<label>laser beam</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>10</damageAmountBase>
+			<armorPenetrationSharp>12</armorPenetrationSharp>
+			<armorPenetrationBlunt>0.00</armorPenetrationBlunt>
+			<pelletCount>10</pelletCount>
+			<secondaryDamage>
+				<li>
+					<def>EMP</def>
+					<amount>7</amount>
+				</li>
+			</secondaryDamage>
+		</projectile>
+	</ThingDef>
+	<!-- Laser cannon (bruh)-->
+	<ThingDef Class="CombatExtended.Lasers.LaserBeamDefCE" ParentName="LaserBulletGreen">
+		<defName>BOR_XCOM_Bullet_LaserCannon_solar</defName>
+		<label>laser beam</label>
+		<graphicData>
+			<color>(0,200,175)</color>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>37</damageAmountBase>
+			<armorPenetrationSharp>46</armorPenetrationSharp>
+			<armorPenetrationBlunt>0.00</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+	<ThingDef Class="CombatExtended.Lasers.LaserBeamDefCE" ParentName="LaserBulletRed">
+		<defName>BOR_XCOM_Bullet_LaserCannonCEInc_N</defName>
+		<label>laser beam</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>22</damageAmountBase>
+			<armorPenetrationSharp>30</armorPenetrationSharp>
+			<armorPenetrationBlunt>0.00</armorPenetrationBlunt>
+			<secondaryDamage>
+				<li>
+					<def>Flame</def>
+					<amount>16</amount>
+				</li>
+			</secondaryDamage>
+		</projectile>
+	</ThingDef>
+	<ThingDef Class="CombatExtended.Lasers.LaserBeamDefCE" ParentName="LaserBulletPurple">
+		<defName>BOR_XCOM_Bullet_LaserCannonCEHP_N</defName>
+		<label>laser beam</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>46</damageAmountBase>
+			<armorPenetrationSharp>24</armorPenetrationSharp>
+			<armorPenetrationBlunt>0.00</armorPenetrationBlunt>
+			<secondaryDamage>
+				<li>
+					<def>Bomb_Secondary</def>
+					<amount>19</amount>
+				</li>
+			</secondaryDamage>
+		</projectile>
+	</ThingDef>
+	<ThingDef Class="CombatExtended.Lasers.LaserBeamDefCE" ParentName="LaserBulletBlue">
+		<defName>BOR_XCOM_Bullet_LaserCannonCEEMP_N</defName>
+		<label>laser beam</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>11</damageAmountBase>
+			<armorPenetrationSharp>17</armorPenetrationSharp>
+			<armorPenetrationBlunt>0.00</armorPenetrationBlunt>
+			<secondaryDamage>
+				<li>
+					<def>EMP</def>
+					<amount>8</amount>
+				</li>
+			</secondaryDamage>
+		</projectile>
+	</ThingDef>
+	<!-- Laser pistol-->
+	<ThingDef Class="CombatExtended.Lasers.LaserBeamDefCE" ParentName="LaserBulletGreen">
+		<defName>BOR_XCOM_Bullet_Laser_Pistol_solar</defName>
+		<label>laser beam</label>
+		<graphicData>
+			<color>(0,200,175)</color>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>22</damageAmountBase>
+			<armorPenetrationSharp>13</armorPenetrationSharp>
+			<armorPenetrationBlunt>0.00</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+	<ThingDef Class="CombatExtended.Lasers.LaserBeamDefCE" ParentName="LaserBulletRed">
+		<defName>BOR_XCOM_Bullet_Laser_PistolCEInc_N</defName>
+		<label>laser beam</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>13</damageAmountBase>
+			<armorPenetrationSharp>8</armorPenetrationSharp>
+			<armorPenetrationBlunt>0.00</armorPenetrationBlunt>
+			<secondaryDamage>
+				<li>
+					<def>Flame</def>
+					<amount>10</amount>
+				</li>
+			</secondaryDamage>
+		</projectile>
+	</ThingDef>
+	<ThingDef Class="CombatExtended.Lasers.LaserBeamDefCE" ParentName="LaserBulletPurple">
+		<defName>BOR_XCOM_Bullet_Laser_PistolCEHP_N</defName>
+		<label>laser beam</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>27</damageAmountBase>
+			<armorPenetrationSharp>8</armorPenetrationSharp>
+			<armorPenetrationBlunt>0.00</armorPenetrationBlunt>
+			<secondaryDamage>
+				<li>
+					<def>Bomb_Secondary</def>
+					<amount>10</amount>
+				</li>
+			</secondaryDamage>
+		</projectile>
+	</ThingDef>
+	<ThingDef Class="CombatExtended.Lasers.LaserBeamDefCE" ParentName="LaserBulletBlue">
+		<defName>BOR_XCOM_Bullet_Laser_PistolCEEMP_N</defName>
+		<label>laser beam</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>6</damageAmountBase>
+			<armorPenetrationSharp>9</armorPenetrationSharp>
+			<armorPenetrationBlunt>0.00</armorPenetrationBlunt>
+			<secondaryDamage>
+				<li>
+					<def>EMP</def>
+					<amount>7</amount>
+				</li>
+			</secondaryDamage>
+		</projectile>
+	</ThingDef>
+	<!-- Laser bullpup-->
+	<ThingDef Class="CombatExtended.Lasers.LaserBeamDefCE" ParentName="LaserBulletGreen">
+		<defName>BOR_XCOM_Bullet_LaserBullpup_solar</defName>
+		<label>laser beam</label>
+		<graphicData>
+			<color>(0,200,175)</color>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>37</damageAmountBase>
+			<armorPenetrationSharp>46</armorPenetrationSharp>
+			<armorPenetrationBlunt>0.00</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+	<ThingDef Class="CombatExtended.Lasers.LaserBeamDefCE" ParentName="LaserBulletRed">
+		<defName>BOR_XCOM_Bullet_LaserBullpupCEInc_N</defName>
+		<label>laser beam</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>22</damageAmountBase>
+			<armorPenetrationSharp>30</armorPenetrationSharp>
+			<armorPenetrationBlunt>0.00</armorPenetrationBlunt>
+			<secondaryDamage>
+				<li>
+					<def>Flame</def>
+					<amount>16</amount>
+				</li>
+			</secondaryDamage>
+		</projectile>
+	</ThingDef>
+	<ThingDef Class="CombatExtended.Lasers.LaserBeamDefCE" ParentName="LaserBulletPurple">
+		<defName>BOR_XCOM_Bullet_LaserBullpupCEHP_N</defName>
+		<label>laser beam</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>46</damageAmountBase>
+			<armorPenetrationSharp>24</armorPenetrationSharp>
+			<armorPenetrationBlunt>0.00</armorPenetrationBlunt>
+			<secondaryDamage>
+				<li>
+					<def>Bomb_Secondary</def>
+					<amount>19</amount>
+				</li>
+			</secondaryDamage>
+		</projectile>
+	</ThingDef>
+	<ThingDef Class="CombatExtended.Lasers.LaserBeamDefCE" ParentName="LaserBulletBlue">
+		<defName>BOR_XCOM_Bullet_LaserBullpupCEEMP_N</defName>
+		<label>laser beam</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>11</damageAmountBase>
+			<armorPenetrationSharp>17</armorPenetrationSharp>
+			<armorPenetrationBlunt>0.00</armorPenetrationBlunt>
+			<secondaryDamage>
+				<li>
+					<def>EMP</def>
+					<amount>8</amount>
+				</li>
+			</secondaryDamage>
+		</projectile>
+	</ThingDef>
+	<!-- Laser DMR-->
+	<ThingDef Class="CombatExtended.Lasers.LaserBeamDefCE" ParentName="LaserBulletGreen">
+		<defName>BOR_XCOM_Bullet_LaserDMR_solar</defName>
+		<label>laser beam</label>
+		<graphicData>
+			<color>(0,200,175)</color>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>61</damageAmountBase>
+			<armorPenetrationSharp>77</armorPenetrationSharp>
+			<armorPenetrationBlunt>0.00</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+	<ThingDef Class="CombatExtended.Lasers.LaserBeamDefCE" ParentName="LaserBulletRed">
+		<defName>BOR_XCOM_Bullet_LaserDMRCEInc_N</defName>
+		<label>laser beam</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>36</damageAmountBase>
+			<armorPenetrationSharp>50</armorPenetrationSharp>
+			<armorPenetrationBlunt>0.00</armorPenetrationBlunt>
+			<secondaryDamage>
+				<li>
+					<def>Flame</def>
+					<amount>26</amount>
+				</li>
+			</secondaryDamage>
+		</projectile>
+	</ThingDef>
+	<ThingDef Class="CombatExtended.Lasers.LaserBeamDefCE" ParentName="LaserBulletPurple">
+		<defName>BOR_XCOM_Bullet_LaserDMRCEHP_N</defName>
+		<label>laser beam</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>77</damageAmountBase>
+			<armorPenetrationSharp>40</armorPenetrationSharp>
+			<armorPenetrationBlunt>0.00</armorPenetrationBlunt>
+			<secondaryDamage>
+				<li>
+					<def>Bomb_Secondary</def>
+					<amount>20</amount>
+				</li>
+			</secondaryDamage>
+		</projectile>
+	</ThingDef>
+	<ThingDef Class="CombatExtended.Lasers.LaserBeamDefCE" ParentName="LaserBulletBlue">
+		<defName>BOR_XCOM_Bullet_LaserDMRCEEMP_N</defName>
+		<label>laser beam</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>18</damageAmountBase>
+			<armorPenetrationSharp>29</armorPenetrationSharp>
+			<armorPenetrationBlunt>0.00</armorPenetrationBlunt>
+			<secondaryDamage>
+				<li>
+					<def>EMP</def>
+					<amount>13</amount>
+				</li>
+			</secondaryDamage>
+		</projectile>
+	</ThingDef>
+	<!-- ===== BOR Solar Laser AmmoSetDefs (always loaded) ===== -->
+	<CombatExtended.AmmoSetDef>
+		<defName>BOR_SolarLaser_Rifle</defName>
+		<label>solar laser rifle ammo set</label>
+		<ammoTypes>
+			<BOR_Ammo_XCOMLaserPack_solar>BOR_XCOM_Bullet_LaserRifle_solar</BOR_Ammo_XCOMLaserPack_solar>
+			<BOR_Ammo_XCOMLaserPackInc_Neutronium>BOR_XCOM_Bullet_LaserRifleCEInc_N</BOR_Ammo_XCOMLaserPackInc_Neutronium>
+			<BOR_Ammo_XCOMLaserPackHP_Neutronium>BOR_XCOM_Bullet_LaserRifleCEHP_N</BOR_Ammo_XCOMLaserPackHP_Neutronium>
+			<BOR_Ammo_XCOMLaserPackEMP_Neutronium>BOR_XCOM_Bullet_LaserRifleCEEMP_N</BOR_Ammo_XCOMLaserPackEMP_Neutronium>
+		</ammoTypes>
+	</CombatExtended.AmmoSetDef>
+	<CombatExtended.AmmoSetDef>
+		<defName>BOR_SolarLaser_Pistol</defName>
+		<label>solar laser pistol ammo set</label>
+		<ammoTypes>
+			<BOR_Ammo_XCOMLaserPack_solar>BOR_XCOM_Bullet_Laser_Pistol_solar</BOR_Ammo_XCOMLaserPack_solar>
+			<BOR_Ammo_XCOMLaserPackInc_Neutronium>BOR_XCOM_Bullet_Laser_PistolCEInc_N</BOR_Ammo_XCOMLaserPackInc_Neutronium>
+			<BOR_Ammo_XCOMLaserPackHP_Neutronium>BOR_XCOM_Bullet_Laser_PistolCEHP_N</BOR_Ammo_XCOMLaserPackHP_Neutronium>
+			<BOR_Ammo_XCOMLaserPackEMP_Neutronium>BOR_XCOM_Bullet_Laser_PistolCEEMP_N</BOR_Ammo_XCOMLaserPackEMP_Neutronium>
+		</ammoTypes>
+	</CombatExtended.AmmoSetDef>
+	<CombatExtended.AmmoSetDef>
+		<defName>BOR_SolarLaser_Cannon</defName>
+		<label>solar laser cannon ammo set</label>
+		<ammoTypes>
+			<BOR_Ammo_XCOMLaserPack_solar>BOR_XCOM_Bullet_LaserCannon_solar</BOR_Ammo_XCOMLaserPack_solar>
+			<BOR_Ammo_XCOMLaserPackInc_Neutronium>BOR_XCOM_Bullet_LaserCannonCEInc_N</BOR_Ammo_XCOMLaserPackInc_Neutronium>
+			<BOR_Ammo_XCOMLaserPackHP_Neutronium>BOR_XCOM_Bullet_LaserCannonCEHP_N</BOR_Ammo_XCOMLaserPackHP_Neutronium>
+			<BOR_Ammo_XCOMLaserPackEMP_Neutronium>BOR_XCOM_Bullet_LaserCannonCEEMP_N</BOR_Ammo_XCOMLaserPackEMP_Neutronium>
+		</ammoTypes>
+	</CombatExtended.AmmoSetDef>
+	<CombatExtended.AmmoSetDef>
+		<defName>BOR_SolarLaser_Shotgun</defName>
+		<label>solar laser shotgun ammo set</label>
+		<ammoTypes>
+			<BOR_Ammo_XCOMLaserPack_solar>BOR_XCOM_Bullet_LaserShotgun_solar</BOR_Ammo_XCOMLaserPack_solar>
+			<BOR_Ammo_XCOMLaserPackInc_Neutronium>BOR_XCOM_Bullet_LaserShotgunCEInc_N</BOR_Ammo_XCOMLaserPackInc_Neutronium>
+			<BOR_Ammo_XCOMLaserPackHP_Neutronium>BOR_XCOM_Bullet_LaserShotgunCEHP_N</BOR_Ammo_XCOMLaserPackHP_Neutronium>
+			<BOR_Ammo_XCOMLaserPackEMP_Neutronium>BOR_XCOM_Bullet_LaserShotgunCEEMP_N</BOR_Ammo_XCOMLaserPackEMP_Neutronium>
+		</ammoTypes>
+	</CombatExtended.AmmoSetDef>
+	<CombatExtended.AmmoSetDef>
+		<defName>BOR_SolarLaser_Sniper</defName>
+		<label>solar laser sniper ammo set</label>
+		<ammoTypes>
+			<BOR_Ammo_XCOMLaserPack_solar>BOR_XCOM_Bullet_LaserSniperRifle_solar</BOR_Ammo_XCOMLaserPack_solar>
+			<BOR_Ammo_XCOMLaserPackInc_Neutronium>BOR_XCOM_Bullet_LaserSniperRifleCEInc_N</BOR_Ammo_XCOMLaserPackInc_Neutronium>
+			<BOR_Ammo_XCOMLaserPackHP_Neutronium>BOR_XCOM_Bullet_LaserSniperRifleCEHP_N</BOR_Ammo_XCOMLaserPackHP_Neutronium>
+			<BOR_Ammo_XCOMLaserPackEMP_Neutronium>BOR_XCOM_Bullet_LaserSniperRifleCEEMP_N</BOR_Ammo_XCOMLaserPackEMP_Neutronium>
+		</ammoTypes>
+	</CombatExtended.AmmoSetDef>
+	<CombatExtended.AmmoSetDef>
+		<defName>BOR_SolarLaser_Bullpup</defName>
+		<label>solar laser bullpup ammo set</label>
+		<ammoTypes>
+			<BOR_Ammo_XCOMLaserPack_solar>BOR_XCOM_Bullet_LaserBullpup_solar</BOR_Ammo_XCOMLaserPack_solar>
+			<BOR_Ammo_XCOMLaserPackInc_Neutronium>BOR_XCOM_Bullet_LaserBullpupCEInc_N</BOR_Ammo_XCOMLaserPackInc_Neutronium>
+			<BOR_Ammo_XCOMLaserPackHP_Neutronium>BOR_XCOM_Bullet_LaserBullpupCEHP_N</BOR_Ammo_XCOMLaserPackHP_Neutronium>
+			<BOR_Ammo_XCOMLaserPackEMP_Neutronium>BOR_XCOM_Bullet_LaserBullpupCEEMP_N</BOR_Ammo_XCOMLaserPackEMP_Neutronium>
+		</ammoTypes>
+	</CombatExtended.AmmoSetDef>
+	<CombatExtended.AmmoSetDef>
+		<defName>BOR_SolarLaser_DMR</defName>
+		<label>solar laser DMR ammo set</label>
+		<ammoTypes>
+			<BOR_Ammo_XCOMLaserPack_solar>BOR_XCOM_Bullet_LaserDMR_solar</BOR_Ammo_XCOMLaserPack_solar>
+			<BOR_Ammo_XCOMLaserPackInc_Neutronium>BOR_XCOM_Bullet_LaserDMRCEInc_N</BOR_Ammo_XCOMLaserPackInc_Neutronium>
+			<BOR_Ammo_XCOMLaserPackHP_Neutronium>BOR_XCOM_Bullet_LaserDMRCEHP_N</BOR_Ammo_XCOMLaserPackHP_Neutronium>
+			<BOR_Ammo_XCOMLaserPackEMP_Neutronium>BOR_XCOM_Bullet_LaserDMRCEEMP_N</BOR_Ammo_XCOMLaserPackEMP_Neutronium>
+		</ammoTypes>
+	</CombatExtended.AmmoSetDef>
+	<!-- ===== BOR standalone CE laser weapons ===== -->
+	<ThingDef ParentName="BaseHumanMakeableGun">
+		<defName>BOR_Gun_LaserRifle_TI</defName>
+		<tradeTags>
+			<li>BOR_Tech_I</li>
+		</tradeTags>
+		<label>solar laser rifle</label>
+		<description>A tenebrite-infused laser rifle channeling stellar energy through a neutronium focusing lens. Fires precise teal beams of concentrated solar energy.</description>
+		<graphicData>
+			<texPath>BOR/Things/Item/Equipment/weaponranged/gen1/laz0r/rifle-laser</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<soundInteract>Interact_ChargeRifle</soundInteract>
+		<thingCategories>
+			<li>BOR_Weapons_I</li>
+		</thingCategories>
+		<statBases>
+			<WorkToMake>45000</WorkToMake>
+			<Mass>3.85</Mass>
+			<Bulk>11.00</Bulk>
+			<SwayFactor>1.49</SwayFactor>
+			<ShotSpread>0.09</ShotSpread>
+			<SightsEfficiency>0.92</SightsEfficiency>
+			<RangedWeapon_Cooldown>0.33</RangedWeapon_Cooldown>
+		</statBases>
+		<weaponTags>
+			<li>SpacerGun</li>
+			<li>Laser</li>
+			<li>CE_AI_AR</li>
+		</weaponTags>
+		<verbs Inherit="False">
+			<li Class="CombatExtended.VerbPropertiesCE">
+				<verbClass>CombatExtended.Verb_ShootCE</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>BOR_XCOM_Bullet_LaserRifle_solar</defaultProjectile>
+				<warmupTime>0.99</warmupTime>
+				<burstShotCount>5</burstShotCount>
+				<ticksBetweenBurstShots>2</ticksBetweenBurstShots>
+				<range>37.9</range>
+				<soundCast>Shot_ChargeRifle</soundCast>
+				<soundCastTail>GunTail_Medium</soundCastTail>
+				<muzzleFlashScale>9</muzzleFlashScale>
+			</li>
+		</verbs>
+		<comps>
+			<li Class="CombatExtended.CompProperties_AmmoUser">
+				<magazineSize>20</magazineSize>
+				<reloadTime>4</reloadTime>
+				<ammoSet>BOR_SolarLaser_Rifle</ammoSet>
+			</li>
+			<li Class="CombatExtended.CompProperties_FireModes">
+				<aiAimMode>AimedShot</aiAimMode>
+			</li>
+		</comps>
+		<tools>
+			<li Class="CombatExtended.ToolCE">
+				<label>stock</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>7</power>
+				<cooldownTime>1.71</cooldownTime>
+				<chanceFactor>1.50</chanceFactor>
+				<armorPenetrationBlunt>2.30</armorPenetrationBlunt>
+				<linkedBodyPartsGroup>Stock</linkedBodyPartsGroup>
+			</li>
+			<li Class="CombatExtended.ToolCE">
+				<label>barrel</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>4</power>
+				<cooldownTime>2.22</cooldownTime>
+				<armorPenetrationBlunt>1.36</armorPenetrationBlunt>
+				<linkedBodyPartsGroup>Barrel</linkedBodyPartsGroup>
+			</li>
+			<li Class="CombatExtended.ToolCE">
+				<label>muzzle</label>
+				<capacities>
+					<li>Poke</li>
+				</capacities>
+				<power>7</power>
+				<cooldownTime>1.71</cooldownTime>
+				<armorPenetrationBlunt>2.30</armorPenetrationBlunt>
+				<linkedBodyPartsGroup>Muzzle</linkedBodyPartsGroup>
+			</li>
+		</tools>
+		<recipeMaker>
+			<researchPrerequisite>BOR_SolarBeamWeaponry</researchPrerequisite>
+			<skillRequirements>
+				<Crafting>8</Crafting>
+			</skillRequirements>
+			<recipeUsers Inherit="False">
+				<li>BOR_Bench_I</li>
+			</recipeUsers>
+		</recipeMaker>
+		<costList>
+			<Plasteel>77</Plasteel>
+			<ComponentSpacer>3</ComponentSpacer>
+		</costList>
+	</ThingDef>
+	<ThingDef ParentName="BaseHumanMakeableGun">
+		<defName>BOR_Gun_LaserSniperRifle_TI</defName>
+		<tradeTags>
+			<li>BOR_Tech_I</li>
+		</tradeTags>
+		<label>solar laser sniper rifle</label>
+		<description>A tenebrite-infused laser sniper rifle focusing stellar energy into extreme-range precision beams. Equipped with advanced optics for night engagement.</description>
+		<graphicData>
+			<texPath>BOR/Things/Item/Equipment/weaponranged/gen1/laz0r/sniper-laser</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<soundInteract>Interact_ChargeRifle</soundInteract>
+		<thingCategories>
+			<li>BOR_Weapons_I</li>
+		</thingCategories>
+		<statBases>
+			<WorkToMake>60000</WorkToMake>
+			<Mass>4.62</Mass>
+			<Bulk>14.30</Bulk>
+			<SwayFactor>2.235</SwayFactor>
+			<ShotSpread>0.045</ShotSpread>
+			<SightsEfficiency>2.30</SightsEfficiency>
+			<RangedWeapon_Cooldown>0.61</RangedWeapon_Cooldown>
+			<NightVisionEfficiency_Weapon>0.33</NightVisionEfficiency_Weapon>
+		</statBases>
+		<weaponTags>
+			<li>SpacerGun</li>
+			<li>Laser</li>
+			<li>CE_AI_SR</li>
+			<li>Bipod_DMR</li>
+			<li>SniperRifle</li>
+		</weaponTags>
+		<verbs Inherit="False">
+			<li Class="CombatExtended.VerbPropertiesCE">
+				<verbClass>CombatExtended.Verb_ShootCE</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>BOR_XCOM_Bullet_LaserSniperRifle_solar</defaultProjectile>
+				<warmupTime>2</warmupTime>
+				<range>60.9</range>
+				<soundCast>ChargeLance_Fire</soundCast>
+				<soundCastTail>GunTail_Heavy</soundCastTail>
+				<muzzleFlashScale>9</muzzleFlashScale>
+			</li>
+		</verbs>
+		<comps>
+			<li Class="CombatExtended.CompProperties_AmmoUser">
+				<magazineSize>12</magazineSize>
+				<reloadTime>7</reloadTime>
+				<ammoSet>BOR_SolarLaser_Sniper</ammoSet>
+			</li>
+			<li Class="CombatExtended.CompProperties_FireModes">
+				<aiAimMode>AimedShot</aiAimMode>
+			</li>
+		</comps>
+		<tools>
+			<li Class="CombatExtended.ToolCE">
+				<label>stock</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>7</power>
+				<cooldownTime>1.71</cooldownTime>
+				<chanceFactor>1.50</chanceFactor>
+				<armorPenetrationBlunt>2.30</armorPenetrationBlunt>
+				<linkedBodyPartsGroup>Stock</linkedBodyPartsGroup>
+			</li>
+			<li Class="CombatExtended.ToolCE">
+				<label>barrel</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>4</power>
+				<cooldownTime>2.22</cooldownTime>
+				<armorPenetrationBlunt>1.36</armorPenetrationBlunt>
+				<linkedBodyPartsGroup>Barrel</linkedBodyPartsGroup>
+			</li>
+			<li Class="CombatExtended.ToolCE">
+				<label>muzzle</label>
+				<capacities>
+					<li>Poke</li>
+				</capacities>
+				<power>7</power>
+				<cooldownTime>1.71</cooldownTime>
+				<armorPenetrationBlunt>2.30</armorPenetrationBlunt>
+				<linkedBodyPartsGroup>Muzzle</linkedBodyPartsGroup>
+			</li>
+		</tools>
+		<recipeMaker>
+			<researchPrerequisite>BOR_SolarBeamHeavyWeaponry</researchPrerequisite>
+			<skillRequirements>
+				<Crafting>8</Crafting>
+			</skillRequirements>
+			<recipeUsers Inherit="False">
+				<li>BOR_Bench_I</li>
+			</recipeUsers>
+		</recipeMaker>
+		<costList>
+			<Plasteel>110</Plasteel>
+			<ComponentSpacer>6</ComponentSpacer>
+		</costList>
+	</ThingDef>
+	<ThingDef ParentName="BaseHumanMakeableGun">
+		<defName>BOR_Gun_LaserShotgun_TI</defName>
+		<tradeTags>
+			<li>BOR_Tech_I</li>
+		</tradeTags>
+		<label>solar laser shotgun</label>
+		<description>A tenebrite-infused scatter laser that fans multiple solar beams in a short-range cone. Devastating at close quarters.</description>
+		<graphicData>
+			<texPath>BOR/Things/Item/Equipment/weaponranged/gen1/laz0r/shotgun-laser</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<soundInteract>Interact_ChargeRifle</soundInteract>
+		<thingCategories>
+			<li>BOR_Weapons_I</li>
+		</thingCategories>
+		<statBases>
+			<WorkToMake>45000</WorkToMake>
+			<Mass>3.85</Mass>
+			<Bulk>10.01</Bulk>
+			<SwayFactor>1.39</SwayFactor>
+			<ShotSpread>0.55</ShotSpread>
+			<SightsEfficiency>0.83</SightsEfficiency>
+			<RangedWeapon_Cooldown>0.61</RangedWeapon_Cooldown>
+		</statBases>
+		<weaponTags>
+			<li>SpacerGun</li>
+			<li>Laser</li>
+			<li>CE_AI_BROOM</li>
+		</weaponTags>
+		<verbs Inherit="False">
+			<li Class="CombatExtended.VerbPropertiesCE">
+				<verbClass>CombatExtended.Verb_ShootCE</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>BOR_XCOM_Bullet_LaserShotgun_solar</defaultProjectile>
+				<warmupTime>1</warmupTime>
+				<range>18.9</range>
+				<soundCast>Shot_ChargeRifle</soundCast>
+				<soundCastTail>GunTail_Medium</soundCastTail>
+				<muzzleFlashScale>9</muzzleFlashScale>
+			</li>
+		</verbs>
+		<comps>
+			<li Class="CombatExtended.CompProperties_AmmoUser">
+				<magazineSize>10</magazineSize>
+				<reloadTime>4.95</reloadTime>
+				<ammoSet>BOR_SolarLaser_Shotgun</ammoSet>
+			</li>
+			<li Class="CombatExtended.CompProperties_FireModes">
+				<aiAimMode>Snapshot</aiAimMode>
+			</li>
+		</comps>
+		<tools>
+			<li Class="CombatExtended.ToolCE">
+				<label>stock</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>7</power>
+				<cooldownTime>1.71</cooldownTime>
+				<chanceFactor>1.50</chanceFactor>
+				<armorPenetrationBlunt>2.30</armorPenetrationBlunt>
+				<linkedBodyPartsGroup>Stock</linkedBodyPartsGroup>
+			</li>
+			<li Class="CombatExtended.ToolCE">
+				<label>barrel</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>4</power>
+				<cooldownTime>2.22</cooldownTime>
+				<armorPenetrationBlunt>1.36</armorPenetrationBlunt>
+				<linkedBodyPartsGroup>Barrel</linkedBodyPartsGroup>
+			</li>
+			<li Class="CombatExtended.ToolCE">
+				<label>muzzle</label>
+				<capacities>
+					<li>Poke</li>
+				</capacities>
+				<power>7</power>
+				<cooldownTime>1.71</cooldownTime>
+				<armorPenetrationBlunt>2.30</armorPenetrationBlunt>
+				<linkedBodyPartsGroup>Muzzle</linkedBodyPartsGroup>
+			</li>
+		</tools>
+		<recipeMaker>
+			<researchPrerequisite>BOR_SolarBeamWeaponry</researchPrerequisite>
+			<skillRequirements>
+				<Crafting>8</Crafting>
+			</skillRequirements>
+			<recipeUsers Inherit="False">
+				<li>BOR_Bench_I</li>
+			</recipeUsers>
+		</recipeMaker>
+		<costList>
+			<Plasteel>61</Plasteel>
+			<ComponentSpacer>6</ComponentSpacer>
+		</costList>
+	</ThingDef>
+	<ThingDef ParentName="BaseHumanMakeableGun">
+		<defName>BOR_Gun_LaserCannon_TI</defName>
+		<tradeTags>
+			<li>BOR_Tech_I</li>
+		</tradeTags>
+		<label>solar laser cannon</label>
+		<description>A heavy tenebrite-infused laser cannon that unleashes sustained bursts of solar energy. Requires two hands and a stable firing position.</description>
+		<graphicData>
+			<texPath>BOR/Things/Item/Equipment/weaponranged/gen1/laz0r/lmg-laser</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<soundInteract>Interact_ChargeRifle</soundInteract>
+		<thingCategories>
+			<li>BOR_Weapons_I</li>
+		</thingCategories>
+		<statBases>
+			<WorkToMake>80000</WorkToMake>
+			<Mass>17.60</Mass>
+			<Bulk>11.44</Bulk>
+			<SwayFactor>4.47</SwayFactor>
+			<ShotSpread>0.144</ShotSpread>
+			<SightsEfficiency>0.644</SightsEfficiency>
+			<RangedWeapon_Cooldown>0.40</RangedWeapon_Cooldown>
+		</statBases>
+		<weaponTags>
+			<li>SpacerGun</li>
+			<li>Laser</li>
+			<li>CE_AI_Suppressive</li>
+			<li>Bipod_LMG</li>
+		</weaponTags>
+		<verbs Inherit="False">
+			<li Class="CombatExtended.VerbPropertiesCE">
+				<verbClass>CombatExtended.Verb_ShootCE</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>BOR_XCOM_Bullet_LaserCannon_solar</defaultProjectile>
+				<warmupTime>1.93</warmupTime>
+				<burstShotCount>13</burstShotCount>
+				<ticksBetweenBurstShots>7</ticksBetweenBurstShots>
+				<range>37.9</range>
+				<soundCast>ChargeLance_Fire</soundCast>
+				<soundCastTail>GunTail_Heavy</soundCastTail>
+				<muzzleFlashScale>9</muzzleFlashScale>
+			</li>
+		</verbs>
+		<comps>
+			<li Class="CombatExtended.CompProperties_AmmoUser">
+				<magazineSize>40</magazineSize>
+				<reloadTime>8.25</reloadTime>
+				<ammoSet>BOR_SolarLaser_Cannon</ammoSet>
+			</li>
+			<li Class="CombatExtended.CompProperties_FireModes">
+				<aiAimMode>SuppressFire</aiAimMode>
+				<noSingleShot>true</noSingleShot>
+			</li>
+		</comps>
+		<tools>
+			<li Class="CombatExtended.ToolCE">
+				<label>stock</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>7</power>
+				<cooldownTime>1.71</cooldownTime>
+				<chanceFactor>1.50</chanceFactor>
+				<armorPenetrationBlunt>2.30</armorPenetrationBlunt>
+				<linkedBodyPartsGroup>Stock</linkedBodyPartsGroup>
+			</li>
+			<li Class="CombatExtended.ToolCE">
+				<label>barrel</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>4</power>
+				<cooldownTime>2.22</cooldownTime>
+				<armorPenetrationBlunt>1.36</armorPenetrationBlunt>
+				<linkedBodyPartsGroup>Barrel</linkedBodyPartsGroup>
+			</li>
+			<li Class="CombatExtended.ToolCE">
+				<label>muzzle</label>
+				<capacities>
+					<li>Poke</li>
+				</capacities>
+				<power>7</power>
+				<cooldownTime>1.71</cooldownTime>
+				<armorPenetrationBlunt>2.30</armorPenetrationBlunt>
+				<linkedBodyPartsGroup>Muzzle</linkedBodyPartsGroup>
+			</li>
+		</tools>
+		<recipeMaker>
+			<researchPrerequisite>BOR_SolarBeamHeavyWeaponry</researchPrerequisite>
+			<skillRequirements>
+				<Crafting>8</Crafting>
+			</skillRequirements>
+			<recipeUsers Inherit="False">
+				<li>BOR_Bench_I</li>
+			</recipeUsers>
+		</recipeMaker>
+		<costList>
+			<Plasteel>132</Plasteel>
+			<ComponentSpacer>10</ComponentSpacer>
+		</costList>
+	</ThingDef>
+	<ThingDef ParentName="BaseHumanMakeableGun">
+		<defName>BOR_Gun_LaserPistol_TI</defName>
+		<tradeTags>
+			<li>BOR_Tech_I</li>
+		</tradeTags>
+		<label>solar laser pistol</label>
+		<description>A compact tenebrite-infused laser sidearm. Easily carried and quick to draw, it fires focused teal solar beams at close range.</description>
+		<graphicData>
+			<texPath>BOR/Things/Item/Equipment/weaponranged/gen1/laz0r/pistol-laser</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<soundInteract>Interact_ChargeRifle</soundInteract>
+		<thingCategories>
+			<li>BOR_Weapons_I</li>
+		</thingCategories>
+		<statBases>
+			<WorkToMake>35000</WorkToMake>
+			<Mass>1.32</Mass>
+			<Bulk>2.53</Bulk>
+			<SwayFactor>1.29</SwayFactor>
+			<ShotSpread>0.22</ShotSpread>
+			<SightsEfficiency>0.67</SightsEfficiency>
+			<RangedWeapon_Cooldown>0.39</RangedWeapon_Cooldown>
+		</statBases>
+		<weaponTags>
+			<li>SpacerGun</li>
+			<li>Laser</li>
+			<li>CE_Sidearm</li>
+			<li>CE_AI_BROOM</li>
+			<li>CE_OneHandedWeapon</li>
+		</weaponTags>
+		<verbs Inherit="False">
+			<li Class="CombatExtended.VerbPropertiesCE">
+				<verbClass>CombatExtended.Verb_ShootCE</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>BOR_XCOM_Bullet_Laser_Pistol_solar</defaultProjectile>
+				<warmupTime>0.88</warmupTime>
+				<range>14.9</range>
+				<soundCast>Shot_ChargeRifle</soundCast>
+				<soundCastTail>GunTail_Light</soundCastTail>
+				<muzzleFlashScale>7</muzzleFlashScale>
+			</li>
+		</verbs>
+		<comps>
+			<li Class="CombatExtended.CompProperties_AmmoUser">
+				<magazineSize>10</magazineSize>
+				<reloadTime>5.06</reloadTime>
+				<ammoSet>BOR_SolarLaser_Pistol</ammoSet>
+			</li>
+			<li Class="CombatExtended.CompProperties_FireModes">
+				<aiAimMode>Snapshot</aiAimMode>
+			</li>
+		</comps>
+		<tools>
+			<li Class="CombatExtended.ToolCE">
+				<label>grip</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>2</power>
+				<cooldownTime>1.69</cooldownTime>
+				<chanceFactor>1.50</chanceFactor>
+				<armorPenetrationBlunt>0.46</armorPenetrationBlunt>
+				<linkedBodyPartsGroup>Grip</linkedBodyPartsGroup>
+			</li>
+			<li Class="CombatExtended.ToolCE">
+				<label>muzzle</label>
+				<capacities>
+					<li>Poke</li>
+				</capacities>
+				<power>2</power>
+				<cooldownTime>1.69</cooldownTime>
+				<armorPenetrationBlunt>0.46</armorPenetrationBlunt>
+				<linkedBodyPartsGroup>Muzzle</linkedBodyPartsGroup>
+			</li>
+		</tools>
+		<recipeMaker>
+			<researchPrerequisite>BOR_SolarBeamWeaponry</researchPrerequisite>
+			<skillRequirements>
+				<Crafting>8</Crafting>
+			</skillRequirements>
+			<recipeUsers Inherit="False">
+				<li>BOR_Bench_I</li>
+			</recipeUsers>
+		</recipeMaker>
+		<costList>
+			<Plasteel>50</Plasteel>
+			<ComponentSpacer>2</ComponentSpacer>
+		</costList>
+	</ThingDef>
+	<ThingDef ParentName="BaseHumanMakeableGun">
+		<defName>BOR_Gun_LaserBullpup_TI</defName>
+		<tradeTags>
+			<li>BOR_Tech_I</li>
+		</tradeTags>
+		<label>solar laser bullpup</label>
+		<description>A compact tenebrite-infused bullpup laser carbine. Its shortened frame allows rapid burst fire of concentrated solar beams while remaining easy to maneuver.</description>
+		<graphicData>
+			<texPath>BOR/Things/Item/Equipment/weaponranged/gen1/laz0r/bullpup-laser</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<soundInteract>Interact_ChargeRifle</soundInteract>
+		<thingCategories>
+			<li>BOR_Weapons_I</li>
+		</thingCategories>
+		<statBases>
+			<WorkToMake>45000</WorkToMake>
+			<Mass>3.52</Mass>
+			<Bulk>10.45</Bulk>
+			<SwayFactor>1.937</SwayFactor>
+			<ShotSpread>0.135</ShotSpread>
+			<SightsEfficiency>0.828</SightsEfficiency>
+			<RangedWeapon_Cooldown>0.28</RangedWeapon_Cooldown>
+		</statBases>
+		<weaponTags>
+			<li>SpacerGun</li>
+			<li>Laser</li>
+			<li>CE_AI_AR</li>
+		</weaponTags>
+		<verbs Inherit="False">
+			<li Class="CombatExtended.VerbPropertiesCE">
+				<verbClass>CombatExtended.Verb_ShootCE</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>BOR_XCOM_Bullet_LaserBullpup_solar</defaultProjectile>
+				<warmupTime>0.83</warmupTime>
+				<burstShotCount>8</burstShotCount>
+				<ticksBetweenBurstShots>7</ticksBetweenBurstShots>
+				<range>24.9</range>
+				<soundCast>Shot_ChargeRifle</soundCast>
+				<soundCastTail>GunTail_Medium</soundCastTail>
+				<muzzleFlashScale>9</muzzleFlashScale>
+			</li>
+		</verbs>
+		<comps>
+			<li Class="CombatExtended.CompProperties_AmmoUser">
+				<magazineSize>30</magazineSize>
+				<reloadTime>3.85</reloadTime>
+				<ammoSet>BOR_SolarLaser_Bullpup</ammoSet>
+			</li>
+			<li Class="CombatExtended.CompProperties_FireModes">
+				<aiAimMode>AimedShot</aiAimMode>
+			</li>
+		</comps>
+		<tools>
+			<li Class="CombatExtended.ToolCE">
+				<label>stock</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>7</power>
+				<cooldownTime>1.71</cooldownTime>
+				<chanceFactor>1.50</chanceFactor>
+				<armorPenetrationBlunt>2.30</armorPenetrationBlunt>
+				<linkedBodyPartsGroup>Stock</linkedBodyPartsGroup>
+			</li>
+			<li Class="CombatExtended.ToolCE">
+				<label>barrel</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>4</power>
+				<cooldownTime>2.22</cooldownTime>
+				<armorPenetrationBlunt>1.36</armorPenetrationBlunt>
+				<linkedBodyPartsGroup>Barrel</linkedBodyPartsGroup>
+			</li>
+			<li Class="CombatExtended.ToolCE">
+				<label>muzzle</label>
+				<capacities>
+					<li>Poke</li>
+				</capacities>
+				<power>7</power>
+				<cooldownTime>1.71</cooldownTime>
+				<armorPenetrationBlunt>2.30</armorPenetrationBlunt>
+				<linkedBodyPartsGroup>Muzzle</linkedBodyPartsGroup>
+			</li>
+		</tools>
+		<recipeMaker>
+			<researchPrerequisite>BOR_SolarBeamSpecialistWeaponry</researchPrerequisite>
+			<skillRequirements>
+				<Crafting>8</Crafting>
+			</skillRequirements>
+			<recipeUsers Inherit="False">
+				<li>BOR_Bench_I</li>
+			</recipeUsers>
+		</recipeMaker>
+		<costList>
+			<Plasteel>77</Plasteel>
+			<ComponentSpacer>3</ComponentSpacer>
+		</costList>
+	</ThingDef>
+	<ThingDef ParentName="BaseHumanMakeableGun">
+		<defName>BOR_Gun_LaserDMR_TI</defName>
+		<tradeTags>
+			<li>BOR_Tech_I</li>
+		</tradeTags>
+		<label>solar laser DMR</label>
+		<description>A tenebrite-infused designated marksman rifle firing high-energy solar beams at extreme range. Pairs a bipod with advanced targeting optics for precision engagements.</description>
+		<graphicData>
+			<texPath>BOR/Things/Item/Equipment/weaponranged/gen1/laz0r/DMR-laser</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<soundInteract>Interact_ChargeRifle</soundInteract>
+		<thingCategories>
+			<li>BOR_Weapons_I</li>
+		</thingCategories>
+		<statBases>
+			<WorkToMake>55000</WorkToMake>
+			<Mass>4.95</Mass>
+			<Bulk>14.30</Bulk>
+			<SwayFactor>2.086</SwayFactor>
+			<ShotSpread>0.0585</ShotSpread>
+			<SightsEfficiency>1.564</SightsEfficiency>
+			<RangedWeapon_Cooldown>0.61</RangedWeapon_Cooldown>
+		</statBases>
+		<weaponTags>
+			<li>SpacerGun</li>
+			<li>Laser</li>
+			<li>CE_AI_SR</li>
+			<li>Bipod_DMR</li>
+		</weaponTags>
+		<verbs Inherit="False">
+			<li Class="CombatExtended.VerbPropertiesCE">
+				<verbClass>CombatExtended.Verb_ShootCE</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>BOR_XCOM_Bullet_LaserDMR_solar</defaultProjectile>
+				<warmupTime>2.20</warmupTime>
+				<burstShotCount>2</burstShotCount>
+				<ticksBetweenBurstShots>4</ticksBetweenBurstShots>
+				<range>49.9</range>
+				<soundCast>ChargeLance_Fire</soundCast>
+				<soundCastTail>GunTail_Heavy</soundCastTail>
+				<muzzleFlashScale>9</muzzleFlashScale>
+			</li>
+		</verbs>
+		<comps>
+			<li Class="CombatExtended.CompProperties_AmmoUser">
+				<magazineSize>12</magazineSize>
+				<reloadTime>7</reloadTime>
+				<ammoSet>BOR_SolarLaser_DMR</ammoSet>
+			</li>
+			<li Class="CombatExtended.CompProperties_FireModes">
+				<aiAimMode>AimedShot</aiAimMode>
+			</li>
+		</comps>
+		<tools>
+			<li Class="CombatExtended.ToolCE">
+				<label>stock</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>7</power>
+				<cooldownTime>1.71</cooldownTime>
+				<chanceFactor>1.50</chanceFactor>
+				<armorPenetrationBlunt>2.30</armorPenetrationBlunt>
+				<linkedBodyPartsGroup>Stock</linkedBodyPartsGroup>
+			</li>
+			<li Class="CombatExtended.ToolCE">
+				<label>barrel</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>4</power>
+				<cooldownTime>2.22</cooldownTime>
+				<armorPenetrationBlunt>1.36</armorPenetrationBlunt>
+				<linkedBodyPartsGroup>Barrel</linkedBodyPartsGroup>
+			</li>
+			<li Class="CombatExtended.ToolCE">
+				<label>muzzle</label>
+				<capacities>
+					<li>Poke</li>
+				</capacities>
+				<power>7</power>
+				<cooldownTime>1.71</cooldownTime>
+				<armorPenetrationBlunt>2.30</armorPenetrationBlunt>
+				<linkedBodyPartsGroup>Muzzle</linkedBodyPartsGroup>
+			</li>
+		</tools>
+		<recipeMaker>
+			<researchPrerequisite>BOR_SolarBeamSpecialistWeaponry</researchPrerequisite>
+			<skillRequirements>
+				<Crafting>8</Crafting>
+			</skillRequirements>
+			<recipeUsers Inherit="False">
+				<li>BOR_Bench_I</li>
+			</recipeUsers>
+		</recipeMaker>
+		<costList>
+			<Plasteel>99</Plasteel>
+			<ComponentSpacer>4</ComponentSpacer>
+		</costList>
+	</ThingDef>
+</Defs>

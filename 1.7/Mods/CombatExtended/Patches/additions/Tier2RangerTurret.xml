@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+	<Operation Class="PatchOperationSequence">
+		<operations>
+			<li Class="PatchOperationReplace">
+				<xpath>Defs/ThingDef[defName="BOR_Turret_Ranger_TII"]/thingClass</xpath>
+				<value>
+					<thingClass>CombatExtended.Building_TurretGunCE</thingClass>
+				</value>
+			</li>
+			<li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+				<defName>BOR_Turret_Ranger_TII_Gun</defName>
+				<statBases>
+					<RangedWeapon_Cooldown>2.09</RangedWeapon_Cooldown>
+					<SightsEfficiency>4.58</SightsEfficiency>
+					<ShotSpread>0.01</ShotSpread>
+					<SwayFactor>0.28</SwayFactor>
+				</statBases>
+				<Properties>
+					<recoilAmount>3.52</recoilAmount>
+					<verbClass>CombatExtended.Verb_ShootCE</verbClass>
+					<hasStandardCommand>true</hasStandardCommand>
+					<defaultProjectile>BOR_Bullet_Ranger_AP</defaultProjectile>
+					<warmupTime>1.98</warmupTime>
+					<range>213</range>
+					<minRange>5</minRange>
+					<ticksBetweenBurstShots>1</ticksBetweenBurstShots>
+					<burstShotCount>1</burstShotCount>
+					<soundCast>railshot</soundCast>
+					<soundCastTail>GunTail_Heavy</soundCastTail>
+					<muzzleFlashScale>10</muzzleFlashScale>
+					<recoilPattern>Mounted</recoilPattern>
+					<targetParams>
+						<canTargetLocations>true</canTargetLocations>
+					</targetParams>
+				</Properties>
+				<AmmoUser>
+					<magazineSize>5</magazineSize>
+					<reloadTime>8.25</reloadTime>
+					<ammoSet>AmmoSet_RangerRailgun</ammoSet>
+				</AmmoUser>
+				<FireModes>
+					<aiUseBurstMode>FALSE</aiUseBurstMode>
+					<aiAimMode>AimedShot</aiAimMode>
+					<aimedBurstShotCount>1</aimedBurstShotCount>
+				</FireModes>
+				<weaponTags>
+					<li>TurretGun</li>
+				</weaponTags>
+			</li>
+		</operations>
+	</Operation>
+</Patch>

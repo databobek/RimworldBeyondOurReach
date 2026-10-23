@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- =====================================================================
+     BOR Combined &amp; Tenebral Vaccines
+     Gate: BOR_Setting_BORCombinedAndTenebralVaccines
+     Requires: Medical Expansion - Vaccines (onofre150.me.vaccines)
+
+     TIER 2 (Kwazaar / Quasar bench) – Combined vaccines:
+       Groups with 2+ diseases, all three quality tiers (standard/nano/archo).
+       1 product, same ingredient cost, 10× work amount.
+       Groups: BaseBio, BaseMech, MSMD Mech*, DO Bio*, DP Bio*
+
+     TIER 3 (Tenebral bench) – Super-vaccines:
+       New Hediffs (BOR_TenebralVaccinated_*) with constant pain 0.15.
+       3 vaccines: Bio (all bio diseases), Mech_I (vanilla mech), Mech_II (MSMD*).
+       Archo-level only. DLC/mod diseases patched in conditionally.
+
+     * Loaded only when the respective mod is active.
+     ===================================================================== -->
+<Patch>
+	<Operation Class="PatchOperationSequence">
+		<operations>
+			<!-- ==============================================================
+                     SECTION 3 – Diseases Overhauled (Ogliss.Mythos.DiseasesOverhauled)
+                     Combined: 10 DO bio diseases (all tiers)
+                     Also patches Tenebral Bio with DO ArchoVaccinated_ hediffs
+                     ============================================================== -->
+			<li Class="PatchOperationConditional">
+				<xpath>/Defs/ThingDef[defName="Vaccine_DO_Tuberculosis"]</xpath>
+				<match Class="PatchOperationSequence">
+					<operations>
+						<!-- Patch Tenebral Bio with DO permanent immunities -->
+						<li Class="PatchOperationAdd">
+							<xpath>/Defs/ThingDef[defName="BOR_TenebralVaccine_Bio"]/ingestible/outcomeDoers</xpath>
+							<value>
+								<li Class="IngestionOutcomeDoer_GiveHediff">
+									<hediffDef>ArchoVaccinated_DO_Tuberculosis</hediffDef>
+									<severity>1.0</severity>
+								</li>
+								<li Class="IngestionOutcomeDoer_GiveHediff">
+									<hediffDef>ArchoVaccinated_DO_KindredDick</hediffDef>
+									<severity>1.0</severity>
+								</li>
+								<li Class="IngestionOutcomeDoer_GiveHediff">
+									<hediffDef>ArchoVaccinated_DO_EpsteinBarr</hediffDef>
+									<severity>1.0</severity>
+								</li>
+								<li Class="IngestionOutcomeDoer_GiveHediff">
+									<hediffDef>ArchoVaccinated_DO_VoightBernstein</hediffDef>
+									<severity>1.0</severity>
+								</li>
+								<li Class="IngestionOutcomeDoer_GiveHediff">
+									<hediffDef>ArchoVaccinated_DO_HansenKampff</hediffDef>
+									<severity>1.0</severity>
+								</li>
+								<li Class="IngestionOutcomeDoer_GiveHediff">
+									<hediffDef>ArchoVaccinated_DO_NewReschianFever</hediffDef>
+									<severity>1.0</severity>
+								</li>
+								<li Class="IngestionOutcomeDoer_GiveHediff">
+									<hediffDef>ArchoVaccinated_DO_HepatitisK</hediffDef>
+									<severity>1.0</severity>
+								</li>
+								<li Class="IngestionOutcomeDoer_GiveHediff">
+									<hediffDef>ArchoVaccinated_DO_Sepsis</hediffDef>
+									<severity>1.0</severity>
+								</li>
+								<li Class="IngestionOutcomeDoer_GiveHediff">
+									<hediffDef>ArchoVaccinated_DO_CommonCold</hediffDef>
+									<severity>1.0</severity>
+								</li>
+								<li Class="IngestionOutcomeDoer_GiveHediff">
+									<hediffDef>ArchoVaccinated_DO_Inflammation</hediffDef>
+									<severity>1.0</severity>
+								</li>
+							</value>
+						</li>
+					</operations>
+				</match>
+			</li>
+			<!-- ==============================================================
+                     SECTION 4 – Diseases Plus (DimonSever000.DiseasesPlus.Specific)
+                     Combined: 8 DP bio diseases (all tiers)
+                     Also patches Tenebral Bio with DP ArchoVaccinated_ hediffs
+                     ============================================================== -->
+			<li Class="PatchOperationConditional">
+				<xpath>/Defs/ThingDef[defName="Vaccine_DP_CommonCold"]</xpath>
+				<match Class="PatchOperationSequence">
+					<operations>
+						<!-- Patch Tenebral Bio with DP permanent immunities -->
+						<li Class="PatchOperationAdd">
+							<xpath>/Defs/ThingDef[defName="BOR_TenebralVaccine_Bio"]/ingestible/outcomeDoers</xpath>
+							<value>
+								<li Class="IngestionOutcomeDoer_GiveHediff">
+									<hediffDef>ArchoVaccinated_DP_CommonCold</hediffDef>
+									<severity>1.0</severity>
+								</li>
+								<li Class="IngestionOutcomeDoer_GiveHediff">
+									<hediffDef>ArchoVaccinated_DP_Conjunctivitis</hediffDef>
+									<severity>1.0</severity>
+								</li>
+								<li Class="IngestionOutcomeDoer_GiveHediff">
+									<hediffDef>ArchoVaccinated_DP_Otitis</hediffDef>
+									<severity>1.0</severity>
+								</li>
+								<li Class="IngestionOutcomeDoer_GiveHediff">
+									<hediffDef>ArchoVaccinated_DP_Tuberculosis</hediffDef>
+									<severity>1.0</severity>
+								</li>
+								<li Class="IngestionOutcomeDoer_GiveHediff">
+									<hediffDef>ArchoVaccinated_DP_Pneumonia</hediffDef>
+									<severity>1.0</severity>
+								</li>
+								<li Class="IngestionOutcomeDoer_GiveHediff">
+									<hediffDef>ArchoVaccinated_DP_Sepsis</hediffDef>
+									<severity>1.0</severity>
+								</li>
+								<li Class="IngestionOutcomeDoer_GiveHediff">
+									<hediffDef>ArchoVaccinated_DP_AcuteHepatitis</hediffDef>
+									<severity>1.0</severity>
+								</li>
+								<li Class="IngestionOutcomeDoer_GiveHediff">
+									<hediffDef>ArchoVaccinated_DP_Angina</hediffDef>
+									<severity>1.0</severity>
+								</li>
+							</value>
+						</li>
+					</operations>
+				</match>
+			</li>
+			<!-- ==============================================================
+                     SECTION 5 – Biotech DLC: patch Tenebral Bio
+                     ============================================================== -->
+			<li Class="PatchOperationConditional">
+				<xpath>/Defs/ThingDef[defName="Vaccine_InfantIllness"]</xpath>
+				<match Class="PatchOperationAdd">
+					<xpath>/Defs/ThingDef[defName="BOR_TenebralVaccine_Bio"]/ingestible/outcomeDoers</xpath>
+					<value>
+						<li Class="IngestionOutcomeDoer_GiveHediff">
+							<hediffDef>ArchoVaccinated_InfantIllness</hediffDef>
+							<severity>1.0</severity>
+						</li>
+					</value>
+				</match>
+			</li>
+			<!-- ==============================================================
+                     SECTION 6 – Royalty DLC: patch Tenebral Bio
+                     ============================================================== -->
+			<li Class="PatchOperationConditional">
+				<xpath>/Defs/ThingDef[defName="Vaccine_BloodRot"]</xpath>
+				<match Class="PatchOperationAdd">
+					<xpath>/Defs/ThingDef[defName="BOR_TenebralVaccine_Bio"]/ingestible/outcomeDoers</xpath>
+					<value>
+						<li Class="IngestionOutcomeDoer_GiveHediff">
+							<hediffDef>ArchoVaccinated_BloodRot</hediffDef>
+							<severity>1.0</severity>
+						</li>
+					</value>
+				</match>
+			</li>
+			<!-- ==============================================================
+                     SECTION 7 – Necroa Archovirus: patch Tenebral Bio
+                     ============================================================== -->
+			<li Class="PatchOperationConditional">
+				<xpath>/Defs/ThingDef[defName="Vaccine_Necroa"]</xpath>
+				<match Class="PatchOperationAdd">
+					<xpath>/Defs/ThingDef[defName="BOR_TenebralVaccine_Bio"]/ingestible/outcomeDoers</xpath>
+					<value>
+						<li Class="IngestionOutcomeDoer_GiveHediff">
+							<hediffDef>ArchoVaccinated_Necroa</hediffDef>
+							<severity>1.0</severity>
+						</li>
+					</value>
+				</match>
+			</li>
+			<!-- ==============================================================
+                     SECTION 8 – Rabies: patch Tenebral Bio
+                     ============================================================== -->
+			<li Class="PatchOperationConditional">
+				<xpath>/Defs/ThingDef[defName="Vaccine_Rabies"]</xpath>
+				<match Class="PatchOperationAdd">
+					<xpath>/Defs/ThingDef[defName="BOR_TenebralVaccine_Bio"]/ingestible/outcomeDoers</xpath>
+					<value>
+						<li Class="IngestionOutcomeDoer_GiveHediff">
+							<hediffDef>ArchoVaccinated_Rabies</hediffDef>
+							<severity>1.0</severity>
+						</li>
+						<li Class="IngestionOutcomeDoer_GiveHediff">
+							<hediffDef>ArchoVaccinated_RabiesActive</hediffDef>
+							<severity>1.0</severity>
+						</li>
+					</value>
+				</match>
+			</li>
+			<!-- ==============================================================
+                     SECTION 9 – Anomaly DLC: patch Tenebral Mech I with
+                                 MetalhorrorImplant jailbreak
+                     ============================================================== -->
+			<li Class="PatchOperationConditional">
+				<xpath>/Defs/ThingDef[defName="NanoVaccine_MetalhorrorImplant"]</xpath>
+				<match Class="PatchOperationAdd">
+					<xpath>/Defs/ThingDef[defName="BOR_TenebralVaccine_Mech_I"]/ingestible/outcomeDoers</xpath>
+					<value>
+						<li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_MechaniteJailbreak">
+							<watcherHediffDef>NanoShieldWatcher_MetalhorrorImplant</watcherHediffDef>
+						</li>
+					</value>
+				</match>
+			</li>
+		</operations>
+	</Operation>
+</Patch>

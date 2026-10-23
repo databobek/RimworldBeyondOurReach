@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+	<Operation Class="PatchOperationSequence">
+		<operations>
+			<li Class="PatchOperationFindMod">
+				<mods>
+					<li>Combat Extended</li>
+				</mods>
+				<match Class="PatchOperationSequence">
+					<operations>
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_ArrayHeadset"]/statBases</xpath>
+							<value>
+								<Bulk>1</Bulk>
+								<WornBulk>1</WornBulk>
+							</value>
+						</li>
+						<li Class="PatchOperationReplace">
+							<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_ArrayHeadset"]/apparel/layers</xpath>
+							<value>
+								<layers>
+									<li>StrappedHead</li>
+								</layers>
+							</value>
+						</li>
+						<li Class="PatchOperationAddModExtension">
+							<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_ArrayHeadset" or defName="BOR_Quasar_Apparel_ArmorHelmetMechCommander" or defName="BOR_Tenebral_Apparel_ArmorHelmetMechCommander" or defName="BOR_Tenebral_Apparel_ArmorHelmetMechlordHelmet"]</xpath>
+							<value>
+								<li Class="CombatExtended.ApparelDefExtension">
+									<isRadioPack>true</isRadioPack>
+								</li>
+							</value>
+						</li>
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[@Name="BOR_MechCommanderHelmetQuasarBase" or @Name="BOR_MechCommanderHelmetTenebralBase" or @Name="BOR_MechlordHelmetQuasarBase" or @Name="BOR_MechlordHelmetTenebralBase"]/statBases</xpath>
+							<value>
+								<Bulk>4</Bulk>
+								<WornBulk>1</WornBulk>
+							</value>
+						</li>
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[@Name="BOR_MechlordSuitQuasarBase" or @Name="BOR_MechlordSuitTenebralBase"]/statBases</xpath>
+							<value>
+								<Bulk>90</Bulk>
+								<WornBulk>13</WornBulk>
+							</value>
+						</li>
+					</operations>
+				</match>
+			</li>
+		</operations>
+	</Operation>
+</Patch>
