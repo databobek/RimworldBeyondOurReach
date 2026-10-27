@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <JobDef>
+    <defName>BOR_HarvestComponents</defName>
+    <driverClass>BeyondOurReach.JobDriver_HarvestComponents</driverClass>
+    <reportString>harvesting components.</reportString>
+    <casualInterruptible>false</casualInterruptible>
+  </JobDef>
+
+  <!-- Own mood memory; stage rises by one each time it is gained again before it expires -->
+  <ThoughtDef>
+    <defName>BOR_MutilatedBody</defName>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <durationDays>15</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>mutilated a body</label>
+        <description>It wasn't right.</description>
+        <baseMoodEffect>-5</baseMoodEffect>
+      </li>
+      <li>
+        <label>mutilated a body</label>
+        <description>Mutilating humans isn't my idea of fun.</description>
+        <baseMoodEffect>-10</baseMoodEffect>
+      </li>
+      <li>
+        <label>mutilated a body</label>
+        <description>I can't... do this... anymore.</description>
+        <baseMoodEffect>-15</baseMoodEffect>
+      </li>
+      <li>
+        <label>mutilated a body</label>
+        <description>No power is worth this.</description>
+        <baseMoodEffect>-20</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>BOR_MutilatedBodySocial</defName>
+    <thoughtClass>Thought_MemorySocial</thoughtClass>
+    <durationDays>15</durationDays>
+    <stackLimit>100</stackLimit>
+    <stackLimitForSameOtherPawn>1</stackLimitForSameOtherPawn>
+    <stages>
+      <li>
+        <label>mutilated a body</label>
+        <baseOpinionOffset>-5</baseOpinionOffset>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <!-- Placeholder research -->
+  <ResearchProjectDef ParentName="BOR_Research_Base_III">
+    <defName>BOR_Research_ComponentHarvest</defName>
+    <label>biomass disassembly</label>
+    <description>Placeholder. Unlocks the butcher table's "Harvest components" operation, which consumes a fresh human corpse and a picocluster to produce crystalline joints. Mutilating a body takes a heavy toll on the operator and sours others' opinion of them.</description>
+    <baseCost>200000</baseCost>
+    <techLevel>Archotech</techLevel>
+    <prerequisites>
+      <li>BOR_Research_Production_III</li>
+    </prerequisites>
+    <researchViewX>17.00</researchViewX>
+    <researchViewY>3.90</researchViewY>
+		<discoveredLetterTitle>About: Biomass Harvesting</discoveredLetterTitle>
+		<discoveredLetterText>You are now able to "produce" tenebral joints, which are essential for creating advanced Tenebral equipment. These superior components are harvested by applying a shot of picoclusters into a dead body, effectively extracting the necessary materials from the corpse.
+
+It makes a gigantic mess and will not make people think of you any better - unless you have a matching precept.
+
+Look up Butcher tables or spots for a helpful gizmo.</discoveredLetterText>
+	</ResearchProjectDef>
+
+</Defs>

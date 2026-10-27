@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <!-- Gizmo comp on the butcher table and butcher spot (vanilla has no electric butcher table) -->
+  <Operation Class="PatchOperationSequence">
+    <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName="TableButcher"]/comps</xpath>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="TableButcher"]</xpath>
+          <value>
+            <comps />
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName="TableButcher"]/comps</xpath>
+        <value>
+          <li Class="BeyondOurReach.CompProperties_ComponentHarvest" />
+        </value>
+      </li>
+    </operations>
+  </Operation>
+  <Operation Class="PatchOperationSequence">
+    <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName="ButcherSpot"]/comps</xpath>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="ButcherSpot"]</xpath>
+          <value>
+            <comps />
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName="ButcherSpot"]/comps</xpath>
+        <value>
+          <li Class="BeyondOurReach.CompProperties_ComponentHarvest" />
+        </value>
+      </li>
+    </operations>
+  </Operation>
+  <!-- Mod-added electric butcher tables, if any -->
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/ThingDef[defName="VFE_TableButcherElectric"]/comps</xpath>
+    <success>Always</success>
+    <value>
+      <li Class="BeyondOurReach.CompProperties_ComponentHarvest" />
+    </value>
+  </Operation>
+</Patch>

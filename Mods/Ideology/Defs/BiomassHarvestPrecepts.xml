@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <IssueDef>
+    <defName>BOR_BiomassHarvest</defName>
+    <label>biomass harvest</label>
+  </IssueDef>
+
+  <PreceptDef>
+    <defName>BOR_BiomassHarvest_Exalted</defName>
+    <issue>BOR_BiomassHarvest</issue>
+    <label>exalted</label>
+    <description>Turning the dead into components is a sacred act. Those who perform it feel purpose rather than guilt.</description>
+    <impact>Medium</impact>
+    <displayOrderInIssue>10</displayOrderInIssue>
+    <selectionWeight>0.5</selectionWeight>
+  </PreceptDef>
+
+  <PreceptDef>
+    <defName>BOR_BiomassHarvest_Neutral</defName>
+    <issue>BOR_BiomassHarvest</issue>
+    <label>neutral</label>
+    <description>A body is only meat and material. Harvesting components from it troubles no one's conscience.</description>
+    <impact>Low</impact>
+    <displayOrderInIssue>20</displayOrderInIssue>
+    <selectionWeight>1</selectionWeight>
+  </PreceptDef>
+
+  <PreceptDef>
+    <defName>BOR_BiomassHarvest_Abhorrent</defName>
+    <issue>BOR_BiomassHarvest</issue>
+    <label>abhorrent</label>
+    <description>Mutilating the dead for parts is a horror. Whoever does it is haunted by it.</description>
+    <impact>Medium</impact>
+    <displayOrderInIssue>30</displayOrderInIssue>
+    <selectionWeight>1</selectionWeight>
+  </PreceptDef>
+
+  <!-- Positive counterpart of BOR_MutilatedBody, used for pawns whose ideo has the exalted precept -->
+  <ThoughtDef>
+    <defName>BOR_MutilatedBodyExalted</defName>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <durationDays>15</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>sacred harvest</label>
+        <description>It felt right.</description>
+        <baseMoodEffect>5</baseMoodEffect>
+      </li>
+      <li>
+        <label>sacred harvest</label>
+        <description>Every harvest brings us closer to power.</description>
+        <baseMoodEffect>10</baseMoodEffect>
+      </li>
+      <li>
+        <label>sacred harvest</label>
+        <description>I was made to do this.</description>
+        <baseMoodEffect>15</baseMoodEffect>
+      </li>
+      <li>
+        <label>sacred harvest</label>
+        <description>All power is worth this.</description>
+        <baseMoodEffect>20</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <!-- Positive counterpart of BOR_MutilatedBodySocial, held by observers whose ideo has the exalted precept -->
+  <ThoughtDef>
+    <defName>BOR_MutilatedBodySocialExalted</defName>
+    <thoughtClass>Thought_MemorySocial</thoughtClass>
+    <durationDays>15</durationDays>
+    <stackLimit>100</stackLimit>
+    <stackLimitForSameOtherPawn>1</stackLimitForSameOtherPawn>
+    <stages>
+      <li>
+        <label>sacred harvest</label>
+        <baseOpinionOffset>5</baseOpinionOffset>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+</Defs>
