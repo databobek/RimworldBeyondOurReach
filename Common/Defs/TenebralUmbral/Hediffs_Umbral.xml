@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- Marks an Umbral; the xenotype carries the genes when Biotech is active, this hediff stands in for them otherwise. -->
+	<HediffDef>
+		<defName>BOR_Umbral</defName>
+		<label>umbral</label>
+		<description>This person emerged from the Umbral Transformation Pod. Their body refuses any part put in by surgery and changes on its own, one kill at a time.</description>
+		<hediffClass>HediffWithComps</hediffClass>
+		<defaultLabelColor>(0.45, 0.2, 0.6)</defaultLabelColor>
+		<isBad>false</isBad>
+		<everCurableByItem>false</everCurableByItem>
+		<scenarioCanAdd>false</scenarioCanAdd>
+	</HediffDef>
+
+	<!-- Flu-style: a few days of growing weakness, then the next Umbral step instead of death. -->
+	<HediffDef>
+		<defName>BOR_UmbralTransformation</defName>
+		<label>umbral transformation</label>
+		<description>The body is reshaping itself. When the change completes, the person gains a new Umbral part.</description>
+		<hediffClass>HediffWithComps</hediffClass>
+		<defaultLabelColor>(0.45, 0.2, 0.6)</defaultLabelColor>
+		<isBad>true</isBad>
+		<initialSeverity>0.01</initialSeverity>
+		<maxSeverity>1</maxSeverity>
+		<everCurableByItem>false</everCurableByItem>
+		<scenarioCanAdd>false</scenarioCanAdd>
+		<comps>
+			<li Class="HediffCompProperties_SeverityPerDay">
+				<severityPerDay>0.25</severityPerDay>
+			</li>
+			<li>
+				<compClass>BeyondOurReach.HediffComp_UmbralTransformation</compClass>
+			</li>
+		</comps>
+		<stages>
+			<li>
+				<label>minor</label>
+				<painOffset>0.05</painOffset>
+				<capMods>
+					<li>
+						<capacity>Consciousness</capacity>
+						<offset>-0.05</offset>
+					</li>
+				</capMods>
+			</li>
+			<li>
+				<minSeverity>0.35</minSeverity>
+				<label>major</label>
+				<painOffset>0.15</painOffset>
+				<vomitMtbDays>1.5</vomitMtbDays>
+				<capMods>
+					<li>
+						<capacity>Consciousness</capacity>
+						<offset>-0.1</offset>
+					</li>
+					<li>
+						<capacity>Manipulation</capacity>
+						<offset>-0.1</offset>
+					</li>
+					<li>
+						<capacity>Moving</capacity>
+						<offset>-0.1</offset>
+					</li>
+				</capMods>
+			</li>
+			<li>
+				<minSeverity>0.7</minSeverity>
+				<label>extreme</label>
+				<painOffset>0.3</painOffset>
+				<vomitMtbDays>0.75</vomitMtbDays>
+				<capMods>
+					<li>
+						<capacity>Consciousness</capacity>
+						<offset>-0.2</offset>
+					</li>
+					<li>
+						<capacity>Manipulation</capacity>
+						<offset>-0.2</offset>
+					</li>
+					<li>
+						<capacity>Moving</capacity>
+						<offset>-0.2</offset>
+					</li>
+				</capMods>
+			</li>
+		</stages>
+		<modExtensions>
+			<li Class="BeyondOurReach.DefModExtension_UmbralTransformation">
+				<phaseAChance>0.25</phaseAChance>
+				<phaseBChance>0.05</phaseBChance>
+				<phaseCChance>0.2</phaseCChance>
+				<emissionChanceFactor>0.5</emissionChanceFactor>
+				<replacements>
+					<li><bodyPart>Eye</bodyPart><hediff>BOR_UmbralBionicEye</hediff></li>
+					<li><bodyPart>Ear</bodyPart><hediff>BOR_UmbralBionicEar</hediff></li>
+					<li><bodyPart>Jaw</bodyPart><hediff>BOR_UmbralBionicJaw</hediff></li>
+					<li><bodyPart>Brain</bodyPart><hediff>BOR_UmbralBrain</hediff></li>
+					<li><bodyPart>Shoulder</bodyPart><hediff>BOR_UmbralBionicArm</hediff></li>
+					<li><bodyPart>Leg</bodyPart><hediff>BOR_UmbralBionicLeg</hediff></li>
+					<li><bodyPart>Heart</bodyPart><hediff>BOR_UmbralBionicHeart</hediff></li>
+					<li><bodyPart>Liver</bodyPart><hediff>BOR_UmbralBionicLiver</hediff></li>
+					<li><bodyPart>Kidney</bodyPart><hediff>BOR_UmbralBionicKidney</hediff></li>
+					<li><bodyPart>Lung</bodyPart><hediff>BOR_UmbralBionicLung</hediff></li>
+				</replacements>
+			</li>
+		</modExtensions>
+	</HediffDef>
+
+	<!-- The brain cannot be swapped, so the Umbral brain grows over it. -->
+	<HediffDef ParentName="BOR_ImplantUmbralHediffBase">
+		<defName>BOR_UmbralBrain</defName>
+		<label>umbral brain</label>
+		<labelNoun>an Umbral brain</labelNoun>
+		<description>Black crystal lattice threaded through the brain. Thought runs faster and colder.</description>
+		<defaultLabelColor>(0.45, 0.2, 0.6)</defaultLabelColor>
+		<stages>
+			<li>
+				<capMods>
+					<li>
+						<capacity>Consciousness</capacity>
+						<offset>0.3</offset>
+					</li>
+				</capMods>
+			</li>
+		</stages>
+	</HediffDef>
+
+	<!-- Phase B. Severity is the mode: 1 camo, 2 utility, 3 combat. The armor visuals are locked apparel swapped per mode. -->
+	<HediffDef>
+		<defName>BOR_UmbralExoskeleton</defName>
+		<label>umbral exoskeleton</label>
+		<description>A shell of living crystal grown over the body. It shifts between camouflage, utility and combat forms. No other clothing fits over it.</description>
+		<hediffClass>HediffWithComps</hediffClass>
+		<defaultLabelColor>(0.45, 0.2, 0.6)</defaultLabelColor>
+		<isBad>false</isBad>
+		<initialSeverity>2</initialSeverity>
+		<minSeverity>0</minSeverity>
+		<maxSeverity>3</maxSeverity>
+		<everCurableByItem>false</everCurableByItem>
+		<scenarioCanAdd>false</scenarioCanAdd>
+		<stages>
+			<li>
+				<!-- CAMO: unseen, but cannot interact with anything. -->
+				<capMods>
+					<li>
+						<capacity>Manipulation</capacity>
+						<setMax>0</setMax>
+					</li>
+				</capMods>
+			</li>
+			<li>
+				<!-- UTILITY: no armor, better work. -->
+				<minSeverity>1.5</minSeverity>
+				<statFactors>
+					<WorkSpeedGlobal>1.5</WorkSpeedGlobal>
+					<MiningSpeed>1.3</MiningSpeed>
+					<ConstructionSpeed>1.3</ConstructionSpeed>
+					<PlantWorkSpeed>1.3</PlantWorkSpeed>
+				</statFactors>
+			</li>
+			<li>
+				<!-- COMBAT: very high armor, much worse work. -->
+				<minSeverity>2.5</minSeverity>
+				<statOffsets>
+					<ArmorRating_Sharp>2.5</ArmorRating_Sharp>
+					<ArmorRating_Blunt>1.2</ArmorRating_Blunt>
+					<ArmorRating_Heat>1.8</ArmorRating_Heat>
+				</statOffsets>
+				<statFactors>
+					<WorkSpeedGlobal>0.4</WorkSpeedGlobal>
+				</statFactors>
+			</li>
+		</stages>
+		<comps>
+			<li Class="BeyondOurReach.HediffCompProperties_UmbralModeApparel">
+				<ownsMode>true</ownsMode>
+				<apparelByMode>
+					<li>BOR_UmbralExoskeleton_Camo</li>
+					<li>BOR_UmbralExoskeleton_Utility</li>
+					<li>BOR_UmbralExoskeleton_Combat</li>
+				</apparelByMode>
+			</li>
+		</comps>
+	</HediffDef>
+
+	<HediffDef>
+		<defName>BOR_UmbralExoskull</defName>
+		<label>umbral exoskull</label>
+		<description>A crystal helm grown over the skull. It follows the form of the exoskeleton.</description>
+		<hediffClass>HediffWithComps</hediffClass>
+		<defaultLabelColor>(0.45, 0.2, 0.6)</defaultLabelColor>
+		<isBad>false</isBad>
+		<everCurableByItem>false</everCurableByItem>
+		<scenarioCanAdd>false</scenarioCanAdd>
+		<comps>
+			<li Class="BeyondOurReach.HediffCompProperties_UmbralModeApparel">
+				<apparelByMode>
+					<li>BOR_UmbralExoskull_Camo</li>
+					<li>BOR_UmbralExoskull_Utility</li>
+					<li>BOR_UmbralExoskull_Combat</li>
+				</apparelByMode>
+			</li>
+		</comps>
+	</HediffDef>
+
+	<HediffDef>
+		<defName>BOR_UmbralCamo</defName>
+		<label>umbral camouflage</label>
+		<description>The exoskeleton bends light around the body.</description>
+		<hediffClass>HediffWithComps</hediffClass>
+		<isBad>false</isBad>
+		<everCurableByItem>false</everCurableByItem>
+		<scenarioCanAdd>false</scenarioCanAdd>
+		<comps>
+			<li Class="HediffCompProperties_Invisibility">
+				<visibleToPlayer>true</visibleToPlayer>
+				<fadeDurationTicks>30</fadeDurationTicks>
+				<recoverFromDisruptedTicks>300</recoverFromDisruptedTicks>
+			</li>
+		</comps>
+	</HediffDef>
+
+	<!-- Phase C. Shown as the pawn's weapon; the gizmo picks one of four forms. -->
+	<HediffDef>
+		<defName>BOR_UmbralUtilityPod</defName>
+		<label>umbral utility pod</label>
+		<description>A crystal growth on the arm that takes the shape of a blade, a tool, a gun or a launcher. It needs no ammunition, and the hand it grows from holds nothing else.</description>
+		<hediffClass>HediffWithComps</hediffClass>
+		<defaultLabelColor>(0.45, 0.2, 0.6)</defaultLabelColor>
+		<isBad>false</isBad>
+		<everCurableByItem>false</everCurableByItem>
+		<scenarioCanAdd>false</scenarioCanAdd>
+		<comps>
+			<li Class="BeyondOurReach.HediffCompProperties_UmbralUtilityPod">
+				<weapons>
+					<li>BOR_UmbralUtility_Blade</li>
+					<li>BOR_UmbralUtility_Tool</li>
+					<li>BOR_UmbralUtility_Gun</li>
+					<li>BOR_UmbralUtility_Launcher</li>
+				</weapons>
+			</li>
+		</comps>
+	</HediffDef>
+</Defs>

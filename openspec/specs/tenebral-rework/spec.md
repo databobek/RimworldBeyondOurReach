@@ -87,3 +87,14 @@ Before the pod can operate, a tenebral appendage or organ and femtoclusters SHAL
 - Whether crystallization progresses while the pawn is not psychotic.
 - The scaling formula for crystalline joints (componentIII) per requested item.
 - How many work actions unlock each locked cell on the altar.
+
+## Implementation decisions
+Implemented in `TenebralPsychosis.cs`, `TenebralSurgery.cs`, `TenebralPods.cs`, `DarkAltar.cs`. Tunables live in XML mod extensions on `BOR_TenebralPsychosis` and `BOR_TenebralBreakCounter`.
+
+- Psychosis is the `BOR_TenebralPsychosis` hediff (severity 0..1). It is hidden below 0.1 (latent), which is the "delayed by a few days" part. A pawn is psychotic once it is visible.
+- Severity floor = (implants + tenebrite gear x 0.5) x 0.1. Nearby tenebrite emission (buildings 1, floor cells 0.1, radius 6, capped at 3) adds 0.03 severity per day per unit. Without emission, severity decays 0.05/day down to the floor.
+- Holytech threshold: 3 breaks. Umbral threshold: 6 breaks. Breaks caused by damage or psycasts don't count.
+- Tenebral bionics can be removed by surgery only from the holytech threshold onward; removing one adds `BOR_HolytechCandidate`.
+- Crystallization: 4 parts per day, plus 2 at once for every break past the threshold, and it keeps going whether or not the pawn is psychotic. Eligible parts are every non-core part that is not vital and not an eating part (so heart, brain, lungs, liver, kidneys, stomach, neck and jaw never crystallize). The percentage counts eligible parts.
+- The Umbral Transformation Pod refuses a pawn below 50%.
+- Altar: unlocking a cell takes the forge analysis time for the item. Each run costs ceil(value x yield x 0.5 / joint value) crystalline joints (at least 1). Work drains 2 days' worth of bloodlust per day of work.

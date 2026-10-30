@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!--
+		Umbral exoskeleton, exoskull and utility pod forms. These are never made or traded: the Umbral hediffs put them
+		on the pawn (locked) and destroy them when they leave it. Textures are placeholders copied from Tier 3 gear.
+	-->
+	<ThingDef Name="BOR_UmbralExoApparelBase" ParentName="ApparelNoQualityBase" Abstract="True">
+		<techLevel>Archotech</techLevel>
+		<destroyOnDrop>true</destroyOnDrop>
+		<tradeability>None</tradeability>
+		<smeltable>false</smeltable>
+		<burnableByRecipe>false</burnableByRecipe>
+		<generateCommonality>0</generateCommonality>
+		<thingCategories Inherit="False" />
+		<statBases>
+			<MaxHitPoints>5000</MaxHitPoints>
+			<Mass>0</Mass>
+			<Flammability>0</Flammability>
+			<EquipDelay>1</EquipDelay>
+			<MarketValue>0</MarketValue>
+			<Insulation_Cold>40</Insulation_Cold>
+			<Insulation_Heat>20</Insulation_Heat>
+		</statBases>
+	</ThingDef>
+
+	<ThingDef Name="BOR_UmbralExoskeletonBase" ParentName="BOR_UmbralExoApparelBase" Abstract="True">
+		<description>Living Umbral crystal grown over the body. It cannot be taken off.</description>
+		<apparel>
+			<bodyPartGroups>
+				<li>Torso</li>
+				<li>Neck</li>
+				<li>Shoulders</li>
+				<li>Arms</li>
+				<li>Legs</li>
+				<li>Hands</li>
+				<li>Feet</li>
+			</bodyPartGroups>
+			<layers>
+				<li>OnSkin</li>
+				<li>Middle</li>
+				<li>Shell</li>
+			</layers>
+			<canBeGeneratedToSatisfyWarmth>false</canBeGeneratedToSatisfyWarmth>
+			<canBeGeneratedToSatisfyToxicEnvironmentResistance>false</canBeGeneratedToSatisfyToxicEnvironmentResistance>
+			<useDeflectMetalEffect>true</useDeflectMetalEffect>
+		</apparel>
+	</ThingDef>
+
+	<ThingDef ParentName="BOR_UmbralExoskeletonBase">
+		<defName>BOR_UmbralExoskeleton_Camo</defName>
+		<label>umbral exoskeleton (camo)</label>
+		<graphicData>
+			<texPath>BOR/Things/Pawn/Humanlike/Apparel/UmbralExoskeleton_Camo/UmbralExoskeleton_Camo</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<apparel>
+			<wornGraphicPath>BOR/Things/Pawn/Humanlike/Apparel/UmbralExoskeleton_Camo/UmbralExoskeleton_Camo</wornGraphicPath>
+		</apparel>
+	</ThingDef>
+
+	<ThingDef ParentName="BOR_UmbralExoskeletonBase">
+		<defName>BOR_UmbralExoskeleton_Utility</defName>
+		<label>umbral exoskeleton (utility)</label>
+		<graphicData>
+			<texPath>BOR/Things/Pawn/Humanlike/Apparel/UmbralExoskeleton_Utility/UmbralExoskeleton_Utility</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<apparel>
+			<wornGraphicPath>BOR/Things/Pawn/Humanlike/Apparel/UmbralExoskeleton_Utility/UmbralExoskeleton_Utility</wornGraphicPath>
+		</apparel>
+	</ThingDef>
+
+	<ThingDef ParentName="BOR_UmbralExoskeletonBase">
+		<defName>BOR_UmbralExoskeleton_Combat</defName>
+		<label>umbral exoskeleton (combat)</label>
+		<graphicData>
+			<texPath>BOR/Things/Pawn/Humanlike/Apparel/UmbralExoskeleton_Combat/UmbralExoskeleton_Combat</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<apparel>
+			<wornGraphicPath>BOR/Things/Pawn/Humanlike/Apparel/UmbralExoskeleton_Combat/UmbralExoskeleton_Combat</wornGraphicPath>
+		</apparel>
+	</ThingDef>
+
+	<ThingDef Name="BOR_UmbralExoskullBase" ParentName="BOR_UmbralExoApparelBase" Abstract="True">
+		<description>Living Umbral crystal grown over the skull. It cannot be taken off.</description>
+		<apparel>
+			<bodyPartGroups>
+				<li>FullHead</li>
+			</bodyPartGroups>
+			<layers>
+				<li>Overhead</li>
+			</layers>
+			<canBeGeneratedToSatisfyWarmth>false</canBeGeneratedToSatisfyWarmth>
+			<canBeGeneratedToSatisfyToxicEnvironmentResistance>false</canBeGeneratedToSatisfyToxicEnvironmentResistance>
+			<useDeflectMetalEffect>true</useDeflectMetalEffect>
+		</apparel>
+	</ThingDef>
+
+	<ThingDef ParentName="BOR_UmbralExoskullBase">
+		<defName>BOR_UmbralExoskull_Camo</defName>
+		<label>umbral exoskull (camo)</label>
+		<graphicData>
+			<texPath>BOR/Things/Pawn/Humanlike/Apparel/UmbralExoskull_Camo/UmbralExoskull_Camo</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<apparel>
+			<wornGraphicPath>BOR/Things/Pawn/Humanlike/Apparel/UmbralExoskull_Camo/UmbralExoskull_Camo</wornGraphicPath>
+		</apparel>
+	</ThingDef>
+
+	<ThingDef ParentName="BOR_UmbralExoskullBase">
+		<defName>BOR_UmbralExoskull_Utility</defName>
+		<label>umbral exoskull (utility)</label>
+		<graphicData>
+			<texPath>BOR/Things/Pawn/Humanlike/Apparel/UmbralExoskull_Utility/UmbralExoskull_Utility</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<apparel>
+			<wornGraphicPath>BOR/Things/Pawn/Humanlike/Apparel/UmbralExoskull_Utility/UmbralExoskull_Utility</wornGraphicPath>
+		</apparel>
+	</ThingDef>
+
+	<ThingDef ParentName="BOR_UmbralExoskullBase">
+		<defName>BOR_UmbralExoskull_Combat</defName>
+		<label>umbral exoskull (combat)</label>
+		<graphicData>
+			<texPath>BOR/Things/Pawn/Humanlike/Apparel/UmbralExoskull_Combat/UmbralExoskull_Combat</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<apparel>
+			<wornGraphicPath>BOR/Things/Pawn/Humanlike/Apparel/UmbralExoskull_Combat/UmbralExoskull_Combat</wornGraphicPath>
+		</apparel>
+	</ThingDef>
+
+	<!-- Utility pod forms: no ammo, gone the moment they leave the hand. -->
+	<ThingDef Name="BOR_UmbralUtilityMeleeBase" ParentName="BaseMeleeWeapon_Sharp" Abstract="True">
+		<techLevel>Archotech</techLevel>
+		<destroyOnDrop>true</destroyOnDrop>
+		<tradeability>None</tradeability>
+		<smeltable>false</smeltable>
+		<burnableByRecipe>false</burnableByRecipe>
+		<generateCommonality>0</generateCommonality>
+		<thingCategories Inherit="False" />
+		<weaponTags Inherit="False" />
+		<recipeMaker Inherit="False" IsNull="True" />
+		<statBases>
+			<MarketValue>0</MarketValue>
+			<Mass>0</Mass>
+		</statBases>
+	</ThingDef>
+
+	<ThingDef ParentName="BOR_UmbralUtilityMeleeBase">
+		<defName>BOR_UmbralUtility_Blade</defName>
+		<label>umbral pod blade</label>
+		<description>The utility pod shaped into a long crystal blade.</description>
+		<graphicData>
+			<texPath>BOR/Things/Item/Equipment/umbral/utility_blade</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<equippedAngleOffset>-65</equippedAngleOffset>
+		<tools>
+			<li>
+				<label>point</label>
+				<capacities>
+					<li>Stab</li>
+				</capacities>
+				<power>58</power>
+				<cooldownTime>1.5</cooldownTime>
+				<armorPenetration>2.0</armorPenetration>
+			</li>
+			<li>
+				<label>edge</label>
+				<capacities>
+					<li>Cut</li>
+				</capacities>
+				<power>62</power>
+				<cooldownTime>1.6</cooldownTime>
+				<armorPenetration>2.0</armorPenetration>
+			</li>
+		</tools>
+	</ThingDef>
+
+	<ThingDef ParentName="BOR_UmbralUtilityMeleeBase">
+		<defName>BOR_UmbralUtility_Tool</defName>
+		<label>umbral pod tool</label>
+		<description>The utility pod shaped into a multitool. Poor in a fight, superb for work.</description>
+		<graphicData>
+			<texPath>BOR/Things/Item/Equipment/umbral/utility_tool</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<equippedStatOffsets>
+			<WorkSpeedGlobal>0.5</WorkSpeedGlobal>
+			<MiningSpeed>1</MiningSpeed>
+			<ConstructionSpeed>1</ConstructionSpeed>
+			<PlantWorkSpeed>0.5</PlantWorkSpeed>
+		</equippedStatOffsets>
+		<tools>
+			<li>
+				<label>head</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>55</power>
+				<cooldownTime>1.8</cooldownTime>
+				<armorPenetration>0.25</armorPenetration>
+			</li>
+		</tools>
+	</ThingDef>
+
+	<ThingDef Name="BOR_UmbralUtilityRangedBase" ParentName="BaseGun" Abstract="True">
+		<techLevel>Archotech</techLevel>
+		<destroyOnDrop>true</destroyOnDrop>
+		<tradeability>None</tradeability>
+		<smeltable>false</smeltable>
+		<burnableByRecipe>false</burnableByRecipe>
+		<generateCommonality>0</generateCommonality>
+		<thingCategories Inherit="False" />
+		<weaponTags Inherit="False" />
+		<recipeMaker Inherit="False" IsNull="True" />
+		<statBases>
+			<MarketValue>0</MarketValue>
+			<Mass>0</Mass>
+		</statBases>
+		<tools>
+			<li>
+				<label>pod</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>14</power>
+				<cooldownTime>1.6</cooldownTime>
+			</li>
+		</tools>
+	</ThingDef>
+
+	<ThingDef ParentName="BOR_UmbralUtilityRangedBase">
+		<defName>BOR_UmbralUtility_Gun</defName>
+		<label>umbral pod gun</label>
+		<description>The utility pod shaped into a gun that fires slivers of its own crystal.</description>
+		<graphicData>
+			<texPath>BOR/Things/Item/Equipment/umbral/utility_gun</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<statBases>
+			<AccuracyTouch>0.85</AccuracyTouch>
+			<AccuracyShort>0.9</AccuracyShort>
+			<AccuracyMedium>0.88</AccuracyMedium>
+			<AccuracyLong>0.75</AccuracyLong>
+			<RangedWeapon_Cooldown>0.9</RangedWeapon_Cooldown>
+		</statBases>
+		<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>BOR_Bullet_UmbralPod</defaultProjectile>
+				<warmupTime>0.5</warmupTime>
+				<range>38.9</range>
+				<burstShotCount>4</burstShotCount>
+				<ticksBetweenBurstShots>6</ticksBetweenBurstShots>
+				<soundCast>Shot_AssaultRifle</soundCast>
+				<soundCastTail>GunTail_Medium</soundCastTail>
+				<muzzleFlashScale>9</muzzleFlashScale>
+			</li>
+		</verbs>
+	</ThingDef>
+
+	<ThingDef ParentName="BaseBullet">
+		<defName>BOR_Bullet_UmbralPod</defName>
+		<label>umbral crystal sliver</label>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>TenebralBullet</damageDef>
+			<damageAmountBase>40</damageAmountBase>
+			<armorPenetrationBase>1.6</armorPenetrationBase>
+			<stoppingPower>1.5</stoppingPower>
+			<speed>120</speed>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="BaseBullet">
+		<defName>BOR_Bullet_UmbralLauncher</defName>
+		<label>umbral vaporizing shard</label>
+		<graphicData>
+			<texPath>Things/Projectile/Rocket_Big</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+		</graphicData>
+		<thingClass>Projectile_Explosive</thingClass>
+		<projectile>
+			<damageDef>Vaporize</damageDef>
+			<damageAmountBase>150</damageAmountBase>
+			<explosionRadius>3</explosionRadius>
+			<speed>55</speed>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="BOR_UmbralUtilityRangedBase">
+		<defName>BOR_UmbralUtility_Launcher</defName>
+		<label>umbral pod launcher</label>
+		<description>The utility pod shaped into a launcher that lobs crystal which flashes into a vaporizing blast.</description>
+		<graphicData>
+			<texPath>BOR/Things/Item/Equipment/umbral/utility_launcher</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<statBases>
+			<AccuracyTouch>0.6</AccuracyTouch>
+			<AccuracyShort>0.7</AccuracyShort>
+			<AccuracyMedium>0.7</AccuracyMedium>
+			<AccuracyLong>0.6</AccuracyLong>
+			<RangedWeapon_Cooldown>3.5</RangedWeapon_Cooldown>
+		</statBases>
+		<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>BOR_Bullet_UmbralLauncher</defaultProjectile>
+				<forcedMissRadius>1.9</forcedMissRadius>
+				<warmupTime>2.5</warmupTime>
+				<ai_AvoidFriendlyFireRadius>4</ai_AvoidFriendlyFireRadius>
+				<range>32.9</range>
+				<burstShotCount>1</burstShotCount>
+				<soundCast>InfernoCannon_Fire</soundCast>
+				<soundCastTail>GunTail_Heavy</soundCastTail>
+				<targetParams>
+					<canTargetLocations>true</canTargetLocations>
+				</targetParams>
+				<muzzleFlashScale>14</muzzleFlashScale>
+			</li>
+		</verbs>
+	</ThingDef>
+</Defs>
