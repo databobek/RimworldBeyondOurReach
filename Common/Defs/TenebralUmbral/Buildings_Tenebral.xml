@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- Textures are placeholders: the dark forge for the altar, the Tier 3 biosculpter pod for both pods. -->
+	<ThingDef ParentName="BuildingBase">
+		<defName>BOR_DarkArchotechAltar</defName>
+		<label>dark archotech altar</label>
+		<description>A forge that already knows every tenebral design but will not give them up for free. Each design must be unsealed by work, and every item has to be paid for in crystalline joints. Only the psychotic can bear to work it, and the work drains their bloodlust. Work left unfinished stays on the altar.</description>
+		<thingClass>Building</thingClass>
+		<graphicData>
+			<texPath>BOR/Things/Building/tier3/dark_altar</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawRotated>false</drawRotated>
+			<drawSize>(4.5, 4.5)</drawSize>
+			<drawOffset>(0,4,0.25)</drawOffset>
+		</graphicData>
+		<castEdgeShadows>true</castEdgeShadows>
+		<staticSunShadowHeight>0.20</staticSunShadowHeight>
+		<constructEffect>ConstructMetal</constructEffect>
+		<costList>
+			<BOR_Tenebrite>200</BOR_Tenebrite>
+			<BOR_ComponentIII>6</BOR_ComponentIII>
+		</costList>
+		<altitudeLayer>Building</altitudeLayer>
+		<fillPercent>0.4</fillPercent>
+		<useHitPoints>True</useHitPoints>
+		<statBases>
+			<WorkToBuild>9000</WorkToBuild>
+			<MaxHitPoints>1000</MaxHitPoints>
+			<Flammability>0</Flammability>
+		</statBases>
+		<size>(3,3)</size>
+		<designationCategory>BOR</designationCategory>
+		<uiOrder>2320</uiOrder>
+		<passability>PassThroughOnly</passability>
+		<pathCost>50</pathCost>
+		<hasInteractionCell>True</hasInteractionCell>
+		<interactionCellOffset>(0,0,-2)</interactionCellOffset>
+		<surfaceType>Item</surfaceType>
+		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+		<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+		<inspectorTabs>
+			<li>BeyondOurReach.ITab_DarkAltar</li>
+		</inspectorTabs>
+		<comps>
+			<li Class="BeyondOurReach.CompProperties_DarkAltar">
+				<gridWidth>4</gridWidth>
+				<unlockWorkFactor>1</unlockWorkFactor>
+				<componentCostFactor>0.5</componentCostFactor>
+				<bloodlustDrainPerDay>2</bloodlustDrainPerDay>
+				<entries>
+					<li><thing>BOR_Tenebral_Blade</thing></li>
+					<li><thing>BOR_Tenebral_Cleaver</thing></li>
+					<li><thing>BOR_Tenebral_Dagger</thing></li>
+					<li><thing>BOR_Gun_Autopistol_TIII</thing></li>
+					<li><thing>BOR_Gun_ChainShotgun_TIII</thing></li>
+					<li><thing>BOR_Gun_AssaultRifle_TIII</thing></li>
+					<li><thing>BOR_Gun_SniperRifle_TIII</thing></li>
+					<li><thing>BOR_Gun_LMG_TIII</thing></li>
+					<li><thing>BOR_Tenebrite</thing></li>
+					<li><thing>BOR_TenebralOrgan</thing></li>
+					<li><thing>BOR_TenebralAppendage</thing></li>
+					<li><thing>BOR_Femtoclusters</thing></li>
+				</entries>
+			</li>
+		</comps>
+		<placeWorkers>
+			<li>PlaceWorker_PreventInteractionSpotOverlap</li>
+		</placeWorkers>
+		<researchPrerequisites>
+			<li>BOR_Research_Production_III</li>
+		</researchPrerequisites>
+		<rotatable>true</rotatable>
+	</ThingDef>
+
+	<ThingDef Name="BOR_TenebralCasketBase" ParentName="BuildingBase" Abstract="True">
+		<containedPawnsSelectable>true</containedPawnsSelectable>
+		<drawerType>RealtimeOnly</drawerType>
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<pathCost>42</pathCost>
+		<blockWind>true</blockWind>
+		<fillPercent>0.5</fillPercent>
+		<canOverlapZones>false</canOverlapZones>
+		<tickerType>Normal</tickerType>
+		<size>(3,2)</size>
+		<designationCategory>BOR</designationCategory>
+		<hasInteractionCell>true</hasInteractionCell>
+		<interactionCellOffset>(0,0,2)</interactionCellOffset>
+		<defaultPlacingRot>South</defaultPlacingRot>
+		<terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+		<constructEffect>ConstructMetal</constructEffect>
+		<constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+		<inspectorTabs>
+			<li>ITab_ContentsCasket</li>
+		</inspectorTabs>
+		<placeWorkers>
+			<li>PlaceWorker_PreventInteractionSpotOverlap</li>
+		</placeWorkers>
+	</ThingDef>
+
+	<ThingDef ParentName="BOR_TenebralCasketBase">
+		<defName>BOR_UmbralTransformationPod</defName>
+		<label>umbral transformation pod</label>
+		<description>A sealed tenebrite sarcophagus. A body at least half turned to crystal can be laid inside, where it finishes the change and comes out Umbral. The less of the body has crystallized, the longer the hold: a half-crystallized body stays for half a year. Once closed, the pod cannot be opened until it is done.</description>
+		<thingClass>BeyondOurReach.Building_UmbralTransformationPod</thingClass>
+		<graphicData>
+			<texPath>BOR/Things/Building/tier3/UmbralPod/UmbralPod</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<shadowData>
+				<volume>(2.9,0.6,1.9)</volume>
+			</shadowData>
+			<drawSize>(3, 2)</drawSize>
+		</graphicData>
+		<uiOrder>2330</uiOrder>
+		<statBases>
+			<WorkToBuild>12000</WorkToBuild>
+			<MaxHitPoints>800</MaxHitPoints>
+			<Flammability>0</Flammability>
+		</statBases>
+		<costList>
+			<BOR_Tenebrite>250</BOR_Tenebrite>
+			<BOR_ComponentIII>8</BOR_ComponentIII>
+			<BOR_Femtoclusters>2</BOR_Femtoclusters>
+		</costList>
+		<building>
+			<ai_chillDestination>false</ai_chillDestination>
+			<isPlayerEjectable>false</isPlayerEjectable>
+			<destroySound>BuildingDestroyed_Metal_Big</destroySound>
+		</building>
+		<researchPrerequisites>
+			<li>BOR_Research_Bionics_III</li>
+		</researchPrerequisites>
+	</ThingDef>
+
+	<ThingDef ParentName="BOR_TenebralCasketBase">
+		<defName>BOR_TenebralPod</defName>
+		<label>tenebral pod</label>
+		<description>A tenebrite pod that works three ways. In stasis it freezes whoever lies inside until they are taken out. In healing it closes the wounds of anyone carrying tenebral implants ten times faster than nature would. In operating mode, load it with a tenebral organ or appendage and femtoclusters, choose what to install and where, and it does the surgery in one step.</description>
+		<thingClass>BeyondOurReach.Building_TenebralPod</thingClass>
+		<graphicData>
+			<texPath>BOR/Things/Building/tier3/TenebralPod/TenebralPod</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<shadowData>
+				<volume>(2.9,0.6,1.9)</volume>
+			</shadowData>
+			<drawSize>(3, 2)</drawSize>
+		</graphicData>
+		<uiOrder>2340</uiOrder>
+		<statBases>
+			<WorkToBuild>10000</WorkToBuild>
+			<MaxHitPoints>600</MaxHitPoints>
+			<Flammability>0</Flammability>
+		</statBases>
+		<costList>
+			<BOR_Tenebrite>150</BOR_Tenebrite>
+			<BOR_ComponentIII>6</BOR_ComponentIII>
+		</costList>
+		<building>
+			<ai_chillDestination>false</ai_chillDestination>
+			<isPlayerEjectable>true</isPlayerEjectable>
+			<destroySound>BuildingDestroyed_Metal_Medium</destroySound>
+		</building>
+		<researchPrerequisites>
+			<li>BOR_Research_Medicine_III</li>
+		</researchPrerequisites>
+	</ThingDef>
+
+	<JobDef>
+		<defName>BOR_AltarUnlock</defName>
+		<driverClass>BeyondOurReach.JobDriver_AltarUnlock</driverClass>
+		<reportString>unsealing a design at TargetA.</reportString>
+	</JobDef>
+
+	<JobDef>
+		<defName>BOR_AltarProduce</defName>
+		<driverClass>BeyondOurReach.JobDriver_AltarProduce</driverClass>
+		<reportString>working the altar at TargetA.</reportString>
+	</JobDef>
+
+	<JobDef>
+		<defName>BOR_LoadTenebralPod</defName>
+		<driverClass>BeyondOurReach.JobDriver_LoadTenebralPod</driverClass>
+		<reportString>loading TargetA into TargetB.</reportString>
+	</JobDef>
+
+	<WorkGiverDef>
+		<defName>BOR_DarkAltar</defName>
+		<label>work the dark archotech altar</label>
+		<giverClass>BeyondOurReach.WorkGiver_DarkAltar</giverClass>
+		<workType>Crafting</workType>
+		<priorityInType>105</priorityInType>
+		<verb>work</verb>
+		<gerund>working</gerund>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</WorkGiverDef>
+
+	<WorkGiverDef>
+		<defName>BOR_LoadTenebralPod</defName>
+		<label>load tenebral pod</label>
+		<giverClass>BeyondOurReach.WorkGiver_LoadTenebralPod</giverClass>
+		<workType>Doctor</workType>
+		<priorityInType>40</priorityInType>
+		<verb>load</verb>
+		<gerund>loading</gerund>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</WorkGiverDef>
+</Defs>

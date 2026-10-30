@@ -77,3 +77,12 @@ The utility weapons SHALL use no ammo and SHALL render similarly to a normal wea
 - Size of the armor, work-stat, and phaseshift effects for each exoskeleton mode.
 - Stats (damage, range, cooldown) for each utility weapon type.
 - Whether the exoskull's helmet visual follows the same mode switch as the exoskeleton, or is tied to it separately.
+
+## Implementation decisions
+Implemented in `Umbral.cs`. Tunables live on `BOR_UmbralTransformation` and the exoskeleton hediff stages.
+
+- Phases A, B and C share one transformation hediff. Each unit of tenebrite emission adds 50% to the trigger chance.
+- Without Biotech, the `BOR_Umbral` hediff stands in for the xenotype and its genes.
+- The exoskeleton, exoskull and utility pod are hediffs. Their visuals are locked, destroy-on-drop apparel and weapons, swapped for each mode. The exoskull follows the exoskeleton's mode.
+- Camo: invisible, Manipulation capped at 0. Utility: no armor, work speed x1.5 (mining, construction and plants x1.3). Combat: +2.5 sharp, +1.2 blunt and +1.8 heat armor, work speed x0.4.
+- Utility pod forms: blade, tool (work-speed bonuses), gun (Tier 3 rifle bullet), launcher (explosive).

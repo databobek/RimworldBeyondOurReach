@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+	<Operation Class="PatchOperationSequence">
+		<operations>
+
+			<!-- Blade: the ultimate monosword. Point and edge only, huge sharp damage and penetration, next to no blunt. -->
+			<li Class="PatchOperationReplace">
+				<xpath>Defs/ThingDef[defName="BOR_UmbralUtility_Blade"]/tools</xpath>
+				<value>
+					<tools>
+						<li Class="CombatExtended.ToolCE">
+							<label>point</label>
+							<capacities>
+								<li>Stab</li>
+							</capacities>
+							<power>95</power>
+							<cooldownTime>1.4</cooldownTime>
+							<armorPenetrationSharp>160</armorPenetrationSharp>
+							<armorPenetrationBlunt>6</armorPenetrationBlunt>
+						</li>
+						<li Class="CombatExtended.ToolCE">
+							<label>edge</label>
+							<capacities>
+								<li>Cut</li>
+							</capacities>
+							<power>100</power>
+							<cooldownTime>1.5</cooldownTime>
+							<armorPenetrationSharp>160</armorPenetrationSharp>
+							<armorPenetrationBlunt>6</armorPenetrationBlunt>
+						</li>
+					</tools>
+				</value>
+			</li>
+
+			<!-- Tool: the reverse. Head only, very blunt, little penetration, no sharp at all. -->
+			<li Class="PatchOperationReplace">
+				<xpath>Defs/ThingDef[defName="BOR_UmbralUtility_Tool"]/tools</xpath>
+				<value>
+					<tools>
+						<li Class="CombatExtended.ToolCE">
+							<label>head</label>
+							<capacities>
+								<li>Blunt</li>
+							</capacities>
+							<power>85</power>
+							<cooldownTime>1.8</cooldownTime>
+							<armorPenetrationBlunt>60</armorPenetrationBlunt>
+						</li>
+					</tools>
+				</value>
+			</li>
+
+			<!-- Ranged forms: a bash with the pod itself. -->
+			<li Class="PatchOperationReplace">
+				<xpath>Defs/ThingDef[defName="BOR_UmbralUtility_Gun" or defName="BOR_UmbralUtility_Launcher"]/tools</xpath>
+				<value>
+					<tools>
+						<li Class="CombatExtended.ToolCE">
+							<label>pod</label>
+							<capacities>
+								<li>Blunt</li>
+							</capacities>
+							<power>14</power>
+							<cooldownTime>1.6</cooldownTime>
+							<armorPenetrationBlunt>12</armorPenetrationBlunt>
+						</li>
+					</tools>
+				</value>
+			</li>
+
+			<!-- Gun: no AmmoUser, so it never needs ammo or reloading. -->
+			<li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+				<defName>BOR_UmbralUtility_Gun</defName>
+				<statBases>
+					<RangedWeapon_Cooldown>0.2</RangedWeapon_Cooldown>
+					<SightsEfficiency>2.2</SightsEfficiency>
+					<ShotSpread>0.03</ShotSpread>
+					<SwayFactor>0.8</SwayFactor>
+					<Bulk>0</Bulk>
+				</statBases>
+				<Properties>
+					<recoilAmount>0.4</recoilAmount>
+					<verbClass>CombatExtended.Verb_ShootCE</verbClass>
+					<hasStandardCommand>true</hasStandardCommand>
+					<defaultProjectile>BOR_Bullet_UmbralPod_CE</defaultProjectile>
+					<warmupTime>0.5</warmupTime>
+					<range>75</range>
+					<burstShotCount>6</burstShotCount>
+					<ticksBetweenBurstShots>4</ticksBetweenBurstShots>
+					<soundCast>Shot_AssaultRifle</soundCast>
+					<soundCastTail>GunTail_Medium</soundCastTail>
+					<muzzleFlashScale>9</muzzleFlashScale>
+				</Properties>
+				<FireModes>
+					<aimedBurstShotCount>3</aimedBurstShotCount>
+					<aiUseBurstMode>TRUE</aiUseBurstMode>
+					<aiAimMode>AimedShot</aiAimMode>
+				</FireModes>
+			</li>
+
+			<!-- Launcher: no AmmoUser; one vaporizing blast of radius 3 per shot. -->
+			<li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+				<defName>BOR_UmbralUtility_Launcher</defName>
+				<statBases>
+					<RangedWeapon_Cooldown>3.5</RangedWeapon_Cooldown>
+					<SightsEfficiency>1.5</SightsEfficiency>
+					<ShotSpread>0.1</ShotSpread>
+					<SwayFactor>1.2</SwayFactor>
+					<Bulk>0</Bulk>
+				</statBases>
+				<Properties>
+					<recoilAmount>1.5</recoilAmount>
+					<verbClass>CombatExtended.Verb_ShootCE</verbClass>
+					<hasStandardCommand>true</hasStandardCommand>
+					<defaultProjectile>BOR_Bullet_UmbralLauncher_CE</defaultProjectile>
+					<warmupTime>2.0</warmupTime>
+					<range>45</range>
+					<burstShotCount>1</burstShotCount>
+					<ai_AvoidFriendlyFireRadius>4</ai_AvoidFriendlyFireRadius>
+					<soundCast>InfernoCannon_Fire</soundCast>
+					<soundCastTail>GunTail_Heavy</soundCastTail>
+					<muzzleFlashScale>14</muzzleFlashScale>
+					<targetParams>
+						<canTargetLocations>true</canTargetLocations>
+					</targetParams>
+				</Properties>
+			</li>
+
+			<!-- Exoskeleton combat mode on CE's armor scale, above Tier 3 power armor (107 sharp / 240 blunt). -->
+			<li Class="PatchOperationReplace">
+				<xpath>Defs/HediffDef[defName="BOR_UmbralExoskeleton"]/stages/li[3]/statOffsets</xpath>
+				<value>
+					<statOffsets>
+						<ArmorRating_Sharp>140</ArmorRating_Sharp>
+						<ArmorRating_Blunt>300</ArmorRating_Blunt>
+						<ArmorRating_Heat>1.8</ArmorRating_Heat>
+					</statOffsets>
+				</value>
+			</li>
+
+		</operations>
+	</Operation>
+</Patch>

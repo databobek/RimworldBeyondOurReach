@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- Grows from tenebral implants, tenebrite gear and nearby tenebrite emission. Hidden while latent. -->
+	<HediffDef>
+		<defName>BOR_TenebralPsychosis</defName>
+		<label>tenebral psychosis</label>
+		<description>Tenebrite seeps into the mind. Tenebral implants hold it at a steady level; tenebrite weapons, armor and buildings make it grow, slowly, over a few days.</description>
+		<hediffClass>HediffWithComps</hediffClass>
+		<defaultLabelColor>(0.6, 0.1, 0.1)</defaultLabelColor>
+		<isBad>true</isBad>
+		<initialSeverity>0.001</initialSeverity>
+		<minSeverity>0</minSeverity>
+		<maxSeverity>1</maxSeverity>
+		<everCurableByItem>false</everCurableByItem>
+		<scenarioCanAdd>false</scenarioCanAdd>
+		<stages>
+			<li>
+				<label>latent</label>
+				<becomeVisible>false</becomeVisible>
+			</li>
+			<li>
+				<minSeverity>0.1</minSeverity>
+				<label>creeping</label>
+				<statOffsets>
+					<MentalBreakThreshold>0.03</MentalBreakThreshold>
+				</statOffsets>
+			</li>
+			<li>
+				<minSeverity>0.4</minSeverity>
+				<label>gripping</label>
+				<statOffsets>
+					<MentalBreakThreshold>0.06</MentalBreakThreshold>
+				</statOffsets>
+			</li>
+			<li>
+				<minSeverity>0.7</minSeverity>
+				<label>consuming</label>
+				<statOffsets>
+					<MentalBreakThreshold>0.1</MentalBreakThreshold>
+				</statOffsets>
+			</li>
+		</stages>
+		<modExtensions>
+			<li Class="BeyondOurReach.DefModExtension_TenebralPsychosis">
+				<floorPerImplant>0.1</floorPerImplant>
+				<gearImplantRatio>0.5</gearImplantRatio>
+				<exposureGainPerDay>0.03</exposureGainPerDay>
+				<decayPerDay>0.05</decayPerDay>
+				<riseToFloorPerDay>0.25</riseToFloorPerDay>
+				<emissionRadius>6</emissionRadius>
+				<buildingEmission>1</buildingEmission>
+				<floorEmission>0.1</floorEmission>
+				<maxEmission>3</maxEmission>
+				<resistantFactor>0.25</resistantFactor>
+			</li>
+		</modExtensions>
+	</HediffDef>
+
+	<!-- Hidden: counts mental breaks suffered while psychotic. -->
+	<HediffDef>
+		<defName>BOR_TenebralBreakCounter</defName>
+		<label>tenebral breaks</label>
+		<description>Hidden counter of mental breaks suffered under tenebral psychosis.</description>
+		<hediffClass>BeyondOurReach.Hediff_TenebralBreaks</hediffClass>
+		<isBad>false</isBad>
+		<everCurableByItem>false</everCurableByItem>
+		<scenarioCanAdd>false</scenarioCanAdd>
+		<modExtensions>
+			<li Class="BeyondOurReach.DefModExtension_TenebralBreaks">
+				<holytechThreshold>3</holytechThreshold>
+				<umbralThreshold>6</umbralThreshold>
+				<crystallizePerDay>4</crystallizePerDay>
+				<partsPerExtraBreak>2</partsPerExtraBreak>
+				<podThreshold>0.5</podThreshold>
+			</li>
+		</modExtensions>
+	</HediffDef>
+
+	<HediffDef>
+		<defName>BOR_Crystallized</defName>
+		<label>crystallized</label>
+		<labelNoun>a crystallized part</labelNoun>
+		<description>This body part has turned to black crystal. It no longer works and cannot be removed.</description>
+		<hediffClass>HediffWithComps</hediffClass>
+		<defaultLabelColor>(0.35, 0.1, 0.45)</defaultLabelColor>
+		<isBad>true</isBad>
+		<tendable>false</tendable>
+		<everCurableByItem>false</everCurableByItem>
+		<scenarioCanAdd>false</scenarioCanAdd>
+		<stages>
+			<li>
+				<partEfficiencyOffset>-100</partEfficiencyOffset>
+			</li>
+		</stages>
+	</HediffDef>
+
+	<HediffDef>
+		<defName>BOR_HolytechCandidate</defName>
+		<label>unbound</label>
+		<description>This person tore the tenebral bionics out of their body. The path of the Holytech is open to them.</description>
+		<hediffClass>HediffWithComps</hediffClass>
+		<defaultLabelColor>(0.95, 0.85, 0.5)</defaultLabelColor>
+		<isBad>false</isBad>
+		<everCurableByItem>false</everCurableByItem>
+		<scenarioCanAdd>false</scenarioCanAdd>
+	</HediffDef>
+</Defs>
