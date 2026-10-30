@@ -1,60 +1,255 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Patch>
 
-    <Operation Class="PatchOperationAdd">
-        <xpath>Defs/ThingDef[defName="BOR_Solar_Apparel_Backpack"]/statBases
-        </xpath>
-        <value>
-            <Bulk>10</Bulk>
-            <WornBulk>2</WornBulk>
-        </value>
-    </Operation>
+    <!-- BOR_Solar_Apparel_Backpack -->
 
     <Operation Class="PatchOperationAdd">
-        <xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_Backpack"]/statBases
-        </xpath>
+        <xpath>Defs/ThingDef[defName="BOR_Solar_Apparel_Backpack"]</xpath>
         <value>
-            <Bulk>10</Bulk>
-            <WornBulk>1</WornBulk>
-        </value>
-    </Operation>
-
-    <Operation Class="PatchOperationAdd">
-        <xpath>Defs/ThingDef[defName="BOR_Tenebral_Apparel_Backpack"]/statBases
-        </xpath>
-        <value>
-            <Bulk>10</Bulk>
-            <WornBulk>0</WornBulk>
+            <comps>
+                <li>
+                    <compClass>CompQuality</compClass>
+                </li>
+            </comps>
         </value>
     </Operation>
 
     <Operation Class="PatchOperationReplace">
-        <xpath>Defs/ThingDef[defName="BOR_Solar_Apparel_Backpack"]/equippedStatOffsets
-        </xpath>
+        <xpath>Defs/ThingDef[defName="BOR_Solar_Apparel_Backpack"]/statBases</xpath>
+        <value>
+            <statBases>
+                <MaxHitPoints>400</MaxHitPoints>
+                <WorkToMake>13824</WorkToMake>
+                <Mass>0.55</Mass>
+                <Bulk>3</Bulk>
+                <WornBulk>0</WornBulk>
+                <Flammability>0.64</Flammability>
+                <Insulation_Cold>1.3</Insulation_Cold>
+                <EquipDelay>1</EquipDelay>
+            </statBases>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="BOR_Solar_Apparel_Backpack"]/equippedStatOffsets</xpath>
         <value>
             <equippedStatOffsets>
-                <CarryBulk>40</CarryBulk>
+                <CarryBulk>68</CarryBulk>
+                <MechControlGroups MayRequire="Ludeon.RimWorld.Biotech">2</MechControlGroups>
+                <MechBandwidth MayRequire="Ludeon.RimWorld.Biotech">2</MechBandwidth>
             </equippedStatOffsets>
         </value>
     </Operation>
 
     <Operation Class="PatchOperationReplace">
-        <xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_Backpack"]/equippedStatOffsets
-        </xpath>
+        <xpath>Defs/ThingDef[defName="BOR_Solar_Apparel_Backpack"]/apparel/layers/li</xpath>
+        <value>
+            <li>Backpack</li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName="BOR_Solar_Apparel_Backpack"]/apparel/bodyPartGroups</xpath>
+        <value>
+            <li>Torso</li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAddModExtension">
+        <xpath>Defs/ThingDef[defName="BOR_Solar_Apparel_Backpack"]</xpath>
+        <value>
+            <li Class="CombatExtended.ApparelDefExtension">
+                <isBackpack>true</isBackpack>
+                <isRadioPack>true</isRadioPack>
+            </li>
+            <li Class="CombatExtended.PartialArmorExt">
+                <stats>
+                    <li>
+                        <ArmorRating_Sharp>24</ArmorRating_Sharp>
+                        <parts>
+                            <li>Torso</li>
+                        </parts>
+                    </li>
+                    <li>
+                        <ArmorRating_Blunt>40</ArmorRating_Blunt>
+                        <parts>
+                            <li>Torso</li>
+                        </parts>
+                    </li>
+                </stats>
+            </li>
+        </value>
+    </Operation>
+
+    <!-- BOR_Quasar_Apparel_Backpack -->
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_Backpack"]</xpath>
+        <value>
+            <comps>
+                <li>
+                    <compClass>CompQuality</compClass>
+                </li>
+            </comps>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_Backpack"]/statBases</xpath>
+        <value>
+            <statBases>
+                <MaxHitPoints>480</MaxHitPoints>
+                <WorkToMake>16589</WorkToMake>
+                <Mass>0.4</Mass>
+                <Bulk>3</Bulk>
+                <WornBulk>0</WornBulk>
+                <Flammability>0.51</Flammability>
+                <Insulation_Cold>1.5</Insulation_Cold>
+                <EquipDelay>1</EquipDelay>
+            </statBases>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_Backpack"]/equippedStatOffsets</xpath>
         <value>
             <equippedStatOffsets>
-                <CarryBulk>65</CarryBulk>
+                <CarryBulk>83</CarryBulk>
+                <MechControlGroups MayRequire="Ludeon.RimWorld.Biotech">3</MechControlGroups>
+                <MechBandwidth MayRequire="Ludeon.RimWorld.Biotech">4</MechBandwidth>
             </equippedStatOffsets>
         </value>
     </Operation>
 
     <Operation Class="PatchOperationReplace">
-        <xpath>Defs/ThingDef[defName="BOR_Tenebral_Apparel_Backpack"]/equippedStatOffsets
-        </xpath>
+        <xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_Backpack"]/apparel/layers/li</xpath>
+        <value>
+            <li>Backpack</li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_Backpack"]/apparel/bodyPartGroups</xpath>
+        <value>
+            <li>Torso</li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAddModExtension">
+        <xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_Backpack"]</xpath>
+        <value>
+            <li Class="CombatExtended.ApparelDefExtension">
+                <isBackpack>true</isBackpack>
+                <isRadioPack>true</isRadioPack>
+            </li>
+            <li Class="CombatExtended.PartialArmorExt">
+                <stats>
+                    <li>
+                        <ArmorRating_Sharp>24</ArmorRating_Sharp>
+                        <parts>
+                            <li>Torso</li>
+                        </parts>
+                    </li>
+                    <li>
+                        <ArmorRating_Blunt>40</ArmorRating_Blunt>
+                        <parts>
+                            <li>Torso</li>
+                        </parts>
+                    </li>
+                    <li>
+                        <ArmorRating_Heat>0.33</ArmorRating_Heat>
+                        <parts>
+                            <li>Torso</li>
+                        </parts>
+                    </li>
+                </stats>
+            </li>
+        </value>
+    </Operation>
+
+    <!-- BOR_Tenebral_Apparel_Backpack -->
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName="BOR_Tenebral_Apparel_Backpack"]</xpath>
+        <value>
+            <comps>
+                <li>
+                    <compClass>CompQuality</compClass>
+                </li>
+            </comps>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="BOR_Tenebral_Apparel_Backpack"]/statBases</xpath>
+        <value>
+            <statBases>
+                <MaxHitPoints>720</MaxHitPoints>
+                <WorkToMake>19907</WorkToMake>
+                <Mass>0.25</Mass>
+                <Bulk>3</Bulk>
+                <WornBulk>0</WornBulk>
+                <Flammability>0.51</Flammability>
+                <Insulation_Cold>1.65</Insulation_Cold>
+                <EquipDelay>1</EquipDelay>
+            </statBases>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="BOR_Tenebral_Apparel_Backpack"]/equippedStatOffsets</xpath>
         <value>
             <equippedStatOffsets>
-                <CarryBulk>90</CarryBulk>
+                <CarryBulk>183</CarryBulk>
+                <MechControlGroups MayRequire="Ludeon.RimWorld.Biotech">4</MechControlGroups>
+                <MechBandwidth MayRequire="Ludeon.RimWorld.Biotech">4</MechBandwidth>
             </equippedStatOffsets>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="BOR_Tenebral_Apparel_Backpack"]/apparel/layers/li</xpath>
+        <value>
+            <li>Backpack</li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName="BOR_Tenebral_Apparel_Backpack"]/apparel/bodyPartGroups</xpath>
+        <value>
+            <li>Torso</li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAddModExtension">
+        <xpath>Defs/ThingDef[defName="BOR_Tenebral_Apparel_Backpack"]</xpath>
+        <value>
+            <li Class="CombatExtended.ApparelDefExtension">
+                <isBackpack>true</isBackpack>
+                <isRadioPack>true</isRadioPack>
+            </li>
+            <li Class="CombatExtended.PartialArmorExt">
+                <stats>
+                    <li>
+                        <ArmorRating_Sharp>128</ArmorRating_Sharp>
+                        <parts>
+                            <li>Torso</li>
+                        </parts>
+                    </li>
+                    <li>
+                        <ArmorRating_Blunt>192</ArmorRating_Blunt>
+                        <parts>
+                            <li>Torso</li>
+                        </parts>
+                    </li>
+                    <li>
+                        <ArmorRating_Heat>0.4</ArmorRating_Heat>
+                        <parts>
+                            <li>Torso</li>
+                        </parts>
+                    </li>
+                </stats>
+            </li>
         </value>
     </Operation>
 </Patch>

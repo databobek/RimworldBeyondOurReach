@@ -20,5 +20,5 @@ Beyond Our Reach (BOR) is a RimWorld mod adding late-game tech tiers (Solar, Kwa
 ## Specs
 Specs cover the C# code in `1.7/Source/` (and `1.7/SourceMedicine/`) only; XML defs, patches and translations are out of scope.
 
-Capabilities in `openspec/specs/`: `forge`, `component-harvest`, `tenebral-bloodlust`, `tier-integration`, `medicine-care`.
+Capabilities in `openspec/specs/`: `forge`, `component-harvest`, `tenebral-bloodlust`, `tier-integration`, `medicine-care`, `umbral-rework`, `tenebral-rework`, `holytech-faction`.
 These describe the behaviour implemented on branch `redux1_0` as of 2026-10-24 and are the baseline for further changes.
