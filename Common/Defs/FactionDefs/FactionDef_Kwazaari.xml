@@ -7,15 +7,25 @@
 		<pawnSingular>kwazaari</pawnSingular>
 		<pawnsPlural>kwazaari</pawnsPlural>
 		<listOrderPriority>43</listOrderPriority>
-		<canMakeRandomly>true</canMakeRandomly>
-		<canSiege>true</canSiege>
+		<!-- Hidden like the mechanoids: no settlements, contact only through the comm console (kwazaari-rework) -->
+		<hidden>true</hidden>
+		<displayInFactionSelection>false</displayInFactionSelection>
+		<canGenerateQuestSites>false</canGenerateQuestSites>
+		<canMakeRandomly>false</canMakeRandomly>
+		<canSiege>false</canSiege>
+		<raidsForbidden>true</raidsForbidden>
+		<raidCommonalityFromPointsCurve>
+			<points>
+				<li>(0, 0)</li>
+			</points>
+		</raidCommonalityFromPointsCurve>
+		<dropPodIncoming>BOR_KwazaariPodIncoming</dropPodIncoming>
+		<dropPodActive>BOR_KwazaariPodActive</dropPodActive>
 		<leaderTitle>kwazaari CEO</leaderTitle>
 		<factionIconPath>BOR/Things/Factions/KwazaariIcon</factionIconPath>
 		<factionNameMaker>NamerKwazaariFaction</factionNameMaker>
 		<settlementNameMaker>NamerKwazaariBase</settlementNameMaker>
 		<settlementTexturePath>World/WorldObjects/DefaultSettlement</settlementTexturePath>
-		<royalFavorLabel>scrip</royalFavorLabel>
-		<royalFavorIconPath>BOR/Things/Factions/Favor</royalFavorIconPath>
 		<techLevel>Ultra</techLevel>
 		<backstoryFilters>
 			<li>
@@ -137,16 +147,10 @@
 				</options>
 			</li>
 		</pawnGroupMakers>
-		<baseTraderKinds>
-			<li>BOR_Base_II</li>
-		</baseTraderKinds>
-		<caravanTraderKinds>
-			<li>BOR_Caravan_II</li>
-		</caravanTraderKinds>
 		<autoFlee>false</autoFlee>
 		<permanentEnemy>false</permanentEnemy>
-		<canStageAttacks>true</canStageAttacks>
-		<settlementGenerationWeight>1</settlementGenerationWeight>
+		<canStageAttacks>false</canStageAttacks>
+		<settlementGenerationWeight>0</settlementGenerationWeight>
 		<requiredCountAtGameStart>1</requiredCountAtGameStart>
 		<disallowedMemes>
 			<li MayRequire="Ludeon.RimWorld.Ideology">Nudism</li>
@@ -176,10 +180,7 @@
 			<max>150</max>
 		</allowedArrivalTemperatureRange>
 		<raidLootMaker>BOR_LootMaker_II</raidLootMaker>
-		<maxConfigurableAtWorldCreation>999</maxConfigurableAtWorldCreation>
-		<visitorTraderKinds>
-			<li>BOR_Visitor_II</li>
-		</visitorTraderKinds>
+		<maxConfigurableAtWorldCreation>1</maxConfigurableAtWorldCreation>
 	</FactionDef>
 
 	<ThingSetMakerDef>

@@ -27,7 +27,7 @@ Anything that only those defs use, such as `BOR_Kwazaari_Heavy_Marine`, SHALL be
 ### Requirement: Scrip ledger
 A `GameComponent` SHALL keep:
 
-- the scrip balance, a whole number that MAY be negative
+- the scrip balance, a decimal number that MAY be negative (the `RoyalFavorValue` stat is fractional, e.g. 0.015 per gold)
 - the tick at which each favor next becomes available
 - the active borrowed-pawn contracts
 
@@ -60,13 +60,13 @@ Forbidden items and items in storage SHALL be included. Items worn or carried by
 ### Requirement: Scrip value
 Each unit of an item SHALL be worth:
 
-- its `royalFavorValue`, when that is greater than 0
+- its `RoyalFavorValue` stat, when that is greater than 0
 - otherwise, `1 + floor(marketValue / 1000)`
 
 A sale SHALL be worth the sum over all units sold. There SHALL be no cap on scrip per sale or per day. The blacklist is the tool for stopping exploits.
 
 #### Scenario: Default value
-- WHEN the player sells one item with no `royalFavorValue` and a market value of 2500
+- WHEN the player sells one item with no `RoyalFavorValue` and a market value of 2500
 - THEN the player gains 3 scrip
 
 ### Requirement: Sell window
@@ -78,7 +78,7 @@ The sell window SHALL list the sellable items, grouped by def, with quality and 
 - AND the sale's scrip value is added to the balance
 
 ### Requirement: Trade blacklist
-Items that cannot be sold to Kwazaari SHALL be listed in XML, in a new def type such as `BeyondOurReach.KwazaariTradeBlacklistDef`, which holds `thingDefs` and `thingCategories`. The lists from every such def SHALL be merged, so other files and patches can add to the blacklist. By default it SHALL contain only `Plasteel` and `MedicineUltratech`.
+Items that cannot be sold to Kwazaari SHALL be listed in XML, in a new def type such as `BeyondOurReach.KwazaariTradeBlacklistDef`, which holds `thingDefs` and `thingCategories`. The lists from every such def SHALL be merged, so other files and patches can add to the blacklist. By default it SHALL contain only `Plasteel`, `MedicineUltratech` and `BOR_Neutronium`.
 
 ### Requirement: Spend window
 The spend window SHALL list every favor with its cost, its cooldown, and the cooldown time remaining. A favor that cannot be bought SHALL be shown disabled with the reason: not enough scrip, cooling down, or a required DLC missing.
@@ -89,7 +89,7 @@ Buying a favor SHALL subtract its cost from the balance and start its cooldown.
 While the balance is below 0, no favor SHALL be bought. Selling SHALL still be possible and SHALL pay the debt off. A negative balance SHALL have no other effect.
 
 ### Requirement: Favor definitions
-Each favor SHALL be defined in XML, for example as a `KwazaariFavorDef` with a worker class. Its cost, cooldown, and contents SHALL be adjustable without changing code. A favor that needs an inactive DLC SHALL be disabled.
+Each favor SHALL be defined in XML as a `BeyondOurReach.KwazaariFavorDef` with a worker class. Its cost, cooldown, and contents SHALL be adjustable without changing code. A favor that needs an inactive DLC SHALL be disabled (`requiredAnyOf`: any one listed package is enough; the psylink favor accepts Royalty or Biotech).
 
 | Favor | Scrip | Cooldown | Delivers |
 |---|---|---|---|
@@ -111,16 +111,19 @@ When the reinforcements favor is bought:
 
 - a blue Kwazaari shuttle SHALL land, reusing the `BOR_SignalShuttle` graphic tinted blue
 - 4 `BOR_Kwazaari_Guardsman` pawns SHALL step out, and the shuttle SHALL leave
-- for 12 hours, the 4 pawns SHALL join the player's faction, marked as borrowed, and the player SHALL control them
+- for 12 hours, the 4 pawns SHALL join the player's faction, marked as borrowed with the `BOR_KwazaariLoan` hediff, and the player SHALL control them
+- only one loan SHALL be active at a time
 
 #### Scenario: Return
 - WHEN 12 hours have passed
 - THEN a Kwazaari shuttle lands, the borrowed pawns are undrafted and ordered to board, and the shuttle leaves after a short wait
 - AND pawns who boarded are removed from the game, returned to the Kwazaari
+- IF no landing spot is free when the loan ends, THEN the pickup SHALL be retried until one is
 
 #### Scenario: Pawn lost
 - WHEN the return shuttle leaves and a borrowed pawn did not board (because it is dead, downed, captured, off the map, or missing)
 - THEN 6 scrip is subtracted for that pawn, even if this makes the balance negative
+- AND a surviving pawn that did not board stays with the colony, its gear unlocked and its loan marker removed
 
 ### Requirement: Borrowed pawn gear
 The apparel and weapon a borrowed pawn arrives with SHALL be locked. The player SHALL NOT be able to strip them, drop them, or swap them out. Colony items a borrowed pawn picks up SHALL leave with that pawn.

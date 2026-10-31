@@ -59,10 +59,11 @@ public static class SignalUtility
 
     public static int IndexOf(ThingComp comp) => comp.parent.AllComps.OfType<ISignalChannel>().ToList().IndexOf((ISignalChannel)comp);
 
-    public static void OpenPawnMenu(ThingComp comp, JobDef jobDef)
+    public static void OpenPawnMenu(ThingComp comp, JobDef jobDef) => OpenPawnMenu(comp.parent, jobDef, IndexOf(comp));
+
+    // Colonist picker that sends the chosen pawn to the target's interaction cell; `index` travels as job.count.
+    public static void OpenPawnMenu(Thing analyzer, JobDef jobDef, int index)
     {
-        Thing analyzer = comp.parent;
-        int index = IndexOf(comp);
         List<FloatMenuOption> options = new();
         foreach (Pawn p in analyzer.Map.mapPawns.FreeColonistsSpawned)
         {
