@@ -131,6 +131,14 @@ public class Building_TenebralPod : Building_TenebralCasket
         && recipe.Worker is Recipe_InstallArtificialBodyPart or Recipe_InstallNaturalBodyPart or Recipe_InstallImplant
         && recipe.ingredients.Any(i => i.filter.Allows(BOR_TenebralDefOf.BOR_TenebralOrgan) || i.filter.Allows(BOR_TenebralDefOf.BOR_TenebralAppendage));
 
+    private static string PrerequisitesLabel(RecipeDef recipe)
+    {
+        IEnumerable<ResearchProjectDef> unfinished = (recipe.researchPrerequisites ?? new List<ResearchProjectDef>())
+            .Concat(recipe.researchPrerequisite != null ? new[] { recipe.researchPrerequisite } : System.Array.Empty<ResearchProjectDef>())
+            .Where(r => !r.IsFinished);
+        return unfinished.Select(r => r.LabelCap.ToString()).Distinct().ToCommaList();
+    }
+
     private static List<RecipeDef>? operations;
 
     public static List<RecipeDef> Operations => operations ??= DefDatabase<RecipeDef>.AllDefs.Where(IsTenebralOperation).OrderBy(r => r.label).ToList();
@@ -232,9 +240,9 @@ public class Building_TenebralPod : Building_TenebralCasket
         DropIngredients();
     }
 
-    public override void TickRare()
+    // The pod ticks every tick (healing needs it), which never calls TickRare, so this runs from Tick on the rare interval.
+    private void RareStep()
     {
-        base.TickRare();
         Pawn? pawn = Occupant;
         if (pawn != null && Transforming && Find.TickManager.TicksGame >= releaseTick)
         {
@@ -268,6 +276,10 @@ public class Building_TenebralPod : Building_TenebralCasket
     protected override void Tick()
     {
         base.Tick();
+        if (this.IsHashIntervalTick(GenTicks.TickRareInterval))
+        {
+            RareStep();
+        }
         if (mode == TenebralPodMode.Healing && this.IsHashIntervalTick(HealInterval) && Occupant is Pawn pawn)
         {
             Heal(pawn);
@@ -319,13 +331,16 @@ public class Building_TenebralPod : Building_TenebralCasket
         List<FloatMenuOption> options = new();
         foreach (RecipeDef recipe in Operations)
         {
-            if (!recipe.AvailableNow)
-            {
-                continue;
-            }
             List<BodyPartRecord> parts = PartsFor(recipe, pawn).ToList();
             if (parts.Count == 0)
             {
+                continue;
+            }
+            if (!recipe.AvailableNow)
+            {
+                // Listed but locked, so it is clear why only some operations can be picked.
+                string needed = PrerequisitesLabel(recipe);
+                options.Add(new FloatMenuOption(recipe.LabelCap + " (" + "BOR_TenebralPodNeedsResearch".Translate(needed) + ")", null));
                 continue;
             }
             RecipeDef r = recipe;
@@ -455,10 +470,10 @@ public class Building_TenebralPod : Building_TenebralCasket
         {
             text += "\n" + "BOR_TenebralPodOperation".Translate(operation.LabelCap, operationPart.LabelCap,
                 (operationProgress / Mathf.Max(1f, operation.workAmount)).ToStringPercent());
-            string missing = MissingIngredients().Select(r => r.Label).ToCommaList();
-            if (!missing.NullOrEmpty())
+            List<string> missing = MissingIngredients().Select(r => r.Label).ToList();
+            if (missing.Count > 0)
             {
-                text += "\n" + "BOR_TenebralPodMissing".Translate(missing);
+                text += "\n" + "BOR_TenebralPodMissing".Translate(missing.ToCommaList());
             }
             if (Occupant is Pawn pawn && !OperationFits(pawn))
             {
@@ -512,7 +527,8 @@ public class JobDriver_LoadTenebralPod : JobDriver
                 return;
             }
             Pod.AddIngredient(carried);
-            if (!carried.Destroyed && carried.stackCount > 0)
+            // A whole stack moves into the pod and leaves the pawn's hands, so look at what is still carried.
+            if (pawn.carryTracker.CarriedThing != null)
             {
                 pawn.carryTracker.TryDropCarriedThing(pawn.Position, ThingPlaceMode.Near, out _);
             }

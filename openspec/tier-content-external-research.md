@@ -2,8 +2,6 @@
 
 Items from the main table where at least one required research is not a BOR project (vanilla, DLC, or another mod). Same columns and tiers as tier-content.md.
 
-Kept on purpose: the melee mod's own research (`Bamba_Melee_Research_Solar/Quasar/Tenebral`) adds a step on top of `BOR_Research_Weapons_*`, and shield belts need both `BOR_Research_Armor_*` and the vanilla `ShieldBelt`. The other outside research (flak, recon, mechtech, hygiene) was replaced by BOR research.
-
 | Tier | Name | Where buildable | Research needed | Source file |
 |---|---|---|---|---|
 | I | solar baton (`Bamba_Melee_Solar_Baton`) | BOR_Bench_I, BOR_Bench_II, BOR_Bench_IV | Bamba_Melee_Research_Solar | AllBambaMelee/1.7/Defs/ThingDefs_Misc/Bamba_Melee_Weapons_BOR.xml |

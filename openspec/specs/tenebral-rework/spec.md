@@ -43,7 +43,7 @@ Every Tenebral building SHALL be replaced by an Umbral building, except the turr
 Tenebral SHALL gain the Dark Archotech Altar. The Umbral transformation chamber is a mode of the Tenebral pod, not a separate building.
 
 ### Requirement: Dark Archotech Altar
-The Dark Archotech Altar SHALL be a special Forge whose grid is prefilled with tenebral items: melee weapons, guns, apparel, tenebrite, tenebral organ, tenebral appendage, femtoclusters, and the tenebral and umbral vaccines. Every item on the altar SHALL also have a normal recipe at the Umbral tier IV buildings; the altar is an additional source, not the only one.
+The Dark Archotech Altar SHALL be a special Forge whose grid is prefilled with tenebral items: guns, apparel, tenebrite, tenebral organ, tenebral appendage, femtoclusters, and the tenebral and umbral vaccines. Tenebral melee weapons are not defined by this mod; they come from AllBambaMelee, which adds them to the grid when it is loaded. Every item on the altar SHALL also have a normal recipe at the Umbral tier IV buildings; the altar is an additional source, not the only one.
 
 - Every grid cell SHALL start prefilled but locked.
 - A locked cell SHALL be unlocked only by performing work on it.

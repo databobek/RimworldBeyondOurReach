@@ -26,7 +26,7 @@ Tier I = solar, II = quasar/kwazaari, III = tenebral, IV = umbral (moved from te
 | I | solar baton (`Bamba_Melee_Solar_Baton`) | BOR_Bench_I, BOR_Bench_II, BOR_Bench_IV | Bamba_Melee_Research_Solar | AllBambaMelee/1.7/Defs/ThingDefs_Misc/Bamba_Melee_Weapons_BOR.xml |
 | I | solar bionic precision hand (`BOR_SolarBionicPrecisionHand`) | BOR_MedicineBench_I | BOR_Research_Bionics_I | Common/Defs/BodyPartDefs/Tier1/BOR_StatBoostImplants.xml |
 | I | solar bladder (`SolarBladder`) | BOR_MedicineBench_I | BOR_Research_Bionics_I | Mods/DubsBadHygiene/Defs/hediffs_hygiene_tier1_bionics.xml |
-| I | solar bodysuit (`BOR_Solar_Carbonsuit`) | BOR_Bench_I | - | Common/Defs/ThingDefs_Items/Tier1/Armor/apparel_bodysuit.xml |
+| I | solar bodysuit (`BOR_Solar_Carbonsuit`) | BOR_Bench_I | BOR_Research_Production_I | Common/Defs/ThingDefs_Items/Tier1/Armor/apparel_bodysuit.xml |
 | I | solar breath-pacer implant (`BOR_SolarBreathPacerImplant`) | BOR_MedicineBench_I | BOR_Research_Bionics_I | Common/Defs/BodyPartDefs/Tier1/BOR_StatBoostImplants.xml |
 | I | solar bullpup (`BOR_Gun_Bullpup_TI`) | BOR_Bench_I | BOR_Research_Weapons_I | Common/Defs/ThingDefs_Items/Tier1/WeaponRanged/RangedUltratech.xml |
 | I | solar chain shotgun (`BOR_Gun_ChainShotgun_TI`) | BOR_Bench_I | BOR_Research_Weapons_I | Common/Defs/ThingDefs_Items/Tier1/WeaponRanged/RangedUltratech.xml |
@@ -179,7 +179,7 @@ Tier I = solar, II = quasar/kwazaari, III = tenebral, IV = umbral (moved from te
 | II | kwazaari backpack (`BOR_Quasar_Apparel_Backpack`) | BOR_Bench_II | BOR_Research_Armor_II | Common/Defs/ThingDefs_Items/Tier2/Armor/BOR_StatBoostApparel.xml |
 | II | kwazaari ballistic cognition stack (`BOR_QuasarBallisticCognitionStack`) | BOR_MedicineBench_II | BOR_Research_Bionics_II | Common/Defs/BodyPartDefs/Tier2/BOR_CombatStatImplants.xml |
 | II | kwazaari baton (`Bamba_Melee_Quasar_Baton`) | BOR_Bench_II, BOR_Bench_IV | Bamba_Melee_Research_Quasar | AllBambaMelee/1.7/Defs/ThingDefs_Misc/Bamba_Melee_Weapons_BOR.xml |
-| II | kwazaari bodysuit (`BOR_Quasar_Carbonsuit`) | BOR_Bench_II | - | Common/Defs/ThingDefs_Items/Tier2/Armor/apparel_bodysuit.xml |
+| II | kwazaari bodysuit (`BOR_Quasar_Carbonsuit`) | BOR_Bench_II | BOR_Research_Production_II | Common/Defs/ThingDefs_Items/Tier2/Armor/apparel_bodysuit.xml |
 | II | kwazaari booster rib implant (`BoosterRibQuasar`) | BOR_MedicineBench_II | BOR_Research_Bionics_II | Mods/EPOE/Defs/hediffdefs_bionicsribstier2.xml |
 | II | kwazaari breath-pacer implant (`BOR_QuasarBreathPacerImplant`) | BOR_MedicineBench_II | BOR_Research_Bionics_II | Common/Defs/BodyPartDefs/Tier2/BOR_StatBoostImplants.xml |
 | II | kwazaari chain shotgun (`BOR_Gun_ChainShotgun_TII`) | BOR_Bench_II | BOR_Research_Weapons_II | Common/Defs/ThingDefs_Items/Tier2/WeaponRanged/RangedUltratech.xml |
@@ -291,14 +291,11 @@ Tier I = solar, II = quasar/kwazaari, III = tenebral, IV = umbral (moved from te
 | III | tenebral backpack (`BOR_Tenebral_Apparel_Backpack`) | BOR_Bench_IV, Dark Archotech Altar | BOR_Research_Armor_III | Common/Defs/ThingDefs_Items/Tier3/Armor/BOR_StatBoostApparel.xml |
 | III | tenebral baton (`Bamba_Melee_Tenebral_Baton`) | BOR_Bench_IV, Dark Archotech Altar | Bamba_Melee_Research_Tenebral | AllBambaMelee/1.7/Defs/ThingDefs_Misc/Bamba_Melee_Weapons_BOR.xml |
 | III | tenebral bio-vaccine (`BOR_TenebralVaccine_Bio`) | BOR_MedicineBench_IV, Dark Archotech Altar | BOR_Research_Vaccines_Combined | Mods/Vaccines/Defs/vacc_combined_vaccines_patch.xml |
-| III | tenebral blade (`BOR_Tenebral_Blade`) | BOR_Bench_IV, Dark Archotech Altar | BOR_Research_Weapons_III | Common/Defs/TenebralUmbral/Tenebral_Melee.xml |
-| III | tenebral bodysuit (`BOR_Tenebral_Carbonsuit`) | BOR_Bench_IV, Dark Archotech Altar | - | Common/Defs/ThingDefs_Items/Tier3/Armor/apparel_bodysuit.xml |
+| III | tenebral bodysuit (`BOR_Tenebral_Carbonsuit`) | BOR_Bench_IV, Dark Archotech Altar | BOR_Research_Production_III | Common/Defs/ThingDefs_Items/Tier3/Armor/apparel_bodysuit.xml |
 | III | tenebral chain shotgun (`BOR_Gun_ChainShotgun_TIII`) | BOR_Bench_IV, Dark Archotech Altar | BOR_Research_Weapons_III | Common/Defs/ThingDefs_Items/Tier3/WeaponRanged/RangedArchotech.xml |
 | III | tenebral chemoregulator rib implant (`ChemoregulatorRibTenebral`) | BOR_MedicineBench_IV | BOR_Research_Bionics_III | Mods/EPOE/Defs/hediffdefs_bionicsribstier3.xml |
-| III | tenebral cleaver (`BOR_Tenebral_Cleaver`) | BOR_Bench_IV, Dark Archotech Altar | BOR_Research_Weapons_III | Common/Defs/TenebralUmbral/Tenebral_Melee.xml |
 | III | tenebral control sublink (high) (`ControlSublinkHighTenebral`) | BOR_MedicineBench_IV | BOR_Research_Mechtech_III | Mods/Biotech/Defs/tier3hediffs.xml |
 | III | tenebral control sublink (standard) (`ControlSublinkTenebral`) | BOR_MedicineBench_IV | BOR_Research_Mechtech_III | Mods/Biotech/Defs/tier3hediffs.xml |
-| III | tenebral dagger (`BOR_Tenebral_Dagger`) | BOR_Bench_IV, Dark Archotech Altar | BOR_Research_Weapons_III | Common/Defs/TenebralUmbral/Tenebral_Melee.xml |
 | III | tenebral gladius (`Bamba_Melee_Tenebral_Gladius`) | BOR_Bench_IV, Dark Archotech Altar | Bamba_Melee_Research_Tenebral | AllBambaMelee/1.7/Defs/ThingDefs_Misc/Bamba_Melee_Weapons_BOR.xml |
 | III | tenebral hammer (`Bamba_Melee_Tenebral_Hammer`) | BOR_Bench_IV, Dark Archotech Altar | Bamba_Melee_Research_Tenebral | AllBambaMelee/1.7/Defs/ThingDefs_Misc/Bamba_Melee_Weapons_BOR.xml |
 | III | tenebral hygiene recycler (`TenebralBladder`) | BOR_MedicineBench_IV | BOR_Research_Bionics_III | Mods/DubsBadHygiene/Defs/hediffs_hygiene_tier3_bionics.xml |
@@ -306,13 +303,10 @@ Tier I = solar, II = quasar/kwazaari, III = tenebral, IV = umbral (moved from te
 | III | tenebral lmg (`BOR_Gun_LMG_TIII`) | BOR_Bench_IV, Dark Archotech Altar | BOR_Research_Weapons_III | Common/Defs/ThingDefs_Items/Tier3/WeaponRanged/RangedArchotech.xml |
 | III | tenebral longsword (`Bamba_Melee_Tenebral_Longsword`) | BOR_Bench_IV, Dark Archotech Altar | Bamba_Melee_Research_Tenebral | AllBambaMelee/1.7/Defs/ThingDefs_Misc/Bamba_Melee_Weapons_BOR.xml |
 | III | tenebral mace (`Bamba_Melee_Tenebral_Mace`) | BOR_Bench_IV, Dark Archotech Altar | Bamba_Melee_Research_Tenebral | AllBambaMelee/1.7/Defs/ThingDefs_Misc/Bamba_Melee_Weapons_BOR.xml |
-| III | tenebral machine lord helmet (`BOR_Apparel_TenebralArmorHelmetMechlordHelmet`) | BOR_Bench_IV, Dark Archotech Altar | BOR_Research_Mechtech_III | Mods/Biotech/Defs/tenebral_mechlord.xml |
-| III | tenebral machine lord suit (`BOR_Apparel_TenebralMechlordSuit`) | Dark Archotech Altar | BOR_Research_Mechtech_III | Mods/Biotech/Defs/tenebral_mechlord.xml |
 | III | tenebral marine helmet (`BOR_Tenebral_Apparel_PowerArmorHelmet`) | BOR_Bench_IV, Dark Archotech Altar | BOR_Research_Armor_III | Common/Defs/ThingDefs_Items/Tier3/Armor/apparel_headgear.xml |
 | III | tenebral mech-vaccine (I) (`BOR_TenebralVaccine_Mech_I`) | BOR_MedicineBench_IV, Dark Archotech Altar | BOR_Research_Vaccines_Combined | Mods/Vaccines/Defs/vacc_combined_vaccines_patch.xml |
 | III | tenebral mech-vaccine (II) (`BOR_TenebralVaccine_Mech_II`) | BOR_MedicineBench_IV, Dark Archotech Altar | BOR_Research_Vaccines_Combined | Mods/Vaccines/Defs/vacc_combined_vaccines_patch.xml |
 | III | tenebral mecharegulator rib implant (`MecharegulatorRibTenebral`) | BOR_MedicineBench_IV | BOR_Research_Bionics_III | Mods/EPOE/Defs/hediffdefs_bionicsribstier3.xml |
-| III | tenebral mechcommander helmet (`BOR_Tenebral_Apparel_ArmorHelmetMechCommander`) | BOR_Bench_IV, Dark Archotech Altar | BOR_Research_Mechtech_III | Mods/Biotech/Defs/tiered_mechanitor_apparel.xml |
 | III | tenebral mechlord helmet (`BOR_Tenebral_Apparel_ArmorHelmetMechlordHelmet`) | BOR_Bench_IV, Dark Archotech Altar | BOR_Research_Mechtech_III | Mods/Biotech/Defs/tiered_mechanitor_apparel.xml |
 | III | tenebral mechlord suit (`BOR_Tenebral_Apparel_MechlordSuit`) | BOR_Bench_IV, Dark Archotech Altar | BOR_Research_Mechtech_III | Mods/Biotech/Defs/tiered_mechanitor_apparel.xml |
 | III | tenebral organ template (`BOR_TenebralOrgan`) | BOR_MedicineBench_IV, Dark Archotech Altar | BOR_Research_Bionics_III | Common/Defs/BodyPartDefs/Tier3/Bodyparts.xml |
