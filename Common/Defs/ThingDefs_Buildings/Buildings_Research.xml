@@ -23,6 +23,7 @@
         <interactionCellOffset>(0,0,-1)</interactionCellOffset>
         <altitudeLayer>Building</altitudeLayer>
         <passability>PassThroughOnly</passability>
+        <pathCost>50</pathCost>
         <castEdgeShadows>true</castEdgeShadows>
         <fillPercent>0.5</fillPercent>
         <designationHotKey>Misc4</designationHotKey>
@@ -48,6 +49,7 @@
             <destroySound>BuildingDestroyed_Metal_Medium</destroySound>
         </building>
         <comps>
+            <li Class="BeyondOurReach.CompProperties_StrangeSignals" />
             <li Class="CompProperties_ReportWorkSpeed">
                 <workSpeedStat>ResearchSpeedFactor</workSpeedStat>
             </li>
@@ -120,6 +122,7 @@
         <interactionCellOffset>(0,0,-1)</interactionCellOffset>
         <altitudeLayer>Building</altitudeLayer>
         <passability>PassThroughOnly</passability>
+        <pathCost>50</pathCost>
         <castEdgeShadows>true</castEdgeShadows>
         <fillPercent>0.50</fillPercent>
         <designationHotKey>Misc4</designationHotKey>
@@ -146,6 +149,35 @@
             <destroySound>BuildingDestroyed_Metal_Medium</destroySound>
         </building>
         <comps>
+            <!-- Signal raids; each channel needs a unique name, it keys the saved state -->
+            <li Class="BeyondOurReach.CompProperties_SignalRaid">
+                <channel>strangeSignal</channel>
+                <dialoguePrefix>BOR_Raid_Signal</dialoguePrefix>
+                <impersonatedFaction>BOR_KwazaarBazaar</impersonatedFaction>
+                <tooltipKey>BOR_Raid_StrangeSignal</tooltipKey>
+                <reportKey>BOR_Raid_StrangeSignal_Report</reportKey>
+                <reward>BOR_TenebriteMotor</reward>
+                <faction>BOR_BadzaarHazaard</faction>
+                <leaderKind>BOR_Badzaari_Warlord</leaderKind>
+                <raiderKinds>
+                    <li>BOR_Badzaari_Raider_Sword</li>
+                    <li>BOR_Badzaari_Raider_Shotgun</li>
+                    <li>BOR_Badzaari_Raider_Rifle</li>
+                    <li>BOR_Badzaari_Raider_Sniper</li>
+                    <li>BOR_Badzaari_Raider_LMG</li>
+                </raiderKinds>
+            </li>
+            <li Class="BeyondOurReach.CompProperties_SignalTenebral">
+                <channel>peculiarBroadcasts</channel>
+                <dialoguePrefix>BOR_Raid_Broadcasts</dialoguePrefix>
+                <tooltipKey>BOR_Raid_PeculiarBroadcasts</tooltipKey>
+                <reportKey>BOR_Raid_PeculiarBroadcasts_Report</reportKey>
+                <reward>BOR_DiluteTenebriteShard</reward>
+                <shuttleReward>BOR_TenebriteMotor</shuttleReward>
+                <faction>BOR_Tenebrites</faction>
+                <badzaariFaction>BOR_BadzaarHazaard</badzaariFaction>
+                <visitorKind>BOR_Tenebral_Executioner</visitorKind>
+            </li>
             <li Class="CompProperties_ReportWorkSpeed">
                 <workSpeedStat>ResearchSpeedFactor</workSpeedStat>
             </li>
@@ -213,6 +245,7 @@
         <interactionCellOffset>(0,0,1)</interactionCellOffset>
         <altitudeLayer>Building</altitudeLayer>
         <passability>PassThroughOnly</passability>
+        <pathCost>50</pathCost>
         <castEdgeShadows>true</castEdgeShadows>
         <fillPercent>0.5</fillPercent>
         <designationHotKey>Misc4</designationHotKey>
@@ -306,6 +339,7 @@
         <interactionCellOffset>(0,0,-2)</interactionCellOffset>
         <altitudeLayer>Building</altitudeLayer>
         <passability>PassThroughOnly</passability>
+        <pathCost>50</pathCost>
         <castEdgeShadows>true</castEdgeShadows>
         <fillPercent>0.5</fillPercent>
         <designationHotKey>Misc4</designationHotKey>

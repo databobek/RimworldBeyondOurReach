@@ -390,4 +390,69 @@
 			<li>BOR_Bench_I</li>
 		</recipeUsers>
 	</RecipeDef>
+
+	<!-- Artifact component: very expensive, needs the next tier's materials -->
+	<RecipeDef>
+		<defName>BOR_Make_CircuitBoard</defName>
+		<label>make circuit board</label>
+		<description>Painstakingly reproduce a Kwazaari circuit board from quasar alloy and kwazaari universal parts. Needed to build the sigma-class sagittary autoscope.</description>
+		<jobString>Making circuit board.</jobString>
+		<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+		<effectWorking>Cook</effectWorking>
+		<soundWorking>Recipe_Machining</soundWorking>
+		<workAmount>30000</workAmount>
+		<unfinishedThingDef>UnfinishedComponent</unfinishedThingDef>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_QuasarAlloy</li>
+					</thingDefs>
+				</filter>
+				<count>150</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_ComponentII</li>
+					</thingDefs>
+				</filter>
+				<count>3</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>ComponentSpacer</li>
+					</thingDefs>
+				</filter>
+				<count>4</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Gold</li>
+					</thingDefs>
+				</filter>
+				<count>10</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>BOR_QuasarAlloy</li>
+				<li>BOR_ComponentII</li>
+				<li>ComponentSpacer</li>
+				<li>Gold</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<BOR_CircuitBoard>1</BOR_CircuitBoard>
+		</products>
+		<researchPrerequisite>BOR_Research_Analyzer_II</researchPrerequisite>
+		<skillRequirements>
+			<Crafting>15</Crafting>
+		</skillRequirements>
+		<recipeUsers>
+			<li>BOR_Bench_I</li>
+		</recipeUsers>
+	</RecipeDef>
 </Defs>

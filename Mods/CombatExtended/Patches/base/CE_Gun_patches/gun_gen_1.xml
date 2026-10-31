@@ -4,9 +4,9 @@
 	<Operation Class="PatchOperationSequence">
 		<operations>
 
-			<!-- AR, Sniper, Shotgun, LMG: standard melee -->
+			<!-- AR, DMR, Bullpup, Sniper, Shotgun, LMG: standard melee -->
 			<li Class="PatchOperationReplace">
-				<xpath>Defs/ThingDef[defName="BOR_Gun_AssaultRifle_TI" or defName="BOR_Gun_SniperRifle_TI" or defName="BOR_Gun_ChainShotgun_TI" or defName="BOR_Gun_LMG_TI"]/tools</xpath>
+				<xpath>Defs/ThingDef[defName="BOR_Gun_AssaultRifle_TI" or defName="BOR_Gun_DMR_TI" or defName="BOR_Gun_Bullpup_TI" or defName="BOR_Gun_SniperRifle_TI" or defName="BOR_Gun_ChainShotgun_TI" or defName="BOR_Gun_LMG_TI"]/tools</xpath>
 				<value>
 					<tools>
 						<li Class="CombatExtended.ToolCE">
@@ -143,6 +143,81 @@
 					<aimedBurstShotCount>3</aimedBurstShotCount>
 					<aiUseBurstMode>TRUE</aiUseBurstMode>
 					<aiAimMode>AimedShot</aiAimMode>
+				</FireModes>
+				<weaponTags>
+					<li>CE_AI_AR</li>
+				</weaponTags>
+				<researchPrerequisite>BOR_Research_Weapons_I</researchPrerequisite>
+			</li>
+
+			<li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+				<defName>BOR_Gun_DMR_TI</defName>
+				<statBases>
+					<RangedWeapon_Cooldown>0.32</RangedWeapon_Cooldown>
+					<SightsEfficiency>2.2</SightsEfficiency>
+					<ShotSpread>0.04</ShotSpread>
+					<SwayFactor>1.2</SwayFactor>
+					<Bulk>7.8</Bulk>
+					<NightVisionEfficiency_Weapon>0.4</NightVisionEfficiency_Weapon>
+				</statBases>
+				<Properties>
+					<recoilAmount>1.4</recoilAmount>
+					<verbClass>CombatExtended.Verb_ShootCE</verbClass>
+					<hasStandardCommand>true</hasStandardCommand>
+					<defaultProjectile>BOR_Bullet_Gen1Rifle_FSJ</defaultProjectile>
+					<warmupTime>1.05</warmupTime>
+					<range>78</range>
+					<soundCast>Shot_ChargeRifle</soundCast>
+					<soundCastTail>GunTail_Medium</soundCastTail>
+					<muzzleFlashScale>9</muzzleFlashScale>
+				</Properties>
+				<AmmoUser>
+					<magazineSize>20</magazineSize>
+					<reloadTime>4</reloadTime>
+					<ammoSet>BOR_AmmoSet_Gen1_Rifle</ammoSet>
+				</AmmoUser>
+				<FireModes>
+					<aiAimMode>AimedShot</aiAimMode>
+				</FireModes>
+				<weaponTags>
+					<li>CE_AI_SR</li>
+					<li>Bipod_DMR</li>
+				</weaponTags>
+				<researchPrerequisite>BOR_Research_Weapons_I</researchPrerequisite>
+				<AllowWithRunAndGun>false</AllowWithRunAndGun>
+			</li>
+
+			<li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+				<defName>BOR_Gun_Bullpup_TI</defName>
+				<statBases>
+					<RangedWeapon_Cooldown>0.27</RangedWeapon_Cooldown>
+					<SightsEfficiency>1.1</SightsEfficiency>
+					<ShotSpread>0.08</ShotSpread>
+					<SwayFactor>0.82</SwayFactor>
+					<Bulk>4.6</Bulk>
+				</statBases>
+				<Properties>
+					<recoilAmount>1.24</recoilAmount>
+					<verbClass>CombatExtended.Verb_ShootCE</verbClass>
+					<hasStandardCommand>true</hasStandardCommand>
+					<defaultProjectile>BOR_Bullet_Gen1Rifle_FSJ</defaultProjectile>
+					<warmupTime>0.6</warmupTime>
+					<range>52</range>
+					<burstShotCount>8</burstShotCount>
+					<ticksBetweenBurstShots>3</ticksBetweenBurstShots>
+					<soundCast>Shot_ChargeRifle</soundCast>
+					<soundCastTail>GunTail_Medium</soundCastTail>
+					<muzzleFlashScale>9</muzzleFlashScale>
+				</Properties>
+				<AmmoUser>
+					<magazineSize>40</magazineSize>
+					<reloadTime>3.6</reloadTime>
+					<ammoSet>BOR_AmmoSet_Gen1_Rifle</ammoSet>
+				</AmmoUser>
+				<FireModes>
+					<aimedBurstShotCount>4</aimedBurstShotCount>
+					<aiUseBurstMode>TRUE</aiUseBurstMode>
+					<aiAimMode>Snapshot</aiAimMode>
 				</FireModes>
 				<weaponTags>
 					<li>CE_AI_AR</li>

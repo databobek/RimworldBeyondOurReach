@@ -52,7 +52,7 @@
         <products>
             <BOR_Tenebrite>10</BOR_Tenebrite>
         </products>
-        <researchPrerequisite>BOR_Research_NSynth_II</researchPrerequisite>
+        <researchPrerequisite>BOR_Research_Analyzer_III</researchPrerequisite>
     </RecipeDef>
 
     <RecipeDef>
@@ -189,4 +189,78 @@
         </recipeUsers>
     </RecipeDef>
 
+
+    <!-- Artifact component: very expensive, needs the next tier's materials -->
+    <RecipeDef>
+        <defName>BOR_Make_TenebriteAmplifier</defName>
+        <label>make tenebrite amplifier</label>
+        <description>Painstakingly grow and tune a tenebrite resonance amplifier from tenebrite and quasar alloy. Needed to build the dark mirror.</description>
+        <jobString>Making tenebrite amplifier.</jobString>
+        <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+        <effectWorking>Cook</effectWorking>
+        <soundWorking>Recipe_Machining</soundWorking>
+        <workAmount>45000</workAmount>
+        <unfinishedThingDef>UnfinishedComponent</unfinishedThingDef>
+        <ingredients>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>BOR_Tenebrite</li>
+                    </thingDefs>
+                </filter>
+                <count>150</count>
+            </li>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>BOR_QuasarAlloy</li>
+                    </thingDefs>
+                </filter>
+                <count>100</count>
+            </li>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>BOR_ComponentII</li>
+                    </thingDefs>
+                </filter>
+                <count>4</count>
+            </li>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>ComponentSpacer</li>
+                    </thingDefs>
+                </filter>
+                <count>4</count>
+            </li>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>Gold</li>
+                    </thingDefs>
+                </filter>
+                <count>20</count>
+            </li>
+        </ingredients>
+        <fixedIngredientFilter>
+            <thingDefs>
+                <li>BOR_Tenebrite</li>
+                <li>BOR_QuasarAlloy</li>
+                <li>BOR_ComponentII</li>
+                <li>ComponentSpacer</li>
+                <li>Gold</li>
+            </thingDefs>
+        </fixedIngredientFilter>
+        <products>
+            <BOR_TenebriteAmplifier>1</BOR_TenebriteAmplifier>
+        </products>
+        <researchPrerequisite>BOR_Research_Analyzer_III</researchPrerequisite>
+        <skillRequirements>
+            <Crafting>17</Crafting>
+        </skillRequirements>
+        <recipeUsers>
+            <li>BOR_Bench_II</li>
+        </recipeUsers>
+    </RecipeDef>
 </Defs>
