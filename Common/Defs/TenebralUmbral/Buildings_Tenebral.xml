@@ -43,7 +43,7 @@
 		</inspectorTabs>
 		<comps>
 			<li Class="BeyondOurReach.CompProperties_DarkAltar">
-				<gridWidth>4</gridWidth>
+				<gridWidth>6</gridWidth>
 				<unlockWorkFactor>1</unlockWorkFactor>
 				<componentCostFactor>0.5</componentCostFactor>
 				<bloodlustDrainPerDay>2</bloodlustDrainPerDay>
@@ -60,6 +60,11 @@
 					<li><thing>BOR_TenebralOrgan</thing></li>
 					<li><thing>BOR_TenebralAppendage</thing></li>
 					<li><thing>BOR_Femtoclusters</thing></li>
+					<li><thing>BOR_Tenebral_Apparel_PowerArmor</thing></li>
+					<li><thing>BOR_Tenebral_Apparel_PowerArmorHelmet</thing></li>
+					<li><thing>BOR_Tenebral_Carbonsuit</thing></li>
+					<li><thing>BOR_Tenebral_Apparel_Backpack</thing></li>
+					<li><thing>BOR_Tenebral_Apparel_ShieldBelt</thing></li>
 				</entries>
 			</li>
 		</comps>
@@ -99,43 +104,9 @@
 	</ThingDef>
 
 	<ThingDef ParentName="BOR_TenebralCasketBase">
-		<defName>BOR_UmbralTransformationPod</defName>
-		<label>umbral transformation pod</label>
-		<description>A sealed tenebrite sarcophagus. A body at least half turned to crystal can be laid inside, where it finishes the change and comes out Umbral. The less of the body has crystallized, the longer the hold: a half-crystallized body stays for half a year. Once closed, the pod cannot be opened until it is done.</description>
-		<thingClass>BeyondOurReach.Building_UmbralTransformationPod</thingClass>
-		<graphicData>
-			<texPath>BOR/Things/Building/tier3/UmbralPod/UmbralPod</texPath>
-			<graphicClass>Graphic_Multi</graphicClass>
-			<shadowData>
-				<volume>(2.9,0.6,1.9)</volume>
-			</shadowData>
-			<drawSize>(3, 2)</drawSize>
-		</graphicData>
-		<uiOrder>2330</uiOrder>
-		<statBases>
-			<WorkToBuild>12000</WorkToBuild>
-			<MaxHitPoints>800</MaxHitPoints>
-			<Flammability>0</Flammability>
-		</statBases>
-		<costList>
-			<BOR_Tenebrite>250</BOR_Tenebrite>
-			<BOR_ComponentIII>8</BOR_ComponentIII>
-			<BOR_Femtoclusters>2</BOR_Femtoclusters>
-		</costList>
-		<building>
-			<ai_chillDestination>false</ai_chillDestination>
-			<isPlayerEjectable>false</isPlayerEjectable>
-			<destroySound>BuildingDestroyed_Metal_Big</destroySound>
-		</building>
-		<researchPrerequisites>
-			<li>BOR_Research_Bionics_III</li>
-		</researchPrerequisites>
-	</ThingDef>
-
-	<ThingDef ParentName="BOR_TenebralCasketBase">
 		<defName>BOR_TenebralPod</defName>
 		<label>tenebral pod</label>
-		<description>A tenebrite pod that works three ways. In stasis it freezes whoever lies inside until they are taken out. In healing it closes the wounds of anyone carrying tenebral implants ten times faster than nature would. In operating mode, load it with a tenebral organ or appendage and femtoclusters, choose what to install and where, and it does the surgery in one step.</description>
+		<description>A tenebrite pod that works four ways. In stasis it freezes whoever lies inside until they are taken out. In healing it closes the wounds of anyone carrying tenebral implants ten times faster than nature would. In operating mode, load it with a tenebral organ or appendage and femtoclusters, choose what to install and where, and it does the surgery in one step. In transformation mode it takes in a pawn whose body is at least half crystallized and holds them, with no way out, for the rest of a year before they emerge as an Umbral.</description>
 		<thingClass>BeyondOurReach.Building_TenebralPod</thingClass>
 		<graphicData>
 			<texPath>BOR/Things/Building/tier3/TenebralPod/TenebralPod</texPath>

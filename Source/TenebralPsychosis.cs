@@ -44,13 +44,13 @@ public class DefModExtension_TenebralBreaks : DefModExtension
     public int holytechThreshold = 3;
     public int umbralThreshold = 6;
 
-    // Parts crystallized per day once the umbral threshold is reached.
-    public float crystallizePerDay = 4f;
+    // Chance that each break past the umbral threshold crystallizes parts.
+    public float crystallizeChancePerBreak = 0.5f;
 
-    // Extra parts crystallized instantly by every break past the umbral threshold.
-    public int partsPerExtraBreak = 2;
+    // Parts crystallized each time that chance succeeds.
+    public int partsPerCrystallization = 1;
 
-    // Fraction of the body that has to be crystallized before the Umbral Transformation Pod accepts the pawn.
+    // Fraction of the body that has to be crystallized before a Tenebral pod in transformation mode accepts the pawn.
     public float podThreshold = 0.5f;
 }
 
@@ -257,11 +257,9 @@ public class MapComponent_TenebralExposure : MapComponent
     }
 }
 
-// Hidden counter of mental breaks suffered while psychotic. Also drives crystallization past the umbral threshold.
+// Hidden counter of mental breaks suffered while psychotic. Breaks past the umbral threshold may crystallize parts.
 public class Hediff_TenebralBreaks : HediffWithComps
 {
-    private const int CrystalInterval = GenDate.TicksPerHour;
-
     public int breaks;
 
     public override bool Visible => false;
@@ -283,31 +281,12 @@ public class Hediff_TenebralBreaks : HediffWithComps
                     "BOR_CrystallizationText".Translate(pawn.Named("PAWN")), LetterDefOf.ThreatSmall, pawn);
             }
         }
-        else if (breaks > s.umbralThreshold)
+        else if (breaks > s.umbralThreshold && Rand.Chance(s.crystallizeChancePerBreak))
         {
-            for (int i = 0; i < s.partsPerExtraBreak; i++)
+            for (int i = 0; i < s.partsPerCrystallization; i++)
             {
                 Crystallization.CrystallizeRandomPart(pawn);
             }
-        }
-    }
-
-    public override void TickInterval(int delta)
-    {
-        base.TickInterval(delta);
-        if (!pawn.IsHashIntervalTick(CrystalInterval, delta))
-        {
-            return;
-        }
-        DefModExtension_TenebralBreaks s = TenebralPsychosis.BreakSettings;
-        if (breaks < s.umbralThreshold || pawn.InContainerEnclosed)
-        {
-            return;
-        }
-        // Crystallization keeps going once it has begun, psychotic or not.
-        if (Rand.Chance(s.crystallizePerDay * CrystalInterval / GenDate.TicksPerDay))
-        {
-            Crystallization.CrystallizeRandomPart(pawn);
         }
     }
 
@@ -320,23 +299,25 @@ public class Hediff_TenebralBreaks : HediffWithComps
 
 public static class Crystallization
 {
-    // Heart, brain and every other vital part never crystallize, nor does the core part. Eating parts are spared too,
-    // or the pawn would starve before reaching the pod.
+    // Only these parts crystallize and count toward the percentage: arms, legs, eyes, ears, the left kidney, the right lung
+    // and the torso. Everything else (heart, brain, digits, ...) is left alone.
     public static bool Eligible(Pawn pawn, BodyPartRecord part)
     {
-        if (part == pawn.RaceProps.body.corePart || pawn.health.hediffSet.PartIsMissing(part))
+        if (pawn.health.hediffSet.PartIsMissing(part))
         {
             return false;
         }
-        List<BodyPartTagDef> tags = part.def.tags;
-        for (int i = 0; i < tags.Count; i++)
+        if (part == pawn.RaceProps.body.corePart)
         {
-            if (tags[i].vital || tags[i] == BodyPartTagDefOf.EatingSource || tags[i] == BodyPartTagDefOf.EatingPathway)
-            {
-                return false;
-            }
+            return true;
         }
-        return true;
+        string defName = part.def.defName;
+        if (defName is "Arm" or "Leg" or "Eye" or "Ear")
+        {
+            return true;
+        }
+        string label = part.customLabel ?? "";
+        return (defName == "Kidney" && label.StartsWith("left")) || (defName == "Lung" && label.StartsWith("right"));
     }
 
     public static bool IsCrystallized(Pawn pawn, BodyPartRecord? part)

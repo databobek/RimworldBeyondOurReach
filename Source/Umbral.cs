@@ -204,7 +204,7 @@ public static class Umbral
         }
     }
 
-    // Turns a crystallized tenebral pawn into an Umbral, as it leaves the Umbral Transformation Pod.
+    // Turns a crystallized tenebral pawn into an Umbral, as it leaves a Tenebral pod in transformation mode.
     public static void MakeUmbral(Pawn pawn)
     {
         Crystallization.ClearAll(pawn);

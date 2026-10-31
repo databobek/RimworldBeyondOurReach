@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+	<!-- With Biotech the moisture pumps can also clean pollution. Terra Pumps adds more modes to the same mode button; whichever patch runs first creates it. -->
+	<Operation Class="PatchOperationConditional">
+		<xpath>/Defs/ThingDef[defName="BOR_MoisturePump_I"]/comps/li[@Class="BeyondOurReach.CompProperties_MultiPump"]</xpath>
+		<nomatch Class="PatchOperationSequence">
+			<operations>
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/ThingDef[defName="BOR_MoisturePump_I"]/tickerType</xpath>
+					<value>
+						<tickerType>Normal</tickerType>
+					</value>
+				</li>
+				<li Class="PatchOperationAdd">
+					<xpath>/Defs/ThingDef[defName="BOR_MoisturePump_I"]/comps</xpath>
+					<value>
+						<li Class="BeyondOurReach.CompProperties_MultiPump">
+							<modes>
+								<li>
+									<comp>RimWorld.CompTerrainPumpDry</comp>
+									<labelKey>BOR_PumpMode_Dry</labelKey>
+									<descKey>BOR_PumpMode_Dry_Desc</descKey>
+									<power>188</power>
+								</li>
+							</modes>
+						</li>
+					</value>
+				</li>
+			</operations>
+		</nomatch>
+	</Operation>
+	<Operation Class="PatchOperationAdd">
+		<xpath>/Defs/ThingDef[defName="BOR_MoisturePump_I"]/comps</xpath>
+		<value>
+			<li Class="CompProperties_PollutionPump">
+				<radius>34.9</radius>
+				<pumpEffecterDef>PollutionPumped</pumpEffecterDef>
+				<pumpsPerWastepack>4</pumpsPerWastepack>
+				<intervalTicks>2000</intervalTicks>
+			</li>
+		</value>
+	</Operation>
+	<Operation Class="PatchOperationAdd">
+		<xpath>/Defs/ThingDef[defName="BOR_MoisturePump_I"]/comps/li[@Class="BeyondOurReach.CompProperties_MultiPump"]/modes</xpath>
+		<value>
+			<li>
+				<comp>RimWorld.CompPollutionPump</comp>
+				<labelKey>BOR_PumpMode_Pollution</labelKey>
+				<descKey>BOR_PumpMode_Pollution_Desc</descKey>
+				<power>5000</power>
+				<research>BOR_Research_PollutionPump_I</research>
+			</li>
+		</value>
+	</Operation>
+	<Operation Class="PatchOperationConditional">
+		<xpath>/Defs/ThingDef[defName="BOR_MoisturePump_I"]/comps/li[@Class="TerraPumps.CompProperties_TerrainPumpWet"]</xpath>
+		<match Class="PatchOperationReplace">
+			<xpath>/Defs/ThingDef[defName="BOR_MoisturePump_I"]/description</xpath>
+			<value>
+				<description>Very slowly equalizes moisture in nearby terrain, converting marshes or shallow water into dry ground, and soft sand into normal sand. Does not affect deep water. With the matching research it can instead clean polluted terrain, or flood, fertilize, break up or deepen terrain, one job at a time. Pick the job with the mode button.</description>
+			</value>
+		</match>
+		<nomatch Class="PatchOperationReplace">
+			<xpath>/Defs/ThingDef[defName="BOR_MoisturePump_I"]/description</xpath>
+			<value>
+				<description>Very slowly equalizes moisture in nearby terrain, converting marshes or shallow water into dry ground, and soft sand into normal sand. Does not affect deep water. With the matching research it can instead clean polluted terrain; the extracted pollution is formed into toxic wastepacks which must be hauled away. Pick the job with the mode button.</description>
+			</value>
+		</nomatch>
+	</Operation>
+	<Operation Class="PatchOperationConditional">
+		<xpath>/Defs/ThingDef[defName="BOR_MoisturePump_II"]/comps/li[@Class="BeyondOurReach.CompProperties_MultiPump"]</xpath>
+		<nomatch Class="PatchOperationSequence">
+			<operations>
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/ThingDef[defName="BOR_MoisturePump_II"]/tickerType</xpath>
+					<value>
+						<tickerType>Normal</tickerType>
+					</value>
+				</li>
+				<li Class="PatchOperationAdd">
+					<xpath>/Defs/ThingDef[defName="BOR_MoisturePump_II"]/comps</xpath>
+					<value>
+						<li Class="BeyondOurReach.CompProperties_MultiPump">
+							<modes>
+								<li>
+									<comp>RimWorld.CompTerrainPumpDry</comp>
+									<labelKey>BOR_PumpMode_Dry</labelKey>
+									<descKey>BOR_PumpMode_Dry_Desc</descKey>
+									<power>292</power>
+								</li>
+							</modes>
+						</li>
+					</value>
+				</li>
+			</operations>
+		</nomatch>
+	</Operation>
+	<Operation Class="PatchOperationAdd">
+		<xpath>/Defs/ThingDef[defName="BOR_MoisturePump_II"]/comps</xpath>
+		<value>
+			<li Class="CompProperties_PollutionPump">
+				<radius>50.9</radius>
+				<pumpEffecterDef>PollutionPumped</pumpEffecterDef>
+				<pumpsPerWastepack>2</pumpsPerWastepack>
+				<intervalTicks>1800</intervalTicks>
+			</li>
+		</value>
+	</Operation>
+	<Operation Class="PatchOperationAdd">
+		<xpath>/Defs/ThingDef[defName="BOR_MoisturePump_II"]/comps/li[@Class="BeyondOurReach.CompProperties_MultiPump"]/modes</xpath>
+		<value>
+			<li>
+				<comp>RimWorld.CompPollutionPump</comp>
+				<labelKey>BOR_PumpMode_Pollution</labelKey>
+				<descKey>BOR_PumpMode_Pollution_Desc</descKey>
+				<power>10000</power>
+				<research>BOR_Research_PollutionPump_II</research>
+			</li>
+		</value>
+	</Operation>
+	<Operation Class="PatchOperationConditional">
+		<xpath>/Defs/ThingDef[defName="BOR_MoisturePump_II"]/comps/li[@Class="TerraPumps.CompProperties_TerrainPumpWet"]</xpath>
+		<match Class="PatchOperationReplace">
+			<xpath>/Defs/ThingDef[defName="BOR_MoisturePump_II"]/description</xpath>
+			<value>
+				<description>Very slowly equalizes moisture in nearby terrain, converting marshes or shallow water into dry ground, and soft sand into normal sand. Does not affect deep water. With the matching research it can instead clean polluted terrain, or flood, fertilize, break up or deepen terrain, one job at a time. Pick the job with the mode button.</description>
+			</value>
+		</match>
+		<nomatch Class="PatchOperationReplace">
+			<xpath>/Defs/ThingDef[defName="BOR_MoisturePump_II"]/description</xpath>
+			<value>
+				<description>Very slowly equalizes moisture in nearby terrain, converting marshes or shallow water into dry ground, and soft sand into normal sand. Does not affect deep water. With the matching research it can instead clean polluted terrain; the extracted pollution is formed into toxic wastepacks which must be hauled away. Pick the job with the mode button.</description>
+			</value>
+		</nomatch>
+	</Operation>
+	<Operation Class="PatchOperationConditional">
+		<xpath>/Defs/ThingDef[defName="BOR_MoisturePump_III"]/comps/li[@Class="BeyondOurReach.CompProperties_MultiPump"]</xpath>
+		<nomatch Class="PatchOperationSequence">
+			<operations>
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/ThingDef[defName="BOR_MoisturePump_III"]/tickerType</xpath>
+					<value>
+						<tickerType>Normal</tickerType>
+					</value>
+				</li>
+				<li Class="PatchOperationAdd">
+					<xpath>/Defs/ThingDef[defName="BOR_MoisturePump_III"]/comps</xpath>
+					<value>
+						<li Class="BeyondOurReach.CompProperties_MultiPump">
+							<modes>
+								<li>
+									<comp>RimWorld.CompTerrainPumpDry</comp>
+									<labelKey>BOR_PumpMode_Dry</labelKey>
+									<descKey>BOR_PumpMode_Dry_Desc</descKey>
+									<power>550</power>
+								</li>
+							</modes>
+						</li>
+					</value>
+				</li>
+			</operations>
+		</nomatch>
+	</Operation>
+	<Operation Class="PatchOperationAdd">
+		<xpath>/Defs/ThingDef[defName="BOR_MoisturePump_III"]/comps</xpath>
+		<value>
+			<li Class="CompProperties_PollutionPump">
+				<radius>100.9</radius>
+				<pumpEffecterDef>PollutionPumped</pumpEffecterDef>
+				<pumpsPerWastepack>1</pumpsPerWastepack>
+				<intervalTicks>1000</intervalTicks>
+			</li>
+		</value>
+	</Operation>
+	<Operation Class="PatchOperationAdd">
+		<xpath>/Defs/ThingDef[defName="BOR_MoisturePump_III"]/comps/li[@Class="BeyondOurReach.CompProperties_MultiPump"]/modes</xpath>
+		<value>
+			<li>
+				<comp>RimWorld.CompPollutionPump</comp>
+				<labelKey>BOR_PumpMode_Pollution</labelKey>
+				<descKey>BOR_PumpMode_Pollution_Desc</descKey>
+				<power>25000</power>
+				<research>BOR_Research_PollutionPump_III</research>
+			</li>
+		</value>
+	</Operation>
+	<Operation Class="PatchOperationConditional">
+		<xpath>/Defs/ThingDef[defName="BOR_MoisturePump_III"]/comps/li[@Class="TerraPumps.CompProperties_TerrainPumpWet"]</xpath>
+		<match Class="PatchOperationReplace">
+			<xpath>/Defs/ThingDef[defName="BOR_MoisturePump_III"]/description</xpath>
+			<value>
+				<description>Very slowly equalizes moisture in nearby terrain, converting marshes or shallow water into dry ground, and soft sand into normal sand. Does not affect deep water. With the matching research it can instead clean polluted terrain, or flood, fertilize, break up or deepen terrain, one job at a time. Pick the job with the mode button.</description>
+			</value>
+		</match>
+		<nomatch Class="PatchOperationReplace">
+			<xpath>/Defs/ThingDef[defName="BOR_MoisturePump_III"]/description</xpath>
+			<value>
+				<description>Very slowly equalizes moisture in nearby terrain, converting marshes or shallow water into dry ground, and soft sand into normal sand. Does not affect deep water. With the matching research it can instead clean polluted terrain; the extracted pollution is formed into toxic wastepacks which must be hauled away. Pick the job with the mode button.</description>
+			</value>
+		</nomatch>
+	</Operation>
+</Patch>

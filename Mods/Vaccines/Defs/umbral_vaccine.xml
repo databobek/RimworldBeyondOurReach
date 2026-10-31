@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- Umbral vaccine: one dose does everything the tenebral bio, mech (I) and mech (II) vaccines do. Made at the umbral medical fabricator and the Dark Archotech Altar. -->
+	<HediffDef>
+		<defName>BOR_UmbralVaccinated</defName>
+		<label>umbral vaccination</label>
+		<labelNoun>an umbral vaccination</labelNoun>
+		<description>This pawn's body has been rewritten by umbral processes. Every known biological and mechanite pathogen is neutralised on contact. The continuous self-maintenance of this modification induces a constant low-level pain signal that cannot be suppressed.</description>
+		<hediffClass>HediffWithComps</hediffClass>
+		<isBad>false</isBad>
+		<initialSeverity>1.0</initialSeverity>
+		<stages>
+			<li>
+				<label>active</label>
+				<painOffset>0.075</painOffset>
+			</li>
+		</stages>
+	</HediffDef>
+	<ThingDef ParentName="ArchoVaccineVialBase">
+		<defName>BOR_UmbralVaccine</defName>
+		<tradeTags>
+			<li>BOR_Tech_III</li>
+		</tradeTags>
+		<label>umbral vaccine</label>
+		<description>The final word in umbral medicine. A single dose does everything the tenebral bio-vaccine and both tenebral mech-vaccines do, with one permanent marker and a single source of low-level pain instead of three.</description>
+		<statBases>
+			<MarketValue>5000</MarketValue>
+		</statBases>
+		<graphicData>
+			<texPath>Things/Item/Health/Vaccine_Base</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+			<color>(0.62, 0.45, 0.95, 1)</color>
+		</graphicData>
+		<ingestible>
+			<ingestReportString>administering the umbral vaccine.</ingestReportString>
+			<ingestReportStringEat>administers the umbral vaccine.</ingestReportStringEat>
+			<outcomeDoers>
+				<!-- Same as the tenebral bio, mech (I) and mech (II) vaccines. Disease patches for other mods are added in the Patches folder. -->
+				<li Class="IngestionOutcomeDoer_GiveHediff">
+					<hediffDef>ArchoVaccinated_Flu</hediffDef>
+					<severity>1.0</severity>
+				</li>
+				<li Class="IngestionOutcomeDoer_GiveHediff">
+					<hediffDef>ArchoVaccinated_Plague</hediffDef>
+					<severity>1.0</severity>
+				</li>
+				<li Class="IngestionOutcomeDoer_GiveHediff">
+					<hediffDef>ArchoVaccinated_Malaria</hediffDef>
+					<severity>1.0</severity>
+				</li>
+				<li Class="IngestionOutcomeDoer_GiveHediff">
+					<hediffDef>ArchoVaccinated_SleepingSickness</hediffDef>
+					<severity>1.0</severity>
+				</li>
+				<li Class="IngestionOutcomeDoer_GiveHediff">
+					<hediffDef>ArchoVaccinated_Scaria</hediffDef>
+					<severity>1.0</severity>
+				</li>
+				<li Class="IngestionOutcomeDoer_GiveHediff">
+					<hediffDef>ArchoVaccinated_Infection</hediffDef>
+					<severity>1.0</severity>
+				</li>
+				<li Class="IngestionOutcomeDoer_GiveHediff">
+					<hediffDef>ArchoVaccinated_GutWorms</hediffDef>
+					<severity>1.0</severity>
+				</li>
+				<li Class="IngestionOutcomeDoer_GiveHediff">
+					<hediffDef>ArchoVaccinated_LungRot</hediffDef>
+					<severity>1.0</severity>
+				</li>
+				<li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_MechaniteJailbreak">
+					<hostileHediffDefName>FibrousMechanites</hostileHediffDefName>
+					<beneficialHediffDef>MechaniteIntegration_Fibrous</beneficialHediffDef>
+					<watcherHediffDef>ArchoTrojan_Fibrous</watcherHediffDef>
+				</li>
+				<li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_MechaniteJailbreak">
+					<hostileHediffDefName>SensoryMechanites</hostileHediffDefName>
+					<beneficialHediffDef>MechaniteIntegration_Sensory</beneficialHediffDef>
+					<watcherHediffDef>ArchoTrojan_Sensory</watcherHediffDef>
+				</li>
+				<li MayRequire="lts.MSMD" Class="MedicalExpansionVaccines.IngestionOutcomeDoer_GiveHediffByQuality">
+					<hediffDef>NanoVaccinated_MedicalMechanites</hediffDef>
+					<baseSeverity>1.0</baseSeverity>
+				</li>
+				<li MayRequire="lts.MSMD" Class="MedicalExpansionVaccines.IngestionOutcomeDoer_GiveHediffByQuality">
+					<hediffDef>NanoVaccinated_BerserkerMechanites</hediffDef>
+					<baseSeverity>1.0</baseSeverity>
+				</li>
+				<li MayRequire="lts.MSMD" Class="MedicalExpansionVaccines.IngestionOutcomeDoer_GiveHediffByQuality">
+					<hediffDef>NanoVaccinated_TrainerMechanites</hediffDef>
+					<baseSeverity>1.0</baseSeverity>
+				</li>
+				<li Class="IngestionOutcomeDoer_GiveHediff">
+					<hediffDef>BOR_UmbralVaccinated</hediffDef>
+					<severity>1.0</severity>
+				</li>
+			</outcomeDoers>
+		</ingestible>
+	</ThingDef>
+	<!-- Costs twice the ingredients of a tenebral vaccine and takes longer. -->
+	<RecipeDef ParentName="BOR_TenebralVaccineCraftingBase">
+		<defName>BOR_Make_UmbralVaccine</defName>
+		<label>make umbral vaccine</label>
+		<jobString>Synthesizing umbral vaccine.</jobString>
+		<description>Synthesize an umbral vaccine, a single dose covering everything the tenebral vaccines do. Yields 1 dose.</description>
+		<workAmount>400000</workAmount>
+		<ingredients Inherit="False">
+			<li>
+				<filter>
+					<categories>
+						<li>MeatRaw</li>
+					</categories>
+				</filter>
+				<count>6</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Pax</li>
+					</thingDefs>
+				</filter>
+				<count>6</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Femtoclusters</li>
+					</thingDefs>
+				</filter>
+				<count>6</count>
+			</li>
+		</ingredients>
+		<products>
+			<BOR_UmbralVaccine>1</BOR_UmbralVaccine>
+		</products>
+	</RecipeDef>
+</Defs>

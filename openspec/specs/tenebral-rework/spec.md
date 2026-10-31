@@ -1,7 +1,7 @@
 # Tenebral Rework Specification
 
 ## Purpose
-Tenebral bionics are a stepping stone on the road to Umbral. Today they cause psychosis (see `tenebral-bloodlust`). This rework tracks how often a psychosis-afflicted pawn breaks, offers an exit to the Holytech path (see `holytech-faction`), and, if breaks go too far, crystallizes the pawn into Umbral (see `umbral-rework`). Tenebral production moves from the regular buildings to the Umbral line, with a new Dark Archotech Altar for tenebral items.
+Tenebral bionics are a stepping stone on the road to Umbral. Today they cause psychosis (see `tenebral-bloodlust`). This rework tracks how often a psychosis-afflicted pawn breaks, offers an exit to the Holytech path (see `holytech-faction`), and, if breaks go too far, crystallizes the pawn into Umbral (see `umbral-rework`). Tenebral production moves from the regular buildings to the Umbral line, with a new Dark Archotech Altar as an additional way to make tenebral items. Umbral buildings produce the same items normally.
 
 ## Requirements
 
@@ -20,14 +20,14 @@ Once the break counter reaches the umbral threshold, the pawn's body SHALL begin
 
 - Crystallized body parts SHALL NOT be removable.
 - Crystallized body parts SHALL be non-functional.
-- The heart and brain SHALL NOT crystallize.
+- Only the parts listed under Implementation decisions crystallize; the heart and brain never do.
 
 #### Scenario: Half crystallized
 - WHEN 50% of the pawn's body is crystallized
-- THEN the pawn can be placed in the Umbral Transformation Pod
+- THEN the pawn can be placed in a Tenebral pod in transformation mode
 
-### Requirement: Umbral Transformation Pod hold
-A pawn placed in the Umbral Transformation Pod SHALL be held for `(100 - crystallized%)`% of a year. The hold SHALL NOT end early.
+### Requirement: Transformation mode hold
+A pawn placed in a Tenebral pod set to transformation mode SHALL be held for `(100 - crystallized%)`% of a year. The hold SHALL NOT end early.
 
 #### Scenario: Partial crystallization
 - WHEN the pawn is 50% crystallized
@@ -37,13 +37,13 @@ A pawn placed in the Umbral Transformation Pod SHALL be held for `(100 - crystal
 When the hold ends, the pawn SHALL emerge as Umbral, as defined in `umbral-rework`.
 
 ### Requirement: Building split
-Every Tenebral building SHALL be replaced by an Umbral building, except the turret, which SHALL remain Tenebral. Tenebral drugs and medicine SHALL be produced for the Umbral line instead of the Tenebral line.
+Every Tenebral building SHALL be replaced by an Umbral building, except the turret, which SHALL remain Tenebral. The Umbral tier has no items of its own. Its buildings (tier IV) SHALL produce the tenebral-tier items (weapons, guns, apparel, vaccines, organs, appendages) as well as the items moved to the Umbral line (drugs and medicine). Umbral pawns resist tenebral psychosis, so they cannot use the Dark Archotech Altar and SHALL NOT need it.
 
 ### Requirement: New Tenebral buildings
-Tenebral SHALL gain two new buildings: the Dark Archotech Altar and the Umbral Transformation Pod.
+Tenebral SHALL gain the Dark Archotech Altar. The Umbral transformation chamber is a mode of the Tenebral pod, not a separate building.
 
 ### Requirement: Dark Archotech Altar
-The Dark Archotech Altar SHALL be a special Forge whose grid is prefilled with tenebral items: melee weapons, guns, tenebrite, tenebral organ, tenebral appendage, and femtoclusters.
+The Dark Archotech Altar SHALL be a special Forge whose grid is prefilled with tenebral items: melee weapons, guns, apparel, tenebrite, tenebral organ, tenebral appendage, femtoclusters, and the tenebral and umbral vaccines. Every item on the altar SHALL also have a normal recipe at the Umbral tier IV buildings; the altar is an additional source, not the only one.
 
 - Every grid cell SHALL start prefilled but locked.
 - A locked cell SHALL be unlocked only by performing work on it.
@@ -66,7 +66,7 @@ Everything created with `BOR_Tenebrite` (buildings, floors, walls, weapons, armo
 - THEN tenebral psychosis grows in that pawn after a few days
 
 ### Requirement: Tenebral pod
-The Tenebral pod SHALL be a Tenebral building that combines a bionic installator, a healing pod, and a stasis pod. It SHALL provide a mode gizmo with three modes: stasis, healing, and operating.
+The Tenebral pod SHALL be a Tenebral building that combines a bionic installator, a healing pod, and a stasis pod. It SHALL provide a mode gizmo with four modes: stasis, healing, operating, and transformation. The mode cannot be changed while a transformation is under way.
 
 #### Scenario: Healing mode
 - WHEN a pawn with a tenebral hediff enters the pod in healing mode
@@ -83,7 +83,7 @@ Before the pod can operate, a tenebral appendage or organ and femtoclusters SHAL
 - Value of the holytech threshold ("a few" breaks).
 - Value of the umbral threshold ("too many" breaks).
 - Which body parts count toward the 50%.
-- Whether a pawn can be placed in the Umbral Transformation Pod before reaching 50%.
+- Whether a pawn can be placed in transformation mode before reaching 50%.
 - Whether crystallization progresses while the pawn is not psychotic.
 - The scaling formula for crystalline joints (componentIII) per requested item.
 - How many work actions unlock each locked cell on the altar.
@@ -95,6 +95,6 @@ Implemented in `TenebralPsychosis.cs`, `TenebralSurgery.cs`, `TenebralPods.cs`, 
 - Severity floor = (implants + tenebrite gear x 0.5) x 0.1. Nearby tenebrite emission (buildings 1, floor cells 0.1, radius 6, capped at 3) adds 0.03 severity per day per unit. Without emission, severity decays 0.05/day down to the floor.
 - Holytech threshold: 3 breaks. Umbral threshold: 6 breaks. Breaks caused by damage or psycasts don't count.
 - Tenebral bionics can be removed by surgery only from the holytech threshold onward; removing one adds `BOR_HolytechCandidate`.
-- Crystallization: 4 parts per day, plus 2 at once for every break past the threshold, and it keeps going whether or not the pawn is psychotic. Eligible parts are every non-core part that is not vital and not an eating part (so heart, brain, lungs, liver, kidneys, stomach, neck and jaw never crystallize). The percentage counts eligible parts.
-- The Umbral Transformation Pod refuses a pawn below 50%.
+- Crystallization: nothing happens on the 6th break itself. Every break after it has a 50% chance to crystallize one random eligible part. There is no timer, so a pawn who stops breaking stops crystallizing. Eligible parts are the arms, legs, eyes, ears, the left kidney, the right lung and the torso (11 parts on a human, so 50% is 6 parts). Nothing else crystallizes or counts. The percentage counts eligible parts.
+- Transformation mode refuses a pawn below 50%.
 - Altar: unlocking a cell takes the forge analysis time for the item. Each run costs ceil(value x yield x 0.5 / joint value) crystalline joints (at least 1). Work drains 2 days' worth of bloodlust per day of work.

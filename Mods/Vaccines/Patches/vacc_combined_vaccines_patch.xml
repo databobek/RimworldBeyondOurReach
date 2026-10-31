@@ -13,6 +13,7 @@
        New Hediffs (BOR_TenebralVaccinated_*) with constant pain 0.15.
        3 vaccines: Bio (all bio diseases), Mech_I (vanilla mech), Mech_II (MSMD*).
        Archo-level only. DLC/mod diseases patched in conditionally.
+       BOR_UmbralVaccine is patched along with Bio and Mech_I.
 
      * Loaded only when the respective mod is active.
      ===================================================================== -->
@@ -30,7 +31,7 @@
 					<operations>
 						<!-- Patch Tenebral Bio with DO permanent immunities -->
 						<li Class="PatchOperationAdd">
-							<xpath>/Defs/ThingDef[defName="BOR_TenebralVaccine_Bio"]/ingestible/outcomeDoers</xpath>
+							<xpath>/Defs/ThingDef[defName="BOR_TenebralVaccine_Bio" or defName="BOR_UmbralVaccine"]/ingestible/outcomeDoers</xpath>
 							<value>
 								<li Class="IngestionOutcomeDoer_GiveHediff">
 									<hediffDef>ArchoVaccinated_DO_Tuberculosis</hediffDef>
@@ -88,7 +89,7 @@
 					<operations>
 						<!-- Patch Tenebral Bio with DP permanent immunities -->
 						<li Class="PatchOperationAdd">
-							<xpath>/Defs/ThingDef[defName="BOR_TenebralVaccine_Bio"]/ingestible/outcomeDoers</xpath>
+							<xpath>/Defs/ThingDef[defName="BOR_TenebralVaccine_Bio" or defName="BOR_UmbralVaccine"]/ingestible/outcomeDoers</xpath>
 							<value>
 								<li Class="IngestionOutcomeDoer_GiveHediff">
 									<hediffDef>ArchoVaccinated_DP_CommonCold</hediffDef>
@@ -133,7 +134,7 @@
 			<li Class="PatchOperationConditional">
 				<xpath>/Defs/ThingDef[defName="Vaccine_InfantIllness"]</xpath>
 				<match Class="PatchOperationAdd">
-					<xpath>/Defs/ThingDef[defName="BOR_TenebralVaccine_Bio"]/ingestible/outcomeDoers</xpath>
+					<xpath>/Defs/ThingDef[defName="BOR_TenebralVaccine_Bio" or defName="BOR_UmbralVaccine"]/ingestible/outcomeDoers</xpath>
 					<value>
 						<li Class="IngestionOutcomeDoer_GiveHediff">
 							<hediffDef>ArchoVaccinated_InfantIllness</hediffDef>
@@ -148,7 +149,7 @@
 			<li Class="PatchOperationConditional">
 				<xpath>/Defs/ThingDef[defName="Vaccine_BloodRot"]</xpath>
 				<match Class="PatchOperationAdd">
-					<xpath>/Defs/ThingDef[defName="BOR_TenebralVaccine_Bio"]/ingestible/outcomeDoers</xpath>
+					<xpath>/Defs/ThingDef[defName="BOR_TenebralVaccine_Bio" or defName="BOR_UmbralVaccine"]/ingestible/outcomeDoers</xpath>
 					<value>
 						<li Class="IngestionOutcomeDoer_GiveHediff">
 							<hediffDef>ArchoVaccinated_BloodRot</hediffDef>
@@ -163,7 +164,7 @@
 			<li Class="PatchOperationConditional">
 				<xpath>/Defs/ThingDef[defName="Vaccine_Necroa"]</xpath>
 				<match Class="PatchOperationAdd">
-					<xpath>/Defs/ThingDef[defName="BOR_TenebralVaccine_Bio"]/ingestible/outcomeDoers</xpath>
+					<xpath>/Defs/ThingDef[defName="BOR_TenebralVaccine_Bio" or defName="BOR_UmbralVaccine"]/ingestible/outcomeDoers</xpath>
 					<value>
 						<li Class="IngestionOutcomeDoer_GiveHediff">
 							<hediffDef>ArchoVaccinated_Necroa</hediffDef>
@@ -178,7 +179,7 @@
 			<li Class="PatchOperationConditional">
 				<xpath>/Defs/ThingDef[defName="Vaccine_Rabies"]</xpath>
 				<match Class="PatchOperationAdd">
-					<xpath>/Defs/ThingDef[defName="BOR_TenebralVaccine_Bio"]/ingestible/outcomeDoers</xpath>
+					<xpath>/Defs/ThingDef[defName="BOR_TenebralVaccine_Bio" or defName="BOR_UmbralVaccine"]/ingestible/outcomeDoers</xpath>
 					<value>
 						<li Class="IngestionOutcomeDoer_GiveHediff">
 							<hediffDef>ArchoVaccinated_Rabies</hediffDef>
@@ -198,7 +199,7 @@
 			<li Class="PatchOperationConditional">
 				<xpath>/Defs/ThingDef[defName="NanoVaccine_MetalhorrorImplant"]</xpath>
 				<match Class="PatchOperationAdd">
-					<xpath>/Defs/ThingDef[defName="BOR_TenebralVaccine_Mech_I"]/ingestible/outcomeDoers</xpath>
+					<xpath>/Defs/ThingDef[defName="BOR_TenebralVaccine_Mech_I" or defName="BOR_UmbralVaccine"]/ingestible/outcomeDoers</xpath>
 					<value>
 						<li Class="MedicalExpansionVaccines.IngestionOutcomeDoer_MechaniteJailbreak">
 							<watcherHediffDef>NanoShieldWatcher_MetalhorrorImplant</watcherHediffDef>

@@ -54,87 +54,16 @@ public abstract class Building_TenebralCasket : Building_CryptosleepCasket
     }
 }
 
-// Holds a half-crystallized pawn for (100 - crystallized%)% of a year, then releases it as an Umbral. No early exit.
-public class Building_UmbralTransformationPod : Building_TenebralCasket
-{
-    private int releaseTick = -1;
-
-    public override AcceptanceReport CanAccept(Pawn pawn)
-    {
-        if (!pawn.RaceProps.Humanlike)
-        {
-            return false;
-        }
-        float needed = TenebralPsychosis.BreakSettings.podThreshold;
-        float fraction = Crystallization.Fraction(pawn);
-        if (fraction < needed)
-        {
-            return "BOR_UmbralPodNotCrystallized".Translate(fraction.ToStringPercent(), needed.ToStringPercent());
-        }
-        return true;
-    }
-
-    protected override void OnAccepted(Pawn pawn)
-    {
-        float remaining = 1f - Crystallization.Fraction(pawn);
-        releaseTick = Find.TickManager.TicksGame + Mathf.RoundToInt(remaining * GenDate.TicksPerYear);
-    }
-
-    public override void TickRare()
-    {
-        base.TickRare();
-        Pawn? pawn = Occupant;
-        if (pawn == null || releaseTick < 0 || Find.TickManager.TicksGame < releaseTick)
-        {
-            return;
-        }
-        releaseTick = -1;
-        Umbral.MakeUmbral(pawn);
-        base.EjectContents();
-        if (pawn.Faction == Faction.OfPlayer)
-        {
-            Find.LetterStack.ReceiveLetter("BOR_UmbralEmergedLabel".Translate(pawn.LabelShortCap),
-                "BOR_UmbralEmergedText".Translate(pawn.Named("PAWN")), LetterDefOf.PositiveEvent, pawn);
-        }
-    }
-
-    // The hold cannot end early; only destruction frees the pawn.
-    public override void EjectContents()
-    {
-        if (releaseTick >= 0 && !Destroyed)
-        {
-            return;
-        }
-        base.EjectContents();
-    }
-
-    public override bool CanOpen => false;
-
-    public override string GetInspectString()
-    {
-        string text = base.GetInspectString();
-        if (Occupant != null && releaseTick >= 0)
-        {
-            text += "\n" + "BOR_UmbralPodRemaining".Translate((releaseTick - Find.TickManager.TicksGame).ToStringTicksToPeriod());
-        }
-        return text;
-    }
-
-    public override void ExposeData()
-    {
-        base.ExposeData();
-        Scribe_Values.Look(ref releaseTick, "releaseTick", -1);
-    }
-}
-
 public enum TenebralPodMode
 {
     Stasis,
     Healing,
-    Operating
+    Operating,
+    Transformation
 }
 
-// Bionic installator, healing pod and stasis pod in one.
+// Bionic installator, healing pod, stasis pod and Umbral transformation chamber in one. In transformation mode a
+// half-crystallized pawn is held for (100 - crystallized%)% of a year and released as an Umbral; there is no early exit.
 public class Building_TenebralPod : Building_TenebralCasket
 {
     private const int HealInterval = 60;
@@ -146,6 +75,7 @@ public class Building_TenebralPod : Building_TenebralCasket
     private RecipeDef? operation;
     private BodyPartRecord? operationPart;
     private float operationProgress;
+    private int releaseTick = -1;
 
     public Building_TenebralPod()
     {
@@ -155,6 +85,8 @@ public class Building_TenebralPod : Building_TenebralCasket
     public TenebralPodMode Mode => mode;
 
     public RecipeDef? Operation => operation;
+
+    public bool Transforming => releaseTick >= 0;
 
     public static bool HasTenebralHediff(Pawn pawn) =>
         TenebralMurder.ImplantCount(pawn) > 0 || pawn.health.hediffSet.HasHediff(BOR_TenebralDefOf.BOR_TenebralPsychosis);
@@ -169,8 +101,28 @@ public class Building_TenebralPod : Building_TenebralCasket
         {
             return "BOR_TenebralPodNeedsTenebral".Translate();
         }
+        if (mode == TenebralPodMode.Transformation)
+        {
+            float needed = TenebralPsychosis.BreakSettings.podThreshold;
+            float fraction = Crystallization.Fraction(pawn);
+            if (fraction < needed)
+            {
+                return "BOR_UmbralPodNotCrystallized".Translate(fraction.ToStringPercent(), needed.ToStringPercent());
+            }
+        }
         return true;
     }
+
+    protected override void OnAccepted(Pawn pawn)
+    {
+        if (mode == TenebralPodMode.Transformation)
+        {
+            float remaining = 1f - Crystallization.Fraction(pawn);
+            releaseTick = Find.TickManager.TicksGame + Mathf.RoundToInt(remaining * GenDate.TicksPerYear);
+        }
+    }
+
+    public override bool CanOpen => !Transforming && base.CanOpen;
 
     // Operation recipes: anything installed from a tenebral organ or appendage. Not RecipeDef.IsSurgery, which is
     // only true for recipes linked to a race and so misses most of the tenebral installs.
@@ -261,6 +213,10 @@ public class Building_TenebralPod : Building_TenebralCasket
 
     private void SetMode(TenebralPodMode newMode)
     {
+        if (Transforming)
+        {
+            return;
+        }
         mode = newMode;
         if (newMode != TenebralPodMode.Operating)
         {
@@ -280,6 +236,11 @@ public class Building_TenebralPod : Building_TenebralCasket
     {
         base.TickRare();
         Pawn? pawn = Occupant;
+        if (pawn != null && Transforming && Find.TickManager.TicksGame >= releaseTick)
+        {
+            Release(pawn);
+            return;
+        }
         if (pawn == null || mode != TenebralPodMode.Operating || operation == null || operationPart == null || MissingIngredients().Any() || !OperationFits(pawn))
         {
             return;
@@ -289,6 +250,18 @@ public class Building_TenebralPod : Building_TenebralCasket
         if (operationProgress >= operation.workAmount)
         {
             Install(pawn);
+        }
+    }
+
+    private void Release(Pawn pawn)
+    {
+        releaseTick = -1;
+        Umbral.MakeUmbral(pawn);
+        EjectContents();
+        if (pawn.Faction == Faction.OfPlayer)
+        {
+            Find.LetterStack.ReceiveLetter("BOR_UmbralEmergedLabel".Translate(pawn.LabelShortCap),
+                "BOR_UmbralEmergedText".Translate(pawn.Named("PAWN")), LetterDefOf.PositiveEvent, pawn);
         }
     }
 
@@ -389,13 +362,17 @@ public class Building_TenebralPod : Building_TenebralCasket
     {
         foreach (Gizmo g in base.GetGizmos())
         {
+            if (Transforming && g is Command_Action eject && eject.defaultLabel == "CommandPodEject".Translate())
+            {
+                continue;
+            }
             yield return g;
         }
         if (Faction != Faction.OfPlayer)
         {
             yield break;
         }
-        yield return new Command_Action
+        Command_Action modeCommand = new()
         {
             defaultLabel = "BOR_TenebralPodMode".Translate(("BOR_TenebralPodMode_" + mode).Translate()),
             defaultDesc = "BOR_TenebralPodModeDesc".Translate(),
@@ -411,6 +388,11 @@ public class Building_TenebralPod : Building_TenebralCasket
                 Find.WindowStack.Add(new FloatMenu(options));
             }
         };
+        if (Transforming)
+        {
+            modeCommand.Disable("BOR_TenebralPodTransforming".Translate());
+        }
+        yield return modeCommand;
         if (mode != TenebralPodMode.Operating)
         {
             yield break;
@@ -438,6 +420,10 @@ public class Building_TenebralPod : Building_TenebralCasket
     // The chosen operation and its loaded ingredients stay for the next occupant.
     public override void EjectContents()
     {
+        if (Transforming && !Destroyed)
+        {
+            return;
+        }
         List<Pawn> pawns = innerContainer.OfType<Pawn>().ToList();
         base.EjectContents();
         operationProgress = 0f;
@@ -461,6 +447,10 @@ public class Building_TenebralPod : Building_TenebralCasket
     {
         string text = base.GetInspectString();
         text += "\n" + "BOR_TenebralPodModeInspect".Translate(("BOR_TenebralPodMode_" + mode).Translate());
+        if (Occupant != null && Transforming)
+        {
+            text += "\n" + "BOR_UmbralPodRemaining".Translate((releaseTick - Find.TickManager.TicksGame).ToStringTicksToPeriod());
+        }
         if (operation != null && operationPart != null)
         {
             text += "\n" + "BOR_TenebralPodOperation".Translate(operation.LabelCap, operationPart.LabelCap,
@@ -490,6 +480,7 @@ public class Building_TenebralPod : Building_TenebralCasket
         Scribe_Defs.Look(ref operation, "operation");
         Scribe_BodyParts.Look(ref operationPart, "operationPart");
         Scribe_Values.Look(ref operationProgress, "operationProgress");
+        Scribe_Values.Look(ref releaseTick, "releaseTick", -1);
         ingredients ??= new ThingOwner<Thing>(this);
     }
 }

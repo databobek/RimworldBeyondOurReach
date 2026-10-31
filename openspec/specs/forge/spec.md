@@ -1,7 +1,7 @@
 # Forge Specification
 
 ## Purpose
-Forges (`BOR_Forge_I`..`BOR_Forge_IV`) reproduce items. A forge has a fixed grid of schematic cells; items are *analyzed* (destroyed) to teach the forge a schematic, which can then be produced repeatedly, optionally drawing neutronium from the pipe net. Implemented by `CompForge` / `CompProperties_Forge`, `ForgeAnalyze.cs`, `ForgeProduce.cs`, `ForgeFormat.cs`, `ForgeOverdrive.cs`, `ForgeMath.cs`, `ITab_Forge.cs`.
+Forges (`BOR_Forge_I`..`BOR_Forge_V`) reproduce items. A forge has a fixed grid of schematic cells; items are *analyzed* (destroyed) to teach the forge a schematic, which can then be produced repeatedly, optionally drawing neutronium from the pipe net. Implemented by `CompForge` / `CompProperties_Forge`, `ForgeAnalyze.cs`, `ForgeProduce.cs`, `ForgeFormat.cs`, `ForgeOverdrive.cs`, `ForgeMath.cs`, `ITab_Forge.cs`.
 
 ## Requirements
 

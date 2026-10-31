@@ -2,7 +2,7 @@
 <Defs>
 
   <ThingDef ParentName="BuildingBase">
-    <defName>BOR_Vitals_III</defName>
+    <defName>BOR_Vitals_IV</defName>
     <label>umbral soul anchor</label>
     <description>The tenebral version of a vitals monitor</description>
     <graphicData>
@@ -62,7 +62,7 @@
   </ThingDef>
 
   <ThingDef ParentName="BuildingBase">
-    <defName>BOR_ToolCabinet_III</defName>
+    <defName>BOR_ToolCabinet_IV</defName>
     <label>umbral manufacturer</label>
     <designatorDropdown>BOR_ToolCabinets</designatorDropdown>
     <description>Increases work speed by a frightening degree when placed near a workbench. One workbench can use up to five dark manufacturers.</description>
@@ -127,22 +127,16 @@
       <li Class="BeyondOurReach.DefModExtension_UmbralOnly" />
     </modExtensions>
   </ThingDef>
-
   <ThingDef ParentName="BuildingBase">
     <defName>BOR_MoisturePump_III</defName>
-    <label>umbral moisture pump</label>
+    <label>tenebral moisture pump</label>
     <description>Very slowly equalizes moisture in nearby terrain, converting marshes or shallow water into dry ground, and soft sand into normal sand. Does not affect deep water.</description>
     <graphicData>
-      <texPath>Things/Building/Misc/MoisturePump</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
-      <shadowData>
-        <volume>(0.58, 0.35, 0.25)</volume>
-        <offset>(0,0,-0.1)</offset>
-      </shadowData>
-      <damageData>
-        <rect>(0.2,0.2,0.6,0.6)</rect>
-      </damageData>
-    </graphicData>
+            <texPath>BOR/Retextures/pollutionpump3</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>(2.5,2.5)</drawSize>
+            <drawOffset>(0,2,0.15)</drawOffset>
+        </graphicData>
     <comps>
       <li Class="CompProperties_Forbiddable" />
       <li Class="CompProperties_Power">
@@ -158,12 +152,14 @@
     <tickerType>Rare</tickerType>
     <altitudeLayer>Building</altitudeLayer>
     <statBases>
-      <MaxHitPoints>250</MaxHitPoints>
-      <WorkToBuild>4500</WorkToBuild>
-      <Flammability>1.0</Flammability>
+      <MaxHitPoints>4000</MaxHitPoints>
+      <WorkToBuild>40000</WorkToBuild>
+      <Flammability>0.5</Flammability><Mass>15</Mass>
       <Beauty>-2</Beauty>
     </statBases>
-    <fillPercent>0.15</fillPercent>
+    <fillPercent>0.2</fillPercent>
+    <size>(2,2)</size>
+    <uiIconScale>0.85</uiIconScale>
     <building>
       <ai_chillDestination>false</ai_chillDestination>
       <destroySound>BuildingDestroyed_Metal_Small</destroySound>
@@ -173,16 +169,13 @@
       <BOR_ComponentIII>1</BOR_ComponentIII>
     </costList>
     <specialDisplayRadius>20.9</specialDisplayRadius>
-    <pathCost>30</pathCost>
     <passability>PassThroughOnly</passability>
-    <designationCategory>Misc</designationCategory>
+    <designationCategory>BOR</designationCategory>
+    <designatorDropdown>BOR_Pumps</designatorDropdown>
     <rotatable>false</rotatable>
     <researchPrerequisites>
       <li>BOR_Research_Analyzer_III</li>
     </researchPrerequisites>
     <constructionSkillPrerequisite>18</constructionSkillPrerequisite>
-    <modExtensions>
-      <li Class="BeyondOurReach.DefModExtension_UmbralOnly" />
-    </modExtensions>
   </ThingDef>
 </Defs>

@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
-	<!-- Tenebral melee weapons, produced at the Dark Archotech Altar. Textures are placeholders copied from the mono swords and the axe. -->
+	<!-- Tenebral melee weapons, made at the umbral fabricator and the Dark Archotech Altar. Textures are placeholders copied from the mono swords and the axe. -->
 	<ThingDef Name="BOR_TenebralMeleeBase" ParentName="BaseMeleeWeapon_Sharp_Quality" Abstract="True">
 		<techLevel>Archotech</techLevel>
 		<smeltable>false</smeltable>
 		<relicChance>2</relicChance>
-		<recipeMaker Inherit="False" IsNull="True" />
+		<recipeMaker Inherit="False">
+			<researchPrerequisite>BOR_Research_Weapons_III</researchPrerequisite>
+			<skillRequirements>
+				<Crafting>18</Crafting>
+			</skillRequirements>
+			<displayPriority>1100</displayPriority>
+			<recipeUsers Inherit="False">
+				<li>BOR_Bench_IV</li>
+			</recipeUsers>
+		</recipeMaker>
 		<thingCategories Inherit="False">
 			<li>BOR_Weapons_III</li>
 		</thingCategories>
