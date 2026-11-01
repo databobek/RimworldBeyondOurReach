@@ -248,6 +248,9 @@ public class CompDarkAltar : ThingComp
         }
     }
 
+    // Burns what the altar holds, so nothing drops when the Path of Light strikes it.
+    public void ClearComponents() => components = 0;
+
     public void DevAddComponents(int amount) => components = Mathf.Max(0, components + amount);
 
     public override IEnumerable<Gizmo> CompGetGizmosExtra()

@@ -38,6 +38,10 @@ public partial class CompForge
     {
         get
         {
+            if (Props.automatic)
+            {
+                return PowerOn ? AutomationForgeSpeed : 0f;
+            }
             if (WorkHelperComp == null || !PowerOn || parent.Map == null)
             {
                 return 0f;

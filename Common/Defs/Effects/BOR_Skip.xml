@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- Vanilla Skip_Entry played 2.5 times slower. A fleck's lifetime and its shader's timings have to change together. -->
+	<FleckDef ParentName="PsycastSkipInner">
+		<defName>BOR_SkipInnerSlow</defName>
+		<solidTime>1</solidTime>
+		<graphicData>
+			<shaderParameters>
+				<_inTime>0.0</_inTime>
+				<_solidTime>0.5</_solidTime>
+				<_outTime>0.25</_outTime>
+			</shaderParameters>
+		</graphicData>
+	</FleckDef>
+
+	<FleckDef ParentName="PsycastSkipOuterRing">
+		<defName>BOR_SkipOuterRingSlow</defName>
+		<solidTime>1</solidTime>
+		<graphicData>
+			<shaderParameters>
+				<_inTime>0.0</_inTime>
+				<_solidTime>0.5</_solidTime>
+				<_outTime>0.25</_outTime>
+				<_AgeOffset>0.175</_AgeOffset>
+			</shaderParameters>
+		</graphicData>
+	</FleckDef>
+
+  <EffecterDef>
+    <defName>BOR_Skip_Slow</defName>
+    <maintainTicks>180</maintainTicks>
+    <children>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerTriggeredDelayed</subEffecterClass>
+        <fleckDef>PlainFlash</fleckDef>
+        <burstCount>1~1</burstCount>
+        <scale>7.0~7.0</scale>
+        <spawnLocType>OnSource</spawnLocType>
+      </li>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerTriggeredDelayed</subEffecterClass>
+        <fleckDef>BOR_SkipInnerSlow</fleckDef>
+        <initialDelayTicks>11</initialDelayTicks>
+        <burstCount>1~1</burstCount>
+        <scale>1~1</scale>
+        <rotation>0~0</rotation>
+        <spawnLocType>OnSource</spawnLocType>
+      </li>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerTriggeredDelayed</subEffecterClass>
+        <fleckDef>BOR_SkipOuterRingSlow</fleckDef>
+        <initialDelayTicks>11</initialDelayTicks>
+        <burstCount>1~1</burstCount>
+        <scale>1~1</scale>
+        <rotation>0~0</rotation>
+        <spawnLocType>OnSource</spawnLocType>
+      </li>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+        <positionRadius>1.3</positionRadius>
+        <fleckDef>ElectricalSpark</fleckDef>
+        <burstCount>7~9</burstCount>
+        <scale>2.5</scale>
+        <spawnLocType>OnSource</spawnLocType>
+      </li>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerTriggeredDelayed</subEffecterClass>
+        <positionRadius>1.3</positionRadius>
+        <initialDelayTicks>12</initialDelayTicks>
+        <fleckDef>ElectricalSpark</fleckDef>
+        <burstCount>5~7</burstCount>
+        <scale>2.5</scale>
+        <spawnLocType>OnSource</spawnLocType>
+      </li>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerTriggeredDelayed</subEffecterClass>
+        <positionRadius>1.3</positionRadius>
+        <initialDelayTicks>25</initialDelayTicks>
+        <fleckDef>ElectricalSpark</fleckDef>
+        <burstCount>3~7</burstCount>
+        <scale>1.5</scale>
+        <spawnLocType>OnSource</spawnLocType>
+      </li>
+    </children>
+  </EffecterDef>
+</Defs>

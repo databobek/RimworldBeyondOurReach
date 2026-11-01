@@ -42,7 +42,7 @@ public class DefModExtension_TenebralPsychosis : DefModExtension
 // Tunables for the hidden break counter; placed on BOR_TenebralBreakCounter.
 public class DefModExtension_TenebralBreaks : DefModExtension
 {
-    public int holytechThreshold = 3;
+    public int orientisThreshold = 3;
     public int umbralThreshold = 6;
 
     // Chance that each break past the umbral threshold crystallizes parts.
@@ -67,7 +67,6 @@ public static class BOR_TenebralDefOf
     public static HediffDef BOR_TenebralPsychosis = null!;
     public static HediffDef BOR_TenebralBreakCounter = null!;
     public static HediffDef BOR_Crystallized = null!;
-    public static HediffDef BOR_HolytechCandidate = null!;
 
     public static JobDef BOR_AltarUnlock = null!;
     public static JobDef BOR_AltarProduce = null!;
@@ -141,8 +140,6 @@ public static class TenebralPsychosis
 
     public static int Breaks(Pawn pawn) =>
         (pawn.health?.hediffSet?.GetFirstHediffOfDef(BOR_TenebralDefOf.BOR_TenebralBreakCounter) as Hediff_TenebralBreaks)?.breaks ?? 0;
-
-    public static bool CanTakeHolytechExit(Pawn pawn) => Breaks(pawn) >= BreakSettings.holytechThreshold;
 
     // Everything made with tenebrite: stuff, or tenebrite in the cost list.
     public static bool MadeOfTenebrite(Thing thing) =>
@@ -308,18 +305,36 @@ public class MapComponent_TenebralExposure : MapComponent
 // Hidden counter of mental breaks suffered while psychotic. Breaks past the umbral threshold may crystallize parts.
 public class Hediff_TenebralBreaks : HediffWithComps
 {
+    private const int ChoiceCheckInterval = 60;
+
     public int breaks;
 
+    // The Orientis choice waits for the break that earned it to end.
+    private bool choicePending;
+
     public override bool Visible => false;
+
+    public override void TickInterval(int delta)
+    {
+        base.TickInterval(delta);
+        if (!choicePending || !pawn.IsHashIntervalTick(ChoiceCheckInterval, delta) || pawn.InMentalState)
+        {
+            return;
+        }
+        choicePending = false;
+        if (pawn.Faction == Faction.OfPlayer)
+        {
+            GameComponent_OrientisPath.Instance.OfferChoice(pawn);
+        }
+    }
 
     public void Notify_Break()
     {
         breaks++;
         DefModExtension_TenebralBreaks s = TenebralPsychosis.BreakSettings;
-        if (pawn.Faction == Faction.OfPlayer && breaks == s.holytechThreshold)
+        if (breaks >= s.orientisThreshold)
         {
-            Find.LetterStack.ReceiveLetter("BOR_HolytechExitLabel".Translate(pawn.LabelShortCap),
-                "BOR_HolytechExitText".Translate(pawn.Named("PAWN")), LetterDefOf.NeutralEvent, pawn);
+            choicePending = true;
         }
         if (breaks == s.umbralThreshold)
         {
@@ -347,6 +362,7 @@ public class Hediff_TenebralBreaks : HediffWithComps
     {
         base.ExposeData();
         Scribe_Values.Look(ref breaks, "breaks");
+        Scribe_Values.Look(ref choicePending, "choicePending");
     }
 }
 

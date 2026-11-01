@@ -451,6 +451,15 @@ public class Building_TenebralPod : Building_TenebralCasket
         }
     }
 
+    // The Path of Light ends a transformation by killing the pawn and destroying the pod. The hold is cleared first so
+    // the corpse is ejected instead of being destroyed with the pod.
+    public void DestroyWithOccupant()
+    {
+        releaseTick = -1;
+        Occupant?.Kill(null);
+        Kill();
+    }
+
     public override void Destroy(DestroyMode mode = DestroyMode.Vanish)
     {
         DropIngredients();

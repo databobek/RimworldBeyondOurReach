@@ -90,7 +90,7 @@ public class WorkGiver_ForgeProduce : WorkGiver_Scanner
         foreach (Building b in pawn.Map.listerBuildings.allBuildingsColonist)
         {
             CompForge? comp = b.TryGetComp<CompForge>();
-            if (comp != null && comp.NextProductionSlot() >= 0)
+            if (comp != null && !comp.Props.automatic && comp.NextProductionSlot() >= 0)
             {
                 yield return b;
             }
@@ -102,7 +102,7 @@ public class WorkGiver_ForgeProduce : WorkGiver_Scanner
         foreach (Building b in pawn.Map.listerBuildings.allBuildingsColonist)
         {
             CompForge? comp = b.TryGetComp<CompForge>();
-            if (comp != null && comp.NextProductionSlot() >= 0)
+            if (comp != null && !comp.Props.automatic && comp.NextProductionSlot() >= 0)
             {
                 return false;
             }
@@ -113,7 +113,7 @@ public class WorkGiver_ForgeProduce : WorkGiver_Scanner
     public override Job? JobOnThing(Pawn pawn, Thing t, bool forced = false)
     {
         CompForge? comp = t.TryGetComp<CompForge>();
-        if (comp == null || comp.IsFormatting || !comp.PowerOn || !comp.IsAssignedOrUnassigned(pawn))
+        if (comp == null || comp.Props.automatic || comp.IsFormatting || !comp.PowerOn || !comp.IsAssignedOrUnassigned(pawn))
         {
             return null;
         }

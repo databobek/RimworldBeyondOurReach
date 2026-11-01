@@ -15,7 +15,11 @@ public static class ForgeTextures
 
 public class ITab_Forge : ITab
 {
-    private const float CellSize = 64f;
+    private const float LargeGridHeight = 6f;
+
+    // Big grids shrink their cells so the tab still fits on the screen.
+    private float CellSize => Forge?.Props.gridHeight > LargeGridHeight ? 44f : 64f;
+
     private const float CellSpacing = 6f;
     private const float Margin = 12f;
     private const float HeaderHeight = 34f;

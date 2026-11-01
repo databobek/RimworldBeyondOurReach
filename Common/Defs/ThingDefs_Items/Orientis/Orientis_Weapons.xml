@@ -1,0 +1,562 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- Made only at the offerings bench, for meditation power alone. "Charge" is the vanilla sense: guns fire single
+	     charged shots with no ammo, and melee weapons add a burn to each hit. Textures point at existing art for now. -->
+	<ThingDef Name="BOR_OrientisMeleeSharpBase" ParentName="BaseMeleeWeapon_Sharp_Quality" Abstract="True">
+		<techLevel>Ultra</techLevel>
+		<tradeability>None</tradeability>
+		<generateCommonality>0</generateCommonality>
+		<smeltable>false</smeltable>
+		<weaponTags Inherit="False" />
+		<recipeMaker Inherit="False" IsNull="True" />
+	</ThingDef>
+
+	<ThingDef Name="BOR_OrientisMeleeBluntBase" ParentName="BaseMeleeWeapon_Blunt_Quality" Abstract="True">
+		<techLevel>Ultra</techLevel>
+		<tradeability>None</tradeability>
+		<generateCommonality>0</generateCommonality>
+		<smeltable>false</smeltable>
+		<weaponTags Inherit="False" />
+		<recipeMaker Inherit="False" IsNull="True" />
+	</ThingDef>
+
+	<ThingDef Name="BOR_OrientisGunBase" ParentName="BaseGunWithQuality" Abstract="True">
+		<techLevel>Ultra</techLevel>
+		<tradeability>None</tradeability>
+		<generateCommonality>0</generateCommonality>
+		<smeltable>false</smeltable>
+		<weaponTags Inherit="False" />
+		<soundInteract>Interact_ChargeRifle</soundInteract>
+		<tools>
+			<li>
+				<label>stock</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>12</power>
+				<cooldownTime>2</cooldownTime>
+			</li>
+		</tools>
+	</ThingDef>
+
+	<ThingDef Name="BOR_OrientisProjectileBase" ParentName="BaseBullet" Abstract="True">
+		<graphicData>
+			<texPath>Things/Projectile/Charge_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+			<color>(1, 0.85, 0.4)</color>
+		</graphicData>
+	</ThingDef>
+
+	<!-- Main melee -->
+	<ThingDef ParentName="BOR_OrientisMeleeSharpBase">
+		<defName>BOR_Orientis_PowerAxe</defName>
+		<label>crusader power axe</label>
+		<description>A broad crusader axe with a charged edge that burns what it cuts.</description>
+		<graphicData>
+			<texPath>BOR/Things/Item/Equipment/axe</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<statBases>
+			<WorkToMake>30000</WorkToMake>
+			<MarketValue>4000</MarketValue>
+			<Mass>3.5</Mass>
+		</statBases>
+		<tools>
+			<li>
+				<label>edge</label>
+				<capacities>
+					<li>Cut</li>
+				</capacities>
+				<power>40</power>
+				<cooldownTime>2.2</cooldownTime>
+				<armorPenetration>1.2</armorPenetration>
+				<extraMeleeDamages>
+					<li>
+						<def>Flame</def>
+						<amount>8</amount>
+						<chance>1</chance>
+					</li>
+				</extraMeleeDamages>
+			</li>
+		</tools>
+	</ThingDef>
+
+	<ThingDef ParentName="BOR_OrientisMeleeSharpBase">
+		<defName>BOR_Orientis_PowerLongsword</defName>
+		<label>crusader power longsword</label>
+		<description>A long crusader sword with a charged blade that burns what it cuts.</description>
+		<graphicData>
+			<texPath>BOR/Things/Item/Equipment/umbral/utility_blade</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<equippedAngleOffset>-65</equippedAngleOffset>
+		<statBases>
+			<WorkToMake>30000</WorkToMake>
+			<MarketValue>4000</MarketValue>
+			<Mass>2</Mass>
+		</statBases>
+		<tools>
+			<li>
+				<label>point</label>
+				<capacities>
+					<li>Stab</li>
+				</capacities>
+				<power>30</power>
+				<cooldownTime>1.6</cooldownTime>
+				<armorPenetration>1.2</armorPenetration>
+			</li>
+			<li>
+				<label>edge</label>
+				<capacities>
+					<li>Cut</li>
+				</capacities>
+				<power>34</power>
+				<cooldownTime>1.7</cooldownTime>
+				<armorPenetration>1.0</armorPenetration>
+				<extraMeleeDamages>
+					<li>
+						<def>Flame</def>
+						<amount>6</amount>
+						<chance>1</chance>
+					</li>
+				</extraMeleeDamages>
+			</li>
+		</tools>
+	</ThingDef>
+
+	<ThingDef ParentName="BOR_OrientisMeleeSharpBase">
+		<defName>BOR_Orientis_PowerDagger</defName>
+		<label>crusader power dagger</label>
+		<description>A short crusader blade, quick and charged to pierce armor.</description>
+		<graphicData>
+			<texPath>BOR/Things/Item/Equipment/umbral/utility_blade</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>0.7</drawSize>
+		</graphicData>
+		<equippedAngleOffset>-65</equippedAngleOffset>
+		<statBases>
+			<WorkToMake>20000</WorkToMake>
+			<MarketValue>2500</MarketValue>
+			<Mass>0.6</Mass>
+		</statBases>
+		<tools>
+			<li>
+				<label>point</label>
+				<capacities>
+					<li>Stab</li>
+				</capacities>
+				<power>20</power>
+				<cooldownTime>1.0</cooldownTime>
+				<armorPenetration>1.5</armorPenetration>
+				<extraMeleeDamages>
+					<li>
+						<def>Flame</def>
+						<amount>4</amount>
+						<chance>1</chance>
+					</li>
+				</extraMeleeDamages>
+			</li>
+		</tools>
+	</ThingDef>
+
+	<ThingDef ParentName="BOR_OrientisMeleeBluntBase">
+		<defName>BOR_Orientis_PowerPoleHammer</defName>
+		<label>crusader power pole hammer</label>
+		<description>A two-handed pole hammer with a charged head. Slow, and very hard to stand up to.</description>
+		<graphicData>
+			<texPath>BOR/Things/Item/Equipment/umbral/utility_tool</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<statBases>
+			<WorkToMake>30000</WorkToMake>
+			<MarketValue>4000</MarketValue>
+			<Mass>5</Mass>
+		</statBases>
+		<tools>
+			<li>
+				<label>head</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>52</power>
+				<cooldownTime>2.8</cooldownTime>
+				<armorPenetration>1.0</armorPenetration>
+				<extraMeleeDamages>
+					<li>
+						<def>Flame</def>
+						<amount>10</amount>
+						<chance>1</chance>
+					</li>
+				</extraMeleeDamages>
+			</li>
+		</tools>
+	</ThingDef>
+
+	<!-- Crossbows -->
+	<ThingDef ParentName="BOR_OrientisProjectileBase">
+		<defName>BOR_Bullet_OrientisPlasmaBolt</defName>
+		<label>plasma bolt</label>
+		<thingClass>Projectile_Explosive</thingClass>
+		<projectile>
+			<damageDef>Bomb</damageDef>
+			<damageAmountBase>45</damageAmountBase>
+			<explosionRadius>2.9</explosionRadius>
+			<speed>40</speed>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="BOR_OrientisGunBase">
+		<defName>BOR_Orientis_PlasmaCrossbow</defName>
+		<label>plasma crossbow</label>
+		<description>A heavy crossbow that throws an explosive bolt of plasma. It needs a long moment to charge.</description>
+		<graphicData>
+			<texPath>BOR/Things/Item/Equipment/weaponranged/gen2/plazma/lmg-plas</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<statBases>
+			<WorkToMake>40000</WorkToMake>
+			<MarketValue>6000</MarketValue>
+			<Mass>6</Mass>
+			<RangedWeapon_Cooldown>3.5</RangedWeapon_Cooldown>
+		</statBases>
+		<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>BOR_Bullet_OrientisPlasmaBolt</defaultProjectile>
+				<warmupTime>3</warmupTime>
+				<range>27.9</range>
+				<forcedMissRadius>1.9</forcedMissRadius>
+				<soundCast>Shot_ChargeBlaster</soundCast>
+				<soundCastTail>GunTail_Medium</soundCastTail>
+				<muzzleFlashScale>12</muzzleFlashScale>
+				<targetParams>
+					<canTargetLocations>true</canTargetLocations>
+				</targetParams>
+			</li>
+		</verbs>
+	</ThingDef>
+
+	<ThingDef ParentName="BOR_OrientisProjectileBase">
+		<defName>BOR_Bullet_OrientisLaserBolt</defName>
+		<label>laser bolt</label>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>55</damageAmountBase>
+			<armorPenetrationBase>1.2</armorPenetrationBase>
+			<speed>110</speed>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="BOR_OrientisGunBase">
+		<defName>BOR_Orientis_LaserCrossbow</defName>
+		<label>laser crossbow</label>
+		<description>A precise crossbow that fires a single bolt of light over long range.</description>
+		<graphicData>
+			<texPath>BOR/Things/Item/Equipment/weaponranged/gen2/plazma/dmr-plas</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<statBases>
+			<WorkToMake>35000</WorkToMake>
+			<MarketValue>5000</MarketValue>
+			<Mass>4</Mass>
+			<AccuracyTouch>0.5</AccuracyTouch>
+			<AccuracyShort>0.8</AccuracyShort>
+			<AccuracyMedium>0.95</AccuracyMedium>
+			<AccuracyLong>0.95</AccuracyLong>
+			<RangedWeapon_Cooldown>2</RangedWeapon_Cooldown>
+		</statBases>
+		<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>BOR_Bullet_OrientisLaserBolt</defaultProjectile>
+				<warmupTime>1.8</warmupTime>
+				<range>44.9</range>
+				<soundCast>Shot_ChargeRifle</soundCast>
+				<soundCastTail>GunTail_Medium</soundCastTail>
+				<muzzleFlashScale>9</muzzleFlashScale>
+			</li>
+		</verbs>
+	</ThingDef>
+
+	<!-- Arquebuses, one per post-medieval tech level -->
+	<ThingDef Name="BOR_OrientisArquebusBase" ParentName="BOR_OrientisGunBase" Abstract="True">
+		<graphicData>
+			<texPath>BOR/Things/Item/Equipment/weaponranged/gen2/plazma/shotgun-plas</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+	</ThingDef>
+
+	<ThingDef ParentName="BOR_OrientisProjectileBase">
+		<defName>BOR_Bullet_OrientisArquebus_Industrial</defName>
+		<label>charge shot</label>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>30</damageAmountBase>
+			<armorPenetrationBase>0.4</armorPenetrationBase>
+			<speed>70</speed>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="BOR_OrientisArquebusBase">
+		<defName>BOR_Orientis_Arquebus_Industrial</defName>
+		<label>charge arquebus</label>
+		<description>A long single-shot arquebus that charges for a moment before it fires.</description>
+		<techLevel>Industrial</techLevel>
+		<statBases>
+			<WorkToMake>10000</WorkToMake>
+			<MarketValue>800</MarketValue>
+			<Mass>4</Mass>
+			<RangedWeapon_Cooldown>2.5</RangedWeapon_Cooldown>
+		</statBases>
+		<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>BOR_Bullet_OrientisArquebus_Industrial</defaultProjectile>
+				<warmupTime>1.8</warmupTime>
+				<range>28.9</range>
+				<soundCast>Shot_ChargeRifle</soundCast>
+				<soundCastTail>GunTail_Medium</soundCastTail>
+				<muzzleFlashScale>9</muzzleFlashScale>
+			</li>
+		</verbs>
+	</ThingDef>
+
+	<ThingDef ParentName="BOR_OrientisProjectileBase">
+		<defName>BOR_Bullet_OrientisArquebus_Spacer</defName>
+		<label>charge shot</label>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>45</damageAmountBase>
+			<armorPenetrationBase>0.7</armorPenetrationBase>
+			<speed>80</speed>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="BOR_OrientisArquebusBase">
+		<defName>BOR_Orientis_Arquebus_Spacer</defName>
+		<label>high charge arquebus</label>
+		<description>A long single-shot arquebus with a stronger charge cell.</description>
+		<techLevel>Spacer</techLevel>
+		<statBases>
+			<WorkToMake>20000</WorkToMake>
+			<MarketValue>2000</MarketValue>
+			<Mass>4</Mass>
+			<RangedWeapon_Cooldown>2.5</RangedWeapon_Cooldown>
+		</statBases>
+		<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>BOR_Bullet_OrientisArquebus_Spacer</defaultProjectile>
+				<warmupTime>1.8</warmupTime>
+				<range>30.9</range>
+				<soundCast>Shot_ChargeRifle</soundCast>
+				<soundCastTail>GunTail_Medium</soundCastTail>
+				<muzzleFlashScale>9</muzzleFlashScale>
+			</li>
+		</verbs>
+	</ThingDef>
+
+	<ThingDef ParentName="BOR_OrientisProjectileBase">
+		<defName>BOR_Bullet_OrientisArquebus_Ultra</defName>
+		<label>charge shot</label>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>70</damageAmountBase>
+			<armorPenetrationBase>1.1</armorPenetrationBase>
+			<speed>90</speed>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="BOR_OrientisArquebusBase">
+		<defName>BOR_Orientis_Arquebus_Ultra</defName>
+		<label>ultra charge arquebus</label>
+		<description>A long single-shot arquebus with a heavy charge cell that goes through most armor.</description>
+		<statBases>
+			<WorkToMake>35000</WorkToMake>
+			<MarketValue>5000</MarketValue>
+			<Mass>4</Mass>
+			<RangedWeapon_Cooldown>2.5</RangedWeapon_Cooldown>
+		</statBases>
+		<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>BOR_Bullet_OrientisArquebus_Ultra</defaultProjectile>
+				<warmupTime>1.8</warmupTime>
+				<range>32.9</range>
+				<soundCast>Shot_ChargeRifle</soundCast>
+				<soundCastTail>GunTail_Medium</soundCastTail>
+				<muzzleFlashScale>9</muzzleFlashScale>
+			</li>
+		</verbs>
+	</ThingDef>
+
+	<ThingDef ParentName="BOR_OrientisProjectileBase">
+		<defName>BOR_Bullet_OrientisArquebus_Archotech</defName>
+		<label>charge shot</label>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>100</damageAmountBase>
+			<armorPenetrationBase>1.6</armorPenetrationBase>
+			<speed>100</speed>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="BOR_OrientisArquebusBase">
+		<defName>BOR_Orientis_Arquebus_Archotech</defName>
+		<label>archotech charge arquebus</label>
+		<description>A long single-shot arquebus whose charge comes from nothing anyone can explain.</description>
+		<techLevel>Archotech</techLevel>
+		<statBases>
+			<WorkToMake>60000</WorkToMake>
+			<MarketValue>12000</MarketValue>
+			<Mass>4</Mass>
+			<RangedWeapon_Cooldown>2.5</RangedWeapon_Cooldown>
+		</statBases>
+		<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>BOR_Bullet_OrientisArquebus_Archotech</defaultProjectile>
+				<warmupTime>1.8</warmupTime>
+				<range>34.9</range>
+				<soundCast>Shot_ChargeRifle</soundCast>
+				<soundCastTail>GunTail_Medium</soundCastTail>
+				<muzzleFlashScale>9</muzzleFlashScale>
+			</li>
+		</verbs>
+	</ThingDef>
+
+	<!-- Charge sabers, one per post-medieval tech level -->
+	<ThingDef Name="BOR_OrientisSaberBase" ParentName="BOR_OrientisMeleeSharpBase" Abstract="True">
+		<graphicData>
+			<texPath>BOR/Things/Item/Equipment/umbral/utility_blade</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<equippedAngleOffset>-65</equippedAngleOffset>
+	</ThingDef>
+
+	<ThingDef ParentName="BOR_OrientisSaberBase">
+		<defName>BOR_Orientis_Saber_Industrial</defName>
+		<label>charge saber</label>
+		<description>A medieval-styled saber with a charged edge that burns what it cuts.</description>
+		<techLevel>Industrial</techLevel>
+		<statBases>
+			<WorkToMake>10000</WorkToMake>
+			<MarketValue>600</MarketValue>
+			<Mass>1.5</Mass>
+		</statBases>
+		<tools>
+			<li>
+				<label>edge</label>
+				<capacities>
+					<li>Cut</li>
+				</capacities>
+				<power>16</power>
+				<cooldownTime>1.6</cooldownTime>
+				<armorPenetration>0.35</armorPenetration>
+				<extraMeleeDamages>
+					<li>
+						<def>Flame</def>
+						<amount>3</amount>
+						<chance>1</chance>
+					</li>
+				</extraMeleeDamages>
+			</li>
+		</tools>
+	</ThingDef>
+
+	<ThingDef ParentName="BOR_OrientisSaberBase">
+		<defName>BOR_Orientis_Saber_Spacer</defName>
+		<label>high charge saber</label>
+		<description>A medieval-styled saber with a strong charged edge that burns what it cuts.</description>
+		<techLevel>Spacer</techLevel>
+		<statBases>
+			<WorkToMake>20000</WorkToMake>
+			<MarketValue>1800</MarketValue>
+			<Mass>1.5</Mass>
+		</statBases>
+		<tools>
+			<li>
+				<label>edge</label>
+				<capacities>
+					<li>Cut</li>
+				</capacities>
+				<power>22</power>
+				<cooldownTime>1.6</cooldownTime>
+				<armorPenetration>0.7</armorPenetration>
+				<extraMeleeDamages>
+					<li>
+						<def>Flame</def>
+						<amount>6</amount>
+						<chance>1</chance>
+					</li>
+				</extraMeleeDamages>
+			</li>
+		</tools>
+	</ThingDef>
+
+	<ThingDef ParentName="BOR_OrientisSaberBase">
+		<defName>BOR_Orientis_Saber_Ultra</defName>
+		<label>ultra charge saber</label>
+		<description>A medieval-styled saber with a heavy charged edge that goes through most armor.</description>
+		<statBases>
+			<WorkToMake>30000</WorkToMake>
+			<MarketValue>4000</MarketValue>
+			<Mass>1.5</Mass>
+		</statBases>
+		<tools>
+			<li>
+				<label>edge</label>
+				<capacities>
+					<li>Cut</li>
+				</capacities>
+				<power>32</power>
+				<cooldownTime>1.6</cooldownTime>
+				<armorPenetration>1.1</armorPenetration>
+				<extraMeleeDamages>
+					<li>
+						<def>Flame</def>
+						<amount>10</amount>
+						<chance>1</chance>
+					</li>
+				</extraMeleeDamages>
+			</li>
+		</tools>
+	</ThingDef>
+
+	<ThingDef ParentName="BOR_OrientisSaberBase">
+		<defName>BOR_Orientis_Saber_Archotech</defName>
+		<label>archotech charge saber</label>
+		<description>A medieval-styled saber whose edge burns with a light that has no source.</description>
+		<techLevel>Archotech</techLevel>
+		<statBases>
+			<WorkToMake>60000</WorkToMake>
+			<MarketValue>10000</MarketValue>
+			<Mass>1.5</Mass>
+		</statBases>
+		<tools>
+			<li>
+				<label>edge</label>
+				<capacities>
+					<li>Cut</li>
+				</capacities>
+				<power>46</power>
+				<cooldownTime>1.6</cooldownTime>
+				<armorPenetration>1.6</armorPenetration>
+				<extraMeleeDamages>
+					<li>
+						<def>Flame</def>
+						<amount>15</amount>
+						<chance>1</chance>
+					</li>
+				</extraMeleeDamages>
+			</li>
+		</tools>
+	</ThingDef>
+</Defs>

@@ -8,5 +8,5 @@
 
 ## Source Layout
 
-- `Source/` is organized into feature folders (`Core`, `Buildings`, `Forge`, `Harvest`, `Kwazaari`, `Signals`, `Tenebral`, `Umbral`).
+- `Source/` is organized into feature folders (`Core`, `Buildings`, `Forge`, `Harvest`, `Kwazaari`, `Orientis`, `Signals`, `Tenebral`, `Umbral`).
 - Everything stays in the single `BeyondOurReach` namespace; XML references classes as `BeyondOurReach.<Class>`, so do not introduce sub-namespaces.

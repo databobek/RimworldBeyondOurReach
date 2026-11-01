@@ -99,8 +99,8 @@ Implemented in `TenebralPsychosis.cs`, `TenebralSurgery.cs`, `TenebralPods.cs`, 
 
 - Psychosis is the `BOR_TenebralPsychosis` hediff (severity 0..1). It is hidden below 0.1 (latent), which is the "delayed by a few days" part. A pawn is psychotic once it is visible.
 - Severity floor = (implants + tenebrite gear x 0.5) x 0.1. Nearby tenebrite emission (buildings 1, floor cells 0.1, radius 6, capped at 3) adds 0.03 severity per day per unit. Without emission, severity decays 0.05/day down to the floor.
-- Orientis threshold: 3 breaks (`holytechThreshold` in code). Umbral threshold: 6 breaks. Breaks caused by damage or psycasts don't count.
-- Not yet changed in code: tenebral bionics can still be removed by surgery from the threshold onward, which adds `BOR_HolytechCandidate`, and the old letter is still sent at the start of the break. Both are to be replaced by the Orientis choice and the no manual stripping rule.
+- Orientis threshold: 3 breaks. Umbral threshold: 6 breaks. Breaks caused by damage or psycasts don't count.
+- Surgery: a part can't be removed or replaced if it or anything below it is tenebral or crystallized, and a tenebral implant can't be removed. Implants that sit beside a part can still be installed on a part with tenebral below it, but not on a crystallized part.
 - Crystallization: nothing happens on the 6th break itself. Every break after it has a 50% chance to crystallize one random eligible part. There is no timer, so a pawn who stops breaking stops crystallizing. Eligible parts are the arms, legs, eyes, ears, the left kidney, the right lung and the torso (11 parts on a human, so 50% is 6 parts). Nothing else crystallizes or counts. The percentage counts eligible parts.
 - Transformation mode refuses a pawn below 50%.
 - Altar: unlocking a cell takes the forge analysis time for the item. Each run costs ceil(value x yield x 0.5 / joint value) crystalline joints (at least 1). Work drains 2 days' worth of bloodlust per day of work.

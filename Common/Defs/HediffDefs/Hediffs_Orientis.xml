@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- Marks an Orientis pawn, standing in for the xenotype without Biotech. Carries the Path of Light tunables. -->
+	<HediffDef>
+		<defName>BOR_Orientis</defName>
+		<label>orientis</label>
+		<description>This person turned away from the Dark Archotech and embraced the light.</description>
+		<hediffClass>HediffWithComps</hediffClass>
+		<defaultLabelColor>(0.95, 0.85, 0.5)</defaultLabelColor>
+		<isBad>false</isBad>
+		<everCurableByItem>false</everCurableByItem>
+		<scenarioCanAdd>false</scenarioCanAdd>
+		<modExtensions>
+			<li Class="BeyondOurReach.DefModExtension_Orientis">
+				<scarHealthFraction>0.25</scarHealthFraction>
+				<stripTicks>120</stripTicks>
+				<glowTicks>600</glowTicks>
+				<beamTicks>60</beamTicks>
+			</li>
+		</modExtensions>
+	</HediffDef>
+
+	<!-- From a meditation bench or mat. -->
+	<!-- From the blessing bench: works like a bionic for one quadrum, on the natural part. -->
+	<HediffDef>
+		<defName>BOR_Blessing</defName>
+		<label>blessed</label>
+		<description>This body part has been enhanced by meditation. It works better than nature made it, for now.</description>
+		<hediffClass>HediffWithComps</hediffClass>
+		<defaultLabelColor>(0.95, 0.85, 0.5)</defaultLabelColor>
+		<isBad>false</isBad>
+		<scenarioCanAdd>false</scenarioCanAdd>
+		<comps>
+			<li Class="HediffCompProperties_Disappears">
+				<disappearsAfterTicks>900000</disappearsAfterTicks>
+				<showRemainingTime>true</showRemainingTime>
+			</li>
+		</comps>
+		<stages>
+			<li>
+				<partEfficiencyOffset>2.2</partEfficiencyOffset>
+			</li>
+		</stages>
+	</HediffDef>
+
+	<!-- From a raised meditation shield. Severity is the share of consciousness lost, and it stops short of killing. -->
+	<HediffDef>
+		<defName>BOR_ShieldExposure</defName>
+		<label>burning light</label>
+		<description>The light of an Orientis shield burns whatever the dark has touched. It grows every hour under the shield, and ends on leaving it.</description>
+		<hediffClass>HediffWithComps</hediffClass>
+		<defaultLabelColor>(0.95, 0.85, 0.5)</defaultLabelColor>
+		<isBad>true</isBad>
+		<initialSeverity>0.35</initialSeverity>
+		<maxSeverity>0.95</maxSeverity>
+		<everCurableByItem>false</everCurableByItem>
+		<scenarioCanAdd>false</scenarioCanAdd>
+		<comps>
+			<li Class="BeyondOurReach.HediffCompProperties_ShieldExposure">
+				<severityPerHour>0.05</severityPerHour>
+			</li>
+		</comps>
+		<stages>
+			<li>
+				<minSeverity>0.35</minSeverity>
+				<capMods>
+					<li>
+						<capacity>Consciousness</capacity>
+						<offset>-0.35</offset>
+					</li>
+				</capMods>
+			</li>
+			<li>
+				<minSeverity>0.40</minSeverity>
+				<capMods>
+					<li>
+						<capacity>Consciousness</capacity>
+						<offset>-0.40</offset>
+					</li>
+				</capMods>
+			</li>
+			<li>
+				<minSeverity>0.45</minSeverity>
+				<capMods>
+					<li>
+						<capacity>Consciousness</capacity>
+						<offset>-0.45</offset>
+					</li>
+				</capMods>
+			</li>
+			<li>
+				<minSeverity>0.50</minSeverity>
+				<capMods>
+					<li>
+						<capacity>Consciousness</capacity>
+						<offset>-0.50</offset>
+					</li>
+				</capMods>
+			</li>
+			<li>
+				<minSeverity>0.55</minSeverity>
+				<capMods>
+					<li>
+						<capacity>Consciousness</capacity>
+						<offset>-0.55</offset>
+					</li>
+				</capMods>
+			</li>
+			<li>
+				<minSeverity>0.60</minSeverity>
+				<capMods>
+					<li>
+						<capacity>Consciousness</capacity>
+						<offset>-0.60</offset>
+					</li>
+				</capMods>
+			</li>
+			<li>
+				<minSeverity>0.65</minSeverity>
+				<capMods>
+					<li>
+						<capacity>Consciousness</capacity>
+						<offset>-0.65</offset>
+					</li>
+				</capMods>
+			</li>
+			<li>
+				<minSeverity>0.70</minSeverity>
+				<capMods>
+					<li>
+						<capacity>Consciousness</capacity>
+						<offset>-0.70</offset>
+					</li>
+				</capMods>
+			</li>
+			<li>
+				<minSeverity>0.75</minSeverity>
+				<capMods>
+					<li>
+						<capacity>Consciousness</capacity>
+						<offset>-0.75</offset>
+					</li>
+				</capMods>
+			</li>
+			<li>
+				<minSeverity>0.80</minSeverity>
+				<capMods>
+					<li>
+						<capacity>Consciousness</capacity>
+						<offset>-0.80</offset>
+					</li>
+				</capMods>
+			</li>
+			<li>
+				<minSeverity>0.85</minSeverity>
+				<capMods>
+					<li>
+						<capacity>Consciousness</capacity>
+						<offset>-0.85</offset>
+					</li>
+				</capMods>
+			</li>
+			<li>
+				<minSeverity>0.90</minSeverity>
+				<capMods>
+					<li>
+						<capacity>Consciousness</capacity>
+						<offset>-0.90</offset>
+					</li>
+				</capMods>
+			</li>
+			<li>
+				<minSeverity>0.95</minSeverity>
+				<capMods>
+					<li>
+						<capacity>Consciousness</capacity>
+						<offset>-0.95</offset>
+					</li>
+				</capMods>
+			</li>
+		</stages>
+	</HediffDef>
+
+	<!-- Left on every part restored by the Path of Light. Works like a vanilla cut scar. -->
+	<HediffDef ParentName="InjuryBase">
+		<defName>BOR_GoldenScar</defName>
+		<label>golden wound</label>
+		<labelNoun>a golden scar</labelNoun>
+		<description>Where a tenebral part was torn away by the light, the flesh grew back marked with gold.</description>
+		<comps>
+			<li Class="HediffCompProperties_TendDuration">
+				<labelTendedWell>bandaged</labelTendedWell>
+				<labelTendedWellInner>sutured</labelTendedWellInner>
+				<labelSolidTendedWell>set</labelSolidTendedWell>
+			</li>
+			<li Class="HediffCompProperties_GetsPermanent">
+				<permanentLabel>golden scar</permanentLabel>
+			</li>
+		</comps>
+		<injuryProps>
+			<painPerSeverity>0.0125</painPerSeverity>
+			<averagePainPerSeverityPermanent>0.00625</averagePainPerSeverityPermanent>
+			<bleedRate>0</bleedRate>
+			<canMerge>false</canMerge>
+			<destroyedLabel>Burned away</destroyedLabel>
+		</injuryProps>
+	</HediffDef>
+</Defs>

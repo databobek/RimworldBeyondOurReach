@@ -7,6 +7,19 @@ namespace BeyondOurReach;
 // Patched via the assembly-wide PatchAll in SettingsWindowPatch.
 public static class UmbralPatches
 {
+    // Vanilla picks any non-archite gene from a pawn it accepts, so these pawns are refused outright.
+    [HarmonyPatch(typeof(Building_GeneExtractor), nameof(Building_GeneExtractor.CanAcceptPawn))]
+    public static class Building_GeneExtractor_CanAcceptPawn_Patch
+    {
+        public static void Postfix(Pawn pawn, ref AcceptanceReport __result)
+        {
+            if (__result.Accepted && (Umbral.IsUmbral(pawn) || Orientis.IsOrientis(pawn)))
+            {
+                __result = "BOR_GenesNotExtractable".Translate(pawn.LabelShortCap);
+            }
+        }
+    }
+
     [HarmonyPatch(typeof(Pawn_GeneTracker), nameof(Pawn_GeneTracker.SetXenotype))]
     public static class Pawn_GeneTracker_SetXenotype_Patch
     {
@@ -93,7 +106,8 @@ public static class UmbralPatches
         }
     }
 
-    // Umbral-only buildings (and their blueprints and frames) are forbidden to everyone else.
+    // Umbral-only buildings (and their blueprints and frames) are forbidden to everyone else. After the Path of Light,
+    // any tenebral or Umbral building that is left is forbidden to all, but can still be taken down.
     [HarmonyPatch(typeof(ForbidUtility), nameof(ForbidUtility.IsForbidden), typeof(Thing), typeof(Pawn))]
     public static class ForbidUtility_IsForbidden_Patch
     {
@@ -111,6 +125,23 @@ public static class UmbralPatches
             if (def.HasModExtension<DefModExtension_UmbralOnly>() && !Umbral.IsUmbral(pawn))
             {
                 __result = true;
+            }
+            else if (DarkBuildings.Banned(def) && t.MapHeld?.designationManager.DesignationOn(t) == null)
+            {
+                __result = true;
+            }
+        }
+    }
+
+    // Tenebral and Umbral buildings leave the build menu for good after the Path of Light.
+    [HarmonyPatch(typeof(Designator_Build), nameof(Designator_Build.Visible), MethodType.Getter)]
+    public static class Designator_Build_Visible_Patch
+    {
+        public static void Postfix(Designator_Build __instance, ref bool __result)
+        {
+            if (__result && DarkBuildings.Banned(__instance.PlacingDef))
+            {
+                __result = false;
             }
         }
     }

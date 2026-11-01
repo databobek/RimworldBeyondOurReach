@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- Placed by the manifest ability: no research and no designationCategory, so they never show in the Architect.
+	     Costs and textures are placeholders. -->
+	<ThingDef Name="BOR_OrientisBuildingBase" ParentName="BuildingBase" Abstract="True">
+		<thingClass>Building</thingClass>
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<fillPercent>0.5</fillPercent>
+		<pathCost>50</pathCost>
+		<rotatable>false</rotatable>
+		<terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+		<statBases>
+			<MaxHitPoints>400</MaxHitPoints>
+			<WorkToBuild>2000</WorkToBuild>
+			<Flammability>0</Flammability>
+			<Mass>50</Mass>
+			<Beauty>10</Beauty>
+		</statBases>
+		<modExtensions>
+			<li Class="BeyondOurReach.DefModExtension_OrientisBuilding" />
+		</modExtensions>
+	</ThingDef>
+
+	<ThingDef ParentName="BOR_OrientisBuildingBase">
+		<defName>BOR_Orientis_MeditationPod</defName>
+		<label>meditation pod</label>
+		<description>Orientis pawns meditate at this pod to generate meditation power, which they load into the nearest meditation cache with room. It needs a cache close by. An Orientis pawn can also raise its shield, which stops projectiles and bombardments and burns tenebral and Umbral pawns inside. The shield runs on stored meditation power.</description>
+		<graphicData>
+			<texPath>BOR/Things/Building/orientis/meditation_pod/meditation_pod</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(4,4)</drawSize>
+		</graphicData>
+		<size>(1,1)</size>
+		<tickerType>Normal</tickerType>
+		<!-- The shield dome is drawn each frame, which a map mesh alone would skip. -->
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<rotatable>true</rotatable>
+		<hasInteractionCell>true</hasInteractionCell>
+		<interactionCellOffset>(0,0,-1)</interactionCellOffset>
+		<placeWorkers>
+			<li>PlaceWorker_PreventInteractionSpotOverlap</li>
+			<li>PlaceWorker_ShowProjectileInterceptorRadius</li>
+		</placeWorkers>
+		<costList>
+			<BOR_QuasarAlloy>77</BOR_QuasarAlloy>
+			<BOR_ComponentII>2</BOR_ComponentII>
+			<Gold>25</Gold>
+		</costList>
+		<comps>
+			<li Class="BeyondOurReach.CompProperties_MeditationSpot">
+				<powerPerDay>200</powerPerDay>
+			</li>
+			<li Class="BeyondOurReach.CompProperties_MeditationShield">
+				<powerPerDay>400</powerPerDay>
+			</li>
+			<li Class="CompProperties_ProjectileInterceptor">
+				<radius>25</radius>
+				<interceptGroundProjectiles>true</interceptGroundProjectiles>
+				<interceptAirProjectiles>true</interceptAirProjectiles>
+				<interceptNonHostileProjectiles>false</interceptNonHostileProjectiles>
+				<interceptOutgoingProjectiles>false</interceptOutgoingProjectiles>
+				<drawWithNoSelection>true</drawWithNoSelection>
+				<color>(1, 0.8, 0.25, 1)</color>
+			</li>
+		</comps>
+	</ThingDef>
+
+	<ThingDef ParentName="BOR_OrientisBuildingBase">
+		<defName>BOR_Orientis_MeditationCache</defName>
+		<label>meditation cache</label>
+		<description>Stores meditation power from pawns meditating nearby. Automated Orientis buildings anywhere on the map draw from it to run, with no connection needed.</description>
+		<graphicData>
+			<texPath>BOR/Things/Building/orientis/meditation_cache/meditation_cache</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(4.8,4.8)</drawSize>
+		</graphicData>
+		<size>(1,3)</size>
+		<rotatable>true</rotatable>
+		<costList>
+			<BOR_QuasarAlloy>77</BOR_QuasarAlloy>
+			<BOR_ComponentII>2</BOR_ComponentII>
+			<Silver>100</Silver>
+		</costList>
+		<comps>
+			<li Class="BeyondOurReach.CompProperties_MeditationCache">
+				<capacity>1000</capacity>
+				<loadRadius>12</loadRadius>
+			</li>
+		</comps>
+	</ThingDef>
+
+	<ThingDef ParentName="BOR_OrientisBuildingBase">
+		<defName>BOR_Orientis_HolyForge</defName>
+		<label>holy forge</label>
+		<description>An automatic forge with a 12x12 grid, powered by meditation power instead of neutronium. It works its grid on its own. Analysis remains manual, and production waits while analysis is pending.</description>
+		<graphicData>
+			<texPath>BOR/Things/Building/orientis/holy_forge</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(4,4)</drawSize>
+		</graphicData>
+		<size>(3,3)</size>
+		<hasInteractionCell>true</hasInteractionCell>
+		<interactionCellOffset>(0,0,-2)</interactionCellOffset>
+		<tickerType>Normal</tickerType>
+		<inspectorTabs>
+			<li>BeyondOurReach.ITab_Forge</li>
+		</inspectorTabs>
+		<placeWorkers>
+			<li>PlaceWorker_PreventInteractionSpotOverlap</li>
+		</placeWorkers>
+		<costList>
+			<BOR_QuasarAlloy>187</BOR_QuasarAlloy>
+			<BOR_ComponentII>2</BOR_ComponentII>
+			<Gold>75</Gold>
+		</costList>
+		<comps>
+			<li Class="BeyondOurReach.CompProperties_Forge">
+				<gridWidth>12</gridWidth>
+				<gridHeight>12</gridHeight>
+				<automatic>true</automatic>
+				<meditationPerDraw>0.05</meditationPerDraw>
+			</li>
+		</comps>
+	</ThingDef>
+
+	<ThingDef ParentName="BOR_OrientisBuildingBase">
+		<defName>BOR_Orientis_OfferingsBench</defName>
+		<label>offerings bench</label>
+		<description>Produces Orientis items on its own from its bills, fueled by meditation power. No pawn can work at it.</description>
+		<thingClass>Building_WorkTable</thingClass>
+		<graphicData>
+			<texPath>BOR/Things/Building/orientis/offerings_bench</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(4,4)</drawSize>
+		</graphicData>
+		<size>(2,2)</size>
+		<hasInteractionCell>true</hasInteractionCell>
+		<interactionCellOffset>(0,0,-1)</interactionCellOffset>
+		<tickerType>Normal</tickerType>
+		<inspectorTabs>
+			<li>ITab_Bills</li>
+		</inspectorTabs>
+		<placeWorkers>
+			<li>PlaceWorker_PreventInteractionSpotOverlap</li>
+		</placeWorkers>
+		<costList>
+			<BOR_QuasarAlloy>165</BOR_QuasarAlloy>
+			<BOR_ComponentII>7</BOR_ComponentII>
+			<Gold>50</Gold>
+		</costList>
+		<comps>
+			<li Class="BeyondOurReach.CompProperties_OfferingsBench">
+				<powerPerWork>0.005</powerPerWork>
+			</li>
+		</comps>
+	</ThingDef>
+
+	<ThingDef ParentName="BOR_OrientisBuildingBase">
+		<defName>BOR_Orientis_MeditationBench</defName>
+		<label>meditation bench</label>
+		<description>Orientis pawns meditate here to generate meditation power, which they load into the nearest meditation cache with room. Slower than a meditation pod. It needs a cache close by.</description>
+		<graphicData>
+			<texPath>BOR/Things/Building/orientis/meditation_bench/meditation_bench</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(4,4)</drawSize>
+		</graphicData>
+		<size>(3,1)</size>
+		<rotatable>true</rotatable>
+		<hasInteractionCell>true</hasInteractionCell>
+		<interactionCellOffset>(0,0,-1)</interactionCellOffset>
+		<placeWorkers>
+			<li>PlaceWorker_PreventInteractionSpotOverlap</li>
+		</placeWorkers>
+		<costList>
+			<BOR_QuasarAlloy>55</BOR_QuasarAlloy>
+			<Silver>50</Silver>
+		</costList>
+		<comps>
+			<li Class="BeyondOurReach.CompProperties_MeditationSpot">
+				<powerPerDay>100</powerPerDay>
+			</li>
+		</comps>
+	</ThingDef>
+
+	<ThingDef ParentName="BOR_OrientisBuildingBase">
+		<defName>BOR_Orientis_MeditationMat</defName>
+		<label>meditation mat</label>
+		<description>Orientis pawns meditate here to generate meditation power, which they load into the nearest meditation cache with room. Slower than a meditation pod. It needs a cache close by.</description>
+		<graphicData>
+			<texPath>BOR/Things/Building/orientis/meditation_mat</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<size>(1,1)</size>
+		<altitudeLayer>FloorEmplacement</altitudeLayer>
+		<passability>Standable</passability>
+		<fillPercent>0</fillPercent>
+		<pathCost>0</pathCost>
+		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+		<costList>
+			<BOR_QuasarAlloy>10</BOR_QuasarAlloy>
+			<Silver>25</Silver>
+		</costList>
+		<comps>
+			<li Class="BeyondOurReach.CompProperties_MeditationSpot">
+				<powerPerDay>50</powerPerDay>
+			</li>
+		</comps>
+	</ThingDef>
+
+	<ThingDef ParentName="BOR_OrientisBuildingBase">
+		<defName>BOR_Orientis_ArchotechIcon</defName>
+		<label>archotech icon</label>
+		<description>A statue in honor of the archotech of the light.</description>
+		<graphicData>
+			<texPath>BOR/Things/Building/orientis/archotech_icon</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(3.3,3.3)</drawSize>
+		</graphicData>
+		<size>(3,3)</size>
+		<statBases>
+			<Beauty>60</Beauty>
+		</statBases>
+		<costList>
+			<BOR_QuasarAlloy>100</BOR_QuasarAlloy>
+			<Gold>100</Gold>
+		</costList>
+	</ThingDef>
+
+	<ThingDef ParentName="BOR_OrientisBuildingBase">
+		<defName>BOR_Orientis_BlessingBench</defName>
+		<label>blessing bench</label>
+		<description>An Orientis pawn meditating here can bless chosen body parts. Each blessing enhances the part like a bionic for one quadrum, without replacing it.</description>
+		<graphicData>
+			<texPath>BOR/Things/Building/orientis/blessing_bench</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(2.7,2.7)</drawSize>
+		</graphicData>
+		<size>(2,2)</size>
+		<hasInteractionCell>true</hasInteractionCell>
+		<interactionCellOffset>(0,0,-1)</interactionCellOffset>
+		<placeWorkers>
+			<li>PlaceWorker_PreventInteractionSpotOverlap</li>
+		</placeWorkers>
+		<costList>
+			<BOR_QuasarAlloy>138</BOR_QuasarAlloy>
+			<BOR_ComponentII>7</BOR_ComponentII>
+			<Gold>50</Gold>
+		</costList>
+		<comps>
+			<li Class="BeyondOurReach.CompProperties_BlessingBench">
+				<ticksPerPart>1250</ticksPerPart>
+				<blessableParts>
+					<li>Eye</li>
+					<li>Ear</li>
+					<li>Jaw</li>
+					<li>Brain</li>
+					<li>Arm</li>
+					<li>Leg</li>
+					<li>Heart</li>
+					<li>Liver</li>
+					<li>Kidney</li>
+					<li>Lung</li>
+				</blessableParts>
+			</li>
+		</comps>
+	</ThingDef>
+</Defs>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<JobDef>
+		<defName>BOR_OrientisMeditate</defName>
+		<driverClass>BeyondOurReach.JobDriver_OrientisMeditate</driverClass>
+		<reportString>meditating at TargetA.</reportString>
+		<casualInterruptible>true</casualInterruptible>
+	</JobDef>
+
+	<JobDef>
+		<defName>BOR_OrientisBless</defName>
+		<driverClass>BeyondOurReach.JobDriver_OrientisBless</driverClass>
+		<reportString>receiving a blessing at TargetA.</reportString>
+		<casualInterruptible>false</casualInterruptible>
+	</JobDef>
+
+	<JobDef>
+		<defName>BOR_OrientisEnableShield</defName>
+		<driverClass>BeyondOurReach.JobDriver_OrientisEnableShield</driverClass>
+		<reportString>raising the shield at TargetA.</reportString>
+		<casualInterruptible>false</casualInterruptible>
+	</JobDef>
+
+	<WorkTypeDef>
+		<defName>BOR_Meditate</defName>
+		<labelShort>meditate</labelShort>
+		<pawnLabel>Meditator</pawnLabel>
+		<gerundLabel>meditating</gerundLabel>
+		<description>Meditate at a meditation pod, bench or mat to generate meditation power. Only Orientis pawns do this.</description>
+		<verb>Meditate at</verb>
+		<naturalPriority>90</naturalPriority>
+	</WorkTypeDef>
+
+	<WorkGiverDef>
+		<defName>BOR_OrientisMeditate</defName>
+		<label>meditate at meditation pods, benches and mats</label>
+		<giverClass>BeyondOurReach.WorkGiver_OrientisMeditate</giverClass>
+		<workType>BOR_Meditate</workType>
+		<priorityInType>100</priorityInType>
+		<verb>meditate at</verb>
+		<gerund>meditating at</gerund>
+	</WorkGiverDef>
+</Defs>

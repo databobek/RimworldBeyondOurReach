@@ -8,6 +8,9 @@ Umbral is a xenotype reached at the end of the Tenebral path (see `tenebral-rewo
 ### Requirement: Umbral xenotype
 Umbral SHALL be a xenotype. Pawns with the Umbral xenotype SHALL carry genes that prevent them from receiving any body part through an operation, including artificial parts and replacement of a lost part. A lost body part SHALL NOT be recoverable by surgery.
 
+### Requirement: Genes cannot be extracted
+A gene extractor SHALL refuse Umbral and Orientis pawns. Umbral genes SHALL NOT appear in generated genepacks.
+
 ### Requirement: Psychosis resistance gene
 The Umbral xenotype SHALL include a gene that makes the pawn resistant to tenebral psychosis.
 
@@ -51,11 +54,14 @@ The Umbral transformation hediff SHALL behave like a flu-style disease: it progr
 Tenebrite-made items SHALL affect Umbral pawns the same way as in `tenebral-rework` (Tenebrite exposure requirement), growing tenebral psychosis over a few days.
 
 ### Requirement: Exoskeleton modes
-The Umbral exoskeleton SHALL be a special armor type. An exoskeleton-equipped pawn SHALL have a gizmo that switches between three modes:
+The Umbral exoskeleton SHALL be a special armor type. An exoskeleton-equipped pawn SHALL have a gizmo that switches between four modes. A new exoskeleton starts in no mode:
 
-- **CAMO:** the pawn is invisible but cannot interact with anything (phaseshift).
-- **UTILITY:** no armor, and all work-related stats are improved.
-- **COMBAT:** very high armor, and all work-related stats are reduced significantly.
+- **NO MODE:** no armor and no bonuses.
+- **CAMO:** the pawn is invisible but cannot interact with anything (phaseshift). It lasts 2 hours.
+- **UTILITY:** no armor, and all work-related stats are improved. It lasts 24 hours.
+- **COMBAT:** very high armor, including the exoskull, and all work-related stats are reduced significantly. It lasts 12 hours.
+
+When a mode's time runs out, the exoskeleton SHALL revert to no mode.
 
 Switching mode SHALL change both the armor visual and the helmet visual. The pawn SHALL look as if it wears armor and a helmet in every mode, even though it has no real apparel.
 
@@ -83,6 +89,7 @@ Implemented in `Umbral.cs`. Tunables live on `BOR_UmbralTransformation` and the 
 
 - Phases A, B and C share one transformation hediff. Each unit of tenebrite emission adds 50% to the trigger chance.
 - Without Biotech, the `BOR_Umbral` hediff stands in for the xenotype and its genes.
+- Utility mode adds 250% global work speed, 960% mining, construction and plant work, 150% research and tending, 2250% cooking and 180% bionic crafting. These are the Tier 3 implant and Tier 4 Adreamoline numbers times 1.5. Selecting a mode restarts its timer, with no cooldown. No mode has placeholder art, using the utility textures.
 - The exoskeleton, exoskull and utility pod are hediffs. Their visuals are locked, destroy-on-drop apparel and weapons, swapped for each mode. The exoskull follows the exoskeleton's mode.
 - Camo: invisible, Manipulation capped at 0. Utility: no armor, work speed x1.5 (mining, construction and plants x1.3). Combat: +2.5 sharp, +1.2 blunt and +1.8 heat armor, work speed x0.4.
 - Utility pod forms: blade, tool (work-speed bonuses), gun (Tier 3 rifle bullet), launcher (explosive).

@@ -15,7 +15,7 @@ public static class KwazaariUtility
 
     private static StatDef? RoyalFavorValue => royalFavorValue ??= DefDatabase<StatDef>.GetNamedSilentFail("RoyalFavorValue");
 
-    private static EffecterDef? SkipEntry => skipEntry ??= DefDatabase<EffecterDef>.GetNamedSilentFail("Skip_Entry");
+    private static EffecterDef? SkipEntry => skipEntry ??= DefDatabase<EffecterDef>.GetNamedSilentFail("BOR_Skip_Slow");
 
     // Ultra-and-beyond items lying in the home area (on the ground or in storage), minus the blacklist.
     public static bool Sellable(Thing t) =>
@@ -33,6 +33,16 @@ public static class KwazaariUtility
         return favor > 0f ? favor : 1f + Mathf.Floor(t.MarketValue / 1000f);
     }
 
+    public static void PlaySkip(IntVec3 cell, Map map, float scale = 1f)
+    {
+        if (SkipEntry != null)
+        {
+            Effecter effecter = SkipEntry.Spawn(cell, map, scale);
+            effecter.Trigger(new TargetInfo(cell, map), new TargetInfo(cell, map));
+            map.effecterMaintainer.AddEffecterToMaintain(effecter, cell, SkipEntry.maintainTicks);
+        }
+    }
+
     // Sells `count` units of `t`: plays the skip effect where it lies and removes it. Returns the scrip earned.
     public static float SellAway(Thing t, int count)
     {
@@ -42,14 +52,7 @@ public static class KwazaariUtility
             return 0f;
         }
         float earned = UnitScrip(t) * count;
-        Map map = t.Map;
-        IntVec3 cell = t.Position;
-        if (SkipEntry != null)
-        {
-            Effecter effecter = SkipEntry.Spawn(cell, map);
-            effecter.Trigger(new TargetInfo(cell, map), new TargetInfo(cell, map));
-            map.effecterMaintainer.AddEffecterToMaintain(effecter, cell, SkipEntry.maintainTicks);
-        }
+        PlaySkip(t.Position, t.Map);
         t.SplitOff(count).Destroy();
         return earned;
     }

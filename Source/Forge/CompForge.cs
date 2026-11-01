@@ -15,6 +15,12 @@ public class CompProperties_Forge : CompProperties
     public PipeNetDef? pipeNet;
     public float pipeAmount;
 
+    // Works its grid on its own, with no pawn and no linked helper. Analysis stays manual.
+    public bool automatic;
+
+    // Meditation power taken per draw, instead of or as well as the pipe resource.
+    public float meditationPerDraw;
+
     // Defnames or trade tags this forge refuses to analyze.
     public List<string> exclusionList = new();
 
@@ -257,6 +263,10 @@ public partial class CompForge : ThingComp
     {
         get
         {
+            if (Props.meditationPerDraw > 0f && MapComponent_MeditationPower.Of(parent.Map).Stored < Props.meditationPerDraw)
+            {
+                return false;
+            }
             if (Props.pipeNet == null || Props.pipeAmount <= 0f)
             {
                 return true;
@@ -268,6 +278,10 @@ public partial class CompForge : ThingComp
 
     public bool TryDrawResource()
     {
+        if (Props.meditationPerDraw > 0f && !MapComponent_MeditationPower.Of(parent.Map).TryDraw(Props.meditationPerDraw))
+        {
+            return false;
+        }
         if (Props.pipeNet == null || Props.pipeAmount <= 0f)
         {
             return true;

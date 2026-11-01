@@ -158,6 +158,7 @@ public class Hediff_DarkCommune : HediffWithComps
 }
 
 // Vanilla lightning strike, drawn with a red bolt. Same flame burst, smoke and thunder.
+[StaticConstructorOnStartup]
 public class WeatherEvent_RedLightning : WeatherEvent
 {
     private const int Duration = 15;

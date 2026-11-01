@@ -10,13 +10,17 @@ public enum ExoskeletonMode
 {
     Camo,
     Utility,
-    Combat
+    Combat,
+    None
 }
 
 // Keeps one locked apparel per exoskeleton mode on the pawn: index = (int)ExoskeletonMode.
 public class HediffCompProperties_UmbralModeApparel : HediffCompProperties
 {
     public List<ThingDef> apparelByMode = new();
+
+    // How long each mode lasts before the exoskeleton reverts to no mode: index = (int)ExoskeletonMode. No entry, no limit.
+    public List<float> hoursByMode = new();
 
     // Only the exoskeleton owns the mode and its gizmo; the exoskull follows it.
     public bool ownsMode;
@@ -32,9 +36,10 @@ public class HediffComp_UmbralModeApparel : HediffComp
     private const int CheckInterval = 250;
 
     // Severity of the exoskeleton hediff per mode; its stages carry the mode's stats.
-    private static readonly float[] ModeSeverity = { 1f, 2f, 3f };
+    private static readonly float[] ModeSeverity = { 1f, 2f, 3f, 0.5f };
 
-    private ExoskeletonMode mode = ExoskeletonMode.Utility;
+    private ExoskeletonMode mode = ExoskeletonMode.None;
+    private int modeEndTick;
 
     public HediffCompProperties_UmbralModeApparel Props => (HediffCompProperties_UmbralModeApparel)props;
 
@@ -43,7 +48,7 @@ public class HediffComp_UmbralModeApparel : HediffComp
     private static ExoskeletonMode OwnerMode(Pawn pawn)
     {
         Hediff? exo = pawn.health.hediffSet.GetFirstHediffOfDef(BOR_UmbralDefOf.BOR_UmbralExoskeleton);
-        return exo?.TryGetComp<HediffComp_UmbralModeApparel>()?.mode ?? ExoskeletonMode.Utility;
+        return exo?.TryGetComp<HediffComp_UmbralModeApparel>()?.mode ?? ExoskeletonMode.None;
     }
 
     public override void CompPostPostAdd(DamageInfo? dinfo)
@@ -62,9 +67,26 @@ public class HediffComp_UmbralModeApparel : HediffComp
         base.CompPostTickInterval(ref severityAdjustment, delta);
         if (Pawn.IsHashIntervalTick(CheckInterval, delta))
         {
+            if (Props.ownsMode && mode != ExoskeletonMode.None && Find.TickManager.TicksGame >= modeEndTick)
+            {
+                EndMode();
+            }
             EnsureApparel();
         }
     }
+
+    private void EndMode()
+    {
+        ExoskeletonMode ended = mode;
+        ApplyMode(ExoskeletonMode.None);
+        if (Pawn.Faction == Faction.OfPlayer)
+        {
+            Messages.Message("BOR_ExoModeEnded".Translate(Pawn.LabelShortCap, ("BOR_ExoMode_" + ended).Translate()), Pawn, MessageTypeDefOf.NeutralEvent);
+        }
+    }
+
+    private int ModeTicks(ExoskeletonMode m) =>
+        (int)m < Props.hoursByMode.Count ? Mathf.RoundToInt(Props.hoursByMode[(int)m] * GenDate.TicksPerHour) : 0;
 
     public override void CompPostPostRemoved()
     {
@@ -124,6 +146,7 @@ public class HediffComp_UmbralModeApparel : HediffComp
     private void ApplyMode(ExoskeletonMode newMode)
     {
         mode = newMode;
+        modeEndTick = Find.TickManager.TicksGame + ModeTicks(newMode);
         parent.Severity = ModeSeverity[(int)newMode];
         Pawn pawn = Pawn;
         bool camo = newMode == ExoskeletonMode.Camo;
@@ -149,7 +172,7 @@ public class HediffComp_UmbralModeApparel : HediffComp
         ThingDef icon = Props.apparelByMode[Mathf.Clamp((int)mode, 0, Props.apparelByMode.Count - 1)];
         yield return new Command_Action
         {
-            defaultLabel = "BOR_ExoMode".Translate(("BOR_ExoMode_" + mode).Translate()),
+            defaultLabel = "BOR_ExoMode".Translate(("BOR_ExoMode_" + mode).Translate() + TimeLeftSuffix),
             defaultDesc = "BOR_ExoModeDesc".Translate(),
             icon = icon.uiIcon,
             action = () =>
@@ -158,19 +181,26 @@ public class HediffComp_UmbralModeApparel : HediffComp
                 foreach (ExoskeletonMode m in System.Enum.GetValues(typeof(ExoskeletonMode)))
                 {
                     ExoskeletonMode chosen = m;
-                    options.Add(new FloatMenuOption(("BOR_ExoMode_" + chosen).Translate(), () => ApplyMode(chosen)));
+                    int ticks = ModeTicks(chosen);
+                    string label = ("BOR_ExoMode_" + chosen).Translate();
+                    options.Add(new FloatMenuOption(ticks > 0 ? label + " (" + ticks.ToStringTicksToPeriod() + ")" : label, () => ApplyMode(chosen)));
                 }
                 Find.WindowStack.Add(new FloatMenu(options));
             }
         };
     }
 
-    public override string CompLabelInBracketsExtra => ("BOR_ExoMode_" + Mode).Translate();
+    private string TimeLeftSuffix =>
+        Props.ownsMode && mode != ExoskeletonMode.None ? ", " + (modeEndTick - Find.TickManager.TicksGame).ToStringTicksToPeriod() : "";
+
+    public override string CompLabelInBracketsExtra => ("BOR_ExoMode_" + Mode).Translate() + TimeLeftSuffix;
 
     public override void CompExposeData()
     {
         base.CompExposeData();
+        // Saves from before no mode left utility unwritten, so it stays the default here. It expires on the first check.
         Scribe_Values.Look(ref mode, "exoMode", ExoskeletonMode.Utility);
+        Scribe_Values.Look(ref modeEndTick, "exoModeEndTick");
     }
 }
 
