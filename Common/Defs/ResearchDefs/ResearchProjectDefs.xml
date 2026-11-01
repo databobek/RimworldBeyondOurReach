@@ -72,7 +72,18 @@
 		</modExtensions>
 	</ResearchProjectDef>
 	<ResearchProjectDef Name="BOR_Research_Base_IV" ParentName="BOR_Research_Base" Abstract="True">
-		<requiredResearchBuilding>BOR_Research_Unlocker_V</requiredResearchBuilding>
+		<requiredResearchBuilding>BOR_Research_Unlocker_IV</requiredResearchBuilding>
+		<requiredResearchFacilities>
+			<li>BOR_Research_Unlocker_III</li>
+		</requiredResearchFacilities>
+		<modExtensions>
+			<li Class="TechLeveler.ResearchTierExtension" MayRequire="bambaryla.techleveler">
+				<tier>TL_Umbral</tier>
+			</li>
+		</modExtensions>
+	</ResearchProjectDef>
+	<ResearchProjectDef Name="BOR_Research_Base_V" ParentName="BOR_Research_Base" Abstract="True">
+		<requiredResearchBuilding>BOR_Research_Unlocker_IV</requiredResearchBuilding>
 		<requiredResearchFacilities>
 			<li>BOR_Research_Unlocker_III</li>
 		</requiredResearchFacilities>
@@ -714,19 +725,19 @@
 		<researchViewX>16.00</researchViewX>
 		<researchViewY>0.90</researchViewY>
 	</ResearchProjectDef>
-	<ResearchProjectDef ParentName="BOR_Research_Base_III">
-		<defName>BOR_Research_Battery_III</defName>
+	<ResearchProjectDef ParentName="BOR_Research_Base_IV">
+		<defName>BOR_Research_Battery_IV</defName>
 		<label>tenebrite battery</label>
 		<description>Build tenebral batteries to store supreme amounts of power.</description>
-		<baseCost>125000</baseCost>
+		<baseCost>175000</baseCost>
 		<techLevel>Archotech</techLevel>
 		<prerequisites>
-			<li>BOR_Research_Power_III</li>
+			<li>BOR_Research_Power_IV</li>
 		</prerequisites>
 		<hiddenPrerequisites>
 			<li>BOR_Research_Battery_II</li>
 		</hiddenPrerequisites>
-		<researchViewX>17.00</researchViewX>
+		<researchViewX>23.00</researchViewX>
 		<researchViewY>0.90</researchViewY>
 	</ResearchProjectDef>
 	<ResearchProjectDef ParentName="BOR_Research_Base_III">
@@ -762,7 +773,7 @@
 	<ResearchProjectDef ParentName="BOR_Research_Base_III">
 		<defName>BOR_Research_Medicine_III</defName>
 		<label>tenebrite medicine production</label>
-		<description>Produce dark medicine, the tenebral medical fabricator, and femtoclusters: small machines that give your doctors agency in small places, needed for tenebral medical procedures.</description>
+		<description>Build the tenebral pod, a healing pod that takes the place of medicine at this tier, the tenebral medical fabricator, and femtoclusters: small machines that give your doctors agency in small places, needed for tenebral medical procedures.</description>
 		<baseCost>500000</baseCost>
 		<techLevel>Archotech</techLevel>
 		<prerequisites>
@@ -797,8 +808,8 @@
 
 			The more bionics are installed on a pawn, the more often they have to kill.</discoveredLetterText>
 	</ResearchProjectDef>
-	<ResearchProjectDef ParentName="BOR_Research_Base_III">
-		<defName>BOR_Research_Drugs_III</defName>
+	<ResearchProjectDef ParentName="BOR_Research_Base_IV">
+		<defName>BOR_Research_Drugs_IV</defName>
 		<label>tenebrite drug production</label>
 		<description>Produce drugs commonly enjoyed in tenebral space communes.
 
@@ -809,15 +820,15 @@
 			Gallop is a synthetic combat psychedelic/steroid used by tenebral offensive units to improve shooting, melee, and movement while all-but-negating pain in the user... sometimes also used recreationally by the affluent within Tenebral Society.
 
 			Adreamoline is a productivity-enhancement drug which negates the user's need to sleep.</description>
-		<baseCost>125000</baseCost>
+		<baseCost>175000</baseCost>
 		<techLevel>Archotech</techLevel>
 		<prerequisites>
-			<li>BOR_Research_Medicine_III</li>
+			<li>BOR_Research_Medicine_IV</li>
 		</prerequisites>
 		<hiddenPrerequisites>
 			<li>BOR_Research_Drugs_II</li>
 		</hiddenPrerequisites>
-		<researchViewX>18.00</researchViewX>
+		<researchViewX>24.00</researchViewX>
 		<researchViewY>3.20</researchViewY>
 	</ResearchProjectDef>
 	<ResearchProjectDef ParentName="BOR_Research_Base_III">
@@ -878,23 +889,115 @@
 		<researchViewX>18.00</researchViewX>
 		<researchViewY>0.10</researchViewY>
 	</ResearchProjectDef>
-	<ResearchProjectDef ParentName="BOR_Research_Base_IV">
-		<defName>BOR_Research_NSynth_IV</defName>
+	<ResearchProjectDef ParentName="BOR_Research_Base_V">
+		<defName>BOR_Research_NSynth_V</defName>
 		<label>laborless neutronium brew</label>
 		<description>Construct the umbral neutronium self-sustained generator, which turns energy into neutronium and other materials.</description>
-		<baseCost>1800000</baseCost>
+		<baseCost>1E+15</baseCost>
 		<techLevel>Archotech</techLevel>
 		<prerequisites>
 			<li>BOR_Research_Gate_IV</li>
 			<li>BOR_Research_NSynth_III</li>
 			<li>BOR_Research_Power_III</li>
 		</prerequisites>
-		<researchViewX>19.00</researchViewX>
+		<researchViewX>30.00</researchViewX>
 		<researchViewY>0.10</researchViewY>
 	</ResearchProjectDef>
 	<!--Tier 4-->
-	<ResearchProjectDef ParentName="BOR_Research_Base_III">
+	<ResearchProjectDef ParentName="BOR_Research_Base_IV">
+		<defName>BOR_Research_Power_IV</defName>
+		<label>umbral power engineering</label>
+		<description>Build umbral power infrastructure, starting with the umbral reactor.</description>
+		<baseCost>700000</baseCost>
+		<techLevel>Archotech</techLevel>
+		<prerequisites>
+			<li>BOR_Research_Production_IV</li>
+		</prerequisites>
+		<hiddenPrerequisites>
+			<li>BOR_Research_Power_III</li>
+		</hiddenPrerequisites>
+		<researchViewX>22.00</researchViewX>
+		<researchViewY>0.90</researchViewY>
+	</ResearchProjectDef>
+	<ResearchProjectDef ParentName="BOR_Research_Base_IV">
+		<defName>BOR_Research_Production_IV</defName>
+		<label>umbral production</label>
+		<description>Build umbral workbenches, forges and tool cabinets.</description>
+		<baseCost>600000</baseCost>
+		<techLevel>Archotech</techLevel>
+		<prerequisites>
+			<li>BOR_Research_Gate_III</li>
+		</prerequisites>
+		<researchViewX>22.00</researchViewX>
+		<researchViewY>2.90</researchViewY>
+	</ResearchProjectDef>
+	<ResearchProjectDef ParentName="BOR_Research_Base_IV">
+		<defName>BOR_Research_Medicine_IV</defName>
+		<label>umbral medicine production</label>
+		<description>Build the umbral medicine bench and vitals monitoring, and produce dark medicine.</description>
+		<baseCost>700000</baseCost>
+		<techLevel>Archotech</techLevel>
+		<prerequisites>
+			<li>BOR_Research_Production_IV</li>
+		</prerequisites>
+		<hiddenPrerequisites>
+			<li>BOR_Research_Medicine_III</li>
+		</hiddenPrerequisites>
+		<researchViewX>23.00</researchViewX>
+		<researchViewY>2.20</researchViewY>
+	</ResearchProjectDef>
+	<ResearchProjectDef ParentName="BOR_Research_Base_IV">
+		<defName>BOR_Research_Joy_IV</defName>
+		<label>umbral recreation</label>
+		<description>Build umbral recreational facilities.</description>
+		<baseCost>700000</baseCost>
+		<techLevel>Archotech</techLevel>
+		<prerequisites>
+			<li>BOR_Research_Production_IV</li>
+		</prerequisites>
+		<hiddenPrerequisites>
+			<li>BOR_Research_Joy_III</li>
+		</hiddenPrerequisites>
+		<researchViewX>22.00</researchViewX>
+		<researchViewY>3.90</researchViewY>
+	</ResearchProjectDef>
+	<ResearchProjectDef ParentName="BOR_Research_Base_IV">
+		<defName>BOR_Research_Hydroponics_IV</defName>
+		<label>umbral hydroponics</label>
+		<description>Build the umbral hydroponics basin.</description>
+		<baseCost>700000</baseCost>
+		<techLevel>Archotech</techLevel>
+		<prerequisites>
+			<li>BOR_Research_Production_IV</li>
+		</prerequisites>
+		<hiddenPrerequisites>
+			<li>BOR_Research_Hydroponics_III</li>
+		</hiddenPrerequisites>
+		<researchViewX>22.00</researchViewX>
+		<researchViewY>5.80</researchViewY>
+	</ResearchProjectDef>
+	<ResearchProjectDef ParentName="BOR_Research_Base_IV">
 		<defName>BOR_Research_Gate_IV</defName>
+		<label>umbral research gate</label>
+		<description>The last step of umbral research. Beyond it lies the final tier of technology.</description>
+		<baseCost>2000000</baseCost>
+		<techLevel>Archotech</techLevel>
+		<prerequisites>
+			<li>BOR_Research_Production_IV</li>
+		</prerequisites>
+		<hiddenPrerequisites>
+			<li>BOR_Research_Medicine_IV</li>
+			<li>BOR_Research_Drugs_IV</li>
+			<li>BOR_Research_Power_IV</li>
+			<li>BOR_Research_Battery_IV</li>
+			<li>BOR_Research_Joy_IV</li>
+			<li>BOR_Research_Hydroponics_IV</li>
+		</hiddenPrerequisites>
+		<researchViewX>26.00</researchViewX>
+		<researchViewY>3.00</researchViewY>
+	</ResearchProjectDef>
+	<ResearchProjectDef ParentName="BOR_Research_Base_III">
+		<defName>BOR_Research_Gate_III</defName>
 		<label>ultimate research gate</label>
 		<description>All of your technological efforts so far have been toward recreating preestablished human tech. But now, you have reached the end of rediscovery. Now is the opportunity for something yours - something new. What was once beyond your reach is now yours for the taking.</description>
 		<baseCost>1000000</baseCost>
@@ -903,31 +1006,32 @@
 			<li>BOR_Research_Production_III</li>
 		</prerequisites>
 		<hiddenPrerequisites>
-			<li>BOR_Research_Battery_III</li>
 			<li>BOR_Research_Bionics_III</li>
-			<li>BOR_Research_Drugs_III</li>
 			<li>BOR_Research_Armor_III</li>
 			<li>BOR_Research_Weapons_III</li>
+			<li>BOR_Research_Medicine_III</li>
 			<li>BOR_Research_Joy_III</li>
 			<li>BOR_Research_Hydroponics_III</li>
+			<li>BOR_Research_Power_III</li>
+			<li>BOR_Research_Core_Drill_III</li>
 		</hiddenPrerequisites>
-		<researchViewX>20.50</researchViewX>
+		<researchViewX>20.00</researchViewX>
 		<researchViewY>3.00</researchViewY>
 	</ResearchProjectDef>
-	<ResearchProjectDef ParentName="BOR_Research_Base_IV">
-		<defName>BOR_Research_Power_IV</defName>
+	<ResearchProjectDef ParentName="BOR_Research_Base_V">
+		<defName>BOR_Research_Power_V</defName>
 		<label>unlimited power</label>
 		<description>Construct the umbral reactor, a source of free energy (as far as you're concerned).</description>
-		<baseCost>1200000</baseCost>
+		<baseCost>1E+15</baseCost>
 		<techLevel>Archotech</techLevel>
 		<prerequisites>
 			<li>BOR_Research_Gate_IV</li>
 		</prerequisites>
-		<researchViewX>22.00</researchViewX>
+		<researchViewX>29.00</researchViewX>
 		<researchViewY>2.00</researchViewY>
 	</ResearchProjectDef>
-	<ResearchProjectDef ParentName="BOR_Research_Base_IV">
-		<defName>BOR_Research_Bionics_IV</defName>
+	<ResearchProjectDef ParentName="BOR_Research_Base_V">
+		<defName>BOR_Research_Bionics_V</defName>
 		<label>umbral bionics</label>
 		<description>Enables installation of umbral bionics.</description>
 		<baseCost>1200000</baseCost>
@@ -935,19 +1039,19 @@
 		<prerequisites>
 			<li>BOR_Research_Gate_IV</li>
 		</prerequisites>
-		<researchViewX>22.00</researchViewX>
+		<researchViewX>29.00</researchViewX>
 		<researchViewY>6.00</researchViewY>
 	</ResearchProjectDef>
-	<ResearchProjectDef ParentName="BOR_Research_Base_IV">
-		<defName>BOR_Research_NeutProc_IV</defName>
+	<ResearchProjectDef ParentName="BOR_Research_Base_V">
+		<defName>BOR_Research_NeutProc_V</defName>
 		<label>self-sustaining production</label>
 		<description>Construct the umbral forge, which turns energy into neutronium and other materials.</description>
-		<baseCost>1200000</baseCost>
+		<baseCost>1E+15</baseCost>
 		<techLevel>Archotech</techLevel>
 		<prerequisites>
 			<li>BOR_Research_Gate_IV</li>
 		</prerequisites>
-		<researchViewX>22.00</researchViewX>
+		<researchViewX>29.00</researchViewX>
 		<researchViewY>4.00</researchViewY>
 	</ResearchProjectDef>
 

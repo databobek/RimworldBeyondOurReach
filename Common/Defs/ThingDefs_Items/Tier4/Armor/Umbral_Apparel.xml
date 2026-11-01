@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!--
+		Umbral exoskeleton, exoskull and utility pod forms. These are never made or traded: the Umbral hediffs put them
+		on the pawn (locked) and destroy them when they leave it. Textures are placeholders copied from Tier 3 gear.
+	-->
+	<ThingDef Name="BOR_UmbralExoApparelBase" ParentName="ApparelNoQualityBase" Abstract="True">
+		<techLevel>Archotech</techLevel>
+		<destroyOnDrop>true</destroyOnDrop>
+		<tradeability>None</tradeability>
+		<smeltable>false</smeltable>
+		<burnableByRecipe>false</burnableByRecipe>
+		<generateCommonality>0</generateCommonality>
+		<thingCategories Inherit="False" />
+		<statBases>
+			<MaxHitPoints>5000</MaxHitPoints>
+			<Mass>0</Mass>
+			<Flammability>0</Flammability>
+			<EquipDelay>1</EquipDelay>
+			<MarketValue>0</MarketValue>
+			<Insulation_Cold>40</Insulation_Cold>
+			<Insulation_Heat>20</Insulation_Heat>
+		</statBases>
+	</ThingDef>
+
+	<ThingDef Name="BOR_UmbralExoskeletonBase" ParentName="BOR_UmbralExoApparelBase" Abstract="True">
+		<description>Living Umbral crystal grown over the body. It cannot be taken off.</description>
+		<apparel>
+			<bodyPartGroups>
+				<li>Torso</li>
+				<li>Neck</li>
+				<li>Shoulders</li>
+				<li>Arms</li>
+				<li>Legs</li>
+				<li>Hands</li>
+				<li>Feet</li>
+			</bodyPartGroups>
+			<layers>
+				<li>OnSkin</li>
+				<li>Middle</li>
+				<li>Shell</li>
+			</layers>
+			<canBeGeneratedToSatisfyWarmth>false</canBeGeneratedToSatisfyWarmth>
+			<canBeGeneratedToSatisfyToxicEnvironmentResistance>false</canBeGeneratedToSatisfyToxicEnvironmentResistance>
+			<useDeflectMetalEffect>true</useDeflectMetalEffect>
+		</apparel>
+	</ThingDef>
+
+	<ThingDef ParentName="BOR_UmbralExoskeletonBase">
+		<defName>BOR_UmbralExoskeleton_Camo</defName>
+		<label>umbral exoskeleton (camo)</label>
+		<graphicData>
+			<texPath>BOR/Things/Pawn/Humanlike/Apparel/UmbralExoskeleton_Camo/UmbralExoskeleton_Camo</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<apparel>
+			<wornGraphicPath>BOR/Things/Pawn/Humanlike/Apparel/UmbralExoskeleton_Camo/UmbralExoskeleton_Camo</wornGraphicPath>
+		</apparel>
+	</ThingDef>
+
+	<ThingDef ParentName="BOR_UmbralExoskeletonBase">
+		<defName>BOR_UmbralExoskeleton_Utility</defName>
+		<label>umbral exoskeleton (utility)</label>
+		<graphicData>
+			<texPath>BOR/Things/Pawn/Humanlike/Apparel/UmbralExoskeleton_Utility/UmbralExoskeleton_Utility</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<apparel>
+			<wornGraphicPath>BOR/Things/Pawn/Humanlike/Apparel/UmbralExoskeleton_Utility/UmbralExoskeleton_Utility</wornGraphicPath>
+		</apparel>
+	</ThingDef>
+
+	<ThingDef ParentName="BOR_UmbralExoskeletonBase">
+		<defName>BOR_UmbralExoskeleton_Combat</defName>
+		<label>umbral exoskeleton (combat)</label>
+		<graphicData>
+			<texPath>BOR/Things/Pawn/Humanlike/Apparel/UmbralExoskeleton_Combat/UmbralExoskeleton_Combat</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<apparel>
+			<wornGraphicPath>BOR/Things/Pawn/Humanlike/Apparel/UmbralExoskeleton_Combat/UmbralExoskeleton_Combat</wornGraphicPath>
+		</apparel>
+	</ThingDef>
+
+	<ThingDef Name="BOR_UmbralExoskullBase" ParentName="BOR_UmbralExoApparelBase" Abstract="True">
+		<description>Living Umbral crystal grown over the skull. It cannot be taken off.</description>
+		<apparel>
+			<bodyPartGroups>
+				<li>FullHead</li>
+			</bodyPartGroups>
+			<layers>
+				<li>Overhead</li>
+			</layers>
+			<canBeGeneratedToSatisfyWarmth>false</canBeGeneratedToSatisfyWarmth>
+			<canBeGeneratedToSatisfyToxicEnvironmentResistance>false</canBeGeneratedToSatisfyToxicEnvironmentResistance>
+			<useDeflectMetalEffect>true</useDeflectMetalEffect>
+		</apparel>
+	</ThingDef>
+
+	<ThingDef ParentName="BOR_UmbralExoskullBase">
+		<defName>BOR_UmbralExoskull_Camo</defName>
+		<label>umbral exoskull (camo)</label>
+		<graphicData>
+			<texPath>BOR/Things/Pawn/Humanlike/Apparel/UmbralExoskull_Camo/UmbralExoskull_Camo</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<apparel>
+			<wornGraphicPath>BOR/Things/Pawn/Humanlike/Apparel/UmbralExoskull_Camo/UmbralExoskull_Camo</wornGraphicPath>
+		</apparel>
+	</ThingDef>
+
+	<ThingDef ParentName="BOR_UmbralExoskullBase">
+		<defName>BOR_UmbralExoskull_Utility</defName>
+		<label>umbral exoskull (utility)</label>
+		<graphicData>
+			<texPath>BOR/Things/Pawn/Humanlike/Apparel/UmbralExoskull_Utility/UmbralExoskull_Utility</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<apparel>
+			<wornGraphicPath>BOR/Things/Pawn/Humanlike/Apparel/UmbralExoskull_Utility/UmbralExoskull_Utility</wornGraphicPath>
+		</apparel>
+	</ThingDef>
+
+	<ThingDef ParentName="BOR_UmbralExoskullBase">
+		<defName>BOR_UmbralExoskull_Combat</defName>
+		<label>umbral exoskull (combat)</label>
+		<graphicData>
+			<texPath>BOR/Things/Pawn/Humanlike/Apparel/UmbralExoskull_Combat/UmbralExoskull_Combat</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<apparel>
+			<wornGraphicPath>BOR/Things/Pawn/Humanlike/Apparel/UmbralExoskull_Combat/UmbralExoskull_Combat</wornGraphicPath>
+		</apparel>
+	</ThingDef>
+
+</Defs>

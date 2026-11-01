@@ -2,6 +2,11 @@
 
 ## Scope Guardrails
 
-- This repository should be treated as 1.7-only for active work.
-- Do not inspect, edit, or create files under `1.5/` or `1.6/`.
-- Only work inside `1.7/` unless the user explicitly requests otherwise.
+- The mod targets RimWorld 1.7 only; there are no per-version folders.
+- Content lives in `Common/` (core defs/patches), `Mods/<Name>/` (compat loaded via `LoadFolders.xml`) and `Source/` (C#, builds to `Assemblies/`).
+- Do not add support for older game versions unless the user explicitly requests it.
+
+## Source Layout
+
+- `Source/` is organized into feature folders (`Core`, `Buildings`, `Forge`, `Harvest`, `Kwazaari`, `Signals`, `Tenebral`, `Umbral`).
+- Everything stays in the single `BeyondOurReach` namespace; XML references classes as `BeyondOurReach.<Class>`, so do not introduce sub-namespaces.

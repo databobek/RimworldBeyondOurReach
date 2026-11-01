@@ -1,19 +1,26 @@
 # Tenebral Rework Specification
 
 ## Purpose
-Tenebral bionics are a stepping stone on the road to Umbral. Today they cause psychosis (see `tenebral-bloodlust`). This rework tracks how often a psychosis-afflicted pawn breaks, offers an exit to the Holytech path (see `holytech-faction`), and, if breaks go too far, crystallizes the pawn into Umbral (see `umbral-rework`). Tenebral production moves from the regular buildings to the Umbral line, with a new Dark Archotech Altar as an additional way to make tenebral items. Umbral buildings produce the same items normally.
+Tenebral bionics are a stepping stone on the road to Umbral. Today they cause psychosis (see `tenebral-bloodlust`). This rework tracks how often a psychosis-afflicted pawn breaks, offers a choice of the Orientis path (see `orientis-faction`), and, if breaks go too far, crystallizes the pawn into Umbral (see `umbral-rework`). Tenebral production moves from the regular buildings to the Umbral line, with a new Dark Archotech Altar as an additional way to make tenebral items. Umbral buildings produce the same items normally.
 
 ## Requirements
 
 ### Requirement: Hidden break counter
 A pawn with tenebral psychosis SHALL have a hidden hediff that counts the number of mental breaks that pawn has suffered while psychotic. The counter SHALL NOT be shown to the player.
 
-### Requirement: Holytech exit
-Once the break counter reaches the holytech threshold, the player SHALL be able to choose to remove one or more tenebral bionics from the pawn. Removing them SHALL enable the pawn to pursue the Holytech path.
+### Requirement: Orientis choice
+When a counted break ends for a pawn that has reached the Orientis threshold, the player SHALL be offered the once-per-colony choice between the Path of Light and the Path of Dark, as defined in `orientis-faction`.
 
-#### Scenario: Exit available
-- WHEN the pawn's break count reaches the holytech threshold
-- THEN the player can remove that pawn's tenebral bionic(s)
+#### Scenario: Choice offered
+- WHEN a pawn reaches the Orientis threshold, the colony has not chosen a path, and the mental state ends
+- THEN the player receives the choice letter
+
+### Requirement: No manual stripping
+The player SHALL NOT be able to remove tenebral parts by any operation at any point. This SHALL cover removing the part, replacing it by installing another part, and removing a parent part it is attached to. The only ways a tenebral part leaves a pawn SHALL be the Path of Light (`orientis-faction`), emergence as Umbral, and injury.
+
+#### Scenario: Surgery after the threshold
+- WHEN a pawn holding a tenebral arm is past any number of breaks
+- THEN no operation is offered that removes or replaces the arm or the shoulder it is attached to
 
 ### Requirement: Crystallization
 Once the break counter reaches the umbral threshold, the pawn's body SHALL begin to crystallize. Each crystallized body part SHALL be marked as crystallized.
@@ -27,7 +34,7 @@ Once the break counter reaches the umbral threshold, the pawn's body SHALL begin
 - THEN the pawn can be placed in a Tenebral pod in transformation mode
 
 ### Requirement: Transformation mode hold
-A pawn placed in a Tenebral pod set to transformation mode SHALL be held for `(100 - crystallized%)`% of a year. The hold SHALL NOT end early.
+A pawn placed in a Tenebral pod set to transformation mode SHALL be held for `(100 - crystallized%)`% of a year. The hold SHALL NOT end early, except that the Path of Light destroys the pod and kills the pawn (see `orientis-faction`).
 
 #### Scenario: Partial crystallization
 - WHEN the pawn is 50% crystallized
@@ -80,7 +87,6 @@ The Tenebral pod SHALL be a Tenebral building that combines a bionic installator
 Before the pod can operate, a tenebral appendage or organ and femtoclusters SHALL be placed inside. The player SHALL then select where and what to install. Installation SHALL be a single step, and its duration SHALL come from the existing recipe work amount.
 
 ## Open questions
-- Value of the holytech threshold ("a few" breaks).
 - Value of the umbral threshold ("too many" breaks).
 - Which body parts count toward the 50%.
 - Whether a pawn can be placed in transformation mode before reaching 50%.
@@ -93,8 +99,8 @@ Implemented in `TenebralPsychosis.cs`, `TenebralSurgery.cs`, `TenebralPods.cs`, 
 
 - Psychosis is the `BOR_TenebralPsychosis` hediff (severity 0..1). It is hidden below 0.1 (latent), which is the "delayed by a few days" part. A pawn is psychotic once it is visible.
 - Severity floor = (implants + tenebrite gear x 0.5) x 0.1. Nearby tenebrite emission (buildings 1, floor cells 0.1, radius 6, capped at 3) adds 0.03 severity per day per unit. Without emission, severity decays 0.05/day down to the floor.
-- Holytech threshold: 3 breaks. Umbral threshold: 6 breaks. Breaks caused by damage or psycasts don't count.
-- Tenebral bionics can be removed by surgery only from the holytech threshold onward; removing one adds `BOR_HolytechCandidate`.
+- Orientis threshold: 3 breaks (`holytechThreshold` in code). Umbral threshold: 6 breaks. Breaks caused by damage or psycasts don't count.
+- Not yet changed in code: tenebral bionics can still be removed by surgery from the threshold onward, which adds `BOR_HolytechCandidate`, and the old letter is still sent at the start of the break. Both are to be replaced by the Orientis choice and the no manual stripping rule.
 - Crystallization: nothing happens on the 6th break itself. Every break after it has a 50% chance to crystallize one random eligible part. There is no timer, so a pawn who stops breaking stops crystallizing. Eligible parts are the arms, legs, eyes, ears, the left kidney, the right lung and the torso (11 parts on a human, so 50% is 6 parts). Nothing else crystallizes or counts. The percentage counts eligible parts.
 - Transformation mode refuses a pawn below 50%.
 - Altar: unlocking a cell takes the forge analysis time for the item. Each run costs ceil(value x yield x 0.5 / joint value) crystalline joints (at least 1). Work drains 2 days' worth of bloodlust per day of work.

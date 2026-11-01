@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- Gained through crystallization and Umbral transformation rolls, see BOR_DarkAbilityHits. The cost comes first so a kill can still refill bloodlust afterwards. -->
+	<AbilityDef Name="BOR_DarkAbilityBase" Abstract="True">
+		<canUseAoeToGetTargets>false</canUseAoeToGetTargets>
+		<verbProperties>
+			<verbClass>Verb_CastAbility</verbClass>
+			<range>29.9</range>
+			<requireLineOfSight>true</requireLineOfSight>
+			<warmupTime>1</warmupTime>
+			<targetParams>
+				<canTargetSelf>false</canTargetSelf>
+				<canTargetBuildings>false</canTargetBuildings>
+				<canTargetMechs>false</canTargetMechs>
+				<mapObjectTargetsMustBeAutoAttackable>false</mapObjectTargetsMustBeAutoAttackable>
+			</targetParams>
+		</verbProperties>
+		<comps>
+			<li Class="BeyondOurReach.CompProperties_AbilityBloodlustCost">
+				<cost>0.5</cost>
+			</li>
+		</comps>
+	</AbilityDef>
+
+	<AbilityDef ParentName="BOR_DarkAbilityBase">
+		<defName>BOR_DarkWound</defName>
+		<label>wound</label>
+		<description>Open wounds all over the target's body until it collapses.</description>
+		<iconPath>BOR/UI/Abilities/DarkWound</iconPath>
+		<displayOrder>100</displayOrder>
+		<cooldownTicksRange>5000</cooldownTicksRange>
+		<comps>
+			<li Class="CompProperties_AbilityEffect">
+				<compClass>BeyondOurReach.CompAbilityEffect_DarkWound</compClass>
+				<goodwillImpact>-15</goodwillImpact>
+			</li>
+		</comps>
+	</AbilityDef>
+
+	<AbilityDef ParentName="BOR_DarkAbilityBase">
+		<defName>BOR_DarkKill</defName>
+		<label>kill</label>
+		<description>Destroy the target's heart.</description>
+		<iconPath>BOR/UI/Abilities/DarkKill</iconPath>
+		<displayOrder>110</displayOrder>
+		<cooldownTicksRange>10000</cooldownTicksRange>
+		<comps>
+			<li Class="CompProperties_AbilityEffect">
+				<compClass>BeyondOurReach.CompAbilityEffect_DarkKill</compClass>
+			</li>
+		</comps>
+	</AbilityDef>
+
+	<AbilityDef ParentName="BOR_DarkAbilityBase">
+		<defName>BOR_DarkThrall</defName>
+		<label>thrall</label>
+		<description>Break the target's will. They become a slave of your faction, but their brain is permanently damaged.</description>
+		<iconPath>BOR/UI/Abilities/DarkThrall</iconPath>
+		<displayOrder>120</displayOrder>
+		<cooldownTicksRange>30000</cooldownTicksRange>
+		<verbProperties>
+			<targetParams>
+				<canTargetAnimals>false</canTargetAnimals>
+			</targetParams>
+		</verbProperties>
+		<comps>
+			<li Class="CompProperties_AbilityEffect">
+				<compClass>BeyondOurReach.CompAbilityEffect_DarkThrall</compClass>
+				<goodwillImpact>-15</goodwillImpact>
+			</li>
+		</comps>
+	</AbilityDef>
+
+	<AbilityDef ParentName="BOR_DarkAbilityBase">
+		<defName>BOR_DarkBolt</defName>
+		<label>dark bolt</label>
+		<description>Call down a bolt of red lightning that vaporizes everything around where it lands, friend or foe.</description>
+		<iconPath>BOR/UI/Abilities/DarkBolt</iconPath>
+		<displayOrder>130</displayOrder>
+		<cooldownTicksRange>15000</cooldownTicksRange>
+		<statBases>
+			<Ability_EffectRadius>4.9</Ability_EffectRadius>
+		</statBases>
+		<verbProperties>
+			<targetParams>
+				<canTargetLocations>true</canTargetLocations>
+				<canTargetBuildings>true</canTargetBuildings>
+				<canTargetMechs>true</canTargetMechs>
+			</targetParams>
+		</verbProperties>
+		<comps>
+			<li Class="CompProperties_AbilityEffect">
+				<compClass>BeyondOurReach.CompAbilityEffect_DarkBolt</compClass>
+			</li>
+		</comps>
+	</AbilityDef>
+
+</Defs>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- A very fast, very deadly flu. Building full immunity unlocks the research; see Hediff_DarkCommune. -->
+	<HediffDef>
+		<defName>BOR_DarkArchotechCommune</defName>
+		<hediffClass>BeyondOurReach.Hediff_DarkCommune</hediffClass>
+		<label>dark archotech commune</label>
+		<description>The mind is being opened to the dark archotechs. It burns, and not everyone comes back from it.</description>
+		<defaultLabelColor>(0.6, 0.15, 0.2)</defaultLabelColor>
+		<isBad>true</isBad>
+		<lethalSeverity>1</lethalSeverity>
+		<makesSickThought>true</makesSickThought>
+		<tendable>true</tendable>
+		<comps>
+			<li Class="HediffCompProperties_TendDuration">
+				<baseTendDurationHours>12</baseTendDurationHours>
+				<severityPerDayTended>-0.3</severityPerDayTended>
+			</li>
+			<li Class="HediffCompProperties_Immunizable">
+				<severityPerDayNotImmune>0.9</severityPerDayNotImmune>
+				<severityPerDayNotImmuneRandomFactor>0.7~1.3</severityPerDayNotImmuneRandomFactor>
+				<immunityPerDaySick>1</immunityPerDaySick>
+				<severityPerDayImmune>-2</severityPerDayImmune>
+				<immunityPerDayNotSick>-0.06</immunityPerDayNotSick>
+			</li>
+		</comps>
+		<stages>
+			<li>
+				<label>onset</label>
+				<painOffset>0.05</painOffset>
+				<capMods>
+					<li><capacity>Consciousness</capacity><offset>-0.05</offset></li>
+				</capMods>
+			</li>
+			<li>
+				<label>fever</label>
+				<minSeverity>0.2</minSeverity>
+				<painOffset>0.15</painOffset>
+				<vomitMtbDays>0.6</vomitMtbDays>
+				<capMods>
+					<li><capacity>Consciousness</capacity><offset>-0.2</offset></li>
+					<li><capacity>Moving</capacity><postFactor>0.8</postFactor></li>
+				</capMods>
+			</li>
+			<li>
+				<label>convulsions</label>
+				<minSeverity>0.5</minSeverity>
+				<painOffset>0.3</painOffset>
+				<vomitMtbDays>0.3</vomitMtbDays>
+				<capMods>
+					<li><capacity>Consciousness</capacity><setMax>0.5</setMax></li>
+					<li><capacity>Moving</capacity><postFactor>0.5</postFactor></li>
+					<li><capacity>Eating</capacity><postFactor>0.5</postFactor></li>
+				</capMods>
+			</li>
+			<li>
+				<label>communion</label>
+				<minSeverity>0.8</minSeverity>
+				<painOffset>0.45</painOffset>
+				<vomitMtbDays>0.15</vomitMtbDays>
+				<capMods>
+					<li><capacity>Consciousness</capacity><setMax>0.2</setMax></li>
+					<li><capacity>Moving</capacity><setMax>0.1</setMax></li>
+					<li><capacity>Eating</capacity><postFactor>0.2</postFactor></li>
+				</capMods>
+			</li>
+		</stages>
+	</HediffDef>
+
+</Defs>

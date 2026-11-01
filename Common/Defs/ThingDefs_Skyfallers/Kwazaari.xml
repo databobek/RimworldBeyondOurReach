@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- Blue Kwazaari shuttle; reuses the core shuttle texture, tinted -->
+  <ThingDef ParentName="BuildingBase">
+    <defName>BOR_KwazaariShuttle</defName>
+    <label>kwazaari shuttle</label>
+    <description>A sleek blue Kwazaari shuttle.</description>
+    <thingClass>BeyondOurReach.Building_KwazaariShuttle</thingClass>
+    <tickerType>Normal</tickerType>
+    <size>(5,3)</size>
+    <rotatable>false</rotatable>
+    <passability>Impassable</passability>
+    <fillPercent>1.0</fillPercent>
+    <pathCost>50</pathCost>
+    <blockWind>true</blockWind>
+    <preventDroppingThingsOn>true</preventDroppingThingsOn>
+    <useHitPoints>false</useHitPoints>
+    <drawHighlight>true</drawHighlight>
+    <highlightColor>(0.56, 0.62, 0.9)</highlightColor>
+    <graphicData>
+      <texPath>Things/Building/Misc/Shuttle</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(6,3)</drawSize>
+      <color>(90,140,215)</color>
+    </graphicData>
+    <building>
+      <claimable>false</claimable>
+      <isInert>true</isInert>
+    </building>
+  </ThingDef>
+
+  <ThingDef ParentName="BOR_RaidShuttleIncomingBase">
+    <defName>BOR_KwazaariShuttleIncoming</defName>
+    <label>kwazaari shuttle (incoming)</label>
+    <graphicData>
+      <color>(90,140,215)</color>
+    </graphicData>
+  </ThingDef>
+
+  <ThingDef ParentName="ShuttleSkyfallerBase">
+    <defName>BOR_KwazaariShuttleLeaving</defName>
+    <label>kwazaari shuttle (leaving)</label>
+    <graphicData>
+      <color>(90,140,215)</color>
+    </graphicData>
+    <skyfaller>
+      <reversed>true</reversed>
+      <ticksToImpactRange>-40~-15</ticksToImpactRange>
+      <moteSpawnTime>0.05</moteSpawnTime>
+      <angleCurve>
+        <points>
+          <li>(0,90)</li>
+          <li>(1,70)</li>
+        </points>
+      </angleCurve>
+      <rotationCurve>
+        <points>
+          <li>(0,0)</li>
+          <li>(0.15,10)</li>
+          <li>(0.5,-5)</li>
+        </points>
+      </rotationCurve>
+      <zPositionCurve>
+        <points>
+          <li>(0,0)</li>
+          <li>(0.05,2.5)</li>
+        </points>
+      </zPositionCurve>
+      <speedCurve>
+        <points>
+          <li>(0,0.1)</li>
+          <li>(0.4,0.6)</li>
+        </points>
+      </speedCurve>
+    </skyfaller>
+  </ThingDef>
+
+  <!-- Blue drop pods; used for every favor delivery via the faction's dropPodIncoming/dropPodActive -->
+  <ThingDef ParentName="DropPodIncoming">
+    <defName>BOR_KwazaariPodIncoming</defName>
+    <label>kwazaari drop pod (incoming)</label>
+    <graphicData>
+      <color>(90,140,215)</color>
+    </graphicData>
+  </ThingDef>
+
+  <ThingDef ParentName="ActiveDropPod">
+    <defName>BOR_KwazaariPodActive</defName>
+    <label>kwazaari drop pod</label>
+    <graphicData>
+      <color>(90,140,215)</color>
+    </graphicData>
+  </ThingDef>
+
+</Defs>

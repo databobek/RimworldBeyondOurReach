@@ -9,8 +9,6 @@ Tier I = solar, II = quasar/kwazaari, III = tenebral, IV = umbral (moved from te
 | I | bionic assembly harness (`BOR_Bionic_Assembly_Harness`) | BOR_Bench_I | BOR_Research_Armor_I | Common/Defs/ThingDefs_Items/Tier1/Armor/apparel_armor.xml |
 | I | circuit board (`BOR_CircuitBoard`) | BOR_Bench_I | BOR_Research_Analyzer_II | Common/Defs/ThingDefs_Items/ThingDefs_Artifacts.xml |
 | I | drugged rib solar implant (`DruggedRibSolar`) | BOR_MedicineBench_I | BOR_Research_Bionics_I | Mods/EPOE/Defs/hediffdefs_bionicsribstier1.xml |
-| I | Judgment shell (Ef) (`BOR_Shell_JudgmentShipCannon_Ef`) | BOR_Bench_I | BOR_Research_JudgmentCannon_I | Common/Defs/ThingDefs_Buildings/tier1/Buildings_Turret.xml |
-| I | Judgment shell (Ni) (`BOR_Shell_JudgmentShipCannon_Ni`) | BOR_Bench_I | BOR_Research_JudgmentCannon_I | Common/Defs/ThingDefs_Buildings/tier1/Buildings_Turret.xml |
 | I | mech solar gestation processor (`MechFormfeederSolar`) | BOR_MedicineBench_I | BOR_Research_Mechtech_I | Mods/Biotech/Defs/tier1hediffs.xml |
 | I | medical solar rib implant (`MedicalRibSolar`) | BOR_MedicineBench_I | BOR_Research_Bionics_I | Mods/EPOE/Defs/hediffdefs_bionicsribstier1.xml |
 | I | nanoclusters (`BOR_Nanoclusters`) | BOR_Bench_I, BasicArchotechWorkbench | BOR_Research_Medicine_I | Common/Defs/ThingDefs_Items/resource.xml |
@@ -149,22 +147,21 @@ Tier I = solar, II = quasar/kwazaari, III = tenebral, IV = umbral (moved from te
 | II | badzaari plated helm (`BOR_Badzaari_Apparel_HeavyHelmet`) | BOR_Bench_II | BOR_Research_Armor_II | Mods/CombatExtended/Defs/additions/EquipmentBadzaar.xml |
 | II | canter (`BOR_Canter`) | BOR_MedicineBench_II | BOR_Research_Drugs_II | Common/Defs/ThingDefs_Items/Tier2/Drugs/Canter.xml |
 | II | castra (`BOR_Castra`) | BOR_MedicineBench_II | BOR_Research_Drugs_II | Common/Defs/ThingDefs_Items/Tier2/Drugs/Castra.xml |
-| II | combined mechanite shield (base) (`BOR_CombinedVaccine_BaseMech`) | BOR_MedicineBench_II, BOR_MedicineBench_IV | BOR_Research_Vaccines_Combined | Mods/Vaccines/Defs/vacc_combined_vaccines_patch.xml |
-| II | combined MSMD mechanite shield (`BOR_CombinedVaccine_MSMDMech`) | BOR_MedicineBench_II, BOR_MedicineBench_IV | BOR_Research_Vaccines_Combined | Mods/Vaccines/Defs/vacc_combined_vaccines_patch.xml |
-| II | combined nano mechanite shield (base) (`BOR_CombinedNanoVaccine_BaseMech`) | BOR_MedicineBench_II, BOR_MedicineBench_IV | BOR_Research_Vaccines_Combined | Mods/Vaccines/Defs/vacc_combined_vaccines_patch.xml |
-| II | combined nano MSMD mechanite shield (`BOR_CombinedNanoVaccine_MSMDMech`) | BOR_MedicineBench_II, BOR_MedicineBench_IV | BOR_Research_Vaccines_Combined | Mods/Vaccines/Defs/vacc_combined_vaccines_patch.xml |
-| II | combined nano-vaccine (base bio) (`BOR_CombinedNanoVaccine_BaseBio`) | BOR_MedicineBench_II, BOR_MedicineBench_IV | BOR_Research_Vaccines_Combined | Mods/Vaccines/Defs/vacc_combined_vaccines_patch.xml |
-| II | combined nano-vaccine (DO bio) (`BOR_CombinedNanoVaccine_DOBio`) | BOR_MedicineBench_II, BOR_MedicineBench_IV | BOR_Research_Vaccines_Combined | Mods/Vaccines/Defs/vacc_combined_vaccines_patch.xml |
-| II | combined nano-vaccine (DP bio) (`BOR_CombinedNanoVaccine_DPBio`) | BOR_MedicineBench_II, BOR_MedicineBench_IV | BOR_Research_Vaccines_Combined | Mods/Vaccines/Defs/vacc_combined_vaccines_patch.xml |
+| II | combined mechanite shield (base) (`BOR_CombinedVaccine_BaseMech`) | BOR_MedicineBench_II, BOR_MedicineBench_IV | BOR_Research_Vaccines_Combined_II | Mods/Vaccines/Defs/vacc_combined_vaccines_patch.xml |
+| II | combined MSMD mechanite shield (`BOR_CombinedVaccine_MSMDMech`) | BOR_MedicineBench_II, BOR_MedicineBench_IV | BOR_Research_Vaccines_Combined_II | Mods/Vaccines/Defs/vacc_combined_vaccines_patch.xml |
+| II | combined nano mechanite shield (base) (`BOR_CombinedNanoVaccine_BaseMech`) | BOR_MedicineBench_II, BOR_MedicineBench_IV | BOR_Research_Vaccines_Combined_II | Mods/Vaccines/Defs/vacc_combined_vaccines_patch.xml |
+| II | combined nano MSMD mechanite shield (`BOR_CombinedNanoVaccine_MSMDMech`) | BOR_MedicineBench_II, BOR_MedicineBench_IV | BOR_Research_Vaccines_Combined_II | Mods/Vaccines/Defs/vacc_combined_vaccines_patch.xml |
+| II | combined nano-vaccine (base bio) (`BOR_CombinedNanoVaccine_BaseBio`) | BOR_MedicineBench_II, BOR_MedicineBench_IV | BOR_Research_Vaccines_Combined_II | Mods/Vaccines/Defs/vacc_combined_vaccines_patch.xml |
+| II | combined nano-vaccine (DO bio) (`BOR_CombinedNanoVaccine_DOBio`) | BOR_MedicineBench_II, BOR_MedicineBench_IV | BOR_Research_Vaccines_Combined_II | Mods/Vaccines/Defs/vacc_combined_vaccines_patch.xml |
+| II | combined nano-vaccine (DP bio) (`BOR_CombinedNanoVaccine_DPBio`) | BOR_MedicineBench_II, BOR_MedicineBench_IV | BOR_Research_Vaccines_Combined_II | Mods/Vaccines/Defs/vacc_combined_vaccines_patch.xml |
 | II | combined tenebral MSMD mechanite shield (`BOR_CombinedArchoVaccine_MSMDMech`) | BOR_MedicineBench_II, BOR_MedicineBench_IV | BOR_Research_Vaccines_Combined | Mods/Vaccines/Defs/vacc_combined_vaccines_patch.xml |
 | II | combined tenebral shield (base mech) (`BOR_CombinedArchoVaccine_BaseMech`) | BOR_MedicineBench_II, BOR_MedicineBench_IV | BOR_Research_Vaccines_Combined | Mods/Vaccines/Defs/vacc_combined_vaccines_patch.xml |
 | II | combined tenebral vaccine (base bio) (`BOR_CombinedArchoVaccine_BaseBio`) | BOR_MedicineBench_II, BOR_MedicineBench_IV | BOR_Research_Vaccines_Combined | Mods/Vaccines/Defs/vacc_combined_vaccines_patch.xml |
 | II | combined tenebral vaccine (DO bio) (`BOR_CombinedArchoVaccine_DOBio`) | BOR_MedicineBench_II, BOR_MedicineBench_IV | BOR_Research_Vaccines_Combined | Mods/Vaccines/Defs/vacc_combined_vaccines_patch.xml |
 | II | combined tenebral vaccine (DP bio) (`BOR_CombinedArchoVaccine_DPBio`) | BOR_MedicineBench_II, BOR_MedicineBench_IV | BOR_Research_Vaccines_Combined | Mods/Vaccines/Defs/vacc_combined_vaccines_patch.xml |
-| II | combined vaccine (base bio) (`BOR_CombinedVaccine_BaseBio`) | BOR_MedicineBench_II, BOR_MedicineBench_IV | BOR_Research_Vaccines_Combined | Mods/Vaccines/Defs/vacc_combined_vaccines_patch.xml |
-| II | combined vaccine (DO bio) (`BOR_CombinedVaccine_DOBio`) | BOR_MedicineBench_II, BOR_MedicineBench_IV | BOR_Research_Vaccines_Combined | Mods/Vaccines/Defs/vacc_combined_vaccines_patch.xml |
-| II | combined vaccine (DP bio) (`BOR_CombinedVaccine_DPBio`) | BOR_MedicineBench_II, BOR_MedicineBench_IV | BOR_Research_Vaccines_Combined | Mods/Vaccines/Defs/vacc_combined_vaccines_patch.xml |
-| II | Cracker shell (`BOR_Shell_NegotiatorCracker_TII`) | BOR_Bench_II | BOR_Research_NegotiatorArtillery_II | Common/Defs/ThingDefs_Buildings/tier2/Buildings_Turret.xml |
+| II | combined vaccine (base bio) (`BOR_CombinedVaccine_BaseBio`) | BOR_MedicineBench_II, BOR_MedicineBench_IV | BOR_Research_Vaccines_Combined_II | Mods/Vaccines/Defs/vacc_combined_vaccines_patch.xml |
+| II | combined vaccine (DO bio) (`BOR_CombinedVaccine_DOBio`) | BOR_MedicineBench_II, BOR_MedicineBench_IV | BOR_Research_Vaccines_Combined_II | Mods/Vaccines/Defs/vacc_combined_vaccines_patch.xml |
+| II | combined vaccine (DP bio) (`BOR_CombinedVaccine_DPBio`) | BOR_MedicineBench_II, BOR_MedicineBench_IV | BOR_Research_Vaccines_Combined_II | Mods/Vaccines/Defs/vacc_combined_vaccines_patch.xml |
 | II | first kwaed kit (`BOR_MedicineII`) | BOR_MedicineBench_II | BOR_Research_Medicine_II | Common/Defs/ThingDefs_Items/Tier2/Various/medical.xml |
 | II | kwazaari aesthetic nose (`AestheticNoseQuasar`) | BOR_MedicineBench_II | BOR_Research_Bionics_II | Mods/Royalty/Defs/hediffs_implants_tier2.xml |
 | II | kwazaari aesthetic shaper (`AestheticShaperQuasar`) | BOR_MedicineBench_II | BOR_Research_Bionics_II | Mods/Royalty/Defs/hediffs_implants_tier2.xml |
@@ -283,7 +280,6 @@ Tier I = solar, II = quasar/kwazaari, III = tenebral, IV = umbral (moved from te
 | II | quasarite weave (`BOR_QuasarAlloyWeave`) | BOR_Bench_II | BOR_Research_Production_II | Common/Defs/ThingDefs_Items/Tier2/Resources/quasaralloyweave.xml |
 | II | sleepquitin (`BOR_Sleepquitin`) | BOR_MedicineBench_II | BOR_Research_Drugs_II | Common/Defs/ThingDefs_Items/Tier2/Drugs/Sleepquitin.xml |
 | II | sunlight (`BOR_Sunlight`) | BOR_MedicineBench_II | BOR_Research_Drugs_II | Common/Defs/ThingDefs_Items/Tier2/Drugs/Sunlight.xml |
-| III | 81mm mortar shell (iN) (`BOR_Shell_Mortar_Ion_N`) | - | BOR_Research_Weapons_III | Mods/CombatExtended/Defs/additions/artillery selection/81mmmortarshell.xml |
 | III | femtoclusters (`BOR_Femtoclusters`) | BOR_Bench_IV, BasicArchotechWorkbench, Dark Archotech Altar | BOR_Research_Medicine_III | Common/Defs/ThingDefs_Items/resource.xml |
 | III | mech tenebral gestation processor (`MechFormfeederTenebral`) | BOR_MedicineBench_IV | BOR_Research_Mechtech_III | Mods/Biotech/Defs/tier3hediffs.xml |
 | III | tenebral appendage template (`BOR_TenebralAppendage`) | BOR_MedicineBench_IV, Dark Archotech Altar | BOR_Research_Bionics_III | Common/Defs/BodyPartDefs/Tier3/Bodyparts.xml |
@@ -322,9 +318,9 @@ Tier I = solar, II = quasar/kwazaari, III = tenebral, IV = umbral (moved from te
 | III | tenebral spear (`Bamba_Melee_Tenebral_Spear`) | BOR_Bench_IV, Dark Archotech Altar | Bamba_Melee_Research_Tenebral | AllBambaMelee/1.7/Defs/ThingDefs_Misc/Bamba_Melee_Weapons_BOR.xml |
 | III | tenebrite amplifier (`BOR_TenebriteAmplifier`) | BOR_Bench_II | BOR_Research_Analyzer_III | Common/Defs/ThingDefs_Items/ThingDefs_Artifacts.xml |
 | III | tenebrite crystals (`BOR_Tenebrite`) | BOR_Bench_II, BOR_Bench_IV, Dark Archotech Altar | BOR_Research_Analyzer_III, BOR_Research_Production_III | Common/Defs/ThingDefs_Items/Tier3/Resources/tenebrite.xml |
-| IV | adreamoline (`BOR_Adreamoline`) | BOR_MedicineBench_IV | BOR_Research_Drugs_III | Common/Defs/ThingDefs_Items/Tier3/Drugs/Adreamoline.xml |
-| IV | crewmates (`BOR_Crewmates`) | BOR_MedicineBench_IV | BOR_Research_Drugs_III | Common/Defs/ThingDefs_Items/Tier3/Drugs/Crewmates.xml |
-| IV | dark medicine (`BOR_MedicineIV`) | BOR_MedicineBench_IV | BOR_Research_Medicine_III | Common/Defs/ThingDefs_Items/Tier3/Various/medical.xml |
-| IV | gallop (`BOR_Gallop`) | BOR_MedicineBench_IV | BOR_Research_Drugs_III | Common/Defs/ThingDefs_Items/Tier3/Drugs/Gallop.xml |
-| IV | pax (`BOR_Pax`) | BOR_MedicineBench_IV | BOR_Research_Drugs_III | Common/Defs/ThingDefs_Items/Tier3/Drugs/Pax.xml |
-| IV | umbral vaccine (`BOR_UmbralVaccine`) | BOR_MedicineBench_IV, Dark Archotech Altar | BOR_Research_Vaccines_Combined | Mods/Vaccines/Defs/umbral_vaccine.xml |
+| IV | adreamoline (`BOR_Adreamoline`) | BOR_MedicineBench_IV | BOR_Research_Drugs_IV | Common/Defs/ThingDefs_Items/Tier4/Drugs/Adreamoline.xml |
+| IV | crewmates (`BOR_Crewmates`) | BOR_MedicineBench_IV | BOR_Research_Drugs_IV | Common/Defs/ThingDefs_Items/Tier4/Drugs/Crewmates.xml |
+| IV | dark medicine (`BOR_MedicineIV`) | BOR_MedicineBench_IV | BOR_Research_Medicine_IV | Common/Defs/ThingDefs_Items/Tier4/Various/medical.xml |
+| IV | gallop (`BOR_Gallop`) | BOR_MedicineBench_IV | BOR_Research_Drugs_IV | Common/Defs/ThingDefs_Items/Tier4/Drugs/Gallop.xml |
+| IV | pax (`BOR_Pax`) | BOR_MedicineBench_IV | BOR_Research_Drugs_IV | Common/Defs/ThingDefs_Items/Tier4/Drugs/Pax.xml |
+| IV | umbral vaccine (`BOR_UmbralVaccine`) | BOR_MedicineBench_IV, Dark Archotech Altar | BOR_Research_Vaccines_IV | Mods/Vaccines/Defs/umbral_vaccine.xml |

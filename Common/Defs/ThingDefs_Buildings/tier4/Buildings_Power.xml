@@ -2,59 +2,65 @@
 <Defs>
 
   <ThingDef ParentName="BuildingBase">
-    <defName>BOR_Reactor_V</defName>
-    <label>umbral reactor</label>
-    <description>A limitless source of energy, fabricating and collapsing micro-singularities within multi-layered stratus to provide limitless energy while maintaing the integrity of realspace. It is inadvised to let this device come to harm, lest the singularities become unstable.</description>
+    <defName>BOR_Reactor_IV</defName>
+    <label>lesser umbral reactor</label>
+    <description>Produces power by stealing momentum from ubiquitous non-interacting particles - which amounts to 'free energy' in simple, small words.</description>
     <thingClass>Building</thingClass>
     <drawerType>MapMeshAndRealTime</drawerType>
     <graphicData>
-      <texPath>BOR/Things/Building/tier4/reactor/reactor</texPath>
-      <graphicClass>Graphic_Multi</graphicClass>
-      <drawSize>(9,8)</drawSize>
-      <drawOffset>(0,4,2.15)</drawOffset>
+      <texPath>BOR/Things/Building/tier4/reactor</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(10,10)</drawSize>
+      <drawOffset>(0,4,0.7)</drawOffset>
     </graphicData>
     <altitudeLayer>Building</altitudeLayer>
     <passability>PassThroughOnly</passability>
     <fillPercent>0.9</fillPercent>
     <pathCost>150</pathCost>
-    <rotatable>true</rotatable>
+    <rotatable>false</rotatable>
     <blockWind>true</blockWind>
     <statBases>
-      <MaxHitPoints>1500</MaxHitPoints>
-      <WorkToBuild>50000</WorkToBuild>
-      <Flammability>0</Flammability>
-      <Beauty>50</Beauty>
+      <MaxHitPoints>1012</MaxHitPoints>
+      <WorkToBuild>8437</WorkToBuild>
+      <Flammability>0.578</Flammability>
+      <Beauty>22</Beauty>
     </statBases>
     <tickerType>Normal</tickerType>
     <canOverlapZones>false</canOverlapZones>
-    <size>(4,2)</size>
+    <size>(7,7)</size>
     <costList>
       <BOR_Tenebrite>100</BOR_Tenebrite>
       <BOR_ComponentIII>6</BOR_ComponentIII>
     </costList>
     <comps>
-      <li Class="CompProperties_Art">
-        <nameMaker>NamerArtSculpture</nameMaker>
-        <descriptionMaker>ArtDescription_Sculpture</descriptionMaker>
-        <canBeEnjoyedAsArt>true</canBeEnjoyedAsArt>
-      </li>
       <li Class="CompProperties_Power">
-        <compClass>CompPowerPlant</compClass>
-        <basePowerConsumption>-Infinity</basePowerConsumption>
+        <compClass>PipeSystem.CompPowerPlantNeedResource</compClass>
+        <basePowerConsumption>-1000000</basePowerConsumption>
         <transmitsPower>true</transmitsPower>
         <shortCircuitInRain>false</shortCircuitInRain>
       </li>
+      <li Class="CompProperties_Flickable" />
       <li Class="CompProperties_Glower">
         <glowRadius>8</glowRadius>
         <glowColor>(151,199,193,0)</glowColor>
       </li>
+      <li Class="CompProperties_HeatPusher">
+        <compClass>CompHeatPusherPowered</compClass>
+        <heatPerSecond>7.125</heatPerSecond>
+      </li>
       <li Class="CompProperties_Breakdownable" />
       <li Class="CompProperties_Explosive">
-        <explosiveRadius>2500</explosiveRadius>
+        <explosiveRadius>250</explosiveRadius>
         <explosiveDamageType>Flame</explosiveDamageType>
         <destroyThingOnExplosionSize>2</destroyThingOnExplosionSize>
-        <startWickHitPointsPercent>0.222</startWickHitPointsPercent>
-        <wickTicks>1500~2500</wickTicks>
+        <startWickHitPointsPercent>0.333</startWickHitPointsPercent>
+        <wickTicks>150~250</wickTicks>
+      </li>
+      <li Class="CompProperties_Stunnable">
+        <useLargeEMPEffecter>true</useLargeEMPEffecter>
+        <affectedDamageDefs>
+          <li>EMP</li>
+        </affectedDamageDefs>
       </li>
     </comps>
     <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
@@ -65,10 +71,87 @@
     <researchPrerequisites>
       <li>BOR_Research_Power_IV</li>
     </researchPrerequisites>
-    <constructionSkillPrerequisite>19</constructionSkillPrerequisite>
+    <constructionSkillPrerequisite>15</constructionSkillPrerequisite>
     <designatorDropdown>BOR_Reactors</designatorDropdown>
     <modExtensions>
       <li Class="BeyondOurReach.DefModExtension_UmbralOnly" />
     </modExtensions>
   </ThingDef>
+
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>BOR_Battery_IV</defName>
+    <label>umbral battery</label>
+    <description>Stores apocalyptic amounts of electricity for later use. This model has been designed for civilian use, and as such it has no countermeasures to account for rain and fire.</description>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <thingClass>Building_Battery</thingClass>
+    <graphicData>
+      <texPath>BOR/Things/Building/tier4/battery/battery3</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawOffset>(0,0,-0.25)</drawOffset>
+      <drawSize>(7,7)</drawSize>
+      <damageData>
+        <cornerTL>Damage/Corner</cornerTL>
+        <cornerTR>Damage/Corner</cornerTR>
+        <cornerBL>Damage/Corner</cornerBL>
+        <cornerBR>Damage/Corner</cornerBR>
+      </damageData>
+    </graphicData>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <pathCost>50</pathCost>
+    <blockWind>true</blockWind>
+    <castEdgeShadows>true</castEdgeShadows>
+    <fillPercent>0.40</fillPercent>
+    <tickerType>Normal</tickerType>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <thingCategories>
+      <li>BuildingsPower</li>
+    </thingCategories>
+    <statBases>
+      <MaxHitPoints>505</MaxHitPoints>
+      <WorkToBuild>4500</WorkToBuild>
+      <Mass>11</Mass>
+      <Flammability>0.45</Flammability>
+      <Beauty>-6.66</Beauty>
+    </statBases>
+    <size>(2,5)</size>
+    <building>
+      <destroySound>BuildingDestroyed_Metal_Medium</destroySound>
+    </building>
+    <costList>
+      <BOR_Tenebrite>70</BOR_Tenebrite>
+      <BOR_ComponentIII>2</BOR_ComponentIII>
+    </costList>
+    <comps>
+      <li Class="CompProperties_Battery">
+        <storedEnergyMax>500000</storedEnergyMax>
+        <efficiency>0.95</efficiency>
+        <shortCircuitInRain>true</shortCircuitInRain>
+        <transmitsPower>true</transmitsPower>
+      </li>
+      <li Class="CompProperties_Breakdownable" />
+      <li Class="CompProperties_Stunnable">
+        <useLargeEMPEffecter>true</useLargeEMPEffecter>
+        <affectedDamageDefs>
+          <li>EMP</li>
+        </affectedDamageDefs>
+      </li>
+    </comps>
+    <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+    <designationCategory>BOR</designationCategory>
+    <uiOrder>2020</uiOrder>
+    <staticSunShadowHeight>0.2</staticSunShadowHeight>
+    <constructEffect>ConstructMetal</constructEffect>
+    <designationHotKey>Misc4</designationHotKey>
+    <canOverlapZones>false</canOverlapZones>
+    <researchPrerequisites>
+      <li>BOR_Research_Battery_IV</li>
+    </researchPrerequisites>
+    <designatorDropdown>BOR_Batteries</designatorDropdown>
+    <modExtensions>
+      <li Class="BeyondOurReach.DefModExtension_UmbralOnly" />
+    </modExtensions>
+  </ThingDef>
+
 </Defs>

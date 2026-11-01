@@ -6,6 +6,19 @@
   <BOR_HolytechCandidate>{0} is free of tenebral bionics. The Holytech path is open.</BOR_HolytechCandidate>
   <BOR_CrystallizationLabel>{0} is crystallizing</BOR_CrystallizationLabel>
   <BOR_CrystallizationText>{PAWN_labelShort} has broken too often under the psychosis. {PAWN_possessive} body has begun turning to black crystal, one part at a time. Crystallized parts stop working and cannot be removed.\n\nOnce half of the body has crystallized, {PAWN_labelShort} can be placed in an Umbral Transformation Pod.</BOR_CrystallizationText>
+  <BOR_PsychosisGizmoTip>Psychosis: {0} ({1})\nWork limit: {2}\n\nOnce psychosis reaches the limit, this colonist stops working tenebrite benches, research benches, forges and the dark altar. They can return once it falls below the limit. Drag the bar to set the limit. At 100% there is no limit.</BOR_PsychosisGizmoTip>
+  <BOR_PsychosisLimitReached>psychosis at {0}, limit is {1}</BOR_PsychosisLimitReached>
+  <BOR_PsychosisLimitStopped>{0} reached the psychosis limit and stopped working at the {1}.</BOR_PsychosisLimitStopped>
+
+  <!-- Dark abilities -->
+  <BOR_DarkAbilityLearnedLabel>{0} gained {1}</BOR_DarkAbilityLearnedLabel>
+  <BOR_DarkAbilityLearnedText>The darkness has settled in {0}. They can now use {1}.\n\n{2}</BOR_DarkAbilityLearnedText>
+  <BOR_AbilityNeedsBloodlust>needs {0} bloodlust</BOR_AbilityNeedsBloodlust>
+  <BOR_AbilityCostTip>Bloodlust cost: {0} (free for Umbral)</BOR_AbilityCostTip>
+  <BOR_AbilityTargetDowned>{0} is already down.</BOR_AbilityTargetDowned>
+  <BOR_AbilityTargetNoHeart>{0} has no heart to destroy.</BOR_AbilityTargetNoHeart>
+  <BOR_AbilityTargetOwn>{0} already serves your faction.</BOR_AbilityTargetOwn>
+  <BOR_AbilityTargetLodger>{0} is under your protection.</BOR_AbilityTargetLodger>
 
   <!-- Umbral transformation pod -->
   <BOR_UmbralPodNotCrystallized>only {0} crystallized, needs {1}</BOR_UmbralPodNotCrystallized>
@@ -14,8 +27,8 @@
   <BOR_UmbralEmergedText>The pod opens. {PAWN_labelShort} is Umbral now: {PAWN_possessive} body will take no more surgery, and it will keep changing with every kill.</BOR_UmbralEmergedText>
 
   <!-- Tenebral pod -->
-  <BOR_TenebralPodMode>Mode: {0}</BOR_TenebralPodMode>
-  <BOR_TenebralPodModeDesc>Switch the pod between stasis, healing, operating and transformation.</BOR_TenebralPodModeDesc>
+  <BOR_TenebralPodMode>Mode</BOR_TenebralPodMode>
+  <BOR_TenebralPodModeDesc>Open the pod controls: choose stasis, healing, transformation or an operation, and who goes in.</BOR_TenebralPodModeDesc>
   <BOR_TenebralPodModeInspect>Mode: {0}</BOR_TenebralPodModeInspect>
   <BOR_TenebralPodMode_Stasis>stasis</BOR_TenebralPodMode_Stasis>
   <BOR_TenebralPodMode_Healing>healing</BOR_TenebralPodMode_Healing>
@@ -30,6 +43,26 @@
   <BOR_TenebralPodCancel>Cancel operation</BOR_TenebralPodCancel>
   <BOR_TenebralPodCancelDesc>Cancel the operation and drop whatever was loaded for it.</BOR_TenebralPodCancelDesc>
   <BOR_TenebralPodNeedsResearch>needs {0}</BOR_TenebralPodNeedsResearch>
+  <BOR_TenebralPodReservedFor>this operation is set up for {0}</BOR_TenebralPodReservedFor>
+  <BOR_OpColonists>Colonist</BOR_OpColonists>
+  <BOR_OpOrgans>Organs</BOR_OpOrgans>
+  <BOR_OpAppendages>Appendages</BOR_OpAppendages>
+  <BOR_OpInstallAt>Install at</BOR_OpInstallAt>
+  <BOR_OpCost>Cost:</BOR_OpCost>
+  <BOR_OpPickColonist>Choose a colonist</BOR_OpPickColonist>
+  <BOR_OpPickOperation>Choose an organ or appendage</BOR_OpPickOperation>
+  <BOR_OpPickPart>Choose where to install</BOR_OpPickPart>
+  <BOR_OpMissingItems>Not enough in the colony</BOR_OpMissingItems>
+  <BOR_TenebralPodTitle>Tenebral pod</BOR_TenebralPodTitle>
+  <BOR_PodAction>Action</BOR_PodAction>
+  <BOR_PodColonists>Colonists</BOR_PodColonists>
+  <BOR_PodSlaves>Slaves</BOR_PodSlaves>
+  <BOR_PodPrisoners>Prisoners</BOR_PodPrisoners>
+  <BOR_PodColonistsOnly>colonists only</BOR_PodColonistsOnly>
+  <BOR_PodOccupied>The pod is occupied</BOR_PodOccupied>
+  <BOR_PodWalks>{0} will walk to the pod.</BOR_PodWalks>
+  <BOR_PodCarried>{0} will be carried to the pod by a colonist.</BOR_PodCarried>
+  <BOR_PodNobodyToCarry>No colonist can carry {0} to the pod.</BOR_PodNobodyToCarry>
   <BOR_TenebralPodNoOperations>No tenebral operation is possible</BOR_TenebralPodNoOperations>
   <BOR_TenebralPodOperation>Operation: {0} on {1} ({2})</BOR_TenebralPodOperation>
   <BOR_TenebralPodMissing>Waiting for: {0}</BOR_TenebralPodMissing>
@@ -39,10 +72,11 @@
   <BOR_TabDarkAltar>Altar</BOR_TabDarkAltar>
   <BOR_AltarHeader>Crystalline joints offered: {0}</BOR_AltarHeader>
   <BOR_AltarLocked>sealed</BOR_AltarLocked>
-  <BOR_AltarLockedTip>{0}\n\nSealed. Click to have a psychotic colonist unseal it ({1} of work). Click again to cancel.</BOR_AltarLockedTip>
+  <BOR_AltarLockedTip>{0}\n\nSealed. Click to have a psychotic colonist unseal it ({1} of work). Click again to cancel.\n\nOnce unsealed: yield per run {2}, crystalline joints per run {3}.</BOR_AltarLockedTip>
   <BOR_AltarCellTip>{0}\n\nYield per run: {1}\nCrystalline joints per run: {2}\n\nLeft click: queue 1 (Shift: 5)\nRight click: remove 1 (Shift: 5)</BOR_AltarCellTip>
   <BOR_AltarUnlocked>The altar gave up the design for {0}.</BOR_AltarUnlocked>
   <BOR_AltarComponents>Crystalline joints offered: {0}</BOR_AltarComponents>
+  <BOR_AltarNeedsPsychosis>Cannot work the altar: psychosis at {0}, needs {1}</BOR_AltarNeedsPsychosis>
   <BOR_AltarNeedsComponents>needs {0} more crystalline joints</BOR_AltarNeedsComponents>
 
   <!-- Umbral -->

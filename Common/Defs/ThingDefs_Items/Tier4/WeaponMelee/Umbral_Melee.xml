@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- Utility pod forms: no ammo, gone the moment they leave the hand. -->
+	<ThingDef Name="BOR_UmbralUtilityMeleeBase" ParentName="BaseMeleeWeapon_Sharp" Abstract="True">
+		<techLevel>Archotech</techLevel>
+		<destroyOnDrop>true</destroyOnDrop>
+		<tradeability>None</tradeability>
+		<smeltable>false</smeltable>
+		<burnableByRecipe>false</burnableByRecipe>
+		<generateCommonality>0</generateCommonality>
+		<thingCategories Inherit="False" />
+		<weaponTags Inherit="False" />
+		<recipeMaker Inherit="False" IsNull="True" />
+		<statBases>
+			<MarketValue>0</MarketValue>
+			<Mass>0</Mass>
+		</statBases>
+	</ThingDef>
+
+	<ThingDef ParentName="BOR_UmbralUtilityMeleeBase">
+		<defName>BOR_UmbralUtility_Blade</defName>
+		<label>umbral pod blade</label>
+		<description>The utility pod shaped into a long crystal blade.</description>
+		<graphicData>
+			<texPath>BOR/Things/Item/Equipment/umbral/utility_blade</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<equippedAngleOffset>-65</equippedAngleOffset>
+		<tools>
+			<li>
+				<label>point</label>
+				<capacities>
+					<li>Stab</li>
+				</capacities>
+				<power>58</power>
+				<cooldownTime>1.5</cooldownTime>
+				<armorPenetration>2.0</armorPenetration>
+			</li>
+			<li>
+				<label>edge</label>
+				<capacities>
+					<li>Cut</li>
+				</capacities>
+				<power>62</power>
+				<cooldownTime>1.6</cooldownTime>
+				<armorPenetration>2.0</armorPenetration>
+			</li>
+		</tools>
+	</ThingDef>
+
+	<ThingDef ParentName="BOR_UmbralUtilityMeleeBase">
+		<defName>BOR_UmbralUtility_Tool</defName>
+		<label>umbral pod tool</label>
+		<description>The utility pod shaped into a multitool. Poor in a fight, superb for work.</description>
+		<graphicData>
+			<texPath>BOR/Things/Item/Equipment/umbral/utility_tool</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<equippedStatOffsets>
+			<WorkSpeedGlobal>0.5</WorkSpeedGlobal>
+			<MiningSpeed>1</MiningSpeed>
+			<ConstructionSpeed>1</ConstructionSpeed>
+			<PlantWorkSpeed>0.5</PlantWorkSpeed>
+		</equippedStatOffsets>
+		<tools>
+			<li>
+				<label>head</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>55</power>
+				<cooldownTime>1.8</cooldownTime>
+				<armorPenetration>0.25</armorPenetration>
+			</li>
+		</tools>
+	</ThingDef>
+
+</Defs>
