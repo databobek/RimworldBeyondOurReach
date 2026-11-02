@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net10.0</TargetFramework>
+		<LangVersion>latest</LangVersion>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+		<GenerateDependencyFile>false</GenerateDependencyFile>
+		<Nullable>enable</Nullable>
+		<DebugType>none</DebugType>
+		<DebugSymbols>false</DebugSymbols>
+		<AssemblyName>BORMeleeAnimation</AssemblyName>
+		<RootNamespace>BeyondOurReach.MeleeAnimation</RootNamespace>
+		<OutputPath>..\Assemblies\</OutputPath>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Reference Include="Assembly-CSharp">
+			<HintPath>..\..\..\..\..\Assembly-CSharp.dll</HintPath>
+			<Private>False</Private>
+		</Reference>
+		<Reference Include="UnityStubs">
+			<HintPath>..\..\..\..\..\UnityStubs.dll</HintPath>
+			<Private>False</Private>
+		</Reference>
+		<Reference Include="BeyondOurReach">
+			<HintPath>..\..\..\Assemblies\BeyondOurReach.dll</HintPath>
+			<Private>False</Private>
+		</Reference>
+		<!-- Melee Animation has no 1.7 folder, so the game falls back to its 1.6 assemblies. -->
+		<Reference Include="zAnimationMod">
+			<HintPath>..\..\..\..\..\..\..\workshop\content\294100\2944488802\1.6\Assemblies\zAnimationMod.dll</HintPath>
+			<Private>False</Private>
+		</Reference>
+	</ItemGroup>
+
+</Project>

@@ -16,7 +16,11 @@ When a counted break ends for a player pawn that has reached the `tenebral-rewor
 
 The letter SHALL read:
 
-> You are at the precipice of madness. I give you a choice - go down the dark path and lose yourself to the Dark Archotech's machinations, or turn away and embrace the light.
+> A great shadow looms over the Settlement. {colonist} feels a sick sensation in their chest, their limbs, their groin. Something that is both unfathomably dark --but so bright it feels like needles in their eyes -- blinds them. They lift their palm to shield their face, when a voice rumbles through the shadows. It sounds like a chorus, and surrounds {colonist}.
+>
+> “For years, another Will has spoken through this Colony. Your Home. It has shaped your buildings. It has shaped your people. It may yet shape your future. But here you stand, on the edge of The Precipice. Only madness remains.
+>
+> I give you a choice -- go down the dark path and lose yourself to the Dark Archotech's machinations, or turn away and embrace the light. Whatever you choose, there is no going back.”
 
 It SHALL offer two options: **Path of Light** and **Path of Dark**. It SHALL NOT expire or be dismissible without choosing.
 
@@ -35,7 +39,7 @@ The choice SHALL be made once per colony and SHALL be final. While a letter is u
 - THEN the letter is sent when that break ends
 
 ### Requirement: Path of Dark
-Choosing the Path of Dark SHALL show the response "So be it." and SHALL set the colony's path permanently. Nothing else SHALL change. Break counting and crystallization SHALL continue as defined in `tenebral-rework`.
+Choosing either path SHALL show the response "So be it." Choosing the Path of Dark SHALL set the colony's path permanently. Nothing else SHALL change. Break counting and crystallization SHALL continue as defined in `tenebral-rework`.
 
 ### Requirement: Path of Light
 Choosing the Path of Light SHALL set the colony's path permanently and SHALL run these steps in order, each finishing before the next starts. It applies to every living pawn belonging to the colony (player faction, slaves included), wherever it is: on any map, in a caravan, in a transport pod, off-map, or held in a container such as a Tenebral pod or cryptosleep casket. Prisoners, guests, and pawns of other factions SHALL NOT be affected.
@@ -121,10 +125,19 @@ Until final art exists, Orientis buildings SHALL use the copies of tier 2 textur
 | Archotech icon | `archotech_icon` | `reactor` |
 | Blessing bench | `blessing_bench` | `research_unlocker` |
 
+### Requirement: Light and dark stay apart
+Orientis pawns SHALL NOT use tenebral or Umbral weapons, armor or clothing, tenebrite, or anything made with tenebrite. Tenebral and Umbral pawns SHALL NOT interact with Orientis buildings or items.
+
+### Requirement: Melee weapon glow
+The blades of Orientis melee weapons SHALL glow faintly while held, and their handles SHALL NOT.
+
 ### Requirement: Dark buildings fall
 Choosing the Path of Light SHALL end the colony's tenebral and Umbral buildings on every map.
 - Each dark archotech altar SHALL be struck by a golden beam from the sky, at the same time as the Umbral pawns, and SHALL become an inert husk at that moment. It SHALL drop no materials and none of the components it held.
+- Each struck altar SHALL send a ring of light across the whole map. A tenebral or Umbral building on that map SHALL die as the ring reaches it. Buildings on maps with no altar SHALL die when the sequence ends.
 - Every other tenebral and Umbral building SHALL become an inert husk that has its footprint and looks like it, greyed out. Pawns in a Tenebral pod SHALL be ejected first.
+- All dark gear on the colony's pawns SHALL burn at the moment tenebral parts are stripped, whether or not the pawn is converted or on a map: worn, wielded, carried or in inventory. An Umbral pawn's grown exoskeleton and utility pod are not gear. Those pawns SHALL glow as the others do.
+- Dark items lying on the map SHALL burn away as the ring reaches them. Any still left when the sequence ends, on any map, SHALL burn then, including gear dropped during conversion. Items worn, carried or inside a container SHALL NOT burn.
 - Their blueprints and frames SHALL be cancelled with a refund.
 - From the moment the path is chosen, these buildings SHALL NOT appear in the build menu, and pawns SHALL NOT build or use any that remain. They MAY still be deconstructed.
 
@@ -195,7 +208,7 @@ A symbol for the meditation resource, a faction symbol, and related icons.
 - Balance of every number below, and a Combat Extended patch for the new gear.
 
 ## Implementation decisions
-Implemented in `Orientis.cs`, `OrientisPath.cs`, `OrientisManifest.cs`, `MeditationPower.cs`, `OfferingsBench.cs` and `Blessing.cs`. Path tunables live on `BOR_Orientis`; building tunables live in each building's comp props.
+Implemented in `Orientis.cs`, `OrientisPath.cs`, `OrientisManifest.cs`, `MeditationPower.cs`, `OfferingsBench.cs` and `Blessing.cs`. Path tunables live on the `BOR_OrientisPath` def; building tunables live in each building's comp props.
 
 - `GameComponent_OrientisPath` holds the colony's path and the running sequence, so a save partway through resumes it.
 - Orientis pawns can't take bionics or implants by surgery, tenebral ones included. Natural transplants still work.
@@ -203,15 +216,16 @@ Implemented in `Orientis.cs`, `OrientisPath.cs`, `OrientisManifest.cs`, `Meditat
 - Meditating at a pod, bench or mat is its own work type, `BOR_Meditate`, set to priority 3 when a pawn becomes Orientis. Only Orientis pawns get the job, and they take the strongest free spot first.
 - The shield is a radius of 25 and draws 400 power per day, so one pod's output covers half of it. It uses vanilla's projectile interceptor, plus a patch that stops the power beam. Bombardments and beams only stop if an enemy fired them. Disabling takes effect at once, with no pawn. A shield's effect on a pawn ends when it leaves the shield, and stops at 95% so it can't kill by itself. A pawn counts as dark if it is Umbral, holds a tenebral or crystallized part, has tenebral psychosis, or belongs to the Tenebrites faction or one of its pawn kinds. Burning pawns glow gold.
 - A tenebral part is any added part or implant named tenebral or III, or made from a tenebral organ or appendage. All of them carry `DefModExtension_TenebralImplant`, including the Royalty and EPOE compat parts, so the Path of Light strips them and the shield sees them.
+- A dark thing is any thing named tenebral or Umbral, tenebrite itself, or anything that costs or is crafted from a dark thing, followed through every step. This covers things like femtoclusters, tier IV medicine and Adreamoline. Those things and Orientis things are forbidden to the other side's colonists, including hauling, and can't be equipped. A pawn made Orientis by the debug action drops dark gear, or keeps it unused in inventory if off the map. Anything marked for deconstruction can still be taken down.
 - Meditation strength is the stat `BOR_MeditationStrength`. The monk bodysuit adds 25%.
 - The holy forge draws 0.05 power per 10 ticks of work, about 300 per day. Its production waits while analysis is pending. Its tab uses smaller cells so the 12x12 grid fits on screen.
 - The offerings bench takes no materials and draws 0.005 power per tick of work, about 300 per day. It only makes Orientis items, and those items are made nowhere else.
 - A blessing takes 1250 ticks per part and adds 220% part efficiency for one quadrum, so a healthy part works at 320%, between kwazaari (234%) and tenebral (422%). Several parts can be blessed in one meditation. Blessing a part again restarts its quadrum and does not stack. Parts with an added part can't be blessed.
 - "Charge" means the vanilla charge weapon idea, not a new mechanic: guns fire single shots after a long warmup with no ammo, and melee hits add burn damage.
 - Additional weapons are one arquebus and one saber each for Industrial, Spacer, Ultra and Archotech. They live in this mod, not in AllBambaGuns or AllBambaMelee.
-- Gear textures point at existing art instead of copies. Armor is Tier 2 trooper art for light, Tier 2 for medium and Tier 3 for heavy. The monk bodysuit uses the Solar bodysuit art.
+- Orientis melee weapons have their own stand-in copies of existing art in `Equipment/orientis/`, each with a `_glow` texture that shows the blade only. `CompWeaponGlow` draws it over the held weapon with an additive shader, including a soft halo past the blade. It does not show on the ground. During Melee Animation's animations, `Mods/MeleeAnimation` draws it through a custom renderer named in each weapon's file in `WeaponTweakData`; the positions in those files are first estimates. Combat Extended is untested. Other gear textures point at existing art instead of copies. Armor is Tier 2 trooper art for light, Tier 2 for medium and Tier 3 for heavy. The monk bodysuit uses the Solar bodysuit art.
 - The symbols are drawn placeholders: `BOR/UI/Orientis/MeditationPower` and `Manifest`, and `BOR/Things/Factions/OrientisIcon`. There is no `FactionDef`.
-- Choosing the path unpauses the game and shows a message. Stripping lasts 120 ticks and parts come out at 60. The glow lasts 600 ticks from the choice and outlasts the rest of the sequence. The sequence waits 60 ticks on the beams, and not at all if there are no Umbral pawns.
+- Choosing the path unpauses the game and shows a message. Stripping lasts 120 ticks and parts come out at 60. The glow lasts 600 ticks from the choice and outlasts the rest of the sequence. The ring moves 0.75 tiles per tick, and the sequence waits for it to cross the map. The sequence waits 60 ticks on the beams, and not at all if there are no Umbral pawns.
 - The golden scar takes 25% of the part's health, capped so the part keeps at least 1 health. Its pain is a vanilla cut scar's.
 - Every pawn that becomes Orientis loses psychosis, the break counter and dark abilities, including a triggering pawn with nothing to strip.
 - Building costs use tier 2 materials, kwazaari alloy and kwazaari universal parts, plus gold or silver. The amounts are placeholders in line with similar tier 2 buildings.

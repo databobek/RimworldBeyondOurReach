@@ -6,7 +6,7 @@ using Verse;
 namespace BeyondOurReach;
 
 // Tunables for the Path of Light; placed on BOR_Orientis.
-public class DefModExtension_Orientis : DefModExtension
+public class OrientisPathSettingsDef : Def
 {
     // Share of a restored part's health the golden scar takes.
     public float scarHealthFraction = 0.25f;
@@ -17,6 +17,9 @@ public class DefModExtension_Orientis : DefModExtension
     // How long cleansed pawns glow, counted from the choice. It runs on past the rest of the sequence.
     public int glowTicks = 600;
 
+    // How fast the ring from a struck altar crosses the map. The sequence waits for it before finishing.
+    public float shockwaveTilesPerTick = 0.75f;
+
     // How long the sequence waits on the golden beams before converting anyone.
     public int beamTicks = 60;
 }
@@ -24,6 +27,7 @@ public class DefModExtension_Orientis : DefModExtension
 [DefOf]
 public static class BOR_OrientisDefOf
 {
+    public static OrientisPathSettingsDef BOR_OrientisPath = null!;
     public static HediffDef BOR_Orientis = null!;
     public static HediffDef BOR_GoldenScar = null!;
     public static AbilityDef BOR_OrientisManifest = null!;
@@ -47,8 +51,7 @@ public static class BOR_OrientisDefOf
 
 public static class Orientis
 {
-    public static DefModExtension_Orientis Settings =>
-        BOR_OrientisDefOf.BOR_Orientis.GetModExtension<DefModExtension_Orientis>() ?? new DefModExtension_Orientis();
+    public static OrientisPathSettingsDef Settings => BOR_OrientisDefOf.BOR_OrientisPath;
 
     // The BOR_Orientis hediff is the fallback when Biotech (and so the xenotype) is not active.
     public static bool IsOrientis(Pawn pawn) =>
@@ -112,6 +115,7 @@ public static class Orientis
         Umbral.RemoveHediffs(pawn, BOR_TenebralDefOf.BOR_TenebralPsychosis);
         Umbral.RemoveHediffs(pawn, BOR_TenebralDefOf.BOR_TenebralBreakCounter);
         Umbral.RemoveHediffs(pawn, BOR_DarkAbilityDefOf.BOR_DarkAbilityHits);
+        OrientisRestrictions.DropDarkGear(pawn);
         if (pawn.abilities != null)
         {
             foreach (AbilityDef ability in DarkAbilities.Settings.abilities)

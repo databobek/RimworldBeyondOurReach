@@ -27,7 +27,7 @@ To add tenebral parts and crystallized parts, use the dev add hediff tool on a b
 3. Do it a third time. **Expected:** no letter while the pawn is berserk.
 4. End the berserk. **Expected:** within a couple of seconds, a gold letter called "The precipice" arrives.
 5. Right-click the letter. **Expected:** it stays.
-6. Open it. **Expected:** the text is the "precipice of madness" quote, with Path of Light and Path of Dark options, plus a jump-to-location option.
+6. Open it. **Expected:** the text starts "A great shadow looms over the Settlement" and names the pawn, with Path of Light and Path of Dark options.
 7. Close it with Escape. **Expected:** it stays in the stack.
 8. Save and reload. **Expected:** the letter is still there and still works.
 
@@ -70,10 +70,10 @@ Bring C to three breaks so that C triggers the letter, then choose Path of Light
 
 **Expected, in order:**
 
-1. The game unpauses if it was paused, and a "The light descends" message appears. A and B glow gold for about 10 seconds at normal speed, which continues after the letter in step 4. These times are longer if the game runs slowly, so wait for the letter in step 4 before judging the result. C, D, I and J do not glow. F, G and H can't glow, because they aren't on the map.
+1. The dialog shows "So be it." Close it. The game unpauses if it was paused, and a "The Light descends on the Settlement" message appears. A and B glow gold for about 10 seconds at normal speed, which continues after the letter in step 4. These times are longer if the game runs slowly, so wait for the letter in step 4 before judging the result. C, D, I and J do not glow. F, G and H can't glow, because they aren't on the map.
 2. Halfway through the glow, the parts come out. Pod F is destroyed, and F's corpse is on the ground where it stood.
 3. A golden beam hits E, and E dies. No nearby pawn or building is damaged. No beam is shown for an Umbral off the map, but that pawn still dies.
-4. About 1 second later, a "The light remains" letter arrives.
+4. About 1 second later, a "The light remains" letter arrives, naming the pawn who made the choice, or another Orientis pawn if that one died.
 
 **Check each pawn afterwards:**
 
@@ -242,7 +242,7 @@ Before choosing, place an altar, a Tenebral pod with a pawn in stasis, a pacifie
 1. Choose the Path of Dark on a test save. **Expected:** nothing here changes.
 2. Choose the Path of Light. **Expected:** the build menu loses tenebral and Umbral buildings at once, including in god mode.
 3. When Umbral pawns are judged, **expected:** each altar gets a golden beam that fades softly at the ground, with a glow, gold dust and sparks where it lands, and turns into a grey "dead dark archotech altar" at once, even with no Umbral pawn present. No tenebrite or components are left behind, including components stored in the altar.
-4. At the end of the sequence, **expected:** the others turn grey in place, with the right footprint and rotation, labeled "dead ...". The pod's pawn is ejected alive, the blueprint and frame are gone, and materials put into the frame come back.
+4. As each altar is struck, **expected:** the camera shakes and a gold ring spreads across the whole map, and dark buildings flash and go grey as it reaches them, nearest first, and dark items lying on the map, such as tenebrite, tenebral gear and femtoclusters, flash and burn away. Items worn by pawns who aren't converted, carried or held inside a container don't burn. With no altar on a map, they all go grey at the end of the sequence instead. Either way, the "The light remains" letter waits until the ring has finished. They turn grey in place, with the right footprint and rotation, labeled "dead ...". The pod's pawn is ejected alive, the blueprint and frame are gone, and materials put into the frame come back.
 5. Check a husk. **Expected:** no power, no bills, no gizmos, and the turret doesn't shoot. It can be deconstructed, for no materials.
 6. Save and reload. **Expected:** husks keep their look and label.
 7. Check the log for a "No husk of size" warning. **Expected:** none.
@@ -260,7 +260,28 @@ Place a pod and a stocked cache, and have an Orientis pawn and a raider with a g
 7. Watch the cache. **Expected:** it drains about 400 per day. At zero the dome falls with a message, and stays down until a pawn raises it again.
 8. Save and reload with the shield up and with it down. **Expected:** each stays as it was.
 
-## 16. Known limits
+## 16. Light and dark stay apart
+
+Spawn tenebrite, a tenebral weapon, tenebral armor, femtoclusters, an Orientis weapon and an Orientis armor. Have an Orientis pawn and a colonist with a tenebral part.
+
+1. Choose the Path of Light with three colonists wearing tenebral armor and a tenebral weapon: one with tenebral parts, one with none, and one in a caravan. **Expected:** all three glow if on a map, and all lose the gear at the moment parts are stripped, with a gold flash on the map. Nothing drops, and only the one with parts converts. An Umbral pawn keeps its grown exoskeleton until the beam kills it. With the "Make Orientis" debug action, gear drops and stays on the ground, because no sequence is running.
+2. Right-click dark gear with the Orientis pawn. **Expected:** equipping is refused with the Orientis reason. It won't haul tenebrite or femtoclusters.
+3. Right-click Orientis gear and an Orientis bench with the tenebral colonist. **Expected:** equipping is refused with the dark reason, and it doesn't use or haul them.
+4. Check a colonist with neither side's mark. **Expected:** no restriction.
+5. When the choice letter opens, **expected:** only Path of Light and Path of Dark are offered, with no jump to location.
+
+## 17. Melee weapon glow
+
+Spawn each Orientis melee weapon and give them to drafted Orientis pawns.
+
+1. Face the pawn in all four directions, by day and at night. **Expected:** the blade has a faint gold glow that lines up with the blade, flipped correctly each way, and the handle has none.
+2. Melee something. **Expected:** the glow stays on the blade through the attack.
+3. Check the dagger. **Expected:** the glow is scaled down with it.
+4. Check an Umbral blade and pole tool. **Expected:** no glow, and the weapon looks as before.
+5. With Melee Animation active, draft two pawns and start a melee duel or execution. **Expected:** the weapons animate, sitting properly in the hands, and the blade keeps its glow through the animation. Adjust positions in the mod's tweak editor if they look wrong.
+6. Without Melee Animation active, start the game. **Expected:** no errors from `BORMeleeAnimation`, and normal weapon drawing.
+
+## 18. Known limits
 
 Don't file these as bugs:
 

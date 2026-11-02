@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using LudeonTK;
 using RimWorld;
+using RimWorld.Planet;
 using UnityEngine;
 using Verse;
 using Verse.Sound;
@@ -40,6 +41,7 @@ public class GameComponent_OrientisPath : GameComponent
     private bool partsStripped;
     private List<Pawn> stripped = new();
     private List<Pawn> glowing = new();
+    private List<LightShockwave> shockwaves = new();
     private int glowEnd;
 
     public GameComponent_OrientisPath(Game game)
@@ -58,7 +60,7 @@ public class GameComponent_OrientisPath : GameComponent
         }
         letterSent = true;
         chooser = pawn;
-        Find.LetterStack.ReceiveLetter(LetterMaker.MakeLetter("BOR_OrientisChoiceLabel".Translate(), "BOR_OrientisChoiceText".Translate(),
+        Find.LetterStack.ReceiveLetter(LetterMaker.MakeLetter("BOR_OrientisChoiceLabel".Translate(), "BOR_OrientisChoiceText".Translate(pawn.LabelShort),
             BOR_OrientisDefOf.BOR_OrientisChoice, pawn));
     }
 
@@ -71,16 +73,16 @@ public class GameComponent_OrientisPath : GameComponent
         stage = Stage.Stripping;
         stageStart = Find.TickManager.TicksGame;
         partsStripped = false;
-        glowing = stripped.ToList();
+        glowing = Orientis.ColonyPawns().Where(p => Orientis.HasTenebralParts(p) || OrientisRestrictions.HasDarkGear(p)).ToList();
         if (chooser != null && !glowing.Contains(chooser) && !Umbral.IsUmbral(chooser))
         {
             glowing.Add(chooser);
         }
         glowEnd = stageStart + Orientis.Settings.glowTicks;
         // The sequence runs on game ticks, so a paused game would show nothing at all.
-        if (Find.TickManager.Paused)
+        if (Find.TickManager.CurTimeSpeed == TimeSpeed.Paused)
         {
-            Find.TickManager.TogglePaused();
+            Find.TickManager.CurTimeSpeed = TimeSpeed.Normal;
         }
         Messages.Message("BOR_OrientisLightBegins".Translate(), MessageTypeDefOf.NeutralEvent);
     }
@@ -94,11 +96,21 @@ public class GameComponent_OrientisPath : GameComponent
         stage = Stage.None;
         stripped.Clear();
         glowing.Clear();
+        shockwaves.Clear();
+    }
+
+    public override void GameComponentUpdate()
+    {
+        foreach (LightShockwave wave in shockwaves)
+        {
+            wave.Draw();
+        }
     }
 
     public override void GameComponentTick()
     {
         int now = Find.TickManager.TicksGame;
+        shockwaves.RemoveAll(wave => wave.Tick());
         // Outlasts the sequence: the pawns are still glowing when the last letter arrives.
         if (glowing.Count > 0)
         {
@@ -126,7 +138,7 @@ public class GameComponent_OrientisPath : GameComponent
                 }
                 break;
             case Stage.Judgment:
-                if (now >= beamEnd)
+                if (now >= beamEnd && shockwaves.Count == 0)
                 {
                     Finish();
                 }
@@ -170,6 +182,10 @@ public class GameComponent_OrientisPath : GameComponent
                 Orientis.Strip(pawn);
             }
         }
+        foreach (Pawn pawn in Orientis.ColonyPawns())
+        {
+            OrientisRestrictions.BurnDarkGear(pawn);
+        }
     }
 
     // Nothing but the Umbral pawn is hurt, and only those on a map get a beam to look at. Dark altars are struck dead the same way.
@@ -180,6 +196,7 @@ public class GameComponent_OrientisPath : GameComponent
         {
             altar.Map.weatherManager.eventHandler.AddEvent(new WeatherEvent_GoldenBeam(altar.Map, altar.Position));
             altar.TryGetComp<CompDarkAltar>().ClearComponents();
+            shockwaves.Add(new LightShockwave(altar.Map, altar.Position, now));
             DarkBuildings.ToHusk(altar);
         }
         List<Pawn> umbrals = Orientis.ColonyPawns().Where(Umbral.IsUmbral).ToList();
@@ -218,7 +235,11 @@ public class GameComponent_OrientisPath : GameComponent
                 Orientis.GrantManifest(pawn);
             }
         }
-        Find.LetterStack.ReceiveLetter("BOR_OrientisDoneLabel".Translate(), "BOR_OrientisDoneText".Translate(), LetterDefOf.PositiveEvent);
+        DarkBuildings.BurnAllItems();
+        // The pawn who made the choice if it lived through it, else whoever did.
+        Pawn? named = chooser != null && !chooser.Dead && Orientis.IsOrientis(chooser) ? chooser : Orientis.ColonyPawns().FirstOrDefault(Orientis.IsOrientis);
+        string name = named?.LabelShort ?? "BOR_OrientisDoneFallback".Translate();
+        Find.LetterStack.ReceiveLetter("BOR_OrientisDoneLabel".Translate(), "BOR_OrientisDoneText".Translate(name), LetterDefOf.PositiveEvent);
     }
 
     public override void ExposeData()
@@ -233,6 +254,7 @@ public class GameComponent_OrientisPath : GameComponent
         Scribe_Values.Look(ref partsStripped, "orientisPartsStripped");
         Scribe_Collections.Look(ref stripped, "orientisStripped", LookMode.Reference);
         Scribe_Collections.Look(ref glowing, "orientisGlowing", LookMode.Reference);
+        Scribe_Collections.Look(ref shockwaves, "orientisShockwaves", LookMode.Deep);
         Scribe_Values.Look(ref glowEnd, "orientisGlowEnd");
         if (Scribe.mode == LoadSaveMode.PostLoadInit)
         {
@@ -240,6 +262,7 @@ public class GameComponent_OrientisPath : GameComponent
             stripped.RemoveAll(p => p == null);
             glowing ??= new List<Pawn>();
             glowing.RemoveAll(p => p == null);
+            shockwaves ??= new List<LightShockwave>();
         }
     }
 }
@@ -253,6 +276,8 @@ public class ChoiceLetter_OrientisPath : ChoiceLetter
     {
         get
         {
+            DiaNode lightResponse = new("BOR_PathOfLightResponse".Translate());
+            lightResponse.options.Add(new DiaOption("OK".Translate()) { resolveTree = true });
             yield return new DiaOption("BOR_PathOfLight".Translate())
             {
                 action = () =>
@@ -260,7 +285,7 @@ public class ChoiceLetter_OrientisPath : ChoiceLetter
                     Find.LetterStack.RemoveLetter(this);
                     GameComponent_OrientisPath.Instance.ChooseLight();
                 },
-                resolveTree = true
+                link = lightResponse
             };
             DiaNode response = new("BOR_PathOfDarkResponse".Translate());
             response.options.Add(new DiaOption("OK".Translate()) { resolveTree = true });
@@ -273,11 +298,93 @@ public class ChoiceLetter_OrientisPath : ChoiceLetter
                 },
                 link = response
             };
-            if (lookTargets.IsValid())
-            {
-                yield return Option_JumpToLocation;
-            }
         }
+    }
+}
+
+// A ring of light racing out from a struck altar. Dark buildings die and dark items burn the moment it reaches them.
+[StaticConstructorOnStartup]
+public class LightShockwave : IExposable
+{
+    private static readonly Material RingMaterial = MaterialPool.MatFrom("BOR/UI/Orientis/Shockwave", ShaderDatabase.MoteGlow);
+
+    private Map map = null!;
+    private IntVec3 center;
+    private int startTick;
+    private List<Thing>? items;
+
+    // For loading.
+    public LightShockwave()
+    {
+    }
+
+    public LightShockwave(Map map, IntVec3 center, int startTick)
+    {
+        this.map = map;
+        this.center = center;
+        this.startTick = startTick;
+        if (map == Find.CurrentMap)
+        {
+            Find.CameraDriver.shaker.DoShake(1.5f);
+        }
+    }
+
+    private float Radius => (Find.TickManager.TicksGame - startTick) * Orientis.Settings.shockwaveTilesPerTick;
+
+    // From the center to the farthest corner of the map.
+    private float MaxRadius => Mathf.Sqrt(Square(Mathf.Max(center.x, map.Size.x - center.x)) + Square(Mathf.Max(center.z, map.Size.z - center.z)));
+
+    private static float Square(float value) => value * value;
+
+    // True once the wave has crossed the whole map, or the map is gone.
+    public bool Tick()
+    {
+        if (map == null || !Find.Maps.Contains(map))
+        {
+            return true;
+        }
+        float radius = Radius;
+        foreach (Building building in map.listerBuildings.allBuildingsColonist.Where(b => DarkBuildings.IsDark(b.def) && b.Position.InHorDistOf(center, radius)).ToList())
+        {
+            DarkBuildings.Smite(building);
+            DarkBuildings.ToHusk(building);
+        }
+        // Worked out once, as the map can hold thousands of items. Another ring may have burned some of them already.
+        items ??= DarkBuildings.ItemsOn(map);
+        items.RemoveAll(item =>
+        {
+            if (!item.Spawned)
+            {
+                return true;
+            }
+            if (!item.Position.InHorDistOf(center, radius))
+            {
+                return false;
+            }
+            DarkBuildings.Burn(item);
+            return true;
+        });
+        return radius >= MaxRadius;
+    }
+
+    public void Draw()
+    {
+        if (map != Find.CurrentMap || map == null || WorldRendererUtility.WorldRendered)
+        {
+            return;
+        }
+        float radius = Radius;
+        float alpha = 1f - Mathf.Clamp01(radius / MaxRadius) * 0.7f;
+        Vector3 pos = center.ToVector3ShiftedWithAltitude(AltitudeLayer.Weather);
+        Matrix4x4 matrix = Matrix4x4.TRS(pos, Quaternion.identity, new Vector3(radius * 2f, 1f, radius * 2f));
+        Graphics.DrawMesh(MeshPool.plane10, matrix, FadedMaterialPool.FadedVersionOf(RingMaterial, alpha), 0);
+    }
+
+    public void ExposeData()
+    {
+        Scribe_References.Look(ref map!, "map");
+        Scribe_Values.Look(ref center, "center");
+        Scribe_Values.Look(ref startTick, "startTick");
     }
 }
 
