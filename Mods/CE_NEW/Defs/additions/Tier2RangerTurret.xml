@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+	<CombatExtended.AmmoSetDef>
+		<defName>AmmoSet_RangerRailgun</defName>
+		<label>Ranger railgun shells</label>
+		<ammoTypes>
+			<BOR_Ammo_Ranger_HE>BOR_Bullet_Ranger_HE</BOR_Ammo_Ranger_HE>
+			<BOR_Ammo_Ranger_AP>BOR_Bullet_Ranger_AP</BOR_Ammo_Ranger_AP>
+			<BOR_Ammo_Ranger_Ion>BOR_Bullet_Ranger_Ion</BOR_Ammo_Ranger_Ion>
+		</ammoTypes>
+	</CombatExtended.AmmoSetDef>
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="HeavyAmmoBase">
+		<defName>BOR_Ammo_Ranger_HE</defName>
+		<label>ranger railgun shell (HE)</label>
+		<graphicData>
+			<texPath>Things/Item/Resource/Shell/Shell_HighExplosive</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<Mass>1.98</Mass>
+			<Bulk>2.75</Bulk>
+		</statBases>
+		<tradeTags>
+			<li>BOR_Tech_II</li>
+			<li>CE_AutoEnableTrade</li>
+			<li>CE_AutoEnableCrafting_FabricationBench</li>
+			<li>CE_AutoEnableCrafting_TableMachining</li>
+		</tradeTags>
+		<thingCategories>
+			<li>AmmoAdvanced</li>
+		</thingCategories>
+		<ammoClass>GrenadeHE</ammoClass>
+		<detonateProjectile>BOR_Bullet_Ranger_HE</detonateProjectile>
+	</ThingDef>
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="HeavyAmmoBase">
+		<defName>BOR_Ammo_Ranger_AP</defName>
+		<label>ranger railgun shell (AP)</label>
+		<graphicData>
+			<texPath>Things/Item/Resource/Shell/Shell_HighExplosive</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<Mass>1.98</Mass>
+			<Bulk>2.75</Bulk>
+		</statBases>
+		<tradeTags>
+			<li>BOR_Tech_II</li>
+			<li>CE_AutoEnableTrade</li>
+			<li>CE_AutoEnableCrafting_FabricationBench</li>
+			<li>CE_AutoEnableCrafting_TableMachining</li>
+		</tradeTags>
+		<thingCategories>
+			<li>AmmoAdvanced</li>
+		</thingCategories>
+		<ammoClass>CompositeRigidAP</ammoClass>
+		<detonateProjectile>BOR_Bullet_Ranger_AP</detonateProjectile>
+	</ThingDef>
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="HeavyAmmoBase">
+		<defName>BOR_Ammo_Ranger_Ion</defName>
+		<label>ranger railgun shell (Ion)</label>
+		<graphicData>
+			<texPath>Things/Item/Resource/Shell/Shell_EMP</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<Mass>1.98</Mass>
+			<Bulk>2.75</Bulk>
+		</statBases>
+		<tradeTags>
+			<li>BOR_Tech_II</li>
+			<li>CE_AutoEnableTrade</li>
+			<li>CE_AutoEnableCrafting_FabricationBench</li>
+			<li>CE_AutoEnableCrafting_TableMachining</li>
+		</tradeTags>
+		<thingCategories>
+			<li>AmmoAdvanced</li>
+		</thingCategories>
+		<ammoClass>GrenadeEMP</ammoClass>
+		<detonateProjectile>BOR_Bullet_Ranger_Ion</detonateProjectile>
+	</ThingDef>
+	<ThingDef ParentName="BaseBulletCE">
+		<defName>BOR_Bullet_Ranger_HE</defName>
+		<label>ranger railgun slug (HE)</label>
+		<graphicData>
+			<texPath>Things/Projectile/ShellHighExplosive</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+		</graphicData>
+		<thingClass>CombatExtended.ProjectileCE_Explosive</thingClass>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Bomb</damageDef>
+			<damageAmountBase>256</damageAmountBase>
+			<explosionRadius>2.42</explosionRadius>
+			<flyOverhead>false</flyOverhead>
+			<soundExplode>MortarBomb_Explode</soundExplode>
+			<speed>478</speed>
+			<applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
+		</projectile>
+	</ThingDef>
+	<ThingDef ParentName="BaseBulletCE">
+		<defName>BOR_Bullet_Ranger_AP</defName>
+		<label>ranger railgun slug (AP)</label>
+		<graphicData>
+			<texPath>Things/Projectile/ShellHighExplosive</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>211</damageAmountBase>
+			<armorPenetrationSharp>138</armorPenetrationSharp>
+			<armorPenetrationBlunt>7083</armorPenetrationBlunt>
+			<speed>511</speed>
+		</projectile>
+	</ThingDef>
+	<ThingDef ParentName="BaseBulletCE">
+		<defName>BOR_Bullet_Ranger_Ion</defName>
+		<label>ranger railgun slug (Ion)</label>
+		<graphicData>
+			<texPath>Things/Projectile/ShellEMP</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+		</graphicData>
+		<thingClass>CombatExtended.ProjectileCE_Explosive</thingClass>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>EMP</damageDef>
+			<damageAmountBase>356</damageAmountBase>
+			<explosionRadius>3.50</explosionRadius>
+			<flyOverhead>false</flyOverhead>
+			<speed>467</speed>
+		</projectile>
+	</ThingDef>
+	<RecipeDef ParentName="AmmoRecipeBase">
+		<defName>MakeBOR_Ammo_Ranger_HE</defName>
+		<label>make ranger railgun shell (HE) x5</label>
+		<description>Craft 5 ranger railgun shells (HE).</description>
+		<jobString>Making ranger railgun shells (HE).</jobString>
+		<researchPrerequisite>BOR_Research_Weapons_II</researchPrerequisite>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Sunsteel</li>
+					</thingDefs>
+				</filter>
+				<count>40</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_QuasarAlloy</li>
+					</thingDefs>
+				</filter>
+				<count>8</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>ComponentSpacer</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>BOR_Sunsteel</li>
+				<li>BOR_QuasarAlloy</li>
+				<li>ComponentSpacer</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<BOR_Ammo_Ranger_HE>5</BOR_Ammo_Ranger_HE>
+		</products>
+		<skillRequirements>
+			<Crafting>12</Crafting>
+		</skillRequirements>
+		<workAmount>2500</workAmount>
+	</RecipeDef>
+	<RecipeDef ParentName="AmmoRecipeBase">
+		<defName>MakeBOR_Ammo_Ranger_AP</defName>
+		<label>make ranger railgun shell (AP) x5</label>
+		<description>Craft 5 ranger railgun shells (AP).</description>
+		<jobString>Making ranger railgun shells (AP).</jobString>
+		<researchPrerequisite>BOR_Research_Weapons_II</researchPrerequisite>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Sunsteel</li>
+					</thingDefs>
+				</filter>
+				<count>28</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Uranium</li>
+					</thingDefs>
+				</filter>
+				<count>8</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_QuasarAlloy</li>
+					</thingDefs>
+				</filter>
+				<count>10</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>ComponentSpacer</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>BOR_Sunsteel</li>
+				<li>Uranium</li>
+				<li>BOR_QuasarAlloy</li>
+				<li>ComponentSpacer</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<BOR_Ammo_Ranger_AP>5</BOR_Ammo_Ranger_AP>
+		</products>
+		<skillRequirements>
+			<Crafting>12</Crafting>
+		</skillRequirements>
+		<workAmount>2700</workAmount>
+	</RecipeDef>
+	<RecipeDef ParentName="AmmoRecipeBase">
+		<defName>MakeBOR_Ammo_Ranger_Ion</defName>
+		<label>make ranger railgun shell (Ion) x5</label>
+		<description>Craft 5 ranger railgun shells (Ion).</description>
+		<jobString>Making ranger railgun shells (Ion).</jobString>
+		<researchPrerequisite>BOR_Research_Weapons_II</researchPrerequisite>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_Sunsteel</li>
+					</thingDefs>
+				</filter>
+				<count>32</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>BOR_QuasarAlloy</li>
+					</thingDefs>
+				</filter>
+				<count>10</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>ComponentSpacer</li>
+					</thingDefs>
+				</filter>
+				<count>2</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>BOR_Sunsteel</li>
+				<li>BOR_QuasarAlloy</li>
+				<li>ComponentSpacer</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<BOR_Ammo_Ranger_Ion>5</BOR_Ammo_Ranger_Ion>
+		</products>
+		<skillRequirements>
+			<Crafting>12</Crafting>
+		</skillRequirements>
+		<workAmount>2800</workAmount>
+	</RecipeDef>
+</Defs>

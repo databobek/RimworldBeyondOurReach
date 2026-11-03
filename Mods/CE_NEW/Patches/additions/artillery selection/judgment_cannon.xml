@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+	<!-- ========== Judgment-class Ship Cannon - CE Integration (Mortar-style rebuild) ========== -->
+	<!-- 1. Use CE turret class -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="BOR_JudgmentShipCannon"]/thingClass</xpath>
+		<value>
+			<thingClass>CombatExtended.Building_TurretGunCE</thingClass>
+		</value>
+	</Operation>
+	<!-- 2. Remove vanilla refueling and explosive comps -->
+	<Operation Class="PatchOperationRemove">
+		<xpath>Defs/ThingDef[defName="BOR_JudgmentShipCannon"]/comps/li[@Class="CompProperties_Refuelable"]</xpath>
+	</Operation>
+	<Operation Class="PatchOperationRemove">
+		<xpath>Defs/ThingDef[defName="BOR_JudgmentShipCannon"]/comps/li[@Class="CompProperties_Explosive"]</xpath>
+	</Operation>
+	<!-- 3. Remove vanilla shells and projectiles replaced below with CE defs -->
+	<Operation Class="PatchOperationRemove">
+		<xpath>Defs/ThingDef[
+			defName="BOR_Shell_JudgmentShipCannon_Ni" or
+			defName="BOR_Shell_JudgmentShipCannon_Ef" or
+			defName="BOR_Bullet_JudgmentShipCannon_Ni" or
+			defName="BOR_Bullet_JudgmentShipCannon_Ef"
+			]</xpath>
+	</Operation>
+	<!-- 4. Convert gun to CE mortar-style weapon -->
+	<Operation Class="CombatExtended.PatchOperationMakeGunCECompatible">
+		<defName>BOR_JudgmentShipCannon_Gun</defName>
+		<statBases>
+			<RangedWeapon_Cooldown>0.55</RangedWeapon_Cooldown>
+			<SightsEfficiency>1.00</SightsEfficiency>
+			<ShotSpread>0.01</ShotSpread>
+			<SwayFactor>0.06</SwayFactor>
+		</statBases>
+		<Properties>
+			<recoilAmount>0.88</recoilAmount>
+			<verbClass>CombatExtended.Verb_ShootMortarCE</verbClass>
+			<forceNormalTimeSpeed>false</forceNormalTimeSpeed>
+			<hasStandardCommand>true</hasStandardCommand>
+			<defaultProjectile>BOR_Bullet_JudgmentShipCannon_Ni_CE</defaultProjectile>
+			<warmupTime>7.15</warmupTime>
+			<range>583</range>
+			<minRange>27</minRange>
+			<ticksBetweenBurstShots>22</ticksBetweenBurstShots>
+			<requireLineOfSight>false</requireLineOfSight>
+			<burstShotCount>3</burstShotCount>
+			<soundCast>Mortar_LaunchA</soundCast>
+			<muzzleFlashScale>16</muzzleFlashScale>
+			<circularError>0.50</circularError>
+			<indirectFirePenalty>0.13</indirectFirePenalty>
+			<recoilPattern>Mounted</recoilPattern>
+			<targetParams>
+				<canTargetLocations>true</canTargetLocations>
+			</targetParams>
+			<onlyManualCast>true</onlyManualCast>
+		</Properties>
+		<AmmoUser>
+			<magazineSize>3</magazineSize>
+			<reloadTime>99</reloadTime>
+			<ammoSet>AmmoSet_BOR_JudgmentShell</ammoSet>
+		</AmmoUser>
+		<weaponTags>
+			<li>TurretGun</li>
+		</weaponTags>
+	</Operation>
+	<!-- 5. Preserve triple-barrel behavior -->
+	<Operation Class="PatchOperationAddModExtension">
+		<xpath>Defs/ThingDef[defName="BOR_JudgmentShipCannon_Gun"]</xpath>
+		<value>
+			<li Class="CombatExtended.MultiBarrelExtension">
+				<offsets>
+					<li>(-0.5,1)</li>
+					<li>(0,1)</li>
+					<li>(0.5,1)</li>
+				</offsets>
+			</li>
+		</value>
+	</Operation>
+	<Operation Class="PatchOperationConditional">
+		<xpath>Defs/ThingDef[defName="BOR_JudgmentShipCannon_Gun"]/comps</xpath>
+		<nomatch Class="PatchOperationAdd">
+			<xpath>Defs/ThingDef[defName="BOR_JudgmentShipCannon_Gun"]</xpath>
+			<value>
+				<comps />
+			</value>
+		</nomatch>
+	</Operation>
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[defName="BOR_JudgmentShipCannon_Gun"]/comps</xpath>
+		<value>
+			<li Class="CombatExtended.CompProperties_Charges">
+				<chargeSpeeds>
+					<li>75</li>
+					<li>108</li>
+					<li>142</li>
+				</chargeSpeeds>
+			</li>
+		</value>
+	</Operation>
+	<!-- 6. Slow heavy-turret rotation -->
+	<Operation Class="PatchOperationAddModExtension">
+		<xpath>Defs/ThingDef[defName="BOR_JudgmentShipCannon"]</xpath>
+		<value>
+			<li Class="CombatExtended.NonSnapTurretExtension">
+				<speed>0.25</speed>
+			</li>
+		</value>
+	</Operation>
+	<!-- 7. CE aiming stat -->
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[defName="BOR_JudgmentShipCannon"]/statBases</xpath>
+		<value>
+			<AimingAccuracy>0.83</AimingAccuracy>
+		</value>
+	</Operation>
+	<!-- 8. CE ammo set, ammo defs, and projectiles -->
+	<!-- ========== Negotiator-class Station Defense System - CE Integration ========== -->
+	<!-- 9. Use CE turret class -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="BOR_NegotiatorStationDefenseSystem_TII"]/thingClass</xpath>
+		<value>
+			<thingClass>CombatExtended.Building_TurretGunCE</thingClass>
+		</value>
+	</Operation>
+	<!-- 10. Remove vanilla refueling and explosive comps -->
+	<Operation Class="PatchOperationRemove">
+		<xpath>Defs/ThingDef[defName="BOR_NegotiatorStationDefenseSystem_TII"]/comps/li[@Class="CompProperties_Refuelable"]</xpath>
+	</Operation>
+	<Operation Class="PatchOperationRemove">
+		<xpath>Defs/ThingDef[defName="BOR_NegotiatorStationDefenseSystem_TII"]/comps/li[@Class="CompProperties_Explosive"]</xpath>
+	</Operation>
+	<!-- 11. Remove vanilla shell/projectile replaced below with CE defs -->
+	<Operation Class="PatchOperationRemove">
+		<xpath>Defs/ThingDef[
+			defName="BOR_Shell_NegotiatorCracker_TII" or
+			defName="BOR_Bullet_NegotiatorCracker_TII"
+			]</xpath>
+	</Operation>
+	<!-- 12. Convert gun to CE mortar-style weapon -->
+	<Operation Class="CombatExtended.PatchOperationMakeGunCECompatible">
+		<defName>BOR_NegotiatorStationDefenseSystem_TII_Gun</defName>
+		<statBases>
+			<RangedWeapon_Cooldown>0.99</RangedWeapon_Cooldown>
+			<SightsEfficiency>1.08</SightsEfficiency>
+			<ShotSpread>0.01</ShotSpread>
+			<SwayFactor>0.03</SwayFactor>
+		</statBases>
+		<Properties>
+			<recoilAmount>1.32</recoilAmount>
+			<verbClass>CombatExtended.Verb_ShootMortarCE</verbClass>
+			<forceNormalTimeSpeed>false</forceNormalTimeSpeed>
+			<hasStandardCommand>true</hasStandardCommand>
+			<defaultProjectile>BOR_Bullet_NegotiatorCracker_TII_CE</defaultProjectile>
+			<warmupTime>11</warmupTime>
+			<range>583</range>
+			<minRange>27</minRange>
+			<ticksBetweenBurstShots>11</ticksBetweenBurstShots>
+			<requireLineOfSight>false</requireLineOfSight>
+			<burstShotCount>1</burstShotCount>
+			<soundCast>Mortar_LaunchA</soundCast>
+			<muzzleFlashScale>35</muzzleFlashScale>
+			<circularError>0.28</circularError>
+			<indirectFirePenalty>0.07</indirectFirePenalty>
+			<recoilPattern>Mounted</recoilPattern>
+			<targetParams>
+				<canTargetLocations>true</canTargetLocations>
+			</targetParams>
+			<onlyManualCast>true</onlyManualCast>
+		</Properties>
+		<AmmoUser>
+			<magazineSize>1</magazineSize>
+			<reloadTime>330</reloadTime>
+			<ammoSet>AmmoSet_BOR_NegotiatorCrackerShell</ammoSet>
+		</AmmoUser>
+		<weaponTags>
+			<li>TurretGun</li>
+		</weaponTags>
+	</Operation>
+	<!-- 12b. Add CompProperties_Charges to Negotiator gun (required by Verb_ShootMortarCE) -->
+	<Operation Class="PatchOperationConditional">
+		<xpath>Defs/ThingDef[defName="BOR_NegotiatorStationDefenseSystem_TII_Gun"]/comps</xpath>
+		<nomatch Class="PatchOperationAdd">
+			<xpath>Defs/ThingDef[defName="BOR_NegotiatorStationDefenseSystem_TII_Gun"]</xpath>
+			<value>
+				<comps />
+			</value>
+		</nomatch>
+	</Operation>
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[defName="BOR_NegotiatorStationDefenseSystem_TII_Gun"]/comps</xpath>
+		<value>
+			<li Class="CombatExtended.CompProperties_Charges">
+				<chargeSpeeds>
+					<li>167</li>
+				</chargeSpeeds>
+			</li>
+		</value>
+	</Operation>
+	<!-- 13. Extremely slow heavy-turret rotation -->
+	<Operation Class="PatchOperationAddModExtension">
+		<xpath>Defs/ThingDef[defName="BOR_NegotiatorStationDefenseSystem_TII"]</xpath>
+		<value>
+			<li Class="CombatExtended.NonSnapTurretExtension">
+				<speed>0.04</speed>
+			</li>
+		</value>
+	</Operation>
+	<!-- 14. CE aiming stat -->
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[defName="BOR_NegotiatorStationDefenseSystem_TII"]/statBases</xpath>
+		<value>
+			<AimingAccuracy>0.83</AimingAccuracy>
+		</value>
+	</Operation>
+	<!-- 15. CE ammo set, ammo def, projectile, and recipe -->
+</Patch>
