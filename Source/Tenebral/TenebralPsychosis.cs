@@ -192,6 +192,11 @@ public static class TenebralPsychosis
         }
         DefModExtension_TenebralPsychosis s = Settings;
         Map map = pawn.Map;
+        // An Umbral shield replaces every other source in its range. Orientis pawns only suffer its mood penalty.
+        if (CompUmbralShield.Covers(map, pawn.Position))
+        {
+            return Orientis.IsOrientis(pawn) ? 0f : s.maxEmission;
+        }
         float total = 0f;
         int cells = GenRadial.NumCellsInRadius(s.emissionRadius);
         for (int i = 0; i < cells; i++)

@@ -1,0 +1,215 @@
+using System.Collections.Generic;
+using HarmonyLib;
+using RimWorld;
+using UnityEngine;
+using Verse;
+
+namespace BeyondOurReach;
+
+public class CompProperties_SolarFlareShield : CompProperties
+{
+    // Room temperature the shield heats towards during a flare.
+    public float targetTemperature = 65f;
+    public float heatPerSecond = 200f;
+
+    public CompProperties_SolarFlareShield()
+    {
+        compClass = typeof(CompSolarFlareShield);
+    }
+}
+
+// Keeps its room powered through a solar flare. Draws its full consumption during a flare and nothing otherwise.
+public class CompSolarFlareShield : ThingComp
+{
+    private const int HeatInterval = 60;
+
+    private CompPowerTrader? power;
+
+    public CompProperties_SolarFlareShield Props => (CompProperties_SolarFlareShield)props;
+
+    private bool RoomEnclosed
+    {
+        get
+        {
+            Room? room = parent.GetRoom();
+            return room != null && !room.UsesOutdoorTemperature;
+        }
+    }
+
+    public bool ShieldingRoom => power != null && power.PowerOn && RoomEnclosed;
+
+    public bool WaitingToShield => power != null && !power.PowerOn && RoomEnclosed && FlickUtility.WantsToBeOn(parent) && !parent.IsBrokenDown();
+
+    private bool FlareActive => parent.Map.gameConditionManager.ElectricityDisabled(parent.Map);
+
+    public override void PostSpawnSetup(bool respawningAfterLoad)
+    {
+        base.PostSpawnSetup(respawningAfterLoad);
+        power = parent.GetComp<CompPowerTrader>();
+        parent.Map.GetComponent<MapComponent_SolarFlareShields>().shields.Add(this);
+        ApplyDraw();
+    }
+
+    public override void PostDeSpawn(Map map, DestroyMode mode = DestroyMode.Vanish)
+    {
+        base.PostDeSpawn(map, mode);
+        map.GetComponent<MapComponent_SolarFlareShields>().shields.Remove(this);
+    }
+
+    public override void CompTick()
+    {
+        base.CompTick();
+        ApplyDraw();
+        if (parent.IsHashIntervalTick(HeatInterval) && FlareActive && ShieldingRoom)
+        {
+            PushHeat(parent.GetRoom());
+        }
+    }
+
+    public override string? CompInspectStringExtra()
+    {
+        return parent.Spawned && !RoomEnclosed ? "BOR_SolarFlareShield_NotShielding".Translate() : null;
+    }
+
+    // Vanilla resets the draw to the building's default in places, so this runs again on the tick.
+    private void ApplyDraw()
+    {
+        if (power != null)
+        {
+            power.PowerOutput = FlareActive ? -power.Props.PowerConsumption : 0f;
+        }
+    }
+
+    // Capped by what the room still needs, so a small room does not jump past the target.
+    private void PushHeat(Room room)
+    {
+        float heat = Mathf.Min(Props.heatPerSecond, (Props.targetTemperature - room.Temperature) * room.CellCount);
+        if (heat > 0f)
+        {
+            room.PushHeat(heat);
+        }
+    }
+}
+
+// A shield only works in a room that does not count as outdoors, which vanilla's indoor check allows.
+public class PlaceWorker_SolarFlareShield : PlaceWorker
+{
+    public override AcceptanceReport AllowsPlacing(BuildableDef checkingDef, IntVec3 loc, Rot4 rot, Map map, Thing? thingToIgnore = null, Thing? thing = null)
+    {
+        Room? room = loc.GetRoom(map);
+        if (room == null || room.UsesOutdoorTemperature)
+        {
+            return "BOR_SolarFlareShield_NeedsRoom".Translate();
+        }
+        return AcceptanceReport.WasAccepted;
+    }
+}
+
+public class MapComponent_SolarFlareShields : MapComponent
+{
+    public readonly List<CompSolarFlareShield> shields = new();
+
+    public MapComponent_SolarFlareShields(Map map) : base(map)
+    {
+    }
+}
+
+// A flare stops a power net as a whole. On a net with protected buildings, this runs the vanilla tick as if there
+// were no flare but with only those buildings listed, and shuts down the rest the way a flare would.
+[HarmonyPatch(typeof(PowerNet), nameof(PowerNet.PowerNetTick))]
+public static class PowerNet_PowerNetTick_Patch
+{
+    private const int ShutdownInterval = 20;
+    private const float ShutdownFraction = 0.05f;
+
+    public static bool ignoreFlare;
+
+    private static readonly HashSet<Room> shieldedRooms = new();
+    private static readonly HashSet<Room> waitingRooms = new();
+    private static readonly List<CompPowerTrader> protectedParts = new();
+    private static readonly List<CompPowerTrader> exposedConsumers = new();
+
+    public static void Prefix(PowerNet __instance, out List<CompPowerTrader>? __state)
+    {
+        __state = null;
+        Map map = __instance.Map;
+        if (!map.gameConditionManager.ElectricityDisabled(map))
+        {
+            return;
+        }
+
+        shieldedRooms.Clear();
+        waitingRooms.Clear();
+        foreach (CompSolarFlareShield shield in map.GetComponent<MapComponent_SolarFlareShields>().shields)
+        {
+            if (shield.ShieldingRoom)
+            {
+                shieldedRooms.Add(shield.parent.GetRoom());
+            }
+            else if (shield.WaitingToShield)
+            {
+                waitingRooms.Add(shield.parent.GetRoom());
+            }
+        }
+
+        protectedParts.Clear();
+        exposedConsumers.Clear();
+        foreach (CompPowerTrader part in __instance.powerComps)
+        {
+            // A shield stays listed while off, so vanilla can power it back on. Until then its room adds only its
+            // generators, which may be all that can restart it; the room's consumers wait for the shield.
+            Room? room = part.parent.GetRoom();
+            bool inShieldedRoom = room != null && shieldedRooms.Contains(room);
+            bool startsShield = room != null && part.PowerOutput > 0f && waitingRooms.Contains(room);
+            if (inShieldedRoom || startsShield || part.parent.GetComp<CompSolarFlareShield>() != null || CompUmbralShield.Covers(map, part.parent.Position))
+            {
+                protectedParts.Add(part);
+            }
+            else if (part.PowerOn && part.EnergyOutputPerTick < 0f)
+            {
+                exposedConsumers.Add(part);
+            }
+        }
+
+        if (protectedParts.Count == 0)
+        {
+            return;
+        }
+
+        if (exposedConsumers.Count > 0 && Find.TickManager.TicksGame % ShutdownInterval == 0)
+        {
+            int count = Mathf.Max(1, Mathf.RoundToInt(exposedConsumers.Count * ShutdownFraction));
+            for (int i = 0; i < count; i++)
+            {
+                exposedConsumers.RandomElement().PowerOn = false;
+            }
+        }
+
+        __state = __instance.powerComps;
+        __instance.powerComps = protectedParts;
+        ignoreFlare = true;
+    }
+
+    public static void Finalizer(PowerNet __instance, List<CompPowerTrader>? __state)
+    {
+        if (__state != null)
+        {
+            __instance.powerComps = __state;
+            ignoreFlare = false;
+        }
+    }
+}
+
+[HarmonyPatch(typeof(GameConditionManager), nameof(GameConditionManager.ElectricityDisabled))]
+public static class GameConditionManager_ElectricityDisabled_Patch
+{
+    public static bool Prefix(ref bool __result)
+    {
+        if (PowerNet_PowerNetTick_Patch.ignoreFlare)
+        {
+            __result = false;
+            return false;
+        }
+        return true;
+    }
+}

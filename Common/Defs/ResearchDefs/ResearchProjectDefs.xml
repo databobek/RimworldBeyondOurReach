@@ -156,6 +156,18 @@
 		<researchViewY>1.70</researchViewY>
 	</ResearchProjectDef>
 	<ResearchProjectDef ParentName="BOR_Research_Base_I">
+		<defName>BOR_Research_SolarFlareShield</defName>
+		<label>solar flare shield</label>
+		<description>Build a sunsteel machine that shields a single room from solar flares, at an enormous cost in power and heat.</description>
+		<baseCost>20000</baseCost>
+		<techLevel>Ultra</techLevel>
+		<prerequisites>
+			<li>BOR_Research_Battery_I</li>
+		</prerequisites>
+		<researchViewX>4.00</researchViewX>
+		<researchViewY>1.30</researchViewY>
+	</ResearchProjectDef>
+	<ResearchProjectDef ParentName="BOR_Research_Base_I">
 		<defName>BOR_Research_Quarks_I</defName>
 		<label>strong force manipulation</label>
 		<description>Harness the strong nuclear force to stitch neutrons into the ultra-dense Neutronium. You can already control the electromagnetic force with the literal flick of a switch; why stop at mastery over one fundamental force? Imagine - a neutron star in your own backyard!</description>
@@ -737,8 +749,20 @@
 		<hiddenPrerequisites>
 			<li>BOR_Research_Battery_II</li>
 		</hiddenPrerequisites>
-		<researchViewX>23.00</researchViewX>
+		<researchViewX>24.50</researchViewX>
 		<researchViewY>0.90</researchViewY>
+	</ResearchProjectDef>
+	<ResearchProjectDef ParentName="BOR_Research_Base_IV">
+		<defName>BOR_Research_UmbralShield</defName>
+		<label>umbral shield</label>
+		<description>Build a crimson dome that turns aside hostile fire, drop pods and solar flares. Every pawn beneath it pays with their mind.</description>
+		<baseCost>350000</baseCost>
+		<techLevel>Archotech</techLevel>
+		<prerequisites>
+			<li>BOR_Research_Power_IV</li>
+		</prerequisites>
+		<researchViewX>24.50</researchViewX>
+		<researchViewY>1.55</researchViewY>
 	</ResearchProjectDef>
 	<ResearchProjectDef ParentName="BOR_Research_Base_III">
 		<defName>BOR_Research_Armor_III</defName>
@@ -828,7 +852,7 @@
 		<hiddenPrerequisites>
 			<li>BOR_Research_Drugs_II</li>
 		</hiddenPrerequisites>
-		<researchViewX>24.00</researchViewX>
+		<researchViewX>25.50</researchViewX>
 		<researchViewY>3.20</researchViewY>
 	</ResearchProjectDef>
 	<ResearchProjectDef ParentName="BOR_Research_Base_III">
@@ -900,7 +924,15 @@
 			<li>BOR_Research_NSynth_III</li>
 			<li>BOR_Research_Power_III</li>
 		</prerequisites>
-		<researchViewX>30.00</researchViewX>
+		<hiddenPrerequisites>
+			<li>BOR_Research_Medicine_IV</li>
+			<li>BOR_Research_Drugs_IV</li>
+			<li>BOR_Research_Power_IV</li>
+			<li>BOR_Research_Battery_IV</li>
+			<li>BOR_Research_Joy_IV</li>
+			<li>BOR_Research_Hydroponics_IV</li>
+		</hiddenPrerequisites>
+		<researchViewX>31.50</researchViewX>
 		<researchViewY>0.10</researchViewY>
 	</ResearchProjectDef>
 	<!--Tier 4-->
@@ -916,7 +948,7 @@
 		<hiddenPrerequisites>
 			<li>BOR_Research_Power_III</li>
 		</hiddenPrerequisites>
-		<researchViewX>22.00</researchViewX>
+		<researchViewX>23.50</researchViewX>
 		<researchViewY>0.90</researchViewY>
 	</ResearchProjectDef>
 	<ResearchProjectDef ParentName="BOR_Research_Base_IV">
@@ -926,9 +958,9 @@
 		<baseCost>600000</baseCost>
 		<techLevel>Archotech</techLevel>
 		<prerequisites>
-			<li>BOR_Research_Gate_III</li>
+			<li>BOR_Research_Gate_IV</li>
 		</prerequisites>
-		<researchViewX>22.00</researchViewX>
+		<researchViewX>23.50</researchViewX>
 		<researchViewY>2.90</researchViewY>
 	</ResearchProjectDef>
 	<ResearchProjectDef ParentName="BOR_Research_Base_IV">
@@ -943,7 +975,7 @@
 		<hiddenPrerequisites>
 			<li>BOR_Research_Medicine_III</li>
 		</hiddenPrerequisites>
-		<researchViewX>23.00</researchViewX>
+		<researchViewX>24.50</researchViewX>
 		<researchViewY>2.20</researchViewY>
 	</ResearchProjectDef>
 	<ResearchProjectDef ParentName="BOR_Research_Base_IV">
@@ -958,7 +990,7 @@
 		<hiddenPrerequisites>
 			<li>BOR_Research_Joy_III</li>
 		</hiddenPrerequisites>
-		<researchViewX>22.00</researchViewX>
+		<researchViewX>23.50</researchViewX>
 		<researchViewY>3.90</researchViewY>
 	</ResearchProjectDef>
 	<ResearchProjectDef ParentName="BOR_Research_Base_IV">
@@ -973,28 +1005,20 @@
 		<hiddenPrerequisites>
 			<li>BOR_Research_Hydroponics_III</li>
 		</hiddenPrerequisites>
-		<researchViewX>22.00</researchViewX>
+		<researchViewX>23.50</researchViewX>
 		<researchViewY>5.80</researchViewY>
 	</ResearchProjectDef>
 	<ResearchProjectDef ParentName="BOR_Research_Base_IV">
 		<defName>BOR_Research_Gate_IV</defName>
 		<label>umbral research gate</label>
-		<description>The last step of umbral research. Beyond it lies the final tier of technology.</description>
+		<description>The first step of umbral research. It unlocks umbral production.</description>
 		<baseCost>2000000</baseCost>
 		<techLevel>Archotech</techLevel>
 		<prerequisites>
-			<li>BOR_Research_Production_IV</li>
+			<li>BOR_Research_Gate_III</li>
 		</prerequisites>
-		<hiddenPrerequisites>
-			<li>BOR_Research_Medicine_IV</li>
-			<li>BOR_Research_Drugs_IV</li>
-			<li>BOR_Research_Power_IV</li>
-			<li>BOR_Research_Battery_IV</li>
-			<li>BOR_Research_Joy_IV</li>
-			<li>BOR_Research_Hydroponics_IV</li>
-		</hiddenPrerequisites>
-		<researchViewX>26.00</researchViewX>
-		<researchViewY>3.00</researchViewY>
+		<researchViewX>22.00</researchViewX>
+		<researchViewY>2.90</researchViewY>
 	</ResearchProjectDef>
 	<ResearchProjectDef ParentName="BOR_Research_Base_III">
 		<defName>BOR_Research_Gate_III</defName>
@@ -1027,7 +1051,15 @@
 		<prerequisites>
 			<li>BOR_Research_Gate_IV</li>
 		</prerequisites>
-		<researchViewX>29.00</researchViewX>
+		<hiddenPrerequisites>
+			<li>BOR_Research_Medicine_IV</li>
+			<li>BOR_Research_Drugs_IV</li>
+			<li>BOR_Research_Power_IV</li>
+			<li>BOR_Research_Battery_IV</li>
+			<li>BOR_Research_Joy_IV</li>
+			<li>BOR_Research_Hydroponics_IV</li>
+		</hiddenPrerequisites>
+		<researchViewX>30.50</researchViewX>
 		<researchViewY>2.00</researchViewY>
 	</ResearchProjectDef>
 	<ResearchProjectDef ParentName="BOR_Research_Base_V">
@@ -1039,7 +1071,15 @@
 		<prerequisites>
 			<li>BOR_Research_Gate_IV</li>
 		</prerequisites>
-		<researchViewX>29.00</researchViewX>
+		<hiddenPrerequisites>
+			<li>BOR_Research_Medicine_IV</li>
+			<li>BOR_Research_Drugs_IV</li>
+			<li>BOR_Research_Power_IV</li>
+			<li>BOR_Research_Battery_IV</li>
+			<li>BOR_Research_Joy_IV</li>
+			<li>BOR_Research_Hydroponics_IV</li>
+		</hiddenPrerequisites>
+		<researchViewX>30.50</researchViewX>
 		<researchViewY>6.00</researchViewY>
 	</ResearchProjectDef>
 	<ResearchProjectDef ParentName="BOR_Research_Base_V">
@@ -1051,7 +1091,15 @@
 		<prerequisites>
 			<li>BOR_Research_Gate_IV</li>
 		</prerequisites>
-		<researchViewX>29.00</researchViewX>
+		<hiddenPrerequisites>
+			<li>BOR_Research_Medicine_IV</li>
+			<li>BOR_Research_Drugs_IV</li>
+			<li>BOR_Research_Power_IV</li>
+			<li>BOR_Research_Battery_IV</li>
+			<li>BOR_Research_Joy_IV</li>
+			<li>BOR_Research_Hydroponics_IV</li>
+		</hiddenPrerequisites>
+		<researchViewX>30.50</researchViewX>
 		<researchViewY>4.00</researchViewY>
 	</ResearchProjectDef>
 

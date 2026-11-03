@@ -154,4 +154,68 @@
     </modExtensions>
   </ThingDef>
 
+  <ThingDef ParentName="BuildingBase">
+    <defName>BOR_UmbralShield</defName>
+    <label>umbral shield</label>
+    <description>Raises a permanent crimson dome 35 tiles in radius. Hostile fire from outside cannot cross it, drop pods cannot land under it, and solar flares do not reach the buildings inside. Tenebrite stops emitting within the dome because the shield takes over: every pawn beneath it slowly falls to tenebral psychosis. Orientis pawns cannot bear being near it.</description>
+    <thingClass>Building</thingClass>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <graphicData>
+      <texPath>BOR/Things/Building/tier4/solarshield3</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(4,4)</drawSize>
+      <drawOffset>(0,4,0.5)</drawOffset>
+    </graphicData>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <fillPercent>0.9</fillPercent>
+    <pathCost>150</pathCost>
+    <rotatable>false</rotatable>
+    <blockWind>true</blockWind>
+    <tickerType>Normal</tickerType>
+    <canOverlapZones>false</canOverlapZones>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <thingCategories>
+      <li>BuildingsPower</li>
+    </thingCategories>
+    <statBases>
+      <MaxHitPoints>1012</MaxHitPoints>
+      <WorkToBuild>12000</WorkToBuild>
+      <Mass>60</Mass>
+      <Flammability>0.578</Flammability>
+      <Beauty>-6.66</Beauty>
+    </statBases>
+    <size>(3,3)</size>
+    <costList>
+      <BOR_Tenebrite>150</BOR_Tenebrite>
+      <BOR_ComponentIII>8</BOR_ComponentIII>
+    </costList>
+    <comps>
+      <li Class="CompProperties_ProjectileInterceptor">
+        <radius>35</radius>
+        <interceptGroundProjectiles>true</interceptGroundProjectiles>
+        <interceptAirProjectiles>true</interceptAirProjectiles>
+        <interceptNonHostileProjectiles>false</interceptNonHostileProjectiles>
+        <interceptOutgoingProjectiles>false</interceptOutgoingProjectiles>
+        <drawWithNoSelection>true</drawWithNoSelection>
+        <color>(0.65, 0, 0.08, 1)</color>
+      </li>
+      <li Class="BeyondOurReach.CompProperties_UmbralShield" />
+    </comps>
+    <placeWorkers>
+      <li>PlaceWorker_ShowProjectileInterceptorRadius</li>
+    </placeWorkers>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+    <designationCategory>BOR</designationCategory>
+    <uiOrder>2030</uiOrder>
+    <constructEffect>ConstructMetal</constructEffect>
+    <researchPrerequisites>
+      <li>BOR_Research_UmbralShield</li>
+    </researchPrerequisites>
+    <constructionSkillPrerequisite>15</constructionSkillPrerequisite>
+    <modExtensions>
+      <li Class="BeyondOurReach.DefModExtension_UmbralOnly" />
+    </modExtensions>
+  </ThingDef>
+
 </Defs>

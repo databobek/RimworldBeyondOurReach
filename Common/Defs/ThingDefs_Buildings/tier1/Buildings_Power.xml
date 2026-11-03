@@ -239,4 +239,66 @@
     <designatorDropdown>BOR_Batteries</designatorDropdown>
   </ThingDef>
 
+  <ThingDef ParentName="BuildingBase">
+    <defName>BOR_SolarFlareShield</defName>
+    <label>solar flare shield</label>
+    <description>Shields the room it stands in from solar flares, keeping every building in that room running while the rest of the colony goes dark. It draws 60 kW for as long as a flare lasts, from batteries anywhere on its grid or generators inside the room, and heats the room to around 65 degrees. Must be built in an enclosed room with a roof, and short-circuits in rain if it loses its roof.</description>
+    <thingClass>Building</thingClass>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <graphicData>
+      <texPath>BOR/Things/Building/tier1/solarshield2</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(4,4)</drawSize>
+      <drawOffset>(0,4,0.5)</drawOffset>
+    </graphicData>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <fillPercent>0.9</fillPercent>
+    <pathCost>150</pathCost>
+    <rotatable>false</rotatable>
+    <blockWind>true</blockWind>
+    <tickerType>Normal</tickerType>
+    <canOverlapZones>false</canOverlapZones>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <thingCategories>
+      <li>BuildingsPower</li>
+    </thingCategories>
+    <statBases>
+      <MaxHitPoints>375</MaxHitPoints>
+      <WorkToBuild>5000</WorkToBuild>
+      <Mass>60</Mass>
+      <Flammability>0.833</Flammability>
+      <Beauty>-8</Beauty>
+    </statBases>
+    <size>(3,3)</size>
+    <costList>
+      <BOR_Sunsteel>165</BOR_Sunsteel>
+      <ComponentSpacer>5</ComponentSpacer>
+    </costList>
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>60000</basePowerConsumption>
+        <shortCircuitInRain>true</shortCircuitInRain>
+      </li>
+      <li Class="CompProperties_Flickable" />
+      <li Class="CompProperties_Breakdownable" />
+      <li Class="BeyondOurReach.CompProperties_SolarFlareShield">
+        <targetTemperature>65</targetTemperature>
+        <heatPerSecond>200</heatPerSecond>
+      </li>
+    </comps>
+    <placeWorkers>
+      <li>BeyondOurReach.PlaceWorker_SolarFlareShield</li>
+    </placeWorkers>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+    <designationCategory>BOR</designationCategory>
+    <uiOrder>2030</uiOrder>
+    <constructEffect>ConstructMetal</constructEffect>
+    <researchPrerequisites>
+      <li>BOR_Research_SolarFlareShield</li>
+    </researchPrerequisites>
+    <constructionSkillPrerequisite>9</constructionSkillPrerequisite>
+  </ThingDef>
+
 </Defs>
