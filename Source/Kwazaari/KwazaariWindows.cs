@@ -74,20 +74,19 @@ public class Dialog_KwazaariSell : Window
         public int available;
         public int selected;
 
+        // One per thing, worked out once: the window draws these every frame and the game is paused behind it.
+        public List<float> unitScrip = new();
+
         public Thing Sample => things[0];
 
         // Scrip for the first `count` units, taken in list order.
         public float Value(int count)
         {
             float total = 0f;
-            foreach (Thing t in things)
+            for (int i = 0; i < things.Count && count > 0; i++)
             {
-                if (count <= 0)
-                {
-                    break;
-                }
-                int take = Mathf.Min(count, t.stackCount);
-                total += KwazaariUtility.UnitScrip(t) * take;
+                int take = Mathf.Min(count, things[i].stackCount);
+                total += unitScrip[i] * take;
                 count -= take;
             }
             return total;
@@ -120,7 +119,8 @@ public class Dialog_KwazaariSell : Window
             {
                 things = things,
                 label = things[0].LabelCapNoCount,
-                available = things.Sum(t => t.stackCount)
+                available = things.Sum(t => t.stackCount),
+                unitScrip = things.Select(KwazaariUtility.UnitScrip).ToList()
             });
         }
         return result.OrderBy(r => r.label).ToList();
@@ -147,15 +147,16 @@ public class Dialog_KwazaariSell : Window
             Widgets.EndScrollView();
         }
 
+        float total = Total;
         Rect bottom = new Rect(inRect.x, inRect.yMax - 40f, inRect.width, 40f);
         Text.Anchor = TextAnchor.MiddleLeft;
-        Widgets.LabelWithIcon(new Rect(bottom.x, bottom.y, 300f, bottom.height), "BOR_Kwazaari_SaleTotal".Translate(KwazaariUI.Scrip(Total)), KwazaariTex.Scrip);
+        Widgets.LabelWithIcon(new Rect(bottom.x, bottom.y, 300f, bottom.height), "BOR_Kwazaari_SaleTotal".Translate(KwazaariUI.Scrip(total)), KwazaariTex.Scrip);
         Text.Anchor = TextAnchor.UpperLeft;
         if (Widgets.ButtonText(new Rect(bottom.xMax - 330f, bottom.y, 160f, bottom.height), "CancelButton".Translate()))
         {
             Close();
         }
-        if (Widgets.ButtonText(new Rect(bottom.xMax - 160f, bottom.y, 160f, bottom.height), "BOR_Kwazaari_ConfirmSale".Translate(), active: Total > 0f))
+        if (Widgets.ButtonText(new Rect(bottom.xMax - 160f, bottom.y, 160f, bottom.height), "BOR_Kwazaari_ConfirmSale".Translate(), active: total > 0f))
         {
             Sell();
         }

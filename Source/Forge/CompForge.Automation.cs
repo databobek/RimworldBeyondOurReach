@@ -12,11 +12,18 @@ public partial class CompForge
     private const string WorkHelperType = "Hobbes.MoreLinkablesProduction.CompWorkHelper";
     private const float AutomationForgeSpeed = 1.5f;
 
+    // None of these change often enough to look at every tick, and an idle 12x12 forge has 144 slots to search.
+    private const int AutomationCheckInterval = 60;
+    private const int ReservationCheckInterval = 15;
+    private const int IdleSearchInterval = 60;
+
     private static readonly System.Type? WorkHelperComp = GenTypes.GetTypeInAnyAssembly(WorkHelperType);
     private static readonly System.Reflection.FieldInfo? WorkHelperState = WorkHelperComp?.GetField("state");
 
     private int robotSlot = -1;
     private int robotTicks;
+    private float automationSpeed;
+    private bool pawnWorking;
 
     // A powered, switched-on work helper in WORK mode (the automatic mode) works linked forges without a pawn.
     private static bool IsAutomating(Thing facility)
@@ -59,13 +66,21 @@ public partial class CompForge
             return;
         }
         UpdateOverdrivePower();
-        float speed = AutomationSpeed;
+        if (parent.IsHashIntervalTick(AutomationCheckInterval))
+        {
+            automationSpeed = AutomationSpeed;
+        }
+        float speed = automationSpeed;
         if (speed <= 0f)
         {
             return;
         }
         // A pawn working the forge takes precedence.
-        if (parent.Map.reservationManager.IsReservedByAnyoneOf(parent, Faction.OfPlayer))
+        if (parent.IsHashIntervalTick(ReservationCheckInterval))
+        {
+            pawnWorking = parent.Map.reservationManager.IsReservedByAnyoneOf(parent, Faction.OfPlayer);
+        }
+        if (pawnWorking)
         {
             return;
         }
@@ -75,6 +90,10 @@ public partial class CompForge
             return;
         }
         if (PendingAnalysis.Count > 0)
+        {
+            return;
+        }
+        if (robotSlot < 0 && !parent.IsHashIntervalTick(IdleSearchInterval))
         {
             return;
         }

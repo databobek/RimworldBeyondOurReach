@@ -85,24 +85,25 @@ public class WorkGiver_ForgeProduce : WorkGiver_Scanner
 {
     public override PathEndMode PathEndMode => PathEndMode.InteractionCell;
 
+    private static bool HasWork(CompForge comp) =>
+        comp.parent.Faction == Faction.OfPlayer && !comp.Props.automatic && comp.NextProductionSlot() >= 0;
+
     public override IEnumerable<Thing> PotentialWorkThingsGlobal(Pawn pawn)
     {
-        foreach (Building b in pawn.Map.listerBuildings.allBuildingsColonist)
+        foreach (CompForge comp in MapComponent_WorkBuildings.Of(pawn.Map).forges)
         {
-            CompForge? comp = b.TryGetComp<CompForge>();
-            if (comp != null && !comp.Props.automatic && comp.NextProductionSlot() >= 0)
+            if (HasWork(comp))
             {
-                yield return b;
+                yield return comp.parent;
             }
         }
     }
 
     public override bool ShouldSkip(Pawn pawn, bool forced = false)
     {
-        foreach (Building b in pawn.Map.listerBuildings.allBuildingsColonist)
+        foreach (CompForge comp in MapComponent_WorkBuildings.Of(pawn.Map).forges)
         {
-            CompForge? comp = b.TryGetComp<CompForge>();
-            if (comp != null && !comp.Props.automatic && comp.NextProductionSlot() >= 0)
+            if (HasWork(comp))
             {
                 return false;
             }

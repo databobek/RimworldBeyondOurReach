@@ -26,6 +26,10 @@ public static class BOR_DarkAbilityDefOf
 {
     public static HediffDef BOR_DarkAbilityHits = null!;
     public static HediffDef BOR_ThrallBrainDamage = null!;
+    public static AbilityDef BOR_DarkWound = null!;
+    public static AbilityDef BOR_DarkKill = null!;
+    public static AbilityDef BOR_DarkThrall = null!;
+    public static AbilityDef BOR_DarkBolt = null!;
 
     static BOR_DarkAbilityDefOf()
     {
@@ -235,12 +239,13 @@ public class CompAbilityEffect_DarkThrall : CompAbilityEffect
     public override void Apply(LocalTargetInfo target, LocalTargetInfo dest)
     {
         base.Apply(target, dest);
-        if (target.Pawn is not Pawn pawn)
+        if (target.Pawn is not Pawn pawn || pawn.guest == null)
         {
             return;
         }
         Pawn caster = parent.pawn;
-        if (!ModsConfig.IdeologyActive)
+        // Slavery is a player-colony system; a hostile caster just takes the target over.
+        if (!ModsConfig.IdeologyActive || caster.Faction != Faction.OfPlayer)
         {
             RecruitUtility.Recruit(pawn, caster.Faction, caster);
         }
@@ -255,6 +260,11 @@ public class CompAbilityEffect_DarkThrall : CompAbilityEffect
     {
         if (target.Pawn is Pawn pawn)
         {
+            // Animals, mechs and the like have no guest tracker and cannot be enslaved.
+            if (pawn.guest == null || !pawn.RaceProps.Humanlike)
+            {
+                return false;
+            }
             if (pawn.Faction == parent.pawn.Faction || pawn.IsSlave)
             {
                 return DarkAbilities.Reject("BOR_AbilityTargetOwn", target, throwMessages);

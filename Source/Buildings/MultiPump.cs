@@ -33,7 +33,7 @@ public class CompProperties_MultiPump : CompProperties
     }
 }
 
-public class CompMultiPump : ThingComp
+public sealed class CompMultiPump : ThingComp
 {
     private int modeIndex;
 
@@ -45,7 +45,19 @@ public class CompMultiPump : ThingComp
     public bool IsActive(ThingComp other)
     {
         string? name = other.GetType().FullName;
-        return !Props.modes.Any(m => m.comp == name) || Current.comp == name;
+        if (Current.comp == name)
+        {
+            return true;
+        }
+        List<PumpMode> modes = Props.modes;
+        for (int i = 0; i < modes.Count; i++)
+        {
+            if (modes[i].comp == name)
+            {
+                return false;
+            }
+        }
+        return true;
     }
 
     private void SetMode(int index)

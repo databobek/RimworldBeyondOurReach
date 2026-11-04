@@ -287,11 +287,12 @@ public class MapComponent_TenebralExposure : MapComponent
     public override void MapComponentTick()
     {
         int tick = Find.TickManager.TicksGame;
-        IReadOnlyList<Pawn> pawns = map.mapPawns.AllHumanlikeSpawned;
+        // Not AllHumanlikeSpawned, which rebuilds a shared list on every read.
+        IReadOnlyList<Pawn> pawns = map.mapPawns.AllPawnsSpawned;
         for (int i = 0; i < pawns.Count; i++)
         {
             Pawn pawn = pawns[i];
-            if (pawn.Dead || (tick + pawn.thingIDNumber) % Interval != 0)
+            if ((tick + pawn.thingIDNumber) % Interval != 0 || pawn.Dead || !pawn.RaceProps.Humanlike)
             {
                 continue;
             }

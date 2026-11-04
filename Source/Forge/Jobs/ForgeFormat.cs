@@ -51,22 +51,24 @@ public class WorkGiver_ForgeFormat : WorkGiver_Scanner
 {
     public override PathEndMode PathEndMode => PathEndMode.InteractionCell;
 
+    private static bool HasWork(CompForge comp) => comp.parent.Faction == Faction.OfPlayer && comp.IsFormatting;
+
     public override IEnumerable<Thing> PotentialWorkThingsGlobal(Pawn pawn)
     {
-        foreach (Building b in pawn.Map.listerBuildings.allBuildingsColonist)
+        foreach (CompForge comp in MapComponent_WorkBuildings.Of(pawn.Map).forges)
         {
-            if (b.TryGetComp<CompForge>()?.IsFormatting == true)
+            if (HasWork(comp))
             {
-                yield return b;
+                yield return comp.parent;
             }
         }
     }
 
     public override bool ShouldSkip(Pawn pawn, bool forced = false)
     {
-        foreach (Building b in pawn.Map.listerBuildings.allBuildingsColonist)
+        foreach (CompForge comp in MapComponent_WorkBuildings.Of(pawn.Map).forges)
         {
-            if (b.TryGetComp<CompForge>()?.IsFormatting == true)
+            if (HasWork(comp))
             {
                 return false;
             }

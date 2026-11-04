@@ -6,7 +6,7 @@ Save before each section so you can reload.
 
 1. Check the log on the main menu after the mod loads. There should be no errors mentioning `UmbralShield`.
 2. Start a dev quick test colony and turn on god mode. Finish `BOR_Research_UmbralShield` with the dev tools.
-3. Spawn a `BOR_UmbralShield` in the base.
+3. Spawn a `BOR_UmbralShield` in the base and connect it to a net with at least 1,000,000 W, such as a lesser umbral reactor plus full batteries.
 
 ## 1. Dome
 
@@ -49,3 +49,10 @@ Spawn an Orientis pawn inside the dome. They gain no psychosis and have the -20 
 
 - Destroy the shield. The dome is gone and every effect stops.
 - Save and reload with the dome hidden. It stays hidden.
+
+## 9. Power
+
+- The shield reads 1,000,000 W whether or not there is a flare. It has no off switch.
+- Cut the power. The dome disappears, hostile shots pass, pods can land, a pawn inside gains no psychosis from the shield, and an Orientis pawn loses the thought. Nearby tenebrite emits as usual.
+- Restore the power. The dome and all its effects come back.
+- During a flare on a net with no batteries, cut the wire to the shield and reconnect it, with reactors inside the radius. Consumers under the dome stay off until the shield comes back, then follow it. Reactors outside the radius cannot restart it.

@@ -49,8 +49,13 @@ public enum ForgeMode
     DoForever
 }
 
-public partial class CompForge : ThingComp
+public sealed partial class CompForge : ThingComp
 {
+    private const int CountRefreshTicks = 60;
+
+    private readonly Dictionary<ThingDef, int> countsOnMap = new();
+    private int countsTick = -CountRefreshTicks;
+
     private List<int> modes = new();
     private List<ThingDef?> slots = new();
     private List<int> queued = new();
@@ -74,7 +79,14 @@ public partial class CompForge : ThingComp
     public override void PostSpawnSetup(bool respawningAfterLoad)
     {
         base.PostSpawnSetup(respawningAfterLoad);
+        MapComponent_WorkBuildings.Of(parent.Map).forges.Add(this);
         RefreshOverdriveCache();
+    }
+
+    public override void PostDeSpawn(Map map, DestroyMode mode = DestroyMode.Vanish)
+    {
+        base.PostDeSpawn(map, mode);
+        MapComponent_WorkBuildings.Of(map).forges.Remove(this);
     }
 
     private void EnsureSize()
@@ -143,6 +155,7 @@ public partial class CompForge : ThingComp
             product.TryGetComp<CompQuality>()?.SetQuality(QualityCategory.Normal, ArtGenerationContext.Colony);
             GenPlace.TryPlaceThing(product, cell, map, ThingPlaceMode.Near);
         }
+        countsOnMap.Clear();
     }
 
     public ForgeMode ModeOf(int index)
@@ -157,6 +170,7 @@ public partial class CompForge : ThingComp
         modes[index] = (int)mode;
     }
 
+    // Refreshed about once a second: "until" slots ask every work tick, and the tab asks for every cell on every frame.
     public int CountOnMap(ThingDef def)
     {
         Map? map = parent.Map;
@@ -164,11 +178,21 @@ public partial class CompForge : ThingComp
         {
             return 0;
         }
-        int total = 0;
+        int now = Find.TickManager.TicksGame;
+        if (now - countsTick >= CountRefreshTicks)
+        {
+            countsOnMap.Clear();
+            countsTick = now;
+        }
+        if (countsOnMap.TryGetValue(def, out int total))
+        {
+            return total;
+        }
         foreach (Thing t in map.listerThings.ThingsOfDef(def))
         {
             total += t.stackCount;
         }
+        countsOnMap[def] = total;
         return total;
     }
 

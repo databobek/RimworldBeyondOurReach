@@ -22,9 +22,18 @@ public class CompDarkCommune : ThingComp
 {
     private CompProperties_DarkCommune Props => (CompProperties_DarkCommune)props;
 
-    // The tier V building the research unlocks, shown as the gizmo.
-    private static ThingDef? BuildingFor(ResearchProjectDef research) =>
-        DefDatabase<ThingDef>.AllDefs.FirstOrDefault(d => d.building != null && d.researchPrerequisites != null && d.researchPrerequisites.Contains(research));
+    private static readonly Dictionary<ResearchProjectDef, ThingDef?> buildings = new();
+
+    // The tier V building the research unlocks, shown as the gizmo. Gizmos rebuild every frame, so the search is kept.
+    private static ThingDef? BuildingFor(ResearchProjectDef research)
+    {
+        if (!buildings.TryGetValue(research, out ThingDef? building))
+        {
+            building = DefDatabase<ThingDef>.AllDefs.FirstOrDefault(d => d.building != null && d.researchPrerequisites != null && d.researchPrerequisites.Contains(research));
+            buildings[research] = building;
+        }
+        return building;
+    }
 
     private static bool Communing(Pawn pawn) => pawn.health.hediffSet.hediffs.Any(h => h is Hediff_DarkCommune);
 

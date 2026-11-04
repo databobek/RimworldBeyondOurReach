@@ -174,9 +174,21 @@ public class CompProperties_MeditationSpot : CompProperties
 }
 
 // A pod, bench or mat. They differ only in how much power they make.
-public class CompMeditationSpot : ThingComp
+public sealed class CompMeditationSpot : ThingComp
 {
     public CompProperties_MeditationSpot Props => (CompProperties_MeditationSpot)props;
+
+    public override void PostSpawnSetup(bool respawningAfterLoad)
+    {
+        base.PostSpawnSetup(respawningAfterLoad);
+        MapComponent_WorkBuildings.Of(parent.Map).meditationSpots.Add(this);
+    }
+
+    public override void PostDeSpawn(Map map, DestroyMode mode = DestroyMode.Vanish)
+    {
+        base.PostDeSpawn(map, mode);
+        MapComponent_WorkBuildings.Of(map).meditationSpots.Remove(this);
+    }
 }
 
 public class WorkGiver_OrientisMeditate : WorkGiver_Scanner
@@ -188,7 +200,7 @@ public class WorkGiver_OrientisMeditate : WorkGiver_Scanner
     public override bool ShouldSkip(Pawn pawn, bool forced = false) => !Orientis.IsOrientis(pawn);
 
     public override IEnumerable<Thing> PotentialWorkThingsGlobal(Pawn pawn) =>
-        pawn.Map.listerBuildings.allBuildingsColonist.Where(b => b.TryGetComp<CompMeditationSpot>() != null);
+        MapComponent_WorkBuildings.Of(pawn.Map).meditationSpots.Where(s => s.parent.Faction == Faction.OfPlayer).Select(s => s.parent);
 
     // The strongest free spot first, so pawns only settle for a mat when the pods are taken.
     public override float GetPriority(Pawn pawn, TargetInfo t) => t.Thing.TryGetComp<CompMeditationSpot>().Props.powerPerDay;
@@ -212,6 +224,7 @@ public class WorkGiver_OrientisMeditate : WorkGiver_Scanner
 public class JobDriver_OrientisMeditate : JobDriver
 {
     private const int SessionTicks = 5000;
+    private const int LoadInterval = 60;
 
     private Thing Spot => job.GetTarget(TargetIndex.A).Thing;
 
@@ -227,6 +240,10 @@ public class JobDriver_OrientisMeditate : JobDriver
         meditate.tickAction = () =>
         {
             pawn.rotationTracker.FaceTarget(Spot);
+            if (!pawn.IsHashIntervalTick(LoadInterval))
+            {
+                return;
+            }
             CompMeditationCache? cache = MapComponent_MeditationPower.Of(pawn.Map).CacheToLoad(Spot.Position);
             if (cache == null)
             {
@@ -234,7 +251,7 @@ public class JobDriver_OrientisMeditate : JobDriver
                 return;
             }
             float perDay = Spot.TryGetComp<CompMeditationSpot>().Props.powerPerDay;
-            cache.Add(perDay * pawn.GetStatValue(BOR_OrientisDefOf.BOR_MeditationStrength) / GenDate.TicksPerDay);
+            cache.Add(perDay * pawn.GetStatValue(BOR_OrientisDefOf.BOR_MeditationStrength) * LoadInterval / GenDate.TicksPerDay);
         };
         meditate.defaultCompleteMode = ToilCompleteMode.Delay;
         meditate.defaultDuration = SessionTicks;

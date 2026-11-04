@@ -83,6 +83,18 @@ public class Building_TenebralPod : Building_TenebralCasket
         ingredients = new ThingOwner<Thing>(this);
     }
 
+    public override void SpawnSetup(Map map, bool respawningAfterLoad)
+    {
+        base.SpawnSetup(map, respawningAfterLoad);
+        MapComponent_WorkBuildings.Of(map).pods.Add(this);
+    }
+
+    public override void DeSpawn(DestroyMode mode = DestroyMode.Vanish)
+    {
+        MapComponent_WorkBuildings.Of(Map).pods.Remove(this);
+        base.DeSpawn(mode);
+    }
+
     public TenebralPodMode Mode => mode;
 
     public Pawn? OperationTarget => operationTarget;
@@ -553,9 +565,9 @@ public class WorkGiver_LoadTenebralPod : WorkGiver_Scanner
 
     public override IEnumerable<Thing> PotentialWorkThingsGlobal(Pawn pawn)
     {
-        foreach (Building b in pawn.Map.listerBuildings.allBuildingsColonist)
+        foreach (Building_TenebralPod pod in MapComponent_WorkBuildings.Of(pawn.Map).pods)
         {
-            if (b is Building_TenebralPod pod && pod.WantsIngredients)
+            if (pod.Faction == Faction.OfPlayer && pod.WantsIngredients)
             {
                 yield return pod;
             }

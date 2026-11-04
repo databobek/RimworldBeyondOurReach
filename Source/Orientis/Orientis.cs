@@ -35,6 +35,8 @@ public static class BOR_OrientisDefOf
     public static StatDef BOR_MeditationStrength = null!;
     public static HediffDef BOR_Blessing = null!;
     public static HediffDef BOR_ShieldExposure = null!;
+    public static HediffDef BOR_OrientisArmorBreak = null!;
+    public static HediffDef BOR_TenebralPsychosis = null!;
     public static JobDef BOR_OrientisMeditate = null!;
     public static JobDef BOR_OrientisBless = null!;
     public static JobDef BOR_OrientisEnableShield = null!;

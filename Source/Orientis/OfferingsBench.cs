@@ -19,8 +19,12 @@ public class CompProperties_OfferingsBench : CompProperties
 // uses it; the player only manages the bills.
 public class CompOfferingsBench : ThingComp
 {
+    // Bills are only looked at this often: checking one can count every matching item on the map.
+    private const int WorkInterval = 30;
+
     private RecipeDef? recipe;
     private float workDone;
+    private float workTotal;
     private bool starved;
 
     public CompProperties_OfferingsBench Props => (CompProperties_OfferingsBench)props;
@@ -28,10 +32,22 @@ public class CompOfferingsBench : ThingComp
     private static float WorkFor(RecipeDef def) =>
         def.workAmount >= 0f ? def.workAmount : def.products[0].thingDef.GetStatValueAbstract(StatDefOf.WorkToMake);
 
+    private float WorkTotal
+    {
+        get
+        {
+            if (workTotal <= 0f)
+            {
+                workTotal = WorkFor(recipe!);
+            }
+            return workTotal;
+        }
+    }
+
     public override void CompTick()
     {
         base.CompTick();
-        if (!parent.Spawned || parent is not Building_WorkTable table)
+        if (!parent.IsHashIntervalTick(WorkInterval) || !parent.Spawned || parent is not Building_WorkTable table)
         {
             return;
         }
@@ -47,16 +63,17 @@ public class CompOfferingsBench : ThingComp
         {
             recipe = bill.recipe;
             workDone = 0f;
+            workTotal = 0f;
         }
-        starved = !MapComponent_MeditationPower.Of(parent.Map).TryDraw(Props.powerPerWork);
+        starved = !MapComponent_MeditationPower.Of(parent.Map).TryDraw(Props.powerPerWork * WorkInterval);
         if (starved)
         {
             return;
         }
-        workDone++;
-        if (workDone >= WorkFor(recipe))
+        workDone += WorkInterval;
+        if (workDone >= WorkTotal)
         {
-            workDone = 0f;
+            workDone -= WorkTotal;
             Finish(bill);
         }
     }
@@ -81,7 +98,7 @@ public class CompOfferingsBench : ThingComp
         }
         return starved
             ? "BOR_OfferingsNoPower".Translate(recipe.products[0].thingDef.label)
-            : "BOR_OfferingsWorking".Translate(recipe.products[0].thingDef.label, (workDone / WorkFor(recipe)).ToStringPercent());
+            : "BOR_OfferingsWorking".Translate(recipe.products[0].thingDef.label, (workDone / WorkTotal).ToStringPercent());
     }
 
     public override void PostExposeData()

@@ -35,9 +35,12 @@ public class CompProperties_DarkAltar : CompProperties
     }
 }
 
-public class CompDarkAltar : ThingComp
+public sealed class CompDarkAltar : ThingComp
 {
     private const float BaseTicksFactor = 2f;
+
+    // Worked out once per cell, as the produce job asks on every work tick.
+    private int[]? componentCosts;
 
     private List<bool> unlocked = new();
     private List<bool> unlockRequested = new();
@@ -137,9 +140,14 @@ public class CompDarkAltar : ThingComp
 
     public int ComponentCost(int i)
     {
-        ThingDef def = Entry(i).thing;
-        float value = def.GetStatValueAbstract(StatDefOf.MarketValue, Entry(i).stuff) * ForgeMath.YieldFor(def);
-        return Mathf.Max(1, Mathf.CeilToInt(value * Props.componentCostFactor / BOR_TenebralDefOf.BOR_ComponentIII.BaseMarketValue));
+        componentCosts ??= new int[Count];
+        if (componentCosts[i] == 0)
+        {
+            ThingDef def = Entry(i).thing;
+            float value = def.GetStatValueAbstract(StatDefOf.MarketValue, Entry(i).stuff) * ForgeMath.YieldFor(def);
+            componentCosts[i] = Mathf.Max(1, Mathf.CeilToInt(value * Props.componentCostFactor / ForgeMath.MarketValue(BOR_TenebralDefOf.BOR_ComponentIII)));
+        }
+        return componentCosts[i];
     }
 
     public int NextUnlockCell()
@@ -220,6 +228,18 @@ public class CompDarkAltar : ThingComp
         product.TryGetComp<CompQuality>()?.SetQuality(QualityCategory.Normal, ArtGenerationContext.Colony);
         GenPlace.TryPlaceThing(product, parent.InteractionCell, parent.Map, ThingPlaceMode.Near);
         return true;
+    }
+
+    public override void PostSpawnSetup(bool respawningAfterLoad)
+    {
+        base.PostSpawnSetup(respawningAfterLoad);
+        MapComponent_WorkBuildings.Of(parent.Map).altars.Add(this);
+    }
+
+    public override void PostDeSpawn(Map map, DestroyMode mode = DestroyMode.Vanish)
+    {
+        base.PostDeSpawn(map, mode);
+        MapComponent_WorkBuildings.Of(map).altars.Remove(this);
     }
 
     public override void PostDestroy(DestroyMode mode, Map previousMap)
@@ -451,12 +471,11 @@ public class WorkGiver_DarkAltar : WorkGiver_Scanner
 
     public override IEnumerable<Thing> PotentialWorkThingsGlobal(Pawn pawn)
     {
-        foreach (Building b in pawn.Map.listerBuildings.allBuildingsColonist)
+        foreach (CompDarkAltar comp in MapComponent_WorkBuildings.Of(pawn.Map).altars)
         {
-            CompDarkAltar? comp = b.TryGetComp<CompDarkAltar>();
-            if (comp != null && HasWork(comp))
+            if (comp.parent.Faction == Faction.OfPlayer && HasWork(comp))
             {
-                yield return b;
+                yield return comp.parent;
             }
         }
     }

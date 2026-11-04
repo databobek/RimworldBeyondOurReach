@@ -18,7 +18,7 @@ public class CompProperties_WeaponGlow : CompProperties
     }
 }
 
-public class CompWeaponGlow : ThingComp
+public sealed class CompWeaponGlow : ThingComp
 {
     private Material? material;
 

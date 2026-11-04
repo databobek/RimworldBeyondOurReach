@@ -65,3 +65,13 @@ Empty the batteries with `DEV: Empty` during a flare. Protected consumers and th
 ## 12. Restart on generators alone
 
 On a net with no batteries, put two solarite reactors and a lamp in the shield's room. During a flare, switch the shield off and on. The lamp goes off with the shield, the shield comes back on within a few seconds, and then the lamp follows.
+
+## 13. RT Solar Flare Shield
+
+With RT Solar Flare Shield active, add a powered `magnetic shield` to the setup, on the same net or its own.
+
+- During a flare, every lamp stays on, the RT shield reads 25,000 W and the BOR shield reads 0 W. The room does not heat up from the BOR shield.
+- The BOR shield's inspect pane says its shielding is inactive because of interference from the magnetic shield. An Umbral shield on the map says the same.
+- Flick the RT shield off during the flare. The message goes away, the BOR shield goes to 60,000 W and only its room stays lit.
+- After the flare, the message is gone and the BOR shield reads 0 W.
+- Without RT Solar Flare Shield loaded, sections 1 and 2 behave as before, with no log errors.

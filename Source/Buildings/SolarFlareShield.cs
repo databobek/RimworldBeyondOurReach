@@ -19,7 +19,7 @@ public class CompProperties_SolarFlareShield : CompProperties
 }
 
 // Keeps its room powered through a solar flare. Draws its full consumption during a flare and nothing otherwise.
-public class CompSolarFlareShield : ThingComp
+public sealed class CompSolarFlareShield : ThingComp
 {
     private const int HeatInterval = 60;
 
@@ -40,7 +40,7 @@ public class CompSolarFlareShield : ThingComp
 
     public bool WaitingToShield => power != null && !power.PowerOn && RoomEnclosed && FlickUtility.WantsToBeOn(parent) && !parent.IsBrokenDown();
 
-    private bool FlareActive => parent.Map.gameConditionManager.ElectricityDisabled(parent.Map);
+    private bool Engaged => parent.Map.gameConditionManager.ElectricityDisabled(parent.Map) && RTSolarFlareShieldCompat.ActiveShield(parent.Map) == null;
 
     public override void PostSpawnSetup(bool respawningAfterLoad)
     {
@@ -60,7 +60,7 @@ public class CompSolarFlareShield : ThingComp
     {
         base.CompTick();
         ApplyDraw();
-        if (parent.IsHashIntervalTick(HeatInterval) && FlareActive && ShieldingRoom)
+        if (parent.IsHashIntervalTick(HeatInterval) && Engaged && ShieldingRoom)
         {
             PushHeat(parent.GetRoom());
         }
@@ -68,7 +68,11 @@ public class CompSolarFlareShield : ThingComp
 
     public override string? CompInspectStringExtra()
     {
-        return parent.Spawned && !RoomEnclosed ? "BOR_SolarFlareShield_NotShielding".Translate() : null;
+        if (!parent.Spawned)
+        {
+            return null;
+        }
+        return RTSolarFlareShieldCompat.InterferenceMessage(parent.Map) ?? (RoomEnclosed ? null : "BOR_SolarFlareShield_NotShielding".Translate());
     }
 
     // Vanilla resets the draw to the building's default in places, so this runs again on the tick.
@@ -76,7 +80,7 @@ public class CompSolarFlareShield : ThingComp
     {
         if (power != null)
         {
-            power.PowerOutput = FlareActive ? -power.Props.PowerConsumption : 0f;
+            power.PowerOutput = Engaged ? -power.Props.PowerConsumption : 0f;
         }
     }
 
@@ -114,6 +118,40 @@ public class MapComponent_SolarFlareShields : MapComponent
     }
 }
 
+// RT Solar Flare Shield lifts the flare from the whole map while one of its shields has power, so ours stand down.
+public static class RTSolarFlareShieldCompat
+{
+    private const string ShieldDefName = "Building_RTMagneticShield";
+
+    public static Thing? ActiveShield(Map map)
+    {
+        ThingDef? def = DefDatabase<ThingDef>.GetNamedSilentFail(ShieldDefName);
+        if (def == null)
+        {
+            return null;
+        }
+        List<Thing> shields = map.listerThings.ThingsOfDef(def);
+        for (int i = 0; i < shields.Count; i++)
+        {
+            if (shields[i].TryGetComp<CompPowerTrader>()?.PowerOn ?? true)
+            {
+                return shields[i];
+            }
+        }
+        return null;
+    }
+
+    public static string? InterferenceMessage(Map map)
+    {
+        if (!map.gameConditionManager.ElectricityDisabled(map))
+        {
+            return null;
+        }
+        Thing? shield = ActiveShield(map);
+        return shield == null ? null : "BOR_SolarFlareShield_Interference".Translate(shield.def.label);
+    }
+}
+
 // A flare stops a power net as a whole. On a net with protected buildings, this runs the vanilla tick as if there
 // were no flare but with only those buildings listed, and shuts down the rest the way a flare would.
 [HarmonyPatch(typeof(PowerNet), nameof(PowerNet.PowerNetTick))]
@@ -129,26 +167,43 @@ public static class PowerNet_PowerNetTick_Patch
     private static readonly List<CompPowerTrader> protectedParts = new();
     private static readonly List<CompPowerTrader> exposedConsumers = new();
 
+    // A map can have many nets; the rooms only need working out once per map per tick.
+    private static int roomsTick = -1;
+    private static int roomsMapId = -1;
+
     public static void Prefix(PowerNet __instance, out List<CompPowerTrader>? __state)
     {
         __state = null;
         Map map = __instance.Map;
-        if (!map.gameConditionManager.ElectricityDisabled(map))
+        if (!map.gameConditionManager.ElectricityDisabled(map) || RTSolarFlareShieldCompat.ActiveShield(map) != null)
         {
             return;
         }
 
-        shieldedRooms.Clear();
-        waitingRooms.Clear();
-        foreach (CompSolarFlareShield shield in map.GetComponent<MapComponent_SolarFlareShields>().shields)
+        // With nothing that could protect a building, vanilla's flare handling is all this net needs.
+        List<CompSolarFlareShield> shields = map.GetComponent<MapComponent_SolarFlareShields>().shields;
+        if (shields.Count == 0 && !CompUmbralShield.AnyOn(map))
         {
-            if (shield.ShieldingRoom)
+            return;
+        }
+
+        int tick = Find.TickManager.TicksGame;
+        if (tick != roomsTick || map.uniqueID != roomsMapId)
+        {
+            roomsTick = tick;
+            roomsMapId = map.uniqueID;
+            shieldedRooms.Clear();
+            waitingRooms.Clear();
+            foreach (CompSolarFlareShield shield in shields)
             {
-                shieldedRooms.Add(shield.parent.GetRoom());
-            }
-            else if (shield.WaitingToShield)
-            {
-                waitingRooms.Add(shield.parent.GetRoom());
+                if (shield.ShieldingRoom)
+                {
+                    shieldedRooms.Add(shield.parent.GetRoom());
+                }
+                else if (shield.WaitingToShield)
+                {
+                    waitingRooms.Add(shield.parent.GetRoom());
+                }
             }
         }
 
@@ -156,12 +211,13 @@ public static class PowerNet_PowerNetTick_Patch
         exposedConsumers.Clear();
         foreach (CompPowerTrader part in __instance.powerComps)
         {
-            // A shield stays listed while off, so vanilla can power it back on. Until then its room adds only its
-            // generators, which may be all that can restart it; the room's consumers wait for the shield.
+            // A shield stays listed while off, so vanilla can power it back on. Until then its room or dome adds only
+            // its generators, which may be all that can restart it; the consumers there wait for the shield.
             Room? room = part.parent.GetRoom();
             bool inShieldedRoom = room != null && shieldedRooms.Contains(room);
-            bool startsShield = room != null && part.PowerOutput > 0f && waitingRooms.Contains(room);
-            if (inShieldedRoom || startsShield || part.parent.GetComp<CompSolarFlareShield>() != null || CompUmbralShield.Covers(map, part.parent.Position))
+            bool startsShield = part.PowerOutput > 0f && ((room != null && waitingRooms.Contains(room)) || CompUmbralShield.InRange(map, part.parent.Position));
+            bool isShield = part.parent.GetComp<CompSolarFlareShield>() != null || part.parent.GetComp<CompUmbralShield>() != null;
+            if (inShieldedRoom || startsShield || isShield || CompUmbralShield.Covers(map, part.parent.Position))
             {
                 protectedParts.Add(part);
             }

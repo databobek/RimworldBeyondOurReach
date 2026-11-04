@@ -157,7 +157,7 @@
   <ThingDef ParentName="BuildingBase">
     <defName>BOR_UmbralShield</defName>
     <label>umbral shield</label>
-    <description>Raises a permanent crimson dome 35 tiles in radius. Hostile fire from outside cannot cross it, drop pods cannot land under it, and solar flares do not reach the buildings inside. Tenebrite stops emitting within the dome because the shield takes over: every pawn beneath it slowly falls to tenebral psychosis. Orientis pawns cannot bear being near it.</description>
+    <description>Consumes a colossal 1,000,000 W to hold up a crimson dome 35 tiles in radius, and the dome falls without it. Hostile fire from outside cannot cross it, drop pods cannot land under it, and solar flares do not reach the buildings inside. Tenebrite stops emitting within the dome because the shield takes over: every pawn beneath it slowly falls to tenebral psychosis. Orientis pawns cannot bear being near it.</description>
     <thingClass>Building</thingClass>
     <drawerType>MapMeshAndRealTime</drawerType>
     <graphicData>
@@ -191,6 +191,11 @@
       <BOR_ComponentIII>8</BOR_ComponentIII>
     </costList>
     <comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>1000000</basePowerConsumption>
+        <shortCircuitInRain>false</shortCircuitInRain>
+      </li>
       <li Class="CompProperties_ProjectileInterceptor">
         <radius>35</radius>
         <interceptGroundProjectiles>true</interceptGroundProjectiles>

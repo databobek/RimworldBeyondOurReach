@@ -164,7 +164,7 @@ Place a pod, a cache within 12 cells, and a second cache far away. Use an Orient
 ## 8. Offerings bench
 
 1. Place the bench and fill a cache.
-2. Open the Bills tab. **Expected:** only Orientis items are offered, with no ingredient requirement: 4 main melee weapons, 2 crossbows, 4 arquebuses, 4 sabers, 6 armor pieces and the monk bodysuit.
+2. Open the Bills tab. **Expected:** only Orientis items are offered, with no ingredient requirement: 4 main melee weapons, 2 crossbows, 4 arquebuses, 6 armor pieces and the monk bodysuit.
 3. Confirm these items are not offered at any other bench.
 4. Add a "do 1 time" bill. **Expected:** no pawn comes, the item appears next to the bench, and the bill completes with the normal message.
 5. Select the bench while working. **Expected:** an inspect line shows the item and progress.
@@ -181,7 +181,7 @@ Make one of each from the bench.
 1. Equip each. **Expected:** it renders, has a sensible info card, and can't be smelted.
 2. Fire the plasma crossbow at the ground and a target. **Expected:** gold projectile, long charge-up, explosion, can target ground.
 3. Fire the laser crossbow and each arquebus. **Expected:** single shots, no ammo, and damage rises with tech level.
-4. Melee with each power weapon and saber. **Expected:** hits add burn damage.
+4. Melee with each power weapon. **Expected:** hits add burn damage.
 
 **Armor and apparel**
 

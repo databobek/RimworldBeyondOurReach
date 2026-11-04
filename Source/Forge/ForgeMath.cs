@@ -9,6 +9,19 @@ public static class ForgeMath
     private const float BaseTicks = 600f;
     private const float AnalysisMultiplier = 2f;
 
+    private static readonly Dictionary<ThingDef, float> marketValues = new();
+
+    // BaseMarketValue has no cache and can walk a def's whole cost tree, and work ticks need it constantly.
+    public static float MarketValue(ThingDef def)
+    {
+        if (!marketValues.TryGetValue(def, out float value))
+        {
+            value = def.BaseMarketValue;
+            marketValues[def] = value;
+        }
+        return value;
+    }
+
     public static float TechMultiplier(ThingDef def)
     {
         int tech = (int)def.techLevel;
@@ -17,7 +30,7 @@ public static class ForgeMath
 
     public static float ValueMultiplier(ThingDef def)
     {
-        return 1f + Mathf.Sqrt(Mathf.Max(1f, def.BaseMarketValue)) / 3f;
+        return 1f + Mathf.Sqrt(Mathf.Max(1f, MarketValue(def))) / 3f;
     }
 
     // Work ticks at a work speed stat of 1.0.
@@ -66,7 +79,7 @@ public static class ForgeMath
             return 1;
         }
         int tech = (int)def.techLevel;
-        float valueFactor = 1f / (1f + def.BaseMarketValue / 30f);
+        float valueFactor = 1f / (1f + MarketValue(def) / 30f);
         float techFactor = 1f / (1f + 0.25f * Mathf.Max(0, tech - (int)TechLevel.Industrial));
         float yield = stack * 0.75f * valueFactor * techFactor;
         return Mathf.Clamp(Mathf.RoundToInt(yield), 1, stack);

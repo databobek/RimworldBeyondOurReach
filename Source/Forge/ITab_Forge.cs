@@ -36,6 +36,9 @@ public class ITab_Forge : ITab
 
     private static readonly Color FormatTint = new(0.85f, 0.2f, 0.2f, 0.25f);
 
+    private static readonly string?[] modeLabels = new string?[3];
+    private static LoadedLanguage? modeLabelsLanguage;
+
     private const float LeverWidth = 64f;
     private const float LeverPad = 6f;
 
@@ -81,27 +84,28 @@ public class ITab_Forge : ITab
 
         float gridTop = inner.y + HeaderHeight;
         int width = forge.Props.gridWidth;
-        float gridWidthPx = width * CellSize + (width - 1) * CellSpacing;
+        float cellSize = CellSize;
+        float gridWidthPx = width * cellSize + (width - 1) * CellSpacing;
         float startX = main.x + (main.width - gridWidthPx) / 2f;
 
-        float rowsPx = forge.Props.gridHeight * CellSize + (forge.Props.gridHeight - 1) * CellSpacing;
-        int hoverCol = selectingColumn ? HandleColumnSelect(forge, startX, gridTop, rowsPx) : -1;
+        float rowsPx = forge.Props.gridHeight * cellSize + (forge.Props.gridHeight - 1) * CellSpacing;
+        int hoverCol = selectingColumn ? HandleColumnSelect(forge, startX, gridTop, rowsPx, cellSize) : -1;
 
         for (int i = 0; i < forge.Capacity; i++)
         {
             int col = i % width;
             int row = i / width;
             Rect cell = new Rect(
-                startX + col * (CellSize + CellSpacing),
-                gridTop + row * (CellSize + CellSpacing),
-                CellSize,
-                CellSize);
+                startX + col * (cellSize + CellSpacing),
+                gridTop + row * (cellSize + CellSpacing),
+                cellSize,
+                cellSize);
             DrawCell(cell, forge, i);
         }
 
         if (hoverCol >= 0 && forge.FilledInColumn(hoverCol) > 0)
         {
-            Widgets.DrawBoxSolid(new Rect(startX + hoverCol * (CellSize + CellSpacing), gridTop, CellSize, rowsPx), FormatTint);
+            Widgets.DrawBoxSolid(new Rect(startX + hoverCol * (cellSize + CellSpacing), gridTop, cellSize, rowsPx), FormatTint);
         }
 
         DrawLever(new Rect(inner.xMax - LeverWidth + LeverPad, gridTop, LeverWidth - LeverPad, rowsPx + 6f + ClearButtonHeight), forge);
@@ -218,12 +222,12 @@ public class ITab_Forge : ITab
     }
 
     // Returns the hovered column and consumes a click on it (right-click cancels selection).
-    private int HandleColumnSelect(CompForge forge, float startX, float gridTop, float rowsPx)
+    private int HandleColumnSelect(CompForge forge, float startX, float gridTop, float rowsPx, float cellSize)
     {
         int hover = -1;
         for (int c = 0; c < forge.Props.gridWidth; c++)
         {
-            if (Mouse.IsOver(new Rect(startX + c * (CellSize + CellSpacing), gridTop, CellSize, rowsPx)))
+            if (Mouse.IsOver(new Rect(startX + c * (cellSize + CellSpacing), gridTop, cellSize, rowsPx)))
             {
                 hover = c;
             }
@@ -370,7 +374,10 @@ public class ITab_Forge : ITab
         Text.CurFontStyle.fontSize = prevSize;
         Text.Font = GameFont.Small;
         Widgets.DrawHighlightIfMouseover(bar);
-        TooltipHandler.TipRegion(bar, "BOR_Forge_ModeTip".Translate());
+        if (Mouse.IsOver(bar))
+        {
+            TooltipHandler.TipRegion(bar, "BOR_Forge_ModeTip".Translate());
+        }
         if (Widgets.ButtonInvisible(bar))
         {
             List<FloatMenuOption> options = new();
@@ -383,7 +390,16 @@ public class ITab_Forge : ITab
         }
     }
 
-    private static string ModeLabel(ForgeMode mode) => ("BOR_Forge_Mode_" + mode).Translate();
+    // Every filled cell draws one of these on every GUI event. Cleared if the language changes while the game runs.
+    private static string ModeLabel(ForgeMode mode)
+    {
+        if (modeLabelsLanguage != LanguageDatabase.activeLanguage)
+        {
+            modeLabelsLanguage = LanguageDatabase.activeLanguage;
+            System.Array.Clear(modeLabels, 0, modeLabels.Length);
+        }
+        return modeLabels[(int)mode] ??= ("BOR_Forge_Mode_" + mode).Translate().Resolve();
+    }
 
     private static string TooltipFor(ThingDef def, CompForge forge)
     {

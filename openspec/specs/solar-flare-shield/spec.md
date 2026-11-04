@@ -44,6 +44,13 @@ The shield SHALL only be placeable in a room that does not count as outdoors (`U
 - WHEN a shield's room comes to count as outdoors
 - THEN the shield SHALL stop protecting and its inspect pane SHALL say why
 
+### Requirement: RT Solar Flare Shield compatibility
+While a flare is on and any `Building_RTMagneticShield` on the map has power, that mod lifts the flare for the whole map. BOR's flare shielding SHALL stay inactive: no 60,000 W draw, no heat, and no change to how nets tick. The inspect pane of each BOR shield, Solar and Umbral, SHALL say it is being interfered with. Only the flare part stands down; the Umbral dome keeps everything else.
+
+#### Scenario: The RT shield loses power mid-flare
+- WHEN the last powered RT shield goes off during a flare
+- THEN BOR's shielding SHALL take over as if the RT shield were absent
+
 ## Approaches
 - **Reuse the vanilla tick (chosen):** a `PowerNetTick` patch narrows `powerComps` to protected buildings for the call, skips the flare check, and lets vanilla run. About 30 lines, keeps vanilla's logic, and other mods' patches keep working. The cost is swapping a live list during the call.
 - **Own flare tick (rejected):** a full replacement during flares. Easier to read, but about 60 lines copied from vanilla, and other mods' patches stop running during flares.

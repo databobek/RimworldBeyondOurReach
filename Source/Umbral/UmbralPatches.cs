@@ -81,12 +81,12 @@ public static class UmbralPatches
             {
                 return;
             }
-            if (thing.def.IsApparel && !Umbral.IsExoApparel(thing.def) && Umbral.WearsExoskeleton(pawn))
+            if (thing.def.IsApparel && Umbral.WearsExoskeleton(pawn) && !Umbral.IsExoApparel(thing.def))
             {
                 cantReason = "BOR_ExoBlocksApparel".Translate();
                 __result = false;
             }
-            else if (thing.def.IsWeapon && !Umbral.IsUtilityWeapon(thing.def) && Umbral.HasUtilityPod(pawn))
+            else if (thing.def.IsWeapon && Umbral.HasUtilityPod(pawn) && !Umbral.IsUtilityWeapon(thing.def))
             {
                 cantReason = "BOR_PodBlocksWeapon".Translate();
                 __result = false;
@@ -99,7 +99,7 @@ public static class UmbralPatches
     {
         public static void Postfix(Pawn p, ThingDef apparel, ref bool __result)
         {
-            if (__result && !Umbral.IsExoApparel(apparel) && Umbral.WearsExoskeleton(p))
+            if (__result && Umbral.WearsExoskeleton(p) && !Umbral.IsExoApparel(apparel))
             {
                 __result = false;
             }
@@ -108,29 +108,19 @@ public static class UmbralPatches
 
     // Umbral-only buildings (and their blueprints and frames) are forbidden to everyone else. After the Path of Light,
     // any tenebral or Umbral building that is left is forbidden to all, but can still be taken down.
-    [HarmonyPatch(typeof(ForbidUtility), nameof(ForbidUtility.IsForbidden), typeof(Thing), typeof(Pawn))]
-    public static class ForbidUtility_IsForbidden_Patch
+    // Called from the one IsForbidden postfix, in OrientisRestrictions, which has already checked the pawn.
+    public static bool ForbidsUmbralBuilding(Thing t, Pawn pawn)
     {
-        public static void Postfix(Thing t, Pawn pawn, ref bool __result)
+        ThingDef def = t.def.entityDefToBuild as ThingDef ?? t.def;
+        if (def.modExtensions == null)
         {
-            if (__result || pawn == null || pawn.Faction != Faction.OfPlayer || !pawn.RaceProps.Humanlike)
-            {
-                return;
-            }
-            ThingDef def = t.def.entityDefToBuild as ThingDef ?? t.def;
-            if (def.modExtensions == null)
-            {
-                return;
-            }
-            if (def.HasModExtension<DefModExtension_UmbralOnly>() && !Umbral.IsUmbral(pawn))
-            {
-                __result = true;
-            }
-            else if (DarkBuildings.Banned(def) && t.MapHeld?.designationManager.DesignationOn(t) == null)
-            {
-                __result = true;
-            }
+            return false;
         }
+        if (def.HasModExtension<DefModExtension_UmbralOnly>() && !Umbral.IsUmbral(pawn))
+        {
+            return true;
+        }
+        return DarkBuildings.Banned(def) && t.MapHeld?.designationManager.DesignationOn(t) == null;
     }
 
     // Tenebral and Umbral buildings leave the build menu for good after the Path of Light.

@@ -52,20 +52,24 @@ public static class OrientisRestrictions
     private static bool IsOrientisThing(Thing thing) => OrientisThings.Contains(thing.def.entityDefToBuild as ThingDef ?? thing.GetInnerIfMinified().def);
 
     // The set lookup comes first: this runs on every forbid check, and most things are in neither set.
-    public static bool Blocks(Pawn pawn, Thing thing, out string reason)
+    private static string? BlockReasonKey(Pawn pawn, Thing thing)
     {
         if (IsDarkThing(thing) && Orientis.IsOrientis(pawn))
         {
-            reason = "BOR_OrientisBlocksDark".Translate();
-            return true;
+            return "BOR_OrientisBlocksDark";
         }
         if (IsOrientisThing(thing) && CompMeditationShield.IsDark(pawn))
         {
-            reason = "BOR_DarkBlocksOrientis".Translate();
-            return true;
+            return "BOR_DarkBlocksOrientis";
         }
-        reason = "";
-        return false;
+        return null;
+    }
+
+    public static bool Blocks(Pawn pawn, Thing thing, out string reason)
+    {
+        string? key = BlockReasonKey(pawn, thing);
+        reason = key == null ? "" : key.Translate();
+        return key != null;
     }
 
     // Everything dark a pawn wears, wields, carries or has in its inventory. An Umbral's grown exoskeleton and pod are part
@@ -163,8 +167,12 @@ public static class OrientisRestrictions
         // A building marked for deconstruction can still be taken down.
         public static void Postfix(Thing t, Pawn pawn, ref bool __result)
         {
-            if (!__result && pawn != null && pawn.Faction == Faction.OfPlayer && pawn.RaceProps.Humanlike
-                && Blocks(pawn, t, out _) && t.MapHeld?.designationManager.DesignationOn(t) == null)
+            if (__result || pawn == null || pawn.Faction != Faction.OfPlayer || !pawn.RaceProps.Humanlike)
+            {
+                return;
+            }
+            if (UmbralPatches.ForbidsUmbralBuilding(t, pawn)
+                || (BlockReasonKey(pawn, t) != null && t.MapHeld?.designationManager.DesignationOn(t) == null))
             {
                 __result = true;
             }

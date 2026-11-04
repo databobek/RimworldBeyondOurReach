@@ -19,17 +19,35 @@ public class CompProperties_MeditationShield : CompProperties
 
 // Switches the pod's vanilla projectile interceptor, which also stops bombardments, and debilitates dark pawns in range.
 // It stays off until an Orientis pawn walks over and raises it, and falls when the map runs out of meditation power.
-public class CompMeditationShield : ThingComp
+public sealed class CompMeditationShield : ThingComp
 {
     private const int CheckInterval = 250;
+    private const int RaisersRefreshFrames = 30;
     private const string TenebralFaction = "BOR_Tenebrites";
 
     private static readonly AccessTools.FieldRef<CompProjectileInterceptor, bool> InterceptorShutDown =
         AccessTools.FieldRefAccess<CompProjectileInterceptor, bool>("shutDown");
 
     private bool enabled;
+    private List<Pawn> raisers = new();
+    private int raisersFrame = -RaisersRefreshFrames;
 
     public CompProperties_MeditationShield Props => (CompProperties_MeditationShield)props;
+
+    // Who can raise the shield. Gizmos rebuild every frame and this checks reachability for each pawn, so it is kept a moment.
+    private List<Pawn> Raisers
+    {
+        get
+        {
+            if (UnityEngine.Time.frameCount - raisersFrame >= RaisersRefreshFrames)
+            {
+                raisersFrame = UnityEngine.Time.frameCount;
+                raisers = parent.Map.mapPawns.FreeColonistsSpawned
+                    .Where(p => Orientis.IsOrientis(p) && !p.Downed && p.CanReach(parent, PathEndMode.InteractionCell, Danger.Deadly)).ToList();
+            }
+            return raisers;
+        }
+    }
 
     public bool Enabled => enabled;
 
@@ -115,8 +133,7 @@ public class CompMeditationShield : ThingComp
             };
             yield break;
         }
-        List<Pawn> pawns = parent.Map.mapPawns.FreeColonistsSpawned
-            .Where(p => Orientis.IsOrientis(p) && !p.Downed && p.CanReach(parent, PathEndMode.InteractionCell, Danger.Deadly)).ToList();
+        List<Pawn> pawns = Raisers;
         Command_Action enable = new()
         {
             defaultLabel = "BOR_ShieldEnable".Translate(),
