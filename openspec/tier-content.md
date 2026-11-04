@@ -72,13 +72,13 @@ Tier I = solar, II = quasar/kwazaari, III = tenebral, IV = umbral (moved from te
 | I | solar kinetic dissipation mesh (`BOR_SolarKineticDissipationMesh`) | BOR_MedicineBench_I | BOR_Research_Bionics_I | Common/Defs/BodyPartDefs/Tier1/BOR_CombatStatImplants.xml |
 | I | solar knee spike (`KneeSpikeSolar`) | BOR_MedicineBench_I | BOR_Research_Bionics_I | Mods/Royalty/Defs/hediffs_implants_tier1.xml |
 | I | solar knife (`Bamba_Melee_Solar_Knife`) | BOR_Bench_I, BOR_Bench_II, BOR_Bench_IV | Bamba_Melee_Research_Solar | AllBambaMelee/1.7/Defs/ThingDefs_Misc/Bamba_Melee_Weapons_BOR.xml |
-| I | solar laser bullpup (`BOR_Gun_LaserBullpup_TI`) | BOR_Bench_I | BOR_SolarBeamSpecialistWeaponry | Mods/CombatExtended/Defs/additions/laser_solar.xml |
-| I | solar laser cannon (`BOR_Gun_LaserCannon_TI`) | BOR_Bench_I | BOR_SolarBeamHeavyWeaponry | Mods/CombatExtended/Defs/additions/laser_solar.xml |
-| I | solar laser DMR (`BOR_Gun_LaserDMR_TI`) | BOR_Bench_I | BOR_SolarBeamSpecialistWeaponry | Mods/CombatExtended/Defs/additions/laser_solar.xml |
-| I | solar laser pistol (`BOR_Gun_LaserPistol_TI`) | BOR_Bench_I | BOR_SolarBeamWeaponry | Mods/CombatExtended/Defs/additions/laser_solar.xml |
-| I | solar laser rifle (`BOR_Gun_LaserRifle_TI`) | BOR_Bench_I | BOR_SolarBeamWeaponry | Mods/CombatExtended/Defs/additions/laser_solar.xml |
-| I | solar laser shotgun (`BOR_Gun_LaserShotgun_TI`) | BOR_Bench_I | BOR_SolarBeamWeaponry | Mods/CombatExtended/Defs/additions/laser_solar.xml |
-| I | solar laser sniper rifle (`BOR_Gun_LaserSniperRifle_TI`) | BOR_Bench_I | BOR_SolarBeamHeavyWeaponry | Mods/CombatExtended/Defs/additions/laser_solar.xml |
+| I | solar laser bullpup (`BOR_Gun_LaserBullpup_TI`) | BOR_Bench_I | BOR_SolarBeamSpecialistWeaponry | Mods/CE/Defs/additions/laser_solar.xml |
+| I | solar laser cannon (`BOR_Gun_LaserCannon_TI`) | BOR_Bench_I | BOR_SolarBeamHeavyWeaponry | Mods/CE/Defs/additions/laser_solar.xml |
+| I | solar laser DMR (`BOR_Gun_LaserDMR_TI`) | BOR_Bench_I | BOR_SolarBeamSpecialistWeaponry | Mods/CE/Defs/additions/laser_solar.xml |
+| I | solar laser pistol (`BOR_Gun_LaserPistol_TI`) | BOR_Bench_I | BOR_SolarBeamWeaponry | Mods/CE/Defs/additions/laser_solar.xml |
+| I | solar laser rifle (`BOR_Gun_LaserRifle_TI`) | BOR_Bench_I | BOR_SolarBeamWeaponry | Mods/CE/Defs/additions/laser_solar.xml |
+| I | solar laser shotgun (`BOR_Gun_LaserShotgun_TI`) | BOR_Bench_I | BOR_SolarBeamWeaponry | Mods/CE/Defs/additions/laser_solar.xml |
+| I | solar laser sniper rifle (`BOR_Gun_LaserSniperRifle_TI`) | BOR_Bench_I | BOR_SolarBeamHeavyWeaponry | Mods/CE/Defs/additions/laser_solar.xml |
 | I | solar learning assistant (`LearningAssistantSolar`) | BOR_MedicineBench_I | BOR_Research_Bionics_I | Mods/Royalty/Defs/hediffs_implants_tier1.xml |
 | I | solar leg (`BOR_SolarBionicLeg`) | BOR_MedicineBench_I | BOR_Research_Bionics_I | Common/Defs/BodyPartDefs/Tier1/Bodyparts.xml |
 | I | solar lifter (`BOR_Mech_SolarLifter`) | - | BOR_Research_Mechtech_I | Mods/Biotech/Defs/tiered_mechs.xml |
@@ -138,13 +138,13 @@ Tier I = solar, II = quasar/kwazaari, III = tenebral, IV = umbral (moved from te
 | I | sunweave (`BOR_Sunweave`) | BOR_Bench_I | BOR_Research_Production_I | Common/Defs/ThingDefs_Items/Tier1/Resources/sunweave.xml |
 | I | trot (`BOR_Trot`) | BOR_MedicineBench_I | BOR_Research_Drugs_I | Common/Defs/ThingDefs_Items/Tier1/Drugs/Trot.xml |
 | I | wide-a-wake (`BOR_WideAWake`) | BOR_MedicineBench_I | BOR_Research_Drugs_I | Common/Defs/ThingDefs_Items/Tier1/Drugs/WideAWake.xml |
-| II | badzaar LMG (`BOR_Gun_Badzaar_LMG`) | BOR_Bench_II | BOR_Research_Weapons_II | Mods/CombatExtended/Defs/additions/EquipmentBadzaar.xml |
-| II | badzaar pistol (`BOR_Gun_Badzaar_Pistol`) | BOR_Bench_II | BOR_Research_Weapons_II | Mods/CombatExtended/Defs/additions/EquipmentBadzaar.xml |
-| II | badzaar rifle (`BOR_Gun_Badzaar_Rifle`) | BOR_Bench_II | BOR_Research_Weapons_II | Mods/CombatExtended/Defs/additions/EquipmentBadzaar.xml |
-| II | badzaar shotgun (`BOR_Gun_Badzaar_Shotgun`) | BOR_Bench_II | BOR_Research_Weapons_II | Mods/CombatExtended/Defs/additions/EquipmentBadzaar.xml |
-| II | badzaar sniper rifle (`BOR_Gun_Badzaar_Sniper`) | BOR_Bench_II | BOR_Research_Weapons_II | Mods/CombatExtended/Defs/additions/EquipmentBadzaar.xml |
-| II | badzaari plate harness (`BOR_Badzaari_Apparel_HeavyArmor`) | BOR_Bench_II | BOR_Research_Armor_II | Mods/CombatExtended/Defs/additions/EquipmentBadzaar.xml |
-| II | badzaari plated helm (`BOR_Badzaari_Apparel_HeavyHelmet`) | BOR_Bench_II | BOR_Research_Armor_II | Mods/CombatExtended/Defs/additions/EquipmentBadzaar.xml |
+| II | badzaar LMG (`BOR_Gun_Badzaar_LMG`) | BOR_Bench_II | BOR_Research_Weapons_II | Mods/CE/Defs/additions/EquipmentBadzaar.xml |
+| II | badzaar pistol (`BOR_Gun_Badzaar_Pistol`) | BOR_Bench_II | BOR_Research_Weapons_II | Mods/CE/Defs/additions/EquipmentBadzaar.xml |
+| II | badzaar rifle (`BOR_Gun_Badzaar_Rifle`) | BOR_Bench_II | BOR_Research_Weapons_II | Mods/CE/Defs/additions/EquipmentBadzaar.xml |
+| II | badzaar shotgun (`BOR_Gun_Badzaar_Shotgun`) | BOR_Bench_II | BOR_Research_Weapons_II | Mods/CE/Defs/additions/EquipmentBadzaar.xml |
+| II | badzaar sniper rifle (`BOR_Gun_Badzaar_Sniper`) | BOR_Bench_II | BOR_Research_Weapons_II | Mods/CE/Defs/additions/EquipmentBadzaar.xml |
+| II | badzaari plate harness (`BOR_Badzaari_Apparel_HeavyArmor`) | BOR_Bench_II | BOR_Research_Armor_II | Mods/CE/Defs/additions/EquipmentBadzaar.xml |
+| II | badzaari plated helm (`BOR_Badzaari_Apparel_HeavyHelmet`) | BOR_Bench_II | BOR_Research_Armor_II | Mods/CE/Defs/additions/EquipmentBadzaar.xml |
 | II | canter (`BOR_Canter`) | BOR_MedicineBench_II | BOR_Research_Drugs_II | Common/Defs/ThingDefs_Items/Tier2/Drugs/Canter.xml |
 | II | castra (`BOR_Castra`) | BOR_MedicineBench_II | BOR_Research_Drugs_II | Common/Defs/ThingDefs_Items/Tier2/Drugs/Castra.xml |
 | II | combined mechanite shield (base) (`BOR_CombinedVaccine_BaseMech`) | BOR_MedicineBench_II, BOR_MedicineBench_IV | BOR_Research_Vaccines_Combined_II | Mods/Vaccines/Defs/vacc_combined_vaccines_patch.xml |
@@ -220,13 +220,13 @@ Tier I = solar, II = quasar/kwazaari, III = tenebral, IV = umbral (moved from te
 | II | kwazaari knee spike (`KneeSpikeQuasar`) | BOR_MedicineBench_II | BOR_Research_Bionics_II | Mods/Royalty/Defs/hediffs_implants_tier2.xml |
 | II | kwazaari knife (`Bamba_Melee_Quasar_Knife`) | BOR_Bench_II, BOR_Bench_IV | Bamba_Melee_Research_Quasar | AllBambaMelee/1.7/Defs/ThingDefs_Misc/Bamba_Melee_Weapons_BOR.xml |
 | II | kwazaari leg (`BOR_QuasarBionicLeg`) | BOR_MedicineBench_II | BOR_Research_Bionics_II | Common/Defs/BodyPartDefs/Tier2/Bodyparts.xml |
-| II | kwazaari less-lethal beam bullpup (`BOR_Gun_QuasarLaserBullpup_TII`) | BOR_Bench_II | BOR_QuasarBeamSpecialistWeaponry | Mods/CombatExtended/Defs/additions/laser_quasar.xml |
-| II | kwazaari less-lethal beam dmr (`BOR_Gun_QuasarLaserDMR_TII`) | BOR_Bench_II | BOR_QuasarBeamSpecialistWeaponry | Mods/CombatExtended/Defs/additions/laser_quasar.xml |
-| II | kwazaari less-lethal beam lmg (`BOR_Gun_QuasarLaserCannon_TII`) | BOR_Bench_II | BOR_QuasarBeamHeavyWeaponry | Mods/CombatExtended/Defs/additions/laser_quasar.xml |
-| II | kwazaari less-lethal beam pistol (`BOR_Gun_QuasarLaserPistol_TII`) | BOR_Bench_II | BOR_QuasarBeamWeaponry | Mods/CombatExtended/Defs/additions/laser_quasar.xml |
-| II | kwazaari less-lethal beam rifle (`BOR_Gun_QuasarLaserRifle_TII`) | BOR_Bench_II | BOR_QuasarBeamWeaponry | Mods/CombatExtended/Defs/additions/laser_quasar.xml |
-| II | kwazaari less-lethal beam scatter (`BOR_Gun_QuasarLaserShotgun_TII`) | BOR_Bench_II | BOR_QuasarBeamWeaponry | Mods/CombatExtended/Defs/additions/laser_quasar.xml |
-| II | kwazaari less-lethal beam sniper rifle (`BOR_Gun_QuasarLaserSniperRifle_TII`) | BOR_Bench_II | BOR_QuasarBeamHeavyWeaponry | Mods/CombatExtended/Defs/additions/laser_quasar.xml |
+| II | kwazaari less-lethal beam bullpup (`BOR_Gun_QuasarLaserBullpup_TII`) | BOR_Bench_II | BOR_QuasarBeamSpecialistWeaponry | Mods/CE/Defs/additions/laser_quasar.xml |
+| II | kwazaari less-lethal beam dmr (`BOR_Gun_QuasarLaserDMR_TII`) | BOR_Bench_II | BOR_QuasarBeamSpecialistWeaponry | Mods/CE/Defs/additions/laser_quasar.xml |
+| II | kwazaari less-lethal beam lmg (`BOR_Gun_QuasarLaserCannon_TII`) | BOR_Bench_II | BOR_QuasarBeamHeavyWeaponry | Mods/CE/Defs/additions/laser_quasar.xml |
+| II | kwazaari less-lethal beam pistol (`BOR_Gun_QuasarLaserPistol_TII`) | BOR_Bench_II | BOR_QuasarBeamWeaponry | Mods/CE/Defs/additions/laser_quasar.xml |
+| II | kwazaari less-lethal beam rifle (`BOR_Gun_QuasarLaserRifle_TII`) | BOR_Bench_II | BOR_QuasarBeamWeaponry | Mods/CE/Defs/additions/laser_quasar.xml |
+| II | kwazaari less-lethal beam scatter (`BOR_Gun_QuasarLaserShotgun_TII`) | BOR_Bench_II | BOR_QuasarBeamWeaponry | Mods/CE/Defs/additions/laser_quasar.xml |
+| II | kwazaari less-lethal beam sniper rifle (`BOR_Gun_QuasarLaserSniperRifle_TII`) | BOR_Bench_II | BOR_QuasarBeamHeavyWeaponry | Mods/CE/Defs/additions/laser_quasar.xml |
 | II | kwazaari light armor (`BOR_Quasar_Apparel_ArmorRecon`) | BOR_Bench_II | BOR_Research_Armor_II | Common/Defs/ThingDefs_Items/Tier2/Armor/apparel_recon_armor.xml |
 | II | kwazaari light helmet (`BOR_Quasar_Apparel_ArmorHelmetRecon`) | BOR_Bench_II | BOR_Research_Armor_II | Common/Defs/ThingDefs_Items/Tier2/Armor/apparel_recon_armor.xml |
 | II | kwazaari liver (`BOR_QuasarBionicLiver`) | BOR_MedicineBench_II | BOR_Research_Bionics_II | Common/Defs/BodyPartDefs/Tier2/Bodyparts.xml |

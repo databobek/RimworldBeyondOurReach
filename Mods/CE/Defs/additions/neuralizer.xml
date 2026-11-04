@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- CE's Neuralizer knocks a pawn out for 2 to 4 hours on any hit, because its one stage ignores severity. This one builds up per hit and wears off. -->
+	<!-- CE floors ambient damage, so beams using these need damageFalloff false or a 1-damage beam deals 0. -->
+	<DamageDef ParentName="Electrical">
+		<defName>BOR_Neuralizer</defName>
+		<label>neuralizer</label>
+		<harmsHealth>false</harmsHealth>
+		<additionalHediffs>
+			<li>
+				<hediff>BOR_Neuralizer</hediff>
+				<severityPerDamageDealt>0.1</severityPerDamageDealt>
+				<victimSeverityScalingByInvBodySize>true</victimSeverityScalingByInvBodySize>
+			</li>
+		</additionalHediffs>
+	</DamageDef>
+
+	<!-- Solar beams build the same effect at about a third of the rate per point of damage. -->
+	<DamageDef ParentName="Electrical">
+		<defName>BOR_Neuralizer_Solar</defName>
+		<label>solar neuralizer</label>
+		<harmsHealth>false</harmsHealth>
+		<additionalHediffs>
+			<li>
+				<hediff>BOR_Neuralizer</hediff>
+				<severityPerDamageDealt>0.035</severityPerDamageDealt>
+				<victimSeverityScalingByInvBodySize>true</victimSeverityScalingByInvBodySize>
+			</li>
+		</additionalHediffs>
+	</DamageDef>
+
+	<HediffDef>
+		<defName>BOR_Neuralizer</defName>
+		<label>neuralized</label>
+		<description>Hit by a neuralizer beam, disrupting the nervous system. Further hits build on it, and it fades with time.</description>
+		<hediffClass>HediffWithComps</hediffClass>
+		<defaultLabelColor>(0.8, 0.8, 0.35)</defaultLabelColor>
+		<initialSeverity>0.01</initialSeverity>
+		<minSeverity>0</minSeverity>
+		<maxSeverity>1</maxSeverity>
+		<isBad>false</isBad>
+		<comps>
+			<li Class="HediffCompProperties_SeverityPerDay">
+				<severityPerDay>-3</severityPerDay>
+			</li>
+		</comps>
+		<stages>
+			<li>
+				<label>dazed</label>
+				<minSeverity>0.01</minSeverity>
+				<capMods>
+					<li>
+						<capacity>Consciousness</capacity>
+						<postFactor>0.9</postFactor>
+					</li>
+				</capMods>
+			</li>
+			<li>
+				<label>disoriented</label>
+				<minSeverity>0.25</minSeverity>
+				<capMods>
+					<li>
+						<capacity>Consciousness</capacity>
+						<postFactor>0.75</postFactor>
+					</li>
+				</capMods>
+			</li>
+			<li>
+				<label>staggering</label>
+				<minSeverity>0.5</minSeverity>
+				<capMods>
+					<li>
+						<capacity>Consciousness</capacity>
+						<postFactor>0.5</postFactor>
+					</li>
+				</capMods>
+			</li>
+			<li>
+				<label>unconscious</label>
+				<minSeverity>0.7</minSeverity>
+				<capMods>
+					<li>
+						<capacity>Consciousness</capacity>
+						<setMax>0.1</setMax>
+					</li>
+				</capMods>
+			</li>
+		</stages>
+	</HediffDef>
+</Defs>
