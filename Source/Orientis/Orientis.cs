@@ -32,6 +32,7 @@ public static class BOR_OrientisDefOf
     public static HediffDef BOR_GoldenScar = null!;
     public static AbilityDef BOR_OrientisManifest = null!;
     public static LetterDef BOR_OrientisChoice = null!;
+    public static LetterDef BOR_DarkDispleasure = null!;
     public static StatDef BOR_MeditationStrength = null!;
     public static HediffDef BOR_Blessing = null!;
     public static HediffDef BOR_ShieldExposure = null!;

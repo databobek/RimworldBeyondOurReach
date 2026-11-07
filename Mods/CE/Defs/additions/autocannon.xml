@@ -44,17 +44,6 @@
 		</projectile>
 	</ThingDef>
 
-	<ThingDef ParentName="Base20x102mmNATOBullet">
-		<defName>BOR_Bullet_Autocannon_TC</defName>
-		<label>Autocannon bullet (TC)</label>
-		<projectile Class="CombatExtended.ProjectilePropertiesCE">
-			<damageAmountBase>46</damageAmountBase>
-			<armorPenetrationSharp>79</armorPenetrationSharp>
-			<armorPenetrationBlunt>2000</armorPenetrationBlunt>
-			<speed>375</speed>
-		</projectile>
-	</ThingDef>
-
 
 	<!-- ==================== Ammo ========================== -->
 
@@ -121,28 +110,6 @@
 		</tradeTags>
 	</ThingDef>
 
-	<ThingDef Class="CombatExtended.AmmoDef" ParentName="AmmoAutocannonShellBase">
-		<defName>BOR_Ammo_Autocannon_TC</defName>
-		<label>Autocannon shell (TC)</label>
-		<graphicData>
-			<texPath>Things/Ammo/STACK_RANGED/HighCaliber/Sabot</texPath>
-			<graphicClass>Graphic_StackCount</graphicClass>
-		</graphicData>
-		<statBases>
-			<Mass>0.35</Mass>
-			<MarketValue>1.8</MarketValue>
-
-			<RoyalFavorValue>0.00</RoyalFavorValue>
-		</statBases>
-		<ammoClass>BOR_TC_AmmoClass</ammoClass>
-		<cookOffProjectile>BOR_Bullet_Autocannon_TC</cookOffProjectile>
-		<generateAllowChance>0.10</generateAllowChance>
-		<generateCommonality>0.1</generateCommonality>
-		<tradeTags>
-			<li>BOR_Tech_III</li>
-		</tradeTags>
-	</ThingDef>
-
 	<!-- ==================== Recipes ========================== -->
 
 	<RecipeDef ParentName="AmmoRecipeBase">
@@ -157,7 +124,7 @@
 						<li>BOR_QuasarAlloy</li>
 					</thingDefs>
 				</filter>
-				<count>104</count>
+				<count>105</count>
 			</li>
 		</ingredients>
 		<fixedIngredientFilter>
@@ -183,7 +150,7 @@
 						<li>BOR_Sunsteel</li>
 					</thingDefs>
 				</filter>
-				<count>104</count>
+				<count>81</count>
 			</li>
 			<li>
 				<filter>
@@ -191,7 +158,7 @@
 						<li>BOR_Neutronium</li>
 					</thingDefs>
 				</filter>
-				<count>100</count>
+				<count>51</count>
 			</li>
 		</ingredients>
 		<fixedIngredientFilter>
@@ -218,7 +185,7 @@
 						<li>BOR_QuasarAlloy</li>
 					</thingDefs>
 				</filter>
-				<count>104</count>
+				<count>105</count>
 			</li>
 			<li>
 				<filter>
@@ -226,7 +193,7 @@
 						<li>BOR_Neutronium</li>
 					</thingDefs>
 				</filter>
-				<count>190</count>
+				<count>192</count>
 			</li>
 		</ingredients>
 		<fixedIngredientFilter>
@@ -241,50 +208,6 @@
 		<workAmount>24000</workAmount>
 	</RecipeDef>
 
-	<RecipeDef ParentName="AdvancedAmmoRecipeBase">
-		<defName>MakeBOR_Ammo_Autocannon_TC</defName>
-		<label>make Autocannon shell (TC) x200</label>
-		<description>Craft 200 Autocannon shell (TC).</description>
-		<jobString>Making Autocannon shell (TC).</jobString>
-		<ingredients>
-			<li>
-				<filter>
-					<thingDefs>
-						<li>BOR_QuasarAlloy</li>
-					</thingDefs>
-				</filter>
-				<count>64</count>
-			</li>
-			<li>
-				<filter>
-					<thingDefs>
-						<li>BOR_Tenebrite</li>
-					</thingDefs>
-				</filter>
-				<count>12</count>
-			</li>
-			<li>
-				<filter>
-					<thingDefs>
-						<li>BOR_Neutronium</li>
-					</thingDefs>
-				</filter>
-				<count>120</count>
-			</li>
-		</ingredients>
-		<fixedIngredientFilter>
-			<thingDefs>
-				<li>BOR_QuasarAlloy</li>
-				<li>BOR_Tenebrite</li>
-				<li>BOR_Neutronium</li>
-			</thingDefs>
-		</fixedIngredientFilter>
-		<products>
-			<BOR_Ammo_Autocannon_TC>200</BOR_Ammo_Autocannon_TC>
-		</products>
-		<workAmount>20100</workAmount>
-	</RecipeDef>
-
 	<!-- ==================== AmmoSets ==================== -->
 
 	<CombatExtended.AmmoSetDef>
@@ -294,7 +217,6 @@
 			<BOR_Ammo_Autocannon_Nc>BOR_Bullet_Autocannon_Nc</BOR_Ammo_Autocannon_Nc>
 			<BOR_Ammo_Autocannon_Ni>BOR_Bullet_Autocannon_Ni</BOR_Ammo_Autocannon_Ni>
 			<BOR_Ammo_Autocannon_QaP>BOR_Bullet_Autocannon_QaP</BOR_Ammo_Autocannon_QaP>
-			<BOR_Ammo_Autocannon_TC>BOR_Bullet_Autocannon_TC</BOR_Ammo_Autocannon_TC>
 		</ammoTypes>
 	</CombatExtended.AmmoSetDef>
 
@@ -305,7 +227,6 @@
 			<BOR_Ammo_Autocannon_Nc>BOR_Bullet_Autocannon_Nc</BOR_Ammo_Autocannon_Nc>
 			<BOR_Ammo_Autocannon_Ni>BOR_Bullet_Autocannon_Ni</BOR_Ammo_Autocannon_Ni>
 			<BOR_Ammo_Autocannon_QaP>BOR_Bullet_Autocannon_QaP</BOR_Ammo_Autocannon_QaP>
-			<BOR_Ammo_Autocannon_TC>BOR_Bullet_Autocannon_TC</BOR_Ammo_Autocannon_TC>
 		</ammoTypes>
 	</CombatExtended.AmmoSetDef>
 
@@ -315,7 +236,6 @@
 		<ammoTypes>
 			<BOR_Ammo_Autocannon_Nc>BOR_Bullet_Autocannon_Nc</BOR_Ammo_Autocannon_Nc>
 			<BOR_Ammo_Autocannon_Ni>BOR_Bullet_Autocannon_Ni</BOR_Ammo_Autocannon_Ni>
-			<BOR_Ammo_Autocannon_TC>BOR_Bullet_Autocannon_TC</BOR_Ammo_Autocannon_TC>
 		</ammoTypes>
 	</CombatExtended.AmmoSetDef>
 

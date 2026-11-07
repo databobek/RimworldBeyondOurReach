@@ -11,6 +11,7 @@ public class MapComponent_WorkBuildings : MapComponent
     public readonly List<CompDarkAltar> altars = new();
     public readonly List<Building_TenebralPod> pods = new();
     public readonly List<CompMeditationSpot> meditationSpots = new();
+    public readonly List<CompBORDeepDrill> drills = new();
 
     public MapComponent_WorkBuildings(Map map) : base(map)
     {

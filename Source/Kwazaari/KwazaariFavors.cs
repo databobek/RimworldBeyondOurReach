@@ -190,7 +190,7 @@ public class FavorWorker_Reinforcements : FavorWorker
 {
     public override AcceptanceReport CanDeliver(Map map)
     {
-        if (def.pawnKind == null || def.pawnCount <= 0)
+        if (def.squad.Count == 0 && (def.pawnKind == null || def.pawnCount <= 0))
         {
             return false;
         }
@@ -214,9 +214,19 @@ public class FavorWorker_Reinforcements : FavorWorker
             returnTick = Find.TickManager.TicksGame + Mathf.RoundToInt(def.loanHours * GenDate.TicksPerHour),
             lostPawnCost = def.lostPawnCost
         };
-        for (int i = 0; i < def.pawnCount; i++)
+        if (def.squad.Count > 0)
         {
-            loan.pawns.Add(PawnGenerator.GeneratePawn(def.pawnKind, faction));
+            foreach (PawnKindDef kind in def.squad)
+            {
+                loan.pawns.Add(PawnGenerator.GeneratePawn(kind, faction));
+            }
+        }
+        else
+        {
+            for (int i = 0; i < def.pawnCount; i++)
+            {
+                loan.pawns.Add(PawnGenerator.GeneratePawn(def.pawnKind, faction));
+            }
         }
         GameComponent_Kwazaari.Instance.AddLoan(loan);
         Building_KwazaariShuttle.SendDelivery(loan, cell);

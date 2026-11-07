@@ -20,6 +20,38 @@ public static class UmbralPatches
         }
     }
 
+    // requiredPreceptsOnly skips the code that fills tmpMemes, so vanilla reads the previous faction's memes here and
+    // can add their rituals, ignoring disallowedPrecepts. The next ideoligion fills the list again.
+    [HarmonyPatch(typeof(IdeoFoundation), nameof(IdeoFoundation.InitPrecepts))]
+    public static class IdeoFoundation_InitPrecepts_Patch
+    {
+        public static void Prefix(IdeoFoundation __instance, IdeoGenerationParms parms, List<MemeDef> ___tmpMemes)
+        {
+            if (parms.forFaction != BOR_UmbralDefOf.BOR_Umbrals)
+            {
+                return;
+            }
+            ___tmpMemes.Clear();
+            foreach (PreceptDef precept in parms.forFaction.GetModExtension<DefModExtension_ExtraPrecepts>()?.precepts ?? new List<PreceptDef>())
+            {
+                __instance.ideo.AddPrecept(PreceptMaker.MakePrecept(precept));
+            }
+        }
+    }
+
+    // Every cooldown goes through here, so the Righteous Slaughter's blessing shortens them all.
+    [HarmonyPatch(typeof(Ability), nameof(Ability.StartCooldown))]
+    public static class Ability_StartCooldown_Patch
+    {
+        public static void Prefix(Ability __instance, ref int ticks)
+        {
+            if (RighteousSlaughter.IsBlessed(__instance.pawn))
+            {
+                ticks = (int)(ticks / RighteousSlaughter.Settings.cooldownSpeed);
+            }
+        }
+    }
+
     [HarmonyPatch(typeof(Pawn_GeneTracker), nameof(Pawn_GeneTracker.SetXenotype))]
     public static class Pawn_GeneTracker_SetXenotype_Patch
     {
@@ -90,6 +122,49 @@ public static class UmbralPatches
             {
                 cantReason = "BOR_PodBlocksWeapon".Translate();
                 __result = false;
+            }
+        }
+    }
+
+    // Situational thoughts and new memories, social ones included, all ask this first.
+    [HarmonyPatch(typeof(ThoughtUtility), nameof(ThoughtUtility.CanGetThought))]
+    public static class ThoughtUtility_CanGetThought_Patch
+    {
+        public static void Postfix(Pawn pawn, ThoughtDef def, ref bool __result)
+        {
+            if (__result && def != BOR_UmbralDefOf.BOR_UmbralEmpty && Umbral.IsUmbral(pawn))
+            {
+                __result = false;
+            }
+        }
+    }
+
+    // Replaces the result outright, so the difficulty's mood offset doesn't move it either.
+    [HarmonyPatch(typeof(Need_Mood), nameof(Need_Mood.CurInstantLevel), MethodType.Getter)]
+    public static class Need_Mood_CurInstantLevel_Patch
+    {
+        public static void Postfix(Pawn ___pawn, ref float __result)
+        {
+            if (Umbral.IsUmbral(___pawn))
+            {
+                __result = Umbral.FixedMood;
+            }
+        }
+    }
+
+    // Recruiting and enslaving unlock everything a pawn wears. The exoskeleton destroys on drop, which vanilla's
+    // RemoveApparel job can't handle, and it can't come off anyway. Lock and Unlock read IsLocked, so it can't just lie.
+    [HarmonyPatch(typeof(Pawn_ApparelTracker), nameof(Pawn_ApparelTracker.UnlockAll))]
+    public static class Pawn_ApparelTracker_UnlockAll_Patch
+    {
+        public static void Postfix(Pawn_ApparelTracker __instance)
+        {
+            foreach (Apparel apparel in __instance.WornApparel)
+            {
+                if (Umbral.IsExoApparel(apparel.def))
+                {
+                    __instance.Lock(apparel);
+                }
             }
         }
     }

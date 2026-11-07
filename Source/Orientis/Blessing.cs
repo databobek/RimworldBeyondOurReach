@@ -21,7 +21,7 @@ public class CompProperties_BlessingBench : CompProperties
 }
 
 // Holds the parts chosen for the pawn on their way here. One pawn at a time, as the job reserves the bench.
-public class CompBlessingBench : ThingComp
+public class CompBlessingBench : ThingComp, IGlowSource
 {
     private Pawn? pawn;
     private List<int> partIndices = new();
@@ -29,6 +29,13 @@ public class CompBlessingBench : ThingComp
     public CompProperties_BlessingBench Props => (CompProperties_BlessingBench)props;
 
     public int PartCount => partIndices.Count;
+
+    private int lastBlessTick = -999;
+
+    // Lit while a pawn is meditating here.
+    public bool GlowActive => Find.TickManager.TicksGame - lastBlessTick <= 2;
+
+    public void NotifyBlessing() => lastBlessTick = Find.TickManager.TicksGame;
 
     public IEnumerable<BodyPartRecord> BlessableParts(Pawn target)
     {
@@ -116,6 +123,7 @@ public class JobDriver_OrientisBless : JobDriver
         {
             pawn.rotationTracker.FaceTarget(Bench);
             ticksDone++;
+            Comp.NotifyBlessing();
             if (ticksDone >= Total)
             {
                 ReadyForNextToil();

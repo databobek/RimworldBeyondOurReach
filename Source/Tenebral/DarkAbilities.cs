@@ -248,6 +248,11 @@ public class CompAbilityEffect_DarkThrall : CompAbilityEffect
         if (!ModsConfig.IdeologyActive || caster.Faction != Faction.OfPlayer)
         {
             RecruitUtility.Recruit(pawn, caster.Faction, caster);
+            // Whoever a hostile Umbral takes over follows its ideoligion.
+            if (ModsConfig.IdeologyActive && Umbral.IsUmbral(caster) && caster.Ideo != null)
+            {
+                pawn.ideo?.SetIdeo(caster.Ideo);
+            }
         }
         else if (!GenGuest.TryEnslavePrisoner(caster, pawn))
         {

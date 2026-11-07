@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<RulePackDef>
+		<defName>NamerIdeoUmbral</defName>
+		<rulePack>
+			<rulesStrings>
+				<li>r_ideoName->Umbralism</li>
+				<li>r_ideoAdjective->Umbral</li>
+				<li>r_memberName->Umbral</li>
+			</rulesStrings>
+		</rulePack>
+	</RulePackDef>
+	<RulePackDef>
+		<defName>NamerLeaderUmbral</defName>
+		<rulePack>
+			<rulesStrings>
+				<li>r_leaderTitle(p=6)->Umbral Sovereign</li>
+			</rulesStrings>
+		</rulePack>
+	</RulePackDef>
+	<RulePackDef>
+		<defName>NamerPersonUmbral</defName>
+		<rulePack>
+			<rulesStrings>
+				<li>r_name->[umbralFirst] [umbralLast]</li>
+				<li>umbralFirst->Vesh</li>
+				<li>umbralFirst->Oreth</li>
+				<li>umbralFirst->Sael</li>
+				<li>umbralFirst->Nhor</li>
+				<li>umbralFirst->Ithe</li>
+				<li>umbralFirst->Maur</li>
+				<li>umbralFirst->Thess</li>
+				<li>umbralFirst->Ulren</li>
+				<li>umbralFirst->Ysen</li>
+				<li>umbralFirst->Hask</li>
+				<li>umbralFirst->Dreth</li>
+				<li>umbralFirst->Quor</li>
+				<li>umbralLast->Morvane</li>
+				<li>umbralLast->Ashkel</li>
+				<li>umbralLast->Noctar</li>
+				<li>umbralLast->Velloth</li>
+				<li>umbralLast->Serrak</li>
+				<li>umbralLast->Ovrel</li>
+				<li>umbralLast->Tenrik</li>
+				<li>umbralLast->Zaeth</li>
+				<li>umbralLast->Duskan</li>
+				<li>umbralLast->Khorem</li>
+				<li>umbralLast->Isvane</li>
+				<li>umbralLast->Grael</li>
+			</rulesStrings>
+		</rulePack>
+	</RulePackDef>
+	<!-- Every culture needs this: a festival under a culture without it logs a grammar error when named. -->
+	<RulePackDef>
+		<defName>NamerFestivalUmbral</defName>
+		<rulePack>
+			<rulesStrings>
+				<li>festivalName->Night of the Will</li>
+				<li>festivalName->Vigil of Change</li>
+				<li>festivalName->The Long Dark</li>
+				<li>festivalName->Red Eclipse</li>
+				<li>festivalName->Hour of the Precipice</li>
+				<li>festivalName->Feast of Shadows</li>
+			</rulesStrings>
+		</rulePack>
+	</RulePackDef>
+	<!-- Used only by BOR_Umbrals. Names and hair come from here even without Ideology. -->
+	<CultureDef>
+		<defName>BOR_Umbral_Culture</defName>
+		<label>umbral</label>
+		<description>What remains of people who listened to the Dark Archotech for too long. Umbrals share no homeland, language or banner, only the changes killing has made in them.</description>
+		<pawnNameMaker>NamerPersonUmbral</pawnNameMaker>
+		<ideoNameMaker>NamerIdeoUmbral</ideoNameMaker>
+		<festivalNameMaker>NamerFestivalUmbral</festivalNameMaker>
+		<leaderTitleMaker>NamerLeaderUmbral</leaderTitleMaker>
+		<allowedPlaceTags>
+			<li MayRequire="Ludeon.RimWorld.Ideology">OriginSpacer</li>
+		</allowedPlaceTags>
+		<iconPath>BOR/Things/Factions/ModIcon</iconPath>
+		<thingStyleCategories />
+		<styleItemTags>
+			<li>
+				<tag>Urban</tag>
+				<baseWeight>1</baseWeight>
+				<weightFactor>1</weightFactor>
+			</li>
+			<li>
+				<tag>Soldier</tag>
+				<baseWeight>2</baseWeight>
+				<weightFactor>1</weightFactor>
+			</li>
+			<li>
+				<tag>NoBeard</tag>
+				<baseWeight>10</baseWeight>
+				<weightFactor>1</weightFactor>
+			</li>
+			<li>
+				<tag>NoTattoo</tag>
+				<baseWeight>1</baseWeight>
+				<weightFactor>1</weightFactor>
+			</li>
+		</styleItemTags>
+	</CultureDef>
+</Defs>

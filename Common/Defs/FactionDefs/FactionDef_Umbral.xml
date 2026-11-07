@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- Never picked for a random raid. A raid that sets parms.faction to this faction still works, so scripted raids must name it. -->
+	<FactionDef ParentName="FactionBase">
+		<defName>BOR_Umbrals</defName>
+		<label>umbrals</label>
+		<description>Changed beyond what they once were, they left every banner behind. They hold no settlements and answer no envoys.</description>
+		<fixedName>Umbrals</fixedName>
+		<pawnSingular>umbral</pawnSingular>
+		<pawnsPlural>umbrals</pawnsPlural>
+		<hidden>true</hidden>
+		<displayInFactionSelection>false</displayInFactionSelection>
+		<requiredCountAtGameStart>1</requiredCountAtGameStart>
+		<maxConfigurableAtWorldCreation>1</maxConfigurableAtWorldCreation>
+		<configurationListOrderPriority>2000</configurationListOrderPriority>
+		<canGenerateQuestSites>false</canGenerateQuestSites>
+		<permanentEnemy>true</permanentEnemy>
+		<autoFlee>false</autoFlee>
+		<techLevel>Archotech</techLevel>
+		<factionIconPath>BOR/Things/Factions/ModIcon</factionIconPath>
+		<colorSpectrum>
+			<li>(0.45, 0.05, 0.10)</li>
+			<li>(0.25, 0.02, 0.08)</li>
+		</colorSpectrum>
+		<backstoryFilters>
+			<li>
+				<categories>
+					<li>Offworld</li>
+				</categories>
+			</li>
+		</backstoryFilters>
+		<allowedCultures>
+			<li>BOR_Umbral_Culture</li>
+		</allowedCultures>
+		<!-- hiddenIdeo only works with fixedIdeo. The ideoligion stays out of the tab until the first pawn holding it spawns. -->
+		<fixedIdeo>true</fixedIdeo>
+		<hiddenIdeo>true</hiddenIdeo>
+		<ideoName>The Other Will</ideoName>
+		<ideoDescription>The Dark Archotech spoke, and they listened past the point of return. Every kill changes the body a little more, until only the Will remains to wear it. They keep no shrine and no scripture, only the next change.</ideoDescription>
+		<requiredPreceptsOnly>true</requiredPreceptsOnly>
+		<!-- Must include a structure meme: with forcedMemes set, no other meme can be added at random. -->
+		<forcedMemes>
+			<li MayRequire="Ludeon.RimWorld.Ideology">Structure_Archist</li>
+			<li MayRequire="Ludeon.RimWorld.Ideology">Darkness</li>
+			<li MayRequire="Ludeon.RimWorld.Ideology">Supremacist</li>
+		</forcedMemes>
+		<deityPresets>
+			<li>
+				<nameType>
+					<name>Horax</name>
+					<type>the Dark Archotech</type>
+				</nameType>
+				<gender>Male</gender>
+				<iconPath>UI/Deities/DeityGeneric</iconPath>
+			</li>
+		</deityPresets>
+		<!-- Slavery and execution stances: Supremacist picks from these, so blocking the others leaves honorable and required.
+		     Funeral and Festival are the only rituals shown in the tab. Don't block the hidden ones: the game needs RoleChange and ChildBirth, and restores hidden rituals on load. -->
+		<disallowedPrecepts>
+			<li MayRequire="Ludeon.RimWorld.Ideology">DarknessCombat_Preferred</li>
+			<li MayRequire="Ludeon.RimWorld.Ideology">Slavery_Acceptable</li>
+			<li MayRequire="Ludeon.RimWorld.Ideology">Execution_DontCare</li>
+			<li MayRequire="Ludeon.RimWorld.Ideology">Execution_RespectedIfGuilty</li>
+			<li MayRequire="Ludeon.RimWorld.Ideology">Festival</li>
+			<li MayRequire="Ludeon.RimWorld.Ideology">Funeral</li>
+			<li MayRequire="Ludeon.RimWorld.Ideology">IdeoRole_Leader</li>
+			<li MayRequire="Ludeon.RimWorld.Ideology">IdeoRole_Moralist</li>
+		</disallowedPrecepts>
+		<modExtensions>
+			<li Class="BeyondOurReach.DefModExtension_ExtraPrecepts">
+				<precepts>
+					<li MayRequire="Ludeon.RimWorld.Ideology">Corpses_DontCare</li>
+					<li MayRequire="Ludeon.RimWorld.Ideology">Nudity_Male_NoRules</li>
+					<li MayRequire="Ludeon.RimWorld.Ideology">Nudity_Female_NoRules</li>
+					<li MayRequire="Ludeon.RimWorld.Ideology">BOR_BiomassHarvest_Exalted</li>
+				</precepts>
+			</li>
+		</modExtensions>
+		<raidsForbidden>true</raidsForbidden>
+		<raidCommonalityFromPointsCurve>
+			<points>
+				<li>(0, 0)</li>
+			</points>
+		</raidCommonalityFromPointsCurve>
+		<allowedArrivalTemperatureRange>
+			<min>-150</min>
+			<max>150</max>
+		</allowedArrivalTemperatureRange>
+		<maxPawnCostPerTotalPointsCurve>
+			<points>
+				<li>(0, 400)</li>
+				<li>(100000, 100000)</li>
+			</points>
+		</maxPawnCostPerTotalPointsCurve>
+		<pawnGroupMakers>
+			<li>
+				<kindDef>Combat</kindDef>
+				<commonality>100</commonality>
+				<options>
+					<BOR_Umbral>1</BOR_Umbral>
+				</options>
+			</li>
+		</pawnGroupMakers>
+	</FactionDef>
+</Defs>

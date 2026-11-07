@@ -7,15 +7,15 @@ namespace BeyondOurReach;
 
 public class JobDriver_HarvestComponents : JobDriver
 {
-    private const TargetIndex TableInd = TargetIndex.A;
+    protected const TargetIndex TableInd = TargetIndex.A;
     private const TargetIndex PicoInd = TargetIndex.B;
     private const TargetIndex CorpseInd = TargetIndex.C;
     private const int WorkTicks = 600;
     private const int BloodRadius = 3;
 
-    private int ticksDone;
+    protected int ticksDone;
 
-    private Thing? Table => job.GetTarget(TableInd).Thing;
+    protected Thing? Table => job.GetTarget(TableInd).Thing;
     private Thing? PicoThing => job.GetTarget(PicoInd).Thing;
     private Corpse? CorpseThing => job.GetTarget(CorpseInd).Thing as Corpse;
 
@@ -54,6 +54,16 @@ public class JobDriver_HarvestComponents : JobDriver
         yield return Toils_Goto.GotoThing(TableInd, PathEndMode.InteractionCell).FailOn(() => pawn.carryTracker.CarriedThing == null || !PicoOnTable());
         yield return DropCarried(CorpseInd);
 
+        yield return WorkToil(() => CorpseOk() && CorpseOnTable() && PicoOnTable());
+
+        Toil finish = ToilMaker.MakeToil("HarvestComponentsFinish");
+        finish.initAction = Finish;
+        finish.defaultCompleteMode = ToilCompleteMode.Instant;
+        yield return finish;
+    }
+
+    protected Toil WorkToil(System.Func<bool> stillValid)
+    {
         Toil work = ToilMaker.MakeToil("HarvestComponentsWork");
         work.initAction = () => ticksDone = 0;
         work.tickAction = () =>
@@ -74,15 +84,10 @@ public class JobDriver_HarvestComponents : JobDriver
             }
         };
         work.defaultCompleteMode = ToilCompleteMode.Never;
-        work.FailOn(() => !CorpseOk() || !CorpseOnTable() || !PicoOnTable());
+        work.FailOn(() => !stillValid());
         work.WithProgressBar(TableInd, () => (float)ticksDone / WorkTicks);
         work.activeSkill = () => SkillDefOf.Crafting;
-        yield return work;
-
-        Toil finish = ToilMaker.MakeToil("HarvestComponentsFinish");
-        finish.initAction = Finish;
-        finish.defaultCompleteMode = ToilCompleteMode.Instant;
-        yield return finish;
+        return work;
     }
 
     private bool PicoOnTable()
@@ -110,7 +115,7 @@ public class JobDriver_HarvestComponents : JobDriver
             && corpse.HitPoints >= comp.Props.minCorpseHealthPct * corpse.MaxHitPoints;
     }
 
-    private Toil DropCarried(TargetIndex? ind)
+    protected Toil DropCarried(TargetIndex? ind)
     {
         Toil toil = ToilMaker.MakeToil("HarvestComponentsDrop");
         toil.initAction = () =>
@@ -134,7 +139,7 @@ public class JobDriver_HarvestComponents : JobDriver
         return toil;
     }
 
-    private void Splatter()
+    protected void Splatter(int radius = BloodRadius)
     {
         Thing? table = Table;
         Map? map = table?.Map;
@@ -142,14 +147,16 @@ public class JobDriver_HarvestComponents : JobDriver
         {
             return;
         }
-        foreach (IntVec3 c in GenRadial.RadialCellsAround(table.Position, BloodRadius, true))
+        foreach (IntVec3 c in GenRadial.RadialCellsAround(table.Position, radius, true))
         {
             if (c.InBounds(map) && Rand.Chance(0.35f))
             {
-                FilthMaker.TryMakeFilth(c, map, Rand.Chance(0.2f) ? ThingDefOf.Filth_CorpseBile : ThingDefOf.Filth_Blood, Rand.RangeInclusive(1, 3));
+                FilthMaker.TryMakeFilth(c, map, PickFilth(), Rand.RangeInclusive(1, 3));
             }
         }
     }
+
+    protected virtual ThingDef PickFilth() => Rand.Chance(0.2f) ? ThingDefOf.Filth_CorpseBile : ThingDefOf.Filth_Blood;
 
     private void Finish()
     {
@@ -182,7 +189,7 @@ public class JobDriver_HarvestComponents : JobDriver
         ApplyThoughts();
     }
 
-    private void ApplyThoughts()
+    protected void ApplyThoughts()
     {
         MemoryThoughtHandler? memories = pawn.needs?.mood?.thoughts?.memories;
         ThoughtDef? ownThought = OwnThoughtFor(pawn);

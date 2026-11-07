@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using HarmonyLib;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -49,19 +50,30 @@ public class MapComponent_MeditationPower : MapComponent
         return true;
     }
 
-    // The nearest cache within its load radius that still has room.
-    public CompMeditationCache? CacheToLoad(IntVec3 from) => caches
-        .Where(c => !c.Full && c.parent.Position.InHorDistOf(from, c.Props.loadRadius))
-        .OrderBy(c => c.parent.Position.DistanceToSquared(from))
-        .FirstOrDefault();
+    public bool HasRoom => caches.Any(c => !c.Full);
+
+    // Shared evenly between the caches that have room, wherever they are on the map.
+    public void Add(float amount)
+    {
+        while (amount > 0.001f)
+        {
+            List<CompMeditationCache> open = caches.Where(c => !c.Full).ToList();
+            if (open.Count == 0)
+            {
+                return;
+            }
+            float each = amount / open.Count;
+            foreach (CompMeditationCache cache in open)
+            {
+                amount -= cache.Add(each);
+            }
+        }
+    }
 }
 
 public class CompProperties_MeditationCache : CompProperties
 {
     public float capacity = 1000f;
-
-    // How close a meditating pawn has to be to load this cache.
-    public float loadRadius = 12f;
 
     public CompProperties_MeditationCache()
     {
@@ -79,7 +91,13 @@ public class CompMeditationCache : ThingComp
 
     public bool Full => stored >= Props.capacity;
 
-    public void Add(float amount) => stored = Mathf.Min(Props.capacity, stored + amount);
+    // Returns what it could actually take.
+    public float Add(float amount)
+    {
+        float added = Mathf.Min(Props.capacity - stored, amount);
+        stored += added;
+        return added;
+    }
 
     // Returns what it could actually give.
     public float Draw(float amount)
@@ -119,7 +137,7 @@ public class CompMeditationCache : ThingComp
     }
 
     public override string CompInspectStringExtra() =>
-        "BOR_MeditationCacheInspect".Translate(stored.ToString("F0"), Props.capacity.ToString("F0"));
+        "BOR_MeditationCacheInspect".Translate(MapComponent_MeditationPower.Of(parent.Map).Stored.ToString("F0"), MapComponent_MeditationPower.Of(parent.Map).Capacity.ToString("F0"));
 
     public override void PostExposeData()
     {
@@ -128,7 +146,7 @@ public class CompMeditationCache : ThingComp
     }
 }
 
-// The meditation symbol and a bar showing how full this cache is.
+// The meditation symbol and a bar showing how full the whole map's pool is.
 public class Gizmo_MeditationPower : Gizmo
 {
     private const float Width = 160f;
@@ -153,9 +171,10 @@ public class Gizmo_MeditationPower : Gizmo
         Text.Font = GameFont.Tiny;
         Widgets.Label(new Rect(inner.x + IconSize + 4f, inner.y, inner.width - IconSize - 4f, IconSize), "BOR_MeditationPower".Translate());
         Rect bar = new(inner.x, inner.yMax - 22f, inner.width, 22f);
-        Widgets.FillableBar(bar, cache.Stored / cache.Props.capacity);
+        MapComponent_MeditationPower power = MapComponent_MeditationPower.Of(cache.parent.Map);
+        Widgets.FillableBar(bar, power.Stored / power.Capacity);
         Text.Anchor = TextAnchor.MiddleCenter;
-        Widgets.Label(bar, cache.Stored.ToString("F0") + " / " + cache.Props.capacity.ToString("F0"));
+        Widgets.Label(bar, power.Stored.ToString("F0") + " / " + power.Capacity.ToString("F0"));
         Text.Anchor = TextAnchor.UpperLeft;
         Text.Font = GameFont.Small;
         return new GizmoResult(GizmoState.Clear);
@@ -166,6 +185,12 @@ public class CompProperties_MeditationSpot : CompProperties
 {
     // Power per day at a meditation strength of 100%.
     public float powerPerDay = 200f;
+
+    // The pawn sits in the middle of the building, facing sideways across it, instead of beside it.
+    public bool sitInMiddle;
+
+    // The pawn goes inside and is not drawn, like in a cryptosleep casket.
+    public bool hidePawn;
 
     public CompProperties_MeditationSpot()
     {
@@ -211,7 +236,7 @@ public class WorkGiver_OrientisMeditate : WorkGiver_Scanner
         {
             return null;
         }
-        if (MapComponent_MeditationPower.Of(t.Map).CacheToLoad(t.Position) == null)
+        if (!MapComponent_MeditationPower.Of(t.Map).HasRoom)
         {
             JobFailReason.Is("BOR_MeditationNoCache".Translate());
             return null;
@@ -226,10 +251,24 @@ public class JobDriver_OrientisMeditate : JobDriver
     private const int SessionTicks = 5000;
     private const int LoadInterval = 60;
 
+    private bool moved;
+
     private Thing Spot => job.GetTarget(TargetIndex.A).Thing;
+
+    private CompProperties_MeditationSpot SpotProps => Spot.TryGetComp<CompMeditationSpot>().Props;
+
+    // True while the pawn is inside a pod, which stops it being drawn.
+    public bool Hidden => moved && SpotProps.hidePawn;
 
     public override bool TryMakePreToilReservations(bool errorOnFailed) =>
         pawn.Reserve(Spot, job, 1, -1, null, errorOnFailed);
+
+    // Across the building: sideways to a vertical one, up or down for a horizontal one. Which way is the pawn's own.
+    private Rot4 SeatFacing()
+    {
+        bool second = pawn.thingIDNumber % 2 == 0;
+        return Spot.Rotation.IsHorizontal ? (second ? Rot4.North : Rot4.South) : (second ? Rot4.East : Rot4.West);
+    }
 
     protected override IEnumerable<Toil> MakeNewToils()
     {
@@ -237,25 +276,61 @@ public class JobDriver_OrientisMeditate : JobDriver
         yield return Toils_Goto.GotoThing(TargetIndex.A, Spot.def.hasInteractionCell ? PathEndMode.InteractionCell : PathEndMode.OnCell);
 
         Toil meditate = ToilMaker.MakeToil("OrientisMeditate");
+        meditate.initAction = () =>
+        {
+            CompProperties_MeditationSpot spot = SpotProps;
+            if (spot.sitInMiddle || spot.hidePawn)
+            {
+                pawn.Position = Spot.Position;
+                pawn.Notify_Teleported(false, true);
+                moved = true;
+            }
+        };
+        meditate.AddFinishAction(() =>
+        {
+            if (moved && pawn.Spawned && Spot.Spawned)
+            {
+                pawn.Position = Spot.InteractionCell;
+                pawn.Notify_Teleported(false, true);
+            }
+            moved = false;
+        });
         meditate.tickAction = () =>
         {
-            pawn.rotationTracker.FaceTarget(Spot);
+            if (moved && SpotProps.sitInMiddle)
+            {
+                pawn.Rotation = SeatFacing();
+            }
+            else
+            {
+                pawn.rotationTracker.FaceTarget(Spot);
+            }
             if (!pawn.IsHashIntervalTick(LoadInterval))
             {
                 return;
             }
-            CompMeditationCache? cache = MapComponent_MeditationPower.Of(pawn.Map).CacheToLoad(Spot.Position);
-            if (cache == null)
+            MapComponent_MeditationPower power = MapComponent_MeditationPower.Of(pawn.Map);
+            if (!power.HasRoom)
             {
                 EndJobWith(JobCondition.Succeeded);
                 return;
             }
             float perDay = Spot.TryGetComp<CompMeditationSpot>().Props.powerPerDay;
-            cache.Add(perDay * pawn.GetStatValue(BOR_OrientisDefOf.BOR_MeditationStrength) * LoadInterval / GenDate.TicksPerDay);
+            power.Add(perDay * pawn.GetStatValue(BOR_OrientisDefOf.BOR_MeditationStrength) * LoadInterval / GenDate.TicksPerDay);
         };
         meditate.defaultCompleteMode = ToilCompleteMode.Delay;
         meditate.defaultDuration = SessionTicks;
         meditate.handlingFacing = true;
         yield return meditate;
     }
+}
+
+// A pawn inside a meditation pod is not drawn.
+[HarmonyPatch(typeof(PawnRenderer), nameof(PawnRenderer.RenderPawnAt))]
+public static class PawnRenderer_RenderPawnAt_Patch
+{
+    private static readonly AccessTools.FieldRef<PawnRenderer, Pawn> PawnOf = AccessTools.FieldRefAccess<PawnRenderer, Pawn>("pawn");
+
+    public static bool Prefix(PawnRenderer __instance) =>
+        PawnOf(__instance).jobs?.curDriver is not JobDriver_OrientisMeditate { Hidden: true };
 }

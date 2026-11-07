@@ -14,6 +14,12 @@ public class DefModExtension_UmbralPart : DefModExtension
 {
 }
 
+// Precepts a requiredPreceptsOnly ideoligion should hold although none of its memes require them; placed on the faction.
+public class DefModExtension_ExtraPrecepts : DefModExtension
+{
+    public List<PreceptDef> precepts = new();
+}
+
 public class UmbralPartReplacement
 {
     public BodyPartDef bodyPart = null!;
@@ -43,6 +49,14 @@ public static class BOR_UmbralDefOf
     public static HediffDef BOR_UmbralCamo = null!;
     public static HediffDef BOR_UmbralUtilityPod = null!;
     public static HediffDef BOR_DarkArchotechCommune = null!;
+    public static ThoughtDef BOR_UmbralEmpty = null!;
+    public static HediffDef BOR_UmbralHerald = null!;
+    public static JobDef BOR_UmbralMurder = null!;
+    [DefAlias("BOR_Umbral")]
+    public static PawnKindDef BOR_Umbral_Kind = null!;
+    public static HediffDef BOR_SlaughterBlessing = null!;
+    public static HediffDef BOR_SlaughterRestraint = null!;
+    public static FactionDef BOR_Umbrals = null!;
 
     [MayRequireBiotech]
     public static XenotypeDef BOR_UmbralXenotype = null!;

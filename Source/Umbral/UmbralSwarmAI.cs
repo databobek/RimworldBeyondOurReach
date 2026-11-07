@@ -80,7 +80,7 @@ public class HediffComp_UmbralSwarmAI : HediffComp
     private void AiTick()
     {
         Pawn pawn = Pawn;
-        if (pawn.Faction == Faction.OfPlayer || !pawn.Spawned || pawn.Downed || pawn.Dead)
+        if (pawn.Faction == Faction.OfPlayer || !pawn.Spawned || pawn.Downed || pawn.Dead || UmbralHerald.IsHerald(pawn))
         {
             state = SwarmState.None;
             return;

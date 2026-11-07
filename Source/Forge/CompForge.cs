@@ -49,7 +49,7 @@ public enum ForgeMode
     DoForever
 }
 
-public sealed partial class CompForge : ThingComp
+public sealed partial class CompForge : ThingComp, IGlowSource
 {
     private const int CountRefreshTicks = 60;
 

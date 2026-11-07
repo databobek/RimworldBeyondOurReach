@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+
+	<!-- Chemfuel Powered Deepdrill is loaded: the tier 1 and 2 BOR deepdrills become a generator that powers itself (and, where
+	     transmitsPower is true, its grid), burning the tier's fuel. Without this mod, and always for tier 0, they need external power. -->
+
+	<!-- Tier 1: BOR fuel rod -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="BOR_Deepdrill_I"]/comps/li[@Class="CompProperties_Power"]</xpath>
+		<value>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerPlant</compClass>
+				<basePowerConsumption>-2100</basePowerConsumption>
+				<transmitsPower>true</transmitsPower>
+				<soundAmbientProducingPower>ChemfuelFiredGenerator_Ambience</soundAmbientProducingPower>
+			</li>
+		</value>
+	</Operation>
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[defName="BOR_Deepdrill_I"]/comps</xpath>
+		<value>
+			<li Class="CompProperties_Refuelable">
+				<fuelConsumptionRate>0.005</fuelConsumptionRate>
+				<fuelCapacity>1</fuelCapacity>
+				<fuelFilter>
+					<thingDefs>
+						<li>BOR_FuelRod</li>
+					</thingDefs>
+				</fuelFilter>
+				<showAllowAutoRefuelToggle>true</showAllowAutoRefuelToggle>
+				<canEjectFuel>true</canEjectFuel>
+			</li>
+		</value>
+	</Operation>
+
+	<!-- Tier 2: neutronium, isolated from the colony grid -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="BOR_Deepdrill_II"]/comps/li[@Class="CompProperties_Power"]</xpath>
+		<value>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerPlant</compClass>
+				<basePowerConsumption>-2100</basePowerConsumption>
+				<transmitsPower>false</transmitsPower>
+				<soundAmbientProducingPower>ChemfuelFiredGenerator_Ambience</soundAmbientProducingPower>
+			</li>
+		</value>
+	</Operation>
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[defName="BOR_Deepdrill_II"]/comps</xpath>
+		<value>
+			<li Class="CompProperties_Refuelable">
+				<fuelConsumptionRate>4.5</fuelConsumptionRate>
+				<fuelCapacity>30.0</fuelCapacity>
+				<fuelFilter>
+					<thingDefs>
+						<li>BOR_Neutronium</li>
+					</thingDefs>
+				</fuelFilter>
+				<showAllowAutoRefuelToggle>true</showAllowAutoRefuelToggle>
+				<canEjectFuel>true</canEjectFuel>
+			</li>
+		</value>
+	</Operation>
+
+</Patch>

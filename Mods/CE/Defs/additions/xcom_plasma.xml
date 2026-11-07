@@ -14,6 +14,8 @@
 			<li>BOR_Tech_II</li>
 			<li>CE_AutoEnableTrade</li>
 			<li>CE_AutoEnableCrafting_FabricationBench</li>
+			<li>CE_AutoEnableCrafting_BOR_Bench_II</li>
+			<li>CE_AutoEnableCrafting_BOR_Bench_IV</li>
 		</tradeTags>
 		<thingCategories>
 			<li>AmmoPlasmaCellPistol</li>
@@ -53,6 +55,9 @@
 			<li>BOR_Tech_I</li>
 			<li>CE_AutoEnableTrade</li>
 			<li>CE_AutoEnableCrafting_FabricationBench</li>
+			<li>CE_AutoEnableCrafting_BOR_Bench_I</li>
+			<li>CE_AutoEnableCrafting_BOR_Bench_II</li>
+			<li>CE_AutoEnableCrafting_BOR_Bench_IV</li>
 		</tradeTags>
 		<thingCategories>
 			<li>AmmoPlasmaCellPistol</li>
@@ -80,45 +85,6 @@
 		<generateCommonality>0.01</generateCommonality>
 	</ThingDef>
 	<ThingDef Class="CombatExtended.AmmoDef" ParentName="SpacerSmallAmmoBase">
-		<defName>BOR_Ammo_XCOM_PlasmaCellPistolTenebrite</defName>
-		<label>Tenebrite Plasma Dense Cell</label>
-		<description>Plasma containment cell optimized for Pistol reinforced with Tenebrite</description>
-		<statBases>
-			<Mass>0.02</Mass>
-			<Bulk>0.02</Bulk>
-			<MarketValue>0.30</MarketValue>
-		</statBases>
-		<tradeTags>
-			<li>BOR_Tech_III</li>
-			<li>CE_AutoEnableTrade</li>
-			<li>CE_AutoEnableCrafting_FabricationBench</li>
-		</tradeTags>
-		<thingCategories>
-			<li>AmmoPlasmaCellPistol</li>
-		</thingCategories>
-		<graphicData>
-			<texPath>BOR/Things/Item/Equipment/weaponranged/gen2/plazma/Ten</texPath>
-			<graphicClass>Graphic_StackCount</graphicClass>
-		</graphicData>
-		<ammoClass>BOR_Plasma_Tenebrite_AmmoClass</ammoClass>
-		<comps>
-			<li Class="CombatExtended.CompProperties_ExplosiveCE">
-				<damageAmountBase>49.5</damageAmountBase>
-				<explosiveDamageType>Bomb</explosiveDamageType>
-				<explosiveRadius>0.55</explosiveRadius>
-				<applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
-			</li>
-			<li Class="CombatExtended.CompProperties_Fragments">
-				<fragments>
-					<Fragment_Tenebral>3</Fragment_Tenebral>
-					<Fragment_Quasar>6</Fragment_Quasar>
-				</fragments>
-			</li>
-		</comps>
-		<generateAllowChance>0.10</generateAllowChance>
-		<generateCommonality>0.01</generateCommonality>
-	</ThingDef>
-	<ThingDef Class="CombatExtended.AmmoDef" ParentName="SpacerSmallAmmoBase">
 		<defName>BOR_Ammo_XCOM_PlasmaCellPistolNeutronium</defName>
 		<label>Neutronium Plasma Pistol Cell</label>
 		<description>Plasma containment cell optimized for pistols infused with Neutronium</description>
@@ -131,6 +97,9 @@
 			<li>BOR_Tech_I</li>
 			<li>CE_AutoEnableTrade</li>
 			<li>CE_AutoEnableCrafting_FabricationBench</li>
+			<li>CE_AutoEnableCrafting_BOR_Bench_I</li>
+			<li>CE_AutoEnableCrafting_BOR_Bench_II</li>
+			<li>CE_AutoEnableCrafting_BOR_Bench_IV</li>
 		</tradeTags>
 		<thingCategories>
 			<li>AmmoPlasmaCellPistol</li>
@@ -168,18 +137,10 @@
 			<li>
 				<filter>
 					<thingDefs>
-						<li>Plasteel</li>
-					</thingDefs>
-				</filter>
-				<count>14</count>
-			</li>
-			<li>
-				<filter>
-					<thingDefs>
 						<li>BOR_QuasarAlloy</li>
 					</thingDefs>
 				</filter>
-				<count>2</count>
+				<count>22</count>
 			</li>
 			<li>
 				<filter>
@@ -192,7 +153,6 @@
 		</ingredients>
 		<fixedIngredientFilter>
 			<thingDefs>
-				<li>Plasteel</li>
 				<li>BOR_QuasarAlloy</li>
 				<li>ComponentSpacer</li>
 			</thingDefs>
@@ -215,15 +175,7 @@
 						<li>BOR_Sunsteel</li>
 					</thingDefs>
 				</filter>
-				<count>2</count>
-			</li>
-			<li>
-				<filter>
-					<thingDefs>
-						<li>BOR_QuasarAlloy</li>
-					</thingDefs>
-				</filter>
-				<count>2</count>
+				<count>17</count>
 			</li>
 			<li>
 				<filter>
@@ -237,56 +189,11 @@
 		<fixedIngredientFilter>
 			<thingDefs>
 				<li>BOR_Sunsteel</li>
-				<li>BOR_QuasarAlloy</li>
 				<li>ComponentSpacer</li>
 			</thingDefs>
 		</fixedIngredientFilter>
 		<products>
 			<BOR_Ammo_XCOM_PlasmaCellPistolSunsteel>500</BOR_Ammo_XCOM_PlasmaCellPistolSunsteel>
-		</products>
-	</RecipeDef>
-	<RecipeDef ParentName="ChargeAmmoRecipeBase">
-		<defName>MakeBOR_Ammo_XCOM_PlasmaCellPistolTenebrite</defName>
-		<label>make Tenebrite Plasma Pistol Cells</label>
-		<description>Craft 500 shots' worth of Tenebrite Plasma Pistol Cells.</description>
-		<jobString>Making Plasma Pistol Cells.</jobString>
-		<researchPrerequisite>BOR_CE_AmmoResearch_TC</researchPrerequisite>
-		<workAmount>34000</workAmount>
-		<ingredients>
-			<li>
-				<filter>
-					<thingDefs>
-						<li>BOR_QuasarAlloy</li>
-					</thingDefs>
-				</filter>
-				<count>14</count>
-			</li>
-			<li>
-				<filter>
-					<thingDefs>
-						<li>BOR_Tenebrite</li>
-					</thingDefs>
-				</filter>
-				<count>2</count>
-			</li>
-			<li>
-				<filter>
-					<thingDefs>
-						<li>ComponentSpacer</li>
-					</thingDefs>
-				</filter>
-				<count>2</count>
-			</li>
-		</ingredients>
-		<fixedIngredientFilter>
-			<thingDefs>
-				<li>BOR_Tenebrite</li>
-				<li>BOR_QuasarAlloy</li>
-				<li>ComponentSpacer</li>
-			</thingDefs>
-		</fixedIngredientFilter>
-		<products>
-			<BOR_Ammo_XCOM_PlasmaCellPistolTenebrite>500</BOR_Ammo_XCOM_PlasmaCellPistolTenebrite>
 		</products>
 	</RecipeDef>
 	<RecipeDef ParentName="ChargeAmmoRecipeBase">
@@ -303,7 +210,7 @@
 						<li>BOR_QuasarAlloy</li>
 					</thingDefs>
 				</filter>
-				<count>14</count>
+				<count>22</count>
 			</li>
 			<li>
 				<filter>
@@ -324,8 +231,8 @@
 		</ingredients>
 		<fixedIngredientFilter>
 			<thingDefs>
-				<li>BOR_Neutronium</li>
 				<li>BOR_QuasarAlloy</li>
+				<li>BOR_Neutronium</li>
 				<li>ComponentSpacer</li>
 			</thingDefs>
 		</fixedIngredientFilter>
@@ -347,6 +254,8 @@
 			<li>BOR_Tech_II</li>
 			<li>CE_AutoEnableTrade</li>
 			<li>CE_AutoEnableCrafting_FabricationBench</li>
+			<li>CE_AutoEnableCrafting_BOR_Bench_II</li>
+			<li>CE_AutoEnableCrafting_BOR_Bench_IV</li>
 		</tradeTags>
 		<thingCategories>
 			<li>AmmoPlasmaCellRifle</li>
@@ -384,6 +293,9 @@
 			<li>BOR_Tech_I</li>
 			<li>CE_AutoEnableTrade</li>
 			<li>CE_AutoEnableCrafting_FabricationBench</li>
+			<li>CE_AutoEnableCrafting_BOR_Bench_I</li>
+			<li>CE_AutoEnableCrafting_BOR_Bench_II</li>
+			<li>CE_AutoEnableCrafting_BOR_Bench_IV</li>
 		</tradeTags>
 		<thingCategories>
 			<li>AmmoPlasmaCellRifle</li>
@@ -409,43 +321,6 @@
 		</comps>
 	</ThingDef>
 	<ThingDef Class="CombatExtended.AmmoDef" ParentName="SpacerSmallAmmoBase">
-		<defName>BOR_Ammo_XCOM_PlasmaCellRifleTenebrite</defName>
-		<label>Tenebrite Plasma Rifle Cell</label>
-		<description>Plasma containment cell optimized for Rifle reinforced with Tenebrite</description>
-		<statBases>
-			<Mass>0.03</Mass>
-			<Bulk>0.02</Bulk>
-			<MarketValue>0.36</MarketValue>
-		</statBases>
-		<tradeTags>
-			<li>BOR_Tech_III</li>
-			<li>CE_AutoEnableTrade</li>
-			<li>CE_AutoEnableCrafting_FabricationBench</li>
-		</tradeTags>
-		<thingCategories>
-			<li>AmmoPlasmaCellRifle</li>
-		</thingCategories>
-		<graphicData>
-			<texPath>BOR/Things/Item/Equipment/weaponranged/gen2/plazma/Ten</texPath>
-			<graphicClass>Graphic_StackCount</graphicClass>
-		</graphicData>
-		<ammoClass>BOR_Plasma_Tenebrite_AmmoClass</ammoClass>
-		<comps>
-			<li Class="CombatExtended.CompProperties_ExplosiveCE">
-				<damageAmountBase>38</damageAmountBase>
-				<explosiveDamageType>Bomb</explosiveDamageType>
-				<explosiveRadius>0.79</explosiveRadius>
-				<applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
-			</li>
-			<li Class="CombatExtended.CompProperties_Fragments">
-				<fragments>
-					<Fragment_Quasar>3</Fragment_Quasar>
-					<Fragment_Solar>10</Fragment_Solar>
-				</fragments>
-			</li>
-		</comps>
-	</ThingDef>
-	<ThingDef Class="CombatExtended.AmmoDef" ParentName="SpacerSmallAmmoBase">
 		<defName>BOR_Ammo_XCOM_PlasmaCellRifleNeutronium</defName>
 		<label>Neutronium Plasma Rifle Cell</label>
 		<description>Plasma containment cell optimized for rifles infused with Neutronium</description>
@@ -458,6 +333,9 @@
 			<li>BOR_Tech_I</li>
 			<li>CE_AutoEnableTrade</li>
 			<li>CE_AutoEnableCrafting_FabricationBench</li>
+			<li>CE_AutoEnableCrafting_BOR_Bench_I</li>
+			<li>CE_AutoEnableCrafting_BOR_Bench_II</li>
+			<li>CE_AutoEnableCrafting_BOR_Bench_IV</li>
 		</tradeTags>
 		<thingCategories>
 			<li>AmmoPlasmaCellRifle</li>
@@ -493,18 +371,10 @@
 			<li>
 				<filter>
 					<thingDefs>
-						<li>Plasteel</li>
-					</thingDefs>
-				</filter>
-				<count>18</count>
-			</li>
-			<li>
-				<filter>
-					<thingDefs>
 						<li>BOR_QuasarAlloy</li>
 					</thingDefs>
 				</filter>
-				<count>2</count>
+				<count>26</count>
 			</li>
 			<li>
 				<filter>
@@ -517,7 +387,6 @@
 		</ingredients>
 		<fixedIngredientFilter>
 			<thingDefs>
-				<li>Plasteel</li>
 				<li>BOR_QuasarAlloy</li>
 				<li>ComponentSpacer</li>
 			</thingDefs>
@@ -540,15 +409,7 @@
 						<li>BOR_Sunsteel</li>
 					</thingDefs>
 				</filter>
-				<count>2</count>
-			</li>
-			<li>
-				<filter>
-					<thingDefs>
-						<li>BOR_QuasarAlloy</li>
-					</thingDefs>
-				</filter>
-				<count>2</count>
+				<count>20</count>
 			</li>
 			<li>
 				<filter>
@@ -562,56 +423,11 @@
 		<fixedIngredientFilter>
 			<thingDefs>
 				<li>BOR_Sunsteel</li>
-				<li>BOR_QuasarAlloy</li>
 				<li>ComponentSpacer</li>
 			</thingDefs>
 		</fixedIngredientFilter>
 		<products>
 			<BOR_Ammo_XCOM_PlasmaCellRifleSunsteel>500</BOR_Ammo_XCOM_PlasmaCellRifleSunsteel>
-		</products>
-	</RecipeDef>
-	<RecipeDef ParentName="ChargeAmmoRecipeBase">
-		<defName>MakeBOR_Ammo_XCOM_PlasmaCellRifleTenebrite</defName>
-		<label>make Tenebrite Plasma Rifle Cells</label>
-		<description>Craft 500 shots' worth of Tenebrite Plasma Rifle Cells.</description>
-		<jobString>Making Plasma Rifle Cells.</jobString>
-		<researchPrerequisite>BOR_CE_AmmoResearch_TC</researchPrerequisite>
-		<workAmount>38000</workAmount>
-		<ingredients>
-			<li>
-				<filter>
-					<thingDefs>
-						<li>BOR_QuasarAlloy</li>
-					</thingDefs>
-				</filter>
-				<count>18</count>
-			</li>
-			<li>
-				<filter>
-					<thingDefs>
-						<li>BOR_Tenebrite</li>
-					</thingDefs>
-				</filter>
-				<count>2</count>
-			</li>
-			<li>
-				<filter>
-					<thingDefs>
-						<li>ComponentSpacer</li>
-					</thingDefs>
-				</filter>
-				<count>2</count>
-			</li>
-		</ingredients>
-		<fixedIngredientFilter>
-			<thingDefs>
-				<li>BOR_Tenebrite</li>
-				<li>BOR_QuasarAlloy</li>
-				<li>ComponentSpacer</li>
-			</thingDefs>
-		</fixedIngredientFilter>
-		<products>
-			<BOR_Ammo_XCOM_PlasmaCellRifleTenebrite>500</BOR_Ammo_XCOM_PlasmaCellRifleTenebrite>
 		</products>
 	</RecipeDef>
 	<RecipeDef ParentName="ChargeAmmoRecipeBase">
@@ -628,7 +444,7 @@
 						<li>BOR_QuasarAlloy</li>
 					</thingDefs>
 				</filter>
-				<count>18</count>
+				<count>26</count>
 			</li>
 			<li>
 				<filter>
@@ -649,8 +465,8 @@
 		</ingredients>
 		<fixedIngredientFilter>
 			<thingDefs>
-				<li>BOR_Neutronium</li>
 				<li>BOR_QuasarAlloy</li>
+				<li>BOR_Neutronium</li>
 				<li>ComponentSpacer</li>
 			</thingDefs>
 		</fixedIngredientFilter>
@@ -672,6 +488,8 @@
 			<li>BOR_Tech_II</li>
 			<li>CE_AutoEnableTrade</li>
 			<li>CE_AutoEnableCrafting_FabricationBench</li>
+			<li>CE_AutoEnableCrafting_BOR_Bench_II</li>
+			<li>CE_AutoEnableCrafting_BOR_Bench_IV</li>
 		</tradeTags>
 		<thingCategories>
 			<li>AmmoPlasmaCellHeavy</li>
@@ -710,6 +528,9 @@
 			<li>BOR_Tech_I</li>
 			<li>CE_AutoEnableTrade</li>
 			<li>CE_AutoEnableCrafting_FabricationBench</li>
+			<li>CE_AutoEnableCrafting_BOR_Bench_I</li>
+			<li>CE_AutoEnableCrafting_BOR_Bench_II</li>
+			<li>CE_AutoEnableCrafting_BOR_Bench_IV</li>
 		</tradeTags>
 		<thingCategories>
 			<li>AmmoPlasmaCellHeavy</li>
@@ -736,44 +557,6 @@
 		</comps>
 	</ThingDef>
 	<ThingDef Class="CombatExtended.AmmoDef" ParentName="SpacerSmallAmmoBase">
-		<defName>BOR_Ammo_XCOM_PlasmaCellHeavyTenebrite</defName>
-		<label>Tenebrite Plasma Dense Cell</label>
-		<description>Plasma containment cell optimized for Heavy reinforced with Tenebrite</description>
-		<statBases>
-			<Mass>0.20</Mass>
-			<Bulk>0.83</Bulk>
-			<MarketValue>0.32</MarketValue>
-		</statBases>
-		<tradeTags>
-			<li>BOR_Tech_III</li>
-			<li>CE_AutoEnableTrade</li>
-			<li>CE_AutoEnableCrafting_FabricationBench</li>
-		</tradeTags>
-		<thingCategories>
-			<li>AmmoPlasmaCellHeavy</li>
-		</thingCategories>
-		<stackLimit>75</stackLimit>
-		<graphicData>
-			<texPath>BOR/Things/Item/Equipment/weaponranged/gen2/plazma/Ten</texPath>
-			<graphicClass>Graphic_StackCount</graphicClass>
-		</graphicData>
-		<ammoClass>BOR_Plasma_Tenebrite_AmmoClass</ammoClass>
-		<comps>
-			<li Class="CombatExtended.CompProperties_ExplosiveCE">
-				<damageAmountBase>106</damageAmountBase>
-				<explosiveDamageType>Bomb</explosiveDamageType>
-				<explosiveRadius>0.79</explosiveRadius>
-				<applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
-			</li>
-			<li Class="CombatExtended.CompProperties_Fragments">
-				<fragments>
-					<Fragment_Tenebral>3</Fragment_Tenebral>
-					<Fragment_Quasar>15</Fragment_Quasar>
-				</fragments>
-			</li>
-		</comps>
-	</ThingDef>
-	<ThingDef Class="CombatExtended.AmmoDef" ParentName="SpacerSmallAmmoBase">
 		<defName>BOR_Ammo_XCOM_PlasmaCellHeavyNeutronium</defName>
 		<label>Neutronium Plasma Heavy Cell</label>
 		<description>Plasma containment cell optimized for weapons infused with Neutronium</description>
@@ -786,6 +569,9 @@
 			<li>BOR_Tech_I</li>
 			<li>CE_AutoEnableTrade</li>
 			<li>CE_AutoEnableCrafting_FabricationBench</li>
+			<li>CE_AutoEnableCrafting_BOR_Bench_I</li>
+			<li>CE_AutoEnableCrafting_BOR_Bench_II</li>
+			<li>CE_AutoEnableCrafting_BOR_Bench_IV</li>
 		</tradeTags>
 		<thingCategories>
 			<li>AmmoPlasmaCellHeavy</li>
@@ -822,18 +608,10 @@
 			<li>
 				<filter>
 					<thingDefs>
-						<li>Plasteel</li>
-					</thingDefs>
-				</filter>
-				<count>20</count>
-			</li>
-			<li>
-				<filter>
-					<thingDefs>
 						<li>BOR_QuasarAlloy</li>
 					</thingDefs>
 				</filter>
-				<count>9</count>
+				<count>56</count>
 			</li>
 			<li>
 				<filter>
@@ -846,7 +624,6 @@
 		</ingredients>
 		<fixedIngredientFilter>
 			<thingDefs>
-				<li>Plasteel</li>
 				<li>BOR_QuasarAlloy</li>
 				<li>ComponentSpacer</li>
 			</thingDefs>
@@ -869,15 +646,7 @@
 						<li>BOR_Sunsteel</li>
 					</thingDefs>
 				</filter>
-				<count>2</count>
-			</li>
-			<li>
-				<filter>
-					<thingDefs>
-						<li>BOR_QuasarAlloy</li>
-					</thingDefs>
-				</filter>
-				<count>9</count>
+				<count>44</count>
 			</li>
 			<li>
 				<filter>
@@ -891,56 +660,11 @@
 		<fixedIngredientFilter>
 			<thingDefs>
 				<li>BOR_Sunsteel</li>
-				<li>BOR_QuasarAlloy</li>
 				<li>ComponentSpacer</li>
 			</thingDefs>
 		</fixedIngredientFilter>
 		<products>
 			<BOR_Ammo_XCOM_PlasmaCellHeavySunsteel>75</BOR_Ammo_XCOM_PlasmaCellHeavySunsteel>
-		</products>
-	</RecipeDef>
-	<RecipeDef ParentName="ChargeAmmoRecipeBase">
-		<defName>MakeBOR_Ammo_XCOM_PlasmaCellHeavyTenebrite</defName>
-		<label>make Tenebrite Plasma Heavy Cells</label>
-		<description>Craft 75 shots' worth of Tenebrite Plasma Heavy Cells.</description>
-		<jobString>Making Plasma Heavy Cells.</jobString>
-		<researchPrerequisite>BOR_CE_AmmoResearch_TC</researchPrerequisite>
-		<workAmount>68000</workAmount>
-		<ingredients>
-			<li>
-				<filter>
-					<thingDefs>
-						<li>BOR_QuasarAlloy</li>
-					</thingDefs>
-				</filter>
-				<count>20</count>
-			</li>
-			<li>
-				<filter>
-					<thingDefs>
-						<li>BOR_Tenebrite</li>
-					</thingDefs>
-				</filter>
-				<count>9</count>
-			</li>
-			<li>
-				<filter>
-					<thingDefs>
-						<li>ComponentSpacer</li>
-					</thingDefs>
-				</filter>
-				<count>2</count>
-			</li>
-		</ingredients>
-		<fixedIngredientFilter>
-			<thingDefs>
-				<li>BOR_Tenebrite</li>
-				<li>BOR_QuasarAlloy</li>
-				<li>ComponentSpacer</li>
-			</thingDefs>
-		</fixedIngredientFilter>
-		<products>
-			<BOR_Ammo_XCOM_PlasmaCellHeavyTenebrite>75</BOR_Ammo_XCOM_PlasmaCellHeavyTenebrite>
 		</products>
 	</RecipeDef>
 	<RecipeDef ParentName="ChargeAmmoRecipeBase">
@@ -957,7 +681,7 @@
 						<li>BOR_QuasarAlloy</li>
 					</thingDefs>
 				</filter>
-				<count>20</count>
+				<count>56</count>
 			</li>
 			<li>
 				<filter>
@@ -965,7 +689,7 @@
 						<li>BOR_Neutronium</li>
 					</thingDefs>
 				</filter>
-				<count>90</count>
+				<count>20</count>
 			</li>
 			<li>
 				<filter>
@@ -978,8 +702,8 @@
 		</ingredients>
 		<fixedIngredientFilter>
 			<thingDefs>
-				<li>BOR_Neutronium</li>
 				<li>BOR_QuasarAlloy</li>
+				<li>BOR_Neutronium</li>
 				<li>ComponentSpacer</li>
 			</thingDefs>
 		</fixedIngredientFilter>
@@ -1015,22 +739,6 @@
 				<li>
 					<def>Flame_Secondary</def>
 					<amount>33</amount>
-				</li>
-			</secondaryDamage>
-		</projectile>
-	</ThingDef>
-	<ThingDef Class="CombatExtended.Lasers.LaserBeamDefCE" ParentName="LaserBulletYellow">
-		<defName>BOR_XCOM_Bullet_BeamRifleTenebrite</defName>
-		<label>plasma beam</label>
-		<projectile Class="CombatExtended.ProjectilePropertiesCE">
-			<damageDef>Burn</damageDef>
-			<damageAmountBase>19</damageAmountBase>
-			<armorPenetrationSharp>79</armorPenetrationSharp>
-			<armorPenetrationBlunt>148.5</armorPenetrationBlunt>
-			<secondaryDamage>
-				<li>
-					<def>Flame_Secondary</def>
-					<amount>35</amount>
 				</li>
 			</secondaryDamage>
 		</projectile>
@@ -1082,22 +790,6 @@
 				<li>
 					<def>Flame_Secondary</def>
 					<amount>46</amount>
-				</li>
-			</secondaryDamage>
-		</projectile>
-	</ThingDef>
-	<ThingDef Class="CombatExtended.Lasers.LaserBeamDefCE" ParentName="LaserBulletYellow">
-		<defName>BOR_XCOM_Bullet_BeamSniperRifleTenebrite</defName>
-		<label>plasma beam</label>
-		<projectile Class="CombatExtended.ProjectilePropertiesCE">
-			<damageDef>Burn</damageDef>
-			<damageAmountBase>54</damageAmountBase>
-			<armorPenetrationSharp>100</armorPenetrationSharp>
-			<armorPenetrationBlunt>236</armorPenetrationBlunt>
-			<secondaryDamage>
-				<li>
-					<def>Flame_Secondary</def>
-					<amount>40</amount>
 				</li>
 			</secondaryDamage>
 		</projectile>
@@ -1157,24 +849,6 @@
 			</secondaryDamage>
 		</projectile>
 	</ThingDef>
-	<ThingDef Class="CombatExtended.Lasers.LaserBeamDefCE" ParentName="LaserBulletYellow">
-		<defName>BOR_XCOM_Bullet_BeamShotgunTenebrite</defName>
-		<label>plasma beam</label>
-		<projectile Class="CombatExtended.ProjectilePropertiesCE">
-			<spreadMult>5</spreadMult>
-			<pelletCount>5</pelletCount>
-			<damageDef>Burn</damageDef>
-			<damageAmountBase>19</damageAmountBase>
-			<armorPenetrationSharp>27</armorPenetrationSharp>
-			<armorPenetrationBlunt>47.25</armorPenetrationBlunt>
-			<secondaryDamage>
-				<li>
-					<def>Flame_Secondary</def>
-					<amount>15</amount>
-				</li>
-			</secondaryDamage>
-		</projectile>
-	</ThingDef>
 	<ThingDef Class="CombatExtended.Lasers.LaserBeamDefCE" ParentName="LaserBulletRed">
 		<defName>BOR_XCOM_Bullet_BeamShotgunNeutronium</defName>
 		<label>plasma beam</label>
@@ -1219,22 +893,6 @@
 			<damageAmountBase>13</damageAmountBase>
 			<armorPenetrationSharp>21</armorPenetrationSharp>
 			<armorPenetrationBlunt>29</armorPenetrationBlunt>
-			<secondaryDamage>
-				<li>
-					<def>Flame_Secondary</def>
-					<amount>13</amount>
-				</li>
-			</secondaryDamage>
-		</projectile>
-	</ThingDef>
-	<ThingDef Class="CombatExtended.Lasers.LaserBeamDefCE" ParentName="LaserBulletYellow">
-		<defName>BOR_XCOM_Bullet_Beam_PistolTenebrite</defName>
-		<label>plasma beam</label>
-		<projectile Class="CombatExtended.ProjectilePropertiesCE">
-			<damageDef>Burn</damageDef>
-			<damageAmountBase>13</damageAmountBase>
-			<armorPenetrationSharp>59</armorPenetrationSharp>
-			<armorPenetrationBlunt>81</armorPenetrationBlunt>
 			<secondaryDamage>
 				<li>
 					<def>Flame_Secondary</def>

@@ -193,6 +193,8 @@ public class HediffComp_UmbralModeApparel : HediffComp
         List<Apparel> worn = pawn.apparel.WornApparel.Where(a => Props.apparelByMode.Contains(a.def)).ToList();
         if (worn.Count == 1 && worn[0].def == want)
         {
+            // Saves from before the UnlockAll patch can hold unlocked pieces.
+            pawn.apparel.Lock(worn[0]);
             return;
         }
         foreach (Apparel ap in worn)

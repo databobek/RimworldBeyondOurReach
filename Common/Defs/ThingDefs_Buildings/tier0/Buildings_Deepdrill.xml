@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+
+	<!-- Deepdrills derived from the vanilla one. Every drill needs external power; with Chemfuel Powered Deepdrill
+	     loaded, Mods/ChemfuelPoweredDeepdrill swaps the power comp for a fuelled generator.
+	     speedMultiplier: portions per unit of work, over a vanilla drill worked by the same pawn.
+	     yieldMultiplier: items per portion, over a vanilla drill worked by the same pawn. -->
+
+	<ThingDef Name="BOR_DeepdrillBase" ParentName="BuildingBase" Abstract="True">
+		<graphicData>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(2, 2)</drawSize>
+			<drawRotated>false</drawRotated>
+			<shadowData>
+				<volume>(0.52, 0.53, 0.09)</volume>
+				<offset>(0, 0, -0.43)</offset>
+			</shadowData>
+		</graphicData>
+		<size>(1, 1)</size>
+		<tickerType>Normal</tickerType>
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<pathCost>50</pathCost>
+		<fillPercent>0.5</fillPercent>
+		<hasInteractionCell>true</hasInteractionCell>
+		<interactionCellOffset>(0, 0, -1)</interactionCellOffset>
+		<designationCategory>BOR</designationCategory>
+		<specialDisplayRadius>2.6</specialDisplayRadius>
+		<rotatable>true</rotatable>
+		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+		<uiIconOffset>(0, 0.03)</uiIconOffset>
+		<uiIconScale>0.85</uiIconScale>
+		<minifiedDef>MinifiedThing</minifiedDef>
+		<building>
+			<uninstallWork>1800</uninstallWork>
+			<buildingTags>
+				<li>Production</li>
+			</buildingTags>
+			<destroySound>BuildingDestroyed_Metal_Small</destroySound>
+		</building>
+		<thingCategories>
+			<li>BuildingsProduction</li>
+		</thingCategories>
+		<placeWorkers>
+			<li>PlaceWorker_DeepDrill</li>
+			<li>PlaceWorker_PreventInteractionSpotOverlap</li>
+			<li>PlaceWorker_InvalidOverSubstructure</li>
+		</placeWorkers>
+		<drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+		<comps>
+			<li Class="CompProperties_Flickable" />
+			<li Class="CompProperties_Glower">
+				<glowRadius>6</glowRadius>
+				<glowColor>(80, 112, 180, 0)</glowColor>
+			</li>
+			<li Class="CompProperties_Forbiddable" />
+		</comps>
+	</ThingDef>
+
+	<ThingDef ParentName="BOR_DeepdrillBase">
+		<defName>BOR_Deepdrill_Reinforced</defName>
+		<label>reinforced deepdrill</label>
+		<description>A deep-crust drilling rig with a hardened bit and a tuned gearbox. It is drilled out of ordinary industrial parts, yet outperforms the standard deepdrill in both speed and yield. Needs external power.</description>
+		<graphicData>
+			<texPath>BOR/Things/Building/tier0/drill</texPath>
+		</graphicData>
+		<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+		<costList>
+			<Steel>150</Steel>
+			<Plasteel>20</Plasteel>
+			<ComponentIndustrial>4</ComponentIndustrial>
+		</costList>
+		<researchPrerequisites>
+			<li>DeepDrilling</li>
+		</researchPrerequisites>
+		<statBases>
+			<MaxHitPoints>350</MaxHitPoints>
+			<WorkToBuild>12000</WorkToBuild>
+			<Flammability>0.5</Flammability>
+			<Beauty>-25</Beauty>
+			<Mass>40</Mass>
+		</statBases>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>1000</basePowerConsumption>
+			</li>
+			<li Class="BeyondOurReach.CompProperties_BORDeepDrill">
+				<speedMultiplier>1.5</speedMultiplier>
+				<yieldMultiplier>1.25</yieldMultiplier>
+			</li>
+			<li Class="CompProperties_CreatesInfestations" />
+		</comps>
+	</ThingDef>
+
+	<ThingDef ParentName="BOR_DeepdrillBase">
+		<defName>BOR_Deepdrill_I</defName>
+		<label>solar deepdrill</label>
+		<description>A deep-crust drilling rig machined from sunsteel. The sunsteel bit cuts far faster than any industrial alloy and brings up more ore from every bore. Needs external power.</description>
+		<graphicData>
+			<texPath>BOR/Things/Building/tier1/diggy</texPath>
+		</graphicData>
+		<constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+		<costList>
+			<BOR_Sunsteel>50</BOR_Sunsteel>
+			<ComponentSpacer>2</ComponentSpacer>
+		</costList>
+		<researchPrerequisites>
+			<li>BOR_Research_Deepdrill_I</li>
+		</researchPrerequisites>
+		<statBases>
+			<MaxHitPoints>450</MaxHitPoints>
+			<WorkToBuild>15000</WorkToBuild>
+			<Flammability>0.1</Flammability>
+			<Beauty>-20</Beauty>
+			<Mass>50</Mass>
+		</statBases>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>1200</basePowerConsumption>
+			</li>
+			<li Class="BeyondOurReach.CompProperties_BORDeepDrill">
+				<speedMultiplier>2</speedMultiplier>
+				<yieldMultiplier>1.5</yieldMultiplier>
+			</li>
+			<li Class="CompProperties_CreatesInfestations" />
+		</comps>
+	</ThingDef>
+
+	<ThingDef ParentName="BOR_DeepdrillBase">
+		<defName>BOR_Deepdrill_II</defName>
+		<label>kwazaari deepdrill</label>
+		<description>A kwazaari-tier deepdrill with a reinforced borefield and a quasar alloy bit. It is the fastest and most productive deepdrill there is, and its sealed borefield design prevents infestation events. Needs external power.</description>
+		<graphicData>
+			<texPath>BOR/Things/Building/tier2/diggy2</texPath>
+		</graphicData>
+		<constructionSkillPrerequisite>12</constructionSkillPrerequisite>
+		<costList>
+			<BOR_QuasarAlloy>100</BOR_QuasarAlloy>
+			<BOR_Neutronium>120</BOR_Neutronium>
+			<BOR_ComponentII>2</BOR_ComponentII>
+		</costList>
+		<researchPrerequisites>
+			<li>BOR_Research_Deepdrill_II</li>
+		</researchPrerequisites>
+		<statBases>
+			<MaxHitPoints>600</MaxHitPoints>
+			<WorkToBuild>18000</WorkToBuild>
+			<Flammability>0.05</Flammability>
+			<Beauty>-20</Beauty>
+			<Mass>65</Mass>
+		</statBases>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>1500</basePowerConsumption>
+			</li>
+			<li Class="BeyondOurReach.CompProperties_BORDeepDrill">
+				<speedMultiplier>3</speedMultiplier>
+				<yieldMultiplier>2</yieldMultiplier>
+			</li>
+		</comps>
+	</ThingDef>
+
+	<WorkGiverDef>
+		<defName>BOR_DrillAtDeepdrill</defName>
+		<label>drill at BOR deepdrill</label>
+		<giverClass>BeyondOurReach.WorkGiver_BORDeepDrill</giverClass>
+		<workType>Mining</workType>
+		<priorityInType>50</priorityInType>
+		<verb>drill</verb>
+		<gerund>drilling</gerund>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+		<canBeDoneByMechs>false</canBeDoneByMechs>
+	</WorkGiverDef>
+
+</Defs>

@@ -28,6 +28,8 @@ public class GameComponent_OrientisPath : GameComponent
 
     private const int AuraInterval = 8;
 
+    private const float HeraldDelaySeconds = 3f;
+
     private static readonly Color AuraColor = new(1f, 0.8f, 0.25f, 1f);
 
     private static readonly float[] AuraScales = { 6f, 3f };
@@ -43,6 +45,9 @@ public class GameComponent_OrientisPath : GameComponent
     private List<Pawn> glowing = new();
     private List<LightShockwave> shockwaves = new();
     private int glowEnd;
+    private int heraldLetterTick = -1;
+    private bool heraldArmed;
+    private float heraldStrikeTime;
 
     public GameComponent_OrientisPath(Game game)
     {
@@ -85,6 +90,34 @@ public class GameComponent_OrientisPath : GameComponent
             Find.TickManager.CurTimeSpeed = TimeSpeed.Normal;
         }
         Messages.Message("BOR_OrientisLightBegins".Translate(), MessageTypeDefOf.NeutralEvent);
+        heraldLetterTick = stageStart + GenDate.TicksPerHour;
+    }
+
+    // The letter that sets this off has been closed; the strike follows on real time, so it comes even if paused.
+    public void ArmHerald() => heraldArmed = true;
+
+    private void UpdateHerald()
+    {
+        if (!heraldArmed)
+        {
+            return;
+        }
+        // Zero after a load too, so a reload just restarts the short wait.
+        if (heraldStrikeTime == 0f)
+        {
+            heraldStrikeTime = Time.realtimeSinceStartup + HeraldDelaySeconds;
+        }
+        if (Time.realtimeSinceStartup < heraldStrikeTime)
+        {
+            return;
+        }
+        heraldArmed = false;
+        heraldStrikeTime = 0f;
+        if (Find.TickManager.CurTimeSpeed == TimeSpeed.Paused)
+        {
+            Find.TickManager.CurTimeSpeed = TimeSpeed.Normal;
+        }
+        UmbralHerald.Strike(chooser);
     }
 
     // Forgets the choice so the letter can be tried again. Debug only.
@@ -97,6 +130,9 @@ public class GameComponent_OrientisPath : GameComponent
         stripped.Clear();
         glowing.Clear();
         shockwaves.Clear();
+        heraldLetterTick = -1;
+        heraldArmed = false;
+        heraldStrikeTime = 0f;
     }
 
     public override void GameComponentUpdate()
@@ -105,12 +141,18 @@ public class GameComponent_OrientisPath : GameComponent
         {
             wave.Draw();
         }
+        UpdateHerald();
     }
 
     public override void GameComponentTick()
     {
         int now = Find.TickManager.TicksGame;
         shockwaves.RemoveAll(wave => wave.Tick());
+        if (heraldLetterTick >= 0 && now >= heraldLetterTick)
+        {
+            heraldLetterTick = -1;
+            Find.LetterStack.ReceiveLetter(LetterMaker.MakeLetter("BOR_DarkDispleasureLabel".Translate(), "BOR_DarkDispleasureText".Translate(), BOR_OrientisDefOf.BOR_DarkDispleasure));
+        }
         // Outlasts the sequence: the pawns are still glowing when the last letter arrives.
         if (glowing.Count > 0)
         {
@@ -256,6 +298,8 @@ public class GameComponent_OrientisPath : GameComponent
         Scribe_Collections.Look(ref glowing, "orientisGlowing", LookMode.Reference);
         Scribe_Collections.Look(ref shockwaves, "orientisShockwaves", LookMode.Deep);
         Scribe_Values.Look(ref glowEnd, "orientisGlowEnd");
+        Scribe_Values.Look(ref heraldLetterTick, "orientisHeraldLetterTick", -1);
+        Scribe_Values.Look(ref heraldArmed, "orientisHeraldArmed");
         if (Scribe.mode == LoadSaveMode.PostLoadInit)
         {
             stripped ??= new List<Pawn>();

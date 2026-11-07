@@ -296,6 +296,16 @@ public class ITab_Forge : ITab
         });
     }
 
+    private static string ShortCount(int n)
+    {
+        if (n < 1000)
+        {
+            return n.ToString();
+        }
+        int tenths = n / 100; // rounded down
+        return tenths % 10 == 0 ? tenths / 10 + "k" : tenths / 10 + "." + tenths % 10 + "k";
+    }
+
     private void DrawCell(Rect cell, CompForge forge, int index)
     {
         Widgets.DrawBoxSolid(cell, CellBack);
@@ -325,10 +335,10 @@ public class ITab_Forge : ITab
         if (mode != ForgeMode.DoForever && count > 0)
         {
             Text.Anchor = TextAnchor.UpperRight;
-            Widgets.Label(new Rect(cell.x, cell.y + 2f, cell.width - 4f, 30f), count.ToString());
+            Widgets.Label(new Rect(cell.x, cell.y + 2f, cell.width - 4f, 30f), ShortCount(count));
         }
-        Text.Anchor = TextAnchor.UpperLeft;
-        Widgets.Label(new Rect(cell.x + 4f, cell.y + 2f, cell.width - 4f, 30f), forge.CountOnMap(def).ToString());
+        Text.Anchor = TextAnchor.LowerLeft;
+        Widgets.Label(new Rect(cell.x + 4f, modeBar.y - 30f, cell.width - 4f, 30f), ShortCount(forge.CountOnMap(def)));
         Text.Anchor = TextAnchor.UpperLeft;
 
         DrawModeBar(modeBar, forge, index, mode);

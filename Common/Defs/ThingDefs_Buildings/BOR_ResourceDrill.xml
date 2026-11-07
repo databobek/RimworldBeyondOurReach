@@ -39,6 +39,7 @@
             <relatedBuildCommands>
                 <li>BOR_ResourceDrill_II</li>
                 <li>BOR_ResourceDrill_III</li>
+                <li>BOR_Mine</li>
             </relatedBuildCommands>
         </building>
         <costList>
@@ -89,11 +90,12 @@
                 <workMoveSideways>300</workMoveSideways>
                 <workMoveUp>300</workMoveUp>
                 <workMoveDown>600</workMoveDown>
-                <!-- going deeper: more yield, more power, costs steel (remove expandDownCostDef to make it free) -->
+                <!-- going deeper: more power (linear), costs the tier metal (remove expandDownCostDef to make it free) -->
                 <maxDepth>5</maxDepth>
-                <expandDownCostDef>Steel</expandDownCostDef>
+                <powerPerDepth>20000</powerPerDepth>
+                <expandDownCostDef>BOR_Sunsteel</expandDownCostDef>
                 <expandDownCostCount>50</expandDownCostCount>
-                <expandDownCostCountPerDepth>25</expandDownCostCountPerDepth>
+                <expandDownCostCountPerDepth>0</expandDownCostCountPerDepth>
                 <stoneChunkDef>ChunkGranite</stoneChunkDef>
                 <!-- uses a specific formula to dictate work amounts based on drillable availabilities -->
                 <allowAnyDeepdrillResource>true</allowAnyDeepdrillResource>
@@ -166,6 +168,7 @@
             <relatedBuildCommands>
                 <li>BOR_ResourceDrill</li>
                 <li>BOR_ResourceDrill_III</li>
+                <li>BOR_Mine</li>
             </relatedBuildCommands>
         </building>
         <costList>
@@ -193,7 +196,7 @@
             <li Class="CompProperties_Flickable" />
             <li Class="CompProperties_Power">
                 <compClass>CompPowerTrader</compClass>
-                <basePowerConsumption>300000</basePowerConsumption>
+                <basePowerConsumption>250000</basePowerConsumption>
             </li>
             <li Class="CVN_EnhancedResourceDrill.CompProperties_ResourceDrill">
                 <selectResourceUiIcon>UI/Designators/Mine</selectResourceUiIcon>
@@ -210,11 +213,12 @@
                 <workMoveSideways>300</workMoveSideways>
                 <workMoveUp>300</workMoveUp>
                 <workMoveDown>600</workMoveDown>
-                <!-- going deeper: more yield, more power, costs steel (remove expandDownCostDef to make it free) -->
+                <!-- going deeper: more power (linear), costs the tier metal (remove expandDownCostDef to make it free) -->
                 <maxDepth>8</maxDepth>
-                <expandDownCostDef>Steel</expandDownCostDef>
+                <powerPerDepth>40000</powerPerDepth>
+                <expandDownCostDef>BOR_QuasarAlloy</expandDownCostDef>
                 <expandDownCostCount>50</expandDownCostCount>
-                <expandDownCostCountPerDepth>25</expandDownCostCountPerDepth>
+                <expandDownCostCountPerDepth>0</expandDownCostCountPerDepth>
                 <stoneChunkDef>ChunkGranite</stoneChunkDef>
                 <allowAnyDeepdrillResource>true</allowAnyDeepdrillResource>
                 <resourceYield>1.5</resourceYield>
@@ -270,6 +274,7 @@
             <relatedBuildCommands>
                 <li>BOR_ResourceDrill</li>
                 <li>BOR_ResourceDrill_II</li>
+                <li>BOR_Mine</li>
             </relatedBuildCommands>
         </building>
         <costList>
@@ -294,8 +299,8 @@
             <li Class="CompProperties_Flickable" />
             <li Class="CompProperties_Power">
                 <compClass>CompPowerTrader</compClass>
-                <!-- draw is base x depth squared, and this drill starts at depth 20: 2,000,000 W -->
-                <basePowerConsumption>5000</basePowerConsumption>
+                <!-- level 1 figure; each level adds powerPerDepth, so the level 20 start is 10000 + 19 x 100000 = 1,910,000 W -->
+                <basePowerConsumption>10000</basePowerConsumption>
             </li>
             <li Class="CVN_EnhancedResourceDrill.CompProperties_ResourceDrill">
                 <selectResourceUiIcon>UI/Designators/Mine</selectResourceUiIcon>
@@ -312,13 +317,14 @@
                 <workMoveSideways>300</workMoveSideways>
                 <workMoveUp>300</workMoveUp>
                 <workMoveDown>600</workMoveDown>
-                <!-- going deeper: more yield, more power, costs steel (remove expandDownCostDef to make it free) -->
+                <!-- going deeper: more power (linear), costs the tier metal (remove expandDownCostDef to make it free) -->
                 <minDepth>20</minDepth>
                 <startDepth>20</startDepth>
                 <maxDepth>50</maxDepth>
-                <expandDownCostDef>Steel</expandDownCostDef>
+                <powerPerDepth>100000</powerPerDepth>
+                <expandDownCostDef>BOR_Tenebrite</expandDownCostDef>
                 <expandDownCostCount>50</expandDownCostCount>
-                <expandDownCostCountPerDepth>25</expandDownCostCountPerDepth>
+                <expandDownCostCountPerDepth>0</expandDownCostCountPerDepth>
                 <stoneChunkDef>ChunkGranite</stoneChunkDef>
                 <allowAnyDeepdrillResource>true</allowAnyDeepdrillResource>
                 <isInvertWhitelist>true</isInvertWhitelist>
@@ -338,6 +344,128 @@
         </comps>
         <modExtensions>
          <li Class="BeyondOurReach.DefModExtension_TenebralBuilding" />
+        </modExtensions>
+    </ThingDef>
+
+    <!-- Between the kwazaari and tenebral drillers: its depths fill the gap from where the first ends to where the second starts. -->
+    <ThingDef ParentName="BuildingBase">
+        <defName>BOR_Mine</defName>
+        <label>tenebral autonomous mine</label>
+        <description>A self-running mine that burns its way down with a concentrated beam. It needs no operators, and reaches the depths between the kwazaari driller's limit and the point where the tenebral driller starts.</description>
+        <graphicData>
+            <graphicClass>Graphic_Single</graphicClass>
+            <texPath>BOR/Things/Building/tier3/mine/1</texPath>
+            <drawSize>(3, 3)</drawSize>
+            <shadowData>
+                <volume>(0.52, 0.53, 0.09)</volume>
+                <offset>(0,0,-0.43)</offset>
+            </shadowData>
+        </graphicData>
+        <size>(3,3)</size>
+        <tickerType>Normal</tickerType>
+        <drawerType>MapMeshAndRealTime</drawerType>
+        <altitudeLayer>Building</altitudeLayer>
+        <passability>PassThroughOnly</passability>
+        <pathCost>50</pathCost>
+        <fillPercent>0.5</fillPercent>
+        <designationCategory>BOR</designationCategory>
+        <designationHotKey>Misc12</designationHotKey>
+        <rotatable>false</rotatable>
+        <drawDamagedOverlay>false</drawDamagedOverlay>
+        <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+        <constructionSkillPrerequisite>10</constructionSkillPrerequisite>
+        <uiIconPath>BOR/Things/Building/tier3/mine/uiicon</uiIconPath>
+        <uiIconScale>0.85</uiIconScale>
+        <building>
+            <buildingTags>
+                <li>Production</li>
+            </buildingTags>
+            <destroySound>BuildingDestroyed_Metal_Small</destroySound>
+            <relatedBuildCommands>
+                <li>BOR_ResourceDrill</li>
+                <li>BOR_ResourceDrill_II</li>
+                <li>BOR_ResourceDrill_III</li>
+            </relatedBuildCommands>
+        </building>
+        <costList>
+            <BOR_Tenebrite>200</BOR_Tenebrite>
+            <BOR_QuasarAlloy>200</BOR_QuasarAlloy>
+            <BOR_ComponentIII>4</BOR_ComponentIII>
+        </costList>
+        <inspectorTabs>
+            <li>CVN_EnhancedResourceDrill.ITab_ResourceDrill</li>
+        </inspectorTabs>
+        <researchPrerequisites>
+            <li>BOR_Research_Core_Drill_III</li>
+        </researchPrerequisites>
+        <statBases>
+            <MaxHitPoints>8500</MaxHitPoints>
+            <WorkToBuild>18000</WorkToBuild>
+            <Flammability>0.0</Flammability>
+            <Beauty>-5</Beauty>
+        </statBases>
+        <comps>
+            <li Class="CompProperties_Forbiddable" />
+            <li Class="CompProperties_Flickable" />
+            <li Class="CompProperties_Power">
+                <compClass>CompPowerTrader</compClass>
+                <!-- level 1 figure; each level adds powerPerDepth, so the level 8 start is 50000 + 7 x 70000 = 540,000 W -->
+                <basePowerConsumption>50000</basePowerConsumption>
+            </li>
+            <li Class="CVN_EnhancedResourceDrill.CompProperties_ResourceDrill">
+                <selectResourceUiIcon>UI/Designators/Mine</selectResourceUiIcon>
+                <isAutomatic>True</isAutomatic>
+                <tickInterval>60</tickInterval>
+                <workPerInterval>45</workPerInterval>
+                <operateJobDef>CVN_OperateResourceDrill</operateJobDef>
+                <!-- underground grid size -->
+                <gridWidth>3</gridWidth>
+                <gridHeight>3</gridHeight>
+                <preciseDrilling>2</preciseDrilling>
+                <!-- work needed for each action -->
+                <workDrill>600</workDrill>
+                <workMoveSideways>300</workMoveSideways>
+                <workMoveUp>300</workMoveUp>
+                <workMoveDown>600</workMoveDown>
+                <!-- going deeper: more power (linear), costs the tier metal (remove expandDownCostDef to make it free) -->
+                <minDepth>8</minDepth>
+                <startDepth>8</startDepth>
+                <maxDepth>20</maxDepth>
+                <powerPerDepth>70000</powerPerDepth>
+                <expandDownCostDef>BOR_Tenebrite</expandDownCostDef>
+                <expandDownCostCount>50</expandDownCostCount>
+                <expandDownCostCountPerDepth>0</expandDownCostCountPerDepth>
+                <stoneChunkDef>ChunkGranite</stoneChunkDef>
+                <allowAnyDeepdrillResource>true</allowAnyDeepdrillResource>
+                <isInvertWhitelist>true</isInvertWhitelist>
+                <resourceYield>1.75</resourceYield>
+                <drillableResources>
+                    <li>
+                        <thingDef>Plasteel</thingDef>
+                    </li>
+                    <li MayRequire="vanillaexpanded.helixiengas">
+                        <thingDef>VHGE_Helixien</thingDef>
+                    </li>
+                    <li MayRequireAnyOf="bambaryla.bor,bambaryla.bor.redux">
+                        <thingDef>BOR_Neutronium</thingDef>
+                    </li>
+                </drillableResources>
+            </li>
+            <!-- Texture 1 is the graphicData above. Timing is in ticks, 60 to a second at normal speed. -->
+            <li Class="BeyondOurReach.CompProperties_MineBeam">
+                <glowTexPath>BOR/Things/Building/tier3/mine/2</glowTexPath>
+                <rockTexPath>BOR/Things/Building/tier3/mine/3</rockTexPath>
+                <beamTexPath>BOR/Things/Building/tier3/mine/4</beamTexPath>
+                <beamSound>BOR_MineBeam</beamSound>
+                <extendTicks>150</extendTicks>
+                <retractTicks>150</retractTicks>
+                <pulseTicks>96</pulseTicks>
+                <pulseStrength>0.4</pulseStrength>
+                <glowPasses>2</glowPasses>
+            </li>
+        </comps>
+        <modExtensions>
+            <li Class="BeyondOurReach.DefModExtension_TenebralBuilding" />
         </modExtensions>
     </ThingDef>
 

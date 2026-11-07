@@ -29,13 +29,14 @@ public static class OrientisManifest
     public static int Available(Map map, ThingDef material) =>
         map.listerThings.ThingsOfDef(material).Where(Usable).Sum(t => t.stackCount);
 
+    // God mode places for free.
     public static bool CanPay(Map map, ThingDef building) =>
-        building.CostList.NullOrEmpty() || building.CostList.All(cost => Available(map, cost.thingDef) >= cost.count);
+        DebugSettings.godMode || building.CostList.NullOrEmpty() || building.CostList.All(cost => Available(map, cost.thingDef) >= cost.count);
 
     // Nearest stacks go first; each stack it takes from disappears in a skip.
     private static void TakeCost(Map map, ThingDef building, IntVec3 cell)
     {
-        if (building.CostList.NullOrEmpty())
+        if (DebugSettings.godMode || building.CostList.NullOrEmpty())
         {
             return;
         }

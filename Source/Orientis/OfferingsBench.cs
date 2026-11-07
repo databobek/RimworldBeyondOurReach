@@ -17,7 +17,7 @@ public class CompProperties_OfferingsBench : CompProperties
 
 // Runs the bench's bills on its own, paying only in meditation power. No work giver lists this bench, so no pawn ever
 // uses it; the player only manages the bills.
-public class CompOfferingsBench : ThingComp
+public class CompOfferingsBench : ThingComp, IGlowSource
 {
     // Bills are only looked at this often: checking one can count every matching item on the map.
     private const int WorkInterval = 30;
@@ -26,6 +26,8 @@ public class CompOfferingsBench : ThingComp
     private float workDone;
     private float workTotal;
     private bool starved;
+
+    public bool GlowActive => recipe != null && !starved;
 
     public CompProperties_OfferingsBench Props => (CompProperties_OfferingsBench)props;
 

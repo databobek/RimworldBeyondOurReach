@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+	<!-- Melee-only kinds join faction groups only when the Melee mod is loaded -->
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/FactionDef[defName="BOR_SolarRepublic"]/pawnGroupMakers/li[kindDef="Combat"]/options</xpath>
+		<value>
+			<BOR_Solar_Skirmisher>3</BOR_Solar_Skirmisher>
+			<BOR_Solar_RiotPolice>2</BOR_Solar_RiotPolice>
+			<BOR_Solar_Mechbreaker>1</BOR_Solar_Mechbreaker>
+			<BOR_Solar_Blademaster>3</BOR_Solar_Blademaster>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/FactionDef[defName="BOR_SolarRepublic"]/pawnGroupMakers/li[kindDef="Settlement"]/options</xpath>
+		<value>
+			<BOR_Solar_Skirmisher>1.5</BOR_Solar_Skirmisher>
+			<BOR_Solar_RiotPolice>4</BOR_Solar_RiotPolice>
+			<BOR_Solar_Mechbreaker>1</BOR_Solar_Mechbreaker>
+			<BOR_Solar_Blademaster>3</BOR_Solar_Blademaster>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/FactionDef[defName="BOR_Tenebrites"]/pawnGroupMakers/li[kindDef="Combat"]/options</xpath>
+		<value>
+			<BOR_Tenebral_Slasher>3</BOR_Tenebral_Slasher>
+			<BOR_Tenebral_Pummeler>2</BOR_Tenebral_Pummeler>
+			<BOR_Tenebral_Vanquisher>2</BOR_Tenebral_Vanquisher>
+		</value>
+	</Operation>
+
+	<!-- Melee members of the Kwazaari squads -->
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/BeyondOurReach.KwazaariFavorDef[defName="BOR_Favor_ReinforcementsMilitia"]/squad</xpath>
+		<value>
+			<li>BOR_Kwazaari_Skirmisher</li>
+			<li>BOR_Kwazaari_Skirmisher</li>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/BeyondOurReach.KwazaariFavorDef[defName="BOR_Favor_ReinforcementsPolice"]/squad</xpath>
+		<value>
+			<li>BOR_Kwazaari_RiotPolice</li>
+			<li>BOR_Kwazaari_RiotPolice</li>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/BeyondOurReach.KwazaariFavorDef[defName="BOR_Favor_Reinforcements"]/squad</xpath>
+		<value>
+			<li>BOR_Kwazaari_Assault_Marine</li>
+		</value>
+	</Operation>
+</Patch>

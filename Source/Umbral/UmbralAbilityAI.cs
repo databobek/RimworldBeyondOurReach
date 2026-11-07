@@ -43,7 +43,7 @@ public static class UmbralAbilityAI
     {
         // Hiding in camo, the Umbral may have no target of its own yet, but it still picks off what it can see.
         bool hiding = HediffComp_UmbralSwarmAI.StateOf(pawn) != SwarmState.None;
-        if (pawn.Faction == Faction.OfPlayer || !pawn.Spawned || pawn.Downed || pawn.Dead || (!hiding && pawn.mindState?.enemyTarget == null)
+        if (pawn.Faction == Faction.OfPlayer || !pawn.Spawned || pawn.Downed || pawn.Dead || UmbralHerald.IsHerald(pawn) || (!hiding && pawn.mindState?.enemyTarget == null)
             || pawn.CurJob?.ability != null || pawn.abilities == null)
         {
             return;

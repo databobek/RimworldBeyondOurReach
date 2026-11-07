@@ -17,6 +17,18 @@ The Umbral xenotype SHALL include a gene that makes the pawn resistant to tenebr
 ### Requirement: Tenebrite-boosted transformation
 Exposure to tenebrite SHALL increase the chance of the transformation hediff being triggered in an Umbral pawn. The size of the increase is to be decided during implementation.
 
+### Requirement: Hidden Umbral faction
+A hidden `BOR_Umbrals` faction SHALL exist in every new world, permanently hostile, with no settlements and no entry in the faction list. Its only pawn kind SHALL be `BOR_Umbral`. It SHALL NOT be chosen for random raids; only a raid that names the faction directly can use it.
+
+### Requirement: Umbral ideoligion
+With Ideology, the `BOR_Umbrals` faction SHALL hold a fixed ideoligion, "The Other Will", with the Archist, Darkness and Supremacist memes and one deity, Horax. It SHALL have no roles and no rituals shown in the tab; vanilla's hidden rituals stay because the game requires them. Slavery SHALL be honorable and execution required, and it SHALL not care about corpses or clothing. Beyond those, it SHALL hold only the precepts its memes require and vanilla's special precepts. It SHALL stay out of the Ideoligions tab until a pawn holding it spawns. A player pawn that turns Umbral SHALL switch to it, and the rest of the colony SHALL keep theirs. Worlds created without the faction get no support.
+
+### Requirement: Umbrals feel nothing
+Turning Umbral SHALL remove all of a pawn's traits and memories. An Umbral SHALL have one thought, `BOR_UmbralEmpty`, with no mood effect, and SHALL gain no other, social thoughts included. Its mood SHALL stay at 50% whatever the difficulty.
+
+### Requirement: Righteous Slaughter
+The Righteous Slaughter SHALL follow the `component-harvest` rules for research, bench and operator, but use a live prisoner instead of a corpse, use no picocluster and give no components. It SHALL be hidden until the colony has an Umbral, and only an Umbral (by xenotype or `BOR_Umbral` hediff) SHALL be able to perform it. The operator SHALL pin the prisoner, carry them to the bench, tear off their limbs from the outside in and then kill them, and it SHALL count as a vanilla execution. If the job ends early, the prisoner SHALL be released, keeping any wounds already dealt. The body SHALL be destroyed, leaving a skull named after the victim. It SHALL spread blood, bile and feces further than a harvest and have a 10-day cooldown per bench. When it finishes, every Umbral of the player's faction SHALL recover abilities 50% faster (a cooldown lasts 1/1.5 as long) and transform 25% faster for 10 days. Another slaughter SHALL restart the blessing, not stack it. Cooldowns already running are not shortened.
+
 ### Requirement: Umbral-only buildings
 Every Umbral building SHALL be buildable and usable only by pawns holding the Umbral xenotype.
 

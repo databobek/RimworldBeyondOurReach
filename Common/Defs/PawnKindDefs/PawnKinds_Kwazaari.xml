@@ -227,39 +227,148 @@
 		</apparelRequired>
 	</PawnKindDef>
 
-	<!-- Kwazaari Marksman -->
+	<!-- Kwazaari kind bases: full matching set per kind, no budget-bought gear -->
 
-	<PawnKindDef ParentName="BOR_ElitePawn_II">
-		<defName>BOR_Kwazaari_Marksman</defName>
-		<label>marksman</label>
-		<labelPlural>marksmen</labelPlural>
-		<apparelTags>
-			<li>IndustrialBasic</li>
-			<li>IndustrialAdvanced</li>
-			<li>IndustrialMilitaryBasic</li>
-			<li>IndustrialMilitaryAdvanced</li>
-		</apparelTags>
-		<apparelDisallowTags>
-			<li>Western</li>
-		</apparelDisallowTags>
-		<weaponTags>
-			<li>BOR_SniperRifle_II</li>
-		</weaponTags>
-		<weaponMoney>
-			<min>50000</min>
-			<max>50000</max>
-		</weaponMoney>
-		<combatPower>450</combatPower>
-		<isFighter>true</isFighter>
+	<PawnKindDef Name="BOR_KwazaariKindBase" ParentName="BOR_BasePawn_II" Abstract="True">
+		<apparelIgnoreSeasons>true</apparelIgnoreSeasons>
+		<apparelTags Inherit="False" />
+		<apparelMoney>0~0</apparelMoney>
+		<weaponMoney>100000~100000</weaponMoney>
 		<canBeSapper>false</canBeSapper>
-		<apparelMoney>
-			<min>15000</min>
-			<max>25000</max>
-		</apparelMoney>
 		<apparelRequired>
+			<li>BOR_Quasar_Carbonsuit</li>
+		</apparelRequired>
+	</PawnKindDef>
+
+	<PawnKindDef Name="BOR_KwazaariCivilianBase" ParentName="BOR_KwazaariKindBase" Abstract="True">
+		<isFighter>false</isFighter>
+		<gearHealthRange>1~2</gearHealthRange>
+	</PawnKindDef>
+
+	<PawnKindDef Name="BOR_KwazaariMilitiaBase" ParentName="BOR_KwazaariKindBase" Abstract="True">
+		<isFighter>true</isFighter>
+	</PawnKindDef>
+
+	<PawnKindDef Name="BOR_KwazaariPoliceBase" ParentName="BOR_KwazaariMilitiaBase" Abstract="True">
+		<techHediffsRequired>
+			<li>BOR_QuasarBionicEye</li>
+		</techHediffsRequired>
+	</PawnKindDef>
+
+	<PawnKindDef Name="BOR_KwazaariGuardBase" ParentName="BOR_KwazaariPoliceBase" Abstract="True">
+		<techHediffsRequired>
+			<li>BOR_QuasarBionicArm</li>
+			<li>BOR_QuasarBionicArm</li>
+		</techHediffsRequired>
+	</PawnKindDef>
+
+	<PawnKindDef Name="BOR_KwazaariEliteKindBase" ParentName="BOR_ElitePawn_II" Abstract="True">
+		<apparelIgnoreSeasons>true</apparelIgnoreSeasons>
+		<apparelTags Inherit="False" />
+		<apparelMoney>0~0</apparelMoney>
+		<weaponMoney>100000~100000</weaponMoney>
+		<canBeSapper>false</canBeSapper>
+		<isFighter>true</isFighter>
+		<apparelRequired>
+			<li>BOR_Quasar_Carbonsuit</li>
+		</apparelRequired>
+	</PawnKindDef>
+
+	<!-- Kwazaari soldiers, hire-only -->
+
+	<PawnKindDef ParentName="BOR_KwazaariMilitiaBase">
+		<defName>BOR_Kwazaari_Militiaman</defName>
+		<label>militiaman</label>
+		<labelPlural>militiamen</labelPlural>
+		<combatPower>135</combatPower>
+		<apparelRequired>
+			<li>BOR_Quasar_Masterforge_Mantle</li>
+			<li>BOR_Quasar_Apparel_FlakPants</li>
 			<li>BOR_Quasar_Apparel_ArmorHelmetRecon</li>
+		</apparelRequired>
+		<weaponTags Inherit="False">
+			<li>BOR_Kind_Kwazaari_Militiaman</li>
+		</weaponTags>
+		<skills>
+			<li>
+				<skill>Shooting</skill>
+				<range>8~12</range>
+			</li>
+		</skills>
+	</PawnKindDef>
+
+	<PawnKindDef ParentName="BOR_KwazaariMilitiaBase">
+		<defName>BOR_Kwazaari_Skirmisher</defName>
+		<label>militia skirmisher</label>
+		<combatPower>135</combatPower>
+		<apparelRequired>
+			<li>BOR_Quasar_Masterforge_Mantle</li>
+			<li>BOR_Quasar_Apparel_FlakPants</li>
+			<li>BOR_Quasar_Apparel_ArmorHelmetRecon</li>
+		</apparelRequired>
+		<weaponTags Inherit="False">
+			<li>BOR_Kind_Kwazaari_Skirmisher</li>
+		</weaponTags>
+		<skills>
+			<li>
+				<skill>Melee</skill>
+				<range>8~12</range>
+			</li>
+		</skills>
+	</PawnKindDef>
+
+	<PawnKindDef ParentName="BOR_KwazaariPoliceBase">
+		<defName>BOR_Kwazaari_Police</defName>
+		<label>police officer</label>
+		<labelPlural>police officers</labelPlural>
+		<combatPower>180</combatPower>
+		<apparelAllowHeadgearChance>0</apparelAllowHeadgearChance>
+		<apparelRequired>
 			<li>BOR_Quasar_Apparel_ArmorRecon</li>
 		</apparelRequired>
+		<weaponTags Inherit="False">
+			<li>BOR_Kind_Kwazaari_Police</li>
+		</weaponTags>
+		<skills>
+			<li>
+				<skill>Shooting</skill>
+				<range>10~14</range>
+			</li>
+		</skills>
+	</PawnKindDef>
+
+	<PawnKindDef ParentName="BOR_KwazaariPoliceBase">
+		<defName>BOR_Kwazaari_RiotPolice</defName>
+		<label>riot police officer</label>
+		<labelPlural>riot police officers</labelPlural>
+		<combatPower>195</combatPower>
+		<apparelAllowHeadgearChance>0</apparelAllowHeadgearChance>
+		<apparelRequired>
+			<li>BOR_Quasar_Apparel_ArmorRecon</li>
+			<li>BOR_Quasar_Apparel_ShieldBelt</li>
+		</apparelRequired>
+		<weaponTags Inherit="False">
+			<li>BOR_Kind_Kwazaari_RiotPolice</li>
+		</weaponTags>
+		<skills>
+			<li>
+				<skill>Melee</skill>
+				<range>10~14</range>
+			</li>
+		</skills>
+	</PawnKindDef>
+
+	<PawnKindDef ParentName="BOR_KwazaariGuardBase">
+		<defName>BOR_Kwazaari_Guardsman</defName>
+		<label>guard</label>
+		<combatPower>300</combatPower>
+		<apparelRequired>
+			<li>BOR_Quasar_Apparel_PowerArmor</li>
+			<li>BOR_Quasar_Apparel_PowerArmorHelmet</li>
+		</apparelRequired>
+		<weaponTags Inherit="False">
+			<li>BOR_Kind_Kwazaari_Guard</li>
+		</weaponTags>
 		<skills>
 			<li>
 				<skill>Shooting</skill>
@@ -268,129 +377,147 @@
 		</skills>
 	</PawnKindDef>
 
-	<!-- Kwazaari Marine -->
-
-	<PawnKindDef ParentName="BOR_ElitePawn_II">
-		<defName>BOR_Kwazaari_Marine</defName>
-		<label>marine</label>
-		<labelPlural>marines</labelPlural>
-		<apparelTags>
-			<li>IndustrialBasic</li>
-			<li>IndustrialAdvanced</li>
-			<li>IndustrialMilitaryBasic</li>
-			<li>IndustrialMilitaryAdvanced</li>
-		</apparelTags>
-		<apparelDisallowTags>
-			<li>Western</li>
-		</apparelDisallowTags>
-		<weaponTags>
-			<li>BOR_ShortShots_II</li>
-		</weaponTags>
-		<weaponMoney>
-			<min>50000</min>
-			<max>50000</max>
-		</weaponMoney>
-		<combatPower>450</combatPower>
-		<isFighter>true</isFighter>
-		<canBeSapper>false</canBeSapper>
-		<apparelMoney>
-			<min>15000</min>
-			<max>25000</max>
-		</apparelMoney>
+	<PawnKindDef ParentName="BOR_KwazaariGuardBase">
+		<defName>BOR_Kwazaari_Breacher</defName>
+		<label>guard breacher</label>
+		<combatPower>330</combatPower>
 		<apparelRequired>
-			<li>BOR_Quasar_Apparel_PowerArmorHelmet</li>
 			<li>BOR_Quasar_Apparel_PowerArmor</li>
+			<li>BOR_Quasar_Apparel_PowerArmorHelmet</li>
 		</apparelRequired>
+		<weaponTags Inherit="False">
+			<li>BOR_Kind_Kwazaari_Breacher</li>
+		</weaponTags>
 		<skills>
 			<li>
 				<skill>Shooting</skill>
-				<range>16~18</range>
+				<range>12~16</range>
 			</li>
 		</skills>
 	</PawnKindDef>
 
-	<!-- Kwazaari Assault Marine -->
-
-	<PawnKindDef ParentName="BOR_ElitePawn_II">
-		<defName>BOR_Kwazaari_Assault_Marine</defName>
-		<label>assault marine</label>
-		<labelPlural>assault marines</labelPlural>
-		<apparelTags>
-			<li>IndustrialBasic</li>
-			<li>IndustrialAdvanced</li>
-			<li>IndustrialMilitaryBasic</li>
-			<li>IndustrialMilitaryAdvanced</li>
-		</apparelTags>
-		<apparelDisallowTags>
-			<li>Western</li>
-		</apparelDisallowTags>
-		<weaponTags>
-			<li>BOR_Melee_II</li>
-		</weaponTags>
-		<weaponMoney>
-			<min>50000</min>
-			<max>50000</max>
-		</weaponMoney>
-		<combatPower>450</combatPower>
-		<isFighter>true</isFighter>
-		<canBeSapper>false</canBeSapper>
-		<apparelMoney>
-			<min>15000</min>
-			<max>25000</max>
-		</apparelMoney>
+	<PawnKindDef ParentName="BOR_KwazaariGuardBase">
+		<defName>BOR_Kwazaari_Mechbreaker</defName>
+		<label>guard mechbreaker</label>
+		<combatPower>345</combatPower>
 		<apparelRequired>
-			<li>BOR_Quasar_Apparel_PowerArmorHelmet</li>
 			<li>BOR_Quasar_Apparel_PowerArmor</li>
+			<li>BOR_Quasar_Apparel_PowerArmorHelmet</li>
 		</apparelRequired>
+		<weaponTags Inherit="False">
+			<li>BOR_Kind_Kwazaari_Mechbreaker</li>
+		</weaponTags>
 		<skills>
 			<li>
 				<skill>Melee</skill>
-				<range>16~18</range>
+				<range>12~16</range>
 			</li>
 		</skills>
 	</PawnKindDef>
 
-	<!-- Kwazaari Guardsman -->
-
-	<PawnKindDef ParentName="BOR_ElitePawn_II">
-		<defName>BOR_Kwazaari_Guardsman</defName>
-		<label>guardsman</label>
-		<labelPlural>guardsmen</labelPlural>
-		<apparelTags>
-			<li>IndustrialBasic</li>
-			<li>IndustrialAdvanced</li>
-			<li>IndustrialMilitaryBasic</li>
-			<li>IndustrialMilitaryAdvanced</li>
-		</apparelTags>
-		<apparelDisallowTags>
-			<li>Western</li>
-		</apparelDisallowTags>
-		<weaponTags>
-			<li>BOR_AssaultRifle_II</li>
-		</weaponTags>
-		<weaponMoney>
-			<min>50000</min>
-			<max>50000</max>
-		</weaponMoney>
-		<combatPower>450</combatPower>
-		<isFighter>true</isFighter>
-		<canBeSapper>false</canBeSapper>
-		<apparelMoney>
-			<min>15000</min>
-			<max>25000</max>
-		</apparelMoney>
+	<PawnKindDef ParentName="BOR_KwazaariGuardBase">
+		<defName>BOR_Kwazaari_Assault_Marine</defName>
+		<label>guard blademaster</label>
+		<combatPower>360</combatPower>
 		<apparelRequired>
-			<li>BOR_Quasar_Apparel_FlakPants</li>
-			<li>BOR_Quasar_Masterforge_Mantle</li>
-			<li>Apparel_AdvancedHelmet</li>
+			<li>BOR_Quasar_Apparel_PowerArmor</li>
+			<li>BOR_Quasar_Apparel_PowerArmorHelmet</li>
 		</apparelRequired>
+		<weaponTags Inherit="False">
+			<li>BOR_Kind_Kwazaari_Blademaster</li>
+		</weaponTags>
+		<skills>
+			<li>
+				<skill>Melee</skill>
+				<range>12~16</range>
+			</li>
+		</skills>
+	</PawnKindDef>
+
+	<PawnKindDef ParentName="BOR_KwazaariGuardBase">
+		<defName>BOR_Kwazaari_FieldOfficer</defName>
+		<label>field officer</label>
+		<combatPower>390</combatPower>
+		<apparelRequired>
+			<li>BOR_Quasar_Apparel_PowerArmor</li>
+			<li>BOR_Quasar_Apparel_PowerArmorHelmet</li>
+		</apparelRequired>
+		<weaponTags Inherit="False">
+			<li>BOR_Kind_Kwazaari_FieldOfficer</li>
+		</weaponTags>
 		<skills>
 			<li>
 				<skill>Shooting</skill>
-				<range>8~14</range>
+				<range>14~18</range>
+			</li>
+			<li>
+				<skill>Social</skill>
+				<range>12~16</range>
 			</li>
 		</skills>
 	</PawnKindDef>
+
+	<PawnKindDef ParentName="BOR_KwazaariEliteKindBase">
+		<defName>BOR_Kwazaari_Marine</defName>
+		<label>elite trooper</label>
+		<combatPower>450</combatPower>
+		<apparelRequired>
+			<li>BOR_Quasar_Apparel_PowerArmor</li>
+			<li>BOR_Quasar_Apparel_PowerArmorHelmet</li>
+		</apparelRequired>
+		<weaponTags Inherit="False">
+			<li>BOR_Kind_Kwazaari_Trooper</li>
+		</weaponTags>
+		<skills>
+			<li>
+				<skill>Shooting</skill>
+				<range>16~20</range>
+			</li>
+		</skills>
+	</PawnKindDef>
+
+	<PawnKindDef ParentName="BOR_KwazaariEliteKindBase">
+		<defName>BOR_Kwazaari_Marksman</defName>
+		<label>elite marksman</label>
+		<labelPlural>elite marksmen</labelPlural>
+		<combatPower>480</combatPower>
+		<apparelRequired>
+			<li>BOR_Quasar_Apparel_PowerArmor</li>
+			<li>BOR_Quasar_Apparel_PowerArmorHelmet</li>
+		</apparelRequired>
+		<weaponTags Inherit="False">
+			<li>BOR_Kind_Kwazaari_Marksman</li>
+		</weaponTags>
+		<skills>
+			<li>
+				<skill>Shooting</skill>
+				<range>16~20</range>
+			</li>
+		</skills>
+	</PawnKindDef>
+
+	<PawnKindDef ParentName="BOR_KwazaariEliteKindBase">
+		<defName>BOR_Kwazaari_EliteHeavy</defName>
+		<label>elite heavy</label>
+		<labelPlural>elite heavies</labelPlural>
+		<combatPower>510</combatPower>
+		<apparelRequired>
+			<li>BOR_Quasar_Apparel_PowerArmor</li>
+			<li>BOR_Quasar_Apparel_PowerArmorHelmet</li>
+			<li>BOR_Quasar_Apparel_Backpack</li>
+		</apparelRequired>
+		<weaponTags Inherit="False">
+			<li>BOR_Kind_Kwazaari_Heavy</li>
+		</weaponTags>
+		<skills>
+			<li>
+				<skill>Shooting</skill>
+				<range>16~20</range>
+			</li>
+		</skills>
+	</PawnKindDef>
+
+	<!-- Kwazaari Officer -->
 
 	<PawnKindDef ParentName="BOR_ElitePawn_II">
 		<defName>BOR_Kwazaari_Officer</defName>
@@ -429,5 +556,160 @@
 		</skills>
 		<factionLeader>true</factionLeader>
 	</PawnKindDef>
+
+
+
+<!--
+	Kwazaari civilians, disabled until the faction has a way to show them on the map.
+	To enable: add each kind's tag to its weapons in the weapon tag patches, add these kinds
+	to the faction's pawn groups, and add Polish labels.
+
+	<PawnKindDef Name="BOR_KwazaariCivilianBase" ParentName="BOR_BasePawn_II" Abstract="True">
+		<isFighter>false</isFighter>
+		<gearHealthRange>1~2</gearHealthRange>
+		<apparelIgnoreSeasons>true</apparelIgnoreSeasons>
+		<apparelTags Inherit="False" />
+		<apparelMoney>0~0</apparelMoney>
+		<apparelRequired>
+			<li>BOR_Quasar_Carbonsuit</li>
+		</apparelRequired>
+		<weaponMoney>100000~100000</weaponMoney>
+	</PawnKindDef>
+
+	<PawnKindDef ParentName="BOR_KwazaariCivilianBase">
+		<defName>BOR_Kwazaari_Townsman</defName>
+		<label>kwazaari townsman</label>
+		<combatPower>60</combatPower>
+		<apparelRequired>
+			<li>BOR_Quasar_Masterforge_Mantle</li>
+		</apparelRequired>
+		<weaponTags>
+			<li>BOR_Kind_Kwazaari_Townsman</li>
+		</weaponTags>
+		<skills>
+			<li>
+				<skill>Social</skill>
+				<range>8~12</range>
+			</li>
+		</skills>
+	</PawnKindDef>
+
+	<PawnKindDef ParentName="BOR_KwazaariCivilianBase">
+		<defName>BOR_Kwazaari_Farmer</defName>
+		<label>kwazaari farmer</label>
+		<combatPower>60</combatPower>
+		<backstoryFiltersOverride>
+			<li>
+				<categoriesAdulthood>
+					<li>Farmer</li>
+				</categoriesAdulthood>
+			</li>
+		</backstoryFiltersOverride>
+		<apparelRequired>
+			<li>BOR_Quasar_Masterforge_Mantle</li>
+		</apparelRequired>
+		<weaponTags>
+			<li>BOR_Kind_Kwazaari_Farmer</li>
+		</weaponTags>
+		<skills>
+			<li>
+				<skill>Plants</skill>
+				<range>12~16</range>
+			</li>
+		</skills>
+	</PawnKindDef>
+
+	<PawnKindDef ParentName="BOR_KwazaariCivilianBase">
+		<defName>BOR_Kwazaari_Miner</defName>
+		<label>kwazaari miner</label>
+		<combatPower>70</combatPower>
+		<backstoryFiltersOverride>
+			<li>
+				<categoriesAdulthood>
+					<li>Miner</li>
+				</categoriesAdulthood>
+			</li>
+		</backstoryFiltersOverride>
+		<apparelRequired>
+			<li>BOR_Quasar_Masterforge_Mantle</li>
+		</apparelRequired>
+		<weaponTags>
+			<li>BOR_Kind_Kwazaari_Miner</li>
+		</weaponTags>
+		<skills>
+			<li>
+				<skill>Mining</skill>
+				<range>12~16</range>
+			</li>
+		</skills>
+	</PawnKindDef>
+
+	<PawnKindDef ParentName="BOR_KwazaariCivilianBase">
+		<defName>BOR_Kwazaari_Grafter</defName>
+		<label>kwazaari neutronium grafter</label>
+		<combatPower>70</combatPower>
+		<apparelRequired>
+			<li>BOR_Quasar_Assembly_Carapace</li>
+		</apparelRequired>
+		<weaponTags>
+			<li>BOR_Kind_Kwazaari_Grafter</li>
+		</weaponTags>
+		<skills>
+			<li>
+				<skill>Medicine</skill>
+				<range>14~18</range>
+			</li>
+			<li>
+				<skill>Intellectual</skill>
+				<range>10~14</range>
+			</li>
+		</skills>
+	</PawnKindDef>
+
+	<PawnKindDef ParentName="BOR_KwazaariCivilianBase">
+		<defName>BOR_Kwazaari_Gunsmith</defName>
+		<label>kwazaari gunsmith</label>
+		<combatPower>70</combatPower>
+		<apparelRequired>
+			<li>BOR_Quasar_Masterforge_Mantle</li>
+		</apparelRequired>
+		<weaponTags>
+			<li>BOR_Kind_Kwazaari_Gunsmith</li>
+		</weaponTags>
+		<skills>
+			<li>
+				<skill>Crafting</skill>
+				<range>14~18</range>
+			</li>
+			<li>
+				<skill>Shooting</skill>
+				<range>10~14</range>
+			</li>
+		</skills>
+	</PawnKindDef>
+
+	<PawnKindDef ParentName="BOR_KwazaariCivilianBase">
+		<defName>BOR_Kwazaari_Scientist</defName>
+		<label>kwazaari scientist</label>
+		<combatPower>70</combatPower>
+		<apparelRequired>
+			<li>BOR_Quasar_Masterforge_Mantle</li>
+			<li>BOR_Quasar_Research_Integration_Helm</li>
+		</apparelRequired>
+		<weaponTags>
+			<li>BOR_Kind_Kwazaari_Scientist</li>
+		</weaponTags>
+		<skills>
+			<li>
+				<skill>Intellectual</skill>
+				<range>14~18</range>
+			</li>
+			<li>
+				<skill>Crafting</skill>
+				<range>10~14</range>
+			</li>
+		</skills>
+	</PawnKindDef>
+-->
 
 </Defs>

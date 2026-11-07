@@ -41,17 +41,6 @@
 	</ThingDef>
 
 	<!-- Tenebrite Coated -->
-	<ThingDef ParentName="Base50BMGBullet">
-		<defName>BOR_Bullet_AntiMat_TC</defName>
-		<label>Anti Materiel bullet (TC)</label>
-		<projectile Class="CombatExtended.ProjectilePropertiesCE">
-			<damageAmountBase>28</damageAmountBase>
-			<armorPenetrationSharp>73.5</armorPenetrationSharp>
-			<armorPenetrationBlunt>695</armorPenetrationBlunt>
-			<speed>331</speed>
-		</projectile>
-	</ThingDef>
-
 
 	<ThingDef Class="CombatExtended.AmmoDef" ParentName="AmmoAntiMaterielBase">
 		<defName>BOR_Ammo_AntiMateriel_FSJ</defName>
@@ -116,28 +105,6 @@
 		</tradeTags>
 	</ThingDef>
 
-	<ThingDef Class="CombatExtended.AmmoDef" ParentName="AmmoAntiMaterielBase">
-		<defName>BOR_Ammo_AntiMateriel_TC</defName>
-		<label>anti-materiel cartridge (TC)</label>
-		<graphicData>
-			<texPath>Things/Ammo/STACK_RANGED/HighCaliber/Sabot</texPath>
-			<graphicClass>Graphic_StackCount</graphicClass>
-		</graphicData>
-		<statBases>
-			<MarketValue>0.85</MarketValue>
-			<Mass>0.15</Mass>
-
-			<RoyalFavorValue>0.00</RoyalFavorValue>
-		</statBases>
-		<ammoClass>BOR_TC_AmmoClass</ammoClass>
-		<cookOffProjectile>BOR_Bullet_AntiMat_TC</cookOffProjectile>
-		<generateAllowChance>0.10</generateAllowChance>
-		<generateCommonality>0.1</generateCommonality>
-		<tradeTags>
-			<li>BOR_Tech_III</li>
-		</tradeTags>
-	</ThingDef>
-
 	<RecipeDef ParentName="AmmoRecipeBase">
 		<defName>MakeBOR_Ammo_AntiMateriel_FSJ</defName>
 		<label>make anti-materiel (FSJ) cartridge x200</label>
@@ -150,7 +117,7 @@
 						<li>BOR_Sunsteel</li>
 					</thingDefs>
 				</filter>
-				<count>50</count>
+				<count>39</count>
 			</li>
 		</ingredients>
 		<fixedIngredientFilter>
@@ -202,7 +169,7 @@
 						<li>BOR_Sunsteel</li>
 					</thingDefs>
 				</filter>
-				<count>50</count>
+				<count>39</count>
 			</li>
 			<li>
 				<filter>
@@ -210,7 +177,7 @@
 						<li>BOR_Neutronium</li>
 					</thingDefs>
 				</filter>
-				<count>100</count>
+				<count>68</count>
 			</li>
 		</ingredients>
 		<fixedIngredientFilter>
@@ -225,50 +192,6 @@
 		<workAmount>13500</workAmount>
 	</RecipeDef>
 
-	<RecipeDef ParentName="AdvancedAmmoRecipeBase">
-		<defName>MakeBOR_Ammo_AntiMateriel_TC</defName>
-		<label>make anti-materiel (TC) cartridge x200</label>
-		<description>Craft 200 anti-materiel (TC) cartridges.</description>
-		<jobString>Making anti-materiel (TC) cartridges.</jobString>
-		<ingredients>
-			<li>
-				<filter>
-					<thingDefs>
-						<li>BOR_QuasarAlloy</li>
-					</thingDefs>
-				</filter>
-				<count>30</count>
-			</li>
-			<li>
-				<filter>
-					<thingDefs>
-						<li>BOR_Tenebrite</li>
-					</thingDefs>
-				</filter>
-				<count>6</count>
-			</li>
-			<li>
-				<filter>
-					<thingDefs>
-						<li>BOR_Neutronium</li>
-					</thingDefs>
-				</filter>
-				<count>60</count>
-			</li>
-		</ingredients>
-		<fixedIngredientFilter>
-			<thingDefs>
-				<li>BOR_QuasarAlloy</li>
-				<li>BOR_Tenebrite</li>
-				<li>BOR_Neutronium</li>
-			</thingDefs>
-		</fixedIngredientFilter>
-		<products>
-			<BOR_Ammo_AntiMateriel_TC>200</BOR_Ammo_AntiMateriel_TC>
-		</products>
-		<workAmount>9900</workAmount>
-	</RecipeDef>
-
 	<!-- ==================== AmmoSets ==================== -->
 
 	<CombatExtended.AmmoSetDef>
@@ -278,7 +201,6 @@
 			<BOR_Ammo_AntiMateriel_FSJ>BOR_Bullet_AntiMat_FSJ</BOR_Ammo_AntiMateriel_FSJ>
 			<BOR_Ammo_AntiMateriel_Ni>BOR_Bullet_AntiMat_Ni</BOR_Ammo_AntiMateriel_Ni>
 			<BOR_Ammo_AntiMateriel_QaP>BOR_Bullet_AntiMat_QaP</BOR_Ammo_AntiMateriel_QaP>
-			<BOR_Ammo_AntiMateriel_TC>BOR_Bullet_AntiMat_TC</BOR_Ammo_AntiMateriel_TC>
 		</ammoTypes>
 	</CombatExtended.AmmoSetDef>
 
@@ -289,7 +211,6 @@
 			<BOR_Ammo_AntiMateriel_FSJ>BOR_Bullet_AntiMat_FSJ</BOR_Ammo_AntiMateriel_FSJ>
 			<BOR_Ammo_AntiMateriel_Ni>BOR_Bullet_AntiMat_Ni</BOR_Ammo_AntiMateriel_Ni>
 			<BOR_Ammo_AntiMateriel_QaP>BOR_Bullet_AntiMat_QaP</BOR_Ammo_AntiMateriel_QaP>
-			<BOR_Ammo_AntiMateriel_TC>BOR_Bullet_AntiMat_TC</BOR_Ammo_AntiMateriel_TC>
 		</ammoTypes>
 	</CombatExtended.AmmoSetDef>
 
@@ -299,7 +220,6 @@
 		<ammoTypes>
 			<BOR_Ammo_AntiMateriel_QaP>BOR_Bullet_AntiMat_QaP</BOR_Ammo_AntiMateriel_QaP>
 			<BOR_Ammo_AntiMateriel_Ni>BOR_Bullet_AntiMat_Ni</BOR_Ammo_AntiMateriel_Ni>
-			<BOR_Ammo_AntiMateriel_TC>BOR_Bullet_AntiMat_TC</BOR_Ammo_AntiMateriel_TC>
 		</ammoTypes>
 	</CombatExtended.AmmoSetDef>
 

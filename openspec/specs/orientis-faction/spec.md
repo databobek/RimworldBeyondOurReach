@@ -49,6 +49,9 @@ Choosing the Path of Light SHALL set the colony's path permanently and SHALL run
 3. Every pawn that was stripped and survived SHALL become the Orientis xenotype. So SHALL the pawn that triggered the letter if it is still alive, even if it had nothing to strip.
 4. Every Orientis pawn SHALL gain the manifest ability.
 
+### Requirement: The Dark Archotech's answer
+One in-game hour after the Path of Light is chosen, a letter SHALL say "Dark Archotechs are not pleased." It SHALL NOT expire or be dismissible with a right click. A few real seconds after it is closed, the game SHALL unpause if paused, the camera SHALL jump to the strike, and dark lightning SHALL strike a random standable, unfogged home area cell that can reach a colonist, or a cell near a colonist if there is none. A `BOR_Umbral` SHALL spawn there. It SHALL go for the closest non-Umbral colonist it can reach, bashing doors if it must, pin them, tear off their limbs and kill them, then skip away and leave the map. If the target is carried off or leaves the map, it SHALL take the next closest. If the target dies any other way, it SHALL skip away. It can be fought, and it SHALL not use its dark abilities or its swarm behaviour. If no home map has a colonist it can reach, nothing happens and a warning is logged.
+
 ### Requirement: Stripping
 Every tenebral part SHALL be removed from every pawn holding one: every hediff with `DefModExtension_TenebralImplant` and every `BOR_Crystallized` hediff.
 
@@ -122,7 +125,6 @@ Until final art exists, Orientis buildings SHALL use the copies of tier 2 textur
 | Offerings bench | `offerings_bench` | `production_bench` |
 | Meditation bench | `meditation_bench/meditation_bench` (multi) | `bench_linkable/bench_linkable` |
 | Meditation mat | `meditation_mat` | `QuasarHydroponics_Tileable_Icon` |
-| Archotech icon | `archotech_icon` | `reactor` |
 | Blessing bench | `blessing_bench` | `research_unlocker` |
 
 ### Requirement: Light and dark stay apart
@@ -164,9 +166,6 @@ The offerings bench SHALL be a bench with bills that cannot be interacted with d
 
 ### Requirement: Meditation bench and meditation mat
 The meditation bench and meditation mat SHALL generate a smaller amount of meditation power and load it into a cache, as a pod does. Using them SHALL be normal Meditate work for Orientis pawns. They SHALL NOT count as recreation or use the meditation schedule.
-
-### Requirement: Archotech icon
-An archotech icon statue SHALL be provided as a decorative building.
 
 ### Requirement: Blessing bench
 Orientis pawns have no bionics. A pawn MAY go to the blessing bench and meditate.
@@ -212,7 +211,7 @@ Implemented in `Orientis.cs`, `OrientisPath.cs`, `OrientisManifest.cs`, `Meditat
 
 - `GameComponent_OrientisPath` holds the colony's path and the running sequence, so a save partway through resumes it.
 - Orientis pawns can't take bionics or implants by surgery, tenebral ones included. Natural transplants still work.
-- Meditation power is one pool per map. A pod makes 200 per day at 100% strength, a bench 100 and a mat 50, and each loads the nearest cache with room within 12 cells. A cache holds 1000.
+- Meditation power is one pool per map. A pod makes 200 per day at 100% strength, a bench 100 and a mat 50, and each loads the caches on the map with no range limit, sharing evenly between those with room. A cache holds 1000. Every cache shows the whole map's pool.
 - Meditating at a pod, bench or mat is its own work type, `BOR_Meditate`, set to priority 3 when a pawn becomes Orientis. Only Orientis pawns get the job, and they take the strongest free spot first.
 - The shield is a radius of 25 and draws 400 power per day, so one pod's output covers half of it. It uses vanilla's projectile interceptor, plus a patch that stops the power beam. Bombardments and beams only stop if an enemy fired them. Disabling takes effect at once, with no pawn. A shield's effect on a pawn ends when it leaves the shield, and stops at 95% so it can't kill by itself. A pawn counts as dark if it is Umbral, holds a tenebral or crystallized part, has tenebral psychosis, or belongs to the Tenebrites faction or one of its pawn kinds. Burning pawns glow gold.
 - A tenebral part is any added part or implant named tenebral or III, or made from a tenebral organ or appendage. All of them carry `DefModExtension_TenebralImplant`, including the Royalty and EPOE compat parts, so the Path of Light strips them and the shield sees them.

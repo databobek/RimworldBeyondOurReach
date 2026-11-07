@@ -80,9 +80,15 @@ public partial class CompForge
     }
 
     // Call on every tick production work actually progresses (pawn or robot): applies overdrive wear.
+    private int lastProducingTick = -999;
+
+    // Lit while it produced in the last couple of ticks, by a pawn or on its own.
+    public bool GlowActive => Find.TickManager.TicksGame - lastProducingTick <= 2;
+
     public void NotifyProducing()
     {
         producing = true;
+        lastProducingTick = Find.TickManager.TicksGame;
         if (wearPerTick <= 0f)
         {
             return;

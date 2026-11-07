@@ -199,4 +199,50 @@
 			</value>
 		</nomatch>
 	</Operation>
+	<!-- Label tree, one patch per case (a label can only be patched once): Biotech + Terra Pumps and Terra Pumps alone both give terraformer; Biotech alone gives filter pump; neither keeps the base label. Biotech loads first, so it decides the Biotech cases and the Terra Pumps patch only handles Terra Pumps without Biotech. -->
+	<Operation Class="PatchOperationConditional">
+		<xpath>/Defs/ResearchProjectDef[defName="MoisturePump"]</xpath>
+		<match Class="PatchOperationReplace">
+			<xpath>/Defs/ThingDef[defName="BOR_MoisturePump_I"]/label</xpath>
+			<value>
+				<label>solar terraformer</label>
+			</value>
+		</match>
+		<nomatch Class="PatchOperationReplace">
+			<xpath>/Defs/ThingDef[defName="BOR_MoisturePump_I"]/label</xpath>
+			<value>
+				<label>solar moisture filter pump</label>
+			</value>
+		</nomatch>
+	</Operation>
+	<Operation Class="PatchOperationConditional">
+		<xpath>/Defs/ResearchProjectDef[defName="MoisturePump"]</xpath>
+		<match Class="PatchOperationReplace">
+			<xpath>/Defs/ThingDef[defName="BOR_MoisturePump_II"]/label</xpath>
+			<value>
+				<label>kwazaari terraformer</label>
+			</value>
+		</match>
+		<nomatch Class="PatchOperationReplace">
+			<xpath>/Defs/ThingDef[defName="BOR_MoisturePump_II"]/label</xpath>
+			<value>
+				<label>kwazaari moisture filter pump</label>
+			</value>
+		</nomatch>
+	</Operation>
+	<Operation Class="PatchOperationConditional">
+		<xpath>/Defs/ResearchProjectDef[defName="MoisturePump"]</xpath>
+		<match Class="PatchOperationReplace">
+			<xpath>/Defs/ThingDef[defName="BOR_MoisturePump_III"]/label</xpath>
+			<value>
+				<label>tenebral terraformer</label>
+			</value>
+		</match>
+		<nomatch Class="PatchOperationReplace">
+			<xpath>/Defs/ThingDef[defName="BOR_MoisturePump_III"]/label</xpath>
+			<value>
+				<label>tenebral moisture filter pump</label>
+			</value>
+		</nomatch>
+	</Operation>
 </Patch>

@@ -75,6 +75,8 @@ public class KwazaariFavorDef : Def
 
     public PawnKindDef? pawnKind;
     public int pawnCount;
+    // Mixed squad; when present it is delivered in place of pawnCount copies of pawnKind.
+    public List<PawnKindDef> squad = new();
     public float loanHours;
     public float lostPawnCost;
 

@@ -31,3 +31,6 @@ A non-Umbral caster SHALL lose 50% of the bloodlust bar on each cast, and the ab
 
 ### Requirement: Thrall without Ideology
 Slavery needs Ideology. Without it, Thrall SHALL recruit the target into the caster's faction instead, still with brain damage.
+
+### Requirement: Thrall by a hostile Umbral
+A target taken over by a hostile Umbral SHALL switch to the caster's ideoligion when Ideology is active.

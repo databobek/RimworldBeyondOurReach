@@ -8,6 +8,8 @@ namespace BeyondOurReach;
 
 public static class Umbral
 {
+    public const float FixedMood = 0.5f;
+
     // Cached per pawn instance because the forbid check asks every tick; cleared when the xenotype or the
     // BOR_Umbral hediff changes. Pawns loaded from a save are new instances, so nothing stale survives a load.
     private static readonly ConditionalWeakTable<Pawn, StrongBox<bool>> umbralCache = new();
@@ -179,6 +181,44 @@ public static class Umbral
             pawn.health.AddHediff(BOR_UmbralDefOf.BOR_Umbral);
         }
         pawn.needs?.AddOrRemoveNeedsAsAppropriate();
+        Hollow(pawn);
+        AdoptUmbralIdeo(pawn);
+    }
+
+    // Umbrals feel nothing: traits and memories go here, and UmbralPatches blocks every new thought and fixes the mood.
+    private static void Hollow(Pawn pawn)
+    {
+        if (pawn.story?.traits != null)
+        {
+            foreach (Trait trait in pawn.story.traits.allTraits.ToList())
+            {
+                pawn.story.traits.RemoveTrait(trait);
+            }
+        }
+        Need_Mood? mood = pawn.needs?.mood;
+        if (mood != null)
+        {
+            mood.thoughts.memories.Memories.Clear();
+            mood.thoughts.situational.Notify_SituationalThoughtsDirty();
+            mood.CurLevel = FixedMood;
+        }
+    }
+
+    // A colonist who turns Umbral takes up the Umbral ideoligion; the rest of the colony keeps theirs.
+    private static void AdoptUmbralIdeo(Pawn pawn)
+    {
+        if (!ModsConfig.IdeologyActive || pawn.ideo == null || pawn.Faction != Faction.OfPlayer)
+        {
+            return;
+        }
+        Ideo? ideo = Find.FactionManager.FirstFactionOfDef(BOR_UmbralDefOf.BOR_Umbrals)?.ideos?.PrimaryIdeo;
+        if (ideo == null || pawn.Ideo == ideo)
+        {
+            return;
+        }
+        // Spawning reveals a hidden ideoligion, but this pawn may already be spawned.
+        ideo.hidden = false;
+        pawn.ideo.SetIdeo(ideo);
     }
 
     public static void RemoveHediffs(Pawn pawn, HediffDef def)
@@ -207,12 +247,24 @@ public static class Umbral
         BOR_UmbralDefOf.BOR_UmbralUtilityPod.CompProps<HediffCompProperties_UmbralUtilityPod>()?.weapons.Contains(def) ?? false;
 }
 
+// The one thought an Umbral has. It changes nothing; the mood is fixed elsewhere.
+public class ThoughtWorker_UmbralEmpty : ThoughtWorker
+{
+    protected override ThoughtState CurrentStateInternal(Pawn p) =>
+        Umbral.IsUmbral(p) ? ThoughtState.ActiveDefault : ThoughtState.Inactive;
+}
+
 // Flu-style progression; at full severity the pawn does not die but gains its next Umbral step.
 public class HediffComp_UmbralTransformation : HediffComp
 {
     public override void CompPostTickInterval(ref float severityAdjustment, int delta)
     {
         base.CompPostTickInterval(ref severityAdjustment, delta);
+        // The severity comp runs first and only adds progress on some ticks.
+        if (severityAdjustment > 0f && RighteousSlaughter.IsBlessed(Pawn))
+        {
+            severityAdjustment *= RighteousSlaughter.Settings.transformationSpeed;
+        }
         if (parent.Severity + severityAdjustment < parent.def.maxSeverity)
         {
             return;

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- Given to every Umbral in the colony by the Righteous Slaughter. Lasts as long as its cooldown, so it can be kept up. -->
+	<HediffDef>
+		<defName>BOR_SlaughterBlessing</defName>
+		<label>sated by the slaughter</label>
+		<description>Someone was torn apart in this person's name. Their abilities recover faster, and any Umbral transformation progresses faster.</description>
+		<hediffClass>HediffWithComps</hediffClass>
+		<defaultLabelColor>(0.45, 0.2, 0.6)</defaultLabelColor>
+		<isBad>false</isBad>
+		<everCurableByItem>false</everCurableByItem>
+		<scenarioCanAdd>false</scenarioCanAdd>
+		<comps>
+			<li Class="HediffCompProperties_Disappears">
+				<disappearsAfterTicks>600000~600000</disappearsAfterTicks>
+				<showRemainingTime>true</showRemainingTime>
+			</li>
+		</comps>
+		<modExtensions>
+			<li Class="BeyondOurReach.DefModExtension_RighteousSlaughter">
+				<cooldownSpeed>1.5</cooldownSpeed>
+				<transformationSpeed>1.25</transformationSpeed>
+			</li>
+		</modExtensions>
+	</HediffDef>
+
+	<!-- Downs the victim for the slaughter. The job removes it if it ends early; the timer covers anything else. -->
+	<HediffDef>
+		<defName>BOR_SlaughterRestraint</defName>
+		<label>pinned down</label>
+		<description>This person is being held down for the slaughter and cannot move.</description>
+		<hediffClass>HediffWithComps</hediffClass>
+		<isBad>true</isBad>
+		<everCurableByItem>false</everCurableByItem>
+		<scenarioCanAdd>false</scenarioCanAdd>
+		<comps>
+			<li Class="HediffCompProperties_Disappears">
+				<disappearsAfterTicks>60000~60000</disappearsAfterTicks>
+			</li>
+		</comps>
+		<stages>
+			<li>
+				<capMods>
+					<li>
+						<capacity>Moving</capacity>
+						<setMax>0</setMax>
+					</li>
+				</capMods>
+			</li>
+		</stages>
+	</HediffDef>
+</Defs>

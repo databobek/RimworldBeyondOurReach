@@ -62,28 +62,462 @@
 	</PawnKindDef>
 
 
-	<!-- Solarite Citizen -->
+	<!-- Solar kind bases: full matching set per kind, no budget-bought gear -->
 
-	<PawnKindDef ParentName="BOR_BasePawn">
+	<PawnKindDef Name="BOR_SolarKindBase" ParentName="BOR_BasePawn" Abstract="True">
+		<apparelIgnoreSeasons>true</apparelIgnoreSeasons>
+		<apparelTags Inherit="False" />
+		<apparelMoney>0~0</apparelMoney>
+		<weaponMoney>100000~100000</weaponMoney>
+		<canBeSapper>false</canBeSapper>
+		<apparelRequired>
+			<li>BOR_Solar_Carbonsuit</li>
+		</apparelRequired>
+	</PawnKindDef>
+
+	<PawnKindDef Name="BOR_SolarCivilianBase" ParentName="BOR_SolarKindBase" Abstract="True">
+		<isFighter>false</isFighter>
+		<gearHealthRange>1~2</gearHealthRange>
+	</PawnKindDef>
+
+	<PawnKindDef Name="BOR_SolarMilitiaBase" ParentName="BOR_SolarKindBase" Abstract="True">
+		<isFighter>true</isFighter>
+	</PawnKindDef>
+
+	<PawnKindDef Name="BOR_SolarPoliceBase" ParentName="BOR_SolarMilitiaBase" Abstract="True">
+		<techHediffsRequired>
+			<li>BOR_SolarBionicEye</li>
+		</techHediffsRequired>
+	</PawnKindDef>
+
+	<PawnKindDef Name="BOR_SolarGuardBase" ParentName="BOR_SolarPoliceBase" Abstract="True">
+		<techHediffsRequired>
+			<li>BOR_SolarBionicArm</li>
+			<li>BOR_SolarBionicArm</li>
+		</techHediffsRequired>
+	</PawnKindDef>
+
+	<PawnKindDef Name="BOR_SolarEliteKindBase" ParentName="BOR_ElitePawn" Abstract="True">
+		<apparelIgnoreSeasons>true</apparelIgnoreSeasons>
+		<apparelTags Inherit="False" />
+		<apparelMoney>0~0</apparelMoney>
+		<weaponMoney>100000~100000</weaponMoney>
+		<canBeSapper>false</canBeSapper>
+		<isFighter>true</isFighter>
+		<apparelRequired>
+			<li>BOR_Solar_Carbonsuit</li>
+		</apparelRequired>
+	</PawnKindDef>
+
+	<!-- Solar ladder, civilians to elites -->
+
+	<PawnKindDef ParentName="BOR_SolarCivilianBase">
 		<defName>BOR_Citizen</defName>
 		<label>citizen</label>
-		<combatPower>65</combatPower>
-		<isFighter>false</isFighter>
-		<gearHealthRange>1.5~2.0</gearHealthRange>
-		<weaponTags>
-			<li>BOR_Pistol_I</li>
-		</weaponTags>
-
-		<weaponMoney>9000~10000</weaponMoney>
-		<apparelMoney>6000~8000</apparelMoney>
-		<apparelRequired>
-
-			<li>Apparel_Duster</li>
-			<li>Apparel_CollarShirt</li>
-			<li>Apparel_Pants</li>
-		</apparelRequired>
+		<combatPower>60</combatPower>
 		<apparelAllowHeadgearChance>0</apparelAllowHeadgearChance>
+		<apparelRequired>
+			<li>BOR_Sunforge_Welders_Coat</li>
+		</apparelRequired>
+		<weaponTags Inherit="False">
+			<li>BOR_Kind_Solar_Townsman</li>
+		</weaponTags>
+		<skills>
+			<li>
+				<skill>Social</skill>
+				<range>4~8</range>
+			</li>
+		</skills>
 	</PawnKindDef>
+
+	<PawnKindDef ParentName="BOR_SolarCivilianBase">
+		<defName>BOR_Farmer</defName>
+		<label>solarite food manufacturer</label>
+		<combatPower>60</combatPower>
+		<backstoryFiltersOverride>
+			<li>
+				<categoriesAdulthood>
+					<li>Farmer</li>
+				</categoriesAdulthood>
+			</li>
+		</backstoryFiltersOverride>
+		<apparelAllowHeadgearChance>0</apparelAllowHeadgearChance>
+		<apparelRequired>
+			<li>BOR_Sunforge_Welders_Coat</li>
+		</apparelRequired>
+		<weaponTags Inherit="False">
+			<li>BOR_Kind_Solar_Farmer</li>
+		</weaponTags>
+		<skills>
+			<li>
+				<skill>Plants</skill>
+				<range>8~12</range>
+			</li>
+		</skills>
+	</PawnKindDef>
+
+	<PawnKindDef ParentName="BOR_SolarCivilianBase">
+		<defName>BOR_Logger</defName>
+		<label>solarite woodcutter</label>
+		<combatPower>60</combatPower>
+		<backstoryFiltersOverride>
+			<li>
+				<categoriesAdulthood>
+					<li>Logger</li>
+				</categoriesAdulthood>
+			</li>
+		</backstoryFiltersOverride>
+		<apparelAllowHeadgearChance>0</apparelAllowHeadgearChance>
+		<apparelRequired>
+			<li>BOR_Sunforge_Welders_Coat</li>
+		</apparelRequired>
+		<weaponTags Inherit="False">
+			<li>BOR_Kind_Solar_Logger</li>
+		</weaponTags>
+		<skills>
+			<li>
+				<skill>Plants</skill>
+				<range>8~12</range>
+			</li>
+		</skills>
+	</PawnKindDef>
+
+	<PawnKindDef ParentName="BOR_SolarCivilianBase">
+		<defName>BOR_Miner</defName>
+		<label>solarite mineral gatherer</label>
+		<combatPower>70</combatPower>
+		<backstoryFiltersOverride>
+			<li>
+				<categoriesAdulthood>
+					<li>Miner</li>
+				</categoriesAdulthood>
+			</li>
+		</backstoryFiltersOverride>
+		<apparelAllowHeadgearChance>0</apparelAllowHeadgearChance>
+		<apparelRequired>
+			<li>BOR_Sunforge_Welders_Coat</li>
+		</apparelRequired>
+		<weaponTags Inherit="False">
+			<li>BOR_Kind_Solar_Miner</li>
+		</weaponTags>
+		<skills>
+			<li>
+				<skill>Mining</skill>
+				<range>8~12</range>
+			</li>
+		</skills>
+	</PawnKindDef>
+
+	<PawnKindDef ParentName="BOR_SolarCivilianBase">
+		<defName>BOR_Solar_Grafter</defName>
+		<label>neutronium grafter</label>
+		<combatPower>70</combatPower>
+		<apparelAllowHeadgearChance>0</apparelAllowHeadgearChance>
+		<apparelRequired>
+			<li>BOR_Bionic_Assembly_Harness</li>
+		</apparelRequired>
+		<weaponTags Inherit="False">
+			<li>BOR_Kind_Solar_Grafter</li>
+		</weaponTags>
+		<skills>
+			<li>
+				<skill>Medicine</skill>
+				<range>10~14</range>
+			</li>
+			<li>
+				<skill>Intellectual</skill>
+				<range>6~10</range>
+			</li>
+		</skills>
+	</PawnKindDef>
+
+	<PawnKindDef ParentName="BOR_SolarCivilianBase">
+		<defName>BOR_Solar_Gunsmith</defName>
+		<label>gunsmith</label>
+		<combatPower>70</combatPower>
+		<apparelRequired>
+			<li>BOR_Sunforge_Welders_Coat</li>
+			<li>BOR_Sunforge_Calibration_Visor</li>
+		</apparelRequired>
+		<weaponTags Inherit="False">
+			<li>BOR_Kind_Solar_Gunsmith</li>
+		</weaponTags>
+		<skills>
+			<li>
+				<skill>Crafting</skill>
+				<range>10~14</range>
+			</li>
+			<li>
+				<skill>Shooting</skill>
+				<range>6~10</range>
+			</li>
+		</skills>
+	</PawnKindDef>
+
+	<PawnKindDef ParentName="BOR_SolarCivilianBase">
+		<defName>BOR_Solar_Scientist</defName>
+		<label>scientist</label>
+		<combatPower>70</combatPower>
+		<apparelRequired>
+			<li>BOR_Sunforge_Welders_Coat</li>
+			<li>BOR_QuantumRebreatherMask</li>
+		</apparelRequired>
+		<weaponTags Inherit="False">
+			<li>BOR_Kind_Solar_Scientist</li>
+		</weaponTags>
+		<skills>
+			<li>
+				<skill>Intellectual</skill>
+				<range>10~14</range>
+			</li>
+			<li>
+				<skill>Crafting</skill>
+				<range>6~10</range>
+			</li>
+		</skills>
+	</PawnKindDef>
+
+	<PawnKindDef ParentName="BOR_SolarMilitiaBase">
+		<defName>BOR_Solar_Militiaman</defName>
+		<label>militiaman</label>
+		<labelPlural>militiamen</labelPlural>
+		<combatPower>90</combatPower>
+		<apparelRequired>
+			<li>BOR_Sunforge_Welders_Coat</li>
+			<li>BOR_Solar_Apparel_FlakPants</li>
+			<li>BOR_Solar_Apparel_ArmorHelmetRecon</li>
+		</apparelRequired>
+		<weaponTags Inherit="False">
+			<li>BOR_Kind_Solar_Militiaman</li>
+		</weaponTags>
+		<skills>
+			<li>
+				<skill>Shooting</skill>
+				<range>6~10</range>
+			</li>
+		</skills>
+	</PawnKindDef>
+
+	<PawnKindDef ParentName="BOR_SolarMilitiaBase">
+		<defName>BOR_Solar_Skirmisher</defName>
+		<label>militia skirmisher</label>
+		<combatPower>90</combatPower>
+		<apparelRequired>
+			<li>BOR_Sunforge_Welders_Coat</li>
+			<li>BOR_Solar_Apparel_FlakPants</li>
+			<li>BOR_Solar_Apparel_ArmorHelmetRecon</li>
+		</apparelRequired>
+		<weaponTags Inherit="False">
+			<li>BOR_Kind_Solar_Skirmisher</li>
+		</weaponTags>
+		<skills>
+			<li>
+				<skill>Melee</skill>
+				<range>6~10</range>
+			</li>
+		</skills>
+	</PawnKindDef>
+
+	<PawnKindDef ParentName="BOR_SolarPoliceBase">
+		<defName>BOR_Solar_Police</defName>
+		<label>police officer</label>
+		<labelPlural>police officers</labelPlural>
+		<combatPower>120</combatPower>
+		<apparelAllowHeadgearChance>0</apparelAllowHeadgearChance>
+		<apparelRequired>
+			<li>BOR_Solar_Apparel_ArmorRecon</li>
+		</apparelRequired>
+		<weaponTags Inherit="False">
+			<li>BOR_Kind_Solar_Police</li>
+		</weaponTags>
+		<skills>
+			<li>
+				<skill>Shooting</skill>
+				<range>8~12</range>
+			</li>
+		</skills>
+	</PawnKindDef>
+
+	<PawnKindDef ParentName="BOR_SolarPoliceBase">
+		<defName>BOR_Solar_RiotPolice</defName>
+		<label>riot police officer</label>
+		<labelPlural>riot police officers</labelPlural>
+		<combatPower>130</combatPower>
+		<apparelAllowHeadgearChance>0</apparelAllowHeadgearChance>
+		<apparelRequired>
+			<li>BOR_Solar_Apparel_ArmorRecon</li>
+			<li>BOR_Solar_Apparel_ShieldBelt</li>
+		</apparelRequired>
+		<weaponTags Inherit="False">
+			<li>BOR_Kind_Solar_RiotPolice</li>
+		</weaponTags>
+		<skills>
+			<li>
+				<skill>Melee</skill>
+				<range>8~12</range>
+			</li>
+		</skills>
+	</PawnKindDef>
+
+	<PawnKindDef ParentName="BOR_SolarGuardBase">
+		<defName>BOR_Solarite_Guardsman</defName>
+		<label>guard</label>
+		<combatPower>200</combatPower>
+		<apparelRequired>
+			<li>BOR_Solar_Apparel_PowerArmor</li>
+			<li>BOR_Solar_Apparel_PowerArmorHelmet</li>
+		</apparelRequired>
+		<weaponTags Inherit="False">
+			<li>BOR_Kind_Solar_Guard</li>
+		</weaponTags>
+		<skills>
+			<li>
+				<skill>Shooting</skill>
+				<range>10~14</range>
+			</li>
+		</skills>
+	</PawnKindDef>
+
+	<PawnKindDef ParentName="BOR_SolarGuardBase">
+		<defName>BOR_Solar_Breacher</defName>
+		<label>guard breacher</label>
+		<combatPower>220</combatPower>
+		<apparelRequired>
+			<li>BOR_Solar_Apparel_PowerArmor</li>
+			<li>BOR_Solar_Apparel_PowerArmorHelmet</li>
+		</apparelRequired>
+		<weaponTags Inherit="False">
+			<li>BOR_Kind_Solar_Breacher</li>
+		</weaponTags>
+		<skills>
+			<li>
+				<skill>Shooting</skill>
+				<range>10~14</range>
+			</li>
+		</skills>
+	</PawnKindDef>
+
+	<PawnKindDef ParentName="BOR_SolarGuardBase">
+		<defName>BOR_Solar_Mechbreaker</defName>
+		<label>guard mechbreaker</label>
+		<combatPower>230</combatPower>
+		<apparelRequired>
+			<li>BOR_Solar_Apparel_PowerArmor</li>
+			<li>BOR_Solar_Apparel_PowerArmorHelmet</li>
+		</apparelRequired>
+		<weaponTags Inherit="False">
+			<li>BOR_Kind_Solar_Mechbreaker</li>
+		</weaponTags>
+		<skills>
+			<li>
+				<skill>Melee</skill>
+				<range>10~14</range>
+			</li>
+		</skills>
+	</PawnKindDef>
+
+	<PawnKindDef ParentName="BOR_SolarGuardBase">
+		<defName>BOR_Solar_Blademaster</defName>
+		<label>guard blademaster</label>
+		<combatPower>240</combatPower>
+		<apparelRequired>
+			<li>BOR_Solar_Apparel_PowerArmor</li>
+			<li>BOR_Solar_Apparel_PowerArmorHelmet</li>
+		</apparelRequired>
+		<weaponTags Inherit="False">
+			<li>BOR_Kind_Solar_Blademaster</li>
+		</weaponTags>
+		<skills>
+			<li>
+				<skill>Melee</skill>
+				<range>10~14</range>
+			</li>
+		</skills>
+	</PawnKindDef>
+
+	<PawnKindDef ParentName="BOR_SolarGuardBase">
+		<defName>BOR_Solar_FieldOfficer</defName>
+		<label>field officer</label>
+		<combatPower>260</combatPower>
+		<apparelRequired>
+			<li>BOR_Solar_Apparel_PowerArmor</li>
+			<li>BOR_Solar_Apparel_PowerArmorHelmet</li>
+		</apparelRequired>
+		<weaponTags Inherit="False">
+			<li>BOR_Kind_Solar_FieldOfficer</li>
+		</weaponTags>
+		<skills>
+			<li>
+				<skill>Shooting</skill>
+				<range>12~16</range>
+			</li>
+			<li>
+				<skill>Social</skill>
+				<range>10~14</range>
+			</li>
+		</skills>
+	</PawnKindDef>
+
+	<PawnKindDef ParentName="BOR_SolarEliteKindBase">
+		<defName>BOR_Solarite_Marine</defName>
+		<label>elite trooper</label>
+		<combatPower>300</combatPower>
+		<apparelRequired>
+			<li>BOR_Solar_Apparel_PowerArmor</li>
+			<li>BOR_Solar_Apparel_PowerArmorHelmet</li>
+		</apparelRequired>
+		<weaponTags Inherit="False">
+			<li>BOR_Kind_Solar_Trooper</li>
+		</weaponTags>
+		<skills>
+			<li>
+				<skill>Shooting</skill>
+				<range>14~18</range>
+			</li>
+		</skills>
+	</PawnKindDef>
+
+	<PawnKindDef ParentName="BOR_SolarEliteKindBase">
+		<defName>BOR_Solarite_Marksman</defName>
+		<label>elite marksman</label>
+		<labelPlural>elite marksmen</labelPlural>
+		<combatPower>320</combatPower>
+		<apparelRequired>
+			<li>BOR_Solar_Apparel_PowerArmor</li>
+			<li>BOR_Solar_Apparel_PowerArmorHelmet</li>
+		</apparelRequired>
+		<weaponTags Inherit="False">
+			<li>BOR_Kind_Solar_Marksman</li>
+		</weaponTags>
+		<skills>
+			<li>
+				<skill>Shooting</skill>
+				<range>14~18</range>
+			</li>
+		</skills>
+	</PawnKindDef>
+
+	<PawnKindDef ParentName="BOR_SolarEliteKindBase">
+		<defName>BOR_Solar_EliteHeavy</defName>
+		<label>elite heavy</label>
+		<labelPlural>elite heavies</labelPlural>
+		<combatPower>340</combatPower>
+		<apparelRequired>
+			<li>BOR_Solar_Apparel_PowerArmor</li>
+			<li>BOR_Solar_Apparel_PowerArmorHelmet</li>
+			<li>BOR_Solar_Apparel_Backpack</li>
+		</apparelRequired>
+		<weaponTags Inherit="False">
+			<li>BOR_Kind_Solar_Heavy</li>
+		</weaponTags>
+		<skills>
+			<li>
+				<skill>Shooting</skill>
+				<range>14~18</range>
+			</li>
+		</skills>
+	</PawnKindDef>
+
 	<!-- Solarite Trader -->
 
 	<PawnKindDef ParentName="BOR_BasePawn">
@@ -107,210 +541,7 @@
 		</apparelRequired>
 	</PawnKindDef>
 
-	<PawnKindDef ParentName="BOR_BasePawn">
-		<defName>BOR_Logger</defName>
-		<label>solarite woodcutter</label>
-		<combatPower>55</combatPower>
-		<backstoryFiltersOverride>
-			<li>
-				<categoriesAdulthood>
-					<li>Logger</li>
-				</categoriesAdulthood>
-			</li>
-		</backstoryFiltersOverride>
-		<isFighter>false</isFighter>
-		<gearHealthRange>0.75~2.0</gearHealthRange>
-		<weaponTags>
-			<li>BOR_Pistol_I</li>
-			<li>MedievalMeleeBasic</li>
-			<li>BOR_Melee_I</li>
-		</weaponTags>
-		<weaponMoney>9000~10000</weaponMoney>
-		<apparelMoney>2000~4000</apparelMoney>
-		<apparelRequired>
-
-			<li>Apparel_Duster</li>
-			<li>Apparel_CollarShirt</li>
-			<li>Apparel_Pants</li>
-		</apparelRequired>
-		<apparelAllowHeadgearChance>0</apparelAllowHeadgearChance>
-	</PawnKindDef>
-
-	<PawnKindDef ParentName="BOR_BasePawn">
-		<defName>BOR_Farmer</defName>
-		<label>solarite food manufacturer</label>
-		<combatPower>55</combatPower>
-		<backstoryFiltersOverride>
-			<li>
-				<categoriesAdulthood>
-					<li>Farmer</li>
-				</categoriesAdulthood>
-			</li>
-		</backstoryFiltersOverride>
-		<isFighter>false</isFighter>
-		<gearHealthRange>0.75~2.0</gearHealthRange>
-		<weaponTags>
-			<li>BOR_Pistol_I</li>
-		</weaponTags>
-		<apparelRequired>
-
-			<li>Apparel_Duster</li>
-			<li>Apparel_CollarShirt</li>
-			<li>Apparel_Pants</li>
-			<li>Apparel_CowboyHat</li>
-		</apparelRequired>
-		<weaponMoney>9000~10000</weaponMoney>
-		<apparelMoney>2000~4000</apparelMoney>
-		<apparelAllowHeadgearChance>0</apparelAllowHeadgearChance>
-	</PawnKindDef>
-
-	<PawnKindDef ParentName="BOR_BasePawn">
-		<defName>BOR_Miner</defName>
-		<label>solarite mineral gatherer</label>
-		<combatPower>80</combatPower>
-		<backstoryFiltersOverride>
-			<li>
-				<categoriesAdulthood>
-					<li>Miner</li>
-				</categoriesAdulthood>
-			</li>
-		</backstoryFiltersOverride>
-		<isFighter>false</isFighter>
-		<gearHealthRange>0.75~2.0</gearHealthRange>
-		<weaponTags>
-			<li>BOR_Pistol_I</li>
-		</weaponTags>
-		<weaponMoney>9000~10000</weaponMoney>
-		<apparelMoney>200~400</apparelMoney>
-		<apparelAllowHeadgearChance>0.4</apparelAllowHeadgearChance>
-		<apparelRequired>
-
-			<li>Apparel_Duster</li>
-			<li>Apparel_CollarShirt</li>
-			<li>Apparel_Pants</li>
-		</apparelRequired>
-	</PawnKindDef>
-
-	<!-- Solarite Marksman -->
-
-	<PawnKindDef ParentName="BOR_ElitePawn">
-		<defName>BOR_Solarite_Marksman</defName>
-		<label>marksman</label>
-		<labelPlural>marksmen</labelPlural>
-		<apparelTags>
-			<li>IndustrialBasic</li>
-			<li>IndustrialAdvanced</li>
-			<li>IndustrialMilitaryBasic</li>
-			<li>IndustrialMilitaryAdvanced</li>
-		</apparelTags>
-		<apparelDisallowTags>
-			<li>Western</li>
-		</apparelDisallowTags>
-		<weaponTags>
-			<li>BOR_SniperRifle_I</li>
-		</weaponTags>
-		<weaponMoney>
-			<min>17000</min>
-			<max>17000</max>
-		</weaponMoney>
-		<combatPower>300</combatPower>
-		<isFighter>true</isFighter>
-		<canBeSapper>false</canBeSapper>
-		<apparelMoney>
-			<min>15000</min>
-			<max>25000</max>
-		</apparelMoney>
-		<apparelRequired>
-			<li>BOR_Solar_Apparel_ArmorHelmetRecon</li>
-			<li>BOR_Solar_Apparel_ArmorRecon</li>
-		</apparelRequired>
-		<skills>
-			<li>
-				<skill>Shooting</skill>
-				<range>12~16</range>
-			</li>
-		</skills>
-	</PawnKindDef>
-
-	<!-- Solarite Marine -->
-
-	<PawnKindDef ParentName="BOR_ElitePawn">
-		<defName>BOR_Solarite_Marine</defName>
-		<label>marine</label>
-		<labelPlural>marines</labelPlural>
-		<apparelTags>
-			<li>IndustrialBasic</li>
-			<li>IndustrialAdvanced</li>
-			<li>IndustrialMilitaryBasic</li>
-			<li>IndustrialMilitaryAdvanced</li>
-		</apparelTags>
-		<apparelDisallowTags>
-			<li>Western</li>
-		</apparelDisallowTags>
-		<weaponTags>
-			<li>BOR_ShortShots_I</li>
-		</weaponTags>
-		<weaponMoney>
-			<min>17000</min>
-			<max>17000</max>
-		</weaponMoney>
-		<combatPower>300</combatPower>
-		<isFighter>true</isFighter>
-		<canBeSapper>false</canBeSapper>
-		<apparelMoney>
-			<min>15000</min>
-			<max>25000</max>
-		</apparelMoney>
-		<apparelRequired>
-			<li>BOR_Solar_Apparel_PowerArmorHelmet</li>
-			<li>BOR_Solar_Apparel_PowerArmor</li>
-		</apparelRequired>
-		<skills>
-			<li>
-				<skill>Shooting</skill>
-				<range>16~18</range>
-			</li>
-		</skills>
-	</PawnKindDef>
-
-	<!-- Solarite Guardsman -->
-
-	<PawnKindDef ParentName="BOR_ElitePawn">
-		<defName>BOR_Solarite_Guardsman</defName>
-		<label>guardsman</label>
-		<labelPlural>guardsmen</labelPlural>
-		<apparelTags Inherit="False">
-			<li>BOR_Military_I</li>
-		</apparelTags>
-		<apparelDisallowTags>
-			<li>Western</li>
-		</apparelDisallowTags>
-		<weaponTags>
-			<li>BOR_AssaultRifle_I</li>
-		</weaponTags>
-		<weaponMoney>
-			<min>17000</min>
-			<max>17000</max>
-		</weaponMoney>
-		<combatPower>300</combatPower>
-		<isFighter>true</isFighter>
-		<canBeSapper>false</canBeSapper>
-		<apparelMoney>
-			<min>15000</min>
-			<max>25000</max>
-		</apparelMoney>
-		<apparelRequired>
-			<li>BOR_Solar_Apparel_FlakPants</li>
-			<li>BOR_Sunforge_Welders_Coat</li>
-			<li>Apparel_AdvancedHelmet</li>
-		</apparelRequired>
-		<skills>
-			<li>
-				<skill>Shooting</skill>
-				<range>8~14</range>
-			</li>
-		</skills>
-	</PawnKindDef>
+	<!-- Solarite Officer -->
 
 	<PawnKindDef ParentName="BOR_ElitePawn">
 		<defName>BOR_Solarite_Officer</defName>
