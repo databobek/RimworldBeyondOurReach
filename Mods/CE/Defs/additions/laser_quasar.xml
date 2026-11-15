@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Defs>
+	<!-- Beam guns fire BOR's laser shots: Shot_BOR_LaserLow (pistol), Shot_BOR_LaserMed (rifle, shotgun, bullpup, DMR), Shot_BOR_LaserHigh (sniper, cannon). Keep them when regenerating this file. -->
 	<!-- ===== Gen2 Kwazaari Less-Than-Lethal Beam Ammo ===== -->
 	<CombatExtended.AmmoCategoryDef>
 		<defName>BOR_XCOM_LaserStun_LessLethal</defName>
@@ -29,9 +30,11 @@
 		<statBases>
 			<MarketValue>1.05</MarketValue>
 		</statBases>
-		<tradeTags>
+		<tradeTags Inherit="False">
+			<li>CE_AmmoInjector</li>
+			<li>CE_Ammo</li>
+			<li>CE_AutoEnableTrade</li>
 			<li>BOR_Tech_II</li>
-			<li>CE_AutoEnableCrafting_FabricationBench</li>
 			<li>CE_AutoEnableCrafting_BOR_Bench_II</li>
 			<li>CE_AutoEnableCrafting_BOR_Bench_IV</li>
 		</tradeTags>
@@ -49,9 +52,11 @@
 		<statBases>
 			<MarketValue>1.05</MarketValue>
 		</statBases>
-		<tradeTags>
+		<tradeTags Inherit="False">
+			<li>CE_AmmoInjector</li>
+			<li>CE_Ammo</li>
+			<li>CE_AutoEnableTrade</li>
 			<li>BOR_Tech_II</li>
-			<li>CE_AutoEnableCrafting_FabricationBench</li>
 			<li>CE_AutoEnableCrafting_BOR_Bench_II</li>
 			<li>CE_AutoEnableCrafting_BOR_Bench_IV</li>
 		</tradeTags>
@@ -69,9 +74,11 @@
 		<statBases>
 			<MarketValue>1.05</MarketValue>
 		</statBases>
-		<tradeTags>
+		<tradeTags Inherit="False">
+			<li>CE_AmmoInjector</li>
+			<li>CE_Ammo</li>
+			<li>CE_AutoEnableTrade</li>
 			<li>BOR_Tech_II</li>
-			<li>CE_AutoEnableCrafting_FabricationBench</li>
 			<li>CE_AutoEnableCrafting_BOR_Bench_II</li>
 			<li>CE_AutoEnableCrafting_BOR_Bench_IV</li>
 		</tradeTags>
@@ -84,7 +91,7 @@
 		<label>make kwazaari stun laser charge pack x500</label>
 		<description>Craft 500 kwazaari stun laser charge packs.</description>
 		<jobString>Making kwazaari stun laser charge packs.</jobString>
-		<researchPrerequisite>BOR_CE_BeamAmmo_II_Solar</researchPrerequisite>
+		<researchPrerequisite>BOR_CE_BeamAmmo_II</researchPrerequisite>
 		<ingredients>
 			<li>
 				<filter>
@@ -119,7 +126,7 @@
 		<label>make kwazaari neuralizer laser charge pack x500</label>
 		<description>Craft 500 kwazaari neuralizer laser charge packs.</description>
 		<jobString>Making kwazaari neuralizer laser charge packs.</jobString>
-		<researchPrerequisite>BOR_CE_BeamAmmo_II_Ni</researchPrerequisite>
+		<researchPrerequisite>BOR_CE_BeamAmmo_II</researchPrerequisite>
 		<ingredients>
 			<li>
 				<filter>
@@ -163,7 +170,7 @@
 		<label>make kwazaari EMP laser charge pack x500</label>
 		<description>Craft 500 kwazaari EMP laser charge packs.</description>
 		<jobString>Making kwazaari EMP laser charge packs.</jobString>
-		<researchPrerequisite>BOR_CE_BeamAmmo_II_Ni</researchPrerequisite>
+		<researchPrerequisite>BOR_CE_BeamAmmo_II</researchPrerequisite>
 		<ingredients>
 			<li>
 				<filter>
@@ -497,7 +504,7 @@
 				<defaultProjectile>BOR_XCOM_Bullet_QuasarLaserRifle_Stun</defaultProjectile>
 				<warmupTime>0.92</warmupTime>
 				<range>29.88</range>
-				<soundCast>Shot_ChargeRifle</soundCast>
+				<soundCast>Shot_BOR_LaserMed</soundCast>
 				<soundCastTail>GunTail_Light</soundCastTail>
 				<muzzleFlashScale>9</muzzleFlashScale>
 			</li>
@@ -525,7 +532,7 @@
 					<defaultProjectile>BOR_XCOM_Bullet_QuasarLaserRifle_EMP</defaultProjectile>
 					<warmupTime>0.92</warmupTime>
 					<range>29.88</range>
-					<soundCast>Shot_ChargeRifle</soundCast>
+					<soundCast>Shot_BOR_LaserMed</soundCast>
 					<soundCastTail>GunTail_Light</soundCastTail>
 					<muzzleFlashScale>9</muzzleFlashScale>
 				</verbPropsUnderBarrel>
@@ -623,7 +630,7 @@
 				<defaultProjectile>BOR_XCOM_Bullet_QuasarLaserSniperRifle_Stun</defaultProjectile>
 				<warmupTime>3.39</warmupTime>
 				<range>58.63</range>
-				<soundCast>ChargeLance_Fire</soundCast>
+				<soundCast>Shot_BOR_LaserHigh</soundCast>
 				<soundCastTail>GunTail_Heavy</soundCastTail>
 				<muzzleFlashScale>9</muzzleFlashScale>
 			</li>
@@ -651,7 +658,7 @@
 					<defaultProjectile>BOR_XCOM_Bullet_QuasarLaserSniperRifle_EMP</defaultProjectile>
 					<warmupTime>3.39</warmupTime>
 					<range>58.63</range>
-					<soundCast>ChargeLance_Fire</soundCast>
+					<soundCast>Shot_BOR_LaserHigh</soundCast>
 					<soundCastTail>GunTail_Heavy</soundCastTail>
 					<muzzleFlashScale>9</muzzleFlashScale>
 				</verbPropsUnderBarrel>
@@ -746,7 +753,7 @@
 				<defaultProjectile>BOR_XCOM_Bullet_QuasarLaserShotgun_Stun</defaultProjectile>
 				<warmupTime>0.92</warmupTime>
 				<range>27.38</range>
-				<soundCast>Shot_ChargeRifle</soundCast>
+				<soundCast>Shot_BOR_LaserMed</soundCast>
 				<soundCastTail>GunTail_Heavy</soundCastTail>
 				<muzzleFlashScale>9</muzzleFlashScale>
 			</li>
@@ -774,7 +781,7 @@
 					<defaultProjectile>BOR_XCOM_Bullet_QuasarLaserShotgun_EMP</defaultProjectile>
 					<warmupTime>0.92</warmupTime>
 					<range>27.38</range>
-					<soundCast>Shot_ChargeRifle</soundCast>
+					<soundCast>Shot_BOR_LaserMed</soundCast>
 					<soundCastTail>GunTail_Heavy</soundCastTail>
 					<muzzleFlashScale>9</muzzleFlashScale>
 				</verbPropsUnderBarrel>
@@ -872,7 +879,7 @@
 				<burstShotCount>15</burstShotCount>
 				<ticksBetweenBurstShots>9</ticksBetweenBurstShots>
 				<range>39.88</range>
-				<soundCast>ChargeLance_Fire</soundCast>
+				<soundCast>Shot_BOR_LaserHigh</soundCast>
 				<soundCastTail>GunTail_Medium</soundCastTail>
 				<muzzleFlashScale>12</muzzleFlashScale>
 			</li>
@@ -901,7 +908,7 @@
 					<defaultProjectile>BOR_XCOM_Bullet_QuasarLaserCannon_EMP</defaultProjectile>
 					<warmupTime>1.60</warmupTime>
 					<range>39.88</range>
-					<soundCast>ChargeLance_Fire</soundCast>
+					<soundCast>Shot_BOR_LaserHigh</soundCast>
 					<soundCastTail>GunTail_Medium</soundCastTail>
 					<muzzleFlashScale>12</muzzleFlashScale>
 				</verbPropsUnderBarrel>
@@ -997,7 +1004,7 @@
 				<defaultProjectile>BOR_XCOM_Bullet_QuasarLaser_Pistol_Stun</defaultProjectile>
 				<warmupTime>0.69</warmupTime>
 				<range>31.13</range>
-				<soundCast>Shot_ChargeRifle</soundCast>
+				<soundCast>Shot_BOR_LaserLow</soundCast>
 				<soundCastTail>GunTail_Light</soundCastTail>
 				<muzzleFlashScale>9</muzzleFlashScale>
 			</li>
@@ -1026,7 +1033,7 @@
 					<defaultProjectile>BOR_XCOM_Bullet_QuasarLaser_Pistol_EMP</defaultProjectile>
 					<warmupTime>0.69</warmupTime>
 					<range>31.13</range>
-					<soundCast>Shot_ChargeRifle</soundCast>
+					<soundCast>Shot_BOR_LaserLow</soundCast>
 					<soundCastTail>GunTail_Light</soundCastTail>
 					<muzzleFlashScale>9</muzzleFlashScale>
 				</verbPropsUnderBarrel>
@@ -1112,7 +1119,7 @@
 				<burstShotCount>5</burstShotCount>
 				<ticksBetweenBurstShots>7</ticksBetweenBurstShots>
 				<range>33.63</range>
-				<soundCast>Shot_ChargeRifle</soundCast>
+				<soundCast>Shot_BOR_LaserMed</soundCast>
 				<soundCastTail>GunTail_Medium</soundCastTail>
 				<muzzleFlashScale>9</muzzleFlashScale>
 			</li>
@@ -1140,7 +1147,7 @@
 					<defaultProjectile>BOR_XCOM_Bullet_QuasarLaserRifle_EMP</defaultProjectile>
 					<warmupTime>0.83</warmupTime>
 					<range>33.63</range>
-					<soundCast>Shot_ChargeRifle</soundCast>
+					<soundCast>Shot_BOR_LaserMed</soundCast>
 					<soundCastTail>GunTail_Medium</soundCastTail>
 					<muzzleFlashScale>9</muzzleFlashScale>
 				</verbPropsUnderBarrel>
@@ -1236,7 +1243,7 @@
 				<defaultProjectile>BOR_XCOM_Bullet_QuasarLaserSniperRifle_Stun</defaultProjectile>
 				<warmupTime>2.29</warmupTime>
 				<range>53.63</range>
-				<soundCast>ChargeLance_Fire</soundCast>
+				<soundCast>Shot_BOR_LaserMed</soundCast>
 				<soundCastTail>GunTail_Heavy</soundCastTail>
 				<muzzleFlashScale>9</muzzleFlashScale>
 			</li>
@@ -1264,7 +1271,7 @@
 					<defaultProjectile>BOR_XCOM_Bullet_QuasarLaserSniperRifle_EMP</defaultProjectile>
 					<warmupTime>2.29</warmupTime>
 					<range>53.63</range>
-					<soundCast>ChargeLance_Fire</soundCast>
+					<soundCast>Shot_BOR_LaserMed</soundCast>
 					<soundCastTail>GunTail_Heavy</soundCastTail>
 					<muzzleFlashScale>9</muzzleFlashScale>
 				</verbPropsUnderBarrel>

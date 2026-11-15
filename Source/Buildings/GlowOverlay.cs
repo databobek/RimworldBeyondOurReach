@@ -1,4 +1,5 @@
 using System.Linq;
+using RimWorld;
 using UnityEngine;
 using Verse;
 
@@ -8,6 +9,20 @@ namespace BeyondOurReach;
 public interface IGlowSource
 {
     bool GlowActive { get; }
+}
+
+// Marks a building as glowing whenever it has power, for buildings with no comp of their own that knows when they work.
+public class CompProperties_PoweredGlowSource : CompProperties
+{
+    public CompProperties_PoweredGlowSource()
+    {
+        compClass = typeof(CompPoweredGlowSource);
+    }
+}
+
+public sealed class CompPoweredGlowSource : ThingComp, IGlowSource
+{
+    public bool GlowActive => parent.GetComp<CompPowerTrader>() is { PowerOn: true } && !parent.IsBrokenDown();
 }
 
 // Draws a glow texture over the building while any comp of it that is an IGlowSource is active. The texture has the building's own size and shows only the parts that glow,

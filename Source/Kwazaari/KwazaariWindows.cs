@@ -11,21 +11,20 @@ public static class KwazaariUI
 {
     public static string Scrip(float amount) => "BOR_Kwazaari_ScripAmount".Translate(amount.ToString("0.##"));
 
-    public static void DrawHeader(Rect rect, string title)
+    // The scrip balance line under the window title; returns the y below it.
+    public static float DrawBalance(Rect rect)
     {
-        Text.Font = GameFont.Medium;
-        Widgets.Label(new Rect(rect.x, rect.y, rect.width, 32f), title);
-        Text.Font = GameFont.Small;
         float scrip = GameComponent_Kwazaari.Instance.Scrip;
-        Rect balance = new Rect(rect.x, rect.y + 36f, rect.width, 24f);
-        GUI.color = scrip < 0f ? ColorLibrary.RedReadable : Color.white;
+        Rect balance = new Rect(rect.x, rect.y, rect.width, 24f);
+        GUI.color = scrip < 0f ? BorSkin.Current.TextBad : Color.white;
         Widgets.LabelWithIcon(balance, "BOR_Kwazaari_Balance".Translate(Scrip(scrip)), KwazaariTex.Scrip);
         GUI.color = Color.white;
+        return balance.yMax + 6f;
     }
 }
 
 // Opened from the comm console: sell technology or spend scrip.
-public class Dialog_Kwazaari : Window
+public class Dialog_Kwazaari : BorWindow
 {
     private readonly Thing console;
 
@@ -40,21 +39,24 @@ public class Dialog_Kwazaari : Window
 
     public override Vector2 InitialSize => new Vector2(460f, 230f);
 
-    public override void DoWindowContents(Rect inRect)
+    protected override string Title => "BOR_Kwazaari_Title".Translate();
+
+    protected override BorUISchemeDef Scheme => BOR_UISchemeDefOf.BOR_UIScheme_Kwazaari;
+
+    protected override void Contents(Rect inRect)
     {
-        KwazaariUI.DrawHeader(inRect, "BOR_Kwazaari_Title".Translate());
-        float y = inRect.y + 80f;
+        float y = KwazaariUI.DrawBalance(inRect) + 10f;
         float w = (inRect.width - 10f) / 2f;
         Rect sell = new Rect(inRect.x, y, w, 60f);
         Rect spend = new Rect(sell.xMax + 10f, y, w, 60f);
         TooltipHandler.TipRegion(sell, "BOR_Kwazaari_Sell_Tip".Translate());
         TooltipHandler.TipRegion(spend, "BOR_Kwazaari_Spend_Tip".Translate());
-        if (Widgets.ButtonText(sell, "BOR_Kwazaari_Sell".Translate()))
+        if (BorSkin.Current.Button(sell, "BOR_Kwazaari_Sell".Translate(), tone: BorTone.Good))
         {
             Close();
             Find.WindowStack.Add(new Dialog_KwazaariSell(console.Map));
         }
-        if (Widgets.ButtonText(spend, "BOR_Kwazaari_Spend".Translate()))
+        if (BorSkin.Current.Button(spend, "BOR_Kwazaari_Spend".Translate(), tone: BorTone.Info))
         {
             Close();
             Find.WindowStack.Add(new Dialog_KwazaariFavors(console));
@@ -63,7 +65,7 @@ public class Dialog_Kwazaari : Window
 }
 
 // Lists sellable things in the home area grouped by def, stuff and quality; sold things are skipped away.
-public class Dialog_KwazaariSell : Window
+public class Dialog_KwazaariSell : BorWindow
 {
     private const float RowHeight = 32f;
 
@@ -108,6 +110,10 @@ public class Dialog_KwazaariSell : Window
 
     public override Vector2 InitialSize => new Vector2(720f, 640f);
 
+    protected override string Title => "BOR_Kwazaari_Sell".Translate();
+
+    protected override BorUISchemeDef Scheme => BOR_UISchemeDefOf.BOR_UIScheme_Kwazaari;
+
     private static List<Row> BuildRows(Map map)
     {
         List<Row> result = new();
@@ -128,10 +134,10 @@ public class Dialog_KwazaariSell : Window
 
     private float Total => rows.Sum(r => r.Value(r.selected));
 
-    public override void DoWindowContents(Rect inRect)
+    protected override void Contents(Rect inRect)
     {
-        KwazaariUI.DrawHeader(inRect, "BOR_Kwazaari_Sell".Translate());
-        Rect listRect = new Rect(inRect.x, inRect.y + 70f, inRect.width, inRect.height - 70f - 50f);
+        float top = KwazaariUI.DrawBalance(inRect);
+        Rect listRect = new Rect(inRect.x, top, inRect.width, inRect.yMax - top - 50f);
         if (rows.Count == 0)
         {
             Widgets.NoneLabelCenteredVertically(listRect, "BOR_Kwazaari_NothingToSell".Translate());
@@ -152,11 +158,11 @@ public class Dialog_KwazaariSell : Window
         Text.Anchor = TextAnchor.MiddleLeft;
         Widgets.LabelWithIcon(new Rect(bottom.x, bottom.y, 300f, bottom.height), "BOR_Kwazaari_SaleTotal".Translate(KwazaariUI.Scrip(total)), KwazaariTex.Scrip);
         Text.Anchor = TextAnchor.UpperLeft;
-        if (Widgets.ButtonText(new Rect(bottom.xMax - 330f, bottom.y, 160f, bottom.height), "CancelButton".Translate()))
+        if (BorSkin.Current.Button(new Rect(bottom.xMax - 330f, bottom.y, 160f, bottom.height), "CancelButton".Translate()))
         {
             Close();
         }
-        if (Widgets.ButtonText(new Rect(bottom.xMax - 160f, bottom.y, 160f, bottom.height), "BOR_Kwazaari_ConfirmSale".Translate(), active: total > 0f))
+        if (BorSkin.Current.Button(new Rect(bottom.xMax - 160f, bottom.y, 160f, bottom.height), "BOR_Kwazaari_ConfirmSale".Translate(), active: total > 0f, tone: BorTone.Good))
         {
             Sell();
         }
@@ -164,10 +170,8 @@ public class Dialog_KwazaariSell : Window
 
     private void DrawRow(Rect rect, Row row, int index)
     {
-        if (index % 2 == 1)
-        {
-            Widgets.DrawLightHighlight(rect);
-        }
+        BorSkin skin = BorSkin.Current;
+        skin.Row(rect, selected: row.selected > 0, hoverable: false, alternate: index % 2 == 1);
         Widgets.InfoCardButton(rect.x, rect.y + 4f, row.Sample);
         Widgets.ThingIcon(new Rect(rect.x + 28f, rect.y + 2f, 28f, 28f), row.Sample);
         Text.Anchor = TextAnchor.MiddleLeft;
@@ -178,18 +182,18 @@ public class Dialog_KwazaariSell : Window
 
         float x = rect.xMax - 190f;
         int step = GenUI.CurrentAdjustmentMultiplier();
-        if (Widgets.ButtonText(new Rect(x, rect.y + 3f, 30f, 26f), "-"))
+        if (skin.Button(new Rect(x, rect.y + 3f, 30f, 26f), "-"))
         {
             row.selected = Mathf.Max(0, row.selected - step);
         }
         Text.Anchor = TextAnchor.MiddleCenter;
         Widgets.Label(new Rect(x + 30f, rect.y, 60f, rect.height), row.selected.ToString());
         Text.Anchor = TextAnchor.UpperLeft;
-        if (Widgets.ButtonText(new Rect(x + 90f, rect.y + 3f, 30f, 26f), "+"))
+        if (skin.Button(new Rect(x + 90f, rect.y + 3f, 30f, 26f), "+"))
         {
             row.selected = Mathf.Min(row.available, row.selected + step);
         }
-        if (Widgets.ButtonText(new Rect(x + 124f, rect.y + 3f, 60f, 26f),
+        if (skin.Button(new Rect(x + 124f, rect.y + 3f, 60f, 26f),
                 row.selected < row.available ? "BOR_Kwazaari_All".Translate() : "BOR_Kwazaari_None".Translate()))
         {
             row.selected = row.selected < row.available ? row.available : 0;
@@ -225,16 +229,14 @@ public class Dialog_KwazaariSell : Window
 }
 
 // Every favor with cost, cooldown and why it can't be bought right now.
-public class Dialog_KwazaariFavors : Window
+public class Dialog_KwazaariFavors : BorWindow
 {
     private const float RowHeight = 52f;
-    private const float RecheckSeconds = 1f;
 
     private readonly Thing console;
     private readonly Map map;
     private readonly List<KwazaariFavorDef> favors;
     private readonly Dictionary<KwazaariFavorDef, AcceptanceReport> reports = new();
-    private float lastCheck = -999f;
     private Vector2 scroll;
 
     public Dialog_KwazaariFavors(Thing console)
@@ -245,23 +247,24 @@ public class Dialog_KwazaariFavors : Window
         forcePause = true;
         absorbInputAroundWindow = true;
         favors = DefDatabase<KwazaariFavorDef>.AllDefs.OrderBy(d => d.order).ThenBy(d => d.cost).ToList();
+        // Checked once: the window pauses the game and closes on a purchase, so nothing it checks can change while it
+        // is open. Some checks (shuttle landing spot) sweep the whole home area.
+        foreach (KwazaariFavorDef favor in favors)
+        {
+            reports[favor] = GameComponent_Kwazaari.Instance.CanBuy(favor, map);
+        }
     }
 
     public override Vector2 InitialSize => new Vector2(680f, 640f);
 
-    public override void DoWindowContents(Rect inRect)
+    protected override string Title => "BOR_Kwazaari_Spend".Translate();
+
+    protected override BorUISchemeDef Scheme => BOR_UISchemeDefOf.BOR_UIScheme_Kwazaari;
+
+    protected override void Contents(Rect inRect)
     {
-        KwazaariUI.DrawHeader(inRect, "BOR_Kwazaari_Spend".Translate());
-        // Some checks (shuttle landing spot) are costly; refresh them once a second, not every frame.
-        if (Time.realtimeSinceStartup - lastCheck > RecheckSeconds)
-        {
-            lastCheck = Time.realtimeSinceStartup;
-            foreach (KwazaariFavorDef favor in favors)
-            {
-                reports[favor] = GameComponent_Kwazaari.Instance.CanBuy(favor, map);
-            }
-        }
-        Rect listRect = new Rect(inRect.x, inRect.y + 70f, inRect.width, inRect.height - 70f);
+        float top = KwazaariUI.DrawBalance(inRect);
+        Rect listRect = new Rect(inRect.x, top, inRect.width, inRect.yMax - top);
         Rect view = new Rect(0f, 0f, listRect.width - 16f, favors.Count * RowHeight);
         Widgets.BeginScrollView(listRect, ref scroll, view);
         for (int i = 0; i < favors.Count; i++)
@@ -273,20 +276,18 @@ public class Dialog_KwazaariFavors : Window
 
     private void DrawRow(Rect rect, KwazaariFavorDef favor, int index)
     {
-        if (index % 2 == 1)
-        {
-            Widgets.DrawLightHighlight(rect);
-        }
+        BorSkin skin = BorSkin.Current;
+        skin.Row(rect, selected: false, hoverable: false, alternate: index % 2 == 1);
         GameComponent_Kwazaari ledger = GameComponent_Kwazaari.Instance;
         AcceptanceReport report = reports[favor];
 
         // Favors that can't be bought are greyed out and get the reason instead of a button.
-        Color tint = report.Accepted ? Color.white : Color.gray;
+        Color tint = report.Accepted ? Color.white : skin.TextDim;
         Widgets.DrawTextureFitted(new Rect(rect.x + 4f, rect.y + 6f, 40f, 40f), favor.Icon, 1f, report.Accepted ? 1f : 0.4f);
         Rect info = new Rect(rect.x + 52f, rect.y, rect.width - 52f - 180f, rect.height);
         GUI.color = tint;
         Widgets.Label(new Rect(info.x, info.y + 4f, info.width, 24f), favor.LabelCap);
-        GUI.color = Color.gray;
+        GUI.color = skin.TextDim;
         string cooldown = "BOR_Kwazaari_FavorStats".Translate(KwazaariUI.Scrip(favor.cost), favor.cooldownDays.ToString("0.#"));
         int left = ledger.CooldownLeft(favor);
         if (left > 0)
@@ -301,7 +302,7 @@ public class Dialog_KwazaariFavors : Window
         if (!report.Accepted)
         {
             string reason = report.Reason.NullOrEmpty() ? "BOR_Kwazaari_Unavailable".Translate().ToString() : report.Reason;
-            GUI.color = ColorLibrary.RedReadable;
+            GUI.color = skin.TextBad;
             Text.Font = GameFont.Tiny;
             Text.Anchor = TextAnchor.MiddleCenter;
             Widgets.Label(button, reason);
@@ -311,7 +312,7 @@ public class Dialog_KwazaariFavors : Window
             TooltipHandler.TipRegion(button, reason);
             return;
         }
-        if (Widgets.ButtonText(button.ContractedBy(0f, 5f), "BOR_Kwazaari_Request".Translate()))
+        if (skin.Button(button.ContractedBy(0f, 5f), "BOR_Kwazaari_Request".Translate(), tone: BorTone.Good))
         {
             Close();
             favor.Worker.Begin(map, console);

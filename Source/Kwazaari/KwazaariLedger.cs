@@ -169,11 +169,21 @@ public class GameComponent_Kwazaari : GameComponent
         }
         foreach (KwazaariLoan loan in loans.ToList())
         {
-            if (loan.pickupSent || now < loan.returnTick)
+            bool mapGone = loan.map == null || !Find.Maps.Contains(loan.map);
+            if (loan.pickupSent)
+            {
+                // The shuttle closes the loan when it leaves. If its map went first, nothing else would.
+                if (mapGone)
+                {
+                    Notify_PickupDeparted(loan);
+                }
+                continue;
+            }
+            if (now < loan.returnTick)
             {
                 continue;
             }
-            if (loan.map == null || !Find.Maps.Contains(loan.map))
+            if (mapGone)
             {
                 loan.pickupSent = true;
                 Notify_PickupDeparted(loan);

@@ -3,22 +3,20 @@
     <Operation Class="PatchOperationSequence">
         <operations>
             <li Class="PatchOperationConditional">
-                <xpath>Defs/RecipeDef/ingredients/li/filter/thingDefs/li[contains(text(), "MedicineUltratech")]</xpath>
+                <xpath>Defs/RecipeDef/ingredients/li/filter/thingDefs/li[contains(text(), "MedicineUltratech") and not(../li[starts-with(text(), "BOR_Medicine")])]</xpath>
                 <match Class="PatchOperationInsert">
-                    <xpath>Defs/RecipeDef/ingredients/li/filter/thingDefs/li[contains(text(), "MedicineUltratech")]</xpath>
+                    <xpath>Defs/RecipeDef/ingredients/li/filter/thingDefs/li[contains(text(), "MedicineUltratech") and not(../li[starts-with(text(), "BOR_Medicine")])]</xpath>
                     <value>
-                        <li>BOR_MedicineI</li>
                         <li>BOR_MedicineII</li>
                         <li>BOR_MedicineIV</li>
                     </value>
                 </match>
             </li>
             <li Class="PatchOperationConditional">
-                <xpath>Defs/RecipeDef/fixedIngredientFilter/thingDefs/li[contains(text(), "MedicineUltratech")]</xpath>
+                <xpath>Defs/RecipeDef/fixedIngredientFilter/thingDefs/li[contains(text(), "MedicineUltratech") and not(../li[starts-with(text(), "BOR_Medicine")])]</xpath>
                 <match Class="PatchOperationInsert">
-                    <xpath>Defs/RecipeDef/fixedIngredientFilter/thingDefs/li[contains(text(), "MedicineUltratech")]</xpath>
+                    <xpath>Defs/RecipeDef/fixedIngredientFilter/thingDefs/li[contains(text(), "MedicineUltratech") and not(../li[starts-with(text(), "BOR_Medicine")])]</xpath>
                     <value>
-                        <li>BOR_MedicineI</li>
                         <li>BOR_MedicineII</li>
                         <li>BOR_MedicineIV</li>
                     </value>

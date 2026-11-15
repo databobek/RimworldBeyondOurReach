@@ -64,7 +64,7 @@ public enum TenebralPodMode
 
 // Bionic installator, healing pod, stasis pod and Umbral transformation chamber in one. In transformation mode a
 // half-crystallized pawn is held for (100 - crystallized%)% of a year and released as an Umbral; there is no early exit.
-public class Building_TenebralPod : Building_TenebralCasket
+public partial class Building_TenebralPod : Building_TenebralCasket
 {
     private const int HealInterval = 60;
     private const float HealingMultiplier = 10f;
@@ -103,8 +103,8 @@ public class Building_TenebralPod : Building_TenebralCasket
 
     public bool Transforming => releaseTick >= 0;
 
-    public static bool HasTenebralHediff(Pawn pawn) =>
-        TenebralMurder.ImplantCount(pawn) > 0 || pawn.health.hediffSet.HasHediff(BOR_TenebralDefOf.BOR_TenebralPsychosis);
+    // Releases the hold without making an Umbral, so the occupant can be ejected before the pod is destroyed.
+    public void AbortTransformation() => releaseTick = -1;
 
     public override AcceptanceReport CanAccept(Pawn pawn) => CanAcceptFor(pawn, mode);
 
@@ -114,6 +114,11 @@ public class Building_TenebralPod : Building_TenebralCasket
         if (!pawn.RaceProps.Humanlike)
         {
             return false;
+        }
+        // Healing is for the pawns dark medicine answers to: tenebral (implants or crystallized parts) or Umbral.
+        if (forMode == TenebralPodMode.Healing && !DarkMedicine.IsAttuned(pawn))
+        {
+            return "BOR_TenebralPodNeedsTenebral".Translate();
         }
         if (forMode == TenebralPodMode.Operating && operation != null && operationTarget != null && !operationTarget.Dead && pawn != operationTarget)
         {
@@ -296,6 +301,7 @@ public class Building_TenebralPod : Building_TenebralCasket
     // The pod ticks every tick (healing needs it), which never calls TickRare, so this runs from Tick on the rare interval.
     private void RareStep()
     {
+        CheckGeneForge();
         Pawn? pawn = Occupant;
         if (pawn != null && Transforming && Find.TickManager.TicksGame >= releaseTick)
         {
@@ -413,7 +419,7 @@ public class Building_TenebralPod : Building_TenebralCasket
         {
             defaultLabel = "BOR_TenebralPodMode".Translate(),
             defaultDesc = "BOR_TenebralPodModeDesc".Translate(),
-            icon = def.uiIcon,
+            icon = BorIcons.Pod(mode),
             action = () => Find.WindowStack.Add(new Window_TenebralPod(this))
         };
         if (Transforming)
@@ -475,6 +481,7 @@ public class Building_TenebralPod : Building_TenebralCasket
     public override void Destroy(DestroyMode mode = DestroyMode.Vanish)
     {
         DropIngredients();
+        DropForgeFemtoclusters();
         base.Destroy(mode);
     }
 
@@ -504,7 +511,7 @@ public class Building_TenebralPod : Building_TenebralCasket
                 text += "\n" + "BOR_TenebralPodWaitingForPatient".Translate();
             }
         }
-        return text;
+        return text + GeneForgeInspect();
     }
 
     public override void ExposeData()
@@ -517,6 +524,7 @@ public class Building_TenebralPod : Building_TenebralCasket
         Scribe_BodyParts.Look(ref operationPart, "operationPart");
         Scribe_Values.Look(ref operationProgress, "operationProgress");
         Scribe_Values.Look(ref releaseTick, "releaseTick", -1);
+        ExposeGeneForge();
         ingredients ??= new ThingOwner<Thing>(this);
     }
 }

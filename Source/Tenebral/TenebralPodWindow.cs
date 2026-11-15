@@ -9,7 +9,7 @@ namespace BeyondOurReach;
 
 // Control window of the Tenebral Pod: action, pawn (colonists, slaves, prisoners), then for an operation the organ
 // or appendage and where to install it.
-public class Window_TenebralPod : Window
+public class Window_TenebralPod : BorWindow
 {
     private const float RowHeight = 28f;
     private const float Gap = 10f;
@@ -143,25 +143,37 @@ public class Window_TenebralPod : Window
         return ok;
     }
 
-    private string ArrivalHint()
+    private string ArrivalHint() => ArrivalHint(pawn);
+
+    private string ArrivalHint(Pawn? p)
     {
-        if (pawn == null || pawn == pod.Occupant)
+        if (p == null || p == pod.Occupant)
         {
             return "";
         }
-        bool carried = pawn.IsPrisonerOfColony || pawn.Downed || !pawn.health.capacities.CapableOf(PawnCapacityDefOf.Moving);
-        return (carried ? "BOR_PodCarried" : "BOR_PodWalks").Translate(pawn.LabelShortCap);
+        bool carried = p.IsPrisonerOfColony || p.Downed || !p.health.capacities.CapableOf(PawnCapacityDefOf.Moving);
+        return (carried ? "BOR_PodCarried" : "BOR_PodWalks").Translate(p.LabelShortCap);
     }
 
-    public override void DoWindowContents(Rect inRect)
+    private void ShowCard(Pawn p, string role)
     {
-        Text.Font = GameFont.Medium;
-        Widgets.Label(new Rect(inRect.x, inRect.y, inRect.width, 34f), "BOR_TenebralPodTitle".Translate());
-        Text.Font = GameFont.Small;
+        string? blocked = Eligible(p);
+        if (blocked == null && pod.PodBusy(p))
+        {
+            blocked = "BOR_PodOccupied".Translate();
+        }
+        TenebralPodPawnCard.Show(p, role, blocked?.CapitalizeFirst(), ArrivalHint(p));
+    }
 
+    protected override string Title => "BOR_TenebralPodTitle".Translate();
+
+    protected override BorUISchemeDef Scheme => BOR_UISchemeDefOf.BOR_UIScheme_Tenebral;
+
+    protected override void Contents(Rect inRect)
+    {
         const float footer = 150f;
-        float top = inRect.y + 40f;
-        float height = inRect.height - 40f - footer;
+        float top = inRect.y;
+        float height = inRect.height - footer;
         float actionWidth = 170f;
         float pawnWidth = 250f;
         float columnWidth = (inRect.width - actionWidth - pawnWidth - Gap * 3f) / 2f;
@@ -179,9 +191,22 @@ public class Window_TenebralPod : Window
         // Pawns: three stacked lists
         float px = inRect.x + actionWidth + Gap;
         float section = (height - Gap * 2f) / 3f;
-        DrawList(new Rect(px, top, pawnWidth, section), "BOR_PodColonists".Translate(), ref colonistScroll, PawnRows(colonists));
-        DrawList(new Rect(px, top + section + Gap, pawnWidth, section), "BOR_PodSlaves".Translate(), ref slaveScroll, PawnRows(slaves));
-        DrawList(new Rect(px, top + (section + Gap) * 2f, pawnWidth, section), "BOR_PodPrisoners".Translate(), ref prisonerScroll, PawnRows(prisoners));
+        // Hovering a pawn shows their card (TenebralPodPawnCard) next to the mouse.
+        int hoverColonist = DrawList(new Rect(px, top, pawnWidth, section), "BOR_PodColonists".Translate(), ref colonistScroll, PawnRows(colonists));
+        int hoverSlave = DrawList(new Rect(px, top + section + Gap, pawnWidth, section), "BOR_PodSlaves".Translate(), ref slaveScroll, PawnRows(slaves));
+        int hoverPrisoner = DrawList(new Rect(px, top + (section + Gap) * 2f, pawnWidth, section), "BOR_PodPrisoners".Translate(), ref prisonerScroll, PawnRows(prisoners));
+        if (hoverColonist >= 0)
+        {
+            ShowCard(colonists[hoverColonist], "BOR_PodColonist".Translate());
+        }
+        else if (hoverSlave >= 0)
+        {
+            ShowCard(slaves[hoverSlave], "BOR_PodSlave".Translate());
+        }
+        else if (hoverPrisoner >= 0)
+        {
+            ShowCard(prisoners[hoverPrisoner], "BOR_PodPrisoner".Translate());
+        }
 
         // Organs and appendages, only for an operation
         float ox = px + pawnWidth + Gap;
@@ -213,7 +238,7 @@ public class Window_TenebralPod : Window
             : null;
         Rect accept = new(inRect.x, inRect.yMax - 36f, 160f, 36f);
         Rect cancel = new(inRect.xMax - 160f, inRect.yMax - 36f, 160f, 36f);
-        if (Widgets.ButtonText(accept, "AcceptButton".Translate(), active: blocked == null))
+        if (BorSkin.Current.Button(accept, "AcceptButton".Translate(), active: blocked == null, tone: BorTone.Good))
         {
             string? failed = pod.Order(pawn!, action, option?.Recipe, part);
             if (failed != null)
@@ -232,7 +257,7 @@ public class Window_TenebralPod : Window
             Widgets.Label(hint, Fit(hint, blocked).Colorize(ColoredText.SubtleGrayColor));
             Text.Anchor = TextAnchor.UpperLeft;
         }
-        if (Widgets.ButtonText(cancel, "CancelButton".Translate()))
+        if (BorSkin.Current.Button(cancel, "CancelButton".Translate()))
         {
             Close();
         }
@@ -271,14 +296,17 @@ public class Window_TenebralPod : Window
         return cut;
     }
 
-    private static void DrawList(Rect rect, string title, ref Vector2 scroll, List<(string label, bool selected, string? locked, Action click)> rows, bool disabled = false)
+    // Returns the row under the mouse, or -1.
+    private static int DrawList(Rect rect, string title, ref Vector2 scroll, List<(string label, bool selected, string? locked, Action click)> rows, bool disabled = false)
     {
+        int hovered = -1;
         Widgets.Label(new Rect(rect.x, rect.y, rect.width, 24f), title);
         Rect outer = new(rect.x, rect.y + 26f, rect.width, rect.height - 26f);
-        Widgets.DrawMenuSection(outer);
+        BorSkin skin = BorSkin.Current;
+        skin.Section(outer);
         if (disabled)
         {
-            Widgets.DrawBoxSolid(outer, new Color(0f, 0f, 0f, 0.35f));
+            skin.Fill(outer, new Color(0f, 0f, 0f, 0.35f));
             rows = new List<(string, bool, string?, Action)>();
         }
         Rect view = new(0f, 0f, outer.width - 16f, Mathf.Max(outer.height, rows.Count * RowHeight));
@@ -287,14 +315,11 @@ public class Window_TenebralPod : Window
         {
             (string label, bool selected, string? locked, Action click) = rows[i];
             Rect row = new(0f, i * RowHeight, view.width, RowHeight);
-            if (selected)
+            if (Mouse.IsOver(row))
             {
-                Widgets.DrawHighlightSelected(row);
+                hovered = i;
             }
-            else if (locked == null)
-            {
-                Widgets.DrawHighlightIfMouseover(row);
-            }
+            skin.Row(row, selected, hoverable: locked == null);
             Text.Anchor = TextAnchor.MiddleLeft;
             string full = locked == null ? label : label + " (" + locked + ")";
             string text = Fit(row, full, 12f);
@@ -306,6 +331,7 @@ public class Window_TenebralPod : Window
             }
         }
         Widgets.EndScrollView();
+        return hovered;
     }
 
     private void DrawParts(Rect rect)
@@ -322,13 +348,9 @@ public class Window_TenebralPod : Window
         foreach (BodyPartRecord p in option.Parts)
         {
             Rect button = new(x, 0f, 144f, 26f);
-            if (Widgets.ButtonText(button, Fit(button, p.LabelCap, 10f)))
+            if (BorSkin.Current.Button(button, Fit(button, p.LabelCap, 10f), selected: p == part))
             {
                 part = p;
-            }
-            if (p == part)
-            {
-                Widgets.DrawHighlightSelected(button);
             }
             x += 150f;
         }

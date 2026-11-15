@@ -7,13 +7,22 @@
     <label>tenebral moisture pump</label>
     <description>Very slowly equalizes moisture in nearby terrain, converting marshes or shallow water into dry ground, and soft sand into normal sand. Does not affect deep water.</description>
     <graphicData>
-            <texPath>BOR/Retextures/pollutionpump3</texPath>
+            <texPath>BOR/Things/Building/tier3/pump</texPath>
             <graphicClass>Graphic_Single</graphicClass>
-            <drawSize>(2.5,2.5)</drawSize>
-            <drawOffset>(0,2,0.15)</drawOffset>
+            <drawSize>(2,2)</drawSize>
         </graphicData>
+    <drawerType>MapMeshAndRealTime</drawerType>
     <comps>
       <li Class="CompProperties_Forbiddable" />
+      <li Class="BeyondOurReach.CompProperties_PoweredGlowSource" />
+      <li Class="BeyondOurReach.CompProperties_GlowOverlay">
+        <glowTexPath>BOR/Things/Building/tier3/pump_glow</glowTexPath>
+      </li>
+      <li Class="CompProperties_Glower">
+        <glowRadius>3</glowRadius>
+        <glowColor>(160,25,25,0)</glowColor>
+        <overlightRadius>0</overlightRadius>
+      </li>
       <li Class="CompProperties_Power">
         <compClass>CompPowerTrader</compClass>
         <basePowerConsumption>550</basePowerConsumption>

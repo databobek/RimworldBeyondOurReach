@@ -4,6 +4,7 @@ using RimWorld;
 using UnityEngine;
 using Verse;
 using Verse.AI;
+using Verse.AI.Group;
 
 namespace BeyondOurReach;
 
@@ -20,14 +21,28 @@ public class HediffCompProperties_UmbralModeApparel : HediffCompProperties
 {
     public List<ThingDef> apparelByMode = new();
 
-    // How long each mode lasts before the exoskeleton reverts to no mode: index = (int)ExoskeletonMode. No entry, no limit.
-    public List<float> hoursByMode = new();
-
     // Only the exoskeleton owns the mode and its gizmo; the exoskull follows it.
     public bool ownsMode;
 
-    // After a timed mode runs out, no mode can be chosen for this long.
-    public float expiryLockSeconds = 30f;
+    // One pool of mode time shared by every mode. It drains in any mode and refills at rechargeRate (hours per hour) in no mode.
+    public float maxHours = 4f;
+    public float rechargeRate = 1f;
+
+    // When the pool runs dry the exoskeleton drops to no mode and cannot be used, nor recharge, for this long.
+    public float recoveryHours = 2f;
+
+    // A player switch drops to no form at once. The old form's armor then sheds from the bottom up over dismantleSeconds,
+    // and the new form's armor grows on from the top down over formSeconds (game time at 1x), after which the form applies.
+    public float dismantleSeconds = 1f;
+    public float formSeconds = 1.5f;
+
+    // Entering a form needs at least this much charge, so a form never starts only to run dry at once. Same for the AI.
+    public float minChargeHours = 0.5f;
+
+    // Umbrals the player does not control: they go into combat form when an enemy is within aiThreatRange (or they have
+    // a target), and back to no form after aiCalmSeconds with none near, so the charge refills between fights.
+    public float aiThreatRange = 30f;
+    public float aiCalmSeconds = 15f;
 
     public HediffCompProperties_UmbralModeApparel()
     {
@@ -45,14 +60,75 @@ public class HediffComp_UmbralModeApparel : HediffComp
     private static readonly float[] ModeSeverity = { 1f, 2f, 3f, 0.5f };
 
     private ExoskeletonMode mode = ExoskeletonMode.None;
-    private int modeEndTick;
 
-    // No mode can be chosen until this tick; set when a weapon breaks the armor.
+    // Mode time left, in ticks; negative until first read, which means full.
+    private float charge = -1f;
+
+    // No mode can be chosen, and the pool does not refill, until this tick: set when the pool runs dry or a weapon breaks the armor.
     private int modeLockEndTick;
+
+    // A switch in progress: the form being shed and the form being grown on, as (int)ExoskeletonMode, or -1 for no form.
+    // The pawn is in no form for the whole switch. Shedding runs to dismantleEndTick, growing from there to switchEndTick.
+    private bool switching;
+    private int switchFrom = -1;
+    private int switchTo = -1;
+    private int switchStartTick;
+    private int dismantleEndTick;
+    private int switchEndTick;
+
+    // AI: the last tick an enemy was near.
+    private int aiLastThreatTick = -999999;
 
     public HediffCompProperties_UmbralModeApparel Props => (HediffCompProperties_UmbralModeApparel)props;
 
+    private float MaxCharge => Props.maxHours * GenDate.TicksPerHour;
+
+    private float Charge => charge < 0f ? MaxCharge : charge;
+
+    public float ChargeTicks => Charge;
+
+    private float MinCharge => Props.minChargeHours * GenDate.TicksPerHour;
+
+    // Whether a form can be picked now: not recovering, not mid-switch, and enough charge to be worth it.
+    public bool CanStartForm => !ModeLocked && !switching && Charge >= MinCharge;
+
     public ExoskeletonMode Mode => Props.ownsMode ? mode : OwnerMode(Pawn);
+
+    public bool Switching => switching;
+
+    // For the effect: which form's armor to draw right now and how much of it shows, as the visible fraction from the top
+    // of the texture. Shedding goes 1 -> 0 (the bottom edge rises), growing goes 0 -> 1 (the bottom edge comes down).
+    public bool TryGetSwitchFrame(out int form, out float shown)
+    {
+        form = -1;
+        shown = 0f;
+        if (!switching)
+        {
+            return false;
+        }
+        int now = Find.TickManager.TicksGame;
+        if (switchFrom >= 0 && now < dismantleEndTick)
+        {
+            form = switchFrom;
+            shown = 1f - Fraction(now, switchStartTick, dismantleEndTick);
+            return true;
+        }
+        if (switchTo >= 0)
+        {
+            form = switchTo;
+            shown = Fraction(now, dismantleEndTick, switchEndTick);
+            return true;
+        }
+        return false;
+    }
+
+    private static float Fraction(int now, int start, int end) => Mathf.Clamp01((now - start) / (float)Mathf.Max(1, end - start));
+
+    // The piece this comp puts on for a form; the exoskull's comp answers for the helmet.
+    public ThingDef? ApparelFor(int form) => form >= 0 && form < Props.apparelByMode.Count ? Props.apparelByMode[form] : null;
+
+    public HediffComp_UmbralModeApparel? SkullComp =>
+        Pawn.health.hediffSet.GetFirstHediffOfDef(BOR_UmbralDefOf.BOR_UmbralExoskull)?.TryGetComp<HediffComp_UmbralModeApparel>();
 
     private static ExoskeletonMode OwnerMode(Pawn pawn)
     {
@@ -74,59 +150,145 @@ public class HediffComp_UmbralModeApparel : HediffComp
     public override void CompPostTickInterval(ref float severityAdjustment, int delta)
     {
         base.CompPostTickInterval(ref severityAdjustment, delta);
+        if (switching)
+        {
+            if (Find.TickManager.TicksGame >= switchEndTick)
+            {
+                // ApplyMode ends the switch.
+                ApplyMode(switchTo >= 0 ? (ExoskeletonMode)switchTo : ExoskeletonMode.None);
+            }
+            else if (Pawn.Spawned)
+            {
+                // Also picks the effect back up after a load.
+                MapComponent_ExoskeletonForms.Of(Pawn.Map).Add(this);
+            }
+        }
         if (Pawn.IsHashIntervalTick(CheckInterval, delta))
         {
-            if (Props.ownsMode && mode != ExoskeletonMode.None && Find.TickManager.TicksGame >= modeEndTick)
+            if (Props.ownsMode)
             {
-                EndMode();
+                TickCharge();
             }
             EnsureApparel();
         }
         if (Props.ownsMode && Pawn.IsHashIntervalTick(AiCheckInterval, delta))
         {
-            AiEnterCombat();
+            AiTick();
         }
     }
 
-    // Umbrals the player does not control put their combat armor on when a threat shows up.
-    private void AiEnterCombat()
+    // Umbrals the player does not control play by the player's rules: the same switch, charge and recovery. They put the
+    // combat armor on when an enemy comes near and take it off once things are calm, to recharge.
+    private void AiTick()
     {
         Pawn pawn = Pawn;
-        if (mode != ExoskeletonMode.None || ModeLocked || pawn.Faction == Faction.OfPlayer || !pawn.Spawned || pawn.Downed)
+        if (pawn.Faction == Faction.OfPlayer || !pawn.Spawned || pawn.Downed || switching
+            || HediffComp_UmbralSwarmAI.StateOf(pawn) != SwarmState.None)
+        {
+            // While the swarm AI hides, it drives the suit itself.
+            return;
+        }
+        int now = Find.TickManager.TicksGame;
+        if (EnemyNear(pawn))
+        {
+            aiLastThreatTick = now;
+        }
+        bool calm = now - aiLastThreatTick >= SecondsToTicks(Props.aiCalmSeconds);
+        if (mode == ExoskeletonMode.None)
+        {
+            if (!calm && CanStartForm)
+            {
+                RequestMode(ExoskeletonMode.Combat);
+            }
+        }
+        else if (calm)
+        {
+            RequestMode(ExoskeletonMode.None);
+        }
+    }
+
+    private bool EnemyNear(Pawn pawn)
+    {
+        if (pawn.mindState?.enemyTarget != null)
+        {
+            return true;
+        }
+        float range = Props.aiThreatRange;
+        foreach (Pawn other in pawn.Map.mapPawns.AllPawnsSpawned)
+        {
+            if (!other.Dead && !other.Downed && other.Position.InHorDistOf(pawn.Position, range) && other.HostileTo(pawn))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // Runs every CheckInterval ticks: any mode drains the pool, no mode refills it unless the exoskeleton is recovering.
+    private void TickCharge()
+    {
+        if (mode != ExoskeletonMode.None)
+        {
+            charge = Charge - CheckInterval;
+            if (charge <= 0f)
+            {
+                charge = 0f;
+                EndMode();
+            }
+        }
+        else if (!ModeLocked)
+        {
+            charge = Mathf.Min(MaxCharge, Charge + CheckInterval * Props.rechargeRate);
+        }
+    }
+
+    // The pool ran dry: back to no mode, and the counting only resumes after the recovery phase.
+    private void EndMode()
+    {
+        ApplyMode(ExoskeletonMode.None);
+        modeLockEndTick = Find.TickManager.TicksGame + Mathf.RoundToInt(Props.recoveryHours * GenDate.TicksPerHour);
+        if (Pawn.Faction == Faction.OfPlayer)
+        {
+            Messages.Message("BOR_ExoChargeEmpty".Translate(Pawn.LabelShortCap), Pawn, MessageTypeDefOf.NegativeEvent);
+        }
+        else
+        {
+            FleeSpent();
+        }
+    }
+
+    // An Umbral of another faction whose suit ran dry on the player's map is armorless for hours, so it gives up and
+    // leaves. Heralds have their own script and stay.
+    private void FleeSpent()
+    {
+        Pawn pawn = Pawn;
+        if (pawn.Faction == null || !pawn.Spawned || pawn.Downed || !pawn.Map.IsPlayerHome || UmbralHerald.IsHerald(pawn)
+            || IsFleeing(pawn))
         {
             return;
         }
-        bool threatened = pawn.mindState?.enemyTarget != null
-            || (pawn.Faction != null && GenHostility.AnyHostileActiveThreatTo(pawn.Map, pawn.Faction));
-        if (threatened)
+        pawn.GetLord()?.RemovePawn(pawn);
+        LordMaker.MakeNewLord(pawn.Faction, new LordJob_ExitMapBest(LocomotionUrgency.Sprint, canDig: false, canDefendSelf: true), pawn.Map, new[] { pawn });
+        pawn.jobs?.EndCurrentJob(JobCondition.InterruptForced);
+        if (pawn.HostileTo(Faction.OfPlayer))
         {
-            SetMode(ExoskeletonMode.Combat);
+            Messages.Message("BOR_ExoSpentFlee".Translate(pawn.LabelShortCap), pawn, MessageTypeDefOf.PositiveEvent);
         }
     }
 
-    public void SetMode(ExoskeletonMode newMode) => ApplyMode(newMode);
-
-    private void EndMode()
-    {
-        ExoskeletonMode ended = mode;
-        ApplyMode(ExoskeletonMode.None);
-        modeLockEndTick = Find.TickManager.TicksGame + Mathf.RoundToInt(Props.expiryLockSeconds * GenTicks.TicksPerRealSecond);
-        if (Pawn.Faction == Faction.OfPlayer)
-        {
-            Messages.Message("BOR_ExoModeEnded".Translate(Pawn.LabelShortCap, ("BOR_ExoMode_" + ended).Translate()), Pawn, MessageTypeDefOf.NeutralEvent);
-        }
-    }
+    // True while this Umbral is leaving because its suit ran dry; the swarm AI stands down for it.
+    public static bool IsFleeing(Pawn pawn) => pawn.GetLord()?.LordJob is LordJob_ExitMapBest;
 
     public bool ModeLocked => Find.TickManager.TicksGame < modeLockEndTick;
 
-    // The swarm AI hides in camo and ends it itself. Ending it locks the armor like a natural expiry, so the Umbral waits for it to come back.
-    public void StartAiCamo() => ApplyMode(ExoskeletonMode.Camo);
+    // The swarm AI hides in camo and ends it itself, through the same switch the player uses.
+    public void StartAiCamo() => RequestMode(ExoskeletonMode.Camo);
 
     public void EndAiCamo()
     {
         if (mode == ExoskeletonMode.Camo)
         {
-            EndMode();
+            RequestMode(ExoskeletonMode.None);
         }
     }
 
@@ -145,9 +307,6 @@ public class HediffComp_UmbralModeApparel : HediffComp
         }
         return true;
     }
-
-    private int ModeTicks(ExoskeletonMode m) =>
-        (int)m < Props.hoursByMode.Count ? Mathf.RoundToInt(Props.hoursByMode[(int)m] * GenDate.TicksPerHour) : 0;
 
     public override void CompPostPostRemoved()
     {
@@ -206,10 +365,37 @@ public class HediffComp_UmbralModeApparel : HediffComp
         pawn.apparel.Wear(apparel, dropReplacedApparel: true, locked: true);
     }
 
+    // The player's switch: drop to no form at once, shed the old form's armor, then grow the new one on. Switching to no
+    // form only sheds.
+    private void RequestMode(ExoskeletonMode target)
+    {
+        ExoskeletonMode from = mode;
+        ApplyMode(ExoskeletonMode.None);
+        switchFrom = from != ExoskeletonMode.None ? (int)from : -1;
+        switchTo = target != ExoskeletonMode.None ? (int)target : -1;
+        if (switchFrom < 0 && switchTo < 0)
+        {
+            return;
+        }
+        switching = true;
+        switchStartTick = Find.TickManager.TicksGame;
+        dismantleEndTick = switchStartTick + (switchFrom >= 0 ? SecondsToTicks(Props.dismantleSeconds) : 0);
+        switchEndTick = dismantleEndTick + (switchTo >= 0 ? SecondsToTicks(Props.formSeconds) : 0);
+        if (Pawn.Spawned)
+        {
+            MapComponent_ExoskeletonForms.Of(Pawn.Map).Add(this);
+        }
+    }
+
+    private static int SecondsToTicks(float seconds) => Mathf.Max(1, Mathf.RoundToInt(seconds * GenTicks.TicksPerRealSecond));
+
+    // Any direct change, including the end of a switch, settles the form and ends a switch in progress.
     private void ApplyMode(ExoskeletonMode newMode)
     {
+        switching = false;
+        switchFrom = -1;
+        switchTo = -1;
         mode = newMode;
-        modeEndTick = Find.TickManager.TicksGame + ModeTicks(newMode);
         parent.Severity = ModeSeverity[(int)newMode];
         Pawn pawn = Pawn;
         bool camo = newMode == ExoskeletonMode.Camo;
@@ -233,43 +419,73 @@ public class HediffComp_UmbralModeApparel : HediffComp
             yield break;
         }
         ThingDef icon = Props.apparelByMode[Mathf.Clamp((int)mode, 0, Props.apparelByMode.Count - 1)];
-        yield return new Command_Action
+        // The label would cover the icon, so it goes into the tooltip.
+        Command_Action cmd = new()
         {
-            defaultLabel = "BOR_ExoMode".Translate(("BOR_ExoMode_" + mode).Translate() + TimeLeftSuffix),
-            defaultDesc = "BOR_ExoModeDesc".Translate(),
-            icon = icon.uiIcon,
+            defaultLabel = "",
+            defaultDesc = "BOR_ExoMode".Translate(ModeLabel + TimeLeftSuffix) + "\n\n" + "BOR_ExoModeDesc".Translate(),
+            icon = mode switch
+            {
+                ExoskeletonMode.Camo => BorIcons.BodysuitCamo,
+                ExoskeletonMode.Utility => BorIcons.BodysuitWork,
+                ExoskeletonMode.Combat => BorIcons.BodysuitArmor,
+                _ => icon.uiIcon,
+            },
             action = () =>
             {
                 List<FloatMenuOption> options = new();
                 foreach (ExoskeletonMode m in System.Enum.GetValues(typeof(ExoskeletonMode)))
                 {
                     ExoskeletonMode chosen = m;
-                    int ticks = ModeTicks(chosen);
-                    string label = ("BOR_ExoMode_" + chosen).Translate();
-                    if (ModeLocked)
+                    if (chosen == mode)
                     {
-                        options.Add(new FloatMenuOption(label + " (" + "BOR_ExoModeLocked".Translate((modeLockEndTick - Find.TickManager.TicksGame).ToStringTicksToPeriod()) + ")", null));
                         continue;
                     }
-                    options.Add(new FloatMenuOption(ticks > 0 ? label + " (" + ticks.ToStringTicksToPeriod() + ")" : label, () => ApplyMode(chosen)));
+                    string label = ("BOR_ExoMode_" + chosen).Translate();
+                    if (chosen != ExoskeletonMode.None && !CanStartForm)
+                    {
+                        options.Add(new FloatMenuOption(label + " (" + "BOR_ExoNeedsCharge".Translate(((int)MinCharge).ToStringTicksToPeriod()) + ")", null));
+                        continue;
+                    }
+                    options.Add(new FloatMenuOption(label, () => RequestMode(chosen)));
                 }
                 Find.WindowStack.Add(new FloatMenu(options));
             }
         };
+        if (ModeLocked)
+        {
+            cmd.Disable("BOR_ExoModeLocked".Translate((modeLockEndTick - Find.TickManager.TicksGame).ToStringTicksToPeriod()));
+        }
+        else if (switching)
+        {
+            cmd.Disable(ModeLabel);
+        }
+        yield return cmd;
     }
 
-    private string TimeLeftSuffix =>
-        Props.ownsMode && mode != ExoskeletonMode.None ? ", " + (modeEndTick - Find.TickManager.TicksGame).ToStringTicksToPeriod() : "";
+    private string ModeLabel => switching && switchTo >= 0
+        ? "BOR_ExoForming".Translate(("BOR_ExoMode_" + (ExoskeletonMode)switchTo).Translate()).Resolve()
+        : ("BOR_ExoMode_" + Mode).Translate().Resolve();
 
-    public override string CompLabelInBracketsExtra => ("BOR_ExoMode_" + Mode).Translate() + TimeLeftSuffix;
+    private string TimeLeftSuffix =>
+        Props.ownsMode ? ", " + "BOR_ExoCharge".Translate(((int)Charge).ToStringTicksToPeriod(), ((int)MaxCharge).ToStringTicksToPeriod()) : "";
+
+    public override string CompLabelInBracketsExtra => (Props.ownsMode ? ModeLabel : ("BOR_ExoMode_" + Mode).Translate().Resolve()) + TimeLeftSuffix;
 
     public override void CompExposeData()
     {
         base.CompExposeData();
         // Saves from before no mode left utility unwritten, so it stays the default here. It expires on the first check.
         Scribe_Values.Look(ref mode, "exoMode", ExoskeletonMode.Utility);
-        Scribe_Values.Look(ref modeEndTick, "exoModeEndTick");
+        Scribe_Values.Look(ref charge, "exoCharge", -1f);
         Scribe_Values.Look(ref modeLockEndTick, "exoCombatLockEndTick");
+        Scribe_Values.Look(ref switching, "exoSwitching");
+        Scribe_Values.Look(ref switchFrom, "exoSwitchFrom", -1);
+        Scribe_Values.Look(ref switchTo, "exoSwitchTo", -1);
+        Scribe_Values.Look(ref switchStartTick, "exoSwitchStart");
+        Scribe_Values.Look(ref dismantleEndTick, "exoSwitchDismantleEnd");
+        Scribe_Values.Look(ref switchEndTick, "exoSwitchEnd");
+        Scribe_Values.Look(ref aiLastThreatTick, "exoAiLastThreat", -999999);
     }
 }
 

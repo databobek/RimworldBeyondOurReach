@@ -21,6 +21,9 @@
 			<MarketValue>2250</MarketValue>
 		</statBases>
 		<tradeTags Inherit="False">
+			<li>CE_AmmoInjector</li>
+			<li>CE_HeavyAmmo</li>
+			<li>CE_AutoEnableTrade</li>
 			<li>BOR_Tech_I</li>
 		</tradeTags>
 		<ammoClass>BOR_Ni_AmmoClass</ammoClass>
@@ -35,8 +38,7 @@
 			<workAmount>111600</workAmount>
 			<targetCountAdjustment>5</targetCountAdjustment>
 			<workSkill>Crafting</workSkill>
-			<recipeUsers>
-				<li>BOR_Bench_I</li>
+			<recipeUsers Inherit="False">
 				<li>BOR_Bench_II</li>
 				<li>BOR_Bench_IV</li>
 			</recipeUsers>
@@ -46,11 +48,11 @@
 			<researchPrerequisite>BOR_Research_JudgmentCannon_I</researchPrerequisite>
 		</recipeMaker>
 		<costList>
-			<BOR_Sunsteel>220</BOR_Sunsteel>
-			<BOR_QuasarAlloy>220</BOR_QuasarAlloy>
+			<BOR_Sunsteel>200</BOR_Sunsteel>
+			<BOR_QuasarAlloy>200</BOR_QuasarAlloy>
 			<BOR_ComponentII>2</BOR_ComponentII>
 			<FSX>33</FSX>
-			<BOR_Neutronium>110</BOR_Neutronium>
+			<BOR_Neutronium>100</BOR_Neutronium>
 		</costList>
 	</ThingDef>
 	<ThingDef ParentName="Base28cmSpgrShell">
@@ -95,7 +97,10 @@
 		<statBases>
 			<MarketValue>3500</MarketValue>
 		</statBases>
-		<tradeTags>
+		<tradeTags Inherit="False">
+			<li>CE_AmmoInjector</li>
+			<li>CE_HeavyAmmo</li>
+			<li>CE_AutoEnableTrade</li>
 			<li>BOR_Tech_I</li>
 		</tradeTags>
 		<ammoClass>BOR_Tf_AmmoClass</ammoClass>
@@ -110,8 +115,9 @@
 			<workAmount>150000</workAmount>
 			<targetCountAdjustment>5</targetCountAdjustment>
 			<workSkill>Crafting</workSkill>
-			<recipeUsers>
-				<li>BOR_Bench_I</li>
+			<recipeUsers Inherit="False">
+				<li>BOR_Bench_II</li>
+				<li>BOR_Bench_IV</li>
 			</recipeUsers>
 			<skillRequirements>
 				<Crafting>14</Crafting>
@@ -119,8 +125,9 @@
 			<researchPrerequisite>BOR_Research_JudgmentCannon_I</researchPrerequisite>
 		</recipeMaker>
 		<costList>
-			<BOR_QuasarAlloy>330</BOR_QuasarAlloy>
-			<BOR_Neutronium>5500</BOR_Neutronium>
+			<BOR_QuasarAlloy>300</BOR_QuasarAlloy>
+			<BOR_ComponentII>2</BOR_ComponentII>
+			<BOR_Neutronium>5000</BOR_Neutronium>
 		</costList>
 	</ThingDef>
 	<ThingDef ParentName="Base28cmSpgrShell">
@@ -152,124 +159,6 @@
 			</li>
 		</comps>
 	</ThingDef>
-	<RecipeDef ParentName="AmmoRecipeBase">
-		<defName>MakeBOR_Ammo_JudgmentShell_Ni</defName>
-		<label>make Judgment shell (Ni) x5</label>
-		<description>Craft 5 Judgment shells (Ni).</description>
-		<jobString>Making Judgment shells (Ni).</jobString>
-		<workAmount>111600</workAmount>
-		<ingredients>
-			<li>
-				<filter>
-					<thingDefs>
-						<li>BOR_Sunsteel</li>
-					</thingDefs>
-				</filter>
-				<count>200</count>
-			</li>
-			<li>
-				<filter>
-					<thingDefs>
-						<li>BOR_QuasarAlloy</li>
-					</thingDefs>
-				</filter>
-				<count>200</count>
-			</li>
-			<li>
-				<filter>
-					<thingDefs>
-						<li>BOR_ComponentII</li>
-					</thingDefs>
-				</filter>
-				<count>2</count>
-			</li>
-			<li>
-				<filter>
-					<thingDefs>
-						<li>FSX</li>
-					</thingDefs>
-				</filter>
-				<count>33</count>
-			</li>
-			<li>
-				<filter>
-					<thingDefs>
-						<li>BOR_Neutronium</li>
-					</thingDefs>
-				</filter>
-				<count>100</count>
-			</li>
-		</ingredients>
-		<fixedIngredientFilter>
-			<thingDefs>
-				<li>BOR_Sunsteel</li>
-				<li>BOR_QuasarAlloy</li>
-				<li>BOR_ComponentII</li>
-				<li>FSX</li>
-				<li>BOR_Neutronium</li>
-			</thingDefs>
-		</fixedIngredientFilter>
-		<products>
-			<BOR_Ammo_JudgmentShell_Ni>5</BOR_Ammo_JudgmentShell_Ni>
-		</products>
-		<recipeUsers>
-			<li>BOR_Bench_I</li>
-		</recipeUsers>
-		<skillRequirements>
-			<Crafting>12</Crafting>
-		</skillRequirements>
-		<researchPrerequisite>BOR_Research_JudgmentCannon_I</researchPrerequisite>
-	</RecipeDef>
-	<RecipeDef ParentName="AmmoRecipeBase">
-		<defName>MakeBOR_Ammo_JudgmentShell_Ef</defName>
-		<label>make Judgment shell (Ef) x5</label>
-		<description>Craft 5 Judgment shells (Ef).</description>
-		<jobString>Making Judgment shells (Ef).</jobString>
-		<workAmount>150000</workAmount>
-		<ingredients>
-			<li>
-				<filter>
-					<thingDefs>
-						<li>BOR_QuasarAlloy</li>
-					</thingDefs>
-				</filter>
-				<count>300</count>
-			</li>
-			<li>
-				<filter>
-					<thingDefs>
-						<li>BOR_ComponentII</li>
-					</thingDefs>
-				</filter>
-				<count>2</count>
-			</li>
-			<li>
-				<filter>
-					<thingDefs>
-						<li>BOR_Neutronium</li>
-					</thingDefs>
-				</filter>
-				<count>5000</count>
-			</li>
-		</ingredients>
-		<fixedIngredientFilter>
-			<thingDefs>
-				<li>BOR_QuasarAlloy</li>
-				<li>BOR_ComponentII</li>
-				<li>BOR_Neutronium</li>
-			</thingDefs>
-		</fixedIngredientFilter>
-		<products>
-			<BOR_Ammo_JudgmentShell_Ef>5</BOR_Ammo_JudgmentShell_Ef>
-		</products>
-		<recipeUsers>
-			<li>BOR_Bench_I</li>
-		</recipeUsers>
-		<skillRequirements>
-			<Crafting>14</Crafting>
-		</skillRequirements>
-		<researchPrerequisite>BOR_Research_JudgmentCannon_I</researchPrerequisite>
-	</RecipeDef>
 	<CombatExtended.AmmoSetDef>
 		<defName>AmmoSet_BOR_NegotiatorCrackerShell</defName>
 		<label>Cracker shell</label>
@@ -289,7 +178,10 @@
 		<statBases>
 			<MarketValue>120000</MarketValue>
 		</statBases>
-		<tradeTags>
+		<tradeTags Inherit="False">
+			<li>CE_AmmoInjector</li>
+			<li>CE_HeavyAmmo</li>
+			<li>CE_AutoEnableTrade</li>
 			<li>BOR_Tech_II</li>
 		</tradeTags>
 		<ammoClass>BOR_Tf_AmmoClass</ammoClass>
@@ -304,8 +196,9 @@
 			<workAmount>850000</workAmount>
 			<targetCountAdjustment>1</targetCountAdjustment>
 			<workSkill>Crafting</workSkill>
-			<recipeUsers>
+			<recipeUsers Inherit="False">
 				<li>BOR_Bench_II</li>
+				<li>BOR_Bench_IV</li>
 			</recipeUsers>
 			<skillRequirements>
 				<Crafting>18</Crafting>
@@ -313,9 +206,9 @@
 			<researchPrerequisite>BOR_Research_NegotiatorArtillery_II</researchPrerequisite>
 		</recipeMaker>
 		<costList>
-			<BOR_Neutronium>1100</BOR_Neutronium>
-			<BOR_QuasarAlloy>1045</BOR_QuasarAlloy>
-			<BOR_ComponentII>11</BOR_ComponentII>
+			<BOR_Neutronium>1000</BOR_Neutronium>
+			<BOR_QuasarAlloy>635</BOR_QuasarAlloy>
+			<BOR_ComponentII>10</BOR_ComponentII>
 		</costList>
 	</ThingDef>
 	<ThingDef ParentName="Base28cmSpgrShell">
@@ -331,7 +224,13 @@
 		<projectile Class="CombatExtended.ProjectilePropertiesCE">
 			<damageDef>BombSuper</damageDef>
 			<damageAmountBase>15000</damageAmountBase>
-			<explosionRadius>1000</explosionRadius>
+			<!-- The fireball. CE explosions stop at the ~80-cell radial pattern too, so the radius 1000 shockwave is
+			     BOR_NegotiatorDetonation, spawned at the centre of this blast. -->
+			<explosionRadius>30</explosionRadius>
+			<explosionEffect>GiantExplosion</explosionEffect>
+			<explosionChanceToStartFire>0.22</explosionChanceToStartFire>
+			<screenShakeFactor>4</screenShakeFactor>
+			<preExplosionSpawnSingleThingDef>BOR_NegotiatorDetonation</preExplosionSpawnSingleThingDef>
 			<soundExplode>Explosion_GiantBomb</soundExplode>
 			<applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
 			<shellingProps>
@@ -340,55 +239,4 @@
 			</shellingProps>
 		</projectile>
 	</ThingDef>
-	<RecipeDef ParentName="AmmoRecipeBase">
-		<defName>MakeBOR_Ammo_NegotiatorCracker_TII</defName>
-		<label>make Cracker shell x1</label>
-		<description>Craft 1 Cracker shell.</description>
-		<jobString>Making Cracker shell.</jobString>
-		<workAmount>850000</workAmount>
-		<ingredients>
-			<li>
-				<filter>
-					<thingDefs>
-						<li>BOR_Neutronium</li>
-					</thingDefs>
-				</filter>
-				<count>1000</count>
-			</li>
-			<li>
-				<filter>
-					<thingDefs>
-						<li>BOR_QuasarAlloy</li>
-					</thingDefs>
-				</filter>
-				<count>635</count>
-			</li>
-			<li>
-				<filter>
-					<thingDefs>
-						<li>BOR_ComponentII</li>
-					</thingDefs>
-				</filter>
-				<count>10</count>
-			</li>
-		</ingredients>
-		<fixedIngredientFilter>
-			<thingDefs>
-				<li>BOR_Neutronium</li>
-				<li>BOR_QuasarAlloy</li>
-				<li>BOR_ComponentII</li>
-			</thingDefs>
-		</fixedIngredientFilter>
-		<products>
-			<BOR_Ammo_NegotiatorCracker_TII>1</BOR_Ammo_NegotiatorCracker_TII>
-		</products>
-		<recipeUsers>
-			<li>BOR_Bench_II</li>
-			<li>BOR_Bench_IV</li>
-		</recipeUsers>
-		<skillRequirements>
-			<Crafting>18</Crafting>
-		</skillRequirements>
-		<researchPrerequisite>BOR_Research_NegotiatorArtillery_II</researchPrerequisite>
-	</RecipeDef>
 </Defs>

@@ -32,7 +32,7 @@
   <BOR_TenebralPodMode_Operating>operating</BOR_TenebralPodMode_Operating>
   <BOR_TenebralPodMode_Transformation>transformation</BOR_TenebralPodMode_Transformation>
   <BOR_TenebralPodTransforming>A transformation is under way and cannot be interrupted.</BOR_TenebralPodTransforming>
-  <BOR_TenebralPodNeedsTenebral>healing needs someone with tenebral implants</BOR_TenebralPodNeedsTenebral>
+  <BOR_TenebralPodNeedsTenebral>healing needs a tenebral or Umbral pawn</BOR_TenebralPodNeedsTenebral>
   <BOR_TenebralPodChoose>Choose operation</BOR_TenebralPodChoose>
   <BOR_TenebralPodChooseDesc>Choose what to install, and where. This works with nobody inside, so a colonist can set up their own operation, load the pod and climb in. Colonists load the tenebral organ or appendage and the femtoclusters it needs; the operation starts once someone is inside and ends by opening the pod.</BOR_TenebralPodChooseDesc>
   <BOR_TenebralPodDoesNotFit>The chosen part can't take this operation on {0}.</BOR_TenebralPodDoesNotFit>
@@ -60,6 +60,20 @@
   <BOR_PodWalks>{0} will walk to the pod.</BOR_PodWalks>
   <BOR_PodCarried>{0} will be carried to the pod by a colonist.</BOR_PodCarried>
   <BOR_PodNobodyToCarry>No colonist can carry {0} to the pod.</BOR_PodNobodyToCarry>
+  <!-- Card shown when hovering a pawn in the pod window. -->
+  <BOR_PodColonist>Colonist</BOR_PodColonist>
+  <BOR_PodSlave>Slave</BOR_PodSlave>
+  <BOR_PodPrisoner>Prisoner</BOR_PodPrisoner>
+  <BOR_PodCard_Age>{0} years old</BOR_PodCard_Age>
+  <BOR_PodCard_Health>Health {0}</BOR_PodCard_Health>
+  <BOR_PodCard_Downed>downed</BOR_PodCard_Downed>
+  <BOR_PodCard_Bleeding>bleeding</BOR_PodCard_Bleeding>
+  <BOR_PodCard_Crystallization>Crystallized {0} (transformation needs {1})</BOR_PodCard_Crystallization>
+  <BOR_PodCard_Psychosis>Tenebral psychosis {0}</BOR_PodCard_Psychosis>
+  <BOR_PodCard_Implants>Tenebral implants</BOR_PodCard_Implants>
+  <BOR_PodCard_Conditions>Conditions</BOR_PodCard_Conditions>
+  <BOR_PodCard_None>none</BOR_PodCard_None>
+  <BOR_PodCard_More>and {0} more</BOR_PodCard_More>
   <BOR_TenebralPodNoOperations>No tenebral operation is possible</BOR_TenebralPodNoOperations>
   <BOR_TenebralPodOperation>Operation: {0} on {1} ({2})</BOR_TenebralPodOperation>
   <BOR_TenebralPodMissing>Waiting for: {0}</BOR_TenebralPodMissing>
@@ -75,18 +89,41 @@
   <BOR_AltarComponents>Crystalline joints offered: {0}</BOR_AltarComponents>
   <BOR_AltarNeedsPsychosis>Cannot work the altar: psychosis at {0}, needs {1}</BOR_AltarNeedsPsychosis>
   <BOR_AltarNeedsComponents>needs {0} more crystalline joints</BOR_AltarNeedsComponents>
+  <BOR_TabGeneForge>Gene Forge</BOR_TabGeneForge>
+  <BOR_GeneForgeHeader>Femtoclusters loaded: {0} / {1}</BOR_GeneForgeHeader>
+  <BOR_GeneForgeNoGenes>{0} has no genes the forge can draw out.</BOR_GeneForgeNoGenes>
+  <BOR_GeneForgeIdle>Click a gene to have a doctor draw it out.</BOR_GeneForgeIdle>
+  <BOR_GeneForgeCellTip>{0}
+
+{1}
+
+Click to have a doctor draw this gene out into a genepack ({2} of work, {3} {4}). Click again to cancel.
+
+The sleeper loses a random body part. It might be a toe. It might be the heart.</BOR_GeneForgeCellTip>
+  <BOR_GeneForgeWaiting>{0}: waiting for {1}</BOR_GeneForgeWaiting>
+  <BOR_GeneForgeProgress>Drawing out {0}</BOR_GeneForgeProgress>
+  <BOR_GeneForgeCancel>Stop drawing out this gene. Loaded femtoclusters stay in the pod.</BOR_GeneForgeCancel>
+  <BOR_GeneForgeInspect>Gene forge: {0} ({1})</BOR_GeneForgeInspect>
+  <BOR_GeneForgeNeedsFemto>needs {0} femtoclusters</BOR_GeneForgeNeedsFemto>
+  <BOR_GeneForgeDone>The gene forge drew {0} out of {1}. It took {1}'s {2} with it.</BOR_GeneForgeDone>
+  <BOR_GeneForgeDoneKilled>The gene forge drew {0} out of {1}. It took {1}'s {2}, and {1} did not survive.</BOR_GeneForgeDoneKilled>
+  <BOR_GeneForgeDoneNoPart>The gene forge drew {0} out of {1}.</BOR_GeneForgeDoneNoPart>
 
   <!-- Umbral -->
   <BOR_UmbralTransformed>{0} has grown: {1}.</BOR_UmbralTransformed>
   <BOR_ExoArmorBroken>{0}'s combat armor has failed.</BOR_ExoArmorBroken>
   <BOR_ExoModeLocked>recovering, {0} left</BOR_ExoModeLocked>
   <BOR_ExoMode>Exoskeleton: {0}</BOR_ExoMode>
-  <BOR_ExoModeDesc>Change the exoskeleton's form. A form lasts a limited time, then the exoskeleton reverts to no mode.\n\nCamo (2 hours): unseen, but unable to handle anything.\nUtility (24 hours): no armor, works much faster.\nCombat (12 hours): very heavy armor, works much slower.\nNo mode: no armor and no bonuses.</BOR_ExoModeDesc>
+  <BOR_ExoNeedsCharge>needs {0} of charge</BOR_ExoNeedsCharge>
+  <BOR_ExoSpentFlee>{0}'s exoskeleton is spent. It flees.</BOR_ExoSpentFlee>
+  <BOR_ExoForming>forming {0}</BOR_ExoForming>
+  <BOR_ExoCharge>charge {0} / {1}</BOR_ExoCharge>
+  <BOR_ExoChargeEmpty>{0}'s exoskeleton has run out of charge and is recovering.</BOR_ExoChargeEmpty>
+  <BOR_ExoModeDesc>Change the exoskeleton's form. Every form draws on one shared charge of 4 hours. It drains in any form and refills while there is no form, so switch back to no form to recharge. A form needs at least half an hour of charge to start. Switching takes a few seconds: the old form sheds, then the new one grows on, and the exoskeleton is in no form meanwhile. If the charge runs out the exoskeleton drops to no form and has to recover for 2 hours before it refills or can be used again.\n\nCamo: unseen, but unable to handle anything.\nUtility: no armor, works much faster.\nCombat: very heavy armor, works much slower.\nNo form: no armor and no bonuses.</BOR_ExoModeDesc>
   <BOR_ExoMode_Camo>camo</BOR_ExoMode_Camo>
   <BOR_ExoMode_Utility>utility</BOR_ExoMode_Utility>
   <BOR_ExoMode_Combat>combat</BOR_ExoMode_Combat>
   <BOR_ExoMode_None>no mode</BOR_ExoMode_None>
-  <BOR_ExoModeEnded>{0}'s exoskeleton has reverted from {1} form.</BOR_ExoModeEnded>
   <BOR_GenesNotExtractable>{0}'s genes cannot be extracted</BOR_GenesNotExtractable>
   <BOR_ExoBlocksApparel>the Umbral exoskeleton leaves no room for clothing</BOR_ExoBlocksApparel>
   <BOR_UtilityPodMode>Pod: {0}</BOR_UtilityPodMode>

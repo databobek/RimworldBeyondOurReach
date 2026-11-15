@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+
+	<!-- CE reads the parrying weapon's own armor ratings in ApplyParryDamage.
+	     Non-stuff BOR melee weapons have none, which logs
+	     "penAmount or armorAmount are zero for Sharp". -->
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[starts-with(defName,"BOR_") and tools and not(stuffCategories) and statBases and not(statBases/ArmorRating_Sharp)]/statBases</xpath>
+		<value>
+			<ArmorRating_Sharp>15</ArmorRating_Sharp>
+			<ArmorRating_Blunt>10</ArmorRating_Blunt>
+		</value>
+	</Operation>
+
+</Patch>

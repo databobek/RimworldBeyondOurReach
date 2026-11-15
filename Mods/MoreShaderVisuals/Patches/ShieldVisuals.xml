@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+	<!-- More Shader Visuals draws shields additively, so a dark color barely shows: keep them bright. -->
+	<!-- domeStyle is one of Crisp, Hex, Vanilla, Bubble, HexBubble. Domes keep their interceptor color. -->
+
+	<Operation Class="PatchOperationAddModExtension">
+		<xpath>Defs/ThingDef[defName="BOR_UmbralShield"]</xpath>
+		<value>
+			<li Class="BeyondOurReach.ShieldVisualsExtension">
+				<domeStyle>Hex</domeStyle>
+			</li>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAddModExtension">
+		<xpath>Defs/ThingDef[defName="BOR_Orientis_MeditationPod"]</xpath>
+		<value>
+			<li Class="BeyondOurReach.ShieldVisualsExtension">
+				<domeStyle>Bubble</domeStyle>
+			</li>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAddModExtension">
+		<xpath>Defs/ThingDef[defName="BOR_Solar_Apparel_ShieldBelt"]</xpath>
+		<value>
+			<li Class="BeyondOurReach.ShieldVisualsExtension">
+				<color>(1, 0.72, 0.25)</color>
+				<domeStyle>Bubble</domeStyle>
+			</li>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAddModExtension">
+		<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_ShieldBelt"]</xpath>
+		<value>
+			<li Class="BeyondOurReach.ShieldVisualsExtension">
+				<color>(0.45, 0.5, 1)</color>
+				<domeStyle>HexBubble</domeStyle>
+			</li>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAddModExtension">
+		<xpath>Defs/ThingDef[defName="BOR_Tenebral_Apparel_ShieldBelt"]</xpath>
+		<value>
+			<li Class="BeyondOurReach.ShieldVisualsExtension">
+				<color>(0.85, 0.2, 0.55)</color>
+				<domeStyle>Hex</domeStyle>
+			</li>
+		</value>
+	</Operation>
+</Patch>

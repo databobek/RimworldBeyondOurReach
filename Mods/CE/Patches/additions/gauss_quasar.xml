@@ -122,7 +122,7 @@
 				<Properties>
 					<verbClass>CombatExtended.Verb_ShootCE</verbClass>
 					<hasStandardCommand>true</hasStandardCommand>
-					<defaultProjectile>BOR_Bullet_QuasarGauss_Rifle_KwazeerStd</defaultProjectile>
+					<defaultProjectile>BOR_Bullet_QuasarGauss_Rifle</defaultProjectile>
 					<warmupTime>0.9</warmupTime>
 					<burstShotCount>6</burstShotCount>
 					<ticksBetweenBurstShots>6</ticksBetweenBurstShots>
@@ -159,7 +159,7 @@
 				<Properties>
 					<verbClass>CombatExtended.Verb_ShootCE</verbClass>
 					<hasStandardCommand>true</hasStandardCommand>
-					<defaultProjectile>BOR_Bullet_QuasarGauss_Pistol_KwazeerStd</defaultProjectile>
+					<defaultProjectile>BOR_Bullet_QuasarGauss_Pistol</defaultProjectile>
 					<warmupTime>0.5</warmupTime>
 					<range>24</range>
 					<soundCast>Shot_Autopistol</soundCast>
@@ -195,7 +195,7 @@
 					<recoilAmount>2.8</recoilAmount>
 					<verbClass>CombatExtended.Verb_ShootCE</verbClass>
 					<hasStandardCommand>true</hasStandardCommand>
-					<defaultProjectile>BOR_Bullet_QuasarGauss_Shotgun_KwazeerStd</defaultProjectile>
+					<defaultProjectile>BOR_Bullet_QuasarGauss_Shotgun</defaultProjectile>
 					<warmupTime>0.50</warmupTime>
 					<range>32</range>
 					<soundCast>Shot_Shotgun</soundCast>
@@ -230,7 +230,7 @@
 					<recoilAmount>4.00</recoilAmount>
 					<verbClass>CombatExtended.Verb_ShootCE</verbClass>
 					<hasStandardCommand>true</hasStandardCommand>
-					<defaultProjectile>BOR_Bullet_QuasarGauss_Sniper_KwazeerStd</defaultProjectile>
+					<defaultProjectile>BOR_Bullet_QuasarGauss_Sniper</defaultProjectile>
 					<warmupTime>2.4</warmupTime>
 					<range>95</range>
 					<soundCast>Shot_SniperRifle</soundCast>
@@ -265,7 +265,7 @@
 				<Properties>
 					<verbClass>CombatExtended.Verb_ShootCE</verbClass>
 					<hasStandardCommand>true</hasStandardCommand>
-					<defaultProjectile>BOR_Bullet_QuasarGauss_Cannon_KwazeerStd</defaultProjectile>
+					<defaultProjectile>BOR_Bullet_QuasarGauss_Cannon</defaultProjectile>
 					<warmupTime>3.0</warmupTime>
 					<range>81</range>
 					<soundCast>Shot_ChargeRifle</soundCast>
@@ -304,7 +304,7 @@
 				<Properties>
 					<verbClass>CombatExtended.Verb_ShootCE</verbClass>
 					<hasStandardCommand>true</hasStandardCommand>
-					<defaultProjectile>BOR_Bullet_QuasarGauss_Bullpup_KwazeerStd</defaultProjectile>
+					<defaultProjectile>BOR_Bullet_QuasarGauss_Bullpup</defaultProjectile>
 					<warmupTime>0.7</warmupTime>
 					<burstShotCount>6</burstShotCount>
 					<ticksBetweenBurstShots>6</ticksBetweenBurstShots>
@@ -343,7 +343,7 @@
 					<recoilAmount>4</recoilAmount>
 					<verbClass>CombatExtended.Verb_ShootCE</verbClass>
 					<hasStandardCommand>true</hasStandardCommand>
-					<defaultProjectile>BOR_Bullet_QuasarGauss_DMR_KwazeerStd</defaultProjectile>
+					<defaultProjectile>BOR_Bullet_QuasarGauss_DMR</defaultProjectile>
 					<warmupTime>1.8</warmupTime>
 					<range>91</range>
 					<soundCast>Shot_SniperRifle</soundCast>
@@ -365,6 +365,322 @@
 				</weaponTags>
 				<researchPrerequisite>BOR_QuasarGaussSpecialistWeaponry</researchPrerequisite>
 				<AllowWithRunAndGun>false</AllowWithRunAndGun>
+			</li>
+			<!-- Fire modes: one cartridge, four programmed cores (see KwazaariFireMode.cs). -->
+			<li Class="PatchOperationConditional">
+				<xpath>Defs/ThingDef[defName="BOR_Gun_GaussBattleRifle_TII"]/comps</xpath>
+				<nomatch Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[defName="BOR_Gun_GaussBattleRifle_TII"]</xpath>
+					<value>
+						<comps />
+					</value>
+				</nomatch>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>Defs/ThingDef[defName="BOR_Gun_GaussBattleRifle_TII"]/comps</xpath>
+				<value>
+					<li Class="BeyondOurReach.CompProperties_KwazaariFireMode">
+						<modes>
+							<li>
+								<labelKey>BOR_KwazaariFireMode_Normal</labelKey>
+								<descKey>BOR_KwazaariFireMode_NormalDesc</descKey>
+								<iconPath>BOR/Things/Item/Equipment/weaponranged/gen1/mag/ammo/SS/ammo_c</iconPath>
+								<projectile>BOR_Bullet_QuasarGauss_Rifle</projectile>
+							</li>
+							<li>
+								<labelKey>BOR_KwazaariFireMode_Boom</labelKey>
+								<descKey>BOR_KwazaariFireMode_BoomDesc</descKey>
+								<ammoPerShot>10</ammoPerShot>
+								<iconPath>BOR/Things/Item/Equipment/weaponranged/gen1/mag/ammo/Ni/ammo_c</iconPath>
+								<projectile>BOR_Bullet_QuasarGauss_Rifle_Boom</projectile>
+							</li>
+							<li>
+								<labelKey>BOR_KwazaariFireMode_EMP</labelKey>
+								<descKey>BOR_KwazaariFireMode_EMPDesc</descKey>
+								<ammoPerShot>4</ammoPerShot>
+								<iconPath>BOR/Things/Item/Equipment/weaponranged/gen1/mag/ammo/EMP_N/ammo_c</iconPath>
+								<projectile>BOR_Bullet_QuasarGauss_Rifle_EMP</projectile>
+							</li>
+							<li>
+								<labelKey>BOR_KwazaariFireMode_Burn</labelKey>
+								<descKey>BOR_KwazaariFireMode_BurnDesc</descKey>
+								<ammoPerShot>4</ammoPerShot>
+								<iconPath>BOR/Things/Item/Equipment/weaponranged/gen1/mag/ammo/Nc/ammo_c</iconPath>
+								<projectile>BOR_Bullet_QuasarGauss_Rifle_Burn</projectile>
+							</li>
+						</modes>
+					</li>
+				</value>
+			</li>
+			<li Class="PatchOperationConditional">
+				<xpath>Defs/ThingDef[defName="BOR_Gun_GaussPistol_TII"]/comps</xpath>
+				<nomatch Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[defName="BOR_Gun_GaussPistol_TII"]</xpath>
+					<value>
+						<comps />
+					</value>
+				</nomatch>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>Defs/ThingDef[defName="BOR_Gun_GaussPistol_TII"]/comps</xpath>
+				<value>
+					<li Class="BeyondOurReach.CompProperties_KwazaariFireMode">
+						<modes>
+							<li>
+								<labelKey>BOR_KwazaariFireMode_Normal</labelKey>
+								<descKey>BOR_KwazaariFireMode_NormalDesc</descKey>
+								<iconPath>BOR/Things/Item/Equipment/weaponranged/gen1/mag/ammo/SS/ammo_c</iconPath>
+								<projectile>BOR_Bullet_QuasarGauss_Pistol</projectile>
+							</li>
+							<li>
+								<labelKey>BOR_KwazaariFireMode_Boom</labelKey>
+								<descKey>BOR_KwazaariFireMode_BoomDesc</descKey>
+								<ammoPerShot>10</ammoPerShot>
+								<iconPath>BOR/Things/Item/Equipment/weaponranged/gen1/mag/ammo/Ni/ammo_c</iconPath>
+								<projectile>BOR_Bullet_QuasarGauss_Pistol_Boom</projectile>
+							</li>
+							<li>
+								<labelKey>BOR_KwazaariFireMode_EMP</labelKey>
+								<descKey>BOR_KwazaariFireMode_EMPDesc</descKey>
+								<ammoPerShot>4</ammoPerShot>
+								<iconPath>BOR/Things/Item/Equipment/weaponranged/gen1/mag/ammo/EMP_N/ammo_c</iconPath>
+								<projectile>BOR_Bullet_QuasarGauss_Pistol_EMP</projectile>
+							</li>
+							<li>
+								<labelKey>BOR_KwazaariFireMode_Burn</labelKey>
+								<descKey>BOR_KwazaariFireMode_BurnDesc</descKey>
+								<ammoPerShot>4</ammoPerShot>
+								<iconPath>BOR/Things/Item/Equipment/weaponranged/gen1/mag/ammo/Nc/ammo_c</iconPath>
+								<projectile>BOR_Bullet_QuasarGauss_Pistol_Burn</projectile>
+							</li>
+						</modes>
+					</li>
+				</value>
+			</li>
+			<li Class="PatchOperationConditional">
+				<xpath>Defs/ThingDef[defName="BOR_Gun_GaussShotgun_TII"]/comps</xpath>
+				<nomatch Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[defName="BOR_Gun_GaussShotgun_TII"]</xpath>
+					<value>
+						<comps />
+					</value>
+				</nomatch>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>Defs/ThingDef[defName="BOR_Gun_GaussShotgun_TII"]/comps</xpath>
+				<value>
+					<li Class="BeyondOurReach.CompProperties_KwazaariFireMode">
+						<modes>
+							<li>
+								<labelKey>BOR_KwazaariFireMode_Normal</labelKey>
+								<descKey>BOR_KwazaariFireMode_NormalDesc</descKey>
+								<iconPath>BOR/Things/Item/Equipment/weaponranged/gen1/mag/ammo/SS/ammo_c</iconPath>
+								<projectile>BOR_Bullet_QuasarGauss_Shotgun</projectile>
+							</li>
+							<li>
+								<labelKey>BOR_KwazaariFireMode_Boom</labelKey>
+								<descKey>BOR_KwazaariFireMode_BoomDesc</descKey>
+								<ammoPerShot>10</ammoPerShot>
+								<iconPath>BOR/Things/Item/Equipment/weaponranged/gen1/mag/ammo/Ni/ammo_c</iconPath>
+								<projectile>BOR_Bullet_QuasarGauss_Shotgun_Boom</projectile>
+							</li>
+							<li>
+								<labelKey>BOR_KwazaariFireMode_EMP</labelKey>
+								<descKey>BOR_KwazaariFireMode_EMPDesc</descKey>
+								<ammoPerShot>4</ammoPerShot>
+								<iconPath>BOR/Things/Item/Equipment/weaponranged/gen1/mag/ammo/EMP_N/ammo_c</iconPath>
+								<projectile>BOR_Bullet_QuasarGauss_Shotgun_EMP</projectile>
+							</li>
+							<li>
+								<labelKey>BOR_KwazaariFireMode_Burn</labelKey>
+								<descKey>BOR_KwazaariFireMode_BurnDesc</descKey>
+								<ammoPerShot>4</ammoPerShot>
+								<iconPath>BOR/Things/Item/Equipment/weaponranged/gen1/mag/ammo/Nc/ammo_c</iconPath>
+								<projectile>BOR_Bullet_QuasarGauss_Shotgun_Burn</projectile>
+							</li>
+						</modes>
+					</li>
+				</value>
+			</li>
+			<li Class="PatchOperationConditional">
+				<xpath>Defs/ThingDef[defName="BOR_Gun_GaussSniperRifle_TII"]/comps</xpath>
+				<nomatch Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[defName="BOR_Gun_GaussSniperRifle_TII"]</xpath>
+					<value>
+						<comps />
+					</value>
+				</nomatch>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>Defs/ThingDef[defName="BOR_Gun_GaussSniperRifle_TII"]/comps</xpath>
+				<value>
+					<li Class="BeyondOurReach.CompProperties_KwazaariFireMode">
+						<modes>
+							<li>
+								<labelKey>BOR_KwazaariFireMode_Normal</labelKey>
+								<descKey>BOR_KwazaariFireMode_NormalDesc</descKey>
+								<iconPath>BOR/Things/Item/Equipment/weaponranged/gen1/mag/ammo/SS/ammo_c</iconPath>
+								<projectile>BOR_Bullet_QuasarGauss_Sniper</projectile>
+							</li>
+							<li>
+								<labelKey>BOR_KwazaariFireMode_Boom</labelKey>
+								<descKey>BOR_KwazaariFireMode_BoomDesc</descKey>
+								<ammoPerShot>10</ammoPerShot>
+								<iconPath>BOR/Things/Item/Equipment/weaponranged/gen1/mag/ammo/Ni/ammo_c</iconPath>
+								<projectile>BOR_Bullet_QuasarGauss_Sniper_Boom</projectile>
+							</li>
+							<li>
+								<labelKey>BOR_KwazaariFireMode_EMP</labelKey>
+								<descKey>BOR_KwazaariFireMode_EMPDesc</descKey>
+								<ammoPerShot>4</ammoPerShot>
+								<iconPath>BOR/Things/Item/Equipment/weaponranged/gen1/mag/ammo/EMP_N/ammo_c</iconPath>
+								<projectile>BOR_Bullet_QuasarGauss_Sniper_EMP</projectile>
+							</li>
+							<li>
+								<labelKey>BOR_KwazaariFireMode_Burn</labelKey>
+								<descKey>BOR_KwazaariFireMode_BurnDesc</descKey>
+								<ammoPerShot>4</ammoPerShot>
+								<iconPath>BOR/Things/Item/Equipment/weaponranged/gen1/mag/ammo/Nc/ammo_c</iconPath>
+								<projectile>BOR_Bullet_QuasarGauss_Sniper_Burn</projectile>
+							</li>
+						</modes>
+					</li>
+				</value>
+			</li>
+			<li Class="PatchOperationConditional">
+				<xpath>Defs/ThingDef[defName="BOR_Gun_GaussCannon_TII"]/comps</xpath>
+				<nomatch Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[defName="BOR_Gun_GaussCannon_TII"]</xpath>
+					<value>
+						<comps />
+					</value>
+				</nomatch>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>Defs/ThingDef[defName="BOR_Gun_GaussCannon_TII"]/comps</xpath>
+				<value>
+					<li Class="BeyondOurReach.CompProperties_KwazaariFireMode">
+						<modes>
+							<li>
+								<labelKey>BOR_KwazaariFireMode_Normal</labelKey>
+								<descKey>BOR_KwazaariFireMode_NormalDesc</descKey>
+								<iconPath>BOR/Things/Item/Equipment/weaponranged/gen1/mag/ammo/SS/ammo_c</iconPath>
+								<projectile>BOR_Bullet_QuasarGauss_Cannon</projectile>
+							</li>
+							<li>
+								<labelKey>BOR_KwazaariFireMode_Boom</labelKey>
+								<descKey>BOR_KwazaariFireMode_BoomDesc</descKey>
+								<ammoPerShot>10</ammoPerShot>
+								<iconPath>BOR/Things/Item/Equipment/weaponranged/gen1/mag/ammo/Ni/ammo_c</iconPath>
+								<projectile>BOR_Bullet_QuasarGauss_Cannon_Boom</projectile>
+							</li>
+							<li>
+								<labelKey>BOR_KwazaariFireMode_EMP</labelKey>
+								<descKey>BOR_KwazaariFireMode_EMPDesc</descKey>
+								<ammoPerShot>4</ammoPerShot>
+								<iconPath>BOR/Things/Item/Equipment/weaponranged/gen1/mag/ammo/EMP_N/ammo_c</iconPath>
+								<projectile>BOR_Bullet_QuasarGauss_Cannon_EMP</projectile>
+							</li>
+							<li>
+								<labelKey>BOR_KwazaariFireMode_Burn</labelKey>
+								<descKey>BOR_KwazaariFireMode_BurnDesc</descKey>
+								<ammoPerShot>4</ammoPerShot>
+								<iconPath>BOR/Things/Item/Equipment/weaponranged/gen1/mag/ammo/Nc/ammo_c</iconPath>
+								<projectile>BOR_Bullet_QuasarGauss_Cannon_Burn</projectile>
+							</li>
+						</modes>
+					</li>
+				</value>
+			</li>
+			<li Class="PatchOperationConditional">
+				<xpath>Defs/ThingDef[defName="BOR_Gun_GaussBullpup_TII"]/comps</xpath>
+				<nomatch Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[defName="BOR_Gun_GaussBullpup_TII"]</xpath>
+					<value>
+						<comps />
+					</value>
+				</nomatch>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>Defs/ThingDef[defName="BOR_Gun_GaussBullpup_TII"]/comps</xpath>
+				<value>
+					<li Class="BeyondOurReach.CompProperties_KwazaariFireMode">
+						<modes>
+							<li>
+								<labelKey>BOR_KwazaariFireMode_Normal</labelKey>
+								<descKey>BOR_KwazaariFireMode_NormalDesc</descKey>
+								<iconPath>BOR/Things/Item/Equipment/weaponranged/gen1/mag/ammo/SS/ammo_c</iconPath>
+								<projectile>BOR_Bullet_QuasarGauss_Bullpup</projectile>
+							</li>
+							<li>
+								<labelKey>BOR_KwazaariFireMode_Boom</labelKey>
+								<descKey>BOR_KwazaariFireMode_BoomDesc</descKey>
+								<ammoPerShot>10</ammoPerShot>
+								<iconPath>BOR/Things/Item/Equipment/weaponranged/gen1/mag/ammo/Ni/ammo_c</iconPath>
+								<projectile>BOR_Bullet_QuasarGauss_Bullpup_Boom</projectile>
+							</li>
+							<li>
+								<labelKey>BOR_KwazaariFireMode_EMP</labelKey>
+								<descKey>BOR_KwazaariFireMode_EMPDesc</descKey>
+								<ammoPerShot>4</ammoPerShot>
+								<iconPath>BOR/Things/Item/Equipment/weaponranged/gen1/mag/ammo/EMP_N/ammo_c</iconPath>
+								<projectile>BOR_Bullet_QuasarGauss_Bullpup_EMP</projectile>
+							</li>
+							<li>
+								<labelKey>BOR_KwazaariFireMode_Burn</labelKey>
+								<descKey>BOR_KwazaariFireMode_BurnDesc</descKey>
+								<ammoPerShot>4</ammoPerShot>
+								<iconPath>BOR/Things/Item/Equipment/weaponranged/gen1/mag/ammo/Nc/ammo_c</iconPath>
+								<projectile>BOR_Bullet_QuasarGauss_Bullpup_Burn</projectile>
+							</li>
+						</modes>
+					</li>
+				</value>
+			</li>
+			<li Class="PatchOperationConditional">
+				<xpath>Defs/ThingDef[defName="BOR_Gun_GaussDMR_TII"]/comps</xpath>
+				<nomatch Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[defName="BOR_Gun_GaussDMR_TII"]</xpath>
+					<value>
+						<comps />
+					</value>
+				</nomatch>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>Defs/ThingDef[defName="BOR_Gun_GaussDMR_TII"]/comps</xpath>
+				<value>
+					<li Class="BeyondOurReach.CompProperties_KwazaariFireMode">
+						<modes>
+							<li>
+								<labelKey>BOR_KwazaariFireMode_Normal</labelKey>
+								<descKey>BOR_KwazaariFireMode_NormalDesc</descKey>
+								<iconPath>BOR/Things/Item/Equipment/weaponranged/gen1/mag/ammo/SS/ammo_c</iconPath>
+								<projectile>BOR_Bullet_QuasarGauss_DMR</projectile>
+							</li>
+							<li>
+								<labelKey>BOR_KwazaariFireMode_Boom</labelKey>
+								<descKey>BOR_KwazaariFireMode_BoomDesc</descKey>
+								<ammoPerShot>10</ammoPerShot>
+								<iconPath>BOR/Things/Item/Equipment/weaponranged/gen1/mag/ammo/Ni/ammo_c</iconPath>
+								<projectile>BOR_Bullet_QuasarGauss_DMR_Boom</projectile>
+							</li>
+							<li>
+								<labelKey>BOR_KwazaariFireMode_EMP</labelKey>
+								<descKey>BOR_KwazaariFireMode_EMPDesc</descKey>
+								<ammoPerShot>4</ammoPerShot>
+								<iconPath>BOR/Things/Item/Equipment/weaponranged/gen1/mag/ammo/EMP_N/ammo_c</iconPath>
+								<projectile>BOR_Bullet_QuasarGauss_DMR_EMP</projectile>
+							</li>
+							<li>
+								<labelKey>BOR_KwazaariFireMode_Burn</labelKey>
+								<descKey>BOR_KwazaariFireMode_BurnDesc</descKey>
+								<ammoPerShot>4</ammoPerShot>
+								<iconPath>BOR/Things/Item/Equipment/weaponranged/gen1/mag/ammo/Nc/ammo_c</iconPath>
+								<projectile>BOR_Bullet_QuasarGauss_DMR_Burn</projectile>
+							</li>
+						</modes>
+					</li>
+				</value>
 			</li>
 		</operations>
 	</Operation>

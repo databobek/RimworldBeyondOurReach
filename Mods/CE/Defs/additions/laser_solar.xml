@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Defs>
+	<!-- Beam guns fire BOR's laser shots: Shot_BOR_LaserLow (pistol), Shot_BOR_LaserMed (rifle, shotgun, bullpup, DMR), Shot_BOR_LaserHigh (sniper, cannon). Keep them when regenerating this file. -->
 	<CombatExtended.AmmoCategoryDef>
 		<defName>BOR_XCOM_Laser_Solar</defName>
 		<label>solar neuralizer</label>
@@ -23,9 +24,11 @@
 			<MarketValue>1.05</MarketValue>
 		</statBases>
 		<ammoClass>BOR_XCOM_Laser_Solar</ammoClass>
-		<tradeTags>
+		<tradeTags Inherit="False">
+			<li>CE_AmmoInjector</li>
+			<li>CE_Ammo</li>
+			<li>CE_AutoEnableTrade</li>
 			<li>BOR_Tech_I</li>
-			<li>CE_AutoEnableCrafting_FabricationBench</li>
 			<li>CE_AutoEnableCrafting_BOR_Bench_I</li>
 			<li>CE_AutoEnableCrafting_BOR_Bench_II</li>
 			<li>CE_AutoEnableCrafting_BOR_Bench_IV</li>
@@ -44,9 +47,11 @@
 			<MarketValue>1.05</MarketValue>
 		</statBases>
 		<ammoClass>BOR_XCOM_LaserEMP_Neutronium</ammoClass>
-		<tradeTags>
+		<tradeTags Inherit="False">
+			<li>CE_AmmoInjector</li>
+			<li>CE_Ammo</li>
+			<li>CE_AutoEnableTrade</li>
 			<li>BOR_Tech_I</li>
-			<li>CE_AutoEnableCrafting_FabricationBench</li>
 			<li>CE_AutoEnableCrafting_BOR_Bench_I</li>
 			<li>CE_AutoEnableCrafting_BOR_Bench_II</li>
 			<li>CE_AutoEnableCrafting_BOR_Bench_IV</li>
@@ -485,7 +490,7 @@
 				<burstShotCount>5</burstShotCount>
 				<ticksBetweenBurstShots>2</ticksBetweenBurstShots>
 				<range>37.9</range>
-				<soundCast>Shot_ChargeRifle</soundCast>
+				<soundCast>Shot_BOR_LaserMed</soundCast>
 				<soundCastTail>GunTail_Medium</soundCastTail>
 				<muzzleFlashScale>9</muzzleFlashScale>
 			</li>
@@ -513,7 +518,7 @@
 					<defaultProjectile>BOR_XCOM_Bullet_LaserRifleCEEMP_N</defaultProjectile>
 					<warmupTime>0.99</warmupTime>
 					<range>37.9</range>
-					<soundCast>Shot_ChargeRifle</soundCast>
+					<soundCast>Shot_BOR_LaserMed</soundCast>
 					<soundCastTail>GunTail_Medium</soundCastTail>
 					<muzzleFlashScale>9</muzzleFlashScale>
 				</verbPropsUnderBarrel>
@@ -610,7 +615,7 @@
 				<defaultProjectile>BOR_XCOM_Bullet_LaserSniperRifle_solar</defaultProjectile>
 				<warmupTime>2</warmupTime>
 				<range>60.9</range>
-				<soundCast>ChargeLance_Fire</soundCast>
+				<soundCast>Shot_BOR_LaserHigh</soundCast>
 				<soundCastTail>GunTail_Heavy</soundCastTail>
 				<muzzleFlashScale>9</muzzleFlashScale>
 			</li>
@@ -638,7 +643,7 @@
 					<defaultProjectile>BOR_XCOM_Bullet_LaserSniperRifleCEEMP_N</defaultProjectile>
 					<warmupTime>2</warmupTime>
 					<range>60.9</range>
-					<soundCast>ChargeLance_Fire</soundCast>
+					<soundCast>Shot_BOR_LaserHigh</soundCast>
 					<soundCastTail>GunTail_Heavy</soundCastTail>
 					<muzzleFlashScale>9</muzzleFlashScale>
 				</verbPropsUnderBarrel>
@@ -732,7 +737,7 @@
 				<defaultProjectile>BOR_XCOM_Bullet_LaserShotgun_solar</defaultProjectile>
 				<warmupTime>1</warmupTime>
 				<range>18.9</range>
-				<soundCast>Shot_ChargeRifle</soundCast>
+				<soundCast>Shot_BOR_LaserMed</soundCast>
 				<soundCastTail>GunTail_Medium</soundCastTail>
 				<muzzleFlashScale>9</muzzleFlashScale>
 			</li>
@@ -760,7 +765,7 @@
 					<defaultProjectile>BOR_XCOM_Bullet_LaserShotgunCEEMP_N</defaultProjectile>
 					<warmupTime>1</warmupTime>
 					<range>18.9</range>
-					<soundCast>Shot_ChargeRifle</soundCast>
+					<soundCast>Shot_BOR_LaserMed</soundCast>
 					<soundCastTail>GunTail_Medium</soundCastTail>
 					<muzzleFlashScale>9</muzzleFlashScale>
 				</verbPropsUnderBarrel>
@@ -857,7 +862,7 @@
 				<burstShotCount>13</burstShotCount>
 				<ticksBetweenBurstShots>7</ticksBetweenBurstShots>
 				<range>37.9</range>
-				<soundCast>ChargeLance_Fire</soundCast>
+				<soundCast>Shot_BOR_LaserHigh</soundCast>
 				<soundCastTail>GunTail_Heavy</soundCastTail>
 				<muzzleFlashScale>9</muzzleFlashScale>
 			</li>
@@ -886,7 +891,7 @@
 					<defaultProjectile>BOR_XCOM_Bullet_LaserCannonCEEMP_N</defaultProjectile>
 					<warmupTime>1.93</warmupTime>
 					<range>37.9</range>
-					<soundCast>ChargeLance_Fire</soundCast>
+					<soundCast>Shot_BOR_LaserHigh</soundCast>
 					<soundCastTail>GunTail_Heavy</soundCastTail>
 					<muzzleFlashScale>9</muzzleFlashScale>
 				</verbPropsUnderBarrel>
@@ -982,7 +987,7 @@
 				<defaultProjectile>BOR_XCOM_Bullet_Laser_Pistol_solar</defaultProjectile>
 				<warmupTime>0.88</warmupTime>
 				<range>14.9</range>
-				<soundCast>Shot_ChargeRifle</soundCast>
+				<soundCast>Shot_BOR_LaserLow</soundCast>
 				<soundCastTail>GunTail_Light</soundCastTail>
 				<muzzleFlashScale>7</muzzleFlashScale>
 			</li>
@@ -1010,7 +1015,7 @@
 					<defaultProjectile>BOR_XCOM_Bullet_Laser_PistolCEEMP_N</defaultProjectile>
 					<warmupTime>0.88</warmupTime>
 					<range>14.9</range>
-					<soundCast>Shot_ChargeRifle</soundCast>
+					<soundCast>Shot_BOR_LaserLow</soundCast>
 					<soundCastTail>GunTail_Light</soundCastTail>
 					<muzzleFlashScale>7</muzzleFlashScale>
 				</verbPropsUnderBarrel>
@@ -1096,7 +1101,7 @@
 				<burstShotCount>8</burstShotCount>
 				<ticksBetweenBurstShots>7</ticksBetweenBurstShots>
 				<range>24.9</range>
-				<soundCast>Shot_ChargeRifle</soundCast>
+				<soundCast>Shot_BOR_LaserMed</soundCast>
 				<soundCastTail>GunTail_Medium</soundCastTail>
 				<muzzleFlashScale>9</muzzleFlashScale>
 			</li>
@@ -1124,7 +1129,7 @@
 					<defaultProjectile>BOR_XCOM_Bullet_LaserBullpupCEEMP_N</defaultProjectile>
 					<warmupTime>0.83</warmupTime>
 					<range>24.9</range>
-					<soundCast>Shot_ChargeRifle</soundCast>
+					<soundCast>Shot_BOR_LaserMed</soundCast>
 					<soundCastTail>GunTail_Medium</soundCastTail>
 					<muzzleFlashScale>9</muzzleFlashScale>
 				</verbPropsUnderBarrel>
@@ -1221,7 +1226,7 @@
 				<burstShotCount>2</burstShotCount>
 				<ticksBetweenBurstShots>4</ticksBetweenBurstShots>
 				<range>49.9</range>
-				<soundCast>ChargeLance_Fire</soundCast>
+				<soundCast>Shot_BOR_LaserMed</soundCast>
 				<soundCastTail>GunTail_Heavy</soundCastTail>
 				<muzzleFlashScale>9</muzzleFlashScale>
 			</li>
@@ -1249,7 +1254,7 @@
 					<defaultProjectile>BOR_XCOM_Bullet_LaserDMRCEEMP_N</defaultProjectile>
 					<warmupTime>2.20</warmupTime>
 					<range>49.9</range>
-					<soundCast>ChargeLance_Fire</soundCast>
+					<soundCast>Shot_BOR_LaserMed</soundCast>
 					<soundCastTail>GunTail_Heavy</soundCastTail>
 					<muzzleFlashScale>9</muzzleFlashScale>
 				</verbPropsUnderBarrel>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- Special shots for the Orientis charge guns (granted by CompOrientisWeaponAbilities while the gun is held). All three
+	     share BOR_OrientisShotGroup, so using one puts the others on its 10 second cooldown. They launch plain vanilla
+	     projectiles, so they work the same with or without Combat Extended. Radius 1.9 is a 3x3 burst, 2.9 a 5x5. -->
+	<!-- Stun shell burst: a light shockwave, not an explosion. Little damage, no harm to buildings or plants, a 5 second stun for
+	     Umbrals, Tenebrals and anomalies and 1 second for everyone else, and the quieter
+	     stun grenade sound. -->
+	<DamageDef ParentName="Bomb">
+		<defName>BOR_OrientisStunBurst</defName>
+		<label>stun burst</label>
+		<workerClass>BeyondOurReach.DamageWorker_OrientisBlast</workerClass>
+		<soundExplosion>Explosion_Stun</soundExplosion>
+		<buildingDamageFactor>0</buildingDamageFactor>
+		<plantDamageFactor>0</plantDamageFactor>
+		<modExtensions>
+			<li Class="BeyondOurReach.DefModExtension_TargetStun">
+				<stunTicks>300</stunTicks>
+				<otherStunTicks>60</otherStunTicks>
+			</li>
+		</modExtensions>
+	</DamageDef>
+
+	<ThingDef ParentName="BOR_OrientisProjectileBase">
+		<defName>BOR_Proj_OrientisVaporize</defName>
+		<label>vaporizing shell</label>
+		<thingClass>Projectile_Explosive</thingClass>
+		<projectile>
+			<damageDef>Vaporize</damageDef>
+			<damageAmountBase>150</damageAmountBase>
+			<explosionRadius>1.9</explosionRadius>
+			<speed>45</speed>
+			<filth>Filth_BlastMark</filth>
+			<filthCount>1</filthCount>
+			<explosionSpawnsSingleFilth>true</explosionSpawnsSingleFilth>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="BOR_OrientisProjectileBase">
+		<defName>BOR_Proj_OrientisEmp</defName>
+		<label>EMP shell</label>
+		<thingClass>Projectile_Explosive</thingClass>
+		<projectile>
+			<damageDef>EMP</damageDef>
+			<damageAmountBase>60</damageAmountBase>
+			<explosionRadius>2.9</explosionRadius>
+			<speed>45</speed>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="BOR_OrientisProjectileBase">
+		<defName>BOR_Proj_OrientisUmbralStun</defName>
+		<label>stun shell</label>
+		<thingClass>Projectile_Explosive</thingClass>
+		<projectile>
+			<damageDef>BOR_OrientisStunBurst</damageDef>
+			<damageAmountBase>8</damageAmountBase>
+			<explosionRadius>1.9</explosionRadius>
+			<speed>45</speed>
+		</projectile>
+	</ThingDef>
+
+	<AbilityDef Name="BOR_OrientisShotBase" Abstract="True">
+		<groupDef>BOR_OrientisShotGroup</groupDef>
+		<aiCanUse>true</aiCanUse>
+		<verbProperties>
+			<verbClass>Verb_CastAbility</verbClass>
+			<range>34.9</range>
+			<warmupTime>1.5</warmupTime>
+			<soundCast>Shot_ChargeRifle</soundCast>
+			<soundCastTail>GunTail_Medium</soundCastTail>
+			<targetParams>
+				<canTargetLocations>true</canTargetLocations>
+			</targetParams>
+		</verbProperties>
+	</AbilityDef>
+
+	<AbilityDef ParentName="BOR_OrientisShotBase">
+		<defName>BOR_OrientisShot_Vaporize</defName>
+		<label>vaporizing shell</label>
+		<description>Fire a shell that bursts into a 3x3 vaporizing blast on impact.</description>
+		<iconPath>UI/Commands/Attack</iconPath>
+		<comps>
+			<li Class="CompProperties_AbilityLaunchProjectile">
+				<projectileDef>BOR_Proj_OrientisVaporize</projectileDef>
+			</li>
+		</comps>
+	</AbilityDef>
+
+	<AbilityDef ParentName="BOR_OrientisShotBase">
+		<defName>BOR_OrientisShot_Emp</defName>
+		<label>EMP shell</label>
+		<description>Fire a shell that releases a 5x5 burst of electromagnetic energy on impact, stunning mechanical targets.</description>
+		<iconPath>UI/Commands/Detonate</iconPath>
+		<comps>
+			<li Class="CompProperties_AbilityLaunchProjectile">
+				<projectileDef>BOR_Proj_OrientisEmp</projectileDef>
+			</li>
+		</comps>
+	</AbilityDef>
+
+	<AbilityDef ParentName="BOR_OrientisShotBase">
+		<defName>BOR_OrientisShot_UmbralStun</defName>
+		<label>stun shell</label>
+		<description>Fire a shell that bursts in a 3x3 shockwave on impact. It stuns everyone briefly, and Umbrals, Tenebrals and anomaly creatures for much longer.</description>
+		<iconPath>BOR/UI/Orientis/Shockwave</iconPath>
+		<comps>
+			<li Class="CompProperties_AbilityLaunchProjectile">
+				<projectileDef>BOR_Proj_OrientisUmbralStun</projectileDef>
+			</li>
+		</comps>
+	</AbilityDef>
+</Defs>

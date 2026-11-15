@@ -6,7 +6,7 @@ Forges (`BOR_Forge_I`..`BOR_Forge_V`) reproduce items. A forge has a fixed grid 
 ## Requirements
 
 ### Requirement: Configurable grid and resource
-A forge SHALL be configured through `CompProperties_Forge`: `gridWidth` x `gridHeight` cells (capacity = product, defaults 2x4), `damagePerOverdriveStep`, `stepMultiplier` (default 1), optional `pipeNet` and `pipeAmount` drawn per work step, `workTicksPerDraw` (default 10), an `exclusionList` of defNames/trade tags, and `analysisSuccessOffset` (percent). Each cell holds at most one learned item def.
+A forge SHALL be configured through `CompProperties_Forge`: `gridWidth` x `gridHeight` cells (capacity = product, defaults 2x4), `damagePerOverdriveStep`, `stepMultiplier` (default 1), `workSpeedFactor` (default 1), optional `pipeNet` and `pipeAmount` drawn per work step, `workTicksPerDraw` (default 10), an `exclusionList` of defNames/trade tags, and `analysisSuccessOffset` (percent). Each cell holds at most one learned item def.
 
 #### Scenario: Forge without a pipe net
 - WHEN a forge has no `pipeNet` or `pipeAmount <= 0`
@@ -36,13 +36,30 @@ A pawn SHALL carry one pending item to the forge and work for `AnalysisTicks`, g
 ### Requirement: Production work
 A pawn SHALL produce from a slot where `ShouldProduce` is true, gaining Intellectual XP (0.08/tick).
 
-- Duration = max(30, BaseWorkTicks / BOR_QuantumForging stat, floor 0.1).
-- Every `workTicksPerDraw` ticks the forge SHALL draw `pipeAmount` neutronium; if it cannot, the job ends incompletable. The job is not offered when the net lacks the amount.
+- Duration = max(30, BaseWorkTicks / (BOR_QuantumForging stat, floor 0.1, x `workSpeedFactor`)).
+- Every `workTicksPerDraw` ticks the forge SHALL draw `pipeAmount` neutronium; if it cannot, the job ends incompletable. The job is not offered when the net lacks the amount, or when the forge's start threshold is not met (see Neutronium start threshold).
+- Tier values: every neutronium forge draws `pipeAmount` 200 every 10 work ticks. Higher tiers work faster instead of drawing more: Forge I (Solar) `workSpeedFactor` 1, II (Kwazaari) 1.5, IV (lesser Umbral) 2. A faster forge therefore spends less neutronium per item, while its draw per working day stays the same.
 - On completion the forge SHALL spawn the item at the interaction cell (near-placement) with quality Normal, stack = `YieldFor(def)`, using the stored stuff (or default stuff).
 
 #### Scenario: Neutronium runs out mid-job
 - WHEN a draw fails during production
 - THEN the job ends and progress for the slot resets to 0
+
+### Requirement: Neutronium start threshold
+Each forge that draws from a pipe net (`pipeNet` set and `pipeAmount > 0`) SHALL have its own start threshold, an integer from 0 to 100 000 neutronium, default 0. It is a per-forge setting, not global.
+
+- A production run SHALL NOT start while the forge's net holds less than the threshold (`PipeNet.Stored`). At 0 there is no limit.
+- The check applies when a run starts: a pawn production job is not offered, and the Robot Assistant does not begin a new run (robot ticks at 0). A run already in progress is never stopped by the threshold; it continues under the normal per-step draw rules.
+- Analysis and formatting are not affected.
+- The threshold is set with a gizmo on the forge (a `Gizmo_Slider`, like the psycast heat limit): the bar shows the neutronium stored in the net out of 100 000, and dragging sets the threshold in steps of 1 000. The label reads `stored / threshold` (`-` when 0), and the tooltip explains the rule. The gizmo is shown only for player-owned forges that draw from a pipe net.
+
+#### Scenario: Net below threshold
+- WHEN a forge's threshold is 50 000 and its net holds 30 000
+- THEN no production job is offered for that forge and its Robot Assistant waits, while another forge on the same net with threshold 0 keeps producing
+
+#### Scenario: Net drops below threshold mid-run
+- WHEN the net falls below the threshold while a run is in progress
+- THEN the run continues to completion (if draws succeed) and the next run waits
 
 ### Requirement: Production modes
 Each cell SHALL have a mode: `DoX`, `DoUntil`, or `DoForever`, and a queued count.
@@ -65,7 +82,7 @@ Each cell SHALL have a mode: `DoX`, `DoUntil`, or `DoForever`, and a queued coun
 ### Requirement: Overdrive
 Each forge SHALL have an overdrive level, a per-forge setting with 10 stages (index 0..9) shown as 100%, 200%, ... 1000%. The default is stage 0 (100%). Overdrive applies only to production, never to analysis or formatting.
 
-- **Step multiplier**: `CompProperties_Forge.stepMultiplier` scales everything each step adds (output, power and wear); the stages stay 10 for every forge. Forge I (Solar) 1, II (Quasar) 1.5, III (Tenebral) 2, IV (Umbral) 5. Formulas below use `s = stepMultiplier x stage`.
+- **Step multiplier**: `CompProperties_Forge.stepMultiplier` scales everything each step adds (output, power and wear); the stages stay 10 for every forge. Forge I (Solar) 1, II (Kwazaari) 1.5, IV (lesser Umbral) 2, V (Umbral) 5. Formulas below use `s = stepMultiplier x stage`.
 - **Output**: the produced stack SHALL be `floor(YieldFor(def) x (1 + 0.5 x s))`. Examples at multiplier 1: 1 gun gives 1 / 1 (1.5 rounded down) / 2 at 100% / 200% / 300%; 256 steel gives 256 / 384 / ... At multiplier 5 (Umbral), 200% gives 3.5x. The multiplier is applied after `YieldFor`'s clamp, so the result may exceed the def's stack limit and SHALL be spawned as multiple stacks if needed.
 - **Power**: while the forge is in use for production, power draw SHALL be `base x (1 + 0.25 x s)` (at multiplier 1: 100% = +0%, 200% = +25%, 300% = +50%, ... 1000% = +225%). When idle, or while analysing or formatting, power draw is the unmodified base.
 - **Wear**: while production work is in progress at stage > 0, the forge SHALL take damage of `damagePerOverdriveStep x s` percent of max hitpoints per second (`CompProperties_Forge.damagePerOverdriveStep`, default 0.1; a value of 1 means +1% per second per step at multiplier 1), where one second is 60 ticks of game time regardless of game speed. At multiplier 1 and the default value that is 0 at 100% (no wear), 0.1% per second at 200%, 0.2% at 300%, up to 0.9% at 1000%. Damage SHALL accumulate fractionally so it is not lost to rounding. If hitpoints reach 0 the forge is destroyed as with any other damage. Wear applies equally to pawn-driven and Robot Assistant production, and only on ticks where work is actually progressing.
@@ -91,7 +108,7 @@ The player SHALL be able to wipe a whole grid column. Formatting is queued per c
 If EvenMoreLinkables (`Hobbes.MoreLinkablesProduction.CompWorkHelper`) is present and a linked facility is powered, switched on, and in `WORK` state, the forge SHALL operate without a pawn at speed 1.5.
 
 - A pawn reservation by the player faction takes precedence.
-- Automation formats first, idles while analyses are pending, then produces using the same draw and yield rules (robot ticks = max(30, BaseWorkTicks / speed)).
+- Automation formats first, idles while analyses are pending, then produces using the same draw, threshold and yield rules (robot ticks = max(30, BaseWorkTicks / (speed x `workSpeedFactor`))).
 
 #### Scenario: Soft dependency missing
 - WHEN the work-helper type cannot be resolved
@@ -106,4 +123,4 @@ The forge SHALL expose an inspector tab ("Forge") showing the grid, with per-cel
 - To the right of the grid there SHALL be a vertical overdrive slider ("lever") with 10 snapping stops, 100% at the bottom and 1000% at the top, with the requested percentage shown and the word OVERDRIVE written vertically beside it. Its tooltip states the output multiplier, extra power use and wear rate for the selected stage. The slider is usable at any time, whether or not the forge is producing.
 
 ### Requirement: Persistence
-The forge SHALL save slots, stuff, queued counts, modes, overdrive stage and requested stage, format queue/ticks/done, robot slot/ticks, and pending analysis references; collections are normalised to capacity after load.
+The forge SHALL save slots, stuff, queued counts, modes, overdrive stage and requested stage, neutronium start threshold, format queue/ticks/done, robot slot/ticks, and pending analysis references; collections are normalised to capacity after load.

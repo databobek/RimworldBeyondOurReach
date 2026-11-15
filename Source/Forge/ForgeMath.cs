@@ -49,9 +49,9 @@ public static class ForgeMath
         return Mathf.Max(0.1f, pawn.GetStatValue(BOR_ForgeDefOf.BOR_ForgeAnalysis));
     }
 
-    public static int ProductionTicks(ThingDef def, Pawn pawn)
+    public static int ProductionTicks(ThingDef def, Pawn pawn, float forgeSpeed = 1f)
     {
-        return Mathf.Max(30, Mathf.RoundToInt(BaseWorkTicks(def) / ProductionSpeed(pawn)));
+        return Mathf.Max(30, Mathf.RoundToInt(BaseWorkTicks(def) / (ProductionSpeed(pawn) * forgeSpeed)));
     }
 
     public static int RobotProductionTicks(ThingDef def, float speed)

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using RimWorld;
+using UnityEngine;
 using Verse;
 using Verse.AI;
 
@@ -32,7 +33,8 @@ public class JobDriver_ForgeProduce : JobDriver
         work.initAction = () =>
         {
             ThingDef? def = Comp?.Slots[Slot];
-            totalTicks = def == null ? 1 : ForgeMath.ProductionTicks(def, pawn);
+            // Linked facilities (tool cabinets, lathes, ...) raise the forge's bench work speed.
+            totalTicks = def == null ? 1 : ForgeMath.ProductionTicks(def, pawn, Comp!.Props.workSpeedFactor * Mathf.Max(0.1f, Comp.parent.GetStatValue(StatDefOf.WorkTableWorkSpeedFactor)));
             ticksDone = 0;
         };
         work.tickAction = () =>
@@ -81,35 +83,9 @@ public class JobDriver_ForgeProduce : JobDriver
     }
 }
 
-public class WorkGiver_ForgeProduce : WorkGiver_Scanner
+public class WorkGiver_ForgeProduce : WorkGiver_ForgeBase
 {
-    public override PathEndMode PathEndMode => PathEndMode.InteractionCell;
-
-    private static bool HasWork(CompForge comp) =>
-        comp.parent.Faction == Faction.OfPlayer && !comp.Props.automatic && comp.NextProductionSlot() >= 0;
-
-    public override IEnumerable<Thing> PotentialWorkThingsGlobal(Pawn pawn)
-    {
-        foreach (CompForge comp in MapComponent_WorkBuildings.Of(pawn.Map).forges)
-        {
-            if (HasWork(comp))
-            {
-                yield return comp.parent;
-            }
-        }
-    }
-
-    public override bool ShouldSkip(Pawn pawn, bool forced = false)
-    {
-        foreach (CompForge comp in MapComponent_WorkBuildings.Of(pawn.Map).forges)
-        {
-            if (HasWork(comp))
-            {
-                return false;
-            }
-        }
-        return true;
-    }
+    protected override bool HasWork(CompForge comp) => !comp.Props.automatic && comp.NextProductionSlot() >= 0;
 
     public override Job? JobOnThing(Pawn pawn, Thing t, bool forced = false)
     {
@@ -119,7 +95,7 @@ public class WorkGiver_ForgeProduce : WorkGiver_Scanner
             return null;
         }
         int slot = comp.NextProductionSlot();
-        if (slot < 0 || !comp.HasResource)
+        if (slot < 0 || !comp.CanStartProduction)
         {
             return null;
         }

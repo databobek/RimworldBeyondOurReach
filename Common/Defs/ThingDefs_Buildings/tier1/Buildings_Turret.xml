@@ -292,7 +292,7 @@
     <ThingDef ParentName="BuildingBase">
         <defName>BOR_Turret_Defender_TI</defName>
         <label>solar defender turret</label>
-        <description>An autonomous defender-pattern double-barreled turret. It fires dense solar sniper rounds at a sustained high cadence.</description>
+        <description>An autonomous defender-pattern double-barreled turret. It fires dense solar sniper rounds at a sustained high cadence, and is fed sunsteel as ammunition.</description>
         <thingClass>Building_TurretGun</thingClass>
         <drawerType>MapMeshAndRealTime</drawerType>
         <graphicData>
@@ -339,6 +339,26 @@
             </li>
             <li Class="CompProperties_Flickable" />
             <li Class="CompProperties_Breakdownable" />
+            <!-- Sunsteel is its ammunition: 40 shots per unit. Combat Extended swaps this for its own ammo. -->
+            <li Class="CompProperties_Refuelable">
+                <fuelLabel>Shots until reload</fuelLabel>
+                <fuelGizmoLabel>Solar rounds</fuelGizmoLabel>
+                <outOfFuelMessage>Needs reloading</outOfFuelMessage>
+                <fuelFilter>
+                    <thingDefs>
+                        <li>BOR_Sunsteel</li>
+                    </thingDefs>
+                </fuelFilter>
+                <fuelCapacity>600</fuelCapacity>
+                <fuelMultiplier>40</fuelMultiplier>
+                <initialFuelPercent>0</initialFuelPercent>
+                <autoRefuelPercent>0.5</autoRefuelPercent>
+                <showFuelGizmo>true</showFuelGizmo>
+                <minimumFueledThreshold>1</minimumFueledThreshold>
+                <factorByDifficulty>true</factorByDifficulty>
+                <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+                <fuelIconPath>BOR/Things/Item/Resource/sunsteel/sunsteela</fuelIconPath>
+            </li>
         </comps>
         <researchPrerequisites>
             <li>BOR_Research_DefenderTurret_I</li>

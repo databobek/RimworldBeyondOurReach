@@ -76,8 +76,10 @@ Everything created with `BOR_Tenebrite` (buildings, floors, walls, weapons, armo
 The Tenebral pod SHALL be a Tenebral building that combines a bionic installator, a healing pod, and a stasis pod. It SHALL provide a mode gizmo with four modes: stasis, healing, operating, and transformation. The mode cannot be changed while a transformation is under way.
 
 #### Scenario: Healing mode
-- WHEN a pawn with a tenebral hediff enters the pod in healing mode
-- THEN the hediff is healed at 10 times the normal healing rate, scaled by the pawn's injuries
+- WHEN a tenebral pawn (tenebral implants or crystallized parts) or an Umbral enters the pod in healing mode
+- THEN each of their injuries heals at 10 times the natural rate
+- WHEN any other pawn is picked for healing
+- THEN the pod refuses them (`BOR_TenebralPodNeedsTenebral`); these are the same pawns dark medicine makes sick
 
 #### Scenario: Stasis mode
 - WHEN a pawn without a tenebral hediff enters the pod in stasis mode
@@ -85,6 +87,9 @@ The Tenebral pod SHALL be a Tenebral building that combines a bionic installator
 
 ### Requirement: Operating mode
 Before the pod can operate, a tenebral appendage or organ and femtoclusters SHALL be placed inside. The player SHALL then select where and what to install. Installation SHALL be a single step, and its duration SHALL come from the existing recipe work amount.
+
+### Requirement: Pawn card in the pod window
+Hovering a pawn in the pod window's colonist, slave or prisoner lists SHALL show a card next to the mouse (`TenebralPodPawnCard`, a floating window so it is not clipped by the pod window) with: portrait, name, role, age and non-baseliner xenotype; health (downed, bleeding); crystallization against the transformation threshold; tenebral psychosis severity if any; installed tenebral implants (hediffs added by the pod's operations); other visible bad conditions (up to 6, then a count); why the pawn can't be picked for the current action, if so; and whether they would walk or be carried to the pod. It SHALL be drawn through BorSkin in the Tenebral scheme.
 
 ## Open questions
 - Value of the umbral threshold ("too many" breaks).

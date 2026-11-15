@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+	<!-- MedPods must not heal the dark archotech's afflictions. -->
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[@Name="MedPodBedBase"]/comps/li[@Class="MedPod.CompProperties_TreatmentRestrictions"]/neverTreatableHediffs</xpath>
+		<value>
+			<li>BOR_TenebralPsychosis</li>
+			<li>BOR_Crystallized</li>
+			<li>BOR_DarkMedicineSickness</li>
+		</value>
+	</Operation>
+</Patch>

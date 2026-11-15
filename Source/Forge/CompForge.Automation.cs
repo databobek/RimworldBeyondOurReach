@@ -89,8 +89,13 @@ public partial class CompForge
             FormatTick();
             return;
         }
+        // Analysis comes first, but an item nobody can bring must not hold production up for good.
         if (PendingAnalysis.Count > 0)
         {
+            if (parent.IsHashIntervalTick(StuckAnalysisCheckInterval))
+            {
+                DropStuckAnalysis();
+            }
             return;
         }
         if (robotSlot < 0 && !parent.IsHashIntervalTick(IdleSearchInterval))
@@ -109,12 +114,17 @@ public partial class CompForge
             robotSlot = slot;
             robotTicks = 0;
         }
+        // A new run waits for the net to reach this forge's threshold.
+        if (robotTicks == 0 && !ThresholdMet)
+        {
+            return;
+        }
         if (robotTicks % Props.workTicksPerDraw == 0 && !TryDrawResource())
         {
             return;
         }
         ThingDef def = slots[slot]!;
-        int total = ForgeMath.RobotProductionTicks(def, speed);
+        int total = ForgeMath.RobotProductionTicks(def, speed * Props.workSpeedFactor);
         robotTicks++;
         NotifyProducing();
         SetProgress(slot, (float)robotTicks / total);

@@ -33,7 +33,6 @@ public static class PawnGenerator_GeneratePawn_UmbralFullyGrown_Patch
         {
             __result.abilities.GainAbility(ability);
         }
-        __result.health.hediffSet.GetFirstHediffOfDef(BOR_UmbralDefOf.BOR_UmbralExoskeleton)
-            ?.TryGetComp<HediffComp_UmbralModeApparel>()?.SetMode(ExoskeletonMode.Combat);
+        // They arrive in no form with a full charge; the suit AI puts the combat armor on when enemies come near.
     }
 }

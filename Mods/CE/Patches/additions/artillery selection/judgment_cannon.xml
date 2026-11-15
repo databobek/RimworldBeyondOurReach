@@ -57,7 +57,7 @@
 		</Properties>
 		<AmmoUser>
 			<magazineSize>3</magazineSize>
-			<reloadTime>99</reloadTime>
+			<reloadTime>40</reloadTime>
 			<ammoSet>AmmoSet_BOR_JudgmentShell</ammoSet>
 		</AmmoUser>
 		<weaponTags>
@@ -105,6 +105,13 @@
 			<li Class="CombatExtended.NonSnapTurretExtension">
 				<speed>0.25</speed>
 			</li>
+		</value>
+	</Operation>
+	<!-- 6b. Shorter cooldown, so Solar artillery sits between Spacer and Ultra in damage per minute -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="BOR_JudgmentShipCannon"]/building/turretBurstCooldownTime</xpath>
+		<value>
+			<turretBurstCooldownTime>10</turretBurstCooldownTime>
 		</value>
 	</Operation>
 	<!-- 7. CE aiming stat -->

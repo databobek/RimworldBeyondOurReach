@@ -25,7 +25,7 @@
 	<ThingDef ParentName="BOR_OrientisBuildingBase">
 		<defName>BOR_Orientis_MeditationPod</defName>
 		<label>meditation pod</label>
-		<description>Orientis pawns meditate at this pod to generate meditation power, which they load into the meditation caches. It needs a cache somewhere on the map. An Orientis pawn can also raise its shield, which stops projectiles and bombardments and burns tenebral and Umbral pawns inside. The shield runs on stored meditation power.</description>
+		<description>Orientis pawns meditate at this pod to generate meditation power, which they load into the meditation caches. It needs a cache somewhere on the map. An Orientis pawn can also raise its shield. It stops projectiles and bombardments, solar flares do not reach the buildings under it, and tenebral and Umbral pawns inside it burn. The shield runs on stored meditation power.</description>
 		<graphicData>
 			<texPath>BOR/Things/Building/orientis/meditation_pod/meditation_pod</texPath>
 			<graphicClass>Graphic_Multi</graphicClass>
@@ -143,6 +143,9 @@
 				<meditationPerDraw>0.05</meditationPerDraw>
 			</li>
 		</comps>
+		<modExtensions>
+			<li Class="BeyondOurReach.BorUIScheme"><scheme>BOR_UIScheme_Orientis</scheme></li>
+		</modExtensions>
 	</ThingDef>
 
 	<ThingDef ParentName="BOR_OrientisBuildingBase">
@@ -180,6 +183,9 @@
 				<powerPerWork>0.005</powerPerWork>
 			</li>
 		</comps>
+		<modExtensions>
+			<li Class="BeyondOurReach.BorUIScheme"><scheme>BOR_UIScheme_Orientis</scheme></li>
+		</modExtensions>
 	</ThingDef>
 
 	<ThingDef ParentName="BOR_OrientisBuildingBase">

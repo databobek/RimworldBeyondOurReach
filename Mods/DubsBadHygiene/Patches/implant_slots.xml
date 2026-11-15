@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+	<!-- Put DBH's own implants in BOR's implant slots: one bladder and one hygiene implant per pawn, whatever the tier. -->
+	<Operation Class="PatchOperationConditional">
+		<xpath>Defs/HediffDef[defName="BionicBladder"]/tags</xpath>
+		<match Class="PatchOperationAdd">
+			<xpath>Defs/HediffDef[defName="BionicBladder"]/tags</xpath>
+			<value>
+				<li>BOR_Slot_Bladder</li>
+			</value>
+		</match>
+		<nomatch Class="PatchOperationAdd">
+			<xpath>Defs/HediffDef[defName="BionicBladder"]</xpath>
+			<value>
+				<tags>
+					<li>BOR_Slot_Bladder</li>
+				</tags>
+			</value>
+		</nomatch>
+	</Operation>
+	<Operation Class="PatchOperationConditional">
+		<xpath>Defs/HediffDef[defName="HygieneEnhancer"]/tags</xpath>
+		<match Class="PatchOperationAdd">
+			<xpath>Defs/HediffDef[defName="HygieneEnhancer"]/tags</xpath>
+			<value>
+				<li>BOR_Slot_Hygiene</li>
+			</value>
+		</match>
+		<nomatch Class="PatchOperationAdd">
+			<xpath>Defs/HediffDef[defName="HygieneEnhancer"]</xpath>
+			<value>
+				<tags>
+					<li>BOR_Slot_Hygiene</li>
+				</tags>
+			</value>
+		</nomatch>
+	</Operation>
+	<Operation Class="PatchOperationConditional">
+		<xpath>Defs/RecipeDef[defName="InstallBionicBladder"]/incompatibleWithHediffTags</xpath>
+		<match Class="PatchOperationAdd">
+			<xpath>Defs/RecipeDef[defName="InstallBionicBladder"]/incompatibleWithHediffTags</xpath>
+			<value>
+				<li>BOR_Slot_Bladder</li>
+			</value>
+		</match>
+		<nomatch Class="PatchOperationAdd">
+			<xpath>Defs/RecipeDef[defName="InstallBionicBladder"]</xpath>
+			<value>
+				<incompatibleWithHediffTags>
+					<li>BOR_Slot_Bladder</li>
+				</incompatibleWithHediffTags>
+			</value>
+		</nomatch>
+	</Operation>
+	<Operation Class="PatchOperationConditional">
+		<xpath>Defs/RecipeDef[defName="InstallHygieneEnhancer"]/incompatibleWithHediffTags</xpath>
+		<match Class="PatchOperationAdd">
+			<xpath>Defs/RecipeDef[defName="InstallHygieneEnhancer"]/incompatibleWithHediffTags</xpath>
+			<value>
+				<li>BOR_Slot_Hygiene</li>
+			</value>
+		</match>
+		<nomatch Class="PatchOperationAdd">
+			<xpath>Defs/RecipeDef[defName="InstallHygieneEnhancer"]</xpath>
+			<value>
+				<incompatibleWithHediffTags>
+					<li>BOR_Slot_Hygiene</li>
+				</incompatibleWithHediffTags>
+			</value>
+		</nomatch>
+	</Operation>
+</Patch>

@@ -14,10 +14,10 @@ public enum SwarmState
     // Camo, gun in hand, in cover, picking targets with abilities.
     Cover,
 
-    // Camo, launcher in hand, in cover within launcher range, waiting for the camo to drop.
+    // Camo, launcher in hand, in cover within launcher range, until the camo time is up.
     Launcher,
 
-    // Camo is gone: fire the launcher from cover until the combat armor is back.
+    // Camo is off: fire the launcher from cover for strikeSeconds, then the suit AI puts the combat armor back on.
     Strike
 }
 
@@ -30,8 +30,11 @@ public class HediffCompProperties_UmbralSwarmAI : HediffCompProperties
     // Seconds in camo with the gun, in cover, before moving up to launcher range.
     public float coverSeconds = 8f;
 
-    // Total seconds in camo. Its end locks the armor, and the Umbral fires from cover until the armor is back.
+    // Total seconds in camo, counted from the start of the switch into it. Hiding needs at least this much suit charge.
     public float camoSeconds = 20f;
+
+    // Seconds firing from cover in no form after the camo is dropped.
+    public float strikeSeconds = 30f;
 
     // After coming out, no new hiding for this long.
     public float cooldownSeconds = 60f;
@@ -53,6 +56,7 @@ public class HediffComp_UmbralSwarmAI : HediffComp
 {
     private const int CheckInterval = 60;
     private const int MaxThreatsForCover = 8;
+    private const int MaxLineOfSightChecks = 50;
     private const int MaxReachChecks = 10;
 
     private SwarmState state;
@@ -80,7 +84,8 @@ public class HediffComp_UmbralSwarmAI : HediffComp
     private void AiTick()
     {
         Pawn pawn = Pawn;
-        if (pawn.Faction == Faction.OfPlayer || !pawn.Spawned || pawn.Downed || pawn.Dead || UmbralHerald.IsHerald(pawn))
+        if (pawn.Faction == Faction.OfPlayer || !pawn.Spawned || pawn.Downed || pawn.Dead || UmbralHerald.IsHerald(pawn)
+            || HediffComp_UmbralModeApparel.IsFleeing(pawn))
         {
             state = SwarmState.None;
             return;
@@ -96,7 +101,9 @@ public class HediffComp_UmbralSwarmAI : HediffComp
         switch (state)
         {
             case SwarmState.None:
-                if (now >= cooldownEndTick && !exo.ModeLocked && Threats(pawn).Count >= Props.minEnemies)
+                // Same rules as the player: a switch, and enough charge to last the whole hide.
+                if (now >= cooldownEndTick && exo.CanStartForm && exo.ChargeTicks >= Ticks(Props.camoSeconds)
+                    && Threats(pawn).Count >= Props.minEnemies)
                 {
                     pod?.AiEquip(launcher: false);
                     exo.StartAiCamo();
@@ -105,7 +112,8 @@ public class HediffComp_UmbralSwarmAI : HediffComp
                 }
                 return;
             case SwarmState.Cover:
-                if (exo.Mode != ExoskeletonMode.Camo)
+                // Still switching into camo counts as camo.
+                if (exo.Mode != ExoskeletonMode.Camo && !exo.Switching)
                 {
                     SetState(SwarmState.Strike, now, resetCover: false);
                 }
@@ -116,14 +124,14 @@ public class HediffComp_UmbralSwarmAI : HediffComp
                 }
                 break;
             case SwarmState.Launcher:
-                if (exo.Mode != ExoskeletonMode.Camo || now >= camoStartTick + Ticks(Props.camoSeconds))
+                if ((exo.Mode != ExoskeletonMode.Camo && !exo.Switching) || now >= camoStartTick + Ticks(Props.camoSeconds))
                 {
                     exo.EndAiCamo();
                     SetState(SwarmState.Strike, now, resetCover: false);
                 }
                 break;
             case SwarmState.Strike:
-                if (!exo.ModeLocked)
+                if (now >= phaseStartTick + Ticks(Props.strikeSeconds))
                 {
                     state = SwarmState.None;
                     cooldownEndTick = now + Ticks(Props.cooldownSeconds);
@@ -197,7 +205,8 @@ public class HediffComp_UmbralSwarmAI : HediffComp
         pawn.jobs.StartJob(go, JobCondition.InterruptForced);
     }
 
-    // Prefers cells no threat can see, far from the threats, with solid cover around.
+    // Prefers cells no threat can see, far from the threats, with solid cover around. Line of sight is the costly part, so
+    // it is only traced for the cells that already score best on distance and cover.
     private IntVec3 FindCover(Pawn pawn, List<Pawn> threats, float launcherRange)
     {
         Map map = pawn.Map;
@@ -209,14 +218,15 @@ public class HediffComp_UmbralSwarmAI : HediffComp
             {
                 continue;
             }
-            float hidden = nearest.Count == 0 ? 1f : nearest.Count(t => !GenSight.LineOfSight(cell, t.Position, map)) / (float)nearest.Count;
             float nearestDistance = nearest.Count == 0 ? 0f : nearest.Min(t => t.Position.DistanceTo(cell));
             // Far from the enemies, or with the launcher, just inside its range of the nearest one.
             float distanceScore = launcherRange > 0f ? -Mathf.Max(0f, nearestDistance - launcherRange) * 10f : Mathf.Min(20f, nearestDistance);
             float cover = CoverUtility.TotalSurroundingCoverScore(cell, map);
-            scored.Add((cell, hidden * 100f + distanceScore + cover * 5f - cell.DistanceTo(pawn.Position) * 0.5f));
+            scored.Add((cell, distanceScore + cover * 5f - cell.DistanceTo(pawn.Position) * 0.5f));
         }
-        foreach ((IntVec3 cell, float score) in scored.OrderByDescending(s => s.score).Take(MaxReachChecks))
+        IEnumerable<(IntVec3 cell, float score)> best = scored.OrderByDescending(s => s.score).Take(MaxLineOfSightChecks)
+            .Select(s => (s.cell, s.score + Hidden(s.cell, nearest, map) * 100f));
+        foreach ((IntVec3 cell, float score) in best.OrderByDescending(s => s.score).Take(MaxReachChecks))
         {
             if (pawn.CanReach(cell, PathEndMode.OnCell, Danger.Deadly))
             {
@@ -225,6 +235,10 @@ public class HediffComp_UmbralSwarmAI : HediffComp
         }
         return IntVec3.Invalid;
     }
+
+    // Share of the threats that cannot see the cell.
+    private static float Hidden(IntVec3 cell, List<Pawn> threats, Map map) =>
+        threats.Count == 0 ? 1f : threats.Count(t => !GenSight.LineOfSight(cell, t.Position, map)) / (float)threats.Count;
 
     public override void CompExposeData()
     {

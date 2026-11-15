@@ -1,150 +1,181 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Defs>
+	<!-- Solar defender ammo. BOR's Solar LMG rounds: FSJ is the sunsteel standard round and stops at the Solar marine (36),
+	     QaP is the AP round and stops at the Ultra marine (46). Def names are the old 30mm PDC ones so existing stacks survive. -->
 	<CombatExtended.AmmoSetDef>
 		<defName>BOR_AmmoSet_PDC</defName>
-		<label>30mm PDC rounds</label>
+		<label>9.5x60mm Solar PDC</label>
 		<ammoTypes>
+			<BOR_Ammo_PDC_FSJ>BOR_Bullet_PDC_FSJ</BOR_Ammo_PDC_FSJ>
 			<BOR_Ammo_PDC_QaP>BOR_Bullet_PDC_QaP</BOR_Ammo_PDC_QaP>
 			<BOR_Ammo_PDC_Ni>BOR_Bullet_PDC_Ni</BOR_Ammo_PDC_Ni>
 			<BOR_Ammo_PDC_Ion>BOR_Bullet_PDC_Ion</BOR_Ammo_PDC_Ion>
 		</ammoTypes>
 	</CombatExtended.AmmoSetDef>
-	<ThingDef Class="CombatExtended.AmmoDef" ParentName="HeavyAmmoBase">
-		<defName>BOR_Ammo_PDC_QaP</defName>
-		<label>30mm PDC round (QaP)</label>
-		<graphicData>
-			<texPath>Things/Item/Resource/Shell/Shell_HighExplosive</texPath>
-			<graphicClass>Graphic_StackCount</graphicClass>
-		</graphicData>
+
+	<ThingDef Class="CombatExtended.AmmoDef" Name="BOR_PDCAmmoBase" ParentName="SpacerMediumAmmoBase" Abstract="True">
+		<description>A sunsteel point-defense round for the solar defender turret.</description>
 		<statBases>
-			<Mass>0.35</Mass>
-			<Bulk>0.45</Bulk>
+			<Mass>0.05</Mass>
+			<Bulk>0.06</Bulk>
 		</statBases>
 		<tradeTags>
 			<li>BOR_Tech_I</li>
 			<li>CE_AutoEnableTrade</li>
-			<li>CE_AutoEnableCrafting_FabricationBench</li>
 			<li>CE_AutoEnableCrafting_BOR_Bench_I</li>
-			<li>CE_AutoEnableCrafting_BOR_Bench_II</li>
-			<li>CE_AutoEnableCrafting_BOR_Bench_IV</li>
-			<li>CE_AutoEnableCrafting_TableMachining</li>
 		</tradeTags>
 		<thingCategories>
 			<li>AmmoAdvanced</li>
 		</thingCategories>
+		<stackLimit>5000</stackLimit>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="BOR_PDCAmmoBase">
+		<defName>BOR_Ammo_PDC_FSJ</defName>
+		<tradeTags Inherit="False">
+			<li>CE_AmmoInjector</li>
+			<li>CE_MediumAmmo</li>
+			<li>BOR_Tech_I</li>
+			<li>CE_AutoEnableTrade</li>
+			<li>CE_AutoEnableCrafting_BOR_Bench_I</li>
+			<li>CE_AutoEnableCrafting_BOR_Bench_II</li>
+			<li>CE_AutoEnableCrafting_BOR_Bench_IV</li>
+		</tradeTags>
+		<label>9.5x60mm Solar PDC round (FSJ)</label>
+		<graphicData>
+			<texPath>BOR/Things/Item/Equipment/weaponranged/gen1/ammo/FSJ</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<ammoClass>BOR_FSJ_AmmoClass</ammoClass>
+		<cookOffProjectile>BOR_Bullet_PDC_FSJ</cookOffProjectile>
+	</ThingDef>
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="BOR_PDCAmmoBase">
+		<defName>BOR_Ammo_PDC_QaP</defName>
+		<tradeTags Inherit="False">
+			<li>CE_AmmoInjector</li>
+			<li>CE_MediumAmmo</li>
+			<li>BOR_Tech_I</li>
+			<li>CE_AutoEnableTrade</li>
+			<li>CE_AutoEnableCrafting_BOR_Bench_II</li>
+			<li>CE_AutoEnableCrafting_BOR_Bench_IV</li>
+		</tradeTags>
+		<label>9.5x60mm Solar PDC round (QaP)</label>
+		<graphicData>
+			<texPath>BOR/Things/Item/Equipment/weaponranged/gen1/ammo/QaP</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
 		<ammoClass>BOR_QaP_AmmoClass</ammoClass>
 		<cookOffProjectile>BOR_Bullet_PDC_QaP</cookOffProjectile>
 	</ThingDef>
-	<ThingDef Class="CombatExtended.AmmoDef" ParentName="HeavyAmmoBase">
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="BOR_PDCAmmoBase">
 		<defName>BOR_Ammo_PDC_Ni</defName>
-		<label>30mm PDC round (Ni)</label>
-		<graphicData>
-			<texPath>Things/Item/Resource/Shell/Shell_HighExplosive</texPath>
-			<graphicClass>Graphic_StackCount</graphicClass>
-		</graphicData>
-		<statBases>
-			<Mass>0.35</Mass>
-			<Bulk>0.45</Bulk>
-		</statBases>
-		<tradeTags>
+		<tradeTags Inherit="False">
+			<li>CE_AmmoInjector</li>
+			<li>CE_MediumAmmo</li>
 			<li>BOR_Tech_I</li>
 			<li>CE_AutoEnableTrade</li>
-			<li>CE_AutoEnableCrafting_FabricationBench</li>
 			<li>CE_AutoEnableCrafting_BOR_Bench_I</li>
 			<li>CE_AutoEnableCrafting_BOR_Bench_II</li>
 			<li>CE_AutoEnableCrafting_BOR_Bench_IV</li>
-			<li>CE_AutoEnableCrafting_TableMachining</li>
 		</tradeTags>
-		<thingCategories>
-			<li>AmmoAdvanced</li>
-		</thingCategories>
+		<label>9.5x60mm Solar PDC round (Ni)</label>
+		<graphicData>
+			<texPath>BOR/Things/Item/Equipment/weaponranged/gen1/ammo/Ni</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
 		<ammoClass>BOR_Ni_AmmoClass</ammoClass>
 		<cookOffProjectile>BOR_Bullet_PDC_Ni</cookOffProjectile>
 	</ThingDef>
-	<ThingDef Class="CombatExtended.AmmoDef" ParentName="HeavyAmmoBase">
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="BOR_PDCAmmoBase">
 		<defName>BOR_Ammo_PDC_Ion</defName>
-		<label>30mm PDC round (Ion)</label>
-		<graphicData>
-			<texPath>Things/Item/Resource/Shell/Shell_EMP</texPath>
-			<graphicClass>Graphic_StackCount</graphicClass>
-		</graphicData>
-		<statBases>
-			<Mass>0.35</Mass>
-			<Bulk>0.45</Bulk>
-		</statBases>
-		<tradeTags>
+		<tradeTags Inherit="False">
+			<li>CE_AmmoInjector</li>
+			<li>CE_MediumAmmo</li>
 			<li>BOR_Tech_I</li>
 			<li>CE_AutoEnableTrade</li>
-			<li>CE_AutoEnableCrafting_FabricationBench</li>
 			<li>CE_AutoEnableCrafting_BOR_Bench_I</li>
 			<li>CE_AutoEnableCrafting_BOR_Bench_II</li>
 			<li>CE_AutoEnableCrafting_BOR_Bench_IV</li>
-			<li>CE_AutoEnableCrafting_TableMachining</li>
 		</tradeTags>
-		<thingCategories>
-			<li>AmmoAdvanced</li>
-		</thingCategories>
-		<ammoClass>GrenadeEMP</ammoClass>
+		<label>9.5x60mm Solar PDC round (Ion)</label>
+		<graphicData>
+			<texPath>BOR/Things/Item/Equipment/weaponranged/gen1/ammo/EMP_N</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<ammoClass>BOR_Charged_Ion_N_AmmoClass</ammoClass>
 		<cookOffProjectile>BOR_Bullet_PDC_Ion</cookOffProjectile>
 	</ThingDef>
-	<ThingDef ParentName="BaseBulletCE">
-		<defName>BOR_Bullet_PDC_QaP</defName>
-		<label>30mm PDC slug (QaP)</label>
+
+	<ThingDef Name="BOR_PDCBulletBase" ParentName="BaseBulletCE" Abstract="True">
 		<graphicData>
-			<texPath>Things/Projectile/ShellHighExplosive</texPath>
+			<texPath>Things/Projectile/Bullet_Big</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<shaderType>TransparentPostLight</shaderType>
 		</graphicData>
 		<projectile Class="CombatExtended.ProjectilePropertiesCE">
 			<damageDef>Bullet</damageDef>
-			<damageAmountBase>80</damageAmountBase>
-			<armorPenetrationSharp>95</armorPenetrationSharp>
-			<armorPenetrationBlunt>5500</armorPenetrationBlunt>
-			<speed>550</speed>
+			<speed>250</speed>
 		</projectile>
 	</ThingDef>
-	<ThingDef ParentName="BaseBulletCE">
+	<ThingDef ParentName="BOR_PDCBulletBase">
+		<defName>BOR_Bullet_PDC_FSJ</defName>
+		<label>9.5x60mm Solar PDC bullet (FSJ)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>29</damageAmountBase>
+			<armorPenetrationSharp>34</armorPenetrationSharp>
+			<armorPenetrationBlunt>93</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+	<ThingDef ParentName="BOR_PDCBulletBase">
+		<defName>BOR_Bullet_PDC_QaP</defName>
+		<label>9.5x60mm Solar PDC bullet (QaP)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>19</damageAmountBase>
+			<armorPenetrationSharp>45</armorPenetrationSharp>
+			<armorPenetrationBlunt>93</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+	<ThingDef ParentName="BOR_PDCBulletBase">
 		<defName>BOR_Bullet_PDC_Ni</defName>
-		<label>30mm PDC slug (Ni)</label>
-		<graphicData>
-			<texPath>Things/Projectile/ShellHighExplosive</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
-			<shaderType>TransparentPostLight</shaderType>
-		</graphicData>
-		<thingClass>CombatExtended.ProjectileCE_Explosive</thingClass>
+		<label>9.5x60mm Solar PDC bullet (Ni)</label>
 		<projectile Class="CombatExtended.ProjectilePropertiesCE">
-			<damageDef>Bomb</damageDef>
-			<damageAmountBase>90</damageAmountBase>
-			<explosionRadius>1.2</explosionRadius>
-			<flyOverhead>false</flyOverhead>
-			<soundExplode>MortarBomb_Explode</soundExplode>
-			<speed>520</speed>
-			<applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
+			<damageAmountBase>17</damageAmountBase>
+			<secondaryDamage>
+				<li>
+					<def>Bomb_Secondary</def>
+					<amount>8</amount>
+				</li>
+			</secondaryDamage>
+			<armorPenetrationSharp>34</armorPenetrationSharp>
+			<armorPenetrationBlunt>80</armorPenetrationBlunt>
 		</projectile>
 	</ThingDef>
-	<ThingDef ParentName="BaseBulletCE">
+	<ThingDef ParentName="BOR_PDCBulletBase">
 		<defName>BOR_Bullet_PDC_Ion</defName>
-		<label>30mm PDC slug (Ion)</label>
-		<graphicData>
-			<texPath>Things/Projectile/ShellEMP</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
-			<shaderType>TransparentPostLight</shaderType>
-		</graphicData>
-		<thingClass>CombatExtended.ProjectileCE_Explosive</thingClass>
+		<label>9.5x60mm Solar PDC bullet (Ion)</label>
 		<projectile Class="CombatExtended.ProjectilePropertiesCE">
-			<damageDef>EMP</damageDef>
-			<damageAmountBase>120</damageAmountBase>
-			<explosionRadius>1.8</explosionRadius>
-			<flyOverhead>false</flyOverhead>
-			<speed>500</speed>
+			<damageAmountBase>17</damageAmountBase>
+			<secondaryDamage>
+				<li>
+					<def>EMP</def>
+					<amount>7</amount>
+				</li>
+			</secondaryDamage>
+			<armorPenetrationSharp>34</armorPenetrationSharp>
+			<armorPenetrationBlunt>93</armorPenetrationBlunt>
+			<empShieldBreakChance>0.4</empShieldBreakChance>
 		</projectile>
 	</ThingDef>
+
 	<RecipeDef ParentName="AmmoRecipeBase">
-		<defName>MakeBOR_Ammo_PDC_QaP</defName>
-		<label>make 30mm PDC round (QaP) ×50</label>
-		<description>Craft 50 30mm PDC rounds (QaP).</description>
-		<jobString>Making 30mm PDC rounds (QaP).</jobString>
-		<researchPrerequisite>BOR_Research_Weapons_I</researchPrerequisite>
+		<defName>MakeBOR_Ammo_PDC_FSJ</defName>
+		<label>make 9.5x60mm Solar PDC round (FSJ) x200</label>
+		<description>Craft 200 9.5x60mm Solar PDC rounds (FSJ).</description>
+		<jobString>Making 9.5x60mm Solar PDC rounds (FSJ).</jobString>
+		<researchPrerequisites>
+			<li>BOR_Research_DefenderTurret_I</li>
+			<li>BOR_CE_AmmoResearch_FSJ</li>
+		</researchPrerequisites>
 		<ingredients>
 			<li>
 				<filter>
@@ -152,12 +183,36 @@
 						<li>BOR_Sunsteel</li>
 					</thingDefs>
 				</filter>
-				<count>30</count>
+				<count>10</count>
 			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>BOR_Sunsteel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<BOR_Ammo_PDC_FSJ>200</BOR_Ammo_PDC_FSJ>
+		</products>
+		<skillRequirements>
+			<Crafting>8</Crafting>
+		</skillRequirements>
+		<workAmount>8000</workAmount>
+	</RecipeDef>
+	<RecipeDef ParentName="AmmoRecipeBase">
+		<defName>MakeBOR_Ammo_PDC_QaP</defName>
+		<label>make 9.5x60mm Solar PDC round (QaP) x200</label>
+		<description>Craft 200 9.5x60mm Solar PDC rounds (QaP).</description>
+		<jobString>Making 9.5x60mm Solar PDC rounds (QaP).</jobString>
+		<researchPrerequisites>
+			<li>BOR_Research_DefenderTurret_I</li>
+			<li>BOR_CE_AmmoResearch_QaP</li>
+		</researchPrerequisites>
+		<ingredients>
 			<li>
 				<filter>
 					<thingDefs>
-						<li>BOR_QuasarAlloy</li>
+						<li>BOR_Sunsteel</li>
 					</thingDefs>
 				</filter>
 				<count>6</count>
@@ -165,33 +220,35 @@
 			<li>
 				<filter>
 					<thingDefs>
-						<li>ComponentSpacer</li>
+						<li>BOR_QuasarAlloy</li>
 					</thingDefs>
 				</filter>
-				<count>1</count>
+				<count>2</count>
 			</li>
 		</ingredients>
 		<fixedIngredientFilter>
 			<thingDefs>
 				<li>BOR_Sunsteel</li>
 				<li>BOR_QuasarAlloy</li>
-				<li>ComponentSpacer</li>
 			</thingDefs>
 		</fixedIngredientFilter>
 		<products>
-			<BOR_Ammo_PDC_QaP>50</BOR_Ammo_PDC_QaP>
+			<BOR_Ammo_PDC_QaP>200</BOR_Ammo_PDC_QaP>
 		</products>
 		<skillRequirements>
 			<Crafting>8</Crafting>
 		</skillRequirements>
-		<workAmount>3600</workAmount>
+		<workAmount>8000</workAmount>
 	</RecipeDef>
 	<RecipeDef ParentName="AmmoRecipeBase">
 		<defName>MakeBOR_Ammo_PDC_Ni</defName>
-		<label>make 30mm PDC round (Ni) ×50</label>
-		<description>Craft 50 30mm PDC rounds (Ni).</description>
-		<jobString>Making 30mm PDC rounds (Ni).</jobString>
-		<researchPrerequisite>BOR_Research_Weapons_I</researchPrerequisite>
+		<label>make 9.5x60mm Solar PDC round (Ni) x200</label>
+		<description>Craft 200 9.5x60mm Solar PDC rounds (Ni).</description>
+		<jobString>Making 9.5x60mm Solar PDC rounds (Ni).</jobString>
+		<researchPrerequisites>
+			<li>BOR_Research_DefenderTurret_I</li>
+			<li>BOR_CE_AmmoResearch_Ni</li>
+		</researchPrerequisites>
 		<ingredients>
 			<li>
 				<filter>
@@ -199,7 +256,7 @@
 						<li>BOR_Sunsteel</li>
 					</thingDefs>
 				</filter>
-				<count>30</count>
+				<count>6</count>
 			</li>
 			<li>
 				<filter>
@@ -207,38 +264,32 @@
 						<li>BOR_Neutronium</li>
 					</thingDefs>
 				</filter>
-				<count>12</count>
-			</li>
-			<li>
-				<filter>
-					<thingDefs>
-						<li>ComponentSpacer</li>
-					</thingDefs>
-				</filter>
-				<count>1</count>
+				<count>6</count>
 			</li>
 		</ingredients>
 		<fixedIngredientFilter>
 			<thingDefs>
 				<li>BOR_Sunsteel</li>
 				<li>BOR_Neutronium</li>
-				<li>ComponentSpacer</li>
 			</thingDefs>
 		</fixedIngredientFilter>
 		<products>
-			<BOR_Ammo_PDC_Ni>50</BOR_Ammo_PDC_Ni>
+			<BOR_Ammo_PDC_Ni>200</BOR_Ammo_PDC_Ni>
 		</products>
 		<skillRequirements>
 			<Crafting>8</Crafting>
 		</skillRequirements>
-		<workAmount>4000</workAmount>
+		<workAmount>8000</workAmount>
 	</RecipeDef>
 	<RecipeDef ParentName="AmmoRecipeBase">
 		<defName>MakeBOR_Ammo_PDC_Ion</defName>
-		<label>make 30mm PDC round (Ion) ×50</label>
-		<description>Craft 50 30mm PDC rounds (Ion).</description>
-		<jobString>Making 30mm PDC rounds (Ion).</jobString>
-		<researchPrerequisite>BOR_Research_Weapons_I</researchPrerequisite>
+		<label>make 9.5x60mm Solar PDC round (Ion) x200</label>
+		<description>Craft 200 9.5x60mm Solar PDC rounds (Ion).</description>
+		<jobString>Making 9.5x60mm Solar PDC rounds (Ion).</jobString>
+		<researchPrerequisites>
+			<li>BOR_Research_DefenderTurret_I</li>
+			<li>BOR_CE_AmmoResearch_EMP_N</li>
+		</researchPrerequisites>
 		<ingredients>
 			<li>
 				<filter>
@@ -246,7 +297,7 @@
 						<li>BOR_Sunsteel</li>
 					</thingDefs>
 				</filter>
-				<count>24</count>
+				<count>6</count>
 			</li>
 			<li>
 				<filter>
@@ -254,30 +305,21 @@
 						<li>BOR_Neutronium</li>
 					</thingDefs>
 				</filter>
-				<count>8</count>
-			</li>
-			<li>
-				<filter>
-					<thingDefs>
-						<li>ComponentSpacer</li>
-					</thingDefs>
-				</filter>
-				<count>1</count>
+				<count>6</count>
 			</li>
 		</ingredients>
 		<fixedIngredientFilter>
 			<thingDefs>
 				<li>BOR_Sunsteel</li>
 				<li>BOR_Neutronium</li>
-				<li>ComponentSpacer</li>
 			</thingDefs>
 		</fixedIngredientFilter>
 		<products>
-			<BOR_Ammo_PDC_Ion>50</BOR_Ammo_PDC_Ion>
+			<BOR_Ammo_PDC_Ion>200</BOR_Ammo_PDC_Ion>
 		</products>
 		<skillRequirements>
 			<Crafting>8</Crafting>
 		</skillRequirements>
-		<workAmount>4200</workAmount>
+		<workAmount>8000</workAmount>
 	</RecipeDef>
 </Defs>

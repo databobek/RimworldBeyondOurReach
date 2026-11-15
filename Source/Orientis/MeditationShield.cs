@@ -17,39 +17,24 @@ public class CompProperties_MeditationShield : CompProperties
     }
 }
 
-// Switches the pod's vanilla projectile interceptor, which also stops bombardments, and debilitates dark pawns in range.
-// It stays off until an Orientis pawn walks over and raises it, and falls when the map runs out of meditation power.
+// Switches the pod's vanilla projectile interceptor, which also stops bombardments, and debilitates dark pawns and
+// anomaly creatures in range.
+// The switch can be flipped any time, but the shield only stands while an Orientis pawn is meditating in the pod, and it
+// switches itself off when the map runs out of meditation power.
 public sealed class CompMeditationShield : ThingComp
 {
     private const int CheckInterval = 250;
-    private const int RaisersRefreshFrames = 30;
+    private const int OccupancyInterval = 60;
     private const string TenebralFaction = "BOR_Tenebrites";
 
     private static readonly AccessTools.FieldRef<CompProjectileInterceptor, bool> InterceptorShutDown =
         AccessTools.FieldRefAccess<CompProjectileInterceptor, bool>("shutDown");
 
+    // The player's switch, and whether the shield is actually up right now (switch on and a pawn inside).
     private bool enabled;
-    private List<Pawn> raisers = new();
-    private int raisersFrame = -RaisersRefreshFrames;
+    private bool active;
 
     public CompProperties_MeditationShield Props => (CompProperties_MeditationShield)props;
-
-    // Who can raise the shield. Gizmos rebuild every frame and this checks reachability for each pawn, so it is kept a moment.
-    private List<Pawn> Raisers
-    {
-        get
-        {
-            if (UnityEngine.Time.frameCount - raisersFrame >= RaisersRefreshFrames)
-            {
-                raisersFrame = UnityEngine.Time.frameCount;
-                raisers = parent.Map.mapPawns.FreeColonistsSpawned
-                    .Where(p => Orientis.IsOrientis(p) && !p.Downed && p.CanReach(parent, PathEndMode.InteractionCell, Danger.Deadly)).ToList();
-            }
-            return raisers;
-        }
-    }
-
-    public bool Enabled => enabled;
 
     private CompProjectileInterceptor Interceptor => parent.GetComp<CompProjectileInterceptor>();
 
@@ -62,7 +47,7 @@ public sealed class CompMeditationShield : ThingComp
     private static bool IsTenebralFaction(FactionDef? faction) => faction?.defName == TenebralFaction;
 
     private static IEnumerable<CompMeditationShield> ActiveOn(Map map) => map.listerThings.ThingsInGroup(ThingRequestGroup.ProjectileInterceptor)
-        .Select(t => t.TryGetComp<CompMeditationShield>()).Where(s => s != null && s.enabled);
+        .Select(t => t.TryGetComp<CompMeditationShield>()).Where(s => s != null && s.active);
 
     public static bool Covers(Map map, IntVec3 cell) =>
         ActiveOn(map).Any(s => cell.InHorDistOf(s.parent.Position, s.Interceptor.Props.radius));
@@ -70,29 +55,41 @@ public sealed class CompMeditationShield : ThingComp
     public override void PostSpawnSetup(bool respawningAfterLoad)
     {
         base.PostSpawnSetup(respawningAfterLoad);
-        InterceptorShutDown(Interceptor) = !enabled;
+        InterceptorShutDown(Interceptor) = !active;
     }
 
-    public void Enable()
+    private void SetActive(bool value)
     {
-        if (enabled || !parent.Spawned || !HasPower)
-        {
-            return;
-        }
-        enabled = true;
-        InterceptorShutDown(Interceptor) = false;
+        active = value;
+        InterceptorShutDown(Interceptor) = !value;
     }
 
     private void Disable()
     {
         enabled = false;
-        InterceptorShutDown(Interceptor) = true;
+        SetActive(false);
     }
+
+    // True while an Orientis pawn is meditating in this pod (the job puts it on the pod's cell and hides it).
+    private bool Occupied() => parent.Map.thingGrid.ThingsListAtFast(parent.Position)
+        .OfType<Pawn>().Any(p => Orientis.IsOrientis(p) && p.CurJobDef == BOR_OrientisDefOf.BOR_OrientisMeditate && p.CurJob.targetA.Thing == parent);
 
     public override void CompTick()
     {
         base.CompTick();
-        if (!enabled || !parent.IsHashIntervalTick(CheckInterval))
+        if (!enabled)
+        {
+            return;
+        }
+        if (parent.IsHashIntervalTick(OccupancyInterval))
+        {
+            bool shouldRun = HasPower && Occupied();
+            if (shouldRun != active)
+            {
+                SetActive(shouldRun);
+            }
+        }
+        if (!active || !parent.IsHashIntervalTick(CheckInterval))
         {
             return;
         }
@@ -103,7 +100,7 @@ public sealed class CompMeditationShield : ThingComp
             return;
         }
         float radius = Interceptor.Props.radius;
-        foreach (Pawn pawn in parent.Map.mapPawns.AllPawnsSpawned.Where(p => p.Position.InHorDistOf(parent.Position, radius) && IsDark(p)).ToList())
+        foreach (Pawn pawn in parent.Map.mapPawns.AllPawnsSpawned.Where(p => p.Position.InHorDistOf(parent.Position, radius) && (IsDark(p) || OrientisTargets.IsAnomaly(p))).ToList())
         {
             if (!pawn.health.hediffSet.HasHediff(BOR_OrientisDefOf.BOR_ShieldExposure))
             {
@@ -122,65 +119,32 @@ public sealed class CompMeditationShield : ThingComp
         {
             yield break;
         }
-        if (enabled)
+        yield return new Command_Toggle
         {
-            yield return new Command_Action
-            {
-                defaultLabel = "BOR_ShieldDisable".Translate(),
-                defaultDesc = "BOR_ShieldDesc".Translate(),
-                icon = OrientisTextures.MeditationPower,
-                action = Disable
-            };
-            yield break;
-        }
-        List<Pawn> pawns = Raisers;
-        Command_Action enable = new()
-        {
-            defaultLabel = "BOR_ShieldEnable".Translate(),
+            defaultLabel = "BOR_ShieldToggle".Translate(),
             defaultDesc = "BOR_ShieldDesc".Translate(),
-            icon = OrientisTextures.MeditationPower,
-            action = () => Find.WindowStack.Add(new FloatMenu(pawns.Select(p => new FloatMenuOption(p.LabelShortCap, () =>
-                p.jobs.TryTakeOrderedJob(JobMaker.MakeJob(BOR_OrientisDefOf.BOR_OrientisEnableShield, parent), JobTag.Misc))).ToList()))
+            icon = BorIcons.OrientisMeditate,
+            isActive = () => enabled,
+            toggleAction = () =>
+            {
+                if (enabled)
+                {
+                    Disable();
+                }
+                else
+                {
+                    enabled = true;
+                }
+            }
         };
-        if (!HasPower)
-        {
-            enable.Disable("BOR_ShieldNoCharge".Translate());
-        }
-        else if (pawns.Count == 0)
-        {
-            enable.Disable("BOR_ShieldNoPawn".Translate());
-        }
-        yield return enable;
     }
 
-    public override string CompInspectStringExtra() => (enabled ? "BOR_ShieldOn" : "BOR_ShieldOff").Translate();
+    public override string CompInspectStringExtra() => (active ? "BOR_ShieldOn" : enabled ? "BOR_ShieldWaiting" : "BOR_ShieldOff").Translate();
 
     public override void PostExposeData()
     {
         base.PostExposeData();
         Scribe_Values.Look(ref enabled, "shieldEnabled");
-    }
-}
-
-// Walks to the pod and raises its shield. No reservation, so a pawn meditating in the pod does not block it.
-public class JobDriver_OrientisEnableShield : JobDriver
-{
-    private const int RaiseTicks = 120;
-
-    private Thing Pod => job.GetTarget(TargetIndex.A).Thing;
-
-    public override bool TryMakePreToilReservations(bool errorOnFailed) => true;
-
-    protected override IEnumerable<Toil> MakeNewToils()
-    {
-        this.FailOnDespawnedOrNull(TargetIndex.A);
-        yield return Toils_Goto.GotoThing(TargetIndex.A, PathEndMode.InteractionCell);
-        yield return Toils_General.Wait(RaiseTicks, TargetIndex.A).WithProgressBarToilDelay(TargetIndex.A);
-
-        Toil raise = ToilMaker.MakeToil("OrientisEnableShield");
-        raise.initAction = () => Pod.TryGetComp<CompMeditationShield>().Enable();
-        raise.defaultCompleteMode = ToilCompleteMode.Instant;
-        yield return raise;
     }
 }
 

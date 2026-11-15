@@ -8,6 +8,10 @@
 					<thingClass>CombatExtended.Building_TurretGunCE</thingClass>
 				</value>
 			</li>
+			<!-- CE ammo replaces the vanilla quasar alloy feed -->
+			<li Class="PatchOperationRemove">
+				<xpath>Defs/ThingDef[defName="BOR_Turret_Ranger_TII"]/comps/li[@Class="CompProperties_Refuelable"]</xpath>
+			</li>
 			<li Class="CombatExtended.PatchOperationMakeGunCECompatible">
 				<defName>BOR_Turret_Ranger_TII_Gun</defName>
 				<statBases>
@@ -20,7 +24,7 @@
 					<recoilAmount>3.52</recoilAmount>
 					<verbClass>CombatExtended.Verb_ShootCE</verbClass>
 					<hasStandardCommand>true</hasStandardCommand>
-					<defaultProjectile>BOR_Bullet_Ranger_AP</defaultProjectile>
+					<defaultProjectile>BOR_Bullet_Ranger_QaP</defaultProjectile>
 					<warmupTime>1.98</warmupTime>
 					<range>213</range>
 					<minRange>5</minRange>

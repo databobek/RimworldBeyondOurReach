@@ -394,7 +394,7 @@ public class LightShockwave : IExposable
             DarkBuildings.ToHusk(building);
         }
         // Worked out once, as the map can hold thousands of items. Another ring may have burned some of them already.
-        items ??= DarkBuildings.ItemsOn(map);
+        items ??= DarkBuildings.TargetsOn(map);
         items.RemoveAll(item =>
         {
             if (!item.Spawned)

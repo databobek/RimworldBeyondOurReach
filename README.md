@@ -14,7 +14,7 @@ Welcome to the Beyond Our Reach mod for RimWorld! This mod introduces advanced t
 
 ## Features
 
-- **Advanced Research Projects**: Unlock solar, quasaric, tenebrite, and umbra technologies.
+- **Advanced Research Projects**: Unlock solar, kwazaari, tenebrite, and umbra technologies.
 - **New Buildings and Items**: Construct new buildings and craft advanced items using unique materials.
 - **Enhanced Gameplay**: Improve your colony's efficiency and capabilities with cutting-edge technology.
 

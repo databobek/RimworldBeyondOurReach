@@ -33,11 +33,13 @@ public static class CareTiers
 
     public static bool IsExtended(MedicalCareCategory cat) => (int)cat >= (int)MedicalCareCategory.Best;
 
+    // A saved value past the last tier belonged to a medicine whose mod was removed. It acts as Best (ultratech), so
+    // doctors keep using medicine instead of none at all.
     public static CareTier Get(MedicalCareCategory cat)
     {
         CareTier[] tiers = ByValue;
         int index = (int)cat;
-        return tiers[index >= 0 && index < tiers.Length ? index : (int)MedicalCareCategory.NoMeds];
+        return tiers[index >= 0 && index < tiers.Length ? index : (int)MedicalCareCategory.Best];
     }
 
     static CareTier[] Build()

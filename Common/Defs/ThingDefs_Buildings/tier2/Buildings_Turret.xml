@@ -4,7 +4,7 @@
     <ThingDef ParentName="BuildingBase">
         <defName>BOR_Turret_Ranger_TII</defName>
         <label>ranger railgun turret</label>
-        <description>A precision long-range railgun turret. It fires rarely, but when it does, the projectile leaves the barrel at extreme velocity with near-perfect accuracy.</description>
+        <description>A precision long-range railgun turret. It fires rarely, but when it does, the projectile leaves the barrel at extreme velocity with near-perfect accuracy. Its slugs are cast from kwazaari alloy.</description>
         <thingClass>Building_TurretGun</thingClass>
         <drawerType>MapMeshAndRealTime</drawerType>
         <graphicData>
@@ -52,6 +52,26 @@
             </li>
             <li Class="CompProperties_Flickable" />
             <li Class="CompProperties_Breakdownable" />
+            <!-- Quasar alloy is its ammunition: 4 slugs per unit. Combat Extended swaps this for its own ammo. -->
+            <li Class="CompProperties_Refuelable">
+                <fuelLabel>Shots until reload</fuelLabel>
+                <fuelGizmoLabel>Kwazaari slugs</fuelGizmoLabel>
+                <outOfFuelMessage>Needs reloading</outOfFuelMessage>
+                <fuelFilter>
+                    <thingDefs>
+                        <li>BOR_QuasarAlloy</li>
+                    </thingDefs>
+                </fuelFilter>
+                <fuelCapacity>50</fuelCapacity>
+                <fuelMultiplier>4</fuelMultiplier>
+                <initialFuelPercent>0</initialFuelPercent>
+                <autoRefuelPercent>0.5</autoRefuelPercent>
+                <showFuelGizmo>true</showFuelGizmo>
+                <minimumFueledThreshold>1</minimumFueledThreshold>
+                <factorByDifficulty>true</factorByDifficulty>
+                <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+                <fuelIconPath>BOR/Things/Item/Resource/quasarite/quasarite_a</fuelIconPath>
+            </li>
         </comps>
         <researchPrerequisites>
             <li>BOR_Research_RangerTurret_II</li>
@@ -310,12 +330,52 @@
             <damageDef>BombSuper</damageDef>
             <damageAmountBase>15000</damageAmountBase>
             <speed>48</speed>
-            <explosionRadius>1000</explosionRadius>
+            <!-- The fireball. Explosions stop at the ~80-cell radial pattern, so the radius 1000 shockwave is
+                 BOR_NegotiatorDetonation, spawned at the centre of this blast. -->
+            <explosionRadius>30</explosionRadius>
+            <explosionEffect>GiantExplosion</explosionEffect>
+            <explosionChanceToStartFire>0.22</explosionChanceToStartFire>
+            <screenShakeFactor>4</screenShakeFactor>
+            <preExplosionSpawnSingleThingDef>BOR_NegotiatorDetonation</preExplosionSpawnSingleThingDef>
             <flyOverhead>true</flyOverhead>
             <soundHitThickRoof>Artillery_HitThickRoof</soundHitThickRoof>
             <soundExplode>MortarBomb_Explode</soundExplode>
             <soundImpactAnticipate>MortarRound_PreImpact</soundImpactAnticipate>
         </projectile>
+    </ThingDef>
+
+    <!-- The Cracker shell's shockwave: every cell within the radius takes BombSuper with falloff, spreading outward over
+         a few seconds with a distortion ring and heat haze at the front (Common/Defs/Effects/BOR_NukeShockwave.xml).
+         Mountain roofs shield what is under them. Source/Buildings/NukeDetonation.cs. -->
+    <ThingDef>
+        <defName>BOR_NegotiatorDetonation</defName>
+        <label>Cracker shockwave</label>
+        <thingClass>BeyondOurReach.NukeDetonation</thingClass>
+        <category>Ethereal</category>
+        <tickerType>Normal</tickerType>
+        <useHitPoints>false</useHitPoints>
+        <selectable>false</selectable>
+        <drawerType>None</drawerType>
+        <altitudeLayer>MetaOverlays</altitudeLayer>
+        <modExtensions>
+            <li Class="BeyondOurReach.DefModExtension_Nuke">
+                <radius>1000</radius>
+                <damage>15000</damage>
+                <damageDef>BombSuper</damageDef>
+                <chanceToStartFire>0.22</chanceToStartFire>
+                <propagationSpeed>1</propagationSpeed>
+                <spareThickRoof>true</spareThickRoof>
+                <screenShakeFactor>4</screenShakeFactor>
+                <!-- Distortion at the front: one ring growing with it, plus heat haze where the camera is looking -->
+                <ringFleck>BOR_NukeShockwaveRing</ringFleck>
+                <fringeFleck>BOR_NukeFringeDistortion</fringeFleck>
+                <fringeScale>0.8~1.4</fringeScale>
+                <fringeSpacing>4</fringeSpacing>
+                <fringeJitter>2.5</fringeJitter>
+                <fringeInterval>4</fringeInterval>
+                <fringeShake>0.255</fringeShake>
+            </li>
+        </modExtensions>
     </ThingDef>
 
 </Defs>

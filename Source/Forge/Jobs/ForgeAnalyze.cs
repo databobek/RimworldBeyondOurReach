@@ -119,34 +119,9 @@ public class JobDriver_ForgeAnalyze : JobDriver
     }
 }
 
-public class WorkGiver_ForgeAnalyze : WorkGiver_Scanner
+public class WorkGiver_ForgeAnalyze : WorkGiver_ForgeBase
 {
-    public override PathEndMode PathEndMode => PathEndMode.InteractionCell;
-
-    private static bool HasWork(CompForge comp) => comp.parent.Faction == Faction.OfPlayer && comp.PendingAnalysis.Count > 0;
-
-    public override IEnumerable<Thing> PotentialWorkThingsGlobal(Pawn pawn)
-    {
-        foreach (CompForge comp in MapComponent_WorkBuildings.Of(pawn.Map).forges)
-        {
-            if (HasWork(comp))
-            {
-                yield return comp.parent;
-            }
-        }
-    }
-
-    public override bool ShouldSkip(Pawn pawn, bool forced = false)
-    {
-        foreach (CompForge comp in MapComponent_WorkBuildings.Of(pawn.Map).forges)
-        {
-            if (HasWork(comp))
-            {
-                return false;
-            }
-        }
-        return true;
-    }
+    protected override bool HasWork(CompForge comp) => comp.PendingAnalysis.Count > 0;
 
     public override Job? JobOnThing(Pawn pawn, Thing t, bool forced = false)
     {

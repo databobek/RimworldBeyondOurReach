@@ -40,7 +40,6 @@ public static class BOR_OrientisDefOf
     public static HediffDef BOR_TenebralPsychosis = null!;
     public static JobDef BOR_OrientisMeditate = null!;
     public static JobDef BOR_OrientisBless = null!;
-    public static JobDef BOR_OrientisEnableShield = null!;
     public static WorkTypeDef BOR_Meditate = null!;
 
     [MayRequireBiotech]
@@ -96,10 +95,18 @@ public static class Orientis
         }
     }
 
+    // Elite Bionics Framework logs a protocol error on direct BodyPartDef.GetMaxHealth calls and ignores its own MaxHPAdjust there.
+    private static readonly System.Reflection.MethodInfo? EbfMaxHealth = HarmonyLib.AccessTools.Method(
+        HarmonyLib.AccessTools.TypeByName("EBF.EBFEndpoints"), "GetMaxHealthWithEBF", new[] { typeof(BodyPartRecord), typeof(Pawn), typeof(bool) });
+
+    private static float MaxHealth(BodyPartRecord part, Pawn pawn) => EbfMaxHealth != null
+        ? (float)EbfMaxHealth.Invoke(null, new object[] { part, pawn, false })
+        : part.def.GetMaxHealth(pawn);
+
     private static void AddScar(Pawn pawn, BodyPartRecord part)
     {
         Hediff_Injury scar = (Hediff_Injury)HediffMaker.MakeHediff(BOR_OrientisDefOf.BOR_GoldenScar, pawn, part);
-        scar.Severity = System.Math.Min(part.def.GetMaxHealth(pawn) * Settings.scarHealthFraction, pawn.health.hediffSet.GetPartHealth(part) - 1f);
+        scar.Severity = System.Math.Min(MaxHealth(part, pawn) * Settings.scarHealthFraction, pawn.health.hediffSet.GetPartHealth(part) - 1f);
         if (scar.Severity <= 0f)
         {
             return;

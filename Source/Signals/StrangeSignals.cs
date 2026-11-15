@@ -89,7 +89,7 @@ public class CompStrangeSignals : ThingComp, ISignalChannel
         {
             cmd.defaultLabel = "";
             cmd.defaultDesc = "BOR_Signals_Strange".Translate();
-            cmd.icon = BaseContent.ClearTex;
+            cmd.icon = BorIcons.Get("StrangeBroadcast_Kwazaari");
             cmd.action = () => SignalUtility.OpenPawnMenu(this, BOR_SignalsDefOf.BOR_InvestigateSignals);
         }
         else

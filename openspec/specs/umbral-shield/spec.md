@@ -8,9 +8,9 @@ An Umbral building that draws 1,000,000 W to hold up a crimson dome, 35 tiles in
 ### Requirement: Power
 The shield SHALL draw 1,000,000 W at all times and have no off switch. It SHALL have no heat, roof or rain requirements.
 
-#### Scenario: Power runs out
-- WHEN the shield has no power
-- THEN every effect of the dome SHALL stop until power returns: interception, the drop pod ban, flare protection, psychosis and the Orientis thought
+#### Scenario: Dome down
+- WHEN the dome is down for any reason: no power, or anything else that drops vanilla's interceptor (`CompProjectileInterceptor.Active`)
+- THEN every effect of the dome SHALL stop until it is back up: interception, the drop pod ban, flare protection, psychosis and the Orientis thought
 - AND during a flare, the shield SHALL be able to restart from stored power or from generators within its radius, while consumers there stay off until it does
 
 ### Requirement: Dome display

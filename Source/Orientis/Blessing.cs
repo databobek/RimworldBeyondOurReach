@@ -56,7 +56,7 @@ public class CompBlessingBench : ThingComp, IGlowSource
             yield return new FloatMenuOption("CannotUseNoPath".Translate(), null);
             yield break;
         }
-        yield return new FloatMenuOption("BOR_BlessingOption".Translate(), () => Find.WindowStack.Add(new Window_Blessing(this, selPawn)));
+        yield return new FloatMenuOption("BOR_BlessingOption".Translate(), () => Find.WindowStack.Add(new Window_Blessing(this, selPawn)), BorIcons.OrientisBlessing, Color.white);
     }
 
     public void Begin(Pawn target, List<BodyPartRecord> parts)
@@ -149,7 +149,7 @@ public class JobDriver_OrientisBless : JobDriver
     }
 }
 
-public class Window_Blessing : Window
+public class Window_Blessing : BorWindow
 {
     private const float RowHeight = 28f;
 
@@ -172,12 +172,13 @@ public class Window_Blessing : Window
         closeOnClickedOutside = false;
     }
 
-    public override void DoWindowContents(Rect inRect)
+    protected override string Title => "BOR_BlessingTitle".Translate(pawn.LabelShortCap);
+
+    protected override BorUISchemeDef Scheme => BOR_UISchemeDefOf.BOR_UIScheme_Orientis;
+
+    protected override void Contents(Rect inRect)
     {
-        Text.Font = GameFont.Medium;
-        Widgets.Label(new Rect(inRect.x, inRect.y, inRect.width, 36f), "BOR_BlessingTitle".Translate(pawn.LabelShortCap));
-        Text.Font = GameFont.Small;
-        Rect outRect = new(inRect.x, inRect.y + 40f, inRect.width, inRect.height - 90f);
+        Rect outRect = new(inRect.x, inRect.y, inRect.width, inRect.height - 50f);
         Rect viewRect = new(0f, 0f, outRect.width - 16f, parts.Count * RowHeight);
         Widgets.BeginScrollView(outRect, ref scroll, viewRect);
         float y = 0f;
@@ -186,7 +187,7 @@ public class Window_Blessing : Window
             bool blessed = pawn.health.hediffSet.hediffs.Any(h => h.def == BOR_OrientisDefOf.BOR_Blessing && h.Part == part);
             string label = part.LabelCap + (blessed ? " (" + "BOR_BlessingAlready".Translate() + ")" : "");
             bool on = chosen.Contains(part);
-            Widgets.CheckboxLabeled(new Rect(0f, y, viewRect.width, RowHeight), label, ref on);
+            BorSkin.Current.Checkbox(new Rect(0f, y, viewRect.width, RowHeight), label, ref on);
             if (on)
             {
                 chosen.Add(part);
@@ -199,7 +200,7 @@ public class Window_Blessing : Window
         }
         Widgets.EndScrollView();
         Rect button = new(inRect.xMax - 160f, inRect.yMax - 40f, 160f, 40f);
-        if (Widgets.ButtonText(button, "BOR_BlessingBegin".Translate(), active: chosen.Count > 0))
+        if (BorSkin.Current.Button(button, "BOR_BlessingBegin".Translate(), active: chosen.Count > 0, tone: BorTone.Good))
         {
             Close();
             bench.Begin(pawn, chosen.ToList());

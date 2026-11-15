@@ -34,6 +34,9 @@ public class CompProperties_Forge : CompProperties
     // Scales what each overdrive step adds: output, power use and wear per step are all multiplied by this.
     public float stepMultiplier = 1f;
 
+    // Production work speed: run duration is divided by this, for pawns and the Robot Assistant alike.
+    public float workSpeedFactor = 1f;
+
     public CompProperties_Forge()
     {
         compClass = typeof(CompForge);
@@ -138,7 +141,8 @@ public sealed partial class CompForge : ThingComp, IGlowSource
     {
         EnsureSize();
         ThingDef? def = slots[index];
-        if (def == null)
+        // Overdrive wear can destroy the forge on the very tick a run ends.
+        if (def == null || !parent.Spawned)
         {
             return;
         }
@@ -278,10 +282,24 @@ public sealed partial class CompForge : ThingComp, IGlowSource
         }
     }
 
-    private CompResource? PipeComp =>
-        Props.pipeNet == null
-            ? null
-            : parent.AllComps.OfType<CompResource>().FirstOrDefault(c => c.Props.pipeNet == Props.pipeNet);
+    private CompResource? pipeComp;
+    private bool pipeCompResolved;
+
+    // Looked up once: the threshold gizmo asks on every frame, and a waiting forge on every tick.
+    private CompResource? PipeComp
+    {
+        get
+        {
+            if (!pipeCompResolved)
+            {
+                pipeCompResolved = true;
+                pipeComp = Props.pipeNet == null
+                    ? null
+                    : parent.AllComps.OfType<CompResource>().FirstOrDefault(c => c.Props.pipeNet == Props.pipeNet);
+            }
+            return pipeComp;
+        }
+    }
 
     public bool HasResource
     {
@@ -302,20 +320,21 @@ public sealed partial class CompForge : ThingComp, IGlowSource
 
     public bool TryDrawResource()
     {
+        // Both are checked before either is taken, so a forge that needs both never pays one for nothing.
+        PipeNet? net = null;
+        if (Props.pipeNet != null && Props.pipeAmount > 0f)
+        {
+            net = PipeComp?.PipeNet;
+            if (net == null || net.Stored < Props.pipeAmount)
+            {
+                return false;
+            }
+        }
         if (Props.meditationPerDraw > 0f && !MapComponent_MeditationPower.Of(parent.Map).TryDraw(Props.meditationPerDraw))
         {
             return false;
         }
-        if (Props.pipeNet == null || Props.pipeAmount <= 0f)
-        {
-            return true;
-        }
-        PipeNet? net = PipeComp?.PipeNet;
-        if (net == null || net.Stored < Props.pipeAmount)
-        {
-            return false;
-        }
-        net.DrawAmongStorage(Props.pipeAmount, net.storages);
+        net?.DrawAmongStorage(Props.pipeAmount, net.storages);
         return true;
     }
 
@@ -345,6 +364,7 @@ public sealed partial class CompForge : ThingComp, IGlowSource
         Scribe_Values.Look(ref wearRemainder, "forgeWearRemainder");
         Scribe_Values.Look(ref robotSlot, "forgeRobotSlot", -1);
         Scribe_Values.Look(ref robotTicks, "forgeRobotTicks");
+        Scribe_Values.Look(ref neutroniumThreshold, "forgeNeutroniumThreshold");
         Scribe_Collections.Look(ref pendingAnalysis, "forgePending", LookMode.Reference);
         Scribe_Collections.Look(ref slotStuff, "forgeSlotStuff", LookMode.Def);
         slotStuff ??= new List<ThingDef?>();

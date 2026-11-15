@@ -13,7 +13,7 @@ public static class ForgeTextures
     public static readonly Texture2D TabAtlas = ContentFinder<Texture2D>.Get("UI/Widgets/TabAtlas");
 }
 
-public class ITab_Forge : ITab
+public class ITab_Forge : BorTab
 {
     private const float LargeGridHeight = 6f;
 
@@ -62,13 +62,13 @@ public class ITab_Forge : ITab
         {
             CompProperties_Forge p = forge.Props;
             float w = p.gridWidth * CellSize + (p.gridWidth - 1) * CellSpacing + Margin * 2f;
-            float h = p.gridHeight * CellSize + (p.gridHeight - 1) * CellSpacing + Margin * 2f + HeaderHeight + FooterHeight + (forge.PendingAnalysis.Count + (forge.IsFormatting ? 1 : 0)) * PendingRowHeight + ClearButtonHeight + 6f;
+            float h = p.gridHeight * CellSize + (p.gridHeight - 1) * CellSpacing + Margin * 2f + HeaderHeight + FooterHeight + (forge.PendingAnalysis.Count + (forge.IsFormatting ? 1 : 0)) * PendingRowHeight + ClearButtonHeight + 6f + TitleHeight;
             size = new Vector2(Mathf.Max(w, 240f) * WidthFactor + LeverWidth, h);
         }
         base.UpdateSize();
     }
 
-    protected override void FillTab()
+    protected override void Contents(Rect rect)
     {
         CompForge? forge = Forge;
         if (forge == null)
@@ -77,7 +77,7 @@ public class ITab_Forge : ITab
             return;
         }
 
-        Rect inner = new Rect(0f, 0f, size.x, size.y).ContractedBy(Margin);
+        Rect inner = rect.ContractedBy(Margin);
 
         Rect main = new Rect(inner.x, inner.y, inner.width - LeverWidth, inner.height);
         DrawHeader(new Rect(main.x, main.y, main.width, 30f), forge);
@@ -105,14 +105,14 @@ public class ITab_Forge : ITab
 
         if (hoverCol >= 0 && forge.FilledInColumn(hoverCol) > 0)
         {
-            Widgets.DrawBoxSolid(new Rect(startX + hoverCol * (cellSize + CellSpacing), gridTop, cellSize, rowsPx), FormatTint);
+            BorSkin.Current.Overlay(new Rect(startX + hoverCol * (cellSize + CellSpacing), gridTop, cellSize, rowsPx), FormatTint, BorTone.Bad);
         }
 
         DrawLever(new Rect(inner.xMax - LeverWidth + LeverPad, gridTop, LeverWidth - LeverPad, rowsPx + 6f + ClearButtonHeight), forge);
 
         Rect clearButton = new Rect(main.x + main.width * 0.125f, gridTop + rowsPx + 6f, main.width * 0.75f, ClearButtonHeight);
         string clearLabel = selectingColumn ? "CancelButton".Translate().Resolve() : "BOR_Forge_ClearColumn".Translate().Resolve();
-        if (Widgets.ButtonText(clearButton, clearLabel))
+        if (BorSkin.Current.Button(clearButton, clearLabel, tone: BorTone.Warn, selected: selectingColumn))
         {
             selectingColumn = !selectingColumn;
         }
@@ -146,16 +146,14 @@ public class ITab_Forge : ITab
         float trackX = slider.center.x;
         float top = slider.y + 8f;
         float bottom = slider.yMax - 8f;
-        Widgets.DrawBoxSolid(new Rect(trackX - 3f, top, 6f, bottom - top), CellBack);
-        GUI.color = CellBorder;
-        Widgets.DrawBox(new Rect(trackX - 3f, top, 6f, bottom - top));
-        GUI.color = Color.white;
+        BorSkin skin = BorSkin.Current;
+        skin.Cell(new Rect(trackX - 3f, top, 6f, bottom - top), CellBack, CellBorder);
 
         int stages = CompForge.OverdriveStages;
         for (int i = 0; i < stages; i++)
         {
             float y = Mathf.Lerp(bottom, top, i / (float)(stages - 1));
-            Widgets.DrawBoxSolid(new Rect(trackX - 8f, y - 0.5f, 16f, 1f), CellBorder);
+            skin.Fill(new Rect(trackX - 8f, y - 0.5f, 16f, 1f), CellBorder);
         }
 
         Rect hit = new Rect(slider.x, rect.y, slider.width, trackH);
@@ -183,20 +181,17 @@ public class ITab_Forge : ITab
         {
             // Where the lever physically is right now, until a colonist moves it.
             float currentY = Mathf.Lerp(bottom, top, forge.OverdriveStage / (float)(stages - 1));
-            GUI.color = CellBorder;
-            Widgets.DrawBox(new Rect(trackX - 11f, currentY - 5f, 22f, 10f));
-            GUI.color = Color.white;
+            skin.Box(new Rect(trackX - 11f, currentY - 5f, 22f, 10f), CellBorder);
         }
         float handleY = Mathf.Lerp(bottom, top, forge.OverdriveTarget / (float)(stages - 1));
         Rect handle = new Rect(trackX - 11f, handleY - 5f, 22f, 10f);
-        Widgets.DrawBoxSolid(handle, Color.Lerp(new Color(0.35f, 0.75f, 0.35f), new Color(0.9f, 0.2f, 0.2f), forge.OverdriveTarget / (float)(stages - 1)));
-        GUI.color = Color.white;
-        Widgets.DrawBox(handle);
+        skin.Fill(handle, Color.Lerp(skin.ToneColor(BorTone.Good), skin.ToneColor(BorTone.Bad), forge.OverdriveTarget / (float)(stages - 1)));
+        skin.Box(handle, Color.white);
 
         Text.Anchor = TextAnchor.MiddleCenter;
         if (forge.OverdrivePending)
         {
-            GUI.color = new Color(1f, 0.85f, 0.4f);
+            GUI.color = skin.TextWarn;
         }
         Widgets.Label(readout, (forge.OverdriveTarget + 1) * 100 + "%");
         GUI.color = Color.white;
@@ -256,7 +251,7 @@ public class ITab_Forge : ITab
         float newWidth = rect.width * 0.75f;
         rect = new Rect(rect.x + (rect.width - newWidth) / 2f, rect.y, newWidth, rect.height);
         string label = "BOR_Forge_Analyze".Translate();
-        if (Widgets.ButtonText(rect, label, active: !full))
+        if (BorSkin.Current.Button(rect, label, active: !full, tone: BorTone.Info))
         {
             BeginAnalyzeTargeting(forge);
         }
@@ -308,10 +303,8 @@ public class ITab_Forge : ITab
 
     private void DrawCell(Rect cell, CompForge forge, int index)
     {
-        Widgets.DrawBoxSolid(cell, CellBack);
-        GUI.color = CellBorder;
-        Widgets.DrawBox(cell);
-        GUI.color = Color.white;
+        BorSkin skin = BorSkin.Current;
+        skin.Cell(cell, CellBack, CellBorder);
 
         ThingDef? def = forge.Slots[index];
         if (def == null)
@@ -328,7 +321,7 @@ public class ITab_Forge : ITab
         if (count > 0 && progress > 0f)
         {
             float h = cell.height * Mathf.Clamp01(progress);
-            Widgets.DrawBoxSolid(new Rect(cell.x, cell.yMax - h, cell.width, h), ProgressTint);
+            skin.Overlay(new Rect(cell.x, cell.yMax - h, cell.width, h), ProgressTint, BorTone.Good);
         }
 
         Text.Font = GameFont.Small;
@@ -343,7 +336,7 @@ public class ITab_Forge : ITab
 
         DrawModeBar(modeBar, forge, index, mode);
 
-        Widgets.DrawHighlightIfMouseover(cell);
+        skin.Hover(cell);
         TooltipHandler.TipRegion(cell, () => TooltipFor(def, forge), 7392000 + index);
 
         if (Mouse.IsOver(modeBar))
@@ -371,7 +364,7 @@ public class ITab_Forge : ITab
 
     private static void DrawModeBar(Rect bar, CompForge forge, int index, ForgeMode mode)
     {
-        Widgets.DrawAtlas(bar, ForgeTextures.TabAtlas);
+        BorSkin.Current.ChipFace(bar);
         Text.Font = GameFont.Tiny;
         int prevSize = Text.CurFontStyle.fontSize;
         bool prevWrap = Text.WordWrap;
@@ -383,7 +376,7 @@ public class ITab_Forge : ITab
         Text.WordWrap = prevWrap;
         Text.CurFontStyle.fontSize = prevSize;
         Text.Font = GameFont.Small;
-        Widgets.DrawHighlightIfMouseover(bar);
+        BorSkin.Current.Hover(bar);
         if (Mouse.IsOver(bar))
         {
             TooltipHandler.TipRegion(bar, "BOR_Forge_ModeTip".Translate());
@@ -425,10 +418,8 @@ public class ITab_Forge : ITab
         {
             Rect fRow = new Rect(rect.x, rect.y, rect.width, PendingRowHeight - 2f);
             int total = System.Math.Max(1, forge.FormatTotal);
-            Widgets.FillableBar(fRow, (forge.FormatDone + forge.FormatCellProgress) / total);
-            Text.Anchor = TextAnchor.MiddleLeft;
-            Widgets.Label(new Rect(fRow.x + 4f, fRow.y, fRow.width - 4f, fRow.height), "BOR_Forge_Formatting".Translate(forge.FormatColumn + 1, forge.FormatDone, total));
-            Text.Anchor = TextAnchor.UpperLeft;
+            BorSkin.Current.Bar(fRow, (forge.FormatDone + forge.FormatCellProgress) / total,
+                "BOR_Forge_Formatting".Translate(forge.FormatColumn + 1, forge.FormatDone, total), BorTone.Warn);
             offset = 1;
         }
         for (int i = 0; i < pending.Count; i++)
@@ -438,11 +429,8 @@ public class ITab_Forge : ITab
             Rect cancel = new Rect(row.xMax - row.height, row.y, row.height, row.height);
             Rect bar = new Rect(row.x, row.y, row.width - row.height - 4f, row.height);
             float prog = forge.AnalyzingThing == t ? forge.AnalysisProgress : 0f;
-            Widgets.FillableBar(bar, prog);
-            Text.Anchor = TextAnchor.MiddleLeft;
-            Widgets.Label(new Rect(bar.x + 4f, bar.y, bar.width - 4f, bar.height), "BOR_Forge_Analyzing".Translate(t.LabelNoCount));
-            Text.Anchor = TextAnchor.UpperLeft;
-            if (Widgets.ButtonText(cancel, "X"))
+            BorSkin.Current.Bar(bar, prog, "BOR_Forge_Analyzing".Translate(t.LabelNoCount), BorTone.Info);
+            if (BorSkin.Current.Button(cancel, "X", tone: BorTone.Bad))
             {
                 forge.RemovePendingAnalysis(t);
                 break;

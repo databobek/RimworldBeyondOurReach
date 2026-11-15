@@ -2,9 +2,9 @@
 <Defs>
 	<ThingDef ParentName="BenchBase">
 		<defName>BOR_Bench_II</defName>
-		<label>Kwazifab Quasar Fabricator</label>
+		<label>Kwazifab Kwazaari Fabricator</label>
 		<uiIconScale>0.50</uiIconScale>
-		<description>A work station for assembling Quasar-based technology, all originally patented within Kwazaari mercantile space.</description>
+		<description>A work station for assembling Kwazaari-based technology, all originally patented within Kwazaari mercantile space.</description>
 		<thingClass>Building_WorkTable</thingClass>
 		<graphicData>
 			<texPath>BOR/Things/Building/tier2/production_bench</texPath>
@@ -81,6 +81,9 @@
 			<li>PlaceWorker_PreventInteractionSpotOverlap</li>
 		</placeWorkers>
 		<designatorDropdown>BOR_Workbenches</designatorDropdown>
+		<modExtensions>
+		  <li Class="BeyondOurReach.BorUIScheme"><scheme>BOR_UIScheme_Kwazaari</scheme></li>
+		</modExtensions>
 	</ThingDef>
 	<ThingDef ParentName="BenchBase">
 		<defName>BOR_Forge_II</defName>
@@ -125,7 +128,14 @@
 		<comps>
 			<li Class="CompProperties_AffectedByFacilities">
 				<linkableFacilities>
+					<li>ToolCabinet</li>
+					<li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_CNCMachine</li>
+					<li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_3DPrinter</li>
 					<li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_RobotAssistant</li>
+					<li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_Spacer_Lathe</li>
+					<li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_Vice</li>
+					<li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_ConveyorBelt</li>
+					<li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_IndustrialOven</li>
 				</linkableFacilities>
 			</li>
 			<li Class="CompProperties_Power">
@@ -138,12 +148,14 @@
       </li>
       <li Class="BeyondOurReach.CompProperties_Forge">
         <stepMultiplier>1.5</stepMultiplier>
+        <workSpeedFactor>1.5</workSpeedFactor>
         <gridWidth>3</gridWidth>
         <gridHeight>4</gridHeight>
         <pipeNet>BOR_NeutroniumNet</pipeNet>
-        <pipeAmount>400</pipeAmount>
+        <pipeAmount>200</pipeAmount>
         <workTicksPerDraw>10</workTicksPerDraw>
         <exclusionList>
+        	<li>BOR_Tech_II</li>
         	<li>BOR_Tech_III</li>
         	<li>BOR_Tech_IV</li>
         	<li>BOR_DataDrive</li>
@@ -176,6 +188,9 @@
 		</researchPrerequisites>
 		<rotatable>true</rotatable>
 		<designatorDropdown>BOR_Workbenches</designatorDropdown>
+		<modExtensions>
+		  <li Class="BeyondOurReach.BorUIScheme"><scheme>BOR_UIScheme_Kwazaari</scheme></li>
+		</modExtensions>
 	</ThingDef>
 	<ThingDef ParentName="BenchBase">
 		<defName>BOR_MedicineBench_II</defName>
@@ -250,6 +265,9 @@
 			<li>BOR_Research_Medicine_II</li>
 		</researchPrerequisites>
 		<designatorDropdown>BOR_MedicineBenches</designatorDropdown>
+		<modExtensions>
+		  <li Class="BeyondOurReach.BorUIScheme"><scheme>BOR_UIScheme_Kwazaari</scheme></li>
+		</modExtensions>
 	</ThingDef>
 	<ThingDef ParentName="BuildingBase">
 		<defName>BOR_HydroponicsBasin_II</defName>

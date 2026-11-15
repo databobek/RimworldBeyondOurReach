@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+	<!-- Hediffs for the Beyond Our Reach abilities. -->
+
+	<HediffDef ParentName="ABT_AbilityBuffBase">
+		<defName>ABT_ShieldHediff</defName>
+		<label>kinetic shell</label>
+		<description>A shell of hardened kinetic field soaks up incoming damage. Hits bigger than what is left get through, and the shell is gone once it collapses.</description>
+		<comps>
+			<li Class="BeyondOurReach.HediffCompProperties_AbilityShield">
+				<graphic>
+					<texPath>Other/ShieldBubble</texPath>
+					<graphicClass>Graphic_Single</graphicClass>
+					<shaderType>TransparentPostLight</shaderType>
+					<drawSize>(2.2, 2.2)</drawSize>
+					<color>(0.6, 0.85, 1, 0.9)</color>
+				</graphic>
+				<absorbAttackType>Both</absorbAttackType>
+				<cannotUseAttackType>None</cannotUseAttackType>
+				<maxEnergy>100</maxEnergy>
+				<maxStackedEnergy>150</maxStackedEnergy>
+				<energyPerTick>0</energyPerTick>
+				<energyLossPerDamage>1</energyLossPerDamage>
+				<rechargeDelay>-1</rechargeDelay>
+				<fullOnAdd>true</fullOnAdd>
+			</li>
+			<li Class="HediffCompProperties_Disappears">
+				<disappearsAfterTicks>3600~3600</disappearsAfterTicks>
+				<showRemainingTime>true</showRemainingTime>
+			</li>
+			<li Class="HediffCompProperties_DisappearsOnDeath" />
+		</comps>
+	</HediffDef>
+
+	<HediffDef ParentName="ABT_AbilityBuffBase">
+		<defName>ABT_HolyWardHediff</defName>
+		<label>archotech's favor</label>
+		<description>Spared by the archotech's judgment and briefly shielded from all damage.</description>
+		<stages>
+			<li>
+				<statFactors>
+					<IncomingDamageFactor>0</IncomingDamageFactor>
+				</statFactors>
+			</li>
+		</stages>
+		<comps>
+			<li Class="HediffCompProperties_Disappears">
+				<disappearsAfterTicks>180~180</disappearsAfterTicks>
+				<showRemainingTime>true</showRemainingTime>
+			</li>
+		</comps>
+	</HediffDef>
+
+	<HediffDef ParentName="ABT_AbilityBuffBase">
+		<defName>ABT_RegenerationHediff</defName>
+		<label>regenerative mechanites</label>
+		<description>A colony of regenerative mechanites repairs one wound a little every few seconds. They leave scars, diseases and missing body parts alone.</description>
+		<comps>
+			<li Class="BeyondOurReach.HediffCompProperties_HealOverTime">
+				<intervalTicks>300</intervalTicks>
+				<injuries>1</injuries>
+				<amount>4</amount>
+			</li>
+			<li Class="HediffCompProperties_Disappears">
+				<disappearsAfterTicks>6250~17500</disappearsAfterTicks>
+				<showRemainingTime>true</showRemainingTime>
+			</li>
+			<li Class="HediffCompProperties_DisappearsOnDeath" />
+		</comps>
+	</HediffDef>
+
+	<HediffDef ParentName="ABT_AbilityBuffBase">
+		<defName>ABT_MedigelHediff</defName>
+		<label>Solar medigel</label>
+		<description>Wounds sealed under Solar Republic field medigel. They heal faster, infections are fought off faster and pain is dulled.</description>
+		<stages>
+			<li>
+				<painFactor>0.8</painFactor>
+				<statFactors>
+					<InjuryHealingFactor>2</InjuryHealingFactor>
+					<ImmunityGainSpeed>1.3</ImmunityGainSpeed>
+				</statFactors>
+			</li>
+		</stages>
+		<comps>
+			<li Class="HediffCompProperties_Disappears">
+				<disappearsAfterTicks>15000~15000</disappearsAfterTicks>
+				<showRemainingTime>true</showRemainingTime>
+			</li>
+			<li Class="HediffCompProperties_DisappearsOnDeath" />
+		</comps>
+	</HediffDef>
+
+	<HediffDef ParentName="ABT_AbilityDebuffBase">
+		<defName>ABT_ResurrectedHediff</defName>
+		<label>nanite revival</label>
+		<description>Recently restarted by resurrector nanites. The body is weak and hungry while they finish their repairs, and the mind is fragile.</description>
+		<stages>
+			<li>
+				<hungerRateFactor>1.75</hungerRateFactor>
+				<restFallFactor>1.75</restFallFactor>
+				<capMods>
+					<li>
+						<capacity>Moving</capacity>
+						<offset>-0.3</offset>
+					</li>
+					<li>
+						<capacity>Manipulation</capacity>
+						<offset>-0.3</offset>
+					</li>
+				</capMods>
+				<statOffsets>
+					<MentalBreakThreshold>0.1</MentalBreakThreshold>
+				</statOffsets>
+			</li>
+		</stages>
+		<comps>
+			<li Class="HediffCompProperties_Disappears">
+				<disappearsAfterTicks>180000~300000</disappearsAfterTicks>
+				<showRemainingTime>true</showRemainingTime>
+			</li>
+		</comps>
+	</HediffDef>
+
+	<HediffDef ParentName="ABT_AbilityDebuffBase">
+		<defName>ABT_ResurrectionDrainHediff</defName>
+		<label>nanite donor strain</label>
+		<description>Seeded resurrector nanites from their own body. Slower and duller for a few days while it recovers.</description>
+		<stages>
+			<li>
+				<restFallFactor>1.3</restFallFactor>
+				<capMods>
+					<li>
+						<capacity>Consciousness</capacity>
+						<offset>-0.15</offset>
+					</li>
+					<li>
+						<capacity>Moving</capacity>
+						<offset>-0.15</offset>
+					</li>
+				</capMods>
+			</li>
+		</stages>
+		<comps>
+			<li Class="HediffCompProperties_Disappears">
+				<disappearsAfterTicks>120000~180000</disappearsAfterTicks>
+				<showRemainingTime>true</showRemainingTime>
+			</li>
+		</comps>
+	</HediffDef>
+
+	<HediffDef ParentName="ABT_AbilityBuffBase">
+		<defName>ABT_BestowMightHediff</defName>
+		<label>combat overdrive</label>
+		<description>An overdrive signal is pushing this pawn's nervous system: faster, steadier and less bothered by pain, but hungrier and more tired while it lasts.</description>
+		<stages>
+			<li>
+				<painFactor>0.5</painFactor>
+				<hungerRateFactor>1.2</hungerRateFactor>
+				<restFallFactor>1.5</restFallFactor>
+				<capMods>
+					<li>
+						<capacity>Moving</capacity>
+						<offset>0.4</offset>
+					</li>
+					<li>
+						<capacity>Manipulation</capacity>
+						<offset>0.4</offset>
+					</li>
+					<li>
+						<capacity>Consciousness</capacity>
+						<offset>0.1</offset>
+					</li>
+					<li>
+						<capacity>BloodPumping</capacity>
+						<offset>0.1</offset>
+					</li>
+				</capMods>
+				<statOffsets>
+					<MeleeDodgeChance>10</MeleeDodgeChance>
+					<AimingDelayFactor>-0.1</AimingDelayFactor>
+					<MentalBreakThreshold>-0.05</MentalBreakThreshold>
+				</statOffsets>
+			</li>
+		</stages>
+		<comps>
+			<li Class="HediffCompProperties_Disappears">
+				<disappearsAfterTicks>1800~2400</disappearsAfterTicks>
+				<showRemainingTime>true</showRemainingTime>
+			</li>
+			<li Class="HediffCompProperties_DisappearsOnDeath" />
+		</comps>
+	</HediffDef>
+
+	<!-- Toggle on the singer. Every verse stacks ABT_BattleHymnBuff on the singer's faction nearby. -->
+	<HediffDef ParentName="ABT_AbilityBuffBase">
+		<defName>ABT_BattleHymnHediff</defName>
+		<label>channeling archotech fury</label>
+		<description>Channeling archotech fury through a psychic amplifier. Every surge empowers allies nearby and costs energy. Stops if downed or out of energy.</description>
+		<comps>
+			<li Class="BeyondOurReach.HediffCompProperties_AllyAura">
+				<intervalTicks>300</intervalTicks>
+				<radius>15</radius>
+				<buff>ABT_BattleHymnBuff</buff>
+				<energyPerPulse>9</energyPerPulse>
+				<severityPerPulse>1</severityPerPulse>
+				<maxSeverity>4</maxSeverity>
+				<inspirationChance>0.04</inspirationChance>
+				<inspirations>
+					<li>Frenzy_Shoot</li>
+					<li>Frenzy_Go</li>
+				</inspirations>
+			</li>
+			<li Class="HediffCompProperties_DisappearsOnDeath" />
+		</comps>
+	</HediffDef>
+
+	<!-- Each verse (5 s) adds 1 severity and it decays 0.4 per verse, so a stage is gained about every other verse; it empties in under a minute once the singing stops. -->
+	<HediffDef ParentName="ABT_AbilityBuffBase">
+		<defName>ABT_BattleHymnBuff</defName>
+		<label>archotech fury</label>
+		<description>Swept up in archotech fury. Stronger with every surge, and fades quickly once the channel closes.</description>
+		<initialSeverity>0.001</initialSeverity>
+		<maxSeverity>4</maxSeverity>
+		<stages>
+			<li>
+				<label>surge I</label>
+				<minSeverity>0</minSeverity>
+				<painFactor>0.7</painFactor>
+				<restFallFactor>0.9</restFallFactor>
+				<capMods>
+					<li><capacity>Moving</capacity><offset>0.1</offset></li>
+					<li><capacity>Manipulation</capacity><offset>0.1</offset></li>
+					<li><capacity>BloodPumping</capacity><offset>0.1</offset></li>
+				</capMods>
+				<statOffsets>
+					<MeleeDodgeChance>3</MeleeDodgeChance>
+					<AimingDelayFactor>-0.05</AimingDelayFactor>
+				</statOffsets>
+			</li>
+			<li>
+				<label>surge II</label>
+				<minSeverity>1.5</minSeverity>
+				<painFactor>0.6</painFactor>
+				<restFallFactor>0.85</restFallFactor>
+				<capMods>
+					<li><capacity>Moving</capacity><offset>0.15</offset></li>
+					<li><capacity>Manipulation</capacity><offset>0.15</offset></li>
+					<li><capacity>BloodPumping</capacity><offset>0.15</offset></li>
+				</capMods>
+				<statOffsets>
+					<MeleeDodgeChance>5</MeleeDodgeChance>
+					<AimingDelayFactor>-0.1</AimingDelayFactor>
+				</statOffsets>
+			</li>
+			<li>
+				<label>surge III</label>
+				<minSeverity>2.5</minSeverity>
+				<painFactor>0.5</painFactor>
+				<restFallFactor>0.8</restFallFactor>
+				<capMods>
+					<li><capacity>Moving</capacity><offset>0.2</offset></li>
+					<li><capacity>Manipulation</capacity><offset>0.2</offset></li>
+					<li><capacity>BloodPumping</capacity><offset>0.2</offset></li>
+				</capMods>
+				<statOffsets>
+					<MeleeDodgeChance>7</MeleeDodgeChance>
+					<AimingDelayFactor>-0.15</AimingDelayFactor>
+				</statOffsets>
+			</li>
+			<li>
+				<label>surge IV</label>
+				<minSeverity>3.5</minSeverity>
+				<painFactor>0.47</painFactor>
+				<restFallFactor>0.75</restFallFactor>
+				<capMods>
+					<li><capacity>Moving</capacity><offset>0.25</offset></li>
+					<li><capacity>Manipulation</capacity><offset>0.25</offset></li>
+					<li><capacity>BloodPumping</capacity><offset>0.25</offset></li>
+				</capMods>
+				<statOffsets>
+					<MeleeDodgeChance>9</MeleeDodgeChance>
+					<AimingDelayFactor>-0.2</AimingDelayFactor>
+				</statOffsets>
+			</li>
+		</stages>
+		<comps>
+			<li Class="HediffCompProperties_SeverityPerDay">
+				<severityPerDay>-80</severityPerDay>
+			</li>
+		</comps>
+	</HediffDef>
+
+	<!-- Toggle on the caster: the orb itself. -->
+	<HediffDef ParentName="ABT_AbilityBuffBase">
+		<defName>ABT_TechnoBitHediff</defName>
+		<label>T-Petrone</label>
+		<description>A T-Petrone support drone hovers at this pawn's shoulder. It shoots what the pawn aims at while drafted, repairs nearby buildings and mechanoids, and steadies the pawn's hands while crafting or building.</description>
+		<comps>
+			<li Class="BeyondOurReach.HediffCompProperties_TechnoBit">
+				<graphic>
+					<texPath>Things/Mote/LightningGlow</texPath>
+					<graphicClass>Graphic_Single</graphicClass>
+					<shaderType>MoteGlow</shaderType>
+					<drawSize>(1.1, 1.1)</drawSize>
+					<color>(0.5, 0.9, 1)</color>
+				</graphic>
+				<laser>ABT_TechnoBitLaser</laser>
+				<heavyLaser>ABT_TechnoBitHeavyLaser</heavyLaser>
+				<laserInterval>45</laserInterval>
+				<heavyLaserInterval>180</heavyLaserInterval>
+				<repairRadius>8</repairRadius>
+				<repairAmount>8~12</repairAmount>
+				<repairIntervalDrafted>160</repairIntervalDrafted>
+				<repairIntervalUndrafted>600</repairIntervalUndrafted>
+				<workBoost>ABT_TechnoBitAssistHediff</workBoost>
+				<workBoostInterval>600</workBoostInterval>
+				<workDistance>2</workDistance>
+			</li>
+			<li Class="HediffCompProperties_DisappearsOnDeath" />
+		</comps>
+	</HediffDef>
+
+	<HediffDef ParentName="ABT_AbilityBuffBase">
+		<defName>ABT_TechnoBitAssistHediff</defName>
+		<label>T-Petrone assist</label>
+		<description>The T-Petrone is steadying this pawn's work.</description>
+		<stages>
+			<li>
+				<capMods>
+					<li>
+						<capacity>Manipulation</capacity>
+						<offset>0.5</offset>
+					</li>
+				</capMods>
+			</li>
+		</stages>
+		<comps>
+			<li Class="HediffCompProperties_Disappears">
+				<disappearsAfterTicks>600~600</disappearsAfterTicks>
+			</li>
+		</comps>
+	</HediffDef>
+
+	<HediffDef ParentName="ABT_AbilityDebuffBase">
+		<defName>ABT_PsionicExhaustionHediff</defName>
+		<label>psychic burnout</label>
+		<description>The psylink is burned out. Psychic abilities cannot be used until it recovers.</description>
+		<comps>
+			<li Class="HediffCompProperties_Disappears">
+				<disappearsAfterTicks>2500~2500</disappearsAfterTicks>
+				<showRemainingTime>true</showRemainingTime>
+			</li>
+		</comps>
+	</HediffDef>
+
+</Defs>

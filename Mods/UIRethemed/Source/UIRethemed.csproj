@@ -1,0 +1,45 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<!-- BOR's windows and tabs drawn with [LFS] UI Rethemed - Core. Compiled against its DLL and loaded only when that
+	     mod is active (LoadFolders.xml), so BOR never depends on it. -->
+
+	<PropertyGroup>
+		<TargetFramework>net10.0</TargetFramework>
+		<LangVersion>latest</LangVersion>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+		<GenerateDependencyFile>false</GenerateDependencyFile>
+		<Nullable>enable</Nullable>
+		<DebugType>none</DebugType>
+		<DebugSymbols>false</DebugSymbols>
+		<AssemblyName>BORUIRethemed</AssemblyName>
+		<RootNamespace>BeyondOurReach.UIRethemed</RootNamespace>
+		<OutputPath>..\Assemblies\</OutputPath>
+		<!-- [LFS] UI Rethemed - Core, Steam Workshop 3832843406. Override with -p:LfsCoreDir=... for a local copy. -->
+		<LfsCoreDir Condition="'$(LfsCoreDir)' == ''">..\..\..\..\..\..\..\workshop\content\294100\3832843406\</LfsCoreDir>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Lib.Harmony" Version="2.4.3" ExcludeAssets="runtime" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Reference Include="BeyondOurReach">
+			<HintPath>..\..\..\Assemblies\BeyondOurReach.dll</HintPath>
+			<Private>False</Private>
+		</Reference>
+		<Reference Include="UIRethemedCore">
+			<HintPath>$(LfsCoreDir)Versions\1.7\Assemblies\UIRethemedCore.dll</HintPath>
+			<Private>False</Private>
+		</Reference>
+		<Reference Include="Assembly-CSharp">
+			<HintPath>..\..\..\..\..\Assembly-CSharp.dll</HintPath>
+			<Private>False</Private>
+		</Reference>
+		<Reference Include="UnityStubs">
+			<HintPath>..\..\..\..\..\UnityStubs.dll</HintPath>
+			<Private>False</Private>
+		</Reference>
+	</ItemGroup>
+
+</Project>

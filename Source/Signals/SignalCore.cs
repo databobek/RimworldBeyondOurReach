@@ -107,12 +107,22 @@ public static class SignalUtility
         {
             home = map.listerBuildings.allBuildingsColonist.Select(b => b.Position).ToList();
         }
+        // A search that finds nothing has looked at every cell of its bucket, and more spots only rule more cells out,
+        // so the bucket is not searched again. Without this a base with no room repeats the same search 400 times.
+        const int searchRadius = 12;
+        HashSet<(int, int)> empty = new();
         for (int attempt = 0; attempt < 400 && spots.Count < count && home.Count > 0; attempt++)
         {
             IntVec3 near = home.RandomElement();
-            if (!CellFinder.TryFindRandomCellNear(near, map, 12, c => ShuttleFits(c, map, size)
+            (int, int) bucket = (near.x / searchRadius, near.z / searchRadius);
+            if (empty.Contains(bucket))
+            {
+                continue;
+            }
+            if (!CellFinder.TryFindRandomCellNear(near, map, searchRadius, c => ShuttleFits(c, map, size)
                 && spots.All(s => s.DistanceTo(c) >= minSpacing), out IntVec3 cell))
             {
+                empty.Add(bucket);
                 continue;
             }
             spots.Add(cell);

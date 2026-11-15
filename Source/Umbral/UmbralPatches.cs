@@ -89,19 +89,6 @@ public static class UmbralPatches
         }
     }
 
-    [HarmonyPatch(typeof(Pawn), nameof(Pawn.Kill))]
-    public static class Pawn_Kill_Patch
-    {
-        public static void Prefix(Pawn __instance, DamageInfo? dinfo)
-        {
-            if (__instance.Dead || !__instance.RaceProps.Humanlike || dinfo?.Instigator is not Pawn killer || killer == __instance)
-            {
-                return;
-            }
-            Umbral.Notify_KilledHumanlike(killer);
-        }
-    }
-
     [HarmonyPatch(typeof(EquipmentUtility), nameof(EquipmentUtility.CanEquip),
         new[] { typeof(Thing), typeof(Pawn), typeof(string), typeof(bool) },
         new[] { ArgumentType.Normal, ArgumentType.Normal, ArgumentType.Out, ArgumentType.Normal })]

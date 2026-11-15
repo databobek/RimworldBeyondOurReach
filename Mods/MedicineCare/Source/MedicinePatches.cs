@@ -9,10 +9,12 @@ namespace BeyondOurReach.MedicineCare;
 [HarmonyPatch(typeof(MedicalCareUtility), nameof(MedicalCareUtility.AllowsMedicine))]
 public static class Patch_AllowsMedicine
 {
-    // Best is no longer "everything": it is the ultratech level, and modded medicine gets its own levels above it.
+    // Every medicine level filters by potency. Vanilla's "normal or worse" allows anything but ultratech, which would let
+    // medicine slotted between industrial and ultratech through, and "best" is no longer everything: it is the ultratech
+    // level, with modded medicine getting its own levels above it.
     public static bool Prefix(MedicalCareCategory cat, ThingDef meds, ref bool __result)
     {
-        if (!CareTiers.IsExtended(cat))
+        if (cat < MedicalCareCategory.HerbalOrWorse)
         {
             return true;
         }

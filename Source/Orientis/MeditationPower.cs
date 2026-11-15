@@ -253,6 +253,13 @@ public class JobDriver_OrientisMeditate : JobDriver
 
     private bool moved;
 
+    // Saved, as a job loaded mid-session does not run the toil's initAction again.
+    public override void ExposeData()
+    {
+        base.ExposeData();
+        Scribe_Values.Look(ref moved, "moved");
+    }
+
     private Thing Spot => job.GetTarget(TargetIndex.A).Thing;
 
     private CompProperties_MeditationSpot SpotProps => Spot.TryGetComp<CompMeditationSpot>().Props;

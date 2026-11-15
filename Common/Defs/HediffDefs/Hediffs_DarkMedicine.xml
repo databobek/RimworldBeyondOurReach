@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- Dark medicine nanites in a body that does not answer to the dark archotech. Behaves as a disease: immunity builds over about a day, then it fades. -->
+	<HediffDef>
+		<defName>BOR_DarkMedicineSickness</defName>
+		<label>dark nanite rejection</label>
+		<description>Dark medicine heals through nanites of the dark archotech. A body that does not answer to it takes them as an infection: wounds close at once, but the pain is blinding, the mind fills with murderous rage, and no anaesthetic works. The body builds immunity over about a day, and the sickness then fades.</description>
+		<hediffClass>HediffWithComps</hediffClass>
+		<defaultLabelColor>(0.6, 0.1, 0.1)</defaultLabelColor>
+		<isBad>true</isBad>
+		<tendable>false</tendable>
+		<initialSeverity>0.05</initialSeverity>
+		<minSeverity>0</minSeverity>
+		<maxSeverity>1</maxSeverity>
+		<everCurableByItem>false</everCurableByItem>
+		<scenarioCanAdd>false</scenarioCanAdd>
+		<comps>
+			<li Class="HediffCompProperties_Immunizable">
+				<immunityPerDaySick>1.0</immunityPerDaySick>
+				<severityPerDayNotImmune>0.9</severityPerDayNotImmune>
+				<severityPerDayImmune>-1.2</severityPerDayImmune>
+			</li>
+		</comps>
+		<stages>
+			<li>
+				<label>early</label>
+				<painOffset>0.4</painOffset>
+			</li>
+			<li>
+				<minSeverity>0.25</minSeverity>
+				<label>rising</label>
+				<painOffset>0.55</painOffset>
+			</li>
+			<li>
+				<minSeverity>0.5</minSeverity>
+				<label>severe</label>
+				<painOffset>0.7</painOffset>
+			</li>
+			<li>
+				<minSeverity>0.75</minSeverity>
+				<label>peak</label>
+				<painOffset>0.75</painOffset>
+			</li>
+		</stages>
+	</HediffDef>
+</Defs>

@@ -47,34 +47,9 @@ public class JobDriver_ForgeFormat : JobDriver
     }
 }
 
-public class WorkGiver_ForgeFormat : WorkGiver_Scanner
+public class WorkGiver_ForgeFormat : WorkGiver_ForgeBase
 {
-    public override PathEndMode PathEndMode => PathEndMode.InteractionCell;
-
-    private static bool HasWork(CompForge comp) => comp.parent.Faction == Faction.OfPlayer && comp.IsFormatting;
-
-    public override IEnumerable<Thing> PotentialWorkThingsGlobal(Pawn pawn)
-    {
-        foreach (CompForge comp in MapComponent_WorkBuildings.Of(pawn.Map).forges)
-        {
-            if (HasWork(comp))
-            {
-                yield return comp.parent;
-            }
-        }
-    }
-
-    public override bool ShouldSkip(Pawn pawn, bool forced = false)
-    {
-        foreach (CompForge comp in MapComponent_WorkBuildings.Of(pawn.Map).forges)
-        {
-            if (HasWork(comp))
-            {
-                return false;
-            }
-        }
-        return true;
-    }
+    protected override bool HasWork(CompForge comp) => comp.IsFormatting;
 
     public override Job? JobOnThing(Pawn pawn, Thing t, bool forced = false)
     {

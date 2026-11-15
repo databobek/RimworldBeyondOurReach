@@ -1,0 +1,634 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+	<!--
+		Abilities and energy pools from "Armors For All Post-Medieval Tech Levels" (bamba.allbambaarmors), which defines them.
+		Every entry has MayRequire, so nothing here applies without that mod.
+		Energy uses the same scale as that mod: Advanced Spacer medium = 100; Solar x1.25, Ultra x1.25 more, Kwazaari and Orientis x1.25 more;
+		light/medium/heavy x0.75/1/1.25. Each pool refills from empty in 200 seconds.
+		This folder loads last (LoadFolders.xml), so it runs after EquipmentBadzaar.xml, which adds the badzaari armor outside Combat Extended.
+		Royalty- and Biotech-only armor is skipped quietly when the DLC is off.
+	-->
+
+	<!-- kwazaari mechcommander helmet (Biotech): kwazaari medium, 195 energy; no mechcommander body armor exists, so the helmet carries them -->
+	<Operation Class="PatchOperationConditional">
+		<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_ArmorHelmetMechCommander"]</xpath>
+		<match Class="PatchOperationConditional">
+			<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_ArmorHelmetMechCommander"]/comps</xpath>
+			<match Class="PatchOperationAdd">
+				<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_ArmorHelmetMechCommander"]/comps</xpath>
+				<value>
+					<li Class="VEF.Abilities.CompProperties_AbilitiesApparel" MayRequire="bamba.allbambaarmors">
+						<abilities>
+							<li>ABT_Shield</li>
+							<li>ABT_ChainLightning</li>
+						</abilities>
+					</li>
+					<li Class="AllBambaArmors.CompProperties_AbilityEnergy" MayRequire="bamba.allbambaarmors">
+						<maxEnergy>195</maxEnergy>
+						<regenPerSecond>0.975</regenPerSecond>
+						<barColor>(0.25, 0.8, 0.75)</barColor>
+					</li>
+				</value>
+			</match>
+			<nomatch Class="PatchOperationAdd">
+				<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_ArmorHelmetMechCommander"]</xpath>
+				<value>
+					<comps>
+						<li Class="VEF.Abilities.CompProperties_AbilitiesApparel" MayRequire="bamba.allbambaarmors">
+							<abilities>
+								<li>ABT_Shield</li>
+								<li>ABT_ChainLightning</li>
+							</abilities>
+						</li>
+						<li Class="AllBambaArmors.CompProperties_AbilityEnergy" MayRequire="bamba.allbambaarmors">
+							<maxEnergy>195</maxEnergy>
+							<regenPerSecond>0.975</regenPerSecond>
+							<barColor>(0.25, 0.8, 0.75)</barColor>
+						</li>
+					</comps>
+				</value>
+			</nomatch>
+		</match>
+	</Operation>
+
+	<!-- kwazaari marine armor: kwazaari medium, 195 energy -->
+	<Operation Class="PatchOperationConditional">
+		<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_PowerArmor"]</xpath>
+		<match Class="PatchOperationConditional">
+			<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_PowerArmor"]/comps</xpath>
+			<match Class="PatchOperationAdd">
+				<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_PowerArmor"]/comps</xpath>
+				<value>
+					<li Class="VEF.Abilities.CompProperties_AbilitiesApparel" MayRequire="bamba.allbambaarmors">
+						<abilities>
+							<li>ABT_AdvancedHeal</li>
+							<li>ABT_BestowMight</li>
+						</abilities>
+					</li>
+					<li Class="AllBambaArmors.CompProperties_AbilityEnergy" MayRequire="bamba.allbambaarmors">
+						<maxEnergy>195</maxEnergy>
+						<regenPerSecond>0.975</regenPerSecond>
+						<barColor>(0.25, 0.8, 0.75)</barColor>
+					</li>
+				</value>
+			</match>
+			<nomatch Class="PatchOperationAdd">
+				<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_PowerArmor"]</xpath>
+				<value>
+					<comps>
+						<li Class="VEF.Abilities.CompProperties_AbilitiesApparel" MayRequire="bamba.allbambaarmors">
+							<abilities>
+								<li>ABT_AdvancedHeal</li>
+								<li>ABT_BestowMight</li>
+							</abilities>
+						</li>
+						<li Class="AllBambaArmors.CompProperties_AbilityEnergy" MayRequire="bamba.allbambaarmors">
+							<maxEnergy>195</maxEnergy>
+							<regenPerSecond>0.975</regenPerSecond>
+							<barColor>(0.25, 0.8, 0.75)</barColor>
+						</li>
+					</comps>
+				</value>
+			</nomatch>
+		</match>
+	</Operation>
+
+	<!-- kwazaari bodysuit: kwazaari light, 146 energy -->
+	<Operation Class="PatchOperationConditional">
+		<xpath>Defs/ThingDef[defName="BOR_Quasar_Carbonsuit"]</xpath>
+		<match Class="PatchOperationConditional">
+			<xpath>Defs/ThingDef[defName="BOR_Quasar_Carbonsuit"]/comps</xpath>
+			<match Class="PatchOperationAdd">
+				<xpath>Defs/ThingDef[defName="BOR_Quasar_Carbonsuit"]/comps</xpath>
+				<value>
+					<li Class="VEF.Abilities.CompProperties_AbilitiesApparel" MayRequire="bamba.allbambaarmors">
+						<abilities>
+							<li>ABT_TechnoBit</li>
+						</abilities>
+					</li>
+					<li Class="AllBambaArmors.CompProperties_AbilityEnergy" MayRequire="bamba.allbambaarmors">
+						<maxEnergy>146</maxEnergy>
+						<regenPerSecond>0.73</regenPerSecond>
+						<barColor>(0.25, 0.8, 0.75)</barColor>
+					</li>
+				</value>
+			</match>
+			<nomatch Class="PatchOperationAdd">
+				<xpath>Defs/ThingDef[defName="BOR_Quasar_Carbonsuit"]</xpath>
+				<value>
+					<comps>
+						<li Class="VEF.Abilities.CompProperties_AbilitiesApparel" MayRequire="bamba.allbambaarmors">
+							<abilities>
+								<li>ABT_TechnoBit</li>
+							</abilities>
+						</li>
+						<li Class="AllBambaArmors.CompProperties_AbilityEnergy" MayRequire="bamba.allbambaarmors">
+							<maxEnergy>146</maxEnergy>
+							<regenPerSecond>0.73</regenPerSecond>
+							<barColor>(0.25, 0.8, 0.75)</barColor>
+						</li>
+					</comps>
+				</value>
+			</nomatch>
+		</match>
+	</Operation>
+
+	<!-- solar marine armor: solar medium, 125 energy -->
+	<Operation Class="PatchOperationConditional">
+		<xpath>Defs/ThingDef[defName="BOR_Solar_Apparel_PowerArmor"]</xpath>
+		<match Class="PatchOperationConditional">
+			<xpath>Defs/ThingDef[defName="BOR_Solar_Apparel_PowerArmor"]/comps</xpath>
+			<match Class="PatchOperationAdd">
+				<xpath>Defs/ThingDef[defName="BOR_Solar_Apparel_PowerArmor"]/comps</xpath>
+				<value>
+					<li Class="VEF.Abilities.CompProperties_AbilitiesApparel" MayRequire="bamba.allbambaarmors">
+						<abilities>
+							<li>ABT_Medigel</li>
+							<li>ABT_Sunfire</li>
+						</abilities>
+					</li>
+					<li Class="AllBambaArmors.CompProperties_AbilityEnergy" MayRequire="bamba.allbambaarmors">
+						<maxEnergy>125</maxEnergy>
+						<regenPerSecond>0.625</regenPerSecond>
+						<barColor>(0.95, 0.75, 0.25)</barColor>
+					</li>
+				</value>
+			</match>
+			<nomatch Class="PatchOperationAdd">
+				<xpath>Defs/ThingDef[defName="BOR_Solar_Apparel_PowerArmor"]</xpath>
+				<value>
+					<comps>
+						<li Class="VEF.Abilities.CompProperties_AbilitiesApparel" MayRequire="bamba.allbambaarmors">
+							<abilities>
+								<li>ABT_Medigel</li>
+								<li>ABT_Sunfire</li>
+							</abilities>
+						</li>
+						<li Class="AllBambaArmors.CompProperties_AbilityEnergy" MayRequire="bamba.allbambaarmors">
+							<maxEnergy>125</maxEnergy>
+							<regenPerSecond>0.625</regenPerSecond>
+							<barColor>(0.95, 0.75, 0.25)</barColor>
+						</li>
+					</comps>
+				</value>
+			</nomatch>
+		</match>
+	</Operation>
+
+	<!-- solar daedalus armor (Royalty): solar light, 94 energy -->
+	<Operation Class="PatchOperationConditional">
+		<xpath>Defs/ThingDef[defName="BOR_Solar_Apparel_ArchangelArmor"]</xpath>
+		<match Class="PatchOperationConditional">
+			<xpath>Defs/ThingDef[defName="BOR_Solar_Apparel_ArchangelArmor"]/comps</xpath>
+			<match Class="PatchOperationAdd">
+				<xpath>Defs/ThingDef[defName="BOR_Solar_Apparel_ArchangelArmor"]/comps</xpath>
+				<value>
+					<li Class="VEF.Abilities.CompProperties_AbilitiesApparel" MayRequire="bamba.allbambaarmors">
+						<abilities>
+							<li>ABT_Regenerate</li>
+						</abilities>
+					</li>
+					<li Class="AllBambaArmors.CompProperties_AbilityEnergy" MayRequire="bamba.allbambaarmors">
+						<maxEnergy>94</maxEnergy>
+						<regenPerSecond>0.47</regenPerSecond>
+						<barColor>(0.95, 0.75, 0.25)</barColor>
+					</li>
+				</value>
+			</match>
+			<nomatch Class="PatchOperationAdd">
+				<xpath>Defs/ThingDef[defName="BOR_Solar_Apparel_ArchangelArmor"]</xpath>
+				<value>
+					<comps>
+						<li Class="VEF.Abilities.CompProperties_AbilitiesApparel" MayRequire="bamba.allbambaarmors">
+							<abilities>
+								<li>ABT_Regenerate</li>
+							</abilities>
+						</li>
+						<li Class="AllBambaArmors.CompProperties_AbilityEnergy" MayRequire="bamba.allbambaarmors">
+							<maxEnergy>94</maxEnergy>
+							<regenPerSecond>0.47</regenPerSecond>
+							<barColor>(0.95, 0.75, 0.25)</barColor>
+						</li>
+					</comps>
+				</value>
+			</nomatch>
+		</match>
+	</Operation>
+
+	<!-- solar recon (hussar) armor: solar light, 94 energy -->
+	<Operation Class="PatchOperationConditional">
+		<xpath>Defs/ThingDef[defName="BOR_Solar_Apparel_ArmorRecon"]</xpath>
+		<match Class="PatchOperationConditional">
+			<xpath>Defs/ThingDef[defName="BOR_Solar_Apparel_ArmorRecon"]/comps</xpath>
+			<match Class="PatchOperationAdd">
+				<xpath>Defs/ThingDef[defName="BOR_Solar_Apparel_ArmorRecon"]/comps</xpath>
+				<value>
+					<li Class="VEF.Abilities.CompProperties_AbilitiesApparel" MayRequire="bamba.allbambaarmors">
+						<abilities>
+							<li>ABT_PhaseStrike</li>
+							<li>ABT_Ignite</li>
+						</abilities>
+					</li>
+					<li Class="AllBambaArmors.CompProperties_AbilityEnergy" MayRequire="bamba.allbambaarmors">
+						<maxEnergy>94</maxEnergy>
+						<regenPerSecond>0.47</regenPerSecond>
+						<barColor>(0.95, 0.75, 0.25)</barColor>
+					</li>
+				</value>
+			</match>
+			<nomatch Class="PatchOperationAdd">
+				<xpath>Defs/ThingDef[defName="BOR_Solar_Apparel_ArmorRecon"]</xpath>
+				<value>
+					<comps>
+						<li Class="VEF.Abilities.CompProperties_AbilitiesApparel" MayRequire="bamba.allbambaarmors">
+							<abilities>
+								<li>ABT_PhaseStrike</li>
+								<li>ABT_Ignite</li>
+							</abilities>
+						</li>
+						<li Class="AllBambaArmors.CompProperties_AbilityEnergy" MayRequire="bamba.allbambaarmors">
+							<maxEnergy>94</maxEnergy>
+							<regenPerSecond>0.47</regenPerSecond>
+							<barColor>(0.95, 0.75, 0.25)</barColor>
+						</li>
+					</comps>
+				</value>
+			</nomatch>
+		</match>
+	</Operation>
+
+	<!-- solar bodysuit: solar light, 94 energy -->
+	<Operation Class="PatchOperationConditional">
+		<xpath>Defs/ThingDef[defName="BOR_Solar_Carbonsuit"]</xpath>
+		<match Class="PatchOperationConditional">
+			<xpath>Defs/ThingDef[defName="BOR_Solar_Carbonsuit"]/comps</xpath>
+			<match Class="PatchOperationAdd">
+				<xpath>Defs/ThingDef[defName="BOR_Solar_Carbonsuit"]/comps</xpath>
+				<value>
+					<li Class="VEF.Abilities.CompProperties_AbilitiesApparel" MayRequire="bamba.allbambaarmors">
+						<abilities>
+							<li>ABT_TechnoBit</li>
+						</abilities>
+					</li>
+					<li Class="AllBambaArmors.CompProperties_AbilityEnergy" MayRequire="bamba.allbambaarmors">
+						<maxEnergy>94</maxEnergy>
+						<regenPerSecond>0.47</regenPerSecond>
+						<barColor>(0.95, 0.75, 0.25)</barColor>
+					</li>
+				</value>
+			</match>
+			<nomatch Class="PatchOperationAdd">
+				<xpath>Defs/ThingDef[defName="BOR_Solar_Carbonsuit"]</xpath>
+				<value>
+					<comps>
+						<li Class="VEF.Abilities.CompProperties_AbilitiesApparel" MayRequire="bamba.allbambaarmors">
+							<abilities>
+								<li>ABT_TechnoBit</li>
+							</abilities>
+						</li>
+						<li Class="AllBambaArmors.CompProperties_AbilityEnergy" MayRequire="bamba.allbambaarmors">
+							<maxEnergy>94</maxEnergy>
+							<regenPerSecond>0.47</regenPerSecond>
+							<barColor>(0.95, 0.75, 0.25)</barColor>
+						</li>
+					</comps>
+				</value>
+			</nomatch>
+		</match>
+	</Operation>
+
+	<!-- badzaari plate harness: kwazaari heavy, 244 energy -->
+	<Operation Class="PatchOperationConditional">
+		<xpath>Defs/ThingDef[defName="BOR_Badzaari_Apparel_HeavyArmor"]</xpath>
+		<match Class="PatchOperationConditional">
+			<xpath>Defs/ThingDef[defName="BOR_Badzaari_Apparel_HeavyArmor"]/comps</xpath>
+			<match Class="PatchOperationAdd">
+				<xpath>Defs/ThingDef[defName="BOR_Badzaari_Apparel_HeavyArmor"]/comps</xpath>
+				<value>
+					<li Class="VEF.Abilities.CompProperties_AbilitiesApparel" MayRequire="bamba.allbambaarmors">
+						<abilities>
+							<li>ABT_SeismicSlash</li>
+						</abilities>
+					</li>
+					<li Class="AllBambaArmors.CompProperties_AbilityEnergy" MayRequire="bamba.allbambaarmors">
+						<maxEnergy>244</maxEnergy>
+						<regenPerSecond>1.22</regenPerSecond>
+						<barColor>(0.25, 0.8, 0.75)</barColor>
+					</li>
+				</value>
+			</match>
+			<nomatch Class="PatchOperationAdd">
+				<xpath>Defs/ThingDef[defName="BOR_Badzaari_Apparel_HeavyArmor"]</xpath>
+				<value>
+					<comps>
+						<li Class="VEF.Abilities.CompProperties_AbilitiesApparel" MayRequire="bamba.allbambaarmors">
+							<abilities>
+								<li>ABT_SeismicSlash</li>
+							</abilities>
+						</li>
+						<li Class="AllBambaArmors.CompProperties_AbilityEnergy" MayRequire="bamba.allbambaarmors">
+							<maxEnergy>244</maxEnergy>
+							<regenPerSecond>1.22</regenPerSecond>
+							<barColor>(0.25, 0.8, 0.75)</barColor>
+						</li>
+					</comps>
+				</value>
+			</nomatch>
+		</match>
+	</Operation>
+
+	<!-- saladin armor (orientis light): orientis light, 146 energy -->
+	<Operation Class="PatchOperationConditional">
+		<xpath>Defs/ThingDef[defName="BOR_Orientis_SaladinArmor"]</xpath>
+		<match Class="PatchOperationConditional">
+			<xpath>Defs/ThingDef[defName="BOR_Orientis_SaladinArmor"]/comps</xpath>
+			<match Class="PatchOperationAdd">
+				<xpath>Defs/ThingDef[defName="BOR_Orientis_SaladinArmor"]/comps</xpath>
+				<value>
+					<li Class="VEF.Abilities.CompProperties_AbilitiesApparel" MayRequire="bamba.allbambaarmors">
+						<abilities>
+							<li>ABT_HealingCircle</li>
+							<li>ABT_PsionicStorm</li>
+						</abilities>
+					</li>
+					<li Class="AllBambaArmors.CompProperties_AbilityEnergy" MayRequire="bamba.allbambaarmors">
+						<maxEnergy>146</maxEnergy>
+						<regenPerSecond>0.73</regenPerSecond>
+						<barColor>(0.95, 0.85, 0.5)</barColor>
+					</li>
+				</value>
+			</match>
+			<nomatch Class="PatchOperationAdd">
+				<xpath>Defs/ThingDef[defName="BOR_Orientis_SaladinArmor"]</xpath>
+				<value>
+					<comps>
+						<li Class="VEF.Abilities.CompProperties_AbilitiesApparel" MayRequire="bamba.allbambaarmors">
+							<abilities>
+								<li>ABT_HealingCircle</li>
+								<li>ABT_PsionicStorm</li>
+							</abilities>
+						</li>
+						<li Class="AllBambaArmors.CompProperties_AbilityEnergy" MayRequire="bamba.allbambaarmors">
+							<maxEnergy>146</maxEnergy>
+							<regenPerSecond>0.73</regenPerSecond>
+							<barColor>(0.95, 0.85, 0.5)</barColor>
+						</li>
+					</comps>
+				</value>
+			</nomatch>
+		</match>
+	</Operation>
+
+	<!-- templar armor (orientis mid): orientis medium, 195 energy -->
+	<Operation Class="PatchOperationConditional">
+		<xpath>Defs/ThingDef[defName="BOR_Orientis_TemplarArmor"]</xpath>
+		<match Class="PatchOperationConditional">
+			<xpath>Defs/ThingDef[defName="BOR_Orientis_TemplarArmor"]/comps</xpath>
+			<match Class="PatchOperationAdd">
+				<xpath>Defs/ThingDef[defName="BOR_Orientis_TemplarArmor"]/comps</xpath>
+				<value>
+					<li Class="VEF.Abilities.CompProperties_AbilitiesApparel" MayRequire="bamba.allbambaarmors">
+						<abilities>
+							<li>ABT_CureDisease</li>
+							<li>ABT_PsionicBlast</li>
+						</abilities>
+					</li>
+					<li Class="AllBambaArmors.CompProperties_AbilityEnergy" MayRequire="bamba.allbambaarmors">
+						<maxEnergy>195</maxEnergy>
+						<regenPerSecond>0.975</regenPerSecond>
+						<barColor>(0.95, 0.85, 0.5)</barColor>
+					</li>
+				</value>
+			</match>
+			<nomatch Class="PatchOperationAdd">
+				<xpath>Defs/ThingDef[defName="BOR_Orientis_TemplarArmor"]</xpath>
+				<value>
+					<comps>
+						<li Class="VEF.Abilities.CompProperties_AbilitiesApparel" MayRequire="bamba.allbambaarmors">
+							<abilities>
+								<li>ABT_CureDisease</li>
+								<li>ABT_PsionicBlast</li>
+							</abilities>
+						</li>
+						<li Class="AllBambaArmors.CompProperties_AbilityEnergy" MayRequire="bamba.allbambaarmors">
+							<maxEnergy>195</maxEnergy>
+							<regenPerSecond>0.975</regenPerSecond>
+							<barColor>(0.95, 0.85, 0.5)</barColor>
+						</li>
+					</comps>
+				</value>
+			</nomatch>
+		</match>
+	</Operation>
+
+	<!-- monk bodysuit (orientis): orientis light, 146 energy -->
+	<Operation Class="PatchOperationConditional">
+		<xpath>Defs/ThingDef[defName="BOR_Orientis_MonkBodysuit"]</xpath>
+		<match Class="PatchOperationConditional">
+			<xpath>Defs/ThingDef[defName="BOR_Orientis_MonkBodysuit"]/comps</xpath>
+			<match Class="PatchOperationAdd">
+				<xpath>Defs/ThingDef[defName="BOR_Orientis_MonkBodysuit"]/comps</xpath>
+				<value>
+					<li Class="VEF.Abilities.CompProperties_AbilitiesApparel" MayRequire="bamba.allbambaarmors">
+						<abilities>
+							<li>ABT_Resurrection</li>
+						</abilities>
+					</li>
+					<li Class="AllBambaArmors.CompProperties_AbilityEnergy" MayRequire="bamba.allbambaarmors">
+						<maxEnergy>146</maxEnergy>
+						<regenPerSecond>0.73</regenPerSecond>
+						<barColor>(0.95, 0.85, 0.5)</barColor>
+					</li>
+				</value>
+			</match>
+			<nomatch Class="PatchOperationAdd">
+				<xpath>Defs/ThingDef[defName="BOR_Orientis_MonkBodysuit"]</xpath>
+				<value>
+					<comps>
+						<li Class="VEF.Abilities.CompProperties_AbilitiesApparel" MayRequire="bamba.allbambaarmors">
+							<abilities>
+								<li>ABT_Resurrection</li>
+							</abilities>
+						</li>
+						<li Class="AllBambaArmors.CompProperties_AbilityEnergy" MayRequire="bamba.allbambaarmors">
+							<maxEnergy>146</maxEnergy>
+							<regenPerSecond>0.73</regenPerSecond>
+							<barColor>(0.95, 0.85, 0.5)</barColor>
+						</li>
+					</comps>
+				</value>
+			</nomatch>
+		</match>
+	</Operation>
+
+	<!-- black templar armor (orientis heavy): orientis heavy, 244 energy -->
+	<Operation Class="PatchOperationConditional">
+		<xpath>Defs/ThingDef[defName="BOR_Orientis_BlackTemplarArmor"]</xpath>
+		<match Class="PatchOperationConditional">
+			<xpath>Defs/ThingDef[defName="BOR_Orientis_BlackTemplarArmor"]/comps</xpath>
+			<match Class="PatchOperationAdd">
+				<xpath>Defs/ThingDef[defName="BOR_Orientis_BlackTemplarArmor"]/comps</xpath>
+				<value>
+					<li Class="VEF.Abilities.CompProperties_AbilitiesApparel" MayRequire="bamba.allbambaarmors">
+						<abilities>
+							<li>ABT_Purify</li>
+							<li>ABT_BattleHymn</li>
+						</abilities>
+					</li>
+					<li Class="AllBambaArmors.CompProperties_AbilityEnergy" MayRequire="bamba.allbambaarmors">
+						<maxEnergy>244</maxEnergy>
+						<regenPerSecond>1.22</regenPerSecond>
+						<barColor>(0.95, 0.85, 0.5)</barColor>
+					</li>
+				</value>
+			</match>
+			<nomatch Class="PatchOperationAdd">
+				<xpath>Defs/ThingDef[defName="BOR_Orientis_BlackTemplarArmor"]</xpath>
+				<value>
+					<comps>
+						<li Class="VEF.Abilities.CompProperties_AbilitiesApparel" MayRequire="bamba.allbambaarmors">
+							<abilities>
+								<li>ABT_Purify</li>
+								<li>ABT_BattleHymn</li>
+							</abilities>
+						</li>
+						<li Class="AllBambaArmors.CompProperties_AbilityEnergy" MayRequire="bamba.allbambaarmors">
+							<maxEnergy>244</maxEnergy>
+							<regenPerSecond>1.22</regenPerSecond>
+							<barColor>(0.95, 0.85, 0.5)</barColor>
+						</li>
+					</comps>
+				</value>
+			</nomatch>
+		</match>
+	</Operation>
+
+	<!-- Every Orientis pawn (the BOR_Orientis hediff marks them, with or without Biotech). They pay from their largest worn pool; with none, only cooldowns apply. -->
+	<Operation Class="PatchOperationConditional">
+		<xpath>Defs/HediffDef[defName="BOR_Orientis"]/comps</xpath>
+		<match Class="PatchOperationAdd">
+			<xpath>Defs/HediffDef[defName="BOR_Orientis"]/comps</xpath>
+			<value>
+				<li Class="BeyondOurReach.HediffCompProperties_GrantAbilities" MayRequire="bamba.allbambaarmors">
+					<abilities>
+						<li>ABT_PsionicBarrier</li>
+						<li>ABT_HolyWrath</li>
+						<li>ABT_Explosion</li>
+						<li>ABT_CreateLight</li>
+					</abilities>
+				</li>
+			</value>
+		</match>
+		<nomatch Class="PatchOperationAdd">
+			<xpath>Defs/HediffDef[defName="BOR_Orientis"]</xpath>
+			<value>
+				<comps>
+					<li Class="BeyondOurReach.HediffCompProperties_GrantAbilities" MayRequire="bamba.allbambaarmors">
+						<abilities>
+							<li>ABT_PsionicBarrier</li>
+							<li>ABT_HolyWrath</li>
+							<li>ABT_Explosion</li>
+							<li>ABT_CreateLight</li>
+						</abilities>
+					</li>
+				</comps>
+			</value>
+		</nomatch>
+	</Operation>
+
+	<!-- BOR_Orientis_SaladinArmor: its abilities only work for an Orientis wearer -->
+	<Operation Class="PatchOperationConditional">
+		<xpath>Defs/ThingDef[defName="BOR_Orientis_SaladinArmor"]</xpath>
+		<match Class="PatchOperationAddModExtension">
+			<xpath>Defs/ThingDef[defName="BOR_Orientis_SaladinArmor"]</xpath>
+			<value>
+				<li Class="AllBambaArmors.ApparelAbilityRestriction" MayRequire="bamba.allbambaarmors">
+					<requiredHediff>BOR_Orientis</requiredHediff>
+					<reason>Only an Orientis can call on this armor's gifts.</reason>
+				</li>
+			</value>
+		</match>
+	</Operation>
+
+	<!-- BOR_Orientis_TemplarArmor: its abilities only work for an Orientis wearer -->
+	<Operation Class="PatchOperationConditional">
+		<xpath>Defs/ThingDef[defName="BOR_Orientis_TemplarArmor"]</xpath>
+		<match Class="PatchOperationAddModExtension">
+			<xpath>Defs/ThingDef[defName="BOR_Orientis_TemplarArmor"]</xpath>
+			<value>
+				<li Class="AllBambaArmors.ApparelAbilityRestriction" MayRequire="bamba.allbambaarmors">
+					<requiredHediff>BOR_Orientis</requiredHediff>
+					<reason>Only an Orientis can call on this armor's gifts.</reason>
+				</li>
+			</value>
+		</match>
+	</Operation>
+
+	<!-- BOR_Orientis_BlackTemplarArmor: its abilities only work for an Orientis wearer -->
+	<Operation Class="PatchOperationConditional">
+		<xpath>Defs/ThingDef[defName="BOR_Orientis_BlackTemplarArmor"]</xpath>
+		<match Class="PatchOperationAddModExtension">
+			<xpath>Defs/ThingDef[defName="BOR_Orientis_BlackTemplarArmor"]</xpath>
+			<value>
+				<li Class="AllBambaArmors.ApparelAbilityRestriction" MayRequire="bamba.allbambaarmors">
+					<requiredHediff>BOR_Orientis</requiredHediff>
+					<reason>Only an Orientis can call on this armor's gifts.</reason>
+				</li>
+			</value>
+		</match>
+	</Operation>
+
+	<!-- BOR_Orientis_MonkBodysuit: its abilities only work for an Orientis wearer -->
+	<Operation Class="PatchOperationConditional">
+		<xpath>Defs/ThingDef[defName="BOR_Orientis_MonkBodysuit"]</xpath>
+		<match Class="PatchOperationAddModExtension">
+			<xpath>Defs/ThingDef[defName="BOR_Orientis_MonkBodysuit"]</xpath>
+			<value>
+				<li Class="AllBambaArmors.ApparelAbilityRestriction" MayRequire="bamba.allbambaarmors">
+					<requiredHediff>BOR_Orientis</requiredHediff>
+					<reason>Only an Orientis can call on this armor's gifts.</reason>
+				</li>
+			</value>
+		</match>
+	</Operation>
+
+	<!--
+		Eye of the archotech (AllBambaArmors): Orientis in its light are blessed; Tenebral and Umbral pawns are seared.
+		"Dark" matches BOR's MeditationShield.IsDark: Umbral, Tenebral parts, Tenebral psychosis, or the Tenebrites faction.
+		Skipped quietly without AllBambaArmors, since the eye will not exist.
+	-->
+	<Operation Class="PatchOperationConditional">
+		<xpath>Defs/ThingDef[defName="ABT_LightOrb"]/comps/li[@Class="BeyondOurReach.CompProperties_MoodAura"]/entries</xpath>
+		<match Class="PatchOperationAdd">
+			<xpath>Defs/ThingDef[defName="ABT_LightOrb"]/comps/li[@Class="BeyondOurReach.CompProperties_MoodAura"]/entries</xpath>
+			<value>
+				<li>
+					<thought>ABT_ArchotechEyeBlessing</thought>
+					<hediffs>
+						<li>BOR_Orientis</li>
+					</hediffs>
+					<xenotypes>
+						<li MayRequire="Ludeon.RimWorld.Biotech">BOR_OrientisXenotype</li>
+					</xenotypes>
+				</li>
+				<li>
+					<thought>ABT_ArchotechEyeSearing</thought>
+					<hediffs>
+						<li>BOR_Umbral</li>
+						<li>BOR_Crystallized</li>
+						<li>BOR_TenebralPsychosis</li>
+					</hediffs>
+					<hediffExtension>BeyondOurReach.DefModExtension_TenebralImplant</hediffExtension>
+					<xenotypes>
+						<li MayRequire="Ludeon.RimWorld.Biotech">BOR_UmbralXenotype</li>
+					</xenotypes>
+					<factions>
+						<li>BOR_Tenebrites</li>
+					</factions>
+				</li>
+			</value>
+		</match>
+	</Operation>
+
+</Patch>

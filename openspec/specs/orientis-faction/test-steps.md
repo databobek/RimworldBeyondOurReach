@@ -259,6 +259,7 @@ Place a pod and a stocked cache, and have an Orientis pawn and a raider with a g
 6. Let them leave, and try a non-dark raider. **Expected:** the effect ends on leaving, and the other raider gets nothing.
 7. Watch the cache. **Expected:** it drains about 400 per day. At zero the dome falls with a message, and stays down until a pawn raises it again.
 8. Save and reload with the shield up and with it down. **Expected:** each stays as it was.
+9. With the shield up, put a powered lamp under the dome and another outside it, then start a solar flare with the dev tools. **Expected:** the lamp under the dome stays lit and the one outside goes dark. Lower the shield and the inside lamp goes dark too.
 
 ## 16. Light and dark stay apart
 

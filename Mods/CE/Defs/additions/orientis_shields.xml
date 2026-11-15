@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- Orientis shields, on CE's shield system. Made at the offerings bench for meditation power alone, so they sit here
+	     with the other CE-only Orientis defs and not in Common. The glow is a second render node over the shield, drawn by the
+	     same drafted-only worker, so it shows exactly when the shield does. The shield is 20% lighter than the pavise
+	     and protects less. -->
+	<ThingDef Name="BOR_OrientisShieldBase" ParentName="ShieldBase" Abstract="True">
+		<techLevel>Ultra</techLevel>
+		<tradeability>None</tradeability>
+		<generateCommonality>0</generateCommonality>
+		<smeltable>false</smeltable>
+		<recipeMaker Inherit="False" IsNull="True" />
+		<equippedStatOffsets>
+			<ReloadSpeed>-0.05</ReloadSpeed>
+			<MeleeHitChance>-0.02</MeleeHitChance>
+			<ShootingAccuracyPawn>-0.05</ShootingAccuracyPawn>
+			<AimingAccuracy>-0.02</AimingAccuracy>
+			<Suppressability>-0.7</Suppressability>
+			<MeleeCritChance>-0.02</MeleeCritChance>
+			<MeleeParryChance>1.0</MeleeParryChance>
+		</equippedStatOffsets>
+	</ThingDef>
+
+	<ThingDef ParentName="BOR_OrientisShieldBase">
+		<defName>BOR_Orientis_Pavise</defName>
+		<label>crusader pavise</label>
+		<description>A tall charged shield on a bearer's arm, wide enough to crouch behind. It covers the whole body down to the legs, and it is heavy to carry.</description>
+		<graphicData>
+			<texPath>BOR/Things/Item/Equipment/orientis/pavise</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<statBases>
+			<WorkToMake>60000</WorkToMake>
+			<MarketValue>6000</MarketValue>
+			<MaxHitPoints>1000</MaxHitPoints>
+			<ArmorRating_Sharp>70</ArmorRating_Sharp>
+			<ArmorRating_Blunt>110</ArmorRating_Blunt>
+			<Mass>5</Mass>
+			<Bulk>10</Bulk>
+			<WornBulk>6</WornBulk>
+		</statBases>
+		<apparel>
+			<developmentalStageFilter>Child, Adult</developmentalStageFilter>
+			<renderNodeProperties>
+				<li>
+					<nodeClass>CombatExtended.PawnRenderNode_Apparel</nodeClass>
+					<workerClass>CombatExtended.PawnRenderNodeWorker_Drafted</workerClass>
+					<texPath>BOR/Things/Item/Equipment/orientis/pavise</texPath>
+					<parentTagDef>ApparelBody</parentTagDef>
+					<drawData>
+						<scale>0.9</scale>
+						<defaultData>
+							<layer>80</layer>
+						</defaultData>
+						<dataEast>
+							<layer>-5</layer>
+							<offset>(0, 0, -0.1)</offset>
+							<rotationOffset>25</rotationOffset>
+						</dataEast>
+						<dataWest>
+							<rotationOffset>-25</rotationOffset>
+						</dataWest>
+						<dataNorth>
+							<layer>-5</layer>
+							<offset>(0.15, 0, -0.1)</offset>
+						</dataNorth>
+						<dataSouth>
+							<offset>(0.25, 0, -0.15)</offset>
+						</dataSouth>
+					</drawData>
+				</li>
+				<li>
+					<nodeClass>CombatExtended.PawnRenderNode_Apparel</nodeClass>
+					<workerClass>CombatExtended.PawnRenderNodeWorker_Drafted</workerClass>
+					<texPath>BOR/Things/Item/Equipment/orientis/pavise_glow</texPath>
+					<shaderTypeDef>MoteGlow</shaderTypeDef>
+					<parentTagDef>ApparelBody</parentTagDef>
+					<drawData>
+						<scale>0.9</scale>
+						<defaultData>
+							<layer>81</layer>
+						</defaultData>
+						<dataEast>
+							<layer>-4</layer>
+							<offset>(0, 0, -0.1)</offset>
+							<rotationOffset>25</rotationOffset>
+						</dataEast>
+						<dataWest>
+							<rotationOffset>-25</rotationOffset>
+						</dataWest>
+						<dataNorth>
+							<layer>-4</layer>
+							<offset>(0.15, 0, -0.1)</offset>
+						</dataNorth>
+						<dataSouth>
+							<offset>(0.25, 0, -0.15)</offset>
+						</dataSouth>
+					</drawData>
+				</li>
+			</renderNodeProperties>
+		</apparel>
+		<modExtensions>
+			<li Class="CombatExtended.ShieldDefExtension">
+				<shieldCoverage>
+					<li>Hands</li>
+					<li>Arms</li>
+					<li>Shoulders</li>
+					<li>Torso</li>
+					<li>Neck</li>
+					<li>Legs</li>
+				</shieldCoverage>
+			</li>
+		</modExtensions>
+	</ThingDef>
+
+	<ThingDef ParentName="BOR_OrientisShieldBase">
+		<defName>BOR_Orientis_Shield</defName>
+		<label>crusader shield</label>
+		<description>A charged round shield on a bearer's arm. It guards the upper body but leaves the legs bare, and it is lighter and weaker than the pavise.</description>
+		<graphicData>
+			<texPath>BOR/Things/Item/Equipment/orientis/shield</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<statBases>
+			<WorkToMake>40000</WorkToMake>
+			<MarketValue>4000</MarketValue>
+			<MaxHitPoints>750</MaxHitPoints>
+			<ArmorRating_Sharp>56</ArmorRating_Sharp>
+			<ArmorRating_Blunt>88</ArmorRating_Blunt>
+			<Mass>4</Mass>
+			<Bulk>8</Bulk>
+			<WornBulk>4.8</WornBulk>
+		</statBases>
+		<apparel>
+			<developmentalStageFilter>Child, Adult</developmentalStageFilter>
+			<renderNodeProperties>
+				<li>
+					<nodeClass>CombatExtended.PawnRenderNode_Apparel</nodeClass>
+					<workerClass>CombatExtended.PawnRenderNodeWorker_Drafted</workerClass>
+					<texPath>BOR/Things/Item/Equipment/orientis/shield</texPath>
+					<parentTagDef>ApparelBody</parentTagDef>
+					<drawData>
+						<scale>0.7</scale>
+						<defaultData>
+							<layer>80</layer>
+						</defaultData>
+						<dataEast>
+							<layer>-5</layer>
+							<offset>(0, 0, -0.1)</offset>
+							<rotationOffset>25</rotationOffset>
+						</dataEast>
+						<dataWest>
+							<rotationOffset>-25</rotationOffset>
+						</dataWest>
+						<dataNorth>
+							<layer>-5</layer>
+							<offset>(0.15, 0, -0.1)</offset>
+						</dataNorth>
+						<dataSouth>
+							<offset>(0.25, 0, -0.15)</offset>
+						</dataSouth>
+					</drawData>
+				</li>
+				<li>
+					<nodeClass>CombatExtended.PawnRenderNode_Apparel</nodeClass>
+					<workerClass>CombatExtended.PawnRenderNodeWorker_Drafted</workerClass>
+					<texPath>BOR/Things/Item/Equipment/orientis/shield_glow</texPath>
+					<shaderTypeDef>MoteGlow</shaderTypeDef>
+					<parentTagDef>ApparelBody</parentTagDef>
+					<drawData>
+						<scale>0.7</scale>
+						<defaultData>
+							<layer>81</layer>
+						</defaultData>
+						<dataEast>
+							<layer>-4</layer>
+							<offset>(0, 0, -0.1)</offset>
+							<rotationOffset>25</rotationOffset>
+						</dataEast>
+						<dataWest>
+							<rotationOffset>-25</rotationOffset>
+						</dataWest>
+						<dataNorth>
+							<layer>-4</layer>
+							<offset>(0.15, 0, -0.1)</offset>
+						</dataNorth>
+						<dataSouth>
+							<offset>(0.25, 0, -0.15)</offset>
+						</dataSouth>
+					</drawData>
+				</li>
+			</renderNodeProperties>
+		</apparel>
+		<modExtensions>
+			<li Class="CombatExtended.ShieldDefExtension">
+				<shieldCoverage>
+					<li>Hands</li>
+					<li>Arms</li>
+					<li>Shoulders</li>
+					<li>Torso</li>
+					<li>Neck</li>
+				</shieldCoverage>
+			</li>
+		</modExtensions>
+	</ThingDef>
+
+	<RecipeDef ParentName="BOR_OrientisOfferingBase">
+		<defName>BOR_Make_Orientis_Pavise</defName>
+		<label>make crusader pavise</label>
+		<description>Make crusader pavise for meditation power alone.</description>
+		<jobString>Making crusader pavise.</jobString>
+		<products>
+			<BOR_Orientis_Pavise>1</BOR_Orientis_Pavise>
+		</products>
+	</RecipeDef>
+
+	<RecipeDef ParentName="BOR_OrientisOfferingBase">
+		<defName>BOR_Make_Orientis_Shield</defName>
+		<label>make crusader shield</label>
+		<description>Make crusader shield for meditation power alone.</description>
+		<jobString>Making crusader shield.</jobString>
+		<products>
+			<BOR_Orientis_Shield>1</BOR_Orientis_Shield>
+		</products>
+	</RecipeDef>
+</Defs>

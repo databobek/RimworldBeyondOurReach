@@ -22,31 +22,19 @@ public sealed class CompUmbralShield : ThingComp
 
     public bool Powered => parent.TryGetComp<CompPowerTrader>()?.PowerOn ?? false;
 
-    public static bool AnyOn(Map map)
+    // Only a dome that is up covers anything: vanilla's interceptor flag, which the patch below also drops without power.
+    // The flare patch keeps its own list of domes for each tick.
+    public static bool Covers(Map map, IntVec3 cell)
     {
         List<Thing> things = map.listerThings.ThingsInGroup(ThingRequestGroup.ProjectileInterceptor);
         for (int i = 0; i < things.Count; i++)
         {
-            if (things[i].TryGetComp<CompUmbralShield>() != null)
+            if (things[i].TryGetComp<CompUmbralShield>() == null)
             {
-                return true;
+                continue;
             }
-        }
-        return false;
-    }
-
-    public static bool Covers(Map map, IntVec3 cell) => AnyInRange(map, cell, mustBePowered: true);
-
-    // Includes a dome that has lost power, whose generators may be all that can restart it during a flare.
-    public static bool InRange(Map map, IntVec3 cell) => AnyInRange(map, cell, mustBePowered: false);
-
-    private static bool AnyInRange(Map map, IntVec3 cell, bool mustBePowered)
-    {
-        List<Thing> things = map.listerThings.ThingsInGroup(ThingRequestGroup.ProjectileInterceptor);
-        for (int i = 0; i < things.Count; i++)
-        {
-            CompUmbralShield? shield = things[i].TryGetComp<CompUmbralShield>();
-            if (shield != null && (!mustBePowered || shield.Powered) && cell.InHorDistOf(things[i].Position, things[i].TryGetComp<CompProjectileInterceptor>().Props.radius))
+            CompProjectileInterceptor interceptor = things[i].TryGetComp<CompProjectileInterceptor>();
+            if (interceptor.Active && cell.InHorDistOf(things[i].Position, interceptor.Props.radius))
             {
                 return true;
             }

@@ -351,114 +351,156 @@
 		</verbs>
 	</ThingDef>
 
-	<!-- Arquebuses, one per post-medieval tech level -->
-	<ThingDef Name="BOR_OrientisArquebusBase" ParentName="BOR_OrientisGunBase" Abstract="True">
-		<graphicData>
-			<texPath>BOR/Things/Item/Equipment/weaponranged/gen2/plazma/shotgun-plas</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
-		</graphicData>
+	<!-- Charge guns. One slug per shot, no ammo, slow to fire: a little sharp damage and a lot of blunt, enough to break an Umbral.
+	     Each also carries the three special shots (OrientisWeaponAbilities.xml). -->
+	<AbilityGroupDef>
+		<defName>BOR_OrientisShotGroup</defName>
+		<cooldownTicks>600</cooldownTicks>
+	</AbilityGroupDef>
+
+	<ThingDef Name="BOR_OrientisSlugGunBase" ParentName="BOR_OrientisGunBase" Abstract="True">
+		<comps>
+			<li Class="BeyondOurReach.CompProperties_OrientisWeaponAbilities">
+				<abilities>
+					<li>BOR_OrientisShot_Vaporize</li>
+					<li>BOR_OrientisShot_Emp</li>
+					<li>BOR_OrientisShot_UmbralStun</li>
+				</abilities>
+			</li>
+		</comps>
 	</ThingDef>
 
 	<ThingDef ParentName="BOR_OrientisProjectileBase">
-		<defName>BOR_Bullet_OrientisArquebus_Industrial</defName>
-		<label>charge shot</label>
+		<defName>BOR_Bullet_OrientisPistol</defName>
+		<label>orientis slug</label>
 		<projectile>
 			<damageDef>Bullet</damageDef>
 			<damageAmountBase>30</damageAmountBase>
-			<armorPenetrationBase>0.4</armorPenetrationBase>
-			<speed>70</speed>
+			<armorPenetrationBase>1.0</armorPenetrationBase>
+			<extraDamages>
+				<li>
+					<def>Blunt</def>
+					<amount>45</amount>
+					<armorPenetration>2.0</armorPenetration>
+				</li>
+			</extraDamages>
+			<speed>85</speed>
 		</projectile>
 	</ThingDef>
 
-	<ThingDef ParentName="BOR_OrientisArquebusBase">
-		<defName>BOR_Orientis_Arquebus_Industrial</defName>
-		<label>charge arquebus</label>
-		<description>A long single-shot arquebus that charges for a moment before it fires.</description>
-		<techLevel>Industrial</techLevel>
+	<ThingDef ParentName="BOR_OrientisSlugGunBase">
+		<defName>BOR_Orientis_Pistol</defName>
+		<label>orientis flintlock</label>
+		<description>A heavy single-shot pistol that charges for a moment before it fires a slug that hits like a hammer. It can also fire a vaporizing, EMP or Umbral-stunning shell that bursts on impact.</description>
+		<graphicData>
+			<texPath>BOR/Things/Item/Equipment/orientis/Pistol</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
 		<statBases>
-			<WorkToMake>10000</WorkToMake>
-			<MarketValue>800</MarketValue>
-			<Mass>4</Mass>
+			<WorkToMake>25000</WorkToMake>
+			<MarketValue>3500</MarketValue>
+			<Mass>1.5</Mass>
+			<RangedWeapon_Cooldown>2.0</RangedWeapon_Cooldown>
+		</statBases>
+		<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>BOR_Bullet_OrientisPistol</defaultProjectile>
+				<warmupTime>1.0</warmupTime>
+				<range>15.9</range>
+				<soundCast>Shot_ChargeRifle</soundCast>
+				<soundCastTail>GunTail_Medium</soundCastTail>
+				<muzzleFlashScale>6</muzzleFlashScale>
+			</li>
+		</verbs>
+	</ThingDef>
+
+	<ThingDef ParentName="BOR_OrientisProjectileBase">
+		<defName>BOR_Bullet_OrientisBlunderbuss</defName>
+		<label>orientis slug</label>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>40</damageAmountBase>
+			<armorPenetrationBase>1.0</armorPenetrationBase>
+			<extraDamages>
+				<li>
+					<def>Blunt</def>
+					<amount>70</amount>
+					<armorPenetration>2.0</armorPenetration>
+				</li>
+			</extraDamages>
+			<speed>75</speed>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="BOR_OrientisSlugGunBase">
+		<defName>BOR_Orientis_Blunderbuss</defName>
+		<label>orientis blunderbuss</label>
+		<description>A short, wide-mouthed gun that fires one heavy charged slug. Slow to fire, brutal up close. It can also fire a vaporizing, EMP or Umbral-stunning shell that bursts on impact.</description>
+		<graphicData>
+			<texPath>BOR/Things/Item/Equipment/orientis/Blunderbuss</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<statBases>
+			<WorkToMake>30000</WorkToMake>
+			<MarketValue>4200</MarketValue>
+			<Mass>3.5</Mass>
 			<RangedWeapon_Cooldown>2.5</RangedWeapon_Cooldown>
 		</statBases>
 		<verbs>
 			<li>
 				<verbClass>Verb_Shoot</verbClass>
 				<hasStandardCommand>true</hasStandardCommand>
-				<defaultProjectile>BOR_Bullet_OrientisArquebus_Industrial</defaultProjectile>
-				<warmupTime>1.8</warmupTime>
-				<range>28.9</range>
+				<defaultProjectile>BOR_Bullet_OrientisBlunderbuss</defaultProjectile>
+				<warmupTime>1.6</warmupTime>
+				<range>19.9</range>
 				<soundCast>Shot_ChargeRifle</soundCast>
 				<soundCastTail>GunTail_Medium</soundCastTail>
-				<muzzleFlashScale>9</muzzleFlashScale>
+				<muzzleFlashScale>8</muzzleFlashScale>
 			</li>
 		</verbs>
 	</ThingDef>
 
 	<ThingDef ParentName="BOR_OrientisProjectileBase">
-		<defName>BOR_Bullet_OrientisArquebus_Spacer</defName>
-		<label>charge shot</label>
+		<defName>BOR_Bullet_OrientisArquebus</defName>
+		<label>orientis slug</label>
 		<projectile>
 			<damageDef>Bullet</damageDef>
-			<damageAmountBase>45</damageAmountBase>
-			<armorPenetrationBase>0.7</armorPenetrationBase>
-			<speed>80</speed>
-		</projectile>
-	</ThingDef>
-
-	<ThingDef ParentName="BOR_OrientisArquebusBase">
-		<defName>BOR_Orientis_Arquebus_Spacer</defName>
-		<label>high charge arquebus</label>
-		<description>A long single-shot arquebus with a stronger charge cell.</description>
-		<techLevel>Spacer</techLevel>
-		<statBases>
-			<WorkToMake>20000</WorkToMake>
-			<MarketValue>2000</MarketValue>
-			<Mass>4</Mass>
-			<RangedWeapon_Cooldown>2.5</RangedWeapon_Cooldown>
-		</statBases>
-		<verbs>
-			<li>
-				<verbClass>Verb_Shoot</verbClass>
-				<hasStandardCommand>true</hasStandardCommand>
-				<defaultProjectile>BOR_Bullet_OrientisArquebus_Spacer</defaultProjectile>
-				<warmupTime>1.8</warmupTime>
-				<range>30.9</range>
-				<soundCast>Shot_ChargeRifle</soundCast>
-				<soundCastTail>GunTail_Medium</soundCastTail>
-				<muzzleFlashScale>9</muzzleFlashScale>
-			</li>
-		</verbs>
-	</ThingDef>
-
-	<ThingDef ParentName="BOR_OrientisProjectileBase">
-		<defName>BOR_Bullet_OrientisArquebus_Ultra</defName>
-		<label>charge shot</label>
-		<projectile>
-			<damageDef>Bullet</damageDef>
-			<damageAmountBase>70</damageAmountBase>
-			<armorPenetrationBase>1.1</armorPenetrationBase>
+			<damageAmountBase>55</damageAmountBase>
+			<armorPenetrationBase>1.0</armorPenetrationBase>
+			<extraDamages>
+				<li>
+					<def>Blunt</def>
+					<amount>90</amount>
+					<armorPenetration>2.0</armorPenetration>
+				</li>
+			</extraDamages>
 			<speed>90</speed>
 		</projectile>
 	</ThingDef>
 
-	<ThingDef ParentName="BOR_OrientisArquebusBase">
-		<defName>BOR_Orientis_Arquebus_Ultra</defName>
-		<label>ultra charge arquebus</label>
-		<description>A long single-shot arquebus with a heavy charge cell that goes through most armor.</description>
+	<ThingDef ParentName="BOR_OrientisSlugGunBase">
+		<defName>BOR_Orientis_Arquebus</defName>
+		<label>orientis arquebus</label>
+		<description>A long single-shot arquebus that charges for a moment, then drives a heavy slug through armor. It can also fire a vaporizing, EMP or Umbral-stunning shell that bursts on impact.</description>
+		<graphicData>
+			<texPath>BOR/Things/Item/Equipment/orientis/Arquebus-2</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
 		<statBases>
 			<WorkToMake>35000</WorkToMake>
 			<MarketValue>5000</MarketValue>
 			<Mass>4</Mass>
-			<RangedWeapon_Cooldown>2.5</RangedWeapon_Cooldown>
+			<RangedWeapon_Cooldown>3.0</RangedWeapon_Cooldown>
 		</statBases>
 		<verbs>
 			<li>
 				<verbClass>Verb_Shoot</verbClass>
 				<hasStandardCommand>true</hasStandardCommand>
-				<defaultProjectile>BOR_Bullet_OrientisArquebus_Ultra</defaultProjectile>
+				<defaultProjectile>BOR_Bullet_OrientisArquebus</defaultProjectile>
 				<warmupTime>1.8</warmupTime>
-				<range>32.9</range>
+				<range>42.9</range>
 				<soundCast>Shot_ChargeRifle</soundCast>
 				<soundCastTail>GunTail_Medium</soundCastTail>
 				<muzzleFlashScale>9</muzzleFlashScale>
@@ -467,37 +509,95 @@
 	</ThingDef>
 
 	<ThingDef ParentName="BOR_OrientisProjectileBase">
-		<defName>BOR_Bullet_OrientisArquebus_Archotech</defName>
-		<label>charge shot</label>
+		<defName>BOR_Bullet_OrientisMusket</defName>
+		<label>orientis slug</label>
 		<projectile>
 			<damageDef>Bullet</damageDef>
-			<damageAmountBase>100</damageAmountBase>
-			<armorPenetrationBase>1.6</armorPenetrationBase>
-			<speed>100</speed>
+			<damageAmountBase>70</damageAmountBase>
+			<armorPenetrationBase>1.0</armorPenetrationBase>
+			<extraDamages>
+				<li>
+					<def>Blunt</def>
+					<amount>110</amount>
+					<armorPenetration>2.0</armorPenetration>
+				</li>
+			</extraDamages>
+			<speed>110</speed>
 		</projectile>
 	</ThingDef>
 
-	<ThingDef ParentName="BOR_OrientisArquebusBase">
-		<defName>BOR_Orientis_Arquebus_Archotech</defName>
-		<label>archotech charge arquebus</label>
-		<description>A long single-shot arquebus whose charge comes from nothing anyone can explain.</description>
-		<techLevel>Archotech</techLevel>
+	<ThingDef ParentName="BOR_OrientisSlugGunBase">
+		<defName>BOR_Orientis_Musket</defName>
+		<label>orientis musket</label>
+		<description>A scoped musket with a long charge cell. One slug, very far, and enough weight behind it to break an Umbral's armor. It can also fire a vaporizing, EMP or Umbral-stunning shell that bursts on impact.</description>
+		<graphicData>
+			<texPath>BOR/Things/Item/Equipment/orientis/Musket-Sniper-2</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<equippedAngleOffset>45</equippedAngleOffset>
 		<statBases>
-			<WorkToMake>60000</WorkToMake>
-			<MarketValue>12000</MarketValue>
-			<Mass>4</Mass>
-			<RangedWeapon_Cooldown>2.5</RangedWeapon_Cooldown>
+			<WorkToMake>40000</WorkToMake>
+			<MarketValue>5600</MarketValue>
+			<Mass>4.5</Mass>
+			<RangedWeapon_Cooldown>3.5</RangedWeapon_Cooldown>
 		</statBases>
 		<verbs>
 			<li>
 				<verbClass>Verb_Shoot</verbClass>
 				<hasStandardCommand>true</hasStandardCommand>
-				<defaultProjectile>BOR_Bullet_OrientisArquebus_Archotech</defaultProjectile>
-				<warmupTime>1.8</warmupTime>
-				<range>34.9</range>
+				<defaultProjectile>BOR_Bullet_OrientisMusket</defaultProjectile>
+				<warmupTime>2.6</warmupTime>
+				<range>56.9</range>
 				<soundCast>Shot_ChargeRifle</soundCast>
 				<soundCastTail>GunTail_Medium</soundCastTail>
 				<muzzleFlashScale>9</muzzleFlashScale>
+			</li>
+		</verbs>
+	</ThingDef>
+
+	<ThingDef ParentName="BOR_OrientisProjectileBase">
+		<defName>BOR_Bullet_OrientisCannon</defName>
+		<label>orientis slug</label>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>90</damageAmountBase>
+			<armorPenetrationBase>1.0</armorPenetrationBase>
+			<extraDamages>
+				<li>
+					<def>Blunt</def>
+					<amount>140</amount>
+					<armorPenetration>2.0</armorPenetration>
+				</li>
+			</extraDamages>
+			<speed>80</speed>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="BOR_OrientisSlugGunBase">
+		<defName>BOR_Orientis_Cannon</defName>
+		<label>orientis handcannon</label>
+		<description>A hand cannon that fires a single huge charged slug. Very slow, and it hits harder than anything else a person can carry. It can also fire a vaporizing, EMP or Umbral-stunning shell that bursts on impact.</description>
+		<graphicData>
+			<texPath>BOR/Things/Item/Equipment/orientis/Cannon</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<equippedAngleOffset>45</equippedAngleOffset>
+		<statBases>
+			<WorkToMake>45000</WorkToMake>
+			<MarketValue>6200</MarketValue>
+			<Mass>7</Mass>
+			<RangedWeapon_Cooldown>4.0</RangedWeapon_Cooldown>
+		</statBases>
+		<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>BOR_Bullet_OrientisCannon</defaultProjectile>
+				<warmupTime>3.0</warmupTime>
+				<range>48.9</range>
+				<soundCast>Shot_ChargeRifle</soundCast>
+				<soundCastTail>GunTail_Medium</soundCastTail>
+				<muzzleFlashScale>12</muzzleFlashScale>
 			</li>
 		</verbs>
 	</ThingDef>

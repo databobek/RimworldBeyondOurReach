@@ -89,6 +89,9 @@
       <li>PlaceWorker_PreventInteractionSpotOverlap</li>
     </placeWorkers>
     <designatorDropdown>BOR_Workbenches</designatorDropdown>
+    <modExtensions>
+      <li Class="BeyondOurReach.BorUIScheme"><scheme>BOR_UIScheme_Solar</scheme></li>
+    </modExtensions>
   </ThingDef>
 
   <ThingDef ParentName="BenchBase">
@@ -131,11 +134,21 @@
     <inspectorTabs>
       <li>BeyondOurReach.ITab_Forge</li>
     </inspectorTabs>
+    <modExtensions>
+      <li Class="BeyondOurReach.BorUIScheme"><scheme>BOR_UIScheme_Solar</scheme></li>
+    </modExtensions>
     <tickerType>Normal</tickerType>
     <comps>
       <li Class="CompProperties_AffectedByFacilities">
         <linkableFacilities>
+          <li>ToolCabinet</li>
+          <li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_CNCMachine</li>
+          <li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_3DPrinter</li>
           <li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_RobotAssistant</li>
+          <li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_Spacer_Lathe</li>
+          <li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_Vice</li>
+          <li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_ConveyorBelt</li>
+          <li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_IndustrialOven</li>
         </linkableFacilities>
       </li>
       <li Class="CompProperties_Power">
@@ -159,6 +172,7 @@
         <pipeAmount>200</pipeAmount>
         <workTicksPerDraw>10</workTicksPerDraw>
         <exclusionList>
+        	<li>BOR_Tech_I</li>
         	<li>BOR_Tech_II</li>
         	<li>BOR_Tech_III</li>
         	<li>BOR_Tech_IV</li>
@@ -168,6 +182,7 @@
         	<li>BOR_TenebriteMotor</li>
         	<li>BOR_TenebriteAmplifier</li>
         	<li>BOR_Attoclusters</li>
+        	<li>MedicineUltratech</li>
         </exclusionList>
         <analysisSuccessOffset>0</analysisSuccessOffset>
       </li>
@@ -267,6 +282,9 @@
       <li>BOR_Research_Medicine_I</li>
     </researchPrerequisites>
     <designatorDropdown>BOR_MedicineBenches</designatorDropdown>
+    <modExtensions>
+      <li Class="BeyondOurReach.BorUIScheme"><scheme>BOR_UIScheme_Solar</scheme></li>
+    </modExtensions>
   </ThingDef>
 
   <ThingDef ParentName="BuildingBase">

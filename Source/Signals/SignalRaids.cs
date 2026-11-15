@@ -23,6 +23,8 @@ public class CompProperties_SignalRaid : CompProperties
     // Unique per analyzer; keys the saved state, since one analyzer can carry several of these comps.
     public string channel = "";
     public string tooltipKey = "";
+    // Icon under BOR/UI/Icons for the investigate button.
+    public string? investigateIcon;
     public string reportKey = "";
     // Dialogue keys are dialoguePrefix + _Greeting, _HungUp, _Ask, _AskReply, _GiveInfo, _GiveInfoReply, _GiveCoords,
     // _DontGiveCoords; _Ambush is the raid letter's title. Greeting text gets {PAWN_*} and {IMPERSONATED} (the
@@ -121,7 +123,7 @@ public class CompSignalRaid : ThingComp, ISignalChannel
         {
             cmd.defaultLabel = "";
             cmd.defaultDesc = Props.tooltipKey.Translate();
-            cmd.icon = BaseContent.ClearTex;
+            cmd.icon = Props.investigateIcon != null ? BorIcons.Get(Props.investigateIcon) : BaseContent.ClearTex;
             cmd.action = () => SignalUtility.OpenPawnMenu(this, BOR_SignalsDefOf.BOR_InvestigateSignals);
         }
         else

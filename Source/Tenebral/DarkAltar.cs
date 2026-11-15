@@ -23,6 +23,9 @@ public class CompProperties_DarkAltar : CompProperties
     // Unlock work = forge analysis ticks for the item x this.
     public float unlockWorkFactor = 1f;
 
+    // Production work = forge production ticks for the item x this.
+    public float produceWorkFactor = 1f;
+
     // Crystalline joints per run = item value x yield x this / joint value (at least 1).
     public float componentCostFactor = 0.5f;
 
@@ -124,7 +127,7 @@ public sealed class CompDarkAltar : ThingComp
 
     public int UnlockTicks(int i) => Mathf.Max(60, Mathf.RoundToInt(ForgeMath.BaseWorkTicks(Entry(i).thing) * BaseTicksFactor * Props.unlockWorkFactor));
 
-    public int ProduceTicks(int i) => Mathf.Max(30, Mathf.RoundToInt(ForgeMath.BaseWorkTicks(Entry(i).thing)));
+    public int ProduceTicks(int i) => Mathf.Max(30, Mathf.RoundToInt(ForgeMath.BaseWorkTicks(Entry(i).thing) * Props.produceWorkFactor));
 
     public float UnlockFraction(int i)
     {
@@ -521,7 +524,7 @@ public class WorkGiver_DarkAltar : WorkGiver_Scanner
     }
 }
 
-public class ITab_DarkAltar : ITab
+public class ITab_DarkAltar : BorTab
 {
     private const float CellSize = 64f;
     private const float CellSpacing = 6f;
@@ -551,19 +554,19 @@ public class ITab_DarkAltar : ITab
             int w = altar.Props.gridWidth;
             int h = Mathf.CeilToInt(altar.Count / (float)w);
             size = new Vector2(Mathf.Max(260f, w * CellSize + (w - 1) * CellSpacing + Margin * 2f),
-                h * CellSize + (h - 1) * CellSpacing + Margin * 2f + HeaderHeight);
+                h * CellSize + (h - 1) * CellSpacing + Margin * 2f + HeaderHeight + TitleHeight);
         }
         base.UpdateSize();
     }
 
-    protected override void FillTab()
+    protected override void Contents(Rect rect)
     {
         CompDarkAltar? altar = Altar;
         if (altar == null)
         {
             return;
         }
-        Rect inner = new Rect(0f, 0f, size.x, size.y).ContractedBy(Margin);
+        Rect inner = rect.ContractedBy(Margin);
         Text.Font = GameFont.Small;
         Text.Anchor = TextAnchor.MiddleCenter;
         Widgets.Label(new Rect(inner.x, inner.y, inner.width, HeaderHeight - 4f), "BOR_AltarHeader".Translate(altar.StoredComponents));
@@ -582,21 +585,27 @@ public class ITab_DarkAltar : ITab
     {
         DarkAltarEntry entry = altar.Entry(i);
         bool open = altar.IsUnlocked(i);
-        Widgets.DrawBoxSolid(cell, CellBack);
+        BorSkin skin = BorSkin.Current;
+        skin.Cell(cell, CellBack, CellBorder);
         Widgets.DefIcon(cell.ContractedBy(8f), entry.thing, entry.stuff);
         float fraction = open ? (altar.Queued(i) > 0 ? altar.ProduceFraction(i) : 0f) : altar.UnlockFraction(i);
         if (!open)
         {
-            Widgets.DrawBoxSolid(cell, LockedTint);
+            skin.Fill(cell, LockedTint);
         }
         if (fraction > 0f)
         {
             float h = cell.height * Mathf.Clamp01(fraction);
-            Widgets.DrawBoxSolid(new Rect(cell.x, cell.yMax - h, cell.width, h), ProgressTint);
+            skin.Overlay(new Rect(cell.x, cell.yMax - h, cell.width, h), ProgressTint, BorTone.Bad);
         }
-        GUI.color = !open && altar.UnlockRequested(i) ? Color.yellow : CellBorder;
-        Widgets.DrawBox(cell);
-        GUI.color = Color.white;
+        if (!open && altar.UnlockRequested(i))
+        {
+            skin.Box(cell, Color.yellow);
+        }
+        else if (!skin.IsThemed)
+        {
+            skin.Box(cell, CellBorder); // vanilla redraws the border over the overlays; the themed cell keeps its own
+        }
 
         Text.Font = GameFont.Tiny;
         if (open && altar.Queued(i) > 0)
@@ -612,7 +621,7 @@ public class ITab_DarkAltar : ITab
         Text.Anchor = TextAnchor.UpperLeft;
         Text.Font = GameFont.Small;
 
-        Widgets.DrawHighlightIfMouseover(cell);
+        skin.Hover(cell);
         TooltipHandler.TipRegion(cell, () => open
             ? "BOR_AltarCellTip".Translate(entry.thing.LabelCap, ForgeMath.YieldFor(entry.thing), altar.ComponentCost(i)).Resolve()
             : "BOR_AltarLockedTip".Translate(entry.thing.LabelCap, altar.UnlockTicks(i).ToStringTicksToPeriod(), ForgeMath.YieldFor(entry.thing), altar.ComponentCost(i)).Resolve(), 7393000 + i);

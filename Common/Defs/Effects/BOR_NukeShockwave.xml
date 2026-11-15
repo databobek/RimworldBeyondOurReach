@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <!-- The Cracker shell's shockwave (BOR_NegotiatorDetonation). Both are driven from Source/Buildings/NukeDetonation.cs. -->
+
+    <!-- One distortion ring spawned at the blast centre, the vanilla ShockwaveFast look scaled to the whole map.
+         growthRate is diameter per second: 80 matches the explosion front at propagationSpeed 1 (40 cells/s in radius).
+         solidTime is overridden per blast with the time the front needs to cross the map. -->
+    <FleckDef ParentName="FleckBase">
+        <defName>BOR_NukeShockwaveRing</defName>
+        <altitudeLayer>MoteOverhead</altitudeLayer>
+        <fadeInTime>0</fadeInTime>
+        <solidTime>9</solidTime>
+        <fadeOutTime>0.8</fadeOutTime>
+        <growthRate>80</growthRate>
+        <drawOffscreen>true</drawOffscreen>
+        <graphicData>
+            <graphicClass>Graphic_FleckPulse</graphicClass>
+            <texPath>Things/Mote/Black</texPath>
+            <shaderType>MoteLargeDistortionWave</shaderType>
+            <shaderParameters>
+                <_DistortionTex>/Things/Mote/PsychicDistortionCurrents</_DistortionTex>
+                <_NoiseTex>/Things/Mote/PsycastNoise</_NoiseTex>
+                <_distortionIntensity>0.425</_distortionIntensity>
+                <_brightnessMultiplier>2.55</_brightnessMultiplier>
+            </shaderParameters>
+            <drawSize>1.0</drawSize>
+        </graphicData>
+    </FleckDef>
+
+    <!-- Heat haze along the front: the psycast background distortion, larger and stronger. Spawned every few ticks on the
+         part of the front that is on screen. -->
+    <FleckDef ParentName="FleckGlowDistortBackground">
+        <defName>BOR_NukeFringeDistortion</defName>
+        <altitudeLayer>MoteOverhead</altitudeLayer>
+        <fadeInTime>0.05</fadeInTime>
+        <solidTime>0.15</solidTime>
+        <fadeOutTime>0.6</fadeOutTime>
+        <growthRate>4</growthRate>
+        <graphicData>
+            <texPath>Things/Mote/Black</texPath>
+            <shaderParameters>
+                <_distortionIntensity>0.17</_distortionIntensity>
+                <_brightnessMultiplier>1.19</_brightnessMultiplier>
+            </shaderParameters>
+            <drawSize>6</drawSize>
+        </graphicData>
+    </FleckDef>
+
+</Defs>

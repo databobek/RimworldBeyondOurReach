@@ -18,6 +18,7 @@ namespace BeyondOurReach.MedicineCare
         {
             var harmony = new Harmony("bambaryla.bor.redux.medicinecare");
             harmony.PatchAll(typeof(MedicineCareMod).Assembly);
+            UIRethemedCompat.Apply(harmony);
             harmony.Patch(
                 AccessTools.Method(typeof(ModLister), nameof(ModLister.HasActiveModWithName)),
                 postfix: new HarmonyMethod(typeof(MedicineCareMod), nameof(NamePostfix)));

@@ -6,6 +6,12 @@ using Verse;
 
 namespace BeyondOurReach;
 
+// Marks a dark thing that is not made with tenebrite; anything that costs or is crafted from tenebrite is dark already.
+// Orientis pawns will not use it, and the Path of Light burns it.
+public class DefModExtension_DarkThing : DefModExtension
+{
+}
+
 // Keeps the light and the dark apart: Orientis pawns leave dark things alone, and dark pawns leave Orientis things alone.
 [StaticConstructorOnStartup]
 public static class OrientisRestrictions
@@ -15,12 +21,12 @@ public static class OrientisRestrictions
     private static readonly HashSet<ThingDef> OrientisThings = new(DefDatabase<ThingDef>.AllDefs
         .Where(d => d.HasModExtension<DefModExtension_OrientisBuilding>() || d.defName.StartsWith("BOR_Orientis_")));
 
-    // Named tenebral or Umbral, or made with tenebrite: tenebrite itself, then anything that costs or is crafted from a
-    // thing already in the set, until nothing new turns up.
+    // Tagged dark, or made with tenebrite: tenebrite itself, then anything that costs or is crafted from a thing already
+    // in the set, until nothing new turns up. Any mod's things count through cost and recipe.
     private static HashSet<ThingDef> FindDarkThings()
     {
         HashSet<ThingDef> dark = new() { BOR_TenebralDefOf.BOR_Tenebrite };
-        dark.UnionWith(DefDatabase<ThingDef>.AllDefs.Where(d => NamedDark(d.defName) || NamedDark(d.label)));
+        dark.UnionWith(DefDatabase<ThingDef>.AllDefs.Where(d => d.HasModExtension<DefModExtension_DarkThing>()));
         bool grew = true;
         while (grew)
         {
@@ -40,8 +46,6 @@ public static class OrientisRestrictions
         return dark;
     }
 
-    private static bool NamedDark(string? name) =>
-        name != null && (name.IndexOf("tenebr", System.StringComparison.OrdinalIgnoreCase) >= 0 || name.IndexOf("umbral", System.StringComparison.OrdinalIgnoreCase) >= 0);
 
     public static bool IsDarkThing(Thing thing)
     {

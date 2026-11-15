@@ -1,0 +1,52 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<!-- Abilities that only Beyond Our Reach armor and pawns use. Builds on AllBambaArmors (ability base classes), so it loads only with that mod and VEF. -->
+	<PropertyGroup>
+		<TargetFramework>net10.0</TargetFramework>
+		<LangVersion>latest</LangVersion>
+		<Nullable>disable</Nullable>
+		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+		<GenerateDependencyFile>false</GenerateDependencyFile>
+		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+		<DebugType>none</DebugType>
+		<DebugSymbols>false</DebugSymbols>
+		<Optimize>true</Optimize>
+		<OutputPath>..\Assemblies\</OutputPath>
+		<AssemblyName>BeyondOurReachArmors</AssemblyName>
+		<RootNamespace>BeyondOurReach</RootNamespace>
+		<RimWorldDir>$(MSBuildThisFileDirectory)..\..\..\..\..</RimWorldDir>
+		<WorkshopDir>$(RimWorldDir)\..\..\workshop\content\294100</WorkshopDir>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Compile Remove="obj/**" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Reference Include="Assembly-CSharp">
+			<HintPath>$(RimWorldDir)\Assembly-CSharp.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+		<Reference Include="UnityStubs">
+			<HintPath>$(RimWorldDir)\UnityStubs.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+		<Reference Include="Waylith">
+			<HintPath>$(RimWorldDir)\Waylith.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+		<Reference Include="VEF">
+			<HintPath>$(WorkshopDir)\2023507013\1.7\Assemblies\VEF.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+		<Reference Include="0Harmony">
+			<HintPath>$(WorkshopDir)\2009463077\1.6\Assemblies\0Harmony.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+		<Reference Include="AllBambaArmors">
+			<HintPath>$(RimWorldDir)\Mods\AllBambaArmors\1.7\VEF\Assemblies\AllBambaArmors.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+	</ItemGroup>
+
+</Project>

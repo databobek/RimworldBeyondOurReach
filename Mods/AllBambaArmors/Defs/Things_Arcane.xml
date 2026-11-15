@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+	<!-- Fields, projectiles, damage types and effects for the Beyond Our Reach abilities. -->
+
+	<DamageDef ParentName="Bomb">
+		<defName>ABT_Psionic</defName>
+		<label>archotech bolt</label>
+		<deathMessage>{0} was torn apart by an archotech bolt.</deathMessage>
+		<hediff>Crush</hediff>
+		<hediffSolid>Crack</hediffSolid>
+		<defaultDamage>12</defaultDamage>
+		<defaultArmorPenetration>0.2</defaultArmorPenetration>
+		<buildingDamageFactorImpassable>1</buildingDamageFactorImpassable>
+		<buildingDamageFactorPassable>1</buildingDamageFactorPassable>
+		<plantDamageFactor>1</plantDamageFactor>
+		<explosionHeatEnergyPerCell>0</explosionHeatEnergyPerCell>
+		<explosionCellFleck>BlastEMP</explosionCellFleck>
+		<explosionColorCenter>(1, 0.92, 0.6)</explosionColorCenter>
+		<explosionColorEdge>(1, 0.7, 0.2)</explosionColorEdge>
+		<soundExplosion>Explosion_EMP</soundExplosion>
+	</DamageDef>
+
+	<DamageDef ParentName="Bomb">
+		<defName>ABT_Lightning</defName>
+		<label>arc discharge</label>
+		<deathMessage>{0} was struck down by an arc discharge.</deathMessage>
+		<hediff>Burn</hediff>
+		<hediffSolid>Crack</hediffSolid>
+		<harmAllLayersUntilOutside>false</harmAllLayersUntilOutside>
+		<armorCategory>Heat</armorCategory>
+		<defaultDamage>16</defaultDamage>
+		<defaultArmorPenetration>0.5</defaultArmorPenetration>
+		<buildingDamageFactorImpassable>1</buildingDamageFactorImpassable>
+		<buildingDamageFactorPassable>1</buildingDamageFactorPassable>
+		<plantDamageFactor>1</plantDamageFactor>
+		<explosionHeatEnergyPerCell>2</explosionHeatEnergyPerCell>
+		<explosionCellFleck>BlastEMP</explosionCellFleck>
+		<explosionColorCenter>(0.85, 0.95, 1)</explosionColorCenter>
+		<explosionColorEdge>(0.5, 0.75, 1)</explosionColorEdge>
+		<soundExplosion>Explosion_EMP</soundExplosion>
+	</DamageDef>
+
+	<!-- Bomb damage (so armor and Combat Extended treat it as a bomb) with vanilla's vaporize look: white-hot cells, heatwave, rays. -->
+	<DamageDef ParentName="Bomb">
+		<defName>ABT_VaporizeBlast</defName>
+		<label>archotech blast</label>
+		<workerClass>BeyondOurReach.DamageWorker_VaporizeBlast</workerClass>
+		<deathMessage>{0} was unmade by the wrath of the archotech.</deathMessage>
+		<explosionHeatEnergyPerCell>12</explosionHeatEnergyPerCell>
+		<explosionCellFleck>Fleck_Vaporize</explosionCellFleck>
+		<explosionColorCenter>(1, 1, 1)</explosionColorCenter>
+		<explosionColorEdge>(0.6, 0.5, 0.4)</explosionColorEdge>
+		<soundExplosion>Explosion_Vaporize</soundExplosion>
+	</DamageDef>
+
+	<!-- Golden mist for the Orientis abilities: the vanilla smoke texture drawn with a glow shader, so it reads as golden light rather than dirty smoke. -->
+	<FleckDef ParentName="FleckBase_Thrown">
+		<defName>ABT_GoldenMist</defName>
+		<graphicData>
+			<texPath>Things/Mote/Smoke</texPath>
+			<shaderType>MoteGlow</shaderType>
+			<renderInstanced>true</renderInstanced>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<fadeInTime>0.4</fadeInTime>
+		<solidTime>1.6</solidTime>
+		<fadeOutTime>2.2</fadeOutTime>
+		<growthRate>0.08</growthRate>
+	</FleckDef>
+
+	<!-- Shared by Psionic Blast and Psionic Storm. -->
+	<ThingDef ParentName="BaseBullet">
+		<defName>ABT_PsionicBolt</defName>
+		<label>archotech bolt</label>
+		<thingClass>Projectile_Explosive</thingClass>
+		<graphicData>
+			<texPath>Things/Projectile/Charge_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+			<color>(1, 0.8, 0.3)</color>
+			<drawSize>1.3</drawSize>
+		</graphicData>
+		<projectile>
+			<damageDef>ABT_Psionic</damageDef>
+			<damageAmountBase>12</damageAmountBase>
+			<explosionRadius>2</explosionRadius>
+			<speed>60</speed>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="BaseBullet">
+		<defName>ABT_TechnoBitLaser</defName>
+		<thingClass>Bullet</thingClass>
+		<label>T-Petrone micro-laser</label>
+		<graphicData>
+			<texPath>Things/Projectile/Charge_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+			<color>(0.5, 0.9, 1)</color>
+			<drawSize>0.7</drawSize>
+		</graphicData>
+		<projectile>
+			<damageDef>Burn</damageDef>
+			<damageAmountBase>4</damageAmountBase>
+			<armorPenetrationBase>0.2</armorPenetrationBase>
+			<speed>110</speed>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="BaseBullet">
+		<defName>ABT_TechnoBitHeavyLaser</defName>
+		<thingClass>Bullet</thingClass>
+		<label>T-Petrone laser burst</label>
+		<graphicData>
+			<texPath>Things/Projectile/ChargeLanceShot</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+			<color>(0.5, 0.9, 1)</color>
+			<drawSize>1</drawSize>
+		</graphicData>
+		<projectile>
+			<damageDef>Burn</damageDef>
+			<damageAmountBase>12</damageAmountBase>
+			<armorPenetrationBase>0.35</armorPenetrationBase>
+			<speed>110</speed>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="ABT_AbilityFieldBase">
+		<defName>ABT_HealingCircleField</defName>
+		<label>restoration field</label>
+		<thingClass>BeyondOurReach.Field_HealingCircle</thingClass>
+		<drawerType>RealtimeOnly</drawerType>
+		<drawOffscreen>true</drawOffscreen>
+		<modExtensions>
+			<li Class="BeyondOurReach.AbilityFieldProps">
+				<durationTicks>1200</durationTicks>
+				<intervalTicks>120</intervalTicks>
+			</li>
+		</modExtensions>
+	</ThingDef>
+
+	<ThingDef ParentName="ABT_AbilityFieldBase">
+		<defName>ABT_HolyWrathField</defName>
+		<label>judgment of the archotech</label>
+		<thingClass>BeyondOurReach.Field_HolyWrath</thingClass>
+		<modExtensions>
+			<li Class="BeyondOurReach.AbilityFieldProps">
+				<delayTicks>360</delayTicks>
+				<durationTicks>60</durationTicks>
+				<intervalTicks>6</intervalTicks>
+			</li>
+		</modExtensions>
+	</ThingDef>
+
+	<ThingDef ParentName="ABT_AbilityFieldBase">
+		<defName>ABT_SunfireField</defName>
+		<label>Solar lance barrage</label>
+		<thingClass>BeyondOurReach.Field_Sunfire</thingClass>
+		<modExtensions>
+			<!-- 13 beams: one every 45 ticks over 585 ticks. -->
+			<li Class="BeyondOurReach.AbilityFieldProps">
+				<durationTicks>585</durationTicks>
+				<intervalTicks>45</intervalTicks>
+			</li>
+		</modExtensions>
+	</ThingDef>
+
+	<ThingDef ParentName="OrbitalStrikeBase">
+		<defName>ABT_SunfireBeam</defName>
+		<label>Solar lance</label>
+		<thingClass>BeyondOurReach.Thing_SunfireBeam</thingClass>
+		<comps>
+			<li Class="CompProperties_OrbitalBeam">
+				<width>1.2</width>
+				<color>(255, 225, 150, 230)</color>
+			</li>
+		</comps>
+	</ThingDef>
+
+	<ThingDef ParentName="ABT_AbilityFieldBase">
+		<defName>ABT_ArcaneExplosionField</defName>
+		<label>wrath of the archotech</label>
+		<thingClass>BeyondOurReach.Field_ArcaneExplosion</thingClass>
+		<modExtensions>
+			<!-- 6 s total: rings gather for 3.6 s, then four expanding waves 15 ticks apart. -->
+			<li Class="BeyondOurReach.AbilityFieldProps">
+				<delayTicks>216</delayTicks>
+				<durationTicks>60</durationTicks>
+				<intervalTicks>15</intervalTicks>
+			</li>
+		</modExtensions>
+	</ThingDef>
+
+	<ThingDef ParentName="ABT_AbilityFieldBase">
+		<defName>ABT_ResurrectionField</defName>
+		<label>nanite revival</label>
+		<thingClass>BeyondOurReach.Field_ResurrectionRitual</thingClass>
+		<modExtensions>
+			<li Class="BeyondOurReach.AbilityFieldProps">
+				<durationTicks>1200</durationTicks>
+				<intervalTicks>60</intervalTicks>
+			</li>
+		</modExtensions>
+	</ThingDef>
+
+	<ThingDef ParentName="ABT_AbilityFieldBase">
+		<defName>ABT_ChainLightningField</defName>
+		<label>arc discharge</label>
+		<thingClass>BeyondOurReach.Field_ChainLightning</thingClass>
+		<modExtensions>
+			<!-- First strike plus 3 waves of forks, 6 ticks apart. -->
+			<li Class="BeyondOurReach.AbilityFieldProps">
+				<durationTicks>24</durationTicks>
+				<intervalTicks>6</intervalTicks>
+				<endsWithCaster>true</endsWithCaster>
+			</li>
+		</modExtensions>
+	</ThingDef>
+
+	<!-- Vanilla projectile interceptor: stops every projectile fired from outside, friend or foe; shots fired from inside pass. -->
+	<ThingDef>
+		<defName>ABT_PsionicBarrierField</defName>
+		<label>the archotech protects</label>
+		<thingClass>BeyondOurReach.Thing_PsionicBarrier</thingClass>
+		<category>Ethereal</category>
+		<tickerType>Normal</tickerType>
+		<drawerType>RealtimeOnly</drawerType>
+		<drawOffscreen>true</drawOffscreen>
+		<useHitPoints>false</useHitPoints>
+		<selectable>false</selectable>
+		<comps>
+			<li Class="CompProperties_ProjectileInterceptor">
+				<radius>2.5</radius>
+				<interceptGroundProjectiles>true</interceptGroundProjectiles>
+				<interceptAirProjectiles>true</interceptAirProjectiles>
+				<interceptNonHostileProjectiles>true</interceptNonHostileProjectiles>
+				<interceptOutgoingProjectiles>false</interceptOutgoingProjectiles>
+				<drawWithNoSelection>true</drawWithNoSelection>
+				<color>(1, 0.8, 0.3)</color>
+				<minAlpha>0.35</minAlpha>
+			</li>
+		</comps>
+	</ThingDef>
+
+	<JobDef>
+		<defName>ABT_ChannelBarrier</defName>
+		<driverClass>BeyondOurReach.JobDriver_ChannelBarrier</driverClass>
+		<reportString>channeling the archotech's protection.</reportString>
+		<casualInterruptible>false</casualInterruptible>
+		<suspendable>false</suspendable>
+	</JobDef>
+
+	<ThingDef>
+		<defName>ABT_LightOrb</defName>
+		<label>eye of the archotech</label>
+		<description>A hovering mote of golden archotech light. Its glow comforts those who walk the path of light and sears those who serve the dark. It stays until whoever opened it closes it.</description>
+		<thingClass>BeyondOurReach.Thing_ArchotechEye</thingClass>
+		<category>Ethereal</category>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<drawerType>RealtimeOnly</drawerType>
+		<tickerType>Rare</tickerType>
+		<useHitPoints>false</useHitPoints>
+		<selectable>true</selectable>
+		<rotatable>false</rotatable>
+		<graphicData>
+			<texPath>Things/Mote/LightningGlow</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>MoteGlow</shaderType>
+			<drawSize>(1.4, 1.4)</drawSize>
+			<color>(1, 0.75, 0.25)</color>
+		</graphicData>
+		<comps>
+			<!-- Golden light, as bright as a vanilla lamp (which runs at 1.45x white), with a small overlit core. -->
+			<li Class="CompProperties_Glower">
+				<glowRadius>14</glowRadius>
+				<overlightRadius>3</overlightRadius>
+				<glowColor>(370,270,110,0)</glowColor>
+			</li>
+			<!-- Mood for pawns in its light. The rules (who is blessed, who is seared) come from other mods, e.g. BOR's Orientis and Tenebral/Umbral. -->
+			<li Class="BeyondOurReach.CompProperties_MoodAura">
+				<radius>14</radius>
+				<entries />
+			</li>
+		</comps>
+	</ThingDef>
+
+	<ThingDef ParentName="PawnFlyerBase">
+		<defName>ABT_PsionicStormFlyer</defName>
+		<label>archotech tempest</label>
+		<thingClass>BeyondOurReach.Flyer_PsionicStorm</thingClass>
+		<pawnFlyer>
+			<!-- Flight time is the storm length: 6 s of circling and bolts, then the landing. -->
+			<flightDurationMin>7</flightDurationMin>
+			<flightSpeed>1000</flightSpeed>
+		</pawnFlyer>
+	</ThingDef>
+
+</Defs>

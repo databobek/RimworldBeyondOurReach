@@ -1,0 +1,558 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+	<!-- Abilities used only by Beyond Our Reach armor and pawns (abilities/ABILITY_MAP.md in AllBambaArmors).
+		The classes behind them (AllBambaArmors.Ability_*) and the shared abstract bases stay in AllBambaArmors. -->
+
+	<VEF.Abilities.AbilityDef ParentName="ABT_ArcaneSupportBase">
+		<defName>ABT_Shield</defName>
+		<label>project kinetic shell</label>
+		<description>Wrap the user or an ally in a shell of hardened kinetic field that soaks up to 100 damage for 60 seconds. A hit bigger than what is left collapses it and the rest gets through. Projecting onto a pawn that is already shelled reinforces the shell, up to 150.</description>
+		<iconPath>Icons/Arcane/Shield</iconPath>
+		<targetMode>Pawn</targetMode>
+		<targetingParameters>
+			<canTargetSelf>true</canTargetSelf>
+			<canTargetBuildings>false</canTargetBuildings>
+			<mapObjectTargetsMustBeAutoAttackable>false</mapObjectTargetsMustBeAutoAttackable>
+		</targetingParameters>
+		<range>30</range>
+		<castTime>12</castTime>
+		<cooldownTime>2100</cooldownTime>
+		<modExtensions>
+			<li Class="AllBambaArmors.AbilityExtension_EnergyCost">
+				<cost>30</cost>
+			</li>
+			<li Class="VEF.Abilities.AbilityExtension_Hediff">
+				<hediff>ABT_ShieldHediff</hediff>
+			</li>
+		</modExtensions>
+	</VEF.Abilities.AbilityDef>
+
+	<VEF.Abilities.AbilityDef ParentName="ABT_ArcaneSupportBase">
+		<defName>ABT_PsionicBarrier</defName>
+		<label>the archotech protects</label>
+		<description>Call on the archotech's protection: a golden bubble around the user for up to 15 seconds. Projectiles, flames, beams and blasts from outside stop at its edge; attacks from inside pass freely. Holding it takes total concentration: the user can do nothing else, any new order drops it, and every attack it stops drains energy until the bubble collapses.</description>
+		<iconPath>Icons/Arcane/PsionicBarrier</iconPath>
+		<abilityClass>BeyondOurReach.Ability_PsionicBarrier</abilityClass>
+		<targetMode>Self</targetMode>
+		<castTime>30</castTime>
+		<cooldownTime>1200</cooldownTime>
+		<durationTime>900</durationTime>
+		<chance>0</chance>
+		<modExtensions>
+			<li Class="AllBambaArmors.AbilityExtension_EnergyCost">
+				<cost>10</cost>
+			</li>
+			<li Class="BeyondOurReach.AbilityExtension_BlockedByHediff">
+				<hediff>ABT_PsionicExhaustionHediff</hediff>
+			</li>
+		</modExtensions>
+	</VEF.Abilities.AbilityDef>
+
+	<VEF.Abilities.AbilityDef ParentName="ABT_ArcaneSupportBase">
+		<defName>ABT_AdvancedHeal</defName>
+		<label>inject mending nanites</label>
+		<description>Fire a burst of mending nanites into the target that knit up to 3 wounds closed by 14 HP each and seal the stumps of lost limbs. They cannot rebuild missing body parts. The nanites home in on their own, so no line of sight is needed.</description>
+		<iconPath>Icons/Arcane/AdvancedHeal</iconPath>
+		<targetMode>Pawn</targetMode>
+		<targetingParameters>
+			<canTargetSelf>true</canTargetSelf>
+			<canTargetBuildings>false</canTargetBuildings>
+			<mapObjectTargetsMustBeAutoAttackable>false</mapObjectTargetsMustBeAutoAttackable>
+		</targetingParameters>
+		<range>25</range>
+		<requireLineOfSight>false</requireLineOfSight>
+		<castTime>150</castTime>
+		<cooldownTime>480</cooldownTime>
+		<modExtensions>
+			<li Class="AllBambaArmors.AbilityExtension_EnergyCost">
+				<cost>28</cost>
+			</li>
+			<li Class="BeyondOurReach.AbilityExtension_HealInjuries">
+				<injuries>3</injuries>
+				<amount>14</amount>
+				<stopMissingPartBleeding>true</stopMissingPartBleeding>
+			</li>
+		</modExtensions>
+	</VEF.Abilities.AbilityDef>
+
+	<VEF.Abilities.AbilityDef ParentName="ABT_ArcaneSupportBase">
+		<defName>ABT_Regenerate</defName>
+		<label>seed regenerative mechanites</label>
+		<description>Seed the target with a colony of regenerative mechanites that repair one wound by 4 HP every 5 seconds for several hours before burning out. They leave scars, diseases and missing body parts alone. Seeding again refreshes the colony. No line of sight needed.</description>
+		<iconPath>Icons/Arcane/Regenerate</iconPath>
+		<targetMode>Pawn</targetMode>
+		<targetingParameters>
+			<canTargetSelf>true</canTargetSelf>
+			<canTargetBuildings>false</canTargetBuildings>
+			<mapObjectTargetsMustBeAutoAttackable>false</mapObjectTargetsMustBeAutoAttackable>
+		</targetingParameters>
+		<range>30</range>
+		<requireLineOfSight>false</requireLineOfSight>
+		<castTime>120</castTime>
+		<cooldownTime>2400</cooldownTime>
+		<modExtensions>
+			<li Class="AllBambaArmors.AbilityExtension_EnergyCost">
+				<cost>40</cost>
+			</li>
+			<li Class="VEF.Abilities.AbilityExtension_Hediff">
+				<hediff>ABT_RegenerationHediff</hediff>
+			</li>
+		</modExtensions>
+	</VEF.Abilities.AbilityDef>
+
+	<VEF.Abilities.AbilityDef ParentName="ABT_ArcaneSupportBase">
+		<defName>ABT_Medigel</defName>
+		<label>apply Solar medigel</label>
+		<description>Walk to the target and seal their wounds under a layer of Solar Republic field medigel. For 6 hours wounds heal twice as fast, infections are fought off faster and pain drops by 20%.</description>
+		<iconPath>Icons/Arcane/Medigel</iconPath>
+		<jobDef>VFEA_GotoTargetAndUseAbility</jobDef>
+		<distanceToTarget>1.5</distanceToTarget>
+		<targetMode>Pawn</targetMode>
+		<targetingParameters>
+			<canTargetSelf>true</canTargetSelf>
+			<canTargetBuildings>false</canTargetBuildings>
+			<mapObjectTargetsMustBeAutoAttackable>false</mapObjectTargetsMustBeAutoAttackable>
+		</targetingParameters>
+		<range>40</range>
+		<requireLineOfSight>false</requireLineOfSight>
+		<castTime>120</castTime>
+		<cooldownTime>600</cooldownTime>
+		<modExtensions>
+			<li Class="AllBambaArmors.AbilityExtension_EnergyCost">
+				<cost>10</cost>
+			</li>
+			<li Class="VEF.Abilities.AbilityExtension_Hediff">
+				<hediff>ABT_MedigelHediff</hediff>
+			</li>
+		</modExtensions>
+	</VEF.Abilities.AbilityDef>
+
+	<VEF.Abilities.AbilityDef ParentName="ABT_ArcaneSupportBase">
+		<defName>ABT_HealingCircle</defName>
+		<label>deploy restoration field</label>
+		<description>Project a restoration field onto the ground for 20 seconds. Every 2 seconds it pulses and closes one wound by 10 HP on each pawn inside who is not hostile to the user. It cannot rebuild missing body parts.</description>
+		<iconPath>Icons/Arcane/HealingCircle</iconPath>
+		<targetMode>Location</targetMode>
+		<range>30</range>
+		<radius>3</radius>
+		<power>10</power>
+		<radiusRingColor>(0.4, 1, 0.5)</radiusRingColor>
+		<castTime>240</castTime>
+		<cooldownTime>3600</cooldownTime>
+		<modExtensions>
+			<li Class="AllBambaArmors.AbilityExtension_EnergyCost">
+				<cost>60</cost>
+			</li>
+			<li Class="BeyondOurReach.AbilityExtension_SpawnField">
+				<thingDef>ABT_HealingCircleField</thingDef>
+			</li>
+		</modExtensions>
+	</VEF.Abilities.AbilityDef>
+
+	<VEF.Abilities.AbilityDef ParentName="ABT_ArcaneSupportBase">
+		<defName>ABT_CureDisease</defName>
+		<label>release pathogen hunters</label>
+		<description>Release a swarm of hunter mechanites tuned to wipe out one infection: a wound infection, flu or plague. They succeed 75% of the time. A second disease needs a second swarm.</description>
+		<iconPath>Icons/Arcane/CureDisease</iconPath>
+		<targetMode>Pawn</targetMode>
+		<targetingParameters>
+			<canTargetSelf>true</canTargetSelf>
+			<canTargetBuildings>false</canTargetBuildings>
+			<mapObjectTargetsMustBeAutoAttackable>false</mapObjectTargetsMustBeAutoAttackable>
+		</targetingParameters>
+		<range>15</range>
+		<castTime>300</castTime>
+		<cooldownTime>3600</cooldownTime>
+		<modExtensions>
+			<li Class="AllBambaArmors.AbilityExtension_EnergyCost">
+				<cost>45</cost>
+			</li>
+			<li Class="BeyondOurReach.AbilityExtension_Cure">
+				<successChance>0.75</successChance>
+				<maxConditions>1</maxConditions>
+				<conditions>
+					<li><hediff>WoundInfection</hediff></li>
+					<li><hediff>Flu</hediff></li>
+					<li><hediff>Plague</hediff></li>
+				</conditions>
+			</li>
+		</modExtensions>
+	</VEF.Abilities.AbilityDef>
+
+	<VEF.Abilities.AbilityDef ParentName="ABT_ArcaneSupportBase">
+		<defName>ABT_Purify</defName>
+		<label>run cellular rewrite</label>
+		<description>Run a slow cellular rewrite on one long-term condition. Scars come first (except brain scars), then chronic illnesses such as cataracts, bad back, frailty, dementia or carcinoma, then alcohol or smokeleaf addiction. Each run only partly undoes the damage, so serious conditions take several.</description>
+		<iconPath>Icons/Arcane/Purify</iconPath>
+		<targetMode>Pawn</targetMode>
+		<targetingParameters>
+			<canTargetSelf>true</canTargetSelf>
+			<canTargetBuildings>false</canTargetBuildings>
+			<mapObjectTargetsMustBeAutoAttackable>false</mapObjectTargetsMustBeAutoAttackable>
+		</targetingParameters>
+		<range>16</range>
+		<castTime>360</castTime>
+		<cooldownTime>36000</cooldownTime>
+		<modExtensions>
+			<li Class="AllBambaArmors.AbilityExtension_EnergyCost">
+				<cost>80</cost>
+			</li>
+			<li Class="BeyondOurReach.AbilityExtension_Cure">
+				<maxConditions>1</maxConditions>
+				<scarHealing>2</scarHealing>
+				<conditions>
+					<li><hediff>Asthma</hediff></li>
+					<li><hediff>Cataract</hediff><chance>0.35</chance></li>
+					<li><hediff>HearingLoss</hediff><chance>0.35</chance></li>
+					<li><hediff>BadBack</hediff><chance>0.35</chance></li>
+					<li><hediff>Frail</hediff><chance>0.35</chance></li>
+					<li><hediff>Cirrhosis</hediff><severity>0.2</severity></li>
+					<li><hediff>Carcinoma</hediff><severity>0.2</severity></li>
+					<li><hediff>HeartArteryBlockage</hediff><severity>0.2</severity></li>
+					<li><hediff>Dementia</hediff><severity>0.2</severity></li>
+					<li><hediff>Alzheimers</hediff><severity>0.2</severity></li>
+					<li><hediff>ToxicBuildup</hediff><severity>0.25</severity></li>
+					<li><hediff>AlcoholAddiction</hediff><severity>0.25</severity></li>
+					<li><hediff>SmokeleafAddiction</hediff><severity>0.25</severity></li>
+				</conditions>
+			</li>
+		</modExtensions>
+	</VEF.Abilities.AbilityDef>
+
+	<VEF.Abilities.AbilityDef ParentName="ABT_ArcaneSupportBase">
+		<defName>ABT_Resurrection</defName>
+		<label>apply resurrector nanites</label>
+		<description>Flood a freshly dead humanlike corpse with resurrector nanites. Over 20 seconds they restart the body: the revived pawn is weak and hungry for days and loses some of their skill. Seeding the nanites from the user's own body leaves the user drained for days, and the revival pulse sears shamblers and other mutants nearby. A rotting corpse is beyond saving.</description>
+		<iconPath>Icons/Arcane/Resurrection</iconPath>
+		<abilityClass>BeyondOurReach.Ability_Resurrection</abilityClass>
+		<targetMode>Thing</targetMode>
+		<targetingParameters>
+			<canTargetPawns>false</canTargetPawns>
+			<canTargetBuildings>false</canTargetBuildings>
+			<canTargetItems>true</canTargetItems>
+			<canTargetCorpses>true</canTargetCorpses>
+			<onlyTargetCorpses>true</onlyTargetCorpses>
+			<mapObjectTargetsMustBeAutoAttackable>false</mapObjectTargetsMustBeAutoAttackable>
+		</targetingParameters>
+		<range>6</range>
+		<castTime>600</castTime>
+		<cooldownTime>36000</cooldownTime>
+		<chance>0</chance>
+		<modExtensions>
+			<li Class="AllBambaArmors.AbilityExtension_EnergyCost">
+				<cost>100</cost>
+			</li>
+			<li Class="BeyondOurReach.AbilityExtension_SpawnField">
+				<thingDef>ABT_ResurrectionField</thingDef>
+			</li>
+		</modExtensions>
+	</VEF.Abilities.AbilityDef>
+
+	<VEF.Abilities.AbilityDef ParentName="ABT_ArcaneSupportBase">
+		<defName>ABT_BestowMight</defName>
+		<label>transmit combat overdrive</label>
+		<description>Beam an overdrive signal into the target's nervous system for 30-40 seconds: +40% moving and manipulation, half the pain, sharper reflexes and faster aim, paid for with extra hunger and fatigue. No line of sight needed.</description>
+		<iconPath>Icons/Arcane/BestowMight</iconPath>
+		<targetMode>Pawn</targetMode>
+		<targetingParameters>
+			<canTargetSelf>true</canTargetSelf>
+			<canTargetBuildings>false</canTargetBuildings>
+			<mapObjectTargetsMustBeAutoAttackable>false</mapObjectTargetsMustBeAutoAttackable>
+		</targetingParameters>
+		<range>30</range>
+		<requireLineOfSight>false</requireLineOfSight>
+		<castTime>60</castTime>
+		<cooldownTime>3600</cooldownTime>
+		<modExtensions>
+			<li Class="AllBambaArmors.AbilityExtension_EnergyCost">
+				<cost>25</cost>
+			</li>
+			<li Class="VEF.Abilities.AbilityExtension_Hediff">
+				<hediff>ABT_BestowMightHediff</hediff>
+			</li>
+		</modExtensions>
+	</VEF.Abilities.AbilityDef>
+
+	<VEF.Abilities.AbilityDef ParentName="ABT_ArcaneSupportBase">
+		<defName>ABT_BattleHymn</defName>
+		<label>archotech fury</label>
+		<description>Start or stop channeling archotech fury through the armor's psychic amplifier. Every 5 seconds, humanlike allies of the user's faction within 15 cells are swept up in another surge: faster, tougher against pain, better at dodging and aiming. Each surge costs energy and has a small chance to inspire. The fury fades quickly once the channel closes.</description>
+		<iconPath>Icons/Arcane/BattleHymn</iconPath>
+		<abilityClass>AllBambaArmors.Ability_Toggle</abilityClass>
+		<targetMode>Self</targetMode>
+		<radius>15</radius>
+		<radiusRingColor>(1, 0.85, 0.3)</radiusRingColor>
+		<castTime>60</castTime>
+		<cooldownTime>600</cooldownTime>
+		<chance>0</chance>
+		<modExtensions>
+			<li Class="AllBambaArmors.AbilityExtension_EnergyCost">
+				<cost>20</cost>
+			</li>
+			<li Class="VEF.Abilities.AbilityExtension_Hediff">
+				<hediff>ABT_BattleHymnHediff</hediff>
+				<applyToCaster>true</applyToCaster>
+			</li>
+		</modExtensions>
+	</VEF.Abilities.AbilityDef>
+
+	<VEF.Abilities.AbilityDef ParentName="ABT_ArcaneSupportBase">
+		<defName>ABT_TechnoBit</defName>
+		<label>T-Petrone</label>
+		<description>Launch or recall a T-Petrone, a palm-sized support drone that hovers at the user's shoulder. While drafted it fires micro-lasers at whatever the user is attacking, with a heavier burst every few seconds. It patches up damaged buildings and mechanoids of the user's faction nearby (this can be switched off) and steadies the user's hands while crafting or building. Every action draws a little energy, and it holds back when the pool runs low.</description>
+		<iconPath>Icons/Arcane/TechnoBit</iconPath>
+		<abilityClass>AllBambaArmors.Ability_Toggle</abilityClass>
+		<targetMode>Self</targetMode>
+		<castTime>6</castTime>
+		<cooldownTime>3600</cooldownTime>
+		<chance>0</chance>
+		<modExtensions>
+			<li Class="VEF.Abilities.AbilityExtension_Hediff">
+				<hediff>ABT_TechnoBitHediff</hediff>
+				<applyToCaster>true</applyToCaster>
+			</li>
+		</modExtensions>
+	</VEF.Abilities.AbilityDef>
+
+	<VEF.Abilities.AbilityDef ParentName="ABT_ArcaneAttackBase">
+		<defName>ABT_SeismicSlash</defName>
+		<label>kinetic cleave</label>
+		<description>Dump the suit's stored kinetic charge through the blade in one swing, sending a cutting shockwave along a straight line. Every pawn on the line or right beside it who is not of the user's faction takes about 70% of a melee hit. Needs a melee weapon.</description>
+		<iconPath>Icons/Arcane/SeismicSlash</iconPath>
+		<abilityClass>BeyondOurReach.Ability_SeismicSlash</abilityClass>
+		<targetMode>Location</targetMode>
+		<range>12</range>
+		<castTime>18</castTime>
+		<cooldownTime>1800</cooldownTime>
+		<modExtensions>
+			<li Class="AllBambaArmors.AbilityExtension_EnergyCost">
+				<cost>25</cost>
+			</li>
+			<li Class="AllBambaArmors.AbilityExtension_RequiresWeapon">
+				<melee>true</melee>
+			</li>
+			<!-- The shockwave pierces at least this much, whatever the blade. A sword alone (about 0.4) barely scratches BOR armor (1.9-2.0 sharp);
+			     1.5 goes through vanilla marine armor and lands most hits on BOR armor. Under Combat Extended armor is in mm
+			     (marine armor 20 mm), so 25 gets through marine-class armor but not heavy plate. -->
+			<li Class="AllBambaArmors.AbilityExtension_MinPenetration">
+				<vanilla>1.5</vanilla>
+				<combatExtended>25</combatExtended>
+			</li>
+		</modExtensions>
+	</VEF.Abilities.AbilityDef>
+
+	<VEF.Abilities.AbilityDef ParentName="ABT_ArcaneAttackBase">
+		<defName>ABT_PhaseStrike</defName>
+		<label>skip strike</label>
+		<description>Skip to a pawn or spot, walls or not, and come out swinging. Aimed at a pawn, the user lands right next to it. Every pawn within 2 cells of the landing spot (the circle) who is not of the user's faction takes 50-150% of a melee hit, with a 10% chance of a triple-damage critical. Needs a melee weapon.</description>
+		<iconPath>Icons/Arcane/PhaseStrike</iconPath>
+		<abilityClass>BeyondOurReach.Ability_PhaseStrike</abilityClass>
+		<targetMode>Location</targetMode>
+		<targetingParameters>
+			<canTargetLocations>true</canTargetLocations>
+			<canTargetPawns>true</canTargetPawns>
+			<canTargetBuildings>false</canTargetBuildings>
+		</targetingParameters>
+		<range>30</range>
+		<radius>2</radius>
+		<requireLineOfSight>false</requireLineOfSight>
+		<castTime>18</castTime>
+		<cooldownTime>1500</cooldownTime>
+		<castFleck MayRequire="Ludeon.RimWorld.Royalty">PsycastSkipFlashEntry</castFleck>
+		<modExtensions>
+			<li Class="AllBambaArmors.AbilityExtension_EnergyCost">
+				<cost>30</cost>
+			</li>
+			<li Class="AllBambaArmors.AbilityExtension_RequiresWeapon">
+				<melee>true</melee>
+			</li>
+		</modExtensions>
+	</VEF.Abilities.AbilityDef>
+
+	<VEF.Abilities.AbilityDef ParentName="ABT_ArcaneAttackBase">
+		<defName>ABT_ChainLightning</defName>
+		<label>arc discharge</label>
+		<description>Vent the capacitor bank into a pawn or building. The arc then leaps onward in waves, forking up to twice from each thing it hits, for 4 waves. Damage drops with each wave, faction buildings take double, and nothing is struck twice. The arc does not pick sides: allies close to the targets can be hit.</description>
+		<iconPath>Icons/Arcane/ChainLightning</iconPath>
+		<targetMode>Pawn</targetMode>
+		<targetingParameters>
+			<canTargetBuildings>true</canTargetBuildings>
+		</targetingParameters>
+		<range>50</range>
+		<power>16</power>
+		<castTime>30</castTime>
+		<cooldownTime>600</cooldownTime>
+		<modExtensions>
+			<li Class="AllBambaArmors.AbilityExtension_EnergyCost">
+				<cost>40</cost>
+			</li>
+			<li Class="BeyondOurReach.AbilityExtension_SpawnField">
+				<thingDef>ABT_ChainLightningField</thingDef>
+			</li>
+		</modExtensions>
+	</VEF.Abilities.AbilityDef>
+
+	<VEF.Abilities.AbilityDef ParentName="ABT_ArcaneAttackBase">
+		<defName>ABT_PsionicBlast</defName>
+		<label>archotech bolt</label>
+		<description>Hurl bolts of archotech light at a pawn or spot. Each one bursts in a small radius for 12 damage, and they scatter more the further the target is. The first bolt comes with the cast; up to 4 more follow, each drawing extra energy while the pool can pay.</description>
+		<iconPath>Icons/Arcane/PsionicBlast</iconPath>
+		<abilityClass>BeyondOurReach.Ability_Burst</abilityClass>
+		<targetMode>Location</targetMode>
+		<targetingParameters>
+			<canTargetLocations>true</canTargetLocations>
+			<canTargetPawns>true</canTargetPawns>
+			<canTargetBuildings>true</canTargetBuildings>
+		</targetingParameters>
+		<range>28</range>
+		<castTime>120</castTime>
+		<cooldownTime>720</cooldownTime>
+		<modExtensions>
+			<li Class="AllBambaArmors.AbilityExtension_EnergyCost">
+				<cost>15</cost>
+			</li>
+			<li Class="BeyondOurReach.AbilityExtension_BlockedByHediff">
+				<hediff>ABT_PsionicExhaustionHediff</hediff>
+			</li>
+			<li Class="VEF.Abilities.AbilityExtension_Projectile">
+				<projectile>ABT_PsionicBolt</projectile>
+				<forcedMissRadius>2.5</forcedMissRadius>
+				<hitFlags>All</hitFlags>
+			</li>
+			<li Class="BeyondOurReach.AbilityExtension_Burst">
+				<count>5</count>
+				<extraCost>4</extraCost>
+			</li>
+		</modExtensions>
+	</VEF.Abilities.AbilityDef>
+
+	<VEF.Abilities.AbilityDef ParentName="ABT_ArcaneAttackBase">
+		<defName>ABT_PsionicStorm</defName>
+		<label>archotech tempest</label>
+		<description>Lift off on a surge of archotech power and circle the target area for several seconds, raining archotech bolts down on it, then crash down in its middle. The strain burns out the user's psylink: no psychic abilities for an hour.</description>
+		<iconPath>Icons/Arcane/PsionicStorm</iconPath>
+		<abilityClass>BeyondOurReach.Ability_PsionicStorm</abilityClass>
+		<targetMode>Location</targetMode>
+		<range>36</range>
+		<radius>5</radius>
+		<castTime>12</castTime>
+		<cooldownTime>1200</cooldownTime>
+		<chance>0</chance>
+		<modExtensions>
+			<li Class="AllBambaArmors.AbilityExtension_EnergyCost">
+				<cost>30</cost>
+			</li>
+			<li Class="BeyondOurReach.AbilityExtension_BlockedByHediff">
+				<hediff>ABT_PsionicExhaustionHediff</hediff>
+			</li>
+			<li Class="BeyondOurReach.AbilityExtension_Storm">
+				<flyer>ABT_PsionicStormFlyer</flyer>
+				<bolt>ABT_PsionicBolt</bolt>
+			</li>
+		</modExtensions>
+	</VEF.Abilities.AbilityDef>
+
+	<VEF.Abilities.AbilityDef ParentName="ABT_ArcaneAttackBase">
+		<defName>ABT_Ignite</defName>
+		<label>induce thermal flashover</label>
+		<description>Focus a microwave pulse on the target spot until it flashes over. The area heats up sharply, snow boils off, corpses burst into flame, and pawns and plants may catch fire, more likely near the center. It burns friend and foe alike.</description>
+		<iconPath>Icons/Arcane/Ignite</iconPath>
+		<abilityClass>BeyondOurReach.Ability_Ignite</abilityClass>
+		<targetMode>Location</targetMode>
+		<range>35</range>
+		<radius>5</radius>
+		<castTime>120</castTime>
+		<cooldownTime>3600</cooldownTime>
+		<modExtensions>
+			<li Class="AllBambaArmors.AbilityExtension_EnergyCost">
+				<cost>30</cost>
+			</li>
+		</modExtensions>
+	</VEF.Abilities.AbilityDef>
+
+	<VEF.Abilities.AbilityDef ParentName="ABT_ArcaneAttackBase">
+		<defName>ABT_Sunfire</defName>
+		<label>call Solar lance barrage</label>
+		<description>Paint the target area for a Solar orbital platform, which answers with 13 thin lances of focused light over about 10 seconds. Each lance sweeps a short path, burning pawns it crosses and hitting buildings four times as hard, sometimes setting them alight.</description>
+		<iconPath>Icons/Arcane/Sunfire</iconPath>
+		<targetMode>Location</targetMode>
+		<range>50</range>
+		<radius>5</radius>
+		<power>8</power>
+		<castTime>180</castTime>
+		<cooldownTime>3600</cooldownTime>
+		<modExtensions>
+			<li Class="AllBambaArmors.AbilityExtension_EnergyCost">
+				<cost>65</cost>
+			</li>
+			<li Class="BeyondOurReach.AbilityExtension_SpawnField">
+				<thingDef>ABT_SunfireField</thingDef>
+			</li>
+		</modExtensions>
+	</VEF.Abilities.AbilityDef>
+
+	<VEF.Abilities.AbilityDef ParentName="ABT_ArcaneAttackBase">
+		<defName>ABT_HolyWrath</defName>
+		<label>judgment of the archotech</label>
+		<description>Mark an area and call the archotech's judgment down on everyone in it. After 6 seconds, discriminating strikes rain down: each one burns and stuns enemies nearby, and hits shamblers and other mutants twice as hard. The user's own faction inside the mark when it falls are instead shielded from all harm for a moment, patched up and put into combat overdrive.</description>
+		<iconPath>Icons/Arcane/HolyWrath</iconPath>
+		<targetMode>Location</targetMode>
+		<range>45</range>
+		<radius>6</radius>
+		<power>15</power>
+		<castTime>150</castTime>
+		<cooldownTime>14400</cooldownTime>
+		<modExtensions>
+			<li Class="AllBambaArmors.AbilityExtension_EnergyCost">
+				<cost>50</cost>
+			</li>
+			<li Class="BeyondOurReach.AbilityExtension_SpawnField">
+				<thingDef>ABT_HolyWrathField</thingDef>
+			</li>
+		</modExtensions>
+	</VEF.Abilities.AbilityDef>
+
+	<VEF.Abilities.AbilityDef ParentName="ABT_ArcaneAttackBase">
+		<defName>ABT_Explosion</defName>
+		<label>wrath of the archotech</label>
+		<description>Pour the entire energy pool into an open channel to the archotech, and let its wrath through. Containment rings gather over the target for a few seconds, then the wrath breaks outward to 12 cells in waves of blast and flame. It does not care whose side anything is on: allies, the user's own buildings, even the user.</description>
+		<iconPath>Icons/Arcane/Explosion</iconPath>
+		<targetMode>Location</targetMode>
+		<targetingParameters>
+			<canTargetLocations>true</canTargetLocations>
+			<canTargetPawns>true</canTargetPawns>
+			<canTargetBuildings>true</canTargetBuildings>
+			<canTargetItems>true</canTargetItems>
+		</targetingParameters>
+		<range>100</range>
+		<radius>12</radius>
+		<power>50</power>
+		<castTime>300</castTime>
+		<cooldownTime>36000</cooldownTime>
+		<chance>0</chance>
+		<modExtensions>
+			<li Class="AllBambaArmors.AbilityExtension_EnergyCost">
+				<drainAll>true</drainAll>
+			</li>
+			<li Class="BeyondOurReach.AbilityExtension_SpawnField">
+				<thingDef>ABT_ArcaneExplosionField</thingDef>
+			</li>
+		</modExtensions>
+	</VEF.Abilities.AbilityDef>
+
+	<VEF.Abilities.AbilityDef ParentName="ABT_ArcaneSupportBase">
+		<defName>ABT_CreateLight</defName>
+		<label>eye of the archotech</label>
+		<description>Open an eye of the archotech over any spot in range, no line of sight needed: a hovering mote of golden light that lights the area. It stays until the user uses this again, anywhere, which closes it.</description>
+		<iconPath>Icons/Arcane/CreateLight</iconPath>
+		<abilityClass>BeyondOurReach.Ability_CreateLight</abilityClass>
+		<targetMode>Location</targetMode>
+		<range>150</range>
+		<requireLineOfSight>false</requireLineOfSight>
+		<castTime>30</castTime>
+		<cooldownTime>1800</cooldownTime>
+		<chance>0</chance>
+	</VEF.Abilities.AbilityDef>
+
+</Defs>

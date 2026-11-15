@@ -152,6 +152,7 @@ The meditation pod SHALL be the place where Orientis pawns meditate to generate 
 ### Requirement: Meditation shield
 A meditation pod SHALL have an "Enable shield" gizmo for a shield covering a circle 50 tiles across. An Orientis pawn SHALL have to walk to the pod to raise it.
 - The shield SHALL stop hostile projectiles, mortar fire and orbital bombardments.
+- While the shield is up, power consumers and generators under it SHALL keep running through a solar flare, like under the Umbral dome. A shield that is down, for any reason, SHALL protect nothing.
 - Tenebral and Umbral pawns inside SHALL lose 35% consciousness at once and 5% more each in-game hour.
 - The shield SHALL draw meditation power from the map's caches, and SHALL fall when there is none left.
 

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<JobDef>
+		<defName>BOR_GeneForge</defName>
+		<driverClass>BeyondOurReach.JobDriver_GeneForge</driverClass>
+		<reportString>drawing a gene out of the sleeper in TargetA.</reportString>
+	</JobDef>
+
+	<WorkGiverDef>
+		<defName>BOR_GeneForge</defName>
+		<label>work the gene forge</label>
+		<giverClass>BeyondOurReach.WorkGiver_GeneForge</giverClass>
+		<workType>Doctor</workType>
+		<priorityInType>35</priorityInType>
+		<verb>work</verb>
+		<gerund>working</gerund>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</WorkGiverDef>
+	<!-- Hidden counter: severity = genes the forge has drawn out of this pawn. Drives the thought below. -->
+	<HediffDef>
+		<defName>BOR_GeneForgeExtracted</defName>
+		<label>genes drawn out</label>
+		<description>Genes have been torn out of this person by a gene forge, and parts of them with it.</description>
+		<hediffClass>HediffWithComps</hediffClass>
+		<everCurableByItem>false</everCurableByItem>
+		<scenarioCanAdd>false</scenarioCanAdd>
+		<isBad>false</isBad>
+		<initialSeverity>1</initialSeverity>
+		<maxSeverity>9999</maxSeverity>
+		<stages>
+			<li>
+				<minSeverity>0</minSeverity>
+				<becomeVisible>false</becomeVisible>
+			</li>
+			<li>
+				<minSeverity>2.5</minSeverity>
+				<becomeVisible>false</becomeVisible>
+			</li>
+			<li>
+				<minSeverity>5.5</minSeverity>
+				<becomeVisible>false</becomeVisible>
+			</li>
+		</stages>
+	</HediffDef>
+
+	<ThoughtDef>
+		<defName>BOR_GeneForgeExtracted</defName>
+		<workerClass>ThoughtWorker_Hediff</workerClass>
+		<hediff>BOR_GeneForgeExtracted</hediff>
+		<validWhileDespawned>true</validWhileDespawned>
+		<stages>
+			<li>
+				<label>gene yoinked</label>
+				<description>They yoinked my gene and some of me is lost.</description>
+				<baseMoodEffect>-10</baseMoodEffect>
+			</li>
+			<li>
+				<label>missing my parts</label>
+				<description>I really miss my parts.</description>
+				<baseMoodEffect>-20</baseMoodEffect>
+			</li>
+			<li>
+				<label>box of genes</label>
+				<description>Am I just a box of genes...?</description>
+				<baseMoodEffect>-30</baseMoodEffect>
+			</li>
+		</stages>
+	</ThoughtDef>
+</Defs>

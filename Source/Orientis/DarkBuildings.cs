@@ -31,22 +31,97 @@ public static class DarkBuildings
         FleckMaker.ThrowMicroSparks(pos, thing.Map);
     }
 
-    // Dark items lying on the map, wherever they are stored. Things worn, carried or held in a container are out of reach.
-    public static List<Thing> ItemsOn(Map map) => map.listerThings.ThingsInGroup(ThingRequestGroup.HaulableEver)
-        .Where(t => t.def.category == ThingCategory.Item && OrientisRestrictions.IsDarkThing(t)).ToList();
-
-    public static void Burn(Thing item)
+    // Anomaly things the light burns, whoever owns them. The void monolith, void structures and void node are left out:
+    // they carry the Anomaly story. Names that do not resolve (Anomaly off) are skipped.
+    private static readonly string[] AnomalyDefNames =
     {
-        Smite(item);
-        item.Destroy();
+        // Items
+        "Shard", "ShardAnimalPulser", "BiomutationPulser", "GoldenCube", "RevenantSpine", "GrayFleshSample",
+        "FleshmassNeuralLump", "RevenantFleshChunk", "MonolithFragment", "Meat_Twisted", "LabyrinthMatter",
+        // Bioferrite and what is made from it
+        "Bioferrite", "Leather_Dread", "VoidsightSerum", "MetalbloodSerum", "JuggernautSerum", "MindNumbSerum",
+        "GhoulResurrectionSerum", "Shell_Deadlife", "TrapIED_Deadlife",
+        // Wild structures
+        "Fleshmass", "Fleshmass_Active", "FleshSack", "FleshmassHeart", "Fleshbulb", "NerveBundle", "FleshmassSpitter",
+        "WarpedObelisk_Mutator", "WarpedObelisk_Duplicator", "WarpedObelisk_Abductor", "WarpedObelisk_Labyrinth",
+        "Noctolith", "PitGate", "PitBurrow", "GrayBox", "GrayStatueDeadlifeDust", "GrayStatueTeleporter",
+        "DirtCubeSculpture", "StoneCubeSculpture", "SandCubeSculpture", "ScrapCubeSculpture", "Plant_TreeHarbinger",
+        // Colony anomaly tech
+        "HoldingPlatform", "HoldingSpot", "ShardInhibitor", "ElectricInhibitor", "BioferriteGenerator",
+        "BioferriteHarvester", "BioferriteShaper", "Electroharvester", "SerumCentrifuge", "FrenzyInducer",
+        "SleepSuppressor", "AtmosphericHeater", "ShardBeacon", "VoidSculpture",
+    };
+
+    private static List<ThingDef>? anomalyDefs;
+
+    private static List<ThingDef> AnomalyDefs => anomalyDefs ??= AnomalyDefNames
+        .Select(n => DefDatabase<ThingDef>.GetNamedSilentFail(n)).Where(d => d != null).ToList();
+
+    private static bool IsAnomalyThing(Thing thing) => thing is UnnaturalCorpse || AnomalyDefs.Contains(thing.GetInnerIfMinified().def);
+
+    // Dark and anomaly items lying on the map, wherever they are stored, then anomaly buildings and trees. Things worn,
+    // carried or held in a container are out of reach.
+    public static List<Thing> TargetsOn(Map map) => map.listerThings.ThingsInGroup(ThingRequestGroup.HaulableEver)
+        .Where(t => t.def.category == ThingCategory.Item && (OrientisRestrictions.IsDarkThing(t) || IsAnomalyThing(t)))
+        .Concat(AnomalyDefs.Where(d => d.category != ThingCategory.Item).SelectMany(d => map.listerThings.ThingsOfDef(d)))
+        .ToList();
+
+    public static void Burn(Thing thing)
+    {
+        Smite(thing);
+        BurnHeldEntity(thing);
+        // A pit gate goes the vanilla way, which also clears the caves under it. Collapsing, it is left alone.
+        if (thing is PitGate gate)
+        {
+            if (!gate.IsCollapsing)
+            {
+                gate.BeginCollapsing();
+            }
+            return;
+        }
+        // The fleshmass heart, pit burrows, obelisks and gray structures cannot be destroyed normally.
+        Thing.allowDestroyNonDestroyable = true;
+        try
+        {
+            if (thing is Building_FleshmassHeart heart)
+            {
+                heart.Kill();
+            }
+            else
+            {
+                thing.Destroy();
+            }
+        }
+        finally
+        {
+            Thing.allowDestroyNonDestroyable = false;
+        }
     }
 
-    // Burns what no ring reached, such as gear dropped during conversion and items on maps with no altar.
+    // An entity on a holding platform burns with it, leaving nothing behind, instead of getting loose.
+    private static void BurnHeldEntity(Thing thing)
+    {
+        Pawn? held = thing.TryGetComp<CompEntityHolder>()?.HeldPawn;
+        if (held == null || held.Destroyed)
+        {
+            return;
+        }
+        if (!held.Dead)
+        {
+            held.Kill(null);
+        }
+        if (held.Corpse != null && !held.Corpse.Destroyed)
+        {
+            held.Corpse.Destroy();
+        }
+    }
+
+    // Burns what no ring reached, such as gear dropped during conversion and things on maps with no altar.
     public static void BurnAllItems()
     {
         foreach (Map map in Find.Maps)
         {
-            ItemsOn(map).ForEach(Burn);
+            TargetsOn(map).Where(t => !t.Destroyed).ToList().ForEach(Burn);
         }
     }
 
@@ -75,6 +150,8 @@ public static class DarkBuildings
         IntVec3 cell = building.Position;
         Rot4 rot = building.Rotation;
         Map map = building.Map;
+        // A transforming pod refuses to eject, and whatever is still inside would be destroyed with it.
+        (building as Building_TenebralPod)?.AbortTransformation();
         if (building is Building_Casket casket)
         {
             casket.EjectContents();

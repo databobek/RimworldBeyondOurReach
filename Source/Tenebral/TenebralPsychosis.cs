@@ -72,6 +72,12 @@ public static class BOR_TenebralDefOf
     public static JobDef BOR_AltarProduce = null!;
     public static JobDef BOR_LoadTenebralPod = null!;
 
+    [MayRequireBiotech]
+    public static JobDef BOR_GeneForge = null!;
+
+    [MayRequireBiotech]
+    public static HediffDef BOR_GeneForgeExtracted = null!;
+
     static BOR_TenebralDefOf()
     {
         DefOfHelper.EnsureInitializedInCtor(typeof(BOR_TenebralDefOf));
@@ -119,8 +125,7 @@ public static class TenebralPsychosis
     public static bool AtWorkLimit(Pawn pawn) => LimitComp(pawn)?.Reached ?? false;
 
     // The work the limit applies to: bills, research, the altar and the forges.
-    public static bool IsLimitedWork(WorkGiver giver) => giver is WorkGiver_DoBill or WorkGiver_Researcher or WorkGiver_DarkAltar
-        or WorkGiver_ForgeAnalyze or WorkGiver_ForgeFormat or WorkGiver_ForgeOverdrive or WorkGiver_ForgeProduce;
+    public static bool IsLimitedWork(WorkGiver giver) => giver is WorkGiver_DoBill or WorkGiver_Researcher or WorkGiver_DarkAltar or WorkGiver_ForgeBase;
 
     // Ends limited work at a tenebrite building once the pawn is at the limit. Severity only moves in the exposure check, which calls this.
     public static void StopWorkAtLimit(Pawn pawn)
@@ -308,7 +313,7 @@ public class MapComponent_TenebralExposure : MapComponent
     }
 }
 
-// Hidden counter of mental breaks suffered while psychotic. Breaks past the umbral threshold may crystallize parts.
+// Hidden counter of berserk breaks suffered while psychotic. Breaks past the umbral threshold may crystallize parts.
 public class Hediff_TenebralBreaks : HediffWithComps
 {
     private const int ChoiceCheckInterval = 60;
@@ -391,7 +396,8 @@ public static class Crystallization
         {
             return true;
         }
-        string label = part.customLabel ?? "";
+        // The untranslated label: the translated one does not start with "left" or "right" in other languages.
+        string label = part.untranslatedCustomLabel ?? part.customLabel ?? "";
         return (defName == "Kidney" && label.StartsWith("left")) || (defName == "Lung" && label.StartsWith("right"));
     }
 
@@ -461,9 +467,10 @@ public static class TenebralPsychosisPatches
     [HarmonyPatch(typeof(MentalStateHandler), nameof(MentalStateHandler.TryStartMentalState))]
     public static class MentalStateHandler_TryStartMentalState_Patch
     {
-        public static void Postfix(Pawn ___pawn, bool __result, bool causedByDamage, bool causedByPsycast)
+        // Only a berserk rage counts as a break; social fights, daze and the rest do not.
+        public static void Postfix(Pawn ___pawn, bool __result, MentalStateDef stateDef, bool causedByDamage, bool causedByPsycast)
         {
-            if (!__result || causedByDamage || causedByPsycast || !___pawn.RaceProps.Humanlike || !TenebralPsychosis.IsPsychotic(___pawn))
+            if (!__result || stateDef != MentalStateDefOf.Berserk || causedByDamage || causedByPsycast || !___pawn.RaceProps.Humanlike || !TenebralPsychosis.IsPsychotic(___pawn))
             {
                 return;
             }

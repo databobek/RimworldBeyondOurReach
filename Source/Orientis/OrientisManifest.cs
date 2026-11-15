@@ -81,7 +81,7 @@ public class Command_OrientisManifest : Command_Ability
     }
 }
 
-public class Window_OrientisManifest : Window
+public class Window_OrientisManifest : BorWindow
 {
     private const float RowHeight = 124f;
     private const float Gap = 10f;
@@ -102,13 +102,14 @@ public class Window_OrientisManifest : Window
         closeOnClickedOutside = false;
     }
 
-    public override void DoWindowContents(Rect inRect)
+    protected override string Title => "BOR_ManifestTitle".Translate();
+
+    protected override BorUISchemeDef Scheme => BOR_UISchemeDefOf.BOR_UIScheme_Orientis;
+
+    protected override void Contents(Rect inRect)
     {
-        Text.Font = GameFont.Medium;
-        Widgets.Label(new Rect(inRect.x, inRect.y, inRect.width, 36f), "BOR_ManifestTitle".Translate());
-        Text.Font = GameFont.Small;
         List<ThingDef> buildings = OrientisManifest.Buildings;
-        Rect outRect = new(inRect.x, inRect.y + 40f, inRect.width, inRect.height - 40f);
+        Rect outRect = inRect;
         Rect viewRect = new(0f, 0f, outRect.width - 16f, buildings.Count * (RowHeight + Gap));
         Widgets.BeginScrollView(outRect, ref scroll, viewRect);
         float y = 0f;
@@ -122,7 +123,7 @@ public class Window_OrientisManifest : Window
 
     private void DrawRow(Rect rect, ThingDef building)
     {
-        Widgets.DrawMenuSection(rect);
+        BorSkin.Current.Section(rect);
         Rect inner = rect.ContractedBy(Gap);
         Widgets.ThingIcon(new Rect(inner.x, inner.y, inner.height, inner.height), building);
         float textX = inner.x + inner.height + Gap;
@@ -133,7 +134,7 @@ public class Window_OrientisManifest : Window
         Text.Font = GameFont.Small;
         DrawCost(new Rect(textX, inner.yMax - CostIconSize, textWidth, CostIconSize), building);
         Rect button = new(inner.xMax - ButtonWidth, inner.y + (inner.height - 36f) / 2f, ButtonWidth, 36f);
-        if (Widgets.ButtonText(button, "BOR_ManifestPlace".Translate(), active: OrientisManifest.CanPay(map, building)))
+        if (BorSkin.Current.Button(button, "BOR_ManifestPlace".Translate(), active: OrientisManifest.CanPay(map, building), tone: BorTone.Good))
         {
             Close();
             Find.DesignatorManager.Select(new Designator_OrientisBuilding(building));
@@ -156,7 +157,7 @@ public class Window_OrientisManifest : Window
             TooltipHandler.TipRegion(icon, cost.thingDef.LabelCap);
             string amount = available + "/" + cost.count;
             float width = Text.CalcSize(amount).x + Gap;
-            GUI.color = available >= cost.count ? Color.white : ColorLibrary.RedReadable;
+            GUI.color = available >= cost.count ? Color.white : BorSkin.Current.TextBad;
             Widgets.Label(new Rect(icon.xMax + 2f, rect.y, width, CostIconSize), amount);
             GUI.color = Color.white;
             x = icon.xMax + 2f + width;

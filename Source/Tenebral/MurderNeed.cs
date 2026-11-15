@@ -145,17 +145,18 @@ public static class MurderPatches
         }
     }
 
+    // A humanlike killed by another pawn sates the killer's bloodlust and can set off its next Umbral step.
     [HarmonyPatch(typeof(Pawn), nameof(Pawn.Kill))]
     public static class Pawn_Kill_Patch
     {
-        public static void Prefix(Pawn __instance, DamageInfo? dinfo, out bool __state)
+        public static void Prefix(Pawn __instance, DamageInfo? dinfo)
         {
-            __state = !__instance.Dead && __instance.RaceProps.Humanlike;
-            if (!__state || dinfo?.Instigator is not Pawn killer || killer == __instance)
+            if (__instance.Dead || !__instance.RaceProps.Humanlike || dinfo?.Instigator is not Pawn killer || killer == __instance)
             {
                 return;
             }
             killer.needs?.TryGetNeed<Need_Murder>()?.Notify_Killed();
+            Umbral.Notify_KilledHumanlike(killer);
         }
     }
 

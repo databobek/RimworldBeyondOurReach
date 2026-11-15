@@ -123,9 +123,26 @@ public static class RTSolarFlareShieldCompat
 {
     private const string ShieldDefName = "Building_RTMagneticShield";
 
+    private static ThingDef? shieldDef;
+    private static bool shieldDefLooked;
+
+    // Looked up once: the flare patch asks on every power net tick.
+    private static ThingDef? ShieldDef
+    {
+        get
+        {
+            if (!shieldDefLooked)
+            {
+                shieldDef = DefDatabase<ThingDef>.GetNamedSilentFail(ShieldDefName);
+                shieldDefLooked = true;
+            }
+            return shieldDef;
+        }
+    }
+
     public static Thing? ActiveShield(Map map)
     {
-        ThingDef? def = DefDatabase<ThingDef>.GetNamedSilentFail(ShieldDefName);
+        ThingDef? def = ShieldDef;
         if (def == null)
         {
             return null;
@@ -164,12 +181,14 @@ public static class PowerNet_PowerNetTick_Patch
 
     private static readonly HashSet<Room> shieldedRooms = new();
     private static readonly HashSet<Room> waitingRooms = new();
+    private static readonly HashSet<Thing> shieldBuildings = new();
+    private static readonly List<(IntVec3 center, float radius, bool up)> domes = new();
     private static readonly List<CompPowerTrader> protectedParts = new();
     private static readonly List<CompPowerTrader> exposedConsumers = new();
 
-    // A map can have many nets; the rooms only need working out once per map per tick.
-    private static int roomsTick = -1;
-    private static int roomsMapId = -1;
+    // A map can have many nets; the shields only need working out once per map per tick.
+    private static int shieldsTick = -1;
+    private static int shieldsMapId = -1;
 
     public static void Prefix(PowerNet __instance, out List<CompPowerTrader>? __state)
     {
@@ -180,31 +199,18 @@ public static class PowerNet_PowerNetTick_Patch
             return;
         }
 
-        // With nothing that could protect a building, vanilla's flare handling is all this net needs.
-        List<CompSolarFlareShield> shields = map.GetComponent<MapComponent_SolarFlareShields>().shields;
-        if (shields.Count == 0 && !CompUmbralShield.AnyOn(map))
+        int tick = Find.TickManager.TicksGame;
+        if (tick != shieldsTick || map.uniqueID != shieldsMapId)
         {
-            return;
+            shieldsTick = tick;
+            shieldsMapId = map.uniqueID;
+            CollectShields(map);
         }
 
-        int tick = Find.TickManager.TicksGame;
-        if (tick != roomsTick || map.uniqueID != roomsMapId)
+        // With nothing that could protect a building, vanilla's flare handling is all this net needs.
+        if (shieldBuildings.Count == 0)
         {
-            roomsTick = tick;
-            roomsMapId = map.uniqueID;
-            shieldedRooms.Clear();
-            waitingRooms.Clear();
-            foreach (CompSolarFlareShield shield in shields)
-            {
-                if (shield.ShieldingRoom)
-                {
-                    shieldedRooms.Add(shield.parent.GetRoom());
-                }
-                else if (shield.WaitingToShield)
-                {
-                    waitingRooms.Add(shield.parent.GetRoom());
-                }
-            }
+            return;
         }
 
         protectedParts.Clear();
@@ -214,10 +220,10 @@ public static class PowerNet_PowerNetTick_Patch
             // A shield stays listed while off, so vanilla can power it back on. Until then its room or dome adds only
             // its generators, which may be all that can restart it; the consumers there wait for the shield.
             Room? room = part.parent.GetRoom();
+            IntVec3 cell = part.parent.Position;
             bool inShieldedRoom = room != null && shieldedRooms.Contains(room);
-            bool startsShield = part.PowerOutput > 0f && ((room != null && waitingRooms.Contains(room)) || CompUmbralShield.InRange(map, part.parent.Position));
-            bool isShield = part.parent.GetComp<CompSolarFlareShield>() != null || part.parent.GetComp<CompUmbralShield>() != null;
-            if (inShieldedRoom || startsShield || isShield || CompUmbralShield.Covers(map, part.parent.Position))
+            bool startsShield = part.PowerOutput > 0f && ((room != null && waitingRooms.Contains(room)) || InDome(cell, upOnly: false));
+            if (inShieldedRoom || startsShield || shieldBuildings.Contains(part.parent) || InDome(cell, upOnly: true))
             {
                 protectedParts.Add(part);
             }
@@ -253,6 +259,58 @@ public static class PowerNet_PowerNetTick_Patch
             __instance.powerComps = __state;
             ignoreFlare = false;
         }
+    }
+
+    // Every shield building on the map, the rooms of the flare shields, and the domes with their reach: Umbral domes and
+    // Orientis meditation shields. A dome is up when vanilla's interceptor says so, so whatever takes it down also ends
+    // its flare protection.
+    private static void CollectShields(Map map)
+    {
+        shieldedRooms.Clear();
+        waitingRooms.Clear();
+        shieldBuildings.Clear();
+        domes.Clear();
+        foreach (CompSolarFlareShield shield in map.GetComponent<MapComponent_SolarFlareShields>().shields)
+        {
+            shieldBuildings.Add(shield.parent);
+            if (shield.ShieldingRoom)
+            {
+                shieldedRooms.Add(shield.parent.GetRoom());
+            }
+            else if (shield.WaitingToShield)
+            {
+                waitingRooms.Add(shield.parent.GetRoom());
+            }
+        }
+        foreach (Thing thing in map.listerThings.ThingsInGroup(ThingRequestGroup.ProjectileInterceptor))
+        {
+            CompProjectileInterceptor interceptor = thing.TryGetComp<CompProjectileInterceptor>();
+            if (thing.TryGetComp<CompUmbralShield>() != null)
+            {
+                shieldBuildings.Add(thing);
+                domes.Add((thing.Position, interceptor.Props.radius, interceptor.Active));
+            }
+            // Runs on meditation power, so one that is down has nothing to restart and counts for nothing.
+            else if (thing.TryGetComp<CompMeditationShield>() != null && interceptor.Active)
+            {
+                shieldBuildings.Add(thing);
+                domes.Add((thing.Position, interceptor.Props.radius, true));
+            }
+        }
+    }
+
+    // The same reach as CompUmbralShield.Covers, against this tick's domes. Umbral domes that are down count too unless
+    // upOnly: their generators may be all that can power them back up during a flare.
+    private static bool InDome(IntVec3 cell, bool upOnly)
+    {
+        foreach ((IntVec3 center, float radius, bool up) in domes)
+        {
+            if ((up || !upOnly) && cell.InHorDistOf(center, radius))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }
 

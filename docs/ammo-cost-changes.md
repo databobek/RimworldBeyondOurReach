@@ -36,7 +36,7 @@ Tenebrite-coated (TC) ammo outside Gen3 and the Tenebrite plasma cells were remo
 
 ## Not yet converted to this model
 
-PDC / Ranger turret ammo, 130mm Type 63, 28cm and Judgment shells, Cracker shell, Neutronium mortar shell (NDev). The Ion_N mortar and howitzer shells also keep their old costs. Quasar gauss (Inc +5, EMP +8 steel-eq premium), laser packs (CE charge pack metal value 36) and plasma cells (CE 22 / 26 / 56) are converted, with their component counts kept; the laser packs lost their old fixed 40 Neutronium except on EMP/Neuralizer variants.
+PDC / Ranger turret ammo, 130mm Type 63, 28cm and Judgment shells, Cracker shell, Neutronium mortar shell (NDev). The Ion_N mortar and howitzer shells also keep their old costs. Quasar gauss (now one cartridge per caliber; the Inc and EMP rounds became fire modes), laser packs (CE charge pack metal value 36) and plasma cells (CE 22 / 26 / 56) are converted, with their component counts kept; the laser packs lost their old fixed 40 Neutronium except on EMP/Neuralizer variants.
 
 ## Changed recipes (106)
 
@@ -46,30 +46,22 @@ PDC / Ranger turret ammo, 130mm Type 63, 28cm and Judgment shells, Cracker shell
 | `BOR_Ammo_105x617mmRCannonShell_NiAT` | 2 | 90 QuasarAlloy, 40 Neutronium, 2 ComponentSpacer | 742 | 91 QuasarAlloy, 40 Neutronium, 2 ComponentSpacer | 747 |
 | `BOR_Ammo_120mmCannonShell_Ni` | 2 | 90 QuasarAlloy, 2 ComponentSpacer, 130 Neutronium | 922 | 91 QuasarAlloy, 132 Neutronium, 2 ComponentSpacer | 931 |
 | `BOR_Ammo_120mmCannonShell_NiAT` | 2 | 90 QuasarAlloy, 2 ComponentSpacer, 70 Neutronium | 802 | 91 QuasarAlloy, 71 Neutronium, 2 ComponentSpacer | 809 |
-| `BOR_Ammo_12GaugeRailgun_KwazeerEMP` | 500 | 5 QuasarAlloy, 1 ComponentII, 25 Neutronium | 259 | 86 QuasarAlloy, 20 Neutronium, 1 ComponentII | 656 |
-| `BOR_Ammo_12GaugeRailgun_KwazeerInc` | 500 | 5 QuasarAlloy, 1 ComponentII, 25 Neutronium | 259 | 86 QuasarAlloy, 13 Neutronium, 1 ComponentII | 642 |
 | `BOR_Ammo_12GaugeRailgun_KwazeerStd` | 500 | 5 QuasarAlloy, 1 ComponentII, 25 Neutronium | 259 | 86 QuasarAlloy, 1 ComponentII | 616 |
 | `BOR_Ammo_12GaugeRailgun_SS` | 200 | 4 Sunsteel | 17 | 26 Sunsteel | 113 |
 | `BOR_Ammo_155mmHowitzerShell_Nc` | 1 | 94 Sunsteel, 2 ComponentSpacer, 50 Neutronium | 718 | 73 Sunsteel, 25 Neutronium, 2 ComponentSpacer | 577 |
 | `BOR_Ammo_155mmHowitzerShell_Ni` | 1 | 94 Sunsteel, 2 ComponentSpacer, 170 Neutronium | 958 | 73 Sunsteel, 115 Neutronium, 2 ComponentSpacer | 757 |
 | `BOR_Ammo_28cmSpgrShell_Ef` | 5 | 200 QuasarAlloy, 100 Tenebrite, 2 ComponentII, 5000 Neutronium | 11942 | 300 QuasarAlloy, 2 ComponentII, 5000 Neutronium | 11874 |
-| `BOR_Ammo_4mmRailgun_KwazeerEMP` | 500 | 3 QuasarAlloy, 1 ComponentII, 10 Neutronium | 219 | 15 QuasarAlloy, 20 Neutronium, 1 ComponentII | 299 |
-| `BOR_Ammo_4mmRailgun_KwazeerInc` | 500 | 3 QuasarAlloy, 1 ComponentII, 10 Neutronium | 219 | 15 QuasarAlloy, 13 Neutronium, 1 ComponentII | 285 |
 | `BOR_Ammo_4mmRailgun_KwazeerStd` | 500 | 3 QuasarAlloy, 1 ComponentII, 10 Neutronium | 219 | 15 QuasarAlloy, 1 ComponentII | 259 |
 | `BOR_Ammo_4mmRailgun_SS` | 500 | 2 Sunsteel | 9 | 12 Sunsteel | 52 |
 | `BOR_Ammo_57x307mmR_Ni` | 10 | 86 QuasarAlloy, 2 ComponentSpacer, 20 Neutronium | 682 | 87 QuasarAlloy, 20 Neutronium, 2 ComponentSpacer | 687 |
 | `BOR_Ammo_57x307mmR_QaP` | 10 | 86 QuasarAlloy | 432 | 87 QuasarAlloy | 437 |
 | `BOR_Ammo_6mmRailgunBullpup_SS` | 500 | 3 Sunsteel | 13 | 12 Sunsteel | 52 |
 | `BOR_Ammo_6mmRailgunDMR_SS` | 500 | 3 Sunsteel | 13 | 12 Sunsteel | 52 |
-| `BOR_Ammo_6mmRailgun_KwazeerEMP` | 500 | 4 QuasarAlloy, 1 ComponentII, 20 Neutronium | 244 | 15 QuasarAlloy, 20 Neutronium, 1 ComponentII | 299 |
-| `BOR_Ammo_6mmRailgun_KwazeerInc` | 500 | 4 QuasarAlloy, 1 ComponentII, 20 Neutronium | 244 | 15 QuasarAlloy, 13 Neutronium, 1 ComponentII | 285 |
 | `BOR_Ammo_6mmRailgun_KwazeerStd` | 500 | 4 QuasarAlloy, 1 ComponentII, 20 Neutronium | 244 | 15 QuasarAlloy, 1 ComponentII | 259 |
 | `BOR_Ammo_6mmRailgun_SS` | 500 | 3 Sunsteel | 13 | 12 Sunsteel | 52 |
 | `BOR_Ammo_75x350mmR_Ni` | 10 | 88 QuasarAlloy, 2 ComponentSpacer, 60 Neutronium | 772 | 177 QuasarAlloy, 122 Neutronium, 2 ComponentSpacer | 1343 |
 | `BOR_Ammo_75x350mmR_QaP` | 10 | 88 QuasarAlloy | 442 | 177 QuasarAlloy | 889 |
 | `BOR_Ammo_8mmRailgunCannon_SS` | 500 | 4 Sunsteel | 17 | 12 Sunsteel | 52 |
-| `BOR_Ammo_8mmRailgun_KwazeerEMP` | 500 | 6 QuasarAlloy, 2 ComponentII, 30 Neutronium | 458 | 15 QuasarAlloy, 20 Neutronium, 2 ComponentII | 483 |
-| `BOR_Ammo_8mmRailgun_KwazeerInc` | 500 | 6 QuasarAlloy, 2 ComponentII, 30 Neutronium | 458 | 15 QuasarAlloy, 13 Neutronium, 2 ComponentII | 469 |
 | `BOR_Ammo_8mmRailgun_KwazeerStd` | 500 | 6 QuasarAlloy, 2 ComponentII, 30 Neutronium | 458 | 15 QuasarAlloy, 2 ComponentII | 443 |
 | `BOR_Ammo_8mmRailgun_SS` | 500 | 4 Sunsteel | 17 | 12 Sunsteel | 52 |
 | `BOR_Ammo_AntiMateriel_FSJ` | 200 | 50 Sunsteel | 217 | 39 Sunsteel | 169 |

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+	<!-- With Vanilla Furniture Expanded - Security, the Negotiator can shell other world tiles that have a map, the way
+	     Combat Extended lets it. VFE Security's world artillery needs its own building class, a crew (the "set world target"
+	     button stays off until someone mans it), its verb and its projectile class. Under CE nothing changes: CE's own
+	     world shelling already covers it, and CE's turret class can't also be VFE Security's. -->
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>Combat Extended</li>
+		</mods>
+		<nomatch Class="PatchOperationSequence">
+			<operations>
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="BOR_NegotiatorStationDefenseSystem_TII"]/thingClass</xpath>
+					<value>
+						<thingClass>VFESecurity.Building_Artillery</thingClass>
+					</value>
+				</li>
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="BOR_NegotiatorStationDefenseSystem_TII"]/hasInteractionCell</xpath>
+					<value>
+						<hasInteractionCell>True</hasInteractionCell>
+					</value>
+				</li>
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="BOR_NegotiatorStationDefenseSystem_TII"]/interactionCellOffset</xpath>
+					<value>
+						<interactionCellOffset>(0,0,-4)</interactionCellOffset>
+					</value>
+				</li>
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[defName="BOR_NegotiatorStationDefenseSystem_TII"]/comps</xpath>
+					<value>
+						<li Class="VFESecurity.CompProperties_DualMannable">
+							<manWorkType>Violent</manWorkType>
+							<secondaryInteractionCellOffset>(1,0,-4)</secondaryInteractionCellOffset>
+						</li>
+						<!-- Same shelling range as Combat Extended's shellingProps -->
+						<li Class="VFESecurity.CompProperties_WorldArtillery">
+							<worldMapAttackRange>583</worldMapAttackRange>
+							<firingMode>GroundToGround</firingMode>
+						</li>
+					</value>
+				</li>
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[defName="BOR_NegotiatorStationDefenseSystem_TII"]</xpath>
+					<value>
+						<placeWorkers>
+							<li>PlaceWorker_PreventInteractionSpotOverlap</li>
+						</placeWorkers>
+					</value>
+				</li>
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="BOR_NegotiatorStationDefenseSystem_TII_Gun"]/verbs/li/verbClass</xpath>
+					<value>
+						<verbClass>VFESecurity.Verb_ShootWithWorldTargeting</verbClass>
+					</value>
+				</li>
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="BOR_Bullet_NegotiatorCracker_TII"]/thingClass</xpath>
+					<value>
+						<thingClass>VFESecurity.Projectile_Artillery</thingClass>
+					</value>
+				</li>
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="BOR_NegotiatorStationDefenseSystem_TII"]/description</xpath>
+					<value>
+						<description>A station-grade spinal artillery system that has absolutely no business being planet-side. The colony mounting rig barely tolerates it, the power grid hates it, and every shot feels like an industrial accident weaponized on purpose. It needs a crew, and a second crew member halves its cooldown. Crewed, it can shell other world locations that have a map.</description>
+					</value>
+				</li>
+			</operations>
+		</nomatch>
+	</Operation>
+</Patch>

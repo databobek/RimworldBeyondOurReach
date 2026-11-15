@@ -1,12 +1,12 @@
 # Medicine Care Specification
 
 ## Purpose
-Replaces the Mod Medicine Patch (`koth.modmedicinepatch`) so every modded medicine gets its own medical care level. Implemented by the separate project `1.7/SourceMedicine/` (`BORMedicineCare.dll`), which is only loaded when Mod Medicine Patch is not active.
+Replaces the Mod Medicine Patch (`koth.modmedicinepatch`) so every modded medicine gets its own medical care level. Implemented by the separate project `Mods/MedicineCare/Source/` (`BORMedicineCare.dll`), which is only loaded when Mod Medicine Patch is not active.
 
 ## Requirements
 
 ### Requirement: Conditional loading
-`LoadFolders.xml` SHALL load `1.7/MedicineCare` only when `koth.modmedicinepatch` is not active. Mod Medicine Patch is a `loadAfter` entry, not a dependency.
+`LoadFolders.xml` SHALL load `Mods/MedicineCare` only when `koth.modmedicinepatch` is not active. Mod Medicine Patch is a `loadAfter` entry, not a dependency.
 
 ### Requirement: Care levels
 `CareTiers` SHALL give each `MedicalCareCategory` value one tier. Values 0 to 4 keep their vanilla meaning (no care, no meds, herbal, industrial, ultratech, so `Best` is the ultratech tier). Every other `IsMedicine` def is appended from value 5, ordered by `MedicalPotency` then `defName` (ordinal). Appended defs SHALL be added to the `InventoryStockGroupDefOf.Medicine` stock group, and the vanilla `careTextures` array SHALL be replaced with one icon per tier.
@@ -16,6 +16,8 @@ Replaces the Mod Medicine Patch (`koth.modmedicinepatch`) so every modded medici
 - THEN a saved care value maps to the same medicine
 - WHEN a medicine mod is added or removed, or one is changed in potency
 - THEN values above it can map to a different medicine
+- WHEN a saved value is past the last tier (its medicine's mod was removed)
+- THEN it acts as `Best`, the ultratech tier, so doctors still use medicine
 
 ### Requirement: Allowed medicine
 For tiers `Best` and above, `AllowsMedicine` SHALL allow a medicine when its `MedicalPotency` is at most the tier's potency. Lower tiers keep vanilla behaviour.
