@@ -29,3 +29,23 @@ Various things, from coders found in the Mod Market: **Taranchuk**, **Shun** and
 
 - **Lore crafting and testing:** Kylarz, Bamba (databobek), Xarmor and T Pet.
 - **Moral support and writing:** T Pet (mutootie) and Thadge/Hobbes.
+
+## Inspirations
+
+**Weapons**
+
+- Solar guns: textures inspired by XCOM 2 and Xenonauts.
+- Kwazaari guns: textures inspired by Helldivers and XCOM 2.
+- Solar-style ultra charge guns: WH40k Tau.
+- Solar-style ultra ballistic guns: Halo.
+- Solar-style spacer conventional guns: Star Wars weapons.
+- Orientis-style ultra charge guns: Destiny 2.
+
+**Armor**
+
+- Solar marine armor: Mass Effect N7 armor.
+- Solar daedalus armor: XCOM Archangel armor.
+- Kwazaari marine armor: Helldivers 2.
+- Kwazaari machine lord suit: Starship Troopers.
+- Solar-style ultra armors: WH40k Tau.
+- Solar-style advanced spacer armors: Star Wars armors (Shoretrooper, Havoc Squad, Dark Troopers).

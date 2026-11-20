@@ -12,6 +12,22 @@ Solar daedalus jet armor, Solar monoswords, and Kwazaari and Tenebral versions o
 
 {{ banner("ideology", "") }}
 
+BOR adds two weapon and armor styles. **Solarite** is the Solar look, and **Orientis** is the look of the Path of Light. Pick a style for a precept and the gear you make takes its look. They restyle the guns, melee weapons and armor from the AllBamba mods, so they only apply when those are loaded.
+
+| Item | Looks like | Style |
+|---|---|---|
+| Flanker armor | {{ style_pics("BOR/SolarStyle/spacer/SolarSpacerRecon/SolarSpacerRecon_Male_south", "BOR/SolarStyle/spacer/SolarSpacerRecon/SolarSpacerReconHelm_south") }} | Solarite |
+| Vanguard armor | {{ style_pics("BOR/SolarStyle/spacer/SolarSpacerMarine/SolarSpacerMarine_Male_south", "BOR/SolarStyle/spacer/SolarSpacerMarine/SolarSpacerMarineHelm_south") }} | Solarite |
+| Breacher armor | {{ style_pics("BOR/SolarStyle/spacer/SolarSpacerCataphract/SolarSpacerCataphract_Male_south", "BOR/SolarStyle/spacer/SolarSpacerCataphract/SolarSpacerCataphractHelm_south") }} | Solarite |
+| Glitter suit | {{ style_pics("BOR/SolarStyle/ultra/SolarUltraArmor/SolarUltra_Male_south", "BOR/SolarStyle/ultra/SolarUltraArmor/SolarUltraHelm_south") }} | Solarite |
+| Spacer ballistic guns | {{ style_pics("BOR/SolarStyle/spacer/conventional/pistol", "BOR/SolarStyle/spacer/conventional/bullpup", "BOR/SolarStyle/spacer/conventional/rifle", "BOR/SolarStyle/spacer/conventional/dmr", "BOR/SolarStyle/spacer/conventional/shotgun", "BOR/SolarStyle/spacer/conventional/lmg", "BOR/SolarStyle/spacer/conventional/sniper") }} | Solarite |
+| Ultra ballistic guns | {{ style_pics("BOR/SolarStyle/ultra/conventional/pistol", "BOR/SolarStyle/ultra/conventional/bullpup", "BOR/SolarStyle/ultra/conventional/ar", "BOR/SolarStyle/ultra/conventional/dmr", "BOR/SolarStyle/ultra/conventional/shotgun", "BOR/SolarStyle/ultra/conventional/lmg", "BOR/SolarStyle/ultra/conventional/sniper") }} | Solarite |
+| Ultra charge guns | {{ style_pics("BOR/SolarStyle/ultra/charge/pistol", "BOR/SolarStyle/ultra/charge/bullpup", "BOR/SolarStyle/ultra/charge/rifle", "BOR/SolarStyle/ultra/charge/dmr", "BOR/SolarStyle/ultra/charge/shotgun", "BOR/SolarStyle/ultra/charge/lmg", "BOR/SolarStyle/ultra/charge/sniper") }} | Solarite |
+| Ultra charge guns | {{ style_pics("BOR/OrientisStyle/ultra/Pistol", "BOR/OrientisStyle/ultra/Bullpup", "BOR/OrientisStyle/ultra/Rifle", "BOR/OrientisStyle/ultra/DMR", "BOR/OrientisStyle/ultra/Shotgun", "BOR/OrientisStyle/ultra/LMG", "BOR/OrientisStyle/ultra/Sniper-Rifle") }} | Orientis |
+| Spacer melee weapons | {{ style_pics("BOR/SolarStyle/spacer/knife", "BOR/SolarStyle/spacer/gladius", "BOR/SolarStyle/spacer/longsword", "BOR/SolarStyle/spacer/axe", "BOR/SolarStyle/spacer/spear", "BOR/SolarStyle/spacer/polehammer", "BOR/SolarStyle/spacer/emp-club", "BOR/SolarStyle/spacer/shield") }} | Solarite |
+| Ultra melee weapons | {{ style_pics("BOR/SolarStyle/ultra/knife", "BOR/SolarStyle/ultra/gladius", "BOR/SolarStyle/ultra/longsword", "BOR/SolarStyle/ultra/axe", "BOR/SolarStyle/ultra/spear", "BOR/SolarStyle/ultra/polehammer", "BOR/SolarStyle/ultra/emp-club", "BOR/SolarStyle/ultra/shield") }} | Solarite |
+| Ultra melee weapons | {{ style_pics("BOR/OrientisStyle/ultra/Knife", "BOR/OrientisStyle/ultra/Gladius", "BOR/OrientisStyle/ultra/Longsword", "BOR/OrientisStyle/ultra/Spear", "BOR/OrientisStyle/ultra/Hammer", "BOR/OrientisStyle/ultra/EMPMace", "BOR/OrientisStyle/ultra/Baton") }} | Orientis |
+
 ## Biotech
 
 {{ banner("biotech", "") }}

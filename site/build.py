@@ -234,6 +234,17 @@ class Helpers:
             self.b.problems.append(f"{self.b.current_page}: emblem texture {tex_path} not found")
         return self._macro("emblem", icon=icon, badges=list(badges))
 
+    def style_pics(self, *tex_paths: str):
+        """A row of small textures, for a table cell."""
+        imgs = []
+        for t in tex_paths:
+            url = self.b.tex.export(self.b.tex.find(t))
+            if url is None:
+                self.b.problems.append(f"{self.b.current_page}: style texture {t} not found")
+                continue
+            imgs.append(f'<img src="{url}" alt="" loading="lazy">')
+        return Markup('<span class="style-pics">' + "".join(imgs) + "</span>")
+
     def portrait(self, def_name: str, caption: str = "", facing: str | None = None):
         pic = self.b.ex.portrait(def_name, facing)
         return self._macro("portrait", pic=pic, caption=caption) if pic else Markup("")

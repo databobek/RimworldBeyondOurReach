@@ -6,8 +6,8 @@ card: banner:weapons
 
 Each tier has its own line of guns, each a clear step above the last:
 
-- **<span class="t-solar">Solar</span>**: ballistic and gauss guns, with textures inspired by XCOM 2 and Xenonauts.
-- **<span class="t-kwazaari">Kwazaari</span>**: ballistic guns and bolt-firing gauss guns, with textures inspired by Helldivers and XCOM 2.
+- **<span class="t-solar">Solar</span>**: ballistic and gauss guns.
+- **<span class="t-kwazaari">Kwazaari</span>**: ballistic guns and bolt-firing gauss guns.
 - **<span class="t-badzaari">Badzaari</span>**: crude guns built from scrap that still hit hard.
 - **<span class="t-tenebral">Tenebral</span>**: the strongest guns you can make, built to maim.
 
