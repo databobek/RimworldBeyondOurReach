@@ -1,13 +1,13 @@
 # Join our discord: https://discord.gg/Pgp89VwsKw
 
-### See everything the mod adds: https://databobek.github.io/RimworldBeyondOurReach/
+### See everything the mod adds: https://bambaryla-mods.github.io/RimworldBeyondOurReach/
 
 <p align="center">
     <a href="#"><img src=".github/assets/logo.png" alt="BoR" align="center"></a>
 </p>
 <p align="center">
-    <a href="http://isitmaintained.com/project/databobek/RimworldBeyondOurReach"><img src="http://isitmaintained.com/badge/resolution/databobek/RimworldBeyondOurReach.svg" alt="Average time to resolve an issue"></a>
-    <a href="http://isitmaintained.com/project/databobek/RimworldBeyondOurReach"><img src="http://isitmaintained.com/badge/open/databobek/RimworldBeyondOurReach.svg" alt="Percentage of issues still open"></a>
+    <a href="http://isitmaintained.com/project/bambaryla-mods/RimworldBeyondOurReach"><img src="http://isitmaintained.com/badge/resolution/bambaryla-mods/RimworldBeyondOurReach.svg" alt="Average time to resolve an issue"></a>
+    <a href="http://isitmaintained.com/project/bambaryla-mods/RimworldBeyondOurReach"><img src="http://isitmaintained.com/badge/open/bambaryla-mods/RimworldBeyondOurReach.svg" alt="Percentage of issues still open"></a>
 </p>
 
 ## Overview
@@ -22,7 +22,7 @@ Welcome to the Beyond Our Reach mod for RimWorld! This mod introduces advanced t
 
 ## Installation
 
-1. Download the mod from the [releases page](https://github.com/databobek/RimworldBeyondOurReach/releases).
+1. Download the mod from the [releases page](https://github.com/bambaryla-mods/RimworldBeyondOurReach/releases).
 2. Extract the contents into your RimWorld `Mods` folder.
 3. Enable the mod in the RimWorld mod menu.
 

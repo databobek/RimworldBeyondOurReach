@@ -69,8 +69,8 @@ NAV = [
 ]
 
 DISCORD = "https://discord.gg/Pgp89VwsKw"
-GITHUB = "https://github.com/databobek/RimworldBeyondOurReach"
-SITE_URL = "https://databobek.github.io/RimworldBeyondOurReach/"  # for link previews
+GITHUB = "https://github.com/bambaryla-mods/RimworldBeyondOurReach"
+SITE_URL = "https://bambaryla-mods.github.io/RimworldBeyondOurReach/"  # for link previews
 SCREENSHOT_EXTS = (".png", ".jpg", ".jpeg", ".webp")
 
 

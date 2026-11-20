@@ -1,6 +1,6 @@
 # Player site
 
-The site at https://databobek.github.io/RimworldBeyondOurReach/ shows players what Beyond Our Reach adds. It is not part of the mod: `_PublisherPlus.xml` keeps this folder out of the Workshop upload.
+The site at https://bambaryla-mods.github.io/RimworldBeyondOurReach/ shows players what Beyond Our Reach adds. It is not part of the mod: `_PublisherPlus.xml` keeps this folder out of the Workshop upload.
 
 ## How it works
 
