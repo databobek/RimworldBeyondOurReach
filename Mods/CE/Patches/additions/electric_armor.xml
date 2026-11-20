@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Electric armor on the power armor of each tier, mostly against neuralizer beams (see Defs/additions/neuralizer.xml).
+     A beam builds neuralizer severity times (1 - electric armor on the hit part), so the helmet carries the same value as the suit.
+     Solar barely resists, kwazaari marines resist but still go down, tenebral takes a lot of hits. -->
+<Patch>
+	<Operation Class="PatchOperationSequence">
+		<operations>
+			<li Class="PatchOperationAdd">
+				<xpath>Defs/ThingDef[defName="BOR_Solar_Apparel_PowerArmor" or defName="BOR_Solar_Apparel_PowerArmorHelmet"]/statBases</xpath>
+				<value>
+					<ArmorRating_Electric>0.1</ArmorRating_Electric>
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>Defs/ThingDef[defName="BOR_Quasar_Apparel_PowerArmor" or defName="BOR_Quasar_Apparel_PowerArmorHelmet"]/statBases</xpath>
+				<value>
+					<ArmorRating_Electric>0.3</ArmorRating_Electric>
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>Defs/ThingDef[defName="BOR_Tenebral_Apparel_PowerArmor" or defName="BOR_Tenebral_Apparel_PowerArmorHelmet"]/statBases</xpath>
+				<value>
+					<ArmorRating_Electric>0.7</ArmorRating_Electric>
+				</value>
+			</li>
+		</operations>
+	</Operation>
+</Patch>
