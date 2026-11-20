@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block description %}{{ meta.get("summary") or "A RimWorld mod that adds four tiers of technology past the end of vanilla." }}{% endblock %}
+{% block body %}
+<section class="hero">
+  <div class="hero-art" style="background-image:url(assets/preview.png)" role="img" aria-label="Solar marines holding a wall against an insect swarm"></div>
+  <div class="hero-inner">
+    <h1 class="visually-hidden">Beyond Our Reach :: Redux</h1>
+    <img class="hero-logo" src="assets/logo.png" alt="Beyond Our Reach" width="630" height="64">
+    <p class="tagline">{{ meta.get("tagline", "") }}</p>
+    <p class="cta">
+      <a class="btn primary" href="{{ workshop }}">Steam Workshop</a>
+      <a class="btn" href="{{ discord }}">Discord</a>
+      <a class="btn" href="{{ github }}">GitHub</a>
+    </p>
+  </div>
+</section>
+<main id="main" class="home">
+  <div class="home-intro">{{ content }}</div>
+  <h2 class="cards-head">What's in the mod</h2>
+  <div class="cards">
+    {% for c in cards %}
+    <a class="card" href="{{ c.slug }}.html">
+      {% if c.card.kind == "banner" %}
+      <div class="thumb" style="background-image:url({{ c.card.src }})"></div>
+      {% elif c.card.kind == "icons" %}
+      <div class="thumb thumb-icons">{% for s in c.card.srcs %}<img src="{{ s }}" alt="" loading="lazy">{% endfor %}</div>
+      {% else %}
+      <div class="thumb thumb-none"></div>
+      {% endif %}
+      <span class="card-group">{{ c.group }}</span>
+      <h3>{{ c.title }}</h3>
+      <p>{{ c.summary }}</p>
+    </a>
+    {% endfor %}
+  </div>
+</main>
+{% endblock %}

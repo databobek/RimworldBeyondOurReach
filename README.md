@@ -1,5 +1,7 @@
 # Join our discord: https://discord.gg/Pgp89VwsKw
 
+### See everything the mod adds: https://databobek.github.io/RimworldBeyondOurReach/
+
 <p align="center">
     <a href="#"><img src=".github/assets/logo.png" alt="BoR" align="center"></a>
 </p>

@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}{{ page.title }} · Beyond Our Reach{% endblock %}
+{% block description %}{{ meta.get("summary") or "Beyond Our Reach :: Redux, a RimWorld mod." }}{% endblock %}
+{% block body %}
+<div class="layout">
+  <aside class="sidebar" aria-label="{{ page.group }} pages">
+    <p class="side-head">{{ page.group }}</p>
+    <ol class="side-pages">
+      {% for slug, title in group_pages %}
+      <li{% if slug == page.slug %} class="on"{% endif %}><a href="{{ slug }}.html"{% if slug == page.slug %} aria-current="page"{% endif %}>{{ title }}</a></li>
+      {% endfor %}
+    </ol>
+    {% if toc %}
+    <p class="side-head">On this page</p>
+    <ol class="side-toc">
+      {% for t in toc %}<li><a href="#{{ t.id }}">{{ t.name }}</a></li>{% endfor %}
+    </ol>
+    {% endif %}
+  </aside>
+  <main id="main" class="content">
+    <div class="page-head">
+      <h1>{{ page.title }}</h1>
+      {% if uses_modes %}
+      <div class="mode-switch" role="group" aria-label="Show stats for">
+        <button type="button" data-set-mode="vanilla">Vanilla</button>
+        <button type="button" data-set-mode="ce">Combat Extended</button>
+      </div>
+      {% endif %}
+    </div>
+    {{ content }}
+    <nav class="pager" aria-label="Next and previous page">
+      {% if prev %}<a class="prev" href="{{ prev.slug }}.html"><span>Previous</span>{{ prev.title }}</a>{% else %}<span></span>{% endif %}
+      {% if next %}<a class="next" href="{{ next.slug }}.html"><span>Next</span>{{ next.title }}</a>{% endif %}
+    </nav>
+  </main>
+</div>
+{% endblock %}

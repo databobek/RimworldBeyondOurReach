@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}Beyond Our Reach :: Redux{% endblock %}</title>
+<meta name="description" content="{% block description %}A RimWorld mod that adds four tiers of technology past the end of vanilla: Solar, Kwazaari, Tenebral and Umbral.{% endblock %}">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Beyond Our Reach :: Redux">
+<meta property="og:title" content="{{ self.title() }}">
+<meta property="og:description" content="{{ self.description() }}">
+<meta property="og:image" content="{{ site_url }}assets/preview.png">
+<meta name="theme-color" content="#1b2838">
+<link rel="icon" href="assets/favicon.png">
+<link rel="stylesheet" href="assets/css/site.css">
+<script>
+/* Runs before the page paints: picks Vanilla or CE stats from ?mode= or the last choice. Without JS both tables show. */
+(function(r){r.classList.add("js");var m="vanilla";try{var p=new URLSearchParams(location.search).get("mode");m=(p==="ce"||p==="vanilla")?p:(localStorage.getItem("bor-mode")==="ce"?"ce":"vanilla")}catch(e){}r.setAttribute("data-mode",m)})(document.documentElement);
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="topbar">
+  <a class="brand" href="index.html"><img src="assets/logo.png" alt="Beyond Our Reach" width="252" height="26"></a>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="topnav">Menu</button>
+  <nav id="topnav" class="topnav" aria-label="Sections">
+    {% for group, entries in nav %}
+    <a href="{{ entries[0][0] }}.html"{% if group == active_group %} class="on" aria-current="true"{% endif %}>{{ group }}</a>
+    {% endfor %}
+  </nav>
+</header>
+{% block body %}{% endblock %}
+<footer class="footer">
+  <p><a href="{{ workshop }}">Steam Workshop</a> · <a href="{{ discord }}">Discord</a> · <a href="{{ github }}">GitHub</a></p>
+  <p class="muted">Every stat, icon and list on this site is read from the mod's own files each time it updates.</p>
+</footer>
+<script src="assets/js/site.js" defer></script>
+</body>
+</html>
