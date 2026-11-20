@@ -52,6 +52,8 @@ Guns, turrets and armor have hand-set CE stats, and the Solar, Kwazaari, Badzaar
 
 {{ banner("bionic-icons", "") }}
 
+Umbral bionics get a box of their own too, with the Umbral logo: {{ style_pics("BOR/Boxes/Umbral") }}
+
 ## Chemfuel Powered Deepdrill
 
 {{ banner("chemfuel-deepdrill", "") }}

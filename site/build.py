@@ -64,6 +64,7 @@ NAV = [
     ("Tenebral road", [("tenebral-road", "The Tenebral road"), ("orientis", "Orientis")]),
     ("Integrations", [("integrations", "DLCs & mods")]),
     ("Recommended Bamba Integrations", [("bamba-integrations", "Recommended Bamba Integrations")]),
+    ("Sneaky mechanics", [("sneaky-mechanics", "Sneaky mechanics")]),
     ("Credits", [("credits", "Credits")]),
 ]
 

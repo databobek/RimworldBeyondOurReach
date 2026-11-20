@@ -49,3 +49,11 @@ Various things, from coders found in the Mod Market: **Taranchuk**, **Shun** and
 - Kwazaari machine lord suit: Starship Troopers.
 - Solar-style ultra armors: WH40k Tau.
 - Solar-style advanced spacer armors: Star Wars armors (Shoretrooper, Havoc Squad, Dark Troopers).
+
+**Medicine**
+
+- Medicine Care: Mod Medicine Patch by Antaios. It gave us the idea, and the code is a separate rewrite.
+
+## The website
+
+The headings use Audiowide by Astigmatic, under the SIL Open Font License.
