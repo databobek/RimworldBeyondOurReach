@@ -44,6 +44,12 @@
 			<canBeGeneratedToSatisfyToxicEnvironmentResistance>false</canBeGeneratedToSatisfyToxicEnvironmentResistance>
 			<useDeflectMetalEffect>true</useDeflectMetalEffect>
 		</apparel>
+		<!-- Combat Extended carry capacity: 30% under the Tenebral backpack (bulk 183) and Tenebral power armor (weight 80).
+		     Utility doubles it. Ignored without CE. -->
+		<equippedStatOffsets>
+			<CarryBulk MayRequire="CETeam.CombatExtended">128</CarryBulk>
+			<CarryWeight MayRequire="CETeam.CombatExtended">56</CarryWeight>
+		</equippedStatOffsets>
 		<modExtensions>
 			<li Class="BeyondOurReach.DefModExtension_DarkThing" />
 		</modExtensions>
@@ -64,6 +70,10 @@
 	<ThingDef ParentName="BOR_UmbralExoskeletonBase">
 		<defName>BOR_UmbralExoskeleton_Utility</defName>
 		<label>umbral exoskeleton (utility)</label>
+		<equippedStatOffsets Inherit="False">
+			<CarryBulk MayRequire="CETeam.CombatExtended">256</CarryBulk>
+			<CarryWeight MayRequire="CETeam.CombatExtended">112</CarryWeight>
+		</equippedStatOffsets>
 		<graphicData>
 			<texPath>BOR/Things/Pawn/Humanlike/Apparel/umbralutility/UmbralUtility_icon</texPath>
 			<graphicClass>Graphic_Single</graphicClass>

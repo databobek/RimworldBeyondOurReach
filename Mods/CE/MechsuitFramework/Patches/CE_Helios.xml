@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Combat Extended + Coventech Mechsuit Framework: the Helios.
+
+     Guns: CE verbs and projectiles, but no AmmoUser or FireModes. The reactor powers them, and without FireModes
+     Verb_ShootCE never aims, so it never puts a warmup stance on the mech itself (the framework fires these as turrets
+     with the mech as the caster).
+
+     Plating: the framework soaks damage with plating HP first, then rolls vanilla-scale armor (armor minus
+     penetration, as a chance). CE penetration is in mm, so that roll does nothing under CE, and CE-scale armor there
+     would block every hit. The shoulders and plating get far bigger HP pools and faster recharge instead.
+
+     Frame: 60 mm sharp / 180 MPa blunt. Superheavy mechs have 24 / 60, and BOR's best Kwazaari rifle round
+     penetrates 57 mm, so small arms do nothing to it. -->
+<Patch>
+	<!-- ========== Frame ========== -->
+	<Operation Class="PatchOperationAddModExtension">
+		<xpath>Defs/ThingDef[defName="BOR_Helios"]</xpath>
+		<value>
+			<li Class="CombatExtended.RacePropertiesExtensionCE">
+				<bodyShape>Humanoid</bodyShape>
+			</li>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="BOR_Helios"]/statBases/ArmorRating_Sharp</xpath>
+		<value>
+			<ArmorRating_Sharp>60</ArmorRating_Sharp>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="BOR_Helios"]/statBases/ArmorRating_Blunt</xpath>
+		<value>
+			<ArmorRating_Blunt>180</ArmorRating_Blunt>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="BOR_Helios"]/statBases/ArmorRating_Heat</xpath>
+		<value>
+			<ArmorRating_Heat>1.0</ArmorRating_Heat>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[defName="BOR_Helios"]/statBases</xpath>
+		<value>
+			<SmokeSensitivity>0</SmokeSensitivity>
+			<NightVisionEfficiency>1.0</NightVisionEfficiency>
+			<CarryWeight>600</CarryWeight>
+			<CarryBulk>300</CarryBulk>
+			<AimingAccuracy>1.5</AimingAccuracy>
+			<MeleeDodgeChance>0.05</MeleeDodgeChance>
+			<MeleeCritChance>0.4</MeleeCritChance>
+			<MeleeParryChance>0.6</MeleeParryChance>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="BOR_Helios"]/tools</xpath>
+		<value>
+			<tools>
+				<li Class="CombatExtended.ToolCE">
+					<label>left fist</label>
+					<capacities>
+						<li>Blunt</li>
+					</capacities>
+					<power>45</power>
+					<cooldownTime>2.4</cooldownTime>
+					<armorPenetrationBlunt>60</armorPenetrationBlunt>
+				</li>
+				<li Class="CombatExtended.ToolCE">
+					<label>right fist</label>
+					<capacities>
+						<li>Blunt</li>
+					</capacities>
+					<power>45</power>
+					<cooldownTime>2.4</cooldownTime>
+					<armorPenetrationBlunt>60</armorPenetrationBlunt>
+				</li>
+			</tools>
+		</value>
+	</Operation>
+
+	<!-- ========== Plating ========== -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/taranchuk_mechsuits.MechComponentDef[@Name="BOR_HeliosShoulderBase"]/comps/li[@Class="taranchuk_mechsuits.CompProperties_MechCompPlating"]/hitPoints</xpath>
+		<value>
+			<hitPoints>2400</hitPoints>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/taranchuk_mechsuits.MechComponentDef[@Name="BOR_HeliosShoulderBase"]/comps/li[@Class="taranchuk_mechsuits.CompProperties_MechCompPlating"]/hpRegen</xpath>
+		<value>
+			<hpRegen>20</hpRegen>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/taranchuk_mechsuits.MechComponentDef[defName="BOR_Helios_SunsteelPlating"]/comps/li[@Class="taranchuk_mechsuits.CompProperties_MechCompPlating"]/hitPoints</xpath>
+		<value>
+			<hitPoints>3200</hitPoints>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/taranchuk_mechsuits.MechComponentDef[defName="BOR_Helios_SunsteelPlating"]/comps/li[@Class="taranchuk_mechsuits.CompProperties_MechCompPlating"]/hpRegen</xpath>
+		<value>
+			<hpRegen>25</hpRegen>
+		</value>
+	</Operation>
+
+	<!-- ========== Guns ========== -->
+	<Operation Class="CombatExtended.PatchOperationMakeGunCECompatible">
+		<defName>BOR_HeliosGun_Rotary</defName>
+		<statBases>
+			<SightsEfficiency>3</SightsEfficiency>
+			<ShotSpread>0.04</ShotSpread>
+			<SwayFactor>0.5</SwayFactor>
+		</statBases>
+		<Properties>
+			<verbClass>CombatExtended.Verb_ShootCE</verbClass>
+			<recoilAmount>0.6</recoilAmount>
+			<defaultProjectile>BOR_BulletCE_HeliosRotary</defaultProjectile>
+			<warmupTime>0.9</warmupTime>
+			<defaultCooldownTime>1.6</defaultCooldownTime>
+			<range>58</range>
+			<burstShotCount>30</burstShotCount>
+			<ticksBetweenBurstShots>3</ticksBetweenBurstShots>
+			<soundCast>Shot_BOR_RailgunMed</soundCast>
+			<soundCastTail>GunTail_Heavy</soundCastTail>
+			<muzzleFlashScale>12</muzzleFlashScale>
+			<recoilPattern>Mounted</recoilPattern>
+		</Properties>
+	</Operation>
+
+	<Operation Class="CombatExtended.PatchOperationMakeGunCECompatible">
+		<defName>BOR_HeliosGun_Cannon</defName>
+		<statBases>
+			<SightsEfficiency>3.5</SightsEfficiency>
+			<ShotSpread>0.02</ShotSpread>
+			<SwayFactor>0.4</SwayFactor>
+		</statBases>
+		<Properties>
+			<verbClass>CombatExtended.Verb_ShootCE</verbClass>
+			<recoilAmount>2</recoilAmount>
+			<defaultProjectile>BOR_BulletCE_HeliosShell</defaultProjectile>
+			<warmupTime>1.6</warmupTime>
+			<defaultCooldownTime>3</defaultCooldownTime>
+			<range>75</range>
+			<minRange>4</minRange>
+			<soundCast>Shot_BOR_RailgunHigh</soundCast>
+			<soundCastTail>GunTail_Heavy</soundCastTail>
+			<muzzleFlashScale>16</muzzleFlashScale>
+			<recoilPattern>Mounted</recoilPattern>
+			<targetParams>
+				<canTargetLocations>true</canTargetLocations>
+			</targetParams>
+		</Properties>
+	</Operation>
+
+	<Operation Class="CombatExtended.PatchOperationMakeGunCECompatible">
+		<defName>BOR_HeliosGun_TwinCannon</defName>
+		<statBases>
+			<SightsEfficiency>4</SightsEfficiency>
+			<ShotSpread>0.01</ShotSpread>
+			<SwayFactor>0.35</SwayFactor>
+		</statBases>
+		<Properties>
+			<verbClass>CombatExtended.Verb_ShootCE</verbClass>
+			<recoilAmount>1.6</recoilAmount>
+			<defaultProjectile>BOR_BulletCE_HeliosSlug</defaultProjectile>
+			<warmupTime>1.3</warmupTime>
+			<defaultCooldownTime>2.4</defaultCooldownTime>
+			<range>85</range>
+			<burstShotCount>2</burstShotCount>
+			<ticksBetweenBurstShots>8</ticksBetweenBurstShots>
+			<soundCast>Shot_BOR_RailgunHigh</soundCast>
+			<soundCastTail>GunTail_Heavy</soundCastTail>
+			<muzzleFlashScale>14</muzzleFlashScale>
+			<recoilPattern>Mounted</recoilPattern>
+		</Properties>
+	</Operation>
+
+	<Operation Class="CombatExtended.PatchOperationMakeGunCECompatible">
+		<defName>BOR_HeliosGun_Flamer</defName>
+		<statBases>
+			<SightsEfficiency>1</SightsEfficiency>
+			<ShotSpread>0.12</ShotSpread>
+			<SwayFactor>0.6</SwayFactor>
+		</statBases>
+		<Properties>
+			<verbClass>CombatExtended.Verb_ShootCE</verbClass>
+			<recoilAmount>0.3</recoilAmount>
+			<defaultProjectile>BOR_BulletCE_HeliosFlame</defaultProjectile>
+			<warmupTime>0.6</warmupTime>
+			<defaultCooldownTime>1.8</defaultCooldownTime>
+			<range>26</range>
+			<burstShotCount>8</burstShotCount>
+			<ticksBetweenBurstShots>5</ticksBetweenBurstShots>
+			<soundCast>Shot_IncendiaryLauncher</soundCast>
+			<muzzleFlashScale>10</muzzleFlashScale>
+			<recoilPattern>Mounted</recoilPattern>
+		</Properties>
+	</Operation>
+
+	<Operation Class="CombatExtended.PatchOperationMakeGunCECompatible">
+		<defName>BOR_HeliosGun_RocketPod</defName>
+		<statBases>
+			<SightsEfficiency>2</SightsEfficiency>
+			<ShotSpread>0.1</ShotSpread>
+			<SwayFactor>0.5</SwayFactor>
+		</statBases>
+		<Properties>
+			<verbClass>CombatExtended.Verb_ShootCE</verbClass>
+			<recoilAmount>1</recoilAmount>
+			<defaultProjectile>BOR_BulletCE_HeliosRocket</defaultProjectile>
+			<warmupTime>2</warmupTime>
+			<defaultCooldownTime>12</defaultCooldownTime>
+			<range>60</range>
+			<minRange>6</minRange>
+			<burstShotCount>8</burstShotCount>
+			<ticksBetweenBurstShots>8</ticksBetweenBurstShots>
+			<soundCast>InfernoCannon_Fire</soundCast>
+			<soundCastTail>GunTail_Heavy</soundCastTail>
+			<muzzleFlashScale>12</muzzleFlashScale>
+			<recoilPattern>Mounted</recoilPattern>
+			<targetParams>
+				<canTargetLocations>true</canTargetLocations>
+			</targetParams>
+		</Properties>
+	</Operation>
+</Patch>

@@ -209,86 +209,6 @@
         </projectile>
     </ThingDef>
 
-    <!-- ==================== Shell: Ef (Tenebral/Efferite) ==================== -->
-
-    <ThingDef ParentName="ResourceBase">
-        <defName>BOR_Shell_JudgmentShipCannon_Ef</defName>
-        <techLevel>Ultra</techLevel>
-        <label>Judgment shell (Ef)</label>
-        <description>A 33cm naval shell for the Judgment-class ship cannon. Carries an Efferite charge for catastrophic blast damage and area denial.</description>
-        <graphicData>
-            <texPath>Things/Projectile/ShellHighExplosive</texPath>
-            <graphicClass>Graphic_Single</graphicClass>
-            <drawSize>1.0</drawSize>
-        </graphicData>
-        <stackLimit>25</stackLimit>
-        <statBases>
-          <RoyalFavorValue>0.5</RoyalFavorValue>
-            <MaxHitPoints>67</MaxHitPoints>
-            <Mass>38</Mass>
-            <MarketValue>2917</MarketValue>
-            <Flammability>1.0</Flammability>
-            <DeteriorationRate>2.0</DeteriorationRate>
-        </statBases>
-        <tradeTags>
-            <li>BOR_Tech_I</li>
-        </tradeTags>
-        <tickerType>Normal</tickerType>
-        <comps>
-            <li Class="CompProperties_Explosive">
-                <explosiveRadius>15</explosiveRadius>
-                <explosiveDamageType>Bomb</explosiveDamageType>
-                <startWickHitPointsPercent>0.7</startWickHitPointsPercent>
-                <wickTicks>
-                    <min>30</min>
-                    <max>60</max>
-                </wickTicks>
-            </li>
-        </comps>
-        <recipeMaker>
-            <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
-            <effectWorking>Cook</effectWorking>
-            <soundWorking>Recipe_Machining</soundWorking>
-            <workAmount>150000</workAmount>
-            <targetCountAdjustment>5</targetCountAdjustment>
-            <workSkill>Crafting</workSkill>
-            <recipeUsers>
-                <li>BOR_Bench_I</li>
-            </recipeUsers>
-            <skillRequirements>
-                <Crafting>14</Crafting>
-            </skillRequirements>
-            <researchPrerequisite>BOR_Research_JudgmentCannon_I</researchPrerequisite>
-        </recipeMaker>
-        <costList>
-            <BOR_QuasarAlloy>220</BOR_QuasarAlloy>
-            <BOR_ComponentII>2</BOR_ComponentII>
-            <BOR_Neutronium>5500</BOR_Neutronium>
-        </costList>
-    </ThingDef>
-
-    <ThingDef ParentName="BaseBullet">
-        <defName>BOR_Bullet_JudgmentShipCannon_Ef</defName>
-        <label>Judgment shell (Ef) projectile</label>
-        <graphicData>
-            <texPath>Things/Projectile/ShellHighExplosive</texPath>
-            <graphicClass>Graphic_Single</graphicClass>
-            <shaderType>TransparentPostLight</shaderType>
-            <drawSize>1.7</drawSize>
-        </graphicData>
-        <thingClass>Projectile_Explosive</thingClass>
-        <projectile>
-            <damageDef>Bomb</damageDef>
-            <damageAmountBase>1568</damageAmountBase>
-            <speed>54</speed>
-            <explosionRadius>13</explosionRadius>
-            <flyOverhead>true</flyOverhead>
-            <soundHitThickRoof>Artillery_HitThickRoof</soundHitThickRoof>
-            <soundExplode>MortarBomb_Explode</soundExplode>
-            <soundImpactAnticipate>MortarRound_PreImpact</soundImpactAnticipate>
-        </projectile>
-    </ThingDef>
-
     <ThingDef ParentName="BuildingBase">
         <defName>BOR_Turret_Defender_TI</defName>
         <label>solar defender turret</label>
@@ -365,6 +285,10 @@
         </researchPrerequisites>
         <designationCategory>BOR</designationCategory>
         <constructionSkillPrerequisite>10</constructionSkillPrerequisite>
+        <!-- Anti-air tier I: downs drop pods of factions up to tier II (Kwazaari). -->
+        <modExtensions>
+            <li Class="BeyondOurReach.DefModExtension_BorTier"><tier>1</tier></li>
+        </modExtensions>
     </ThingDef>
 
     <ThingDef ParentName="BaseWeaponTurret">

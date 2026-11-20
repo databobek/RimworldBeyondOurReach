@@ -5,6 +5,8 @@
 - The mod targets RimWorld 1.7 only; there are no per-version folders.
 - Content lives in `Common/` (core defs/patches), `Mods/<Name>/` (compat loaded via `LoadFolders.xml`) and `Source/` (C#, builds to `Assemblies/`).
 - Do not add support for older game versions unless the user explicitly requests it.
+- `site/` is the player website (GitHub Pages), not part of the mod. Its stats are generated from the defs; see `site/README.md`.
+- Files in different load folders must not share a relative path (e.g. two `Patches/PawnKindGroups.xml`): when both folders load, RimWorld keeps only the one from the later folder.
 
 ## Content Guardrails
 

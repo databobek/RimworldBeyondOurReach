@@ -132,8 +132,7 @@ public class CompSignalTenebral : CompSignalRaid
         }
         else
         {
-            IntVec3 home = map.areaManager.Home.ActiveCells.Where(c => !c.Fogged(map)).RandomElementWithFallback(parent.Position);
-            cell = DropCellFinder.TryFindDropSpotNear(home, map, out IntVec3 spot, false, true) ? spot : home;
+            cell = SignalUtility.HomeDropSpot(map);
         }
 
         Faction faction = Find.FactionManager.FirstFactionOfDef(Props.faction) ?? CreateFaction(Props.faction);

@@ -9,7 +9,7 @@ Lets the player turn a fresh human corpse plus a picocluster into crystalline jo
 `CompProperties_ComponentHarvest` SHALL configure a parent building with `cooldownTicks` (default 1 hour), `componentCount` (default 10) and `minCorpseHealthPct` (default 0.75).
 
 #### Scenario: Research not finished
-- WHEN `BOR_Research_ComponentHarvest` is not finished, or the parent is unspawned or not player-owned
+- WHEN `BOR_Research_Analyzer_III` (galactic analyzer, which unlocks the dark mirror) is not finished, or the parent is unspawned or not player-owned
 - THEN no gizmo and no inspect-string cooldown are shown
 
 ### Requirement: Gizmo gating

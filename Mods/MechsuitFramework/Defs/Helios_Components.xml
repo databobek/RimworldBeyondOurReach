@@ -1,0 +1,543 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- Helios components. Each fits only the Helios slot tag it names, except the reactor and plating, which use the
+	     framework's own Reactor and Plating tags. Arms and the pod are Mountable turrets: their textures point north,
+	     which is the framework's turret convention (Handheld components expect east-pointing weapon art). -->
+	<taranchuk_mechsuits.MechComponentDef Name="BOR_HeliosComponentBase" ParentName="CVN_MechComponentBase" Abstract="True">
+		<techLevel>Ultra</techLevel>
+		<stackLimit>1</stackLimit>
+		<inheritPaintColor>false</inheritPaintColor>
+		<thingSetMakerTags Inherit="False" />
+		<tradeTags>
+			<li>BOR_Tech_I</li>
+		</tradeTags>
+		<statBases>
+			<Mass>40</Mass>
+			<MaxHitPoints>300</MaxHitPoints>
+			<WorkToMake>30000</WorkToMake>
+			<Flammability>0</Flammability>
+		</statBases>
+		<recipeMaker>
+			<researchPrerequisite>BOR_Research_Helios</researchPrerequisite>
+			<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+			<workSkill>Crafting</workSkill>
+			<effectWorking>Smith</effectWorking>
+			<soundWorking>Recipe_Machining</soundWorking>
+			<unfinishedThingDef>UnfinishedComponent</unfinishedThingDef>
+			<skillRequirements>
+				<Crafting>9</Crafting>
+			</skillRequirements>
+			<recipeUsers>
+				<li>BOR_Bench_I</li>
+			</recipeUsers>
+		</recipeMaker>
+	</taranchuk_mechsuits.MechComponentDef>
+
+	<!-- Shoulders: always fitted to a built Helios and cannot be taken off. Each is an ablative plate that recharges
+	     after it breaks. Craftable only to replace one that was destroyed. -->
+	<taranchuk_mechsuits.MechComponentDef Name="BOR_HeliosShoulderBase" ParentName="BOR_HeliosComponentBase" Abstract="True">
+		<description>One of the Helios's two fixed armored shoulders. It takes hits before the frame does and recharges once broken. Once installed it cannot be removed.</description>
+		<installTime>8000</installTime>
+		<removable>false</removable>
+		<drawOnMech>true</drawOnMech>
+		<costList>
+			<BOR_Sunsteel>150</BOR_Sunsteel>
+			<ComponentSpacer>2</ComponentSpacer>
+		</costList>
+		<comps>
+			<li Class="taranchuk_mechsuits.CompProperties_MechCompPlating">
+				<layerOrder>20</layerOrder>
+				<sharpArmor>1.0</sharpArmor>
+				<bluntArmor>0.6</bluntArmor>
+				<heatArmor>1.2</heatArmor>
+				<hitPoints>900</hitPoints>
+				<hpRegen>8</hpRegen>
+				<colorBarHostile>(0.9, 0.2, 0.2)</colorBarHostile>
+				<colorBarHonHostile>(0.95, 0.6, 0.2)</colorBarHonHostile>
+				<effectorWhenDamaged>Deflect_Metal</effectorWhenDamaged>
+				<effectorWhenDepleted>DisabledByEMP</effectorWhenDepleted>
+			</li>
+		</comps>
+	</taranchuk_mechsuits.MechComponentDef>
+
+	<taranchuk_mechsuits.MechComponentDef ParentName="BOR_HeliosShoulderBase">
+		<defName>BOR_Helios_ShoulderL</defName>
+		<label>Helios left shoulder</label>
+		<slotTags>
+			<li>BOR_HeliosShoulderL</li>
+		</slotTags>
+		<graphicData>
+			<texPath>BOR/MechsAndVehicles/Knight/Shoulders/Knight_Shoulder_Left_south</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1.2</drawSize>
+		</graphicData>
+		<equippedGraphicData>
+			<texPath>BOR/MechsAndVehicles/Knight/Shoulders/Knight_Shoulder_Left</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>2.2</drawSize>
+		</equippedGraphicData>
+	</taranchuk_mechsuits.MechComponentDef>
+
+	<taranchuk_mechsuits.MechComponentDef ParentName="BOR_HeliosShoulderBase">
+		<defName>BOR_Helios_ShoulderR</defName>
+		<label>Helios right shoulder</label>
+		<slotTags>
+			<li>BOR_HeliosShoulderR</li>
+		</slotTags>
+		<graphicData>
+			<texPath>BOR/MechsAndVehicles/Knight/Shoulders/Knight_Shoulder_Right_south</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1.2</drawSize>
+		</graphicData>
+		<equippedGraphicData>
+			<texPath>BOR/MechsAndVehicles/Knight/Shoulders/Knight_Shoulder_Right</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>2.2</drawSize>
+		</equippedGraphicData>
+	</taranchuk_mechsuits.MechComponentDef>
+
+	<!-- Weapon arms. Either arm slot takes any of them. -->
+	<taranchuk_mechsuits.MechComponentDef Name="BOR_HeliosArmBase" ParentName="BOR_HeliosComponentBase" Abstract="True">
+		<slotTags>
+			<li>BOR_HeliosArm</li>
+		</slotTags>
+		<installTime>5000</installTime>
+		<isSelfInstallable>false</isSelfInstallable>
+		<drawOnMech>true</drawOnMech>
+		<recoilPower>4</recoilPower>
+		<recoilRelaxation>6</recoilRelaxation>
+		<projectileSpawnOffset>(0, 0, 1.4)</projectileSpawnOffset>
+		<costList>
+			<BOR_Sunsteel>220</BOR_Sunsteel>
+			<ComponentSpacer>6</ComponentSpacer>
+		</costList>
+	</taranchuk_mechsuits.MechComponentDef>
+
+	<taranchuk_mechsuits.MechComponentDef ParentName="BOR_HeliosArmBase">
+		<defName>BOR_Helios_Arm_Rotarygun</defName>
+		<label>Helios rotary gun arm</label>
+		<description>A Helios weapon arm built around a solar gauss rotary cannon. Long bursts of armor-piercing slugs.</description>
+		<powerDraw>150</powerDraw>
+		<graphicData>
+			<texPath>BOR/MechsAndVehicles/Knight/TurretArms/TurretArm_Rotarygun</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1.5</drawSize>
+		</graphicData>
+		<equippedGraphicData>
+			<texPath>BOR/MechsAndVehicles/Knight/TurretArms/TurretArm_Rotarygun</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>3</drawSize>
+		</equippedGraphicData>
+		<comps>
+			<li Class="taranchuk_mechsuits.CompProperties_MechCompTurret">
+				<turretDef>BOR_HeliosGun_Rotary</turretDef>
+			</li>
+		</comps>
+	</taranchuk_mechsuits.MechComponentDef>
+
+	<taranchuk_mechsuits.MechComponentDef ParentName="BOR_HeliosArmBase">
+		<defName>BOR_Helios_Arm_Cannon</defName>
+		<label>Helios cannon arm</label>
+		<description>A Helios weapon arm with a single heavy cannon firing explosive shells.</description>
+		<powerDraw>200</powerDraw>
+		<graphicData>
+			<texPath>BOR/MechsAndVehicles/Knight/TurretArms/TurretArm_Cannon</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1.5</drawSize>
+		</graphicData>
+		<equippedGraphicData>
+			<texPath>BOR/MechsAndVehicles/Knight/TurretArms/TurretArm_Cannon</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>3</drawSize>
+		</equippedGraphicData>
+		<comps>
+			<li Class="taranchuk_mechsuits.CompProperties_MechCompTurret">
+				<turretDef>BOR_HeliosGun_Cannon</turretDef>
+			</li>
+		</comps>
+	</taranchuk_mechsuits.MechComponentDef>
+
+	<taranchuk_mechsuits.MechComponentDef ParentName="BOR_HeliosArmBase">
+		<defName>BOR_Helios_Arm_TwinCannon</defName>
+		<label>Helios twin cannon arm</label>
+		<description>A Helios weapon arm with paired long-barrel cannons. Fires two high-velocity armor-piercing slugs at a time.</description>
+		<powerDraw>200</powerDraw>
+		<graphicData>
+			<texPath>BOR/MechsAndVehicles/Knight/TurretArms/TurretArm_TwinCannon</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1.5</drawSize>
+		</graphicData>
+		<equippedGraphicData>
+			<texPath>BOR/MechsAndVehicles/Knight/TurretArms/TurretArm_TwinCannon</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>3</drawSize>
+		</equippedGraphicData>
+		<comps>
+			<li Class="taranchuk_mechsuits.CompProperties_MechCompTurret">
+				<turretDef>BOR_HeliosGun_TwinCannon</turretDef>
+			</li>
+		</comps>
+	</taranchuk_mechsuits.MechComponentDef>
+
+	<taranchuk_mechsuits.MechComponentDef ParentName="BOR_HeliosArmBase">
+		<defName>BOR_Helios_Arm_Flamethrower</defName>
+		<label>Helios flamethrower arm</label>
+		<description>A Helios weapon arm that sprays burning solar plasma at close range.</description>
+		<powerDraw>120</powerDraw>
+		<graphicData>
+			<texPath>BOR/MechsAndVehicles/Knight/TurretArms/TurretArm_FlameThrower</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1.5</drawSize>
+		</graphicData>
+		<equippedGraphicData>
+			<texPath>BOR/MechsAndVehicles/Knight/TurretArms/TurretArm_FlameThrower</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>3</drawSize>
+		</equippedGraphicData>
+		<comps>
+			<li Class="taranchuk_mechsuits.CompProperties_MechCompTurret">
+				<turretDef>BOR_HeliosGun_Flamer</turretDef>
+			</li>
+		</comps>
+	</taranchuk_mechsuits.MechComponentDef>
+
+	<taranchuk_mechsuits.MechComponentDef ParentName="BOR_HeliosComponentBase">
+		<defName>BOR_Helios_RocketPod</defName>
+		<label>Helios rocket pod</label>
+		<description>A back-mounted launcher for the Helios. Fires salvos of explosive rockets ahead of the mech, then takes a long time to cycle.</description>
+		<slotTags>
+			<li>Back</li>
+		</slotTags>
+		<installTime>6000</installTime>
+		<powerDraw>250</powerDraw>
+		<drawOnMech>true</drawOnMech>
+		<projectileSpawnOffset>(0, 0, 0.6)</projectileSpawnOffset>
+		<costList>
+			<BOR_Sunsteel>260</BOR_Sunsteel>
+			<ComponentSpacer>8</ComponentSpacer>
+		</costList>
+		<graphicData>
+			<texPath>BOR/MechsAndVehicles/Knight/RocketPod/RocketPod_south</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1.5</drawSize>
+		</graphicData>
+		<equippedGraphicData>
+			<texPath>BOR/MechsAndVehicles/Knight/RocketPod/RocketPod</texPath>
+			<graphicClass>BeyondOurReach.Graphic_MultiMirrorWest</graphicClass>
+			<drawSize>2.4</drawSize>
+		</equippedGraphicData>
+		<comps>
+			<li Class="taranchuk_mechsuits.CompProperties_MechCompTurret">
+				<turretDef>BOR_HeliosGun_RocketPod</turretDef>
+				<canRotate>false</canRotate>
+			</li>
+		</comps>
+		<!-- Aims straight ahead of the mech, but its sprite has art for each facing and must not turn with the aim. -->
+		<modExtensions>
+			<li Class="BeyondOurReach.DefModExtension_MechCompUpright" />
+		</modExtensions>
+	</taranchuk_mechsuits.MechComponentDef>
+
+	<!-- The reactor: fits any Reactor slot. Loads solarite fuel rods from the mech's inventory when it runs dry. -->
+	<taranchuk_mechsuits.MechComponentDef ParentName="BOR_HeliosComponentBase">
+		<defName>BOR_Helios_Reactor</defName>
+		<label>solarite mech reactor</label>
+		<description>A compact solarite reactor for mech frames. It burns solarite fuel rods carried in the mech's inventory, about ten a day, and puts out far more power than any chemfuel or nuclear mech generator.</description>
+		<slotTags>
+			<li>Reactor</li>
+		</slotTags>
+		<installTime>12000</installTime>
+		<powerGeneration>1500</powerGeneration>
+		<!-- Needed to move at all: the framework checks for power before anything generates that tick, so it only
+		     sees charge held in a component battery. Surplus charges this; it lasts a few seconds once the rods run out. -->
+		<batteryCapacity>3000</batteryCapacity>
+		<fuelType>
+			<def>BOR_FuelRod</def>
+			<drainPerSecond>0.01</drainPerSecond>
+			<capacity>30</capacity>
+		</fuelType>
+		<costList>
+			<BOR_Sunsteel>300</BOR_Sunsteel>
+			<ComponentSpacer>10</ComponentSpacer>
+			<Uranium>40</Uranium>
+		</costList>
+		<graphicData>
+			<texPath>MechSuitz/Parts/MechGens/NuclearMechgen</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<color>(150, 220, 215)</color>
+		</graphicData>
+	</taranchuk_mechsuits.MechComponentDef>
+
+	<!-- Optional torso plating: fits any Plating slot, so other framework mechs can use it too. -->
+	<taranchuk_mechsuits.MechComponentDef ParentName="BOR_HeliosComponentBase">
+		<defName>BOR_Helios_SunsteelPlating</defName>
+		<label>sunsteel mech plating</label>
+		<description>Heavy sunsteel plating for a mech frame. Better than any steel, plasteel or glitterweave plating, does not slow the mech, and recharges once broken.</description>
+		<slotTags>
+			<li>Plating</li>
+		</slotTags>
+		<installTime>9000</installTime>
+		<costList>
+			<BOR_Sunsteel>400</BOR_Sunsteel>
+			<ComponentSpacer>4</ComponentSpacer>
+		</costList>
+		<graphicData>
+			<texPath>MechSuitz/Parts/PlasteelArmor_LV4</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+			<color>(240, 200, 120)</color>
+		</graphicData>
+		<comps>
+			<li Class="taranchuk_mechsuits.CompProperties_MechCompPlating">
+				<layerOrder>10</layerOrder>
+				<sharpArmor>1.1</sharpArmor>
+				<bluntArmor>0.65</bluntArmor>
+				<heatArmor>1.4</heatArmor>
+				<hitPoints>1200</hitPoints>
+				<hpRegen>10</hpRegen>
+				<colorBarHostile>(0.9, 0.2, 0.2)</colorBarHostile>
+				<colorBarHonHostile>(0.95, 0.75, 0.3)</colorBarHonHostile>
+				<effectorWhenDamaged>Deflect_Metal</effectorWhenDamaged>
+				<effectorWhenDepleted>DisabledByEMP</effectorWhenDepleted>
+			</li>
+		</comps>
+	</taranchuk_mechsuits.MechComponentDef>
+
+	<!-- Guns the turret components fire. Never spawned on their own. -->
+	<ThingDef ParentName="BaseWeaponTurret">
+		<defName>BOR_HeliosGun_Rotary</defName>
+		<label>Helios rotary gun</label>
+		<description>The gun inside a Helios rotary gun arm.</description>
+		<tradeability>None</tradeability>
+		<destroyOnDrop>true</destroyOnDrop>
+		<graphicData>
+			<texPath>BOR/MechsAndVehicles/Knight/TurretArms/TurretArm_Rotarygun</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<statBases>
+			<AccuracyTouch>0.6</AccuracyTouch>
+			<AccuracyShort>0.65</AccuracyShort>
+			<AccuracyMedium>0.55</AccuracyMedium>
+			<AccuracyLong>0.4</AccuracyLong>
+		</statBases>
+		<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<defaultProjectile>BOR_Bullet_GaussCannon_TI</defaultProjectile>
+				<warmupTime>1.2</warmupTime>
+				<defaultCooldownTime>2.0</defaultCooldownTime>
+				<range>36.9</range>
+				<burstShotCount>20</burstShotCount>
+				<ticksBetweenBurstShots>4</ticksBetweenBurstShots>
+				<soundCast>Shot_BOR_RailgunMed</soundCast>
+				<soundCastTail>GunTail_Heavy</soundCastTail>
+				<muzzleFlashScale>12</muzzleFlashScale>
+			</li>
+		</verbs>
+	</ThingDef>
+
+	<ThingDef ParentName="BaseWeaponTurret">
+		<defName>BOR_HeliosGun_Cannon</defName>
+		<label>Helios cannon</label>
+		<description>The gun inside a Helios cannon arm.</description>
+		<tradeability>None</tradeability>
+		<destroyOnDrop>true</destroyOnDrop>
+		<graphicData>
+			<texPath>BOR/MechsAndVehicles/Knight/TurretArms/TurretArm_Cannon</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<statBases>
+			<AccuracyTouch>0.5</AccuracyTouch>
+			<AccuracyShort>0.7</AccuracyShort>
+			<AccuracyMedium>0.75</AccuracyMedium>
+			<AccuracyLong>0.65</AccuracyLong>
+		</statBases>
+		<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<defaultProjectile>BOR_Bullet_HeliosShell</defaultProjectile>
+				<forcedMissRadius>1.2</forcedMissRadius>
+				<warmupTime>2.0</warmupTime>
+				<defaultCooldownTime>3.5</defaultCooldownTime>
+				<range>45.9</range>
+				<minRange>4</minRange>
+				<soundCast>Shot_BOR_RailgunHigh</soundCast>
+				<soundCastTail>GunTail_Heavy</soundCastTail>
+				<muzzleFlashScale>16</muzzleFlashScale>
+				<targetParams>
+					<canTargetLocations>true</canTargetLocations>
+				</targetParams>
+			</li>
+		</verbs>
+	</ThingDef>
+
+	<ThingDef ParentName="BaseWeaponTurret">
+		<defName>BOR_HeliosGun_TwinCannon</defName>
+		<label>Helios twin cannon</label>
+		<description>The guns inside a Helios twin cannon arm.</description>
+		<tradeability>None</tradeability>
+		<destroyOnDrop>true</destroyOnDrop>
+		<graphicData>
+			<texPath>BOR/MechsAndVehicles/Knight/TurretArms/TurretArm_TwinCannon</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<statBases>
+			<AccuracyTouch>0.55</AccuracyTouch>
+			<AccuracyShort>0.75</AccuracyShort>
+			<AccuracyMedium>0.8</AccuracyMedium>
+			<AccuracyLong>0.75</AccuracyLong>
+		</statBases>
+		<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<defaultProjectile>BOR_Bullet_HeliosSlug</defaultProjectile>
+				<warmupTime>1.6</warmupTime>
+				<defaultCooldownTime>2.8</defaultCooldownTime>
+				<range>49.9</range>
+				<burstShotCount>2</burstShotCount>
+				<ticksBetweenBurstShots>8</ticksBetweenBurstShots>
+				<soundCast>Shot_BOR_RailgunHigh</soundCast>
+				<soundCastTail>GunTail_Heavy</soundCastTail>
+				<muzzleFlashScale>14</muzzleFlashScale>
+			</li>
+		</verbs>
+	</ThingDef>
+
+	<ThingDef ParentName="BaseWeaponTurret">
+		<defName>BOR_HeliosGun_Flamer</defName>
+		<label>Helios flamethrower</label>
+		<description>The projector inside a Helios flamethrower arm.</description>
+		<tradeability>None</tradeability>
+		<destroyOnDrop>true</destroyOnDrop>
+		<graphicData>
+			<texPath>BOR/MechsAndVehicles/Knight/TurretArms/TurretArm_FlameThrower</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<statBases>
+			<AccuracyTouch>0.8</AccuracyTouch>
+			<AccuracyShort>0.7</AccuracyShort>
+			<AccuracyMedium>0.5</AccuracyMedium>
+			<AccuracyLong>0.3</AccuracyLong>
+		</statBases>
+		<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<defaultProjectile>BOR_Bullet_HeliosFlame</defaultProjectile>
+				<forcedMissRadius>1.0</forcedMissRadius>
+				<warmupTime>0.8</warmupTime>
+				<defaultCooldownTime>2.2</defaultCooldownTime>
+				<range>17.9</range>
+				<burstShotCount>6</burstShotCount>
+				<ticksBetweenBurstShots>6</ticksBetweenBurstShots>
+				<soundCast>Shot_IncendiaryLauncher</soundCast>
+				<muzzleFlashScale>10</muzzleFlashScale>
+			</li>
+		</verbs>
+	</ThingDef>
+
+	<ThingDef ParentName="BaseWeaponTurret">
+		<defName>BOR_HeliosGun_RocketPod</defName>
+		<label>Helios rocket pod</label>
+		<description>The launcher inside a Helios rocket pod.</description>
+		<tradeability>None</tradeability>
+		<destroyOnDrop>true</destroyOnDrop>
+		<graphicData>
+			<texPath>BOR/MechsAndVehicles/Knight/RocketPod/RocketPod_south</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<statBases>
+			<AccuracyTouch>0.4</AccuracyTouch>
+			<AccuracyShort>0.5</AccuracyShort>
+			<AccuracyMedium>0.5</AccuracyMedium>
+			<AccuracyLong>0.4</AccuracyLong>
+		</statBases>
+		<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<defaultProjectile>BOR_Bullet_HeliosRocket</defaultProjectile>
+				<warmupTime>2.5</warmupTime>
+				<defaultCooldownTime>15</defaultCooldownTime>
+				<range>39.9</range>
+				<minRange>6</minRange>
+				<forcedMissRadius>2.5</forcedMissRadius>
+				<burstShotCount>8</burstShotCount>
+				<ticksBetweenBurstShots>10</ticksBetweenBurstShots>
+				<soundCast>InfernoCannon_Fire</soundCast>
+				<soundCastTail>GunTail_Heavy</soundCastTail>
+				<muzzleFlashScale>12</muzzleFlashScale>
+				<targetParams>
+					<canTargetLocations>true</canTargetLocations>
+				</targetParams>
+			</li>
+		</verbs>
+	</ThingDef>
+
+	<ThingDef ParentName="BaseBullet">
+		<defName>BOR_Bullet_HeliosShell</defName>
+		<label>Helios cannon shell</label>
+		<thingClass>Projectile_Explosive</thingClass>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Big</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1.6</drawSize>
+		</graphicData>
+		<projectile>
+			<damageDef>Bomb</damageDef>
+			<damageAmountBase>55</damageAmountBase>
+			<explosionRadius>2.9</explosionRadius>
+			<speed>80</speed>
+			<soundExplode>MortarBomb_Explode</soundExplode>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="BaseBullet">
+		<defName>BOR_Bullet_HeliosSlug</defName>
+		<label>Helios cannon slug</label>
+		<graphicData>
+			<texPath>BOR/Things/Bullet/Bullet_Mag_Big</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1.4</drawSize>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>48</damageAmountBase>
+			<stoppingPower>4</stoppingPower>
+			<armorPenetrationBase>1.0</armorPenetrationBase>
+			<speed>140</speed>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="BaseBullet">
+		<defName>BOR_Bullet_HeliosFlame</defName>
+		<label>solar plasma</label>
+		<thingClass>Projectile_Explosive</thingClass>
+		<graphicData>
+			<texPath>Things/Projectile/LauncherShot</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+			<color>(255, 190, 90)</color>
+		</graphicData>
+		<projectile>
+			<damageDef>Flame</damageDef>
+			<damageAmountBase>16</damageAmountBase>
+			<explosionRadius>0.9</explosionRadius>
+			<speed>40</speed>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="BaseBullet">
+		<defName>BOR_Bullet_HeliosRocket</defName>
+		<label>Helios rocket</label>
+		<thingClass>Projectile_Explosive</thingClass>
+		<graphicData>
+			<texPath>Things/Projectile/Rocket_Big</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Bomb</damageDef>
+			<damageAmountBase>40</damageAmountBase>
+			<explosionRadius>2.4</explosionRadius>
+			<speed>45</speed>
+			<soundExplode>MortarBomb_Explode</soundExplode>
+		</projectile>
+	</ThingDef>
+</Defs>

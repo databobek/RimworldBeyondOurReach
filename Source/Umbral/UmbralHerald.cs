@@ -6,11 +6,13 @@ using Verse.AI;
 
 namespace BeyondOurReach;
 
-// The Dark Archotech's answer to the Path of Light: a bolt, an Umbral, one dead colonist, and it is gone.
+// The Dark Archotech's answer to the Path of Light: a Harbinger (or a bolt, if it has nowhere to land), an Umbral,
+// one dead colonist, and it is gone.
 public static class UmbralHerald
 {
     private const int MaxCellTries = 50;
     private const int FallbackRadius = 15;
+    private const int HarbingerSearchRadius = 15;
 
     public static bool IsHerald(Pawn pawn) => pawn.health.hediffSet.HasHediff(BOR_UmbralDefOf.BOR_UmbralHerald);
 
@@ -31,15 +33,40 @@ public static class UmbralHerald
             Log.Warning("[BOR] The Umbral herald found nowhere to strike: no home map with a reachable non-Umbral colonist.");
             return;
         }
-        // There is no letter at this point, so the player is taken to it.
-        CameraJumper.TryJump(cell, map);
-        map.weatherManager.eventHandler.AddEvent(new WeatherEvent_RedLightning(map, cell));
         Faction? faction = Find.FactionManager.FirstFactionOfDef(BOR_UmbralDefOf.BOR_Umbrals);
         Pawn herald = PawnGenerator.GeneratePawn(BOR_UmbralDefOf.BOR_Umbral_Kind, faction);
+        // There is no letter at this point, so the player is taken to it.
+        if (TryFindHarbingerSpot(map, cell, out IntVec3 spot))
+        {
+            CameraJumper.TryJump(spot, map);
+            Building_HeraldHarbinger.Send(herald, target, spot, map);
+            return;
+        }
+        CameraJumper.TryJump(cell, map);
+        map.weatherManager.eventHandler.AddEvent(new WeatherEvent_RedLightning(map, cell));
         GenSpawn.Spawn(herald, cell, map);
+        Mark(herald, target);
+    }
+
+    // Sends the herald after its target, or after the closest colonist if the target is gone from the map.
+    public static void Mark(Pawn herald, Pawn? target)
+    {
+        if (target == null || target.Dead || !target.Spawned || target.Map != herald.Map)
+        {
+            target = ClosestColonist(herald.Position, herald.Map);
+        }
         Hediff_UmbralHerald hediff = (Hediff_UmbralHerald)HediffMaker.MakeHediff(BOR_UmbralDefOf.BOR_UmbralHerald, herald);
         hediff.target = target;
         herald.health.AddHediff(hediff);
+    }
+
+    // A clear patch near the strike where the Harbinger fits and from which the herald can walk to the strike cell.
+    private static bool TryFindHarbingerSpot(Map map, IntVec3 strike, out IntVec3 spot)
+    {
+        IntVec2 size = BOR_UmbralDefOf.BOR_HeraldHarbinger.size;
+        return CellFinder.TryFindRandomCellNear(strike, map, HarbingerSearchRadius, c => SignalUtility.ShuttleFits(c, map, size)
+            && map.reachability.CanReach(GenAdj.OccupiedRect(c, Rot4.North, size).ExpandedBy(1).EdgeCells.First(), strike,
+                PathEndMode.OnCell, TraverseMode.PassDoors, Danger.Deadly), out spot);
     }
 
     private static bool TryFindStrike(Map map, out IntVec3 cell, out Pawn target)

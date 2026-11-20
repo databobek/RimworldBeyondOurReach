@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Combat Extended + Coventech Mechsuit Framework: Helios rounds. Solarite war-machine ordnance, a step above BOR's
+     Solarite and Kwazaari rifle rounds (45-58 mm): the rotary gun out-penetrates both, the twin cannon kills armor. -->
+<Defs>
+	<ThingDef ParentName="BaseBulletCE">
+		<defName>BOR_BulletCE_HeliosRotary</defName>
+		<label>Helios gauss slug</label>
+		<graphicData>
+			<texPath>BOR/Things/Bullet/Bullet_Mag_Big</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>30</damageAmountBase>
+			<armorPenetrationSharp>75</armorPenetrationSharp>
+			<armorPenetrationBlunt>650</armorPenetrationBlunt>
+			<speed>230</speed>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="BaseBulletCE">
+		<defName>BOR_BulletCE_HeliosSlug</defName>
+		<label>Helios cannon slug</label>
+		<graphicData>
+			<texPath>BOR/Things/Bullet/Bullet_Mag_Big</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1.4</drawSize>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>130</damageAmountBase>
+			<armorPenetrationSharp>170</armorPenetrationSharp>
+			<armorPenetrationBlunt>2000</armorPenetrationBlunt>
+			<speed>320</speed>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="BaseExplosiveBullet">
+		<defName>BOR_BulletCE_HeliosShell</defName>
+		<label>Helios cannon shell</label>
+		<thingClass>CombatExtended.ProjectileCE_Explosive</thingClass>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Big</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+			<drawSize>1.6</drawSize>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Bomb</damageDef>
+			<damageAmountBase>260</damageAmountBase>
+			<explosionRadius>3.5</explosionRadius>
+			<speed>180</speed>
+			<flyOverhead>false</flyOverhead>
+			<soundExplode>MortarBomb_Explode</soundExplode>
+			<applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
+			<preExplosionSpawnSingleThingDef>Filth_BlastMark</preExplosionSpawnSingleThingDef>
+		</projectile>
+		<comps>
+			<li Class="CombatExtended.CompProperties_Fragments">
+				<fragments>
+					<Fragment_Large>20</Fragment_Large>
+					<Fragment_Small>50</Fragment_Small>
+				</fragments>
+			</li>
+		</comps>
+	</ThingDef>
+
+	<ThingDef ParentName="BaseExplosiveBullet">
+		<defName>BOR_BulletCE_HeliosRocket</defName>
+		<label>Helios rocket</label>
+		<thingClass>CombatExtended.ProjectileCE_Explosive</thingClass>
+		<graphicData>
+			<texPath>Things/Projectile/Rocket_Big</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Bomb</damageDef>
+			<damageAmountBase>150</damageAmountBase>
+			<explosionRadius>2.8</explosionRadius>
+			<speed>90</speed>
+			<flyOverhead>false</flyOverhead>
+			<soundExplode>MortarBomb_Explode</soundExplode>
+			<preExplosionSpawnSingleThingDef>Filth_BlastMark</preExplosionSpawnSingleThingDef>
+		</projectile>
+		<comps>
+			<li Class="CombatExtended.CompProperties_Fragments">
+				<fragments>
+					<Fragment_Small>30</Fragment_Small>
+				</fragments>
+			</li>
+		</comps>
+	</ThingDef>
+
+	<ThingDef ParentName="BaseExplosiveBullet">
+		<defName>BOR_BulletCE_HeliosFlame</defName>
+		<label>solar plasma</label>
+		<thingClass>CombatExtended.ProjectileCE_Explosive</thingClass>
+		<graphicData>
+			<texPath>Things/Projectile/LauncherShot</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+			<color>(255, 190, 90)</color>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Flame</damageDef>
+			<damageAmountBase>30</damageAmountBase>
+			<explosionRadius>1.4</explosionRadius>
+			<speed>55</speed>
+			<flyOverhead>false</flyOverhead>
+		</projectile>
+	</ThingDef>
+</Defs>

@@ -89,6 +89,9 @@ The Umbral utility pod SHALL provide a gizmo that switches the pawn's displayed 
 
 The utility weapons SHALL use no ammo and SHALL render similarly to a normal weapon. A utility pod SHALL prevent the pawn from equipping any other weapon.
 
+### Requirement: Umbral Harbinger needs no fuel
+With Odyssey, the player-built Umbral Harbinger SHALL fly as an Odyssey shuttle that never uses fuel. It SHALL be full from the moment it is built, launching from the map or from a caravan SHALL NOT use any fuel, and it SHALL NOT show a fuel readout, fuel gizmos or the shuttle's "refuel from cargo" command. Its range SHALL come only from its fixed launch distance. Without Odyssey but with Vehicle Framework, it SHALL be a Vehicle Framework aircraft with no fuel at all. The herald's Harbinger is covered by the Orientis spec ("The Dark Archotech's answer").
+
 ## Open questions
 - Rendering rules for the exoskeleton, exoskull, and utility pod (to be specified later).
 - Whether phases B and C use the same transformation hediff as phase A, or a separate one. To be decided during implementation.
@@ -105,3 +108,4 @@ Implemented in `Umbral.cs`. Tunables live on `BOR_UmbralTransformation` and the 
 - The exoskeleton, exoskull and utility pod are hediffs. Their visuals are locked, destroy-on-drop apparel and weapons, swapped for each mode. The exoskull follows the exoskeleton's mode.
 - Camo: invisible, Manipulation capped at 0. Utility: no armor, work speed x1.5 (mining, construction and plants x1.3). Combat: +2.5 sharp, +1.2 blunt and +1.8 heat armor, work speed x0.4.
 - Utility pod forms: blade, tool (work-speed bonuses), gun (Tier 3 rifle bullet), launcher (explosive).
+- A pod form change, by the player or the AI, takes `morphSeconds` (2.5s, the exoskeleton's shed plus grow). The weapon goes at once and the pawn is unarmed until the end. Meanwhile the crystal morphs like a slide transition: one outline slides from the old texture's visible bounds to the new one's, both textures stretch to fit it, and the new fades in as the old fades out (all four forms share one grip angle, so it does not turn). Each shape's pose comes from the real weapon renderer, mods that move weapons (SQUISHY) included, and the morph slides between the two poses, so the new weapon appears exactly where it ends. It is drawn in the hand wherever vanilla would show the weapon. The gizmo is disabled mid-morph.

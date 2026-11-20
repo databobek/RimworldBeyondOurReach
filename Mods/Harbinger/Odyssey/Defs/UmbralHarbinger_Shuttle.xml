@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Umbral Harbinger as an Odyssey shuttle. Built and flown like the passenger shuttle, but it needs no fuel
+     (CompRefuelable_Endless), reaches twice as far and carries less. -->
+<Defs>
+	<ThingDef ParentName="BuildingBase">
+		<defName>BOR_UmbralHarbinger</defName>
+		<label>umbral harbinger</label>
+		<description>A crescent-winged Umbral craft. It lifts straight up and needs no fuel: whatever drives it is not chemfuel. It reaches twice as far as a passenger shuttle but has little room inside. It can reach orbital locations.</description>
+		<thingClass>Building_PassengerShuttle</thingClass>
+		<preventDroppingThingsOn>true</preventDroppingThingsOn>
+		<altitudeLayer>Building</altitudeLayer>
+		<pathCost>50</pathCost>
+		<blockWind>true</blockWind>
+		<passability>PassThroughOnly</passability>
+		<fillPercent>0.5</fillPercent>
+		<size>(5,5)</size>
+		<drawHighlight>true</drawHighlight>
+		<highlightColor>(0.75, 0.15, 0.2)</highlightColor>
+		<uiIconScale>1</uiIconScale>
+		<graphicData>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<texPath>BOR/MechsAndVehicles/Ship/Ship</texPath>
+			<drawSize>(6,6)</drawSize>
+			<shadowData>
+				<volume>(4, 1.0, 3)</volume>
+			</shadowData>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>1200</MaxHitPoints>
+			<Flammability>0</Flammability>
+			<WorkToBuild>60000</WorkToBuild>
+			<Mass>150</Mass>
+			<Comfort>0.75</Comfort>
+		</statBases>
+		<tickerType>Normal</tickerType>
+		<designationCategory>Odyssey</designationCategory>
+		<constructionSkillPrerequisite>12</constructionSkillPrerequisite>
+		<costList>
+			<BOR_Tenebrite>400</BOR_Tenebrite>
+			<BOR_ComponentIII>8</BOR_ComponentIII>
+		</costList>
+		<canOverlapZones>true</canOverlapZones>
+		<killedLeavings>
+			<BOR_Tenebrite>80</BOR_Tenebrite>
+			<BOR_ComponentIII>2</BOR_ComponentIII>
+		</killedLeavings>
+		<rotatable>true</rotatable>
+		<hasInteractionCell>true</hasInteractionCell>
+		<interactionCellOffset>(3, 0, 0)</interactionCellOffset>
+		<defaultPlacingRot>East</defaultPlacingRot>
+		<selectable>true</selectable>
+		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+		<soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
+		<preventSkyfallersLandingOn>true</preventSkyfallersLandingOn>
+		<drawerType>RealtimeOnly</drawerType>
+		<repairEffect>ConstructMetal</repairEffect>
+		<building>
+			<claimable>false</claimable>
+			<destroySound>BuildingDestroyed_Metal_Big</destroySound>
+			<isInert>true</isInert>
+		</building>
+		<inspectorTabs>
+			<li>ITab_ContentsTransporter</li>
+		</inspectorTabs>
+		<researchPrerequisites>
+			<li>BOR_Research_Harbinger</li>
+		</researchPrerequisites>
+		<comps>
+			<li Class="CompProperties_Shuttle">
+				<shipDef>BOR_Ship_UmbralHarbinger</shipDef>
+			</li>
+			<li Class="CompProperties_Launchable">
+				<fuelPerTile>1</fuelPerTile>
+				<skyfallerLeaving>BOR_UmbralHarbingerLeaving</skyfallerLeaving>
+				<worldObjectDef>PassengerShuttle</worldObjectDef>
+				<cooldownTicks>1250</cooldownTicks>
+				<fixedLaunchDistanceMax>124</fixedLaunchDistanceMax>
+				<cooldownEndedMessage>{0} is ready to launch again.</cooldownEndedMessage>
+			</li>
+			<li Class="CompProperties_Transporter">
+				<massCapacity>250</massCapacity>
+				<max1PerGroup>true</max1PerGroup>
+				<canChangeAssignedThingsAfterStarting>true</canChangeAssignedThingsAfterStarting>
+				<pawnLoadedSound>Shuttle_PawnLoaded</pawnLoadedSound>
+				<pawnExitSound>Shuttle_PawnExit</pawnExitSound>
+				<showMassInInspectString>true</showMassInInspectString>
+			</li>
+			<!-- Never burns: starts full, hides itself, and every burn is skipped. The range comes from fixedLaunchDistanceMax. -->
+			<li Class="CompProperties_Refuelable">
+				<compClass>BeyondOurReach.CompRefuelable_Endless</compClass>
+				<fuelCapacity>1000</fuelCapacity>
+				<initialFuelPercent>1</initialFuelPercent>
+				<consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+				<drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
+				<fuelFilter>
+					<thingDefs>
+						<li>Chemfuel</li>
+					</thingDefs>
+				</fuelFilter>
+			</li>
+			<li Class="CompProperties_AmbientSound">
+				<sound>ShuttleIdle_Ambience</sound>
+			</li>
+		</comps>
+		<placeWorkers>
+			<li>PlaceWorker_NotUnderRoof</li>
+		</placeWorkers>
+		<uiOrder>2610</uiOrder>
+	</ThingDef>
+
+	<TransportShipDef>
+		<defName>BOR_Ship_UmbralHarbinger</defName>
+		<label>umbral harbinger</label>
+		<shipThing>BOR_UmbralHarbinger</shipThing>
+		<arrivingSkyfaller>BOR_UmbralHarbingerIncoming</arrivingSkyfaller>
+		<leavingSkyfaller>BOR_UmbralHarbingerLeaving</leavingSkyfaller>
+		<worldObject>PassengerShuttle</worldObject>
+		<playerShuttle>true</playerShuttle>
+	</TransportShipDef>
+
+	<!-- Straight down and straight up, like the herald's Harbinger. Uses Odyssey's shuttle skyfaller classes. -->
+	<ThingDef ParentName="BOR_HarbingerSkyfallerBase">
+		<defName>BOR_UmbralHarbingerIncoming</defName>
+		<label>umbral harbinger (incoming)</label>
+		<thingClass>PassengerShuttleIncoming</thingClass>
+		<skyfaller>
+			<anticipationSound>Shuttle_Landing</anticipationSound>
+			<anticipationSoundTicks>250</anticipationSoundTicks>
+			<ticksToImpactRange>200~250</ticksToImpactRange>
+			<minimalRoofDestruction>true</minimalRoofDestruction>
+			<!-- Odyssey's shuttle skyfallers ignore angleCurve and always read rotationCurve and zPositionCurve.
+			     Almost no sideways speed plus a falling zPositionCurve makes it come straight down. -->
+			<rotationCurve>
+				<points>
+					<li>(0,0)</li>
+					<li>(1,0)</li>
+				</points>
+			</rotationCurve>
+			<zPositionCurve>
+				<points>
+					<li>(0,14)</li>
+					<li>(0.7,3)</li>
+					<li>(1,0)</li>
+				</points>
+			</zPositionCurve>
+			<speedCurve>
+				<points>
+					<li>(0,0.01)</li>
+					<li>(1,0.01)</li>
+				</points>
+			</speedCurve>
+		</skyfaller>
+	</ThingDef>
+
+	<ThingDef ParentName="BOR_HarbingerSkyfallerBase">
+		<defName>BOR_UmbralHarbingerLeaving</defName>
+		<label>umbral harbinger (leaving)</label>
+		<thingClass>PassengerShuttleLeaving</thingClass>
+		<rotatable>true</rotatable>
+		<skyfaller>
+			<reversed>true</reversed>
+			<anticipationSound>Shuttle_Leaving</anticipationSound>
+			<anticipationSoundTicks>-10</anticipationSoundTicks>
+			<ticksToImpactRange>-40~-15</ticksToImpactRange>
+			<moteSpawnTime>0.05</moteSpawnTime>
+			<rotationCurve>
+				<points>
+					<li>(0,0)</li>
+					<li>(1,0)</li>
+				</points>
+			</rotationCurve>
+			<!-- Lifts slowly in place, then at 0.6 (burstAt below) jumps away forward. Odyssey's leaving shuttle flies
+			     the way it faces, so speed is the forward run; it ramps up rather than steps, because a reversed
+			     skyfaller's distance is computed from total ticks times the current speed and a step would teleport it. -->
+			<zPositionCurve>
+				<points>
+					<li>(0,0)</li>
+					<li>(0.6,2.5)</li>
+					<li>(1,6)</li>
+				</points>
+			</zPositionCurve>
+			<speedCurve>
+				<points>
+					<li>(0,0.01)</li>
+					<li>(0.6,0.01)</li>
+					<li>(0.7,0.35)</li>
+					<li>(1,1)</li>
+				</points>
+			</speedCurve>
+		</skyfaller>
+		<comps>
+			<li Class="BeyondOurReach.CompProperties_SkyfallerDistortion">
+				<burstAt>0.6</burstAt>
+				<burstFleck>BOR_HarbingerWarpBurst</burstFleck>
+				<riseFleck>BOR_HarbingerWarpRise</riseFleck>
+			</li>
+		</comps>
+	</ThingDef>
+</Defs>

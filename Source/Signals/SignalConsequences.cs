@@ -106,9 +106,6 @@ public class MapComponent_SignalConsequences : MapComponent
         return buildings.Count > 0 ? buildings.RandomElement().Position : CellFinder.RandomNotEdgeCell(10, map);
     }
 
-    private IntVec3 DropSpotNear(IntVec3 c) =>
-        DropCellFinder.TryFindDropSpotNear(c, map, out IntVec3 spot, false, true) ? spot : c;
-
     private void OrbitalLaser()
     {
         IntVec3 cell = RandomHomeCell();
@@ -125,7 +122,7 @@ public class MapComponent_SignalConsequences : MapComponent
         int pods = Rand.RangeInclusive(15, 25);
         for (int i = 0; i < pods; i++)
         {
-            IntVec3 cell = DropSpotNear(RandomHomeCell());
+            IntVec3 cell = SignalUtility.HomeDropSpot(map);
             SkyfallerMaker.SpawnSkyfaller(BOR_SignalsDefOf.BOR_FilthPodIncoming, ThingMaker.MakeThing(ThingDefOf.ChunkSlagSteel), cell, map);
             if (!first.IsValid)
             {
@@ -150,7 +147,7 @@ public class MapComponent_SignalConsequences : MapComponent
                 t.stackCount = Mathf.Min(left, wastepack.stackLimit);
                 things.Add(t);
             }
-            IntVec3 cell = DropSpotNear(RandomHomeCell());
+            IntVec3 cell = SignalUtility.HomeDropSpot(map);
             DropPodUtility.DropThingsNear(cell, map, things);
             if (!first.IsValid)
             {

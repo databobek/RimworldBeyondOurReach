@@ -92,11 +92,30 @@ public static class SignalUtility
     }
 
     public static bool LandingCellOk(IntVec3 c, Map map) =>
-        c.InBounds(map) && c.Standable(map) && !c.Roofed(map) && c.GetEdifice(map) == null && c.GetFirstItem(map) == null
-        && c.GetFirstPawn(map) == null && !c.Fogged(map);
+        c.InBounds(map) && c.Standable(map) && !c.GetTerrain(map).dangerous && !c.Roofed(map) && c.GetEdifice(map) == null
+        && c.GetFirstItem(map) == null && c.GetFirstPawn(map) == null && !c.Fogged(map);
+
+    // Open ground a pod can reach: standable (so not rock, deep water or deep lava), not shallow lava, not under a mountain.
+    private static bool PodCellOk(IntVec3 c, Map map) =>
+        c.Standable(map) && !c.Fogged(map) && !c.GetTerrain(map).dangerous && !(c.GetRoof(map)?.isThickRoof ?? false);
 
     public static bool ShuttleFits(IntVec3 c, Map map, IntVec2 size) =>
         GenAdj.OccupiedRect(c, Rot4.North, size).ExpandedBy(1).All(x => LandingCellOk(x, map));
+
+    // A drop pod landing spot near a random home cell. The search must start on open ground: from a cell inside rock or
+    // under a mountain roof it finds nothing reachable, and the pod would come down right there.
+    public static IntVec3 HomeDropSpot(Map map)
+    {
+        List<IntVec3> home = map.areaManager.Home.ActiveCells.Where(c => PodCellOk(c, map)).ToList();
+        for (int i = 0; i < 10 && home.Count > 0; i++)
+        {
+            if (DropCellFinder.TryFindDropSpotNear(home.RandomElement(), map, out IntVec3 spot, false, true) && PodCellOk(spot, map))
+            {
+                return spot;
+            }
+        }
+        return DropCellFinder.TradeDropSpot(map);
+    }
 
     // Up to `count` landing spots spread over the home area, at least minSpacing apart.
     public static List<IntVec3> RaidLandingSpots(Map map, IntVec2 size, int count, float minSpacing)

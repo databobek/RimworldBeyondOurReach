@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Combat Extended + Vehicle Framework: CE projectiles for BOR vehicle turrets. The roof gun fires BOR's Kwazaari
+     heavy CE bullet. The Harbinger cannon only exists without Odyssey, so that patch is conditional. -->
+<Patch>
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/Vehicles.VehicleTurretDef[defName="BOR_KwazaariTruck_RoofTurret"]/projectile</xpath>
+		<value>
+			<projectile>BOR_Bullet_Gen2Rifle_QaP</projectile>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/Vehicles.VehicleTurretDef[defName="BOR_KwazaariTruck_Cannon"]/projectile</xpath>
+		<value>
+			<projectile>BOR_BulletCE_KwazaariTruckShell</projectile>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationConditional">
+		<xpath>Defs/Vehicles.VehicleTurretDef[defName="BOR_HarbingerCannon"]</xpath>
+		<match Class="PatchOperationReplace">
+			<xpath>Defs/Vehicles.VehicleTurretDef[defName="BOR_HarbingerCannon"]/projectile</xpath>
+			<value>
+				<projectile>BOR_BulletCE_HarbingerBolt</projectile>
+			</value>
+		</match>
+	</Operation>
+</Patch>

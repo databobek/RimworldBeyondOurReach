@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- Helios-class mech, built on the Coventech Mechsuit Framework.
+	     Slot offsets are (x, layer, z) per facing, tuned in game with Debug actions > Pawns > Edit Mech Offsets (which
+	     copies the finished BodyDef). Facing south the shoulder pads swap screen sides (ShoulderL on the right) but the
+	     arms do not. -->
+	<BodyDef>
+		<defName>BOR_HeliosBody</defName>
+		<label>Helios frame</label>
+		<corePart Class="taranchuk_mechsuits.MechPart">
+			<def>MechSuitTorso</def>
+			<partID>Torso</partID>
+			<height>Middle</height>
+			<depth>Outside</depth>
+			<slots>
+				<li>
+					<label>armor plating</label>
+					<slotID>TorsoPlating</slotID>
+					<tags>
+						<li>Plating</li>
+					</tags>
+				</li>
+				<li>
+					<label>reactor</label>
+					<slotID>Reactor</slotID>
+					<tags>
+						<li>Reactor</li>
+					</tags>
+				</li>
+				<li>
+					<label>back mount</label>
+					<slotID>Back</slotID>
+					<tags>
+						<li>Back</li>
+					</tags>
+					<compDrawOffsets>
+						<north>(0, 0.02, 0.36)</north>
+						<east>(-0.12, 0.03, 0.61)</east>
+						<south>(0, 0.03, 0.52)</south>
+						<west>(0.35, 0.03, 0.6)</west>
+					</compDrawOffsets>
+					<shootingArcMinAngle>-30</shootingArcMinAngle>
+					<shootingArcMaxAngle>30</shootingArcMaxAngle>
+				</li>
+			</slots>
+			<parts>
+				<li>
+					<def>MechanicalNeck</def>
+					<coverage>0.08</coverage>
+					<height>Top</height>
+					<parts>
+						<li Class="taranchuk_mechsuits.MechPart">
+							<def>MechanicalHead</def>
+							<partID>Head</partID>
+							<coverage>0.8</coverage>
+							<groups>
+								<li>HeadAttackTool</li>
+							</groups>
+							<slots>
+								<li>
+									<label>core</label>
+									<slotID>Core</slotID>
+									<tags>
+										<li>Core</li>
+									</tags>
+								</li>
+								<li>
+									<label>system</label>
+									<slotID>System</slotID>
+									<tags>
+										<li>System</li>
+									</tags>
+								</li>
+							</slots>
+						</li>
+					</parts>
+				</li>
+				<li Class="taranchuk_mechsuits.MechPart">
+					<def>MechanicalShoulder</def>
+					<partID>ShoulderL</partID>
+					<coverage>0.17</coverage>
+					<slots>
+						<li>
+							<label>left shoulder</label>
+							<slotID>ShoulderL</slotID>
+							<tags>
+								<li>BOR_HeliosShoulderL</li>
+							</tags>
+							<compDrawOffsets>
+								<north>(-0.95, 0.04, 0.45)</north>
+								<east>(-0.05, 0.03, 1.76)</east>
+								<south>(0.95, 0.04, 0.45)</south>
+								<west>(0.24, 0.04, -0.7)</west>
+							</compDrawOffsets>
+						</li>
+					</slots>
+					<parts>
+						<li Class="taranchuk_mechsuits.MechPart">
+							<def>MechanicalArm</def>
+							<partID>ArmL</partID>
+							<coverage>0.85</coverage>
+							<slots>
+								<li>
+									<label>left arm</label>
+									<slotID>ArmL</slotID>
+									<tags>
+										<li>BOR_HeliosArm</li>
+									</tags>
+									<compDrawOffsets>
+										<north>(-1.1, 0.02, -0.1)</north>
+										<east>(0.07, 0, 1.13)</east>
+										<south>(-1.1, 0.02, -0.1)</south>
+										<west>(-0.1, -0.02, -0.75)</west>
+									</compDrawOffsets>
+									<shootingArcMinAngle>-45</shootingArcMinAngle>
+									<shootingArcMaxAngle>45</shootingArcMaxAngle>
+								</li>
+							</slots>
+						</li>
+					</parts>
+				</li>
+				<li Class="taranchuk_mechsuits.MechPart">
+					<def>MechanicalShoulder</def>
+					<partID>ShoulderR</partID>
+					<coverage>0.17</coverage>
+					<slots>
+						<li>
+							<label>right shoulder</label>
+							<slotID>ShoulderR</slotID>
+							<tags>
+								<li>BOR_HeliosShoulderR</li>
+							</tags>
+							<compDrawOffsets>
+								<north>(0.95, 0.04, 0.45)</north>
+								<east>(-0.05, 0.04, -0.52)</east>
+								<south>(-0.95, 0.04, 0.45)</south>
+								<west>(0.3, 0.02, 1.77)</west>
+							</compDrawOffsets>
+						</li>
+					</slots>
+					<parts>
+						<li Class="taranchuk_mechsuits.MechPart">
+							<def>MechanicalArm</def>
+							<partID>ArmR</partID>
+							<coverage>0.85</coverage>
+							<slots>
+								<li>
+									<label>right arm</label>
+									<slotID>ArmR</slotID>
+									<tags>
+										<li>BOR_HeliosArm</li>
+									</tags>
+									<compDrawOffsets>
+										<north>(1.1, 0.02, -0.1)</north>
+										<east>(0.1, 0, -0.58)</east>
+										<south>(1.1, 0.02, -0.1)</south>
+										<west>(-0.1, -0.1, 0.98)</west>
+									</compDrawOffsets>
+									<shootingArcMinAngle>-45</shootingArcMinAngle>
+									<shootingArcMaxAngle>45</shootingArcMaxAngle>
+								</li>
+							</slots>
+						</li>
+					</parts>
+				</li>
+				<li>
+					<def>MechanicalLeg</def>
+					<customLabel>left leg</customLabel>
+					<coverage>0.2</coverage>
+					<height>Bottom</height>
+				</li>
+				<li>
+					<def>MechanicalLeg</def>
+					<customLabel>right leg</customLabel>
+					<coverage>0.2</coverage>
+					<height>Bottom</height>
+				</li>
+			</parts>
+		</corePart>
+	</BodyDef>
+
+	<!-- Not a BaseMechanoid: that parent brings Biotech's overseer comp, which turns a player mech with no mechanitor feral.
+	     The mechsuit framework does the controlling here (pilot, power, drafting). -->
+	<ThingDef ParentName="BasePawn">
+		<defName>BOR_Helios</defName>
+		<label>Helios-class mech</label>
+		<description>A Solarite walking fortress. A single pilot rides inside a sunsteel frame between two fixed armored shoulders, each an ablative plate that recharges once it is broken. The arms are interchangeable weapon mounts and the back takes a rocket pod.\n\nThe reactor burns solarite fuel rods carried in the mech's inventory. Without them it has no power and stands where it is.</description>
+		<soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
+		<tradeability>None</tradeability>
+		<!-- The body is drawn at size 4, so its icon overflows at full scale. MechBlueprintIcons copies this onto the
+		     blueprint the framework generates (BOR_Helios_Building). -->
+		<uiIconScale>0.33</uiIconScale>
+		<statBases>
+			<MarketValue>32000</MarketValue>
+			<MoveSpeed>4.2</MoveSpeed>
+			<ArmorRating_Blunt>0.6</ArmorRating_Blunt>
+			<ArmorRating_Sharp>1.0</ArmorRating_Sharp>
+			<ArmorRating_Heat>1.4</ArmorRating_Heat>
+			<PsychicSensitivity>0</PsychicSensitivity>
+			<ToxicResistance>1</ToxicResistance>
+			<ToxicEnvironmentResistance>1</ToxicEnvironmentResistance>
+			<Flammability>0</Flammability>
+			<ComfyTemperatureMin>-150</ComfyTemperatureMin>
+			<ComfyTemperatureMax>300</ComfyTemperatureMax>
+			<MeatAmount>0</MeatAmount>
+			<EMPResistance>0.5</EMPResistance>
+		</statBases>
+		<tools>
+			<li>
+				<label>left fist</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>28</power>
+				<cooldownTime>2.4</cooldownTime>
+			</li>
+			<li>
+				<label>right fist</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>28</power>
+				<cooldownTime>2.4</cooldownTime>
+			</li>
+		</tools>
+		<race>
+			<intelligence>ToolUser</intelligence>
+			<thinkTreeMain>MechSuit</thinkTreeMain>
+			<body>BOR_HeliosBody</body>
+			<fleshType>Mechanoid</fleshType>
+			<needsRest>false</needsRest>
+			<hasGenders>false</hasGenders>
+			<foodType>None</foodType>
+			<lifeExpectancy>2500</lifeExpectancy>
+			<bloodDef>Filth_MachineBits</bloodDef>
+			<baseBodySize>4</baseBodySize>
+			<baseHealthScale>8</baseHealthScale>
+			<lifeStageAges>
+				<li>
+					<def>MechanoidFullyFormed</def>
+					<minAge>0</minAge>
+					<soundWounded>Pawn_Mech_Centipede_Wounded</soundWounded>
+					<soundDeath>Pawn_Mech_Centipede_Death</soundDeath>
+				</li>
+			</lifeStageAges>
+			<soundMeleeHitPawn>Pawn_Melee_MechanoidBash_HitPawn</soundMeleeHitPawn>
+			<soundMeleeHitBuilding>Pawn_Melee_MechanoidBash_HitBuilding</soundMeleeHitBuilding>
+			<soundMeleeMiss>Pawn_Melee_MechanoidBash_Miss</soundMeleeMiss>
+		</race>
+		<butcherProducts>
+			<BOR_Sunsteel>300</BOR_Sunsteel>
+			<ComponentSpacer>6</ComponentSpacer>
+		</butcherProducts>
+		<inspectorTabs>
+			<li>taranchuk_mechsuits.ITab_MechSuit</li>
+			<li>taranchuk_mechsuits.ITab_MechSuitWork</li>
+		</inspectorTabs>
+		<comps>
+			<li Class="taranchuk_mechsuits.CompProperties_MechSuit">
+				<massCapacity>600</massCapacity>
+				<basePilotCapacity>1</basePilotCapacity>
+				<basePassengerCapacity>1</basePassengerCapacity>
+				<baseCarryingCapacity>600</baseCarryingCapacity>
+				<requiresPilot>true</requiresPilot>
+				<canBePilotedByPawns>true</canBePilotedByPawns>
+				<gantryTags>
+					<li>Medium</li>
+				</gantryTags>
+				<designationCategory>BOR</designationCategory>
+				<costList>
+					<BOR_Sunsteel>2000</BOR_Sunsteel>
+					<ComponentSpacer>40</ComponentSpacer>
+				</costList>
+				<researchPrerequisites>
+					<li>BOR_Research_Helios</li>
+				</researchPrerequisites>
+				<statBases>
+					<WorkToBuild>120000</WorkToBuild>
+					<MaxHitPoints>1500</MaxHitPoints>
+				</statBases>
+				<!-- No needs at all: the reactor stands in for mech energy. -->
+				<overrideNeeds />
+				<standIfNotMoving>true</standIfNotMoving>
+				<repairable>true</repairable>
+				<!-- SkillGain loads as <SkillDefName>level</SkillDefName>, not the skill/amount pair the framework docs show. -->
+				<overridenSkillLevels>
+					<Shooting>15</Shooting>
+					<Melee>12</Melee>
+				</overridenSkillLevels>
+			</li>
+		</comps>
+	</ThingDef>
+
+	<!-- The built mech is generated from this kind, so a finished blueprint comes with the shoulders, reactor, two arms
+	     and the rocket pod already installed. -->
+	<PawnKindDef>
+		<defName>BOR_Helios</defName>
+		<label>Helios-class mech</label>
+		<race>BOR_Helios</race>
+		<combatPower>1500</combatPower>
+		<destroyGearOnDrop>true</destroyGearOnDrop>
+		<canStrip>false</canStrip>
+		<forceNormalGearQuality>true</forceNormalGearQuality>
+		<lifeStages>
+			<li>
+				<bodyGraphicData>
+					<texPath>BOR/MechsAndVehicles/Knight/MainBody/Knight</texPath>
+					<graphicClass>BeyondOurReach.Graphic_MultiMirrorWest</graphicClass>
+					<drawSize>4</drawSize>
+					<shadowData>
+						<volume>(1.2, 0.6, 0.8)</volume>
+						<offset>(0, 0, -0.6)</offset>
+					</shadowData>
+				</bodyGraphicData>
+			</li>
+		</lifeStages>
+		<modExtensions>
+			<li Class="taranchuk_mechsuits.MechSpawnGeneration">
+				<prebuiltComponents>
+					<li>
+						<partID>ShoulderL</partID>
+						<slotID>ShoulderL</slotID>
+						<component>BOR_Helios_ShoulderL</component>
+					</li>
+					<li>
+						<partID>ShoulderR</partID>
+						<slotID>ShoulderR</slotID>
+						<component>BOR_Helios_ShoulderR</component>
+					</li>
+					<li>
+						<partID>Torso</partID>
+						<slotID>Reactor</slotID>
+						<component>BOR_Helios_Reactor</component>
+					</li>
+					<li>
+						<partID>Torso</partID>
+						<slotID>Back</slotID>
+						<component>BOR_Helios_RocketPod</component>
+					</li>
+					<li>
+						<partID>ArmL</partID>
+						<slotID>ArmL</slotID>
+						<component>BOR_Helios_Arm_Rotarygun</component>
+					</li>
+					<li>
+						<partID>ArmR</partID>
+						<slotID>ArmR</slotID>
+						<component>BOR_Helios_Arm_Cannon</component>
+					</li>
+				</prebuiltComponents>
+			</li>
+		</modExtensions>
+	</PawnKindDef>
+</Defs>

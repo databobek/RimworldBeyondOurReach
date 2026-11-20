@@ -54,9 +54,14 @@ The Dark Archotech Altar SHALL be a special Forge whose grid is prefilled with t
 
 - Every grid cell SHALL start prefilled but locked.
 - A locked cell SHALL be unlocked only by performing work on it.
+- Unlocking SHALL be shared by every altar: an item unlocked at one altar SHALL be unlocked at every altar on every map, including altars built later. Which cells the player asked to unlock, and unlock progress, SHALL be shared the same way.
 - The altar SHALL be usable only by a pawn with the Tenebral Psychosis hediff.
 - Analysis and production on the altar SHALL drain the pawn's Bloodlust need.
-- Progress SHALL persist on the altar, so work can be paused and resumed. (Unlike a regular forge.)
+- Progress SHALL persist, so work can be paused and resumed. (Unlike a regular forge.) Production progress SHALL stay on the altar.
+
+#### Scenario: Second altar
+- WHEN an item has been unlocked at one altar and the player builds a second altar
+- THEN the item is already unlocked at the second altar
 
 #### Scenario: Requesting an item
 - WHEN the player brings the scaled amount of crystalline joints (componentIII) to the altar
@@ -109,3 +114,4 @@ Implemented in `TenebralPsychosis.cs`, `TenebralSurgery.cs`, `TenebralPods.cs`, 
 - Crystallization: nothing happens on the 6th break itself. Every break after it has a 50% chance to crystallize one random eligible part. There is no timer, so a pawn who stops breaking stops crystallizing. Eligible parts are the arms, legs, eyes, ears, the left kidney, the right lung and the torso (11 parts on a human, so 50% is 6 parts). Nothing else crystallizes or counts. The percentage counts eligible parts.
 - Transformation mode refuses a pawn below 50%.
 - Altar: unlocking a cell takes the forge analysis time for the item. Each run costs ceil(value x yield x 0.5 / joint value) crystalline joints (at least 1). Work drains 2 days' worth of bloodlust per day of work.
+- Altar unlocks live in `GameComponent_DarkAltar`, keyed by the item's defName, so an item from a removed mod loads without errors. Saves from before kept unlocks on each altar; on load, an item unlocked or requested at any altar carries over to all of them, with the furthest progress.

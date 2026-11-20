@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Combat Extended + Vehicle Framework. Under CE, VF fires turrets through CE, which only takes CE projectiles. The ammo
+     stays steel and neutronium: they are not CE ammo, so CE fires the turret's own projectile (patched in below). -->
+<Defs>
+	<ThingDef ParentName="BaseExplosiveBullet">
+		<defName>BOR_BulletCE_KwazaariTruckShell</defName>
+		<label>neutronium shell</label>
+		<thingClass>CombatExtended.ProjectileCE_Explosive</thingClass>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Big</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+			<drawSize>2</drawSize>
+			<color>(120, 190, 255)</color>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Bomb</damageDef>
+			<damageAmountBase>180</damageAmountBase>
+			<explosionRadius>3.4</explosionRadius>
+			<speed>160</speed>
+			<flyOverhead>false</flyOverhead>
+			<soundExplode>MortarBomb_Explode</soundExplode>
+			<applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
+			<preExplosionSpawnSingleThingDef>Filth_BlastMark</preExplosionSpawnSingleThingDef>
+		</projectile>
+	</ThingDef>
+
+	<!-- Only used by the Vehicle Framework Harbinger, which loads without Odyssey. -->
+	<ThingDef ParentName="BaseBulletCE">
+		<defName>BOR_BulletCE_HarbingerBolt</defName>
+		<label>harbinger bolt</label>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Big</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+			<drawSize>1.6</drawSize>
+			<color>(200, 30, 40)</color>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>80</damageAmountBase>
+			<armorPenetrationSharp>60</armorPenetrationSharp>
+			<armorPenetrationBlunt>500</armorPenetrationBlunt>
+			<speed>250</speed>
+		</projectile>
+	</ThingDef>
+</Defs>

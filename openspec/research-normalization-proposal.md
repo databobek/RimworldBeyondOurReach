@@ -102,3 +102,12 @@ Differences from the draft above:
 - `Gate_IV` hidden prerequisites are `Medicine_IV`, `Drugs_IV`, `Power_IV`, `Battery_IV`, `Joy_IV`, `Hydroponics_IV`.
 - `Vaccines_Combined_II` gates the basic and nano combined vaccines; `Vaccines_Combined` keeps the archo and tenebral ones. `Vaccines_IV` gates the umbral vaccine and requires `Vaccines_Combined` as a hidden prerequisite.
 - Descriptions of existing researches were left alone, so `Medicine_III` still mentions dark medicine and the fabricator, which now need `Medicine_IV`.
+
+## Later: dark pacts (see `specs/dark-pacts`)
+
+Tenebral research moved to dark pacts at the dark mirror (base `BOR_Research_Base_III_Pact`, cost 1E+15). Researches that no longer unlocked anything were deleted:
+- `Weapons_III` and `Armor_III`: the dark altar makes every tenebral gun and armor piece without checking research. Their only other use was the same recipes at `Bench_IV`, which comes after `Gate_III` anyway. Those recipes lost their research line, the dread beacon now hangs off `Production_III`, and CE's tenebral ammo research and ion shells moved to `Production_III` and `BOR_CE_AmmoResearch_TC`.
+- `Power_III`, `Joy_III`, `Hydroponics_III`: they unlocked nothing at all. They were dropped from the hidden prerequisites that named them; SimpleLearning's tenebral desk now needs `Production_III`.
+- `ComponentHarvest`: biomass harvesting comes with `Analyzer_III`, since crystalline joints are needed to build the dark mirror.
+
+`Storage_III` only unlocks the tier III Baux, so it moved into `Mods/AdaptiveStorageFramework`. `Gate_III` stays bench research, with `Production_III`, `Medicine_III`, `Bionics_III` and `Core_Drill_III` as hidden prerequisites.

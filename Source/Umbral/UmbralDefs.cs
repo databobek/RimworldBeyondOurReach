@@ -57,6 +57,9 @@ public static class BOR_UmbralDefOf
     public static HediffDef BOR_SlaughterBlessing = null!;
     public static HediffDef BOR_SlaughterRestraint = null!;
     public static FactionDef BOR_Umbrals = null!;
+    public static ThingDef BOR_HeraldHarbinger = null!;
+    public static ThingDef BOR_HeraldHarbingerIncoming = null!;
+    public static ThingDef BOR_HeraldHarbingerLeaving = null!;
 
     [MayRequireBiotech]
     public static XenotypeDef BOR_UmbralXenotype = null!;

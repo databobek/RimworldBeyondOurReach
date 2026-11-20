@@ -16,7 +16,7 @@ public static class BOR_HarvestDefOf
     public static ThoughtDef BOR_MutilatedBody = null!;
     public static ThoughtDef BOR_MutilatedBodySocial = null!;
 
-    public static ResearchProjectDef BOR_Research_ComponentHarvest = null!;
+    public static ResearchProjectDef BOR_Research_Analyzer_III = null!;
 
     static BOR_HarvestDefOf()
     {

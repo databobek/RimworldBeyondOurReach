@@ -375,11 +375,6 @@ public class LightShockwave : IExposable
 
     private float Radius => (Find.TickManager.TicksGame - startTick) * Orientis.Settings.shockwaveTilesPerTick;
 
-    // From the center to the farthest corner of the map.
-    private float MaxRadius => Mathf.Sqrt(Square(Mathf.Max(center.x, map.Size.x - center.x)) + Square(Mathf.Max(center.z, map.Size.z - center.z)));
-
-    private static float Square(float value) => value * value;
-
     // True once the wave has crossed the whole map, or the map is gone.
     public bool Tick()
     {
@@ -408,21 +403,10 @@ public class LightShockwave : IExposable
             DarkBuildings.Burn(item);
             return true;
         });
-        return radius >= MaxRadius;
+        return radius >= ShockwaveRing.MaxRadius(map, center);
     }
 
-    public void Draw()
-    {
-        if (map != Find.CurrentMap || map == null || WorldRendererUtility.WorldRendered)
-        {
-            return;
-        }
-        float radius = Radius;
-        float alpha = 1f - Mathf.Clamp01(radius / MaxRadius) * 0.7f;
-        Vector3 pos = center.ToVector3ShiftedWithAltitude(AltitudeLayer.Weather);
-        Matrix4x4 matrix = Matrix4x4.TRS(pos, Quaternion.identity, new Vector3(radius * 2f, 1f, radius * 2f));
-        Graphics.DrawMesh(MeshPool.plane10, matrix, FadedMaterialPool.FadedVersionOf(RingMaterial, alpha), 0);
-    }
+    public void Draw() => ShockwaveRing.Draw(map, center, Radius, RingMaterial);
 
     public void ExposeData()
     {

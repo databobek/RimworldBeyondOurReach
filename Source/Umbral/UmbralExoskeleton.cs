@@ -308,6 +308,17 @@ public class HediffComp_UmbralModeApparel : HediffComp
         return true;
     }
 
+    // A corpse must not keep the camo: death nulls the pawn's mindState, which the vanilla invisibility comp reads on
+    // every draw of the corpse and the portrait.
+    public override void Notify_PawnDied(DamageInfo? dinfo, Hediff culprit = null!)
+    {
+        base.Notify_PawnDied(dinfo, culprit);
+        if (Props.ownsMode && (mode != ExoskeletonMode.None || switching))
+        {
+            ApplyMode(ExoskeletonMode.None);
+        }
+    }
+
     public override void CompPostPostRemoved()
     {
         base.CompPostPostRemoved();
@@ -387,7 +398,7 @@ public class HediffComp_UmbralModeApparel : HediffComp
         }
     }
 
-    private static int SecondsToTicks(float seconds) => Mathf.Max(1, Mathf.RoundToInt(seconds * GenTicks.TicksPerRealSecond));
+    internal static int SecondsToTicks(float seconds) => Mathf.Max(1, Mathf.RoundToInt(seconds * GenTicks.TicksPerRealSecond));
 
     // Any direct change, including the end of a switch, settles the form and ends a switch in progress.
     private void ApplyMode(ExoskeletonMode newMode)
@@ -494,6 +505,13 @@ public class HediffCompProperties_UmbralUtilityPod : HediffCompProperties
 {
     public List<ThingDef> weapons = new();
 
+    // Forms kept in `weapons` (the AI goes by index) but left out of the switch menu.
+    public List<ThingDef> disabledWeapons = new();
+
+    // A form change empties the hand while the pod morphs from the old shape into the new one, over this many seconds
+    // (game time at 1x). Matches the exoskeleton's shed and grow.
+    public float morphSeconds = 2.5f;
+
     public HediffCompProperties_UmbralUtilityPod()
     {
         compClass = typeof(HediffComp_UmbralUtilityPod);
@@ -520,9 +538,53 @@ public class HediffComp_UmbralUtilityPod : HediffComp
 
     private int mode;
 
+    // A form change in progress: the pod morphs from the form morphFrom into the form `mode`, and the hand holds nothing
+    // until morphEndTick.
+    private bool morphing;
+    private int morphFrom = -1;
+    private int morphStartTick;
+    private int morphEndTick;
+
     public HediffCompProperties_UmbralUtilityPod Props => (HediffCompProperties_UmbralUtilityPod)props;
 
-    private ThingDef? Wanted => Props.weapons.Count == 0 ? null : Props.weapons[Mathf.Clamp(mode, 0, Props.weapons.Count - 1)];
+    private ThingDef? Wanted => FormDef(mode);
+
+    private ThingDef? FormDef(int form) => Props.weapons.Count == 0 ? null : Props.weapons[Mathf.Clamp(form, 0, Props.weapons.Count - 1)];
+
+    public bool Morphing => morphing;
+
+    // Never-equipped copies of the forms, only used to ask the weapon renderer (and the mods that move weapons) where each
+    // form would be drawn. They claim the pawn's equipment as their holder so those mods treat them as the pawn's weapon.
+    private readonly Dictionary<ThingDef, ThingWithComps> poseProxies = new();
+
+    public ThingWithComps? PoseProxy(ThingDef def)
+    {
+        if (Pawn.equipment == null)
+        {
+            return null;
+        }
+        if (!poseProxies.TryGetValue(def, out ThingWithComps? proxy))
+        {
+            proxy = (ThingWithComps)ThingMaker.MakeThing(def);
+            poseProxies[def] = proxy;
+        }
+        proxy.holdingOwner = Pawn.equipment.GetDirectlyHeldThings();
+        return proxy;
+    }
+
+    // For the effect: the shape being left, the shape being taken, and how far the morph has got, 0 to 1.
+    public bool TryGetMorphFrame(out ThingDef? from, out ThingDef? to, out float progress)
+    {
+        from = FormDef(morphFrom);
+        to = Wanted;
+        progress = 0f;
+        if (!morphing || from == null || to == null)
+        {
+            return false;
+        }
+        progress = Mathf.Clamp01((Find.TickManager.TicksGame - morphStartTick) / (float)Mathf.Max(1, morphEndTick - morphStartTick));
+        return true;
+    }
 
     public override void CompPostPostAdd(DamageInfo? dinfo)
     {
@@ -533,6 +595,19 @@ public class HediffComp_UmbralUtilityPod : HediffComp
     public override void CompPostTickInterval(ref float severityAdjustment, int delta)
     {
         base.CompPostTickInterval(ref severityAdjustment, delta);
+        if (morphing)
+        {
+            if (Find.TickManager.TicksGame >= morphEndTick)
+            {
+                morphing = false;
+                EnsureWeapon();
+            }
+            else
+            {
+                // Also picks the effect back up after a load.
+                UtilityPodMorphs.Add(this);
+            }
+        }
         if (Pawn.IsHashIntervalTick(CheckInterval, delta))
         {
             EnsureWeapon();
@@ -553,7 +628,7 @@ public class HediffComp_UmbralUtilityPod : HediffComp
         }
         Thing? target = pawn.mindState?.enemyTarget;
         // Hiding in camo: no switching, a switch would end the walk to cover.
-        if (target == null || !target.Spawned || Find.TickManager.TicksGame < lastAiSwitchTick + AiSwitchCooldown
+        if (target == null || !target.Spawned || morphing || Find.TickManager.TicksGame < lastAiSwitchTick + AiSwitchCooldown
             || HediffComp_UmbralSwarmAI.StateOf(pawn) != SwarmState.None)
         {
             return;
@@ -569,13 +644,12 @@ public class HediffComp_UmbralUtilityPod : HediffComp
         {
             return;
         }
-        mode = want;
         lastAiSwitchTick = Find.TickManager.TicksGame;
-        EnsureWeapon();
+        RequestForm(want);
         pawn.jobs?.EndCurrentJob(JobCondition.InterruptForced);
     }
 
-    // The swarm AI picks the weapon itself while hiding: the gun, or the launcher.
+    // The swarm AI picks the weapon itself while hiding: the gun, or the launcher. It morphs under the camo.
     public void AiEquip(bool launcher)
     {
         int want = launcher ? Launcher : Gun;
@@ -583,9 +657,28 @@ public class HediffComp_UmbralUtilityPod : HediffComp
         {
             return;
         }
-        mode = want;
         lastAiSwitchTick = Find.TickManager.TicksGame;
+        RequestForm(want);
+    }
+
+    // Every form change, the player's and the AI's: the weapon goes at once and the pod morphs into the new shape, which
+    // is equipped when the morph ends. A new target mid-morph keeps the running timer.
+    private void RequestForm(int want)
+    {
+        if (want == mode || Props.weapons.Count == 0)
+        {
+            return;
+        }
+        if (!morphing)
+        {
+            morphFrom = mode;
+            morphStartTick = Find.TickManager.TicksGame;
+            morphEndTick = morphStartTick + HediffComp_UmbralModeApparel.SecondsToTicks(Props.morphSeconds);
+        }
+        mode = want;
+        morphing = true;
         EnsureWeapon();
+        UtilityPodMorphs.Add(this);
     }
 
     public float LauncherRange => Props.weapons.Count <= Launcher ? 0f : Props.weapons[Launcher].Verbs.FirstOrDefault()?.range ?? 0f;
@@ -603,9 +696,17 @@ public class HediffComp_UmbralUtilityPod : HediffComp
         return false;
     }
 
+    // A death mid-morph ends it: the form already counts as the new one, which a resurrected pawn grows back.
+    public override void Notify_PawnDied(DamageInfo? dinfo, Hediff culprit = null!)
+    {
+        base.Notify_PawnDied(dinfo, culprit);
+        morphing = false;
+    }
+
     public override void CompPostPostRemoved()
     {
         base.CompPostPostRemoved();
+        morphing = false;
         ThingWithComps? primary = Pawn.equipment?.Primary;
         if (primary != null && Props.weapons.Contains(primary.def))
         {
@@ -617,11 +718,25 @@ public class HediffComp_UmbralUtilityPod : HediffComp
     {
         Pawn pawn = Pawn;
         ThingDef? want = Wanted;
-        if (want == null || pawn.equipment == null || pawn.Dead || pawn.Downed)
+        if (want == null || pawn.equipment == null)
         {
             return;
         }
         ThingWithComps? primary = pawn.equipment.Primary;
+        // Mid-morph the hand is empty.
+        if (morphing)
+        {
+            if (primary != null && Props.weapons.Contains(primary.def))
+            {
+                pawn.equipment.DestroyEquipment(primary);
+                StopUsing(pawn, primary);
+            }
+            return;
+        }
+        if (pawn.Dead || pawn.Downed)
+        {
+            return;
+        }
         if (primary?.def == want)
         {
             return;
@@ -631,6 +746,7 @@ public class HediffComp_UmbralUtilityPod : HediffComp
             if (Props.weapons.Contains(primary.def))
             {
                 pawn.equipment.DestroyEquipment(primary);
+                StopUsing(pawn, primary);
             }
             else if (pawn.Spawned)
             {
@@ -645,6 +761,21 @@ public class HediffComp_UmbralUtilityPod : HediffComp
         pawn.equipment.AddEquipment((ThingWithComps)ThingMaker.MakeThing(want));
     }
 
+    // Removing equipment does not stop an attack already under way: a gun warming up or mid-burst, or a melee job, would
+    // keep using the destroyed weapon's verb. Vanilla cancels the stance the same way when a primary is destroyed.
+    private static void StopUsing(Pawn pawn, ThingWithComps weapon)
+    {
+        if (!pawn.Spawned)
+        {
+            return;
+        }
+        pawn.stances?.CancelBusyStanceSoft();
+        if (pawn.CurJob?.verbToUse?.EquipmentSource == weapon)
+        {
+            pawn.jobs.EndCurrentJob(JobCondition.InterruptForced);
+        }
+    }
+
     public override IEnumerable<Gizmo> CompGetGizmos()
     {
         if (Pawn.Faction != Faction.OfPlayer || Props.weapons.Count == 0)
@@ -652,7 +783,7 @@ public class HediffComp_UmbralUtilityPod : HediffComp
             yield break;
         }
         ThingDef current = Wanted!;
-        yield return new Command_Action
+        Command_Action cmd = new()
         {
             defaultLabel = "BOR_UtilityPodMode".Translate(current.LabelCap),
             defaultDesc = "BOR_UtilityPodModeDesc".Translate(),
@@ -663,20 +794,28 @@ public class HediffComp_UmbralUtilityPod : HediffComp
                 for (int i = 0; i < Props.weapons.Count; i++)
                 {
                     int chosen = i;
-                    options.Add(new FloatMenuOption(Props.weapons[i].LabelCap, () =>
+                    if (chosen != mode && !Props.disabledWeapons.Contains(Props.weapons[i]))
                     {
-                        mode = chosen;
-                        EnsureWeapon();
-                    }));
+                        options.Add(new FloatMenuOption(Props.weapons[i].LabelCap, () => RequestForm(chosen)));
+                    }
                 }
                 Find.WindowStack.Add(new FloatMenu(options));
             }
         };
+        if (morphing)
+        {
+            cmd.Disable("BOR_ExoForming".Translate(current.label));
+        }
+        yield return cmd;
     }
 
     public override void CompExposeData()
     {
         base.CompExposeData();
         Scribe_Values.Look(ref mode, "podMode");
+        Scribe_Values.Look(ref morphing, "podMorphing");
+        Scribe_Values.Look(ref morphFrom, "podMorphFrom", -1);
+        Scribe_Values.Look(ref morphStartTick, "podMorphStart");
+        Scribe_Values.Look(ref morphEndTick, "podMorphEnd");
     }
 }

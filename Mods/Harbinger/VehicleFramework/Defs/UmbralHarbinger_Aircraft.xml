@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Umbral Harbinger as a Vehicle Framework aircraft. Loaded only without Odyssey, which turns it into a shuttle instead.
+     Vertical takeoff and landing, no fuel comp at all (VF handles that), faster than any other aircraft (VVE tops out
+     at FlightSpeed 50), and little cargo. -->
+<Defs>
+	<Vehicles.VehicleDef ParentName="BaseVehiclePawn">
+		<defName>BOR_UmbralHarbingerAircraft</defName>
+		<label>umbral harbinger</label>
+		<description>A crescent-winged Umbral craft. It lifts straight up, needs no fuel and outruns every other aircraft, but carries little. Two fixed cannons fire straight ahead.\n\n&lt;color=#b4282d&gt;Crew:&lt;/color&gt; Pilot x1, Passengers x3\n&lt;color=#b4282d&gt;Fuel type:&lt;/color&gt; None</description>
+		<graphicData>
+			<texPath>BOR/MechsAndVehicles/Ship/Ship</texPath>
+			<graphicClass>Vehicles.Graphic_Vehicle</graphicClass>
+			<shaderType>Cutout</shaderType>
+			<drawSize>(6, 6)</drawSize>
+		</graphicData>
+		<fillPercent>0.7</fillPercent>
+		<buildDef>BOR_UmbralHarbingerAircraft_Blueprint</buildDef>
+		<size>(5, 5)</size>
+		<canCaravan LockSetting="True">false</canCaravan>
+		<vehicleCategory>Transport</vehicleCategory>
+		<techLevel>Archotech</techLevel>
+		<vehicleType>Air</vehicleType>
+		<statBases>
+			<ArmorRating_Blunt>0.7</ArmorRating_Blunt>
+			<ArmorRating_Sharp>1.1</ArmorRating_Sharp>
+			<ArmorRating_Heat>1.5</ArmorRating_Heat>
+			<Flammability>0</Flammability>
+			<MarketValue>40000</MarketValue>
+		</statBases>
+		<vehicleStats>
+			<Mass>200</Mass>
+			<MoveSpeed>6</MoveSpeed>
+			<CargoCapacity>150</CargoCapacity>
+			<RepairRate>0.6</RepairRate>
+			<FlightSpeed>80</FlightSpeed>
+		</vehicleStats>
+		<race>
+			<baseBodySize>5</baseBodySize>
+		</race>
+		<properties>
+			<visibilityWeight>4</visibilityWeight>
+			<vehicleJobLimitations>
+				<li>(RepairVehicle, 3)</li>
+			</vehicleJobLimitations>
+			<roles>
+				<li>
+					<key>pilot</key>
+					<label>pilot</label>
+					<slots>1</slots>
+					<slotsToOperate>1</slotsToOperate>
+					<handlingTypes>
+						<li>Movement</li>
+						<li>Turret</li>
+					</handlingTypes>
+					<turretIds>
+						<li>leftCannon</li>
+						<li>rightCannon</li>
+					</turretIds>
+					<hitbox>
+						<cells>
+							<li>(0, 1)</li>
+						</cells>
+					</hitbox>
+				</li>
+				<li>
+					<key>passenger</key>
+					<label>passenger</label>
+					<slots>3</slots>
+					<hitbox>
+						<cells>
+							<li>(0, 0)</li>
+						</cells>
+					</hitbox>
+				</li>
+			</roles>
+		</properties>
+		<components>
+			<li>
+				<key>Drive</key>
+				<label>Drive</label>
+				<health>260</health>
+				<priorityStatEfficiency>true</priorityStatEfficiency>
+				<depth>Internal</depth>
+				<hitbox>
+					<cells>
+						<li>(0, -1)</li>
+					</cells>
+				</hitbox>
+				<categories>
+					<li>MoveSpeed</li>
+					<li>FlightSpeed</li>
+					<li>FlightControl</li>
+				</categories>
+			</li>
+			<li>
+				<key>Hull</key>
+				<label>Hull</label>
+				<health>600</health>
+				<depth>External</depth>
+				<hitbox>
+					<cells>
+						<li>(0, 1)</li>
+						<li>(0, 0)</li>
+						<li>(0, -1)</li>
+						<li>(0, -2)</li>
+					</cells>
+				</hitbox>
+			</li>
+			<li>
+				<key>LeftWing</key>
+				<label>Left wing</label>
+				<health>300</health>
+				<depth>External</depth>
+				<hitbox>
+					<fallthrough>false</fallthrough>
+					<side>Left</side>
+				</hitbox>
+				<categories>
+					<li>FlightControl</li>
+				</categories>
+			</li>
+			<li>
+				<key>RightWing</key>
+				<label>Right wing</label>
+				<health>300</health>
+				<depth>External</depth>
+				<hitbox>
+					<fallthrough>false</fallthrough>
+					<side>Right</side>
+				</hitbox>
+				<categories>
+					<li>FlightControl</li>
+				</categories>
+			</li>
+			<li>
+				<key>Cockpit</key>
+				<label>Cockpit</label>
+				<health>120</health>
+				<depth>Internal</depth>
+				<hitWeight>5</hitWeight>
+			</li>
+		</components>
+		<comps>
+			<li Class="Vehicles.CompProperties_VehicleLauncher">
+				<controlInFlight>false</controlInFlight>
+				<canRoofPunch>false</canRoofPunch>
+				<launchProtocol Class="Vehicles.DefaultTakeoff">
+					<maxFlightNodes>1</maxFlightNodes>
+					<launchProperties>
+						<maxTicks>360</maxTicks>
+						<zPositionCurve Class="SmashTools.BezierCurve">
+							<points>
+								<li>(0, 0)</li>
+								<li>(0.4, 3)</li>
+								<li>(0.7, 8)</li>
+								<li>(1, 200)</li>
+							</points>
+						</zPositionCurve>
+					</launchProperties>
+					<landingProperties>
+						<maxTicks>360</maxTicks>
+						<zPositionCurve Class="SmashTools.BezierCurve">
+							<points>
+								<li>(0, 200)</li>
+								<li>(0.5, 15)</li>
+								<li>(0.8, 3)</li>
+								<li>(1, 0)</li>
+							</points>
+						</zPositionCurve>
+					</landingProperties>
+				</launchProtocol>
+			</li>
+			<li Class="Vehicles.CompProperties_VehicleTurrets">
+				<turrets>
+					<li>
+						<turretDef>BOR_HarbingerCannon</turretDef>
+						<renderProperties>
+							<north>(-0.62, 1.46)</north>
+							<east>(1.46, 0.62)</east>
+							<south>(0.62, -1.46)</south>
+							<west>(-1.46, -0.62)</west>
+						</renderProperties>
+						<gizmoLabel>Left cannon</gizmoLabel>
+						<angleRestricted />
+						<aimPieOffset>(0, 0)</aimPieOffset>
+						<key>leftCannon</key>
+					</li>
+					<li>
+						<turretDef>BOR_HarbingerCannon</turretDef>
+						<renderProperties>
+							<north>(0.62, 1.46)</north>
+							<east>(1.46, -0.62)</east>
+							<south>(-0.62, -1.46)</south>
+							<west>(-1.46, 0.62)</west>
+						</renderProperties>
+						<gizmoLabel>Right cannon</gizmoLabel>
+						<angleRestricted />
+						<aimPieOffset>(0, 0)</aimPieOffset>
+						<key>rightCannon</key>
+					</li>
+				</turrets>
+			</li>
+		</comps>
+	</Vehicles.VehicleDef>
+
+	<Vehicles.VehicleBuildDef ParentName="VehicleBaseBuildable">
+		<defName>BOR_UmbralHarbingerAircraft_Blueprint</defName>
+		<label>umbral harbinger</label>
+		<description>A crescent-winged Umbral craft. It lifts straight up, needs no fuel and outruns every other aircraft, but carries little. Two fixed cannons fire straight ahead.\n\n&lt;color=#b4282d&gt;Crew:&lt;/color&gt; Pilot x1, Passengers x3\n&lt;color=#b4282d&gt;Fuel type:&lt;/color&gt; None</description>
+		<graphicData>
+			<texPath>BOR/MechsAndVehicles/Ship/Ship</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(6, 6)</drawSize>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>1200</MaxHitPoints>
+			<WorkToBuild>60000</WorkToBuild>
+			<Flammability>0</Flammability>
+		</statBases>
+		<researchPrerequisites>
+			<li>BOR_Research_Harbinger</li>
+		</researchPrerequisites>
+		<size>(5, 5)</size>
+		<costList>
+			<BOR_Tenebrite>400</BOR_Tenebrite>
+			<BOR_ComponentIII>8</BOR_ComponentIII>
+		</costList>
+		<soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
+		<thingToSpawn>BOR_UmbralHarbingerAircraft</thingToSpawn>
+		<constructionSkillPrerequisite>12</constructionSkillPrerequisite>
+	</Vehicles.VehicleBuildDef>
+
+	<!-- No ammunition filter: VF refills the magazine for free, so the Harbinger needs nothing loaded. -->
+	<Vehicles.VehicleTurretDef ParentName="VehicleTurretBase">
+		<defName>BOR_HarbingerCannon</defName>
+		<label>harbinger cannon</label>
+		<description>One of the Harbinger's two fixed forward cannons. It needs no ammunition.</description>
+		<turretType>Static</turretType>
+		<shotSound>Shot_BOR_RailgunHigh</shotSound>
+		<projectile>BOR_Bullet_HarbingerBolt</projectile>
+		<reloadTimer>2</reloadTimer>
+		<warmUpTimer>1</warmUpTimer>
+		<magazineCapacity>6</magazineCapacity>
+		<maxRange>49.9</maxRange>
+		<fireModes>
+			<li>
+				<shotsPerBurst>2</shotsPerBurst>
+				<ticksBetweenShots>8</ticksBetweenShots>
+				<ticksBetweenBursts>60</ticksBetweenBursts>
+				<spreadRadius>1</spreadRadius>
+				<label>Burst</label>
+				<texPath>UI/Gizmos/FireRate_Burst</texPath>
+			</li>
+		</fireModes>
+		<gizmoIconTexPath>BOR/MechsAndVehicles/Ship/Ship_east</gizmoIconTexPath>
+	</Vehicles.VehicleTurretDef>
+
+	<ThingDef ParentName="BaseBullet">
+		<defName>BOR_Bullet_HarbingerBolt</defName>
+		<label>harbinger bolt</label>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Big</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+			<drawSize>1.6</drawSize>
+			<color>(200, 30, 40)</color>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>65</damageAmountBase>
+			<stoppingPower>3</stoppingPower>
+			<armorPenetrationBase>1.2</armorPenetrationBase>
+			<speed>150</speed>
+		</projectile>
+	</ThingDef>
+</Defs>

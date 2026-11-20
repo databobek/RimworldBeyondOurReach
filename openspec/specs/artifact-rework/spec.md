@@ -238,6 +238,14 @@ End conversation closes at once and keeps the contact state. The last stage's on
 
 The gizmo SHALL be disabled ("The tenebral is still here.") while he is alive on the map, or while the tenebral shuttle stands.
 
+### Requirement: Anti-air leaves the guests alone
+The signal chains' arrivals (`BOR_SignalShuttleIncoming`, `BOR_TenebralShuttleIncoming`, `BOR_TenebralPodIncoming`) carry `DefModExtension_NoAntiAir`. Anti-air SHALL NOT target them, even when a hostile pawn is inside. The Badzaari raid shuttles stay fair game, subject to the tier rule below.
+
+### Requirement: Anti-air is tier-gated
+`DefModExtension_BorTier` gives factions and anti-air turrets a tier: Solar Republic 1, Kwazaar Bazaar and Badzaari 2, Tenebral vanquishers 3, Umbrals 4, and the solar defender turret 1. Anything unmarked (vanilla, CE and VFE Security turrets, other mods' factions) is tier 0, the Ultra level. A skyfaller's tier is the highest tier among the factions of the pawns inside it, at any depth. Anti-air SHALL still target and fire at every hostile skyfaller, but a hit SHALL only count when the skyfaller's tier is at most the turret's tier plus one: Ultra-level anti-air downs up to Solar, Solar up to Kwazaari, Kwazaari up to Tenebral, Tenebral up to Umbral. Any other hit is spent without effect (no damage to the pod or anyone inside); it throws sparks and, at most once a second per pod, a floating "Deflected". A new BOR anti-air turret needs the marker with its tier.
+
+The guest rule hooks targeting: Combat Extended's skyfaller CIWS (`VerbCIWSSkyfaller` and `CompCIWSTarget_Skyfaller` friendliness) and VFE Security's point defense (`CompPointDefense.IsValidTransporter`). The tier rule hooks the hit: CE's `CompCIWSImpactHandler_Skyfaller.OnImpact` (by the round's launcher) and VFE Security's `CompPointDefense.TryIntercept`. The patches live in `Source/Buildings/AntiAir.cs` and switch themselves off when the mod is not loaded.
+
 ### Requirement: Dev gizmos
 Dev mode SHALL add, per channel: "Finish investigation", "Arrive", and "Forget analysis" once the channel is done. Peculiar broadcasts also gets "Arrive by shuttle" and "Arrive by pod" to test both routes regardless of the Badzaari.
 

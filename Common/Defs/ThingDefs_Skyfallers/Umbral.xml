@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- The Harbinger the Umbral herald arrives in (UmbralHerald.Strike). Comes straight down, lets the herald out and
+       goes straight back up: a skyfaller angle of 0 is vertical on screen. Anti-air leaves it alone: the herald is
+       scripted and always arrives. -->
+  <ThingDef ParentName="BuildingBase">
+    <defName>BOR_HeraldHarbinger</defName>
+    <label>umbral harbinger</label>
+    <description>A crescent-winged Umbral craft. It sets down only long enough to let its passenger out.</description>
+    <thingClass>BeyondOurReach.Building_HeraldHarbinger</thingClass>
+    <tickerType>Normal</tickerType>
+    <size>(5,5)</size>
+    <rotatable>false</rotatable>
+    <passability>Impassable</passability>
+    <fillPercent>1.0</fillPercent>
+    <blockWind>true</blockWind>
+    <preventDroppingThingsOn>true</preventDroppingThingsOn>
+    <useHitPoints>false</useHitPoints>
+    <graphicData>
+      <texPath>BOR/MechsAndVehicles/Ship/Ship</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawSize>(6,6)</drawSize>
+    </graphicData>
+    <building>
+      <claimable>false</claimable>
+      <isInert>true</isInert>
+    </building>
+  </ThingDef>
+
+  <ThingDef Name="BOR_HarbingerSkyfallerBase" ParentName="ShuttleSkyfallerBase" Abstract="True">
+    <size>(5,5)</size>
+    <graphicData Inherit="False">
+      <texPath>BOR/MechsAndVehicles/Ship/Ship</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <shaderType>CutoutFlying</shaderType>
+      <drawSize>(6,6)</drawSize>
+    </graphicData>
+    <skyfaller>
+      <shadowSize>(5.5,5.5)</shadowSize>
+    </skyfaller>
+  </ThingDef>
+
+  <ThingDef ParentName="BOR_HarbingerSkyfallerBase">
+    <defName>BOR_HeraldHarbingerIncoming</defName>
+    <label>umbral harbinger (incoming)</label>
+    <skyfaller>
+      <ticksToImpactRange>150~180</ticksToImpactRange>
+      <angleCurve>
+        <points>
+          <li>(0,0)</li>
+          <li>(1,0)</li>
+        </points>
+      </angleCurve>
+      <speedCurve>
+        <points>
+          <li>(0.5,1)</li>
+          <li>(0.95,0.1)</li>
+        </points>
+      </speedCurve>
+    </skyfaller>
+    <modExtensions>
+      <li Class="BeyondOurReach.DefModExtension_NoAntiAir" />
+    </modExtensions>
+  </ThingDef>
+
+  <ThingDef ParentName="BOR_HarbingerSkyfallerBase">
+    <defName>BOR_HeraldHarbingerLeaving</defName>
+    <label>umbral harbinger (leaving)</label>
+    <skyfaller>
+      <reversed>true</reversed>
+      <ticksToImpactRange>-40~-15</ticksToImpactRange>
+      <moteSpawnTime>0.05</moteSpawnTime>
+      <angleCurve>
+        <points>
+          <li>(0,0)</li>
+          <li>(1,0)</li>
+        </points>
+      </angleCurve>
+      <!-- Crawls up, then jumps away at 0.55 (burstAt below). -->
+      <speedCurve>
+        <points>
+          <li>(0,0.04)</li>
+          <li>(0.55,0.04)</li>
+          <li>(0.62,1.2)</li>
+        </points>
+      </speedCurve>
+    </skyfaller>
+    <comps>
+      <li Class="BeyondOurReach.CompProperties_SkyfallerDistortion">
+        <burstAt>0.55</burstAt>
+        <burstFleck>BOR_HarbingerWarpBurst</burstFleck>
+        <riseFleck>BOR_HarbingerWarpRise</riseFleck>
+      </li>
+    </comps>
+    <modExtensions>
+      <li Class="BeyondOurReach.DefModExtension_NoAntiAir" />
+    </modExtensions>
+  </ThingDef>
+</Defs>

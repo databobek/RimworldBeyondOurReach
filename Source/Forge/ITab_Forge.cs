@@ -291,7 +291,7 @@ public class ITab_Forge : BorTab
         });
     }
 
-    private static string ShortCount(int n)
+    internal static string ShortCount(int n)
     {
         if (n < 1000)
         {
@@ -334,7 +334,7 @@ public class ITab_Forge : BorTab
         Widgets.Label(new Rect(cell.x + 4f, modeBar.y - 30f, cell.width - 4f, 30f), ShortCount(forge.CountOnMap(def)));
         Text.Anchor = TextAnchor.UpperLeft;
 
-        DrawModeBar(modeBar, forge, index, mode);
+        DrawModeBar(modeBar, mode, AllModes, chosen => forge.SetMode(index, chosen));
 
         skin.Hover(cell);
         TooltipHandler.TipRegion(cell, () => TooltipFor(def, forge), 7392000 + index);
@@ -362,7 +362,10 @@ public class ITab_Forge : BorTab
         }
     }
 
-    private static void DrawModeBar(Rect bar, CompForge forge, int index, ForgeMode mode)
+    private static readonly ForgeMode[] AllModes = { ForgeMode.DoX, ForgeMode.DoUntil, ForgeMode.DoForever };
+
+    // Shared with the dark altar, which offers only some of the modes.
+    internal static void DrawModeBar(Rect bar, ForgeMode mode, ForgeMode[] choices, System.Action<ForgeMode> setMode)
     {
         BorSkin.Current.ChipFace(bar);
         Text.Font = GameFont.Tiny;
@@ -384,10 +387,10 @@ public class ITab_Forge : BorTab
         if (Widgets.ButtonInvisible(bar))
         {
             List<FloatMenuOption> options = new();
-            foreach (ForgeMode m in System.Enum.GetValues(typeof(ForgeMode)))
+            foreach (ForgeMode m in choices)
             {
                 ForgeMode chosen = m;
-                options.Add(new FloatMenuOption(ModeLabel(chosen), () => forge.SetMode(index, chosen)));
+                options.Add(new FloatMenuOption(ModeLabel(chosen), () => setMode(chosen)));
             }
             Find.WindowStack.Add(new FloatMenu(options));
         }

@@ -14,7 +14,8 @@ public class DarkAltarEntry
     public ThingDef? stuff;
 }
 
-// A special forge: every cell is prefilled with a tenebral item but locked until worked on. Progress stays on the altar.
+// A special forge: every cell is prefilled with a tenebral item but locked until worked on.
+// Unlocking is shared by every altar (GameComponent_DarkAltar); production progress stays on the altar.
 public class CompProperties_DarkAltar : CompProperties
 {
     public int gridWidth = 4;
@@ -41,16 +42,27 @@ public class CompProperties_DarkAltar : CompProperties
 public sealed class CompDarkAltar : ThingComp
 {
     private const float BaseTicksFactor = 2f;
+    private const int CountRefreshTicks = 60;
+
+    // The altar offers the forge's counted modes, but not "forever".
+    public static readonly ForgeMode[] Modes = { ForgeMode.DoX, ForgeMode.DoUntil };
 
     // Worked out once per cell, as the produce job asks on every work tick.
     private int[]? componentCosts;
 
-    private List<bool> unlocked = new();
-    private List<bool> unlockRequested = new();
-    private List<float> unlockProgress = new();
+    // Refreshed about once a second, as "until" cells ask on every work scan and the tab on every frame. -1 = not counted yet.
+    private int[]? countsOnMap;
+    private int countsTick = -CountRefreshTicks;
+
+    private List<int> modes = new();
     private List<int> queued = new();
     private List<float> produceProgress = new();
     private int components;
+
+    // Unsealing from saves made before it was shared, held from loading until the whole game is loaded.
+    private List<bool>? oldUnlocked;
+    private List<bool>? oldRequested;
+    private List<float>? oldProgress;
 
     public CompProperties_DarkAltar Props => (CompProperties_DarkAltar)props;
 
@@ -58,21 +70,11 @@ public sealed class CompDarkAltar : ThingComp
 
     public int StoredComponents => components;
 
+    private static GameComponent_DarkAltar Seals => GameComponent_DarkAltar.Instance;
+
     private void EnsureSize()
     {
         int n = Count;
-        while (unlocked.Count < n)
-        {
-            unlocked.Add(false);
-        }
-        while (unlockRequested.Count < n)
-        {
-            unlockRequested.Add(false);
-        }
-        while (unlockProgress.Count < n)
-        {
-            unlockProgress.Add(0f);
-        }
         while (queued.Count < n)
         {
             queued.Add(0);
@@ -81,30 +83,75 @@ public sealed class CompDarkAltar : ThingComp
         {
             produceProgress.Add(0f);
         }
+        while (modes.Count < n)
+        {
+            modes.Add((int)ForgeMode.DoX);
+        }
+    }
+
+    public ForgeMode ModeOf(int i)
+    {
+        EnsureSize();
+        return (ForgeMode)modes[i];
+    }
+
+    public void SetMode(int i, ForgeMode mode)
+    {
+        EnsureSize();
+        modes[i] = (int)mode;
+    }
+
+    public int CountOnMap(int i)
+    {
+        Map? map = parent.Map;
+        if (map == null)
+        {
+            return 0;
+        }
+        int now = Find.TickManager.TicksGame;
+        if (countsOnMap == null || countsOnMap.Length != Count)
+        {
+            countsOnMap = new int[Count];
+            countsTick = -CountRefreshTicks;
+        }
+        if (now - countsTick >= CountRefreshTicks)
+        {
+            for (int k = 0; k < countsOnMap.Length; k++)
+            {
+                countsOnMap[k] = -1;
+            }
+            countsTick = now;
+        }
+        if (countsOnMap[i] < 0)
+        {
+            int total = 0;
+            foreach (Thing t in map.listerThings.ThingsOfDef(Entry(i).thing))
+            {
+                total += t.stackCount;
+            }
+            countsOnMap[i] = total;
+        }
+        return countsOnMap[i];
+    }
+
+    public bool ShouldProduce(int i)
+    {
+        EnsureSize();
+        if (!IsUnlocked(i) || queued[i] <= 0)
+        {
+            return false;
+        }
+        return (ForgeMode)modes[i] != ForgeMode.DoUntil || CountOnMap(i) < queued[i];
     }
 
     public DarkAltarEntry Entry(int i) => Props.entries[i];
 
-    public bool IsUnlocked(int i)
-    {
-        EnsureSize();
-        return unlocked[i];
-    }
+    // Unsealing is shared by every altar: these ask GameComponent_DarkAltar.
+    public bool IsUnlocked(int i) => Seals.IsUnsealed(Entry(i).thing);
 
-    public bool UnlockRequested(int i)
-    {
-        EnsureSize();
-        return unlockRequested[i];
-    }
+    public bool UnlockRequested(int i) => Seals.IsRequested(Entry(i).thing);
 
-    public void ToggleUnlock(int i)
-    {
-        EnsureSize();
-        if (!unlocked[i])
-        {
-            unlockRequested[i] = !unlockRequested[i];
-        }
-    }
+    public void ToggleUnlock(int i) => Seals.ToggleRequest(Entry(i).thing);
 
     public int Queued(int i)
     {
@@ -115,7 +162,7 @@ public sealed class CompDarkAltar : ThingComp
     public void AddQueued(int i, int amount)
     {
         EnsureSize();
-        if (unlocked[i])
+        if (IsUnlocked(i))
         {
             queued[i] = Mathf.Max(0, queued[i] + amount);
             if (queued[i] == 0)
@@ -129,11 +176,7 @@ public sealed class CompDarkAltar : ThingComp
 
     public int ProduceTicks(int i) => Mathf.Max(30, Mathf.RoundToInt(ForgeMath.BaseWorkTicks(Entry(i).thing) * Props.produceWorkFactor));
 
-    public float UnlockFraction(int i)
-    {
-        EnsureSize();
-        return unlockProgress[i] / UnlockTicks(i);
-    }
+    public float UnlockFraction(int i) => Seals.Progress(Entry(i).thing) / UnlockTicks(i);
 
     public float ProduceFraction(int i)
     {
@@ -155,10 +198,9 @@ public sealed class CompDarkAltar : ThingComp
 
     public int NextUnlockCell()
     {
-        EnsureSize();
         for (int i = 0; i < Count; i++)
         {
-            if (!unlocked[i] && unlockRequested[i])
+            if (!IsUnlocked(i) && UnlockRequested(i))
             {
                 return i;
             }
@@ -171,7 +213,7 @@ public sealed class CompDarkAltar : ThingComp
         EnsureSize();
         for (int i = 0; i < Count; i++)
         {
-            if (unlocked[i] && queued[i] > 0)
+            if (ShouldProduce(i))
             {
                 return i;
             }
@@ -196,18 +238,13 @@ public sealed class CompDarkAltar : ThingComp
         }
     }
 
-    // Returns true when the cell finished unlocking on this tick.
+    // Returns true when the cell finished unlocking on this tick, for every altar.
     public bool WorkUnlock(int i)
     {
-        EnsureSize();
-        unlockProgress[i] += 1f;
-        if (unlockProgress[i] < UnlockTicks(i))
+        if (!Seals.AddProgress(Entry(i).thing, 1f, UnlockTicks(i)))
         {
             return false;
         }
-        unlocked[i] = true;
-        unlockRequested[i] = false;
-        unlockProgress[i] = 0f;
         Messages.Message("BOR_AltarUnlocked".Translate(Entry(i).thing.LabelCap), parent, MessageTypeDefOf.PositiveEvent);
         return true;
     }
@@ -223,13 +260,18 @@ public sealed class CompDarkAltar : ThingComp
         }
         produceProgress[i] = 0f;
         components -= ComponentCost(i);
-        queued[i] = Mathf.Max(0, queued[i] - 1);
+        // "Until" keeps its target; the count on the map stops it.
+        if (modes[i] == (int)ForgeMode.DoX)
+        {
+            queued[i] = Mathf.Max(0, queued[i] - 1);
+        }
         DarkAltarEntry entry = Entry(i);
         ThingDef? stuff = entry.thing.MadeFromStuff ? entry.stuff ?? GenStuff.DefaultStuffFor(entry.thing) : null;
         Thing product = ThingMaker.MakeThing(entry.thing, stuff);
         product.stackCount = ForgeMath.YieldFor(entry.thing);
         product.TryGetComp<CompQuality>()?.SetQuality(QualityCategory.Normal, ArtGenerationContext.Colony);
         GenPlace.TryPlaceThing(product, parent.InteractionCell, parent.Map, ThingPlaceMode.Near);
+        countsTick = -CountRefreshTicks;
         return true;
     }
 
@@ -257,13 +299,11 @@ public sealed class CompDarkAltar : ThingComp
         }
     }
 
-    // Instant unlock / relock for testing.
+    // Instant unlock / relock for testing, for every altar.
     public void DevSetUnlocked(int i, bool value)
     {
         EnsureSize();
-        unlocked[i] = value;
-        unlockRequested[i] = false;
-        unlockProgress[i] = 0f;
+        Seals.SetUnsealed(Entry(i).thing, value);
         if (!value)
         {
             queued[i] = 0;
@@ -311,17 +351,124 @@ public sealed class CompDarkAltar : ThingComp
     public override void PostExposeData()
     {
         base.PostExposeData();
-        Scribe_Collections.Look(ref unlocked, "altarUnlocked", LookMode.Value);
-        Scribe_Collections.Look(ref unlockRequested, "altarUnlockRequested", LookMode.Value);
-        Scribe_Collections.Look(ref unlockProgress, "altarUnlockProgress", LookMode.Value);
         Scribe_Collections.Look(ref queued, "altarQueued", LookMode.Value);
         Scribe_Collections.Look(ref produceProgress, "altarProduceProgress", LookMode.Value);
         Scribe_Values.Look(ref components, "altarComponents");
-        unlocked ??= new List<bool>();
-        unlockRequested ??= new List<bool>();
-        unlockProgress ??= new List<float>();
+        Scribe_Collections.Look(ref modes, "altarModes", LookMode.Value);
+        modes ??= new List<int>();
         queued ??= new List<int>();
         produceProgress ??= new List<float>();
+
+        // Older saves kept unsealing on each altar. Read it while loading, and hand it over once the whole game is loaded.
+        if (Scribe.mode == LoadSaveMode.LoadingVars)
+        {
+            Scribe_Collections.Look(ref oldUnlocked, "altarUnlocked", LookMode.Value);
+            Scribe_Collections.Look(ref oldRequested, "altarUnlockRequested", LookMode.Value);
+            Scribe_Collections.Look(ref oldProgress, "altarUnlockProgress", LookMode.Value);
+        }
+        else if (Scribe.mode == LoadSaveMode.PostLoadInit && (oldUnlocked != null || oldRequested != null || oldProgress != null))
+        {
+            for (int i = 0; i < Count; i++)
+            {
+                Seals.CarryOver(Entry(i).thing,
+                    oldUnlocked != null && i < oldUnlocked.Count && oldUnlocked[i],
+                    oldRequested != null && i < oldRequested.Count && oldRequested[i],
+                    oldProgress != null && i < oldProgress.Count ? oldProgress[i] : 0f);
+            }
+            oldUnlocked = null;
+            oldRequested = null;
+            oldProgress = null;
+        }
+    }
+}
+
+// Which altar designs are unsealed, which ones colonists are asked to unseal, and how far each has got.
+// Shared by every dark archotech altar on every map, so each design is unsealed once for all of them.
+// Keyed by defName, so a design from a mod that was since removed still loads without errors.
+public class GameComponent_DarkAltar : GameComponent
+{
+    private HashSet<string> unsealed = new();
+    private HashSet<string> requested = new();
+    private Dictionary<string, float> progress = new();
+
+    public GameComponent_DarkAltar(Game game)
+    {
+    }
+
+    public static GameComponent_DarkAltar Instance => Current.Game.GetComponent<GameComponent_DarkAltar>();
+
+    public bool IsUnsealed(ThingDef design) => unsealed.Contains(design.defName);
+
+    public bool IsRequested(ThingDef design) => requested.Contains(design.defName);
+
+    public float Progress(ThingDef design) => progress.TryGetValue(design.defName, out float done) ? done : 0f;
+
+    public void ToggleRequest(ThingDef design)
+    {
+        if (!IsUnsealed(design) && !requested.Remove(design.defName))
+        {
+            requested.Add(design.defName);
+        }
+    }
+
+    // Returns true when this work finished unsealing the design.
+    public bool AddProgress(ThingDef design, float amount, float needed)
+    {
+        float done = Progress(design) + amount;
+        if (done < needed)
+        {
+            progress[design.defName] = done;
+            return false;
+        }
+        SetUnsealed(design, true);
+        return true;
+    }
+
+    public void SetUnsealed(ThingDef design, bool value)
+    {
+        requested.Remove(design.defName);
+        progress.Remove(design.defName);
+        if (value)
+        {
+            unsealed.Add(design.defName);
+        }
+        else
+        {
+            unsealed.Remove(design.defName);
+        }
+    }
+
+    // From a save that kept unsealing on each altar: what any altar unsealed or was asked to unseal carries over, with the furthest progress.
+    public void CarryOver(ThingDef design, bool wasUnsealed, bool wasRequested, float wasProgress)
+    {
+        if (IsUnsealed(design))
+        {
+            return;
+        }
+        if (wasUnsealed)
+        {
+            SetUnsealed(design, true);
+            return;
+        }
+        if (wasRequested)
+        {
+            requested.Add(design.defName);
+        }
+        if (wasProgress > Progress(design))
+        {
+            progress[design.defName] = wasProgress;
+        }
+    }
+
+    public override void ExposeData()
+    {
+        base.ExposeData();
+        Scribe_Collections.Look(ref unsealed, "unsealed", LookMode.Value);
+        Scribe_Collections.Look(ref requested, "requested", LookMode.Value);
+        Scribe_Collections.Look(ref progress, "progress", LookMode.Value, LookMode.Value);
+        unsealed ??= new HashSet<string>();
+        requested ??= new HashSet<string>();
+        progress ??= new Dictionary<string, float>();
     }
 }
 
@@ -427,7 +574,7 @@ public class JobDriver_AltarProduce : JobDriver_AltarWork
         Scribe_Values.Look(ref cell, "altarCell", -1);
     }
 
-    protected override bool StillWanted(CompDarkAltar comp) => Cell >= 0 && comp.Queued(Cell) > 0;
+    protected override bool StillWanted(CompDarkAltar comp) => Cell >= 0 && comp.ShouldProduce(Cell);
 
     protected override bool WorkTick(CompDarkAltar comp)
     {
@@ -530,6 +677,7 @@ public class ITab_DarkAltar : BorTab
     private const float CellSpacing = 6f;
     private const float Margin = 12f;
     private const float HeaderHeight = 30f;
+    private const float ModeBarHeight = 14f;
 
     private static readonly Color CellBack = new(0.12f, 0.06f, 0.06f, 1f);
     private static readonly Color CellBorder = new(0.45f, 0.15f, 0.15f, 1f);
@@ -587,7 +735,8 @@ public class ITab_DarkAltar : BorTab
         bool open = altar.IsUnlocked(i);
         BorSkin skin = BorSkin.Current;
         skin.Cell(cell, CellBack, CellBorder);
-        Widgets.DefIcon(cell.ContractedBy(8f), entry.thing, entry.stuff);
+        Rect modeBar = new(cell.x + 2f, cell.yMax - ModeBarHeight - 2f, cell.width - 4f, ModeBarHeight);
+        Widgets.DefIcon(open ? new Rect(cell.x + 8f, cell.y + 6f, cell.width - 16f, cell.height - 12f - ModeBarHeight) : cell.ContractedBy(8f), entry.thing, entry.stuff);
         float fraction = open ? (altar.Queued(i) > 0 ? altar.ProduceFraction(i) : 0f) : altar.UnlockFraction(i);
         if (!open)
         {
@@ -608,12 +757,17 @@ public class ITab_DarkAltar : BorTab
         }
 
         Text.Font = GameFont.Tiny;
-        if (open && altar.Queued(i) > 0)
+        if (open)
         {
-            Text.Anchor = TextAnchor.UpperRight;
-            Widgets.Label(new Rect(cell.x, cell.y + 2f, cell.width - 4f, 20f), altar.Queued(i).ToString());
+            if (altar.Queued(i) > 0)
+            {
+                Text.Anchor = TextAnchor.UpperRight;
+                Widgets.Label(new Rect(cell.x, cell.y + 2f, cell.width - 4f, 20f), ITab_Forge.ShortCount(altar.Queued(i)));
+            }
+            Text.Anchor = TextAnchor.LowerLeft;
+            Widgets.Label(new Rect(cell.x + 4f, modeBar.y - 20f, cell.width - 4f, 20f), ITab_Forge.ShortCount(altar.CountOnMap(i)));
         }
-        else if (!open)
+        else
         {
             Text.Anchor = TextAnchor.LowerCenter;
             Widgets.Label(new Rect(cell.x, cell.y, cell.width, cell.height - 2f), "BOR_AltarLocked".Translate());
@@ -621,10 +775,21 @@ public class ITab_DarkAltar : BorTab
         Text.Anchor = TextAnchor.UpperLeft;
         Text.Font = GameFont.Small;
 
+        if (open)
+        {
+            ITab_Forge.DrawModeBar(modeBar, altar.ModeOf(i), CompDarkAltar.Modes, mode => altar.SetMode(i, mode));
+        }
+
         skin.Hover(cell);
         TooltipHandler.TipRegion(cell, () => open
             ? "BOR_AltarCellTip".Translate(entry.thing.LabelCap, ForgeMath.YieldFor(entry.thing), altar.ComponentCost(i)).Resolve()
             : "BOR_AltarLockedTip".Translate(entry.thing.LabelCap, altar.UnlockTicks(i).ToStringTicksToPeriod(), ForgeMath.YieldFor(entry.thing), altar.ComponentCost(i)).Resolve(), 7393000 + i);
+
+        // The mode bar handles its own clicks.
+        if (open && Mouse.IsOver(modeBar))
+        {
+            return;
+        }
 
         if (Event.current.type == EventType.MouseDown && Event.current.button == 1 && Mouse.IsOver(cell) && open)
         {

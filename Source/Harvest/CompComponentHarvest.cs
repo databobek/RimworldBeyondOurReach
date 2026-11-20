@@ -51,7 +51,7 @@ public class CompComponentHarvest : ThingComp
         {
             yield return g;
         }
-        if (!parent.Spawned || parent.Faction != Faction.OfPlayer || !BOR_HarvestDefOf.BOR_Research_ComponentHarvest.IsFinished)
+        if (!parent.Spawned || parent.Faction != Faction.OfPlayer || !BOR_HarvestDefOf.BOR_Research_Analyzer_III.IsFinished)
         {
             yield break;
         }
@@ -230,7 +230,7 @@ public class CompComponentHarvest : ThingComp
 
     public override string CompInspectStringExtra()
     {
-        if (!BOR_HarvestDefOf.BOR_Research_ComponentHarvest.IsFinished)
+        if (!BOR_HarvestDefOf.BOR_Research_Analyzer_III.IsFinished)
         {
             return null!;
         }

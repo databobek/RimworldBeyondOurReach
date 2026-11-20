@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- MuzzleFlash + Coventech Mechsuit Framework: Helios arm and pod flashes. MechComponent_Draw_MuzzleFlash_Patch feeds
+     each arm's pivot into MuzzleFlash's position cache. The offsets reach from that pivot to the barrel tip, tuned in
+     game (MuzzleFlash adds its own 0.37 x size push on top). -->
+<Patch>
+    <Operation Class="SafePatcher.PatchOperationSetModExtension">
+        <xpath>Defs/ThingDef[defName="BOR_HeliosGun_Rotary"]</xpath>
+        <value>
+            <li Class="MuzzleFlash.MuzzleFlashProps">
+                <def>MF_StandardMuzzleFlashBallisticwithTealNormal</def>
+                <drawSize>(1.0,1.0)</drawSize>
+                <offsets>
+                    <li>(1.6,0)</li>
+                </offsets>
+                <isAlternately>true</isAlternately>
+            </li>
+        </value>
+    </Operation>
+
+    <Operation Class="SafePatcher.PatchOperationSetModExtension">
+        <xpath>Defs/ThingDef[defName="BOR_HeliosGun_Cannon"]</xpath>
+        <value>
+            <li Class="MuzzleFlash.MuzzleFlashProps">
+                <def>MF_StandardMuzzleFlashBallisticwithTealNormal</def>
+                <drawSize>(1.6,1.6)</drawSize>
+                <offsets>
+                    <li>(1.5,0)</li>
+                </offsets>
+                <isAlternately>true</isAlternately>
+            </li>
+        </value>
+    </Operation>
+
+    <Operation Class="SafePatcher.PatchOperationSetModExtension">
+        <xpath>Defs/ThingDef[defName="BOR_HeliosGun_TwinCannon"]</xpath>
+        <value>
+            <li Class="MuzzleFlash.MuzzleFlashProps">
+                <def>MF_StandardMuzzleFlashBallisticwithTealNormal</def>
+                <drawSize>(1.4,1.4)</drawSize>
+                <offsets>
+                    <li>(1.56,0)</li>
+                </offsets>
+                <isAlternately>true</isAlternately>
+            </li>
+        </value>
+    </Operation>
+
+    <Operation Class="SafePatcher.PatchOperationSetModExtension">
+        <xpath>Defs/ThingDef[defName="BOR_HeliosGun_Flamer"]</xpath>
+        <value>
+            <li Class="MuzzleFlash.MuzzleFlashProps">
+                <def>MF_StandardMuzzleFlashGood</def>
+                <drawSize>(1.2,1.2)</drawSize>
+                <offsets>
+                    <li>(1.65,0)</li>
+                </offsets>
+                <isAlternately>true</isAlternately>
+            </li>
+        </value>
+    </Operation>
+
+    <!-- The pod does not turn, so its flash alternates between the left and right tube banks. -->
+    <Operation Class="SafePatcher.PatchOperationSetModExtension">
+        <xpath>Defs/ThingDef[defName="BOR_HeliosGun_RocketPod"]</xpath>
+        <value>
+            <li Class="MuzzleFlash.MuzzleFlashProps">
+                <def>MF_StandardMuzzleFlashBallisticwithTealNormal</def>
+                <drawSize>(0.9,0.9)</drawSize>
+                <offsets>
+                    <li>(0.4,0.3)</li>
+                    <li>(0.4,-0.3)</li>
+                </offsets>
+                <isAlternately>true</isAlternately>
+            </li>
+        </value>
+    </Operation>
+</Patch>

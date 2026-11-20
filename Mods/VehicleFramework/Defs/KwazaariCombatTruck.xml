@@ -1,0 +1,451 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<ResearchProjectDef ParentName="BOR_Research_Base_II">
+		<defName>BOR_Research_KwazaariTruck</defName>
+		<label>Kwazaari combat truck</label>
+		<description>Build the Kwazaari combat truck: a heavy armored hauler that burns neutronium, with a turret gun on the roof and two fixed cannons along its flanks.</description>
+		<baseCost>120000</baseCost>
+		<techLevel>Ultra</techLevel>
+		<prerequisites>
+			<li>BOR_Research_Weapons_II</li>
+			<li>BOR_Research_Power_II</li>
+		</prerequisites>
+		<researchViewX>12.00</researchViewX>
+		<researchViewY>3.70</researchViewY>
+	</ResearchProjectDef>
+
+	<!-- Kwazaari combat truck. Front is +z on the north texture (the cab); the cargo pods sit at the back. -->
+	<Vehicles.VehicleDef ParentName="BaseVehiclePawn">
+		<defName>BOR_KwazaariCombatTruck</defName>
+		<label>Kwazaari combat truck</label>
+		<description>A Kwazaari military hauler. Most of it is armored cargo space, which makes it the biggest freight vehicle that can still fight. A turret gun on the cab roof covers every direction, and two fixed cannons along its flanks fire straight ahead.\n\n&lt;color=#5aa0d7&gt;Crew:&lt;/color&gt; Driver x1, Gunner x1, Cannoneer x1, Passengers x4\n&lt;color=#5aa0d7&gt;Fuel type:&lt;/color&gt; Neutronium\n&lt;color=#5aa0d7&gt;Ammunition:&lt;/color&gt; Steel (turret), neutronium (cannons)</description>
+		<graphicData>
+			<texPath>BOR/MechsAndVehicles/Tank/Tank</texPath>
+			<graphicClass>Vehicles.Graphic_Vehicle</graphicClass>
+			<shaderType>Cutout</shaderType>
+			<drawSize>(4, 6)</drawSize>
+		</graphicData>
+		<fillPercent>1</fillPercent>
+		<buildDef>BOR_KwazaariCombatTruck_Blueprint</buildDef>
+		<size>(3, 5)</size>
+		<vehicleCategory>Combat</vehicleCategory>
+		<techLevel>Ultra</techLevel>
+		<vehicleType>Land</vehicleType>
+		<statBases>
+			<ArmorRating_Blunt>0.6</ArmorRating_Blunt>
+			<ArmorRating_Sharp>1.0</ArmorRating_Sharp>
+			<ArmorRating_Heat>1.2</ArmorRating_Heat>
+			<Flammability>0.2</Flammability>
+			<MarketValue>18000</MarketValue>
+		</statBases>
+		<vehicleStats>
+			<Mass>1100</Mass>
+			<MoveSpeed>11</MoveSpeed>
+			<CargoCapacity>3000</CargoCapacity>
+			<RepairRate>0.5</RepairRate>
+			<AccelerationRate>0.06</AccelerationRate>
+		</vehicleStats>
+		<race>
+			<baseBodySize>6</baseBodySize>
+		</race>
+		<properties>
+			<visibilityWeight>7</visibilityWeight>
+			<vehicleJobLimitations>
+				<li>(RepairVehicle, 3)</li>
+			</vehicleJobLimitations>
+			<roles>
+				<li>
+					<key>driver</key>
+					<label>driver</label>
+					<slots>1</slots>
+					<slotsToOperate>1</slotsToOperate>
+					<handlingTypes>
+						<li>Movement</li>
+					</handlingTypes>
+					<hitbox>
+						<cells>
+							<li>(0, 2)</li>
+						</cells>
+					</hitbox>
+				</li>
+				<li>
+					<key>gunner</key>
+					<label>gunner</label>
+					<slots>1</slots>
+					<slotsToOperate>1</slotsToOperate>
+					<handlingTypes>Turret</handlingTypes>
+					<turretIds>
+						<li>roofTurret</li>
+					</turretIds>
+					<hitbox>
+						<cells>
+							<li>(0, 1)</li>
+						</cells>
+					</hitbox>
+				</li>
+				<li>
+					<key>cannoneer</key>
+					<label>cannoneer</label>
+					<slots>1</slots>
+					<slotsToOperate>1</slotsToOperate>
+					<handlingTypes>Turret</handlingTypes>
+					<turretIds>
+						<li>leftCannon</li>
+						<li>rightCannon</li>
+					</turretIds>
+					<hitbox>
+						<cells>
+							<li>(0, 1)</li>
+						</cells>
+					</hitbox>
+				</li>
+				<li>
+					<key>passenger</key>
+					<label>passenger</label>
+					<slots>4</slots>
+					<hitbox>
+						<cells>
+							<li>(0, 0)</li>
+						</cells>
+					</hitbox>
+				</li>
+			</roles>
+		</properties>
+		<components>
+			<li>
+				<key>Engine</key>
+				<label>Engine</label>
+				<health>220</health>
+				<priorityStatEfficiency>true</priorityStatEfficiency>
+				<depth>Internal</depth>
+				<hitbox>
+					<cells>
+						<li>(0, 2)</li>
+					</cells>
+				</hitbox>
+				<categories>
+					<li>MoveSpeed</li>
+				</categories>
+			</li>
+			<li>
+				<key>NeutroniumTank</key>
+				<label>Neutronium tank</label>
+				<health>160</health>
+				<depth>Internal</depth>
+				<reactors>
+					<li Class="Vehicles.Reactor_Explosive">
+						<indicator>VF_Explosive</indicator>
+						<chance>0.2</chance>
+						<maxHealth>0.2</maxHealth>
+						<radius>4</radius>
+						<damageDef>Bomb</damageDef>
+					</li>
+				</reactors>
+				<hitbox>
+					<cells>
+						<li>(0, 1)</li>
+					</cells>
+				</hitbox>
+			</li>
+			<li>
+				<key>LeftWheels</key>
+				<label>Left wheels</label>
+				<health>260</health>
+				<depth>External</depth>
+				<tags>
+					<li>Wheel</li>
+				</tags>
+				<hitbox>
+					<fallthrough>false</fallthrough>
+					<side>Left</side>
+				</hitbox>
+				<categories>
+					<li>MoveSpeed</li>
+				</categories>
+			</li>
+			<li>
+				<key>RightWheels</key>
+				<label>Right wheels</label>
+				<health>260</health>
+				<depth>External</depth>
+				<tags>
+					<li>Wheel</li>
+				</tags>
+				<hitbox>
+					<fallthrough>false</fallthrough>
+					<side>Right</side>
+				</hitbox>
+				<categories>
+					<li>MoveSpeed</li>
+				</categories>
+			</li>
+			<li>
+				<key>FrontArmorPlating</key>
+				<label>Front armor plating</label>
+				<health>360</health>
+				<depth>External</depth>
+				<armor>
+					<ArmorRating_Blunt>0.7</ArmorRating_Blunt>
+					<ArmorRating_Sharp>1.15</ArmorRating_Sharp>
+				</armor>
+				<hitbox>
+					<side>Front</side>
+				</hitbox>
+			</li>
+			<li>
+				<key>LeftArmorPlating</key>
+				<label>Left armor plating</label>
+				<health>320</health>
+				<depth>External</depth>
+				<armor>
+					<ArmorRating_Blunt>0.65</ArmorRating_Blunt>
+					<ArmorRating_Sharp>1.05</ArmorRating_Sharp>
+				</armor>
+				<hitbox>
+					<side>Left</side>
+				</hitbox>
+			</li>
+			<li>
+				<key>RightArmorPlating</key>
+				<label>Right armor plating</label>
+				<health>320</health>
+				<depth>External</depth>
+				<armor>
+					<ArmorRating_Blunt>0.65</ArmorRating_Blunt>
+					<ArmorRating_Sharp>1.05</ArmorRating_Sharp>
+				</armor>
+				<hitbox>
+					<side>Right</side>
+				</hitbox>
+			</li>
+			<li>
+				<key>BackArmorPlating</key>
+				<label>Rear armor plating</label>
+				<health>280</health>
+				<depth>External</depth>
+				<hitbox>
+					<side>Back</side>
+				</hitbox>
+			</li>
+			<li>
+				<key>CargoPods</key>
+				<label>Cargo pods</label>
+				<health>300</health>
+				<depth>External</depth>
+				<hitbox>
+					<cells>
+						<li>(0, -1)</li>
+						<li>(0, -2)</li>
+					</cells>
+				</hitbox>
+			</li>
+			<li>
+				<key>TurretRing</key>
+				<label>Turret ring</label>
+				<health>120</health>
+				<depth>External</depth>
+				<hitWeight>8</hitWeight>
+			</li>
+			<li>
+				<key>Dashboard</key>
+				<label>Dashboard</label>
+				<health>80</health>
+				<depth>Internal</depth>
+				<hitWeight>5</hitWeight>
+			</li>
+			<li>
+				<key>SteeringApparatus</key>
+				<label>Steering apparatus</label>
+				<health>90</health>
+				<depth>Internal</depth>
+				<hitWeight>5</hitWeight>
+				<categories>
+					<li>MoveSpeed</li>
+				</categories>
+			</li>
+		</components>
+		<comps>
+			<li Class="Vehicles.CompProperties_FueledTravel">
+				<fuelType>BOR_Neutronium</fuelType>
+				<fuelConsumptionRate>30</fuelConsumptionRate>
+				<fuelCapacity>300</fuelCapacity>
+			</li>
+			<li Class="Vehicles.CompProperties_VehicleTurrets">
+				<turrets>
+					<li>
+						<turretDef>BOR_KwazaariTruck_RoofTurret</turretDef>
+						<renderProperties>
+							<north>(0, 0.35)</north>
+							<east>(0.35, 0)</east>
+							<south>(0, -0.35)</south>
+							<west>(-0.35, 0)</west>
+						</renderProperties>
+						<gizmoLabel>Roof turret</gizmoLabel>
+						<angleRestricted />
+						<aimPieOffset>(0, 1.6)</aimPieOffset>
+						<drawLayer>2</drawLayer>
+						<key>roofTurret</key>
+					</li>
+					<li>
+						<turretDef>BOR_KwazaariTruck_Cannon</turretDef>
+						<renderProperties>
+							<north>(-1.75, 0.9)</north>
+							<east>(0.9, 1.75)</east>
+							<south>(1.75, -0.9)</south>
+							<west>(-0.9, -1.75)</west>
+						</renderProperties>
+						<gizmoLabel>Left cannon</gizmoLabel>
+						<angleRestricted />
+						<aimPieOffset>(0, 0)</aimPieOffset>
+						<key>leftCannon</key>
+					</li>
+					<li>
+						<turretDef>BOR_KwazaariTruck_Cannon</turretDef>
+						<renderProperties>
+							<north>(1.75, 0.9)</north>
+							<east>(0.9, -1.75)</east>
+							<south>(-1.75, -0.9)</south>
+							<west>(-0.9, 1.75)</west>
+						</renderProperties>
+						<gizmoLabel>Right cannon</gizmoLabel>
+						<angleRestricted />
+						<aimPieOffset>(0, 0)</aimPieOffset>
+						<key>rightCannon</key>
+					</li>
+				</turrets>
+			</li>
+		</comps>
+	</Vehicles.VehicleDef>
+
+	<Vehicles.VehicleBuildDef ParentName="VehicleBaseBuildable">
+		<defName>BOR_KwazaariCombatTruck_Blueprint</defName>
+		<label>Kwazaari combat truck</label>
+		<description>A Kwazaari military hauler. Most of it is armored cargo space, which makes it the biggest freight vehicle that can still fight. A turret gun on the cab roof covers every direction, and two fixed cannons along its flanks fire straight ahead.\n\n&lt;color=#5aa0d7&gt;Crew:&lt;/color&gt; Driver x1, Gunner x1, Cannoneer x1, Passengers x4\n&lt;color=#5aa0d7&gt;Fuel type:&lt;/color&gt; Neutronium\n&lt;color=#5aa0d7&gt;Ammunition:&lt;/color&gt; Steel (turret), neutronium (cannons)</description>
+		<graphicData>
+			<texPath>BOR/MechsAndVehicles/Tank/Tank</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(4, 6)</drawSize>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>800</MaxHitPoints>
+			<WorkToBuild>60000</WorkToBuild>
+			<Flammability>0</Flammability>
+		</statBases>
+		<researchPrerequisites>
+			<li>BOR_Research_KwazaariTruck</li>
+		</researchPrerequisites>
+		<size>(3, 5)</size>
+		<costList>
+			<BOR_QuasarAlloy>650</BOR_QuasarAlloy>
+			<BOR_ComponentII>24</BOR_ComponentII>
+			<BOR_Neutronium>150</BOR_Neutronium>
+		</costList>
+		<soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
+		<thingToSpawn>BOR_KwazaariCombatTruck</thingToSpawn>
+		<constructionSkillPrerequisite>10</constructionSkillPrerequisite>
+	</Vehicles.VehicleBuildDef>
+
+	<Vehicles.VehicleTurretDef ParentName="VehicleTurretBase">
+		<defName>BOR_KwazaariTruck_RoofTurret</defName>
+		<label>roof turret</label>
+		<description>A Kwazaari light machine gun on a rotating mount. Fed with steel.</description>
+		<turretType>Rotatable</turretType>
+		<shotSound>Shot_Minigun</shotSound>
+		<projectile>BOR_Bullet_LMG_TII</projectile>
+		<reloadTimer>3</reloadTimer>
+		<warmUpTimer>0.8</warmUpTimer>
+		<chargePerAmmoCount>0.25</chargePerAmmoCount>
+		<magazineCapacity>200</magazineCapacity>
+		<genericAmmo>true</genericAmmo>
+		<autoSnapTargeting>true</autoSnapTargeting>
+		<rotationSpeed>3</rotationSpeed>
+		<projectileOffset>1.6</projectileOffset>
+		<maxRange>34.9</maxRange>
+		<recoil>
+			<distanceTotal>0.12</distanceTotal>
+			<distancePerTick>0.04</distancePerTick>
+			<speedMultiplierPostRecoil>0.1</speedMultiplierPostRecoil>
+		</recoil>
+		<fireModes>
+			<li>
+				<shotsPerBurst>8</shotsPerBurst>
+				<ticksBetweenShots>5</ticksBetweenShots>
+				<ticksBetweenBursts>60</ticksBetweenBursts>
+				<burstsTillWarmup>4</burstsTillWarmup>
+				<label>Burst</label>
+				<texPath>UI/Gizmos/FireRate_Burst</texPath>
+				<accuracyTouch>0.8</accuracyTouch>
+				<accuracyShort>0.75</accuracyShort>
+				<accuracyMedium>0.55</accuracyMedium>
+				<accuracyLong>0.35</accuracyLong>
+			</li>
+		</fireModes>
+		<graphicData>
+			<texPath>BOR/MechsAndVehicles/Tank/Tank_Turret</texPath>
+			<graphicClass>Vehicles.Graphic_Turret</graphicClass>
+			<shaderType>Cutout</shaderType>
+			<drawSize>(3.4, 3.4)</drawSize>
+		</graphicData>
+		<ammunition>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</ammunition>
+	</Vehicles.VehicleTurretDef>
+
+	<!-- The flank cannons are drawn into the hull texture, so the turret has no graphic of its own. -->
+	<Vehicles.VehicleTurretDef ParentName="VehicleTurretBase">
+		<defName>BOR_KwazaariTruck_Cannon</defName>
+		<label>flank cannon</label>
+		<description>A fixed tank cannon along the truck's flank. It only fires straight ahead. Each shell takes 5 neutronium.</description>
+		<turretType>Static</turretType>
+		<shotSound>Shot_BOR_RailgunHigh</shotSound>
+		<projectile>BOR_Bullet_KwazaariTruckShell</projectile>
+		<reloadTimer>5</reloadTimer>
+		<warmUpTimer>2</warmUpTimer>
+		<chargePerAmmoCount>5</chargePerAmmoCount>
+		<magazineCapacity>1</magazineCapacity>
+		<genericAmmo>true</genericAmmo>
+		<minRange>5</minRange>
+		<maxRange>54.9</maxRange>
+		<vehicleRecoil>
+			<distanceTotal>0.25</distanceTotal>
+			<distancePerTick>0.1</distancePerTick>
+			<speedMultiplierPostRecoil>0.75</speedMultiplierPostRecoil>
+		</vehicleRecoil>
+		<fireModes>
+			<li>
+				<shotsPerBurst>1</shotsPerBurst>
+				<spreadRadius>2</spreadRadius>
+				<label>Single</label>
+				<texPath>UI/Gizmos/FireRate_Single</texPath>
+			</li>
+		</fireModes>
+		<gizmoIconTexPath>BOR/MechsAndVehicles/Tank/Tank_east</gizmoIconTexPath>
+		<ammunition>
+			<thingDefs>
+				<li>BOR_Neutronium</li>
+			</thingDefs>
+		</ammunition>
+	</Vehicles.VehicleTurretDef>
+
+	<ThingDef ParentName="BaseBullet">
+		<defName>BOR_Bullet_KwazaariTruckShell</defName>
+		<label>neutronium shell</label>
+		<thingClass>Projectile_Explosive</thingClass>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Big</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+			<drawSize>2</drawSize>
+			<color>(120, 190, 255)</color>
+		</graphicData>
+		<projectile>
+			<damageDef>Bomb</damageDef>
+			<damageAmountBase>70</damageAmountBase>
+			<explosionRadius>3.4</explosionRadius>
+			<speed>110</speed>
+			<soundExplode>MortarBomb_Explode</soundExplode>
+		</projectile>
+	</ThingDef>
+</Defs>
