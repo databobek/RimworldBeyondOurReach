@@ -9,7 +9,7 @@ Some of what BOR does has nothing to do with the things it adds. These are the c
 BOR's factions arrive in drop pods, and every faction has a tier: Solar is I, Kwazaari and Badzaari are II, Tenebral is III and Umbral is IV. Anti-air has a tier too, and it can only bring down pods up to one tier above its own.
 
 - **Ordinary anti-air**, meaning the point-defense turrets from Combat Extended and from Vanilla Furniture Expanded - Security, counts as tier 0. It downs Solar pods and nothing harder.
-- **Tier I anti-air** reaches the Kwazaari and the Badzaari. The Solar defender is one, and with Combat Extended so is the charge AA turret from [Turrets For All](bamba-integrations.html#turrets-for-all-post-medieval-tech-levels).
+- **Tier I anti-air** reaches the Kwazaari and the Badzaari. The Solar defender is one, and with Combat Extended so is the charge AA turret from [Turrets For All Tech Levels](bamba-integrations.html#turrets-for-all-post-medieval-tech-levels).
 - **Tenebral and Umbral pods** are out of reach of every anti-air turret for now.
 
 The turret still fires, and spends its fuel or ammo doing it. The shot hits the pod, throws a spark and floats a "Deflected" over it. Pods from the strange signal chains are never shot at, so the visitor you're waiting for isn't taken out of the sky by your own defenses.
