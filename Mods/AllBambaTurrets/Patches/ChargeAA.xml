@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+	<!-- With Turrets For All Post-Medieval Tech Levels and Combat Extended, the charge AA turret counts as BOR anti-air tier I,
+	     like the Solar defender: it can down drop pods of factions up to Kwazaari. Anti-air without a BOR tier (CE and
+	     VFE Security turrets) only downs Solar pods; see Source/Buildings/AntiAir.cs. -->
+	<Operation Class="PatchOperationConditional">
+		<xpath>Defs/ThingDef[defName="ABT_Turret_ChargeAA"]/modExtensions</xpath>
+		<match Class="PatchOperationAdd">
+			<xpath>Defs/ThingDef[defName="ABT_Turret_ChargeAA"]/modExtensions</xpath>
+			<value>
+				<li Class="BeyondOurReach.DefModExtension_BorTier"><tier>1</tier></li>
+			</value>
+		</match>
+		<nomatch Class="PatchOperationAdd">
+			<xpath>Defs/ThingDef[defName="ABT_Turret_ChargeAA"]</xpath>
+			<value>
+				<modExtensions>
+					<li Class="BeyondOurReach.DefModExtension_BorTier"><tier>1</tier></li>
+				</modExtensions>
+			</value>
+		</nomatch>
+	</Operation>
+</Patch>

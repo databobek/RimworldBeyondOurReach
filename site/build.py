@@ -28,12 +28,14 @@ SITE = Path(__file__).resolve().parent
 ROOT = SITE.parent
 sys.path.insert(0, str(SITE))
 
-from gen.defs import DefDB, make_scenarios, read_load_folders  # noqa: E402
-from gen.external import find_ce, refresh  # noqa: E402
+from gen.defs import (CE_MOD_NAME, CE_PACKAGE_ID, DLC_NAMES, DLC_PACKAGE_IDS, DefDB, LoadFolder, Scenario,  # noqa: E402
+                      make_scenarios, read_load_folders)
+from gen.external import BAMBA_DIR, find_ce, refresh, refresh_bamba  # noqa: E402
 from gen.extract import MOD_NAMES, TIERS, Extractor  # noqa: E402
 from gen.textures import Textures  # noqa: E402
 
-EXTERNAL_PARENTS = SITE / "gen" / "external_parents.xml"
+GEN = SITE / "gen"
+EXTERNAL_PARENTS = GEN / "external_parents.xml"
 BUILD_MARKER = ".bor-site-build"  # written into the output so a rebuild only ever deletes its own folder
 
 # Alt text for the Workshop banners: their headline, since the text is baked into the image.
@@ -61,6 +63,7 @@ NAV = [
     ("Bionics & medicine", [("bionics", "Bionics"), ("medicine", "Medicine & drugs")]),
     ("Tenebral road", [("tenebral-road", "The Tenebral road"), ("orientis", "Orientis")]),
     ("Integrations", [("integrations", "DLCs & mods")]),
+    ("Recommended Bamba Integrations", [("bamba-integrations", "Recommended Bamba Integrations")]),
     ("Credits", [("credits", "Credits")]),
 ]
 
@@ -78,6 +81,17 @@ def fmt_num(v, digits: int = 2) -> str:
     if "." in s:
         s = s.rstrip("0").rstrip(".")
     return s.replace("-", "−")
+
+
+def fmt_duration(seconds) -> str:
+    """90 -> "90 s", 600 -> "10 min", 3600 -> "1 h"."""
+    if seconds is None:
+        return "—"
+    if seconds < 120:
+        return f"{fmt_num(seconds, 1)} s"
+    if seconds < 7200:
+        return f"{fmt_num(seconds / 60, 1)} min"
+    return f"{fmt_num(seconds / 3600, 1)} h"
 
 
 def fmt_pct(v) -> str:
@@ -234,6 +248,21 @@ class Helpers:
             self.b.problems.append(f"{self.b.current_page}: emblem texture {tex_path} not found")
         return self._macro("emblem", icon=icon, badges=list(badges))
 
+    def armor_abilities(self):
+        return self._macro("armor_abilities", rows=self.b.ex.armor_abilities())
+
+    def bamba_guns(self):
+        self.uses_modes = True
+        return self._macro("weapon_tables", groups=self._open(self.b.bamba.ranged_weapons()))
+
+    def bamba_melee(self):
+        self.uses_modes = True
+        return self._macro("melee_tables", groups=self._open(self.b.bamba.melee_weapons()))
+
+    @staticmethod
+    def _open(groups):
+        return [dataclasses.replace(g, open=True) for g in groups]
+
     def style_pics(self, *tex_paths: str):
         """A row of small textures, for a table cell."""
         imgs = []
@@ -309,6 +338,8 @@ class Builder:
         self.tex = Textures(ROOT, [f.path for f in folders], out / "assets" / "icons")
         self.ex = Extractor(dbs, folders, self.tex, hard_deps=self.hard_dependencies())
 
+        self.bamba = self._load_bamba(out)
+
         self.env = Environment(
             loader=FileSystemLoader(str(SITE / "templates")),
             autoescape=select_autoescape(["html"]),
@@ -316,13 +347,33 @@ class Builder:
             trim_blocks=True,
             lstrip_blocks=True,
         )
-        self.env.filters.update(num=fmt_num, pct=fmt_pct, armor=fmt_armor, armor_ce=fmt_armor_ce,
+        self.env.filters.update(num=fmt_num, duration=fmt_duration, pct=fmt_pct, armor=fmt_armor, armor_ce=fmt_armor_ce,
                                 desc=fmt_desc, desc_plain=fmt_desc_plain, slug=slugify)
         self.env.globals.update(tiers=TIERS)
         self.macros = self.env.get_template("macros.html").module
         self.md_env = Environment(autoescape=False, undefined=StrictUndefined)
 
     # ---------- data ----------
+
+    def _load_bamba(self, out: Path) -> Extractor | None:
+        """BOR's guns and melee weapons from Guns For All and Melee For All, copied into gen/bamba (see refresh_bamba)."""
+        root = GEN / BAMBA_DIR
+        if not root.is_dir():
+            self.problems.append(f"{root.relative_to(ROOT)} is missing; run with --refresh-bamba")
+            return None
+        ce = CE_PACKAGE_ID
+        folders = [LoadFolder("guns", (), (), ()), LoadFolder("guns/CE", (ce,), (), ()),
+                   LoadFolder("melee", (), (), ()), LoadFolder("melee/CE", (ce,), (), ())]
+        bor = frozenset({"bambaryla.bor.redux", "bambaryla.bor", "bamba.allbambamelee.tiered", "bambaryla.allbambaguns"})
+        plain = Scenario("vanilla", DLC_PACKAGE_IDS | bor, DLC_NAMES)
+        with_ce = Scenario("ce", DLC_PACKAGE_IDS | bor | {ce}, DLC_NAMES | {CE_MOD_NAME})
+        dbs = {"vanilla": DefDB(root, folders, plain, EXTERNAL_PARENTS),
+               "ce": DefDB(root, folders, with_ce, EXTERNAL_PARENTS)}
+        dbs["all"] = dbs["vanilla"]
+        for db in dbs.values():
+            self.problems += [f"[bamba {db.scenario.name}] {w}" for w in db.warnings]
+        tex = Textures(root, [f.path for f in folders], out / "assets" / "icons")
+        return Extractor(dbs, folders, tex, hard_deps=self.hard_dependencies())
 
     def data(self, kind: str):
         if kind not in self._data:
@@ -425,7 +476,7 @@ class Builder:
         self.prepare_out()
         shutil.copytree(SITE / "static", self.out / "assets", dirs_exist_ok=True)
         self.copy_asset(ROOT / ".github" / "assets" / "logo.png", "assets/logo.png")
-        self.copy_asset(ROOT / "About" / "Preview.png", "assets/preview.png")
+        self.copy_asset(SITE / "screenshots" / "faction-solar.png", "assets/preview.png")
         self.copy_asset(ROOT / "Textures" / "BOR" / "Things" / "Factions" / "ModIcon.png", "assets/favicon.png")
 
         common = {
@@ -512,6 +563,8 @@ def main():
     ap.add_argument("--strict", action="store_true", help="exit with an error if the build reports problems (CI)")
     ap.add_argument("--refresh-parents", action="store_true",
                     help="re-copy the vanilla/DLC/CE base defs into gen/external_parents.xml (needs the game installed)")
+    ap.add_argument("--refresh-bamba", action="store_true",
+                    help="re-copy BOR's guns and melee weapons from Guns For All and Melee For All into gen/bamba")
     ap.add_argument("--ce-dir", type=Path, help="Combat Extended folder for --refresh-parents (found automatically)")
     args = ap.parse_args()
     if hasattr(sys.stdout, "reconfigure"):
@@ -525,6 +578,12 @@ def main():
         print(f"Wrote {count} base defs to {EXTERNAL_PARENTS.relative_to(ROOT)} (Combat Extended: {ce or 'not found'})")
         if missing:
             print(f"{len(missing)} parent(s) come from other mods and stay unresolved: {', '.join(missing)}")
+    if args.refresh_bamba:
+        mods = ROOT.parent
+        files, textures, missing = refresh_bamba(mods, GEN / BAMBA_DIR)
+        print(f"Copied {files} def files and {textures} textures to {(GEN / BAMBA_DIR).relative_to(ROOT)}")
+        if missing:
+            print("Not found: " + "; ".join(missing))
     b = Builder(args.out.resolve())
     b.build()
     problems = b.report()

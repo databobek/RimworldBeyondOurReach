@@ -1,0 +1,1263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- Tier-specific projectiles for AllBambaGuns. Spacer charge guns fire CE's own ammo items; the later lines use the items in CE_Ammo_Lines.xml (same pattern as CE_Ammo.xml). Damage, blunt penetration, speed and secondary effects are copied from the CE source bullet; only armorPenetrationSharp differs. -->
+	<CombatExtended.AmmoSetDef>
+		<defName>AmmoSet_ABG_SC_6x18mmCharged</defName>
+		<label>6x18mm Charged</label>
+		<ammoTypes>
+			<Ammo_6x18mmCharged>Bullet_ABG_SC_6x18mmCharged</Ammo_6x18mmCharged>
+			<Ammo_6x18mmCharged_AP>Bullet_ABG_SC_6x18mmCharged_AP</Ammo_6x18mmCharged_AP>
+			<Ammo_6x18mmCharged_Ion>Bullet_ABG_SC_6x18mmCharged_Ion</Ammo_6x18mmCharged_Ion>
+		</ammoTypes>
+		<similarTo>AmmoSet_ChargedPistol</similarTo>
+	</CombatExtended.AmmoSetDef>
+	<ThingDef ParentName="Base6x18mmChargedBullet">
+		<defName>Bullet_ABG_SC_6x18mmCharged</defName>
+		<label>6x18mm Charged bullet</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>ABG_ChargeBullet</damageDef>
+			<damageAmountBase>10</damageAmountBase>
+			<secondaryDamage>
+				<li>
+					<def>Bomb_Secondary</def>
+					<amount>3</amount>
+				</li>
+			</secondaryDamage>
+			<armorPenetrationSharp>12</armorPenetrationSharp>
+			<armorPenetrationBlunt>14.4</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+	<ThingDef ParentName="Base6x18mmChargedBullet">
+		<defName>Bullet_ABG_SC_6x18mmCharged_AP</defName>
+		<label>6x18mm Charged bullet (Conc.)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>ABG_ChargeBullet</damageDef>
+			<damageAmountBase>8</damageAmountBase>
+			<secondaryDamage>
+				<li>
+					<def>Bomb_Secondary</def>
+					<amount>1</amount>
+				</li>
+			</secondaryDamage>
+			<armorPenetrationSharp>19</armorPenetrationSharp>
+			<armorPenetrationBlunt>14.4</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+	<ThingDef ParentName="Base6x18mmChargedBullet">
+		<defName>Bullet_ABG_SC_6x18mmCharged_Ion</defName>
+		<label>6x18mm Charged bullet (Ion)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>ABG_ChargeBullet</damageDef>
+			<damageAmountBase>8</damageAmountBase>
+			<secondaryDamage>
+				<li>
+					<def>EMP</def>
+					<amount>5</amount>
+				</li>
+			</secondaryDamage>
+			<armorPenetrationSharp>12</armorPenetrationSharp>
+			<armorPenetrationBlunt>14.4</armorPenetrationBlunt>
+			<empShieldBreakChance>0.2</empShieldBreakChance>
+		</projectile>
+	</ThingDef>
+	<CombatExtended.AmmoSetDef>
+		<defName>AmmoSet_ABG_SC_6x24mmCharged</defName>
+		<label>6x24mm Charged</label>
+		<ammoTypes>
+			<Ammo_6x24mmCharged>Bullet_ABG_SC_6x24mmCharged</Ammo_6x24mmCharged>
+			<Ammo_6x24mmCharged_AP>Bullet_ABG_SC_6x24mmCharged_AP</Ammo_6x24mmCharged_AP>
+			<Ammo_6x24mmCharged_Ion>Bullet_ABG_SC_6x24mmCharged_Ion</Ammo_6x24mmCharged_Ion>
+		</ammoTypes>
+		<similarTo>AmmoSet_ChargedRifle</similarTo>
+	</CombatExtended.AmmoSetDef>
+	<ThingDef ParentName="Base6x24mmChargedBullet">
+		<defName>Bullet_ABG_SC_6x24mmCharged</defName>
+		<label>6x24mm Charged bullet</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>ABG_ChargeBullet</damageDef>
+			<damageAmountBase>13</damageAmountBase>
+			<secondaryDamage>
+				<li>
+					<def>Bomb_Secondary</def>
+					<amount>4</amount>
+				</li>
+			</secondaryDamage>
+			<armorPenetrationSharp>15</armorPenetrationSharp>
+			<armorPenetrationBlunt>25.6</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+	<ThingDef ParentName="Base6x24mmChargedBullet">
+		<defName>Bullet_ABG_SC_6x24mmCharged_AP</defName>
+		<label>6x24mm Charged bullet (Conc.)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>ABG_ChargeBullet</damageDef>
+			<damageAmountBase>10</damageAmountBase>
+			<secondaryDamage>
+				<li>
+					<def>Bomb_Secondary</def>
+					<amount>2</amount>
+				</li>
+			</secondaryDamage>
+			<armorPenetrationSharp>21</armorPenetrationSharp>
+			<armorPenetrationBlunt>25.6</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+	<ThingDef ParentName="Base6x24mmChargedBullet">
+		<defName>Bullet_ABG_SC_6x24mmCharged_Ion</defName>
+		<label>6x24mm Charged bullet (Ion)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>ABG_ChargeBullet</damageDef>
+			<damageAmountBase>10</damageAmountBase>
+			<secondaryDamage>
+				<li>
+					<def>EMP</def>
+					<amount>6</amount>
+				</li>
+			</secondaryDamage>
+			<armorPenetrationSharp>15</armorPenetrationSharp>
+			<armorPenetrationBlunt>25.6</armorPenetrationBlunt>
+			<empShieldBreakChance>0.2</empShieldBreakChance>
+		</projectile>
+	</ThingDef>
+	<CombatExtended.AmmoSetDef>
+		<defName>AmmoSet_ABG_SC_8x35mmCharged</defName>
+		<label>8x35mm Charged</label>
+		<ammoTypes>
+			<Ammo_8x35mmCharged>Bullet_ABG_SC_8x35mmCharged</Ammo_8x35mmCharged>
+			<Ammo_8x35mmCharged_AP>Bullet_ABG_SC_8x35mmCharged_AP</Ammo_8x35mmCharged_AP>
+			<Ammo_8x35mmCharged_Ion>Bullet_ABG_SC_8x35mmCharged_Ion</Ammo_8x35mmCharged_Ion>
+		</ammoTypes>
+		<similarTo>AmmoSet_ChargedRifle</similarTo>
+	</CombatExtended.AmmoSetDef>
+	<ThingDef ParentName="Base8x35mmChargedBullet">
+		<defName>Bullet_ABG_SC_8x35mmCharged</defName>
+		<label>8x35mm Charged bullet</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>ABG_ChargeBullet</damageDef>
+			<CIWSVersion>Bullet_8x35mmChargedCIWS</CIWSVersion>
+			<damageAmountBase>19</damageAmountBase>
+			<secondaryDamage>
+				<li>
+					<def>Bomb_Secondary</def>
+					<amount>6</amount>
+				</li>
+			</secondaryDamage>
+			<armorPenetrationSharp>16</armorPenetrationSharp>
+			<armorPenetrationBlunt>57.6</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+	<ThingDef ParentName="Base8x35mmChargedBullet">
+		<defName>Bullet_ABG_SC_8x35mmCharged_AP</defName>
+		<label>8x35mm Charged bullet (Conc.)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>ABG_ChargeBullet</damageDef>
+			<damageAmountBase>15</damageAmountBase>
+			<secondaryDamage>
+				<li>
+					<def>Bomb_Secondary</def>
+					<amount>2</amount>
+				</li>
+			</secondaryDamage>
+			<armorPenetrationSharp>23</armorPenetrationSharp>
+			<armorPenetrationBlunt>57.6</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+	<ThingDef ParentName="Base8x35mmChargedBullet">
+		<defName>Bullet_ABG_SC_8x35mmCharged_Ion</defName>
+		<label>8x35mm Charged bullet (Ion)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>ABG_ChargeBullet</damageDef>
+			<damageAmountBase>15</damageAmountBase>
+			<secondaryDamage>
+				<li>
+					<def>EMP</def>
+					<amount>9</amount>
+				</li>
+			</secondaryDamage>
+			<armorPenetrationSharp>16</armorPenetrationSharp>
+			<armorPenetrationBlunt>57.6</armorPenetrationBlunt>
+			<empShieldBreakChance>0.33</empShieldBreakChance>
+		</projectile>
+	</ThingDef>
+	<CombatExtended.AmmoSetDef>
+		<defName>AmmoSet_ABG_SC_12GaugeCharged</defName>
+		<label>12 Gauge Charged</label>
+		<ammoTypes>
+			<Ammo_12GaugeCharged>Bullet_ABG_SC_12GaugeCharged</Ammo_12GaugeCharged>
+			<Ammo_12GaugeCharged_Slug>Bullet_ABG_SC_12GaugeCharged_Slug</Ammo_12GaugeCharged_Slug>
+			<Ammo_12GaugeCharged_Ion>Bullet_ABG_SC_12GaugeCharged_Ion</Ammo_12GaugeCharged_Ion>
+		</ammoTypes>
+		<similarTo>AmmoSet_ChargedShotgun</similarTo>
+	</CombatExtended.AmmoSetDef>
+	<ThingDef ParentName="Base12GaugeChargedBullet">
+		<defName>Bullet_ABG_SC_12GaugeCharged</defName>
+		<label>charge shot pellet</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>ABG_ChargeBullet</damageDef>
+			<damageAmountBase>10</damageAmountBase>
+			<secondaryDamage>
+				<li>
+					<def>Bomb_Secondary</def>
+					<amount>3</amount>
+				</li>
+			</secondaryDamage>
+			<armorPenetrationSharp>10</armorPenetrationSharp>
+			<armorPenetrationBlunt>14.4</armorPenetrationBlunt>
+			<pelletCount>6</pelletCount>
+			<spreadMult>8.9</spreadMult>
+			<shieldDamageMultiplier>0.25</shieldDamageMultiplier>
+		</projectile>
+	</ThingDef>
+	<ThingDef ParentName="Base12GaugeChargedBullet">
+		<defName>Bullet_ABG_SC_12GaugeCharged_Slug</defName>
+		<label>charge shot (Slug)</label>
+		<graphicData>
+			<drawSize>(1.5,1.5)</drawSize>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>ABG_ChargeBullet</damageDef>
+			<damageAmountBase>24</damageAmountBase>
+			<secondaryDamage>
+				<li>
+					<def>Bomb_Secondary</def>
+					<amount>15</amount>
+				</li>
+			</secondaryDamage>
+			<armorPenetrationSharp>15</armorPenetrationSharp>
+			<armorPenetrationBlunt>90</armorPenetrationBlunt>
+			<effectiveRangeMultiplier>1.5</effectiveRangeMultiplier>
+			<recoilMultiplier>1.33</recoilMultiplier>
+		</projectile>
+	</ThingDef>
+	<ThingDef ParentName="Base12GaugeChargedBullet">
+		<defName>Bullet_ABG_SC_12GaugeCharged_Ion</defName>
+		<label>charge shot (Ion shot)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>ABG_ChargeBullet</damageDef>
+			<damageAmountBase>8</damageAmountBase>
+			<secondaryDamage>
+				<li>
+					<def>EMP</def>
+					<amount>5</amount>
+				</li>
+			</secondaryDamage>
+			<armorPenetrationSharp>10</armorPenetrationSharp>
+			<armorPenetrationBlunt>14.4</armorPenetrationBlunt>
+			<pelletCount>6</pelletCount>
+			<spreadMult>8.9</spreadMult>
+			<empShieldBreakChance>0.025</empShieldBreakChance>
+			<shieldDamageMultiplier>0.25</shieldDamageMultiplier>
+		</projectile>
+	</ThingDef>
+	<CombatExtended.AmmoSetDef>
+		<defName>AmmoSet_ABG_SC_8x50mmCharged</defName>
+		<label>8x50mm Charged</label>
+		<ammoTypes>
+			<Ammo_8x50mmCharged>Bullet_ABG_SC_8x50mmCharged</Ammo_8x50mmCharged>
+			<Ammo_8x50mmCharged_AP>Bullet_ABG_SC_8x50mmCharged_AP</Ammo_8x50mmCharged_AP>
+			<Ammo_8x50mmCharged_Ion>Bullet_ABG_SC_8x50mmCharged_Ion</Ammo_8x50mmCharged_Ion>
+		</ammoTypes>
+		<similarTo>AmmoSet_ChargedRifle</similarTo>
+	</CombatExtended.AmmoSetDef>
+	<ThingDef ParentName="Base8x50mmChargedBullet">
+		<defName>Bullet_ABG_SC_8x50mmCharged</defName>
+		<label>8x50mm Charged bullet</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>ABG_ChargeBullet</damageDef>
+			<damageAmountBase>24</damageAmountBase>
+			<secondaryDamage>
+				<li>
+					<def>Bomb_Secondary</def>
+					<amount>7</amount>
+				</li>
+			</secondaryDamage>
+			<armorPenetrationSharp>18</armorPenetrationSharp>
+			<armorPenetrationBlunt>120</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+	<ThingDef ParentName="Base8x50mmChargedBullet">
+		<defName>Bullet_ABG_SC_8x50mmCharged_AP</defName>
+		<label>8x50mm Charged bullet (Conc.)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>ABG_ChargeBullet</damageDef>
+			<damageAmountBase>19</damageAmountBase>
+			<secondaryDamage>
+				<li>
+					<def>Bomb_Secondary</def>
+					<amount>3</amount>
+				</li>
+			</secondaryDamage>
+			<armorPenetrationSharp>24</armorPenetrationSharp>
+			<armorPenetrationBlunt>120</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+	<ThingDef ParentName="Base8x50mmChargedBullet">
+		<defName>Bullet_ABG_SC_8x50mmCharged_Ion</defName>
+		<label>8x50mm Charged bullet (Ion)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>ABG_ChargeBullet</damageDef>
+			<damageAmountBase>19</damageAmountBase>
+			<secondaryDamage>
+				<li>
+					<def>EMP</def>
+					<amount>11</amount>
+				</li>
+			</secondaryDamage>
+			<armorPenetrationSharp>18</armorPenetrationSharp>
+			<armorPenetrationBlunt>120</armorPenetrationBlunt>
+			<empShieldBreakChance>1</empShieldBreakChance>
+		</projectile>
+	</ThingDef>
+	<CombatExtended.AmmoSetDef>
+		<defName>AmmoSet_7x22mmCaseless</defName>
+		<label>7x22mm Caseless</label>
+		<ammoTypes>
+			<Ammo_7x22mmCaseless_FMJ>Bullet_7x22mmCaseless_FMJ</Ammo_7x22mmCaseless_FMJ>
+			<Ammo_7x22mmCaseless_AP>Bullet_7x22mmCaseless_AP</Ammo_7x22mmCaseless_AP>
+			<Ammo_7x22mmCaseless_HP>Bullet_7x22mmCaseless_HP</Ammo_7x22mmCaseless_HP>
+		</ammoTypes>
+	</CombatExtended.AmmoSetDef>
+	<ThingDef ParentName="Base10mmAutoBullet">
+		<defName>Bullet_7x22mmCaseless_FMJ</defName>
+		<label>7x22mm Caseless bullet (FMJ)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>14</damageAmountBase>
+			<armorPenetrationSharp>18</armorPenetrationSharp>
+			<armorPenetrationBlunt>19.2</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+	<ThingDef ParentName="Base10mmAutoBullet">
+		<defName>Bullet_7x22mmCaseless_AP</defName>
+		<label>7x22mm Caseless bullet (AP)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>9</damageAmountBase>
+			<armorPenetrationSharp>24</armorPenetrationSharp>
+			<armorPenetrationBlunt>19.2</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+	<ThingDef ParentName="Base10mmAutoBullet">
+		<defName>Bullet_7x22mmCaseless_HP</defName>
+		<label>7x22mm Caseless bullet (HP)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>18</damageAmountBase>
+			<armorPenetrationSharp>9</armorPenetrationSharp>
+			<armorPenetrationBlunt>19.2</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+	<CombatExtended.AmmoSetDef>
+		<defName>AmmoSet_6x32mmCaseless</defName>
+		<label>6x32mm Caseless</label>
+		<ammoTypes>
+			<Ammo_6x32mmCaseless_FMJ>Bullet_6x32mmCaseless_FMJ</Ammo_6x32mmCaseless_FMJ>
+			<Ammo_6x32mmCaseless_AP>Bullet_6x32mmCaseless_AP</Ammo_6x32mmCaseless_AP>
+			<Ammo_6x32mmCaseless_HP>Bullet_6x32mmCaseless_HP</Ammo_6x32mmCaseless_HP>
+			<Ammo_6x32mmCaseless_Incendiary>Bullet_6x32mmCaseless_Incendiary</Ammo_6x32mmCaseless_Incendiary>
+			<Ammo_6x32mmCaseless_HE>Bullet_6x32mmCaseless_HE</Ammo_6x32mmCaseless_HE>
+			<Ammo_6x32mmCaseless_Sabot>Bullet_6x32mmCaseless_Sabot</Ammo_6x32mmCaseless_Sabot>
+		</ammoTypes>
+	</CombatExtended.AmmoSetDef>
+	<ThingDef ParentName="Base277FuryBullet">
+		<defName>Bullet_6x32mmCaseless_FMJ</defName>
+		<label>6x32mm Caseless bullet (FMJ)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>19</damageAmountBase>
+			<armorPenetrationSharp>23</armorPenetrationSharp>
+			<armorPenetrationBlunt>73.1</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+	<ThingDef ParentName="Base277FuryBullet">
+		<defName>Bullet_6x32mmCaseless_AP</defName>
+		<label>6x32mm Caseless bullet (AP)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>12</damageAmountBase>
+			<armorPenetrationSharp>32</armorPenetrationSharp>
+			<armorPenetrationBlunt>73.1</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+	<ThingDef ParentName="Base277FuryBullet">
+		<defName>Bullet_6x32mmCaseless_HP</defName>
+		<label>6x32mm Caseless bullet (HP)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>25</damageAmountBase>
+			<armorPenetrationSharp>11</armorPenetrationSharp>
+			<armorPenetrationBlunt>73.1</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+	<ThingDef ParentName="Base277FuryBullet">
+		<defName>Bullet_6x32mmCaseless_Incendiary</defName>
+		<label>6x32mm Caseless bullet (AP-I)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>12</damageAmountBase>
+			<armorPenetrationSharp>32</armorPenetrationSharp>
+			<armorPenetrationBlunt>73.1</armorPenetrationBlunt>
+			<secondaryDamage>
+				<li>
+					<def>Flame_Secondary</def>
+					<amount>5</amount>
+				</li>
+			</secondaryDamage>
+		</projectile>
+	</ThingDef>
+	<ThingDef ParentName="Base277FuryBullet">
+		<defName>Bullet_6x32mmCaseless_HE</defName>
+		<label>6x32mm Caseless bullet (AP-HE)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>19</damageAmountBase>
+			<armorPenetrationSharp>23</armorPenetrationSharp>
+			<armorPenetrationBlunt>73.1</armorPenetrationBlunt>
+			<secondaryDamage>
+				<li>
+					<def>Bomb_Secondary</def>
+					<amount>7</amount>
+				</li>
+			</secondaryDamage>
+		</projectile>
+	</ThingDef>
+	<ThingDef ParentName="Base277FuryBullet">
+		<defName>Bullet_6x32mmCaseless_Sabot</defName>
+		<label>6x32mm Caseless bullet (Sabot)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>10</damageAmountBase>
+			<armorPenetrationSharp>40</armorPenetrationSharp>
+			<armorPenetrationBlunt>93.98</armorPenetrationBlunt>
+			<speed>226</speed>
+		</projectile>
+	</ThingDef>
+	<CombatExtended.AmmoSetDef>
+		<defName>AmmoSet_75x40mmCaseless</defName>
+		<label>7.5x40mm Caseless</label>
+		<ammoTypes>
+			<Ammo_75x40mmCaseless_FMJ>Bullet_75x40mmCaseless_FMJ</Ammo_75x40mmCaseless_FMJ>
+			<Ammo_75x40mmCaseless_AP>Bullet_75x40mmCaseless_AP</Ammo_75x40mmCaseless_AP>
+			<Ammo_75x40mmCaseless_Incendiary>Bullet_75x40mmCaseless_Incendiary</Ammo_75x40mmCaseless_Incendiary>
+			<Ammo_75x40mmCaseless_HE>Bullet_75x40mmCaseless_HE</Ammo_75x40mmCaseless_HE>
+			<Ammo_75x40mmCaseless_Sabot>Bullet_75x40mmCaseless_Sabot</Ammo_75x40mmCaseless_Sabot>
+		</ammoTypes>
+	</CombatExtended.AmmoSetDef>
+	<ThingDef ParentName="Base338NormaBullet">
+		<defName>Bullet_75x40mmCaseless_FMJ</defName>
+		<label>7.5x40mm Caseless bullet (FMJ)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>25</damageAmountBase>
+			<armorPenetrationSharp>24</armorPenetrationSharp>
+			<armorPenetrationBlunt>126.66</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+	<ThingDef ParentName="Base338NormaBullet">
+		<defName>Bullet_75x40mmCaseless_AP</defName>
+		<label>7.5x40mm Caseless bullet (AP)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>16</damageAmountBase>
+			<armorPenetrationSharp>35</armorPenetrationSharp>
+			<armorPenetrationBlunt>126.66</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+	<ThingDef ParentName="Base338NormaBullet">
+		<defName>Bullet_75x40mmCaseless_Incendiary</defName>
+		<label>7.5x40mm Caseless bullet (AP-I)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>16</damageAmountBase>
+			<armorPenetrationSharp>35</armorPenetrationSharp>
+			<armorPenetrationBlunt>126.66</armorPenetrationBlunt>
+			<secondaryDamage>
+				<li>
+					<def>Flame_Secondary</def>
+					<amount>9</amount>
+				</li>
+			</secondaryDamage>
+		</projectile>
+	</ThingDef>
+	<ThingDef ParentName="Base338NormaBullet">
+		<defName>Bullet_75x40mmCaseless_HE</defName>
+		<label>7.5x40mm Caseless bullet (AP-HE)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>25</damageAmountBase>
+			<armorPenetrationSharp>24</armorPenetrationSharp>
+			<armorPenetrationBlunt>126.66</armorPenetrationBlunt>
+			<secondaryDamage>
+				<li>
+					<def>Bomb_Secondary</def>
+					<amount>12</amount>
+				</li>
+			</secondaryDamage>
+		</projectile>
+	</ThingDef>
+	<ThingDef ParentName="Base338NormaBullet">
+		<defName>Bullet_75x40mmCaseless_Sabot</defName>
+		<label>7.5x40mm Caseless bullet (Sabot)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>13</damageAmountBase>
+			<armorPenetrationSharp>44</armorPenetrationSharp>
+			<armorPenetrationBlunt>162.46</armorPenetrationBlunt>
+			<speed>206</speed>
+		</projectile>
+	</ThingDef>
+	<CombatExtended.AmmoSetDef>
+		<defName>AmmoSet_10x60mmCaseless</defName>
+		<label>10x60mm Caseless</label>
+		<ammoTypes>
+			<Ammo_10x60mmCaseless_FMJ>Bullet_10x60mmCaseless_FMJ</Ammo_10x60mmCaseless_FMJ>
+			<Ammo_10x60mmCaseless_AP>Bullet_10x60mmCaseless_AP</Ammo_10x60mmCaseless_AP>
+			<Ammo_10x60mmCaseless_Incendiary>Bullet_10x60mmCaseless_Incendiary</Ammo_10x60mmCaseless_Incendiary>
+			<Ammo_10x60mmCaseless_HE>Bullet_10x60mmCaseless_HE</Ammo_10x60mmCaseless_HE>
+			<Ammo_10x60mmCaseless_Sabot>Bullet_10x60mmCaseless_Sabot</Ammo_10x60mmCaseless_Sabot>
+		</ammoTypes>
+	</CombatExtended.AmmoSetDef>
+	<ThingDef ParentName="Base50BMGBullet">
+		<defName>Bullet_10x60mmCaseless_FMJ</defName>
+		<label>10x60mm Caseless bullet (FMJ)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>42</damageAmountBase>
+			<armorPenetrationSharp>32</armorPenetrationSharp>
+			<armorPenetrationBlunt>360.34</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+	<ThingDef ParentName="Base50BMGBullet">
+		<defName>Bullet_10x60mmCaseless_AP</defName>
+		<label>10x60mm Caseless bullet (AP)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>26</damageAmountBase>
+			<armorPenetrationSharp>45</armorPenetrationSharp>
+			<armorPenetrationBlunt>360.34</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+	<ThingDef ParentName="Base50BMGBullet">
+		<defName>Bullet_10x60mmCaseless_Incendiary</defName>
+		<label>10x60mm Caseless bullet (AP-I)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>26</damageAmountBase>
+			<armorPenetrationSharp>45</armorPenetrationSharp>
+			<armorPenetrationBlunt>360.34</armorPenetrationBlunt>
+			<secondaryDamage>
+				<li>
+					<def>Flame_Secondary</def>
+					<amount>14</amount>
+				</li>
+			</secondaryDamage>
+		</projectile>
+	</ThingDef>
+	<ThingDef ParentName="Base50BMGBullet">
+		<defName>Bullet_10x60mmCaseless_HE</defName>
+		<label>10x60mm Caseless bullet (AP-HE)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>42</damageAmountBase>
+			<armorPenetrationSharp>32</armorPenetrationSharp>
+			<armorPenetrationBlunt>360.34</armorPenetrationBlunt>
+			<secondaryDamage>
+				<li>
+					<def>Bomb_Secondary</def>
+					<amount>20</amount>
+				</li>
+			</secondaryDamage>
+		</projectile>
+	</ThingDef>
+	<ThingDef ParentName="Base50BMGBullet">
+		<defName>Bullet_10x60mmCaseless_Sabot</defName>
+		<label>10x60mm Caseless bullet (Sabot)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>22</damageAmountBase>
+			<armorPenetrationSharp>56</armorPenetrationSharp>
+			<armorPenetrationBlunt>462.92</armorPenetrationBlunt>
+			<speed>221</speed>
+		</projectile>
+	</ThingDef>
+	<CombatExtended.AmmoSetDef>
+		<defName>AmmoSet_16GaugeCaseless</defName>
+		<label>16 Gauge Caseless</label>
+		<ammoTypes>
+			<Ammo_16GaugeCaseless_Buck>Bullet_16GaugeCaseless_Buck</Ammo_16GaugeCaseless_Buck>
+			<Ammo_16GaugeCaseless_Slug>Bullet_16GaugeCaseless_Slug</Ammo_16GaugeCaseless_Slug>
+			<Ammo_16GaugeCaseless_Beanbag>Bullet_16GaugeCaseless_Beanbag</Ammo_16GaugeCaseless_Beanbag>
+			<Ammo_16GaugeCaseless_EMP>Bullet_16GaugeCaseless_EMP</Ammo_16GaugeCaseless_EMP>
+		</ammoTypes>
+	</CombatExtended.AmmoSetDef>
+	<ThingDef ParentName="Base10GaugeBullet">
+		<defName>Bullet_16GaugeCaseless_Buck</defName>
+		<label>16 Gauge Caseless pellet (Buck)</label>
+		<graphicData>
+			<texPath>Things/Projectile/Shotgun_Pellet</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>8</damageAmountBase>
+			<pelletCount>18</pelletCount>
+			<armorPenetrationSharp>11</armorPenetrationSharp>
+			<armorPenetrationBlunt>3.92</armorPenetrationBlunt>
+			<spreadMult>8.9</spreadMult>
+			<shieldDamageMultiplier>0.25</shieldDamageMultiplier>
+		</projectile>
+	</ThingDef>
+	<ThingDef ParentName="Base10GaugeBullet">
+		<defName>Bullet_16GaugeCaseless_Slug</defName>
+		<label>16 Gauge Caseless bullet (Slug)</label>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_big</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<speed>108</speed>
+			<damageAmountBase>33</damageAmountBase>
+			<armorPenetrationSharp>24</armorPenetrationSharp>
+			<armorPenetrationBlunt>129</armorPenetrationBlunt>
+			<casingMoteDefname>Fleck_ShotgunShell_Green</casingMoteDefname>
+			<casingFilthDefname>Filth_ShotgunAmmoCasings_Green</casingFilthDefname>
+			<effectiveRangeMultiplier>1.5</effectiveRangeMultiplier>
+			<recoilMultiplier>1.33</recoilMultiplier>
+		</projectile>
+	</ThingDef>
+	<ThingDef ParentName="Base10GaugeBullet">
+		<defName>Bullet_16GaugeCaseless_Beanbag</defName>
+		<label>16 Gauge Caseless bullet (Beanbag)</label>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_big</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<speed>30</speed>
+			<damageDef>Beanbag</damageDef>
+			<damageAmountBase>12</damageAmountBase>
+			<armorPenetrationSharp>0</armorPenetrationSharp>
+			<armorPenetrationBlunt>6.04</armorPenetrationBlunt>
+			<spreadMult>2</spreadMult>
+			<casingMoteDefname>Fleck_ShotgunShell_White</casingMoteDefname>
+			<casingFilthDefname>Filth_ShotgunAmmoCasings_White</casingFilthDefname>
+			<shieldDamageMultiplier>0.1</shieldDamageMultiplier>
+		</projectile>
+	</ThingDef>
+	<ThingDef ParentName="Base10GaugeBullet">
+		<defName>Bullet_16GaugeCaseless_EMP</defName>
+		<label>16 Gauge Caseless bullet (EMP)</label>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_big</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<color>(68,210,215)</color>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<speed>43</speed>
+			<damageDef>EMP</damageDef>
+			<damageAmountBase>19</damageAmountBase>
+			<armorPenetrationSharp>0</armorPenetrationSharp>
+			<armorPenetrationBlunt>0</armorPenetrationBlunt>
+			<empShieldBreakChance>0.25</empShieldBreakChance>
+			<casingMoteDefname>Fleck_ShotgunShell_Black</casingMoteDefname>
+			<casingFilthDefname>Filth_ShotgunAmmoCasings_Black</casingFilthDefname>
+		</projectile>
+	</ThingDef>
+	<CombatExtended.AmmoSetDef>
+		<defName>AmmoSet_7x24mmHypersonic</defName>
+		<label>7x24mm Hypersonic</label>
+		<ammoTypes>
+			<Ammo_7x24mmHypersonic_FMJ>Bullet_7x24mmHypersonic_FMJ</Ammo_7x24mmHypersonic_FMJ>
+			<Ammo_7x24mmHypersonic_AP>Bullet_7x24mmHypersonic_AP</Ammo_7x24mmHypersonic_AP>
+			<Ammo_7x24mmHypersonic_HP>Bullet_7x24mmHypersonic_HP</Ammo_7x24mmHypersonic_HP>
+		</ammoTypes>
+	</CombatExtended.AmmoSetDef>
+	<ThingDef ParentName="Base500SWMagnumBullet">
+		<defName>Bullet_7x24mmHypersonic_FMJ</defName>
+		<label>7x24mm Hypersonic bullet (FMJ)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>21</damageAmountBase>
+			<armorPenetrationSharp>33</armorPenetrationSharp>
+			<armorPenetrationBlunt>53.820</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+	<ThingDef ParentName="Base500SWMagnumBullet">
+		<defName>Bullet_7x24mmHypersonic_AP</defName>
+		<label>7x24mm Hypersonic bullet (AP)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>13</damageAmountBase>
+			<armorPenetrationSharp>45</armorPenetrationSharp>
+			<armorPenetrationBlunt>53.820</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+	<ThingDef ParentName="Base500SWMagnumBullet">
+		<defName>Bullet_7x24mmHypersonic_HP</defName>
+		<label>7x24mm Hypersonic bullet (HP)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>27</damageAmountBase>
+			<armorPenetrationSharp>16</armorPenetrationSharp>
+			<armorPenetrationBlunt>53.820</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+	<CombatExtended.AmmoSetDef>
+		<defName>AmmoSet_65x36mmHypersonic</defName>
+		<label>6.5x36mm Hypersonic</label>
+		<ammoTypes>
+			<Ammo_65x36mmHypersonic_FMJ>Bullet_65x36mmHypersonic_FMJ</Ammo_65x36mmHypersonic_FMJ>
+			<Ammo_65x36mmHypersonic_AP>Bullet_65x36mmHypersonic_AP</Ammo_65x36mmHypersonic_AP>
+			<Ammo_65x36mmHypersonic_Incendiary>Bullet_65x36mmHypersonic_Incendiary</Ammo_65x36mmHypersonic_Incendiary>
+			<Ammo_65x36mmHypersonic_HE>Bullet_65x36mmHypersonic_HE</Ammo_65x36mmHypersonic_HE>
+			<Ammo_65x36mmHypersonic_Sabot>Bullet_65x36mmHypersonic_Sabot</Ammo_65x36mmHypersonic_Sabot>
+		</ammoTypes>
+	</CombatExtended.AmmoSetDef>
+	<ThingDef ParentName="Base338NormaBullet">
+		<defName>Bullet_65x36mmHypersonic_FMJ</defName>
+		<label>6.5x36mm Hypersonic bullet (FMJ)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>25</damageAmountBase>
+			<armorPenetrationSharp>42</armorPenetrationSharp>
+			<armorPenetrationBlunt>126.66</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+	<ThingDef ParentName="Base338NormaBullet">
+		<defName>Bullet_65x36mmHypersonic_AP</defName>
+		<label>6.5x36mm Hypersonic bullet (AP)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>16</damageAmountBase>
+			<armorPenetrationSharp>55</armorPenetrationSharp>
+			<armorPenetrationBlunt>126.66</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+	<ThingDef ParentName="Base338NormaBullet">
+		<defName>Bullet_65x36mmHypersonic_Incendiary</defName>
+		<label>6.5x36mm Hypersonic bullet (AP-I)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>16</damageAmountBase>
+			<armorPenetrationSharp>55</armorPenetrationSharp>
+			<armorPenetrationBlunt>126.66</armorPenetrationBlunt>
+			<secondaryDamage>
+				<li>
+					<def>Flame_Secondary</def>
+					<amount>9</amount>
+				</li>
+			</secondaryDamage>
+		</projectile>
+	</ThingDef>
+	<ThingDef ParentName="Base338NormaBullet">
+		<defName>Bullet_65x36mmHypersonic_HE</defName>
+		<label>6.5x36mm Hypersonic bullet (AP-HE)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>25</damageAmountBase>
+			<armorPenetrationSharp>42</armorPenetrationSharp>
+			<armorPenetrationBlunt>126.66</armorPenetrationBlunt>
+			<secondaryDamage>
+				<li>
+					<def>Bomb_Secondary</def>
+					<amount>12</amount>
+				</li>
+			</secondaryDamage>
+		</projectile>
+	</ThingDef>
+	<ThingDef ParentName="Base338NormaBullet">
+		<defName>Bullet_65x36mmHypersonic_Sabot</defName>
+		<label>6.5x36mm Hypersonic bullet (Sabot)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>13</damageAmountBase>
+			<armorPenetrationSharp>68</armorPenetrationSharp>
+			<armorPenetrationBlunt>162.46</armorPenetrationBlunt>
+			<speed>206</speed>
+		</projectile>
+	</ThingDef>
+	<CombatExtended.AmmoSetDef>
+		<defName>AmmoSet_8x44mmHypersonic</defName>
+		<label>8x44mm Hypersonic</label>
+		<ammoTypes>
+			<Ammo_8x44mmHypersonic_FMJ>Bullet_8x44mmHypersonic_FMJ</Ammo_8x44mmHypersonic_FMJ>
+			<Ammo_8x44mmHypersonic_AP>Bullet_8x44mmHypersonic_AP</Ammo_8x44mmHypersonic_AP>
+			<Ammo_8x44mmHypersonic_Incendiary>Bullet_8x44mmHypersonic_Incendiary</Ammo_8x44mmHypersonic_Incendiary>
+			<Ammo_8x44mmHypersonic_HE>Bullet_8x44mmHypersonic_HE</Ammo_8x44mmHypersonic_HE>
+			<Ammo_8x44mmHypersonic_Sabot>Bullet_8x44mmHypersonic_Sabot</Ammo_8x44mmHypersonic_Sabot>
+		</ammoTypes>
+	</CombatExtended.AmmoSetDef>
+	<ThingDef ParentName="Base408CheyenneTacticalBullet">
+		<defName>Bullet_8x44mmHypersonic_FMJ</defName>
+		<label>8x44mm Hypersonic bullet (FMJ)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>34</damageAmountBase>
+			<armorPenetrationSharp>44</armorPenetrationSharp>
+			<armorPenetrationBlunt>242</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+	<ThingDef ParentName="Base408CheyenneTacticalBullet">
+		<defName>Bullet_8x44mmHypersonic_AP</defName>
+		<label>8x44mm Hypersonic bullet (AP)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>21</damageAmountBase>
+			<armorPenetrationSharp>59</armorPenetrationSharp>
+			<armorPenetrationBlunt>242</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+	<ThingDef ParentName="Base408CheyenneTacticalBullet">
+		<defName>Bullet_8x44mmHypersonic_Incendiary</defName>
+		<label>8x44mm Hypersonic bullet (AP-I)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>21</damageAmountBase>
+			<armorPenetrationSharp>59</armorPenetrationSharp>
+			<armorPenetrationBlunt>242</armorPenetrationBlunt>
+			<secondaryDamage>
+				<li>
+					<def>Flame_Secondary</def>
+					<amount>9</amount>
+				</li>
+			</secondaryDamage>
+		</projectile>
+	</ThingDef>
+	<ThingDef ParentName="Base408CheyenneTacticalBullet">
+		<defName>Bullet_8x44mmHypersonic_HE</defName>
+		<label>8x44mm Hypersonic bullet (AP-HE)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>34</damageAmountBase>
+			<armorPenetrationSharp>44</armorPenetrationSharp>
+			<armorPenetrationBlunt>242</armorPenetrationBlunt>
+			<secondaryDamage>
+				<li>
+					<def>Bomb_Secondary</def>
+					<amount>12</amount>
+				</li>
+			</secondaryDamage>
+		</projectile>
+	</ThingDef>
+	<ThingDef ParentName="Base408CheyenneTacticalBullet">
+		<defName>Bullet_8x44mmHypersonic_Sabot</defName>
+		<label>8x44mm Hypersonic bullet (Sabot)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<speed>259</speed>
+			<damageAmountBase>18</damageAmountBase>
+			<armorPenetrationSharp>75</armorPenetrationSharp>
+			<armorPenetrationBlunt>310.36</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+	<CombatExtended.AmmoSetDef>
+		<defName>AmmoSet_14GaugeHypersonic</defName>
+		<label>14 Gauge Hypersonic</label>
+		<ammoTypes>
+			<Ammo_14GaugeHypersonic_Buck>Bullet_14GaugeHypersonic_Buck</Ammo_14GaugeHypersonic_Buck>
+			<Ammo_14GaugeHypersonic_Slug>Bullet_14GaugeHypersonic_Slug</Ammo_14GaugeHypersonic_Slug>
+			<Ammo_14GaugeHypersonic_Beanbag>Bullet_14GaugeHypersonic_Beanbag</Ammo_14GaugeHypersonic_Beanbag>
+			<Ammo_14GaugeHypersonic_EMP>Bullet_14GaugeHypersonic_EMP</Ammo_14GaugeHypersonic_EMP>
+		</ammoTypes>
+	</CombatExtended.AmmoSetDef>
+	<ThingDef ParentName="Base23x75mmRBullet">
+		<defName>Bullet_14GaugeHypersonic_Buck</defName>
+		<label>14 Gauge Hypersonic pellet (Buck)</label>
+		<graphicData>
+			<texPath>Things/Projectile/Shotgun_Pellet</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>10</damageAmountBase>
+			<pelletCount>18</pelletCount>
+			<armorPenetrationSharp>21</armorPenetrationSharp>
+			<armorPenetrationBlunt>8.1</armorPenetrationBlunt>
+			<spreadMult>7.9</spreadMult>
+			<shieldDamageMultiplier>0.25</shieldDamageMultiplier>
+		</projectile>
+	</ThingDef>
+	<ThingDef ParentName="Base23x75mmRBullet">
+		<defName>Bullet_14GaugeHypersonic_Slug</defName>
+		<label>14 Gauge Hypersonic bullet (Slug)</label>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_big</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<speed>106</speed>
+			<damageAmountBase>38</damageAmountBase>
+			<armorPenetrationSharp>44</armorPenetrationSharp>
+			<armorPenetrationBlunt>162.5</armorPenetrationBlunt>
+			<casingMoteDefname>Fleck_ShotgunShell_Green</casingMoteDefname>
+			<casingFilthDefname>Filth_ShotgunAmmoCasings_Green</casingFilthDefname>
+			<effectiveRangeMultiplier>1.5</effectiveRangeMultiplier>
+			<recoilMultiplier>1.33</recoilMultiplier>
+		</projectile>
+	</ThingDef>
+	<ThingDef ParentName="Base23x75mmRBullet">
+		<defName>Bullet_14GaugeHypersonic_Beanbag</defName>
+		<label>14 Gauge Hypersonic bullet (Beanbag)</label>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_big</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<speed>30</speed>
+			<damageDef>Beanbag</damageDef>
+			<damageAmountBase>13</damageAmountBase>
+			<armorPenetrationBlunt>7.38</armorPenetrationBlunt>
+			<spreadMult>2</spreadMult>
+			<casingMoteDefname>Fleck_ShotgunShell_White</casingMoteDefname>
+			<casingFilthDefname>Filth_ShotgunAmmoCasings_White</casingFilthDefname>
+			<shieldDamageMultiplier>0.1</shieldDamageMultiplier>
+		</projectile>
+	</ThingDef>
+	<ThingDef ParentName="Base23x75mmRBullet">
+		<defName>Bullet_14GaugeHypersonic_EMP</defName>
+		<label>14 Gauge Hypersonic bullet (EMP)</label>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_big</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<color>(68,210,215)</color>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>EMP</damageDef>
+			<damageAmountBase>29</damageAmountBase>
+			<armorPenetrationSharp>0</armorPenetrationSharp>
+			<armorPenetrationBlunt>0</armorPenetrationBlunt>
+			<empShieldBreakChance>0.5</empShieldBreakChance>
+			<speed>60</speed>
+			<casingMoteDefname>Fleck_ShotgunShell_Black</casingMoteDefname>
+			<casingFilthDefname>Filth_ShotgunAmmoCasings_Black</casingFilthDefname>
+		</projectile>
+	</ThingDef>
+	<CombatExtended.AmmoSetDef>
+		<defName>AmmoSet_11x68mmHypersonic</defName>
+		<label>11x68mm Hypersonic</label>
+		<ammoTypes>
+			<Ammo_11x68mmHypersonic_AP>Bullet_11x68mmHypersonic_AP</Ammo_11x68mmHypersonic_AP>
+			<Ammo_11x68mmHypersonic_Incendiary>Bullet_11x68mmHypersonic_Incendiary</Ammo_11x68mmHypersonic_Incendiary>
+			<Ammo_11x68mmHypersonic_HE>Bullet_11x68mmHypersonic_HE</Ammo_11x68mmHypersonic_HE>
+			<Ammo_11x68mmHypersonic_Sabot>Bullet_11x68mmHypersonic_Sabot</Ammo_11x68mmHypersonic_Sabot>
+		</ammoTypes>
+	</CombatExtended.AmmoSetDef>
+	<ThingDef ParentName="Base20x102mmNATOBullet">
+		<defName>Bullet_11x68mmHypersonic_AP</defName>
+		<label>11x68mm Hypersonic bullet (AP)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>58</damageAmountBase>
+			<armorPenetrationSharp>58</armorPenetrationSharp>
+			<armorPenetrationBlunt>1029.080</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+	<ThingDef ParentName="Base20x102mmNATOBullet">
+		<defName>Bullet_11x68mmHypersonic_Incendiary</defName>
+		<label>11x68mm Hypersonic bullet (AP-I)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>58</damageAmountBase>
+			<armorPenetrationSharp>58</armorPenetrationSharp>
+			<armorPenetrationBlunt>1029.080</armorPenetrationBlunt>
+			<secondaryDamage>
+				<li>
+					<def>Flame_Secondary</def>
+					<amount>22</amount>
+				</li>
+			</secondaryDamage>
+		</projectile>
+	</ThingDef>
+	<ThingDef ParentName="Base20x102mmNATOBullet">
+		<defName>Bullet_11x68mmHypersonic_HE</defName>
+		<label>11x68mm Hypersonic bullet (AP-HE)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>70</damageAmountBase>
+			<armorPenetrationSharp>29</armorPenetrationSharp>
+			<armorPenetrationBlunt>1029.080</armorPenetrationBlunt>
+			<secondaryDamage>
+				<li>
+					<def>Bomb_Secondary</def>
+					<amount>31</amount>
+				</li>
+			</secondaryDamage>
+		</projectile>
+	</ThingDef>
+	<ThingDef ParentName="Base20x102mmNATOBullet">
+		<defName>Bullet_11x68mmHypersonic_Sabot</defName>
+		<label>11x68mm Hypersonic bullet (Sabot)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>40</damageAmountBase>
+			<armorPenetrationSharp>78</armorPenetrationSharp>
+			<armorPenetrationBlunt>1320.02</armorPenetrationBlunt>
+			<speed>247</speed>
+		</projectile>
+	</ThingDef>
+	<CombatExtended.AmmoSetDef>
+		<defName>AmmoSet_5x20mmCharged</defName>
+		<label>5x20mm Charged</label>
+		<ammoTypes>
+			<Ammo_5x20mmCharged>Bullet_5x20mmCharged</Ammo_5x20mmCharged>
+			<Ammo_5x20mmCharged_Conc>Bullet_5x20mmCharged_Conc</Ammo_5x20mmCharged_Conc>
+			<Ammo_5x20mmCharged_Ion>Bullet_5x20mmCharged_Ion</Ammo_5x20mmCharged_Ion>
+		</ammoTypes>
+	</CombatExtended.AmmoSetDef>
+	<ThingDef ParentName="Base10x18mmChargedBullet">
+		<defName>Bullet_5x20mmCharged</defName>
+		<label>5x20mm Charged bullet</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>ABG_ChargeBullet</damageDef>
+			<damageAmountBase>15</damageAmountBase>
+			<secondaryDamage>
+				<li>
+					<def>Bomb_Secondary</def>
+					<amount>4</amount>
+				</li>
+			</secondaryDamage>
+			<armorPenetrationSharp>15</armorPenetrationSharp>
+			<armorPenetrationBlunt>22</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+	<ThingDef ParentName="Base10x18mmChargedBullet">
+		<defName>Bullet_5x20mmCharged_Conc</defName>
+		<label>5x20mm Charged bullet (Conc.)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>ABG_ChargeBullet</damageDef>
+			<damageAmountBase>12</damageAmountBase>
+			<secondaryDamage>
+				<li>
+					<def>Bomb_Secondary</def>
+					<amount>2</amount>
+				</li>
+			</secondaryDamage>
+			<armorPenetrationSharp>24</armorPenetrationSharp>
+			<armorPenetrationBlunt>22</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+	<ThingDef ParentName="Base10x18mmChargedBullet">
+		<defName>Bullet_5x20mmCharged_Ion</defName>
+		<label>5x20mm Charged bullet (Ion)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>ABG_ChargeBullet</damageDef>
+			<damageAmountBase>12</damageAmountBase>
+			<secondaryDamage>
+				<li>
+					<def>EMP</def>
+					<amount>8</amount>
+				</li>
+			</secondaryDamage>
+			<armorPenetrationSharp>15</armorPenetrationSharp>
+			<armorPenetrationBlunt>22</armorPenetrationBlunt>
+			<empShieldBreakChance>1</empShieldBreakChance>
+		</projectile>
+	</ThingDef>
+	<CombatExtended.AmmoSetDef>
+		<defName>AmmoSet_6x26mmCharged</defName>
+		<label>6x26mm Charged</label>
+		<ammoTypes>
+			<Ammo_6x26mmCharged>Bullet_6x26mmCharged</Ammo_6x26mmCharged>
+			<Ammo_6x26mmCharged_Conc>Bullet_6x26mmCharged_Conc</Ammo_6x26mmCharged_Conc>
+			<Ammo_6x26mmCharged_Ion>Bullet_6x26mmCharged_Ion</Ammo_6x26mmCharged_Ion>
+		</ammoTypes>
+	</CombatExtended.AmmoSetDef>
+	<ThingDef ParentName="Base8x35mmChargedBullet">
+		<defName>Bullet_6x26mmCharged</defName>
+		<label>6x26mm Charged bullet</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>ABG_ChargeBullet</damageDef>
+			<CIWSVersion>Bullet_8x35mmChargedCIWS</CIWSVersion>
+			<damageAmountBase>19</damageAmountBase>
+			<secondaryDamage>
+				<li>
+					<def>Bomb_Secondary</def>
+					<amount>6</amount>
+				</li>
+			</secondaryDamage>
+			<armorPenetrationSharp>19</armorPenetrationSharp>
+			<armorPenetrationBlunt>39</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+	<ThingDef ParentName="Base8x35mmChargedBullet">
+		<defName>Bullet_6x26mmCharged_Conc</defName>
+		<label>6x26mm Charged bullet (Conc.)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>ABG_ChargeBullet</damageDef>
+			<damageAmountBase>15</damageAmountBase>
+			<secondaryDamage>
+				<li>
+					<def>Bomb_Secondary</def>
+					<amount>3</amount>
+				</li>
+			</secondaryDamage>
+			<armorPenetrationSharp>26</armorPenetrationSharp>
+			<armorPenetrationBlunt>39</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+	<ThingDef ParentName="Base8x35mmChargedBullet">
+		<defName>Bullet_6x26mmCharged_Ion</defName>
+		<label>6x26mm Charged bullet (Ion)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>ABG_ChargeBullet</damageDef>
+			<damageAmountBase>15</damageAmountBase>
+			<secondaryDamage>
+				<li>
+					<def>EMP</def>
+					<amount>10</amount>
+				</li>
+			</secondaryDamage>
+			<armorPenetrationSharp>19</armorPenetrationSharp>
+			<armorPenetrationBlunt>39</armorPenetrationBlunt>
+			<empShieldBreakChance>0.33</empShieldBreakChance>
+		</projectile>
+	</ThingDef>
+	<CombatExtended.AmmoSetDef>
+		<defName>AmmoSet_7x30mmCharged</defName>
+		<label>7x30mm Charged</label>
+		<ammoTypes>
+			<Ammo_7x30mmCharged>Bullet_7x30mmCharged</Ammo_7x30mmCharged>
+			<Ammo_7x30mmCharged_Conc>Bullet_7x30mmCharged_Conc</Ammo_7x30mmCharged_Conc>
+			<Ammo_7x30mmCharged_Ion>Bullet_7x30mmCharged_Ion</Ammo_7x30mmCharged_Ion>
+		</ammoTypes>
+	</CombatExtended.AmmoSetDef>
+	<ThingDef ParentName="Base8x35mmChargedBullet">
+		<defName>Bullet_7x30mmCharged</defName>
+		<label>7x30mm Charged bullet</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>ABG_ChargeBullet</damageDef>
+			<CIWSVersion>Bullet_8x35mmChargedCIWS</CIWSVersion>
+			<damageAmountBase>24</damageAmountBase>
+			<secondaryDamage>
+				<li>
+					<def>Bomb_Secondary</def>
+					<amount>7</amount>
+				</li>
+			</secondaryDamage>
+			<armorPenetrationSharp>20</armorPenetrationSharp>
+			<armorPenetrationBlunt>62</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+	<ThingDef ParentName="Base8x35mmChargedBullet">
+		<defName>Bullet_7x30mmCharged_Conc</defName>
+		<label>7x30mm Charged bullet (Conc.)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>ABG_ChargeBullet</damageDef>
+			<damageAmountBase>19</damageAmountBase>
+			<secondaryDamage>
+				<li>
+					<def>Bomb_Secondary</def>
+					<amount>4</amount>
+				</li>
+			</secondaryDamage>
+			<armorPenetrationSharp>29</armorPenetrationSharp>
+			<armorPenetrationBlunt>62</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+	<ThingDef ParentName="Base8x35mmChargedBullet">
+		<defName>Bullet_7x30mmCharged_Ion</defName>
+		<label>7x30mm Charged bullet (Ion)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>ABG_ChargeBullet</damageDef>
+			<damageAmountBase>19</damageAmountBase>
+			<secondaryDamage>
+				<li>
+					<def>EMP</def>
+					<amount>12</amount>
+				</li>
+			</secondaryDamage>
+			<armorPenetrationSharp>20</armorPenetrationSharp>
+			<armorPenetrationBlunt>62</armorPenetrationBlunt>
+			<empShieldBreakChance>0.33</empShieldBreakChance>
+		</projectile>
+	</ThingDef>
+	<CombatExtended.AmmoSetDef>
+		<defName>AmmoSet_16GaugeCharged</defName>
+		<label>16 Gauge Charged</label>
+		<ammoTypes>
+			<Ammo_16GaugeCharged>Bullet_16GaugeCharged</Ammo_16GaugeCharged>
+			<Ammo_16GaugeCharged_Slug>Bullet_16GaugeCharged_Slug</Ammo_16GaugeCharged_Slug>
+			<Ammo_16GaugeCharged_Ion>Bullet_16GaugeCharged_Ion</Ammo_16GaugeCharged_Ion>
+		</ammoTypes>
+	</CombatExtended.AmmoSetDef>
+	<ThingDef ParentName="Base12GaugeChargedBullet">
+		<defName>Bullet_16GaugeCharged</defName>
+		<label>16 Gauge Charged pellet</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>ABG_ChargeBullet</damageDef>
+			<damageAmountBase>12</damageAmountBase>
+			<secondaryDamage>
+				<li>
+					<def>Bomb_Secondary</def>
+					<amount>4</amount>
+				</li>
+			</secondaryDamage>
+			<armorPenetrationSharp>12</armorPenetrationSharp>
+			<armorPenetrationBlunt>17</armorPenetrationBlunt>
+			<pelletCount>6</pelletCount>
+			<spreadMult>8.9</spreadMult>
+			<shieldDamageMultiplier>0.25</shieldDamageMultiplier>
+		</projectile>
+	</ThingDef>
+	<ThingDef ParentName="Base12GaugeChargedBullet">
+		<defName>Bullet_16GaugeCharged_Slug</defName>
+		<label>16 Gauge Charged bullet (Slug)</label>
+		<graphicData>
+			<drawSize>(1.5,1.5)</drawSize>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>ABG_ChargeBullet</damageDef>
+			<damageAmountBase>30</damageAmountBase>
+			<secondaryDamage>
+				<li>
+					<def>Bomb_Secondary</def>
+					<amount>15</amount>
+				</li>
+			</secondaryDamage>
+			<armorPenetrationSharp>19</armorPenetrationSharp>
+			<armorPenetrationBlunt>112</armorPenetrationBlunt>
+			<effectiveRangeMultiplier>1.5</effectiveRangeMultiplier>
+			<recoilMultiplier>1.33</recoilMultiplier>
+		</projectile>
+	</ThingDef>
+	<ThingDef ParentName="Base12GaugeChargedBullet">
+		<defName>Bullet_16GaugeCharged_Ion</defName>
+		<label>16 Gauge Charged pellet (Ion)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>ABG_ChargeBullet</damageDef>
+			<damageAmountBase>10</damageAmountBase>
+			<secondaryDamage>
+				<li>
+					<def>EMP</def>
+					<amount>5</amount>
+				</li>
+			</secondaryDamage>
+			<armorPenetrationSharp>12</armorPenetrationSharp>
+			<armorPenetrationBlunt>17</armorPenetrationBlunt>
+			<pelletCount>6</pelletCount>
+			<spreadMult>8.9</spreadMult>
+			<empShieldBreakChance>0.025</empShieldBreakChance>
+			<shieldDamageMultiplier>0.25</shieldDamageMultiplier>
+		</projectile>
+	</ThingDef>
+	<CombatExtended.AmmoSetDef>
+		<defName>AmmoSet_9x45mmCharged</defName>
+		<label>9x45mm Charged</label>
+		<ammoTypes>
+			<Ammo_9x45mmCharged>Bullet_9x45mmCharged</Ammo_9x45mmCharged>
+			<Ammo_9x45mmCharged_Conc>Bullet_9x45mmCharged_Conc</Ammo_9x45mmCharged_Conc>
+			<Ammo_9x45mmCharged_Ion>Bullet_9x45mmCharged_Ion</Ammo_9x45mmCharged_Ion>
+		</ammoTypes>
+	</CombatExtended.AmmoSetDef>
+	<ThingDef ParentName="Base12x72mmChargedBullet">
+		<defName>Bullet_9x45mmCharged</defName>
+		<label>9x45mm Charged bullet</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>ABG_ChargeBullet</damageDef>
+			<damageAmountBase>39</damageAmountBase>
+			<secondaryDamage>
+				<li>
+					<def>Bomb_Secondary</def>
+					<amount>12</amount>
+				</li>
+			</secondaryDamage>
+			<armorPenetrationSharp>22</armorPenetrationSharp>
+			<armorPenetrationBlunt>123</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+	<ThingDef ParentName="Base12x72mmChargedBullet">
+		<defName>Bullet_9x45mmCharged_Conc</defName>
+		<label>9x45mm Charged bullet (Conc.)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>ABG_ChargeBullet</damageDef>
+			<damageAmountBase>30</damageAmountBase>
+			<secondaryDamage>
+				<li>
+					<def>Bomb_Secondary</def>
+					<amount>6</amount>
+				</li>
+			</secondaryDamage>
+			<armorPenetrationSharp>30</armorPenetrationSharp>
+			<armorPenetrationBlunt>123</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+	<ThingDef ParentName="Base12x72mmChargedBullet">
+		<defName>Bullet_9x45mmCharged_Ion</defName>
+		<label>9x45mm Charged bullet (Ion)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>ABG_ChargeBullet</damageDef>
+			<damageAmountBase>30</damageAmountBase>
+			<secondaryDamage>
+				<li>
+					<def>EMP</def>
+					<amount>20</amount>
+				</li>
+			</secondaryDamage>
+			<armorPenetrationSharp>22</armorPenetrationSharp>
+			<armorPenetrationBlunt>123</armorPenetrationBlunt>
+			<empShieldBreakChance>1</empShieldBreakChance>
+		</projectile>
+	</ThingDef>
+</Defs>

@@ -105,3 +105,63 @@ def refresh(root: Path, game: Path, ce: Path | None, out: Path) -> tuple[int, li
         doc.append(el)
     out.write_bytes(etree.tostring(doc, xml_declaration=True, encoding="utf-8", pretty_print=True))
     return len(chosen), sorted(set(missing))
+
+
+# ---------- Bamba mods ----------
+# Beyond Our Reach's own guns and melee weapons live in Guns For All and Melee For All, which are separate mods.
+# The player site shows them, so their BOR defs (and the textures those use) are copied into gen/bamba/.
+
+BAMBA_DIR = "bamba"
+BAMBA_FILES = {
+    "guns": ("AllBambaGuns", [
+        "Defs/WeaponDefs/SolarCharged.xml", "Defs/WeaponDefs/QuasarCharged.xml",
+        "Defs/ResearchProjectDefs/ResearchProjects.xml",
+        "CE/Defs/WeaponDefs/SolarCharged.xml", "CE/Defs/WeaponDefs/QuasarCharged.xml",
+        "CE/Defs/CE_Ammo.xml", "CE/Defs/CE_Ammo_Lines.xml", "CE/Defs/CE_Ammo_Tiers.xml", "CE/Defs/CE_ChargeDamage.xml",
+        "CE/Defs/ResearchProjectDefs/ResearchProjects.xml",
+    ], ["Textures", "CE/Textures"]),
+    "melee": ("AllBambaMelee/1.7", [
+        "Defs/ThingDefs_Misc/Bamba_Melee_Weapons_BOR.xml", "Defs/ThingDefs_Misc/Bamba_Melee_Shields.xml",
+        "Defs/ResearchProjectDefs/Bamba_Melee_Research.xml",
+        "CE/Patches/CombatExtended/Bamba_Melee_CE.xml",
+    ], ["../Textures", "Textures", "CE/Textures"]),
+}
+
+
+def refresh_bamba(mods: Path, out: Path) -> tuple[int, int, list[str]]:
+    """Copy the BOR guns and melee defs and their textures from the sibling mods. Returns (files, textures, missing)."""
+    import shutil
+    files = textures = 0
+    missing: list[str] = []
+    if out.exists():
+        shutil.rmtree(out)
+    for name, (mod, wanted, tex_dirs) in BAMBA_FILES.items():
+        src_root = mods / mod
+        for rel in wanted:
+            src = src_root / rel
+            if not src.is_file():
+                missing.append(f"{mod}/{rel}")
+                continue
+            dst = out / name / rel
+            dst.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(src, dst)
+            files += 1
+        tex_paths = set()
+        for p in (out / name).rglob("*.xml"):
+            text = p.read_text(encoding="utf-8-sig", errors="replace")
+            tex_paths.update(re.findall(r"<texPath>([^<]+)</texPath>", text))
+        for tp in sorted(tex_paths):
+            found = False
+            for td in tex_dirs:
+                base = (src_root / td).resolve()
+                for cand in sorted(base.glob(tp + "*.png")) if base.is_dir() else []:
+                    # a single texture or a Graphic_Multi set, not another texture sharing the prefix
+                    if cand.stem == Path(tp).stem or cand.stem.startswith(Path(tp).stem + "_"):
+                        dst = out / name / "Textures" / cand.relative_to(base)
+                        dst.parent.mkdir(parents=True, exist_ok=True)
+                        shutil.copy2(cand, dst)
+                        textures += 1
+                        found = True
+            if not found and not tp.startswith(("Things/Ammo", "Things/Projectile")):
+                missing.append(f"{mod} texture {tp}")
+    return files, textures, missing

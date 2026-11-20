@@ -380,3 +380,22 @@
   <div class="faction-tags">{% for b in badges %}<span class="badge">{{ b }}</span>{% endfor %}</div>
 </div>
 {% endmacro %}
+
+{# ---------- armor abilities ---------- #}
+
+{% macro armor_abilities(rows) %}
+<div class="table-scroll"><table class="stats abilities-table">
+  <thead><tr><th scope="col">Ability</th><th scope="col">What it does</th><th scope="col" title="Taken from the armor's energy pool">Energy</th><th scope="col">Cooldown</th><th scope="col">Worn with</th></tr></thead>
+  <tbody>
+  {% for a in rows %}
+    <tr>
+      <th scope="row" class="name"><span class="ability-name">{% if a.icon %}<img src="{{ a.icon }}" alt="" loading="lazy" width="32" height="32">{% endif %}{{ a.label }}</span></th>
+      <td class="wrap">{{ a.description|desc }}</td>
+      <td>{{ a.cost|num(0) }}</td>
+      <td>{{ a.cooldown|duration }}</td>
+      <td class="wrap">{{ a.armors|join(", ") }}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table></div>
+{% endmacro %}

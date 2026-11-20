@@ -39,6 +39,7 @@ MOD_NAMES = {
     "assssssqwww.visualtweaks": "More Shader Visuals",
     "automatic.bionicicons": "Bionic Icons",
     "bamba.allbambaarmors": "Armors For All Post-Medieval Tech Levels",
+    "bambaryla.allbambaturrets": "Turrets For All Post-Medieval Tech Levels",
     "bamba.allbambamelee.tiered": "Melee Weapons For All Post-Medieval Tech Levels",
     "ceteam.combatextended": "Combat Extended",
     "cf.chempowereddeepdrill": "Chemfuel Powered Deepdrill",
@@ -447,6 +448,38 @@ class Extractor:
                 "granted_by": sorted(set(granted.get(n, []))),
             })
         return out
+
+    def armor_abilities(self) -> list[dict]:
+        """Every ability from Armors For All that a BOR armor grants: icon, text, energy cost, cooldown and the armors."""
+        granted: dict[str, list[tuple[str, float]]] = {}
+        for t in self.all.all("ThingDef"):
+            comps = t.node("comps")
+            if comps is None:
+                continue
+            energy = next((_f(li, "maxEnergy") for li in comps
+                           if (li.get("Class") or "").endswith("CompProperties_AbilityEnergy")), None)
+            for li in comps:
+                if not (li.get("Class") or "").endswith("CompProperties_AbilitiesApparel"):
+                    continue
+                for x in li.findall("abilities/li"):
+                    name = (x.text or "").strip()
+                    if name:
+                        granted.setdefault(name, []).append((cap(t.label), energy))
+        rows = []
+        for d in self.all.all("VEF.Abilities.AbilityDef"):
+            if d.def_name not in granted:
+                continue
+            ticks = d.num("cooldownTime")
+            rows.append({
+                "label": cap(d.label),
+                "description": d.description,
+                "icon": self.tex.export(self.tex.find(d.text("iconPath"))),
+                "cost": d.num("modExtensions/li[@Class='AllBambaArmors.AbilityExtension_EnergyCost']/cost"),
+                "cooldown": ticks / 60 if ticks else None,
+                "armors": sorted({a for a, _ in granted[d.def_name]}),
+            })
+        rows.sort(key=lambda r: (r["armors"][0], r["label"]))
+        return rows
 
     def made_at(self, bench: str) -> list[dict]:
         """Everything the bench's recipes produce."""

@@ -1,0 +1,582 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+	<ThingDef ParentName="ShieldBase" MayRequire="ceteam.combatextended">
+		<defName>Bamba_Melee_Industrial_Shield</defName>
+		<label>industrial shield</label>
+		<description>A piece of hard material that means to be put between you and your enemy. This one is made from industrial-grade steel and more sophisticated than the ones one could smith together from whatever material.</description>
+		<techLevel>Industrial</techLevel>
+		<graphicData>
+			<texPath>Bamba_Melee/Weapons/shields/industrial</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<costList>
+			<Steel>70</Steel>
+			<ComponentIndustrial>2</ComponentIndustrial>
+		</costList>
+		<recipeMaker>
+			<researchPrerequisite>Bamba_Melee_Research_Industrial</researchPrerequisite>
+			<recipeUsers>
+				<li>FueledSmithy</li>
+				<li>ElectricSmithy</li>
+			</recipeUsers>
+			<skillRequirements>
+				<Crafting>6</Crafting>
+			</skillRequirements>
+			<displayPriority>670</displayPriority>
+		</recipeMaker>
+		<statBases>
+			<WorkToMake>15000</WorkToMake>
+			<MaxHitPoints>150</MaxHitPoints>
+			<ArmorRating_Sharp>8</ArmorRating_Sharp>
+			<ArmorRating_Blunt>12</ArmorRating_Blunt>
+			<Mass>9</Mass>
+			<Bulk>10</Bulk>
+			<WornBulk>7.5</WornBulk>
+		</statBases>
+		<equippedStatOffsets>
+			<ReloadSpeed>-0.15</ReloadSpeed>
+			<MeleeHitChance>-1</MeleeHitChance>
+			<ShootingAccuracyPawn>-0.2</ShootingAccuracyPawn>
+			<AimingAccuracy>-0.12</AimingAccuracy>
+			<Suppressability>-0.4</Suppressability>
+			<MeleeCritChance>-0.1</MeleeCritChance>
+			<MeleeParryChance>1.0</MeleeParryChance>
+		</equippedStatOffsets>
+		<apparel>
+			<developmentalStageFilter>Child, Adult</developmentalStageFilter>
+			<tags>
+				<li>OutlanderShield</li>
+			</tags>
+			<renderNodeProperties>
+				<li>
+					<nodeClass>CombatExtended.PawnRenderNode_Apparel</nodeClass>
+					<workerClass>CombatExtended.PawnRenderNodeWorker_Drafted</workerClass>
+					<texPath>Bamba_Melee/Weapons/shields/industrial</texPath>
+					<parentTagDef>ApparelBody</parentTagDef>
+					<drawData>
+						<scale>0.7</scale>
+						<defaultData>
+							<layer>80</layer>
+						</defaultData>
+						<dataEast>
+							<layer>-5</layer>
+							<offset>(0, 0, -0.1)</offset>
+							<rotationOffset>25</rotationOffset>
+						</dataEast>
+						<dataWest>
+							<rotationOffset>-25</rotationOffset>
+						</dataWest>
+						<dataNorth>
+							<layer>-5</layer>
+							<offset>(0.15, 0, -0.1)</offset>
+						</dataNorth>
+						<dataSouth>
+							<offset>(0.25, 0, -0.15)</offset>
+						</dataSouth>
+					</drawData>
+				</li>
+			</renderNodeProperties>
+		</apparel>
+		<modExtensions>
+			<li Class="CombatExtended.ShieldDefExtension">
+				<shieldCoverage>
+					<li>Hands</li>
+					<li>Arms</li>
+					<li>Shoulders</li>
+					<li>Torso</li>
+					<li>Neck</li>
+				</shieldCoverage>
+				<crouchCoverage>
+					<li>Legs</li>
+				</crouchCoverage>
+			</li>
+		</modExtensions>
+		<tradeTags>
+			<li>Armor</li>
+		</tradeTags>
+	</ThingDef>
+
+	<ThingDef ParentName="ShieldBase" MayRequire="ceteam.combatextended">
+		<defName>Bamba_Melee_Spacer_Shield</defName>
+		<label>spacer shield</label>
+		<description>A piece of hard material that means to be put between you and your enemy. Use of a mix of steel and plasteel gives this appliance a set of uniquely effective capabilities, with improved handling due to usage of synthread.</description>
+		<techLevel>Spacer</techLevel>
+		<graphicData>
+			<texPath>Bamba_Melee/Weapons/shields/spacer</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<costList>
+			<Steel>30</Steel>
+			<Plasteel>50</Plasteel>
+			<ComponentIndustrial>3</ComponentIndustrial>
+			<Synthread>15</Synthread>
+		</costList>
+		<recipeMaker>
+			<researchPrerequisite>Bamba_Melee_Research_Spacer</researchPrerequisite>
+			<recipeUsers>
+				<li>FabricationBench</li>
+			</recipeUsers>
+			<skillRequirements>
+				<Crafting>7</Crafting>
+			</skillRequirements>
+			<displayPriority>770</displayPriority>
+		</recipeMaker>
+		<statBases>
+			<WorkToMake>22000</WorkToMake>
+			<MaxHitPoints>250</MaxHitPoints>
+			<ArmorRating_Sharp>16</ArmorRating_Sharp>
+			<ArmorRating_Blunt>24</ArmorRating_Blunt>
+			<Mass>7</Mass>
+			<Bulk>10</Bulk>
+			<WornBulk>7.0</WornBulk>
+		</statBases>
+		<equippedStatOffsets>
+			<ReloadSpeed>-0.12</ReloadSpeed>
+			<MeleeHitChance>-0.08</MeleeHitChance>
+			<ShootingAccuracyPawn>-0.15</ShootingAccuracyPawn>
+			<AimingAccuracy>-0.1</AimingAccuracy>
+			<Suppressability>-0.45</Suppressability>
+			<MeleeCritChance>-0.08</MeleeCritChance>
+			<MeleeParryChance>1.0</MeleeParryChance>
+		</equippedStatOffsets>
+		<apparel>
+			<developmentalStageFilter>Child, Adult</developmentalStageFilter>
+			<tags>
+				<li>SpacerShield</li>
+			</tags>
+			<renderNodeProperties>
+				<li>
+					<nodeClass>CombatExtended.PawnRenderNode_Apparel</nodeClass>
+					<workerClass>CombatExtended.PawnRenderNodeWorker_Drafted</workerClass>
+					<texPath>Bamba_Melee/Weapons/shields/spacer</texPath>
+					<parentTagDef>ApparelBody</parentTagDef>
+					<drawData>
+						<scale>0.7</scale>
+						<defaultData>
+							<layer>80</layer>
+						</defaultData>
+						<dataEast>
+							<layer>-5</layer>
+							<offset>(0, 0, -0.1)</offset>
+							<rotationOffset>25</rotationOffset>
+						</dataEast>
+						<dataWest>
+							<rotationOffset>-25</rotationOffset>
+						</dataWest>
+						<dataNorth>
+							<layer>-5</layer>
+							<offset>(0.15, 0, -0.1)</offset>
+						</dataNorth>
+						<dataSouth>
+							<offset>(0.25, 0, -0.15)</offset>
+						</dataSouth>
+					</drawData>
+				</li>
+			</renderNodeProperties>
+		</apparel>
+		<modExtensions>
+			<li Class="CombatExtended.ShieldDefExtension">
+				<shieldCoverage>
+					<li>Hands</li>
+					<li>Arms</li>
+					<li>Shoulders</li>
+					<li>Torso</li>
+					<li>Neck</li>
+				</shieldCoverage>
+				<crouchCoverage>
+					<li>Legs</li>
+				</crouchCoverage>
+			</li>
+		</modExtensions>
+		<tradeTags>
+			<li>Armor</li>
+		</tradeTags>
+	</ThingDef>
+
+	<ThingDef ParentName="ShieldBase" MayRequire="ceteam.combatextended">
+		<defName>Bamba_Melee_Ultra_Shield</defName>
+		<label>ultra shield</label>
+		<description>A piece of hard material that means to be put between you and your enemy. Full plasteel - hyperweave build guarantees highest-tier of effectiveness available to humans.</description>
+		<techLevel>Ultra</techLevel>
+		<graphicData>
+			<texPath>Bamba_Melee/Weapons/shields/ultra</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<costList>
+			<Plasteel>120</Plasteel>
+			<ComponentIndustrial>4</ComponentIndustrial>
+			<ComponentSpacer>1</ComponentSpacer>
+			<Hyperweave>15</Hyperweave>
+		</costList>
+		<recipeMaker>
+			<researchPrerequisite>Bamba_Melee_Research_Ultra</researchPrerequisite>
+			<recipeUsers>
+				<li>FabricationBench</li>
+			</recipeUsers>
+			<skillRequirements>
+				<Crafting>11</Crafting>
+			</skillRequirements>
+			<displayPriority>870</displayPriority>
+		</recipeMaker>
+		<statBases>
+			<WorkToMake>35000</WorkToMake>
+			<MaxHitPoints>400</MaxHitPoints>
+			<ArmorRating_Sharp>32</ArmorRating_Sharp>
+			<ArmorRating_Blunt>50</ArmorRating_Blunt>
+			<Mass>5</Mass>
+			<Bulk>9</Bulk>
+			<WornBulk>6.0</WornBulk>
+		</statBases>
+		<equippedStatOffsets>
+			<ReloadSpeed>-0.1</ReloadSpeed>
+			<MeleeHitChance>-0.05</MeleeHitChance>
+			<ShootingAccuracyPawn>-0.1</ShootingAccuracyPawn>
+			<AimingAccuracy>-0.05</AimingAccuracy>
+			<Suppressability>-0.6</Suppressability>
+			<MeleeCritChance>-0.05</MeleeCritChance>
+			<MeleeParryChance>1.0</MeleeParryChance>
+		</equippedStatOffsets>
+		<apparel>
+			<developmentalStageFilter>Child, Adult</developmentalStageFilter>
+			<tags>
+				<li>UltraShield</li>
+			</tags>
+			<renderNodeProperties>
+				<li>
+					<nodeClass>CombatExtended.PawnRenderNode_Apparel</nodeClass>
+					<workerClass>CombatExtended.PawnRenderNodeWorker_Drafted</workerClass>
+					<texPath>Bamba_Melee/Weapons/shields/ultra</texPath>
+					<parentTagDef>ApparelBody</parentTagDef>
+					<drawData>
+						<scale>0.7</scale>
+						<defaultData>
+							<layer>80</layer>
+						</defaultData>
+						<dataEast>
+							<layer>-5</layer>
+							<offset>(0, 0, -0.1)</offset>
+							<rotationOffset>25</rotationOffset>
+						</dataEast>
+						<dataWest>
+							<rotationOffset>-25</rotationOffset>
+						</dataWest>
+						<dataNorth>
+							<layer>-5</layer>
+							<offset>(0.15, 0, -0.1)</offset>
+						</dataNorth>
+						<dataSouth>
+							<offset>(0.25, 0, -0.15)</offset>
+						</dataSouth>
+					</drawData>
+				</li>
+			</renderNodeProperties>
+		</apparel>
+		<modExtensions>
+			<li Class="CombatExtended.ShieldDefExtension">
+				<shieldCoverage>
+					<li>Hands</li>
+					<li>Arms</li>
+					<li>Shoulders</li>
+					<li>Torso</li>
+					<li>Neck</li>
+				</shieldCoverage>
+				<crouchCoverage>
+					<li>Legs</li>
+				</crouchCoverage>
+			</li>
+		</modExtensions>
+		<tradeTags>
+			<li>Armor</li>
+		</tradeTags>
+	</ThingDef>
+
+	<ThingDef ParentName="ShieldBase" MayRequire="ceteam.combatextended,bambaryla.bor.redux">
+		<defName>Bamba_Melee_Solar_Shield</defName>
+		<label>solar shield</label>
+		<description>A piece of hard material that means to be put between you and your enemy. Application of Sunweave to the handle and Sunsteel to the pain application device, puts this appliance beyond Ultratech territory. Solarite melee weapons are typically ornate.</description>
+		<techLevel>Ultra</techLevel>
+		<graphicData>
+			<texPath>Bamba_Melee/Weapons/shields/solar</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<costList>
+			<BOR_Sunsteel>120</BOR_Sunsteel>
+			<ComponentSpacer>2</ComponentSpacer>
+			<BOR_Sunweave>15</BOR_Sunweave>
+		</costList>
+		<recipeMaker>
+			<researchPrerequisite>Bamba_Melee_Research_Solar</researchPrerequisite>
+			<recipeUsers>
+				<li>BOR_Bench_I</li>
+			</recipeUsers>
+			<skillRequirements>
+				<Crafting>14</Crafting>
+			</skillRequirements>
+			<displayPriority>970</displayPriority>
+		</recipeMaker>
+		<statBases>
+			<WorkToMake>46000</WorkToMake>
+			<MaxHitPoints>600</MaxHitPoints>
+			<ArmorRating_Sharp>50</ArmorRating_Sharp>
+			<ArmorRating_Blunt>80</ArmorRating_Blunt>
+			<Mass>4</Mass>
+			<Bulk>8</Bulk>
+			<WornBulk>5.5</WornBulk>
+		</statBases>
+		<equippedStatOffsets>
+			<ReloadSpeed>-0.08</ReloadSpeed>
+			<MeleeHitChance>-0.04</MeleeHitChance>
+			<ShootingAccuracyPawn>-0.08</ShootingAccuracyPawn>
+			<AimingAccuracy>-0.04</AimingAccuracy>
+			<Suppressability>-0.65</Suppressability>
+			<MeleeCritChance>-0.04</MeleeCritChance>
+			<MeleeParryChance>1.0</MeleeParryChance>
+		</equippedStatOffsets>
+		<apparel>
+			<developmentalStageFilter>Child, Adult</developmentalStageFilter>
+			<tags>
+				<li>SolarShield</li>
+			</tags>
+			<renderNodeProperties>
+				<li>
+					<nodeClass>CombatExtended.PawnRenderNode_Apparel</nodeClass>
+					<workerClass>CombatExtended.PawnRenderNodeWorker_Drafted</workerClass>
+					<texPath>Bamba_Melee/Weapons/shields/solar</texPath>
+					<parentTagDef>ApparelBody</parentTagDef>
+					<drawData>
+						<scale>0.7</scale>
+						<defaultData>
+							<layer>80</layer>
+						</defaultData>
+						<dataEast>
+							<layer>-5</layer>
+							<offset>(0, 0, -0.1)</offset>
+							<rotationOffset>25</rotationOffset>
+						</dataEast>
+						<dataWest>
+							<rotationOffset>-25</rotationOffset>
+						</dataWest>
+						<dataNorth>
+							<layer>-5</layer>
+							<offset>(0.15, 0, -0.1)</offset>
+						</dataNorth>
+						<dataSouth>
+							<offset>(0.25, 0, -0.15)</offset>
+						</dataSouth>
+					</drawData>
+				</li>
+			</renderNodeProperties>
+		</apparel>
+		<modExtensions>
+			<li Class="CombatExtended.ShieldDefExtension">
+				<shieldCoverage>
+					<li>Hands</li>
+					<li>Arms</li>
+					<li>Shoulders</li>
+					<li>Torso</li>
+					<li>Neck</li>
+				</shieldCoverage>
+				<crouchCoverage>
+					<li>Legs</li>
+				</crouchCoverage>
+			</li>
+		</modExtensions>
+		<tradeTags>
+			<li>Armor</li>
+		</tradeTags>
+	</ThingDef>
+
+	<ThingDef ParentName="ShieldBase" MayRequire="ceteam.combatextended,bambaryla.bor.redux">
+		<defName>Bamba_Melee_Quasar_Shield</defName>
+		<label>kwazaari shield</label>
+		<description>A piece of hard material that means to be put between you and your enemy. Beyond Solarite tech comes the Kwazaari utilitarian design. While better, they do not bring joy.</description>
+		<techLevel>Ultra</techLevel>
+		<graphicData>
+			<texPath>Bamba_Melee/Weapons/shields/quasar</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<costList>
+			<BOR_QuasarAlloy>120</BOR_QuasarAlloy>
+			<BOR_ComponentII>2</BOR_ComponentII>
+			<BOR_QuasarAlloyWeave>15</BOR_QuasarAlloyWeave>
+		</costList>
+		<recipeMaker>
+			<researchPrerequisite>Bamba_Melee_Research_Quasar</researchPrerequisite>
+			<recipeUsers>
+				<li>BOR_Bench_II</li>
+			</recipeUsers>
+			<skillRequirements>
+				<Crafting>17</Crafting>
+			</skillRequirements>
+			<displayPriority>1070</displayPriority>
+		</recipeMaker>
+		<statBases>
+			<WorkToMake>66000</WorkToMake>
+			<MaxHitPoints>900</MaxHitPoints>
+			<ArmorRating_Sharp>65</ArmorRating_Sharp>
+			<ArmorRating_Blunt>100</ArmorRating_Blunt>
+			<Mass>3</Mass>
+			<Bulk>8</Bulk>
+			<WornBulk>5</WornBulk>
+		</statBases>
+		<equippedStatOffsets>
+			<ReloadSpeed>-0.07</ReloadSpeed>
+			<MeleeHitChance>-0.03</MeleeHitChance>
+			<ShootingAccuracyPawn>-0.07</ShootingAccuracyPawn>
+			<AimingAccuracy>-0.03</AimingAccuracy>
+			<Suppressability>-0.7</Suppressability>
+			<MeleeCritChance>-0.03</MeleeCritChance>
+			<MeleeParryChance>1.0</MeleeParryChance>
+		</equippedStatOffsets>
+		<apparel>
+			<developmentalStageFilter>Child, Adult</developmentalStageFilter>
+			<tags>
+				<li>QuasarShield</li>
+			</tags>
+			<renderNodeProperties>
+				<li>
+					<nodeClass>CombatExtended.PawnRenderNode_Apparel</nodeClass>
+					<workerClass>CombatExtended.PawnRenderNodeWorker_Drafted</workerClass>
+					<texPath>Bamba_Melee/Weapons/shields/quasar</texPath>
+					<parentTagDef>ApparelBody</parentTagDef>
+					<drawData>
+						<scale>0.7</scale>
+						<defaultData>
+							<layer>80</layer>
+						</defaultData>
+						<dataEast>
+							<layer>-5</layer>
+							<offset>(0, 0, -0.1)</offset>
+							<rotationOffset>25</rotationOffset>
+						</dataEast>
+						<dataWest>
+							<rotationOffset>-25</rotationOffset>
+						</dataWest>
+						<dataNorth>
+							<layer>-5</layer>
+							<offset>(0.15, 0, -0.1)</offset>
+						</dataNorth>
+						<dataSouth>
+							<offset>(0.25, 0, -0.15)</offset>
+						</dataSouth>
+					</drawData>
+				</li>
+			</renderNodeProperties>
+		</apparel>
+		<modExtensions>
+			<li Class="CombatExtended.ShieldDefExtension">
+				<shieldCoverage>
+					<li>Hands</li>
+					<li>Arms</li>
+					<li>Shoulders</li>
+					<li>Torso</li>
+					<li>Neck</li>
+				</shieldCoverage>
+				<crouchCoverage>
+					<li>Legs</li>
+				</crouchCoverage>
+			</li>
+		</modExtensions>
+		<tradeTags>
+			<li>Armor</li>
+		</tradeTags>
+	</ThingDef>
+
+	<ThingDef ParentName="ApparelBase" MayRequire="ceteam.combatextended,bambaryla.bor.redux">
+		<defName>Bamba_Melee_Tenebral_Shield</defName>
+		<label>tenebral shield</label>
+		<description>A piece of hard material that means to be put between you and your enemy. It's shaped from a tenebrite crystal into a shape vaguely resembling the function.</description>
+		<techLevel>Archotech</techLevel>
+		<!-- Not craftable: parented to ApparelBase instead of CE's ShieldBase so no recipeMaker is inherited. Fields below mirror CE's ShieldBase. -->
+		<thingClass>CombatExtended.Apparel_Shield</thingClass>
+		<thingCategories>
+			<li>Shields</li>
+		</thingCategories>
+		<storedConceptLearnOpportunity>CE_Shields</storedConceptLearnOpportunity>
+		<smeltable>false</smeltable>
+		<graphicData>
+			<texPath>Bamba_Melee/Weapons/shields/tenebral</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>16000</MarketValue>
+			<MaxHitPoints>1200</MaxHitPoints>
+			<ArmorRating_Sharp>80</ArmorRating_Sharp>
+			<ArmorRating_Blunt>120</ArmorRating_Blunt>
+			<Mass>2</Mass>
+			<Bulk>8</Bulk>
+			<WornBulk>4</WornBulk>
+		</statBases>
+		<equippedStatOffsets>
+			<ReloadSpeed>-0.05</ReloadSpeed>
+			<MeleeHitChance>-0.02</MeleeHitChance>
+			<ShootingAccuracyPawn>-0.05</ShootingAccuracyPawn>
+			<AimingAccuracy>-0.02</AimingAccuracy>
+			<Suppressability>-0.8</Suppressability>
+			<MeleeCritChance>-0.02</MeleeCritChance>
+			<MeleeParryChance>1.0</MeleeParryChance>
+		</equippedStatOffsets>
+		<apparel>
+			<countsAsClothingForNudity>false</countsAsClothingForNudity>
+			<careIfWornByCorpse>false</careIfWornByCorpse>
+			<bodyPartGroups>
+				<li>LeftShoulder</li>
+			</bodyPartGroups>
+			<layers>
+				<li>Shield</li>
+			</layers>
+			<developmentalStageFilter>Child, Adult</developmentalStageFilter>
+			<tags>
+				<li>TenebralShield</li>
+			</tags>
+			<renderNodeProperties>
+				<li>
+					<nodeClass>CombatExtended.PawnRenderNode_Apparel</nodeClass>
+					<workerClass>CombatExtended.PawnRenderNodeWorker_Drafted</workerClass>
+					<texPath>Bamba_Melee/Weapons/shields/tenebral</texPath>
+					<parentTagDef>ApparelBody</parentTagDef>
+					<drawData>
+						<scale>0.7</scale>
+						<defaultData>
+							<layer>80</layer>
+						</defaultData>
+						<dataEast>
+							<layer>-5</layer>
+							<offset>(0, 0, -0.1)</offset>
+							<rotationOffset>25</rotationOffset>
+						</dataEast>
+						<dataWest>
+							<rotationOffset>-25</rotationOffset>
+						</dataWest>
+						<dataNorth>
+							<layer>-5</layer>
+							<offset>(0.15, 0, -0.1)</offset>
+						</dataNorth>
+						<dataSouth>
+							<offset>(0.25, 0, -0.15)</offset>
+						</dataSouth>
+					</drawData>
+				</li>
+			</renderNodeProperties>
+		</apparel>
+		<modExtensions>
+			<li Class="CombatExtended.ShieldDefExtension">
+				<shieldCoverage>
+					<li>Hands</li>
+					<li>Arms</li>
+					<li>Shoulders</li>
+					<li>Torso</li>
+					<li>Neck</li>
+				</shieldCoverage>
+				<crouchCoverage>
+					<li>Legs</li>
+				</crouchCoverage>
+			</li>
+		</modExtensions>
+		<tradeTags>
+			<li>Armor</li>
+		</tradeTags>
+	</ThingDef>
+
+</Defs>

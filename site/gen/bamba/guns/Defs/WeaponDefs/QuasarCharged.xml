@@ -1,0 +1,677 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+	<!-- ==================== PISTOL ==================== -->
+
+	<ThingDef ParentName="BaseBullet" MayRequireAnyOf="bambaryla.bor.redux,bambaryla.bor">
+		<defName>ABG_Bullet_QPistol</defName>
+		<label>quasar charge pistol shot</label>
+		<graphicData>
+			<texPath>Projectile/Charge/quasar/pistol</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>16</damageAmountBase>
+			<armorPenetrationBase>0.5</armorPenetrationBase>
+			<speed>70</speed>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="BaseHumanMakeableGun" MayRequireAnyOf="bambaryla.bor.redux,bambaryla.bor">
+		<defName>ABG_Gun_QPistol</defName>
+		<label>kwazaari charge pistol</label>
+		<description>A handy sidearm with low stopping power, making up for it in weight and compactness. This weapon is an iterative improvement over the Solar technology, using Quasar Alloy to improve it across the board.</description>
+		<techLevel>Ultra</techLevel>
+		<graphicData>
+			<texPath>charge/quasar/pistol</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<soundInteract>Interact_Revolver</soundInteract>
+		<thingSetMakerTags>
+			<li>RewardStandardQualitySuper</li>
+		</thingSetMakerTags>
+		<statBases>
+			<WorkToMake>42000</WorkToMake>
+			<Mass>1.2</Mass>
+			<AccuracyTouch>0.8</AccuracyTouch>
+			<AccuracyShort>0.7</AccuracyShort>
+			<AccuracyMedium>0.55</AccuracyMedium>
+			<AccuracyLong>0.45</AccuracyLong>
+			<RangedWeapon_Cooldown>1.2</RangedWeapon_Cooldown>
+		</statBases>
+		<weaponTags>
+			<li>BOR_Kind_Kwazaari_FieldOfficer</li>
+		</weaponTags>
+		<weaponClasses>
+			<li>RangedLight</li>
+		</weaponClasses>
+		<tradeTags>
+			<li>WeaponRanged</li>
+		</tradeTags>
+		<costList>
+			<BOR_QuasarAlloy>30</BOR_QuasarAlloy>
+			<Plasteel>15</Plasteel>
+			<BOR_ComponentII>3</BOR_ComponentII>
+		</costList>
+		<recipeMaker>
+			<researchPrerequisite>ABG_Research_QuasarChargeWeaponry</researchPrerequisite>
+			<skillRequirements>
+				<Crafting>18</Crafting>
+			</skillRequirements>
+			<recipeUsers Inherit="False">
+				<li>BOR_Bench_II</li>
+			</recipeUsers>
+			<displayPriority>1000</displayPriority>
+		</recipeMaker>
+		<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>ABG_Bullet_QPistol</defaultProjectile>
+				<warmupTime>0.3</warmupTime>
+				<range>26.9</range>
+				<soundCast>Shot_ChargeRifle</soundCast>
+				<soundCastTail>GunTail_Light</soundCastTail>
+				<muzzleFlashScale>9</muzzleFlashScale>
+			</li>
+		</verbs>
+		<tools>
+			<li>
+				<label>grip</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>9</power>
+				<cooldownTime>2</cooldownTime>
+			</li>
+			<li>
+				<label>barrel</label>
+				<capacities>
+					<li>Blunt</li>
+					<li>Poke</li>
+				</capacities>
+				<power>9</power>
+				<cooldownTime>2</cooldownTime>
+			</li>
+		</tools>
+	</ThingDef>
+
+	<!-- ==================== BULLPUP ==================== -->
+
+	<ThingDef ParentName="BaseBullet" MayRequireAnyOf="bambaryla.bor.redux,bambaryla.bor">
+		<defName>ABG_Bullet_QBullpup</defName>
+		<label>quasar charge bullpup shot</label>
+		<graphicData>
+			<texPath>Projectile/Charge/quasar/rifle</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>18</damageAmountBase>
+			<armorPenetrationBase>0.5</armorPenetrationBase>
+			<speed>70</speed>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="BaseHumanMakeableGun" MayRequireAnyOf="bambaryla.bor.redux,bambaryla.bor">
+		<defName>ABG_Gun_QBullpup</defName>
+		<label>kwazaari charge bullpup</label>
+		<description>A specific rifle implement with its action moved behind the grip, allowing more muzzle for less rifle. This weapon is an iterative improvement over the Solar technology, using Quasar Alloy to improve it across the board.</description>
+		<techLevel>Ultra</techLevel>
+		<graphicData>
+			<texPath>charge/quasar/bullpup</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<soundInteract>Interact_ChargeRifle</soundInteract>
+		<thingSetMakerTags>
+			<li>RewardStandardQualitySuper</li>
+		</thingSetMakerTags>
+		<statBases>
+			<WorkToMake>62000</WorkToMake>
+			<Mass>3.0</Mass>
+			<AccuracyTouch>0.65</AccuracyTouch>
+			<AccuracyShort>0.75</AccuracyShort>
+			<AccuracyMedium>0.69</AccuracyMedium>
+			<AccuracyLong>0.6</AccuracyLong>
+			<RangedWeapon_Cooldown>1.7</RangedWeapon_Cooldown>
+		</statBases>
+		<weaponTags>
+			<li>BOR_Kind_Kwazaari_Guard</li>
+		</weaponTags>
+		<tradeTags>
+			<li>WeaponRanged</li>
+		</tradeTags>
+		<costList>
+			<BOR_QuasarAlloy>60</BOR_QuasarAlloy>
+			<Plasteel>15</Plasteel>
+			<BOR_ComponentII>5</BOR_ComponentII>
+		</costList>
+		<recipeMaker>
+			<researchPrerequisite>ABG_Research_QuasarSpecialistChargeWeaponry</researchPrerequisite>
+			<skillRequirements>
+				<Crafting>18</Crafting>
+			</skillRequirements>
+			<recipeUsers Inherit="False">
+				<li>BOR_Bench_II</li>
+			</recipeUsers>
+			<displayPriority>1010</displayPriority>
+		</recipeMaker>
+		<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>ABG_Bullet_QBullpup</defaultProjectile>
+				<warmupTime>0.9</warmupTime>
+				<range>30.9</range>
+				<burstShotCount>4</burstShotCount>
+				<ticksBetweenBurstShots>6</ticksBetweenBurstShots>
+				<soundCast>Shot_ChargeRifle</soundCast>
+				<soundCastTail>GunTail_Medium</soundCastTail>
+				<muzzleFlashScale>9</muzzleFlashScale>
+			</li>
+		</verbs>
+		<tools>
+			<li>
+				<label>stock</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>9</power>
+				<cooldownTime>2</cooldownTime>
+			</li>
+			<li>
+				<label>barrel</label>
+				<capacities>
+					<li>Blunt</li>
+					<li>Poke</li>
+				</capacities>
+				<power>9</power>
+				<cooldownTime>2</cooldownTime>
+			</li>
+		</tools>
+	</ThingDef>
+
+	<!-- ==================== Battle RIFLE ==================== -->
+
+	<ThingDef ParentName="BaseBullet" MayRequireAnyOf="bambaryla.bor.redux,bambaryla.bor">
+		<defName>ABG_Bullet_QBattleRifle</defName>
+		<label>quasar charge battle rifle shot</label>
+		<graphicData>
+			<texPath>Projectile/Charge/quasar/rifle</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>20</damageAmountBase>
+			<armorPenetrationBase>0.5</armorPenetrationBase>
+			<speed>70</speed>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="BaseHumanMakeableGun" MayRequireAnyOf="bambaryla.bor.redux,bambaryla.bor">
+		<defName>ABG_Gun_QBattleRifle</defName>
+		<label>kwazaari charge battle rifle</label>
+		<description>A classic rifle, the mainstay of any infantry-based military. This weapon is an iterative improvement over the Solar technology, using Quasar Alloy to improve it across the board.</description>
+		<techLevel>Ultra</techLevel>
+		<graphicData>
+			<texPath>charge/quasar/rifle</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<soundInteract>Interact_ChargeRifle</soundInteract>
+		<thingSetMakerTags>
+			<li>RewardStandardQualitySuper</li>
+		</thingSetMakerTags>
+		<statBases>
+			<WorkToMake>65000</WorkToMake>
+			<Mass>3.6</Mass>
+			<AccuracyTouch>0.6</AccuracyTouch>
+			<AccuracyShort>0.72</AccuracyShort>
+			<AccuracyMedium>0.65</AccuracyMedium>
+			<AccuracyLong>0.55</AccuracyLong>
+			<RangedWeapon_Cooldown>1.7</RangedWeapon_Cooldown>
+		</statBases>
+		<weaponTags>
+			<li>BOR_Kind_Kwazaari_Guard</li>
+		</weaponTags>
+		<tradeTags>
+			<li>WeaponRanged</li>
+		</tradeTags>
+		<costList>
+			<BOR_QuasarAlloy>70</BOR_QuasarAlloy>
+			<Plasteel>15</Plasteel>
+			<BOR_ComponentII>6</BOR_ComponentII>
+		</costList>
+		<recipeMaker>
+			<researchPrerequisite>ABG_Research_QuasarChargeWeaponry</researchPrerequisite>
+			<skillRequirements>
+				<Crafting>18</Crafting>
+			</skillRequirements>
+			<recipeUsers Inherit="False">
+				<li>BOR_Bench_II</li>
+			</recipeUsers>
+			<displayPriority>1020</displayPriority>
+		</recipeMaker>
+		<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>ABG_Bullet_QBattleRifle</defaultProjectile>
+				<warmupTime>1.0</warmupTime>
+				<range>31.9</range>
+				<burstShotCount>3</burstShotCount>
+				<ticksBetweenBurstShots>8</ticksBetweenBurstShots>
+				<soundCast>Shot_ChargeRifle</soundCast>
+				<soundCastTail>GunTail_Medium</soundCastTail>
+				<muzzleFlashScale>9</muzzleFlashScale>
+			</li>
+		</verbs>
+		<tools>
+			<li>
+				<label>stock</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>9</power>
+				<cooldownTime>2</cooldownTime>
+			</li>
+			<li>
+				<label>barrel</label>
+				<capacities>
+					<li>Blunt</li>
+					<li>Poke</li>
+				</capacities>
+				<power>9</power>
+				<cooldownTime>2</cooldownTime>
+			</li>
+		</tools>
+	</ThingDef>
+
+	<!-- ==================== DMR ==================== -->
+
+	<ThingDef ParentName="BaseBullet" MayRequireAnyOf="bambaryla.bor.redux,bambaryla.bor">
+		<defName>ABG_Bullet_QDMR</defName>
+		<label>quasar charge DMR shot</label>
+		<graphicData>
+			<texPath>Projectile/Charge/quasar/rifle</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>22</damageAmountBase>
+			<armorPenetrationBase>0.5</armorPenetrationBase>
+			<stoppingPower>1.5</stoppingPower>
+			<speed>90</speed>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="BaseHumanMakeableGun" MayRequireAnyOf="bambaryla.bor.redux,bambaryla.bor">
+		<defName>ABG_Gun_QDMR</defName>
+		<label>kwazaari charge DMR</label>
+		<description>A single-shot, mid-range and mid-damage gun with a scope. This weapon is an iterative improvement over the Solar technology, using Quasar Alloy to improve it across the board.</description>
+		<techLevel>Ultra</techLevel>
+		<graphicData>
+			<texPath>charge/quasar/dmr</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<soundInteract>Interact_ChargeLance</soundInteract>
+		<thingSetMakerTags>
+			<li>RewardStandardQualitySuper</li>
+		</thingSetMakerTags>
+		<weaponClasses>
+			<li>LongShots</li>
+			<li>RangedHeavy</li>
+		</weaponClasses>
+		<statBases>
+			<WorkToMake>75000</WorkToMake>
+			<Mass>2.8</Mass>
+			<AccuracyTouch>0.7</AccuracyTouch>
+			<AccuracyShort>0.9</AccuracyShort>
+			<AccuracyMedium>0.9</AccuracyMedium>
+			<AccuracyLong>0.85</AccuracyLong>
+			<RangedWeapon_Cooldown>1.7</RangedWeapon_Cooldown>
+		</statBases>
+		<weaponTags>
+		</weaponTags>
+		<tradeTags>
+			<li>WeaponRanged</li>
+		</tradeTags>
+		<costList>
+			<BOR_QuasarAlloy>65</BOR_QuasarAlloy>
+			<Plasteel>15</Plasteel>
+			<BOR_ComponentII>5</BOR_ComponentII>
+		</costList>
+		<recipeMaker>
+			<researchPrerequisite>ABG_Research_QuasarSpecialistChargeWeaponry</researchPrerequisite>
+			<skillRequirements>
+				<Crafting>18</Crafting>
+			</skillRequirements>
+			<recipeUsers Inherit="False">
+				<li>BOR_Bench_II</li>
+			</recipeUsers>
+			<displayPriority>1030</displayPriority>
+		</recipeMaker>
+		<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>ABG_Bullet_QDMR</defaultProjectile>
+				<warmupTime>1.0</warmupTime>
+				<range>32.9</range>
+				<soundCast>ChargeLance_Fire</soundCast>
+				<soundCastTail>GunTail_Heavy</soundCastTail>
+				<muzzleFlashScale>9</muzzleFlashScale>
+			</li>
+		</verbs>
+		<tools>
+			<li>
+				<label>stock</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>9</power>
+				<cooldownTime>2</cooldownTime>
+			</li>
+			<li>
+				<label>barrel</label>
+				<capacities>
+					<li>Blunt</li>
+					<li>Poke</li>
+				</capacities>
+				<power>9</power>
+				<cooldownTime>2</cooldownTime>
+			</li>
+		</tools>
+	</ThingDef>
+
+	<!-- ==================== SHOTGUN ==================== -->
+
+	<ThingDef ParentName="BaseBullet" MayRequireAnyOf="bambaryla.bor.redux,bambaryla.bor">
+		<defName>ABG_Bullet_QShotgun</defName>
+		<label>quasar charge shotgun blast</label>
+		<graphicData>
+			<texPath>Projectile/Charge/quasar/shotgun</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>15</damageAmountBase>
+			<armorPenetrationBase>0.5</armorPenetrationBase>
+			<stoppingPower>3</stoppingPower>
+			<speed>55</speed>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="BaseHumanMakeableGun" MayRequireAnyOf="bambaryla.bor.redux,bambaryla.bor">
+		<defName>ABG_Gun_QShotgun</defName>
+		<label>kwazaari charge shotgun</label>
+		<description>A magazine-fed, burst-fire shotgun built on a chain shotgun action, a kwazaari-alloy build that keeps recoil and spread to a minimum. Short-ranged, but extraordinarily dangerous up close.</description>
+		<techLevel>Ultra</techLevel>
+		<graphicData>
+			<texPath>charge/quasar/shotgun</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<soundInteract>Interact_Shotgun</soundInteract>
+		<thingSetMakerTags>
+			<li>RewardStandardQualitySuper</li>
+		</thingSetMakerTags>
+		<weaponClasses>
+			<li>ShortShots</li>
+		</weaponClasses>
+		<statBases>
+			<WorkToMake>57000</WorkToMake>
+			<Mass>3.0</Mass>
+			<AccuracyTouch>0.72</AccuracyTouch>
+			<AccuracyShort>0.78</AccuracyShort>
+			<AccuracyMedium>0.68</AccuracyMedium>
+			<AccuracyLong>0.58</AccuracyLong>
+			<RangedWeapon_Cooldown>0.9</RangedWeapon_Cooldown>
+		</statBases>
+		<weaponTags>
+			<li>BOR_Kind_Kwazaari_Breacher</li>
+		</weaponTags>
+		<tradeTags>
+			<li>WeaponRanged</li>
+		</tradeTags>
+		<costList>
+			<BOR_QuasarAlloy>55</BOR_QuasarAlloy>
+			<Plasteel>15</Plasteel>
+			<BOR_ComponentII>4</BOR_ComponentII>
+		</costList>
+		<recipeMaker>
+			<researchPrerequisite>ABG_Research_QuasarHeavyChargeWeaponry</researchPrerequisite>
+			<skillRequirements>
+				<Crafting>18</Crafting>
+			</skillRequirements>
+			<recipeUsers Inherit="False">
+				<li>BOR_Bench_II</li>
+			</recipeUsers>
+			<displayPriority>1040</displayPriority>
+		</recipeMaker>
+		<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>ABG_Bullet_QShotgun</defaultProjectile>
+				<warmupTime>0.7</warmupTime>
+				<range>16.9</range>
+				<burstShotCount>5</burstShotCount>
+				<ticksBetweenBurstShots>6</ticksBetweenBurstShots>
+				<soundCast>Shot_ChargeRifle</soundCast>
+				<soundCastTail>GunTail_Medium</soundCastTail>
+				<muzzleFlashScale>9</muzzleFlashScale>
+			</li>
+		</verbs>
+		<tools>
+			<li>
+				<label>stock</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>9</power>
+				<cooldownTime>2</cooldownTime>
+			</li>
+			<li>
+				<label>barrel</label>
+				<capacities>
+					<li>Blunt</li>
+					<li>Poke</li>
+				</capacities>
+				<power>9</power>
+				<cooldownTime>2</cooldownTime>
+			</li>
+		</tools>
+	</ThingDef>
+
+	<!-- ==================== LMG ==================== -->
+
+	<ThingDef ParentName="BaseBullet" MayRequireAnyOf="bambaryla.bor.redux,bambaryla.bor">
+		<defName>ABG_Bullet_QLMG</defName>
+		<label>quasar charge LMG shot</label>
+		<graphicData>
+			<texPath>Projectile/Charge/quasar/sniper</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>15</damageAmountBase>
+			<armorPenetrationBase>0.5</armorPenetrationBase>
+			<stoppingPower>1</stoppingPower>
+			<speed>70</speed>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="BaseHumanMakeableGun" MayRequireAnyOf="bambaryla.bor.redux,bambaryla.bor">
+		<defName>ABG_Gun_QLMG</defName>
+		<label>kwazaari charge LMG</label>
+		<description>A "delete-this-direction"-kinda weapon designed for suppresive fire and outfitted with a bipod. This weapon is an iterative improvement over the Solar technology, using Quasar Alloy to improve it across the board.</description>
+		<techLevel>Ultra</techLevel>
+		<graphicData>
+			<texPath>charge/quasar/lmg</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<soundInteract>Interact_Rifle</soundInteract>
+		<thingSetMakerTags>
+			<li>RewardStandardQualitySuper</li>
+		</thingSetMakerTags>
+		<weaponClasses>
+			<li>RangedHeavy</li>
+		</weaponClasses>
+		<statBases>
+			<WorkToMake>80000</WorkToMake>
+			<Mass>7.5</Mass>
+			<AccuracyTouch>0.45</AccuracyTouch>
+			<AccuracyShort>0.55</AccuracyShort>
+			<AccuracyMedium>0.45</AccuracyMedium>
+			<AccuracyLong>0.35</AccuracyLong>
+			<RangedWeapon_Cooldown>1.3</RangedWeapon_Cooldown>
+		</statBases>
+		<weaponTags>
+			<li>BOR_Kind_Kwazaari_Heavy</li>
+		</weaponTags>
+		<tradeTags>
+			<li>WeaponRanged</li>
+		</tradeTags>
+		<costList>
+			<BOR_QuasarAlloy>80</BOR_QuasarAlloy>
+			<Plasteel>15</Plasteel>
+			<BOR_ComponentII>6</BOR_ComponentII>
+		</costList>
+		<recipeMaker>
+			<researchPrerequisite>ABG_Research_QuasarHeavyChargeWeaponry</researchPrerequisite>
+			<skillRequirements>
+				<Crafting>18</Crafting>
+			</skillRequirements>
+			<recipeUsers Inherit="False">
+				<li>BOR_Bench_II</li>
+			</recipeUsers>
+			<displayPriority>1050</displayPriority>
+		</recipeMaker>
+		<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>ABG_Bullet_QLMG</defaultProjectile>
+				<warmupTime>1.8</warmupTime>
+				<range>29.9</range>
+				<burstShotCount>8</burstShotCount>
+				<ticksBetweenBurstShots>4</ticksBetweenBurstShots>
+				<soundCast>Shot_ChargeRifle</soundCast>
+				<soundCastTail>GunTail_Medium</soundCastTail>
+				<muzzleFlashScale>9</muzzleFlashScale>
+			</li>
+		</verbs>
+		<tools>
+			<li>
+				<label>stock</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>9</power>
+				<cooldownTime>2</cooldownTime>
+			</li>
+			<li>
+				<label>barrel</label>
+				<capacities>
+					<li>Blunt</li>
+					<li>Poke</li>
+				</capacities>
+				<power>9</power>
+				<cooldownTime>2</cooldownTime>
+			</li>
+		</tools>
+	</ThingDef>
+
+	<!-- ==================== SNIPER ==================== -->
+
+	<ThingDef ParentName="BaseBullet" MayRequireAnyOf="bambaryla.bor.redux,bambaryla.bor">
+		<defName>ABG_Bullet_QSniper</defName>
+		<label>quasar charge sniper shot</label>
+		<graphicData>
+			<texPath>Things/Projectile/ChargeLanceShot</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+			<drawSize>1.5</drawSize>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>25</damageAmountBase>
+			<armorPenetrationBase>0.5</armorPenetrationBase>
+			<stoppingPower>1.5</stoppingPower>
+			<speed>120</speed>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="BaseHumanMakeableGun" MayRequireAnyOf="bambaryla.bor.redux,bambaryla.bor">
+		<defName>ABG_Gun_QSniper</defName>
+		<label>kwazaari charge sniper rifle</label>
+		<description>A single-shot, high-range and high-damage gun with a scope and bipod. This weapon is an iterative improvement over the Solar technology, using Quasar Alloy to improve it across the board.</description>
+		<techLevel>Ultra</techLevel>
+		<graphicData>
+			<texPath>charge/quasar/sniper</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<equippedAngleOffset>45</equippedAngleOffset>
+		<soundInteract>Interact_ChargeLance</soundInteract>
+		<thingSetMakerTags>
+			<li>RewardStandardQualitySuper</li>
+		</thingSetMakerTags>
+		<weaponClasses>
+			<li>LongShots</li>
+			<li>RangedHeavy</li>
+		</weaponClasses>
+		<statBases>
+			<WorkToMake>80000</WorkToMake>
+			<Mass>7.5</Mass>
+			<AccuracyTouch>0.7</AccuracyTouch>
+			<AccuracyShort>0.85</AccuracyShort>
+			<AccuracyMedium>0.9</AccuracyMedium>
+			<AccuracyLong>0.95</AccuracyLong>
+			<RangedWeapon_Cooldown>2.3</RangedWeapon_Cooldown>
+		</statBases>
+		<weaponTags>
+		</weaponTags>
+		<tradeTags>
+			<li>WeaponRanged</li>
+		</tradeTags>
+		<costList>
+			<BOR_QuasarAlloy>70</BOR_QuasarAlloy>
+			<Plasteel>15</Plasteel>
+			<BOR_ComponentII>5</BOR_ComponentII>
+		</costList>
+		<recipeMaker>
+			<researchPrerequisite>ABG_Research_QuasarHeavyChargeWeaponry</researchPrerequisite>
+			<skillRequirements>
+				<Crafting>18</Crafting>
+			</skillRequirements>
+			<recipeUsers Inherit="False">
+				<li>BOR_Bench_II</li>
+			</recipeUsers>
+			<displayPriority>1060</displayPriority>
+		</recipeMaker>
+		<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>ABG_Bullet_QSniper</defaultProjectile>
+				<warmupTime>1.7</warmupTime>
+				<range>44.9</range>
+				<soundCast>ChargeLance_Fire</soundCast>
+				<soundCastTail>GunTail_Heavy</soundCastTail>
+				<muzzleFlashScale>9</muzzleFlashScale>
+			</li>
+		</verbs>
+		<tools>
+			<li>
+				<label>barrel</label>
+				<capacities>
+					<li>Blunt</li>
+					<li>Poke</li>
+				</capacities>
+				<power>9</power>
+				<cooldownTime>2</cooldownTime>
+			</li>
+		</tools>
+	</ThingDef>
+
+</Defs>

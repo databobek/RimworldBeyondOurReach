@@ -1,0 +1,1180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+	<!-- Standalone BOR melee parents with NO recipeMaker anywhere in the chain. -->
+
+	<ThingDef Name="Bamba_BOR_BaseMeleeWeapon_Sharp_NoRecipe" Abstract="True" ParentName="BaseWeapon" MayRequireAnyOf="bambaryla.bor.redux,bambaryla.bor">
+		<techLevel>Ultra</techLevel>
+		<smeltable>false</smeltable>
+		<burnableByRecipe>true</burnableByRecipe>
+		<thingCategories>
+			<li>WeaponsMelee</li>
+		</thingCategories>
+		<weaponClasses>
+			<li>Melee</li>
+			<li>MeleePiercer</li>
+		</weaponClasses>
+		<relicChance>1</relicChance>
+		<inspectorTabs>
+			<li>ITab_Art</li>
+		</inspectorTabs>
+		<tradeTags>
+			<li>WeaponMelee</li>
+		</tradeTags>
+		<comps>
+			<li>
+				<compClass>CompQuality</compClass>
+			</li>
+			<li Class="CompProperties_Art">
+				<nameMaker>NamerArtWeaponMelee</nameMaker>
+				<descriptionMaker>ArtDescription_WeaponMelee</descriptionMaker>
+				<minQualityForArtistic>Excellent</minQualityForArtistic>
+			</li>
+		</comps>
+	</ThingDef>
+
+	<ThingDef Name="Bamba_BOR_BaseMeleeWeapon_Blunt_NoRecipe" Abstract="True" ParentName="BaseWeapon" MayRequireAnyOf="bambaryla.bor.redux,bambaryla.bor">
+		<techLevel>Ultra</techLevel>
+		<smeltable>false</smeltable>
+		<burnableByRecipe>true</burnableByRecipe>
+		<thingCategories>
+			<li>WeaponsMelee</li>
+		</thingCategories>
+		<weaponClasses>
+			<li>MeleeBlunt</li>
+		</weaponClasses>
+		<relicChance>1</relicChance>
+		<inspectorTabs>
+			<li>ITab_Art</li>
+		</inspectorTabs>
+		<tradeTags>
+			<li>WeaponMelee</li>
+		</tradeTags>
+		<comps>
+			<li>
+				<compClass>CompQuality</compClass>
+			</li>
+			<li Class="CompProperties_Art">
+				<nameMaker>NamerArtWeaponMelee</nameMaker>
+				<descriptionMaker>ArtDescription_WeaponMelee</descriptionMaker>
+				<minQualityForArtistic>Excellent</minQualityForArtistic>
+			</li>
+		</comps>
+	</ThingDef>
+
+	<!-- Solar tier (BOR Tier I) -->
+
+	<ThingDef ParentName="Bamba_BOR_BaseMeleeWeapon_Sharp_NoRecipe" MayRequireAnyOf="bambaryla.bor.redux,bambaryla.bor">
+		<defName>Bamba_Melee_Solar_Knife</defName>
+		<label>solar knife</label>
+		<description>A solar-tier knife built from sunsteel and sunweave composites.</description>
+		<graphicData>
+			<texPath>Bamba_Melee/Weapons/Knives/Knife_Solar</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>0.75</drawSize>
+		</graphicData>
+		<techLevel>Ultra</techLevel>
+		<statBases>
+			<Mass>0.3</Mass>
+			<MarketValue>1700</MarketValue>
+			<Beauty>3</Beauty>
+		</statBases>
+		<equippedStatOffsets>
+			<WorkSpeedGlobal>0.15</WorkSpeedGlobal>
+		</equippedStatOffsets>
+		<weaponTags>
+			<li>BOR_Melee_I</li>
+			<li MayRequire="ceteam.combatextended">CE_OneHandedWeapon</li>
+			<li>BOR_Kind_Solar_Townsman</li>
+			<li>BOR_Kind_Solar_Farmer</li>
+			<li>BOR_Kind_Solar_Logger</li>
+			<li>BOR_Kind_Solar_Grafter</li>
+		</weaponTags>
+		<equippedAngleOffset>-65</equippedAngleOffset>
+		<tools>
+			<li>
+				<label>handle</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>14</power>
+				<cooldownTime>1.2</cooldownTime>
+			</li>
+			<li>
+				<label>point</label>
+				<capacities>
+					<li>Stab</li>
+				</capacities>
+				<power>26</power>
+				<cooldownTime>1.2</cooldownTime>
+			</li>
+			<li>
+				<label>edge</label>
+				<capacities>
+					<li>Cut</li>
+				</capacities>
+				<power>25</power>
+				<cooldownTime>0.8</cooldownTime>
+			</li>
+		</tools>
+	</ThingDef>
+
+	<ThingDef ParentName="Bamba_BOR_BaseMeleeWeapon_Sharp_NoRecipe" MayRequireAnyOf="bambaryla.bor.redux,bambaryla.bor">
+		<defName>Bamba_Melee_Solar_Gladius</defName>
+		<label>solar gladius</label>
+		<description>A solar-tier gladius built from sunsteel and sunweave composites.</description>
+		<graphicData>
+			<texPath>Bamba_Melee/Weapons/Gladius_Solar</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1.25</drawSize>
+		</graphicData>
+		<techLevel>Ultra</techLevel>
+		<statBases>
+			<Mass>0.35</Mass>
+			<MarketValue>4600</MarketValue>
+			<Beauty>3</Beauty>
+		</statBases>
+		<weaponTags>
+			<li>BOR_Melee_I</li>
+			<li MayRequire="ceteam.combatextended">CE_OneHandedWeapon</li>
+			<li>BOR_Kind_Solar_Townsman</li>
+			<li>BOR_Kind_Solar_Skirmisher</li>
+			<li>BOR_Kind_Solar_Blademaster</li>
+		</weaponTags>
+		<equippedAngleOffset>-65</equippedAngleOffset>
+		<tools>
+			<li>
+				<label>handle</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>15</power>
+				<cooldownTime>1.3</cooldownTime>
+			</li>
+			<li>
+				<label>point</label>
+				<capacities>
+					<li>Stab</li>
+				</capacities>
+				<power>30</power>
+				<armorPenetration>0.6</armorPenetration>
+				<cooldownTime>1.3</cooldownTime>
+			</li>
+			<li>
+				<label>edge</label>
+				<capacities>
+					<li>Cut</li>
+				</capacities>
+				<power>30</power>
+				<cooldownTime>1.3</cooldownTime>
+			</li>
+		</tools>
+	</ThingDef>
+
+	<ThingDef ParentName="Bamba_BOR_BaseMeleeWeapon_Sharp_NoRecipe" MayRequireAnyOf="bambaryla.bor.redux,bambaryla.bor">
+		<defName>Bamba_Melee_Solar_Longsword</defName>
+		<label>solar longsword</label>
+		<description>A solar-tier longsword exploiting sunsteel's structural stability for heavier strikes.</description>
+		<graphicData>
+			<texPath>Bamba_Melee/Weapons/Longsword_Solar</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1.5</drawSize>
+		</graphicData>
+		<techLevel>Ultra</techLevel>
+		<statBases>
+			<Mass>0.8</Mass>
+			<MarketValue>5680</MarketValue>
+			<Beauty>3</Beauty>
+		</statBases>
+		<weaponTags>
+			<li>BOR_Melee_I</li>
+			<li>BOR_Kind_Solar_Blademaster</li>
+		</weaponTags>
+		<equippedAngleOffset>-65</equippedAngleOffset>
+		<tools>
+			<li>
+				<label>handle</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>15</power>
+				<cooldownTime>1.8</cooldownTime>
+			</li>
+			<li>
+				<label>point</label>
+				<capacities>
+					<li>Stab</li>
+				</capacities>
+				<power>40</power>
+				<armorPenetration>0.8</armorPenetration>
+				<cooldownTime>1.8</cooldownTime>
+			</li>
+			<li>
+				<label>edge</label>
+				<capacities>
+					<li>Cut</li>
+				</capacities>
+				<power>40</power>
+				<cooldownTime>1.8</cooldownTime>
+			</li>
+		</tools>
+	</ThingDef>
+
+	<ThingDef ParentName="Bamba_BOR_BaseMeleeWeapon_Blunt_NoRecipe" MayRequireAnyOf="bambaryla.bor.redux,bambaryla.bor">
+		<defName>Bamba_Melee_Solar_Hammer</defName>
+		<label>solar hammer</label>
+		<description>A solar-tier hammer that channels sunsteel density into concentrated blunt force.</description>
+		<graphicData>
+			<texPath>Bamba_Melee/Weapons/Hammer_Solar</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1.25</drawSize>
+		</graphicData>
+		<techLevel>Ultra</techLevel>
+		<statBases>
+			<Mass>0.512</Mass>
+			<MarketValue>5400</MarketValue>
+			<Beauty>3</Beauty>
+		</statBases>
+		<weaponTags>
+			<li>BOR_Melee_I</li>
+			<li MayRequire="ceteam.combatextended">CE_OneHandedWeapon</li>
+			<li>BOR_Kind_Solar_Miner</li>
+		</weaponTags>
+		<equippedAngleOffset>-65</equippedAngleOffset>
+		<tools>
+			<li>
+				<label>handle</label>
+				<capacities>
+					<li>Poke</li>
+				</capacities>
+				<power>17</power>
+				<cooldownTime>1.5</cooldownTime>
+			</li>
+			<li>
+				<label>head</label>
+				<labelUsedInLogging>false</labelUsedInLogging>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>40</power>
+				<cooldownTime>1.5</cooldownTime>
+			</li>
+		</tools>
+	</ThingDef>
+
+	<ThingDef ParentName="Bamba_BaseMeleeWeapon_Blunt_NoRecipe">
+		<defName>Bamba_Melee_Solar_Polehammer</defName>
+		<label>solar polehammer</label>
+		<description>A very ornate polehammer combining hammer and polearm into a single decorative and devastating weapon. Built from sunsteel with sunweave reinforcement, its ornate geometry conceals an effectiveness far beyond normal tech levels.</description>
+		<graphicData>
+			<texPath>Bamba_Melee/Weapons/Polehammers/Polehammer_Solar</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1.25</drawSize>
+		</graphicData>
+		<techLevel>Ultra</techLevel>
+		<statBases>
+			<Mass>1.0</Mass>
+			<MarketValue>6000</MarketValue>
+			<Beauty>3</Beauty>
+		</statBases>
+		<weaponTags>
+			<li>BOR_Melee_I</li>
+		</weaponTags>
+		<equippedStatOffsets>
+			<MoveSpeed>-0.15</MoveSpeed>
+		</equippedStatOffsets>
+		<tools>
+			<li>
+				<label>handle</label>
+				<capacities>
+					<li>Poke</li>
+				</capacities>
+				<power>18</power>
+				<cooldownTime>1.8</cooldownTime>
+			</li>
+			<li>
+				<label>head</label>
+				<labelUsedInLogging>false</labelUsedInLogging>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>50</power>
+				<cooldownTime>1.8</cooldownTime>
+			</li>
+		</tools>
+	</ThingDef>
+
+	<ThingDef ParentName="Bamba_BOR_BaseMeleeWeapon_Blunt_NoRecipe" MayRequireAnyOf="bambaryla.bor.redux,bambaryla.bor">
+		<defName>Bamba_Melee_Solar_Mace</defName>
+		<label>solar mace</label>
+		<description>A solar-tier mace that channels sunsteel density into concentrated blunt force.</description>
+		<graphicData>
+			<texPath>Bamba_Melee/Weapons/maces/mace_sol</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<techLevel>Ultra</techLevel>
+		<statBases>
+			<Mass>0.5</Mass>
+			<MarketValue>5100</MarketValue>
+			<Beauty>3</Beauty>
+		</statBases>
+		<weaponTags>
+			<li>BOR_Melee_I</li>
+			<li MayRequire="ceteam.combatextended">CE_OneHandedWeapon</li>
+			<li>BOR_Kind_Solar_Mechbreaker</li>
+		</weaponTags>
+		<equippedAngleOffset>-65</equippedAngleOffset>
+		<tools>
+			<li>
+				<label>handle</label>
+				<capacities>
+					<li>Poke</li>
+				</capacities>
+				<power>12</power>
+				<cooldownTime>1.35</cooldownTime>
+			</li>
+			<li>
+				<label>head</label>
+				<labelUsedInLogging>false</labelUsedInLogging>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>25</power>
+				<cooldownTime>1.35</cooldownTime>
+				<extraMeleeDamages>
+					<li>
+						<def>EMP</def>
+						<amount>14</amount>
+					</li>
+				</extraMeleeDamages>
+			</li>
+		</tools>
+	</ThingDef>
+
+	<ThingDef ParentName="Bamba_BOR_BaseMeleeWeapon_Blunt_NoRecipe" MayRequireAnyOf="bambaryla.bor.redux,bambaryla.bor">
+		<defName>Bamba_Melee_Solar_Baton</defName>
+		<label>solar baton</label>
+		<description>A solar-tier baton that channels sunsteel density into concentrated blunt force.</description>
+		<graphicData>
+			<texPath>Bamba_Melee/Weapons/lethalnt/nonlethal_sol</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<techLevel>Ultra</techLevel>
+		<statBases>
+			<Mass>0.55</Mass>
+			<MarketValue>4400</MarketValue>
+			<Beauty>3</Beauty>
+		</statBases>
+		<weaponTags>
+			<li>BOR_Melee_I</li>
+			<li MayRequire="ceteam.combatextended">CE_OneHandedWeapon</li>
+			<li>BOR_Kind_Solar_RiotPolice</li>
+		</weaponTags>
+		<equippedAngleOffset>-65</equippedAngleOffset>
+		<tools>
+			<li>
+				<label>handle</label>
+				<capacities>
+					<li>Poke</li>
+				</capacities>
+				<power>6</power>
+				<cooldownTime>1.4</cooldownTime>
+			</li>
+			<li>
+				<label>head</label>
+				<labelUsedInLogging>false</labelUsedInLogging>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>12</power>
+				<cooldownTime>1.4</cooldownTime>
+				<extraMeleeDamages>
+					<li>
+						<def>Stun</def>
+						<amount>14</amount>
+					</li>
+				</extraMeleeDamages>
+			</li>
+		</tools>
+	</ThingDef>
+
+	<ThingDef ParentName="Bamba_BOR_BaseMeleeWeapon_Sharp_NoRecipe" MayRequireAnyOf="bambaryla.bor.redux,bambaryla.bor">
+		<defName>Bamba_Melee_Solar_Spear</defName>
+		<label>solar spear</label>
+		<description>A solar-tier spear balancing fast recoveries with deep puncture capability.</description>
+		<graphicData>
+			<texPath>Bamba_Melee/Weapons/Spear_Solar</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1.5</drawSize>
+		</graphicData>
+		<techLevel>Ultra</techLevel>
+		<statBases>
+			<Mass>0.8</Mass>
+			<MarketValue>4980</MarketValue>
+			<Beauty>3</Beauty>
+			<VEF_MeleeWeaponRange MayRequire="OskarPotocki.VanillaFactionsExpanded.Core">2.84</VEF_MeleeWeaponRange>
+		</statBases>
+		<weaponTags>
+			<li>BOR_Melee_I</li>
+			<li>BOR_Kind_Solar_Skirmisher</li>
+		</weaponTags>
+		<equippedAngleOffset>-25</equippedAngleOffset>
+		<tools>
+			<li>
+				<label>shaft</label>
+				<capacities>
+					<li>Blunt</li>
+					<li>Poke</li>
+				</capacities>
+				<power>22</power>
+				<cooldownTime>1.7</cooldownTime>
+			</li>
+			<li>
+				<label>point</label>
+				<capacities>
+					<li>Stab</li>
+				</capacities>
+				<power>45</power>
+				<armorPenetration>1.2</armorPenetration>
+				<cooldownTime>1.7</cooldownTime>
+			</li>
+		</tools>
+
+	</ThingDef>
+
+	<!-- kwazaari tier (BOR Tier II) -->
+
+	<ThingDef ParentName="Bamba_BOR_BaseMeleeWeapon_Sharp_NoRecipe" MayRequireAnyOf="bambaryla.bor.redux,bambaryla.bor">
+		<defName>Bamba_Melee_Quasar_Knife</defName>
+		<label>kwazaari knife</label>
+		<description>One of the oldest tools in human history - a blade with a handle. Useful for stabbing people and there's not a single job that doesn't benefit from a knife. This kwazaari utilitarian design prioritizes function over form, crafted from kwazaari alloy for superior performance.</description>
+		<graphicData>
+			<texPath>Bamba_Melee/Weapons/Knives/Knife_Quasar</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>0.75</drawSize>
+		</graphicData>
+		<techLevel>Ultra</techLevel>
+		<statBases>
+			<Mass>0.25</Mass>
+			<MarketValue>4000</MarketValue>
+		</statBases>
+		<equippedStatOffsets>
+			<WorkSpeedGlobal>0.2</WorkSpeedGlobal>
+		</equippedStatOffsets>
+		<weaponTags>
+			<li>BOR_Melee_II</li>
+			<li MayRequire="ceteam.combatextended">CE_OneHandedWeapon</li>
+		</weaponTags>
+		<equippedAngleOffset>-65</equippedAngleOffset>
+		<tools>
+			<li>
+				<label>handle</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>15</power>
+				<cooldownTime>1.0</cooldownTime>
+			</li>
+			<li>
+				<label>point</label>
+				<capacities>
+					<li>Stab</li>
+				</capacities>
+				<power>33</power>
+				<cooldownTime>1.0</cooldownTime>
+			</li>
+			<li>
+				<label>edge</label>
+				<capacities>
+					<li>Cut</li>
+				</capacities>
+				<power>32</power>
+				<cooldownTime>0.6</cooldownTime>
+			</li>
+		</tools>
+	</ThingDef>
+
+	<ThingDef ParentName="Bamba_BOR_BaseMeleeWeapon_Sharp_NoRecipe" MayRequireAnyOf="bambaryla.bor.redux,bambaryla.bor">
+		<defName>Bamba_Melee_Quasar_Gladius</defName>
+		<label>kwazaari gladius</label>
+		<description>A quasar-tier gladius formed from kwazaari alloy and kwazaari universal parts.</description>
+		<graphicData>
+			<texPath>Bamba_Melee/Weapons/Gladius_Quasar</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1.25</drawSize>
+		</graphicData>
+		<techLevel>Ultra</techLevel>
+		<statBases>
+			<Mass>0.3</Mass>
+			<MarketValue>9000</MarketValue>
+		</statBases>
+		<weaponTags>
+			<li>BOR_Melee_II</li>
+			<li MayRequire="ceteam.combatextended">CE_OneHandedWeapon</li>
+			<li>BOR_Kind_Kwazaari_Skirmisher</li>
+			<li>BOR_Kind_Kwazaari_Blademaster</li>
+		</weaponTags>
+		<equippedAngleOffset>-65</equippedAngleOffset>
+		<tools>
+			<li>
+				<label>handle</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>17</power>
+				<cooldownTime>1.1</cooldownTime>
+			</li>
+			<li>
+				<label>point</label>
+				<capacities>
+					<li>Stab</li>
+				</capacities>
+				<power>37</power>
+				<armorPenetration>0.9</armorPenetration>
+				<cooldownTime>1.1</cooldownTime>
+			</li>
+			<li>
+				<label>edge</label>
+				<capacities>
+					<li>Cut</li>
+				</capacities>
+				<power>37</power>
+				<cooldownTime>1.1</cooldownTime>
+			</li>
+		</tools>
+
+	</ThingDef>
+
+	<ThingDef ParentName="Bamba_BOR_BaseMeleeWeapon_Sharp_NoRecipe" MayRequireAnyOf="bambaryla.bor.redux,bambaryla.bor">
+		<defName>Bamba_Melee_Quasar_Longsword</defName>
+		<label>kwazaari longsword</label>
+		<description>A quasar-tier longsword tuned around extreme edge throughput and momentum control.</description>
+		<graphicData>
+			<texPath>Bamba_Melee/Weapons/Longsword_Quasar</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1.5</drawSize>
+		</graphicData>
+		<techLevel>Ultra</techLevel>
+		<statBases>
+			<Mass>0.65</Mass>
+			<MarketValue>9200</MarketValue>
+		</statBases>
+		<weaponTags>
+			<li>BOR_LongSword_II</li>
+			<li>BOR_Melee_II</li>
+			<li>BOR_Kind_Kwazaari_Blademaster</li>
+		</weaponTags>
+		<equippedAngleOffset>-65</equippedAngleOffset>
+		<tools>
+			<li>
+				<label>handle</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>17</power>
+				<cooldownTime>1.6</cooldownTime>
+			</li>
+			<li>
+				<label>point</label>
+				<capacities>
+					<li>Stab</li>
+				</capacities>
+				<power>55</power>
+				<armorPenetration>1.2</armorPenetration>
+				<cooldownTime>1.6</cooldownTime>
+			</li>
+			<li>
+				<label>edge</label>
+				<capacities>
+					<li>Cut</li>
+				</capacities>
+				<power>55</power>
+				<cooldownTime>1.6</cooldownTime>
+			</li>
+		</tools>
+
+	</ThingDef>
+
+	<ThingDef ParentName="Bamba_BOR_BaseMeleeWeapon_Blunt_NoRecipe" MayRequireAnyOf="bambaryla.bor.redux,bambaryla.bor">
+		<defName>Bamba_Melee_Quasar_Hammer</defName>
+		<label>kwazaari hammer</label>
+		<description>A quasar-tier hammer using kwazaari-grade internals to deliver overwhelming blunt trauma.</description>
+		<graphicData>
+			<texPath>Bamba_Melee/Weapons/Hammer_Quasar</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1.25</drawSize>
+		</graphicData>
+		<techLevel>Ultra</techLevel>
+		<statBases>
+			<Mass>0.41</Mass>
+			<MarketValue>8000</MarketValue>
+		</statBases>
+		<weaponTags>
+			<li>BOR_Melee_II</li>
+			<li MayRequire="ceteam.combatextended">CE_OneHandedWeapon</li>
+		</weaponTags>
+		<equippedAngleOffset>-65</equippedAngleOffset>
+		<tools>
+			<li>
+				<label>handle</label>
+				<capacities>
+					<li>Poke</li>
+				</capacities>
+				<power>20</power>
+				<cooldownTime>1.3</cooldownTime>
+			</li>
+			<li>
+				<label>head</label>
+				<labelUsedInLogging>false</labelUsedInLogging>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>48</power>
+				<cooldownTime>1.3</cooldownTime>
+			</li>
+		</tools>
+	</ThingDef>
+
+	<ThingDef ParentName="Bamba_BaseMeleeWeapon_Blunt_NoRecipe">
+		<defName>Bamba_Melee_Quasar_Polehammer</defName>
+		<label>kwazaari polehammer</label>
+		<description>A combination of two ancient designs: a hammer and a long stick, perfected through kwazaari engineering. This utilitarian polehammer uses kwazaari alloy construction for overwhelming efficiency, though offering no aesthetic joy.</description>
+		<graphicData>
+			<texPath>Bamba_Melee/Weapons/Polehammers/Polehammer_Quasar</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1.25</drawSize>
+		</graphicData>
+		<techLevel>Ultra</techLevel>
+		<statBases>
+			<Mass>0.7</Mass>
+			<MarketValue>8400</MarketValue>
+		</statBases>
+		<weaponTags>
+			<li>BOR_Melee_II</li>
+		</weaponTags>
+		<equippedStatOffsets>
+			<MoveSpeed>-0.1</MoveSpeed>
+		</equippedStatOffsets>
+		<tools>
+			<li>
+				<label>handle</label>
+				<capacities>
+					<li>Poke</li>
+				</capacities>
+				<power>22</power>
+				<cooldownTime>1.5</cooldownTime>
+			</li>
+			<li>
+				<label>head</label>
+				<labelUsedInLogging>false</labelUsedInLogging>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>60</power>
+				<cooldownTime>1.5</cooldownTime>
+			</li>
+		</tools>
+	</ThingDef>
+
+	<ThingDef ParentName="Bamba_BOR_BaseMeleeWeapon_Blunt_NoRecipe" MayRequireAnyOf="bambaryla.bor.redux,bambaryla.bor">
+		<defName>Bamba_Melee_Quasar_Mace</defName>
+		<label>kwazaari mace</label>
+		<description>A quasar-tier mace using kwazaari-grade internals to deliver overwhelming blunt trauma.</description>
+		<graphicData>
+			<texPath>Bamba_Melee/Weapons/maces/mace_qua</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<techLevel>Ultra</techLevel>
+		<statBases>
+			<Mass>0.4</Mass>
+			<MarketValue>5700</MarketValue>
+		</statBases>
+		<weaponTags>
+			<li>BOR_Melee_II</li>
+			<li MayRequire="ceteam.combatextended">CE_OneHandedWeapon</li>
+			<li>BOR_Kind_Kwazaari_Mechbreaker</li>
+		</weaponTags>
+		<equippedAngleOffset>-65</equippedAngleOffset>
+		<tools>
+			<li>
+				<label>handle</label>
+				<capacities>
+					<li>Poke</li>
+				</capacities>
+				<power>14</power>
+				<cooldownTime>1.2</cooldownTime>
+			</li>
+			<li>
+				<label>head</label>
+				<labelUsedInLogging>false</labelUsedInLogging>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>32</power>
+				<cooldownTime>1.2</cooldownTime>
+				<extraMeleeDamages>
+					<li>
+						<def>EMP</def>
+						<amount>22</amount>
+					</li>
+				</extraMeleeDamages>
+			</li>
+		</tools>
+	</ThingDef>
+
+	<ThingDef ParentName="Bamba_BOR_BaseMeleeWeapon_Blunt_NoRecipe" MayRequireAnyOf="bambaryla.bor.redux,bambaryla.bor">
+		<defName>Bamba_Melee_Quasar_Baton</defName>
+		<label>kwazaari baton</label>
+		<description>A quasar-tier baton using kwazaari-grade internals to deliver overwhelming blunt trauma.</description>
+		<graphicData>
+			<texPath>Bamba_Melee/Weapons/lethalnt/nonlethal_qua</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<techLevel>Ultra</techLevel>
+		<statBases>
+			<Mass>0.45</Mass>
+			<MarketValue>6800</MarketValue>
+		</statBases>
+		<weaponTags>
+			<li>BOR_Melee_II</li>
+			<li MayRequire="ceteam.combatextended">CE_OneHandedWeapon</li>
+			<li>BOR_Kind_Kwazaari_RiotPolice</li>
+		</weaponTags>
+		<equippedAngleOffset>-65</equippedAngleOffset>
+		<tools>
+			<li>
+				<label>handle</label>
+				<capacities>
+					<li>Poke</li>
+				</capacities>
+				<power>7</power>
+				<cooldownTime>1.3</cooldownTime>
+			</li>
+			<li>
+				<label>head</label>
+				<labelUsedInLogging>false</labelUsedInLogging>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>16</power>
+				<cooldownTime>1.3</cooldownTime>
+				<extraMeleeDamages>
+					<li>
+						<def>Stun</def>
+						<amount>22</amount>
+					</li>
+				</extraMeleeDamages>
+			</li>
+		</tools>
+	</ThingDef>
+
+	<ThingDef ParentName="Bamba_BOR_BaseMeleeWeapon_Sharp_NoRecipe" MayRequireAnyOf="bambaryla.bor.redux,bambaryla.bor">
+		<defName>Bamba_Melee_Quasar_Spear</defName>
+		<label>kwazaari spear</label>
+		<description>A quasar-tier spear engineered for fast thrust cycles and improved puncture transfer.</description>
+		<graphicData>
+			<texPath>Bamba_Melee/Weapons/Spear_Quasar</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1.5</drawSize>
+		</graphicData>
+		<techLevel>Ultra</techLevel>
+		<statBases>
+			<Mass>0.656</Mass>
+			<MarketValue>9200</MarketValue>
+			<VEF_MeleeWeaponRange MayRequire="OskarPotocki.VanillaFactionsExpanded.Core">2.84</VEF_MeleeWeaponRange>
+		</statBases>
+		<weaponTags>
+			<li>BOR_Melee_II</li>
+			<li>BOR_Kind_Kwazaari_Skirmisher</li>
+		</weaponTags>
+		<equippedAngleOffset>-25</equippedAngleOffset>
+		<tools>
+			<li>
+				<label>shaft</label>
+				<capacities>
+					<li>Blunt</li>
+					<li>Poke</li>
+				</capacities>
+				<power>25</power>
+				<cooldownTime>1.5</cooldownTime>
+			</li>
+			<li>
+				<label>point</label>
+				<capacities>
+					<li>Stab</li>
+				</capacities>
+				<power>60</power>
+				<armorPenetration>1.5</armorPenetration>
+				<cooldownTime>1.5</cooldownTime>
+			</li>
+		</tools>
+
+	</ThingDef>
+
+	<!-- Tenebral tier (BOR Tier III) -->
+
+	<ThingDef ParentName="Bamba_BOR_BaseMeleeWeapon_Sharp_NoRecipe" MayRequireAnyOf="bambaryla.bor.redux,bambaryla.bor">
+		<defName>Bamba_Melee_Tenebral_Knife</defName>
+		<label>tenebral knife</label>
+		<description>One of the oldest tools in human history - a blade with a handle. Useful for stabbing people and there's not a single job that doesn't benefit from a knife. This one is shaped from a tenebrite crystal into a form vaguely resembling a proper blade, serving its cutting function with terrifying crystalline effectiveness.</description>
+		<graphicData>
+			<texPath>Bamba_Melee/Weapons/Knives/Knife_Tenebral</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>0.75</drawSize>
+		</graphicData>
+		<techLevel>Archotech</techLevel>
+		<statBases>
+			<Mass>0.18</Mass>
+			<MarketValue>8000</MarketValue>
+		</statBases>
+		<equippedStatOffsets>
+			<WorkSpeedGlobal>0.3</WorkSpeedGlobal>
+		</equippedStatOffsets>
+		<weaponTags>
+			<li>BOR_Melee_III</li>
+			<li MayRequire="ceteam.combatextended">CE_OneHandedWeapon</li>
+		</weaponTags>
+		<equippedAngleOffset>-65</equippedAngleOffset>
+		<tools>
+			<li>
+				<label>handle</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>18</power>
+				<cooldownTime>1.7</cooldownTime>
+			</li>
+			<li>
+				<label>point</label>
+				<capacities>
+					<li>Stab</li>
+				</capacities>
+				<power>45</power>
+				<cooldownTime>0.7</cooldownTime>
+			</li>
+			<li>
+				<label>edge</label>
+				<capacities>
+					<li>Cut</li>
+				</capacities>
+				<power>44</power>
+				<cooldownTime>0.35</cooldownTime>
+			</li>
+		</tools>
+	</ThingDef>
+
+	<ThingDef ParentName="Bamba_BOR_BaseMeleeWeapon_Sharp_NoRecipe" MayRequireAnyOf="bambaryla.bor.redux,bambaryla.bor">
+		<defName>Bamba_Melee_Tenebral_Gladius</defName>
+		<label>tenebral gladius</label>
+		<description>A tenebral gladius leveraging tenebrite crystal behavior for severe close-range lethality.</description>
+		<graphicData>
+			<texPath>Bamba_Melee/Weapons/Gladius_Tenebral</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1.25</drawSize>
+		</graphicData>
+		<techLevel>Archotech</techLevel>
+		<statBases>
+			<Mass>0.25</Mass>
+			<MarketValue>16000</MarketValue>
+		</statBases>
+		<weaponTags>
+			<li>BOR_Melee_III</li>
+			<li MayRequire="ceteam.combatextended">CE_OneHandedWeapon</li>
+			<li>BOR_Kind_Tenebral_Slasher</li>
+		</weaponTags>
+		<equippedAngleOffset>-65</equippedAngleOffset>
+		<tools>
+			<li>
+				<label>handle</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>20</power>
+				<cooldownTime>0.8</cooldownTime>
+			</li>
+			<li>
+				<label>point</label>
+				<capacities>
+					<li>Stab</li>
+				</capacities>
+				<power>50</power>
+				<armorPenetration>1.5</armorPenetration>
+				<cooldownTime>0.8</cooldownTime>
+			</li>
+			<li>
+				<label>edge</label>
+				<capacities>
+					<li>Cut</li>
+				</capacities>
+				<power>50</power>
+				<cooldownTime>0.8</cooldownTime>
+			</li>
+		</tools>
+
+	</ThingDef>
+
+	<ThingDef ParentName="Bamba_BOR_BaseMeleeWeapon_Sharp_NoRecipe" MayRequireAnyOf="bambaryla.bor.redux,bambaryla.bor">
+		<defName>Bamba_Melee_Tenebral_Longsword</defName>
+		<label>tenebral longsword</label>
+		<description>A tenebral longsword with extreme edge density and highly compressed strike windows.</description>
+		<graphicData>
+			<texPath>Bamba_Melee/Weapons/Longsword_Tenebral</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1.5</drawSize>
+		</graphicData>
+		<techLevel>Archotech</techLevel>
+		<weaponTags>
+			<li>BOR_Melee_III</li>
+			<li>BOR_Kind_Tenebral_Slasher</li>
+		</weaponTags>
+		<statBases>
+			<Mass>0.5</Mass>
+			<MarketValue>19200</MarketValue>
+		</statBases>
+		<equippedAngleOffset>-65</equippedAngleOffset>
+		<tools>
+			<li>
+				<label>handle</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>20</power>
+				<cooldownTime>1.3</cooldownTime>
+			</li>
+			<li>
+				<label>point</label>
+				<capacities>
+					<li>Stab</li>
+				</capacities>
+				<power>70</power>
+				<armorPenetration>1.5</armorPenetration>
+				<cooldownTime>1.3</cooldownTime>
+			</li>
+			<li>
+				<label>edge</label>
+				<capacities>
+					<li>Cut</li>
+				</capacities>
+				<power>70</power>
+				<cooldownTime>1.3</cooldownTime>
+			</li>
+		</tools>
+
+	</ThingDef>
+
+	<ThingDef ParentName="Bamba_BOR_BaseMeleeWeapon_Blunt_NoRecipe" MayRequireAnyOf="bambaryla.bor.redux,bambaryla.bor">
+		<defName>Bamba_Melee_Tenebral_Hammer</defName>
+		<label>tenebral hammer</label>
+		<description>A tenebral hammer designed around dense crystal impact transfer and minimal recovery delay.</description>
+		<graphicData>
+			<texPath>Bamba_Melee/Weapons/Hammer_Tenebral</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1.25</drawSize>
+		</graphicData>
+		<weaponTags>
+			<li>BOR_Melee_III</li>
+			<li MayRequire="ceteam.combatextended">CE_OneHandedWeapon</li>
+		</weaponTags>
+		<techLevel>Archotech</techLevel>
+		<statBases>
+			<Mass>0.3</Mass>
+			<MarketValue>16000</MarketValue>
+		</statBases>
+		<equippedAngleOffset>-65</equippedAngleOffset>
+		<tools>
+			<li>
+				<label>handle</label>
+				<capacities>
+					<li>Poke</li>
+				</capacities>
+				<power>25</power>
+				<cooldownTime>1.2</cooldownTime>
+			</li>
+			<li>
+				<label>head</label>
+				<labelUsedInLogging>false</labelUsedInLogging>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>58</power>
+				<cooldownTime>1.2</cooldownTime>
+			</li>
+		</tools>
+	</ThingDef>
+
+	<ThingDef ParentName="Bamba_BaseMeleeWeapon_Blunt_NoRecipe">
+		<defName>Bamba_Melee_Tenebral_Polehammer</defName>
+		<label>tenebral polehammer</label>
+		<description>A combination of two ancient designs: a hammer and a long stick, now assembled from tenebrite crystals into vague shapes. Its crystalline impact delivery transmits crushing force with unnatural efficiency.</description>
+		<graphicData>
+			<texPath>Bamba_Melee/Weapons/Polehammers/Polehammer_Tenebral</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1.25</drawSize>
+		</graphicData>
+		<techLevel>Archotech</techLevel>
+		<statBases>
+			<Mass>0.5</Mass>
+			<MarketValue>16400</MarketValue>
+		</statBases>
+		<weaponTags>
+			<li>BOR_Melee_III</li>
+			<li>BOR_Kind_Tenebral_Pummeler</li>
+		</weaponTags>
+		<equippedStatOffsets>
+			<MoveSpeed>-0.05</MoveSpeed>
+		</equippedStatOffsets>
+		<tools>
+			<li>
+				<label>handle</label>
+				<capacities>
+					<li>Poke</li>
+				</capacities>
+				<power>22</power>
+				<cooldownTime>1.4</cooldownTime>
+			</li>
+			<li>
+				<label>head</label>
+				<labelUsedInLogging>false</labelUsedInLogging>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>75</power>
+				<cooldownTime>1.4</cooldownTime>
+			</li>
+		</tools>
+	</ThingDef>
+
+	<ThingDef ParentName="Bamba_BOR_BaseMeleeWeapon_Blunt_NoRecipe" MayRequireAnyOf="bambaryla.bor.redux,bambaryla.bor">
+		<defName>Bamba_Melee_Tenebral_Mace</defName>
+		<label>tenebral mace</label>
+		<description>A tenebral mace using kwazaari-grade internals to deliver overwhelming blunt trauma.</description>
+		<graphicData>
+			<texPath>Bamba_Melee/Weapons/maces/mace_ten</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<techLevel>Archotech</techLevel>
+		<statBases>
+			<Mass>0.28</Mass>
+			<MarketValue>15400</MarketValue>
+		</statBases>
+		<weaponTags>
+			<li>BOR_Melee_III</li>
+			<li MayRequire="ceteam.combatextended">CE_OneHandedWeapon</li>
+		</weaponTags>
+		<equippedAngleOffset>-65</equippedAngleOffset>
+		<tools>
+			<li>
+				<label>handle</label>
+				<capacities>
+					<li>Poke</li>
+				</capacities>
+				<power>15</power>
+				<cooldownTime>1.0</cooldownTime>
+			</li>
+			<li>
+				<label>head</label>
+				<labelUsedInLogging>false</labelUsedInLogging>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>45</power>
+				<cooldownTime>1.0</cooldownTime>
+				<extraMeleeDamages>
+					<li>
+						<def>EMP</def>
+						<amount>30</amount>
+					</li>
+				</extraMeleeDamages>
+			</li>
+		</tools>
+	</ThingDef>
+
+	<ThingDef ParentName="Bamba_BOR_BaseMeleeWeapon_Blunt_NoRecipe" MayRequireAnyOf="bambaryla.bor.redux,bambaryla.bor">
+		<defName>Bamba_Melee_Tenebral_Baton</defName>
+		<label>tenebral baton</label>
+		<description>A tenebral baton using kwazaari-grade internals to deliver overwhelming blunt trauma.</description>
+		<graphicData>
+			<texPath>Bamba_Melee/Weapons/lethalnt/nonlethal_ten</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<techLevel>Archotech</techLevel>
+		<statBases>
+			<Mass>0.3</Mass>
+			<MarketValue>14000</MarketValue>
+		</statBases>
+		<weaponTags>
+			<li>BOR_Melee_III</li>
+			<li MayRequire="ceteam.combatextended">CE_OneHandedWeapon</li>
+		</weaponTags>
+		<equippedAngleOffset>-65</equippedAngleOffset>
+		<tools>
+			<li>
+				<label>handle</label>
+				<capacities>
+					<li>Poke</li>
+				</capacities>
+				<power>7</power>
+				<cooldownTime>1.1</cooldownTime>
+			</li>
+			<li>
+				<label>head</label>
+				<labelUsedInLogging>false</labelUsedInLogging>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>22</power>
+				<cooldownTime>1.1</cooldownTime>
+				<extraMeleeDamages>
+					<li>
+						<def>Stun</def>
+						<amount>30</amount>
+					</li>
+				</extraMeleeDamages>
+			</li>
+		</tools>
+	</ThingDef>
+
+	<ThingDef ParentName="Bamba_BOR_BaseMeleeWeapon_Sharp_NoRecipe" MayRequireAnyOf="bambaryla.bor.redux,bambaryla.bor">
+		<defName>Bamba_Melee_Tenebral_Spear</defName>
+		<label>tenebral spear</label>
+		<description>A tenebral spear with exceptional puncture force and very low attack recovery time.</description>
+		<graphicData>
+			<texPath>Bamba_Melee/Weapons/Spear_Tenebral</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1.5</drawSize>
+		</graphicData>
+		<weaponTags>
+			<li>BOR_Melee_III</li>
+			<li>BOR_Kind_Tenebral_Vanquisher</li>
+			<li MayRequire="ceteam.combatextended">CE_OneHandedWeapon</li>
+		</weaponTags>
+		<techLevel>Archotech</techLevel>
+		<statBases>
+			<Mass>0.5</Mass>
+			<MarketValue>15200</MarketValue>
+			<VEF_MeleeWeaponRange MayRequire="OskarPotocki.VanillaFactionsExpanded.Core">2.84</VEF_MeleeWeaponRange>
+		</statBases>
+		<equippedAngleOffset>-25</equippedAngleOffset>
+		<tools>
+			<li>
+				<label>shaft</label>
+				<capacities>
+					<li>Blunt</li>
+					<li>Poke</li>
+				</capacities>
+				<power>30</power>
+				<cooldownTime>1.1</cooldownTime>
+			</li>
+			<li>
+				<label>point</label>
+				<capacities>
+					<li>Stab</li>
+				</capacities>
+				<power>80</power>
+				<armorPenetration>1.9</armorPenetration>
+				<cooldownTime>1.1</cooldownTime>
+			</li>
+		</tools>
+	</ThingDef>
+
+</Defs>
