@@ -61,6 +61,7 @@ NAV = [
     ("Bionics & medicine", [("bionics", "Bionics"), ("medicine", "Medicine & drugs")]),
     ("Tenebral road", [("tenebral-road", "The Tenebral road"), ("orientis", "Orientis")]),
     ("Integrations", [("integrations", "DLCs & mods")]),
+    ("Credits", [("credits", "Credits")]),
 ]
 
 DISCORD = "https://discord.gg/Pgp89VwsKw"
