@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+	<!-- A mod settings checkbox (Vanilla Expanded Framework). It patches nothing: BeyondOurReach.BorSettings reads it.
+	     BOR's anti-air tiers only apply to Combat Extended CIWS and VFE Security point defense, so it shows with either. -->
+	<Operation Class="ModSettingsFramework.PatchOperationModOption">
+		<id>BOR_AntiAirTiers</id>
+		<defaultValue>True</defaultValue>
+		<order>20</order>
+		<label>Tiered anti-air</label>
+		<tooltip>On: anti-air turrets only shoot down drop pods of factions up to one tier above their own. Shots at sturdier pods deflect. Off: anti-air shoots down any hostile drop pod, as it does without BOR.\n\nThe guests of the strange signals are never shot at either way.</tooltip>
+		<mods>
+			<li>Combat Extended</li>
+			<li>Vanilla Furniture Expanded - Security</li>
+		</mods>
+	</Operation>
+</Patch>

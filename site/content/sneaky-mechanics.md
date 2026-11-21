@@ -14,6 +14,8 @@ BOR's factions arrive in drop pods, and every faction has a tier: Solar is I, Kw
 
 The turret still fires, and spends its fuel or ammo doing it. The shot hits the pod, throws a spark and floats a "Deflected" over it. Pods from the strange signal chains are never shot at, so the visitor you're waiting for isn't taken out of the sky by your own defenses.
 
+To play without tiers, turn off **Tiered anti-air** in BOR's mod settings. Anti-air then downs any hostile pod, as it does without BOR, and the signal visitors stay safe.
+
 ## Medicine with a care level of its own
 
 Vanilla gives you four settings for how good a patient's medicine can be. Mods add medicine that fits none of them. **Medicine Care** gives every modded medicine its own care level in the medical tab, sorted by potency and placed above vanilla's ultratech, so you can say exactly which grade a patient may get. The setting shows one icon per level, and you can click or drag across them.
@@ -38,7 +40,7 @@ Artifacts go the other way. A Kwazaari artifact has to be analyzed at the solar 
 
 ## No research for sale
 
-[Research Commission](https://steamcommunity.com/workshop/filedetails/?id=3822832387) lets friendly factions buy and sell research. BOR's factions never trade research with you, and BOR research can only be earned in your colony, so with Research Commission loaded, both are taken out of its offers.
+[Research Commission](https://steamcommunity.com/workshop/filedetails/?id=3822832387) lets friendly factions buy and sell research. BOR's factions never trade research with you, and BOR research can only be earned in your colony, so with Research Commission loaded, both are taken out of its offers. To let BOR trade research like everyone else, turn off **Research Commission leaves BOR out** in BOR's mod settings.
 
 ## Shields that look like BOR's
 

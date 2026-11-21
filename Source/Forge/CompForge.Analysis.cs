@@ -30,6 +30,11 @@ public partial class CompForge
         {
             return false;
         }
+        // The mod settings can make the techprof subpersona core replicable.
+        if (def.defName == "TechprofSubpersonaCore" && BorSettings.ReplicateTechprof)
+        {
+            return false;
+        }
         if (list.Contains(def.defName))
         {
             return true;

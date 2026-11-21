@@ -7,7 +7,8 @@ namespace BeyondOurReach.ResearchCommission;
 /// <summary>
 /// Research Commission (mrk.researchcommission) lets any friendly faction buy or sell research. BOR factions never trade
 /// research with the player and BOR research can only be earned in the colony, so both are removed from the mod's
-/// eligibility checks. This assembly only loads when that mod is active (see LoadFolders.xml).
+/// eligibility checks, unless the "Research Commission leaves BOR out" mod setting is off. This assembly only loads when
+/// that mod is active (see LoadFolders.xml).
 /// </summary>
 [StaticConstructorOnStartup]
 public static class ResearchCommissionCompat
@@ -34,8 +35,10 @@ public static class ResearchCommissionCompat
         }
     }
 
+    // The setting is read on every check, so toggling it applies at once.
     private static bool IsBor(Def? def) =>
-        def?.modContentPack != null
+        BorSettings.ResearchCommissionExcludesBor
+        && def?.modContentPack != null
         && string.Equals(def.modContentPack.PackageId, BorPackageId, System.StringComparison.OrdinalIgnoreCase);
 
     public static void IsEligibleClientPostfix(Faction? faction, ref bool __result)

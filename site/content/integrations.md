@@ -42,7 +42,7 @@ The [Umbral harbinger](mechs.html#umbral-harbinger) works as a shuttle that can 
 
 {{ banner("combat-extended", "") }}
 
-Guns, turrets and armor have hand-set CE stats, and the Solar, Kwazaari, Badzaari and Tenebral guns each have their own ammo. BOR adds new shells and vehicle ammunition too, and the less-lethal beam weapons only exist with CE. Muzzle Flash is supported as well. The [Weapons](weapons.html), [Turrets](turrets.html) and [Armor](armor.html) pages show the CE numbers when you flip the switch.
+Guns, turrets and armor have hand-set CE stats, and the Solar, Kwazaari, Badzaari and Tenebral guns each have their own ammo. The dark altar makes the Tenebral ammo along with the guns. BOR adds new shells and vehicle ammunition too, and the less-lethal beam weapons only exist with CE. Muzzle Flash is supported as well. The [Weapons](weapons.html), [Turrets](turrets.html) and [Armor](armor.html) pages show the CE numbers when you flip the switch.
 
 ## Adaptive Storage Framework
 
@@ -114,7 +114,7 @@ These outposts and upgrades come with World Domination 2 - Additional upgrades a
 - **Armors For All Post-Medieval Tech Levels**: extra abilities for armor.
 - **[LFS] UI Rethemed**: BOR's own windows match the UI Rethemed skin.
 - **More Shader Visuals**: better-looking shields.
-- **Research Commission**: BOR factions never sell research, and BOR research can't be bought.
+- **Research Commission**: BOR factions never sell research, and BOR research can't be bought. This can be turned off in the mod settings.
 - **Vanilla Races Expanded - Android**: android surgery accepts BOR medicine.
 
 ## Full list

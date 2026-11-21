@@ -589,16 +589,15 @@ public class JobDriver_AltarProduce : JobDriver_AltarWork
     protected override float Fraction(CompDarkAltar comp) => comp.ProduceFraction(Cell);
 
     // Brings the crystalline joints the altar requests before a run.
+    // The toil list must not depend on target B: the deposit destroys the joints, so after a
+    // reload B is null and toils are rebuilt. A jump skips the haul when there is nothing to fetch.
     protected override IEnumerable<Toil> PreWorkToils()
     {
-        if (!job.GetTarget(ComponentInd).IsValid)
-        {
-            yield break;
-        }
+        Toil deposit = ToilMaker.MakeToil("AltarDeposit");
+        yield return Toils_Jump.JumpIf(deposit, () => !job.GetTarget(ComponentInd).IsValid);
         yield return Toils_Goto.GotoThing(ComponentInd, PathEndMode.ClosestTouch).FailOnDespawnedNullOrForbidden(ComponentInd);
         yield return Toils_Haul.StartCarryThing(ComponentInd);
         yield return Toils_Goto.GotoThing(AltarInd, PathEndMode.InteractionCell);
-        Toil deposit = ToilMaker.MakeToil("AltarDeposit");
         deposit.initAction = () =>
         {
             Thing? carried = pawn.carryTracker.CarriedThing;

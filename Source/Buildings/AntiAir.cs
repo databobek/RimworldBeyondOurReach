@@ -24,6 +24,7 @@ public class DefModExtension_NoAntiAir : DefModExtension
 // Who may shoot down what. Turrets shoot at every hostile pod as before, but a hit only counts on drop pods of factions
 // up to one tier above the turret's own: Ultra-level anti-air downs up to Solar, Solar up to Kwazaari, Kwazaari up to
 // Tenebral, Tenebral up to Umbral. Anything harder just deflects the shot. The signal guests are never shot at.
+// With "Tiered anti-air" off in the mod settings, every pod can be downed, as in vanilla; the guests stay safe.
 public static class AntiAir
 {
     private const int DeflectTextInterval = GenTicks.TicksPerRealSecond;
@@ -48,7 +49,8 @@ public static class AntiAir
         return tier;
     }
 
-    public static bool CanDown(Thing? turret, Thing skyfaller) => PodTier(skyfaller) <= Tier(turret?.def) + 1;
+    public static bool CanDown(Thing? turret, Thing skyfaller) =>
+        !BorSettings.AntiAirTiers || PodTier(skyfaller) <= Tier(turret?.def) + 1;
 
     // A spark and, at most once a second per pod, a floating "Deflected".
     public static void Deflect(Thing skyfaller)
