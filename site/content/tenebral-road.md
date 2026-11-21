@@ -17,7 +17,7 @@ A pawn whose bloodlust runs dry is miserable. When they snap, they go berserk, w
 Tenebral technology has its own buildings:
 
 - The **dark mirror** unlocks tenebral research, which you get through [dark pacts](research.html#dark-pacts).
-- The **dark archotech altar** makes tenebral guns, apparel and parts, but only a pawn in tenebral psychosis can work it.
+- The **dark archotech altar** makes tenebral guns, apparel and parts, but only a pawn in tenebral psychosis can work it. Working it drains bloodlust, and the altar favors the far gone: the emptier a pawn's bloodlust, the deeper their psychosis and the more dark parts they carry, the faster they work. Their skills and work speed don't matter there.
 - The **tenebral pod** heals tenebral pawns ten times faster than normal, holds them in stasis, and installs their parts.
 - **Crystalline joints**, the component every tenebral recipe needs, are harvested at a butcher table from a fresh human corpse and a picocluster. Your colonists will not feel good about it.
 

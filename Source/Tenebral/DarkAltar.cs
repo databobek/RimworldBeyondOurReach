@@ -238,10 +238,10 @@ public sealed class CompDarkAltar : ThingComp
         }
     }
 
-    // Returns true when the cell finished unlocking on this tick, for every altar.
-    public bool WorkUnlock(int i)
+    // Adds this tick's work (the worker's altar piety); returns true when the cell finished unlocking, for every altar.
+    public bool WorkUnlock(int i, float work)
     {
-        if (!Seals.AddProgress(Entry(i).thing, 1f, UnlockTicks(i)))
+        if (!Seals.AddProgress(Entry(i).thing, work, UnlockTicks(i)))
         {
             return false;
         }
@@ -249,11 +249,11 @@ public sealed class CompDarkAltar : ThingComp
         return true;
     }
 
-    // Returns true when a run finished on this tick.
-    public bool WorkProduce(int i)
+    // Adds this tick's work (the worker's altar piety); returns true when a run finished.
+    public bool WorkProduce(int i, float work)
     {
         EnsureSize();
-        produceProgress[i] += 1f;
+        produceProgress[i] += work;
         if (produceProgress[i] < ProduceTicks(i))
         {
             return false;
@@ -492,8 +492,8 @@ public abstract class JobDriver_AltarWork : JobDriver
 
     protected abstract bool StillWanted(CompDarkAltar comp);
 
-    // Advances the cell by one tick; true when finished.
-    protected abstract bool WorkTick(CompDarkAltar comp);
+    // Advances the cell by this tick's work; true when finished.
+    protected abstract bool WorkTick(CompDarkAltar comp, float work);
 
     protected abstract float Fraction(CompDarkAltar comp);
 
@@ -530,7 +530,9 @@ public abstract class JobDriver_AltarWork : JobDriver
             pawn.rotationTracker.FaceTarget(AltarThing);
             CompDarkAltar.DrainBloodlust(pawn, comp.Props.bloodlustDrainPerDay);
             pawn.skills?.Learn(SkillDefOf.Intellectual, 0.08f);
-            if (WorkTick(comp))
+            // Piety moves slowly (bloodlust drains over days), so a few seconds of cache is plenty.
+            float work = pawn.GetStatValue(BOR_TenebralDefOf.BOR_TenebralAltarPiety, cacheStaleAfterTicks: 250);
+            if (WorkTick(comp, work))
             {
                 ReadyForNextToil();
             }
@@ -547,7 +549,7 @@ public class JobDriver_AltarUnlock : JobDriver_AltarWork
 {
     protected override bool StillWanted(CompDarkAltar comp) => !comp.IsUnlocked(Cell) && comp.UnlockRequested(Cell);
 
-    protected override bool WorkTick(CompDarkAltar comp) => comp.WorkUnlock(Cell);
+    protected override bool WorkTick(CompDarkAltar comp, float work) => comp.WorkUnlock(Cell, work);
 
     protected override float Fraction(CompDarkAltar comp) => comp.UnlockFraction(Cell);
 }
@@ -576,14 +578,14 @@ public class JobDriver_AltarProduce : JobDriver_AltarWork
 
     protected override bool StillWanted(CompDarkAltar comp) => Cell >= 0 && comp.ShouldProduce(Cell);
 
-    protected override bool WorkTick(CompDarkAltar comp)
+    protected override bool WorkTick(CompDarkAltar comp, float work)
     {
         if (comp.ComponentsMissing(Cell) > 0)
         {
             EndJobWith(JobCondition.Incompletable);
             return false;
         }
-        return comp.WorkProduce(Cell);
+        return comp.WorkProduce(Cell, work);
     }
 
     protected override float Fraction(CompDarkAltar comp) => comp.ProduceFraction(Cell);

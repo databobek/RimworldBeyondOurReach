@@ -68,6 +68,8 @@ public static class BOR_TenebralDefOf
     public static HediffDef BOR_TenebralBreakCounter = null!;
     public static HediffDef BOR_Crystallized = null!;
 
+    public static StatDef BOR_TenebralAltarPiety = null!;
+
     public static JobDef BOR_AltarUnlock = null!;
     public static JobDef BOR_AltarProduce = null!;
     public static JobDef BOR_LoadTenebralPod = null!;
