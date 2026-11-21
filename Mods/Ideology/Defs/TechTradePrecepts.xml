@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- Recorded by BeyondOurReach.TradeDeal_TryExecute_TechTrade_Patch when the colony sells an item whose tech level is
+       above the buying faction's. -->
+  <HistoryEventDef>
+    <defName>BOR_SoldTechToLesser</defName>
+    <label>sold technology to a lesser faction</label>
+  </HistoryEventDef>
+
+  <IssueDef>
+    <defName>BOR_TechTrade</defName>
+    <label>selling technology</label>
+  </IssueDef>
+
+  <PreceptDef>
+    <defName>BOR_TechTrade_Abhorrent</defName>
+    <issue>BOR_TechTrade</issue>
+    <label>abhorrent to lesser factions</label>
+    <description>Technology must never fall into the wrong hands. Selling anything more advanced than the buyer could make is an abhorrent betrayal.</description>
+    <impact>Medium</impact>
+    <displayOrderInIssue>10</displayOrderInIssue>
+    <!-- Only ideoligions designed with it (Kwazaarism) hold it; random ones never pick it. -->
+    <selectionWeight>0</selectionWeight>
+    <comps>
+      <li Class="PreceptComp_SelfTookMemoryThought">
+        <eventDef>BOR_SoldTechToLesser</eventDef>
+        <thought>BOR_SoldTechToLesser_Abhorrent</thought>
+      </li>
+      <li Class="PreceptComp_KnowsMemoryThought">
+        <eventDef>BOR_SoldTechToLesser</eventDef>
+        <thought>BOR_SoldTechToLesser_Know_Abhorrent</thought>
+      </li>
+      <li Class="PreceptComp_KnowsMemoryThought">
+        <eventDef>BOR_SoldTechToLesser</eventDef>
+        <thought>BOR_SoldTechToLesser_Know_Abhorrent_Mood</thought>
+        <description>Someone sold technology to a lesser faction</description>
+      </li>
+    </comps>
+  </PreceptDef>
+
+  <ThoughtDef>
+    <defName>BOR_SoldTechToLesser_Abhorrent</defName>
+    <durationDays>6</durationDays>
+    <stages>
+      <li>
+        <label>sold technology to lesser faction</label>
+        <description>I handed technology to people who could never have made it. It's an abhorrent betrayal of everything I believe.</description>
+        <baseMoodEffect>-20</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>BOR_SoldTechToLesser_Know_Abhorrent</defName>
+    <thoughtClass>Thought_MemorySocial</thoughtClass>
+    <durationDays>10</durationDays>
+    <stackLimit>100</stackLimit>
+    <stackLimitForSameOtherPawn>3</stackLimitForSameOtherPawn>
+    <stages>
+      <li>
+        <label>sold technology to lesser faction</label>
+        <baseOpinionOffset>-20</baseOpinionOffset>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>BOR_SoldTechToLesser_Know_Abhorrent_Mood</defName>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <durationDays>8</durationDays>
+    <stackLimit>5</stackLimit>
+    <stackedEffectMultiplier>0.5</stackedEffectMultiplier>
+    <doNotApplyToQuestLodgers>true</doNotApplyToQuestLodgers>
+    <stages>
+      <li>
+        <label>technology sold to lesser faction</label>
+        <description>Someone sold our technology to a lesser faction! It will fall into the wrong hands.</description>
+        <baseMoodEffect>-4</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+</Defs>

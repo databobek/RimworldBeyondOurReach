@@ -14,12 +14,6 @@ public class DefModExtension_UmbralPart : DefModExtension
 {
 }
 
-// Precepts a requiredPreceptsOnly ideoligion should hold although none of its memes require them; placed on the faction.
-public class DefModExtension_ExtraPrecepts : DefModExtension
-{
-    public List<PreceptDef> precepts = new();
-}
-
 public class UmbralPartReplacement
 {
     public BodyPartDef bodyPart = null!;

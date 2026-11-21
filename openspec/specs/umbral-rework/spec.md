@@ -21,7 +21,7 @@ Exposure to tenebrite SHALL increase the chance of the transformation hediff bei
 A hidden `BOR_Umbrals` faction SHALL exist in every new world, permanently hostile, with no settlements and no entry in the faction list. Its only pawn kind SHALL be `BOR_Umbral`. It SHALL NOT be chosen for random raids; only a raid that names the faction directly can use it.
 
 ### Requirement: Umbral ideoligion
-With Ideology, the `BOR_Umbrals` faction SHALL hold a fixed ideoligion, "The Other Will", with the Archist, Darkness and Supremacist memes and one deity, Horax. It SHALL have no roles and no rituals shown in the tab; vanilla's hidden rituals stay because the game requires them. Slavery SHALL be honorable and execution required, and it SHALL not care about corpses or clothing. Beyond those, it SHALL hold only the precepts its memes require and vanilla's special precepts. It SHALL stay out of the Ideoligions tab until a pawn holding it spawns. A player pawn that turns Umbral SHALL switch to it, and the rest of the colony SHALL keep theirs. Worlds created without the faction get no support.
+With Ideology, the `BOR_Umbrals` faction SHALL hold a fixed ideoligion, "Umbrals", loaded as designed from `Mods/Ideology/Ideos/Umbrals.rid`, with one deity, Horax, and no roles. It SHALL stay out of the Ideoligions tab until a pawn holding it spawns. A player pawn that turns Umbral SHALL switch to it, and the rest of the colony SHALL keep theirs. Worlds created without the faction get no support.
 
 ### Requirement: Umbrals feel nothing
 Turning Umbral SHALL remove all of a pawn's traits and memories. An Umbral SHALL have one thought, `BOR_UmbralEmpty`, with no mood effect, and SHALL gain no other, social thoughts included. Its mood SHALL stay at 50% whatever the difficulty.

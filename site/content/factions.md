@@ -12,6 +12,8 @@ Near-ultratech colonizers with a peculiar link to the past: think high-tech outl
 
 With Biotech, Solarites are their own xenotype: a little smarter than baseline humans, and more reliant on technology.
 
+With Ideology, every Solar Republic follows **Solarism**, the same fixed ideoligion in every world. It's loyal, collectivist and puts humanity first.
+
 {{ screenshot("faction-solar", "A Solar Republic trade caravan") }}
 
 ## Kwazaar Bazaar
@@ -25,6 +27,8 @@ You sell them ultratech items, or anything better, from your home area, and they
 {{ kwazaari_favors() }}
 
 With Biotech, the Kwazaari are a xenotype too: smarter still, and even more dependent on their machines.
+
+With Ideology, the Kwazaari follow **Kwazaarism**, a fixed ideoligion run like a corporation. Technology must never fall into the wrong hands: when someone who follows it sells an item more advanced than the buying faction could make, they're badly upset, and so is every other believer in the colony. Gifts and orbital traders don't count.
 
 {{ screenshot("faction-kwazaari", "The Kwazaari console with scrip and favors") }}
 
@@ -41,6 +45,8 @@ Badzaari are what happens when Kwazaari technology ends up in the wrong hands. T
 {{ faction("BOR_Tenebrites") }}
 
 The most dangerous hunters on the Rim. They come in crystalline armor, full of tenebral bionics that make them crave killing, and they have no interest in talking.
+
+With Ideology, they follow **Tenebralism**, a fixed ideoligion of pain, raiding and supremacy.
 
 {{ screenshot("faction-tenebral", "A Tenebral raid") }}
 

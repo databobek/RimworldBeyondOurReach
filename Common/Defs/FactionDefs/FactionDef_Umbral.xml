@@ -32,50 +32,13 @@
 		<allowedCultures>
 			<li>BOR_Umbral_Culture</li>
 		</allowedCultures>
-		<!-- hiddenIdeo only works with fixedIdeo. The ideoligion stays out of the tab until the first pawn holding it spawns. -->
+		<!-- The ideoligion comes from Mods/Ideology/Ideos/Umbrals.rid (DefModExtension_FixedIdeo).
+		     hiddenIdeo only works with fixedIdeo. The ideoligion stays out of the tab until the first pawn holding it spawns. -->
 		<fixedIdeo>true</fixedIdeo>
 		<hiddenIdeo>true</hiddenIdeo>
-		<ideoName>The Other Will</ideoName>
-		<ideoDescription>The Dark Archotech spoke, and they listened past the point of return. Every kill changes the body a little more, until only the Will remains to wear it. They keep no shrine and no scripture, only the next change.</ideoDescription>
-		<requiredPreceptsOnly>true</requiredPreceptsOnly>
-		<!-- Must include a structure meme: with forcedMemes set, no other meme can be added at random. -->
-		<forcedMemes>
-			<li MayRequire="Ludeon.RimWorld.Ideology">Structure_Archist</li>
-			<li MayRequire="Ludeon.RimWorld.Ideology">Darkness</li>
-			<li MayRequire="Ludeon.RimWorld.Ideology">Supremacist</li>
-		</forcedMemes>
-		<deityPresets>
-			<li>
-				<nameType>
-					<name>Horax</name>
-					<type>the Dark Archotech</type>
-				</nameType>
-				<gender>Male</gender>
-				<iconPath>UI/Deities/DeityGeneric</iconPath>
-			</li>
-		</deityPresets>
-		<!-- Slavery and execution stances: Supremacist picks from these, so blocking the others leaves honorable and required.
-		     Funeral and Festival are the only rituals shown in the tab. Don't block the hidden ones: the game needs RoleChange and ChildBirth, and restores hidden rituals on load. -->
-		<disallowedPrecepts>
-			<li MayRequire="Ludeon.RimWorld.Ideology">DarknessCombat_Preferred</li>
-			<li MayRequire="Ludeon.RimWorld.Ideology">Slavery_Acceptable</li>
-			<li MayRequire="Ludeon.RimWorld.Ideology">Execution_DontCare</li>
-			<li MayRequire="Ludeon.RimWorld.Ideology">Execution_RespectedIfGuilty</li>
-			<li MayRequire="Ludeon.RimWorld.Ideology">Festival</li>
-			<li MayRequire="Ludeon.RimWorld.Ideology">Funeral</li>
-			<li MayRequire="Ludeon.RimWorld.Ideology">IdeoRole_Leader</li>
-			<li MayRequire="Ludeon.RimWorld.Ideology">IdeoRole_Moralist</li>
-		</disallowedPrecepts>
 		<modExtensions>
 			<li Class="BeyondOurReach.DefModExtension_BorTier"><tier>4</tier></li>
-			<li Class="BeyondOurReach.DefModExtension_ExtraPrecepts">
-				<precepts>
-					<li MayRequire="Ludeon.RimWorld.Ideology">Corpses_DontCare</li>
-					<li MayRequire="Ludeon.RimWorld.Ideology">Nudity_Male_NoRules</li>
-					<li MayRequire="Ludeon.RimWorld.Ideology">Nudity_Female_NoRules</li>
-					<li MayRequire="Ludeon.RimWorld.Ideology">BOR_BiomassHarvest_Exalted</li>
-				</precepts>
-			</li>
+			<li Class="BeyondOurReach.DefModExtension_FixedIdeo"><file>Umbrals.rid</file></li>
 		</modExtensions>
 		<raidsForbidden>true</raidsForbidden>
 		<raidCommonalityFromPointsCurve>

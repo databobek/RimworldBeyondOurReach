@@ -20,25 +20,6 @@ public static class UmbralPatches
         }
     }
 
-    // requiredPreceptsOnly skips the code that fills tmpMemes, so vanilla reads the previous faction's memes here and
-    // can add their rituals, ignoring disallowedPrecepts. The next ideoligion fills the list again.
-    [HarmonyPatch(typeof(IdeoFoundation), nameof(IdeoFoundation.InitPrecepts))]
-    public static class IdeoFoundation_InitPrecepts_Patch
-    {
-        public static void Prefix(IdeoFoundation __instance, IdeoGenerationParms parms, List<MemeDef> ___tmpMemes)
-        {
-            if (parms.forFaction != BOR_UmbralDefOf.BOR_Umbrals)
-            {
-                return;
-            }
-            ___tmpMemes.Clear();
-            foreach (PreceptDef precept in parms.forFaction.GetModExtension<DefModExtension_ExtraPrecepts>()?.precepts ?? new List<PreceptDef>())
-            {
-                __instance.ideo.AddPrecept(PreceptMaker.MakePrecept(precept));
-            }
-        }
-    }
-
     // Every cooldown goes through here, so the Righteous Slaughter's blessing shortens them all.
     [HarmonyPatch(typeof(Ability), nameof(Ability.StartCooldown))]
     public static class Ability_StartCooldown_Patch
